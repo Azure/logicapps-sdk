@@ -29,6 +29,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
     /// </summary>
     internal class CSharpExpressionVisitor : VisitorBase<string, object>
     {
+        private static readonly object QualifiedEnumContext = new();
+
         private readonly struct VisitResult
         {
             public readonly string Text;
@@ -244,6 +246,11 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (e.Value == null && e.Type != typeof(object))
                 return $"({GetTypeName(e.Type)})null";
 
+            if (e.Type.IsEnum && ReferenceEquals(p, QualifiedEnumContext))
+            {
+                return $"{GetQualifiedTypeName(e.Type)}.{e.Value}";
+            }
+
             return RenderLiteral(e.Value, e.Type);
         }
 
@@ -263,7 +270,12 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             if (e.Expression == null)
             {
                 if (e.Member.DeclaringType != null && e.Member.DeclaringType.IsEnum)
-                    return new VisitResult($"{GetTypeName(e.Member.DeclaringType)}.{e.Member.Name}", false, false);
+                {
+                    var typeName = ReferenceEquals(p, QualifiedEnumContext)
+                        ? GetQualifiedTypeName(e.Member.DeclaringType)
+                        : GetTypeName(e.Member.DeclaringType);
+                    return new VisitResult($"{typeName}.{e.Member.Name}", false, false);
+                }
 
                 if (e.Member is PropertyInfo prop &&
                     prop.DeclaringType == typeof(HttpMethod))
@@ -667,7 +679,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             // Static methods on other types
             if (e.Method.IsStatic && e.Method.DeclaringType != null)
             {
-                var typeName = GetTypeName(e.Method.DeclaringType);
+                var typeName = GetRuntimeTypeName(e.Method.DeclaringType);
                 return $"{typeName}.{e.Method.Name}{GetGenericMethodTypeArguments(e.Method)}({string.Join(", ", args)})";
             }
 
@@ -1186,6 +1198,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         internal string VisitExpression(Expression e, object p) => VisitTagged(e, p).Text;
 
+        internal string VisitEnumExpression(Expression e) =>
+            VisitExpression(e, QualifiedEnumContext);
+
         private VisitResult VisitTagged(Expression e, object p)
         {
             return e switch
@@ -1248,7 +1263,16 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
             return type.Name;
         }
 
-        private static string GetQualifiedTypeName(Type type) =>
+        internal static string GetQualifiedTypeName(Type type) =>
             (type.FullName ?? type.Name).Replace('+', '.');
+
+        private static string GetRuntimeTypeName(Type type) =>
+            type.Namespace != null &&
+            (type.Namespace == "System" ||
+             type.Namespace.StartsWith("System.", StringComparison.Ordinal) ||
+             type.Namespace == "Newtonsoft.Json" ||
+             type.Namespace.StartsWith("Newtonsoft.Json.", StringComparison.Ordinal))
+                ? GetTypeName(type)
+                : GetQualifiedTypeName(type);
     }
 }

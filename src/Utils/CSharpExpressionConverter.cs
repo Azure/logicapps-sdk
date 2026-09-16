@@ -39,6 +39,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         {
             if (e == null) return null;
 
+            if (typeof(T).IsEnum)
+            {
+                return new JValue(ConvertEnum(e));
+            }
+
             if (TryConvertLocalJsonToken(e.Body, out var token))
             {
                 return token;
@@ -216,10 +221,19 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             if (expression is MemberExpression member &&
-                member.Member is System.Reflection.FieldInfo field &&
-                TryGetLocalValue(member.Expression, out var target))
+                member.Member is FieldInfo field &&
+                member.Expression == null &&
+                field.IsLiteral)
             {
-                value = field.GetValue(target);
+                value = field.GetValue(null);
+                return true;
+            }
+
+            if (expression is MemberExpression capturedMember &&
+                capturedMember.Member is FieldInfo capturedField &&
+                TryGetLocalValue(capturedMember.Expression, out var target))
+            {
+                value = capturedField.GetValue(target);
                 return true;
             }
 
@@ -229,6 +243,79 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private static JToken ConvertTemplateToken(Expression expression) =>
             expression.Visit(new ComplexObjectConverter(), null);
+
+        private static string ConvertEnum<T>(Expression<Func<T>> expression)
+        {
+            if (expression == null)
+            {
+                return string.Empty;
+            }
+
+            if (TryGetLocalValue(expression.Body, out var value) && value is Enum enumValue)
+            {
+                return Utility.GetEnumMemberValue(enumValue);
+            }
+
+            if (!RequiresCSharp(expression.Body))
+            {
+                try
+                {
+                    return RenderTemplateEnum(expression.Body, times: 0);
+                }
+                catch (Exception exception) when (IsUnsupportedTemplateExpression(exception))
+                {
+                }
+            }
+
+            return WrapCSharp(RenderCSharpEnum(expression.Body, typeof(T)));
+        }
+
+        private static string RenderTemplateEnum(Expression expression, int times)
+        {
+            var converted = expression.Visit(new LogicConverter(), null);
+            var forceInline = times > 0;
+            while (times > 0)
+            {
+                converted = new FunctionCallNode
+                {
+                    FunctionName = "encodeURIComponent",
+                    Arguments = [converted]
+                };
+                times--;
+            }
+
+            return converted.Render(forceInline);
+        }
+
+        private static string RenderCSharpEnum(Expression expression, Type enumType)
+        {
+            if (TryGetLocalValue(expression, out var localValue) && localValue is Enum localEnum)
+            {
+                return CSharpExpressionVisitor.RenderLiteral(
+                    Utility.GetEnumMemberValue(localEnum),
+                    typeof(string));
+            }
+
+            var enumTypeName = CSharpExpressionVisitor.GetQualifiedTypeName(enumType);
+            var mappings = Enum.GetValues(enumType)
+                .Cast<Enum>()
+                .GroupBy(value => value.ToString("D"), StringComparer.Ordinal)
+                .Select(group => group.First())
+                .Select(value =>
+                {
+                    var memberName = Enum.GetName(enumType, value);
+                    return memberName == null
+                        ? null
+                        : $"{enumTypeName}.{memberName} => " +
+                          CSharpExpressionVisitor.RenderLiteral(
+                              Utility.GetEnumMemberValue(value),
+                              typeof(string));
+                })
+                .Where(mapping => mapping != null);
+
+            return $"({Visitor.VisitEnumExpression(expression)}) switch {{ " +
+                   $"{string.Join(", ", mappings)}, var value => value.ToString() }}";
+        }
 
         /// <summary>Converts an expression to unwrapped C# source.</summary>
         internal static string ConvertCSharp<T>(Expression<Func<T>> e)
@@ -247,8 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>Converts an enum expression to its quoted member-value string.</summary>
         public static string Convert<T>(Expression<Func<T>> e) where T : Enum
         {
-            var value = e.Compile().Invoke();
-            return Utility.GetEnumMemberValue(value);
+            return ConvertEnum(e);
         }
 
         /// <summary>Wraps an expression in encodeURIComponent calls.</summary>
@@ -274,7 +360,20 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>Wraps an enum expression in encodeURIComponent calls.</summary>
         public static string ConvertWithUrlEncoding<T>(Expression<Func<T>> e, int times) where T : Enum
         {
-            return ExpressionConverter.ConvertWithUrlEncoding(e, times);
+            if (e == null) return string.Empty;
+
+            if (!RequiresCSharp(e.Body))
+            {
+                try
+                {
+                    return RenderTemplateEnum(e.Body, times);
+                }
+                catch (Exception exception) when (IsUnsupportedTemplateExpression(exception))
+                {
+                }
+            }
+
+            return WrapCSharp(WrapEncodeUri(RenderCSharpEnum(e.Body, typeof(T)), times));
         }
 
         /// <summary>Wraps an int expression in encodeURIComponent calls.</summary>
@@ -380,13 +479,26 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(expression));
             }
 
-            var wireValue = Utility.GetEnumMemberValue(expression.Compile().Invoke());
+            var csharp = WrapEncodeUri(RenderCSharpEnum(expression.Body, typeof(T)), times);
+
+            if (!RequiresCSharp(expression.Body))
+            {
+                try
+                {
+                    return new ConvertedPathArgument(
+                        RenderTemplateEnum(expression.Body, times),
+                        csharp,
+                        requiresCSharp: false);
+                }
+                catch (Exception exception) when (IsUnsupportedTemplateExpression(exception))
+                {
+                }
+            }
+
             return new ConvertedPathArgument(
-                ExpressionConverter.ConvertWithUrlEncoding(expression, times),
-                WrapEncodeUri(
-                    CSharpExpressionVisitor.RenderLiteral(wireValue, typeof(string)),
-                    times),
-                requiresCSharp: false);
+                templateExpression: null,
+                csharp,
+                requiresCSharp: true);
         }
 
         internal static ConvertedPathArgument ConvertPathArgumentWithUrlEncodingWithInt(

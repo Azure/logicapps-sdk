@@ -193,8 +193,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 }
                 return new LiteralNode
                 {
-                    Type = value.GetType(),
-                    Value = value
+                    Type = value is Enum ? typeof(string) : value.GetType(),
+                    Value = value is Enum enumValue
+                        ? Utility.GetEnumMemberValue(enumValue)
+                        : value
                 };
             }
             else if (litNode != null && ImplementsGenericInterface(obj.Type, typeof(IOutputWorkflowTrigger<>)))
@@ -337,6 +339,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override LogicAppExpressionNode Visit(ConstantExpression e, object p)
         {
+            if (e.Value is Enum enumValue)
+            {
+                return new LiteralNode
+                {
+                    Type = typeof(string),
+                    Value = Utility.GetEnumMemberValue(enumValue)
+                };
+            }
+
             return new LiteralNode
             {
                 Type = e.Type,

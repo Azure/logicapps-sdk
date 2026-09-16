@@ -41,6 +41,16 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <returns>Either the value of EnumMember or the member name.</returns>
         public static string GetEnumMemberValue<T>(T value) where T : Enum
         {
+            return GetEnumMemberValue((Enum)(object)value);
+        }
+
+        /// <summary>
+        /// Gets the EnumMember value of an enum or name if none exists.
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <returns>Either the value of EnumMember or the member name.</returns>
+        public static string GetEnumMemberValue(Enum value)
+        {
             var type = value.GetType();
             var member = type.GetMember(value.ToString());
             if (member.Length > 0)
