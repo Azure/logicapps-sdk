@@ -240,10 +240,12 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 TriggerOutput = new BodyNamedModel { Body = "value" }
             };
 
-            Assert.DoesNotContain(
-                "triggerBody()",
-                CSharpExpressionConverter.ConvertO(
-                    () => model.TriggerOutput.Body.ToUpper()));
+            var expression = CSharpExpressionConverter.ConvertO(
+                () => model.TriggerOutput.Body.ToUpper());
+
+            Assert.Equal("@csharp{\"value\".ToUpper()}", expression);
+            using var compiled = EmittedExpressionCompiler.Compile(expression);
+            Assert.Equal("VALUE", compiled.Evaluate());
         }
 
         private sealed class TriggerNamedModel
