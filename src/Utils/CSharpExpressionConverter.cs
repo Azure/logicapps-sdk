@@ -7,6 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System;
     using System.Linq.Expressions;
     using System.Net;
+    using System.Reflection;
     using System.Text.RegularExpressions;
     using Microsoft.Azure.Workflows.Sdk.Expressions;
     using Newtonsoft.Json.Linq;
@@ -574,6 +575,12 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             protected override Expression VisitMember(MemberExpression node)
             {
+                if (IsRuntimeStaticMember(node))
+                {
+                    this.Required = true;
+                    return node;
+                }
+
                 if (node.Expression != null && IsNativeRuntimeType(node.Expression.Type))
                 {
                     this.Required = true;
@@ -581,6 +588,23 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
 
                 return base.VisitMember(node);
+            }
+
+            private static bool IsRuntimeStaticMember(MemberExpression node)
+            {
+                if (node.Expression != null)
+                {
+                    return false;
+                }
+
+                return node.Member switch
+                {
+                    PropertyInfo property =>
+                        property.DeclaringType != null &&
+                        property.DeclaringType != typeof(HttpMethod),
+                    FieldInfo field => !field.IsLiteral,
+                    _ => false,
+                };
             }
 
             protected override Expression VisitBinary(BinaryExpression node)

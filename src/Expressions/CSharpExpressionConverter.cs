@@ -265,15 +265,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 if (e.Member.DeclaringType != null && e.Member.DeclaringType.IsEnum)
                     return new VisitResult($"{GetTypeName(e.Member.DeclaringType)}.{e.Member.Name}", false, false);
 
-                if (e.Member is PropertyInfo prop)
+                if (e.Member is PropertyInfo prop &&
+                    prop.DeclaringType == typeof(HttpMethod))
                 {
                     var value = prop.GetValue(null);
                     return new VisitResult(RenderLiteral(value, prop.PropertyType), false, false);
                 }
-                if (e.Member is FieldInfo field)
+
+                if (e.Member is FieldInfo field && field.IsLiteral)
                 {
                     var value = field.GetValue(null);
                     return new VisitResult(RenderLiteral(value, field.FieldType), false, false);
+                }
+
+                if (e.Member.DeclaringType != null)
+                {
+                    return new VisitResult(
+                        $"{GetQualifiedTypeName(e.Member.DeclaringType)}.{e.Member.Name}",
+                        false,
+                        false);
                 }
             }
 
@@ -1237,5 +1247,8 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
             return type.Name;
         }
+
+        private static string GetQualifiedTypeName(Type type) =>
+            (type.FullName ?? type.Name).Replace('+', '.');
     }
 }
