@@ -19,35 +19,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         {
             var trigger = WorkflowTriggers.Managed.Office365("office365").OnNewEmail();
 
-            var compose = WorkflowActions.BuiltIn.Compose(inputs: () => new EmailContent
-            {
-                Subject = trigger.TriggerBody.Value[0].Subject,
-                Body = trigger.TriggerBody.Value[0].Body,
-                From = trigger.TriggerBody.Value[0].From,
-                ReceivedTime = trigger.TriggerBody.Value[0].ReceivedTime
-            }.ToString()).WithName("ComposeEmailContent");
+            var compose = WorkflowActions.BuiltIn.Compose(
+                inputs: () => JsonConvert.SerializeObject(
+                    new
+                    {
+                        Subject = trigger.TriggerBody.Value[0].Subject,
+                        Body = trigger.TriggerBody.Value[0].Body,
+                        From = trigger.TriggerBody.Value[0].From,
+                        ReceivedTime = trigger.TriggerBody.Value[0].ReceivedTime,
+                    })).WithName("ComposeEmailContent");
 
             trigger.Then(compose);
 
             return new[] { WorkflowFactory.CreateStatefulWorkflow("GetEmailWorkflow", trigger) };
         }
-    }
-
-    /// <summary>
-    /// Email content model for compose output.
-    /// </summary>
-    public class EmailContent
-    {
-        [JsonProperty(Required = Required.Default)]
-        public string Subject { get; set; } = string.Empty;
-
-        [JsonProperty(Required = Required.Default)]
-        public string Body { get; set; } = string.Empty;
-
-        [JsonProperty(Required = Required.Default)]
-        public string From { get; set; } = string.Empty;
-
-        [JsonProperty(Required = Required.Default)]
-        public string ReceivedTime { get; set; } = string.Empty;
     }
 }

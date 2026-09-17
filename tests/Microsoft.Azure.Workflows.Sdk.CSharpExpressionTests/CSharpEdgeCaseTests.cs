@@ -130,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("HttpTrigger");
             Assert.Equal(
-                "triggerOutputs().ToObject<global::Microsoft.Azure.Workflows.Sdk.HttpRequestTriggerOutput>().Body",
+                "triggerOutputs()?[\"Body\"]",
                 CSharpExpressionConverter.ConvertO(() => $"{trigger.TriggerOutput.Body}"));
         }
 

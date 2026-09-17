@@ -9,10 +9,9 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     /// <summary>
     /// GOAL specification for object payloads, mirroring <c>ComplexObjectConverterTests</c>.
     ///
-    /// Key insight of the C# model: object payloads no longer need the JSON-building
-    /// machinery of the LA <c>ComplexObjectConverter</c>. The emitted C# is simply the
-    /// native object-initializer source, compiled and (if a JSON payload is needed)
-    /// serialized at runtime.
+    /// Anonymous and runtime-supported payloads use native C# initializers. Payload types
+    /// from the SDK or a codeful project are rejected because their assemblies are not
+    /// available to the runtime expression engine.
     ///
     /// NOTE: the exact source formatting below (member order, numeric suffixes such as
     /// <c>10L</c>/<c>2.5m</c>, and <c>(string)null</c>) is a target to be finalized during
@@ -30,12 +29,11 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void ConvertO_MemberInit_EmitsObjectInitializer()
+        public void ConvertO_MemberInitForUnavailableType_IsRejected()
         {
-            // LA JSON: {"Name":"n","Count":2,"renamed":"t"}
-            Assert.Equal(
-                "new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"n\", Count = 2, Tag = \"t\" }",
-                CSharpExpressionConverter.ConvertO(() => new Poco { Name = "n", Count = 2, Tag = "t" }));
+            Assert.Throws<NotSupportedException>(
+                () => CSharpExpressionConverter.ConvertO(
+                    () => new Poco { Name = "n", Count = 2, Tag = "t" }));
         }
 
         [Fact]
@@ -61,18 +59,15 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             // LA JSON: {"b":true,"l":10,"d":1.5,"dec":2.5,"e":"Running","n":null}
             Assert.Equal(
-                "new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = global::Microsoft.Azure.Workflows.Sdk.FlowStatus.Running, n = (string)null }",
+                "new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = \"Running\", n = (string)null }",
                 CSharpExpressionConverter.ConvertO(() => new { b = true, l = 10L, d = 1.5, dec = 2.5m, e = FlowStatus.Running, n = (string)null }));
         }
 
         [Fact]
-        public void ConvertObject_EmitsObjectInitializer()
+        public void ConvertObject_ForUnavailableType_IsRejected()
         {
-            // LA: ConvertObject rewrites string members through the converter and re-compiles.
-            // The C# model just emits the initializer source.
-            Assert.Equal(
-                "new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"hi\", Count = 3 }",
-                CSharpExpressionConverter.ConvertO(() => new Poco { Name = "hi", Count = 3 }));
+            Assert.Throws<NotSupportedException>(
+                () => CSharpExpressionConverter.ConvertO(() => new Poco { Name = "hi", Count = 3 }));
         }
     }
 }

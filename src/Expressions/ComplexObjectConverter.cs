@@ -5,7 +5,6 @@
 namespace Microsoft.Azure.Workflows.Sdk.Expressions
 {
     using Newtonsoft.Json.Linq;
-    using System.ComponentModel;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Runtime.CompilerServices;
@@ -39,11 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(ListInitExpression e, object p)
         {
-            e.NewExpression.Visit(this, p);
-            foreach (var init in e.Initializers)
-            {
-            }
-            return base.Visit(e, p);
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -53,16 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(BinaryExpression e, object p)
         {
-            var concat2 = typeof(string).GetMethod("Concat", [typeof(string), typeof(string)]);
-
-            if (e.Method == concat2)
-            {
-                var conv = new LogicConverter();
-                var node = e.Visit(conv, null);
-                return new JValue(node.Render());
-            }
-
-            throw new NotImplementedException();
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -72,49 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(ConstantExpression e, object p)
         {
-            if (e.Value == null)
-            {
-                return JValue.CreateNull();
-            }
-            if (e.Type == typeof(string))
-            {
-                return new JValue((string)e.Value);
-            }
-            if (e.Type == typeof(bool))
-            {
-                return new JValue((bool)e.Value);
-            }
-            if (e.Type == typeof(int))
-            {
-                return new JValue((int)e.Value);
-            }
-            if (e.Type == typeof(long))
-            {
-                return new JValue((long)e.Value);
-            }
-            if (e.Type == typeof(double))
-            {
-                return new JValue((double)e.Value);
-            }
-            if (e.Type == typeof(float))
-            {
-                return new JValue((float)e.Value);
-            }
-            if (e.Type == typeof(decimal))
-            {
-                return new JValue((decimal)e.Value);
-            }
-            if (e.Type.IsEnum)
-            {
-                var enumValue = e.Value;
-                var enumType = e.Type;
-                var enumName = Enum.GetName(enumType, enumValue);
-                var member = enumType.GetMember(enumName).FirstOrDefault();
-                var enumMemberAttr = member?.GetCustomAttribute<System.Runtime.Serialization.EnumMemberAttribute>();
-                var value = enumMemberAttr?.Value ?? enumName;
-                return new JValue(value);
-            }
-            throw new NotImplementedException($"ConstantExpression {e.Type} / {e.Value}");
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -144,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 return result;
             }
 
-            throw new NotImplementedException();
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -154,9 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(MemberExpression e, object p)
         {
-            var conv = new LogicConverter();
-            var node = e.Visit(conv, null);
-            return new JValue(node.Render());
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -166,9 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(MethodCallExpression e, object p)
         {
-            var conv = new LogicConverter();
-            var node = e.Visit(conv, null);
-            return new JValue(node.Render());
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -178,9 +118,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(UnaryExpression e, object p)
         {
-            var conv = new LogicConverter();
-            var node = e.Visit(conv, null);
-            return new JValue(node.Render());
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -190,9 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="p">Additional parameter (not used).</param>
         public override JToken Visit(ConditionalExpression e, object p)
         {
-            var conv = new LogicConverter();
-            var node = e.Visit(conv, null);
-            return new JValue(node.Render());
+            return ExpressionConverter.ConvertExpression(e);
         }
 
         /// <summary>
@@ -250,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
         /// <param name="_">Additional parameter (not used).</param>
         public override JToken Visit(Expression e, object _)
         {
-            throw new NotImplementedException();
+            return ExpressionConverter.ConvertExpression(e);
         }
     }
 }

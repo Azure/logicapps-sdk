@@ -133,14 +133,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void Convert_ObjectInterpolation_EmitsJsonSerializeCall()
+        public void Convert_ObjectInterpolationForUnavailableType_IsRejected()
         {
-            // LA: @{concat('{', '"Name":', '"', 'n', '"', ',', '"Count":', 2, '}')}
-            // IMPROVEMENT: instead of fragile hand-built JSON-via-concat, the C# model
-            // serializes the object with a real serializer.
-            Assert.Equal(
-                "JsonConvert.SerializeObject(new global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.Poco { Name = \"n\", Count = 2 })",
-                CSharpExpressionConverter.ConvertO(() => $"{new Poco { Name = "n", Count = 2 }}"));
+            Assert.Throws<NotSupportedException>(
+                () => CSharpExpressionConverter.ConvertO(() => $"{new Poco { Name = "n", Count = 2 }}"));
         }
 
         [Fact]
