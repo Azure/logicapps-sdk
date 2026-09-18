@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
     public class PropublicacampaignipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<CandidateSearchResponse> CandidateSearch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression] Func<string> query = null)
         {
             var apiCallPath = String.Format("/{0}/candidates/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateGetResponse> CandidateGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CandidateGetResponse> CandidateGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/candidates/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial(Expression<Func<string>> cycle, Expression<Func<categoryInput>> category)
+        public IBodyWorkflowAction<CandidateTopFinancialResponse> CandidateTopFinancial([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<categoryInput> category)
         {
             var apiCallPath = String.Format("/{0}/candidates/leaders/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(category, 1));
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateStateResponse> CandidateState(Expression<Func<string>> cycle, Expression<Func<string>> state)
+        public IBodyWorkflowAction<CandidateStateResponse> CandidateState([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression] Func<string> state)
         {
             var apiCallPath = String.Format("/{0}/races/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(state, 1));
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CandidateRecentResponse> CandidateRecent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/candidates/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ContributionLateRecentResponse> ContributionLateRecent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/contributions/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ContributionLateCandidateResponse> ContributionLateCandidate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/candidates/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ContributionLateCommitteeResponse> ContributionLateCommittee([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/48hour.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<ContributionLateDateResponse> ContributionLateDate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> year, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> month, [WorkflowExpression] Func<string> day)
         {
             var apiCallPath = String.Format("/{0}/contributions/48hour/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
             var apiCallHttpMethod = "get";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch(Expression<Func<string>> cycle, Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<CommitteeSearchResponse> CommitteeSearch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression] Func<string> query = null)
         {
             var apiCallPath = String.Format("/{0}/committees/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommitteeGetResponse> CommitteeGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -115,7 +114,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeRecentResponse> CommitteeRecent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/committees/new.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeRecentPACsResponse> CommitteeRecentPACs([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/committees/superpacs.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommitteeFilingResponse> CommitteeFiling([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/filings.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommitteeLeadershipResponse> CommitteeLeadership([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/committees/leadership.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSearchResponse> FilingSearch(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<FilingSearchResponse> FilingSearch([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/filings/search.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -160,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingDateResponse> FilingDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<FilingDateResponse> FilingDate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> year, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> month, [WorkflowExpression] Func<string> day)
         {
             var apiCallPath = String.Format("/{0}/filings/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
             var apiCallHttpMethod = "get";
@@ -169,7 +168,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<FilingFormTypeResponse> FilingFormType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/filings/types.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingTypeResponse> FilingType(Expression<Func<string>> cycle, Expression<Func<string>> formTypeId)
+        public IBodyWorkflowAction<FilingTypeResponse> FilingType([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression] Func<string> formTypeId)
         {
             var apiCallPath = String.Format("/{0}/filings/types/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(formTypeId, 1));
             var apiCallHttpMethod = "get";
@@ -187,7 +186,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary(Expression<Func<string>> cycle, Expression<Func<string>> filingId)
+        public IBodyWorkflowAction<FilingSummaryResponse> FilingSummary([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> filingId)
         {
             var apiCallPath = String.Format("/{0}/filings/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(filingId, 1));
             var apiCallHttpMethod = "get";
@@ -196,7 +195,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ExpenditureRecentResponse> ExpenditureRecent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -205,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<ExpenditureDateResponse> ExpenditureDate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> year, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> month, [WorkflowExpression] Func<string> day)
         {
             var apiCallPath = String.Format("/{0}/independent_expenditures/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
             var apiCallHttpMethod = "get";
@@ -214,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureCommitteeResponse> ExpenditureCommittee([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -223,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureCandidateResponse> ExpenditureCandidate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/candidates/{1}/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<ExpenditurePresResponse> ExpenditurePres([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/president/independent_expenditures.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -241,7 +240,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice(Expression<Func<string>> cycle, Expression<Func<string>> office)
+        public IBodyWorkflowAction<ExpenditureOfficeResponse> ExpenditureOffice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression] Func<string> office)
         {
             var apiCallPath = String.Format("/{0}/independent_expenditures/race_totals/{1}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(office, 1));
             var apiCallHttpMethod = "get";
@@ -250,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<ExpenditureRaceCommitteeResponse> ExpenditureRaceCommittee([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/independent_expenditures/races.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -259,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent(Expression<Func<string>> cycle)
+        public IBodyWorkflowAction<CommunicationRecentResponse> CommunicationRecent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle)
         {
             var apiCallPath = String.Format("/{0}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1));
             var apiCallHttpMethod = "get";
@@ -268,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<CommunicationCommitteeResponse> CommunicationCommittee([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/electioneering_communications.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";
@@ -277,7 +276,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate(Expression<Func<string>> cycle, Expression<Func<string>> year, Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<CommunicationDateResponse> CommunicationDate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> year, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> month, [WorkflowExpression] Func<string> day)
         {
             var apiCallPath = String.Format("/{0}/electioneering_communications/{1}/{2}/{3}.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(year, 1), ExpressionConverter.ConvertWithUrlEncoding(month, 1), ExpressionConverter.ConvertWithUrlEncoding(day, 1));
             var apiCallHttpMethod = "get";
@@ -286,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicacampaignip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicacampaignip")]
-        public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee(Expression<Func<string>> cycle, Expression<Func<string>> fecId)
+        public IBodyWorkflowAction<BundlerCommitteeResponse> BundlerCommittee([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cycle, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fecId)
         {
             var apiCallPath = String.Format("/{0}/committees/{1}/lobbyist_bundlers.json", ExpressionConverter.ConvertWithUrlEncoding(cycle, 1), ExpressionConverter.ConvertWithUrlEncoding(fecId, 1));
             var apiCallHttpMethod = "get";

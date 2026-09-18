@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
     public class PowerassistActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortResponse> ArraySort(Expression<Func<JToken[]>> bodyarray)
+        public IBodyWorkflowAction<ArraySortResponse> ArraySort([WorkflowExpression] Func<JToken[]> bodyarray)
         {
             var apiCallPath = "/array/sort";
             var apiCallHttpMethod = "post";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse(Expression<Func<JToken[]>> bodyarray)
+        public IBodyWorkflowAction<ArrayReverseResponse> ArrayReverse([WorkflowExpression] Func<JToken[]> bodyarray)
         {
             var apiCallPath = "/array/reverse";
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bool>> bodydescending)
+        public IBodyWorkflowAction<ArraySortByPropertyResponse> ArraySortByProperty([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bool> bodydescending)
         {
             var apiCallPath = "/array/sortByProperty";
             var apiCallHttpMethod = "post";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayFilterResponse> ArrayFilter([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/filter";
             var apiCallHttpMethod = "post";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend(Expression<Func<JToken[]>> bodyarray, Expression<Func<object>> bodyvalue, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayPrependResponse> ArrayPrepend([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/prepend";
             var apiCallHttpMethod = "post";
@@ -150,7 +149,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayAnyResponse> ArrayAny([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/any";
             var apiCallHttpMethod = "post";
@@ -194,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayEveryResponse> ArrayEvery([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/every";
             var apiCallHttpMethod = "post";
@@ -238,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayRemoveFirstResponse> ArrayRemoveFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/removeFirst";
             var apiCallHttpMethod = "post";
@@ -282,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName = null)
+        public IBodyWorkflowAction<ArrayGroupByResponse> ArrayGroupBy([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName = null)
         {
             var apiCallPath = "/array/groupBy";
             var apiCallHttpMethod = "post";
@@ -306,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst(Expression<Func<JToken[]>> bodyarray, Expression<Func<string>> bodypropertyName, Expression<Func<bodycomparisonInput>> bodycomparison, Expression<Func<object>> bodyvalue = null, Expression<Func<bodyvalueTypeInput>> bodyvalueType = null)
+        public IBodyWorkflowAction<ArrayFindFirstResponse> ArrayFindFirst([WorkflowExpression] Func<JToken[]> bodyarray, [WorkflowExpression] Func<string> bodypropertyName, [WorkflowExpression] Func<bodycomparisonInput> bodycomparison, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<bodyvalueTypeInput> bodyvalueType = null)
         {
             var apiCallPath = "/array/findFirst";
             var apiCallHttpMethod = "post";
@@ -350,7 +349,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<RoundResponse> Round(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<RoundResponse> Round([WorkflowExpression] Func<double> bodynumber)
         {
             var apiCallPath = "/math/round";
             var apiCallHttpMethod = "post";
@@ -368,7 +367,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathCeilResponse> MathCeil(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<MathCeilResponse> MathCeil([WorkflowExpression] Func<double> bodynumber)
         {
             var apiCallPath = "/math/ceil";
             var apiCallHttpMethod = "post";
@@ -386,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathFloorResponse> MathFloor(Expression<Func<double>> bodynumber)
+        public IBodyWorkflowAction<MathFloorResponse> MathFloor([WorkflowExpression] Func<double> bodynumber)
         {
             var apiCallPath = "/math/floor";
             var apiCallHttpMethod = "post";
@@ -404,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathAverageResponse> MathAverage(Expression<Func<double[]>> bodynumbers)
+        public IBodyWorkflowAction<MathAverageResponse> MathAverage([WorkflowExpression] Func<double[]> bodynumbers)
         {
             var apiCallPath = "/math/average";
             var apiCallHttpMethod = "post";
@@ -422,7 +421,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathMedianResponse> MathMedian(Expression<Func<JToken[]>> bodynumbers)
+        public IBodyWorkflowAction<MathMedianResponse> MathMedian([WorkflowExpression] Func<JToken[]> bodynumbers)
         {
             var apiCallPath = "/math/median";
             var apiCallHttpMethod = "post";
@@ -440,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathModeResponse> MathMode(Expression<Func<JToken[]>> bodynumbers)
+        public IBodyWorkflowAction<MathModeResponse> MathMode([WorkflowExpression] Func<JToken[]> bodynumbers)
         {
             var apiCallPath = "/math/mode";
             var apiCallHttpMethod = "post";
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<MathRandomResponse> MathRandom(Expression<Func<int>> bodymaximum)
+        public IBodyWorkflowAction<MathRandomResponse> MathRandom([WorkflowExpression] Func<int> bodymaximum)
         {
             var apiCallPath = "/math/random";
             var apiCallHttpMethod = "post";
@@ -476,7 +475,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodysearchValue, Expression<Func<string>> bodyreplaceValue)
+        public IBodyWorkflowAction<StringReplaceAllResponse> StringReplaceAll([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodysearchValue, [WorkflowExpression] Func<string> bodyreplaceValue)
         {
             var apiCallPath = "/string/replaceAll";
             var apiCallHttpMethod = "post";
@@ -498,7 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace(Expression<Func<string>> bodysourceString, Expression<Func<string>> bodypattern, Expression<Func<string>> bodyreplaceValue)
+        public IBodyWorkflowAction<StringRegexReplaceResponse> StringRegexReplace([WorkflowExpression] Func<string> bodysourceString, [WorkflowExpression] Func<string> bodypattern, [WorkflowExpression] Func<string> bodyreplaceValue)
         {
             var apiCallPath = "/string/regexReplace";
             var apiCallHttpMethod = "post";
@@ -520,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCapitalizeResponse> StringCapitalize([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/capitalize";
             var apiCallHttpMethod = "post";
@@ -538,7 +537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimResponse> StringTrim(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimResponse> StringTrim([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
         {
             var apiCallPath = "/string/trim";
             var apiCallHttpMethod = "post";
@@ -562,7 +561,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimStartResponse> StringTrimStart([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
         {
             var apiCallPath = "/string/trimStart";
             var apiCallHttpMethod = "post";
@@ -586,7 +585,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd(Expression<Func<string>> bodystring, Expression<Func<string>> bodycharacters = null)
+        public IBodyWorkflowAction<StringTrimEndResponse> StringTrimEnd([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodycharacters = null)
         {
             var apiCallPath = "/string/trimEnd";
             var apiCallHttpMethod = "post";
@@ -610,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringSlugifyResponse> StringSlugify([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/slugify";
             var apiCallHttpMethod = "post";
@@ -628,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordsResponse> StringWords(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordsResponse> StringWords([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
             var apiCallPath = "/string/words";
             var apiCallHttpMethod = "post";
@@ -652,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount(Expression<Func<string>> bodystring, Expression<Func<string>> bodydelimiter = null)
+        public IBodyWorkflowAction<StringWordCountResponse> StringWordCount([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodydelimiter = null)
         {
             var apiCallPath = "/string/wordCount";
             var apiCallHttpMethod = "post";
@@ -676,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringStripHtmlResponse> StringStripHtml([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/stripHtml";
             var apiCallHttpMethod = "post";
@@ -694,7 +693,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanResponse> StringClean(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanResponse> StringClean([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/clean";
             var apiCallHttpMethod = "post";
@@ -712,7 +711,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringCleanDiacriticsResponse> StringCleanDiacritics([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/cleanDiacritics";
             var apiCallHttpMethod = "post";
@@ -730,7 +729,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringEscapeHtmlResponse> StringEscapeHtml([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/escapeHtml";
             var apiCallHttpMethod = "post";
@@ -748,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml(Expression<Func<string>> bodystring)
+        public IBodyWorkflowAction<StringUnescapeHtmlResponse> StringUnescapeHtml([WorkflowExpression] Func<string> bodystring)
         {
             var apiCallPath = "/string/unescapeHtml";
             var apiCallHttpMethod = "post";
@@ -766,7 +765,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances(Expression<Func<string>> bodystring, Expression<Func<string>> bodysubstring, Expression<Func<bool>> bodyignoreCase = null)
+        public IBodyWorkflowAction<StringCountInstancesResponse> StringCountInstances([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodysubstring, [WorkflowExpression] Func<bool> bodyignoreCase = null)
         {
             var apiCallPath = "/string/countInstances";
             var apiCallHttpMethod = "post";
@@ -802,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<StringChopResponse> StringChop(Expression<Func<string>> bodystring, Expression<Func<int>> bodyinterval)
+        public IBodyWorkflowAction<StringChopResponse> StringChop([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<int> bodyinterval)
         {
             var apiCallPath = "/string/chop";
             var apiCallHttpMethod = "post";
@@ -822,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsStringResponse> TypesIsString([WorkflowExpression] Func<object> bodyvalue)
         {
             var apiCallPath = "/types/isString";
             var apiCallHttpMethod = "post";
@@ -840,7 +839,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber(Expression<Func<object>> bodyvalue, Expression<Func<bool>> bodyincludeNumbersInStrings)
+        public IBodyWorkflowAction<TypesIsNumberResponse> TypesIsNumber([WorkflowExpression] Func<object> bodyvalue, [WorkflowExpression] Func<bool> bodyincludeNumbersInStrings)
         {
             var apiCallPath = "/types/isNumber";
             var apiCallHttpMethod = "post";
@@ -860,7 +859,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsNullOrEmptyResponse> TypesIsNullOrEmpty([WorkflowExpression] Func<object> bodyvalue)
         {
             var apiCallPath = "/types/isNullOrEmpty";
             var apiCallHttpMethod = "post";
@@ -878,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsArrayResponse> TypesIsArray([WorkflowExpression] Func<object> bodyvalue)
         {
             var apiCallPath = "/types/isArray";
             var apiCallHttpMethod = "post";
@@ -896,7 +895,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject(Expression<Func<object>> bodyvalue)
+        public IBodyWorkflowAction<TypesIsObjectResponse> TypesIsObject([WorkflowExpression] Func<object> bodyvalue)
         {
             var apiCallPath = "/types/isObject";
             var apiCallHttpMethod = "post";
@@ -914,7 +913,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> bodyemail)
         {
             var apiCallPath = "/validate/email";
             var apiCallHttpMethod = "post";
@@ -932,7 +931,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerassist
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerassist")]
-        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex(Expression<Func<string>> bodystring, Expression<Func<string>> bodypattern)
+        public IBodyWorkflowAction<ValidateRegexResponse> ValidateRegex([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<string> bodypattern)
         {
             var apiCallPath = "/validate/regex";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
     public class NistnvdipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<string>> cvssV2Metrics = null, Expression<Func<cvssV2SeverityInput>> cvssV2Severity = null, Expression<Func<string>> cvssV3Metrics = null, Expression<Func<cvssV3SeverityInput>> cvssV3Severity = null, Expression<Func<string>> cweId = null, Expression<Func<bool>> includeMatchStringChange = null, Expression<Func<bool>> isExactMatch = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<string>> pubStartDate = null, Expression<Func<string>> pubEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCVECollectionResponse> GetCVECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<string> cvssV2Metrics = null, [WorkflowExpression] Func<cvssV2SeverityInput> cvssV2Severity = null, [WorkflowExpression] Func<string> cvssV3Metrics = null, [WorkflowExpression] Func<cvssV3SeverityInput> cvssV3Severity = null, [WorkflowExpression] Func<string> cweId = null, [WorkflowExpression] Func<bool> includeMatchStringChange = null, [WorkflowExpression] Func<bool> isExactMatch = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<string> pubStartDate = null, [WorkflowExpression] Func<string> pubEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
             var apiCallPath = "/cves/1.0/";
             var apiCallHttpMethod = "get";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nistnvdip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nistnvdip")]
-        public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection(Expression<Func<addOnsInput>> addOns = null, Expression<Func<string>> cpeMatchString = null, Expression<Func<bool>> includeDeprecated = null, Expression<Func<string>> keyword = null, Expression<Func<string>> modStartDate = null, Expression<Func<string>> modEndDate = null, Expression<Func<int>> resultsPerPage = null, Expression<Func<int>> startIndex = null)
+        public IBodyWorkflowAction<GetCPECollectionResponse> GetCPECollection([WorkflowExpression] Func<addOnsInput> addOns = null, [WorkflowExpression] Func<string> cpeMatchString = null, [WorkflowExpression] Func<bool> includeDeprecated = null, [WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> modStartDate = null, [WorkflowExpression] Func<string> modEndDate = null, [WorkflowExpression] Func<int> resultsPerPage = null, [WorkflowExpression] Func<int> startIndex = null)
         {
             var apiCallPath = "/cpes/1.0/";
             var apiCallHttpMethod = "get";

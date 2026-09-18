@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<AccountUpdateResponse> AccountUpdate(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodypassword = null)
+        public IBodyWorkflowAction<AccountUpdateResponse> AccountUpdate([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodypassword = null)
         {
             var apiCallPath = "/account/update";
             var apiCallHttpMethod = "put";
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainListResponse> DomainList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DomainListResponse> DomainList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/domains";
             var apiCallHttpMethod = "get";
@@ -62,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainCreateResponse> DomainCreate(Expression<Func<string>> bodydomain, Expression<Func<string>> bodyredirectroot = null, Expression<Func<string>> bodyredirect404 = null)
+        public IBodyWorkflowAction<DomainCreateResponse> DomainCreate([WorkflowExpression] Func<string> bodydomain, [WorkflowExpression] Func<string> bodyredirectroot = null, [WorkflowExpression] Func<string> bodyredirect404 = null)
         {
             var apiCallPath = "/domain/add";
             var apiCallHttpMethod = "post";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainUpdateResponse> DomainUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyredirectroot = null, Expression<Func<string>> bodyredirect404 = null)
+        public IBodyWorkflowAction<DomainUpdateResponse> DomainUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodyredirectroot = null, [WorkflowExpression] Func<string> bodyredirect404 = null)
         {
             var apiCallPath = String.Format("/domain/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<DomainDeleteResponse> DomainDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<DomainDeleteResponse> DomainDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/domain/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -129,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<SplashListResponse> SplashList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SplashListResponse> SplashList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/splash";
             var apiCallHttpMethod = "get";
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<CTAListResponse> CTAList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CTAListResponse> CTAList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/overlay";
             var apiCallHttpMethod = "get";
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkListResponse> LinkList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> order = null)
+        public IBodyWorkflowAction<LinkListResponse> LinkList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> order = null)
         {
             var apiCallPath = "/urls";
             var apiCallHttpMethod = "get";
@@ -170,7 +169,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkGetResponse> LinkGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<LinkGetResponse> LinkGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/url/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkShortenResponse> LinkShorten(Expression<Func<string>> bodyurl, Expression<Func<string>> bodycustom = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodytype = null, Expression<Func<bodygeotargetInputItem[]>> bodygeotarget = null, Expression<Func<bodydevicetargetInputItem[]>> bodydevicetarget = null, Expression<Func<bodyparametersInputItem[]>> bodyparameters = null)
+        public IBodyWorkflowAction<LinkShortenResponse> LinkShorten([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<string> bodycustom = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyexpiry = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bodygeotargetInputItem[]> bodygeotarget = null, [WorkflowExpression] Func<bodydevicetargetInputItem[]> bodydevicetarget = null, [WorkflowExpression] Func<bodyparametersInputItem[]> bodyparameters = null)
         {
             var apiCallPath = "/url/add";
             var apiCallHttpMethod = "post";
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkUpdateResponse> LinkUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodycustom = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyexpiry = null, Expression<Func<string>> bodytype = null, Expression<Func<bodygeotargetInputItem[]>> bodygeotarget = null, Expression<Func<bodydevicetargetInputItem[]>> bodydevicetarget = null, Expression<Func<bodyparametersInputItem[]>> bodyparameters = null)
+        public IBodyWorkflowAction<LinkUpdateResponse> LinkUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodycustom = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyexpiry = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<bodygeotargetInputItem[]> bodygeotarget = null, [WorkflowExpression] Func<bodydevicetargetInputItem[]> bodydevicetarget = null, [WorkflowExpression] Func<bodyparametersInputItem[]> bodyparameters = null)
         {
             var apiCallPath = String.Format("/url/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -303,7 +302,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<LinkDeleteResponse> LinkDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<LinkDeleteResponse> LinkDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/url/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -312,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelListResponse> PixelList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PixelListResponse> PixelList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/pixels";
             var apiCallHttpMethod = "get";
@@ -325,7 +324,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelCreateResponse> PixelCreate(Expression<Func<string>> bodytype, Expression<Func<string>> bodyname, Expression<Func<string>> bodytag)
+        public IBodyWorkflowAction<PixelCreateResponse> PixelCreate([WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodytag)
         {
             var apiCallPath = "/pixel/add";
             var apiCallHttpMethod = "post";
@@ -347,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelUpdateResponse> PixelUpdate(Expression<Func<string>> id, Expression<Func<string>> bodytag, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<PixelUpdateResponse> PixelUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodytag, [WorkflowExpression] Func<string> bodyname = null)
         {
             var apiCallPath = String.Format("/pixel/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -371,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PixelDeleteResponse> PixelDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/pixel/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -380,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRListResponse> QRList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<QRListResponse> QRList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/qr";
             var apiCallHttpMethod = "get";
@@ -393,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRGetResponse> QRGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<QRGetResponse> QRGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/qr/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -402,7 +401,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRCreateResponse> QRCreate(Expression<Func<string>> bodytype = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodybackground = null, Expression<Func<string>> bodyforeground = null, Expression<Func<string>> bodylogo = null)
+        public IBodyWorkflowAction<QRCreateResponse> QRCreate([WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodybackground = null, [WorkflowExpression] Func<string> bodyforeground = null, [WorkflowExpression] Func<string> bodylogo = null)
         {
             var apiCallPath = "/qr/add";
             var apiCallHttpMethod = "post";
@@ -448,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRUpdateResponse> QRUpdate(Expression<Func<string>> id, Expression<Func<string>> bodydata, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodybackground = null, Expression<Func<string>> bodyforeground = null, Expression<Func<string>> bodylogo = null)
+        public IBodyWorkflowAction<QRUpdateResponse> QRUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodybackground = null, [WorkflowExpression] Func<string> bodyforeground = null, [WorkflowExpression] Func<string> bodylogo = null)
         {
             var apiCallPath = String.Format("/qr/{0}/update", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "put";
@@ -490,7 +489,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<QRDeleteResponse> QRDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<QRDeleteResponse> QRDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/qr/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -508,7 +507,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<PlanSubscribeResponse> PlanSubscribe(Expression<Func<string>> planid, Expression<Func<string>> userid, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodyexpiration = null)
+        public IBodyWorkflowAction<PlanSubscribeResponse> PlanSubscribe([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> planid, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> userid, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodyexpiration = null)
         {
             var apiCallPath = String.Format("/plan/{0}/user/{1}", ExpressionConverter.ConvertWithUrlEncoding(planid, 1), ExpressionConverter.ConvertWithUrlEncoding(userid, 1));
             var apiCallHttpMethod = "put";
@@ -536,7 +535,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserListResponse> UserList(Expression<Func<filterInput>> filter = null)
+        public IBodyWorkflowAction<UserListResponse> UserList([WorkflowExpression] Func<filterInput> filter = null)
         {
             var apiCallPath = "/users";
             var apiCallHttpMethod = "get";
@@ -547,7 +546,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserGetResponse> UserGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<UserGetResponse> UserGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/user/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -556,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserCreateResponse> UserCreate(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyemail, Expression<Func<int>> bodyplanid = null, Expression<Func<string>> bodyexpiration = null)
+        public IBodyWorkflowAction<UserCreateResponse> UserCreate([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<int> bodyplanid = null, [WorkflowExpression] Func<string> bodyexpiration = null)
         {
             var apiCallPath = "/user/add";
             var apiCallHttpMethod = "post";
@@ -590,7 +589,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Urlbaeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "urlbaeip")]
-        public IBodyWorkflowAction<UserDeleteResponse> UserDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<UserDeleteResponse> UserDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/user/{0}/delete", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";

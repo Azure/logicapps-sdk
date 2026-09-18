@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
     public class PlingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> profileId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodycontent, Expression<Func<string[]>> bodyaudienceUsers)
+        public IWorkflowAction SendNotification([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> profileId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodycontent, [WorkflowExpression] Func<string[]> bodyaudienceUsers)
         {
             var apiCallPath = String.Format("/profiles/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "post";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pling
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pling")]
-        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates(Expression<Func<string>> profileId)
+        public IBodyWorkflowAction<GetTemplatesResponseItem[]> GetTemplates([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> profileId)
         {
             var apiCallPath = String.Format("/profiles/{0}/templates", ExpressionConverter.ConvertWithUrlEncoding(profileId, 1));
             var apiCallHttpMethod = "get";

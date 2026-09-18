@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<GetProcessedEmailsResponse> GetProcessedEmails(Expression<Func<string>> mailagentKey, Expression<Func<string>> subject = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> dateFrom = null, Expression<Func<string>> dateTo = null, Expression<Func<string>> requestId = null, Expression<Func<bool>> isHb = null, Expression<Func<bool>> isSb = null)
+        public IBodyWorkflowAction<GetProcessedEmailsResponse> GetProcessedEmails([WorkflowExpression] Func<string> mailagentKey, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> dateFrom = null, [WorkflowExpression] Func<string> dateTo = null, [WorkflowExpression] Func<string> requestId = null, [WorkflowExpression] Func<bool> isHb = null, [WorkflowExpression] Func<bool> isSb = null)
         {
             var apiCallPath = "/v1.0/email";
             var apiCallHttpMethod = "get";
@@ -49,7 +48,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage> SendMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodyfromname, Expression<Func<EmailAddressItems[]>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymailTypeInput>> bodymailType = null, Expression<Func<string>> bodybody = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<SuccessMessage> SendMail([WorkflowExpression] Func<string> bodymailAgent, [WorkflowExpression] Func<string> bodyfromname, [WorkflowExpression] Func<EmailAddressItems[]> bodyto, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodyfromaddressprefix = null, [WorkflowExpression] Func<string> bodyfromaddressdomain = null, [WorkflowExpression] Func<EmailAddressItems[]> bodycC = null, [WorkflowExpression] Func<EmailAddressItems[]> bodybCC = null, [WorkflowExpression] Func<bodymailTypeInput> bodymailType = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<ReplyToAddresss[]> bodyreplyTo = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
             var apiCallPath = "/v1.0/email";
             var apiCallHttpMethod = "post";
@@ -147,7 +146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<SuccessMessage> SendTemplateMail(Expression<Func<string>> bodymailAgent, Expression<Func<string>> bodymailTemplate, Expression<Func<string>> bodyfromname, Expression<Func<string>> bodyfromaddressprefix = null, Expression<Func<string>> bodyfromaddressdomain = null, Expression<Func<EmailAddressItems[]>> bodyto = null, Expression<Func<EmailAddressItems[]>> bodycC = null, Expression<Func<EmailAddressItems[]>> bodybCC = null, Expression<Func<bodymergeInfoInputItem[]>> bodymergeInfo = null, Expression<Func<ReplyToAddresss[]>> bodyreplyTo = null)
+        public IBodyWorkflowAction<SuccessMessage> SendTemplateMail([WorkflowExpression] Func<string> bodymailAgent, [WorkflowExpression] Func<string> bodymailTemplate, [WorkflowExpression] Func<string> bodyfromname, [WorkflowExpression] Func<string> bodyfromaddressprefix = null, [WorkflowExpression] Func<string> bodyfromaddressdomain = null, [WorkflowExpression] Func<EmailAddressItems[]> bodyto = null, [WorkflowExpression] Func<EmailAddressItems[]> bodycC = null, [WorkflowExpression] Func<EmailAddressItems[]> bodybCC = null, [WorkflowExpression] Func<bodymergeInfoInputItem[]> bodymergeInfo = null, [WorkflowExpression] Func<ReplyToAddresss[]> bodyreplyTo = null)
         {
             var apiCallPath = "/v1.0/email/template";
             var apiCallHttpMethod = "post";
@@ -227,7 +226,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zeptomail
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zeptomail")]
-        public IBodyWorkflowAction<ProcessedMailStatsResponse> ProcessedMailStats(Expression<Func<string>> mailagent, Expression<Func<string>> fromTime = null, Expression<Func<string>> toTime = null)
+        public IBodyWorkflowAction<ProcessedMailStatsResponse> ProcessedMailStats([WorkflowExpression] Func<string> mailagent, [WorkflowExpression] Func<string> fromTime = null, [WorkflowExpression] Func<string> toTime = null)
         {
             var apiCallPath = "/v1.0/stats/email";
             var apiCallHttpMethod = "get";

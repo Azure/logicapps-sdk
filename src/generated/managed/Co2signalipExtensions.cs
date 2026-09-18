@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
     public class Co2signalipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
-        public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode(Expression<Func<string>> countryCode)
+        public IBodyWorkflowAction<GetLatestbyCodeResponse> GetLatestbyCode([WorkflowExpression] Func<string> countryCode)
         {
             var apiCallPath = "/latest";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Co2signalip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "co2signalip")]
-        public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon(Expression<Func<double>> lon = null, Expression<Func<double>> lat = null)
+        public IBodyWorkflowAction<GetLatestbyLatLonResponse> GetLatestbyLatLon([WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> lat = null)
         {
             var apiCallPath = "/latestbyloc";
             var apiCallHttpMethod = "get";

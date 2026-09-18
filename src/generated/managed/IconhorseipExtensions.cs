@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iconhorseip
     public class IconhorseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iconhorseip")]
-        public IBodyWorkflowAction<JToken> FaviconGet(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<JToken> FaviconGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> domain)
         {
             var apiCallPath = String.Format("/icon/{0}", ExpressionConverter.ConvertWithUrlEncoding(domain, 1));
             var apiCallHttpMethod = "get";

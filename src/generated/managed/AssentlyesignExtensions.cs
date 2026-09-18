@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
     public class AssentlyesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken> GetCase(Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken> GetCase([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/getCase";
             var apiCallHttpMethod = "get";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindCases(Expression<Func<object>> findCasesModel = null)
+        public IBodyWorkflowAction<JToken[]> FindCases([WorkflowExpression] Func<object> findCasesModel = null)
         {
             var apiCallPath = "/v2/findCases";
             var apiCallHttpMethod = "get";
@@ -36,7 +35,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<JToken[]> FindTemplates(Expression<Func<object>> findTemplatesModel = null)
+        public IBodyWorkflowAction<JToken[]> FindTemplates([WorkflowExpression] Func<object> findTemplatesModel = null)
         {
             var apiCallPath = "/v2/findTemplates";
             var apiCallHttpMethod = "get";
@@ -46,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCase(Expression<Func<object>> caseModel = null)
+        public IWorkflowAction CreateCase([WorkflowExpression] Func<object> caseModel = null)
         {
             var apiCallPath = "/v2/createCase";
             var apiCallHttpMethod = "post";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction CreateCaseFromTemplate(Expression<Func<object>> createCaseFromTemplateModel = null)
+        public IWorkflowAction CreateCaseFromTemplate([WorkflowExpression] Func<object> createCaseFromTemplateModel = null)
         {
             var apiCallPath = "/v2/createCaseFromTemplate";
             var apiCallHttpMethod = "post";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction UpdateCaseMetadata(Expression<Func<object>> updateCaseMetadataModel = null)
+        public IWorkflowAction UpdateCaseMetadata([WorkflowExpression] Func<object> updateCaseMetadataModel = null)
         {
             var apiCallPath = "/v2/updateCaseMetadata";
             var apiCallHttpMethod = "post";
@@ -92,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction SendCase(Expression<Func<string>> id)
+        public IWorkflowAction SendCase([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/sendCase";
             var apiCallHttpMethod = "post";
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RequestApproval(Expression<Func<string>> id)
+        public IWorkflowAction RequestApproval([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/requestApproval";
             var apiCallHttpMethod = "post";
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RemindCase(Expression<Func<string>> id)
+        public IWorkflowAction RemindCase([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/remindCase";
             var apiCallHttpMethod = "post";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction DeleteCase(Expression<Func<string>> id)
+        public IWorkflowAction DeleteCase([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/deleteCase";
             var apiCallHttpMethod = "post";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction RecallCase(Expression<Func<string>> id)
+        public IWorkflowAction RecallCase([WorkflowExpression] Func<string> id)
         {
             var apiCallPath = "/v2/recallCase";
             var apiCallHttpMethod = "post";
@@ -142,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IWorkflowAction GetCaseByTemporaryId(Expression<Func<int>> id)
+        public IWorkflowAction GetCaseByTemporaryId([WorkflowExpression] Func<int> id)
         {
             var apiCallPath = "/v2/getCaseByTemporaryId";
             var apiCallHttpMethod = "get";
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "assentlyesign")]
-        public IBodyWorkflowAction<string> GetFileOfCase(Expression<Func<string>> caseid, Expression<Func<string>> documentid)
+        public IBodyWorkflowAction<string> GetFileOfCase([WorkflowExpression] Func<string> caseid, [WorkflowExpression] Func<string> documentid)
         {
             var apiCallPath = "/v2/getdocumentdata";
             var apiCallHttpMethod = "get";
@@ -165,7 +164,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Assentlyesign
 
     public class AssentlyesignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CaseEventTrigger(Expression<Func<string>> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CaseEventTrigger([WorkflowExpression] Func<string> eventPath, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/hook/v1/";
             var apiCallHttpMethod = "post";

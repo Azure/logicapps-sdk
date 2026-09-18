@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
     public class CloudmersivevideoandmediaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToMp3(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        public IBodyWorkflowAction<string> AudioConvertToMp3([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
             var apiCallPath = "/video/convert/to/mp3";
             var apiCallHttpMethod = "post";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToM4a(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        public IBodyWorkflowAction<string> AudioConvertToM4a([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
             var apiCallPath = "/video/convert/to/m4a";
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToAac(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> bitRate = null)
+        public IBodyWorkflowAction<string> AudioConvertToAac([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> bitRate = null)
         {
             var apiCallPath = "/video/convert/to/aac";
             var apiCallHttpMethod = "post";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> AudioConvertToWav(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> sampleRate = null)
+        public IBodyWorkflowAction<string> AudioConvertToWav([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<double> sampleRate = null)
         {
             var apiCallPath = "/video/convert/to/wav";
             var apiCallHttpMethod = "post";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<MediaInformation> VideoGetInfo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null)
+        public IBodyWorkflowAction<MediaInformation> VideoGetInfo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null)
         {
             var apiCallPath = "/video/convert/get-info";
             var apiCallHttpMethod = "post";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToWebm(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        public IBodyWorkflowAction<string> VideoConvertToWebm([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
             var apiCallPath = "/video/convert/to/webm";
             var apiCallHttpMethod = "post";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToMov(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        public IBodyWorkflowAction<string> VideoConvertToMov([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
             var apiCallPath = "/video/convert/to/mov";
             var apiCallHttpMethod = "post";
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToMp4(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null)
+        public IBodyWorkflowAction<string> VideoConvertToMp4([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null)
         {
             var apiCallPath = "/video/convert/to/mp4";
             var apiCallHttpMethod = "post";
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoConvertToGif(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<bool>> preserveAspectRatio = null, Expression<Func<int>> frameRate = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
+        public IBodyWorkflowAction<string> VideoConvertToGif([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<bool> preserveAspectRatio = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> timeSpan = null)
         {
             var apiCallPath = "/video/convert/to/gif";
             var apiCallHttpMethod = "post";
@@ -161,7 +160,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoResizeVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
+        public IBodyWorkflowAction<string> VideoResizeVideo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null, [WorkflowExpression] Func<string> extension = null)
         {
             var apiCallPath = "/video/resize/preserveAspectRatio";
             var apiCallHttpMethod = "post";
@@ -182,7 +181,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoResizeVideoSimple(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<int>> frameRate = null, Expression<Func<int>> quality = null, Expression<Func<string>> extension = null)
+        public IBodyWorkflowAction<string> VideoResizeVideoSimple([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<int> frameRate = null, [WorkflowExpression] Func<int> quality = null, [WorkflowExpression] Func<string> extension = null)
         {
             var apiCallPath = "/video/resize/target";
             var apiCallHttpMethod = "post";
@@ -203,7 +202,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<string> VideoCutVideo(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> startTime = null, Expression<Func<string>> timeSpan = null)
+        public IBodyWorkflowAction<string> VideoCutVideo([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<string> startTime = null, [WorkflowExpression] Func<string> timeSpan = null)
         {
             var apiCallPath = "/video/cut";
             var apiCallHttpMethod = "post";
@@ -218,7 +217,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<SplitVideoResult> VideoSplitVideo(Expression<Func<string>> splitTime, Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<string>> timeSpan = null)
+        public IBodyWorkflowAction<SplitVideoResult> VideoSplitVideo([WorkflowExpression] Func<string> splitTime, [WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<string> timeSpan = null)
         {
             var apiCallPath = "/video/split";
             var apiCallHttpMethod = "post";
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<StillFramesResult> VideoConvertToStillFrames(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<int>> maxWidth = null, Expression<Func<int>> maxHeight = null, Expression<Func<double>> framesPerSecond = null)
+        public IBodyWorkflowAction<StillFramesResult> VideoConvertToStillFrames([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<int> maxWidth = null, [WorkflowExpression] Func<int> maxHeight = null, [WorkflowExpression] Func<double> framesPerSecond = null)
         {
             var apiCallPath = "/video/convert/to/still-frames";
             var apiCallHttpMethod = "post";
@@ -249,7 +248,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivevideoandmedia
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivevideoandmedia")]
-        public IBodyWorkflowAction<NsfwResult> VideoScanForNsfw(Expression<Func<object>> inputFile = null, Expression<Func<string>> fileUrl = null, Expression<Func<double>> framesPerSecond = null)
+        public IBodyWorkflowAction<NsfwResult> VideoScanForNsfw([WorkflowExpression] Func<object> inputFile = null, [WorkflowExpression] Func<string> fileUrl = null, [WorkflowExpression] Func<double> framesPerSecond = null)
         {
             var apiCallPath = "/video/scan/nsfw";
             var apiCallHttpMethod = "post";

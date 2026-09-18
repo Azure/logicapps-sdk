@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
     public class ServicebusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction SendMessage(Expression<Func<string>> entityName, Expression<Func<JToken>> messagecontent = null, Expression<Func<string>> messagecontentType = null, Expression<Func<string>> messagemessageId = null, Expression<Func<string>> messageto = null, Expression<Func<string>> messagereplyTo = null, Expression<Func<string>> messagereplyToSessionId = null, Expression<Func<string>> messagelabel = null, Expression<Func<string>> messagescheduledEnqueueTimeUtc = null, Expression<Func<string>> messagesessionId = null, Expression<Func<string>> messagecorrelationId = null, Expression<Func<int>> messagesequenceNumber = null, Expression<Func<string>> messagelockToken = null, Expression<Func<string>> messagetimeToLive = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction SendMessage([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<JToken> messagecontent = null, [WorkflowExpression] Func<string> messagecontentType = null, [WorkflowExpression] Func<string> messagemessageId = null, [WorkflowExpression] Func<string> messageto = null, [WorkflowExpression] Func<string> messagereplyTo = null, [WorkflowExpression] Func<string> messagereplyToSessionId = null, [WorkflowExpression] Func<string> messagelabel = null, [WorkflowExpression] Func<string> messagescheduledEnqueueTimeUtc = null, [WorkflowExpression] Func<string> messagesessionId = null, [WorkflowExpression] Func<string> messagecorrelationId = null, [WorkflowExpression] Func<int> messagesequenceNumber = null, [WorkflowExpression] Func<string> messagelockToken = null, [WorkflowExpression] Func<string> messagetimeToLive = null, [WorkflowExpression] Func<string> systemProperties = null)
         {
             var apiCallPath = String.Format("/{0}/messages", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "post";
@@ -117,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction SendMessages(Expression<Func<string>> entityName, Expression<Func<ServiceBusMessage[]>> messages = null, Expression<Func<string>> systemProperties = null)
+        public IWorkflowAction SendMessages([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> entityName, [WorkflowExpression] Func<ServiceBusMessage[]> messages = null, [WorkflowExpression] Func<string> systemProperties = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch", ExpressionConverter.ConvertWithUrlEncoding(entityName, 2));
             var apiCallHttpMethod = "post";
@@ -130,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction CompleteMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction CompleteMessageInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "delete";
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction AbandonMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction AbandonMessageInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "post";
@@ -162,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> sequenceNumber, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction DeferMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction DeferMessageInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "post";
@@ -194,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction DeadLetterMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<string>> sessionId = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        public IWorkflowAction DeadLetterMessageInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
             var apiCallPath = String.Format("/{0}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "post";
@@ -213,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction RenewLockOnMessageInQueue(Expression<Func<string>> queueName, Expression<Func<string>> lockToken, Expression<Func<queueTypeInput>> queueType = null)
+        public IWorkflowAction RenewLockOnMessageInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<queueTypeInput> queueType = null)
         {
             var apiCallPath = String.Format("/{0}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "post";
@@ -226,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromQueueWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -244,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction CloseSessionInQueue(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        public IWorkflowAction CloseSessionInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
             var apiCallPath = String.Format("/{0}/sessions/{1}/close", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
             var apiCallHttpMethod = "delete";
@@ -253,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction RenewLockOnSessionInQueue(Expression<Func<string>> queueName, Expression<Func<string>> sessionId)
+        public IWorkflowAction RenewLockOnSessionInQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<string> sessionId)
         {
             var apiCallPath = String.Format("/{0}/sessions/{1}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
             var apiCallHttpMethod = "post";
@@ -262,7 +261,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction CompleteMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction CompleteMessageInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/complete", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "delete";
@@ -278,7 +277,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction AbandonMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction AbandonMessageInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/abandon", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "post";
@@ -294,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> sequenceNumber, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage> GetDeferredMessageFromTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<int> sequenceNumber, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -310,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction DeferMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IWorkflowAction DeferMessageInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/defer", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "post";
@@ -326,7 +325,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction DeadLetterMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<string>> sessionId = null, Expression<Func<string>> deadLetterReason = null, Expression<Func<string>> deadLetterErrorDescription = null)
+        public IWorkflowAction DeadLetterMessageInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<string> sessionId = null, [WorkflowExpression] Func<string> deadLetterReason = null, [WorkflowExpression] Func<string> deadLetterErrorDescription = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/deadletter", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "post";
@@ -345,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction RenewLockOnMessageInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> lockToken, Expression<Func<subscriptionTypeInput>> subscriptionType = null)
+        public IWorkflowAction RenewLockOnMessageInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<string> lockToken, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/renewlock", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "post";
@@ -358,7 +357,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<Subscription> CreateTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<object>> subscriptionFilter = null, Expression<Func<subscriptionFilterTypeInput>> subscriptionFilterType = null)
+        public IBodyWorkflowAction<Subscription> CreateTopicSubscription([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<object> subscriptionFilter = null, [WorkflowExpression] Func<subscriptionFilterTypeInput> subscriptionFilterType = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "post";
@@ -371,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction DeleteTopicSubscription(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName)
+        public IWorkflowAction DeleteTopicSubscription([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "delete";
@@ -380,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null)
+        public IBodyWorkflowAction<ServiceBusMessage[]> GetMessagesFromTopicWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/batch/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -398,7 +397,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction CloseSessionInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
+        public IWorkflowAction CloseSessionInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sessionId)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/sessions/{2}/close", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
             var apiCallHttpMethod = "delete";
@@ -407,7 +406,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "servicebus")]
-        public IWorkflowAction RenewLockOnSessionInTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<string>> sessionId)
+        public IWorkflowAction RenewLockOnSessionInTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sessionId)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/sessions/{2}/renewlock", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1), ExpressionConverter.ConvertWithUrlEncoding(sessionId, 1));
             var apiCallHttpMethod = "post";
@@ -418,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
 
     public class ServicebusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -429,7 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromQueueWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -443,7 +442,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -457,7 +456,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock(Expression<Func<string>> queueName, Expression<Func<int>> maxMessageCount = null, Expression<Func<queueTypeInput>> queueType = null, Expression<Func<string>> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromQueueWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> queueName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<queueTypeInput> queueType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(queueName, 2));
             var apiCallHttpMethod = "get";
@@ -474,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetMessageFromTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -485,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage> GetNewMessageFromTopicWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -499,7 +498,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetMessagesFromTopic([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/batch/head", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";
@@ -513,7 +512,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus
             return new ApiConnectionTrigger<ServiceBusMessage[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock(Expression<Func<string>> topicName, Expression<Func<string>> subscriptionName, Expression<Func<int>> maxMessageCount = null, Expression<Func<subscriptionTypeInput>> subscriptionType = null, Expression<Func<string>> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceBusMessage[]> GetNewMessagesFromTopicWithPeekLock([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> topicName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriptionName, [WorkflowExpression] Func<int> maxMessageCount = null, [WorkflowExpression] Func<subscriptionTypeInput> subscriptionType = null, [WorkflowExpression] Func<string> sessionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/{0}/subscriptions/{1}/messages/batch/head/peek", ExpressionConverter.ConvertWithUrlEncoding(topicName, 2), ExpressionConverter.ConvertWithUrlEncoding(subscriptionName, 1));
             var apiCallHttpMethod = "get";

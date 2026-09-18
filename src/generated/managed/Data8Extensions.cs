@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
     public class Data8Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName(Expression<Func<string>> bodynametitle = null, Expression<Func<string>> bodynameforename = null, Expression<Func<string>> bodynamemiddleName = null, Expression<Func<string>> bodynamesurname = null)
+        public IBodyWorkflowAction<IsUsableNameResponse> IsUsableName([WorkflowExpression] Func<string> bodynametitle = null, [WorkflowExpression] Func<string> bodynameforename = null, [WorkflowExpression] Func<string> bodynamemiddleName = null, [WorkflowExpression] Func<string> bodynamesurname = null)
         {
             var apiCallPath = "/SalaciousName/IsUnusableName.json";
             var apiCallHttpMethod = "post";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS(Expression<Func<string>> bodynumber)
+        public IBodyWorkflowAction<IsCallableTPSResponse> IsCallableTPS([WorkflowExpression] Func<string> bodynumber)
         {
             var apiCallPath = "/TPS/IsCallable.json";
             var apiCallHttpMethod = "post";
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS(Expression<Func<string>> bodynumber)
+        public IBodyWorkflowAction<IsCallableCTPSResponse> IsCallableCTPS([WorkflowExpression] Func<string> bodynumber)
         {
             var apiCallPath = "/CTPS/IsCallable.json";
             var apiCallHttpMethod = "post";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount(Expression<Func<string>> bodysortCode, Expression<Func<string>> bodybankAccountNumber = null)
+        public IBodyWorkflowAction<IsValidBankAccountResponse> IsValidBankAccount([WorkflowExpression] Func<string> bodysortCode, [WorkflowExpression] Func<string> bodybankAccountNumber = null)
         {
             var apiCallPath = "/BankAccountValidation/IsValid.json";
             var apiCallHttpMethod = "post";
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel)
+        public IBodyWorkflowAction<IsValidEmailResponse> IsValidEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel)
         {
             var apiCallPath = "/EmailValidation/IsValid.json";
             var apiCallHttpMethod = "post";
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<string>> bodydefaultCountry, Expression<Func<bool>> bodyoptionsuseLineValidation = null, Expression<Func<bool>> bodyoptionsuseMobileValidation = null)
+        public IBodyWorkflowAction<IsValidTelephoneResponse> IsValidTelephone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<string> bodydefaultCountry, [WorkflowExpression] Func<bool> bodyoptionsuseLineValidation = null, [WorkflowExpression] Func<bool> bodyoptionsuseMobileValidation = null)
         {
             var apiCallPath = "/InternationalTelephoneValidation/IsValid.json";
             var apiCallHttpMethod = "post";
@@ -180,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanAddressResponse> CleanAddress(Expression<Func<string[]>> bodyaddresslines = null, Expression<Func<string>> bodyoptionsdefaultCountryCode = null, Expression<Func<bool>> bodyoptionsdetectCountry = null, Expression<Func<string>> bodyoptionscountry = null, Expression<Func<bool>> bodyoptionsincludeCountry = null)
+        public IBodyWorkflowAction<CleanAddressResponse> CleanAddress([WorkflowExpression] Func<string[]> bodyaddresslines = null, [WorkflowExpression] Func<string> bodyoptionsdefaultCountryCode = null, [WorkflowExpression] Func<bool> bodyoptionsdetectCountry = null, [WorkflowExpression] Func<string> bodyoptionscountry = null, [WorkflowExpression] Func<bool> bodyoptionsincludeCountry = null)
         {
             var apiCallPath = "/Postcoder/CleanAddress.json";
             var apiCallHttpMethod = "post";
@@ -242,7 +241,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress(Expression<Func<bodylicenceInput>> bodylicence, Expression<Func<string>> bodypostcode, Expression<Func<string>> bodybuilding = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<bool>> bodyoptionsnormalizeCase = null, Expression<Func<bool>> bodyoptionsnormalizeTownCase = null, Expression<Func<bool>> bodyoptionsexcludeCounty = null, Expression<Func<bool>> bodyoptionsuseAnyAvailableCounty = null, Expression<Func<bool>> bodyoptionsunwantedPunctuation = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeLocation = null, Expression<Func<bool>> bodyoptionsreturnResultCount = null, Expression<Func<bool>> bodyoptionsincludeNYB = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null)
+        public IBodyWorkflowAction<GetFullAddressResponse> GetFullAddress([WorkflowExpression] Func<bodylicenceInput> bodylicence, [WorkflowExpression] Func<string> bodypostcode, [WorkflowExpression] Func<string> bodybuilding = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeCase = null, [WorkflowExpression] Func<bool> bodyoptionsnormalizeTownCase = null, [WorkflowExpression] Func<bool> bodyoptionsexcludeCounty = null, [WorkflowExpression] Func<bool> bodyoptionsuseAnyAvailableCounty = null, [WorkflowExpression] Func<bool> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeLocation = null, [WorkflowExpression] Func<bool> bodyoptionsreturnResultCount = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null)
         {
             var apiCallPath = "/AddressCapture/GetFullAddress.json";
             var apiCallHttpMethod = "post";
@@ -386,7 +385,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased(Expression<Func<string>> bodyrecordnamesurname, Expression<Func<string[]>> bodyrecordaddresslines, Expression<Func<bool>> bodymarketing, Expression<Func<string>> bodyrecordnametitle = null, Expression<Func<string>> bodyrecordnameforename = null, Expression<Func<string>> bodyrecordnamemiddleName = null, Expression<Func<bodyoptionsmatchLevelInput>> bodyoptionsmatchLevel = null)
+        public IBodyWorkflowAction<IsDeceasedResponse> IsDeceased([WorkflowExpression] Func<string> bodyrecordnamesurname, [WorkflowExpression] Func<string[]> bodyrecordaddresslines, [WorkflowExpression] Func<bool> bodymarketing, [WorkflowExpression] Func<string> bodyrecordnametitle = null, [WorkflowExpression] Func<string> bodyrecordnameforename = null, [WorkflowExpression] Func<string> bodyrecordnamemiddleName = null, [WorkflowExpression] Func<bodyoptionsmatchLevelInput> bodyoptionsmatchLevel = null)
         {
             var apiCallPath = "/Deceased/IsDeceased.json";
             var apiCallHttpMethod = "post";
@@ -474,7 +473,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodysearch, Expression<Func<string>> bodytelephoneNumber = null, Expression<Func<string>> bodysession = null, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<SearchPredictiveAddressResponse> SearchPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodysearch, [WorkflowExpression] Func<string> bodytelephoneNumber = null, [WorkflowExpression] Func<string> bodysession = null, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
         {
             var apiCallPath = "/PredictiveAddress/Search.json";
             var apiCallHttpMethod = "post";
@@ -526,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<bool>> bodyoptionsincludeMR = null, Expression<Func<bool>> bodyoptionsincludeNYB = null)
+        public IBodyWorkflowAction<DrilldownPredictiveAddressResponse> DrilldownPredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<bool> bodyoptionsincludeMR = null, [WorkflowExpression] Func<bool> bodyoptionsincludeNYB = null)
         {
             var apiCallPath = "/PredictiveAddress/DrillDown.json";
             var apiCallHttpMethod = "post";
@@ -566,7 +565,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress(Expression<Func<string>> bodycountry, Expression<Func<string>> bodyid, Expression<Func<int>> bodyoptionsmaxLineLength = null, Expression<Func<int>> bodyoptionsmaxLines = null, Expression<Func<bool>> bodyoptionsfixTownCounty = null, Expression<Func<bool>> bodyoptionsfixPostcode = null, Expression<Func<bool>> bodyoptionsfixBuilding = null, Expression<Func<string>> bodyoptionsunwantedPunctuation = null, Expression<Func<bodyoptionsformatterInput>> bodyoptionsformatter = null, Expression<Func<bool>> bodyoptionsincludeUDPRN = null, Expression<Func<bool>> bodyoptionsincludeUPRN = null)
+        public IBodyWorkflowAction<RetrievePredictiveAddressResponse> RetrievePredictiveAddress([WorkflowExpression] Func<string> bodycountry, [WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<int> bodyoptionsmaxLineLength = null, [WorkflowExpression] Func<int> bodyoptionsmaxLines = null, [WorkflowExpression] Func<bool> bodyoptionsfixTownCounty = null, [WorkflowExpression] Func<bool> bodyoptionsfixPostcode = null, [WorkflowExpression] Func<bool> bodyoptionsfixBuilding = null, [WorkflowExpression] Func<string> bodyoptionsunwantedPunctuation = null, [WorkflowExpression] Func<bodyoptionsformatterInput> bodyoptionsformatter = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUDPRN = null, [WorkflowExpression] Func<bool> bodyoptionsincludeUPRN = null)
         {
             var apiCallPath = "/PredictiveAddress/Retrieve.json";
             var apiCallHttpMethod = "post";
@@ -728,7 +727,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail(Expression<Func<string>> bodyemail, Expression<Func<bodylevelInput>> bodylevel, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyforename = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodysurname = null, Expression<Func<string>> bodycompany = null)
+        public IBodyWorkflowAction<CleanseEmailResponse> CleanseEmail([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bodylevelInput> bodylevel, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyforename = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodysurname = null, [WorkflowExpression] Func<string> bodycompany = null)
         {
             var apiCallPath = "/EmailValidation/CleanseSimple.json";
             var apiCallHttpMethod = "post";
@@ -778,7 +777,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Data8
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "data8")]
-        public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone(Expression<Func<string>> bodytelephoneNumber, Expression<Func<int>> bodydefaultCountry)
+        public IBodyWorkflowAction<IsValidPhoneResponse> IsValidPhone([WorkflowExpression] Func<string> bodytelephoneNumber, [WorkflowExpression] Func<int> bodydefaultCountry)
         {
             var apiCallPath = "/PhoneValidation/IsValid.json";
             var apiCallHttpMethod = "post";

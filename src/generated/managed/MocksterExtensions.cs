@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
     public class MocksterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetAirlinesResponseItem[]> GetAirlines([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/airlines";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetAnimalsResponseItem[]> GetAnimals([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/animals";
             var apiCallHttpMethod = "get";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetColorsResponseItem[]> GetColors([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/colors";
             var apiCallHttpMethod = "get";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetCompaniesResponseItem[]> GetCompanies([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/companies";
             var apiCallHttpMethod = "get";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetDatabasesResponseItem[]> GetDatabases([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/databases";
             var apiCallHttpMethod = "get";
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetDatesResponseItem[]> GetDates([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/dates";
             var apiCallHttpMethod = "get";
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetFinancesResponseItem[]> GetFinances([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/finances";
             var apiCallHttpMethod = "get";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetGitsResponseItem[]> GetGits([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/gits";
             var apiCallHttpMethod = "get";
@@ -128,7 +127,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetHackersResponseItem[]> GetHackers([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/hackers";
             var apiCallHttpMethod = "get";
@@ -143,7 +142,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages(Expression<Func<int>> count = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<categoryInput>> category = null)
+        public IBodyWorkflowAction<GetRandomImagesResponseItem[]> GetRandomImages([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<categoryInput> category = null)
         {
             var apiCallPath = "/images";
             var apiCallHttpMethod = "get";
@@ -160,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetInternetResponseItem[]> GetInternet([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/internets";
             var apiCallHttpMethod = "get";
@@ -173,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetLocationsResponseItem[]> GetLocations([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/locations";
             var apiCallHttpMethod = "get";
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetLoremsResponseItem[]> GetLorems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/lorems";
             var apiCallHttpMethod = "get";
@@ -201,7 +200,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetMusicsResponseItem[]> GetMusics([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/musics";
             var apiCallHttpMethod = "get";
@@ -216,7 +215,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetNumbersResponseItem[]> GetNumbers([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/numbers";
             var apiCallHttpMethod = "get";
@@ -229,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetPeopleResponseItem[]> GetPeople([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/persons";
             var apiCallHttpMethod = "get";
@@ -244,7 +243,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetPhonesResponseItem[]> GetPhones([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/phones";
             var apiCallHttpMethod = "get";
@@ -259,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetProductsResponseItem[]> GetProducts([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/products";
             var apiCallHttpMethod = "get";
@@ -274,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetSciencesResponseItem[]> GetSciences([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/sciences";
             var apiCallHttpMethod = "get";
@@ -287,7 +286,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetStringsResponseItem[]> GetStrings([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/strings";
             var apiCallHttpMethod = "get";
@@ -300,7 +299,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems(Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetSystemsResponseItem[]> GetSystems([WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/systems";
             var apiCallHttpMethod = "get";
@@ -313,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetVehiclesResponseItem[]> GetVehicles([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/vehicles";
             var apiCallHttpMethod = "get";
@@ -328,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mockster
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mockster")]
-        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords(Expression<Func<availableLocalesInput>> availableLocales = null, Expression<Func<int>> count = null, Expression<Func<int>> seed = null)
+        public IBodyWorkflowAction<GetWordsResponseItem[]> GetWords([WorkflowExpression] Func<availableLocalesInput> availableLocales = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> seed = null)
         {
             var apiCallPath = "/words";
             var apiCallHttpMethod = "get";

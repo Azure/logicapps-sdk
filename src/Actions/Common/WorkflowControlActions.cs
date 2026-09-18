@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq.Expressions;
     using Newtonsoft.Json.Linq;
 
     /// <summary>
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="trueBranch">A factory that builds the true branch action graph and returns any node in the chain.</param>
         /// <param name="falseBranch">A factory that builds the false branch action graph and returns any node in the chain.</param>
         public IWorkflowAction Condition(
-            Expression<Func<bool>> expression,
+            [WorkflowExpression] Func<bool> expression,
             Func<IChainableNode> trueBranch,
             Func<IChainableNode> falseBranch)
         {
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(expression), "Condition action requires a non-null expression.");
             }
 
-            var expressionStr = ExpressionConverter.Convert(expression);
+            var expressionStr = ExpressionConverter.ConvertGenerated(expression);
             var resolvedTrueBranch = trueBranch?.Invoke();
             var resolvedFalseBranch = falseBranch?.Invoke();
 
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="items">An expression for the collection to iterate over.</param>
         /// <param name="actions">A factory that takes the current item token and builds the action graph, returning any node in the chain.</param>
         public IWorkflowAction ForEach(
-            Expression<Func<JToken>> items,
+            [WorkflowExpression] Func<JToken> items,
             Func<JToken, IChainableNode> actions)
         {
             if (items == null)
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentNullException(nameof(actions), "ForEach action requires non-null actions.");
             }
 
-            var itemsExpression = ExpressionConverter.ConvertO(items);
+            var itemsExpression = ExpressionConverter.ConvertGeneratedO(items);
             var currentItemPlaceholder = new ForEachItemToken();
             var resolvedActions = actions.Invoke(currentItemPlaceholder);
             return new ForEachAction(itemsExpression, resolvedActions?.GetRootOperation() as IWorkflowAction);
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="expression">The boolean expression for the exit condition.</param>
         /// <param name="actions">A factory that builds the action graph to repeat and returns any node in the chain.</param>
         public IWorkflowAction Until(
-            Expression<Func<bool>> expression,
+            [WorkflowExpression] Func<bool> expression,
             Func<IChainableNode> actions)
         {
             if (expression == null)
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(actions), "Until action requires non-null actions.");
             }
-            var expressionStr = ExpressionConverter.Convert(expression);
+            var expressionStr = ExpressionConverter.ConvertGenerated(expression);
             var resolvedActions = actions.Invoke();
             return new UntilAction(expressionStr, resolvedActions?.GetRootOperation() as IWorkflowAction);
         }
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="cases">A factory that returns a dictionary mapping case labels to their SwitchCase entries.</param>
         /// <param name="defaultCase">A factory that builds the default case action graph and returns any node in the chain (optional).</param>
         public IWorkflowAction Switch(
-            Expression<Func<JToken>> on,
+            [WorkflowExpression] Func<JToken> on,
             Func<Dictionary<string, SwitchCase>> cases,
             Func<IChainableNode> defaultCase = null)
         {
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 throw new ArgumentNullException(nameof(cases), "Switch action requires a non-null cases factory.");
             }
-            var onExpression = ExpressionConverter.ConvertO(on);
+            var onExpression = ExpressionConverter.ConvertGeneratedO(on);
             var resolvedCasesDict = cases.Invoke();
             var resolvedDefaultCase = defaultCase?.Invoke();
             return new SwitchAction(onExpression, resolvedCasesDict, resolvedDefaultCase?.GetRootOperation() as IWorkflowAction);
@@ -137,15 +136,15 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="status">An expression for the termination status (e.g., FlowStatus.Failed).</param>
         /// <param name="message">An expression for the termination message (optional).</param>
         public IWorkflowAction Terminate(
-            Expression<Func<FlowStatus>> status,
-            Expression<Func<string>> message = null)
+            [WorkflowExpression] Func<FlowStatus> status,
+            [WorkflowExpression] Func<string> message = null)
         {
             if (status == null)
             {
                 throw new ArgumentNullException(nameof(status), "Terminate action requires a non-null status expression.");
             }
-            var statusStr = ExpressionConverter.Convert(status);
-            var messageStr = message != null ? ExpressionConverter.Convert(message) : null;
+            var statusStr = ExpressionConverter.ConvertGenerated(status);
+            var messageStr = message != null ? ExpressionConverter.ConvertGenerated(message) : null;
             return new TerminateAction(statusStr, messageStr);
         }
     }

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
+        public IBodyWorkflowAction<TextTitleResponse> TextTitle([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<titleInput> title)
         {
             var apiCallPath = String.Format("/{0}/json", ExpressionConverter.ConvertWithUrlEncoding(title, 1));
             var apiCallHttpMethod = "get";

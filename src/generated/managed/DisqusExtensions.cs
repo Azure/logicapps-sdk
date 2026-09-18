@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
     public class DisqusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> Create(Expression<Func<string>> thread, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse> Create([WorkflowExpression] Func<string> thread, [WorkflowExpression] Func<string> message)
         {
             var apiCallPath = "/posts/create.json";
             var apiCallHttpMethod = "post";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<CreatePostResponse> ReplyTo(Expression<Func<string>> parent, Expression<Func<string>> message)
+        public IBodyWorkflowAction<CreatePostResponse> ReplyTo([WorkflowExpression] Func<string> parent, [WorkflowExpression] Func<string> message)
         {
             var apiCallPath = "/reply/posts/create.json";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> Remove(Expression<Func<string>> post)
+        public IBodyWorkflowAction<OperationResultResponse> Remove([WorkflowExpression] Func<string> post)
         {
             var apiCallPath = "/posts/remove.json";
             var apiCallHttpMethod = "post";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<EmptyResponse> SubscribeToThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<EmptyResponse> SubscribeToThread([WorkflowExpression] Func<string> thread)
         {
             var apiCallPath = "/threads/subscribe.json";
             var apiCallHttpMethod = "post";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> OpenThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<OperationResultResponse> OpenThread([WorkflowExpression] Func<string> thread)
         {
             var apiCallPath = "/threads/open.json";
             var apiCallHttpMethod = "post";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<OperationResultResponse> CloseThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<OperationResultResponse> CloseThread([WorkflowExpression] Func<string> thread)
         {
             var apiCallPath = "/threads/close.json";
             var apiCallHttpMethod = "post";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<RecommendThreadResponse> RecommendThread([WorkflowExpression] Func<string> thread)
         {
             var apiCallPath = "/threads/vote.json";
             var apiCallHttpMethod = "post";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<GetThreadResponse> GetThread(Expression<Func<string>> thread)
+        public IBodyWorkflowAction<GetThreadResponse> GetThread([WorkflowExpression] Func<string> thread)
         {
             var apiCallPath = "/threads/details.json";
             var apiCallHttpMethod = "get";
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "disqus")]
-        public IBodyWorkflowAction<Thread[]> GetForumThreads(Expression<Func<string>> forum)
+        public IBodyWorkflowAction<Thread[]> GetForumThreads([WorkflowExpression] Func<string> forum)
         {
             var apiCallPath = "/forums/listThreads.json";
             var apiCallHttpMethod = "get";
@@ -120,7 +119,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
 
     public class DisqusTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<Post[]> OnPostCreated(Expression<Func<string>> forum, Expression<Func<string>> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Post[]> OnPostCreated([WorkflowExpression] Func<string> forum, [WorkflowExpression] Func<string> thread = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/posts/list.json";
             var apiCallHttpMethod = "get";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Disqus
             return new ApiConnectionTrigger<Post[]>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated(Expression<Func<string>> forum, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Thread[]> OnThreadCreated([WorkflowExpression] Func<string> forum, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/threads/list.json";
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
     public class HyasinsightActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<DeviceGeoItem[]> MobileGeolocation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<DeviceGeoItem[]> MobileGeolocation([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/device_geo";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SinkholeItem[]> Sinkhole(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SinkholeItem[]> Sinkhole([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/sinkhole";
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivednsItem[]> PassiveDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivednsItem[]> PassiveDNS([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/passivedns";
             var apiCallHttpMethod = "get";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<DynamicdnsItem[]> DynamicDNS(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<DynamicdnsItem[]> DynamicDNS([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/dynamicdns";
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<PassivehashItem[]> PassiveHash(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<PassivehashItem[]> PassiveHash([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/passivehash";
             var apiCallHttpMethod = "get";
@@ -67,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<Sslcertificate> SSLCertificate(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<Sslcertificate> SSLCertificate([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/ssl_certificate";
             var apiCallHttpMethod = "get";
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<WhoisItem[]> Whois(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<WhoisItem[]> Whois([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/whois";
             var apiCallHttpMethod = "get";
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<C2attributionItem[]> C2Attribution(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<C2attributionItem[]> C2Attribution([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/c2attribution";
             var apiCallHttpMethod = "get";
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SampleInformation> SampleInformation(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SampleInformation> SampleInformation([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/sample/information";
             var apiCallHttpMethod = "get";
@@ -111,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<SampleItem[]> Sample(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<SampleItem[]> Sample([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/sample";
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<OsIndicatorsItem[]> OpenSourceIndicators(Expression<Func<indicatorTypeInput>> indicatorType, Expression<Func<string>> indicatorValue)
+        public IBodyWorkflowAction<OsIndicatorsItem[]> OpenSourceIndicators([WorkflowExpression] Func<indicatorTypeInput> indicatorType, [WorkflowExpression] Func<string> indicatorValue)
         {
             var apiCallPath = "/os_indicators";
             var apiCallHttpMethod = "get";
@@ -133,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hyasinsight
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hyasinsight")]
-        public IBodyWorkflowAction<WhoisCurrent> CurrentWhois(Expression<Func<string>> bodyappliedFiltersdomain = null)
+        public IBodyWorkflowAction<WhoisCurrent> CurrentWhois([WorkflowExpression] Func<string> bodyappliedFiltersdomain = null)
         {
             var apiCallPath = "/whois/v1";
             var apiCallHttpMethod = "post";

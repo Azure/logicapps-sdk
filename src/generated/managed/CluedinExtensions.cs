@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
     public class CluedinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
-        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
+        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse([WorkflowExpression] Func<string> bodyresultapproval = null, [WorkflowExpression] Func<string> bodyresultreason = null, [WorkflowExpression] Func<string> bodyresultreviewedBy = null)
         {
             var apiCallPath = "/callback";
             var apiCallHttpMethod = "post";

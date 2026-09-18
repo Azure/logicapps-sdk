@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
     public class UsajobsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs(Expression<Func<string>> keyword = null, Expression<Func<string>> positionTitle = null, Expression<Func<int>> remunerationMinimumAmount = null, Expression<Func<int>> remunerationMaximumAmount = null, Expression<Func<string>> payGradeHigh = null, Expression<Func<string>> payGradeLow = null, Expression<Func<string>> jobCategoryCode = null, Expression<Func<bool>> remoteIndicator = null, Expression<Func<string>> locationName = null, Expression<Func<int>> radius = null, Expression<Func<bool>> relocationIndicator = null, Expression<Func<string>> travelPercentage = null, Expression<Func<string>> organization = null, Expression<Func<string>> positionOfferingTypeCode = null, Expression<Func<string>> positionScheduleTypeCode = null, Expression<Func<string>> securityClearanceRequired = null, Expression<Func<positionSensitivityInput>> positionSensitivity = null, Expression<Func<bool>> supervisoryStatus = null, Expression<Func<int>> datePosted = null, Expression<Func<string>> jobGradeCode = null, Expression<Func<string>> whoMayApply = null, Expression<Func<string>> salaryBucket = null, Expression<Func<string>> gradeBucket = null, Expression<Func<string>> hiringPath = null, Expression<Func<string>> missionCriticalTags = null, Expression<Func<string>> postingChannel = null, Expression<Func<fieldsInput>> fields = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortDirectionInput>> sortDirection = null, Expression<Func<int>> page = null, Expression<Func<int>> resultsPerPage = null)
+        public IBodyWorkflowAction<SearchJobsResponse> SearchJobs([WorkflowExpression] Func<string> keyword = null, [WorkflowExpression] Func<string> positionTitle = null, [WorkflowExpression] Func<int> remunerationMinimumAmount = null, [WorkflowExpression] Func<int> remunerationMaximumAmount = null, [WorkflowExpression] Func<string> payGradeHigh = null, [WorkflowExpression] Func<string> payGradeLow = null, [WorkflowExpression] Func<string> jobCategoryCode = null, [WorkflowExpression] Func<bool> remoteIndicator = null, [WorkflowExpression] Func<string> locationName = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<bool> relocationIndicator = null, [WorkflowExpression] Func<string> travelPercentage = null, [WorkflowExpression] Func<string> organization = null, [WorkflowExpression] Func<string> positionOfferingTypeCode = null, [WorkflowExpression] Func<string> positionScheduleTypeCode = null, [WorkflowExpression] Func<string> securityClearanceRequired = null, [WorkflowExpression] Func<positionSensitivityInput> positionSensitivity = null, [WorkflowExpression] Func<bool> supervisoryStatus = null, [WorkflowExpression] Func<int> datePosted = null, [WorkflowExpression] Func<string> jobGradeCode = null, [WorkflowExpression] Func<string> whoMayApply = null, [WorkflowExpression] Func<string> salaryBucket = null, [WorkflowExpression] Func<string> gradeBucket = null, [WorkflowExpression] Func<string> hiringPath = null, [WorkflowExpression] Func<string> missionCriticalTags = null, [WorkflowExpression] Func<string> postingChannel = null, [WorkflowExpression] Func<fieldsInput> fields = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> resultsPerPage = null)
         {
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
@@ -83,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicHonorsResponse> ListAcademicHonors([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/academichonors";
             var apiCallHttpMethod = "get";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAcademicLevelsResponse> ListAcademicLevels([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/academiclevels";
             var apiCallHttpMethod = "get";
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListActionCodesResponse> ListActionCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/actioncodes";
             var apiCallHttpMethod = "get";
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAgencySubelementsResponse> ListAgencySubelements([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/agencysubelements";
             var apiCallHttpMethod = "get";
@@ -127,7 +126,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListAnnouncementClosingTypesResponse> ListAnnouncementClosingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/announcementclosingtypes";
             var apiCallHttpMethod = "get";
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicantSuppliersResponse> ListApplicantSuppliers([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/applicantsuppliers";
             var apiCallHttpMethod = "get";
@@ -149,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListApplicationStatusesResponse> ListApplicationStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/applicationstatuses";
             var apiCallHttpMethod = "get";
@@ -160,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/countries";
             var apiCallHttpMethod = "get";
@@ -171,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions(Expression<Func<string>> country = null, Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCountrySubdivisionsResponse> ListCountrySubdivisions([WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/countrysubdivisions";
             var apiCallHttpMethod = "get";
@@ -184,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkGroupingsResponse> ListCyberWorkGroupings([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/cyberworkgroupings";
             var apiCallHttpMethod = "get";
@@ -195,7 +194,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListCyberWorkRolesResponse> ListCyberWorkRoles([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/cyberworkroles";
             var apiCallHttpMethod = "get";
@@ -206,7 +205,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDegreeTypeCodesResponse> ListDegreeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/degreetypecodes";
             var apiCallHttpMethod = "get";
@@ -217,7 +216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDisabilitiesResponse> ListDisabilities([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/disabilities";
             var apiCallHttpMethod = "get";
@@ -228,7 +227,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentationsResponse> ListDocumentations([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/documentations";
             var apiCallHttpMethod = "get";
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListDocumentFormatsResponse> ListDocumentFormats([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/documentformats";
             var apiCallHttpMethod = "get";
@@ -250,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListEthnicitiesResponse> ListEthnicities([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/ethnicities";
             var apiCallHttpMethod = "get";
@@ -261,7 +260,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListFederalEmploymentStatusesResponse> ListFederalEmploymentStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/federalemploymentstatuses";
             var apiCallHttpMethod = "get";
@@ -272,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGeolocCodesResponse> ListGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/geoloccodes";
             var apiCallHttpMethod = "get";
@@ -283,7 +282,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListGsaGeolocCodesResponse> ListGsaGeolocCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/gsageoloccodes";
             var apiCallHttpMethod = "get";
@@ -294,7 +293,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListHiringPathsResponse> ListHiringPaths([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/hiringpaths";
             var apiCallHttpMethod = "get";
@@ -305,7 +304,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListKeyStandardRequirementsResponse> ListKeyStandardRequirements([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/keystandardrequirements";
             var apiCallHttpMethod = "get";
@@ -316,7 +315,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageCodesResponse> ListLanguageCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/languagecodes";
             var apiCallHttpMethod = "get";
@@ -327,7 +326,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLanguageProficienciesResponse> ListLanguageProficiencies([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/languageproficiencies";
             var apiCallHttpMethod = "get";
@@ -338,7 +337,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListLocationExpansionsResponse> ListLocationExpansions([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/locationexpansions";
             var apiCallHttpMethod = "get";
@@ -349,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMilitaryStatusCodesResponse> ListMilitaryStatusCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/militarystatuscodes";
             var apiCallHttpMethod = "get";
@@ -360,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListMissionCriticalCodesResponse> ListMissionCriticalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/missioncriticalcodes";
             var apiCallHttpMethod = "get";
@@ -371,7 +370,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListOccupationalSeriesResponse> ListOccupationalSeries([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/occupationalseries";
             var apiCallHttpMethod = "get";
@@ -382,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPayPlansResponse> ListPayPlans([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/payplans";
             var apiCallHttpMethod = "get";
@@ -393,7 +392,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOfferingTypesResponse> ListPositionOfferingTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/positionofferingtypes";
             var apiCallHttpMethod = "get";
@@ -404,7 +403,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionOpeningStatusesResponse> ListPositionOpeningStatuses([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/positionopeningstatuses";
             var apiCallHttpMethod = "get";
@@ -415,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPositionScheduleTypesResponse> ListPositionScheduleTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/positionscheduletypes";
             var apiCallHttpMethod = "get";
@@ -426,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListPostalCodesResponse> ListPostalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/postalcodes";
             var apiCallHttpMethod = "get";
@@ -437,7 +436,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRaceCodesResponse> ListRaceCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/racecodes";
             var apiCallHttpMethod = "get";
@@ -448,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRefereeTypeCodesResponse> ListRefereeTypeCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/refereetypecodes";
             var apiCallHttpMethod = "get";
@@ -459,7 +458,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRemunerationRateIntervalCodesResponse> ListRemunerationRateIntervalCodes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/remunerationrateintervalcodes";
             var apiCallHttpMethod = "get";
@@ -470,7 +469,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListRequiredStandardDocumentsResponse> ListRequiredStandardDocuments([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/requiredstandarddocuments";
             var apiCallHttpMethod = "get";
@@ -481,7 +480,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSecurityClearancesResponse> ListSecurityClearances([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/securityclearances";
             var apiCallHttpMethod = "get";
@@ -492,7 +491,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListServiceTypesResponse> ListServiceTypes([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/servicetypes";
             var apiCallHttpMethod = "get";
@@ -503,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListSpecialHiringsResponse> ListSpecialHirings([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/specialhirings";
             var apiCallHttpMethod = "get";
@@ -514,7 +513,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListTravelPercentagesResponse> ListTravelPercentages([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/travelpercentages";
             var apiCallHttpMethod = "get";
@@ -525,7 +524,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Usajobs
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "usajobs")]
-        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply(Expression<Func<string>> lastmodified = null)
+        public IBodyWorkflowAction<ListWhoMayApplyResponse> ListWhoMayApply([WorkflowExpression] Func<string> lastmodified = null)
         {
             var apiCallPath = "/codelist/whomayapply";
             var apiCallHttpMethod = "get";

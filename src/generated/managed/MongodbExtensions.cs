@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
     public class MongodbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<InsertDocumentResponse> InsertDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
             var apiCallPath = "/action/insertOne";
             var apiCallHttpMethod = "post";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
             var apiCallPath = "/action/findOne";
             var apiCallHttpMethod = "post";
@@ -85,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
         {
             var apiCallPath = "/action/updateOne";
             var apiCallHttpMethod = "post";
@@ -131,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteDocumentResponse> DeleteDocument([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
             var apiCallPath = "/action/deleteOne";
             var apiCallHttpMethod = "post";
@@ -163,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodydocuments)
+        public IBodyWorkflowAction<InsertMultipleDocumentsResponse> InsertMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodydocuments)
         {
             var apiCallPath = "/action/insertMany";
             var apiCallHttpMethod = "post";
@@ -189,7 +188,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<int>> bodylimit = null, Expression<Func<int>> bodyskip = null)
+        public IBodyWorkflowAction<FindMultipleDocumentsResponse> FindMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<int> bodylimit = null, [WorkflowExpression] Func<int> bodyskip = null)
         {
             var apiCallPath = "/action/find";
             var apiCallHttpMethod = "post";
@@ -250,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<bool>> bodyupsert = null)
+        public IBodyWorkflowAction<UpdateMultipleDocumentsResponse> UpdateMultipleDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<bool> bodyupsert = null)
         {
             var apiCallPath = "/action/updateMany";
             var apiCallHttpMethod = "post";
@@ -296,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection)
+        public IBodyWorkflowAction<DeleteManyDocumentsResponse> DeleteManyDocuments([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection)
         {
             var apiCallPath = "/action/deleteMany";
             var apiCallHttpMethod = "post";
@@ -328,7 +327,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mongodb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mongodb")]
-        public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline(Expression<Func<string>> bodydataSource, Expression<Func<string>> bodydatabase, Expression<Func<string>> bodycollection, Expression<Func<JToken[]>> bodypipeline)
+        public IBodyWorkflowAction<RunAggregationPipelineResponse> RunAggregationPipeline([WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodydatabase, [WorkflowExpression] Func<string> bodycollection, [WorkflowExpression] Func<JToken[]> bodypipeline)
         {
             var apiCallPath = "/action/aggregate";
             var apiCallHttpMethod = "post";

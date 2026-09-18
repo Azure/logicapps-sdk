@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -15,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
 
     public class CpqsyncTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ProductUpdated(Expression<Func<string>> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductUpdated([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemUpdated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ProductCreated(Expression<Func<string>> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ProductCreated([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tenantId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/master-data/tenants/{0}/web-hooks/PricedItemCreated", ExpressionConverter.ConvertWithUrlEncoding(tenantId, 1));
             var apiCallHttpMethod = "post";

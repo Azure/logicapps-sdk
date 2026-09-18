@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
     public class TikitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketItems> GetAllTickets(Expression<Func<string>> expand = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> count = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketItems> GetAllTickets([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> count = null)
         {
             var apiCallPath = "/Ticket";
             var apiCallHttpMethod = "get";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> CreateTicket(Expression<Func<string>> bodyticketrequest, Expression<Func<string>> bodyticketrequesterrequesterEmail, Expression<Func<int>> bodyticketstatus, Expression<Func<int>> bodyticketpriority, Expression<Func<int>> bodyticketticketType, Expression<Func<string>> bodyticketassigneeassigneeEmail, Expression<Func<int>> bodyticketcategory = null, Expression<Func<int>> bodyticketgroup = null, Expression<Func<string>> bodyticketdueDate = null, Expression<Func<string>> bodyticketresolutionDate = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> CreateTicket([WorkflowExpression] Func<string> bodyticketrequest, [WorkflowExpression] Func<string> bodyticketrequesterrequesterEmail, [WorkflowExpression] Func<int> bodyticketstatus, [WorkflowExpression] Func<int> bodyticketpriority, [WorkflowExpression] Func<int> bodyticketticketType, [WorkflowExpression] Func<string> bodyticketassigneeassigneeEmail, [WorkflowExpression] Func<int> bodyticketcategory = null, [WorkflowExpression] Func<int> bodyticketgroup = null, [WorkflowExpression] Func<string> bodyticketdueDate = null, [WorkflowExpression] Func<string> bodyticketresolutionDate = null)
         {
             var apiCallPath = "/AddTicket";
             var apiCallHttpMethod = "post";
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> UpdateTicket(Expression<Func<int>> bodyticketenterTikitId, Expression<Func<string>> bodyticketassigneeassigneeEmail, Expression<Func<string>> bodyticketchangeRequestInformation = null, Expression<Func<string>> bodyticketrequesterrequesterEmail = null, Expression<Func<int>> bodyticketstatus = null, Expression<Func<int>> bodyticketcategory = null, Expression<Func<int>> bodyticketpriority = null, Expression<Func<int>> bodyticketticketType = null, Expression<Func<int>> bodyticketgroup = null, Expression<Func<string>> bodyticketdueDate = null, Expression<Func<string>> bodyticketresolutionDate = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> UpdateTicket([WorkflowExpression] Func<int> bodyticketenterTikitId, [WorkflowExpression] Func<string> bodyticketassigneeassigneeEmail, [WorkflowExpression] Func<string> bodyticketchangeRequestInformation = null, [WorkflowExpression] Func<string> bodyticketrequesterrequesterEmail = null, [WorkflowExpression] Func<int> bodyticketstatus = null, [WorkflowExpression] Func<int> bodyticketcategory = null, [WorkflowExpression] Func<int> bodyticketpriority = null, [WorkflowExpression] Func<int> bodyticketticketType = null, [WorkflowExpression] Func<int> bodyticketgroup = null, [WorkflowExpression] Func<string> bodyticketdueDate = null, [WorkflowExpression] Func<string> bodyticketresolutionDate = null)
         {
             var apiCallPath = "/UpdateTicket";
             var apiCallHttpMethod = "post";
@@ -211,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> GetOneTicket(Expression<Func<string>> id, Expression<Func<string>> select = null, Expression<Func<string>> expand = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicket> GetOneTicket([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> expand = null)
         {
             var apiCallPath = String.Format("/ticket/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -226,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<AddCommentResponse> AddComment(Expression<Func<string>> id, Expression<Func<string>> bodycommentbody = null, Expression<Func<bool>> bodycommentisPublic = null)
+        public IBodyWorkflowAction<AddCommentResponse> AddComment([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodycommentbody = null, [WorkflowExpression] Func<bool> bodycommentisPublic = null)
         {
             var apiCallPath = String.Format("/ticket({0})/AddComment", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -263,7 +262,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<GetFileAttachedResponse> GetFileAttached(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetFileAttachedResponse> GetFileAttached([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/ticket/{0}/FileAttachments", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -272,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<GetTasksResponse> GetTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null, Expression<Func<string>> assignee = null)
+        public IBodyWorkflowAction<GetTasksResponse> GetTasks([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> lifecycle = null, [WorkflowExpression] Func<string> phase = null, [WorkflowExpression] Func<string> taskName = null, [WorkflowExpression] Func<string> assignee = null)
         {
             var apiCallPath = String.Format("/Ticket({0})/GetTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -290,7 +289,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<GetPowerAutomateTasksResponse> GetPowerAutomateTasks(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> taskName = null)
+        public IBodyWorkflowAction<GetPowerAutomateTasksResponse> GetPowerAutomateTasks([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> lifecycle = null, [WorkflowExpression] Func<string> phase = null, [WorkflowExpression] Func<string> taskName = null)
         {
             var apiCallPath = String.Format("/Ticket({0})/GetPowerAutomateTasks", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -306,7 +305,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> AddTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle, Expression<Func<string>> bodylifecycle = null, Expression<Func<string>> bodyphase = null, Expression<Func<string>> bodyassignee = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> AddTask([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodylifecycle = null, [WorkflowExpression] Func<string> bodyphase = null, [WorkflowExpression] Func<string> bodyassignee = null)
         {
             var apiCallPath = String.Format("/Ticket({0})/AddTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -343,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyassignee = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsTicketTask> UpdateTask([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyassignee = null)
         {
             var apiCallPath = String.Format("/TicketTask({0})/UpdateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -372,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsPowerAutomateTask> UpdatePowerAutomateTask(Expression<Func<string>> id, Expression<Func<string>> bodystatusId = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsPowerAutomateTask> UpdatePowerAutomateTask([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodystatusId = null)
         {
             var apiCallPath = String.Format("/TicketTask({0})/UpdatePowerAutomateTask", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -395,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<GetApprovalsResponse> GetApprovals(Expression<Func<string>> id, Expression<Func<string>> lifecycle = null, Expression<Func<string>> phase = null, Expression<Func<string>> approvalName = null, Expression<Func<string>> approvers = null, Expression<Func<string>> additionalDetails = null)
+        public IBodyWorkflowAction<GetApprovalsResponse> GetApprovals([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> lifecycle = null, [WorkflowExpression] Func<string> phase = null, [WorkflowExpression] Func<string> approvalName = null, [WorkflowExpression] Func<string> approvers = null, [WorkflowExpression] Func<string> additionalDetails = null)
         {
             var apiCallPath = String.Format("/Ticket({0})/GetApprovals", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -415,7 +414,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tikit")]
-        public IBodyWorkflowAction<ServiceDeskCoreModelsApprovals> UpdateApproval(Expression<Func<string>> id, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyadditionalDetails = null, Expression<Func<bodyrequiredByAllInput>> bodyrequiredByAll = null, Expression<Func<string>> bodyapprovers = null)
+        public IBodyWorkflowAction<ServiceDeskCoreModelsApprovals> UpdateApproval([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyadditionalDetails = null, [WorkflowExpression] Func<bodyrequiredByAllInput> bodyrequiredByAll = null, [WorkflowExpression] Func<string> bodyapprovers = null)
         {
             var apiCallPath = String.Format("/Approvals({0})/UpdateApproval", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
 
     public class TikitTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null, [WorkflowExpression] Func<string> bodywebHookassignees = null, [WorkflowExpression] Func<string> bodywebHooktitle = null, [WorkflowExpression] Func<string> bodywebHookstatus = null, [WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null, [WorkflowExpression] Func<int> bodywebHookgroup = null, [WorkflowExpression] Func<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/AddTicketWebhook";
             var apiCallHttpMethod = "post";
@@ -546,7 +545,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger(Expression<Func<string>> bodywebHookrequesters = null, Expression<Func<string>> bodywebHookassignees = null, Expression<Func<string>> bodywebHooktitle = null, Expression<Func<string>> bodywebHookstatus = null, Expression<Func<bodywebHookpriorityInput>> bodywebHookpriority = null, Expression<Func<int>> bodywebHookgroup = null, Expression<Func<int>> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> UpdateTicketWebhookTrigger([WorkflowExpression] Func<string> bodywebHookrequesters = null, [WorkflowExpression] Func<string> bodywebHookassignees = null, [WorkflowExpression] Func<string> bodywebHooktitle = null, [WorkflowExpression] Func<string> bodywebHookstatus = null, [WorkflowExpression] Func<bodywebHookpriorityInput> bodywebHookpriority = null, [WorkflowExpression] Func<int> bodywebHookgroup = null, [WorkflowExpression] Func<int> bodywebHookselectTemplate = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/UpdateTicketWebhook";
             var apiCallHttpMethod = "post";
@@ -634,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook(Expression<Func<string>> bodywebHookcommenter = null, Expression<Func<string>> bodywebHookcommentStringContain = null, Expression<Func<bodywebHookisPublicCommentInput>> bodywebHookisPublicComment = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> AddCommentTicketWebhook([WorkflowExpression] Func<string> bodywebHookcommenter = null, [WorkflowExpression] Func<string> bodywebHookcommentStringContain = null, [WorkflowExpression] Func<bodywebHookisPublicCommentInput> bodywebHookisPublicComment = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/AddCommentTicketWebhook";
             var apiCallHttpMethod = "post";
@@ -688,7 +687,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<string>> bodywebHooklifecyclePowerAutomateName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreModelsTicketTask> ActivatePowerAutomateTaskWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, [WorkflowExpression] Func<string> bodywebHooklifecyclePowerAutomateName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/ActivatePowerAutomateTaskWebhook";
             var apiCallHttpMethod = "post";
@@ -732,7 +731,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             return new ApiConnectionTrigger<ServiceDeskCoreModelsTicketTask>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> ChangeLifecyclePhaseWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/ChangeLifecyclePhaseWebhook";
             var apiCallHttpMethod = "post";
@@ -770,7 +769,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             return new ApiConnectionTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook(Expression<Func<string>> bodywebHooklifecycleId = null, Expression<Func<int>> bodywebHooklifecyclePhaseId = null, Expression<Func<int>> bodywebHooklifecycleTransitionId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ServiceDeskCoreActionsAddWebhookWebhookParam> EngageLifecycleTransitionWebhook([WorkflowExpression] Func<string> bodywebHooklifecycleId = null, [WorkflowExpression] Func<int> bodywebHooklifecyclePhaseId = null, [WorkflowExpression] Func<int> bodywebHooklifecycleTransitionId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/EngageLifecycleTransitionWebhook";
             var apiCallHttpMethod = "post";

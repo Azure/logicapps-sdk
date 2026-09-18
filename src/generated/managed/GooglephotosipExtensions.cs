@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction CreateAlbum(Expression<Func<string>> body = null)
+        public IWorkflowAction CreateAlbum([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/v1/albums";
             var apiCallHttpMethod = "post";
@@ -40,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlephotosip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlephotosip")]
-        public IWorkflowAction CreateItems(Expression<Func<string>> mediaItemIds)
+        public IWorkflowAction CreateItems([WorkflowExpression] Func<string> mediaItemIds)
         {
             var apiCallPath = "/v1/mediaItems:batchGet";
             var apiCallHttpMethod = "get";

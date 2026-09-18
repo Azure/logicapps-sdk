@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
     public class OpenfdadrugipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugAdverseEventResponse> DrugAdverseEvent(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugAdverseEventResponse> DrugAdverseEvent([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/event.json";
             var apiCallHttpMethod = "get";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugLabelingResponse> DrugLabeling(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugLabelingResponse> DrugLabeling([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/label.json";
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugNDCResponse> DrugNDC(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugNDCResponse> DrugNDC([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/ndc.json";
             var apiCallHttpMethod = "get";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugEnforcementResponse> DrugEnforcement(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugEnforcementResponse> DrugEnforcement([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/enforcement.json";
             var apiCallHttpMethod = "get";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openfdadrugip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openfdadrugip")]
-        public IBodyWorkflowAction<DrugsFDAResponse> DrugsFDA(Expression<Func<string>> search = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<DrugsFDAResponse> DrugsFDA([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/drugsfda.json";
             var apiCallHttpMethod = "get";

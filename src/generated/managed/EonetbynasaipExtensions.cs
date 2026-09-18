@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsResponse> Events([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
             var apiCallPath = "/events";
             var apiCallHttpMethod = "get";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
             var apiCallPath = "/events/geojson";
             var apiCallHttpMethod = "get";
@@ -76,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventCategoriesResponse> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IBodyWorkflowAction<EventCategoriesResponse> EventCategories([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> category, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
         {
             var apiCallPath = String.Format("/categories/{0}", ExpressionConverter.ConvertWithUrlEncoding(category, 1));
             var apiCallHttpMethod = "get";
@@ -106,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<LayersResponse> Layers(Expression<Func<string>> category)
+        public IBodyWorkflowAction<LayersResponse> Layers([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> category)
         {
             var apiCallPath = String.Format("/layers/{0}", ExpressionConverter.ConvertWithUrlEncoding(category, 1));
             var apiCallHttpMethod = "get";

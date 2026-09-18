@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Linemessageip
     public class LinemessageipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "linemessageip")]
-        public IWorkflowAction SendMessage(Expression<Func<string>> bodyto = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        public IWorkflowAction SendMessage([WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
             var apiCallPath = "/v2/bot/message/push";
             var apiCallHttpMethod = "post";

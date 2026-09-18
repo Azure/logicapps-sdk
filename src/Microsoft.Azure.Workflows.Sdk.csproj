@@ -13,6 +13,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Microsoft.Azure.Workflows.Sdk.Generators\**\*.cs" />
+    <ProjectReference Include="Microsoft.Azure.Workflows.Sdk.Generators\Microsoft.Azure.Workflows.Sdk.Generators.csproj"
+                      ReferenceOutputAssembly="false"
+                      PrivateAssets="all" />
+    <None Include="buildTransitive\Microsoft.Azure.Workflows.Sdk.props"
+          Pack="true"
+          PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Rpc" Version="1.0.1" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
@@ -20,6 +27,16 @@
   <ItemGroup>
       <ExcludeFromStyleCop Include="**\*.cs" />
   </ItemGroup>
+
+  <Target Name="AddWorkflowExpressionGeneratorToPackage"
+          BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <None Include="$(TargetDir)..\..\Microsoft.Azure.Workflows.Sdk.Generators\$(Configuration)\Microsoft.Azure.Workflows.Sdk.Generators.dll"
+            Pack="true"
+            PackagePath="analyzers\dotnet\cs\Microsoft.Azure.Workflows.Sdk.Generators.dll"
+            Visible="false" />
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
     <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleToAttribute">

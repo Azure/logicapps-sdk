@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
     public class PantryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> pantryID)
+        public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pantryID)
         {
             var apiCallPath = String.Format("/pantry/{0}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetContentsResponse> GetContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<GetContentsResponse> GetContents([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
             var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> Delete(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<string> Delete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
             var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
             var apiCallHttpMethod = "delete";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> CreateAndOrReplace(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<string> CreateAndOrReplace([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
             var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
             var apiCallHttpMethod = "post";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
             var apiCallPath = String.Format("/pantry/{0}/basket/{1}", ExpressionConverter.ConvertWithUrlEncoding(pantryID, 1), ExpressionConverter.ConvertWithUrlEncoding(basketName, 1));
             var apiCallHttpMethod = "put";

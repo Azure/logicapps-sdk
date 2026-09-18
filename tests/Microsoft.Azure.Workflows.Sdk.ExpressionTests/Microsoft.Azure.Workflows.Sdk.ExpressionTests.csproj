@@ -5,6 +5,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
     <IsPackable>false</IsPackable>
+    <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,9 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.Generators\Microsoft.Azure.Workflows.Sdk.Generators.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
   </ItemGroup>
 
 </Project>

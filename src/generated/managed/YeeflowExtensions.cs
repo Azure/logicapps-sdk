@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
     public class YeeflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<AddItemResponse> AddItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<AddItemResponse> AddItem([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, [WorkflowExpression] Func<object> bodydata = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetItemResponse> GetItem([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> listID, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<DeleteItemResponse> DeleteItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
+        public IBodyWorkflowAction<DeleteItemResponse> DeleteItem([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> listID, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "delete";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<UpdateItemResponse> UpdateItem(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<int>> bodyrowVersion = null, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<UpdateItemResponse> UpdateItem([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> listID, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> bodyrowVersion = null, [WorkflowExpression] Func<object> bodydata = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/{1}", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "patch";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<GetListFieldsResponse> GetListFields(Expression<Func<string>> application, Expression<Func<string>> listID)
+        public IBodyWorkflowAction<GetListFieldsResponse> GetListFields([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID)
         {
             var apiCallPath = String.Format("/lists/41/{0}/fields", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "get";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow(Expression<Func<string>> application, Expression<Func<string>> key, Expression<Func<string>> bodyapplicantID = null, Expression<Func<object>> bodyvariables = null)
+        public IBodyWorkflowAction<StartWorkflowResponse> StartWorkflow([WorkflowExpression] Func<string> application, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyapplicantID = null, [WorkflowExpression] Func<object> bodyvariables = null)
         {
             var apiCallPath = "/workflow/forms/start";
             var apiCallHttpMethod = "post";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<GetAgentDefinitionResponse> GetAgentDefinition(Expression<Func<string>> application, Expression<Func<string>> agentID)
+        public IBodyWorkflowAction<GetAgentDefinitionResponse> GetAgentDefinition([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> agentID)
         {
             var apiCallPath = String.Format("/agents/{0}", ExpressionConverter.ConvertWithUrlEncoding(agentID, 1));
             var apiCallHttpMethod = "get";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<RunAgentResponse> RunAgent(Expression<Func<string>> application, Expression<Func<string>> agentID, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<RunAgentResponse> RunAgent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> agentID, [WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = String.Format("/agents/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(agentID, 1));
             var apiCallHttpMethod = "post";
@@ -145,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<QueryItemsResponse> QueryItems(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string[]>> bodyfields = null, Expression<Func<ListDataWhereRequest[]>> bodyfilters = null, Expression<Func<bodysortsInputItem[]>> bodysorts = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null)
+        public IBodyWorkflowAction<QueryItemsResponse> QueryItems([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, [WorkflowExpression] Func<string[]> bodyfields = null, [WorkflowExpression] Func<ListDataWhereRequest[]> bodyfilters = null, [WorkflowExpression] Func<bodysortsInputItem[]> bodysorts = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/query", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -212,7 +211,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<AddItemFileResponse> AddItemFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id, Expression<Func<string>> fileName, Expression<Func<string>> fieldID = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<AddItemFileResponse> AddItemFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> listID, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fieldID = null, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/items/{1}/files", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "post";
@@ -226,7 +225,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> fileName, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/files";
             var apiCallHttpMethod = "post";
@@ -237,7 +236,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<GetFilePropertyResponse> GetFileProperty(Expression<Func<string>> fieldValue = null)
+        public IBodyWorkflowAction<GetFilePropertyResponse> GetFileProperty([WorkflowExpression] Func<string> fieldValue = null)
         {
             var apiCallPath = "/files/properties";
             var apiCallHttpMethod = "post";
@@ -247,7 +246,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/files/{0}/content", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -256,7 +255,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<AddLibraryFileResponse> AddLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> fileName, Expression<Func<string>> path = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<AddLibraryFileResponse> AddLibraryFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> path = null, [WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/library", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -270,7 +269,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeeflow")]
-        public IBodyWorkflowAction<string> GetLibraryFile(Expression<Func<string>> application, Expression<Func<string>> listID, Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> GetLibraryFile([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> listID, [WorkflowExpression] Func<string> id)
         {
             var apiCallPath = String.Format("/lists/41/{0}/library/{1}/content", ExpressionConverter.ConvertWithUrlEncoding(listID, 1), ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -282,7 +281,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
 
     public class YeeflowTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> OnItemCreated(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreated([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/hooks/1", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -301,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemModified(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemModified([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/hooks/2", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -320,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemCreatedModified([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/hooks/3", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";
@@ -339,7 +338,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeeflow
             return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> OnItemDeleted(Expression<Func<string>> application, Expression<Func<string>> listID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnItemDeleted([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> application, [WorkflowExpression] Func<string> listID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = String.Format("/lists/41/{0}/hooks/4", ExpressionConverter.ConvertWithUrlEncoding(listID, 1));
             var apiCallHttpMethod = "post";

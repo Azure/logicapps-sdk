@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
     public class SinchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage, Expression<Func<string>> bodysourceNumber = null, Expression<Func<bool>> bodydeliveryReport = null, Expression<Func<string>> bodycallbackUrl = null, Expression<Func<bodymetadataInputItem[]>> bodymetadata = null)
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodysourceNumber = null, [WorkflowExpression] Func<bool> bodydeliveryReport = null, [WorkflowExpression] Func<string> bodycallbackUrl = null, [WorkflowExpression] Func<bodymetadataInputItem[]> bodymetadata = null)
         {
             var apiCallPath = "/v1/int-power-automate/send-message";
             var apiCallHttpMethod = "post";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IBodyWorkflowAction<Message> GetMessageStatus(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<Message> GetMessageStatus([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> messageId)
         {
             var apiCallPath = String.Format("/v1/messages/{0}", ExpressionConverter.ConvertWithUrlEncoding(messageId, 1));
             var apiCallHttpMethod = "get";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sinch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sinch")]
-        public IWorkflowAction SendRCS(Expression<Func<object>> body = null)
+        public IWorkflowAction SendRCS([WorkflowExpression] Func<object> body = null)
         {
             var apiCallPath = "/v2/int-power-automate/message";
             var apiCallHttpMethod = "post";

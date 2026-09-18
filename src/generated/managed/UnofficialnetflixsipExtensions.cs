@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
     public class UnofficialnetflixsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleSearchResponse> TitleSearch(Expression<Func<int>> query = null, Expression<Func<int>> type = null, Expression<Func<int>> genrelist = null, Expression<Func<string>> countrylist = null, Expression<Func<int>> startYear = null, Expression<Func<int>> endYear = null, Expression<Func<string>> audio = null, Expression<Func<string>> audiosubtitleAndor = null, Expression<Func<string>> subtitle = null, Expression<Func<string>> countryAndorunique = null, Expression<Func<string>> orderby = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleSearchResponse> TitleSearch([WorkflowExpression] Func<int> query = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> genrelist = null, [WorkflowExpression] Func<string> countrylist = null, [WorkflowExpression] Func<int> startYear = null, [WorkflowExpression] Func<int> endYear = null, [WorkflowExpression] Func<string> audio = null, [WorkflowExpression] Func<string> audiosubtitleAndor = null, [WorkflowExpression] Func<string> subtitle = null, [WorkflowExpression] Func<string> countryAndorunique = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/search";
             var apiCallHttpMethod = "get";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch(Expression<Func<string>> name = null, Expression<Func<int>> netflixId = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<PeopleSearchResponse> PeopleSearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/people";
             var apiCallHttpMethod = "get";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch(Expression<Func<int>> netflixId = null, Expression<Func<string>> countryList = null, Expression<Func<string>> date = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<DeletedSearchResponse> DeletedSearch([WorkflowExpression] Func<int> netflixId = null, [WorkflowExpression] Func<string> countryList = null, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/titlesdel";
             var apiCallHttpMethod = "get";
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleDetailResponse> TitleDetail(Expression<Func<int>> netflixid, Expression<Func<int>> imdbid)
+        public IBodyWorkflowAction<TitleDetailResponse> TitleDetail([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> imdbid)
         {
             var apiCallPath = "/title";
             var apiCallHttpMethod = "get";
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleCountryResponse> TitleCountry(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleCountryResponse> TitleCountry([WorkflowExpression] Func<int> netflixid)
         {
             var apiCallPath = "/titlecountries";
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleGenreResponse> TitleGenre(Expression<Func<int>> netflixid)
+        public IBodyWorkflowAction<TitleGenreResponse> TitleGenre([WorkflowExpression] Func<int> netflixid)
         {
             var apiCallPath = "/titlegenres";
             var apiCallHttpMethod = "get";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode(Expression<Func<int>> netflixid, Expression<Func<int>> seasonid, Expression<Func<int>> episodeid = null)
+        public IBodyWorkflowAction<TitleEpisodeResponse> TitleEpisode([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> seasonid, [WorkflowExpression] Func<int> episodeid = null)
         {
             var apiCallPath = "/episodes";
             var apiCallHttpMethod = "get";
@@ -145,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleImageResponse> TitleImage(Expression<Func<int>> netflixid, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleImageResponse> TitleImage([WorkflowExpression] Func<int> netflixid, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/images";
             var apiCallHttpMethod = "get";
@@ -159,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Unofficialnetflixsip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "unofficialnetflixsip")]
-        public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring(Expression<Func<int>> countrylist, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
+        public IBodyWorkflowAction<TitleExpiringResponse> TitleExpiring([WorkflowExpression] Func<int> countrylist, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
         {
             var apiCallPath = "/expiring";
             var apiCallHttpMethod = "get";

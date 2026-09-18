@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
     public class XooadbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
-        public IBodyWorkflowAction<string> Query(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<string> Query([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
             var apiCallPath = String.Format("/query/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
             var apiCallHttpMethod = "post";
@@ -28,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooadb
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooadb")]
-        public IBodyWorkflowAction<string> Invoke(Expression<Func<string>> fcn, Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
+        public IBodyWorkflowAction<string> Invoke([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fcn, [WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
             var apiCallPath = String.Format("/invoke/{0}", ExpressionConverter.ConvertWithUrlEncoding(fcn, 1));
             var apiCallHttpMethod = "post";

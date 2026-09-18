@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     public class FinnishbisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
+        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> businessId)
         {
             var apiCallPath = String.Format("/bis/v1/{0}", ExpressionConverter.ConvertWithUrlEncoding(businessId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
+        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<bool> totalResults = null)
         {
             var apiCallPath = "/bis/v1";
             var apiCallHttpMethod = "get";

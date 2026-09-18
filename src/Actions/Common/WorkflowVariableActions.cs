@@ -6,7 +6,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 {
     using System;
     using System.Collections;
-    using System.Linq.Expressions;
 
     /// <summary>
     /// Provides factory methods for creating variable actions
@@ -22,11 +21,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the initial value.</param>
         public IVariableWorkflowAction InitializeVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             var typeStr = InferVariableType(typeof(T));
             return new InitializeVariableAction(nameStr, typeStr, valueToken);
         }
@@ -38,11 +37,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the new value.</param>
         public IVariableWorkflowAction SetVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             return new SetVariableAction(nameStr, valueToken);
         }
 
@@ -53,11 +52,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the increment value.</param>
         public IVariableWorkflowAction IncrementVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             return new IncrementVariableAction(nameStr, valueToken);
         }
 
@@ -68,11 +67,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the decrement value.</param>
         public IVariableWorkflowAction DecrementVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             return new DecrementVariableAction(nameStr, valueToken);
         }
 
@@ -82,11 +81,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the string to append.</param>
         public IVariableWorkflowAction AppendToStringVariable(
-            Expression<Func<string>> name,
-            Expression<Func<string>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<string> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             return new AppendToStringVariableAction(nameStr, valueToken);
         }
 
@@ -97,11 +96,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="name">An expression for the variable name.</param>
         /// <param name="value">An expression for the value to append.</param>
         public IVariableWorkflowAction AppendToArrayVariable<T>(
-            Expression<Func<string>> name,
-            Expression<Func<T>> value)
+            [WorkflowExpression] Func<string> name,
+            [WorkflowExpression] Func<T> value)
         {
-            var nameStr = ExpressionConverter.Convert(name);
-            var valueToken = ExpressionConverter.ConvertO(value);
+            var nameStr = ExpressionConverter.ConvertGenerated(name);
+            var valueToken = ExpressionConverter.ConvertGeneratedO(value);
             return new AppendToArrayVariableAction(nameStr, valueToken);
         }
 

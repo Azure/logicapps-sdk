@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
     public class CloudmersivenlpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> AnalyticsSentiment(Expression<Func<string>> inputtextToAnalyze = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse> AnalyticsSentiment([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
             var apiCallPath = "/nlp-v2/analytics/sentiment";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ProfanityAnalysisResponse> AnalyticsProfanity(Expression<Func<string>> inputtextToAnalyze = null)
+        public IBodyWorkflowAction<ProfanityAnalysisResponse> AnalyticsProfanity([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
             var apiCallPath = "/nlp-v2/analytics/profanity";
             var apiCallHttpMethod = "post";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SubjectivityAnalysisResponse> AnalyticsSubjectivity(Expression<Func<string>> inputtextToAnalyze = null)
+        public IBodyWorkflowAction<SubjectivityAnalysisResponse> AnalyticsSubjectivity([WorkflowExpression] Func<string> inputtextToAnalyze = null)
         {
             var apiCallPath = "/nlp-v2/analytics/subjectivity";
             var apiCallHttpMethod = "post";
@@ -78,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities(Expression<Func<string>> valueinputString = null)
+        public IBodyWorkflowAction<ExtractEntitiesResponse> ExtractEntities([WorkflowExpression] Func<string> valueinputString = null)
         {
             var apiCallPath = "/nlp-v2/extract-entities";
             var apiCallHttpMethod = "post";
@@ -100,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetectionGetLanguage(Expression<Func<string>> inputtextToDetect = null)
+        public IBodyWorkflowAction<LanguageDetectionResponse> LanguageDetectionGetLanguage([WorkflowExpression] Func<string> inputtextToDetect = null)
         {
             var apiCallPath = "/nlp-v2/language/detect";
             var apiCallHttpMethod = "post";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateDeuToEng(Expression<Func<string>> inputtextToTranslate = null)
+        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateDeuToEng([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
             var apiCallPath = "/nlp-v2/translate/language/deu/to/eng";
             var apiCallHttpMethod = "post";
@@ -144,7 +143,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToDeu(Expression<Func<string>> inputtextToTranslate = null)
+        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToDeu([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
             var apiCallPath = "/nlp-v2/translate/language/eng/to/deu";
             var apiCallHttpMethod = "post";
@@ -166,7 +165,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateRusToEng(Expression<Func<string>> inputtextToTranslate = null)
+        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateRusToEng([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
             var apiCallPath = "/nlp-v2/translate/language/rus/to/eng";
             var apiCallHttpMethod = "post";
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToRus(Expression<Func<string>> inputtextToTranslate = null)
+        public IBodyWorkflowAction<LanguageTranslationResponse> LanguageTranslationTranslateEngToRus([WorkflowExpression] Func<string> inputtextToTranslate = null)
         {
             var apiCallPath = "/nlp-v2/translate/language/eng/to/rus";
             var apiCallHttpMethod = "post";
@@ -210,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<ParseResponse> ParseParseString(Expression<Func<string>> inputinputString = null)
+        public IBodyWorkflowAction<ParseResponse> ParseParseString([WorkflowExpression] Func<string> inputinputString = null)
         {
             var apiCallPath = "/nlp-v2/parse/tree";
             var apiCallHttpMethod = "post";
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagSentence(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagSentence([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/sentence";
             var apiCallHttpMethod = "post";
@@ -254,7 +253,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagVerbs(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagVerbs([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/verbs";
             var apiCallHttpMethod = "post";
@@ -276,7 +275,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagNouns(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagNouns([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/nouns";
             var apiCallHttpMethod = "post";
@@ -298,7 +297,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagAdjectives(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagAdjectives([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/adjectives";
             var apiCallHttpMethod = "post";
@@ -320,7 +319,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagAdverbs(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagAdverbs([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/adverbs";
             var apiCallHttpMethod = "post";
@@ -342,7 +341,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<PosResponse> PosTaggerTagPronouns(Expression<Func<string>> requestinputText = null)
+        public IBodyWorkflowAction<PosResponse> PosTaggerTagPronouns([WorkflowExpression] Func<string> requestinputText = null)
         {
             var apiCallPath = "/nlp-v2/pos/tag/pronouns";
             var apiCallHttpMethod = "post";
@@ -364,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<RephraseResponse> RephraseEnglishRephraseSentenceBySentence(Expression<Func<string>> inputtextToTranslate = null, Expression<Func<int>> inputtargetRephrasingCount = null)
+        public IBodyWorkflowAction<RephraseResponse> RephraseEnglishRephraseSentenceBySentence([WorkflowExpression] Func<string> inputtextToTranslate = null, [WorkflowExpression] Func<int> inputtargetRephrasingCount = null)
         {
             var apiCallPath = "/nlp-v2/rephrase/rephrase/eng/by-sentence";
             var apiCallHttpMethod = "post";
@@ -392,7 +391,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<SentenceSegmentationResponse> SegmentationGetSentences(Expression<Func<string>> inputinputString = null)
+        public IBodyWorkflowAction<SentenceSegmentationResponse> SegmentationGetSentences([WorkflowExpression] Func<string> inputinputString = null)
         {
             var apiCallPath = "/nlp-v2/segmentation/sentences";
             var apiCallHttpMethod = "post";
@@ -414,7 +413,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<GetWordsResponse> SegmentationGetWords(Expression<Func<string>> inputinputText = null)
+        public IBodyWorkflowAction<GetWordsResponse> SegmentationGetWords([WorkflowExpression] Func<string> inputinputText = null)
         {
             var apiCallPath = "/nlp-v2/segmentation/words";
             var apiCallHttpMethod = "post";
@@ -436,7 +435,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<CheckWordResponse> SpellcheckCorrectJson(Expression<Func<string>> valueword = null)
+        public IBodyWorkflowAction<CheckWordResponse> SpellcheckCorrectJson([WorkflowExpression] Func<string> valueword = null)
         {
             var apiCallPath = "/nlp-v2/spellcheck/check/word";
             var apiCallHttpMethod = "post";
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivenlp
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivenlp")]
-        public IBodyWorkflowAction<CheckSentenceResponse> SpellcheckCheckSentence(Expression<Func<string>> valuesentence = null)
+        public IBodyWorkflowAction<CheckSentenceResponse> SpellcheckCheckSentence([WorkflowExpression] Func<string> valuesentence = null)
         {
             var apiCallPath = "/nlp-v2/spellcheck/check/sentence";
             var apiCallHttpMethod = "post";

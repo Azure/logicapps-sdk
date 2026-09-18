@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
     public class SmsforapplicationsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport[]> ListJobs(Expression<Func<bool>> jobIdsOnly, Expression<Func<string>> fromTs = null, Expression<Func<string>> toTs = null, Expression<Func<bool>> open = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<JobReport[]> ListJobs([WorkflowExpression] Func<bool> jobIdsOnly, [WorkflowExpression] Func<string> fromTs = null, [WorkflowExpression] Func<string> toTs = null, [WorkflowExpression] Func<bool> open = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/jobs";
             var apiCallHttpMethod = "get";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<JobReport> GetJob(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<JobReport> GetJob([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> jobId)
         {
             var apiCallPath = String.Format("/jobs/{0}", ExpressionConverter.ConvertWithUrlEncoding(jobId, 1));
             var apiCallHttpMethod = "get";
@@ -44,7 +43,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsforapplications
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsforapplications")]
-        public IBodyWorkflowAction<RecipientReport[]> ListRecipients(Expression<Func<string>> jobId)
+        public IBodyWorkflowAction<RecipientReport[]> ListRecipients([WorkflowExpression] Func<string> jobId)
         {
             var apiCallPath = "/sms";
             var apiCallHttpMethod = "get";

@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the headers for the request.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; }
+        public JToken Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the request.
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal ResponseAction(
             HttpStatusCode statusCode = HttpStatusCode.OK, 
             object responseBody = null, 
-            Dictionary<string, string> headers = null, 
+            JToken headers = null,
             JToken schema = null)
         {
             this.StatusCode = statusCode;
@@ -90,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="responseBody">The response body (optional).</param>
         /// <param name="headers">The request headers (optional).</param>
         /// <param name="schema">The JSON schema of the response (optional).</param>
-        internal ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, Dictionary<string, string> headers = null, JToken schema = null)
+        internal ResponseAction(HttpStatusCode statusCode = HttpStatusCode.OK, object responseBody = null, JToken headers = null, JToken schema = null)
             : base(statusCode, responseBody, headers, schema)
         {
         }

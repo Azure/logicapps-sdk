@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
+        public IBodyWorkflowAction<CheckTextResponse> CheckText([WorkflowExpression] Func<string> bodyleft, [WorkflowExpression] Func<string> bodyright, [WorkflowExpression] Func<diffLevelInput> diffLevel = null)
         {
             var apiCallPath = "/public/text";
             var apiCallHttpMethod = "post";
@@ -37,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
+        public IBodyWorkflowAction<CheckImageResponse> CheckImage([WorkflowExpression] Func<string> bodyleftImage, [WorkflowExpression] Func<string> bodyrightImage)
         {
             var apiCallPath = "/public/image";
             var apiCallHttpMethod = "post";

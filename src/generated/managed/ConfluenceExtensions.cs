@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
     public class ConfluenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cloudId)
         {
             var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPages([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cloudId)
         {
             var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cloudId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> spaceId)
         {
             var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cloudId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> spaceId, [WorkflowExpression] Func<string> pageId)
         {
             var apiCallPath = String.Format("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(cloudId, 1), ExpressionConverter.ConvertWithUrlEncoding(pageId, 1), ExpressionConverter.ConvertWithUrlEncoding(spaceId, 1));
             var apiCallHttpMethod = "get";

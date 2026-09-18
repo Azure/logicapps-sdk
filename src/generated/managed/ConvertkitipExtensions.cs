@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd(Expression<Func<string>> formId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<FormSubAddResponse> FormSubAdd([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
             var apiCallPath = String.Format("/forms/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "post";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<FormSubListResponse> FormSubList(Expression<Func<string>> formId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<FormSubListResponse> FormSubList([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/forms/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(formId, 1));
             var apiCallHttpMethod = "get";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd(Expression<Func<string>> sequenceId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<SequenceSubAddResponse> SequenceSubAdd([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sequenceId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
             var apiCallPath = String.Format("/sequences/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
             var apiCallHttpMethod = "post";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList(Expression<Func<string>> sequenceId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SequenceSubListResponse> SequenceSubList([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> sequenceId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/sequences/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(sequenceId, 1));
             var apiCallHttpMethod = "get";
@@ -158,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagAddResponse> TagAdd(Expression<Func<string>> bodytagname = null)
+        public IBodyWorkflowAction<TagAddResponse> TagAdd([WorkflowExpression] Func<string> bodytagname = null)
         {
             var apiCallPath = "/tags";
             var apiCallHttpMethod = "post";
@@ -188,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubResponse> TagSub(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<int[]>> bodytags = null)
+        public IBodyWorkflowAction<TagSubResponse> TagSub([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<int[]> bodytags = null)
         {
             var apiCallPath = String.Format("/tags/{0}/subscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "post";
@@ -230,7 +229,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove(Expression<Func<string>> subscriberId, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<TagSubRemoveResponse> TagSubRemove([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriberId, [WorkflowExpression] Func<string> tagId)
         {
             var apiCallPath = String.Format("/subscribers/{0}/tags/{1}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1), ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "delete";
@@ -239,7 +238,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail(Expression<Func<string>> tagId, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<TagSubRemoveEmailResponse> TagSubRemoveEmail([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId, [WorkflowExpression] Func<string> bodyemail)
         {
             var apiCallPath = String.Format("/tags/{0}/unsubscribe", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "post";
@@ -257,7 +256,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<TagSubListResponse> TagSubList(Expression<Func<string>> tagId, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<subscriberStateInput>> subscriberState = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<TagSubListResponse> TagSubList([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tagId, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<subscriberStateInput> subscriberState = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/tags/{0}/subscriptions", ExpressionConverter.ConvertWithUrlEncoding(tagId, 1));
             var apiCallHttpMethod = "get";
@@ -274,7 +273,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList(Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<string>> updatedFrom = null, Expression<Func<string>> updatedTo = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<string>> emailAddress = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SubscriberListResponse> SubscriberList([WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> updatedFrom = null, [WorkflowExpression] Func<string> updatedTo = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<string> emailAddress = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/subscribers";
             var apiCallHttpMethod = "get";
@@ -301,7 +300,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet(Expression<Func<string>> subscriberId)
+        public IBodyWorkflowAction<SubscriberGetResponse> SubscriberGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriberId)
         {
             var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
             var apiCallHttpMethod = "get";
@@ -310,7 +309,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate(Expression<Func<string>> subscriberId, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodyemailAddress = null)
+        public IBodyWorkflowAction<SubscriberUpdateResponse> SubscriberUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriberId, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodyemailAddress = null)
         {
             var apiCallPath = String.Format("/subscribers/{0}", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
             var apiCallHttpMethod = "put";
@@ -346,7 +345,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub(Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<SubscriberUnsubResponse> SubscriberUnsub([WorkflowExpression] Func<string> bodyemail)
         {
             var apiCallPath = "/unsubscribe";
             var apiCallHttpMethod = "put";
@@ -364,7 +363,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags(Expression<Func<string>> subscriberId)
+        public IBodyWorkflowAction<SubscriberTagsResponse> SubscriberTags([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> subscriberId)
         {
             var apiCallPath = String.Format("/subscribers/{0}/tags", ExpressionConverter.ConvertWithUrlEncoding(subscriberId, 1));
             var apiCallHttpMethod = "get";
@@ -382,7 +381,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastAddResponse> BroadcastAdd([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
             var apiCallPath = "/broadcasts";
             var apiCallHttpMethod = "post";
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<BroadcastGetResponse> BroadcastGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> broadcastId)
         {
             var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
             var apiCallHttpMethod = "get";
@@ -467,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate(Expression<Func<string>> broadcastId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyemailAddress = null, Expression<Func<string>> bodyemailLayoutTemplate = null, Expression<Func<bool>> bodyPublic = null, Expression<Func<string>> bodypublishedAt = null, Expression<Func<string>> bodysendAt = null, Expression<Func<string>> bodythumbnailAlt = null, Expression<Func<string>> bodythumbnailUrl = null)
+        public IBodyWorkflowAction<BroadcastUpdateResponse> BroadcastUpdate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> broadcastId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyemailAddress = null, [WorkflowExpression] Func<string> bodyemailLayoutTemplate = null, [WorkflowExpression] Func<bool> bodyPublic = null, [WorkflowExpression] Func<string> bodypublishedAt = null, [WorkflowExpression] Func<string> bodysendAt = null, [WorkflowExpression] Func<string> bodythumbnailAlt = null, [WorkflowExpression] Func<string> bodythumbnailUrl = null)
         {
             var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
             var apiCallHttpMethod = "put";
@@ -543,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<string> BroadcastDelete(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<string> BroadcastDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> broadcastId)
         {
             var apiCallPath = String.Format("/broadcasts/{0}", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
             var apiCallHttpMethod = "delete";
@@ -552,7 +551,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat(Expression<Func<string>> broadcastId)
+        public IBodyWorkflowAction<BroadcastGetStatResponse> BroadcastGetStat([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> broadcastId)
         {
             var apiCallPath = String.Format("/broadcasts/{0}/stats", ExpressionConverter.ConvertWithUrlEncoding(broadcastId, 1));
             var apiCallHttpMethod = "get";
@@ -561,7 +560,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<PurchaseListResponse> PurchaseList([WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/purchases";
             var apiCallHttpMethod = "get";
@@ -572,7 +571,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd(Expression<Func<string>> bodypurchasetransactionId = null, Expression<Func<string>> bodypurchaseemailAddress = null, Expression<Func<string>> bodypurchasefirstName = null, Expression<Func<string>> bodypurchasecurrency = null, Expression<Func<string>> bodypurchasetransactionTime = null, Expression<Func<int>> bodypurchasesubtotal = null, Expression<Func<int>> bodypurchasetax = null, Expression<Func<int>> bodypurchaseshipping = null, Expression<Func<int>> bodypurchasediscount = null, Expression<Func<int>> bodypurchasetotal = null, Expression<Func<string>> bodypurchasestatus = null, Expression<Func<bodypurchaseproductsInputItem[]>> bodypurchaseproducts = null)
+        public IBodyWorkflowAction<PurchaseAddResponse> PurchaseAdd([WorkflowExpression] Func<string> bodypurchasetransactionId = null, [WorkflowExpression] Func<string> bodypurchaseemailAddress = null, [WorkflowExpression] Func<string> bodypurchasefirstName = null, [WorkflowExpression] Func<string> bodypurchasecurrency = null, [WorkflowExpression] Func<string> bodypurchasetransactionTime = null, [WorkflowExpression] Func<int> bodypurchasesubtotal = null, [WorkflowExpression] Func<int> bodypurchasetax = null, [WorkflowExpression] Func<int> bodypurchaseshipping = null, [WorkflowExpression] Func<int> bodypurchasediscount = null, [WorkflowExpression] Func<int> bodypurchasetotal = null, [WorkflowExpression] Func<string> bodypurchasestatus = null, [WorkflowExpression] Func<bodypurchaseproductsInputItem[]> bodypurchaseproducts = null)
         {
             var apiCallPath = "/purchases";
             var apiCallHttpMethod = "post";
@@ -668,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Convertkitip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "convertkitip")]
-        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet(Expression<Func<string>> purchaseId)
+        public IBodyWorkflowAction<PurchaseGetResponse> PurchaseGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> purchaseId)
         {
             var apiCallPath = String.Format("/purchases/{0}", ExpressionConverter.ConvertWithUrlEncoding(purchaseId, 1));
             var apiCallHttpMethod = "get";

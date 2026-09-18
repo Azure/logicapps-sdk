@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilitervisionagents
     public class TilitervisionagentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilitervisionagents")]
-        public IBodyWorkflowAction<AgentResponse> RunVisionAgent(Expression<Func<agentNameInput>> agentName, Expression<Func<string>> payloadinputFileB64, Expression<Func<string>> payloadexpectedText = null, Expression<Func<string>> payloadobjectType = null, Expression<Func<string[]>> payloadexpectedObjects = null)
+        public IBodyWorkflowAction<AgentResponse> RunVisionAgent([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<agentNameInput> agentName, [WorkflowExpression] Func<string> payloadinputFileB64, [WorkflowExpression] Func<string> payloadexpectedText = null, [WorkflowExpression] Func<string> payloadobjectType = null, [WorkflowExpression] Func<string[]> payloadexpectedObjects = null)
         {
             var apiCallPath = String.Format("/api/v2/agents/{0}/v1/inference", ExpressionConverter.ConvertWithUrlEncoding(agentName, 1));
             var apiCallHttpMethod = "post";

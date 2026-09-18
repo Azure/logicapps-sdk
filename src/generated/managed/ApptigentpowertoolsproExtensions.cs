@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apptigentpowertoolspro
     public class ApptigentpowertoolsproActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apptigentpowertoolspro")]
-        public IWorkflowAction CompositeImage(Expression<Func<positionInput>> position, Expression<Func<double>> opacity, Expression<Func<object>> background, Expression<Func<object>> foreground, Expression<Func<double>> horizontal = null, Expression<Func<double>> vertical = null, Expression<Func<string>> filename = null)
+        public IWorkflowAction CompositeImage([WorkflowExpression] Func<positionInput> position, [WorkflowExpression] Func<double> opacity, [WorkflowExpression] Func<object> background, [WorkflowExpression] Func<object> foreground, [WorkflowExpression] Func<double> horizontal = null, [WorkflowExpression] Func<double> vertical = null, [WorkflowExpression] Func<string> filename = null)
         {
             var apiCallPath = "/CompositeImage";
             var apiCallHttpMethod = "post";

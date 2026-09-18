@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
     public class KagiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SummarizePostResponse> Summarize(Expression<Func<string>> bodyurl = null, Expression<Func<string>> bodytext = null, Expression<Func<bodyengineInput>> bodyengine = null, Expression<Func<bodysummaryTypeInput>> bodysummaryType = null, Expression<Func<bodytargetLanguageInput>> bodytargetLanguage = null, Expression<Func<bool>> bodycache = null)
+        public IBodyWorkflowAction<SummarizePostResponse> Summarize([WorkflowExpression] Func<string> bodyurl = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyengineInput> bodyengine = null, [WorkflowExpression] Func<bodysummaryTypeInput> bodysummaryType = null, [WorkflowExpression] Func<bodytargetLanguageInput> bodytargetLanguage = null, [WorkflowExpression] Func<bool> bodycache = null)
         {
             var apiCallPath = "/v0/summarize";
             var apiCallHttpMethod = "post";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT(Expression<Func<string>> bodyquery)
+        public IBodyWorkflowAction<FastGPTPostResponse> FastGPT([WorkflowExpression] Func<string> bodyquery)
         {
             var apiCallPath = "/v0/fastgpt";
             var apiCallHttpMethod = "post";
@@ -102,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/v0/search/";
             var apiCallHttpMethod = "get";
@@ -114,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet(Expression<Func<string>> q)
+        public IBodyWorkflowAction<EnrichmentWebGetResponse> EnrichmentWebGet([WorkflowExpression] Func<string> q)
         {
             var apiCallPath = "/v0/enrich/web";
             var apiCallHttpMethod = "get";
@@ -124,7 +123,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet(Expression<Func<string>> q)
+        public IBodyWorkflowAction<EnrichmentNewsGetResponse> EnrichmentNewsGet([WorkflowExpression] Func<string> q)
         {
             var apiCallPath = "/v0/enrich/news";
             var apiCallHttpMethod = "get";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kagi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kagi")]
-        public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet(Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SmallWebGetResponse> SmallWebGet([WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/v1/smallweb/feed/";
             var apiCallHttpMethod = "get";

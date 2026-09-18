@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
     public class ApplicationinsightsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<Table> RunQuery([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
         {
             var apiCallPath = "/api/QueryDraft";
             var apiCallHttpMethod = "post";
@@ -26,7 +25,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery([WorkflowExpression] Func<chartTypeInput> chartType, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
         {
             var apiCallPath = "/api/VisualizeQueryDraft";
             var apiCallHttpMethod = "post";

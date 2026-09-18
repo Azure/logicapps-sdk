@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
     public class MotimateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<UserGetAllResponse> UserGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        public IBodyWorkflowAction<UserGetAllResponse> UserGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
             var apiCallPath = "/public_api/users";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById(Expression<Func<string>> userId, Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        public IBodyWorkflowAction<UserDeleteByIdResponse> UserDeleteById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> userId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
             var apiCallPath = String.Format("/public_api/users/{0}", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "delete";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        public IBodyWorkflowAction<PositionGetAllResponse> PositionGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
             var apiCallPath = "/public_api/positions";
             var apiCallHttpMethod = "get";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionCreateResponse> PositionCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<PositionCreateResponse> PositionCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
             var apiCallPath = "/public_api/positions";
             var apiCallHttpMethod = "post";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> positionId)
+        public IBodyWorkflowAction<PositionDeleteByIdResponse> PositionDeleteById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> positionId)
         {
             var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
             var apiCallHttpMethod = "delete";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById(Expression<Func<string>> positionId, Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> bodyimportId = null, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<PositionUpdateByIdResponse> PositionUpdateById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> positionId, [WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> bodyimportId = null, [WorkflowExpression] Func<string> bodyname = null)
         {
             var apiCallPath = String.Format("/public_api/positions/{0}", ExpressionConverter.ConvertWithUrlEncoding(positionId, 1));
             var apiCallHttpMethod = "patch";
@@ -98,7 +97,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        public IBodyWorkflowAction<GroupGetAllResponse> GroupGetAll([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
             var apiCallPath = "/public_api/groups";
             var apiCallHttpMethod = "get";
@@ -109,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupCreateResponse> GroupCreate(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<GroupCreateResponse> GroupCreate([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
             var apiCallPath = "/public_api/groups";
             var apiCallHttpMethod = "post";
@@ -121,7 +120,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById(Expression<Func<string>> auth, Expression<Func<string>> subdomain, Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<GroupDeleteByIdResponse> GroupDeleteById([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> auth, [WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> groupId)
         {
             var apiCallPath = String.Format("/public_api/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupId, 1));
             var apiCallHttpMethod = "delete";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<TokenGetResponse> TokenGet(Expression<Func<string>> subdomain, Expression<Func<string>> username, Expression<Func<string>> password, Expression<Func<string>> clientId)
+        public IBodyWorkflowAction<TokenGetResponse> TokenGet([WorkflowExpression] Func<string> subdomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> password, [WorkflowExpression] Func<string> clientId)
         {
             var apiCallPath = "/oauth/token";
             var apiCallHttpMethod = "post";
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Motimate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "motimate")]
-        public IBodyWorkflowAction<MeResponse> Me(Expression<Func<string>> auth, Expression<Func<string>> subdomain)
+        public IBodyWorkflowAction<MeResponse> Me([WorkflowExpression] Func<string> auth, [WorkflowExpression] Func<string> subdomain)
         {
             var apiCallPath = "/public_api/me";
             var apiCallHttpMethod = "get";

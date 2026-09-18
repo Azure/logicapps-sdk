@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName)
         {
             var apiCallPath = String.Format("/keys/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName)
         {
             var apiCallPath = String.Format("/keys/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
             var apiCallHttpMethod = "get";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
+        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyVersion)
         {
             var apiCallPath = String.Format("/keys/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
         {
             var apiCallPath = String.Format("/keys/{0}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
             var apiCallHttpMethod = "post";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
         {
             var apiCallPath = String.Format("/keys/{0}/versions/{1}/encrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
             var apiCallHttpMethod = "post";
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
         {
             var apiCallPath = String.Format("/keys/{0}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1));
             var apiCallHttpMethod = "post";
@@ -108,7 +107,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
         {
             var apiCallPath = String.Format("/keys/{0}/versions/{1}/decrypt", ExpressionConverter.ConvertWithUrlEncoding(keyName, 1), ExpressionConverter.ConvertWithUrlEncoding(keyVersion, 1));
             var apiCallHttpMethod = "post";
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretName)
         {
             var apiCallPath = String.Format("/secrets/{0}/versions", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
             var apiCallHttpMethod = "get";
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretName)
         {
             var apiCallPath = String.Format("/secrets/{0}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
             var apiCallHttpMethod = "get";
@@ -155,7 +154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretVersion)
         {
             var apiCallPath = String.Format("/secrets/{0}/versions/{1}/metadata", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
             var apiCallHttpMethod = "get";
@@ -164,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecret(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<Secret> GetSecret([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretName)
         {
             var apiCallPath = String.Format("/secrets/{0}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1));
             var apiCallHttpMethod = "get";
@@ -173,7 +172,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<Secret> GetSecretVersion([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> secretVersion)
         {
             var apiCallPath = String.Format("/secrets/{0}/versions/{1}/value", ExpressionConverter.ConvertWithUrlEncoding(secretName, 1), ExpressionConverter.ConvertWithUrlEncoding(secretVersion, 1));
             var apiCallHttpMethod = "get";

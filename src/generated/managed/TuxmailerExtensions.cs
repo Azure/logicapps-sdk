@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tuxmailer
     public class TuxmailerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tuxmailer")]
-        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail(Expression<Func<string>> email, Expression<Func<string>> teamName = null)
+        public IBodyWorkflowAction<ValidateEmailResponse> ValidateEmail([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<string> teamName = null)
         {
             var apiCallPath = "/common/v1/user/validate/email";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hvivehicleinspection
     public class HvivehicleinspectionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hvivehicleinspection")]
-        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle(Expression<Func<string>> sv, Expression<Func<string>> bodymasterEmail, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyvehicleNumber, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate)
+        public IBodyWorkflowAction<InspectionPerVehicleResponseItem[]> InspectionPerVehicle([WorkflowExpression] Func<string> sv, [WorkflowExpression] Func<string> bodymasterEmail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyvehicleNumber, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate)
         {
             var apiCallPath = "/workflows/9bf21378f9924c97b16d3fed67e69200/triggers/manual/paths/invoke";
             var apiCallHttpMethod = "post";

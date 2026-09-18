@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
     public class NationalweatherserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Tafs(Expression<Func<string>> stationId)
+        public IBodyWorkflowAction<ProblemDetail> Tafs([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> stationId)
         {
             var apiCallPath = String.Format("/stations/{0}/tafs", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
+        public IBodyWorkflowAction<ProblemDetail> Taf([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> stationId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> date, [WorkflowExpression] Func<string> time)
         {
             var apiCallPath = String.Format("/stations/{0}/tafs/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1), ExpressionConverter.ConvertWithUrlEncoding(date, 1), ExpressionConverter.ConvertWithUrlEncoding(time, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
+        public IBodyWorkflowAction<ProblemDetail> RadarQueue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> host, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> arrived = null, [WorkflowExpression] Func<string> created = null, [WorkflowExpression] Func<string> published = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> feed = null, [WorkflowExpression] Func<int> resolution = null)
         {
             var apiCallPath = String.Format("/radar/queues/{0}", ExpressionConverter.ConvertWithUrlEncoding(host, 1));
             var apiCallHttpMethod = "get";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<ProblemDetail> RadarProfiler([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> stationId, [WorkflowExpression] Func<string> time = null, [WorkflowExpression] Func<string> interval = null)
         {
             var apiCallPath = String.Format("/radar/profilers/{0}", ExpressionConverter.ConvertWithUrlEncoding(stationId, 1));
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
     public class PlumsailformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IBodyWorkflowAction<string> DownloadAttachment(Expression<Func<string>> fileUrl)
+        public IBodyWorkflowAction<string> DownloadAttachment([WorkflowExpression] Func<string> fileUrl)
         {
             var apiCallPath = "/api/attachments";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> fileUrl = null)
+        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> fileUrl = null)
         {
             var apiCallPath = "/api/attachments";
             var apiCallHttpMethod = "delete";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "plumsailforms")]
-        public IWorkflowAction DeleteSubmission(Expression<Func<string>> formId, Expression<Func<string>> submissionId)
+        public IWorkflowAction DeleteSubmission([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> formId, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> submissionId)
         {
             var apiCallPath = String.Format("/api/forms/{0}/submissions/{1}", ExpressionConverter.ConvertWithUrlEncoding(formId, 1), ExpressionConverter.ConvertWithUrlEncoding(submissionId, 1));
             var apiCallHttpMethod = "delete";
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
 
     public class PlumsailformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormIsSubmitted(Expression<Func<string>> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormIsSubmitted([WorkflowExpression] Func<string> subscriberform, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/submissions";
             var apiCallHttpMethod = "post";

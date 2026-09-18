@@ -5,7 +5,14 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
+    <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.Generators\Microsoft.Azure.Workflows.Sdk.Generators.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />

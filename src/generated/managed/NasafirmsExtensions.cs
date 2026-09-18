@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
     public class NasafirmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction GetArea(Expression<Func<string>> source, Expression<Func<string>> areaCoord, Expression<Func<dayRangeInput>> dayRange)
+        public IWorkflowAction GetArea([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> source, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> areaCoord, [WorkflowExpression] Func<dayRangeInput> dayRange)
         {
             var apiCallPath = String.Format("/api/area/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(areaCoord, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IWorkflowAction GetCountry(Expression<Func<string>> source, Expression<Func<string>> country, Expression<Func<dayRangeInput>> dayRange)
+        public IWorkflowAction GetCountry([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> source, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> country, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<dayRangeInput> dayRange)
         {
             var apiCallPath = String.Format("/api/country/csv/api_key/{0}/{1}/{2}", ExpressionConverter.ConvertWithUrlEncoding(source, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1), ExpressionConverter.ConvertWithUrlEncoding(dayRange, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nasafirms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nasafirms")]
-        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey(Expression<Func<string>> mAPKEY)
+        public IBodyWorkflowAction<CheckMapKeyResponse> CheckMapKey([WorkflowExpression] Func<string> mAPKEY)
         {
             var apiCallPath = "/mapserver/mapkey_status/";
             var apiCallHttpMethod = "get";

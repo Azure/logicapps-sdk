@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
     public class MailboxvalidatoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateSingleResponse> ValidateSingle([WorkflowExpression] Func<string> email)
         {
             var apiCallPath = "/validation/single";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateDisposableResponse> ValidateDisposable([WorkflowExpression] Func<string> email)
         {
             var apiCallPath = "/email/disposable";
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailboxvalidatorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailboxvalidatorip")]
-        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidateFreeResponse> ValidateFree([WorkflowExpression] Func<string> email)
         {
             var apiCallPath = "/email/free";
             var apiCallHttpMethod = "get";

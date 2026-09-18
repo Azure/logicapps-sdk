@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
     public class Dynamicsnav2016Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesOrder(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<ItemsList> GetAllSalesOrder([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> company, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> instancename, [WorkflowExpression] Func<string> salesorderservice, [WorkflowExpression] Func<string> filter = null)
         {
             var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1));
             var apiCallHttpMethod = "get";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsnav2016
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicsnav2016")]
-        public IBodyWorkflowAction<ItemsList> GetAllSalesLine(Expression<Func<string>> company, Expression<Func<string>> instancename, Expression<Func<string>> salesorderservice, Expression<Func<string>> ordernumber, Expression<Func<string>> saleslineservice)
+        public IBodyWorkflowAction<ItemsList> GetAllSalesLine([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> company, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> instancename, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> salesorderservice, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> ordernumber, [WorkflowExpression] Func<string> saleslineservice)
         {
             var apiCallPath = String.Format("/{0}/OData/Company('{1}')/{2}(Document_Type='Order',No='{3}')/{4}", ExpressionConverter.ConvertWithUrlEncoding(instancename, 1), ExpressionConverter.ConvertWithUrlEncoding(company, 1), ExpressionConverter.ConvertWithUrlEncoding(salesorderservice, 1), ExpressionConverter.ConvertWithUrlEncoding(ordernumber, 1), ExpressionConverter.ConvertWithUrlEncoding(saleslineservice, 1));
             var apiCallHttpMethod = "get";

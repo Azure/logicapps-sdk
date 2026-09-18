@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
 
     public class WorkmobileTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormDataHook(Expression<Func<int>> bodyuserFormId, Expression<Func<bool>> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormDataHook([WorkflowExpression] Func<int> bodyuserFormId, [WorkflowExpression] Func<bool> bodyincludeSubFormData, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/notifications/external";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
     public class AbstractexchangerateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<LiveRatesResponse> LiveRates(Expression<Func<string>> @base, Expression<Func<string>> target = null)
+        public IBodyWorkflowAction<LiveRatesResponse> LiveRates([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target = null)
         {
             var apiCallPath = "/v1/live/";
             var apiCallHttpMethod = "get";
@@ -24,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractexchangerate
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractexchangerate")]
-        public IBodyWorkflowAction<ConvertResponse> Convert(Expression<Func<string>> @base, Expression<Func<string>> target, Expression<Func<string>> date = null, Expression<Func<double>> baseAmount = null)
+        public IBodyWorkflowAction<ConvertResponse> Convert([WorkflowExpression] Func<string> @base, [WorkflowExpression] Func<string> target, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<double> baseAmount = null)
         {
             var apiCallPath = "/v1/convert/";
             var apiCallHttpMethod = "get";

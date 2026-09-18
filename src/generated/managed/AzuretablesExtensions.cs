@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
     public class AzuretablesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<InsertEntityResponse> CreateEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<InsertEntityResponse> CreateEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "post";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTableResponse> CreateTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName = null, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetTableResponse> CreateTable([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName = null, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
             var apiCallHttpMethod = "post";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction DeleteEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> ifMatch = null)
+        public IWorkflowAction DeleteEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> ifMatch = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "delete";
@@ -55,7 +54,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction DeleteTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction DeleteTable([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "delete";
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetEntitiesResponse> GetEntities([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "get";
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null, Expression<Func<string>> select = null)
+        public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null, [WorkflowExpression] Func<string> select = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "get";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTableResponse> GetTable(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetTableResponse> GetTable([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1));
             var apiCallHttpMethod = "get";
@@ -105,7 +104,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IBodyWorkflowAction<GetTablesResponse> GetTables(Expression<Func<string>> storageAccountName, Expression<Func<string>> xMsClientRequestId = null)
+        public IBodyWorkflowAction<GetTablesResponse> GetTables([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2));
             var apiCallHttpMethod = "get";
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction InsertMergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction InsertMergeEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "patch";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction InsertReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction InsertReplaceEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "put";
@@ -152,7 +151,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction MergeEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction MergeEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "patch";
@@ -171,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuretables
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuretables")]
-        public IWorkflowAction ReplaceEntity(Expression<Func<string>> storageAccountName, Expression<Func<string>> tableName, Expression<Func<string>> partitionKey, Expression<Func<string>> rowKey, Expression<Func<string>> ifMatch, Expression<Func<string>> xMsClientRequestId = null)
+        public IWorkflowAction ReplaceEntity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> storageAccountName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> tableName, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> partitionKey, [WorkflowExpression] Func<string> rowKey, [WorkflowExpression] Func<string> ifMatch, [WorkflowExpression] Func<string> xMsClientRequestId = null)
         {
             var apiCallPath = String.Format("/v2/storageAccounts/{0}/tables/{1}/entities/etag(PartitionKey='{2}',RowKey='{3}')", ExpressionConverter.ConvertWithUrlEncoding(storageAccountName, 2), ExpressionConverter.ConvertWithUrlEncoding(tableName, 1), ExpressionConverter.ConvertWithUrlEncoding(partitionKey, 1), ExpressionConverter.ConvertWithUrlEncoding(rowKey, 1));
             var apiCallHttpMethod = "put";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skribblesign
     public class SkribblesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "skribblesign")]
-        public IBodyWorkflowAction<ErrorResponse> CreateSeal(Expression<Func<string>> requestcontent, Expression<Func<string>> requesttitle = null, Expression<Func<string>> requestsealForSealing = null, Expression<Func<string>> requestvisualSignatureformField = null, Expression<Func<string>> requestvisualSignatureimagecontent = null, Expression<Func<string>> requestvisualSignatureimagecontentType = null, Expression<Func<Position[]>> requestvisualSignaturepositions = null)
+        public IBodyWorkflowAction<ErrorResponse> CreateSeal([WorkflowExpression] Func<string> requestcontent, [WorkflowExpression] Func<string> requesttitle = null, [WorkflowExpression] Func<string> requestsealForSealing = null, [WorkflowExpression] Func<string> requestvisualSignatureformField = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontent = null, [WorkflowExpression] Func<string> requestvisualSignatureimagecontentType = null, [WorkflowExpression] Func<Position[]> requestvisualSignaturepositions = null)
         {
             var apiCallPath = "/seal";
             var apiCallHttpMethod = "post";

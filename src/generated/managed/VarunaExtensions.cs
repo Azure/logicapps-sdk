@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
     public class VarunaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<JToken> GetADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<JToken> GetADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
         {
             var apiCallPath = "/getdocument";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument(Expression<Func<string>> documentType, Expression<Func<object>> createSchema = null)
+        public IBodyWorkflowAction<CreateADocumentResponse> CreateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<object> createSchema = null)
         {
             var apiCallPath = "/createdocument";
             var apiCallHttpMethod = "post";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DeleteADocumentResponse> DeleteADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId)
         {
             var apiCallPath = "/deletedocument";
             var apiCallHttpMethod = "delete";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument(Expression<Func<string>> documentType, Expression<Func<string>> documentId, Expression<Func<object>> updateSchema = null)
+        public IBodyWorkflowAction<UpdateADocumentResponse> UpdateADocument([WorkflowExpression] Func<string> documentType, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<object> updateSchema = null)
         {
             var apiCallPath = "/updatedocument";
             var apiCallHttpMethod = "patch";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "varuna")]
-        public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType(Expression<Func<string>> documentType)
+        public IBodyWorkflowAction<JToken[]> GetAllDocumentsByType([WorkflowExpression] Func<string> documentType)
         {
             var apiCallPath = "/getalldocumentsbytype";
             var apiCallHttpMethod = "get";
@@ -69,7 +68,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
 
     public class VarunaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> SubscribeTrigger(Expression<Func<string>> bodytriggerName, Expression<Func<int>> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> SubscribeTrigger([WorkflowExpression] Func<string> bodytriggerName, [WorkflowExpression] Func<int> bodywhen = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/subscribewebhook";
             var apiCallHttpMethod = "post";

@@ -22,6 +22,49 @@ namespace Microsoft.Azure.Workflows.Sdk
         public static string Convert(Expression<Func<string>> expression) =>
             ConvertScalar(expression);
 
+        internal static string ConvertGenerated(Func<string> expression)
+        {
+            return ConvertGeneratedScalar(expression);
+        }
+
+        public static string Convert(Func<string> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert(Func<Uri> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert(Func<HttpMethod> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert(Func<int> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert(Func<double> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert(Func<bool> expression) =>
+            ConvertGenerated(expression);
+
+        public static string Convert<T>(Func<T> expression)
+            where T : Enum =>
+            ConvertGenerated(expression);
+
+        internal static string ConvertGenerated<T>(Func<T> expression)
+        {
+            return ConvertGeneratedScalar(expression);
+        }
+
+        private static string ConvertGeneratedScalar(Delegate expression)
+        {
+            var token = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToWorkflowToken();
+            if (token.Type == JTokenType.Null)
+                return null;
+
+            return token.Type == JTokenType.String
+                ? token.Value<string>()
+                : token.ToString(Newtonsoft.Json.Formatting.None);
+        }
+
         public static string Convert(Expression<Func<Uri>> expression) =>
             ConvertScalar(expression);
 
@@ -84,8 +127,53 @@ namespace Microsoft.Azure.Workflows.Sdk
             return expression.Body.Visit(converter, null);
         }
 
+        internal static JToken ConvertGeneratedO<T>(Func<T> expression) =>
+            GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToWorkflowToken();
+
+        public static JToken ConvertO<T>(Func<T> expression) =>
+            ConvertGeneratedO(expression);
+
+        internal static string ConvertGeneratedWithUrlEncoding(
+            Func<string> expression,
+            int times)
+        {
+            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
+            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
+        }
+
+        public static string ConvertWithUrlEncoding(
+            Func<string> expression,
+            int times) =>
+            ConvertGeneratedWithUrlEncoding(expression, times);
+
+        internal static string ConvertGeneratedWithUrlEncodingWithInt(
+            Func<int> expression,
+            int times)
+        {
+            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
+            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
+        }
+
+        public static string ConvertWithUrlEncodingWithInt(
+            Func<int> expression,
+            int times) =>
+            ConvertGeneratedWithUrlEncodingWithInt(expression, times);
+
+        public static string ConvertWithUrlEncoding<T>(
+            Func<T> expression,
+            int times)
+            where T : Enum
+        {
+            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
+            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
+        }
+
         public static string ConvertOWithBase64<T>(Expression<Func<T>> expression) =>
             WrapCSharp($"base64({ConvertToCSharp(expression)})");
+
+        public static string ConvertOWithBase64<T>(Func<T> expression) =>
+            WrapCSharp(
+                $"base64({GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToCSharpSource()})");
 
         public static TResult ConvertObject<TResult>(Expression<Func<TResult>> expression)
         {

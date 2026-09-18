@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datamuseip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Datamuseip
     public class DatamuseipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "datamuseip")]
-        public IBodyWorkflowAction<WordsResponseItem[]> Words(Expression<Func<string>> ml = null, Expression<Func<string>> sl = null, Expression<Func<string>> sp = null, Expression<Func<string>> relJja = null, Expression<Func<string>> relJjb = null, Expression<Func<string>> relSyn = null, Expression<Func<string>> relTrg = null, Expression<Func<string>> relAnt = null, Expression<Func<string>> relSpc = null, Expression<Func<string>> relGen = null, Expression<Func<string>> relCom = null, Expression<Func<string>> relPar = null, Expression<Func<string>> relBga = null, Expression<Func<string>> relBgb = null, Expression<Func<string>> relRhy = null, Expression<Func<string>> relNry = null, Expression<Func<string>> relHom = null, Expression<Func<string>> relCns = null, Expression<Func<string>> v = null, Expression<Func<string>> topics = null, Expression<Func<string>> lc = null, Expression<Func<string>> rc = null, Expression<Func<int>> max = null, Expression<Func<string>> md = null)
+        public IBodyWorkflowAction<WordsResponseItem[]> Words([WorkflowExpression] Func<string> ml = null, [WorkflowExpression] Func<string> sl = null, [WorkflowExpression] Func<string> sp = null, [WorkflowExpression] Func<string> relJja = null, [WorkflowExpression] Func<string> relJjb = null, [WorkflowExpression] Func<string> relSyn = null, [WorkflowExpression] Func<string> relTrg = null, [WorkflowExpression] Func<string> relAnt = null, [WorkflowExpression] Func<string> relSpc = null, [WorkflowExpression] Func<string> relGen = null, [WorkflowExpression] Func<string> relCom = null, [WorkflowExpression] Func<string> relPar = null, [WorkflowExpression] Func<string> relBga = null, [WorkflowExpression] Func<string> relBgb = null, [WorkflowExpression] Func<string> relRhy = null, [WorkflowExpression] Func<string> relNry = null, [WorkflowExpression] Func<string> relHom = null, [WorkflowExpression] Func<string> relCns = null, [WorkflowExpression] Func<string> v = null, [WorkflowExpression] Func<string> topics = null, [WorkflowExpression] Func<string> lc = null, [WorkflowExpression] Func<string> rc = null, [WorkflowExpression] Func<int> max = null, [WorkflowExpression] Func<string> md = null)
         {
             var apiCallPath = "/words";
             var apiCallHttpMethod = "get";

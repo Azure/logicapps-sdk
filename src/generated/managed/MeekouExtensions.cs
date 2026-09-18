@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
     public class MeekouActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> HtmlToPdf(Expression<Func<string>> htmlContent = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response> HtmlToPdf([WorkflowExpression] Func<string> htmlContent = null, [WorkflowExpression] Func<string> xCustomHost = null)
         {
             var apiCallPath = "/api/File/HtmlToPdf";
             var apiCallHttpMethod = "post";
@@ -25,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IWorkflowAction SwaggerThreeToTwo(Expression<Func<string>> swaggerUrl = null, Expression<Func<string>> xCustomHost = null)
+        public IWorkflowAction SwaggerThreeToTwo([WorkflowExpression] Func<string> swaggerUrl = null, [WorkflowExpression] Func<string> xCustomHost = null)
         {
             var apiCallPath = "/api/File/SwaggerThreeToTwo";
             var apiCallHttpMethod = "post";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Evaluate(Expression<Func<string>> formula = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response> Evaluate([WorkflowExpression] Func<string> formula = null, [WorkflowExpression] Func<string> xCustomHost = null)
         {
             var apiCallPath = "/api/Math/Evaluate";
             var apiCallHttpMethod = "post";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Sum(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodydata = null, Expression<Func<string>> bodypath = null)
+        public IBodyWorkflowAction<Response> Sum([WorkflowExpression] Func<string> xCustomHost = null, [WorkflowExpression] Func<string> bodydata = null, [WorkflowExpression] Func<string> bodypath = null)
         {
             var apiCallPath = "/api/Math/Sum";
             var apiCallHttpMethod = "post";
@@ -81,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> RoundUp(Expression<Func<double>> input = null, Expression<Func<string>> xCustomHost = null)
+        public IBodyWorkflowAction<Response> RoundUp([WorkflowExpression] Func<double> input = null, [WorkflowExpression] Func<string> xCustomHost = null)
         {
             var apiCallPath = "/api/Math/RoundUp";
             var apiCallHttpMethod = "post";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meekou
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meekou")]
-        public IBodyWorkflowAction<Response> Regex(Expression<Func<string>> xCustomHost = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodypattern = null)
+        public IBodyWorkflowAction<Response> Regex([WorkflowExpression] Func<string> xCustomHost = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodypattern = null)
         {
             var apiCallPath = "/api/Text/Regex";
             var apiCallHttpMethod = "post";

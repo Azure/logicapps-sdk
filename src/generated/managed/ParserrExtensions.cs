@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
 
     public class ParserrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookEmailReceived(Expression<Func<string>> bodyemail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookEmailReceived([WorkflowExpression] Func<string> bodyemail, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/api/microsoft/subscription/create";
             var apiCallHttpMethod = "post";

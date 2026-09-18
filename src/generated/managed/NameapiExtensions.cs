@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
     public class NameapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<ParseNameResponse> ParseName(Expression<Func<JToken[]>> bodyinputPersonpersonNamepersonNames, Expression<Func<bodyinputPersongenderInput>> bodyinputPersongender = null)
+        public IBodyWorkflowAction<ParseNameResponse> ParseName([WorkflowExpression] Func<JToken[]> bodyinputPersonpersonNamepersonNames, [WorkflowExpression] Func<bodyinputPersongenderInput> bodyinputPersongender = null)
         {
             var apiCallPath = "/v5.3/parser/personnameparser";
             var apiCallHttpMethod = "post";
@@ -54,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nameapi
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nameapi")]
-        public IBodyWorkflowAction<DetectDeaResponse> DetectDea(Expression<Func<string>> emailAddress)
+        public IBodyWorkflowAction<DetectDeaResponse> DetectDea([WorkflowExpression] Func<string> emailAddress)
         {
             var apiCallPath = "/v5.3/email/disposableemailaddressdetector";
             var apiCallHttpMethod = "get";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyorderColumns = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null, [WorkflowExpression] Func<bool> bodytakeAll = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeFrom = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeTo = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityFrom = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityTo = null, [WorkflowExpression] Func<int[]> bodyadditionalSearchDatauserIds = null, [WorkflowExpression] Func<string[]> bodyadditionalSearchDataserviceArticles = null, [WorkflowExpression] Func<int> bodyadditionalSearchDataassignmentStatusId = null, [WorkflowExpression] Func<bool> bodyadditionalSearchDataisInvoice = null)
         {
             var apiCallPath = "/GetServiceAssignmentsDispatcher";
             var apiCallHttpMethod = "post";
@@ -132,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
+        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodyquantity = null, [WorkflowExpression] Func<string> bodydateTo = null, [WorkflowExpression] Func<string> bodybookText = null, [WorkflowExpression] Func<string> bodynoteText = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodyprojectPhaseId = null, [WorkflowExpression] Func<int> bodyticketid = null)
         {
             var apiCallPath = "/CreateActivityRecording";
             var apiCallHttpMethod = "post";
@@ -192,7 +191,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodydateTo, [WorkflowExpression] Func<int> bodypause = null, [WorkflowExpression] Func<bool> bodynoInvoice = null, [WorkflowExpression] Func<bool> bodyextraCharge = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyserviceContractId = null, [WorkflowExpression] Func<string> bodyuserName = null)
         {
             var apiCallPath = "/CreateInvoicePositionNote";
             var apiCallHttpMethod = "post";

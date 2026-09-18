@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
     public class CopyaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workflowId, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "get";
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
+        public IBodyWorkflowAction<WorkflowPostResponse> Workflow([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workflowId)
         {
             var apiCallPath = String.Format("/workflow/{0}/run", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1));
             var apiCallHttpMethod = "post";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> workflowId, [WorkflowExpression] Func<string> runId)
         {
             var apiCallPath = String.Format("/workflow/{0}/run/{1}", ExpressionConverter.ConvertWithUrlEncoding(workflowId, 1), ExpressionConverter.ConvertWithUrlEncoding(runId, 1));
             var apiCallHttpMethod = "get";

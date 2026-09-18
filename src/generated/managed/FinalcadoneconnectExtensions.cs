@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
     public class FinalcadoneconnectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<GetOrganizationsResponseItem[]> GetOrganizations(Expression<Func<string>> acceptLanguage = null, Expression<Func<string>> xTimeZone = null)
+        public IBodyWorkflowAction<GetOrganizationsResponseItem[]> GetOrganizations([WorkflowExpression] Func<string> acceptLanguage = null, [WorkflowExpression] Func<string> xTimeZone = null)
         {
             var apiCallPath = "/organizations";
             var apiCallHttpMethod = "get";
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitParametersResponse> InitParameters(Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodytheUserSTimeZoneInIANAFormat = null)
+        public IBodyWorkflowAction<InitParametersResponse> InitParameters([WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodytheUserSTimeZoneInIANAFormat = null)
         {
             var apiCallPath = "/InitParameters";
             var apiCallHttpMethod = "post";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finalcadoneconnect")]
-        public IBodyWorkflowAction<InitResponse> Init(Expression<Func<string>> bodyorganizationID = null, Expression<Func<string>> bodyprojectID = null)
+        public IBodyWorkflowAction<InitResponse> Init([WorkflowExpression] Func<string> bodyorganizationID = null, [WorkflowExpression] Func<string> bodyprojectID = null)
         {
             var apiCallPath = "/init";
             var apiCallHttpMethod = "post";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
 
     public class FinalcadoneconnectTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ThenObsCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/ev/201";
             var apiCallHttpMethod = "post";
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenObsUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenObsUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/ev/202";
             var apiCallHttpMethod = "post";
@@ -137,7 +136,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenFormCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/ev/301";
             var apiCallHttpMethod = "post";
@@ -158,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenFormUpdated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenFormUpdated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/ev/302";
             var apiCallHttpMethod = "post";
@@ -179,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger ThenDocumentCreated(Expression<Func<string>> bodyorganizationID, Expression<Func<string>> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ThenDocumentCreated([WorkflowExpression] Func<string> bodyorganizationID, [WorkflowExpression] Func<string> bodyprojectID, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks/ev/401";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Recordedfutureidenti
     public class RecordedfutureidentiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "recordedfutureidenti")]
-        public IBodyWorkflowAction<LookupResponse> CredentialLookup(Expression<Func<string[]>> bodyfilterauthorizationProtocols = null, Expression<Func<string[]>> bodyfilterauthorizationTechnologies = null, Expression<Func<string>> bodyfilterbreachPropertiesdate = null, Expression<Func<string>> bodyfilterbreachPropertiesname = null, Expression<Func<string>> bodyfilterdumpPropertiesdate = null, Expression<Func<string>> bodyfilterdumpPropertiesname = null, Expression<Func<string>> bodyfilterexfiltrationDateGte = null, Expression<Func<string>> bodyfilterfirstDownloadedGte = null, Expression<Func<string>> bodyfilterlatestDownloadedGte = null, Expression<Func<string[]>> bodyfiltermalwareFamilies = null, Expression<Func<bodyfilterpropertiesInputItem[]>> bodyfilterproperties = null, Expression<Func<bodyfilterusernamePropertiesInputItem[]>> bodyfilterusernameProperties = null, Expression<Func<string>> bodyorganizationId = null, Expression<Func<string[]>> bodysubjects = null, Expression<Func<DomainLogin[]>> bodysubjectsLogin = null, Expression<Func<string[]>> bodysubjectsSha1 = null)
+        public IBodyWorkflowAction<LookupResponse> CredentialLookup([WorkflowExpression] Func<string[]> bodyfilterauthorizationProtocols = null, [WorkflowExpression] Func<string[]> bodyfilterauthorizationTechnologies = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterbreachPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesdate = null, [WorkflowExpression] Func<string> bodyfilterdumpPropertiesname = null, [WorkflowExpression] Func<string> bodyfilterexfiltrationDateGte = null, [WorkflowExpression] Func<string> bodyfilterfirstDownloadedGte = null, [WorkflowExpression] Func<string> bodyfilterlatestDownloadedGte = null, [WorkflowExpression] Func<string[]> bodyfiltermalwareFamilies = null, [WorkflowExpression] Func<bodyfilterpropertiesInputItem[]> bodyfilterproperties = null, [WorkflowExpression] Func<bodyfilterusernamePropertiesInputItem[]> bodyfilterusernameProperties = null, [WorkflowExpression] Func<string> bodyorganizationId = null, [WorkflowExpression] Func<string[]> bodysubjects = null, [WorkflowExpression] Func<DomainLogin[]> bodysubjectsLogin = null, [WorkflowExpression] Func<string[]> bodysubjectsSha1 = null)
         {
             var apiCallPath = "/v2/credentials/lookup";
             var apiCallHttpMethod = "post";

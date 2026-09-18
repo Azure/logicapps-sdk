@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Domaintoolsirisenric
     public class DomaintoolsirisenricActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "domaintoolsirisenric")]
-        public IBodyWorkflowAction<EnrichResponse> EnrichDomain(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<EnrichResponse> EnrichDomain([WorkflowExpression] Func<string> domain)
         {
             var apiCallPath = "/iris-enrich/";
             var apiCallHttpMethod = "post";

@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
     public class AcsidentityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity(Expression<Func<TokenScopes[]>> bodytokenScopes = null)
+        public IBodyWorkflowAction<CreateCommunicationIdentityResponse> CreateCommunicationIdentity([WorkflowExpression] Func<TokenScopes[]> bodytokenScopes = null)
         {
             var apiCallPath = "/identities";
             var apiCallHttpMethod = "post";
@@ -35,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IWorkflowAction DeleteCommunicationIdentity(Expression<Func<string>> identityId)
+        public IWorkflowAction DeleteCommunicationIdentity([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> identityId)
         {
             var apiCallPath = String.Format("/identities/{0}", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "delete";
@@ -45,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken(Expression<Func<string>> identityId, Expression<Func<TokenScopes[]>> bodytokenScopes)
+        public IBodyWorkflowAction<AccessTokenInfo> IssueIdentityAccessToken([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> identityId, [WorkflowExpression] Func<TokenScopes[]> bodytokenScopes)
         {
             var apiCallPath = String.Format("/identities/{0}/:issueAccessToken", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "post";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acsidentity
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acsidentity")]
-        public IWorkflowAction RevokeIdentityAccessTokens(Expression<Func<string>> identityId)
+        public IWorkflowAction RevokeIdentityAccessTokens([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> identityId)
         {
             var apiCallPath = String.Format("/identities/{0}/:revokeAccessTokens", ExpressionConverter.ConvertWithUrlEncoding(identityId, 1));
             var apiCallHttpMethod = "post";

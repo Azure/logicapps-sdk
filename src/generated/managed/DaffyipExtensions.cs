@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<CausesGetResponseItem[]> CausesGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/users/{0}/causes", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<ContributionsGetResponse> ContributionsGet([WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/contributions";
             var apiCallHttpMethod = "get";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet(Expression<Func<string>> userId, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<DonationsGetResponse> DonationsGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> userId, [WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = String.Format("/users/{0}/donations", ExpressionConverter.ConvertWithUrlEncoding(userId, 1));
             var apiCallHttpMethod = "get";
@@ -63,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet(Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GiftsGetResponse> GiftsGet([WorkflowExpression] Func<int> page = null)
         {
             var apiCallPath = "/gifts";
             var apiCallHttpMethod = "get";
@@ -74,7 +73,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Daffyip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "daffyip")]
-        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet(Expression<Func<string>> ein)
+        public IBodyWorkflowAction<NonProfitGetResponse> NonProfitGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> ein)
         {
             var apiCallPath = String.Format("/non_profits/{0}", ExpressionConverter.ConvertWithUrlEncoding(ein, 1));
             var apiCallHttpMethod = "get";

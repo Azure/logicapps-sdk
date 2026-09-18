@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
     public class IpqsfraudandriskscorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION(Expression<Func<string>> ip, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> userAgent = null, Expression<Func<string>> userLanguage = null, Expression<Func<bool>> fast = null, Expression<Func<bool>> mobile = null, Expression<Func<bool>> allowPublicAccessPoints = null, Expression<Func<bool>> lighterPenalties = null)
+        public IBodyWorkflowAction<IPREPUTATIONResponse> IPREPUTATION([WorkflowExpression] Func<string> ip, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> userLanguage = null, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<bool> mobile = null, [WorkflowExpression] Func<bool> allowPublicAccessPoints = null, [WorkflowExpression] Func<bool> lighterPenalties = null)
         {
             var apiCallPath = "/ip";
             var apiCallHttpMethod = "post";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION(Expression<Func<string>> email, Expression<Func<abuseStrictnessInput>> abuseStrictness, Expression<Func<bool>> fast = null, Expression<Func<int>> timeout = null, Expression<Func<bool>> suggestDomain = null)
+        public IBodyWorkflowAction<EMAILREPUTATIONResponse> EMAILREPUTATION([WorkflowExpression] Func<string> email, [WorkflowExpression] Func<abuseStrictnessInput> abuseStrictness, [WorkflowExpression] Func<bool> fast = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<bool> suggestDomain = null)
         {
             var apiCallPath = "/email";
             var apiCallHttpMethod = "post";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION(Expression<Func<string>> url, Expression<Func<strictnessInput>> strictness, Expression<Func<bool>> fast = null)
+        public IBodyWorkflowAction<URLREPUTATIONResponse> URLREPUTATION([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<bool> fast = null)
         {
             var apiCallPath = "/url";
             var apiCallHttpMethod = "post";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ipqsfraudandriskscor
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ipqsfraudandriskscor")]
-        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION(Expression<Func<string>> phone, Expression<Func<strictnessInput>> strictness, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<PHONEREPUTATIONResponse> PHONEREPUTATION([WorkflowExpression] Func<string> phone, [WorkflowExpression] Func<strictnessInput> strictness, [WorkflowExpression] Func<string> country = null)
         {
             var apiCallPath = "/phone";
             var apiCallHttpMethod = "post";

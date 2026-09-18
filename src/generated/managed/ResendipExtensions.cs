@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
     public class ResendipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<EmailPostResponse> Email(Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<string>> bodysubject, Expression<Func<string>> bodycc = null, Expression<Func<string>> bodybcc = null, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodyhtml = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null, Expression<Func<string>> bodyreplyTo = null)
+        public IBodyWorkflowAction<EmailPostResponse> Email([WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodysubject, [WorkflowExpression] Func<string> bodycc = null, [WorkflowExpression] Func<string> bodybcc = null, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodyhtml = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null, [WorkflowExpression] Func<string> bodyreplyTo = null)
         {
             var apiCallPath = "/emails";
             var apiCallHttpMethod = "post";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet(Expression<Func<string>> emailId)
+        public IBodyWorkflowAction<RetrieveGetResponse> RetrieveGet([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> emailId)
         {
             var apiCallPath = String.Format("/emails/{0}", ExpressionConverter.ConvertWithUrlEncoding(emailId, 1));
             var apiCallHttpMethod = "get";
@@ -88,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<DomainPostResponse> Domain(Expression<Func<string>> bodyname, Expression<Func<bodyregionInput>> bodyregion = null)
+        public IBodyWorkflowAction<DomainPostResponse> Domain([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyregionInput> bodyregion = null)
         {
             var apiCallPath = "/domains";
             var apiCallHttpMethod = "post";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<string> DomainDelete(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<string> DomainDelete([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> domainId)
         {
             var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
             var apiCallHttpMethod = "delete";
@@ -131,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Resendip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "resendip")]
-        public IBodyWorkflowAction<string> Verify(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<string> Verify([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> domainId)
         {
             var apiCallPath = String.Format("/domains/{0}", ExpressionConverter.ConvertWithUrlEncoding(domainId, 1));
             var apiCallHttpMethod = "post";

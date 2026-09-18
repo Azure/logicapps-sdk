@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// Gets or sets the headers for the response.
         /// </summary>
         [JsonProperty(Required = Required.Default)]
-        public Dictionary<string, string> Headers { get; set; }
+        public JToken Headers { get; set; }
 
         /// <summary>
         /// Gets or sets the body of the response.

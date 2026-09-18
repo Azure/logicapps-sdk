@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
     public class IbmwatsontexttospeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<SynthesizeResponse> Synthesize(Expression<Func<string>> bodytext, Expression<Func<voiceInput>> voice = null)
+        public IBodyWorkflowAction<SynthesizeResponse> Synthesize([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<voiceInput> voice = null)
         {
             var apiCallPath = "/v1/synthesize";
             var apiCallHttpMethod = "post";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<PronunciationResponse> Pronunciation(Expression<Func<voiceInput>> voice = null, Expression<Func<string>> text = null)
+        public IBodyWorkflowAction<PronunciationResponse> Pronunciation([WorkflowExpression] Func<voiceInput> voice = null, [WorkflowExpression] Func<string> text = null)
         {
             var apiCallPath = "/v1/pronunciation";
             var apiCallHttpMethod = "get";
@@ -56,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ibmwatsontexttospeip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ibmwatsontexttospeip")]
-        public IBodyWorkflowAction<GetVoiceResponse> GetVoice(Expression<Func<string>> voice)
+        public IBodyWorkflowAction<GetVoiceResponse> GetVoice([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> voice)
         {
             var apiCallPath = String.Format("/v1/voices/{0}", ExpressionConverter.ConvertWithUrlEncoding(voice, 1));
             var apiCallHttpMethod = "get";

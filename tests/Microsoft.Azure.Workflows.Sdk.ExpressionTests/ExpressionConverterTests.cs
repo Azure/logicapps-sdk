@@ -4,6 +4,7 @@
 
 namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
 {
+    using System.Linq.Expressions;
     using Microsoft.Azure.Workflows.Sdk;
     using Newtonsoft.Json;
 
@@ -15,11 +16,11 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         [Fact]
         public void Convert_LiteralsRemainBuildTimeValues()
         {
-            Assert.Equal("hello", ExpressionConverter.Convert(() => "hello"));
-            Assert.Equal("True", ExpressionConverter.Convert(() => true));
-            Assert.Equal("3", ExpressionConverter.Convert(() => 1 + 2));
-            Assert.Equal("GET", ExpressionConverter.Convert(() => System.Net.Http.HttpMethod.Get));
-            Assert.Equal("Running", ExpressionConverter.Convert(() => FlowStatus.Running));
+            Assert.Equal("hello", ExpressionConverter.Convert(Tree(() => "hello")));
+            Assert.Equal("True", ExpressionConverter.Convert(Tree(() => true)));
+            Assert.Equal("3", ExpressionConverter.Convert(Tree(() => 1 + 2)));
+            Assert.Equal("GET", ExpressionConverter.Convert(Tree(() => System.Net.Http.HttpMethod.Get)));
+            Assert.Equal("Running", ExpressionConverter.Convert(Tree(() => FlowStatus.Running)));
         }
 
         [Fact]
@@ -30,10 +31,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
 
             Assert.Equal(
                 "@csharp{1 < 2}",
-                ExpressionConverter.Convert(() => left < right));
+                ExpressionConverter.Convert(Tree(() => left < right)));
             Assert.Equal(
                 "@csharp{1 >= 2}",
-                ExpressionConverter.Convert(() => left >= right));
+                ExpressionConverter.Convert(Tree(() => left >= right)));
         }
 
         [Fact]
@@ -41,13 +42,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         {
             Assert.Equal(
                 "@{encodeURIComponent('a b')}",
-                ExpressionConverter.ConvertWithUrlEncoding(() => "a b", 1));
+                ExpressionConverter.ConvertWithUrlEncoding(Tree(() => "a b"), 1));
             Assert.Equal(
                 "@{encodeURIComponent(encodeURIComponent(42))}",
-                ExpressionConverter.ConvertWithUrlEncodingWithInt(() => 42, 2));
+                ExpressionConverter.ConvertWithUrlEncodingWithInt(Tree(() => 42), 2));
             Assert.Equal(
                 "@csharp{base64(\"hello\")}",
-                ExpressionConverter.ConvertOWithBase64(() => "hello"));
+                ExpressionConverter.ConvertOWithBase64(Tree(() => "hello")));
         }
 
         [Fact]
@@ -60,12 +61,12 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
             Assert.Equal(
                 "@{encodeURIComponent(encodeURIComponent(variables('myVar')))}",
                 ExpressionConverter.ConvertWithUrlEncoding(
-                    () => variable.Value.ToObject<string>(),
+                    Tree(() => variable.Value.ToObject<string>()),
                     2));
             Assert.Equal(
                 "@{encodeURIComponent(concat('prefix-', variables('myVar')))}",
                 ExpressionConverter.ConvertWithUrlEncoding(
-                    () => "prefix-" + variable.Value.ToObject<string>(),
+                    Tree(() => "prefix-" + variable.Value.ToObject<string>()),
                     1));
         }
 
@@ -78,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
 
             Assert.Equal(
                 "@csharp{variables(\"myVar\")}",
-                ExpressionConverter.Convert(() => $"{variable.Value}"));
+                ExpressionConverter.Convert(Tree(() => $"{variable.Value}")));
         }
 
         [Fact]
@@ -88,7 +89,52 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
 
             Assert.Equal(
                 "@csharp{item()}",
-                ExpressionConverter.Convert(() => $"{item}"));
+                ExpressionConverter.Convert(Tree(() => $"{item}")));
+        }
+
+        [Fact]
+        public void Compose_InterceptorPreservesArbitraryCSharpSyntax()
+        {
+            var compose = WorkflowActions.BuiltIn.Compose(
+                () => DateTime.UtcNow.DayOfWeek switch
+                {
+                    DayOfWeek.Saturday or DayOfWeek.Sunday => "weekend",
+                    _ => "weekday",
+                });
+
+            Assert.Equal(
+                "@csharp{DateTime.UtcNow.DayOfWeek switch\r\n{\r\n    DayOfWeek.Saturday or DayOfWeek.Sunday => \"weekend\",\r\n    _ => \"weekday\",\r\n}}",
+                (string)(Newtonsoft.Json.Linq.JToken)compose.GetActionDefinition("flow").Inputs);
+        }
+
+        [Fact]
+        public void Compose_InterceptorBindsFinalWorkflowOperationName()
+        {
+            var finalName = "DynamicallyNamed";
+            var source = WorkflowActions.BuiltIn.Compose(() => "value").WithName(finalName);
+            var target = WorkflowActions.BuiltIn.Compose(() => $"{source.Output}");
+
+            Assert.Equal(
+                "@csharp{$\"{outputs(\"DynamicallyNamed\")}\"}",
+                (string)(Newtonsoft.Json.Linq.JToken)target.GetActionDefinition("flow").Inputs);
+        }
+
+        [Fact]
+        public void Interceptor_BindsCapturedScalarValues()
+        {
+            var threshold = 5;
+            var dataset = "captured-dataset";
+            var compose = WorkflowActions.BuiltIn.Compose(() => threshold + 1);
+            var getItems = WorkflowActions.Managed.Sharepointonline("sharepoint").GetItems(
+                dataset: () => dataset,
+                table: () => "items");
+
+            Assert.Equal(
+                "@csharp{5 + 1}",
+                (string)(Newtonsoft.Json.Linq.JToken)compose.GetActionDefinition("flow").Inputs);
+            Assert.Contains(
+                "@{encodeURIComponent(encodeURIComponent('captured-dataset'))}",
+                Newtonsoft.Json.Linq.JObject.FromObject(getItems.GetActionDefinition("flow")).ToString());
         }
 
         [Fact]
@@ -98,13 +144,13 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
                 name: () => "myVar",
                 value: () => "value");
 
-            var converted = ExpressionConverter.ConvertO(
+            var converted = ExpressionConverter.ConvertO(Tree(
                 () => new Poco
                 {
                     Name = variable.Value.ToObject<string>(),
                     Count = 2,
                     Tag = "literal",
-                });
+                }));
 
             Assert.Equal(
                 "{\"Name\":\"@csharp{variables(\\\"myVar\\\").ToObject<string>()}\",\"Count\":2,\"renamed\":\"literal\"}",
@@ -116,7 +162,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         {
             Assert.Equal(
                 "[\"a\",\"b\"]",
-                ExpressionConverter.ConvertO(() => new[] { "a", "b" }).ToString(Formatting.None));
+                ExpressionConverter.ConvertO(Tree(() => new[] { "a", "b" })).ToString(Formatting.None));
         }
 
         [Fact]
@@ -136,5 +182,8 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
             Assert.Equal("@csharp{variables(\"myVar\").ToObject<string>()}", converted.Name);
             Assert.Equal(3, converted.Count);
         }
+
+        private static Expression<Func<T>> Tree<T>(Expression<Func<T>> expression) =>
+            expression;
     }
 }

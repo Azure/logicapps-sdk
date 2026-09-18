@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<GovernmentRegion[]> GetGovernmentRegionsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GovernmentRegion[]> GetGovernmentRegionsByFederalStateDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/FederalStates/{0}/GovernmentRegions", ExpressionConverter.ConvertWithUrlEncoding(federalStateKey, 1));
             var apiCallHttpMethod = "get";
@@ -34,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<District[]> GetDistrictsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<District[]> GetDistrictsByFederalStateDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/FederalStates/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(federalStateKey, 1));
             var apiCallHttpMethod = "get";
@@ -47,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<District[]> GetDistrictsByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<District[]> GetDistrictsByGovernmentRegionDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/GovernmentRegions/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(governmentRegionKey, 1));
             var apiCallHttpMethod = "get";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByFederalStateDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/FederalStates/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(federalStateKey, 1));
             var apiCallHttpMethod = "get";
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByGovernmentRegionDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/GovernmentRegions/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(governmentRegionKey, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Municipality[]> GetMunicipalitiesByDistrictDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -99,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByFederalStateDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/FederalStates/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(federalStateKey, 1));
             var apiCallHttpMethod = "get";
@@ -112,7 +111,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByGovernmentRegionDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/GovernmentRegions/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(governmentRegionKey, 1));
             var apiCallHttpMethod = "get";
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MunicipalAssociation[]> GetMunicipalAssociationsByDistrictDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/Districts/{0}/MunicipalAssociations", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -138,7 +137,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Locality[]> GetLocalitiesByFederalStateDE(Expression<Func<string>> federalStateKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Locality[]> GetLocalitiesByFederalStateDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalStateKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/FederalStates/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(federalStateKey, 1));
             var apiCallHttpMethod = "get";
@@ -151,7 +150,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Locality[]> GetLocalitiesByGovernmentRegionDE(Expression<Func<string>> governmentRegionKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Locality[]> GetLocalitiesByGovernmentRegionDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> governmentRegionKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/GovernmentRegions/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(governmentRegionKey, 1));
             var apiCallHttpMethod = "get";
@@ -164,7 +163,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Locality[]> GetLocalitiesByDistrictDE(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Locality[]> GetLocalitiesByDistrictDE([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/de/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -177,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Locality[]> SearchLocalitiesDE(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Locality[]> SearchLocalitiesDE([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/de/Localities";
             var apiCallHttpMethod = "get";
@@ -194,7 +193,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Street[]> SearchStreetsDE(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Street[]> SearchStreetsDE([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/de/Streets";
             var apiCallHttpMethod = "get";
@@ -213,7 +212,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<Street[]> FullTextSearchDE(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<Street[]> FullTextSearchDE([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/de/FullTextSearch";
             var apiCallHttpMethod = "get";
@@ -236,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityLI[]> SearchLocalitiesLI(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityLI[]> SearchLocalitiesLI([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/li/Localities";
             var apiCallHttpMethod = "get";
@@ -253,7 +252,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetLI[]> SearchStreetsLI(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetLI[]> SearchStreetsLI([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/li/Streets";
             var apiCallHttpMethod = "get";
@@ -272,7 +271,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetLI[]> FullTextSearchLI(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetLI[]> FullTextSearchLI([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/li/FullTextSearch";
             var apiCallHttpMethod = "get";
@@ -295,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<DistrictCH[]> GetDistrictsByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<DistrictCH[]> GetDistrictsByCantonCH([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/ch/Cantons/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(cantonKey, 1));
             var apiCallHttpMethod = "get";
@@ -308,7 +307,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<CommuneCH[]> GetCommunesByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<CommuneCH[]> GetCommunesByCantonCH([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/ch/Cantons/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(cantonKey, 1));
             var apiCallHttpMethod = "get";
@@ -321,7 +320,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<CommuneCH[]> GetCommunesByDistrictCH(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<CommuneCH[]> GetCommunesByDistrictCH([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/ch/Districts/{0}/Communes", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -334,7 +333,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByCantonCH(Expression<Func<string>> cantonKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByCantonCH([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> cantonKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/ch/Cantons/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(cantonKey, 1));
             var apiCallHttpMethod = "get";
@@ -347,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByDistrictCH(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityCH[]> GetLocalitiesByDistrictCH([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/ch/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -360,7 +359,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityCH[]> SearchLocalitiesCH(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityCH[]> SearchLocalitiesCH([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/ch/Localities";
             var apiCallHttpMethod = "get";
@@ -377,7 +376,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetCH[]> SearchStreetsCH(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetCH[]> SearchStreetsCH([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/ch/Streets";
             var apiCallHttpMethod = "get";
@@ -396,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetCH[]> FullTextSearchCH(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetCH[]> FullTextSearchCH([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/ch/FullTextSearch";
             var apiCallHttpMethod = "get";
@@ -419,7 +418,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<DistrictAT[]> GetDistrictsByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<DistrictAT[]> GetDistrictsByFederalProvinceAT([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/at/FederalProvinces/{0}/Districts", ExpressionConverter.ConvertWithUrlEncoding(federalProvinceKey, 1));
             var apiCallHttpMethod = "get";
@@ -432,7 +431,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByFederalProvinceAT([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/at/FederalProvinces/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(federalProvinceKey, 1));
             var apiCallHttpMethod = "get";
@@ -445,7 +444,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByDistrictAT(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MunicipalityAT[]> GetMunicipalitiesByDistrictAT([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/at/Districts/{0}/Municipalities", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -458,7 +457,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByFederalProvinceAT(Expression<Func<string>> federalProvinceKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByFederalProvinceAT([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> federalProvinceKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/at/FederalProvinces/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(federalProvinceKey, 1));
             var apiCallHttpMethod = "get";
@@ -471,7 +470,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByDistrictAT(Expression<Func<string>> districtKey, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityAT[]> GetLocalitiesByDistrictAT([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> districtKey, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = String.Format("/at/Districts/{0}/Localities", ExpressionConverter.ConvertWithUrlEncoding(districtKey, 1));
             var apiCallHttpMethod = "get";
@@ -484,7 +483,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<LocalityAT[]> SearchLocalitiesAT(Expression<Func<string>> postalCode = null, Expression<Func<string>> name = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<LocalityAT[]> SearchLocalitiesAT([WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/at/Localities";
             var apiCallHttpMethod = "get";
@@ -501,7 +500,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetAT[]> SearchStreetsAT(Expression<Func<string>> name = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> locality = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetAT[]> SearchStreetsAT([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/at/Streets";
             var apiCallHttpMethod = "get";
@@ -520,7 +519,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openplz
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openplz")]
-        public IBodyWorkflowAction<StreetAT[]> FullTextSearchAT(Expression<Func<string>> searchTerm, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<StreetAT[]> FullTextSearchAT([WorkflowExpression] Func<string> searchTerm, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
             var apiCallPath = "/at/FullTextSearch";
             var apiCallHttpMethod = "get";

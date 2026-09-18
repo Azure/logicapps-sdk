@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
     public class InteractionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByIdResponse> ReadListById(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesprimarySponsorName = null)
+        public IBodyWorkflowAction<ReadListByIdResponse> ReadListById([WorkflowExpression] Func<string> bodyvariablesid = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null, [WorkflowExpression] Func<string> bodyvariablesprimarySponsorName = null)
         {
             var apiCallPath = "/graphql/ReadListByID";
             var apiCallHttpMethod = "post";
@@ -82,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadListByNameResponse> ReadListByName(Expression<Func<string>> bodyvariablesfilterByName = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadListByNameResponse> ReadListByName([WorkflowExpression] Func<string> bodyvariablesfilterByName = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null)
         {
             var apiCallPath = "/graphql/ReadListByName";
             var apiCallHttpMethod = "post";
@@ -146,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> ReadAdditionalFieldDefinitionsAndValues(Expression<Func<string>> bodyvariablesid = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null)
+        public IBodyWorkflowAction<ReadAdditionalFieldDefinitionsAndValuesResponse> ReadAdditionalFieldDefinitionsAndValues([WorkflowExpression] Func<string> bodyvariablesid = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null)
         {
             var apiCallPath = "/graphql/ReadAdditionalFieldDefinitionsAndValues";
             var apiCallHttpMethod = "post";
@@ -210,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> AddOrUpdateAdditionalFieldValues(Expression<Func<string>> bodyvariablesinputcontactId, Expression<Func<bodyvariablesinputadditionalFieldsInputItem[]>> bodyvariablesinputadditionalFields)
+        public IBodyWorkflowAction<AddOrUpdateAdditionalFieldValuesResponse> AddOrUpdateAdditionalFieldValues([WorkflowExpression] Func<string> bodyvariablesinputcontactId, [WorkflowExpression] Func<bodyvariablesinputadditionalFieldsInputItem[]> bodyvariablesinputadditionalFields)
         {
             var apiCallPath = "/graphql/UpdateAdditionalFieldValues";
             var apiCallHttpMethod = "post";
@@ -248,7 +247,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ReadContactByIdResponse> ReadContactById(Expression<Func<string>> bodyvariablescontactid = null, Expression<Func<string>> bodyvariableslistid = null)
+        public IBodyWorkflowAction<ReadContactByIdResponse> ReadContactById([WorkflowExpression] Func<string> bodyvariablescontactid = null, [WorkflowExpression] Func<string> bodyvariableslistid = null)
         {
             var apiCallPath = "/graphql/ReadContactByID";
             var apiCallHttpMethod = "post";
@@ -296,7 +295,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputemailAddress = null, Expression<Func<string>> bodyvariablesinputcompanyName = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputprimaryPhone = null, Expression<Func<bodyvariablesinputbusinessAddresscountryInput>> bodyvariablesinputbusinessAddresscountry = null, Expression<Func<string>> bodyvariablesinputbusinessAddressstreet = null, Expression<Func<string>> bodyvariablesinputbusinessAddresscity = null, Expression<Func<string>> bodyvariablesinputbusinessAddressadministrativeDivision = null, Expression<Func<string>> bodyvariablesinputbusinessAddresspostalCode = null)
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodyvariablesinputlastName, [WorkflowExpression] Func<string> bodyvariablesinputfirstName = null, [WorkflowExpression] Func<string> bodyvariablesinputmiddleName = null, [WorkflowExpression] Func<string> bodyvariablesinputgoesBy = null, [WorkflowExpression] Func<string> bodyvariablesinputtitle = null, [WorkflowExpression] Func<string> bodyvariablesinputemailAddress = null, [WorkflowExpression] Func<string> bodyvariablesinputcompanyName = null, [WorkflowExpression] Func<string> bodyvariablesinputjobTitle = null, [WorkflowExpression] Func<string> bodyvariablesinputprimaryPhone = null, [WorkflowExpression] Func<bodyvariablesinputbusinessAddresscountryInput> bodyvariablesinputbusinessAddresscountry = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddressstreet = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddresscity = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddressadministrativeDivision = null, [WorkflowExpression] Func<string> bodyvariablesinputbusinessAddresspostalCode = null)
         {
             var apiCallPath = "/graphql/CreateContact";
             var apiCallHttpMethod = "post";
@@ -418,7 +417,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<ListResponse> ReadLists(Expression<Func<bodyvariableslistClassInput>> bodyvariableslistClass = null, Expression<Func<int>> bodyvariablesskip = null, Expression<Func<int>> bodyvariableslimit = null, Expression<Func<string>> bodyvariablesfilterByName = null)
+        public IBodyWorkflowAction<ListResponse> ReadLists([WorkflowExpression] Func<bodyvariableslistClassInput> bodyvariableslistClass = null, [WorkflowExpression] Func<int> bodyvariablesskip = null, [WorkflowExpression] Func<int> bodyvariableslimit = null, [WorkflowExpression] Func<string> bodyvariablesfilterByName = null)
         {
             var apiCallPath = "/graphql/ReadLists";
             var apiCallHttpMethod = "post";
@@ -488,7 +487,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<AddContactsToListsResponse> AddContactsToLists(Expression<Func<string[]>> bodyvariableslistIds = null, Expression<Func<string[]>> bodyvariablescontactIds = null)
+        public IBodyWorkflowAction<AddContactsToListsResponse> AddContactsToLists([WorkflowExpression] Func<string[]> bodyvariableslistIds = null, [WorkflowExpression] Func<string[]> bodyvariablescontactIds = null)
         {
             var apiCallPath = "/graphql/AddContactsToLists";
             var apiCallHttpMethod = "post";
@@ -526,7 +525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<RemoveContactsfromListResponse> RemoveContactsfromList(Expression<Func<string[]>> bodyvariablescontactIds = null, Expression<Func<string>> bodyvariableslistId = null)
+        public IBodyWorkflowAction<RemoveContactsfromListResponse> RemoveContactsfromList([WorkflowExpression] Func<string[]> bodyvariablescontactIds = null, [WorkflowExpression] Func<string> bodyvariableslistId = null)
         {
             var apiCallPath = "/graphql/RemoveContactsFromList";
             var apiCallHttpMethod = "post";
@@ -564,7 +563,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdatePersonContactResponse> UpdatePersonContact(Expression<Func<string>> bodyvariablesinputid, Expression<Func<string>> bodyvariablesinputlastName, Expression<Func<string>> bodyvariablesinputtitle = null, Expression<Func<string>> bodyvariablesinputfirstName = null, Expression<Func<string>> bodyvariablesinputmiddleName = null, Expression<Func<string>> bodyvariablesinputgoesBy = null, Expression<Func<string>> bodyvariablesinputjobTitle = null, Expression<Func<string>> bodyvariablesinputaddressstreet = null, Expression<Func<string>> bodyvariablesinputaddresscity = null, Expression<Func<string>> bodyvariablesinputaddressadministrativeDivision = null, Expression<Func<bodyvariablesinputaddresscountryInput>> bodyvariablesinputaddresscountry = null, Expression<Func<string>> bodyvariablesinputaddresspostalCode = null, Expression<Func<string>> bodyvariablesinputemailelectronicAddress = null, Expression<Func<string>> bodyvariablesinputprimaryPhonenumber = null, Expression<Func<string>> bodyvariablesinputcompanyName = null)
+        public IBodyWorkflowAction<UpdatePersonContactResponse> UpdatePersonContact([WorkflowExpression] Func<string> bodyvariablesinputid, [WorkflowExpression] Func<string> bodyvariablesinputlastName, [WorkflowExpression] Func<string> bodyvariablesinputtitle = null, [WorkflowExpression] Func<string> bodyvariablesinputfirstName = null, [WorkflowExpression] Func<string> bodyvariablesinputmiddleName = null, [WorkflowExpression] Func<string> bodyvariablesinputgoesBy = null, [WorkflowExpression] Func<string> bodyvariablesinputjobTitle = null, [WorkflowExpression] Func<string> bodyvariablesinputaddressstreet = null, [WorkflowExpression] Func<string> bodyvariablesinputaddresscity = null, [WorkflowExpression] Func<string> bodyvariablesinputaddressadministrativeDivision = null, [WorkflowExpression] Func<bodyvariablesinputaddresscountryInput> bodyvariablesinputaddresscountry = null, [WorkflowExpression] Func<string> bodyvariablesinputaddresspostalCode = null, [WorkflowExpression] Func<string> bodyvariablesinputemailelectronicAddress = null, [WorkflowExpression] Func<string> bodyvariablesinputprimaryPhonenumber = null, [WorkflowExpression] Func<string> bodyvariablesinputcompanyName = null)
         {
             var apiCallPath = "/graphql/UpdatePersonContact";
             var apiCallHttpMethod = "post";
@@ -704,7 +703,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<CreateActivityResponse> CreateActivity(Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string>> bodyvariablesinputactivityDate, Expression<Func<string>> bodyvariablesinputsubject, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<CreateActivityResponse> CreateActivity([WorkflowExpression] Func<string> bodyvariablesinputtypeId, [WorkflowExpression] Func<string> bodyvariablesinputactivityDate, [WorkflowExpression] Func<string> bodyvariablesinputsubject, [WorkflowExpression] Func<string[]> bodyvariablesinputlinkedEntityIds, [WorkflowExpression] Func<string> bodyvariablesinputsummary = null)
         {
             var apiCallPath = "/graphql/CreateActivity";
             var apiCallHttpMethod = "post";
@@ -752,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<SearchContactsResponse> SearchContacts(Expression<Func<string>> bodyvariablesemailAddress = null, Expression<Func<string>> bodyvariablesfirstName = null, Expression<Func<string>> bodyvariableslastName = null)
+        public IBodyWorkflowAction<SearchContactsResponse> SearchContacts([WorkflowExpression] Func<string> bodyvariablesemailAddress = null, [WorkflowExpression] Func<string> bodyvariablesfirstName = null, [WorkflowExpression] Func<string> bodyvariableslastName = null)
         {
             var apiCallPath = "/graphql/SearchContacts";
             var apiCallHttpMethod = "post";
@@ -796,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Interaction
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "interaction")]
-        public IBodyWorkflowAction<UpdateActivityResponse> UpdateActivity(Expression<Func<string>> bodyvariablesinputactivityId, Expression<Func<string>> bodyvariablesinputtypeId, Expression<Func<string[]>> bodyvariablesinputlinkedEntityIds, Expression<Func<string>> bodyvariablesinputactivityDate = null, Expression<Func<string>> bodyvariablesinputsubject = null, Expression<Func<string>> bodyvariablesinputsummary = null)
+        public IBodyWorkflowAction<UpdateActivityResponse> UpdateActivity([WorkflowExpression] Func<string> bodyvariablesinputactivityId, [WorkflowExpression] Func<string> bodyvariablesinputtypeId, [WorkflowExpression] Func<string[]> bodyvariablesinputlinkedEntityIds, [WorkflowExpression] Func<string> bodyvariablesinputactivityDate = null, [WorkflowExpression] Func<string> bodyvariablesinputsubject = null, [WorkflowExpression] Func<string> bodyvariablesinputsummary = null)
         {
             var apiCallPath = "/graphql/UpdateActivity";
             var apiCallHttpMethod = "post";

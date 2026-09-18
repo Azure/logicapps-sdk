@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class As2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent = null)
+        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues([WorkflowExpression] Func<As2ReplicableMicContent[]> micContent = null)
         {
             var apiCallPath = "/createOrUpdateMicValues";
             var apiCallHttpMethod = "put";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement(Expression<Func<string>> as2From, Expression<Func<string>> as2To)
+        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To)
         {
             var apiCallPath = "/resolveAgreement";
             var apiCallHttpMethod = "get";
@@ -33,7 +32,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2DecodeResponse> Decode(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<As2DecodeResponse> Decode([WorkflowExpression] Func<string> body = null)
         {
             var apiCallPath = "/decode";
             var apiCallHttpMethod = "post";
@@ -43,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2EncodeResponse> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> fileName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<As2EncodeResponse> Encode([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To, [WorkflowExpression] Func<string> fileName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
             var apiCallPath = "/encode";
             var apiCallHttpMethod = "post";
@@ -61,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/triggers/onCreatedMicValues";
             var apiCallHttpMethod = "get";

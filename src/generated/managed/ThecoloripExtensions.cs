@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
     public class ThecoloripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<ColorGetResponse> ColorGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null)
+        public IBodyWorkflowAction<ColorGetResponse> ColorGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null)
         {
             var apiCallPath = "/id";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thecolorip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thecolorip")]
-        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet(Expression<Func<string>> hex = null, Expression<Func<string>> rgb = null, Expression<Func<string>> hsl = null, Expression<Func<string>> cmyk = null, Expression<Func<modeInput>> mode = null, Expression<Func<int>> count = null)
+        public IBodyWorkflowAction<SchemeGetResponse> SchemeGet([WorkflowExpression] Func<string> hex = null, [WorkflowExpression] Func<string> rgb = null, [WorkflowExpression] Func<string> hsl = null, [WorkflowExpression] Func<string> cmyk = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<int> count = null)
         {
             var apiCallPath = "/scheme";
             var apiCallHttpMethod = "get";

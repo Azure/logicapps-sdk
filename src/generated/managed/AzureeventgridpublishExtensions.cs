@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureeventgridpublish
     public class AzureeventgridpublishActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureeventgridpublish")]
-        public IWorkflowAction PublishEvent(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction PublishEvent([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
             var apiCallPath = "/eventGrid/api/events";
             var apiCallHttpMethod = "post";

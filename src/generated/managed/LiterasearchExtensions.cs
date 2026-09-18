@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
     public class LiterasearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterList(Expression<Func<string>> request)
+        public IWorkflowAction GetMatterList([WorkflowExpression] Func<string> request)
         {
             var apiCallPath = "/GetMatterList";
             var apiCallHttpMethod = "get";
@@ -22,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterNarrative(Expression<Func<string>> matterId)
+        public IWorkflowAction GetMatterNarrative([WorkflowExpression] Func<string> matterId)
         {
             var apiCallPath = "/GetMatterNarrative";
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Literasearch
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "literasearch")]
-        public IWorkflowAction GetMatterDetail(Expression<Func<string>> matterId)
+        public IWorkflowAction GetMatterDetail([WorkflowExpression] Func<string> matterId)
         {
             var apiCallPath = "/GetMatterDetail";
             var apiCallHttpMethod = "get";

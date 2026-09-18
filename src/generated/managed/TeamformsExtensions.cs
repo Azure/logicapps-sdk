@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormMeta[]> Forms(Expression<Func<string>> groupId)
+        public IBodyWorkflowAction<FormMeta[]> Forms([WorkflowExpression] Func<string> groupId)
         {
             var apiCallPath = "/forms";
             var apiCallHttpMethod = "get";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<FormSchema> Form(Expression<Func<string>> groupId, Expression<Func<string>> formId)
+        public IBodyWorkflowAction<FormSchema> Form([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId)
         {
             var apiCallPath = "/form";
             var apiCallHttpMethod = "get";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File[]> Files(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<File[]> Files([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
             var apiCallPath = "/files";
             var apiCallHttpMethod = "get";
@@ -53,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<File> Pdf(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<File> Pdf([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
             var apiCallPath = "/pdf";
             var apiCallHttpMethod = "get";
@@ -64,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<string> PdfContent(Expression<Func<string>> groupId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<string> PdfContent([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> responseId)
         {
             var apiCallPath = "/pdf-content";
             var apiCallHttpMethod = "get";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamforms")]
-        public IBodyWorkflowAction<JToken> Response(Expression<Func<string>> groupId, Expression<Func<string>> formId, Expression<Func<string>> responseId)
+        public IBodyWorkflowAction<JToken> Response([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> responseId)
         {
             var apiCallPath = "/response";
             var apiCallHttpMethod = "get";
@@ -89,7 +88,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
 
     public class TeamformsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger SubscribeResponse(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, Expression<Func<environmentInput>> environment = null, Expression<Func<triggersInput>> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponse([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<environmentInput> environment = null, [WorkflowExpression] Func<triggersInput> triggers = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/response-subscription";
             var apiCallHttpMethod = "post";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
             return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger SubscribeResponseDeletion(Expression<Func<string>> groupId, Expression<Func<string>> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger SubscribeResponseDeletion([WorkflowExpression] Func<string> groupId, [WorkflowExpression] Func<string> formId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/response-deletion-subscription";
             var apiCallHttpMethod = "post";

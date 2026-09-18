@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
     public class FederalreservemarketsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus(Expression<Func<operationInput>> operation, Expression<Func<statusInput>> status, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetTreasurySecuritiesOperationsByStatusResponse> GetTreasurySecuritiesOperationsByStatus([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<operationInput> operation, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<statusInput> status, [WorkflowExpression] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
         {
             var apiCallPath = String.Format("/tsy/{0}/{1}/{2}/latest.{3}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(status, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Federalreservemarkets
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "federalreservemarkets")]
-        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations(Expression<Func<operationInput>> operation, Expression<Func<includeInput>> include, Expression<Func<formatInput>> format)
+        public IBodyWorkflowAction<GetSecuritiesLendingOperationsResponse> GetSecuritiesLendingOperations([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<operationInput> operation, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<includeInput> include, [WorkflowExpression] Func<formatInput> format)
         {
             var apiCallPath = String.Format("/seclending/{0}/results/{1}/latest.{2}", ExpressionConverter.ConvertWithUrlEncoding(operation, 1), ExpressionConverter.ConvertWithUrlEncoding(include, 1), ExpressionConverter.ConvertWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";

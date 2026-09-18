@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<GetIdeaResponse> GetIdea(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetIdeaResponse> GetIdea([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> id)
         {
             var apiCallPath = String.Format("/integration/v1/ideas/{0}", ExpressionConverter.ConvertWithUrlEncoding(id, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeasResponse> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<IdeasResponse> Ideas([WorkflowExpression] Func<string> publishedAfter = null, [WorkflowExpression] Func<string> lastStageChangeAfter = null, [WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> afterCursor = null, [WorkflowExpression] Func<int> limit = null)
         {
             var apiCallPath = "/integration/v1/ideas";
             var apiCallHttpMethod = "get";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
 
     public class NoscoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger([WorkflowExpression] Func<string> ideaboxId, [WorkflowExpression] Func<string> stageId, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
             var apiCallHttpMethod = "get";
@@ -70,7 +69,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<string> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
             var apiCallHttpMethod = "get";
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
             var apiCallHttpMethod = "get";
@@ -96,7 +95,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
             return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
             var apiCallHttpMethod = "get";

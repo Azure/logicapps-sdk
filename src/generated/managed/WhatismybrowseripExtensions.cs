@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Whatismybrowserip
     public class WhatismybrowseripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "whatismybrowserip")]
-        public IBodyWorkflowAction<DetectPostResponse> Detect(Expression<Func<bodyheadersInputItem[]>> bodyheaders = null)
+        public IBodyWorkflowAction<DetectPostResponse> Detect([WorkflowExpression] Func<bodyheadersInputItem[]> bodyheaders = null)
         {
             var apiCallPath = "/detect";
             var apiCallHttpMethod = "post";

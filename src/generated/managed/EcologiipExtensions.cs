@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
     public class EcologiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseTreesResponse> PurchaseTrees([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodytest = null)
         {
             var apiCallPath = "/impact/trees";
             var apiCallHttpMethod = "post";
@@ -42,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets(Expression<Func<int>> bodynumber, Expression<Func<string>> bodyunits, Expression<Func<bool>> bodytest = null)
+        public IBodyWorkflowAction<PurchaseOffsetsResponse> PurchaseOffsets([WorkflowExpression] Func<int> bodynumber, [WorkflowExpression] Func<string> bodyunits, [WorkflowExpression] Func<bool> bodytest = null)
         {
             var apiCallPath = "/impact/carbon";
             var apiCallHttpMethod = "post";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetImpactResponse> GetImpact(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetImpactResponse> GetImpact([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username)
         {
             var apiCallPath = String.Format("/users/{0}/impact", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetTreesResponse> GetTrees(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetTreesResponse> GetTrees([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username)
         {
             var apiCallPath = String.Format("/users/{0}/trees", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ecologiip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ecologiip")]
-        public IBodyWorkflowAction<GetOffsetResponse> GetOffset(Expression<Func<string>> username)
+        public IBodyWorkflowAction<GetOffsetResponse> GetOffset([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> username)
         {
             var apiCallPath = String.Format("/users/{0}/carbon-offset", ExpressionConverter.ConvertWithUrlEncoding(username, 1));
             var apiCallHttpMethod = "get";

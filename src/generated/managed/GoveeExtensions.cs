@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
     public class GoveeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice(Expression<Func<string>> bodydeviceMACAddress, Expression<Func<string>> bodydeviceModel, Expression<Func<bodycmdcommandNameInput>> bodycmdcommandName = null, Expression<Func<bodyturnInput>> bodyturn = null, Expression<Func<int>> bodybrightness = null, Expression<Func<int>> bodycolorcolorRed = null, Expression<Func<int>> bodycolorcolorGreen = null, Expression<Func<int>> bodycolorcolorBlue = null, Expression<Func<int>> bodycolorTemperature = null)
+        public IBodyWorkflowAction<RunCommandOnDeviceResponse> RunCommandOnDevice([WorkflowExpression] Func<string> bodydeviceMACAddress, [WorkflowExpression] Func<string> bodydeviceModel, [WorkflowExpression] Func<bodycmdcommandNameInput> bodycmdcommandName = null, [WorkflowExpression] Func<bodyturnInput> bodyturn = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<int> bodycolorcolorRed = null, [WorkflowExpression] Func<int> bodycolorcolorGreen = null, [WorkflowExpression] Func<int> bodycolorcolorBlue = null, [WorkflowExpression] Func<int> bodycolorTemperature = null)
         {
             var apiCallPath = "/devices/control";
             var apiCallHttpMethod = "put";
@@ -90,7 +89,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Govee
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "govee")]
-        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation(Expression<Func<string>> device = null, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<GetDeviceInformationResponse> GetDeviceInformation([WorkflowExpression] Func<string> device = null, [WorkflowExpression] Func<string> model = null)
         {
             var apiCallPath = "/devices";
             var apiCallHttpMethod = "get";

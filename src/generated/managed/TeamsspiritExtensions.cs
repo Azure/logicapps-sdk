@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -21,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction Approve(Expression<Func<string>> approvalID)
+        public IWorkflowAction Approve([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> approvalID)
         {
             var apiCallPath = String.Format("/approvals/{0}/approve", ExpressionConverter.ConvertWithUrlEncoding(approvalID, 1));
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction Reject(Expression<Func<string>> approvalID)
+        public IWorkflowAction Reject([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> approvalID)
         {
             var apiCallPath = String.Format("/approvals/{0}", ExpressionConverter.ConvertWithUrlEncoding(approvalID, 1));
             var apiCallHttpMethod = "delete";
@@ -39,7 +38,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ArchiveTeam(Expression<Func<string>> groupID, Expression<Func<bool>> bodysharePointReadOnly)
+        public IWorkflowAction ArchiveTeam([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<bool> bodysharePointReadOnly)
         {
             var apiCallPath = String.Format("/groups/{0}/archive", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -57,7 +56,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction DeleteTeam(Expression<Func<string>> groupID)
+        public IWorkflowAction DeleteTeam([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID)
         {
             var apiCallPath = String.Format("/groups/{0}", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "delete";
@@ -66,7 +65,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeTagValue(Expression<Func<string>> groupID, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
+        public IWorkflowAction ChangeTagValue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> contentid = null, [WorkflowExpression] Func<string> contentvalue = null)
         {
             var apiCallPath = String.Format("/groups/{0}/change-tag-value", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "patch";
@@ -94,7 +93,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveAllUsersExeptOwners(Expression<Func<string>> groupID)
+        public IWorkflowAction RemoveAllUsersExeptOwners([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID)
         {
             var apiCallPath = String.Format("/groups/{0}/remove-all-users-not-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -103,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyownerId = null)
+        public IWorkflowAction RemoveAllUsersExceptOneOwner([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> bodyownerId = null)
         {
             var apiCallPath = String.Format("/groups/{0}/remove-all-users-except-selected-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -125,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveGuests(Expression<Func<string>> groupID)
+        public IWorkflowAction RemoveGuests([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID)
         {
             var apiCallPath = String.Format("/groups/{0}/remove-all-guests", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveUser(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction RemoveUser([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
         {
             var apiCallPath = String.Format("/groups/{0}/remove-user", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -156,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeRoleToMember(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction ChangeRoleToMember([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
         {
             var apiCallPath = String.Format("/groups/{0}/change-role-to-member", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -178,7 +177,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeRoleToOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
+        public IWorkflowAction ChangeRoleToOwner([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
         {
             var apiCallPath = String.Format("/groups/{0}/change-role-to-owner", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -200,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ExtendExpirationDate(Expression<Func<string>> groupID, Expression<Func<string>> bodyweeks = null)
+        public IWorkflowAction ExtendExpirationDate([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> bodyweeks = null)
         {
             var apiCallPath = String.Format("/groups/{0}/extend-expiration", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1));
             var apiCallHttpMethod = "post";
@@ -232,7 +231,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IBodyWorkflowAction<string> GetTagValue(Expression<Func<string>> groupID, Expression<Func<string>> tagID)
+        public IBodyWorkflowAction<string> GetTagValue([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> groupID, [WorkflowExpression] Func<string> tagID)
         {
             var apiCallPath = String.Format("/groups/{0}/attribute/{1}", ExpressionConverter.ConvertWithUrlEncoding(groupID, 1), ExpressionConverter.ConvertWithUrlEncoding(tagID, 1));
             var apiCallHttpMethod = "get";
@@ -243,7 +242,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
             var apiCallPath = "/webhooks";
             var apiCallHttpMethod = "post";

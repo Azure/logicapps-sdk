@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
     public class HolopinipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<IssuePostResponse> Issue(Expression<Func<string>> id, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<IssuePostResponse> Issue([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyemail)
         {
             var apiCallPath = "/sticker/share";
             var apiCallHttpMethod = "post";
@@ -31,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet(Expression<Func<string>> username)
+        public IBodyWorkflowAction<UserStickerGetResponse> UserStickerGet([WorkflowExpression] Func<string> username)
         {
             var apiCallPath = "/stickers";
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Holopinip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "holopinip")]
-        public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet(Expression<Func<string>> user)
+        public IBodyWorkflowAction<UserBoardGetResponse> UserBoardGet([WorkflowExpression] Func<string> user)
         {
             var apiCallPath = "/user/board";
             var apiCallHttpMethod = "get";

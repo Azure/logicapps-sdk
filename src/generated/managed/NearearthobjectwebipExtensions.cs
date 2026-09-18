@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
     public class NearearthobjectwebipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedResponse> Feed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<bool> detailed = null)
         {
             var apiCallPath = "/feed";
             var apiCallHttpMethod = "get";
@@ -27,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedTodayResponse> FeedToday([WorkflowExpression] Func<bool> detailed = null)
         {
             var apiCallPath = "/feed/today";
             var apiCallHttpMethod = "get";
@@ -38,7 +37,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<NeoResponse> Neo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/neo/browse";
             var apiCallHttpMethod = "get";
@@ -51,7 +50,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<NeoIDResponse> NeoID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iD)
         {
             var apiCallPath = String.Format("/neo/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";
@@ -60,7 +59,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<SentryResponse> Sentry([WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
             var apiCallPath = "/neo/sentry";
             var apiCallHttpMethod = "get";
@@ -75,7 +74,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<SentryIDResponse> SentryID([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iD)
         {
             var apiCallPath = String.Format("/neo/sentry/{0}", ExpressionConverter.ConvertWithUrlEncoding(iD, 1));
             var apiCallHttpMethod = "get";

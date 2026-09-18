@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
     public class StormglassipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<WeatherPointRequestResponse> WeatherPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<WeatherPointRequestResponse> WeatherPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
             var apiCallPath = "/weather/point";
             var apiCallHttpMethod = "get";
@@ -30,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<BioPointRequestResponse> BioPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<BioPointRequestResponse> BioPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
             var apiCallPath = "/bio/point";
             var apiCallHttpMethod = "get";
@@ -48,7 +47,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<TimeExtremesPointRequestResponse> TimeExtremesPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
+        public IBodyWorkflowAction<TimeExtremesPointRequestResponse> TimeExtremesPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> datum = null)
         {
             var apiCallPath = "/tide/extremes/point";
             var apiCallHttpMethod = "get";
@@ -65,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> TimeSealLevelPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> datum = null)
+        public IBodyWorkflowAction<TimeSealLevelPointRequestResponse> TimeSealLevelPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> datum = null)
         {
             var apiCallPath = "/tide/sea-level/point";
             var apiCallHttpMethod = "get";
@@ -91,7 +90,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<GetTideStationsAreaResponse> GetTideStationsArea(Expression<Func<string>> box)
+        public IBodyWorkflowAction<GetTideStationsAreaResponse> GetTideStationsArea([WorkflowExpression] Func<string> box)
         {
             var apiCallPath = "/tide/stations/area";
             var apiCallHttpMethod = "get";
@@ -101,7 +100,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<AstronomyPointRequestResponse> AstronomyPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> end = null, Expression<Func<string>> start = null)
+        public IBodyWorkflowAction<AstronomyPointRequestResponse> AstronomyPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> start = null)
         {
             var apiCallPath = "/astronomy/point";
             var apiCallHttpMethod = "get";
@@ -116,7 +115,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<SolarPointRequestResponse> SolarPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> @params, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> source = null)
+        public IBodyWorkflowAction<SolarPointRequestResponse> SolarPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> @params, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> source = null)
         {
             var apiCallPath = "/solar/point";
             var apiCallHttpMethod = "get";
@@ -134,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormglassip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormglassip")]
-        public IBodyWorkflowAction<ElevationPointRequestResponse> ElevationPointRequest(Expression<Func<double>> lat, Expression<Func<double>> lng)
+        public IBodyWorkflowAction<ElevationPointRequestResponse> ElevationPointRequest([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng)
         {
             var apiCallPath = "/elevation/point";
             var apiCallHttpMethod = "get";

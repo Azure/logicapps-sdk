@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
     public class LibraryofcongressipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
             var apiCallPath = "/search/";
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<CollectionResponse> Collection([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> collection, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
             var apiCallPath = String.Format("/collections/{0}", ExpressionConverter.ConvertWithUrlEncoding(collection, 1));
             var apiCallHttpMethod = "get";
@@ -52,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<FormatResponse> Format([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<formatInput> format, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
             var apiCallPath = String.Format("/{0}/", ExpressionConverter.ConvertWithUrlEncoding(format, 1));
             var apiCallHttpMethod = "get";
@@ -72,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<ItemResponse> Item([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> identifier)
         {
             var apiCallPath = String.Format("/item/{0}/", ExpressionConverter.ConvertWithUrlEncoding(identifier, 1));
             var apiCallHttpMethod = "get";

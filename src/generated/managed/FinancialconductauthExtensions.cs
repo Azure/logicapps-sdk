@@ -1,10 +1,9 @@
-//------------------------------------------------------------
+﻿//------------------------------------------------------------
 // Copyright (c) Microsoft Corporation.  All rights reserved.
 //------------------------------------------------------------
 
 namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
 {
-    using System.Linq.Expressions;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
@@ -12,7 +11,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
     public class FinancialconductauthActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch(Expression<Func<string>> q, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<typeInput> type)
         {
             var apiCallPath = "/services/V0.1/Search";
             var apiCallHttpMethod = "get";
@@ -23,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Individuals/{0}", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
             var apiCallHttpMethod = "get";
@@ -32,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -41,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pRN)
         {
             var apiCallPath = String.Format("/services/V0.1/CIS/{0}", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
             var apiCallHttpMethod = "get";
@@ -50,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pRN)
         {
             var apiCallPath = String.Format("/services/V0.1/CIS/{0}/Subfund", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
             var apiCallHttpMethod = "get";
@@ -59,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> pRN)
         {
             var apiCallPath = String.Format("/services/V0.1/CIS/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(pRN, 1));
             var apiCallHttpMethod = "get";
@@ -68,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> iRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Individuals/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(iRN, 1));
             var apiCallHttpMethod = "get";
@@ -77,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Names", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -86,7 +85,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Address", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -95,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Individuals", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -104,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Permissions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -113,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF(Expression<Func<string>> fRN, Expression<Func<string>> rEQREF)
+        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> rEQREF)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(rEQREF, 1));
             var apiCallHttpMethod = "get";
@@ -122,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Regulators/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -131,7 +130,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Passports/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -140,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Exclusions", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -149,7 +148,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/DisciplinaryHistory", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -158,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Requirements", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -167,7 +166,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Waivers", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1));
             var apiCallHttpMethod = "get";
@@ -176,7 +175,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry(Expression<Func<string>> fRN, Expression<Func<string>> country)
+        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry([WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> fRN, [WorkflowExpression(WorkflowExpressionLocation.InlineTemplate)] Func<string> country)
         {
             var apiCallPath = String.Format("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", ExpressionConverter.ConvertWithUrlEncoding(fRN, 1), ExpressionConverter.ConvertWithUrlEncoding(country, 1));
             var apiCallHttpMethod = "get";
