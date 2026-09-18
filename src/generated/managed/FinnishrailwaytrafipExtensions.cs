@@ -14,34 +14,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishrailwaytrafip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
         public IBodyWorkflowAction<GetStationsResponseItem[]> GetStations()
         {
-            var apiCallPath = "/metadata/stations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStationsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/metadata/stations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules(Expression<Func<string>> departureStation, Expression<Func<string>> arrivalStation, Expression<Func<string>> departureDate = null)
+        public IBodyWorkflowAction<GetSchedulesResponseItem[]> GetSchedules([WorkflowExpression] Func<string> departureStation, [WorkflowExpression] Func<string> arrivalStation, [WorkflowExpression] Func<string> departureDate = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(departureStation, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(arrivalStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (departureDate != null)
-                callPayload.Queries["departure_date"] = CSharpExpressionConverter.ConvertO(departureDate);
-            return new ApiConnectionAction<GetSchedulesResponseItem[]>(callPayload);
+            SourceExpression.Validate(departureStation, nameof(departureStation), required: true);
+            SourceExpression.Validate(arrivalStation, nameof(arrivalStation), required: true);
+            SourceExpression.Validate(departureDate, nameof(departureDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(departureStation, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(arrivalStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (departureDate != null)
+                    callPayload.Queries["departure_date"] = SourceExpressionConverter.ConvertO(departureDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSchedulesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishrailwaytrafip")]
-        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures(Expression<Func<string>> trainStation, Expression<Func<int>> arrivingTrains = null, Expression<Func<int>> departingTrains = null)
+        public IBodyWorkflowAction<GetArrivalsAndDeparturesResponseItem[]> GetArrivalsAndDepartures([WorkflowExpression] Func<string> trainStation, [WorkflowExpression] Func<int> arrivingTrains = null, [WorkflowExpression] Func<int> departingTrains = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainStation, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (arrivingTrains != null)
-                callPayload.Queries["arriving_trains"] = CSharpExpressionConverter.ConvertO(arrivingTrains);
-            if (departingTrains != null)
-                callPayload.Queries["departing_trains"] = CSharpExpressionConverter.ConvertO(departingTrains);
-            return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(callPayload);
+            SourceExpression.Validate(trainStation, nameof(trainStation), required: true);
+            SourceExpression.Validate(arrivingTrains, nameof(arrivingTrains), required: false);
+            SourceExpression.Validate(departingTrains, nameof(departingTrains), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-trains/station/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainStation, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (arrivingTrains != null)
+                    callPayload.Queries["arriving_trains"] = SourceExpressionConverter.ConvertO(arrivingTrains);
+                if (departingTrains != null)
+                    callPayload.Queries["departing_trains"] = SourceExpressionConverter.ConvertO(departingTrains);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetArrivalsAndDeparturesResponseItem[]>(BuildSourceInput);
         }
     }
 

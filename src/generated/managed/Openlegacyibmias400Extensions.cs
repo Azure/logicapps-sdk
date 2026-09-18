@@ -12,63 +12,103 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openlegacyibmias400
     public class Openlegacyibmias400Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
-        public IBodyWorkflowAction<JToken> AS400Cobol(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> AS400Cobol([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-AS400Cobol";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(project, nameof(project), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dummy-AS400Cobol";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
-        public IBodyWorkflowAction<JToken> AS400Rpg(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> AS400Rpg([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-AS400Rpg";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(project, nameof(project), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dummy-AS400Rpg";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
-        public IBodyWorkflowAction<JToken> AS400DataQueue(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> AS400DataQueue([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-AS400DataQueue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(project, nameof(project), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dummy-AS400DataQueue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
-        public IBodyWorkflowAction<JToken> AS400Db2Queries(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> AS400Db2Queries([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-AS400Db2Queries";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(project, nameof(project), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dummy-AS400Db2Queries";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openlegacyibmias400")]
-        public IBodyWorkflowAction<JToken> AS400Db2Executables(Expression<Func<string>> project, Expression<Func<string>> method, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> AS400Db2Executables([WorkflowExpression] Func<string> project, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/dummy-AS400Db2Executables";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(project, nameof(project), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dummy-AS400Db2Executables";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

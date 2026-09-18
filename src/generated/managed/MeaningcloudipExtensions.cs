@@ -12,75 +12,158 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Meaningcloudip
     public class MeaningcloudipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<ofInput>> of = null, Expression<Func<txtfInput>> txtf = null, Expression<Func<string>> model = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<uwInput>> uw = null)
+        public IBodyWorkflowAction<SentimentAnalysisResponse> SentimentAnalysis([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<txtfInput> txtf = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<uwInput> uw = null)
         {
-            var apiCallPath = "/sentiment-2.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentimentAnalysisResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(of, nameof(of), required: false);
+            SourceExpression.Validate(txtf, nameof(txtf), required: false);
+            SourceExpression.Validate(model, nameof(model), required: false);
+            SourceExpression.Validate(verbose, nameof(verbose), required: false);
+            SourceExpression.Validate(uw, nameof(uw), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sentiment-2.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentimentAnalysisResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClassificationResponse> TextClassification(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<expandHierarchyInput>> expandHierarchy = null)
+        public IBodyWorkflowAction<TextClassificationResponse> TextClassification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<expandHierarchyInput> expandHierarchy = null)
         {
-            var apiCallPath = "/class-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClassificationResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(model, nameof(model), required: true);
+            SourceExpression.Validate(title, nameof(title), required: false);
+            SourceExpression.Validate(debug, nameof(debug), required: false);
+            SourceExpression.Validate(verbose, nameof(verbose), required: false);
+            SourceExpression.Validate(expandHierarchy, nameof(expandHierarchy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/class-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TextClassificationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<string>> model = null)
+        public IBodyWorkflowAction<CorporateReputationResponse> CorporateReputation([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> model = null)
         {
-            var apiCallPath = "/reputation-2.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CorporateReputationResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(model, nameof(model), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reputation-2.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CorporateReputationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<SummarizationResponse> Summarization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<string>> lang, Expression<Func<int>> sentences = null, Expression<Func<ofInput>> of = null)
+        public IBodyWorkflowAction<SummarizationResponse> Summarization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<int> sentences = null, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/summarization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SummarizationResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(sentences, nameof(sentences), required: false);
+            SourceExpression.Validate(of, nameof(of), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/summarization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SummarizationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<modelInput>> model, Expression<Func<string>> title = null, Expression<Func<ofInput>> of = null, Expression<Func<debugInput>> debug = null, Expression<Func<verboseInput>> verbose = null, Expression<Func<polarityInput>> polarity = null)
+        public IBodyWorkflowAction<DeepCategorizationResponse> DeepCategorization([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<modelInput> model, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<debugInput> debug = null, [WorkflowExpression] Func<verboseInput> verbose = null, [WorkflowExpression] Func<polarityInput> polarity = null)
         {
-            var apiCallPath = "/deepcategorization-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeepCategorizationResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(model, nameof(model), required: true);
+            SourceExpression.Validate(title, nameof(title), required: false);
+            SourceExpression.Validate(of, nameof(of), required: false);
+            SourceExpression.Validate(debug, nameof(debug), required: false);
+            SourceExpression.Validate(verbose, nameof(verbose), required: false);
+            SourceExpression.Validate(polarity, nameof(polarity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/deepcategorization-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeepCategorizationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification(Expression<Func<string>> key, Expression<Func<string>> txt)
+        public IBodyWorkflowAction<LanguageIdentificationResponse> LanguageIdentification([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt)
         {
-            var apiCallPath = "/lang-4.0/identification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageIdentificationResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/lang-4.0/identification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LanguageIdentificationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<TextClusteringResponse> TextClustering(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<langInput>> lang, Expression<Func<ofInput>> of = null, Expression<Func<modeInput>> mode = null, Expression<Func<swInput>> sw = null)
+        public IBodyWorkflowAction<TextClusteringResponse> TextClustering([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<ofInput> of = null, [WorkflowExpression] Func<modeInput> mode = null, [WorkflowExpression] Func<swInput> sw = null)
         {
-            var apiCallPath = "/clustering-1.1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextClusteringResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(of, nameof(of), required: false);
+            SourceExpression.Validate(mode, nameof(mode), required: false);
+            SourceExpression.Validate(sw, nameof(sw), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/clustering-1.1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TextClusteringResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "meaningcloudip")]
-        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure(Expression<Func<string>> key, Expression<Func<string>> txt, Expression<Func<ofInput>> of = null)
+        public IBodyWorkflowAction<DocumentStructureResponse> DocumentStructure([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> txt, [WorkflowExpression] Func<ofInput> of = null)
         {
-            var apiCallPath = "/documentstructure-1.0";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocumentStructureResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(txt, nameof(txt), required: true);
+            SourceExpression.Validate(of, nameof(of), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/documentstructure-1.0";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentStructureResponse>(BuildSourceInput);
         }
     }
 

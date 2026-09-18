@@ -1,0 +1,1 @@
+{"result":{"input":"@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}"},"framework":".NETCoreApp,Version=v9.0","signed":false,"assemblyName":"LinkedConsumer"}

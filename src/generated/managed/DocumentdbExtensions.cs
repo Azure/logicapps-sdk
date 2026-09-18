@@ -12,273 +12,427 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdb
     public class DocumentdbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> xMsDocumentdbIsUpsert = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<PostDocumentsResponse> CreateDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> xMsDocumentdbIsUpsert = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsMaxItemCount != null)
-                callPayload.Headers["x-ms-max-item-count"] = CSharpExpressionConverter.ConvertO(xMsMaxItemCount);
-            if (xMsContinuation != null)
-                callPayload.Headers["x-ms-continuation"] = CSharpExpressionConverter.ConvertO(xMsContinuation);
-            if (xMsConsistencyLevel != null)
-                callPayload.Headers["x-ms-consistency-level"] = CSharpExpressionConverter.Convert(xMsConsistencyLevel);
-            if (xMsSessionToken != null)
-                callPayload.Headers["x-ms-session-token"] = CSharpExpressionConverter.ConvertO(xMsSessionToken);
-            if (xMsActivityId != null)
-                callPayload.Headers["x-ms-activity-id"] = CSharpExpressionConverter.ConvertO(xMsActivityId);
-            if (xMsDocumentdbIsUpsert != null)
-                callPayload.Headers["x-ms-documentdb-is-upsert"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbIsUpsert);
-            if (xMsDocumentdbPreTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
-            if (xMsDocumentdbPostTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-post-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
+            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
+            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
+            SourceExpression.Validate(xMsDocumentdbIsUpsert, nameof(xMsDocumentdbIsUpsert), required: false);
+            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = SourceExpressionConverter.ConvertO(xMsMaxItemCount);
+                if (xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = SourceExpressionConverter.ConvertO(xMsContinuation);
+                if (xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = SourceExpressionConverter.Convert(xMsConsistencyLevel);
+                if (xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = SourceExpressionConverter.ConvertO(xMsSessionToken);
+                if (xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = SourceExpressionConverter.ConvertO(xMsActivityId);
+                if (xMsDocumentdbIsUpsert != null)
+                    callPayload.Headers["x-ms-documentdb-is-upsert"] = SourceExpressionConverter.ConvertO(xMsDocumentdbIsUpsert);
+                if (xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
+                if (xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PostDocumentsResponse>(callPayload);
+            return new ApiConnectionAction<PostDocumentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<CreateStoredProcedureResponse> CreateStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfunctionDefinition != null)
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodyfunctionDefinition);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfunctionDefinition != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodyfunctionDefinition);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyid != null)
+            return new ApiConnectionAction<CreateStoredProcedureResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
+            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
+            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
+            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = SourceExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
+                if (xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = SourceExpressionConverter.ConvertO(xMsMaxItemCount);
+                if (xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = SourceExpressionConverter.ConvertO(xMsContinuation);
+                if (xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = SourceExpressionConverter.Convert(xMsConsistencyLevel);
+                if (xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = SourceExpressionConverter.ConvertO(xMsSessionToken);
+                if (xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = SourceExpressionConverter.ConvertO(xMsActivityId);
+                if (xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
+                if (xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<string> DeleteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<JToken> ExecuteStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<string> parameters = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsDocumentdbRawPartitionkey != null)
-                callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
-            if (xMsMaxItemCount != null)
-                callPayload.Headers["x-ms-max-item-count"] = CSharpExpressionConverter.ConvertO(xMsMaxItemCount);
-            if (xMsContinuation != null)
-                callPayload.Headers["x-ms-continuation"] = CSharpExpressionConverter.ConvertO(xMsContinuation);
-            if (xMsConsistencyLevel != null)
-                callPayload.Headers["x-ms-consistency-level"] = CSharpExpressionConverter.Convert(xMsConsistencyLevel);
-            if (xMsSessionToken != null)
-                callPayload.Headers["x-ms-session-token"] = CSharpExpressionConverter.ConvertO(xMsSessionToken);
-            if (xMsActivityId != null)
-                callPayload.Headers["x-ms-activity-id"] = CSharpExpressionConverter.ConvertO(xMsActivityId);
-            if (xMsDocumentdbPreTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
-            if (xMsDocumentdbPostTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-post-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<string> DeleteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<xMsVersionInput>> xMsVersion = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<JToken> ExecuteStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<string>> parameters = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsDocumentdbRawPartitionkey != null)
-                callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(parameters);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetDocumentV2Response> GetDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = CSharpExpressionConverter.ConvertO(purviewAccountName);
-            if (xMsDocumentdbRawPartitionkey != null)
-                callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
-            if (xMsMaxItemCount != null)
-                callPayload.Headers["x-ms-max-item-count"] = CSharpExpressionConverter.ConvertO(xMsMaxItemCount);
-            if (xMsContinuation != null)
-                callPayload.Headers["x-ms-continuation"] = CSharpExpressionConverter.ConvertO(xMsContinuation);
-            if (xMsConsistencyLevel != null)
-                callPayload.Headers["x-ms-consistency-level"] = CSharpExpressionConverter.Convert(xMsConsistencyLevel);
-            if (xMsSessionToken != null)
-                callPayload.Headers["x-ms-session-token"] = CSharpExpressionConverter.ConvertO(xMsSessionToken);
-            if (xMsActivityId != null)
-                callPayload.Headers["x-ms-activity-id"] = CSharpExpressionConverter.ConvertO(xMsActivityId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            return new ApiConnectionAction<GetDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<xMsVersionInput>> xMsVersion = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = CSharpExpressionConverter.ConvertO(purviewAccountName);
-            if (xMsDocumentdbRawPartitionkey != null)
-                callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
-            if (xMsMaxItemCount != null)
-                callPayload.Headers["x-ms-max-item-count"] = CSharpExpressionConverter.ConvertO(xMsMaxItemCount);
-            if (xMsContinuation != null)
-                callPayload.Headers["x-ms-continuation"] = CSharpExpressionConverter.ConvertO(xMsContinuation);
-            if (xMsConsistencyLevel != null)
-                callPayload.Headers["x-ms-consistency-level"] = CSharpExpressionConverter.Convert(xMsConsistencyLevel);
-            if (xMsSessionToken != null)
-                callPayload.Headers["x-ms-session-token"] = CSharpExpressionConverter.ConvertO(xMsSessionToken);
-            if (xMsActivityId != null)
-                callPayload.Headers["x-ms-activity-id"] = CSharpExpressionConverter.ConvertO(xMsActivityId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            return new ApiConnectionAction<GetDocumentsV3Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<xMsVersionInput>> xMsVersion = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            return new ApiConnectionAction<GetStoredProceduresResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> containerId, Expression<Func<string>> queryText = null, Expression<Func<string>> partitionKey = null, Expression<Func<int>> maxItemCount = null, Expression<Func<string>> continuationToken = null, Expression<Func<consistencyLevelInput>> consistencyLevel = null, Expression<Func<string>> sessionToken = null, Expression<Func<bool>> extractSensitivityLabel = null, Expression<Func<string>> purviewAccountName = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (queryText != null)
-                callPayload.Queries["queryText"] = CSharpExpressionConverter.ConvertO(queryText);
-            if (partitionKey != null)
-                callPayload.Queries["partitionKey"] = CSharpExpressionConverter.ConvertO(partitionKey);
-            if (maxItemCount != null)
-                callPayload.Queries["maxItemCount"] = CSharpExpressionConverter.ConvertO(maxItemCount);
-            if (continuationToken != null)
-                callPayload.Queries["continuationToken"] = CSharpExpressionConverter.ConvertO(continuationToken);
-            if (consistencyLevel != null)
-                callPayload.Queries["consistencyLevel"] = CSharpExpressionConverter.Convert(consistencyLevel);
-            if (sessionToken != null)
-                callPayload.Queries["sessionToken"] = CSharpExpressionConverter.ConvertO(sessionToken);
-            if (extractSensitivityLabel != null)
-                callPayload.Queries["extractSensitivityLabel"] = CSharpExpressionConverter.ConvertO(extractSensitivityLabel);
-            if (purviewAccountName != null)
-                callPayload.Queries["purviewAccountName"] = CSharpExpressionConverter.ConvertO(purviewAccountName);
-            return new ApiConnectionAction<QueryDocumentsV5Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> documentId, Expression<Func<string>> xMsDocumentdbRawPartitionkey = null, Expression<Func<double>> xMsMaxItemCount = null, Expression<Func<string>> xMsContinuation = null, Expression<Func<xMsConsistencyLevelInput>> xMsConsistencyLevel = null, Expression<Func<string>> xMsSessionToken = null, Expression<Func<string>> xMsActivityId = null, Expression<Func<string>> xMsDocumentdbPreTriggerInclude = null, Expression<Func<string>> xMsDocumentdbPostTriggerInclude = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsDocumentdbRawPartitionkey != null)
-                callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
-            if (xMsMaxItemCount != null)
-                callPayload.Headers["x-ms-max-item-count"] = CSharpExpressionConverter.ConvertO(xMsMaxItemCount);
-            if (xMsContinuation != null)
-                callPayload.Headers["x-ms-continuation"] = CSharpExpressionConverter.ConvertO(xMsContinuation);
-            if (xMsConsistencyLevel != null)
-                callPayload.Headers["x-ms-consistency-level"] = CSharpExpressionConverter.Convert(xMsConsistencyLevel);
-            if (xMsSessionToken != null)
-                callPayload.Headers["x-ms-session-token"] = CSharpExpressionConverter.ConvertO(xMsSessionToken);
-            if (xMsActivityId != null)
-                callPayload.Headers["x-ms-activity-id"] = CSharpExpressionConverter.ConvertO(xMsActivityId);
-            if (xMsDocumentdbPreTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
-            if (xMsDocumentdbPostTriggerInclude != null)
-                callPayload.Headers["x-ms-documentdb-post-trigger-include"] = CSharpExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
+            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            SourceExpression.Validate(parameters, nameof(parameters), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = SourceExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(parameters);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PutDocumentResponse>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
-        public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure(Expression<Func<string>> cosmosDbAccountName, Expression<Func<string>> databaseId, Expression<Func<string>> collectionId, Expression<Func<string>> sprocId, Expression<Func<string>> bodyfunctionDefinition = null, Expression<Func<string>> bodyid = null, Expression<Func<xMsVersionInput>> xMsVersion = null)
+        public IBodyWorkflowAction<GetDocumentV2Response> GetDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xMsVersion != null)
-                callPayload.Headers["x-ms-version"] = CSharpExpressionConverter.Convert(xMsVersion);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfunctionDefinition != null)
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
+            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
+            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
+            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodyfunctionDefinition);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                if (xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = SourceExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
+                if (xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = SourceExpressionConverter.ConvertO(xMsMaxItemCount);
+                if (xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = SourceExpressionConverter.ConvertO(xMsContinuation);
+                if (xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = SourceExpressionConverter.Convert(xMsConsistencyLevel);
+                if (xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = SourceExpressionConverter.ConvertO(xMsSessionToken);
+                if (xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = SourceExpressionConverter.ConvertO(xMsActivityId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                return callPayload;
             }
 
-            if (bodyid != null)
+            return new ApiConnectionAction<GetDocumentV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<GetDocumentsV3Response> GetDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
+            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
+            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                if (xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = SourceExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
+                if (xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = SourceExpressionConverter.ConvertO(xMsMaxItemCount);
+                if (xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = SourceExpressionConverter.ConvertO(xMsContinuation);
+                if (xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = SourceExpressionConverter.Convert(xMsConsistencyLevel);
+                if (xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = SourceExpressionConverter.ConvertO(xMsSessionToken);
+                if (xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = SourceExpressionConverter.ConvertO(xMsActivityId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<GetDocumentsV3Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<GetStoredProceduresResponse> GetStoredProcedures([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateStoredProcedureResponse>(callPayload);
+            return new ApiConnectionAction<GetStoredProceduresResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<QueryDocumentsV5Response> QueryDocuments([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> containerId, [WorkflowExpression] Func<string> queryText = null, [WorkflowExpression] Func<string> partitionKey = null, [WorkflowExpression] Func<int> maxItemCount = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<consistencyLevelInput> consistencyLevel = null, [WorkflowExpression] Func<string> sessionToken = null, [WorkflowExpression] Func<bool> extractSensitivityLabel = null, [WorkflowExpression] Func<string> purviewAccountName = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(containerId, nameof(containerId), required: true);
+            SourceExpression.Validate(queryText, nameof(queryText), required: false);
+            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
+            SourceExpression.Validate(maxItemCount, nameof(maxItemCount), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            SourceExpression.Validate(consistencyLevel, nameof(consistencyLevel), required: false);
+            SourceExpression.Validate(sessionToken, nameof(sessionToken), required: false);
+            SourceExpression.Validate(extractSensitivityLabel, nameof(extractSensitivityLabel), required: false);
+            SourceExpression.Validate(purviewAccountName, nameof(purviewAccountName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v5/cosmosdb/{0}/dbs/{1}/colls/{2}/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(containerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (queryText != null)
+                    callPayload.Queries["queryText"] = SourceExpressionConverter.ConvertO(queryText);
+                if (partitionKey != null)
+                    callPayload.Queries["partitionKey"] = SourceExpressionConverter.ConvertO(partitionKey);
+                if (maxItemCount != null)
+                    callPayload.Queries["maxItemCount"] = SourceExpressionConverter.ConvertO(maxItemCount);
+                if (continuationToken != null)
+                    callPayload.Queries["continuationToken"] = SourceExpressionConverter.ConvertO(continuationToken);
+                if (consistencyLevel != null)
+                    callPayload.Queries["consistencyLevel"] = SourceExpressionConverter.Convert(consistencyLevel);
+                if (sessionToken != null)
+                    callPayload.Queries["sessionToken"] = SourceExpressionConverter.ConvertO(sessionToken);
+                if (extractSensitivityLabel != null)
+                    callPayload.Queries["extractSensitivityLabel"] = SourceExpressionConverter.ConvertO(extractSensitivityLabel);
+                if (purviewAccountName != null)
+                    callPayload.Queries["purviewAccountName"] = SourceExpressionConverter.ConvertO(purviewAccountName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryDocumentsV5Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<PutDocumentResponse> ReplaceDocument([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> xMsDocumentdbRawPartitionkey = null, [WorkflowExpression] Func<double> xMsMaxItemCount = null, [WorkflowExpression] Func<string> xMsContinuation = null, [WorkflowExpression] Func<xMsConsistencyLevelInput> xMsConsistencyLevel = null, [WorkflowExpression] Func<string> xMsSessionToken = null, [WorkflowExpression] Func<string> xMsActivityId = null, [WorkflowExpression] Func<string> xMsDocumentdbPreTriggerInclude = null, [WorkflowExpression] Func<string> xMsDocumentdbPostTriggerInclude = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(xMsDocumentdbRawPartitionkey, nameof(xMsDocumentdbRawPartitionkey), required: false);
+            SourceExpression.Validate(xMsMaxItemCount, nameof(xMsMaxItemCount), required: false);
+            SourceExpression.Validate(xMsContinuation, nameof(xMsContinuation), required: false);
+            SourceExpression.Validate(xMsConsistencyLevel, nameof(xMsConsistencyLevel), required: false);
+            SourceExpression.Validate(xMsSessionToken, nameof(xMsSessionToken), required: false);
+            SourceExpression.Validate(xMsActivityId, nameof(xMsActivityId), required: false);
+            SourceExpression.Validate(xMsDocumentdbPreTriggerInclude, nameof(xMsDocumentdbPreTriggerInclude), required: false);
+            SourceExpression.Validate(xMsDocumentdbPostTriggerInclude, nameof(xMsDocumentdbPostTriggerInclude), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/docs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsDocumentdbRawPartitionkey != null)
+                    callPayload.Headers["x-ms-documentdb-raw-partitionkey"] = SourceExpressionConverter.ConvertO(xMsDocumentdbRawPartitionkey);
+                if (xMsMaxItemCount != null)
+                    callPayload.Headers["x-ms-max-item-count"] = SourceExpressionConverter.ConvertO(xMsMaxItemCount);
+                if (xMsContinuation != null)
+                    callPayload.Headers["x-ms-continuation"] = SourceExpressionConverter.ConvertO(xMsContinuation);
+                if (xMsConsistencyLevel != null)
+                    callPayload.Headers["x-ms-consistency-level"] = SourceExpressionConverter.Convert(xMsConsistencyLevel);
+                if (xMsSessionToken != null)
+                    callPayload.Headers["x-ms-session-token"] = SourceExpressionConverter.ConvertO(xMsSessionToken);
+                if (xMsActivityId != null)
+                    callPayload.Headers["x-ms-activity-id"] = SourceExpressionConverter.ConvertO(xMsActivityId);
+                if (xMsDocumentdbPreTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-pre-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPreTriggerInclude);
+                if (xMsDocumentdbPostTriggerInclude != null)
+                    callPayload.Headers["x-ms-documentdb-post-trigger-include"] = SourceExpressionConverter.ConvertO(xMsDocumentdbPostTriggerInclude);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PutDocumentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdb")]
+        public IBodyWorkflowAction<CreateStoredProcedureResponse> ReplaceStoredProcedure([WorkflowExpression] Func<string> cosmosDbAccountName, [WorkflowExpression] Func<string> databaseId, [WorkflowExpression] Func<string> collectionId, [WorkflowExpression] Func<string> sprocId, [WorkflowExpression] Func<string> bodyfunctionDefinition = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<xMsVersionInput> xMsVersion = null)
+        {
+            SourceExpression.Validate(cosmosDbAccountName, nameof(cosmosDbAccountName), required: true);
+            SourceExpression.Validate(databaseId, nameof(databaseId), required: true);
+            SourceExpression.Validate(collectionId, nameof(collectionId), required: true);
+            SourceExpression.Validate(sprocId, nameof(sprocId), required: true);
+            SourceExpression.Validate(bodyfunctionDefinition, nameof(bodyfunctionDefinition), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(xMsVersion, nameof(xMsVersion), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/cosmosdb/{0}/dbs/{1}/colls/{2}/sprocs/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cosmosDbAccountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(databaseId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sprocId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xMsVersion != null)
+                    callPayload.Headers["x-ms-version"] = SourceExpressionConverter.Convert(xMsVersion);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfunctionDefinition != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodyfunctionDefinition);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateStoredProcedureResponse>(BuildSourceInput);
         }
     }
 

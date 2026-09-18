@@ -14,243 +14,299 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<ListAgentsResponseItem[]> ListAgents()
         {
-            var apiCallPath = "/agents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAgentsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/agents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAgentsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<bodyloginStatusInput>> bodyloginStatus = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodypermissionInput>> bodypermission = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodymaxChatCounts = null)
+        public IBodyWorkflowAction<CreateAgentResponse> CreateAgent([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodyloginStatusInput> bodyloginStatus = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodypermissionInput> bodypermission = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodymaxChatCounts = null)
         {
-            var apiCallPath = "/agents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["login"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodyloginStatus != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyloginStatus, nameof(bodyloginStatus), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodypermission, nameof(bodypermission), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodymaxChatCounts, nameof(bodymaxChatCounts), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["login_status"] = CSharpExpressionConverter.Convert(bodyloginStatus);
+                var apiCallPath = "/agents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["job_title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
+                body["login"] = SourceExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodyloginStatus != null)
+                {
+                    body["login_status"] = SourceExpressionConverter.Convert(bodyloginStatus);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["job_title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypermission != null)
+                {
+                    body["permission"] = SourceExpressionConverter.Convert(bodypermission);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodymaxChatCounts != null)
+                {
+                    body["max_chats_count"] = SourceExpressionConverter.ConvertToken(bodymaxChatCounts);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypermission != null)
-            {
-                body["permission"] = CSharpExpressionConverter.Convert(bodypermission);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodymaxChatCounts != null)
-            {
-                body["max_chats_count"] = CSharpExpressionConverter.ConvertToken(bodymaxChatCounts);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAgentResponse>(callPayload);
+            return new ApiConnectionAction<CreateAgentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent(Expression<Func<string>> login)
+        public IBodyWorkflowAction<DeleteAgentResponse> DeleteAgent([WorkflowExpression] Func<string> login)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/agents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(login, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteAgentResponse>(callPayload);
+            SourceExpression.Validate(login, nameof(login), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/agents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(login, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteAgentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
         public IBodyWorkflowAction<ListTicketsResponseItem[]> ListTickets()
         {
-            var apiCallPath = "/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTicketsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListTicketsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> CreateTicket(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyrequesterrequesterSEmail = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse> CreateTicket([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyrequesterrequesterSEmail = null, [WorkflowExpression] Func<string> bodyrequesterrequesterSName = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyassigneeassigneeId = null, [WorkflowExpression] Func<bodysourcesourceTypeInput> bodysourcesourceType = null, [WorkflowExpression] Func<string> bodysourcesourceURL = null)
         {
-            var apiCallPath = "/tickets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            if (bodyrequesterrequesterSEmail != null)
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: false);
+            SourceExpression.Validate(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            SourceExpression.Validate(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            SourceExpression.Validate(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requesterObject["mail"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
-                requesterObjectpropCount++;
-            }
-
-            if (bodyrequesterrequesterSName != null)
-            {
-                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
-                requesterObjectpropCount++;
-            }
-
-            if (requesterObjectpropCount > 0)
-            {
-                body["requester"] = requesterObject;
+                var apiCallPath = "/tickets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
+                if (bodyrequesterrequesterSEmail != null)
+                {
+                    requesterObject["mail"] = SourceExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
+                    requesterObjectpropCount++;
+                }
+
+                if (bodyrequesterrequesterSName != null)
+                {
+                    requesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
+                    requesterObjectpropCount++;
+                }
+
+                if (requesterObjectpropCount > 0)
+                {
+                    body["requester"] = requesterObject;
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                if (bodyassigneeassigneeId != null)
+                {
+                    assigneeObject["id"] = SourceExpressionConverter.ConvertToken(bodyassigneeassigneeId);
+                    assigneeObjectpropCount++;
+                }
+
+                if (assigneeObjectpropCount > 0)
+                {
+                    body["assignee"] = assigneeObject;
+                    bodypropCount++;
+                }
+
+                var sourceObject = new JObject();
+                var sourceObjectpropCount = 0;
+                if (bodysourcesourceType != null)
+                {
+                    sourceObject["type"] = SourceExpressionConverter.Convert(bodysourcesourceType);
+                    sourceObjectpropCount++;
+                }
+
+                if (bodysourcesourceURL != null)
+                {
+                    sourceObject["url"] = SourceExpressionConverter.ConvertToken(bodysourcesourceURL);
+                    sourceObjectpropCount++;
+                }
+
+                if (sourceObjectpropCount > 0)
+                {
+                    body["source"] = sourceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
-                bodypropCount++;
-            }
-
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            if (bodyassigneeassigneeId != null)
-            {
-                assigneeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassigneeassigneeId);
-                assigneeObjectpropCount++;
-            }
-
-            if (assigneeObjectpropCount > 0)
-            {
-                body["assignee"] = assigneeObject;
-                bodypropCount++;
-            }
-
-            var sourceObject = new JObject();
-            var sourceObjectpropCount = 0;
-            if (bodysourcesourceType != null)
-            {
-                sourceObject["type"] = CSharpExpressionConverter.Convert(bodysourcesourceType);
-                sourceObjectpropCount++;
-            }
-
-            if (bodysourcesourceURL != null)
-            {
-                sourceObject["url"] = CSharpExpressionConverter.ConvertToken(bodysourcesourceURL);
-                sourceObjectpropCount++;
-            }
-
-            if (sourceObjectpropCount > 0)
-            {
-                body["source"] = sourceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TicketResponse>(callPayload);
+            return new ApiConnectionAction<TicketResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> UpdateTicket(Expression<Func<string>> ticketId, Expression<Func<string>> bodyrequesterrequesterSEmail, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyrequesterrequesterSName = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodyassigneeassigneeId = null, Expression<Func<bodysourcesourceTypeInput>> bodysourcesourceType = null, Expression<Func<string>> bodysourcesourceURL = null)
+        public IBodyWorkflowAction<TicketResponse> UpdateTicket([WorkflowExpression] Func<string> ticketId, [WorkflowExpression] Func<string> bodyrequesterrequesterSEmail, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyrequesterrequesterSName = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodyassigneeassigneeId = null, [WorkflowExpression] Func<bodysourcesourceTypeInput> bodysourcesourceType = null, [WorkflowExpression] Func<string> bodysourcesourceURL = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
+            SourceExpression.Validate(bodyrequesterrequesterSEmail, nameof(bodyrequesterrequesterSEmail), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodyrequesterrequesterSName, nameof(bodyrequesterrequesterSName), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodyassigneeassigneeId, nameof(bodyassigneeassigneeId), required: false);
+            SourceExpression.Validate(bodysourcesourceType, nameof(bodysourcesourceType), required: false);
+            SourceExpression.Validate(bodysourcesourceURL, nameof(bodysourcesourceURL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tickets/{0}/tags", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
 
-            var requesterObject = new JObject();
-            var requesterObjectpropCount = 0;
-            requesterObjectpropCount++;
-            requesterObject["mail"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
-            if (bodyrequesterrequesterSName != null)
-            {
-                requesterObject["name"] = CSharpExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
+                var requesterObject = new JObject();
+                var requesterObjectpropCount = 0;
                 requesterObjectpropCount++;
+                requesterObject["mail"] = SourceExpressionConverter.ConvertToken(bodyrequesterrequesterSEmail);
+                if (bodyrequesterrequesterSName != null)
+                {
+                    requesterObject["name"] = SourceExpressionConverter.ConvertToken(bodyrequesterrequesterSName);
+                    requesterObjectpropCount++;
+                }
+
+                if (requesterObjectpropCount > 0)
+                {
+                    body["requester"] = requesterObject;
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                if (bodyassigneeassigneeId != null)
+                {
+                    assigneeObject["id"] = SourceExpressionConverter.ConvertToken(bodyassigneeassigneeId);
+                    assigneeObjectpropCount++;
+                }
+
+                if (assigneeObjectpropCount > 0)
+                {
+                    body["assignee"] = assigneeObject;
+                    bodypropCount++;
+                }
+
+                var sourceObject = new JObject();
+                var sourceObjectpropCount = 0;
+                if (bodysourcesourceType != null)
+                {
+                    sourceObject["type"] = SourceExpressionConverter.Convert(bodysourcesourceType);
+                    sourceObjectpropCount++;
+                }
+
+                if (bodysourcesourceURL != null)
+                {
+                    sourceObject["url"] = SourceExpressionConverter.ConvertToken(bodysourcesourceURL);
+                    sourceObjectpropCount++;
+                }
+
+                if (sourceObjectpropCount > 0)
+                {
+                    body["source"] = sourceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (requesterObjectpropCount > 0)
-            {
-                body["requester"] = requesterObject;
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
-                bodypropCount++;
-            }
-
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            if (bodyassigneeassigneeId != null)
-            {
-                assigneeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassigneeassigneeId);
-                assigneeObjectpropCount++;
-            }
-
-            if (assigneeObjectpropCount > 0)
-            {
-                body["assignee"] = assigneeObject;
-                bodypropCount++;
-            }
-
-            var sourceObject = new JObject();
-            var sourceObjectpropCount = 0;
-            if (bodysourcesourceType != null)
-            {
-                sourceObject["type"] = CSharpExpressionConverter.Convert(bodysourcesourceType);
-                sourceObjectpropCount++;
-            }
-
-            if (bodysourcesourceURL != null)
-            {
-                sourceObject["url"] = CSharpExpressionConverter.ConvertToken(bodysourcesourceURL);
-                sourceObjectpropCount++;
-            }
-
-            if (sourceObjectpropCount > 0)
-            {
-                body["source"] = sourceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TicketResponse>(callPayload);
+            return new ApiConnectionAction<TicketResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livechat")]
-        public IBodyWorkflowAction<TicketResponse> GetTicket(Expression<Func<string>> ticketId)
+        public IBodyWorkflowAction<TicketResponse> GetTicket([WorkflowExpression] Func<string> ticketId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TicketResponse>(callPayload);
+            SourceExpression.Validate(ticketId, nameof(ticketId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ticketId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TicketResponse>(BuildSourceInput);
         }
     }
 
@@ -258,57 +314,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livechat
     {
         public IWorkflowTrigger WebhookTicketCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ticket_created_webhook/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["event_type"] = Convert.ToString("ticket_created");
-            callPayload.Queries["data_types[]"] = Convert.ToString("ticket");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/ticket_created_webhook/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["event_type"] = Convert.ToString("ticket_created");
+                callPayload.Queries["data_types[]"] = Convert.ToString("ticket");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger WebhookChatStarted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/chat_starts_webhook/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["event_type"] = Convert.ToString("chat_started");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/chat_starts_webhook/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["event_type"] = Convert.ToString("chat_started");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger WebhookChatEnded(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/chat_ends_webhook/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["event_type"] = Convert.ToString("chat_ended");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/chat_ends_webhook/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["event_type"] = Convert.ToString("chat_ended");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

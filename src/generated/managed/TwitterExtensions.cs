@@ -12,140 +12,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twitter
     public class TwitterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<TweetModel[]> UserTimeline(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<TweetModel[]> UserTimeline([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/usertimeline";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            SourceExpression.Validate(userName, nameof(userName), required: true);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/usertimeline";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = SourceExpressionConverter.ConvertO(userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TweetModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<TweetModel[]> HomeTimeline(Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<TweetModel[]> HomeTimeline([WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/hometimeline";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/hometimeline";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TweetModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<TweetModel[]> SearchTweet(Expression<Func<string>> searchQuery, Expression<Func<int>> maxResults = null, Expression<Func<string>> sinceId = null)
+        public IBodyWorkflowAction<TweetModel[]> SearchTweet([WorkflowExpression] Func<string> searchQuery, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<string> sinceId = null)
         {
-            var apiCallPath = "/searchtweets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = CSharpExpressionConverter.ConvertO(searchQuery);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            if (sinceId != null)
-                callPayload.Queries["sinceId"] = CSharpExpressionConverter.ConvertO(sinceId);
-            return new ApiConnectionAction<TweetModel[]>(callPayload);
+            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: true);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            SourceExpression.Validate(sinceId, nameof(sinceId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/searchtweets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchQuery"] = SourceExpressionConverter.ConvertO(searchQuery);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                if (sinceId != null)
+                    callPayload.Queries["sinceId"] = SourceExpressionConverter.ConvertO(sinceId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TweetModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<UserDetailsModel[]> Followers(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> Followers([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            SourceExpression.Validate(userName, nameof(userName), required: true);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = SourceExpressionConverter.ConvertO(userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDetailsModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers(Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowers([WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/myfollowers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/myfollowers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDetailsModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<UserDetailsModel[]> Following(Expression<Func<string>> userName, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> Following([WorkflowExpression] Func<string> userName, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/friends";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            SourceExpression.Validate(userName, nameof(userName), required: true);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/friends";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = SourceExpressionConverter.ConvertO(userName);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDetailsModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing(Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<UserDetailsModel[]> MyFollowing([WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/myfriends";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["maxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<UserDetailsModel[]>(callPayload);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/myfriends";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["maxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDetailsModel[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<UserDetailsModel> User(Expression<Func<string>> userName)
+        public IBodyWorkflowAction<UserDetailsModel> User([WorkflowExpression] Func<string> userName)
         {
-            var apiCallPath = "/user";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userName"] = CSharpExpressionConverter.ConvertO(userName);
-            return new ApiConnectionAction<UserDetailsModel>(callPayload);
+            SourceExpression.Validate(userName, nameof(userName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userName"] = SourceExpressionConverter.ConvertO(userName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDetailsModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<TweetResponseModel> Tweet(Expression<Func<string>> tweetText = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<TweetResponseModel> Tweet([WorkflowExpression] Func<string> tweetText = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/posttweet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tweetText != null)
-                callPayload.Queries["tweetText"] = CSharpExpressionConverter.ConvertO(tweetText);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            SourceExpression.Validate(tweetText, nameof(tweetText), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/posttweet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tweetText != null)
+                    callPayload.Queries["tweetText"] = SourceExpressionConverter.ConvertO(tweetText);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TweetResponseModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twitter")]
-        public IBodyWorkflowAction<TweetResponseModel> Retweet(Expression<Func<string>> tweetId, Expression<Func<bool>> trimUser = null)
+        public IBodyWorkflowAction<TweetResponseModel> Retweet([WorkflowExpression] Func<string> tweetId, [WorkflowExpression] Func<bool> trimUser = null)
         {
-            var apiCallPath = "/retweet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tweetId"] = CSharpExpressionConverter.ConvertO(tweetId);
-            callPayload.Queries["trimUser"] = Convert.ToString(false);
-            if (trimUser != null)
-                callPayload.Queries["trimUser"] = CSharpExpressionConverter.ConvertO(trimUser);
-            return new ApiConnectionAction<TweetResponseModel>(callPayload);
+            SourceExpression.Validate(tweetId, nameof(tweetId), required: true);
+            SourceExpression.Validate(trimUser, nameof(trimUser), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/retweet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tweetId"] = SourceExpressionConverter.ConvertO(tweetId);
+                callPayload.Queries["trimUser"] = Convert.ToString(false);
+                if (trimUser != null)
+                    callPayload.Queries["trimUser"] = SourceExpressionConverter.ConvertO(trimUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TweetResponseModel>(BuildSourceInput);
         }
     }
 
     public class TwitterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet(Expression<Func<string>> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseTweetModel> OnNewTweet([WorkflowExpression] Func<string> searchQuery, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/onnewtweet";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchQuery"] = CSharpExpressionConverter.ConvertO(searchQuery);
-            return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/onnewtweet";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchQuery"] = SourceExpressionConverter.ConvertO(searchQuery);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseTweetModel>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,57 +12,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Amazons3bucket
     public class Amazons3bucketActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IBodyWorkflowAction<ListObjectsS3Response> ListObjectsS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> bucketlistType = null, Expression<Func<string>> continuationToken = null, Expression<Func<string>> delimiter = null, Expression<Func<string>> prefix = null, Expression<Func<string>> encodingType = null, Expression<Func<string>> fetchOwner = null, Expression<Func<double>> maxKeys = null, Expression<Func<string>> startAfter = null)
+        public IBodyWorkflowAction<ListObjectsS3Response> ListObjectsS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> bucketlistType = null, [WorkflowExpression] Func<string> continuationToken = null, [WorkflowExpression] Func<string> delimiter = null, [WorkflowExpression] Func<string> prefix = null, [WorkflowExpression] Func<string> encodingType = null, [WorkflowExpression] Func<string> fetchOwner = null, [WorkflowExpression] Func<double> maxKeys = null, [WorkflowExpression] Func<string> startAfter = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bucketlist-type"] = Convert.ToString("2");
-            if (bucketlistType != null)
-                callPayload.Queries["bucketlist-type"] = CSharpExpressionConverter.ConvertO(bucketlistType);
-            if (continuationToken != null)
-                callPayload.Queries["continuation-token"] = CSharpExpressionConverter.ConvertO(continuationToken);
-            if (delimiter != null)
-                callPayload.Queries["delimiter"] = CSharpExpressionConverter.ConvertO(delimiter);
-            if (prefix != null)
-                callPayload.Queries["prefix"] = CSharpExpressionConverter.ConvertO(prefix);
-            if (encodingType != null)
-                callPayload.Queries["encoding-type"] = CSharpExpressionConverter.ConvertO(encodingType);
-            if (fetchOwner != null)
-                callPayload.Queries["fetch-owner"] = CSharpExpressionConverter.ConvertO(fetchOwner);
-            if (maxKeys != null)
-                callPayload.Queries["max-keys"] = CSharpExpressionConverter.ConvertO(maxKeys);
-            if (startAfter != null)
-                callPayload.Queries["start-after"] = CSharpExpressionConverter.ConvertO(startAfter);
-            return new ApiConnectionAction<ListObjectsS3Response>(callPayload);
+            SourceExpression.Validate(region, nameof(region), required: true);
+            SourceExpression.Validate(bucket, nameof(bucket), required: true);
+            SourceExpression.Validate(bucketlistType, nameof(bucketlistType), required: false);
+            SourceExpression.Validate(continuationToken, nameof(continuationToken), required: false);
+            SourceExpression.Validate(delimiter, nameof(delimiter), required: false);
+            SourceExpression.Validate(prefix, nameof(prefix), required: false);
+            SourceExpression.Validate(encodingType, nameof(encodingType), required: false);
+            SourceExpression.Validate(fetchOwner, nameof(fetchOwner), required: false);
+            SourceExpression.Validate(maxKeys, nameof(maxKeys), required: false);
+            SourceExpression.Validate(startAfter, nameof(startAfter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bucketlist-type"] = Convert.ToString("2");
+                if (bucketlistType != null)
+                    callPayload.Queries["bucketlist-type"] = SourceExpressionConverter.ConvertO(bucketlistType);
+                if (continuationToken != null)
+                    callPayload.Queries["continuation-token"] = SourceExpressionConverter.ConvertO(continuationToken);
+                if (delimiter != null)
+                    callPayload.Queries["delimiter"] = SourceExpressionConverter.ConvertO(delimiter);
+                if (prefix != null)
+                    callPayload.Queries["prefix"] = SourceExpressionConverter.ConvertO(prefix);
+                if (encodingType != null)
+                    callPayload.Queries["encoding-type"] = SourceExpressionConverter.ConvertO(encodingType);
+                if (fetchOwner != null)
+                    callPayload.Queries["fetch-owner"] = SourceExpressionConverter.ConvertO(fetchOwner);
+                if (maxKeys != null)
+                    callPayload.Queries["max-keys"] = SourceExpressionConverter.ConvertO(maxKeys);
+                if (startAfter != null)
+                    callPayload.Queries["start-after"] = SourceExpressionConverter.ConvertO(startAfter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListObjectsS3Response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction DeleteObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
+        public IWorkflowAction DeleteObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(region, nameof(region), required: true);
+            SourceExpression.Validate(bucket, nameof(bucket), required: true);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction GetObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key)
+        public IWorkflowAction GetObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(region, nameof(region), required: true);
+            SourceExpression.Validate(bucket, nameof(bucket), required: true);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "amazons3bucket")]
-        public IWorkflowAction PutObjectS3(Expression<Func<string>> region, Expression<Func<string>> bucket, Expression<Func<string>> key, Expression<Func<string>> body = null)
+        public IWorkflowAction PutObjectS3([WorkflowExpression] Func<string> region, [WorkflowExpression] Func<string> bucket, [WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(region, nameof(region), required: true);
+            SourceExpression.Validate(bucket, nameof(bucket), required: true);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aws/s3/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bucket, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

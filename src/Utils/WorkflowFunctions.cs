@@ -7,10 +7,14 @@ namespace Microsoft.Azure.Workflows.Sdk;
 using Newtonsoft.Json.Linq;
 
 /// <summary>
-/// These functions are meant to be used inside an expression tree for conversion to a Logic App expression string.
+/// SDK intrinsics recognized by the workflow source compiler inside annotated authoring expressions.
+/// These methods are not executable generation-time helpers.
 /// </summary>
 public static class WorkflowFunctions
 {
-    public static T ToJson<T>(string input) => default;
-    public static JToken ToJson(string input) => default;
+    public static T ToJson<T>(string input) =>
+        throw new NotSupportedException("WorkflowFunctions.ToJson requires the SDK workflow source compiler; it cannot be invoked directly.");
+
+    public static JToken ToJson(string input) =>
+        throw new NotSupportedException("WorkflowFunctions.ToJson requires the SDK workflow source compiler; it cannot be invoked directly.");
 }

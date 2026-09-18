@@ -12,117 +12,184 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescontentmoder
     public class CognitiveservicescontentmoderatorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<EvaluateImageResponse> EvaluateImage(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<EvaluateImageResponse> EvaluateImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<EvaluateImageResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> teamName, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> contentId, Expression<Func<string>> workflowName, Expression<Func<string>> contentcontentValue, Expression<Func<string>> callBackEndpoint = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ContentType"] = CSharpExpressionConverter.Convert(contentType);
-            callPayload.Queries["ContentId"] = CSharpExpressionConverter.ConvertO(contentId);
-            callPayload.Queries["WorkflowName"] = CSharpExpressionConverter.ConvertO(workflowName);
-            if (callBackEndpoint != null)
-                callPayload.Queries["CallBackEndpoint"] = CSharpExpressionConverter.ConvertO(callBackEndpoint);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["ContentValue"] = CSharpExpressionConverter.ConvertToken(contentcontentValue);
-            if (contentpropCount > 0)
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = content;
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Evaluate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            return new ApiConnectionAction<EvaluateImageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<OCRResponse> OCR(Expression<Func<string>> language, Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> contentId, [WorkflowExpression] Func<string> workflowName, [WorkflowExpression] Func<string> contentcontentValue, [WorkflowExpression] Func<string> callBackEndpoint = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
-            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<OCRResponse>(callPayload);
+            SourceExpression.Validate(teamName, nameof(teamName), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(contentId, nameof(contentId), required: true);
+            SourceExpression.Validate(workflowName, nameof(workflowName), required: true);
+            SourceExpression.Validate(contentcontentValue, nameof(contentcontentValue), required: true);
+            SourceExpression.Validate(callBackEndpoint, nameof(callBackEndpoint), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/jobs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ContentType"] = SourceExpressionConverter.Convert(contentType);
+                callPayload.Queries["ContentId"] = SourceExpressionConverter.ConvertO(contentId);
+                callPayload.Queries["WorkflowName"] = SourceExpressionConverter.ConvertO(workflowName);
+                if (callBackEndpoint != null)
+                    callPayload.Queries["CallBackEndpoint"] = SourceExpressionConverter.ConvertO(callBackEndpoint);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["ContentValue"] = SourceExpressionConverter.ConvertToken(contentcontentValue);
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateJobResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<ScreenTextResponse> ScreenText(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> language = null, Expression<Func<bool>> autocorrect = null, Expression<Func<bool>> pII = null, Expression<Func<string>> listId = null, Expression<Func<bool>> classify = null, Expression<Func<string>> textContent = null)
+        public IBodyWorkflowAction<OCRResponse> OCR([WorkflowExpression] Func<string> language, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/Screen/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (language != null)
-                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
-            if (autocorrect != null)
-                callPayload.Queries["autocorrect"] = CSharpExpressionConverter.ConvertO(autocorrect);
-            if (pII != null)
-                callPayload.Queries["PII"] = CSharpExpressionConverter.ConvertO(pII);
-            if (listId != null)
-                callPayload.Queries["listId"] = CSharpExpressionConverter.ConvertO(listId);
-            if (classify != null)
-                callPayload.Queries["classify"] = CSharpExpressionConverter.ConvertO(classify);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.Convert(contentType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(textContent);
-            return new ApiConnectionAction<ScreenTextResponse>(callPayload);
+            SourceExpression.Validate(language, nameof(language), required: true);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/OCR";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OCRResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<FindFacesResponse> FindFaces(Expression<Func<formatInput>> format, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<ScreenTextResponse> ScreenText([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> autocorrect = null, [WorkflowExpression] Func<bool> pII = null, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<bool> classify = null, [WorkflowExpression] Func<string> textContent = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<FindFacesResponse>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(language, nameof(language), required: false);
+            SourceExpression.Validate(autocorrect, nameof(autocorrect), required: false);
+            SourceExpression.Validate(pII, nameof(pII), required: false);
+            SourceExpression.Validate(listId, nameof(listId), required: false);
+            SourceExpression.Validate(classify, nameof(classify), required: false);
+            SourceExpression.Validate(textContent, nameof(textContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/Screen/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                if (autocorrect != null)
+                    callPayload.Queries["autocorrect"] = SourceExpressionConverter.ConvertO(autocorrect);
+                if (pII != null)
+                    callPayload.Queries["PII"] = SourceExpressionConverter.ConvertO(pII);
+                if (listId != null)
+                    callPayload.Queries["listId"] = SourceExpressionConverter.ConvertO(listId);
+                if (classify != null)
+                    callPayload.Queries["classify"] = SourceExpressionConverter.ConvertO(classify);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.Convert(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(textContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ScreenTextResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<DetectLanguageResponse> DetectLanguage(Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> textContent = null)
+        public IBodyWorkflowAction<FindFacesResponse> FindFaces([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.Convert(contentType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(textContent);
-            return new ApiConnectionAction<DetectLanguageResponse>(callPayload);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/FindFaces";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FindFacesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<MatchImageResponse> MatchImage(Expression<Func<formatInput>> format, Expression<Func<string>> listId = null, Expression<Func<object>> image = null)
+        public IBodyWorkflowAction<DetectLanguageResponse> DetectLanguage([WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> textContent = null)
         {
-            var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Match";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (listId != null)
-                callPayload.Queries["listId"] = CSharpExpressionConverter.ConvertO(listId);
-            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<MatchImageResponse>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(textContent, nameof(textContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessText/DetectLanguage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.Convert(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(textContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetectLanguageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
-        public IBodyWorkflowAction<string[]> CreateReviews(Expression<Func<string>> teamName, Expression<Func<string>> subTeam = null, Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<MatchImageResponse> MatchImage([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<object> image = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (subTeam != null)
-                callPayload.Queries["subTeam"] = CSharpExpressionConverter.ConvertO(subTeam);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<string[]>(callPayload);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(listId, nameof(listId), required: false);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contentmoderator/moderate/v1.0/ProcessImage/Match";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (listId != null)
+                    callPayload.Queries["listId"] = SourceExpressionConverter.ConvertO(listId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MatchImageResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescontentmoderator")]
+        public IBodyWorkflowAction<string[]> CreateReviews([WorkflowExpression] Func<string> teamName, [WorkflowExpression] Func<string> subTeam = null, [WorkflowExpression] Func<bodyInputItem[]> body = null)
+        {
+            SourceExpression.Validate(teamName, nameof(teamName), required: true);
+            SourceExpression.Validate(subTeam, nameof(subTeam), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contentmoderator/review/v1.0/teams/{0}/reviews", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (subTeam != null)
+                    callPayload.Queries["subTeam"] = SourceExpressionConverter.ConvertO(subTeam);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
     }
 

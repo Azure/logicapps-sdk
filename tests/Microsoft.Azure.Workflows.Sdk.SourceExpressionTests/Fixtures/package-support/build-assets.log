@@ -1,0 +1,5 @@
+MSBuild version 17.14.51+25f168cee for .NET
+  Build manifest and Compile-item metadata validation passed.
+  WFSDK1004: Workflow source transformation is deferred during design-time builds. Original sources and delegate APIs are retained; source-only rewrites and their diagnostics require a normal build. This is not full IDE diagnostic parity.
+  Design-time target retained original inputs without requiring a compiler.
+Independent manifest/context, design-time, requirement propagation, and explicit failure checks passed.

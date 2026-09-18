@@ -12,2498 +12,2908 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Highq
     public class HighqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction InsertDocument(Expression<Func<string>> version, Expression<Func<object>> file, Expression<Func<string>> parentfolderid, Expression<Func<string>> filename, Expression<Func<bool>> overrideduplicate = null, Expression<Func<string>> versionnote = null, Expression<Func<string>> progressiveoperkey = null, Expression<Func<string>> dmsdatabasename = null, Expression<Func<string>> dmseditdate = null, Expression<Func<string>> dmsparentfolderid = null, Expression<Func<string>> dmsdocid = null, Expression<Func<string>> dmsversion = null, Expression<Func<string>> notification = null, Expression<Func<string>> batchid = null, Expression<Func<string>> rootfolderid = null)
+        public IWorkflowAction InsertDocument([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> parentfolderid, [WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<bool> overrideduplicate = null, [WorkflowExpression] Func<string> versionnote = null, [WorkflowExpression] Func<string> progressiveoperkey = null, [WorkflowExpression] Func<string> dmsdatabasename = null, [WorkflowExpression] Func<string> dmseditdate = null, [WorkflowExpression] Func<string> dmsparentfolderid = null, [WorkflowExpression] Func<string> dmsdocid = null, [WorkflowExpression] Func<string> dmsversion = null, [WorkflowExpression] Func<string> notification = null, [WorkflowExpression] Func<string> batchid = null, [WorkflowExpression] Func<string> rootfolderid = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/files/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["parentfolderid"] = CSharpExpressionConverter.ConvertO(parentfolderid);
-            if (overrideduplicate != null)
-                callPayload.Queries["overrideduplicate"] = CSharpExpressionConverter.ConvertO(overrideduplicate);
-            if (batchid != null)
-                callPayload.Queries["batchid"] = CSharpExpressionConverter.ConvertO(batchid);
-            if (rootfolderid != null)
-                callPayload.Queries["rootfolderid"] = CSharpExpressionConverter.ConvertO(rootfolderid);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(parentfolderid, nameof(parentfolderid), required: true);
+            SourceExpression.Validate(filename, nameof(filename), required: true);
+            SourceExpression.Validate(overrideduplicate, nameof(overrideduplicate), required: false);
+            SourceExpression.Validate(versionnote, nameof(versionnote), required: false);
+            SourceExpression.Validate(progressiveoperkey, nameof(progressiveoperkey), required: false);
+            SourceExpression.Validate(dmsdatabasename, nameof(dmsdatabasename), required: false);
+            SourceExpression.Validate(dmseditdate, nameof(dmseditdate), required: false);
+            SourceExpression.Validate(dmsparentfolderid, nameof(dmsparentfolderid), required: false);
+            SourceExpression.Validate(dmsdocid, nameof(dmsdocid), required: false);
+            SourceExpression.Validate(dmsversion, nameof(dmsversion), required: false);
+            SourceExpression.Validate(notification, nameof(notification), required: false);
+            SourceExpression.Validate(batchid, nameof(batchid), required: false);
+            SourceExpression.Validate(rootfolderid, nameof(rootfolderid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/files/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["parentfolderid"] = SourceExpressionConverter.ConvertO(parentfolderid);
+                if (overrideduplicate != null)
+                    callPayload.Queries["overrideduplicate"] = SourceExpressionConverter.ConvertO(overrideduplicate);
+                if (batchid != null)
+                    callPayload.Queries["batchid"] = SourceExpressionConverter.ConvertO(batchid);
+                if (rootfolderid != null)
+                    callPayload.Queries["rootfolderid"] = SourceExpressionConverter.ConvertO(rootfolderid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction MoveDocuments(Expression<Func<string>> version, Expression<Func<string>> targetfolder, Expression<Func<string>> fileidcsvfileidCSV = null)
+        public IWorkflowAction MoveDocuments([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> targetfolder, [WorkflowExpression] Func<string> fileidcsvfileidCSV = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/files/move", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["targetfolder"] = CSharpExpressionConverter.ConvertO(targetfolder);
-            var fileidcsv = new JObject();
-            var fileidcsvpropCount = 0;
-            if (fileidcsvfileidCSV != null)
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(targetfolder, nameof(targetfolder), required: true);
+            SourceExpression.Validate(fileidcsvfileidCSV, nameof(fileidcsvfileidCSV), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fileidcsv["fileidCSV"] = CSharpExpressionConverter.ConvertToken(fileidcsvfileidCSV);
-                fileidcsvpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/files/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["targetfolder"] = SourceExpressionConverter.ConvertO(targetfolder);
+                var fileidcsv = new JObject();
+                var fileidcsvpropCount = 0;
+                if (fileidcsvfileidCSV != null)
+                {
+                    fileidcsv["fileidCSV"] = SourceExpressionConverter.ConvertToken(fileidcsvfileidCSV);
+                    fileidcsvpropCount++;
+                }
+
+                if (fileidcsvpropCount > 0)
+                {
+                    callPayload.Body = fileidcsv;
+                }
+                return callPayload;
             }
 
-            if (fileidcsvpropCount > 0)
-            {
-                callPayload.Body = fileidcsv;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IBodyWorkflowAction<Site> CreateSite(Expression<Func<string>> version, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderID = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteID = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeID = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalID = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteID = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeID = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalID = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleID = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppID = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
+        public IBodyWorkflowAction<Site> CreateSite([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<int> bodyid = null, [WorkflowExpression] Func<string> bodysitename = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodysitedescription = null, [WorkflowExpression] Func<string> bodyenabledmodules = null, [WorkflowExpression] Func<string> bodysitefolderID = null, [WorkflowExpression] Func<string> bodysitefolderpermission = null, [WorkflowExpression] Func<string> bodymodulehomeenable = null, [WorkflowExpression] Func<string> bodymoduleactivityenable = null, [WorkflowExpression] Func<string> bodymoduleactivitymicroblog = null, [WorkflowExpression] Func<string> bodymoduledocumentdocid = null, [WorkflowExpression] Func<string> bodymoduleblogblogTitle = null, [WorkflowExpression] Func<string> bodymoduleblogblogContent = null, [WorkflowExpression] Func<int> bodymoduleblogshowComment = null, [WorkflowExpression] Func<string[]> bodymoduleblogtagList = null, [WorkflowExpression] Func<int> bodymoduleblogstatus = null, [WorkflowExpression] Func<int> bodymoduleblogsiteID = null, [WorkflowExpression] Func<string> bodymoduleblogauthor = null, [WorkflowExpression] Func<string[]> bodymoduleblogcategoryList = null, [WorkflowExpression] Func<int> bodymoduleblognotificationTypeID = null, [WorkflowExpression] Func<string> bodymoduleblogmessage = null, [WorkflowExpression] Func<int> bodymoduleblogmessageCode = null, [WorkflowExpression] Func<string> bodymoduleblogexternalID = null, [WorkflowExpression] Func<string> bodymoduleblogpublishDate = null, [WorkflowExpression] Func<string> bodymoduleblogprocesstype = null, [WorkflowExpression] Func<string> bodymoduleblogenable = null, [WorkflowExpression] Func<int> bodymodulewikiwikiid = null, [WorkflowExpression] Func<int> bodymodulewikicurrentversionid = null, [WorkflowExpression] Func<int> bodymodulewikiparentwikiid = null, [WorkflowExpression] Func<string> bodymodulewikiwikititle = null, [WorkflowExpression] Func<string> bodymodulewikiwikicontent = null, [WorkflowExpression] Func<int> bodymodulewikishowcomment = null, [WorkflowExpression] Func<string> bodymodulewikicreateddate = null, [WorkflowExpression] Func<string> bodymodulewikimodifieddate = null, [WorkflowExpression] Func<string> bodymodulewikitaglist = null, [WorkflowExpression] Func<string> bodymodulewikiwikipath = null, [WorkflowExpression] Func<int> bodymodulewikiwikidraftid = null, [WorkflowExpression] Func<string> bodymodulewikidrafttype = null, [WorkflowExpression] Func<int> bodymodulewikistatus = null, [WorkflowExpression] Func<int> bodymodulewikiwikiversionid = null, [WorkflowExpression] Func<string> bodymoduletaskindex = null, [WorkflowExpression] Func<int> bodymoduletaskparenttaskid = null, [WorkflowExpression] Func<int> bodymoduletasktaskid = null, [WorkflowExpression] Func<string> bodymoduletasktitle = null, [WorkflowExpression] Func<string> bodymoduletaskdescription = null, [WorkflowExpression] Func<string> bodymoduletaskduedate = null, [WorkflowExpression] Func<string> bodymoduletaskstartdate = null, [WorkflowExpression] Func<string> bodymoduletaskmattermaptaskid = null, [WorkflowExpression] Func<string> bodymoduletasktype = null, [WorkflowExpression] Func<string> bodymoduletaskdependenton = null, [WorkflowExpression] Func<string> bodymoduletaskdaysfromdependent = null, [WorkflowExpression] Func<int> bodymoduletaskignoreweekend = null, [WorkflowExpression] Func<int> bodymoduletaskduration = null, [WorkflowExpression] Func<string> bodymoduletaskresource = null, [WorkflowExpression] Func<string> bodymoduleEventeventTitle = null, [WorkflowExpression] Func<string> bodymoduleEventeventContent = null, [WorkflowExpression] Func<int> bodymoduleEventshowComment = null, [WorkflowExpression] Func<string[]> bodymoduleEventtagList = null, [WorkflowExpression] Func<int> bodymoduleEventstatus = null, [WorkflowExpression] Func<int> bodymoduleEventsiteID = null, [WorkflowExpression] Func<string> bodymoduleEventcontact = null, [WorkflowExpression] Func<string[]> bodymoduleEventcategoryList = null, [WorkflowExpression] Func<int> bodymoduleEventnotificationTypeID = null, [WorkflowExpression] Func<string> bodymoduleEventmessage = null, [WorkflowExpression] Func<int> bodymoduleEventmessageCode = null, [WorkflowExpression] Func<string> bodymoduleEventexternalID = null, [WorkflowExpression] Func<string> bodymoduleEventstartDate = null, [WorkflowExpression] Func<string> bodymoduleEventendDate = null, [WorkflowExpression] Func<string> bodymoduleEventstartTime = null, [WorkflowExpression] Func<string> bodymoduleEventendTime = null, [WorkflowExpression] Func<string> bodymoduleEventlocation = null, [WorkflowExpression] Func<string> bodymoduleEventauthor = null, [WorkflowExpression] Func<string> bodymoduleEventprocesstype = null, [WorkflowExpression] Func<string> bodymoduleEventenable = null, [WorkflowExpression] Func<int> bodymoduleisheetid = null, [WorkflowExpression] Func<string> bodymoduleisheettitle = null, [WorkflowExpression] Func<string> bodymoduleisheetdescription = null, [WorkflowExpression] Func<string> bodymoduleisheetstatus = null, [WorkflowExpression] Func<string> bodymoduleisheetaccesstype = null, [WorkflowExpression] Func<string> bodymoduleisheettype = null, [WorkflowExpression] Func<string> bodymoduleisheetviewlink = null, [WorkflowExpression] Func<string> bodymoduleisheetallowsections = null, [WorkflowExpression] Func<string> bodymoduleisheetallowlookup = null, [WorkflowExpression] Func<string> bodymoduleisheetdisplayisheet = null, [WorkflowExpression] Func<string> bodymoduleisheetsearchasdefaultview = null, [WorkflowExpression] Func<string> bodymoduleisheetenableversion = null, [WorkflowExpression] Func<string> bodymoduleisheetenablesheetalerter = null, [WorkflowExpression] Func<string> bodymoduleisheetalertercondition = null, [WorkflowExpression] Func<string> bodymoduleisheetoverrideitemmodifieddate = null, [WorkflowExpression] Func<string> bodymoduleisheetenablebulkinsertupdate = null, [WorkflowExpression] Func<string> bodymoduleisheetfielddescriptions = null, [WorkflowExpression] Func<string> bodymoduleisheetenablerowlocking = null, [WorkflowExpression] Func<string> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, [WorkflowExpression] Func<string> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, [WorkflowExpression] Func<string> bodymoduleisheetallowchoicelistvaluesforreuse = null, [WorkflowExpression] Func<string> bodymoduleisheetallowscorelistvaluesforreuse = null, [WorkflowExpression] Func<string> bodymoduleisheetallowIsheetComments = null, [WorkflowExpression] Func<int> bodymoduleisheetshareRecordsLimit = null, [WorkflowExpression] Func<int> bodymoduleisheetshareRecordsLimitEnabled = null, [WorkflowExpression] Func<string> bodymoduleisheetenableIsheetAddRecordFormSharing = null, [WorkflowExpression] Func<string> bodymoduleisheetrecordcount = null, [WorkflowExpression] Func<int> bodymoduleisheetsheettypeid = null, [WorkflowExpression] Func<string> bodymoduleqaenable = null, [WorkflowExpression] Func<PersonDBO[]> bodymodulepeopleperson = null, [WorkflowExpression] Func<string> bodymodulecontractexpressenable = null, [WorkflowExpression] Func<string> bodyadminnote = null, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodyenddate = null, [WorkflowExpression] Func<string> bodycreateddate = null, [WorkflowExpression] Func<string> bodyarchiveddate = null, [WorkflowExpression] Func<string> bodyclientno = null, [WorkflowExpression] Func<string> bodymatterno = null, [WorkflowExpression] Func<string> bodylandingpage = null, [WorkflowExpression] Func<string> bodylink = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodystatusid = null, [WorkflowExpression] Func<string> bodysize = null, [WorkflowExpression] Func<string> bodybillingnotes = null, [WorkflowExpression] Func<string> bodybillingnextinvoicedate = null, [WorkflowExpression] Func<string> bodybillinglastinvoicedate = null, [WorkflowExpression] Func<string> bodyfilepagecount = null, [WorkflowExpression] Func<string> bodymaxpagecount = null, [WorkflowExpression] Func<string> bodysitehttplink = null, [WorkflowExpression] Func<int> bodyisSyncable = null, [WorkflowExpression] Func<string> bodyenforceusergroups = null, [WorkflowExpression] Func<string> bodycsvSiteCategory = null, [WorkflowExpression] Func<string> bodysiteNameInDefaultLanguage = null, [WorkflowExpression] Func<int> bodyvisible = null, [WorkflowExpression] Func<string> bodysiteLogoName = null, [WorkflowExpression] Func<int> bodysiteLogoFileSize = null, [WorkflowExpression] Func<int> bodysiteLogoHeight = null, [WorkflowExpression] Func<int> bodysiteLogoWidth = null, [WorkflowExpression] Func<int> bodysiteStatus = null, [WorkflowExpression] Func<int> bodyapplySiteTerms = null, [WorkflowExpression] Func<string> bodysiteTerm = null, [WorkflowExpression] Func<int> bodytermType = null, [WorkflowExpression] Func<int> bodynextLoginSiteTerms = null, [WorkflowExpression] Func<int> bodydefaultSiteTermsEnable = null, [WorkflowExpression] Func<int> bodyadvancedQAPermission = null, [WorkflowExpression] Func<int> bodyisInternal = null, [WorkflowExpression] Func<int> bodypsm = null, [WorkflowExpression] Func<string> bodysiteLabelDisplay = null, [WorkflowExpression] Func<int> bodyallowSiteAdministration = null, [WorkflowExpression] Func<int> bodysiteLevelPasswordEnable = null, [WorkflowExpression] Func<int> bodysiteLevelPasscodeEnable = null, [WorkflowExpression] Func<int> bodypasscodeUsingAuthApp = null, [WorkflowExpression] Func<string> bodysitePassword = null, [WorkflowExpression] Func<int> bodyipRestrictionEnable = null, [WorkflowExpression] Func<string> bodyavailableIP = null, [WorkflowExpression] Func<int> bodyhighqDrive = null, [WorkflowExpression] Func<int> bodyapplySiteHomePage = null, [WorkflowExpression] Func<string> bodysiteHomePage = null, [WorkflowExpression] Func<int> bodysiteHomePageType = null, [WorkflowExpression] Func<int> bodynextLoginSiteHomePage = null, [WorkflowExpression] Func<int> bodyapplyDisplayContent = null, [WorkflowExpression] Func<string> bodydisplayContent = null, [WorkflowExpression] Func<int> bodyrssSecurity = null, [WorkflowExpression] Func<int> bodyencryptedPassword = null, [WorkflowExpression] Func<string> bodyavailableIPRangeCSV = null, [WorkflowExpression] Func<int> bodysiteModuleID = null, [WorkflowExpression] Func<int> bodyicalSecurity = null, [WorkflowExpression] Func<string> bodydefaultDisplayContent = null, [WorkflowExpression] Func<int> bodydefaultEmailAlert = null, [WorkflowExpression] Func<int> bodyexcelReportFooter = null, [WorkflowExpression] Func<string> bodyexcelReportFooterText = null, [WorkflowExpression] Func<string> bodyannouncementMLJSON = null, [WorkflowExpression] Func<int> bodytemplateType = null, [WorkflowExpression] Func<int> bodytemplateLicence = null, [WorkflowExpression] Func<string> bodyopenChannelAppID = null, [WorkflowExpression] Func<int> bodyitemid = null, [WorkflowExpression] Func<int> bodysitemetadatasheetid = null, [WorkflowExpression] Func<bool> bodymysite = null, [WorkflowExpression] Func<string> bodylastaccesseddate = null, [WorkflowExpression] Func<int> bodydefaultViewerMetaDataTab = null, [WorkflowExpression] Func<int> bodydocumentMetadataViewId = null, [WorkflowExpression] Func<int> bodyfolderMetadataViewId = null, [WorkflowExpression] Func<int> bodydocSort = null, [WorkflowExpression] Func<int> bodyfolderSort = null, [WorkflowExpression] Func<int> bodydefaultFolderRenderView = null, [WorkflowExpression] Func<int> bodyisTaskAttachmentDefault = null, [WorkflowExpression] Func<int> bodytaskAttachmentDefaultFolderId = null, [WorkflowExpression] Func<string> bodyfavourite = null, [WorkflowExpression] Func<bool> bodyenabledocumentredaction = null, [WorkflowExpression] Func<int> bodymentiongroups = null, [WorkflowExpression] Func<bool> bodyenablefilerelationships = null, [WorkflowExpression] Func<int> bodyfilerelationshipsitepermissionlevel = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/sites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodysitename != null)
-            {
-                body["sitename"] = CSharpExpressionConverter.ConvertToken(bodysitename);
-                bodypropCount++;
-            }
-
-            if (bodyrole != null)
-            {
-                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
-                bodypropCount++;
-            }
-
-            if (bodysitedescription != null)
-            {
-                body["sitedescription"] = CSharpExpressionConverter.ConvertToken(bodysitedescription);
-                bodypropCount++;
-            }
-
-            if (bodyenabledmodules != null)
-            {
-                body["enabledmodules"] = CSharpExpressionConverter.ConvertToken(bodyenabledmodules);
-                bodypropCount++;
-            }
-
-            if (bodysitefolderID != null)
-            {
-                body["sitefolderID"] = CSharpExpressionConverter.ConvertToken(bodysitefolderID);
-                bodypropCount++;
-            }
-
-            if (bodysitefolderpermission != null)
-            {
-                body["sitefolderpermission"] = CSharpExpressionConverter.ConvertToken(bodysitefolderpermission);
-                bodypropCount++;
-            }
-
-            var moduleObject = new JObject();
-            var moduleObjectpropCount = 0;
-            var homeObject = new JObject();
-            var homeObjectpropCount = 0;
-            if (bodymodulehomeenable != null)
-            {
-                homeObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymodulehomeenable);
-                homeObjectpropCount++;
-            }
-
-            if (homeObjectpropCount > 0)
-            {
-                moduleObject["home"] = homeObject;
-                moduleObjectpropCount++;
-            }
-
-            var activityObject = new JObject();
-            var activityObjectpropCount = 0;
-            if (bodymoduleactivityenable != null)
-            {
-                activityObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleactivityenable);
-                activityObjectpropCount++;
-            }
-
-            if (bodymoduleactivitymicroblog != null)
-            {
-                activityObject["microblog"] = CSharpExpressionConverter.ConvertToken(bodymoduleactivitymicroblog);
-                activityObjectpropCount++;
-            }
-
-            if (activityObjectpropCount > 0)
-            {
-                moduleObject["activity"] = activityObject;
-                moduleObjectpropCount++;
-            }
-
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodymoduledocumentdocid != null)
-            {
-                documentObject["docid"] = CSharpExpressionConverter.ConvertToken(bodymoduledocumentdocid);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                moduleObject["document"] = documentObject;
-                moduleObjectpropCount++;
-            }
-
-            var blogObject = new JObject();
-            var blogObjectpropCount = 0;
-            if (bodymoduleblogblogTitle != null)
-            {
-                blogObject["blogTitle"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogblogTitle);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogblogContent != null)
-            {
-                blogObject["blogContent"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogblogContent);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogshowComment != null)
-            {
-                blogObject["showComment"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogshowComment);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogtagList != null)
-            {
-                blogObject["tagList"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogtagList);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogstatus != null)
-            {
-                blogObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogstatus);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogsiteID != null)
-            {
-                blogObject["siteID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogsiteID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogauthor != null)
-            {
-                blogObject["author"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogauthor);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogcategoryList != null)
-            {
-                blogObject["categoryList"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogcategoryList);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblognotificationTypeID != null)
-            {
-                blogObject["notificationTypeID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblognotificationTypeID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogmessage != null)
-            {
-                blogObject["message"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogmessage);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogmessageCode != null)
-            {
-                blogObject["messageCode"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogmessageCode);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogexternalID != null)
-            {
-                blogObject["externalID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogexternalID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogpublishDate != null)
-            {
-                blogObject["publishDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogpublishDate);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogprocesstype != null)
-            {
-                blogObject["processtype"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogprocesstype);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogenable != null)
-            {
-                blogObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogenable);
-                blogObjectpropCount++;
-            }
-
-            if (blogObjectpropCount > 0)
-            {
-                moduleObject["blog"] = blogObject;
-                moduleObjectpropCount++;
-            }
-
-            var wikiObject = new JObject();
-            var wikiObjectpropCount = 0;
-            if (bodymodulewikiwikiid != null)
-            {
-                wikiObject["wikiid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikiid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikicurrentversionid != null)
-            {
-                wikiObject["currentversionid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikicurrentversionid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiparentwikiid != null)
-            {
-                wikiObject["parentwikiid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiparentwikiid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikititle != null)
-            {
-                wikiObject["wikititle"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikititle);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikicontent != null)
-            {
-                wikiObject["wikicontent"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikicontent);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikishowcomment != null)
-            {
-                wikiObject["showcomment"] = CSharpExpressionConverter.ConvertToken(bodymodulewikishowcomment);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikicreateddate != null)
-            {
-                wikiObject["createddate"] = CSharpExpressionConverter.ConvertToken(bodymodulewikicreateddate);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikimodifieddate != null)
-            {
-                wikiObject["modifieddate"] = CSharpExpressionConverter.ConvertToken(bodymodulewikimodifieddate);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikitaglist != null)
-            {
-                wikiObject["taglist"] = CSharpExpressionConverter.ConvertToken(bodymodulewikitaglist);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikipath != null)
-            {
-                wikiObject["wikipath"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikipath);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikidraftid != null)
-            {
-                wikiObject["wikidraftid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikidraftid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikidrafttype != null)
-            {
-                wikiObject["drafttype"] = CSharpExpressionConverter.ConvertToken(bodymodulewikidrafttype);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikistatus != null)
-            {
-                wikiObject["status"] = CSharpExpressionConverter.ConvertToken(bodymodulewikistatus);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikiversionid != null)
-            {
-                wikiObject["wikiversionid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikiversionid);
-                wikiObjectpropCount++;
-            }
-
-            if (wikiObjectpropCount > 0)
-            {
-                moduleObject["wiki"] = wikiObject;
-                moduleObjectpropCount++;
-            }
-
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodymoduletaskindex != null)
-            {
-                taskObject["index"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskindex);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskparenttaskid != null)
-            {
-                taskObject["parenttaskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskparenttaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktaskid != null)
-            {
-                taskObject["taskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktitle != null)
-            {
-                taskObject["title"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktitle);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdescription != null)
-            {
-                taskObject["description"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdescription);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskduedate != null)
-            {
-                taskObject["duedate"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskduedate);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskstartdate != null)
-            {
-                taskObject["startdate"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskstartdate);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskmattermaptaskid != null)
-            {
-                taskObject["mattermaptaskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskmattermaptaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktype != null)
-            {
-                taskObject["type"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktype);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdependenton != null)
-            {
-                taskObject["dependenton"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdependenton);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdaysfromdependent != null)
-            {
-                taskObject["daysfromdependent"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdaysfromdependent);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskignoreweekend != null)
-            {
-                taskObject["ignoreweekend"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskignoreweekend);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskduration != null)
-            {
-                taskObject["duration"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskduration);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskresource != null)
-            {
-                taskObject["resource"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskresource);
-                taskObjectpropCount++;
-            }
-
-            if (taskObjectpropCount > 0)
-            {
-                moduleObject["task"] = taskObject;
-                moduleObjectpropCount++;
-            }
-
-            var @eventObject = new JObject();
-            var @eventObjectpropCount = 0;
-            if (bodymoduleEventeventTitle != null)
-            {
-                @eventObject["eventTitle"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventeventTitle);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventeventContent != null)
-            {
-                @eventObject["eventContent"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventeventContent);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventshowComment != null)
-            {
-                @eventObject["showComment"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventshowComment);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventtagList != null)
-            {
-                @eventObject["tagList"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventtagList);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstatus != null)
-            {
-                @eventObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstatus);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventsiteID != null)
-            {
-                @eventObject["siteID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventsiteID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventcontact != null)
-            {
-                @eventObject["contact"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventcontact);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventcategoryList != null)
-            {
-                @eventObject["categoryList"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventcategoryList);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventnotificationTypeID != null)
-            {
-                @eventObject["notificationTypeID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventnotificationTypeID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventmessage != null)
-            {
-                @eventObject["message"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventmessage);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventmessageCode != null)
-            {
-                @eventObject["messageCode"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventmessageCode);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventexternalID != null)
-            {
-                @eventObject["externalID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventexternalID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstartDate != null)
-            {
-                @eventObject["startDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstartDate);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventendDate != null)
-            {
-                @eventObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventendDate);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstartTime != null)
-            {
-                @eventObject["startTime"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstartTime);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventendTime != null)
-            {
-                @eventObject["endTime"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventendTime);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventlocation != null)
-            {
-                @eventObject["location"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventlocation);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventauthor != null)
-            {
-                @eventObject["author"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventauthor);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventprocesstype != null)
-            {
-                @eventObject["processtype"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventprocesstype);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventenable != null)
-            {
-                @eventObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventenable);
-                @eventObjectpropCount++;
-            }
-
-            if (@eventObjectpropCount > 0)
-            {
-                moduleObject["event"] = @eventObject;
-                moduleObjectpropCount++;
-            }
-
-            var isheetObject = new JObject();
-            var isheetObjectpropCount = 0;
-            if (bodymoduleisheetid != null)
-            {
-                isheetObject["id"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetid);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheettitle != null)
-            {
-                isheetObject["title"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheettitle);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetdescription != null)
-            {
-                isheetObject["description"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetdescription);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetstatus != null)
-            {
-                isheetObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetstatus);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetaccesstype != null)
-            {
-                isheetObject["accesstype"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetaccesstype);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheettype != null)
-            {
-                isheetObject["type"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheettype);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetviewlink != null)
-            {
-                isheetObject["viewlink"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetviewlink);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowsections != null)
-            {
-                isheetObject["allowsections"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowsections);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowlookup != null)
-            {
-                isheetObject["allowlookup"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowlookup);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetdisplayisheet != null)
-            {
-                isheetObject["displayisheet"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetdisplayisheet);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsearchasdefaultview != null)
-            {
-                isheetObject["searchasdefaultview"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsearchasdefaultview);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenableversion != null)
-            {
-                isheetObject["enableversion"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenableversion);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablesheetalerter != null)
-            {
-                isheetObject["enablesheetalerter"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablesheetalerter);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetalertercondition != null)
-            {
-                isheetObject["alertercondition"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetalertercondition);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetoverrideitemmodifieddate != null)
-            {
-                isheetObject["overrideitemmodifieddate"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetoverrideitemmodifieddate);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablebulkinsertupdate != null)
-            {
-                isheetObject["enablebulkinsertupdate"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablebulkinsertupdate);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetfielddescriptions != null)
-            {
-                isheetObject["fielddescriptions"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetfielddescriptions);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablerowlocking != null)
-            {
-                isheetObject["enablerowlocking"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablerowlocking);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsetcharlimittruncatemultilinetextenabled != null)
-            {
-                isheetObject["setcharlimittruncatemultilinetextenabled"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextenabled);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsetcharlimittruncatemultilinetextval != null)
-            {
-                isheetObject["setcharlimittruncatemultilinetextval"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextval);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowchoicelistvaluesforreuse != null)
-            {
-                isheetObject["allowchoicelistvaluesforreuse"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowchoicelistvaluesforreuse);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowscorelistvaluesforreuse != null)
-            {
-                isheetObject["allowscorelistvaluesforreuse"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowscorelistvaluesforreuse);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowIsheetComments != null)
-            {
-                isheetObject["allowIsheetComments"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowIsheetComments);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetshareRecordsLimit != null)
-            {
-                isheetObject["shareRecordsLimit"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimit);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetshareRecordsLimitEnabled != null)
-            {
-                isheetObject["shareRecordsLimitEnabled"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimitEnabled);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenableIsheetAddRecordFormSharing != null)
-            {
-                isheetObject["enableIsheetAddRecordFormSharing"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenableIsheetAddRecordFormSharing);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetrecordcount != null)
-            {
-                isheetObject["recordcount"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetrecordcount);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsheettypeid != null)
-            {
-                isheetObject["sheettypeid"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsheettypeid);
-                isheetObjectpropCount++;
-            }
-
-            if (isheetObjectpropCount > 0)
-            {
-                moduleObject["isheet"] = isheetObject;
-                moduleObjectpropCount++;
-            }
-
-            var qaObject = new JObject();
-            var qaObjectpropCount = 0;
-            if (bodymoduleqaenable != null)
-            {
-                qaObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleqaenable);
-                qaObjectpropCount++;
-            }
-
-            if (qaObjectpropCount > 0)
-            {
-                moduleObject["qa"] = qaObject;
-                moduleObjectpropCount++;
-            }
-
-            var peopleObject = new JObject();
-            var peopleObjectpropCount = 0;
-            if (bodymodulepeopleperson != null)
-            {
-                peopleObject["person"] = CSharpExpressionConverter.ConvertToken(bodymodulepeopleperson);
-                peopleObjectpropCount++;
-            }
-
-            if (peopleObjectpropCount > 0)
-            {
-                moduleObject["people"] = peopleObject;
-                moduleObjectpropCount++;
-            }
-
-            var contractexpressObject = new JObject();
-            var contractexpressObjectpropCount = 0;
-            if (bodymodulecontractexpressenable != null)
-            {
-                contractexpressObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymodulecontractexpressenable);
-                contractexpressObjectpropCount++;
-            }
-
-            if (contractexpressObjectpropCount > 0)
-            {
-                moduleObject["contractexpress"] = contractexpressObject;
-                moduleObjectpropCount++;
-            }
-
-            if (moduleObjectpropCount > 0)
-            {
-                body["module"] = moduleObject;
-                bodypropCount++;
-            }
-
-            if (bodyadminnote != null)
-            {
-                body["adminnote"] = CSharpExpressionConverter.ConvertToken(bodyadminnote);
-                bodypropCount++;
-            }
-
-            if (bodystartdate != null)
-            {
-                body["startdate"] = CSharpExpressionConverter.ConvertToken(bodystartdate);
-                bodypropCount++;
-            }
-
-            if (bodyenddate != null)
-            {
-                body["enddate"] = CSharpExpressionConverter.ConvertToken(bodyenddate);
-                bodypropCount++;
-            }
-
-            if (bodycreateddate != null)
-            {
-                body["createddate"] = CSharpExpressionConverter.ConvertToken(bodycreateddate);
-                bodypropCount++;
-            }
-
-            if (bodyarchiveddate != null)
-            {
-                body["archiveddate"] = CSharpExpressionConverter.ConvertToken(bodyarchiveddate);
-                bodypropCount++;
-            }
-
-            if (bodyclientno != null)
-            {
-                body["clientno"] = CSharpExpressionConverter.ConvertToken(bodyclientno);
-                bodypropCount++;
-            }
-
-            if (bodymatterno != null)
-            {
-                body["matterno"] = CSharpExpressionConverter.ConvertToken(bodymatterno);
-                bodypropCount++;
-            }
-
-            if (bodylandingpage != null)
-            {
-                body["landingpage"] = CSharpExpressionConverter.ConvertToken(bodylandingpage);
-                bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = CSharpExpressionConverter.ConvertToken(bodylink);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodystatusid != null)
-            {
-                body["statusid"] = CSharpExpressionConverter.ConvertToken(bodystatusid);
-                bodypropCount++;
-            }
-
-            if (bodysize != null)
-            {
-                body["size"] = CSharpExpressionConverter.ConvertToken(bodysize);
-                bodypropCount++;
-            }
-
-            if (bodybillingnotes != null)
-            {
-                body["billingnotes"] = CSharpExpressionConverter.ConvertToken(bodybillingnotes);
-                bodypropCount++;
-            }
-
-            if (bodybillingnextinvoicedate != null)
-            {
-                body["billingnextinvoicedate"] = CSharpExpressionConverter.ConvertToken(bodybillingnextinvoicedate);
-                bodypropCount++;
-            }
-
-            if (bodybillinglastinvoicedate != null)
-            {
-                body["billinglastinvoicedate"] = CSharpExpressionConverter.ConvertToken(bodybillinglastinvoicedate);
-                bodypropCount++;
-            }
-
-            if (bodyfilepagecount != null)
-            {
-                body["filepagecount"] = CSharpExpressionConverter.ConvertToken(bodyfilepagecount);
-                bodypropCount++;
-            }
-
-            if (bodymaxpagecount != null)
-            {
-                body["maxpagecount"] = CSharpExpressionConverter.ConvertToken(bodymaxpagecount);
-                bodypropCount++;
-            }
-
-            if (bodysitehttplink != null)
-            {
-                body["sitehttplink"] = CSharpExpressionConverter.ConvertToken(bodysitehttplink);
-                bodypropCount++;
-            }
-
-            if (bodyisSyncable != null)
-            {
-                body["isSyncable"] = CSharpExpressionConverter.ConvertToken(bodyisSyncable);
-                bodypropCount++;
-            }
-
-            if (bodyenforceusergroups != null)
-            {
-                body["enforceusergroups"] = CSharpExpressionConverter.ConvertToken(bodyenforceusergroups);
-                bodypropCount++;
-            }
-
-            if (bodycsvSiteCategory != null)
-            {
-                body["csvSiteCategory"] = CSharpExpressionConverter.ConvertToken(bodycsvSiteCategory);
-                bodypropCount++;
-            }
-
-            if (bodysiteNameInDefaultLanguage != null)
-            {
-                body["siteNameInDefaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysiteNameInDefaultLanguage);
-                bodypropCount++;
-            }
-
-            if (bodyvisible != null)
-            {
-                body["visible"] = CSharpExpressionConverter.ConvertToken(bodyvisible);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoName != null)
-            {
-                body["siteLogoName"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoName);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoFileSize != null)
-            {
-                body["siteLogoFileSize"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoFileSize);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoHeight != null)
-            {
-                body["siteLogoHeight"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoHeight);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoWidth != null)
-            {
-                body["siteLogoWidth"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoWidth);
-                bodypropCount++;
-            }
-
-            if (bodysiteStatus != null)
-            {
-                body["siteStatus"] = CSharpExpressionConverter.ConvertToken(bodysiteStatus);
-                bodypropCount++;
-            }
-
-            if (bodyapplySiteTerms != null)
-            {
-                body["applySiteTerms"] = CSharpExpressionConverter.ConvertToken(bodyapplySiteTerms);
-                bodypropCount++;
-            }
-
-            if (bodysiteTerm != null)
-            {
-                body["siteTerm"] = CSharpExpressionConverter.ConvertToken(bodysiteTerm);
-                bodypropCount++;
-            }
-
-            if (bodytermType != null)
-            {
-                body["termType"] = CSharpExpressionConverter.ConvertToken(bodytermType);
-                bodypropCount++;
-            }
-
-            if (bodynextLoginSiteTerms != null)
-            {
-                body["nextLoginSiteTerms"] = CSharpExpressionConverter.ConvertToken(bodynextLoginSiteTerms);
-                bodypropCount++;
-            }
-
-            if (bodydefaultSiteTermsEnable != null)
-            {
-                body["defaultSiteTermsEnable"] = CSharpExpressionConverter.ConvertToken(bodydefaultSiteTermsEnable);
-                bodypropCount++;
-            }
-
-            if (bodyadvancedQAPermission != null)
-            {
-                body["advancedQAPermission"] = CSharpExpressionConverter.ConvertToken(bodyadvancedQAPermission);
-                bodypropCount++;
-            }
-
-            if (bodyisInternal != null)
-            {
-                body["isInternal"] = CSharpExpressionConverter.ConvertToken(bodyisInternal);
-                bodypropCount++;
-            }
-
-            if (bodypsm != null)
-            {
-                body["psm"] = CSharpExpressionConverter.ConvertToken(bodypsm);
-                bodypropCount++;
-            }
-
-            if (bodysiteLabelDisplay != null)
-            {
-                body["siteLabelDisplay"] = CSharpExpressionConverter.ConvertToken(bodysiteLabelDisplay);
-                bodypropCount++;
-            }
-
-            if (bodyallowSiteAdministration != null)
-            {
-                body["allowSiteAdministration"] = CSharpExpressionConverter.ConvertToken(bodyallowSiteAdministration);
-                bodypropCount++;
-            }
-
-            if (bodysiteLevelPasswordEnable != null)
-            {
-                body["siteLevelPasswordEnable"] = CSharpExpressionConverter.ConvertToken(bodysiteLevelPasswordEnable);
-                bodypropCount++;
-            }
-
-            if (bodysiteLevelPasscodeEnable != null)
-            {
-                body["siteLevelPasscodeEnable"] = CSharpExpressionConverter.ConvertToken(bodysiteLevelPasscodeEnable);
-                bodypropCount++;
-            }
-
-            if (bodypasscodeUsingAuthApp != null)
-            {
-                body["passcodeUsingAuthApp"] = CSharpExpressionConverter.ConvertToken(bodypasscodeUsingAuthApp);
-                bodypropCount++;
-            }
-
-            if (bodysitePassword != null)
-            {
-                body["sitePassword"] = CSharpExpressionConverter.ConvertToken(bodysitePassword);
-                bodypropCount++;
-            }
-
-            if (bodyipRestrictionEnable != null)
-            {
-                body["ipRestrictionEnable"] = CSharpExpressionConverter.ConvertToken(bodyipRestrictionEnable);
-                bodypropCount++;
-            }
-
-            if (bodyavailableIP != null)
-            {
-                body["availableIP"] = CSharpExpressionConverter.ConvertToken(bodyavailableIP);
-                bodypropCount++;
-            }
-
-            if (bodyhighqDrive != null)
-            {
-                body["highqDrive"] = CSharpExpressionConverter.ConvertToken(bodyhighqDrive);
-                bodypropCount++;
-            }
-
-            if (bodyapplySiteHomePage != null)
-            {
-                body["applySiteHomePage"] = CSharpExpressionConverter.ConvertToken(bodyapplySiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodysiteHomePage != null)
-            {
-                body["siteHomePage"] = CSharpExpressionConverter.ConvertToken(bodysiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodysiteHomePageType != null)
-            {
-                body["siteHomePageType"] = CSharpExpressionConverter.ConvertToken(bodysiteHomePageType);
-                bodypropCount++;
-            }
-
-            if (bodynextLoginSiteHomePage != null)
-            {
-                body["nextLoginSiteHomePage"] = CSharpExpressionConverter.ConvertToken(bodynextLoginSiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodyapplyDisplayContent != null)
-            {
-                body["applyDisplayContent"] = CSharpExpressionConverter.ConvertToken(bodyapplyDisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodydisplayContent != null)
-            {
-                body["displayContent"] = CSharpExpressionConverter.ConvertToken(bodydisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodyrssSecurity != null)
-            {
-                body["rssSecurity"] = CSharpExpressionConverter.ConvertToken(bodyrssSecurity);
-                bodypropCount++;
-            }
-
-            if (bodyencryptedPassword != null)
-            {
-                body["encryptedPassword"] = CSharpExpressionConverter.ConvertToken(bodyencryptedPassword);
-                bodypropCount++;
-            }
-
-            if (bodyavailableIPRangeCSV != null)
-            {
-                body["availableIPRangeCSV"] = CSharpExpressionConverter.ConvertToken(bodyavailableIPRangeCSV);
-                bodypropCount++;
-            }
-
-            if (bodysiteModuleID != null)
-            {
-                body["siteModuleID"] = CSharpExpressionConverter.ConvertToken(bodysiteModuleID);
-                bodypropCount++;
-            }
-
-            if (bodyicalSecurity != null)
-            {
-                body["icalSecurity"] = CSharpExpressionConverter.ConvertToken(bodyicalSecurity);
-                bodypropCount++;
-            }
-
-            if (bodydefaultDisplayContent != null)
-            {
-                body["defaultDisplayContent"] = CSharpExpressionConverter.ConvertToken(bodydefaultDisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodydefaultEmailAlert != null)
-            {
-                body["defaultEmailAlert"] = CSharpExpressionConverter.ConvertToken(bodydefaultEmailAlert);
-                bodypropCount++;
-            }
-
-            if (bodyexcelReportFooter != null)
-            {
-                body["excelReportFooter"] = CSharpExpressionConverter.ConvertToken(bodyexcelReportFooter);
-                bodypropCount++;
-            }
-
-            if (bodyexcelReportFooterText != null)
-            {
-                body["excelReportFooterText"] = CSharpExpressionConverter.ConvertToken(bodyexcelReportFooterText);
-                bodypropCount++;
-            }
-
-            if (bodyannouncementMLJSON != null)
-            {
-                body["announcementMLJSON"] = CSharpExpressionConverter.ConvertToken(bodyannouncementMLJSON);
-                bodypropCount++;
-            }
-
-            if (bodytemplateType != null)
-            {
-                body["templateType"] = CSharpExpressionConverter.ConvertToken(bodytemplateType);
-                bodypropCount++;
-            }
-
-            if (bodytemplateLicence != null)
-            {
-                body["templateLicence"] = CSharpExpressionConverter.ConvertToken(bodytemplateLicence);
-                bodypropCount++;
-            }
-
-            if (bodyopenChannelAppID != null)
-            {
-                body["openChannelAppID"] = CSharpExpressionConverter.ConvertToken(bodyopenChannelAppID);
-                bodypropCount++;
-            }
-
-            if (bodyitemid != null)
-            {
-                body["itemid"] = CSharpExpressionConverter.ConvertToken(bodyitemid);
-                bodypropCount++;
-            }
-
-            if (bodysitemetadatasheetid != null)
-            {
-                body["sitemetadatasheetid"] = CSharpExpressionConverter.ConvertToken(bodysitemetadatasheetid);
-                bodypropCount++;
-            }
-
-            if (bodymysite != null)
-            {
-                body["mysite"] = CSharpExpressionConverter.ConvertToken(bodymysite);
-                bodypropCount++;
-            }
-
-            if (bodylastaccesseddate != null)
-            {
-                body["lastaccesseddate"] = CSharpExpressionConverter.ConvertToken(bodylastaccesseddate);
-                bodypropCount++;
-            }
-
-            if (bodydefaultViewerMetaDataTab != null)
-            {
-                body["defaultViewerMetaDataTab"] = CSharpExpressionConverter.ConvertToken(bodydefaultViewerMetaDataTab);
-                bodypropCount++;
-            }
-
-            if (bodydocumentMetadataViewId != null)
-            {
-                body["documentMetadataViewId"] = CSharpExpressionConverter.ConvertToken(bodydocumentMetadataViewId);
-                bodypropCount++;
-            }
-
-            if (bodyfolderMetadataViewId != null)
-            {
-                body["folderMetadataViewId"] = CSharpExpressionConverter.ConvertToken(bodyfolderMetadataViewId);
-                bodypropCount++;
-            }
-
-            if (bodydocSort != null)
-            {
-                body["docSort"] = CSharpExpressionConverter.ConvertToken(bodydocSort);
-                bodypropCount++;
-            }
-
-            if (bodyfolderSort != null)
-            {
-                body["folderSort"] = CSharpExpressionConverter.ConvertToken(bodyfolderSort);
-                bodypropCount++;
-            }
-
-            if (bodydefaultFolderRenderView != null)
-            {
-                body["defaultFolderRenderView"] = CSharpExpressionConverter.ConvertToken(bodydefaultFolderRenderView);
-                bodypropCount++;
-            }
-
-            if (bodyisTaskAttachmentDefault != null)
-            {
-                body["isTaskAttachmentDefault"] = CSharpExpressionConverter.ConvertToken(bodyisTaskAttachmentDefault);
-                bodypropCount++;
-            }
-
-            if (bodytaskAttachmentDefaultFolderId != null)
-            {
-                body["taskAttachmentDefaultFolderId"] = CSharpExpressionConverter.ConvertToken(bodytaskAttachmentDefaultFolderId);
-                bodypropCount++;
-            }
-
-            if (bodyfavourite != null)
-            {
-                body["favourite"] = CSharpExpressionConverter.ConvertToken(bodyfavourite);
-                bodypropCount++;
-            }
-
-            if (bodyenabledocumentredaction != null)
-            {
-                body["enabledocumentredaction"] = CSharpExpressionConverter.ConvertToken(bodyenabledocumentredaction);
-                bodypropCount++;
-            }
-
-            if (bodymentiongroups != null)
-            {
-                body["mentiongroups"] = CSharpExpressionConverter.ConvertToken(bodymentiongroups);
-                bodypropCount++;
-            }
-
-            if (bodyenablefilerelationships != null)
-            {
-                body["enablefilerelationships"] = CSharpExpressionConverter.ConvertToken(bodyenablefilerelationships);
-                bodypropCount++;
-            }
-
-            if (bodyfilerelationshipsitepermissionlevel != null)
-            {
-                body["filerelationshipsitepermissionlevel"] = CSharpExpressionConverter.ConvertToken(bodyfilerelationshipsitepermissionlevel);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Site>(callPayload);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodysitename, nameof(bodysitename), required: false);
+            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
+            SourceExpression.Validate(bodysitedescription, nameof(bodysitedescription), required: false);
+            SourceExpression.Validate(bodyenabledmodules, nameof(bodyenabledmodules), required: false);
+            SourceExpression.Validate(bodysitefolderID, nameof(bodysitefolderID), required: false);
+            SourceExpression.Validate(bodysitefolderpermission, nameof(bodysitefolderpermission), required: false);
+            SourceExpression.Validate(bodymodulehomeenable, nameof(bodymodulehomeenable), required: false);
+            SourceExpression.Validate(bodymoduleactivityenable, nameof(bodymoduleactivityenable), required: false);
+            SourceExpression.Validate(bodymoduleactivitymicroblog, nameof(bodymoduleactivitymicroblog), required: false);
+            SourceExpression.Validate(bodymoduledocumentdocid, nameof(bodymoduledocumentdocid), required: false);
+            SourceExpression.Validate(bodymoduleblogblogTitle, nameof(bodymoduleblogblogTitle), required: false);
+            SourceExpression.Validate(bodymoduleblogblogContent, nameof(bodymoduleblogblogContent), required: false);
+            SourceExpression.Validate(bodymoduleblogshowComment, nameof(bodymoduleblogshowComment), required: false);
+            SourceExpression.Validate(bodymoduleblogtagList, nameof(bodymoduleblogtagList), required: false);
+            SourceExpression.Validate(bodymoduleblogstatus, nameof(bodymoduleblogstatus), required: false);
+            SourceExpression.Validate(bodymoduleblogsiteID, nameof(bodymoduleblogsiteID), required: false);
+            SourceExpression.Validate(bodymoduleblogauthor, nameof(bodymoduleblogauthor), required: false);
+            SourceExpression.Validate(bodymoduleblogcategoryList, nameof(bodymoduleblogcategoryList), required: false);
+            SourceExpression.Validate(bodymoduleblognotificationTypeID, nameof(bodymoduleblognotificationTypeID), required: false);
+            SourceExpression.Validate(bodymoduleblogmessage, nameof(bodymoduleblogmessage), required: false);
+            SourceExpression.Validate(bodymoduleblogmessageCode, nameof(bodymoduleblogmessageCode), required: false);
+            SourceExpression.Validate(bodymoduleblogexternalID, nameof(bodymoduleblogexternalID), required: false);
+            SourceExpression.Validate(bodymoduleblogpublishDate, nameof(bodymoduleblogpublishDate), required: false);
+            SourceExpression.Validate(bodymoduleblogprocesstype, nameof(bodymoduleblogprocesstype), required: false);
+            SourceExpression.Validate(bodymoduleblogenable, nameof(bodymoduleblogenable), required: false);
+            SourceExpression.Validate(bodymodulewikiwikiid, nameof(bodymodulewikiwikiid), required: false);
+            SourceExpression.Validate(bodymodulewikicurrentversionid, nameof(bodymodulewikicurrentversionid), required: false);
+            SourceExpression.Validate(bodymodulewikiparentwikiid, nameof(bodymodulewikiparentwikiid), required: false);
+            SourceExpression.Validate(bodymodulewikiwikititle, nameof(bodymodulewikiwikititle), required: false);
+            SourceExpression.Validate(bodymodulewikiwikicontent, nameof(bodymodulewikiwikicontent), required: false);
+            SourceExpression.Validate(bodymodulewikishowcomment, nameof(bodymodulewikishowcomment), required: false);
+            SourceExpression.Validate(bodymodulewikicreateddate, nameof(bodymodulewikicreateddate), required: false);
+            SourceExpression.Validate(bodymodulewikimodifieddate, nameof(bodymodulewikimodifieddate), required: false);
+            SourceExpression.Validate(bodymodulewikitaglist, nameof(bodymodulewikitaglist), required: false);
+            SourceExpression.Validate(bodymodulewikiwikipath, nameof(bodymodulewikiwikipath), required: false);
+            SourceExpression.Validate(bodymodulewikiwikidraftid, nameof(bodymodulewikiwikidraftid), required: false);
+            SourceExpression.Validate(bodymodulewikidrafttype, nameof(bodymodulewikidrafttype), required: false);
+            SourceExpression.Validate(bodymodulewikistatus, nameof(bodymodulewikistatus), required: false);
+            SourceExpression.Validate(bodymodulewikiwikiversionid, nameof(bodymodulewikiwikiversionid), required: false);
+            SourceExpression.Validate(bodymoduletaskindex, nameof(bodymoduletaskindex), required: false);
+            SourceExpression.Validate(bodymoduletaskparenttaskid, nameof(bodymoduletaskparenttaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktaskid, nameof(bodymoduletasktaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktitle, nameof(bodymoduletasktitle), required: false);
+            SourceExpression.Validate(bodymoduletaskdescription, nameof(bodymoduletaskdescription), required: false);
+            SourceExpression.Validate(bodymoduletaskduedate, nameof(bodymoduletaskduedate), required: false);
+            SourceExpression.Validate(bodymoduletaskstartdate, nameof(bodymoduletaskstartdate), required: false);
+            SourceExpression.Validate(bodymoduletaskmattermaptaskid, nameof(bodymoduletaskmattermaptaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktype, nameof(bodymoduletasktype), required: false);
+            SourceExpression.Validate(bodymoduletaskdependenton, nameof(bodymoduletaskdependenton), required: false);
+            SourceExpression.Validate(bodymoduletaskdaysfromdependent, nameof(bodymoduletaskdaysfromdependent), required: false);
+            SourceExpression.Validate(bodymoduletaskignoreweekend, nameof(bodymoduletaskignoreweekend), required: false);
+            SourceExpression.Validate(bodymoduletaskduration, nameof(bodymoduletaskduration), required: false);
+            SourceExpression.Validate(bodymoduletaskresource, nameof(bodymoduletaskresource), required: false);
+            SourceExpression.Validate(bodymoduleEventeventTitle, nameof(bodymoduleEventeventTitle), required: false);
+            SourceExpression.Validate(bodymoduleEventeventContent, nameof(bodymoduleEventeventContent), required: false);
+            SourceExpression.Validate(bodymoduleEventshowComment, nameof(bodymoduleEventshowComment), required: false);
+            SourceExpression.Validate(bodymoduleEventtagList, nameof(bodymoduleEventtagList), required: false);
+            SourceExpression.Validate(bodymoduleEventstatus, nameof(bodymoduleEventstatus), required: false);
+            SourceExpression.Validate(bodymoduleEventsiteID, nameof(bodymoduleEventsiteID), required: false);
+            SourceExpression.Validate(bodymoduleEventcontact, nameof(bodymoduleEventcontact), required: false);
+            SourceExpression.Validate(bodymoduleEventcategoryList, nameof(bodymoduleEventcategoryList), required: false);
+            SourceExpression.Validate(bodymoduleEventnotificationTypeID, nameof(bodymoduleEventnotificationTypeID), required: false);
+            SourceExpression.Validate(bodymoduleEventmessage, nameof(bodymoduleEventmessage), required: false);
+            SourceExpression.Validate(bodymoduleEventmessageCode, nameof(bodymoduleEventmessageCode), required: false);
+            SourceExpression.Validate(bodymoduleEventexternalID, nameof(bodymoduleEventexternalID), required: false);
+            SourceExpression.Validate(bodymoduleEventstartDate, nameof(bodymoduleEventstartDate), required: false);
+            SourceExpression.Validate(bodymoduleEventendDate, nameof(bodymoduleEventendDate), required: false);
+            SourceExpression.Validate(bodymoduleEventstartTime, nameof(bodymoduleEventstartTime), required: false);
+            SourceExpression.Validate(bodymoduleEventendTime, nameof(bodymoduleEventendTime), required: false);
+            SourceExpression.Validate(bodymoduleEventlocation, nameof(bodymoduleEventlocation), required: false);
+            SourceExpression.Validate(bodymoduleEventauthor, nameof(bodymoduleEventauthor), required: false);
+            SourceExpression.Validate(bodymoduleEventprocesstype, nameof(bodymoduleEventprocesstype), required: false);
+            SourceExpression.Validate(bodymoduleEventenable, nameof(bodymoduleEventenable), required: false);
+            SourceExpression.Validate(bodymoduleisheetid, nameof(bodymoduleisheetid), required: false);
+            SourceExpression.Validate(bodymoduleisheettitle, nameof(bodymoduleisheettitle), required: false);
+            SourceExpression.Validate(bodymoduleisheetdescription, nameof(bodymoduleisheetdescription), required: false);
+            SourceExpression.Validate(bodymoduleisheetstatus, nameof(bodymoduleisheetstatus), required: false);
+            SourceExpression.Validate(bodymoduleisheetaccesstype, nameof(bodymoduleisheetaccesstype), required: false);
+            SourceExpression.Validate(bodymoduleisheettype, nameof(bodymoduleisheettype), required: false);
+            SourceExpression.Validate(bodymoduleisheetviewlink, nameof(bodymoduleisheetviewlink), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowsections, nameof(bodymoduleisheetallowsections), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowlookup, nameof(bodymoduleisheetallowlookup), required: false);
+            SourceExpression.Validate(bodymoduleisheetdisplayisheet, nameof(bodymoduleisheetdisplayisheet), required: false);
+            SourceExpression.Validate(bodymoduleisheetsearchasdefaultview, nameof(bodymoduleisheetsearchasdefaultview), required: false);
+            SourceExpression.Validate(bodymoduleisheetenableversion, nameof(bodymoduleisheetenableversion), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablesheetalerter, nameof(bodymoduleisheetenablesheetalerter), required: false);
+            SourceExpression.Validate(bodymoduleisheetalertercondition, nameof(bodymoduleisheetalertercondition), required: false);
+            SourceExpression.Validate(bodymoduleisheetoverrideitemmodifieddate, nameof(bodymoduleisheetoverrideitemmodifieddate), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablebulkinsertupdate, nameof(bodymoduleisheetenablebulkinsertupdate), required: false);
+            SourceExpression.Validate(bodymoduleisheetfielddescriptions, nameof(bodymoduleisheetfielddescriptions), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablerowlocking, nameof(bodymoduleisheetenablerowlocking), required: false);
+            SourceExpression.Validate(bodymoduleisheetsetcharlimittruncatemultilinetextenabled, nameof(bodymoduleisheetsetcharlimittruncatemultilinetextenabled), required: false);
+            SourceExpression.Validate(bodymoduleisheetsetcharlimittruncatemultilinetextval, nameof(bodymoduleisheetsetcharlimittruncatemultilinetextval), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowchoicelistvaluesforreuse, nameof(bodymoduleisheetallowchoicelistvaluesforreuse), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowscorelistvaluesforreuse, nameof(bodymoduleisheetallowscorelistvaluesforreuse), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowIsheetComments, nameof(bodymoduleisheetallowIsheetComments), required: false);
+            SourceExpression.Validate(bodymoduleisheetshareRecordsLimit, nameof(bodymoduleisheetshareRecordsLimit), required: false);
+            SourceExpression.Validate(bodymoduleisheetshareRecordsLimitEnabled, nameof(bodymoduleisheetshareRecordsLimitEnabled), required: false);
+            SourceExpression.Validate(bodymoduleisheetenableIsheetAddRecordFormSharing, nameof(bodymoduleisheetenableIsheetAddRecordFormSharing), required: false);
+            SourceExpression.Validate(bodymoduleisheetrecordcount, nameof(bodymoduleisheetrecordcount), required: false);
+            SourceExpression.Validate(bodymoduleisheetsheettypeid, nameof(bodymoduleisheetsheettypeid), required: false);
+            SourceExpression.Validate(bodymoduleqaenable, nameof(bodymoduleqaenable), required: false);
+            SourceExpression.Validate(bodymodulepeopleperson, nameof(bodymodulepeopleperson), required: false);
+            SourceExpression.Validate(bodymodulecontractexpressenable, nameof(bodymodulecontractexpressenable), required: false);
+            SourceExpression.Validate(bodyadminnote, nameof(bodyadminnote), required: false);
+            SourceExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
+            SourceExpression.Validate(bodyenddate, nameof(bodyenddate), required: false);
+            SourceExpression.Validate(bodycreateddate, nameof(bodycreateddate), required: false);
+            SourceExpression.Validate(bodyarchiveddate, nameof(bodyarchiveddate), required: false);
+            SourceExpression.Validate(bodyclientno, nameof(bodyclientno), required: false);
+            SourceExpression.Validate(bodymatterno, nameof(bodymatterno), required: false);
+            SourceExpression.Validate(bodylandingpage, nameof(bodylandingpage), required: false);
+            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodystatusid, nameof(bodystatusid), required: false);
+            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
+            SourceExpression.Validate(bodybillingnotes, nameof(bodybillingnotes), required: false);
+            SourceExpression.Validate(bodybillingnextinvoicedate, nameof(bodybillingnextinvoicedate), required: false);
+            SourceExpression.Validate(bodybillinglastinvoicedate, nameof(bodybillinglastinvoicedate), required: false);
+            SourceExpression.Validate(bodyfilepagecount, nameof(bodyfilepagecount), required: false);
+            SourceExpression.Validate(bodymaxpagecount, nameof(bodymaxpagecount), required: false);
+            SourceExpression.Validate(bodysitehttplink, nameof(bodysitehttplink), required: false);
+            SourceExpression.Validate(bodyisSyncable, nameof(bodyisSyncable), required: false);
+            SourceExpression.Validate(bodyenforceusergroups, nameof(bodyenforceusergroups), required: false);
+            SourceExpression.Validate(bodycsvSiteCategory, nameof(bodycsvSiteCategory), required: false);
+            SourceExpression.Validate(bodysiteNameInDefaultLanguage, nameof(bodysiteNameInDefaultLanguage), required: false);
+            SourceExpression.Validate(bodyvisible, nameof(bodyvisible), required: false);
+            SourceExpression.Validate(bodysiteLogoName, nameof(bodysiteLogoName), required: false);
+            SourceExpression.Validate(bodysiteLogoFileSize, nameof(bodysiteLogoFileSize), required: false);
+            SourceExpression.Validate(bodysiteLogoHeight, nameof(bodysiteLogoHeight), required: false);
+            SourceExpression.Validate(bodysiteLogoWidth, nameof(bodysiteLogoWidth), required: false);
+            SourceExpression.Validate(bodysiteStatus, nameof(bodysiteStatus), required: false);
+            SourceExpression.Validate(bodyapplySiteTerms, nameof(bodyapplySiteTerms), required: false);
+            SourceExpression.Validate(bodysiteTerm, nameof(bodysiteTerm), required: false);
+            SourceExpression.Validate(bodytermType, nameof(bodytermType), required: false);
+            SourceExpression.Validate(bodynextLoginSiteTerms, nameof(bodynextLoginSiteTerms), required: false);
+            SourceExpression.Validate(bodydefaultSiteTermsEnable, nameof(bodydefaultSiteTermsEnable), required: false);
+            SourceExpression.Validate(bodyadvancedQAPermission, nameof(bodyadvancedQAPermission), required: false);
+            SourceExpression.Validate(bodyisInternal, nameof(bodyisInternal), required: false);
+            SourceExpression.Validate(bodypsm, nameof(bodypsm), required: false);
+            SourceExpression.Validate(bodysiteLabelDisplay, nameof(bodysiteLabelDisplay), required: false);
+            SourceExpression.Validate(bodyallowSiteAdministration, nameof(bodyallowSiteAdministration), required: false);
+            SourceExpression.Validate(bodysiteLevelPasswordEnable, nameof(bodysiteLevelPasswordEnable), required: false);
+            SourceExpression.Validate(bodysiteLevelPasscodeEnable, nameof(bodysiteLevelPasscodeEnable), required: false);
+            SourceExpression.Validate(bodypasscodeUsingAuthApp, nameof(bodypasscodeUsingAuthApp), required: false);
+            SourceExpression.Validate(bodysitePassword, nameof(bodysitePassword), required: false);
+            SourceExpression.Validate(bodyipRestrictionEnable, nameof(bodyipRestrictionEnable), required: false);
+            SourceExpression.Validate(bodyavailableIP, nameof(bodyavailableIP), required: false);
+            SourceExpression.Validate(bodyhighqDrive, nameof(bodyhighqDrive), required: false);
+            SourceExpression.Validate(bodyapplySiteHomePage, nameof(bodyapplySiteHomePage), required: false);
+            SourceExpression.Validate(bodysiteHomePage, nameof(bodysiteHomePage), required: false);
+            SourceExpression.Validate(bodysiteHomePageType, nameof(bodysiteHomePageType), required: false);
+            SourceExpression.Validate(bodynextLoginSiteHomePage, nameof(bodynextLoginSiteHomePage), required: false);
+            SourceExpression.Validate(bodyapplyDisplayContent, nameof(bodyapplyDisplayContent), required: false);
+            SourceExpression.Validate(bodydisplayContent, nameof(bodydisplayContent), required: false);
+            SourceExpression.Validate(bodyrssSecurity, nameof(bodyrssSecurity), required: false);
+            SourceExpression.Validate(bodyencryptedPassword, nameof(bodyencryptedPassword), required: false);
+            SourceExpression.Validate(bodyavailableIPRangeCSV, nameof(bodyavailableIPRangeCSV), required: false);
+            SourceExpression.Validate(bodysiteModuleID, nameof(bodysiteModuleID), required: false);
+            SourceExpression.Validate(bodyicalSecurity, nameof(bodyicalSecurity), required: false);
+            SourceExpression.Validate(bodydefaultDisplayContent, nameof(bodydefaultDisplayContent), required: false);
+            SourceExpression.Validate(bodydefaultEmailAlert, nameof(bodydefaultEmailAlert), required: false);
+            SourceExpression.Validate(bodyexcelReportFooter, nameof(bodyexcelReportFooter), required: false);
+            SourceExpression.Validate(bodyexcelReportFooterText, nameof(bodyexcelReportFooterText), required: false);
+            SourceExpression.Validate(bodyannouncementMLJSON, nameof(bodyannouncementMLJSON), required: false);
+            SourceExpression.Validate(bodytemplateType, nameof(bodytemplateType), required: false);
+            SourceExpression.Validate(bodytemplateLicence, nameof(bodytemplateLicence), required: false);
+            SourceExpression.Validate(bodyopenChannelAppID, nameof(bodyopenChannelAppID), required: false);
+            SourceExpression.Validate(bodyitemid, nameof(bodyitemid), required: false);
+            SourceExpression.Validate(bodysitemetadatasheetid, nameof(bodysitemetadatasheetid), required: false);
+            SourceExpression.Validate(bodymysite, nameof(bodymysite), required: false);
+            SourceExpression.Validate(bodylastaccesseddate, nameof(bodylastaccesseddate), required: false);
+            SourceExpression.Validate(bodydefaultViewerMetaDataTab, nameof(bodydefaultViewerMetaDataTab), required: false);
+            SourceExpression.Validate(bodydocumentMetadataViewId, nameof(bodydocumentMetadataViewId), required: false);
+            SourceExpression.Validate(bodyfolderMetadataViewId, nameof(bodyfolderMetadataViewId), required: false);
+            SourceExpression.Validate(bodydocSort, nameof(bodydocSort), required: false);
+            SourceExpression.Validate(bodyfolderSort, nameof(bodyfolderSort), required: false);
+            SourceExpression.Validate(bodydefaultFolderRenderView, nameof(bodydefaultFolderRenderView), required: false);
+            SourceExpression.Validate(bodyisTaskAttachmentDefault, nameof(bodyisTaskAttachmentDefault), required: false);
+            SourceExpression.Validate(bodytaskAttachmentDefaultFolderId, nameof(bodytaskAttachmentDefaultFolderId), required: false);
+            SourceExpression.Validate(bodyfavourite, nameof(bodyfavourite), required: false);
+            SourceExpression.Validate(bodyenabledocumentredaction, nameof(bodyenabledocumentredaction), required: false);
+            SourceExpression.Validate(bodymentiongroups, nameof(bodymentiongroups), required: false);
+            SourceExpression.Validate(bodyenablefilerelationships, nameof(bodyenablefilerelationships), required: false);
+            SourceExpression.Validate(bodyfilerelationshipsitepermissionlevel, nameof(bodyfilerelationshipsitepermissionlevel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/sites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodysitename != null)
+                {
+                    body["sitename"] = SourceExpressionConverter.ConvertToken(bodysitename);
+                    bodypropCount++;
+                }
+
+                if (bodyrole != null)
+                {
+                    body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                    bodypropCount++;
+                }
+
+                if (bodysitedescription != null)
+                {
+                    body["sitedescription"] = SourceExpressionConverter.ConvertToken(bodysitedescription);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledmodules != null)
+                {
+                    body["enabledmodules"] = SourceExpressionConverter.ConvertToken(bodyenabledmodules);
+                    bodypropCount++;
+                }
+
+                if (bodysitefolderID != null)
+                {
+                    body["sitefolderID"] = SourceExpressionConverter.ConvertToken(bodysitefolderID);
+                    bodypropCount++;
+                }
+
+                if (bodysitefolderpermission != null)
+                {
+                    body["sitefolderpermission"] = SourceExpressionConverter.ConvertToken(bodysitefolderpermission);
+                    bodypropCount++;
+                }
+
+                var moduleObject = new JObject();
+                var moduleObjectpropCount = 0;
+                var homeObject = new JObject();
+                var homeObjectpropCount = 0;
+                if (bodymodulehomeenable != null)
+                {
+                    homeObject["enable"] = SourceExpressionConverter.ConvertToken(bodymodulehomeenable);
+                    homeObjectpropCount++;
+                }
+
+                if (homeObjectpropCount > 0)
+                {
+                    moduleObject["home"] = homeObject;
+                    moduleObjectpropCount++;
+                }
+
+                var activityObject = new JObject();
+                var activityObjectpropCount = 0;
+                if (bodymoduleactivityenable != null)
+                {
+                    activityObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleactivityenable);
+                    activityObjectpropCount++;
+                }
+
+                if (bodymoduleactivitymicroblog != null)
+                {
+                    activityObject["microblog"] = SourceExpressionConverter.ConvertToken(bodymoduleactivitymicroblog);
+                    activityObjectpropCount++;
+                }
+
+                if (activityObjectpropCount > 0)
+                {
+                    moduleObject["activity"] = activityObject;
+                    moduleObjectpropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodymoduledocumentdocid != null)
+                {
+                    documentObject["docid"] = SourceExpressionConverter.ConvertToken(bodymoduledocumentdocid);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    moduleObject["document"] = documentObject;
+                    moduleObjectpropCount++;
+                }
+
+                var blogObject = new JObject();
+                var blogObjectpropCount = 0;
+                if (bodymoduleblogblogTitle != null)
+                {
+                    blogObject["blogTitle"] = SourceExpressionConverter.ConvertToken(bodymoduleblogblogTitle);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogblogContent != null)
+                {
+                    blogObject["blogContent"] = SourceExpressionConverter.ConvertToken(bodymoduleblogblogContent);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogshowComment != null)
+                {
+                    blogObject["showComment"] = SourceExpressionConverter.ConvertToken(bodymoduleblogshowComment);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogtagList != null)
+                {
+                    blogObject["tagList"] = SourceExpressionConverter.ConvertToken(bodymoduleblogtagList);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogstatus != null)
+                {
+                    blogObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleblogstatus);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogsiteID != null)
+                {
+                    blogObject["siteID"] = SourceExpressionConverter.ConvertToken(bodymoduleblogsiteID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogauthor != null)
+                {
+                    blogObject["author"] = SourceExpressionConverter.ConvertToken(bodymoduleblogauthor);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogcategoryList != null)
+                {
+                    blogObject["categoryList"] = SourceExpressionConverter.ConvertToken(bodymoduleblogcategoryList);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblognotificationTypeID != null)
+                {
+                    blogObject["notificationTypeID"] = SourceExpressionConverter.ConvertToken(bodymoduleblognotificationTypeID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogmessage != null)
+                {
+                    blogObject["message"] = SourceExpressionConverter.ConvertToken(bodymoduleblogmessage);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogmessageCode != null)
+                {
+                    blogObject["messageCode"] = SourceExpressionConverter.ConvertToken(bodymoduleblogmessageCode);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogexternalID != null)
+                {
+                    blogObject["externalID"] = SourceExpressionConverter.ConvertToken(bodymoduleblogexternalID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogpublishDate != null)
+                {
+                    blogObject["publishDate"] = SourceExpressionConverter.ConvertToken(bodymoduleblogpublishDate);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogprocesstype != null)
+                {
+                    blogObject["processtype"] = SourceExpressionConverter.ConvertToken(bodymoduleblogprocesstype);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogenable != null)
+                {
+                    blogObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleblogenable);
+                    blogObjectpropCount++;
+                }
+
+                if (blogObjectpropCount > 0)
+                {
+                    moduleObject["blog"] = blogObject;
+                    moduleObjectpropCount++;
+                }
+
+                var wikiObject = new JObject();
+                var wikiObjectpropCount = 0;
+                if (bodymodulewikiwikiid != null)
+                {
+                    wikiObject["wikiid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikiid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikicurrentversionid != null)
+                {
+                    wikiObject["currentversionid"] = SourceExpressionConverter.ConvertToken(bodymodulewikicurrentversionid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiparentwikiid != null)
+                {
+                    wikiObject["parentwikiid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiparentwikiid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikititle != null)
+                {
+                    wikiObject["wikititle"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikititle);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikicontent != null)
+                {
+                    wikiObject["wikicontent"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikicontent);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikishowcomment != null)
+                {
+                    wikiObject["showcomment"] = SourceExpressionConverter.ConvertToken(bodymodulewikishowcomment);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikicreateddate != null)
+                {
+                    wikiObject["createddate"] = SourceExpressionConverter.ConvertToken(bodymodulewikicreateddate);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikimodifieddate != null)
+                {
+                    wikiObject["modifieddate"] = SourceExpressionConverter.ConvertToken(bodymodulewikimodifieddate);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikitaglist != null)
+                {
+                    wikiObject["taglist"] = SourceExpressionConverter.ConvertToken(bodymodulewikitaglist);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikipath != null)
+                {
+                    wikiObject["wikipath"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikipath);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikidraftid != null)
+                {
+                    wikiObject["wikidraftid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikidraftid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikidrafttype != null)
+                {
+                    wikiObject["drafttype"] = SourceExpressionConverter.ConvertToken(bodymodulewikidrafttype);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikistatus != null)
+                {
+                    wikiObject["status"] = SourceExpressionConverter.ConvertToken(bodymodulewikistatus);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikiversionid != null)
+                {
+                    wikiObject["wikiversionid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikiversionid);
+                    wikiObjectpropCount++;
+                }
+
+                if (wikiObjectpropCount > 0)
+                {
+                    moduleObject["wiki"] = wikiObject;
+                    moduleObjectpropCount++;
+                }
+
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodymoduletaskindex != null)
+                {
+                    taskObject["index"] = SourceExpressionConverter.ConvertToken(bodymoduletaskindex);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskparenttaskid != null)
+                {
+                    taskObject["parenttaskid"] = SourceExpressionConverter.ConvertToken(bodymoduletaskparenttaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktaskid != null)
+                {
+                    taskObject["taskid"] = SourceExpressionConverter.ConvertToken(bodymoduletasktaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktitle != null)
+                {
+                    taskObject["title"] = SourceExpressionConverter.ConvertToken(bodymoduletasktitle);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdescription != null)
+                {
+                    taskObject["description"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdescription);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskduedate != null)
+                {
+                    taskObject["duedate"] = SourceExpressionConverter.ConvertToken(bodymoduletaskduedate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskstartdate != null)
+                {
+                    taskObject["startdate"] = SourceExpressionConverter.ConvertToken(bodymoduletaskstartdate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskmattermaptaskid != null)
+                {
+                    taskObject["mattermaptaskid"] = SourceExpressionConverter.ConvertToken(bodymoduletaskmattermaptaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktype != null)
+                {
+                    taskObject["type"] = SourceExpressionConverter.ConvertToken(bodymoduletasktype);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdependenton != null)
+                {
+                    taskObject["dependenton"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdependenton);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdaysfromdependent != null)
+                {
+                    taskObject["daysfromdependent"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdaysfromdependent);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskignoreweekend != null)
+                {
+                    taskObject["ignoreweekend"] = SourceExpressionConverter.ConvertToken(bodymoduletaskignoreweekend);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskduration != null)
+                {
+                    taskObject["duration"] = SourceExpressionConverter.ConvertToken(bodymoduletaskduration);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskresource != null)
+                {
+                    taskObject["resource"] = SourceExpressionConverter.ConvertToken(bodymoduletaskresource);
+                    taskObjectpropCount++;
+                }
+
+                if (taskObjectpropCount > 0)
+                {
+                    moduleObject["task"] = taskObject;
+                    moduleObjectpropCount++;
+                }
+
+                var @eventObject = new JObject();
+                var @eventObjectpropCount = 0;
+                if (bodymoduleEventeventTitle != null)
+                {
+                    @eventObject["eventTitle"] = SourceExpressionConverter.ConvertToken(bodymoduleEventeventTitle);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventeventContent != null)
+                {
+                    @eventObject["eventContent"] = SourceExpressionConverter.ConvertToken(bodymoduleEventeventContent);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventshowComment != null)
+                {
+                    @eventObject["showComment"] = SourceExpressionConverter.ConvertToken(bodymoduleEventshowComment);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventtagList != null)
+                {
+                    @eventObject["tagList"] = SourceExpressionConverter.ConvertToken(bodymoduleEventtagList);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstatus != null)
+                {
+                    @eventObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstatus);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventsiteID != null)
+                {
+                    @eventObject["siteID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventsiteID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventcontact != null)
+                {
+                    @eventObject["contact"] = SourceExpressionConverter.ConvertToken(bodymoduleEventcontact);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventcategoryList != null)
+                {
+                    @eventObject["categoryList"] = SourceExpressionConverter.ConvertToken(bodymoduleEventcategoryList);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventnotificationTypeID != null)
+                {
+                    @eventObject["notificationTypeID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventnotificationTypeID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventmessage != null)
+                {
+                    @eventObject["message"] = SourceExpressionConverter.ConvertToken(bodymoduleEventmessage);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventmessageCode != null)
+                {
+                    @eventObject["messageCode"] = SourceExpressionConverter.ConvertToken(bodymoduleEventmessageCode);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventexternalID != null)
+                {
+                    @eventObject["externalID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventexternalID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstartDate != null)
+                {
+                    @eventObject["startDate"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstartDate);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventendDate != null)
+                {
+                    @eventObject["endDate"] = SourceExpressionConverter.ConvertToken(bodymoduleEventendDate);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstartTime != null)
+                {
+                    @eventObject["startTime"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstartTime);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventendTime != null)
+                {
+                    @eventObject["endTime"] = SourceExpressionConverter.ConvertToken(bodymoduleEventendTime);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventlocation != null)
+                {
+                    @eventObject["location"] = SourceExpressionConverter.ConvertToken(bodymoduleEventlocation);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventauthor != null)
+                {
+                    @eventObject["author"] = SourceExpressionConverter.ConvertToken(bodymoduleEventauthor);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventprocesstype != null)
+                {
+                    @eventObject["processtype"] = SourceExpressionConverter.ConvertToken(bodymoduleEventprocesstype);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventenable != null)
+                {
+                    @eventObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleEventenable);
+                    @eventObjectpropCount++;
+                }
+
+                if (@eventObjectpropCount > 0)
+                {
+                    moduleObject["event"] = @eventObject;
+                    moduleObjectpropCount++;
+                }
+
+                var isheetObject = new JObject();
+                var isheetObjectpropCount = 0;
+                if (bodymoduleisheetid != null)
+                {
+                    isheetObject["id"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetid);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheettitle != null)
+                {
+                    isheetObject["title"] = SourceExpressionConverter.ConvertToken(bodymoduleisheettitle);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetdescription != null)
+                {
+                    isheetObject["description"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetdescription);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetstatus != null)
+                {
+                    isheetObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetstatus);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetaccesstype != null)
+                {
+                    isheetObject["accesstype"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetaccesstype);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheettype != null)
+                {
+                    isheetObject["type"] = SourceExpressionConverter.ConvertToken(bodymoduleisheettype);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetviewlink != null)
+                {
+                    isheetObject["viewlink"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetviewlink);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowsections != null)
+                {
+                    isheetObject["allowsections"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowsections);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowlookup != null)
+                {
+                    isheetObject["allowlookup"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowlookup);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetdisplayisheet != null)
+                {
+                    isheetObject["displayisheet"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetdisplayisheet);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsearchasdefaultview != null)
+                {
+                    isheetObject["searchasdefaultview"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsearchasdefaultview);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenableversion != null)
+                {
+                    isheetObject["enableversion"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenableversion);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablesheetalerter != null)
+                {
+                    isheetObject["enablesheetalerter"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablesheetalerter);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetalertercondition != null)
+                {
+                    isheetObject["alertercondition"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetalertercondition);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetoverrideitemmodifieddate != null)
+                {
+                    isheetObject["overrideitemmodifieddate"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetoverrideitemmodifieddate);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablebulkinsertupdate != null)
+                {
+                    isheetObject["enablebulkinsertupdate"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablebulkinsertupdate);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetfielddescriptions != null)
+                {
+                    isheetObject["fielddescriptions"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetfielddescriptions);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablerowlocking != null)
+                {
+                    isheetObject["enablerowlocking"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablerowlocking);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsetcharlimittruncatemultilinetextenabled != null)
+                {
+                    isheetObject["setcharlimittruncatemultilinetextenabled"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextenabled);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsetcharlimittruncatemultilinetextval != null)
+                {
+                    isheetObject["setcharlimittruncatemultilinetextval"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextval);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowchoicelistvaluesforreuse != null)
+                {
+                    isheetObject["allowchoicelistvaluesforreuse"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowchoicelistvaluesforreuse);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowscorelistvaluesforreuse != null)
+                {
+                    isheetObject["allowscorelistvaluesforreuse"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowscorelistvaluesforreuse);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowIsheetComments != null)
+                {
+                    isheetObject["allowIsheetComments"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowIsheetComments);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetshareRecordsLimit != null)
+                {
+                    isheetObject["shareRecordsLimit"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimit);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetshareRecordsLimitEnabled != null)
+                {
+                    isheetObject["shareRecordsLimitEnabled"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimitEnabled);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenableIsheetAddRecordFormSharing != null)
+                {
+                    isheetObject["enableIsheetAddRecordFormSharing"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenableIsheetAddRecordFormSharing);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetrecordcount != null)
+                {
+                    isheetObject["recordcount"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetrecordcount);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsheettypeid != null)
+                {
+                    isheetObject["sheettypeid"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsheettypeid);
+                    isheetObjectpropCount++;
+                }
+
+                if (isheetObjectpropCount > 0)
+                {
+                    moduleObject["isheet"] = isheetObject;
+                    moduleObjectpropCount++;
+                }
+
+                var qaObject = new JObject();
+                var qaObjectpropCount = 0;
+                if (bodymoduleqaenable != null)
+                {
+                    qaObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleqaenable);
+                    qaObjectpropCount++;
+                }
+
+                if (qaObjectpropCount > 0)
+                {
+                    moduleObject["qa"] = qaObject;
+                    moduleObjectpropCount++;
+                }
+
+                var peopleObject = new JObject();
+                var peopleObjectpropCount = 0;
+                if (bodymodulepeopleperson != null)
+                {
+                    peopleObject["person"] = SourceExpressionConverter.ConvertToken(bodymodulepeopleperson);
+                    peopleObjectpropCount++;
+                }
+
+                if (peopleObjectpropCount > 0)
+                {
+                    moduleObject["people"] = peopleObject;
+                    moduleObjectpropCount++;
+                }
+
+                var contractexpressObject = new JObject();
+                var contractexpressObjectpropCount = 0;
+                if (bodymodulecontractexpressenable != null)
+                {
+                    contractexpressObject["enable"] = SourceExpressionConverter.ConvertToken(bodymodulecontractexpressenable);
+                    contractexpressObjectpropCount++;
+                }
+
+                if (contractexpressObjectpropCount > 0)
+                {
+                    moduleObject["contractexpress"] = contractexpressObject;
+                    moduleObjectpropCount++;
+                }
+
+                if (moduleObjectpropCount > 0)
+                {
+                    body["module"] = moduleObject;
+                    bodypropCount++;
+                }
+
+                if (bodyadminnote != null)
+                {
+                    body["adminnote"] = SourceExpressionConverter.ConvertToken(bodyadminnote);
+                    bodypropCount++;
+                }
+
+                if (bodystartdate != null)
+                {
+                    body["startdate"] = SourceExpressionConverter.ConvertToken(bodystartdate);
+                    bodypropCount++;
+                }
+
+                if (bodyenddate != null)
+                {
+                    body["enddate"] = SourceExpressionConverter.ConvertToken(bodyenddate);
+                    bodypropCount++;
+                }
+
+                if (bodycreateddate != null)
+                {
+                    body["createddate"] = SourceExpressionConverter.ConvertToken(bodycreateddate);
+                    bodypropCount++;
+                }
+
+                if (bodyarchiveddate != null)
+                {
+                    body["archiveddate"] = SourceExpressionConverter.ConvertToken(bodyarchiveddate);
+                    bodypropCount++;
+                }
+
+                if (bodyclientno != null)
+                {
+                    body["clientno"] = SourceExpressionConverter.ConvertToken(bodyclientno);
+                    bodypropCount++;
+                }
+
+                if (bodymatterno != null)
+                {
+                    body["matterno"] = SourceExpressionConverter.ConvertToken(bodymatterno);
+                    bodypropCount++;
+                }
+
+                if (bodylandingpage != null)
+                {
+                    body["landingpage"] = SourceExpressionConverter.ConvertToken(bodylandingpage);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodystatusid != null)
+                {
+                    body["statusid"] = SourceExpressionConverter.ConvertToken(bodystatusid);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodybillingnotes != null)
+                {
+                    body["billingnotes"] = SourceExpressionConverter.ConvertToken(bodybillingnotes);
+                    bodypropCount++;
+                }
+
+                if (bodybillingnextinvoicedate != null)
+                {
+                    body["billingnextinvoicedate"] = SourceExpressionConverter.ConvertToken(bodybillingnextinvoicedate);
+                    bodypropCount++;
+                }
+
+                if (bodybillinglastinvoicedate != null)
+                {
+                    body["billinglastinvoicedate"] = SourceExpressionConverter.ConvertToken(bodybillinglastinvoicedate);
+                    bodypropCount++;
+                }
+
+                if (bodyfilepagecount != null)
+                {
+                    body["filepagecount"] = SourceExpressionConverter.ConvertToken(bodyfilepagecount);
+                    bodypropCount++;
+                }
+
+                if (bodymaxpagecount != null)
+                {
+                    body["maxpagecount"] = SourceExpressionConverter.ConvertToken(bodymaxpagecount);
+                    bodypropCount++;
+                }
+
+                if (bodysitehttplink != null)
+                {
+                    body["sitehttplink"] = SourceExpressionConverter.ConvertToken(bodysitehttplink);
+                    bodypropCount++;
+                }
+
+                if (bodyisSyncable != null)
+                {
+                    body["isSyncable"] = SourceExpressionConverter.ConvertToken(bodyisSyncable);
+                    bodypropCount++;
+                }
+
+                if (bodyenforceusergroups != null)
+                {
+                    body["enforceusergroups"] = SourceExpressionConverter.ConvertToken(bodyenforceusergroups);
+                    bodypropCount++;
+                }
+
+                if (bodycsvSiteCategory != null)
+                {
+                    body["csvSiteCategory"] = SourceExpressionConverter.ConvertToken(bodycsvSiteCategory);
+                    bodypropCount++;
+                }
+
+                if (bodysiteNameInDefaultLanguage != null)
+                {
+                    body["siteNameInDefaultLanguage"] = SourceExpressionConverter.ConvertToken(bodysiteNameInDefaultLanguage);
+                    bodypropCount++;
+                }
+
+                if (bodyvisible != null)
+                {
+                    body["visible"] = SourceExpressionConverter.ConvertToken(bodyvisible);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoName != null)
+                {
+                    body["siteLogoName"] = SourceExpressionConverter.ConvertToken(bodysiteLogoName);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoFileSize != null)
+                {
+                    body["siteLogoFileSize"] = SourceExpressionConverter.ConvertToken(bodysiteLogoFileSize);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoHeight != null)
+                {
+                    body["siteLogoHeight"] = SourceExpressionConverter.ConvertToken(bodysiteLogoHeight);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoWidth != null)
+                {
+                    body["siteLogoWidth"] = SourceExpressionConverter.ConvertToken(bodysiteLogoWidth);
+                    bodypropCount++;
+                }
+
+                if (bodysiteStatus != null)
+                {
+                    body["siteStatus"] = SourceExpressionConverter.ConvertToken(bodysiteStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyapplySiteTerms != null)
+                {
+                    body["applySiteTerms"] = SourceExpressionConverter.ConvertToken(bodyapplySiteTerms);
+                    bodypropCount++;
+                }
+
+                if (bodysiteTerm != null)
+                {
+                    body["siteTerm"] = SourceExpressionConverter.ConvertToken(bodysiteTerm);
+                    bodypropCount++;
+                }
+
+                if (bodytermType != null)
+                {
+                    body["termType"] = SourceExpressionConverter.ConvertToken(bodytermType);
+                    bodypropCount++;
+                }
+
+                if (bodynextLoginSiteTerms != null)
+                {
+                    body["nextLoginSiteTerms"] = SourceExpressionConverter.ConvertToken(bodynextLoginSiteTerms);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultSiteTermsEnable != null)
+                {
+                    body["defaultSiteTermsEnable"] = SourceExpressionConverter.ConvertToken(bodydefaultSiteTermsEnable);
+                    bodypropCount++;
+                }
+
+                if (bodyadvancedQAPermission != null)
+                {
+                    body["advancedQAPermission"] = SourceExpressionConverter.ConvertToken(bodyadvancedQAPermission);
+                    bodypropCount++;
+                }
+
+                if (bodyisInternal != null)
+                {
+                    body["isInternal"] = SourceExpressionConverter.ConvertToken(bodyisInternal);
+                    bodypropCount++;
+                }
+
+                if (bodypsm != null)
+                {
+                    body["psm"] = SourceExpressionConverter.ConvertToken(bodypsm);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLabelDisplay != null)
+                {
+                    body["siteLabelDisplay"] = SourceExpressionConverter.ConvertToken(bodysiteLabelDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyallowSiteAdministration != null)
+                {
+                    body["allowSiteAdministration"] = SourceExpressionConverter.ConvertToken(bodyallowSiteAdministration);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLevelPasswordEnable != null)
+                {
+                    body["siteLevelPasswordEnable"] = SourceExpressionConverter.ConvertToken(bodysiteLevelPasswordEnable);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLevelPasscodeEnable != null)
+                {
+                    body["siteLevelPasscodeEnable"] = SourceExpressionConverter.ConvertToken(bodysiteLevelPasscodeEnable);
+                    bodypropCount++;
+                }
+
+                if (bodypasscodeUsingAuthApp != null)
+                {
+                    body["passcodeUsingAuthApp"] = SourceExpressionConverter.ConvertToken(bodypasscodeUsingAuthApp);
+                    bodypropCount++;
+                }
+
+                if (bodysitePassword != null)
+                {
+                    body["sitePassword"] = SourceExpressionConverter.ConvertToken(bodysitePassword);
+                    bodypropCount++;
+                }
+
+                if (bodyipRestrictionEnable != null)
+                {
+                    body["ipRestrictionEnable"] = SourceExpressionConverter.ConvertToken(bodyipRestrictionEnable);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableIP != null)
+                {
+                    body["availableIP"] = SourceExpressionConverter.ConvertToken(bodyavailableIP);
+                    bodypropCount++;
+                }
+
+                if (bodyhighqDrive != null)
+                {
+                    body["highqDrive"] = SourceExpressionConverter.ConvertToken(bodyhighqDrive);
+                    bodypropCount++;
+                }
+
+                if (bodyapplySiteHomePage != null)
+                {
+                    body["applySiteHomePage"] = SourceExpressionConverter.ConvertToken(bodyapplySiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodysiteHomePage != null)
+                {
+                    body["siteHomePage"] = SourceExpressionConverter.ConvertToken(bodysiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodysiteHomePageType != null)
+                {
+                    body["siteHomePageType"] = SourceExpressionConverter.ConvertToken(bodysiteHomePageType);
+                    bodypropCount++;
+                }
+
+                if (bodynextLoginSiteHomePage != null)
+                {
+                    body["nextLoginSiteHomePage"] = SourceExpressionConverter.ConvertToken(bodynextLoginSiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyDisplayContent != null)
+                {
+                    body["applyDisplayContent"] = SourceExpressionConverter.ConvertToken(bodyapplyDisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayContent != null)
+                {
+                    body["displayContent"] = SourceExpressionConverter.ConvertToken(bodydisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodyrssSecurity != null)
+                {
+                    body["rssSecurity"] = SourceExpressionConverter.ConvertToken(bodyrssSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodyencryptedPassword != null)
+                {
+                    body["encryptedPassword"] = SourceExpressionConverter.ConvertToken(bodyencryptedPassword);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableIPRangeCSV != null)
+                {
+                    body["availableIPRangeCSV"] = SourceExpressionConverter.ConvertToken(bodyavailableIPRangeCSV);
+                    bodypropCount++;
+                }
+
+                if (bodysiteModuleID != null)
+                {
+                    body["siteModuleID"] = SourceExpressionConverter.ConvertToken(bodysiteModuleID);
+                    bodypropCount++;
+                }
+
+                if (bodyicalSecurity != null)
+                {
+                    body["icalSecurity"] = SourceExpressionConverter.ConvertToken(bodyicalSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultDisplayContent != null)
+                {
+                    body["defaultDisplayContent"] = SourceExpressionConverter.ConvertToken(bodydefaultDisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultEmailAlert != null)
+                {
+                    body["defaultEmailAlert"] = SourceExpressionConverter.ConvertToken(bodydefaultEmailAlert);
+                    bodypropCount++;
+                }
+
+                if (bodyexcelReportFooter != null)
+                {
+                    body["excelReportFooter"] = SourceExpressionConverter.ConvertToken(bodyexcelReportFooter);
+                    bodypropCount++;
+                }
+
+                if (bodyexcelReportFooterText != null)
+                {
+                    body["excelReportFooterText"] = SourceExpressionConverter.ConvertToken(bodyexcelReportFooterText);
+                    bodypropCount++;
+                }
+
+                if (bodyannouncementMLJSON != null)
+                {
+                    body["announcementMLJSON"] = SourceExpressionConverter.ConvertToken(bodyannouncementMLJSON);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateType != null)
+                {
+                    body["templateType"] = SourceExpressionConverter.ConvertToken(bodytemplateType);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateLicence != null)
+                {
+                    body["templateLicence"] = SourceExpressionConverter.ConvertToken(bodytemplateLicence);
+                    bodypropCount++;
+                }
+
+                if (bodyopenChannelAppID != null)
+                {
+                    body["openChannelAppID"] = SourceExpressionConverter.ConvertToken(bodyopenChannelAppID);
+                    bodypropCount++;
+                }
+
+                if (bodyitemid != null)
+                {
+                    body["itemid"] = SourceExpressionConverter.ConvertToken(bodyitemid);
+                    bodypropCount++;
+                }
+
+                if (bodysitemetadatasheetid != null)
+                {
+                    body["sitemetadatasheetid"] = SourceExpressionConverter.ConvertToken(bodysitemetadatasheetid);
+                    bodypropCount++;
+                }
+
+                if (bodymysite != null)
+                {
+                    body["mysite"] = SourceExpressionConverter.ConvertToken(bodymysite);
+                    bodypropCount++;
+                }
+
+                if (bodylastaccesseddate != null)
+                {
+                    body["lastaccesseddate"] = SourceExpressionConverter.ConvertToken(bodylastaccesseddate);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultViewerMetaDataTab != null)
+                {
+                    body["defaultViewerMetaDataTab"] = SourceExpressionConverter.ConvertToken(bodydefaultViewerMetaDataTab);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentMetadataViewId != null)
+                {
+                    body["documentMetadataViewId"] = SourceExpressionConverter.ConvertToken(bodydocumentMetadataViewId);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderMetadataViewId != null)
+                {
+                    body["folderMetadataViewId"] = SourceExpressionConverter.ConvertToken(bodyfolderMetadataViewId);
+                    bodypropCount++;
+                }
+
+                if (bodydocSort != null)
+                {
+                    body["docSort"] = SourceExpressionConverter.ConvertToken(bodydocSort);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderSort != null)
+                {
+                    body["folderSort"] = SourceExpressionConverter.ConvertToken(bodyfolderSort);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultFolderRenderView != null)
+                {
+                    body["defaultFolderRenderView"] = SourceExpressionConverter.ConvertToken(bodydefaultFolderRenderView);
+                    bodypropCount++;
+                }
+
+                if (bodyisTaskAttachmentDefault != null)
+                {
+                    body["isTaskAttachmentDefault"] = SourceExpressionConverter.ConvertToken(bodyisTaskAttachmentDefault);
+                    bodypropCount++;
+                }
+
+                if (bodytaskAttachmentDefaultFolderId != null)
+                {
+                    body["taskAttachmentDefaultFolderId"] = SourceExpressionConverter.ConvertToken(bodytaskAttachmentDefaultFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyfavourite != null)
+                {
+                    body["favourite"] = SourceExpressionConverter.ConvertToken(bodyfavourite);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledocumentredaction != null)
+                {
+                    body["enabledocumentredaction"] = SourceExpressionConverter.ConvertToken(bodyenabledocumentredaction);
+                    bodypropCount++;
+                }
+
+                if (bodymentiongroups != null)
+                {
+                    body["mentiongroups"] = SourceExpressionConverter.ConvertToken(bodymentiongroups);
+                    bodypropCount++;
+                }
+
+                if (bodyenablefilerelationships != null)
+                {
+                    body["enablefilerelationships"] = SourceExpressionConverter.ConvertToken(bodyenablefilerelationships);
+                    bodypropCount++;
+                }
+
+                if (bodyfilerelationshipsitepermissionlevel != null)
+                {
+                    body["filerelationshipsitepermissionlevel"] = SourceExpressionConverter.ConvertToken(bodyfilerelationshipsitepermissionlevel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Site>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "highq")]
-        public IWorkflowAction UpdateSite(Expression<Func<string>> version, Expression<Func<string>> siteid, Expression<Func<int>> bodyid = null, Expression<Func<string>> bodysitename = null, Expression<Func<string>> bodyrole = null, Expression<Func<string>> bodysitedescription = null, Expression<Func<string>> bodyenabledmodules = null, Expression<Func<string>> bodysitefolderID = null, Expression<Func<string>> bodysitefolderpermission = null, Expression<Func<string>> bodymodulehomeenable = null, Expression<Func<string>> bodymoduleactivityenable = null, Expression<Func<string>> bodymoduleactivitymicroblog = null, Expression<Func<string>> bodymoduledocumentdocid = null, Expression<Func<string>> bodymoduleblogblogTitle = null, Expression<Func<string>> bodymoduleblogblogContent = null, Expression<Func<int>> bodymoduleblogshowComment = null, Expression<Func<string[]>> bodymoduleblogtagList = null, Expression<Func<int>> bodymoduleblogstatus = null, Expression<Func<int>> bodymoduleblogsiteID = null, Expression<Func<string>> bodymoduleblogauthor = null, Expression<Func<string[]>> bodymoduleblogcategoryList = null, Expression<Func<int>> bodymoduleblognotificationTypeID = null, Expression<Func<string>> bodymoduleblogmessage = null, Expression<Func<int>> bodymoduleblogmessageCode = null, Expression<Func<string>> bodymoduleblogexternalID = null, Expression<Func<string>> bodymoduleblogpublishDate = null, Expression<Func<string>> bodymoduleblogprocesstype = null, Expression<Func<string>> bodymoduleblogenable = null, Expression<Func<int>> bodymodulewikiwikiid = null, Expression<Func<int>> bodymodulewikicurrentversionid = null, Expression<Func<int>> bodymodulewikiparentwikiid = null, Expression<Func<string>> bodymodulewikiwikititle = null, Expression<Func<string>> bodymodulewikiwikicontent = null, Expression<Func<int>> bodymodulewikishowcomment = null, Expression<Func<string>> bodymodulewikicreateddate = null, Expression<Func<string>> bodymodulewikimodifieddate = null, Expression<Func<string>> bodymodulewikitaglist = null, Expression<Func<string>> bodymodulewikiwikipath = null, Expression<Func<int>> bodymodulewikiwikidraftid = null, Expression<Func<string>> bodymodulewikidrafttype = null, Expression<Func<int>> bodymodulewikistatus = null, Expression<Func<int>> bodymodulewikiwikiversionid = null, Expression<Func<string>> bodymoduletaskindex = null, Expression<Func<int>> bodymoduletaskparenttaskid = null, Expression<Func<int>> bodymoduletasktaskid = null, Expression<Func<string>> bodymoduletasktitle = null, Expression<Func<string>> bodymoduletaskdescription = null, Expression<Func<string>> bodymoduletaskduedate = null, Expression<Func<string>> bodymoduletaskstartdate = null, Expression<Func<string>> bodymoduletaskmattermaptaskid = null, Expression<Func<string>> bodymoduletasktype = null, Expression<Func<string>> bodymoduletaskdependenton = null, Expression<Func<string>> bodymoduletaskdaysfromdependent = null, Expression<Func<int>> bodymoduletaskignoreweekend = null, Expression<Func<int>> bodymoduletaskduration = null, Expression<Func<string>> bodymoduletaskresource = null, Expression<Func<string>> bodymoduleEventeventTitle = null, Expression<Func<string>> bodymoduleEventeventContent = null, Expression<Func<int>> bodymoduleEventshowComment = null, Expression<Func<string[]>> bodymoduleEventtagList = null, Expression<Func<int>> bodymoduleEventstatus = null, Expression<Func<int>> bodymoduleEventsiteID = null, Expression<Func<string>> bodymoduleEventcontact = null, Expression<Func<string[]>> bodymoduleEventcategoryList = null, Expression<Func<int>> bodymoduleEventnotificationTypeID = null, Expression<Func<string>> bodymoduleEventmessage = null, Expression<Func<int>> bodymoduleEventmessageCode = null, Expression<Func<string>> bodymoduleEventexternalID = null, Expression<Func<string>> bodymoduleEventstartDate = null, Expression<Func<string>> bodymoduleEventendDate = null, Expression<Func<string>> bodymoduleEventstartTime = null, Expression<Func<string>> bodymoduleEventendTime = null, Expression<Func<string>> bodymoduleEventlocation = null, Expression<Func<string>> bodymoduleEventauthor = null, Expression<Func<string>> bodymoduleEventprocesstype = null, Expression<Func<string>> bodymoduleEventenable = null, Expression<Func<int>> bodymoduleisheetid = null, Expression<Func<string>> bodymoduleisheettitle = null, Expression<Func<string>> bodymoduleisheetdescription = null, Expression<Func<string>> bodymoduleisheetstatus = null, Expression<Func<string>> bodymoduleisheetaccesstype = null, Expression<Func<string>> bodymoduleisheettype = null, Expression<Func<string>> bodymoduleisheetviewlink = null, Expression<Func<string>> bodymoduleisheetallowsections = null, Expression<Func<string>> bodymoduleisheetallowlookup = null, Expression<Func<string>> bodymoduleisheetdisplayisheet = null, Expression<Func<string>> bodymoduleisheetsearchasdefaultview = null, Expression<Func<string>> bodymoduleisheetenableversion = null, Expression<Func<string>> bodymoduleisheetenablesheetalerter = null, Expression<Func<string>> bodymoduleisheetalertercondition = null, Expression<Func<string>> bodymoduleisheetoverrideitemmodifieddate = null, Expression<Func<string>> bodymoduleisheetenablebulkinsertupdate = null, Expression<Func<string>> bodymoduleisheetfielddescriptions = null, Expression<Func<string>> bodymoduleisheetenablerowlocking = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, Expression<Func<string>> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, Expression<Func<string>> bodymoduleisheetallowchoicelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowscorelistvaluesforreuse = null, Expression<Func<string>> bodymoduleisheetallowIsheetComments = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimit = null, Expression<Func<int>> bodymoduleisheetshareRecordsLimitEnabled = null, Expression<Func<string>> bodymoduleisheetenableIsheetAddRecordFormSharing = null, Expression<Func<string>> bodymoduleisheetrecordcount = null, Expression<Func<int>> bodymoduleisheetsheettypeid = null, Expression<Func<string>> bodymoduleqaenable = null, Expression<Func<PersonDBO[]>> bodymodulepeopleperson = null, Expression<Func<string>> bodymodulecontractexpressenable = null, Expression<Func<string>> bodyadminnote = null, Expression<Func<string>> bodystartdate = null, Expression<Func<string>> bodyenddate = null, Expression<Func<string>> bodycreateddate = null, Expression<Func<string>> bodyarchiveddate = null, Expression<Func<string>> bodyclientno = null, Expression<Func<string>> bodymatterno = null, Expression<Func<string>> bodylandingpage = null, Expression<Func<string>> bodylink = null, Expression<Func<string>> bodystatus = null, Expression<Func<int>> bodystatusid = null, Expression<Func<string>> bodysize = null, Expression<Func<string>> bodybillingnotes = null, Expression<Func<string>> bodybillingnextinvoicedate = null, Expression<Func<string>> bodybillinglastinvoicedate = null, Expression<Func<string>> bodyfilepagecount = null, Expression<Func<string>> bodymaxpagecount = null, Expression<Func<string>> bodysitehttplink = null, Expression<Func<int>> bodyisSyncable = null, Expression<Func<string>> bodyenforceusergroups = null, Expression<Func<string>> bodycsvSiteCategory = null, Expression<Func<string>> bodysiteNameInDefaultLanguage = null, Expression<Func<int>> bodyvisible = null, Expression<Func<string>> bodysiteLogoName = null, Expression<Func<int>> bodysiteLogoFileSize = null, Expression<Func<int>> bodysiteLogoHeight = null, Expression<Func<int>> bodysiteLogoWidth = null, Expression<Func<int>> bodysiteStatus = null, Expression<Func<int>> bodyapplySiteTerms = null, Expression<Func<string>> bodysiteTerm = null, Expression<Func<int>> bodytermType = null, Expression<Func<int>> bodynextLoginSiteTerms = null, Expression<Func<int>> bodydefaultSiteTermsEnable = null, Expression<Func<int>> bodyadvancedQAPermission = null, Expression<Func<int>> bodyisInternal = null, Expression<Func<int>> bodypsm = null, Expression<Func<string>> bodysiteLabelDisplay = null, Expression<Func<int>> bodyallowSiteAdministration = null, Expression<Func<int>> bodysiteLevelPasswordEnable = null, Expression<Func<int>> bodysiteLevelPasscodeEnable = null, Expression<Func<int>> bodypasscodeUsingAuthApp = null, Expression<Func<string>> bodysitePassword = null, Expression<Func<int>> bodyipRestrictionEnable = null, Expression<Func<string>> bodyavailableIP = null, Expression<Func<int>> bodyhighqDrive = null, Expression<Func<int>> bodyapplySiteHomePage = null, Expression<Func<string>> bodysiteHomePage = null, Expression<Func<int>> bodysiteHomePageType = null, Expression<Func<int>> bodynextLoginSiteHomePage = null, Expression<Func<int>> bodyapplyDisplayContent = null, Expression<Func<string>> bodydisplayContent = null, Expression<Func<int>> bodyrssSecurity = null, Expression<Func<int>> bodyencryptedPassword = null, Expression<Func<string>> bodyavailableIPRangeCSV = null, Expression<Func<int>> bodysiteModuleID = null, Expression<Func<int>> bodyicalSecurity = null, Expression<Func<string>> bodydefaultDisplayContent = null, Expression<Func<int>> bodydefaultEmailAlert = null, Expression<Func<int>> bodyexcelReportFooter = null, Expression<Func<string>> bodyexcelReportFooterText = null, Expression<Func<string>> bodyannouncementMLJSON = null, Expression<Func<int>> bodytemplateType = null, Expression<Func<int>> bodytemplateLicence = null, Expression<Func<string>> bodyopenChannelAppID = null, Expression<Func<int>> bodyitemid = null, Expression<Func<int>> bodysitemetadatasheetid = null, Expression<Func<bool>> bodymysite = null, Expression<Func<string>> bodylastaccesseddate = null, Expression<Func<int>> bodydefaultViewerMetaDataTab = null, Expression<Func<int>> bodydocumentMetadataViewId = null, Expression<Func<int>> bodyfolderMetadataViewId = null, Expression<Func<int>> bodydocSort = null, Expression<Func<int>> bodyfolderSort = null, Expression<Func<int>> bodydefaultFolderRenderView = null, Expression<Func<int>> bodyisTaskAttachmentDefault = null, Expression<Func<int>> bodytaskAttachmentDefaultFolderId = null, Expression<Func<string>> bodyfavourite = null, Expression<Func<bool>> bodyenabledocumentredaction = null, Expression<Func<int>> bodymentiongroups = null, Expression<Func<bool>> bodyenablefilerelationships = null, Expression<Func<int>> bodyfilerelationshipsitepermissionlevel = null)
+        public IWorkflowAction UpdateSite([WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> siteid, [WorkflowExpression] Func<int> bodyid = null, [WorkflowExpression] Func<string> bodysitename = null, [WorkflowExpression] Func<string> bodyrole = null, [WorkflowExpression] Func<string> bodysitedescription = null, [WorkflowExpression] Func<string> bodyenabledmodules = null, [WorkflowExpression] Func<string> bodysitefolderID = null, [WorkflowExpression] Func<string> bodysitefolderpermission = null, [WorkflowExpression] Func<string> bodymodulehomeenable = null, [WorkflowExpression] Func<string> bodymoduleactivityenable = null, [WorkflowExpression] Func<string> bodymoduleactivitymicroblog = null, [WorkflowExpression] Func<string> bodymoduledocumentdocid = null, [WorkflowExpression] Func<string> bodymoduleblogblogTitle = null, [WorkflowExpression] Func<string> bodymoduleblogblogContent = null, [WorkflowExpression] Func<int> bodymoduleblogshowComment = null, [WorkflowExpression] Func<string[]> bodymoduleblogtagList = null, [WorkflowExpression] Func<int> bodymoduleblogstatus = null, [WorkflowExpression] Func<int> bodymoduleblogsiteID = null, [WorkflowExpression] Func<string> bodymoduleblogauthor = null, [WorkflowExpression] Func<string[]> bodymoduleblogcategoryList = null, [WorkflowExpression] Func<int> bodymoduleblognotificationTypeID = null, [WorkflowExpression] Func<string> bodymoduleblogmessage = null, [WorkflowExpression] Func<int> bodymoduleblogmessageCode = null, [WorkflowExpression] Func<string> bodymoduleblogexternalID = null, [WorkflowExpression] Func<string> bodymoduleblogpublishDate = null, [WorkflowExpression] Func<string> bodymoduleblogprocesstype = null, [WorkflowExpression] Func<string> bodymoduleblogenable = null, [WorkflowExpression] Func<int> bodymodulewikiwikiid = null, [WorkflowExpression] Func<int> bodymodulewikicurrentversionid = null, [WorkflowExpression] Func<int> bodymodulewikiparentwikiid = null, [WorkflowExpression] Func<string> bodymodulewikiwikititle = null, [WorkflowExpression] Func<string> bodymodulewikiwikicontent = null, [WorkflowExpression] Func<int> bodymodulewikishowcomment = null, [WorkflowExpression] Func<string> bodymodulewikicreateddate = null, [WorkflowExpression] Func<string> bodymodulewikimodifieddate = null, [WorkflowExpression] Func<string> bodymodulewikitaglist = null, [WorkflowExpression] Func<string> bodymodulewikiwikipath = null, [WorkflowExpression] Func<int> bodymodulewikiwikidraftid = null, [WorkflowExpression] Func<string> bodymodulewikidrafttype = null, [WorkflowExpression] Func<int> bodymodulewikistatus = null, [WorkflowExpression] Func<int> bodymodulewikiwikiversionid = null, [WorkflowExpression] Func<string> bodymoduletaskindex = null, [WorkflowExpression] Func<int> bodymoduletaskparenttaskid = null, [WorkflowExpression] Func<int> bodymoduletasktaskid = null, [WorkflowExpression] Func<string> bodymoduletasktitle = null, [WorkflowExpression] Func<string> bodymoduletaskdescription = null, [WorkflowExpression] Func<string> bodymoduletaskduedate = null, [WorkflowExpression] Func<string> bodymoduletaskstartdate = null, [WorkflowExpression] Func<string> bodymoduletaskmattermaptaskid = null, [WorkflowExpression] Func<string> bodymoduletasktype = null, [WorkflowExpression] Func<string> bodymoduletaskdependenton = null, [WorkflowExpression] Func<string> bodymoduletaskdaysfromdependent = null, [WorkflowExpression] Func<int> bodymoduletaskignoreweekend = null, [WorkflowExpression] Func<int> bodymoduletaskduration = null, [WorkflowExpression] Func<string> bodymoduletaskresource = null, [WorkflowExpression] Func<string> bodymoduleEventeventTitle = null, [WorkflowExpression] Func<string> bodymoduleEventeventContent = null, [WorkflowExpression] Func<int> bodymoduleEventshowComment = null, [WorkflowExpression] Func<string[]> bodymoduleEventtagList = null, [WorkflowExpression] Func<int> bodymoduleEventstatus = null, [WorkflowExpression] Func<int> bodymoduleEventsiteID = null, [WorkflowExpression] Func<string> bodymoduleEventcontact = null, [WorkflowExpression] Func<string[]> bodymoduleEventcategoryList = null, [WorkflowExpression] Func<int> bodymoduleEventnotificationTypeID = null, [WorkflowExpression] Func<string> bodymoduleEventmessage = null, [WorkflowExpression] Func<int> bodymoduleEventmessageCode = null, [WorkflowExpression] Func<string> bodymoduleEventexternalID = null, [WorkflowExpression] Func<string> bodymoduleEventstartDate = null, [WorkflowExpression] Func<string> bodymoduleEventendDate = null, [WorkflowExpression] Func<string> bodymoduleEventstartTime = null, [WorkflowExpression] Func<string> bodymoduleEventendTime = null, [WorkflowExpression] Func<string> bodymoduleEventlocation = null, [WorkflowExpression] Func<string> bodymoduleEventauthor = null, [WorkflowExpression] Func<string> bodymoduleEventprocesstype = null, [WorkflowExpression] Func<string> bodymoduleEventenable = null, [WorkflowExpression] Func<int> bodymoduleisheetid = null, [WorkflowExpression] Func<string> bodymoduleisheettitle = null, [WorkflowExpression] Func<string> bodymoduleisheetdescription = null, [WorkflowExpression] Func<string> bodymoduleisheetstatus = null, [WorkflowExpression] Func<string> bodymoduleisheetaccesstype = null, [WorkflowExpression] Func<string> bodymoduleisheettype = null, [WorkflowExpression] Func<string> bodymoduleisheetviewlink = null, [WorkflowExpression] Func<string> bodymoduleisheetallowsections = null, [WorkflowExpression] Func<string> bodymoduleisheetallowlookup = null, [WorkflowExpression] Func<string> bodymoduleisheetdisplayisheet = null, [WorkflowExpression] Func<string> bodymoduleisheetsearchasdefaultview = null, [WorkflowExpression] Func<string> bodymoduleisheetenableversion = null, [WorkflowExpression] Func<string> bodymoduleisheetenablesheetalerter = null, [WorkflowExpression] Func<string> bodymoduleisheetalertercondition = null, [WorkflowExpression] Func<string> bodymoduleisheetoverrideitemmodifieddate = null, [WorkflowExpression] Func<string> bodymoduleisheetenablebulkinsertupdate = null, [WorkflowExpression] Func<string> bodymoduleisheetfielddescriptions = null, [WorkflowExpression] Func<string> bodymoduleisheetenablerowlocking = null, [WorkflowExpression] Func<string> bodymoduleisheetsetcharlimittruncatemultilinetextenabled = null, [WorkflowExpression] Func<string> bodymoduleisheetsetcharlimittruncatemultilinetextval = null, [WorkflowExpression] Func<string> bodymoduleisheetallowchoicelistvaluesforreuse = null, [WorkflowExpression] Func<string> bodymoduleisheetallowscorelistvaluesforreuse = null, [WorkflowExpression] Func<string> bodymoduleisheetallowIsheetComments = null, [WorkflowExpression] Func<int> bodymoduleisheetshareRecordsLimit = null, [WorkflowExpression] Func<int> bodymoduleisheetshareRecordsLimitEnabled = null, [WorkflowExpression] Func<string> bodymoduleisheetenableIsheetAddRecordFormSharing = null, [WorkflowExpression] Func<string> bodymoduleisheetrecordcount = null, [WorkflowExpression] Func<int> bodymoduleisheetsheettypeid = null, [WorkflowExpression] Func<string> bodymoduleqaenable = null, [WorkflowExpression] Func<PersonDBO[]> bodymodulepeopleperson = null, [WorkflowExpression] Func<string> bodymodulecontractexpressenable = null, [WorkflowExpression] Func<string> bodyadminnote = null, [WorkflowExpression] Func<string> bodystartdate = null, [WorkflowExpression] Func<string> bodyenddate = null, [WorkflowExpression] Func<string> bodycreateddate = null, [WorkflowExpression] Func<string> bodyarchiveddate = null, [WorkflowExpression] Func<string> bodyclientno = null, [WorkflowExpression] Func<string> bodymatterno = null, [WorkflowExpression] Func<string> bodylandingpage = null, [WorkflowExpression] Func<string> bodylink = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<int> bodystatusid = null, [WorkflowExpression] Func<string> bodysize = null, [WorkflowExpression] Func<string> bodybillingnotes = null, [WorkflowExpression] Func<string> bodybillingnextinvoicedate = null, [WorkflowExpression] Func<string> bodybillinglastinvoicedate = null, [WorkflowExpression] Func<string> bodyfilepagecount = null, [WorkflowExpression] Func<string> bodymaxpagecount = null, [WorkflowExpression] Func<string> bodysitehttplink = null, [WorkflowExpression] Func<int> bodyisSyncable = null, [WorkflowExpression] Func<string> bodyenforceusergroups = null, [WorkflowExpression] Func<string> bodycsvSiteCategory = null, [WorkflowExpression] Func<string> bodysiteNameInDefaultLanguage = null, [WorkflowExpression] Func<int> bodyvisible = null, [WorkflowExpression] Func<string> bodysiteLogoName = null, [WorkflowExpression] Func<int> bodysiteLogoFileSize = null, [WorkflowExpression] Func<int> bodysiteLogoHeight = null, [WorkflowExpression] Func<int> bodysiteLogoWidth = null, [WorkflowExpression] Func<int> bodysiteStatus = null, [WorkflowExpression] Func<int> bodyapplySiteTerms = null, [WorkflowExpression] Func<string> bodysiteTerm = null, [WorkflowExpression] Func<int> bodytermType = null, [WorkflowExpression] Func<int> bodynextLoginSiteTerms = null, [WorkflowExpression] Func<int> bodydefaultSiteTermsEnable = null, [WorkflowExpression] Func<int> bodyadvancedQAPermission = null, [WorkflowExpression] Func<int> bodyisInternal = null, [WorkflowExpression] Func<int> bodypsm = null, [WorkflowExpression] Func<string> bodysiteLabelDisplay = null, [WorkflowExpression] Func<int> bodyallowSiteAdministration = null, [WorkflowExpression] Func<int> bodysiteLevelPasswordEnable = null, [WorkflowExpression] Func<int> bodysiteLevelPasscodeEnable = null, [WorkflowExpression] Func<int> bodypasscodeUsingAuthApp = null, [WorkflowExpression] Func<string> bodysitePassword = null, [WorkflowExpression] Func<int> bodyipRestrictionEnable = null, [WorkflowExpression] Func<string> bodyavailableIP = null, [WorkflowExpression] Func<int> bodyhighqDrive = null, [WorkflowExpression] Func<int> bodyapplySiteHomePage = null, [WorkflowExpression] Func<string> bodysiteHomePage = null, [WorkflowExpression] Func<int> bodysiteHomePageType = null, [WorkflowExpression] Func<int> bodynextLoginSiteHomePage = null, [WorkflowExpression] Func<int> bodyapplyDisplayContent = null, [WorkflowExpression] Func<string> bodydisplayContent = null, [WorkflowExpression] Func<int> bodyrssSecurity = null, [WorkflowExpression] Func<int> bodyencryptedPassword = null, [WorkflowExpression] Func<string> bodyavailableIPRangeCSV = null, [WorkflowExpression] Func<int> bodysiteModuleID = null, [WorkflowExpression] Func<int> bodyicalSecurity = null, [WorkflowExpression] Func<string> bodydefaultDisplayContent = null, [WorkflowExpression] Func<int> bodydefaultEmailAlert = null, [WorkflowExpression] Func<int> bodyexcelReportFooter = null, [WorkflowExpression] Func<string> bodyexcelReportFooterText = null, [WorkflowExpression] Func<string> bodyannouncementMLJSON = null, [WorkflowExpression] Func<int> bodytemplateType = null, [WorkflowExpression] Func<int> bodytemplateLicence = null, [WorkflowExpression] Func<string> bodyopenChannelAppID = null, [WorkflowExpression] Func<int> bodyitemid = null, [WorkflowExpression] Func<int> bodysitemetadatasheetid = null, [WorkflowExpression] Func<bool> bodymysite = null, [WorkflowExpression] Func<string> bodylastaccesseddate = null, [WorkflowExpression] Func<int> bodydefaultViewerMetaDataTab = null, [WorkflowExpression] Func<int> bodydocumentMetadataViewId = null, [WorkflowExpression] Func<int> bodyfolderMetadataViewId = null, [WorkflowExpression] Func<int> bodydocSort = null, [WorkflowExpression] Func<int> bodyfolderSort = null, [WorkflowExpression] Func<int> bodydefaultFolderRenderView = null, [WorkflowExpression] Func<int> bodyisTaskAttachmentDefault = null, [WorkflowExpression] Func<int> bodytaskAttachmentDefaultFolderId = null, [WorkflowExpression] Func<string> bodyfavourite = null, [WorkflowExpression] Func<bool> bodyenabledocumentredaction = null, [WorkflowExpression] Func<int> bodymentiongroups = null, [WorkflowExpression] Func<bool> bodyenablefilerelationships = null, [WorkflowExpression] Func<int> bodyfilerelationshipsitepermissionlevel = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/sites/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
-            {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodysitename != null)
-            {
-                body["sitename"] = CSharpExpressionConverter.ConvertToken(bodysitename);
-                bodypropCount++;
-            }
-
-            if (bodyrole != null)
-            {
-                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
-                bodypropCount++;
-            }
-
-            if (bodysitedescription != null)
-            {
-                body["sitedescription"] = CSharpExpressionConverter.ConvertToken(bodysitedescription);
-                bodypropCount++;
-            }
-
-            if (bodyenabledmodules != null)
-            {
-                body["enabledmodules"] = CSharpExpressionConverter.ConvertToken(bodyenabledmodules);
-                bodypropCount++;
-            }
-
-            if (bodysitefolderID != null)
-            {
-                body["sitefolderID"] = CSharpExpressionConverter.ConvertToken(bodysitefolderID);
-                bodypropCount++;
-            }
-
-            if (bodysitefolderpermission != null)
-            {
-                body["sitefolderpermission"] = CSharpExpressionConverter.ConvertToken(bodysitefolderpermission);
-                bodypropCount++;
-            }
-
-            var moduleObject = new JObject();
-            var moduleObjectpropCount = 0;
-            var homeObject = new JObject();
-            var homeObjectpropCount = 0;
-            if (bodymodulehomeenable != null)
-            {
-                homeObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymodulehomeenable);
-                homeObjectpropCount++;
-            }
-
-            if (homeObjectpropCount > 0)
-            {
-                moduleObject["home"] = homeObject;
-                moduleObjectpropCount++;
-            }
-
-            var activityObject = new JObject();
-            var activityObjectpropCount = 0;
-            if (bodymoduleactivityenable != null)
-            {
-                activityObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleactivityenable);
-                activityObjectpropCount++;
-            }
-
-            if (bodymoduleactivitymicroblog != null)
-            {
-                activityObject["microblog"] = CSharpExpressionConverter.ConvertToken(bodymoduleactivitymicroblog);
-                activityObjectpropCount++;
-            }
-
-            if (activityObjectpropCount > 0)
-            {
-                moduleObject["activity"] = activityObject;
-                moduleObjectpropCount++;
-            }
-
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodymoduledocumentdocid != null)
-            {
-                documentObject["docid"] = CSharpExpressionConverter.ConvertToken(bodymoduledocumentdocid);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                moduleObject["document"] = documentObject;
-                moduleObjectpropCount++;
-            }
-
-            var blogObject = new JObject();
-            var blogObjectpropCount = 0;
-            if (bodymoduleblogblogTitle != null)
-            {
-                blogObject["blogTitle"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogblogTitle);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogblogContent != null)
-            {
-                blogObject["blogContent"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogblogContent);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogshowComment != null)
-            {
-                blogObject["showComment"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogshowComment);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogtagList != null)
-            {
-                blogObject["tagList"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogtagList);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogstatus != null)
-            {
-                blogObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogstatus);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogsiteID != null)
-            {
-                blogObject["siteID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogsiteID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogauthor != null)
-            {
-                blogObject["author"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogauthor);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogcategoryList != null)
-            {
-                blogObject["categoryList"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogcategoryList);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblognotificationTypeID != null)
-            {
-                blogObject["notificationTypeID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblognotificationTypeID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogmessage != null)
-            {
-                blogObject["message"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogmessage);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogmessageCode != null)
-            {
-                blogObject["messageCode"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogmessageCode);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogexternalID != null)
-            {
-                blogObject["externalID"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogexternalID);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogpublishDate != null)
-            {
-                blogObject["publishDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogpublishDate);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogprocesstype != null)
-            {
-                blogObject["processtype"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogprocesstype);
-                blogObjectpropCount++;
-            }
-
-            if (bodymoduleblogenable != null)
-            {
-                blogObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleblogenable);
-                blogObjectpropCount++;
-            }
-
-            if (blogObjectpropCount > 0)
-            {
-                moduleObject["blog"] = blogObject;
-                moduleObjectpropCount++;
-            }
-
-            var wikiObject = new JObject();
-            var wikiObjectpropCount = 0;
-            if (bodymodulewikiwikiid != null)
-            {
-                wikiObject["wikiid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikiid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikicurrentversionid != null)
-            {
-                wikiObject["currentversionid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikicurrentversionid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiparentwikiid != null)
-            {
-                wikiObject["parentwikiid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiparentwikiid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikititle != null)
-            {
-                wikiObject["wikititle"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikititle);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikicontent != null)
-            {
-                wikiObject["wikicontent"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikicontent);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikishowcomment != null)
-            {
-                wikiObject["showcomment"] = CSharpExpressionConverter.ConvertToken(bodymodulewikishowcomment);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikicreateddate != null)
-            {
-                wikiObject["createddate"] = CSharpExpressionConverter.ConvertToken(bodymodulewikicreateddate);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikimodifieddate != null)
-            {
-                wikiObject["modifieddate"] = CSharpExpressionConverter.ConvertToken(bodymodulewikimodifieddate);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikitaglist != null)
-            {
-                wikiObject["taglist"] = CSharpExpressionConverter.ConvertToken(bodymodulewikitaglist);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikipath != null)
-            {
-                wikiObject["wikipath"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikipath);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikidraftid != null)
-            {
-                wikiObject["wikidraftid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikidraftid);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikidrafttype != null)
-            {
-                wikiObject["drafttype"] = CSharpExpressionConverter.ConvertToken(bodymodulewikidrafttype);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikistatus != null)
-            {
-                wikiObject["status"] = CSharpExpressionConverter.ConvertToken(bodymodulewikistatus);
-                wikiObjectpropCount++;
-            }
-
-            if (bodymodulewikiwikiversionid != null)
-            {
-                wikiObject["wikiversionid"] = CSharpExpressionConverter.ConvertToken(bodymodulewikiwikiversionid);
-                wikiObjectpropCount++;
-            }
-
-            if (wikiObjectpropCount > 0)
-            {
-                moduleObject["wiki"] = wikiObject;
-                moduleObjectpropCount++;
-            }
-
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodymoduletaskindex != null)
-            {
-                taskObject["index"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskindex);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskparenttaskid != null)
-            {
-                taskObject["parenttaskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskparenttaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktaskid != null)
-            {
-                taskObject["taskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktitle != null)
-            {
-                taskObject["title"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktitle);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdescription != null)
-            {
-                taskObject["description"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdescription);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskduedate != null)
-            {
-                taskObject["duedate"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskduedate);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskstartdate != null)
-            {
-                taskObject["startdate"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskstartdate);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskmattermaptaskid != null)
-            {
-                taskObject["mattermaptaskid"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskmattermaptaskid);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletasktype != null)
-            {
-                taskObject["type"] = CSharpExpressionConverter.ConvertToken(bodymoduletasktype);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdependenton != null)
-            {
-                taskObject["dependenton"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdependenton);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskdaysfromdependent != null)
-            {
-                taskObject["daysfromdependent"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskdaysfromdependent);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskignoreweekend != null)
-            {
-                taskObject["ignoreweekend"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskignoreweekend);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskduration != null)
-            {
-                taskObject["duration"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskduration);
-                taskObjectpropCount++;
-            }
-
-            if (bodymoduletaskresource != null)
-            {
-                taskObject["resource"] = CSharpExpressionConverter.ConvertToken(bodymoduletaskresource);
-                taskObjectpropCount++;
-            }
-
-            if (taskObjectpropCount > 0)
-            {
-                moduleObject["task"] = taskObject;
-                moduleObjectpropCount++;
-            }
-
-            var @eventObject = new JObject();
-            var @eventObjectpropCount = 0;
-            if (bodymoduleEventeventTitle != null)
-            {
-                @eventObject["eventTitle"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventeventTitle);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventeventContent != null)
-            {
-                @eventObject["eventContent"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventeventContent);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventshowComment != null)
-            {
-                @eventObject["showComment"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventshowComment);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventtagList != null)
-            {
-                @eventObject["tagList"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventtagList);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstatus != null)
-            {
-                @eventObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstatus);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventsiteID != null)
-            {
-                @eventObject["siteID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventsiteID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventcontact != null)
-            {
-                @eventObject["contact"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventcontact);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventcategoryList != null)
-            {
-                @eventObject["categoryList"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventcategoryList);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventnotificationTypeID != null)
-            {
-                @eventObject["notificationTypeID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventnotificationTypeID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventmessage != null)
-            {
-                @eventObject["message"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventmessage);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventmessageCode != null)
-            {
-                @eventObject["messageCode"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventmessageCode);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventexternalID != null)
-            {
-                @eventObject["externalID"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventexternalID);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstartDate != null)
-            {
-                @eventObject["startDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstartDate);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventendDate != null)
-            {
-                @eventObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventendDate);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventstartTime != null)
-            {
-                @eventObject["startTime"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventstartTime);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventendTime != null)
-            {
-                @eventObject["endTime"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventendTime);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventlocation != null)
-            {
-                @eventObject["location"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventlocation);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventauthor != null)
-            {
-                @eventObject["author"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventauthor);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventprocesstype != null)
-            {
-                @eventObject["processtype"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventprocesstype);
-                @eventObjectpropCount++;
-            }
-
-            if (bodymoduleEventenable != null)
-            {
-                @eventObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleEventenable);
-                @eventObjectpropCount++;
-            }
-
-            if (@eventObjectpropCount > 0)
-            {
-                moduleObject["event"] = @eventObject;
-                moduleObjectpropCount++;
-            }
-
-            var isheetObject = new JObject();
-            var isheetObjectpropCount = 0;
-            if (bodymoduleisheetid != null)
-            {
-                isheetObject["id"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetid);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheettitle != null)
-            {
-                isheetObject["title"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheettitle);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetdescription != null)
-            {
-                isheetObject["description"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetdescription);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetstatus != null)
-            {
-                isheetObject["status"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetstatus);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetaccesstype != null)
-            {
-                isheetObject["accesstype"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetaccesstype);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheettype != null)
-            {
-                isheetObject["type"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheettype);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetviewlink != null)
-            {
-                isheetObject["viewlink"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetviewlink);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowsections != null)
-            {
-                isheetObject["allowsections"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowsections);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowlookup != null)
-            {
-                isheetObject["allowlookup"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowlookup);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetdisplayisheet != null)
-            {
-                isheetObject["displayisheet"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetdisplayisheet);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsearchasdefaultview != null)
-            {
-                isheetObject["searchasdefaultview"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsearchasdefaultview);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenableversion != null)
-            {
-                isheetObject["enableversion"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenableversion);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablesheetalerter != null)
-            {
-                isheetObject["enablesheetalerter"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablesheetalerter);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetalertercondition != null)
-            {
-                isheetObject["alertercondition"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetalertercondition);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetoverrideitemmodifieddate != null)
-            {
-                isheetObject["overrideitemmodifieddate"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetoverrideitemmodifieddate);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablebulkinsertupdate != null)
-            {
-                isheetObject["enablebulkinsertupdate"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablebulkinsertupdate);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetfielddescriptions != null)
-            {
-                isheetObject["fielddescriptions"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetfielddescriptions);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenablerowlocking != null)
-            {
-                isheetObject["enablerowlocking"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenablerowlocking);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsetcharlimittruncatemultilinetextenabled != null)
-            {
-                isheetObject["setcharlimittruncatemultilinetextenabled"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextenabled);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsetcharlimittruncatemultilinetextval != null)
-            {
-                isheetObject["setcharlimittruncatemultilinetextval"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextval);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowchoicelistvaluesforreuse != null)
-            {
-                isheetObject["allowchoicelistvaluesforreuse"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowchoicelistvaluesforreuse);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowscorelistvaluesforreuse != null)
-            {
-                isheetObject["allowscorelistvaluesforreuse"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowscorelistvaluesforreuse);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetallowIsheetComments != null)
-            {
-                isheetObject["allowIsheetComments"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetallowIsheetComments);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetshareRecordsLimit != null)
-            {
-                isheetObject["shareRecordsLimit"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimit);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetshareRecordsLimitEnabled != null)
-            {
-                isheetObject["shareRecordsLimitEnabled"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimitEnabled);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetenableIsheetAddRecordFormSharing != null)
-            {
-                isheetObject["enableIsheetAddRecordFormSharing"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetenableIsheetAddRecordFormSharing);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetrecordcount != null)
-            {
-                isheetObject["recordcount"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetrecordcount);
-                isheetObjectpropCount++;
-            }
-
-            if (bodymoduleisheetsheettypeid != null)
-            {
-                isheetObject["sheettypeid"] = CSharpExpressionConverter.ConvertToken(bodymoduleisheetsheettypeid);
-                isheetObjectpropCount++;
-            }
-
-            if (isheetObjectpropCount > 0)
-            {
-                moduleObject["isheet"] = isheetObject;
-                moduleObjectpropCount++;
-            }
-
-            var qaObject = new JObject();
-            var qaObjectpropCount = 0;
-            if (bodymoduleqaenable != null)
-            {
-                qaObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymoduleqaenable);
-                qaObjectpropCount++;
-            }
-
-            if (qaObjectpropCount > 0)
-            {
-                moduleObject["qa"] = qaObject;
-                moduleObjectpropCount++;
-            }
-
-            var peopleObject = new JObject();
-            var peopleObjectpropCount = 0;
-            if (bodymodulepeopleperson != null)
-            {
-                peopleObject["person"] = CSharpExpressionConverter.ConvertToken(bodymodulepeopleperson);
-                peopleObjectpropCount++;
-            }
-
-            if (peopleObjectpropCount > 0)
-            {
-                moduleObject["people"] = peopleObject;
-                moduleObjectpropCount++;
-            }
-
-            var contractexpressObject = new JObject();
-            var contractexpressObjectpropCount = 0;
-            if (bodymodulecontractexpressenable != null)
-            {
-                contractexpressObject["enable"] = CSharpExpressionConverter.ConvertToken(bodymodulecontractexpressenable);
-                contractexpressObjectpropCount++;
-            }
-
-            if (contractexpressObjectpropCount > 0)
-            {
-                moduleObject["contractexpress"] = contractexpressObject;
-                moduleObjectpropCount++;
-            }
-
-            if (moduleObjectpropCount > 0)
-            {
-                body["module"] = moduleObject;
-                bodypropCount++;
-            }
-
-            if (bodyadminnote != null)
-            {
-                body["adminnote"] = CSharpExpressionConverter.ConvertToken(bodyadminnote);
-                bodypropCount++;
-            }
-
-            if (bodystartdate != null)
-            {
-                body["startdate"] = CSharpExpressionConverter.ConvertToken(bodystartdate);
-                bodypropCount++;
-            }
-
-            if (bodyenddate != null)
-            {
-                body["enddate"] = CSharpExpressionConverter.ConvertToken(bodyenddate);
-                bodypropCount++;
-            }
-
-            if (bodycreateddate != null)
-            {
-                body["createddate"] = CSharpExpressionConverter.ConvertToken(bodycreateddate);
-                bodypropCount++;
-            }
-
-            if (bodyarchiveddate != null)
-            {
-                body["archiveddate"] = CSharpExpressionConverter.ConvertToken(bodyarchiveddate);
-                bodypropCount++;
-            }
-
-            if (bodyclientno != null)
-            {
-                body["clientno"] = CSharpExpressionConverter.ConvertToken(bodyclientno);
-                bodypropCount++;
-            }
-
-            if (bodymatterno != null)
-            {
-                body["matterno"] = CSharpExpressionConverter.ConvertToken(bodymatterno);
-                bodypropCount++;
-            }
-
-            if (bodylandingpage != null)
-            {
-                body["landingpage"] = CSharpExpressionConverter.ConvertToken(bodylandingpage);
-                bodypropCount++;
-            }
-
-            if (bodylink != null)
-            {
-                body["link"] = CSharpExpressionConverter.ConvertToken(bodylink);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodystatusid != null)
-            {
-                body["statusid"] = CSharpExpressionConverter.ConvertToken(bodystatusid);
-                bodypropCount++;
-            }
-
-            if (bodysize != null)
-            {
-                body["size"] = CSharpExpressionConverter.ConvertToken(bodysize);
-                bodypropCount++;
-            }
-
-            if (bodybillingnotes != null)
-            {
-                body["billingnotes"] = CSharpExpressionConverter.ConvertToken(bodybillingnotes);
-                bodypropCount++;
-            }
-
-            if (bodybillingnextinvoicedate != null)
-            {
-                body["billingnextinvoicedate"] = CSharpExpressionConverter.ConvertToken(bodybillingnextinvoicedate);
-                bodypropCount++;
-            }
-
-            if (bodybillinglastinvoicedate != null)
-            {
-                body["billinglastinvoicedate"] = CSharpExpressionConverter.ConvertToken(bodybillinglastinvoicedate);
-                bodypropCount++;
-            }
-
-            if (bodyfilepagecount != null)
-            {
-                body["filepagecount"] = CSharpExpressionConverter.ConvertToken(bodyfilepagecount);
-                bodypropCount++;
-            }
-
-            if (bodymaxpagecount != null)
-            {
-                body["maxpagecount"] = CSharpExpressionConverter.ConvertToken(bodymaxpagecount);
-                bodypropCount++;
-            }
-
-            if (bodysitehttplink != null)
-            {
-                body["sitehttplink"] = CSharpExpressionConverter.ConvertToken(bodysitehttplink);
-                bodypropCount++;
-            }
-
-            if (bodyisSyncable != null)
-            {
-                body["isSyncable"] = CSharpExpressionConverter.ConvertToken(bodyisSyncable);
-                bodypropCount++;
-            }
-
-            if (bodyenforceusergroups != null)
-            {
-                body["enforceusergroups"] = CSharpExpressionConverter.ConvertToken(bodyenforceusergroups);
-                bodypropCount++;
-            }
-
-            if (bodycsvSiteCategory != null)
-            {
-                body["csvSiteCategory"] = CSharpExpressionConverter.ConvertToken(bodycsvSiteCategory);
-                bodypropCount++;
-            }
-
-            if (bodysiteNameInDefaultLanguage != null)
-            {
-                body["siteNameInDefaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysiteNameInDefaultLanguage);
-                bodypropCount++;
-            }
-
-            if (bodyvisible != null)
-            {
-                body["visible"] = CSharpExpressionConverter.ConvertToken(bodyvisible);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoName != null)
-            {
-                body["siteLogoName"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoName);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoFileSize != null)
-            {
-                body["siteLogoFileSize"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoFileSize);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoHeight != null)
-            {
-                body["siteLogoHeight"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoHeight);
-                bodypropCount++;
-            }
-
-            if (bodysiteLogoWidth != null)
-            {
-                body["siteLogoWidth"] = CSharpExpressionConverter.ConvertToken(bodysiteLogoWidth);
-                bodypropCount++;
-            }
-
-            if (bodysiteStatus != null)
-            {
-                body["siteStatus"] = CSharpExpressionConverter.ConvertToken(bodysiteStatus);
-                bodypropCount++;
-            }
-
-            if (bodyapplySiteTerms != null)
-            {
-                body["applySiteTerms"] = CSharpExpressionConverter.ConvertToken(bodyapplySiteTerms);
-                bodypropCount++;
-            }
-
-            if (bodysiteTerm != null)
-            {
-                body["siteTerm"] = CSharpExpressionConverter.ConvertToken(bodysiteTerm);
-                bodypropCount++;
-            }
-
-            if (bodytermType != null)
-            {
-                body["termType"] = CSharpExpressionConverter.ConvertToken(bodytermType);
-                bodypropCount++;
-            }
-
-            if (bodynextLoginSiteTerms != null)
-            {
-                body["nextLoginSiteTerms"] = CSharpExpressionConverter.ConvertToken(bodynextLoginSiteTerms);
-                bodypropCount++;
-            }
-
-            if (bodydefaultSiteTermsEnable != null)
-            {
-                body["defaultSiteTermsEnable"] = CSharpExpressionConverter.ConvertToken(bodydefaultSiteTermsEnable);
-                bodypropCount++;
-            }
-
-            if (bodyadvancedQAPermission != null)
-            {
-                body["advancedQAPermission"] = CSharpExpressionConverter.ConvertToken(bodyadvancedQAPermission);
-                bodypropCount++;
-            }
-
-            if (bodyisInternal != null)
-            {
-                body["isInternal"] = CSharpExpressionConverter.ConvertToken(bodyisInternal);
-                bodypropCount++;
-            }
-
-            if (bodypsm != null)
-            {
-                body["psm"] = CSharpExpressionConverter.ConvertToken(bodypsm);
-                bodypropCount++;
-            }
-
-            if (bodysiteLabelDisplay != null)
-            {
-                body["siteLabelDisplay"] = CSharpExpressionConverter.ConvertToken(bodysiteLabelDisplay);
-                bodypropCount++;
-            }
-
-            if (bodyallowSiteAdministration != null)
-            {
-                body["allowSiteAdministration"] = CSharpExpressionConverter.ConvertToken(bodyallowSiteAdministration);
-                bodypropCount++;
-            }
-
-            if (bodysiteLevelPasswordEnable != null)
-            {
-                body["siteLevelPasswordEnable"] = CSharpExpressionConverter.ConvertToken(bodysiteLevelPasswordEnable);
-                bodypropCount++;
-            }
-
-            if (bodysiteLevelPasscodeEnable != null)
-            {
-                body["siteLevelPasscodeEnable"] = CSharpExpressionConverter.ConvertToken(bodysiteLevelPasscodeEnable);
-                bodypropCount++;
-            }
-
-            if (bodypasscodeUsingAuthApp != null)
-            {
-                body["passcodeUsingAuthApp"] = CSharpExpressionConverter.ConvertToken(bodypasscodeUsingAuthApp);
-                bodypropCount++;
-            }
-
-            if (bodysitePassword != null)
-            {
-                body["sitePassword"] = CSharpExpressionConverter.ConvertToken(bodysitePassword);
-                bodypropCount++;
-            }
-
-            if (bodyipRestrictionEnable != null)
-            {
-                body["ipRestrictionEnable"] = CSharpExpressionConverter.ConvertToken(bodyipRestrictionEnable);
-                bodypropCount++;
-            }
-
-            if (bodyavailableIP != null)
-            {
-                body["availableIP"] = CSharpExpressionConverter.ConvertToken(bodyavailableIP);
-                bodypropCount++;
-            }
-
-            if (bodyhighqDrive != null)
-            {
-                body["highqDrive"] = CSharpExpressionConverter.ConvertToken(bodyhighqDrive);
-                bodypropCount++;
-            }
-
-            if (bodyapplySiteHomePage != null)
-            {
-                body["applySiteHomePage"] = CSharpExpressionConverter.ConvertToken(bodyapplySiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodysiteHomePage != null)
-            {
-                body["siteHomePage"] = CSharpExpressionConverter.ConvertToken(bodysiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodysiteHomePageType != null)
-            {
-                body["siteHomePageType"] = CSharpExpressionConverter.ConvertToken(bodysiteHomePageType);
-                bodypropCount++;
-            }
-
-            if (bodynextLoginSiteHomePage != null)
-            {
-                body["nextLoginSiteHomePage"] = CSharpExpressionConverter.ConvertToken(bodynextLoginSiteHomePage);
-                bodypropCount++;
-            }
-
-            if (bodyapplyDisplayContent != null)
-            {
-                body["applyDisplayContent"] = CSharpExpressionConverter.ConvertToken(bodyapplyDisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodydisplayContent != null)
-            {
-                body["displayContent"] = CSharpExpressionConverter.ConvertToken(bodydisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodyrssSecurity != null)
-            {
-                body["rssSecurity"] = CSharpExpressionConverter.ConvertToken(bodyrssSecurity);
-                bodypropCount++;
-            }
-
-            if (bodyencryptedPassword != null)
-            {
-                body["encryptedPassword"] = CSharpExpressionConverter.ConvertToken(bodyencryptedPassword);
-                bodypropCount++;
-            }
-
-            if (bodyavailableIPRangeCSV != null)
-            {
-                body["availableIPRangeCSV"] = CSharpExpressionConverter.ConvertToken(bodyavailableIPRangeCSV);
-                bodypropCount++;
-            }
-
-            if (bodysiteModuleID != null)
-            {
-                body["siteModuleID"] = CSharpExpressionConverter.ConvertToken(bodysiteModuleID);
-                bodypropCount++;
-            }
-
-            if (bodyicalSecurity != null)
-            {
-                body["icalSecurity"] = CSharpExpressionConverter.ConvertToken(bodyicalSecurity);
-                bodypropCount++;
-            }
-
-            if (bodydefaultDisplayContent != null)
-            {
-                body["defaultDisplayContent"] = CSharpExpressionConverter.ConvertToken(bodydefaultDisplayContent);
-                bodypropCount++;
-            }
-
-            if (bodydefaultEmailAlert != null)
-            {
-                body["defaultEmailAlert"] = CSharpExpressionConverter.ConvertToken(bodydefaultEmailAlert);
-                bodypropCount++;
-            }
-
-            if (bodyexcelReportFooter != null)
-            {
-                body["excelReportFooter"] = CSharpExpressionConverter.ConvertToken(bodyexcelReportFooter);
-                bodypropCount++;
-            }
-
-            if (bodyexcelReportFooterText != null)
-            {
-                body["excelReportFooterText"] = CSharpExpressionConverter.ConvertToken(bodyexcelReportFooterText);
-                bodypropCount++;
-            }
-
-            if (bodyannouncementMLJSON != null)
-            {
-                body["announcementMLJSON"] = CSharpExpressionConverter.ConvertToken(bodyannouncementMLJSON);
-                bodypropCount++;
-            }
-
-            if (bodytemplateType != null)
-            {
-                body["templateType"] = CSharpExpressionConverter.ConvertToken(bodytemplateType);
-                bodypropCount++;
-            }
-
-            if (bodytemplateLicence != null)
-            {
-                body["templateLicence"] = CSharpExpressionConverter.ConvertToken(bodytemplateLicence);
-                bodypropCount++;
-            }
-
-            if (bodyopenChannelAppID != null)
-            {
-                body["openChannelAppID"] = CSharpExpressionConverter.ConvertToken(bodyopenChannelAppID);
-                bodypropCount++;
-            }
-
-            if (bodyitemid != null)
-            {
-                body["itemid"] = CSharpExpressionConverter.ConvertToken(bodyitemid);
-                bodypropCount++;
-            }
-
-            if (bodysitemetadatasheetid != null)
-            {
-                body["sitemetadatasheetid"] = CSharpExpressionConverter.ConvertToken(bodysitemetadatasheetid);
-                bodypropCount++;
-            }
-
-            if (bodymysite != null)
-            {
-                body["mysite"] = CSharpExpressionConverter.ConvertToken(bodymysite);
-                bodypropCount++;
-            }
-
-            if (bodylastaccesseddate != null)
-            {
-                body["lastaccesseddate"] = CSharpExpressionConverter.ConvertToken(bodylastaccesseddate);
-                bodypropCount++;
-            }
-
-            if (bodydefaultViewerMetaDataTab != null)
-            {
-                body["defaultViewerMetaDataTab"] = CSharpExpressionConverter.ConvertToken(bodydefaultViewerMetaDataTab);
-                bodypropCount++;
-            }
-
-            if (bodydocumentMetadataViewId != null)
-            {
-                body["documentMetadataViewId"] = CSharpExpressionConverter.ConvertToken(bodydocumentMetadataViewId);
-                bodypropCount++;
-            }
-
-            if (bodyfolderMetadataViewId != null)
-            {
-                body["folderMetadataViewId"] = CSharpExpressionConverter.ConvertToken(bodyfolderMetadataViewId);
-                bodypropCount++;
-            }
-
-            if (bodydocSort != null)
-            {
-                body["docSort"] = CSharpExpressionConverter.ConvertToken(bodydocSort);
-                bodypropCount++;
-            }
-
-            if (bodyfolderSort != null)
-            {
-                body["folderSort"] = CSharpExpressionConverter.ConvertToken(bodyfolderSort);
-                bodypropCount++;
-            }
-
-            if (bodydefaultFolderRenderView != null)
-            {
-                body["defaultFolderRenderView"] = CSharpExpressionConverter.ConvertToken(bodydefaultFolderRenderView);
-                bodypropCount++;
-            }
-
-            if (bodyisTaskAttachmentDefault != null)
-            {
-                body["isTaskAttachmentDefault"] = CSharpExpressionConverter.ConvertToken(bodyisTaskAttachmentDefault);
-                bodypropCount++;
-            }
-
-            if (bodytaskAttachmentDefaultFolderId != null)
-            {
-                body["taskAttachmentDefaultFolderId"] = CSharpExpressionConverter.ConvertToken(bodytaskAttachmentDefaultFolderId);
-                bodypropCount++;
-            }
-
-            if (bodyfavourite != null)
-            {
-                body["favourite"] = CSharpExpressionConverter.ConvertToken(bodyfavourite);
-                bodypropCount++;
-            }
-
-            if (bodyenabledocumentredaction != null)
-            {
-                body["enabledocumentredaction"] = CSharpExpressionConverter.ConvertToken(bodyenabledocumentredaction);
-                bodypropCount++;
-            }
-
-            if (bodymentiongroups != null)
-            {
-                body["mentiongroups"] = CSharpExpressionConverter.ConvertToken(bodymentiongroups);
-                bodypropCount++;
-            }
-
-            if (bodyenablefilerelationships != null)
-            {
-                body["enablefilerelationships"] = CSharpExpressionConverter.ConvertToken(bodyenablefilerelationships);
-                bodypropCount++;
-            }
-
-            if (bodyfilerelationshipsitepermissionlevel != null)
-            {
-                body["filerelationshipsitepermissionlevel"] = CSharpExpressionConverter.ConvertToken(bodyfilerelationshipsitepermissionlevel);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(siteid, nameof(siteid), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodysitename, nameof(bodysitename), required: false);
+            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
+            SourceExpression.Validate(bodysitedescription, nameof(bodysitedescription), required: false);
+            SourceExpression.Validate(bodyenabledmodules, nameof(bodyenabledmodules), required: false);
+            SourceExpression.Validate(bodysitefolderID, nameof(bodysitefolderID), required: false);
+            SourceExpression.Validate(bodysitefolderpermission, nameof(bodysitefolderpermission), required: false);
+            SourceExpression.Validate(bodymodulehomeenable, nameof(bodymodulehomeenable), required: false);
+            SourceExpression.Validate(bodymoduleactivityenable, nameof(bodymoduleactivityenable), required: false);
+            SourceExpression.Validate(bodymoduleactivitymicroblog, nameof(bodymoduleactivitymicroblog), required: false);
+            SourceExpression.Validate(bodymoduledocumentdocid, nameof(bodymoduledocumentdocid), required: false);
+            SourceExpression.Validate(bodymoduleblogblogTitle, nameof(bodymoduleblogblogTitle), required: false);
+            SourceExpression.Validate(bodymoduleblogblogContent, nameof(bodymoduleblogblogContent), required: false);
+            SourceExpression.Validate(bodymoduleblogshowComment, nameof(bodymoduleblogshowComment), required: false);
+            SourceExpression.Validate(bodymoduleblogtagList, nameof(bodymoduleblogtagList), required: false);
+            SourceExpression.Validate(bodymoduleblogstatus, nameof(bodymoduleblogstatus), required: false);
+            SourceExpression.Validate(bodymoduleblogsiteID, nameof(bodymoduleblogsiteID), required: false);
+            SourceExpression.Validate(bodymoduleblogauthor, nameof(bodymoduleblogauthor), required: false);
+            SourceExpression.Validate(bodymoduleblogcategoryList, nameof(bodymoduleblogcategoryList), required: false);
+            SourceExpression.Validate(bodymoduleblognotificationTypeID, nameof(bodymoduleblognotificationTypeID), required: false);
+            SourceExpression.Validate(bodymoduleblogmessage, nameof(bodymoduleblogmessage), required: false);
+            SourceExpression.Validate(bodymoduleblogmessageCode, nameof(bodymoduleblogmessageCode), required: false);
+            SourceExpression.Validate(bodymoduleblogexternalID, nameof(bodymoduleblogexternalID), required: false);
+            SourceExpression.Validate(bodymoduleblogpublishDate, nameof(bodymoduleblogpublishDate), required: false);
+            SourceExpression.Validate(bodymoduleblogprocesstype, nameof(bodymoduleblogprocesstype), required: false);
+            SourceExpression.Validate(bodymoduleblogenable, nameof(bodymoduleblogenable), required: false);
+            SourceExpression.Validate(bodymodulewikiwikiid, nameof(bodymodulewikiwikiid), required: false);
+            SourceExpression.Validate(bodymodulewikicurrentversionid, nameof(bodymodulewikicurrentversionid), required: false);
+            SourceExpression.Validate(bodymodulewikiparentwikiid, nameof(bodymodulewikiparentwikiid), required: false);
+            SourceExpression.Validate(bodymodulewikiwikititle, nameof(bodymodulewikiwikititle), required: false);
+            SourceExpression.Validate(bodymodulewikiwikicontent, nameof(bodymodulewikiwikicontent), required: false);
+            SourceExpression.Validate(bodymodulewikishowcomment, nameof(bodymodulewikishowcomment), required: false);
+            SourceExpression.Validate(bodymodulewikicreateddate, nameof(bodymodulewikicreateddate), required: false);
+            SourceExpression.Validate(bodymodulewikimodifieddate, nameof(bodymodulewikimodifieddate), required: false);
+            SourceExpression.Validate(bodymodulewikitaglist, nameof(bodymodulewikitaglist), required: false);
+            SourceExpression.Validate(bodymodulewikiwikipath, nameof(bodymodulewikiwikipath), required: false);
+            SourceExpression.Validate(bodymodulewikiwikidraftid, nameof(bodymodulewikiwikidraftid), required: false);
+            SourceExpression.Validate(bodymodulewikidrafttype, nameof(bodymodulewikidrafttype), required: false);
+            SourceExpression.Validate(bodymodulewikistatus, nameof(bodymodulewikistatus), required: false);
+            SourceExpression.Validate(bodymodulewikiwikiversionid, nameof(bodymodulewikiwikiversionid), required: false);
+            SourceExpression.Validate(bodymoduletaskindex, nameof(bodymoduletaskindex), required: false);
+            SourceExpression.Validate(bodymoduletaskparenttaskid, nameof(bodymoduletaskparenttaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktaskid, nameof(bodymoduletasktaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktitle, nameof(bodymoduletasktitle), required: false);
+            SourceExpression.Validate(bodymoduletaskdescription, nameof(bodymoduletaskdescription), required: false);
+            SourceExpression.Validate(bodymoduletaskduedate, nameof(bodymoduletaskduedate), required: false);
+            SourceExpression.Validate(bodymoduletaskstartdate, nameof(bodymoduletaskstartdate), required: false);
+            SourceExpression.Validate(bodymoduletaskmattermaptaskid, nameof(bodymoduletaskmattermaptaskid), required: false);
+            SourceExpression.Validate(bodymoduletasktype, nameof(bodymoduletasktype), required: false);
+            SourceExpression.Validate(bodymoduletaskdependenton, nameof(bodymoduletaskdependenton), required: false);
+            SourceExpression.Validate(bodymoduletaskdaysfromdependent, nameof(bodymoduletaskdaysfromdependent), required: false);
+            SourceExpression.Validate(bodymoduletaskignoreweekend, nameof(bodymoduletaskignoreweekend), required: false);
+            SourceExpression.Validate(bodymoduletaskduration, nameof(bodymoduletaskduration), required: false);
+            SourceExpression.Validate(bodymoduletaskresource, nameof(bodymoduletaskresource), required: false);
+            SourceExpression.Validate(bodymoduleEventeventTitle, nameof(bodymoduleEventeventTitle), required: false);
+            SourceExpression.Validate(bodymoduleEventeventContent, nameof(bodymoduleEventeventContent), required: false);
+            SourceExpression.Validate(bodymoduleEventshowComment, nameof(bodymoduleEventshowComment), required: false);
+            SourceExpression.Validate(bodymoduleEventtagList, nameof(bodymoduleEventtagList), required: false);
+            SourceExpression.Validate(bodymoduleEventstatus, nameof(bodymoduleEventstatus), required: false);
+            SourceExpression.Validate(bodymoduleEventsiteID, nameof(bodymoduleEventsiteID), required: false);
+            SourceExpression.Validate(bodymoduleEventcontact, nameof(bodymoduleEventcontact), required: false);
+            SourceExpression.Validate(bodymoduleEventcategoryList, nameof(bodymoduleEventcategoryList), required: false);
+            SourceExpression.Validate(bodymoduleEventnotificationTypeID, nameof(bodymoduleEventnotificationTypeID), required: false);
+            SourceExpression.Validate(bodymoduleEventmessage, nameof(bodymoduleEventmessage), required: false);
+            SourceExpression.Validate(bodymoduleEventmessageCode, nameof(bodymoduleEventmessageCode), required: false);
+            SourceExpression.Validate(bodymoduleEventexternalID, nameof(bodymoduleEventexternalID), required: false);
+            SourceExpression.Validate(bodymoduleEventstartDate, nameof(bodymoduleEventstartDate), required: false);
+            SourceExpression.Validate(bodymoduleEventendDate, nameof(bodymoduleEventendDate), required: false);
+            SourceExpression.Validate(bodymoduleEventstartTime, nameof(bodymoduleEventstartTime), required: false);
+            SourceExpression.Validate(bodymoduleEventendTime, nameof(bodymoduleEventendTime), required: false);
+            SourceExpression.Validate(bodymoduleEventlocation, nameof(bodymoduleEventlocation), required: false);
+            SourceExpression.Validate(bodymoduleEventauthor, nameof(bodymoduleEventauthor), required: false);
+            SourceExpression.Validate(bodymoduleEventprocesstype, nameof(bodymoduleEventprocesstype), required: false);
+            SourceExpression.Validate(bodymoduleEventenable, nameof(bodymoduleEventenable), required: false);
+            SourceExpression.Validate(bodymoduleisheetid, nameof(bodymoduleisheetid), required: false);
+            SourceExpression.Validate(bodymoduleisheettitle, nameof(bodymoduleisheettitle), required: false);
+            SourceExpression.Validate(bodymoduleisheetdescription, nameof(bodymoduleisheetdescription), required: false);
+            SourceExpression.Validate(bodymoduleisheetstatus, nameof(bodymoduleisheetstatus), required: false);
+            SourceExpression.Validate(bodymoduleisheetaccesstype, nameof(bodymoduleisheetaccesstype), required: false);
+            SourceExpression.Validate(bodymoduleisheettype, nameof(bodymoduleisheettype), required: false);
+            SourceExpression.Validate(bodymoduleisheetviewlink, nameof(bodymoduleisheetviewlink), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowsections, nameof(bodymoduleisheetallowsections), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowlookup, nameof(bodymoduleisheetallowlookup), required: false);
+            SourceExpression.Validate(bodymoduleisheetdisplayisheet, nameof(bodymoduleisheetdisplayisheet), required: false);
+            SourceExpression.Validate(bodymoduleisheetsearchasdefaultview, nameof(bodymoduleisheetsearchasdefaultview), required: false);
+            SourceExpression.Validate(bodymoduleisheetenableversion, nameof(bodymoduleisheetenableversion), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablesheetalerter, nameof(bodymoduleisheetenablesheetalerter), required: false);
+            SourceExpression.Validate(bodymoduleisheetalertercondition, nameof(bodymoduleisheetalertercondition), required: false);
+            SourceExpression.Validate(bodymoduleisheetoverrideitemmodifieddate, nameof(bodymoduleisheetoverrideitemmodifieddate), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablebulkinsertupdate, nameof(bodymoduleisheetenablebulkinsertupdate), required: false);
+            SourceExpression.Validate(bodymoduleisheetfielddescriptions, nameof(bodymoduleisheetfielddescriptions), required: false);
+            SourceExpression.Validate(bodymoduleisheetenablerowlocking, nameof(bodymoduleisheetenablerowlocking), required: false);
+            SourceExpression.Validate(bodymoduleisheetsetcharlimittruncatemultilinetextenabled, nameof(bodymoduleisheetsetcharlimittruncatemultilinetextenabled), required: false);
+            SourceExpression.Validate(bodymoduleisheetsetcharlimittruncatemultilinetextval, nameof(bodymoduleisheetsetcharlimittruncatemultilinetextval), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowchoicelistvaluesforreuse, nameof(bodymoduleisheetallowchoicelistvaluesforreuse), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowscorelistvaluesforreuse, nameof(bodymoduleisheetallowscorelistvaluesforreuse), required: false);
+            SourceExpression.Validate(bodymoduleisheetallowIsheetComments, nameof(bodymoduleisheetallowIsheetComments), required: false);
+            SourceExpression.Validate(bodymoduleisheetshareRecordsLimit, nameof(bodymoduleisheetshareRecordsLimit), required: false);
+            SourceExpression.Validate(bodymoduleisheetshareRecordsLimitEnabled, nameof(bodymoduleisheetshareRecordsLimitEnabled), required: false);
+            SourceExpression.Validate(bodymoduleisheetenableIsheetAddRecordFormSharing, nameof(bodymoduleisheetenableIsheetAddRecordFormSharing), required: false);
+            SourceExpression.Validate(bodymoduleisheetrecordcount, nameof(bodymoduleisheetrecordcount), required: false);
+            SourceExpression.Validate(bodymoduleisheetsheettypeid, nameof(bodymoduleisheetsheettypeid), required: false);
+            SourceExpression.Validate(bodymoduleqaenable, nameof(bodymoduleqaenable), required: false);
+            SourceExpression.Validate(bodymodulepeopleperson, nameof(bodymodulepeopleperson), required: false);
+            SourceExpression.Validate(bodymodulecontractexpressenable, nameof(bodymodulecontractexpressenable), required: false);
+            SourceExpression.Validate(bodyadminnote, nameof(bodyadminnote), required: false);
+            SourceExpression.Validate(bodystartdate, nameof(bodystartdate), required: false);
+            SourceExpression.Validate(bodyenddate, nameof(bodyenddate), required: false);
+            SourceExpression.Validate(bodycreateddate, nameof(bodycreateddate), required: false);
+            SourceExpression.Validate(bodyarchiveddate, nameof(bodyarchiveddate), required: false);
+            SourceExpression.Validate(bodyclientno, nameof(bodyclientno), required: false);
+            SourceExpression.Validate(bodymatterno, nameof(bodymatterno), required: false);
+            SourceExpression.Validate(bodylandingpage, nameof(bodylandingpage), required: false);
+            SourceExpression.Validate(bodylink, nameof(bodylink), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodystatusid, nameof(bodystatusid), required: false);
+            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
+            SourceExpression.Validate(bodybillingnotes, nameof(bodybillingnotes), required: false);
+            SourceExpression.Validate(bodybillingnextinvoicedate, nameof(bodybillingnextinvoicedate), required: false);
+            SourceExpression.Validate(bodybillinglastinvoicedate, nameof(bodybillinglastinvoicedate), required: false);
+            SourceExpression.Validate(bodyfilepagecount, nameof(bodyfilepagecount), required: false);
+            SourceExpression.Validate(bodymaxpagecount, nameof(bodymaxpagecount), required: false);
+            SourceExpression.Validate(bodysitehttplink, nameof(bodysitehttplink), required: false);
+            SourceExpression.Validate(bodyisSyncable, nameof(bodyisSyncable), required: false);
+            SourceExpression.Validate(bodyenforceusergroups, nameof(bodyenforceusergroups), required: false);
+            SourceExpression.Validate(bodycsvSiteCategory, nameof(bodycsvSiteCategory), required: false);
+            SourceExpression.Validate(bodysiteNameInDefaultLanguage, nameof(bodysiteNameInDefaultLanguage), required: false);
+            SourceExpression.Validate(bodyvisible, nameof(bodyvisible), required: false);
+            SourceExpression.Validate(bodysiteLogoName, nameof(bodysiteLogoName), required: false);
+            SourceExpression.Validate(bodysiteLogoFileSize, nameof(bodysiteLogoFileSize), required: false);
+            SourceExpression.Validate(bodysiteLogoHeight, nameof(bodysiteLogoHeight), required: false);
+            SourceExpression.Validate(bodysiteLogoWidth, nameof(bodysiteLogoWidth), required: false);
+            SourceExpression.Validate(bodysiteStatus, nameof(bodysiteStatus), required: false);
+            SourceExpression.Validate(bodyapplySiteTerms, nameof(bodyapplySiteTerms), required: false);
+            SourceExpression.Validate(bodysiteTerm, nameof(bodysiteTerm), required: false);
+            SourceExpression.Validate(bodytermType, nameof(bodytermType), required: false);
+            SourceExpression.Validate(bodynextLoginSiteTerms, nameof(bodynextLoginSiteTerms), required: false);
+            SourceExpression.Validate(bodydefaultSiteTermsEnable, nameof(bodydefaultSiteTermsEnable), required: false);
+            SourceExpression.Validate(bodyadvancedQAPermission, nameof(bodyadvancedQAPermission), required: false);
+            SourceExpression.Validate(bodyisInternal, nameof(bodyisInternal), required: false);
+            SourceExpression.Validate(bodypsm, nameof(bodypsm), required: false);
+            SourceExpression.Validate(bodysiteLabelDisplay, nameof(bodysiteLabelDisplay), required: false);
+            SourceExpression.Validate(bodyallowSiteAdministration, nameof(bodyallowSiteAdministration), required: false);
+            SourceExpression.Validate(bodysiteLevelPasswordEnable, nameof(bodysiteLevelPasswordEnable), required: false);
+            SourceExpression.Validate(bodysiteLevelPasscodeEnable, nameof(bodysiteLevelPasscodeEnable), required: false);
+            SourceExpression.Validate(bodypasscodeUsingAuthApp, nameof(bodypasscodeUsingAuthApp), required: false);
+            SourceExpression.Validate(bodysitePassword, nameof(bodysitePassword), required: false);
+            SourceExpression.Validate(bodyipRestrictionEnable, nameof(bodyipRestrictionEnable), required: false);
+            SourceExpression.Validate(bodyavailableIP, nameof(bodyavailableIP), required: false);
+            SourceExpression.Validate(bodyhighqDrive, nameof(bodyhighqDrive), required: false);
+            SourceExpression.Validate(bodyapplySiteHomePage, nameof(bodyapplySiteHomePage), required: false);
+            SourceExpression.Validate(bodysiteHomePage, nameof(bodysiteHomePage), required: false);
+            SourceExpression.Validate(bodysiteHomePageType, nameof(bodysiteHomePageType), required: false);
+            SourceExpression.Validate(bodynextLoginSiteHomePage, nameof(bodynextLoginSiteHomePage), required: false);
+            SourceExpression.Validate(bodyapplyDisplayContent, nameof(bodyapplyDisplayContent), required: false);
+            SourceExpression.Validate(bodydisplayContent, nameof(bodydisplayContent), required: false);
+            SourceExpression.Validate(bodyrssSecurity, nameof(bodyrssSecurity), required: false);
+            SourceExpression.Validate(bodyencryptedPassword, nameof(bodyencryptedPassword), required: false);
+            SourceExpression.Validate(bodyavailableIPRangeCSV, nameof(bodyavailableIPRangeCSV), required: false);
+            SourceExpression.Validate(bodysiteModuleID, nameof(bodysiteModuleID), required: false);
+            SourceExpression.Validate(bodyicalSecurity, nameof(bodyicalSecurity), required: false);
+            SourceExpression.Validate(bodydefaultDisplayContent, nameof(bodydefaultDisplayContent), required: false);
+            SourceExpression.Validate(bodydefaultEmailAlert, nameof(bodydefaultEmailAlert), required: false);
+            SourceExpression.Validate(bodyexcelReportFooter, nameof(bodyexcelReportFooter), required: false);
+            SourceExpression.Validate(bodyexcelReportFooterText, nameof(bodyexcelReportFooterText), required: false);
+            SourceExpression.Validate(bodyannouncementMLJSON, nameof(bodyannouncementMLJSON), required: false);
+            SourceExpression.Validate(bodytemplateType, nameof(bodytemplateType), required: false);
+            SourceExpression.Validate(bodytemplateLicence, nameof(bodytemplateLicence), required: false);
+            SourceExpression.Validate(bodyopenChannelAppID, nameof(bodyopenChannelAppID), required: false);
+            SourceExpression.Validate(bodyitemid, nameof(bodyitemid), required: false);
+            SourceExpression.Validate(bodysitemetadatasheetid, nameof(bodysitemetadatasheetid), required: false);
+            SourceExpression.Validate(bodymysite, nameof(bodymysite), required: false);
+            SourceExpression.Validate(bodylastaccesseddate, nameof(bodylastaccesseddate), required: false);
+            SourceExpression.Validate(bodydefaultViewerMetaDataTab, nameof(bodydefaultViewerMetaDataTab), required: false);
+            SourceExpression.Validate(bodydocumentMetadataViewId, nameof(bodydocumentMetadataViewId), required: false);
+            SourceExpression.Validate(bodyfolderMetadataViewId, nameof(bodyfolderMetadataViewId), required: false);
+            SourceExpression.Validate(bodydocSort, nameof(bodydocSort), required: false);
+            SourceExpression.Validate(bodyfolderSort, nameof(bodyfolderSort), required: false);
+            SourceExpression.Validate(bodydefaultFolderRenderView, nameof(bodydefaultFolderRenderView), required: false);
+            SourceExpression.Validate(bodyisTaskAttachmentDefault, nameof(bodyisTaskAttachmentDefault), required: false);
+            SourceExpression.Validate(bodytaskAttachmentDefaultFolderId, nameof(bodytaskAttachmentDefaultFolderId), required: false);
+            SourceExpression.Validate(bodyfavourite, nameof(bodyfavourite), required: false);
+            SourceExpression.Validate(bodyenabledocumentredaction, nameof(bodyenabledocumentredaction), required: false);
+            SourceExpression.Validate(bodymentiongroups, nameof(bodymentiongroups), required: false);
+            SourceExpression.Validate(bodyenablefilerelationships, nameof(bodyenablefilerelationships), required: false);
+            SourceExpression.Validate(bodyfilerelationshipsitepermissionlevel, nameof(bodyfilerelationshipsitepermissionlevel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/sites/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodysitename != null)
+                {
+                    body["sitename"] = SourceExpressionConverter.ConvertToken(bodysitename);
+                    bodypropCount++;
+                }
+
+                if (bodyrole != null)
+                {
+                    body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                    bodypropCount++;
+                }
+
+                if (bodysitedescription != null)
+                {
+                    body["sitedescription"] = SourceExpressionConverter.ConvertToken(bodysitedescription);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledmodules != null)
+                {
+                    body["enabledmodules"] = SourceExpressionConverter.ConvertToken(bodyenabledmodules);
+                    bodypropCount++;
+                }
+
+                if (bodysitefolderID != null)
+                {
+                    body["sitefolderID"] = SourceExpressionConverter.ConvertToken(bodysitefolderID);
+                    bodypropCount++;
+                }
+
+                if (bodysitefolderpermission != null)
+                {
+                    body["sitefolderpermission"] = SourceExpressionConverter.ConvertToken(bodysitefolderpermission);
+                    bodypropCount++;
+                }
+
+                var moduleObject = new JObject();
+                var moduleObjectpropCount = 0;
+                var homeObject = new JObject();
+                var homeObjectpropCount = 0;
+                if (bodymodulehomeenable != null)
+                {
+                    homeObject["enable"] = SourceExpressionConverter.ConvertToken(bodymodulehomeenable);
+                    homeObjectpropCount++;
+                }
+
+                if (homeObjectpropCount > 0)
+                {
+                    moduleObject["home"] = homeObject;
+                    moduleObjectpropCount++;
+                }
+
+                var activityObject = new JObject();
+                var activityObjectpropCount = 0;
+                if (bodymoduleactivityenable != null)
+                {
+                    activityObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleactivityenable);
+                    activityObjectpropCount++;
+                }
+
+                if (bodymoduleactivitymicroblog != null)
+                {
+                    activityObject["microblog"] = SourceExpressionConverter.ConvertToken(bodymoduleactivitymicroblog);
+                    activityObjectpropCount++;
+                }
+
+                if (activityObjectpropCount > 0)
+                {
+                    moduleObject["activity"] = activityObject;
+                    moduleObjectpropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodymoduledocumentdocid != null)
+                {
+                    documentObject["docid"] = SourceExpressionConverter.ConvertToken(bodymoduledocumentdocid);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    moduleObject["document"] = documentObject;
+                    moduleObjectpropCount++;
+                }
+
+                var blogObject = new JObject();
+                var blogObjectpropCount = 0;
+                if (bodymoduleblogblogTitle != null)
+                {
+                    blogObject["blogTitle"] = SourceExpressionConverter.ConvertToken(bodymoduleblogblogTitle);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogblogContent != null)
+                {
+                    blogObject["blogContent"] = SourceExpressionConverter.ConvertToken(bodymoduleblogblogContent);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogshowComment != null)
+                {
+                    blogObject["showComment"] = SourceExpressionConverter.ConvertToken(bodymoduleblogshowComment);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogtagList != null)
+                {
+                    blogObject["tagList"] = SourceExpressionConverter.ConvertToken(bodymoduleblogtagList);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogstatus != null)
+                {
+                    blogObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleblogstatus);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogsiteID != null)
+                {
+                    blogObject["siteID"] = SourceExpressionConverter.ConvertToken(bodymoduleblogsiteID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogauthor != null)
+                {
+                    blogObject["author"] = SourceExpressionConverter.ConvertToken(bodymoduleblogauthor);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogcategoryList != null)
+                {
+                    blogObject["categoryList"] = SourceExpressionConverter.ConvertToken(bodymoduleblogcategoryList);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblognotificationTypeID != null)
+                {
+                    blogObject["notificationTypeID"] = SourceExpressionConverter.ConvertToken(bodymoduleblognotificationTypeID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogmessage != null)
+                {
+                    blogObject["message"] = SourceExpressionConverter.ConvertToken(bodymoduleblogmessage);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogmessageCode != null)
+                {
+                    blogObject["messageCode"] = SourceExpressionConverter.ConvertToken(bodymoduleblogmessageCode);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogexternalID != null)
+                {
+                    blogObject["externalID"] = SourceExpressionConverter.ConvertToken(bodymoduleblogexternalID);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogpublishDate != null)
+                {
+                    blogObject["publishDate"] = SourceExpressionConverter.ConvertToken(bodymoduleblogpublishDate);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogprocesstype != null)
+                {
+                    blogObject["processtype"] = SourceExpressionConverter.ConvertToken(bodymoduleblogprocesstype);
+                    blogObjectpropCount++;
+                }
+
+                if (bodymoduleblogenable != null)
+                {
+                    blogObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleblogenable);
+                    blogObjectpropCount++;
+                }
+
+                if (blogObjectpropCount > 0)
+                {
+                    moduleObject["blog"] = blogObject;
+                    moduleObjectpropCount++;
+                }
+
+                var wikiObject = new JObject();
+                var wikiObjectpropCount = 0;
+                if (bodymodulewikiwikiid != null)
+                {
+                    wikiObject["wikiid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikiid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikicurrentversionid != null)
+                {
+                    wikiObject["currentversionid"] = SourceExpressionConverter.ConvertToken(bodymodulewikicurrentversionid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiparentwikiid != null)
+                {
+                    wikiObject["parentwikiid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiparentwikiid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikititle != null)
+                {
+                    wikiObject["wikititle"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikititle);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikicontent != null)
+                {
+                    wikiObject["wikicontent"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikicontent);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikishowcomment != null)
+                {
+                    wikiObject["showcomment"] = SourceExpressionConverter.ConvertToken(bodymodulewikishowcomment);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikicreateddate != null)
+                {
+                    wikiObject["createddate"] = SourceExpressionConverter.ConvertToken(bodymodulewikicreateddate);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikimodifieddate != null)
+                {
+                    wikiObject["modifieddate"] = SourceExpressionConverter.ConvertToken(bodymodulewikimodifieddate);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikitaglist != null)
+                {
+                    wikiObject["taglist"] = SourceExpressionConverter.ConvertToken(bodymodulewikitaglist);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikipath != null)
+                {
+                    wikiObject["wikipath"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikipath);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikidraftid != null)
+                {
+                    wikiObject["wikidraftid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikidraftid);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikidrafttype != null)
+                {
+                    wikiObject["drafttype"] = SourceExpressionConverter.ConvertToken(bodymodulewikidrafttype);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikistatus != null)
+                {
+                    wikiObject["status"] = SourceExpressionConverter.ConvertToken(bodymodulewikistatus);
+                    wikiObjectpropCount++;
+                }
+
+                if (bodymodulewikiwikiversionid != null)
+                {
+                    wikiObject["wikiversionid"] = SourceExpressionConverter.ConvertToken(bodymodulewikiwikiversionid);
+                    wikiObjectpropCount++;
+                }
+
+                if (wikiObjectpropCount > 0)
+                {
+                    moduleObject["wiki"] = wikiObject;
+                    moduleObjectpropCount++;
+                }
+
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodymoduletaskindex != null)
+                {
+                    taskObject["index"] = SourceExpressionConverter.ConvertToken(bodymoduletaskindex);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskparenttaskid != null)
+                {
+                    taskObject["parenttaskid"] = SourceExpressionConverter.ConvertToken(bodymoduletaskparenttaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktaskid != null)
+                {
+                    taskObject["taskid"] = SourceExpressionConverter.ConvertToken(bodymoduletasktaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktitle != null)
+                {
+                    taskObject["title"] = SourceExpressionConverter.ConvertToken(bodymoduletasktitle);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdescription != null)
+                {
+                    taskObject["description"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdescription);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskduedate != null)
+                {
+                    taskObject["duedate"] = SourceExpressionConverter.ConvertToken(bodymoduletaskduedate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskstartdate != null)
+                {
+                    taskObject["startdate"] = SourceExpressionConverter.ConvertToken(bodymoduletaskstartdate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskmattermaptaskid != null)
+                {
+                    taskObject["mattermaptaskid"] = SourceExpressionConverter.ConvertToken(bodymoduletaskmattermaptaskid);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletasktype != null)
+                {
+                    taskObject["type"] = SourceExpressionConverter.ConvertToken(bodymoduletasktype);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdependenton != null)
+                {
+                    taskObject["dependenton"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdependenton);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskdaysfromdependent != null)
+                {
+                    taskObject["daysfromdependent"] = SourceExpressionConverter.ConvertToken(bodymoduletaskdaysfromdependent);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskignoreweekend != null)
+                {
+                    taskObject["ignoreweekend"] = SourceExpressionConverter.ConvertToken(bodymoduletaskignoreweekend);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskduration != null)
+                {
+                    taskObject["duration"] = SourceExpressionConverter.ConvertToken(bodymoduletaskduration);
+                    taskObjectpropCount++;
+                }
+
+                if (bodymoduletaskresource != null)
+                {
+                    taskObject["resource"] = SourceExpressionConverter.ConvertToken(bodymoduletaskresource);
+                    taskObjectpropCount++;
+                }
+
+                if (taskObjectpropCount > 0)
+                {
+                    moduleObject["task"] = taskObject;
+                    moduleObjectpropCount++;
+                }
+
+                var @eventObject = new JObject();
+                var @eventObjectpropCount = 0;
+                if (bodymoduleEventeventTitle != null)
+                {
+                    @eventObject["eventTitle"] = SourceExpressionConverter.ConvertToken(bodymoduleEventeventTitle);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventeventContent != null)
+                {
+                    @eventObject["eventContent"] = SourceExpressionConverter.ConvertToken(bodymoduleEventeventContent);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventshowComment != null)
+                {
+                    @eventObject["showComment"] = SourceExpressionConverter.ConvertToken(bodymoduleEventshowComment);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventtagList != null)
+                {
+                    @eventObject["tagList"] = SourceExpressionConverter.ConvertToken(bodymoduleEventtagList);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstatus != null)
+                {
+                    @eventObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstatus);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventsiteID != null)
+                {
+                    @eventObject["siteID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventsiteID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventcontact != null)
+                {
+                    @eventObject["contact"] = SourceExpressionConverter.ConvertToken(bodymoduleEventcontact);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventcategoryList != null)
+                {
+                    @eventObject["categoryList"] = SourceExpressionConverter.ConvertToken(bodymoduleEventcategoryList);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventnotificationTypeID != null)
+                {
+                    @eventObject["notificationTypeID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventnotificationTypeID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventmessage != null)
+                {
+                    @eventObject["message"] = SourceExpressionConverter.ConvertToken(bodymoduleEventmessage);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventmessageCode != null)
+                {
+                    @eventObject["messageCode"] = SourceExpressionConverter.ConvertToken(bodymoduleEventmessageCode);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventexternalID != null)
+                {
+                    @eventObject["externalID"] = SourceExpressionConverter.ConvertToken(bodymoduleEventexternalID);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstartDate != null)
+                {
+                    @eventObject["startDate"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstartDate);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventendDate != null)
+                {
+                    @eventObject["endDate"] = SourceExpressionConverter.ConvertToken(bodymoduleEventendDate);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventstartTime != null)
+                {
+                    @eventObject["startTime"] = SourceExpressionConverter.ConvertToken(bodymoduleEventstartTime);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventendTime != null)
+                {
+                    @eventObject["endTime"] = SourceExpressionConverter.ConvertToken(bodymoduleEventendTime);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventlocation != null)
+                {
+                    @eventObject["location"] = SourceExpressionConverter.ConvertToken(bodymoduleEventlocation);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventauthor != null)
+                {
+                    @eventObject["author"] = SourceExpressionConverter.ConvertToken(bodymoduleEventauthor);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventprocesstype != null)
+                {
+                    @eventObject["processtype"] = SourceExpressionConverter.ConvertToken(bodymoduleEventprocesstype);
+                    @eventObjectpropCount++;
+                }
+
+                if (bodymoduleEventenable != null)
+                {
+                    @eventObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleEventenable);
+                    @eventObjectpropCount++;
+                }
+
+                if (@eventObjectpropCount > 0)
+                {
+                    moduleObject["event"] = @eventObject;
+                    moduleObjectpropCount++;
+                }
+
+                var isheetObject = new JObject();
+                var isheetObjectpropCount = 0;
+                if (bodymoduleisheetid != null)
+                {
+                    isheetObject["id"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetid);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheettitle != null)
+                {
+                    isheetObject["title"] = SourceExpressionConverter.ConvertToken(bodymoduleisheettitle);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetdescription != null)
+                {
+                    isheetObject["description"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetdescription);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetstatus != null)
+                {
+                    isheetObject["status"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetstatus);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetaccesstype != null)
+                {
+                    isheetObject["accesstype"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetaccesstype);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheettype != null)
+                {
+                    isheetObject["type"] = SourceExpressionConverter.ConvertToken(bodymoduleisheettype);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetviewlink != null)
+                {
+                    isheetObject["viewlink"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetviewlink);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowsections != null)
+                {
+                    isheetObject["allowsections"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowsections);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowlookup != null)
+                {
+                    isheetObject["allowlookup"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowlookup);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetdisplayisheet != null)
+                {
+                    isheetObject["displayisheet"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetdisplayisheet);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsearchasdefaultview != null)
+                {
+                    isheetObject["searchasdefaultview"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsearchasdefaultview);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenableversion != null)
+                {
+                    isheetObject["enableversion"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenableversion);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablesheetalerter != null)
+                {
+                    isheetObject["enablesheetalerter"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablesheetalerter);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetalertercondition != null)
+                {
+                    isheetObject["alertercondition"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetalertercondition);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetoverrideitemmodifieddate != null)
+                {
+                    isheetObject["overrideitemmodifieddate"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetoverrideitemmodifieddate);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablebulkinsertupdate != null)
+                {
+                    isheetObject["enablebulkinsertupdate"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablebulkinsertupdate);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetfielddescriptions != null)
+                {
+                    isheetObject["fielddescriptions"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetfielddescriptions);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenablerowlocking != null)
+                {
+                    isheetObject["enablerowlocking"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenablerowlocking);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsetcharlimittruncatemultilinetextenabled != null)
+                {
+                    isheetObject["setcharlimittruncatemultilinetextenabled"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextenabled);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsetcharlimittruncatemultilinetextval != null)
+                {
+                    isheetObject["setcharlimittruncatemultilinetextval"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsetcharlimittruncatemultilinetextval);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowchoicelistvaluesforreuse != null)
+                {
+                    isheetObject["allowchoicelistvaluesforreuse"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowchoicelistvaluesforreuse);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowscorelistvaluesforreuse != null)
+                {
+                    isheetObject["allowscorelistvaluesforreuse"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowscorelistvaluesforreuse);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetallowIsheetComments != null)
+                {
+                    isheetObject["allowIsheetComments"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetallowIsheetComments);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetshareRecordsLimit != null)
+                {
+                    isheetObject["shareRecordsLimit"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimit);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetshareRecordsLimitEnabled != null)
+                {
+                    isheetObject["shareRecordsLimitEnabled"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetshareRecordsLimitEnabled);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetenableIsheetAddRecordFormSharing != null)
+                {
+                    isheetObject["enableIsheetAddRecordFormSharing"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetenableIsheetAddRecordFormSharing);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetrecordcount != null)
+                {
+                    isheetObject["recordcount"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetrecordcount);
+                    isheetObjectpropCount++;
+                }
+
+                if (bodymoduleisheetsheettypeid != null)
+                {
+                    isheetObject["sheettypeid"] = SourceExpressionConverter.ConvertToken(bodymoduleisheetsheettypeid);
+                    isheetObjectpropCount++;
+                }
+
+                if (isheetObjectpropCount > 0)
+                {
+                    moduleObject["isheet"] = isheetObject;
+                    moduleObjectpropCount++;
+                }
+
+                var qaObject = new JObject();
+                var qaObjectpropCount = 0;
+                if (bodymoduleqaenable != null)
+                {
+                    qaObject["enable"] = SourceExpressionConverter.ConvertToken(bodymoduleqaenable);
+                    qaObjectpropCount++;
+                }
+
+                if (qaObjectpropCount > 0)
+                {
+                    moduleObject["qa"] = qaObject;
+                    moduleObjectpropCount++;
+                }
+
+                var peopleObject = new JObject();
+                var peopleObjectpropCount = 0;
+                if (bodymodulepeopleperson != null)
+                {
+                    peopleObject["person"] = SourceExpressionConverter.ConvertToken(bodymodulepeopleperson);
+                    peopleObjectpropCount++;
+                }
+
+                if (peopleObjectpropCount > 0)
+                {
+                    moduleObject["people"] = peopleObject;
+                    moduleObjectpropCount++;
+                }
+
+                var contractexpressObject = new JObject();
+                var contractexpressObjectpropCount = 0;
+                if (bodymodulecontractexpressenable != null)
+                {
+                    contractexpressObject["enable"] = SourceExpressionConverter.ConvertToken(bodymodulecontractexpressenable);
+                    contractexpressObjectpropCount++;
+                }
+
+                if (contractexpressObjectpropCount > 0)
+                {
+                    moduleObject["contractexpress"] = contractexpressObject;
+                    moduleObjectpropCount++;
+                }
+
+                if (moduleObjectpropCount > 0)
+                {
+                    body["module"] = moduleObject;
+                    bodypropCount++;
+                }
+
+                if (bodyadminnote != null)
+                {
+                    body["adminnote"] = SourceExpressionConverter.ConvertToken(bodyadminnote);
+                    bodypropCount++;
+                }
+
+                if (bodystartdate != null)
+                {
+                    body["startdate"] = SourceExpressionConverter.ConvertToken(bodystartdate);
+                    bodypropCount++;
+                }
+
+                if (bodyenddate != null)
+                {
+                    body["enddate"] = SourceExpressionConverter.ConvertToken(bodyenddate);
+                    bodypropCount++;
+                }
+
+                if (bodycreateddate != null)
+                {
+                    body["createddate"] = SourceExpressionConverter.ConvertToken(bodycreateddate);
+                    bodypropCount++;
+                }
+
+                if (bodyarchiveddate != null)
+                {
+                    body["archiveddate"] = SourceExpressionConverter.ConvertToken(bodyarchiveddate);
+                    bodypropCount++;
+                }
+
+                if (bodyclientno != null)
+                {
+                    body["clientno"] = SourceExpressionConverter.ConvertToken(bodyclientno);
+                    bodypropCount++;
+                }
+
+                if (bodymatterno != null)
+                {
+                    body["matterno"] = SourceExpressionConverter.ConvertToken(bodymatterno);
+                    bodypropCount++;
+                }
+
+                if (bodylandingpage != null)
+                {
+                    body["landingpage"] = SourceExpressionConverter.ConvertToken(bodylandingpage);
+                    bodypropCount++;
+                }
+
+                if (bodylink != null)
+                {
+                    body["link"] = SourceExpressionConverter.ConvertToken(bodylink);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodystatusid != null)
+                {
+                    body["statusid"] = SourceExpressionConverter.ConvertToken(bodystatusid);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodybillingnotes != null)
+                {
+                    body["billingnotes"] = SourceExpressionConverter.ConvertToken(bodybillingnotes);
+                    bodypropCount++;
+                }
+
+                if (bodybillingnextinvoicedate != null)
+                {
+                    body["billingnextinvoicedate"] = SourceExpressionConverter.ConvertToken(bodybillingnextinvoicedate);
+                    bodypropCount++;
+                }
+
+                if (bodybillinglastinvoicedate != null)
+                {
+                    body["billinglastinvoicedate"] = SourceExpressionConverter.ConvertToken(bodybillinglastinvoicedate);
+                    bodypropCount++;
+                }
+
+                if (bodyfilepagecount != null)
+                {
+                    body["filepagecount"] = SourceExpressionConverter.ConvertToken(bodyfilepagecount);
+                    bodypropCount++;
+                }
+
+                if (bodymaxpagecount != null)
+                {
+                    body["maxpagecount"] = SourceExpressionConverter.ConvertToken(bodymaxpagecount);
+                    bodypropCount++;
+                }
+
+                if (bodysitehttplink != null)
+                {
+                    body["sitehttplink"] = SourceExpressionConverter.ConvertToken(bodysitehttplink);
+                    bodypropCount++;
+                }
+
+                if (bodyisSyncable != null)
+                {
+                    body["isSyncable"] = SourceExpressionConverter.ConvertToken(bodyisSyncable);
+                    bodypropCount++;
+                }
+
+                if (bodyenforceusergroups != null)
+                {
+                    body["enforceusergroups"] = SourceExpressionConverter.ConvertToken(bodyenforceusergroups);
+                    bodypropCount++;
+                }
+
+                if (bodycsvSiteCategory != null)
+                {
+                    body["csvSiteCategory"] = SourceExpressionConverter.ConvertToken(bodycsvSiteCategory);
+                    bodypropCount++;
+                }
+
+                if (bodysiteNameInDefaultLanguage != null)
+                {
+                    body["siteNameInDefaultLanguage"] = SourceExpressionConverter.ConvertToken(bodysiteNameInDefaultLanguage);
+                    bodypropCount++;
+                }
+
+                if (bodyvisible != null)
+                {
+                    body["visible"] = SourceExpressionConverter.ConvertToken(bodyvisible);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoName != null)
+                {
+                    body["siteLogoName"] = SourceExpressionConverter.ConvertToken(bodysiteLogoName);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoFileSize != null)
+                {
+                    body["siteLogoFileSize"] = SourceExpressionConverter.ConvertToken(bodysiteLogoFileSize);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoHeight != null)
+                {
+                    body["siteLogoHeight"] = SourceExpressionConverter.ConvertToken(bodysiteLogoHeight);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLogoWidth != null)
+                {
+                    body["siteLogoWidth"] = SourceExpressionConverter.ConvertToken(bodysiteLogoWidth);
+                    bodypropCount++;
+                }
+
+                if (bodysiteStatus != null)
+                {
+                    body["siteStatus"] = SourceExpressionConverter.ConvertToken(bodysiteStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyapplySiteTerms != null)
+                {
+                    body["applySiteTerms"] = SourceExpressionConverter.ConvertToken(bodyapplySiteTerms);
+                    bodypropCount++;
+                }
+
+                if (bodysiteTerm != null)
+                {
+                    body["siteTerm"] = SourceExpressionConverter.ConvertToken(bodysiteTerm);
+                    bodypropCount++;
+                }
+
+                if (bodytermType != null)
+                {
+                    body["termType"] = SourceExpressionConverter.ConvertToken(bodytermType);
+                    bodypropCount++;
+                }
+
+                if (bodynextLoginSiteTerms != null)
+                {
+                    body["nextLoginSiteTerms"] = SourceExpressionConverter.ConvertToken(bodynextLoginSiteTerms);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultSiteTermsEnable != null)
+                {
+                    body["defaultSiteTermsEnable"] = SourceExpressionConverter.ConvertToken(bodydefaultSiteTermsEnable);
+                    bodypropCount++;
+                }
+
+                if (bodyadvancedQAPermission != null)
+                {
+                    body["advancedQAPermission"] = SourceExpressionConverter.ConvertToken(bodyadvancedQAPermission);
+                    bodypropCount++;
+                }
+
+                if (bodyisInternal != null)
+                {
+                    body["isInternal"] = SourceExpressionConverter.ConvertToken(bodyisInternal);
+                    bodypropCount++;
+                }
+
+                if (bodypsm != null)
+                {
+                    body["psm"] = SourceExpressionConverter.ConvertToken(bodypsm);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLabelDisplay != null)
+                {
+                    body["siteLabelDisplay"] = SourceExpressionConverter.ConvertToken(bodysiteLabelDisplay);
+                    bodypropCount++;
+                }
+
+                if (bodyallowSiteAdministration != null)
+                {
+                    body["allowSiteAdministration"] = SourceExpressionConverter.ConvertToken(bodyallowSiteAdministration);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLevelPasswordEnable != null)
+                {
+                    body["siteLevelPasswordEnable"] = SourceExpressionConverter.ConvertToken(bodysiteLevelPasswordEnable);
+                    bodypropCount++;
+                }
+
+                if (bodysiteLevelPasscodeEnable != null)
+                {
+                    body["siteLevelPasscodeEnable"] = SourceExpressionConverter.ConvertToken(bodysiteLevelPasscodeEnable);
+                    bodypropCount++;
+                }
+
+                if (bodypasscodeUsingAuthApp != null)
+                {
+                    body["passcodeUsingAuthApp"] = SourceExpressionConverter.ConvertToken(bodypasscodeUsingAuthApp);
+                    bodypropCount++;
+                }
+
+                if (bodysitePassword != null)
+                {
+                    body["sitePassword"] = SourceExpressionConverter.ConvertToken(bodysitePassword);
+                    bodypropCount++;
+                }
+
+                if (bodyipRestrictionEnable != null)
+                {
+                    body["ipRestrictionEnable"] = SourceExpressionConverter.ConvertToken(bodyipRestrictionEnable);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableIP != null)
+                {
+                    body["availableIP"] = SourceExpressionConverter.ConvertToken(bodyavailableIP);
+                    bodypropCount++;
+                }
+
+                if (bodyhighqDrive != null)
+                {
+                    body["highqDrive"] = SourceExpressionConverter.ConvertToken(bodyhighqDrive);
+                    bodypropCount++;
+                }
+
+                if (bodyapplySiteHomePage != null)
+                {
+                    body["applySiteHomePage"] = SourceExpressionConverter.ConvertToken(bodyapplySiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodysiteHomePage != null)
+                {
+                    body["siteHomePage"] = SourceExpressionConverter.ConvertToken(bodysiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodysiteHomePageType != null)
+                {
+                    body["siteHomePageType"] = SourceExpressionConverter.ConvertToken(bodysiteHomePageType);
+                    bodypropCount++;
+                }
+
+                if (bodynextLoginSiteHomePage != null)
+                {
+                    body["nextLoginSiteHomePage"] = SourceExpressionConverter.ConvertToken(bodynextLoginSiteHomePage);
+                    bodypropCount++;
+                }
+
+                if (bodyapplyDisplayContent != null)
+                {
+                    body["applyDisplayContent"] = SourceExpressionConverter.ConvertToken(bodyapplyDisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayContent != null)
+                {
+                    body["displayContent"] = SourceExpressionConverter.ConvertToken(bodydisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodyrssSecurity != null)
+                {
+                    body["rssSecurity"] = SourceExpressionConverter.ConvertToken(bodyrssSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodyencryptedPassword != null)
+                {
+                    body["encryptedPassword"] = SourceExpressionConverter.ConvertToken(bodyencryptedPassword);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableIPRangeCSV != null)
+                {
+                    body["availableIPRangeCSV"] = SourceExpressionConverter.ConvertToken(bodyavailableIPRangeCSV);
+                    bodypropCount++;
+                }
+
+                if (bodysiteModuleID != null)
+                {
+                    body["siteModuleID"] = SourceExpressionConverter.ConvertToken(bodysiteModuleID);
+                    bodypropCount++;
+                }
+
+                if (bodyicalSecurity != null)
+                {
+                    body["icalSecurity"] = SourceExpressionConverter.ConvertToken(bodyicalSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultDisplayContent != null)
+                {
+                    body["defaultDisplayContent"] = SourceExpressionConverter.ConvertToken(bodydefaultDisplayContent);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultEmailAlert != null)
+                {
+                    body["defaultEmailAlert"] = SourceExpressionConverter.ConvertToken(bodydefaultEmailAlert);
+                    bodypropCount++;
+                }
+
+                if (bodyexcelReportFooter != null)
+                {
+                    body["excelReportFooter"] = SourceExpressionConverter.ConvertToken(bodyexcelReportFooter);
+                    bodypropCount++;
+                }
+
+                if (bodyexcelReportFooterText != null)
+                {
+                    body["excelReportFooterText"] = SourceExpressionConverter.ConvertToken(bodyexcelReportFooterText);
+                    bodypropCount++;
+                }
+
+                if (bodyannouncementMLJSON != null)
+                {
+                    body["announcementMLJSON"] = SourceExpressionConverter.ConvertToken(bodyannouncementMLJSON);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateType != null)
+                {
+                    body["templateType"] = SourceExpressionConverter.ConvertToken(bodytemplateType);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateLicence != null)
+                {
+                    body["templateLicence"] = SourceExpressionConverter.ConvertToken(bodytemplateLicence);
+                    bodypropCount++;
+                }
+
+                if (bodyopenChannelAppID != null)
+                {
+                    body["openChannelAppID"] = SourceExpressionConverter.ConvertToken(bodyopenChannelAppID);
+                    bodypropCount++;
+                }
+
+                if (bodyitemid != null)
+                {
+                    body["itemid"] = SourceExpressionConverter.ConvertToken(bodyitemid);
+                    bodypropCount++;
+                }
+
+                if (bodysitemetadatasheetid != null)
+                {
+                    body["sitemetadatasheetid"] = SourceExpressionConverter.ConvertToken(bodysitemetadatasheetid);
+                    bodypropCount++;
+                }
+
+                if (bodymysite != null)
+                {
+                    body["mysite"] = SourceExpressionConverter.ConvertToken(bodymysite);
+                    bodypropCount++;
+                }
+
+                if (bodylastaccesseddate != null)
+                {
+                    body["lastaccesseddate"] = SourceExpressionConverter.ConvertToken(bodylastaccesseddate);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultViewerMetaDataTab != null)
+                {
+                    body["defaultViewerMetaDataTab"] = SourceExpressionConverter.ConvertToken(bodydefaultViewerMetaDataTab);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentMetadataViewId != null)
+                {
+                    body["documentMetadataViewId"] = SourceExpressionConverter.ConvertToken(bodydocumentMetadataViewId);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderMetadataViewId != null)
+                {
+                    body["folderMetadataViewId"] = SourceExpressionConverter.ConvertToken(bodyfolderMetadataViewId);
+                    bodypropCount++;
+                }
+
+                if (bodydocSort != null)
+                {
+                    body["docSort"] = SourceExpressionConverter.ConvertToken(bodydocSort);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderSort != null)
+                {
+                    body["folderSort"] = SourceExpressionConverter.ConvertToken(bodyfolderSort);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultFolderRenderView != null)
+                {
+                    body["defaultFolderRenderView"] = SourceExpressionConverter.ConvertToken(bodydefaultFolderRenderView);
+                    bodypropCount++;
+                }
+
+                if (bodyisTaskAttachmentDefault != null)
+                {
+                    body["isTaskAttachmentDefault"] = SourceExpressionConverter.ConvertToken(bodyisTaskAttachmentDefault);
+                    bodypropCount++;
+                }
+
+                if (bodytaskAttachmentDefaultFolderId != null)
+                {
+                    body["taskAttachmentDefaultFolderId"] = SourceExpressionConverter.ConvertToken(bodytaskAttachmentDefaultFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodyfavourite != null)
+                {
+                    body["favourite"] = SourceExpressionConverter.ConvertToken(bodyfavourite);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledocumentredaction != null)
+                {
+                    body["enabledocumentredaction"] = SourceExpressionConverter.ConvertToken(bodyenabledocumentredaction);
+                    bodypropCount++;
+                }
+
+                if (bodymentiongroups != null)
+                {
+                    body["mentiongroups"] = SourceExpressionConverter.ConvertToken(bodymentiongroups);
+                    bodypropCount++;
+                }
+
+                if (bodyenablefilerelationships != null)
+                {
+                    body["enablefilerelationships"] = SourceExpressionConverter.ConvertToken(bodyenablefilerelationships);
+                    bodypropCount++;
+                }
+
+                if (bodyfilerelationshipsitepermissionlevel != null)
+                {
+                    body["filerelationshipsitepermissionlevel"] = SourceExpressionConverter.ConvertToken(bodyfilerelationshipsitepermissionlevel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

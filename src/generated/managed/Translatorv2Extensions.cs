@@ -14,54 +14,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Translatorv2
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
         public IBodyWorkflowAction<Language[]> Languages()
         {
-            var apiCallPath = "/Languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["scope"] = Convert.ToString("translation");
-            return new ApiConnectionAction<Language[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["scope"] = Convert.ToString("translation");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Language[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<string> Translate(Expression<Func<string>> to, Expression<Func<string>> bodytext, Expression<Func<string>> from = null, Expression<Func<string>> category = null, Expression<Func<textTypeInput>> textType = null)
+        public IBodyWorkflowAction<string> Translate([WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<textTypeInput> textType = null)
         {
-            var apiCallPath = "/Translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            if (textType != null)
-                callPayload.Queries["textType"] = CSharpExpressionConverter.Convert(textType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(to, nameof(to), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(textType, nameof(textType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/Translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (textType != null)
+                    callPayload.Queries["textType"] = SourceExpressionConverter.Convert(textType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "translatorv2")]
-        public IBodyWorkflowAction<Language> Detect(Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<Language> Detect([WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = "/Detect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/Detect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Language>(callPayload);
+            return new ApiConnectionAction<Language>(BuildSourceInput);
         }
     }
 

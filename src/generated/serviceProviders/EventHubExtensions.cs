@@ -14,92 +14,129 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.EventHub
     public class EventHubActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> SendEvent(Expression<Func<string>> eventHubName, Expression<Func<SendEventInputEventDataType>> eventData, Expression<Func<string>> partitionKey = null)
+        public IOutputWorkflowAction<JToken> SendEvent([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventInputEventDataType> eventData, [WorkflowExpression] Func<string> partitionKey = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
-            serviceProviderParameters["eventData"] = CSharpExpressionConverter.ConvertToken(eventData);
-            if (partitionKey != null)
+            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
+            SourceExpression.Validate(eventData, nameof(eventData), required: true);
+            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["eventHubName"] = SourceExpressionConverter.ConvertToken(eventHubName);
+                serviceProviderParameters["eventData"] = SourceExpressionConverter.ConvertToken(eventData);
+                if (partitionKey != null)
+                {
+                    serviceProviderParameters["partitionKey"] = SourceExpressionConverter.ConvertToken(partitionKey);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvent", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> SendEvents(Expression<Func<string>> eventHubName, Expression<Func<SendEventsInputEventDatasTypeItem[]>> eventDatas, Expression<Func<string>> partitionKey = null)
+        public IOutputWorkflowAction<JToken> SendEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<SendEventsInputEventDatasTypeItem[]> eventDatas, [WorkflowExpression] Func<string> partitionKey = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
-            serviceProviderParameters["eventDatas"] = CSharpExpressionConverter.ConvertToken(eventDatas);
-            if (partitionKey != null)
+            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
+            SourceExpression.Validate(eventDatas, nameof(eventDatas), required: true);
+            SourceExpression.Validate(partitionKey, nameof(partitionKey), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["partitionKey"] = CSharpExpressionConverter.ConvertToken(partitionKey);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["eventHubName"] = SourceExpressionConverter.ConvertToken(eventHubName);
+                serviceProviderParameters["eventDatas"] = SourceExpressionConverter.ConvertToken(eventDatas);
+                if (partitionKey != null)
+                {
+                    serviceProviderParameters["partitionKey"] = SourceExpressionConverter.ConvertToken(partitionKey);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "sendEvents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "eventHub")]
-        public IOutputWorkflowAction<JToken> ReplicateEvents(Expression<Func<string>> eventHubName, Expression<Func<bool>> skipAlreadyReplicated)
+        public IOutputWorkflowAction<JToken> ReplicateEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<bool> skipAlreadyReplicated)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
-            serviceProviderParameters["skipAlreadyReplicated"] = CSharpExpressionConverter.ConvertToken(skipAlreadyReplicated);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
+            SourceExpression.Validate(skipAlreadyReplicated, nameof(skipAlreadyReplicated), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["eventHubName"] = SourceExpressionConverter.ConvertToken(eventHubName);
+                serviceProviderParameters["skipAlreadyReplicated"] = SourceExpressionConverter.ConvertToken(skipAlreadyReplicated);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "replicateEvents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<JToken>(BuildSourceInput);
         }
     }
 
     public class EventHubTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
+        public IBodyWorkflowTrigger<ReceiveEventsOutputItem[]> ReceiveEvents([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
-            if (consumerGroup != null)
+            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
+            SourceExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["consumerGroup"] = CSharpExpressionConverter.ConvertToken(consumerGroup);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["eventHubName"] = SourceExpressionConverter.ConvertToken(eventHubName);
+                if (consumerGroup != null)
+                {
+                    serviceProviderParameters["consumerGroup"] = SourceExpressionConverter.ConvertToken(consumerGroup);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEvents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(serviceProviderInput);
+            return new ServiceProviderTrigger<ReceiveEventsOutputItem[]>(BuildSourceInput);
         }
 
-        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication(Expression<Func<string>> eventHubName, Expression<Func<string>> consumerGroup = null)
+        public IOutputWorkflowTrigger<JToken> ReceiveEventsForReplication([WorkflowExpression] Func<string> eventHubName, [WorkflowExpression] Func<string> consumerGroup = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["eventHubName"] = CSharpExpressionConverter.ConvertToken(eventHubName);
-            if (consumerGroup != null)
+            SourceExpression.Validate(eventHubName, nameof(eventHubName), required: true);
+            SourceExpression.Validate(consumerGroup, nameof(consumerGroup), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["consumerGroup"] = CSharpExpressionConverter.ConvertToken(consumerGroup);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["eventHubName"] = SourceExpressionConverter.ConvertToken(eventHubName);
+                if (consumerGroup != null)
+                {
+                    serviceProviderParameters["consumerGroup"] = SourceExpressionConverter.ConvertToken(consumerGroup);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/eventHub", operationId: "receiveEventsForReplication", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputTrigger<JToken>(serviceProviderInput);
+            return new ServiceProviderOutputTrigger<JToken>(BuildSourceInput);
         }
     }
 

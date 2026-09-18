@@ -12,54 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
     public class WpformsbyreenhancedlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
-        public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries(Expression<Func<string>> formId, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<GetEntriesResponseItem[]> GetEntries([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/resources/entries/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<GetEntriesResponseItem[]>(callPayload);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/resources/entries/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEntriesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpformsbyreenhancedl")]
-        public IBodyWorkflowAction<JToken> GetEntry(Expression<Func<string>> id, Expression<Func<string>> formId)
+        public IBodyWorkflowAction<JToken> GetEntry([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> formId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/entries/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class WpformsbyreenhancedlTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateFlow(Expression<Func<string>> bodyformID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateFlow([WorkflowExpression] Func<string> bodyformID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/resources/flows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["form_id"] = CSharpExpressionConverter.ConvertToken(bodyformID);
-            var metaObject = new JObject();
-            var metaObjectpropCount = 0;
-            metaObject["powerAutomateUrl"] = "@listCallbackUrl()";
-            metaObjectpropCount++;
-            if (metaObjectpropCount > 0)
+            SourceExpression.Validate(bodyformID, nameof(bodyformID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["meta"] = metaObject;
+                var apiCallPath = "/resources/flows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["form_id"] = SourceExpressionConverter.ConvertToken(bodyformID);
+                var metaObject = new JObject();
+                var metaObjectpropCount = 0;
+                metaObject["powerAutomateUrl"] = "@listCallbackUrl()";
+                metaObjectpropCount++;
+                if (metaObjectpropCount > 0)
+                {
+                    body["meta"] = metaObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,59 +12,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smsapi
     public class SmsapiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smsapi")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodygroup = null, Expression<Func<int>> bodyfast = null)
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodygroup = null, [WorkflowExpression] Func<int> bodyfast = null)
         {
-            var apiCallPath = "/sms.do";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            body["format"] = "json";
-            bodypropCount++;
-            if (bodyto != null)
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodygroup, nameof(bodygroup), required: false);
+            SourceExpression.Validate(bodyfast, nameof(bodyfast), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
+                var apiCallPath = "/sms.do";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                body["format"] = "json";
                 bodypropCount++;
-            }
-
-            body["encoding"] = "utf-8";
-            bodypropCount++;
-            if (bodygroup != null)
-            {
-                body["group"] = CSharpExpressionConverter.ConvertToken(bodygroup);
-                bodypropCount++;
-            }
-
-            if (bodyfast != null)
-            {
-                if (bodyfast != null)
+                if (bodyto != null)
                 {
-                    body["fast"] = CSharpExpressionConverter.ConvertToken(bodyfast);
+                    body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
                     bodypropCount++;
                 }
 
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                body["encoding"] = "utf-8";
                 bodypropCount++;
-            }
-            else
-            {
-                body["fast"] = 0;
-                bodypropCount++;
+                if (bodygroup != null)
+                {
+                    body["group"] = SourceExpressionConverter.ConvertToken(bodygroup);
+                    bodypropCount++;
+                }
+
+                if (bodyfast != null)
+                {
+                    if (bodyfast != null)
+                    {
+                        body["fast"] = SourceExpressionConverter.ConvertToken(bodyfast);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["fast"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            return new ApiConnectionAction<SendSmsResponse>(BuildSourceInput);
         }
     }
 

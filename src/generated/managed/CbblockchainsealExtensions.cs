@@ -12,63 +12,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cbblockchainseal
     public class CbblockchainsealActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<CreateSealResponse> CreateSeal(Expression<Func<string>> bodyfile)
+        public IBodyWorkflowAction<CreateSealResponse> CreateSeal([WorkflowExpression] Func<string> bodyfile)
         {
-            var apiCallPath = "/v2/CreateSeal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSealResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IBodyWorkflowAction<ListSealsResponse> ListSeals(Expression<Func<string>> bodyfile = null)
-        {
-            var apiCallPath = "/v2/ListSeals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
-            {
-                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
+                var apiCallPath = "/v2/CreateSeal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ListSealsResponse>(callPayload);
+            return new ApiConnectionAction<CreateSealResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
-        public IWorkflowAction VerifySeal(Expression<Func<string>> bodyfile, Expression<Func<string>> bodysealId)
+        public IBodyWorkflowAction<ListSealsResponse> ListSeals([WorkflowExpression] Func<string> bodyfile = null)
         {
-            var apiCallPath = "/v2/VerfiySeal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-            bodypropCount++;
-            body["sealId"] = CSharpExpressionConverter.ConvertToken(bodysealId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v2/ListSeals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfile != null)
+                {
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<ListSealsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cbblockchainseal")]
+        public IWorkflowAction VerifySeal([WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<string> bodysealId)
+        {
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodysealId, nameof(bodysealId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/VerfiySeal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                bodypropCount++;
+                body["sealId"] = SourceExpressionConverter.ConvertToken(bodysealId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

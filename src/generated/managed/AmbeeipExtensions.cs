@@ -12,290 +12,444 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ambeeip
     public class AmbeeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<AirQualityGeoResponse> AirQualityGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/latest/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<AirQualityGeoResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityGeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<AirQualityPostalResponse> AirQualityPostal([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = "/latest/by-postal-code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (postalCode != null)
-                callPayload.Queries["postalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            if (countryCode != null)
-                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
-            return new ApiConnectionAction<AirQualityPostalResponse>(callPayload);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-postal-code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (postalCode != null)
+                    callPayload.Queries["postalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (countryCode != null)
+                    callPayload.Queries["countryCode"] = SourceExpressionConverter.ConvertO(countryCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityPostalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity(Expression<Func<string>> city = null)
+        public IBodyWorkflowAction<AirQualityCityResponse> AirQualityCity([WorkflowExpression] Func<string> city = null)
         {
-            var apiCallPath = "/latest/by-city";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (city != null)
-                callPayload.Queries["city"] = CSharpExpressionConverter.ConvertO(city);
-            return new ApiConnectionAction<AirQualityCityResponse>(callPayload);
+            SourceExpression.Validate(city, nameof(city), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-city";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (city != null)
+                    callPayload.Queries["city"] = SourceExpressionConverter.ConvertO(city);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityCityResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry(Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<AirQualityCountryResponse> AirQualityCountry([WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = "/latest/by-country-code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (countryCode != null)
-                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
-            return new ApiConnectionAction<AirQualityCountryResponse>(callPayload);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-country-code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (countryCode != null)
+                    callPayload.Queries["countryCode"] = SourceExpressionConverter.ConvertO(countryCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityCountryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<AirQualityGeoHistoryResponse> AirQualityGeoHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/history/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<AirQualityGeoHistoryResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/history/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityGeoHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory(Expression<Func<int>> postalCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<AirQualityPostalHistoryResponse> AirQualityPostalHistory([WorkflowExpression] Func<int> postalCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/history/by-postal-code";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (postalCode != null)
-                callPayload.Queries["postalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            if (countryCode != null)
-                callPayload.Queries["countryCode"] = CSharpExpressionConverter.ConvertO(countryCode);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<AirQualityPostalHistoryResponse>(callPayload);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/history/by-postal-code";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (postalCode != null)
+                    callPayload.Queries["postalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (countryCode != null)
+                    callPayload.Queries["countryCode"] = SourceExpressionConverter.ConvertO(countryCode);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityPostalHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityMostPollutedResponse> AirQualityMostPolluted()
         {
-            var apiCallPath = "/latest/by-order/worst";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AirQualityMostPollutedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-order/worst";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityMostPollutedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
         public IBodyWorkflowAction<AirQualityLeastPollutedResponse> AirQualityLeastPolluted()
         {
-            var apiCallPath = "/latest/by-order/best";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AirQualityLeastPollutedResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/by-order/best";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AirQualityLeastPollutedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<WeatherCurrentResponse> WeatherCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/weather/latest/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<WeatherCurrentResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/weather/latest/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WeatherCurrentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<WeatherHistoryResponse> WeatherHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/weather/history/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<WeatherHistoryResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/weather/history/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WeatherHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<WeatherForecastResponse> WeatherForecast([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/weather/forecast/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (filter != null)
-                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
-            return new ApiConnectionAction<WeatherForecastResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/weather/forecast/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WeatherForecastResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<PollenLatestGeoResponse> PollenLatestGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/latest/pollen/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<PollenLatestGeoResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/pollen/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PollenLatestGeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace(Expression<Func<string>> place = null)
+        public IBodyWorkflowAction<PollenLatestPlaceResponse> PollenLatestPlace([WorkflowExpression] Func<string> place = null)
         {
-            var apiCallPath = "/latest/pollen/by-place";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (place != null)
-                callPayload.Queries["place"] = CSharpExpressionConverter.ConvertO(place);
-            return new ApiConnectionAction<PollenLatestPlaceResponse>(callPayload);
+            SourceExpression.Validate(place, nameof(place), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/pollen/by-place";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (place != null)
+                    callPayload.Queries["place"] = SourceExpressionConverter.ConvertO(place);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PollenLatestPlaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<PollenHistoryGeoResponse> PollenHistoryGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/history/pollen/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<PollenHistoryGeoResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/history/pollen/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PollenHistoryGeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace(Expression<Func<string>> place = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<PollenHistoryPlaceResponse> PollenHistoryPlace([WorkflowExpression] Func<string> place = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/history/pollen/by-place";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (place != null)
-                callPayload.Queries["place"] = CSharpExpressionConverter.ConvertO(place);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<PollenHistoryPlaceResponse>(callPayload);
+            SourceExpression.Validate(place, nameof(place), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/history/pollen/by-place";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (place != null)
+                    callPayload.Queries["place"] = SourceExpressionConverter.ConvertO(place);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PollenHistoryPlaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<PollForecastGeoResponse> PollForecastGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/forecast/pollen/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<PollForecastGeoResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/forecast/pollen/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PollForecastGeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<FireCurrentResponse> FireCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<FireCurrentResponse> FireCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/latest/fire";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<FireCurrentResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest/fire";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FireCurrentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<SoilCurrentResponse> SoilCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/soil/latest/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<SoilCurrentResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/soil/latest/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SoilCurrentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<SoilHistoryResponse> SoilHistory([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/soil/history/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<SoilHistoryResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/soil/history/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SoilHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null)
+        public IBodyWorkflowAction<WaterVaporCurrentResponse> WaterVaporCurrent([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null)
         {
-            var apiCallPath = "/waterVapor/latest/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            return new ApiConnectionAction<WaterVaporCurrentResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/waterVapor/latest/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WaterVaporCurrentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ambeeip")]
-        public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo(Expression<Func<int>> lat = null, Expression<Func<int>> lng = null, Expression<Func<string>> from = null, Expression<Func<string>> to = null)
+        public IBodyWorkflowAction<WaterVaporGeoResponse> WaterVaporGeo([WorkflowExpression] Func<int> lat = null, [WorkflowExpression] Func<int> lng = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null)
         {
-            var apiCallPath = "/waterVapor/history/by-lat-lng";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lng != null)
-                callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            return new ApiConnectionAction<WaterVaporGeoResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lng, nameof(lng), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/waterVapor/history/by-lat-lng";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lng != null)
+                    callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WaterVaporGeoResponse>(BuildSourceInput);
         }
     }
 

@@ -14,170 +14,223 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surexerolite
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
         public IBodyWorkflowAction<GetStartedResponseItem[]> GetStarted()
         {
-            var apiCallPath = "/connections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStartedResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStartedResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetInvoicesResponse> GetInvoices(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> statuses = null, Expression<Func<string>> iDs = null, Expression<Func<string>> invoiceNumbers = null, Expression<Func<string>> contactIDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetInvoicesResponse> GetInvoices([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> where = null, [WorkflowExpression] Func<string> statuses = null, [WorkflowExpression] Func<string> iDs = null, [WorkflowExpression] Func<string> invoiceNumbers = null, [WorkflowExpression] Func<string> contactIDs = null, [WorkflowExpression] Func<bool> summaryOnly = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/api.xro/2.0/Invoices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (where != null)
-                callPayload.Queries["where"] = CSharpExpressionConverter.ConvertO(where);
-            if (statuses != null)
-                callPayload.Queries["Statuses"] = CSharpExpressionConverter.ConvertO(statuses);
-            if (iDs != null)
-                callPayload.Queries["IDs"] = CSharpExpressionConverter.ConvertO(iDs);
-            if (invoiceNumbers != null)
-                callPayload.Queries["InvoiceNumbers"] = CSharpExpressionConverter.ConvertO(invoiceNumbers);
-            if (contactIDs != null)
-                callPayload.Queries["ContactIDs"] = CSharpExpressionConverter.ConvertO(contactIDs);
-            if (summaryOnly != null)
-                callPayload.Queries["summaryOnly"] = CSharpExpressionConverter.ConvertO(summaryOnly);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<GetInvoicesResponse>(callPayload);
+            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
+            SourceExpression.Validate(where, nameof(where), required: false);
+            SourceExpression.Validate(statuses, nameof(statuses), required: false);
+            SourceExpression.Validate(iDs, nameof(iDs), required: false);
+            SourceExpression.Validate(invoiceNumbers, nameof(invoiceNumbers), required: false);
+            SourceExpression.Validate(contactIDs, nameof(contactIDs), required: false);
+            SourceExpression.Validate(summaryOnly, nameof(summaryOnly), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api.xro/2.0/Invoices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (where != null)
+                    callPayload.Queries["where"] = SourceExpressionConverter.ConvertO(where);
+                if (statuses != null)
+                    callPayload.Queries["Statuses"] = SourceExpressionConverter.ConvertO(statuses);
+                if (iDs != null)
+                    callPayload.Queries["IDs"] = SourceExpressionConverter.ConvertO(iDs);
+                if (invoiceNumbers != null)
+                    callPayload.Queries["InvoiceNumbers"] = SourceExpressionConverter.ConvertO(invoiceNumbers);
+                if (contactIDs != null)
+                    callPayload.Queries["ContactIDs"] = SourceExpressionConverter.ConvertO(contactIDs);
+                if (summaryOnly != null)
+                    callPayload.Queries["summaryOnly"] = SourceExpressionConverter.ConvertO(summaryOnly);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Headers["xero-tenant-id"] = SourceExpressionConverter.ConvertO(xeroTenantId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetInvoicesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice(Expression<Func<string>> xeroTenantId, Expression<Func<string>> bodytype, Expression<Func<bodylineItemsInputItem[]>> bodylineItems, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodydueDate = null, Expression<Func<string>> bodyreference = null, Expression<Func<string>> bodycontactcontactID = null, Expression<Func<string>> bodylineAmountTypes = null, Expression<Func<string>> bodyinvoiceNumber = null, Expression<Func<string>> bodycurrencyCode = null, Expression<Func<double>> bodycurrencyRate = null, Expression<Func<string>> bodystatus = null, Expression<Func<string>> bodyexpectedPaymentDate = null)
+        public IBodyWorkflowAction<PostInvoiceResponse> PostInvoice([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<bodylineItemsInputItem[]> bodylineItems, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<string> bodycontactcontactID = null, [WorkflowExpression] Func<string> bodylineAmountTypes = null, [WorkflowExpression] Func<string> bodyinvoiceNumber = null, [WorkflowExpression] Func<string> bodycurrencyCode = null, [WorkflowExpression] Func<double> bodycurrencyRate = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<string> bodyexpectedPaymentDate = null)
         {
-            var apiCallPath = "/api.xro/2.0/Invoices";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
-            callPayload.Headers["Accept"] = Convert.ToString(" application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydate != null)
+            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodylineItems, nameof(bodylineItems), required: true);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
+            SourceExpression.Validate(bodycontactcontactID, nameof(bodycontactcontactID), required: false);
+            SourceExpression.Validate(bodylineAmountTypes, nameof(bodylineAmountTypes), required: false);
+            SourceExpression.Validate(bodyinvoiceNumber, nameof(bodyinvoiceNumber), required: false);
+            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: false);
+            SourceExpression.Validate(bodycurrencyRate, nameof(bodycurrencyRate), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodyexpectedPaymentDate, nameof(bodyexpectedPaymentDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Date"] = CSharpExpressionConverter.ConvertToken(bodydate);
+                var apiCallPath = "/api.xro/2.0/Invoices";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["xero-tenant-id"] = SourceExpressionConverter.ConvertO(xeroTenantId);
+                callPayload.Headers["Accept"] = Convert.ToString(" application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString(" application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydate != null)
+                {
+                    body["Date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["DueDate"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["Type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                if (bodyreference != null)
+                {
+                    body["Reference"] = SourceExpressionConverter.ConvertToken(bodyreference);
+                    bodypropCount++;
+                }
 
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
+                var contactObject = new JObject();
+                var contactObjectpropCount = 0;
+                if (bodycontactcontactID != null)
+                {
+                    contactObject["ContactID"] = SourceExpressionConverter.ConvertToken(bodycontactcontactID);
+                    contactObjectpropCount++;
+                }
+
+                if (contactObjectpropCount > 0)
+                {
+                    body["Contact"] = contactObject;
+                    bodypropCount++;
+                }
+
+                if (bodylineAmountTypes != null)
+                {
+                    body["LineAmountTypes"] = SourceExpressionConverter.ConvertToken(bodylineAmountTypes);
+                    bodypropCount++;
+                }
+
+                if (bodyinvoiceNumber != null)
+                {
+                    body["InvoiceNumber"] = SourceExpressionConverter.ConvertToken(bodyinvoiceNumber);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["LineItems"] = SourceExpressionConverter.ConvertToken(bodylineItems);
+                if (bodycurrencyCode != null)
+                {
+                    body["CurrencyCode"] = SourceExpressionConverter.ConvertToken(bodycurrencyCode);
+                    bodypropCount++;
+                }
+
+                if (bodycurrencyRate != null)
+                {
+                    body["CurrencyRate"] = SourceExpressionConverter.ConvertToken(bodycurrencyRate);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectedPaymentDate != null)
+                {
+                    body["ExpectedPaymentDate"] = SourceExpressionConverter.ConvertToken(bodyexpectedPaymentDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["Type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-            if (bodyreference != null)
-            {
-                body["Reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
-                bodypropCount++;
-            }
-
-            var contactObject = new JObject();
-            var contactObjectpropCount = 0;
-            if (bodycontactcontactID != null)
-            {
-                contactObject["ContactID"] = CSharpExpressionConverter.ConvertToken(bodycontactcontactID);
-                contactObjectpropCount++;
-            }
-
-            if (contactObjectpropCount > 0)
-            {
-                body["Contact"] = contactObject;
-                bodypropCount++;
-            }
-
-            if (bodylineAmountTypes != null)
-            {
-                body["LineAmountTypes"] = CSharpExpressionConverter.ConvertToken(bodylineAmountTypes);
-                bodypropCount++;
-            }
-
-            if (bodyinvoiceNumber != null)
-            {
-                body["InvoiceNumber"] = CSharpExpressionConverter.ConvertToken(bodyinvoiceNumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["LineItems"] = CSharpExpressionConverter.ConvertToken(bodylineItems);
-            if (bodycurrencyCode != null)
-            {
-                body["CurrencyCode"] = CSharpExpressionConverter.ConvertToken(bodycurrencyCode);
-                bodypropCount++;
-            }
-
-            if (bodycurrencyRate != null)
-            {
-                body["CurrencyRate"] = CSharpExpressionConverter.ConvertToken(bodycurrencyRate);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyexpectedPaymentDate != null)
-            {
-                body["ExpectedPaymentDate"] = CSharpExpressionConverter.ConvertToken(bodyexpectedPaymentDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostInvoiceResponse>(callPayload);
+            return new ApiConnectionAction<PostInvoiceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<GetContactsResponse> GetContacts(Expression<Func<string>> xeroTenantId, Expression<Func<string>> where = null, Expression<Func<string>> iDs = null, Expression<Func<bool>> summaryOnly = null, Expression<Func<int>> page = null, Expression<Func<bool>> includeArchived = null, Expression<Func<string>> searchTerm = null)
+        public IBodyWorkflowAction<GetContactsResponse> GetContacts([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<string> where = null, [WorkflowExpression] Func<string> iDs = null, [WorkflowExpression] Func<bool> summaryOnly = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<bool> includeArchived = null, [WorkflowExpression] Func<string> searchTerm = null)
         {
-            var apiCallPath = "/api.xro/2.0/Contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (where != null)
-                callPayload.Queries["where"] = CSharpExpressionConverter.ConvertO(where);
-            if (iDs != null)
-                callPayload.Queries["IDs"] = CSharpExpressionConverter.ConvertO(iDs);
-            if (summaryOnly != null)
-                callPayload.Queries["summaryOnly"] = CSharpExpressionConverter.ConvertO(summaryOnly);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (includeArchived != null)
-                callPayload.Queries["includeArchived"] = CSharpExpressionConverter.ConvertO(includeArchived);
-            if (searchTerm != null)
-                callPayload.Queries["searchTerm"] = CSharpExpressionConverter.ConvertO(searchTerm);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
+            SourceExpression.Validate(where, nameof(where), required: false);
+            SourceExpression.Validate(iDs, nameof(iDs), required: false);
+            SourceExpression.Validate(summaryOnly, nameof(summaryOnly), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(includeArchived, nameof(includeArchived), required: false);
+            SourceExpression.Validate(searchTerm, nameof(searchTerm), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api.xro/2.0/Contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (where != null)
+                    callPayload.Queries["where"] = SourceExpressionConverter.ConvertO(where);
+                if (iDs != null)
+                    callPayload.Queries["IDs"] = SourceExpressionConverter.ConvertO(iDs);
+                if (summaryOnly != null)
+                    callPayload.Queries["summaryOnly"] = SourceExpressionConverter.ConvertO(summaryOnly);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (includeArchived != null)
+                    callPayload.Queries["includeArchived"] = SourceExpressionConverter.ConvertO(includeArchived);
+                if (searchTerm != null)
+                    callPayload.Queries["searchTerm"] = SourceExpressionConverter.ConvertO(searchTerm);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["xero-tenant-id"] = SourceExpressionConverter.ConvertO(xeroTenantId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContactsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surexerolite")]
-        public IBodyWorkflowAction<PostContactsResponse> PostContacts(Expression<Func<string>> xeroTenantId, Expression<Func<bodycontactsInputItem[]>> bodycontacts)
+        public IBodyWorkflowAction<PostContactsResponse> PostContacts([WorkflowExpression] Func<string> xeroTenantId, [WorkflowExpression] Func<bodycontactsInputItem[]> bodycontacts)
         {
-            var apiCallPath = "/api.xro/2.0/Contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["xero-tenant-id"] = CSharpExpressionConverter.ConvertO(xeroTenantId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Contacts"] = CSharpExpressionConverter.ConvertToken(bodycontacts);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(xeroTenantId, nameof(xeroTenantId), required: true);
+            SourceExpression.Validate(bodycontacts, nameof(bodycontacts), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api.xro/2.0/Contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["xero-tenant-id"] = SourceExpressionConverter.ConvertO(xeroTenantId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Contacts"] = SourceExpressionConverter.ConvertToken(bodycontacts);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PostContactsResponse>(callPayload);
+            return new ApiConnectionAction<PostContactsResponse>(BuildSourceInput);
         }
     }
 

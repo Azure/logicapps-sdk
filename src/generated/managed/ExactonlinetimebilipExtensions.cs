@@ -12,1628 +12,2237 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Exactonlinetimebilip
     public class ExactonlinetimebilipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<DivisionsResponse> GetDivisions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<DivisionsResponse> GetDivisions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/hrm/Divisions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<DivisionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<EmploymentInternalRatesResponse> GetEmploymentInternalRates(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/EmploymentInternalRates", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<EmploymentInternalRatesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourCostTypesResponse> GetHourCostTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourCostTypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<HourCostTypesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryActivitiesByProjectResponse> GetHourEntryActivitiesByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryActivitiesByProject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<HourEntryActivitiesByProjectResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryRecentAccountsResponse> GetHourEntryRecentAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccounts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<HourEntryRecentAccountsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryRecentAccountsByProjectResponse> GetHourEntryRecentAccountsByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccountsByProject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<HourEntryRecentAccountsByProjectResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryRecentHourTypesResponse> GetHourEntryRecentHourTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<HourEntryRecentHourTypesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryRecentHourTypesByProjectResponse> GetHourEntryRecentHourTypesByProject(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypesByProject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<HourEntryRecentHourTypesByProjectResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourEntryRecentProjectsResponse> GetHourEntryRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentProjects", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<HourEntryRecentProjectsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HoursByDateResponse> GetHoursByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursByDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["checkDate"] = CSharpExpressionConverter.ConvertO(checkDate);
-            return new ApiConnectionAction<HoursByDateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HoursByIdResponse> GetHoursById(Expression<Func<string>> division, Expression<Func<string>> entryId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursById", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["entryId"] = CSharpExpressionConverter.ConvertO(entryId);
-            return new ApiConnectionAction<HoursByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourTypesResponse> GetHourTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<HourTypesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourTypesByDateResponse> GetHourTypesByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["checkDate"] = CSharpExpressionConverter.ConvertO(checkDate);
-            return new ApiConnectionAction<HourTypesByDateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<HourTypesByProjectAndDateResponse> GetHourTypesByProjectAndDate(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByProjectAndDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<HourTypesByProjectAndDateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> GetProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PutProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsiD = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            var projectRestrictionRebillings = new JObject();
-            var projectRestrictionRebillingspropCount = 0;
-            if (projectRestrictionRebillingsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                projectRestrictionRebillings["ID"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/hrm/Divisions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DivisionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<EmploymentInternalRatesResponse> GetEmploymentInternalRates([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/EmploymentInternalRates", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EmploymentInternalRatesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourCostTypesResponse> GetHourCostTypes([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourCostTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourCostTypesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryActivitiesByProjectResponse> GetHourEntryActivitiesByProject([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryActivitiesByProject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryActivitiesByProjectResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryRecentAccountsResponse> GetHourEntryRecentAccounts([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryRecentAccountsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryRecentAccountsByProjectResponse> GetHourEntryRecentAccountsByProject([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentAccountsByProject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryRecentAccountsByProjectResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryRecentHourTypesResponse> GetHourEntryRecentHourTypes([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryRecentHourTypesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryRecentHourTypesByProjectResponse> GetHourEntryRecentHourTypesByProject([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentHourTypesByProject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryRecentHourTypesByProjectResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourEntryRecentProjectsResponse> GetHourEntryRecentProjects([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourEntryRecentProjects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourEntryRecentProjectsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HoursByDateResponse> GetHoursByDate([WorkflowExpression] Func<string> checkDate, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(checkDate, nameof(checkDate), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursByDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["checkDate"] = SourceExpressionConverter.ConvertO(checkDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HoursByDateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HoursByIdResponse> GetHoursById([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> entryId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(entryId, nameof(entryId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HoursById", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["entryId"] = SourceExpressionConverter.ConvertO(entryId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HoursByIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourTypesResponse> GetHourTypes([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourTypesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourTypesByDateResponse> GetHourTypesByDate([WorkflowExpression] Func<string> checkDate, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(checkDate, nameof(checkDate), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["checkDate"] = SourceExpressionConverter.ConvertO(checkDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourTypesByDateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<HourTypesByProjectAndDateResponse> GetHourTypesByProjectAndDate([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/HourTypesByProjectAndDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HourTypesByProjectAndDateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> GetProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PutProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsiD = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                var projectRestrictionRebillings = new JObject();
+                var projectRestrictionRebillingspropCount = 0;
+                if (projectRestrictionRebillingsiD != null)
+                {
+                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
+                    projectRestrictionRebillingspropCount++;
+                }
+
                 projectRestrictionRebillingspropCount++;
-            }
+                projectRestrictionRebillings["CostTypeRebill"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebill);
+                if (projectRestrictionRebillingscostTypeRebillCode != null)
+                {
+                    projectRestrictionRebillings["CostTypeRebillCode"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillCode);
+                    projectRestrictionRebillingspropCount++;
+                }
 
-            projectRestrictionRebillingspropCount++;
-            projectRestrictionRebillings["CostTypeRebill"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebill);
-            if (projectRestrictionRebillingscostTypeRebillCode != null)
-            {
-                projectRestrictionRebillings["CostTypeRebillCode"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillCode);
+                if (projectRestrictionRebillingscostTypeRebillDescription != null)
+                {
+                    projectRestrictionRebillings["CostTypeRebillDescription"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillDescription);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreated != null)
+                {
+                    projectRestrictionRebillings["Created"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreated);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreator != null)
+                {
+                    projectRestrictionRebillings["Creator"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreator);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreatorFullName != null)
+                {
+                    projectRestrictionRebillings["CreatorFullName"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreatorFullName);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsdivision != null)
+                {
+                    projectRestrictionRebillings["Division"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsdivision);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodified != null)
+                {
+                    projectRestrictionRebillings["Modified"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodified);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodifier != null)
+                {
+                    projectRestrictionRebillings["Modifier"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifier);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodifierFullName != null)
+                {
+                    projectRestrictionRebillings["ModifierFullName"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifierFullName);
+                    projectRestrictionRebillingspropCount++;
+                }
+
                 projectRestrictionRebillingspropCount++;
+                projectRestrictionRebillings["Project"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsproject);
+                if (projectRestrictionRebillingsprojectCode != null)
+                {
+                    projectRestrictionRebillings["ProjectCode"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectCode);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsprojectDescription != null)
+                {
+                    projectRestrictionRebillings["ProjectDescription"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectDescription);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingspropCount > 0)
+                {
+                    callPayload.Body = projectRestrictionRebillings;
+                }
+                return callPayload;
             }
 
-            if (projectRestrictionRebillingscostTypeRebillDescription != null)
+            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PostProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebill, [WorkflowExpression] Func<string> projectRestrictionRebillingsproject, [WorkflowExpression] Func<string> projectRestrictionRebillingsiD = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscostTypeRebillDescription = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreated = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreator = null, [WorkflowExpression] Func<string> projectRestrictionRebillingscreatorFullName = null, [WorkflowExpression] Func<int> projectRestrictionRebillingsdivision = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodified = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifier = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsmodifierFullName = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectCode = null, [WorkflowExpression] Func<string> projectRestrictionRebillingsprojectDescription = null)
+        {
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebill, nameof(projectRestrictionRebillingscostTypeRebill), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingsproject, nameof(projectRestrictionRebillingsproject), required: true);
+            SourceExpression.Validate(projectRestrictionRebillingsiD, nameof(projectRestrictionRebillingsiD), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillCode, nameof(projectRestrictionRebillingscostTypeRebillCode), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscostTypeRebillDescription, nameof(projectRestrictionRebillingscostTypeRebillDescription), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreated, nameof(projectRestrictionRebillingscreated), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreator, nameof(projectRestrictionRebillingscreator), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingscreatorFullName, nameof(projectRestrictionRebillingscreatorFullName), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsdivision, nameof(projectRestrictionRebillingsdivision), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodified, nameof(projectRestrictionRebillingsmodified), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodifier, nameof(projectRestrictionRebillingsmodifier), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsmodifierFullName, nameof(projectRestrictionRebillingsmodifierFullName), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsprojectCode, nameof(projectRestrictionRebillingsprojectCode), required: false);
+            SourceExpression.Validate(projectRestrictionRebillingsprojectDescription, nameof(projectRestrictionRebillingsprojectDescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                projectRestrictionRebillings["CostTypeRebillDescription"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillDescription);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var projectRestrictionRebillings = new JObject();
+                var projectRestrictionRebillingspropCount = 0;
+                if (projectRestrictionRebillingsiD != null)
+                {
+                    projectRestrictionRebillings["ID"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
+                    projectRestrictionRebillingspropCount++;
+                }
+
                 projectRestrictionRebillingspropCount++;
-            }
+                projectRestrictionRebillings["CostTypeRebill"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebill);
+                if (projectRestrictionRebillingscostTypeRebillCode != null)
+                {
+                    projectRestrictionRebillings["CostTypeRebillCode"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillCode);
+                    projectRestrictionRebillingspropCount++;
+                }
 
-            if (projectRestrictionRebillingscreated != null)
-            {
-                projectRestrictionRebillings["Created"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreated);
+                if (projectRestrictionRebillingscostTypeRebillDescription != null)
+                {
+                    projectRestrictionRebillings["CostTypeRebillDescription"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillDescription);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreated != null)
+                {
+                    projectRestrictionRebillings["Created"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreated);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreator != null)
+                {
+                    projectRestrictionRebillings["Creator"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreator);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingscreatorFullName != null)
+                {
+                    projectRestrictionRebillings["CreatorFullName"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingscreatorFullName);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsdivision != null)
+                {
+                    projectRestrictionRebillings["Division"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsdivision);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodified != null)
+                {
+                    projectRestrictionRebillings["Modified"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodified);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodifier != null)
+                {
+                    projectRestrictionRebillings["Modifier"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifier);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsmodifierFullName != null)
+                {
+                    projectRestrictionRebillings["ModifierFullName"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifierFullName);
+                    projectRestrictionRebillingspropCount++;
+                }
+
                 projectRestrictionRebillingspropCount++;
+                projectRestrictionRebillings["Project"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsproject);
+                if (projectRestrictionRebillingsprojectCode != null)
+                {
+                    projectRestrictionRebillings["ProjectCode"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectCode);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingsprojectDescription != null)
+                {
+                    projectRestrictionRebillings["ProjectDescription"] = SourceExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectDescription);
+                    projectRestrictionRebillingspropCount++;
+                }
+
+                if (projectRestrictionRebillingspropCount > 0)
+                {
+                    callPayload.Body = projectRestrictionRebillings;
+                }
+                return callPayload;
             }
 
-            if (projectRestrictionRebillingscreator != null)
-            {
-                projectRestrictionRebillings["Creator"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreator);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingscreatorFullName != null)
-            {
-                projectRestrictionRebillings["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreatorFullName);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsdivision != null)
-            {
-                projectRestrictionRebillings["Division"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsdivision);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodified != null)
-            {
-                projectRestrictionRebillings["Modified"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodified);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodifier != null)
-            {
-                projectRestrictionRebillings["Modifier"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifier);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodifierFullName != null)
-            {
-                projectRestrictionRebillings["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifierFullName);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            projectRestrictionRebillingspropCount++;
-            projectRestrictionRebillings["Project"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsproject);
-            if (projectRestrictionRebillingsprojectCode != null)
-            {
-                projectRestrictionRebillings["ProjectCode"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectCode);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsprojectDescription != null)
-            {
-                projectRestrictionRebillings["ProjectDescription"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectDescription);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingspropCount > 0)
-            {
-                callPayload.Body = projectRestrictionRebillings;
-            }
-
-            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
+            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> PostProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> projectRestrictionRebillingscostTypeRebill, Expression<Func<string>> projectRestrictionRebillingsproject, Expression<Func<string>> projectRestrictionRebillingsiD = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillCode = null, Expression<Func<string>> projectRestrictionRebillingscostTypeRebillDescription = null, Expression<Func<string>> projectRestrictionRebillingscreated = null, Expression<Func<string>> projectRestrictionRebillingscreator = null, Expression<Func<string>> projectRestrictionRebillingscreatorFullName = null, Expression<Func<int>> projectRestrictionRebillingsdivision = null, Expression<Func<string>> projectRestrictionRebillingsmodified = null, Expression<Func<string>> projectRestrictionRebillingsmodifier = null, Expression<Func<string>> projectRestrictionRebillingsmodifierFullName = null, Expression<Func<string>> projectRestrictionRebillingsprojectCode = null, Expression<Func<string>> projectRestrictionRebillingsprojectDescription = null)
+        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> DeleteProjectRestrictionRebillings([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var projectRestrictionRebillings = new JObject();
-            var projectRestrictionRebillingspropCount = 0;
-            if (projectRestrictionRebillingsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                projectRestrictionRebillings["ID"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsiD);
-                projectRestrictionRebillingspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                return callPayload;
             }
 
-            projectRestrictionRebillingspropCount++;
-            projectRestrictionRebillings["CostTypeRebill"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebill);
-            if (projectRestrictionRebillingscostTypeRebillCode != null)
-            {
-                projectRestrictionRebillings["CostTypeRebillCode"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillCode);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingscostTypeRebillDescription != null)
-            {
-                projectRestrictionRebillings["CostTypeRebillDescription"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscostTypeRebillDescription);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingscreated != null)
-            {
-                projectRestrictionRebillings["Created"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreated);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingscreator != null)
-            {
-                projectRestrictionRebillings["Creator"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreator);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingscreatorFullName != null)
-            {
-                projectRestrictionRebillings["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingscreatorFullName);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsdivision != null)
-            {
-                projectRestrictionRebillings["Division"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsdivision);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodified != null)
-            {
-                projectRestrictionRebillings["Modified"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodified);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodifier != null)
-            {
-                projectRestrictionRebillings["Modifier"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifier);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsmodifierFullName != null)
-            {
-                projectRestrictionRebillings["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsmodifierFullName);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            projectRestrictionRebillingspropCount++;
-            projectRestrictionRebillings["Project"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsproject);
-            if (projectRestrictionRebillingsprojectCode != null)
-            {
-                projectRestrictionRebillings["ProjectCode"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectCode);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingsprojectDescription != null)
-            {
-                projectRestrictionRebillings["ProjectDescription"] = CSharpExpressionConverter.ConvertToken(projectRestrictionRebillingsprojectDescription);
-                projectRestrictionRebillingspropCount++;
-            }
-
-            if (projectRestrictionRebillingspropCount > 0)
-            {
-                callPayload.Body = projectRestrictionRebillings;
-            }
-
-            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
+            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectRestrictionRebillingsResponse> DeleteProjectRestrictionRebillings(Expression<Func<string>> division, Expression<Func<string>> iD)
+        public IBodyWorkflowAction<RecentCostsByNumberOfWeeksResponse> GetRecentCostsByNumberOfWeeks([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<int> numberOfWeeks, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/ProjectRestrictionRebillings", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            return new ApiConnectionAction<ProjectRestrictionRebillingsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(numberOfWeeks, nameof(numberOfWeeks), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentCostsByNumberOfWeeks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["numberOfWeeks"] = SourceExpressionConverter.ConvertO(numberOfWeeks);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecentCostsByNumberOfWeeksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<RecentCostsByNumberOfWeeksResponse> GetRecentCostsByNumberOfWeeks(Expression<Func<string>> division, Expression<Func<int>> numberOfWeeks, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<RecentHoursResponse> GetRecentHours([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentCostsByNumberOfWeeks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["numberOfWeeks"] = CSharpExpressionConverter.ConvertO(numberOfWeeks);
-            return new ApiConnectionAction<RecentCostsByNumberOfWeeksResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHours", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecentHoursResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<RecentHoursResponse> GetRecentHours(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<RecentHoursByNumberOfWeeksResponse> GetRecentHoursByNumberOfWeeks([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<int> numberOfWeeks, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHours", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<RecentHoursResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(numberOfWeeks, nameof(numberOfWeeks), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHoursByNumberOfWeeks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["numberOfWeeks"] = SourceExpressionConverter.ConvertO(numberOfWeeks);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecentHoursByNumberOfWeeksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<RecentHoursByNumberOfWeeksResponse> GetRecentHoursByNumberOfWeeks(Expression<Func<string>> division, Expression<Func<int>> numberOfWeeks, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingAccountDetailsResponse> GetTimeAndBillingAccountDetails([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/RecentHoursByNumberOfWeeks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["numberOfWeeks"] = CSharpExpressionConverter.ConvertO(numberOfWeeks);
-            return new ApiConnectionAction<RecentHoursByNumberOfWeeksResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingAccountDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingAccountDetailsResponse> GetTimeAndBillingAccountDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIDResponse> GetTimeAndBillingAccountDetailsByID([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetails", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingAccountDetailsResponse>(callPayload);
+            SourceExpression.Validate(accountId, nameof(accountId), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetailsByID", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["accountId"] = SourceExpressionConverter.ConvertO(accountId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingAccountDetailsByIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingAccountDetailsByIDResponse> GetTimeAndBillingAccountDetailsByID(Expression<Func<string>> accountId, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingActivitiesAndExpensesResponse> GetTimeAndBillingActivitiesAndExpenses([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingAccountDetailsByID", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["accountId"] = CSharpExpressionConverter.ConvertO(accountId);
-            return new ApiConnectionAction<TimeAndBillingAccountDetailsByIDResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingActivitiesAndExpenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingActivitiesAndExpensesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingActivitiesAndExpensesResponse> GetTimeAndBillingActivitiesAndExpenses(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryAccountsResponse> GetTimeAndBillingEntryAccounts([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingActivitiesAndExpenses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingActivitiesAndExpensesResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryAccountsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryAccountsResponse> GetTimeAndBillingEntryAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryAccountsByDateResponse> GetTimeAndBillingEntryAccountsByDate([WorkflowExpression] Func<string> checkDate, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccounts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryAccountsResponse>(callPayload);
+            SourceExpression.Validate(checkDate, nameof(checkDate), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["checkDate"] = SourceExpressionConverter.ConvertO(checkDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryAccountsByDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryAccountsByDateResponse> GetTimeAndBillingEntryAccountsByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryAccountsByProjectAndDateResponse> GetTimeAndBillingEntryAccountsByProjectAndDate([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["checkDate"] = CSharpExpressionConverter.ConvertO(checkDate);
-            return new ApiConnectionAction<TimeAndBillingEntryAccountsByDateResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByProjectAndDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryAccountsByProjectAndDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryAccountsByProjectAndDateResponse> GetTimeAndBillingEntryAccountsByProjectAndDate(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryProjectsResponse> GetTimeAndBillingEntryProjects([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryAccountsByProjectAndDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<TimeAndBillingEntryAccountsByProjectAndDateResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryProjectsResponse> GetTimeAndBillingEntryProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryProjectsByAccountAndDateResponse> GetTimeAndBillingEntryProjectsByAccountAndDate([WorkflowExpression] Func<string> accountId, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjects", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryProjectsResponse>(callPayload);
+            SourceExpression.Validate(accountId, nameof(accountId), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByAccountAndDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["accountId"] = SourceExpressionConverter.ConvertO(accountId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryProjectsByAccountAndDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryProjectsByAccountAndDateResponse> GetTimeAndBillingEntryProjectsByAccountAndDate(Expression<Func<string>> accountId, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryProjectsByDateResponse> GetTimeAndBillingEntryProjectsByDate([WorkflowExpression] Func<string> checkDate, [WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByAccountAndDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["accountId"] = CSharpExpressionConverter.ConvertO(accountId);
-            return new ApiConnectionAction<TimeAndBillingEntryProjectsByAccountAndDateResponse>(callPayload);
+            SourceExpression.Validate(checkDate, nameof(checkDate), required: true);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByDate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["checkDate"] = SourceExpressionConverter.ConvertO(checkDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryProjectsByDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryProjectsByDateResponse> GetTimeAndBillingEntryProjectsByDate(Expression<Func<string>> checkDate, Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryRecentAccountsResponse> GetTimeAndBillingEntryRecentAccounts([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryProjectsByDate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["checkDate"] = CSharpExpressionConverter.ConvertO(checkDate);
-            return new ApiConnectionAction<TimeAndBillingEntryProjectsByDateResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentAccounts", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryRecentAccountsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryRecentAccountsResponse> GetTimeAndBillingEntryRecentAccounts(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse> GetTimeAndBillingEntryRecentActivitiesAndExpenses([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentAccounts", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryRecentAccountsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentActivitiesAndExpenses", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse> GetTimeAndBillingEntryRecentActivitiesAndExpenses(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryRecentHourCostTypesResponse> GetTimeAndBillingEntryRecentHourCostTypes([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentActivitiesAndExpenses", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryRecentActivitiesAndExpensesResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentHourCostTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryRecentHourCostTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryRecentHourCostTypesResponse> GetTimeAndBillingEntryRecentHourCostTypes(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingEntryRecentProjectsResponse> GetTimeAndBillingEntryRecentProjects([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentHourCostTypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryRecentHourCostTypesResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentProjects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingEntryRecentProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingEntryRecentProjectsResponse> GetTimeAndBillingEntryRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingItemDetailsResponse> GetTimeAndBillingItemDetails([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingEntryRecentProjects", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingEntryRecentProjectsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingItemDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingItemDetailsResponse> GetTimeAndBillingItemDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingItemDetailsByIDResponse> GetTimeAndBillingItemDetailsByID([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> itemId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetails", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingItemDetailsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetailsByID", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["itemId"] = SourceExpressionConverter.ConvertO(itemId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingItemDetailsByIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingItemDetailsByIDResponse> GetTimeAndBillingItemDetailsByID(Expression<Func<string>> division, Expression<Func<string>> itemId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingProjectDetailsResponse> GetTimeAndBillingProjectDetails([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingItemDetailsByID", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["itemId"] = CSharpExpressionConverter.ConvertO(itemId);
-            return new ApiConnectionAction<TimeAndBillingItemDetailsByIDResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingProjectDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingProjectDetailsResponse> GetTimeAndBillingProjectDetails(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIDResponse> GetTimeAndBillingProjectDetailsByID([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetails", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingProjectDetailsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetailsByID", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingProjectDetailsByIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingProjectDetailsByIDResponse> GetTimeAndBillingProjectDetailsByID(Expression<Func<string>> division, Expression<Func<string>> projectId, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeAndBillingRecentProjectsResponse> GetTimeAndBillingRecentProjects([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingProjectDetailsByID", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<TimeAndBillingProjectDetailsByIDResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingRecentProjects", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeAndBillingRecentProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeAndBillingRecentProjectsResponse> GetTimeAndBillingRecentProjects(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> GetTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/read/project/TimeAndBillingRecentProjects", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeAndBillingRecentProjectsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeCorrectionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> GetTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> PutTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> timeCorrectionsiD = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            SourceExpression.Validate(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
+            SourceExpression.Validate(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
+            SourceExpression.Validate(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
+            SourceExpression.Validate(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
+            SourceExpression.Validate(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
+            SourceExpression.Validate(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
+            SourceExpression.Validate(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
+            SourceExpression.Validate(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
+            SourceExpression.Validate(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
+            SourceExpression.Validate(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                var timeCorrections = new JObject();
+                var timeCorrectionspropCount = 0;
+                if (timeCorrectionsiD != null)
+                {
+                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsiD);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreated != null)
+                {
+                    timeCorrections["Created"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreated);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreator != null)
+                {
+                    timeCorrections["Creator"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreator);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreatorFullName != null)
+                {
+                    timeCorrections["CreatorFullName"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreatorFullName);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsdivision != null)
+                {
+                    timeCorrections["Division"] = SourceExpressionConverter.ConvertToken(timeCorrectionsdivision);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodified != null)
+                {
+                    timeCorrections["Modified"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodified);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodifier != null)
+                {
+                    timeCorrections["Modifier"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodifier);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodifierFullName != null)
+                {
+                    timeCorrections["ModifierFullName"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodifierFullName);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsnotes != null)
+                {
+                    timeCorrections["Notes"] = SourceExpressionConverter.ConvertToken(timeCorrectionsnotes);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsoriginalEntryId != null)
+                {
+                    timeCorrections["OriginalEntryId"] = SourceExpressionConverter.ConvertToken(timeCorrectionsoriginalEntryId);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsquantity != null)
+                {
+                    timeCorrections["Quantity"] = SourceExpressionConverter.ConvertToken(timeCorrectionsquantity);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionspropCount > 0)
+                {
+                    callPayload.Body = timeCorrections;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeCorrectionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> PutTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> timeCorrectionsiD = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> PostTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeCorrectionsiD = null, [WorkflowExpression] Func<string> timeCorrectionscreated = null, [WorkflowExpression] Func<string> timeCorrectionscreator = null, [WorkflowExpression] Func<string> timeCorrectionscreatorFullName = null, [WorkflowExpression] Func<int> timeCorrectionsdivision = null, [WorkflowExpression] Func<string> timeCorrectionsmodified = null, [WorkflowExpression] Func<string> timeCorrectionsmodifier = null, [WorkflowExpression] Func<string> timeCorrectionsmodifierFullName = null, [WorkflowExpression] Func<string> timeCorrectionsnotes = null, [WorkflowExpression] Func<string> timeCorrectionsoriginalEntryId = null, [WorkflowExpression] Func<double> timeCorrectionsquantity = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            var timeCorrections = new JObject();
-            var timeCorrectionspropCount = 0;
-            if (timeCorrectionsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(timeCorrectionsiD, nameof(timeCorrectionsiD), required: false);
+            SourceExpression.Validate(timeCorrectionscreated, nameof(timeCorrectionscreated), required: false);
+            SourceExpression.Validate(timeCorrectionscreator, nameof(timeCorrectionscreator), required: false);
+            SourceExpression.Validate(timeCorrectionscreatorFullName, nameof(timeCorrectionscreatorFullName), required: false);
+            SourceExpression.Validate(timeCorrectionsdivision, nameof(timeCorrectionsdivision), required: false);
+            SourceExpression.Validate(timeCorrectionsmodified, nameof(timeCorrectionsmodified), required: false);
+            SourceExpression.Validate(timeCorrectionsmodifier, nameof(timeCorrectionsmodifier), required: false);
+            SourceExpression.Validate(timeCorrectionsmodifierFullName, nameof(timeCorrectionsmodifierFullName), required: false);
+            SourceExpression.Validate(timeCorrectionsnotes, nameof(timeCorrectionsnotes), required: false);
+            SourceExpression.Validate(timeCorrectionsoriginalEntryId, nameof(timeCorrectionsoriginalEntryId), required: false);
+            SourceExpression.Validate(timeCorrectionsquantity, nameof(timeCorrectionsquantity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                timeCorrections["ID"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsiD);
-                timeCorrectionspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var timeCorrections = new JObject();
+                var timeCorrectionspropCount = 0;
+                if (timeCorrectionsiD != null)
+                {
+                    timeCorrections["ID"] = SourceExpressionConverter.ConvertToken(timeCorrectionsiD);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreated != null)
+                {
+                    timeCorrections["Created"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreated);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreator != null)
+                {
+                    timeCorrections["Creator"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreator);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionscreatorFullName != null)
+                {
+                    timeCorrections["CreatorFullName"] = SourceExpressionConverter.ConvertToken(timeCorrectionscreatorFullName);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsdivision != null)
+                {
+                    timeCorrections["Division"] = SourceExpressionConverter.ConvertToken(timeCorrectionsdivision);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodified != null)
+                {
+                    timeCorrections["Modified"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodified);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodifier != null)
+                {
+                    timeCorrections["Modifier"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodifier);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsmodifierFullName != null)
+                {
+                    timeCorrections["ModifierFullName"] = SourceExpressionConverter.ConvertToken(timeCorrectionsmodifierFullName);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsnotes != null)
+                {
+                    timeCorrections["Notes"] = SourceExpressionConverter.ConvertToken(timeCorrectionsnotes);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsoriginalEntryId != null)
+                {
+                    timeCorrections["OriginalEntryId"] = SourceExpressionConverter.ConvertToken(timeCorrectionsoriginalEntryId);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionsquantity != null)
+                {
+                    timeCorrections["Quantity"] = SourceExpressionConverter.ConvertToken(timeCorrectionsquantity);
+                    timeCorrectionspropCount++;
+                }
+
+                if (timeCorrectionspropCount > 0)
+                {
+                    callPayload.Body = timeCorrections;
+                }
+                return callPayload;
             }
 
-            if (timeCorrectionscreated != null)
-            {
-                timeCorrections["Created"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreated);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionscreator != null)
-            {
-                timeCorrections["Creator"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreator);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionscreatorFullName != null)
-            {
-                timeCorrections["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreatorFullName);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsdivision != null)
-            {
-                timeCorrections["Division"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsdivision);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodified != null)
-            {
-                timeCorrections["Modified"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodified);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodifier != null)
-            {
-                timeCorrections["Modifier"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodifier);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodifierFullName != null)
-            {
-                timeCorrections["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodifierFullName);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsnotes != null)
-            {
-                timeCorrections["Notes"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsnotes);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsoriginalEntryId != null)
-            {
-                timeCorrections["OriginalEntryId"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsoriginalEntryId);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsquantity != null)
-            {
-                timeCorrections["Quantity"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsquantity);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionspropCount > 0)
-            {
-                callPayload.Body = timeCorrections;
-            }
-
-            return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
+            return new ApiConnectionAction<TimeCorrectionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> PostTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> timeCorrectionsiD = null, Expression<Func<string>> timeCorrectionscreated = null, Expression<Func<string>> timeCorrectionscreator = null, Expression<Func<string>> timeCorrectionscreatorFullName = null, Expression<Func<int>> timeCorrectionsdivision = null, Expression<Func<string>> timeCorrectionsmodified = null, Expression<Func<string>> timeCorrectionsmodifier = null, Expression<Func<string>> timeCorrectionsmodifierFullName = null, Expression<Func<string>> timeCorrectionsnotes = null, Expression<Func<string>> timeCorrectionsoriginalEntryId = null, Expression<Func<double>> timeCorrectionsquantity = null)
+        public IBodyWorkflowAction<TimeCorrectionsResponse> DeleteTimeCorrections([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var timeCorrections = new JObject();
-            var timeCorrectionspropCount = 0;
-            if (timeCorrectionsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                timeCorrections["ID"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsiD);
-                timeCorrectionspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                return callPayload;
             }
 
-            if (timeCorrectionscreated != null)
-            {
-                timeCorrections["Created"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreated);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionscreator != null)
-            {
-                timeCorrections["Creator"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreator);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionscreatorFullName != null)
-            {
-                timeCorrections["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(timeCorrectionscreatorFullName);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsdivision != null)
-            {
-                timeCorrections["Division"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsdivision);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodified != null)
-            {
-                timeCorrections["Modified"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodified);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodifier != null)
-            {
-                timeCorrections["Modifier"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodifier);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsmodifierFullName != null)
-            {
-                timeCorrections["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsmodifierFullName);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsnotes != null)
-            {
-                timeCorrections["Notes"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsnotes);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsoriginalEntryId != null)
-            {
-                timeCorrections["OriginalEntryId"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsoriginalEntryId);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionsquantity != null)
-            {
-                timeCorrections["Quantity"] = CSharpExpressionConverter.ConvertToken(timeCorrectionsquantity);
-                timeCorrectionspropCount++;
-            }
-
-            if (timeCorrectionspropCount > 0)
-            {
-                callPayload.Body = timeCorrections;
-            }
-
-            return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
+            return new ApiConnectionAction<TimeCorrectionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeCorrectionsResponse> DeleteTimeCorrections(Expression<Func<string>> division, Expression<Func<string>> iD)
+        public IBodyWorkflowAction<TimeTransactionsResponse> GetTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeCorrections", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            return new ApiConnectionAction<TimeCorrectionsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeTransactionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> GetTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse> PutTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsiD = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
+            SourceExpression.Validate(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
+            SourceExpression.Validate(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
+            SourceExpression.Validate(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            SourceExpression.Validate(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
+            SourceExpression.Validate(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
+            SourceExpression.Validate(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
+            SourceExpression.Validate(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
+            SourceExpression.Validate(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
+            SourceExpression.Validate(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
+            SourceExpression.Validate(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
+            SourceExpression.Validate(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
+            SourceExpression.Validate(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
+            SourceExpression.Validate(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
+            SourceExpression.Validate(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
+            SourceExpression.Validate(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
+            SourceExpression.Validate(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
+            SourceExpression.Validate(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
+            SourceExpression.Validate(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
+            SourceExpression.Validate(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
+            SourceExpression.Validate(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
+            SourceExpression.Validate(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
+            SourceExpression.Validate(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
+            SourceExpression.Validate(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
+            SourceExpression.Validate(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
+            SourceExpression.Validate(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
+            SourceExpression.Validate(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
+            SourceExpression.Validate(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
+            SourceExpression.Validate(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
+            SourceExpression.Validate(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
+            SourceExpression.Validate(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
+            SourceExpression.Validate(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
+            SourceExpression.Validate(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
+            SourceExpression.Validate(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
+            SourceExpression.Validate(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
+            SourceExpression.Validate(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
+            SourceExpression.Validate(timeTransactionstype, nameof(timeTransactionstype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                var timeTransactions = new JObject();
+                var timeTransactionspropCount = 0;
+                if (timeTransactionsiD != null)
+                {
+                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsiD);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsaccount != null)
+                {
+                    timeTransactions["Account"] = SourceExpressionConverter.ConvertToken(timeTransactionsaccount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsaccountName != null)
+                {
+                    timeTransactions["AccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionsaccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsactivity != null)
+                {
+                    timeTransactions["Activity"] = SourceExpressionConverter.ConvertToken(timeTransactionsactivity);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsactivityDescription != null)
+                {
+                    timeTransactions["ActivityDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsactivityDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsamount != null)
+                {
+                    timeTransactions["Amount"] = SourceExpressionConverter.ConvertToken(timeTransactionsamount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsamountFC != null)
+                {
+                    timeTransactions["AmountFC"] = SourceExpressionConverter.ConvertToken(timeTransactionsamountFC);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsattachment != null)
+                {
+                    timeTransactions["Attachment"] = SourceExpressionConverter.ConvertToken(timeTransactionsattachment);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreated != null)
+                {
+                    timeTransactions["Created"] = SourceExpressionConverter.ConvertToken(timeTransactionscreated);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreator != null)
+                {
+                    timeTransactions["Creator"] = SourceExpressionConverter.ConvertToken(timeTransactionscreator);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreatorFullName != null)
+                {
+                    timeTransactions["CreatorFullName"] = SourceExpressionConverter.ConvertToken(timeTransactionscreatorFullName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscurrency != null)
+                {
+                    timeTransactions["Currency"] = SourceExpressionConverter.ConvertToken(timeTransactionscurrency);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdate != null)
+                {
+                    timeTransactions["Date"] = SourceExpressionConverter.ConvertToken(timeTransactionsdate);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdivision != null)
+                {
+                    timeTransactions["Division"] = SourceExpressionConverter.ConvertToken(timeTransactionsdivision);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdivisionDescription != null)
+                {
+                    timeTransactions["DivisionDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsdivisionDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsemployee != null)
+                {
+                    timeTransactions["Employee"] = SourceExpressionConverter.ConvertToken(timeTransactionsemployee);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsendTime != null)
+                {
+                    timeTransactions["EndTime"] = SourceExpressionConverter.ConvertToken(timeTransactionsendTime);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsentryNumber != null)
+                {
+                    timeTransactions["EntryNumber"] = SourceExpressionConverter.ConvertToken(timeTransactionsentryNumber);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionserrorText != null)
+                {
+                    timeTransactions["ErrorText"] = SourceExpressionConverter.ConvertToken(timeTransactionserrorText);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionshourStatus != null)
+                {
+                    timeTransactions["HourStatus"] = SourceExpressionConverter.ConvertToken(timeTransactionshourStatus);
+                    timeTransactionspropCount++;
+                }
+
+                timeTransactionspropCount++;
+                timeTransactions["Item"] = SourceExpressionConverter.ConvertToken(timeTransactionsitem);
+                if (timeTransactionsitemDescription != null)
+                {
+                    timeTransactions["ItemDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsitemDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsitemDivisable != null)
+                {
+                    timeTransactions["ItemDivisable"] = SourceExpressionConverter.ConvertToken(timeTransactionsitemDivisable);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodified != null)
+                {
+                    timeTransactions["Modified"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodified);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodifier != null)
+                {
+                    timeTransactions["Modifier"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodifier);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodifierFullName != null)
+                {
+                    timeTransactions["ModifierFullName"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodifierFullName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsnotes != null)
+                {
+                    timeTransactions["Notes"] = SourceExpressionConverter.ConvertToken(timeTransactionsnotes);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprice != null)
+                {
+                    timeTransactions["Price"] = SourceExpressionConverter.ConvertToken(timeTransactionsprice);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionspriceFC != null)
+                {
+                    timeTransactions["PriceFC"] = SourceExpressionConverter.ConvertToken(timeTransactionspriceFC);
+                    timeTransactionspropCount++;
+                }
+
+                timeTransactionspropCount++;
+                timeTransactions["Project"] = SourceExpressionConverter.ConvertToken(timeTransactionsproject);
+                if (timeTransactionsprojectAccount != null)
+                {
+                    timeTransactions["ProjectAccount"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectAccountCode != null)
+                {
+                    timeTransactions["ProjectAccountCode"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccountCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectAccountName != null)
+                {
+                    timeTransactions["ProjectAccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectCode != null)
+                {
+                    timeTransactions["ProjectCode"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectDescription != null)
+                {
+                    timeTransactions["ProjectDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectDescription);
+                    timeTransactionspropCount++;
+                }
+
+                timeTransactionspropCount++;
+                timeTransactions["Quantity"] = SourceExpressionConverter.ConvertToken(timeTransactionsquantity);
+                if (timeTransactionsskipValidation != null)
+                {
+                    timeTransactions["SkipValidation"] = SourceExpressionConverter.ConvertToken(timeTransactionsskipValidation);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsstartTime != null)
+                {
+                    timeTransactions["StartTime"] = SourceExpressionConverter.ConvertToken(timeTransactionsstartTime);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscription != null)
+                {
+                    timeTransactions["Subscription"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccount != null)
+                {
+                    timeTransactions["SubscriptionAccount"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccountCode != null)
+                {
+                    timeTransactions["SubscriptionAccountCode"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccountName != null)
+                {
+                    timeTransactions["SubscriptionAccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionDescription != null)
+                {
+                    timeTransactions["SubscriptionDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionNumber != null)
+                {
+                    timeTransactions["SubscriptionNumber"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionNumber);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionstype != null)
+                {
+                    timeTransactions["Type"] = SourceExpressionConverter.ConvertToken(timeTransactionstype);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionspropCount > 0)
+                {
+                    callPayload.Body = timeTransactions;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TimeTransactionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> PutTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> iD, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsiD = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse> PostTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> timeTransactionsitem, [WorkflowExpression] Func<string> timeTransactionsproject, [WorkflowExpression] Func<double> timeTransactionsquantity, [WorkflowExpression] Func<string> timeTransactionsiD = null, [WorkflowExpression] Func<string> timeTransactionsaccount = null, [WorkflowExpression] Func<string> timeTransactionsaccountName = null, [WorkflowExpression] Func<string> timeTransactionsactivity = null, [WorkflowExpression] Func<string> timeTransactionsactivityDescription = null, [WorkflowExpression] Func<double> timeTransactionsamount = null, [WorkflowExpression] Func<double> timeTransactionsamountFC = null, [WorkflowExpression] Func<string> timeTransactionsattachment = null, [WorkflowExpression] Func<string> timeTransactionscreated = null, [WorkflowExpression] Func<string> timeTransactionscreator = null, [WorkflowExpression] Func<string> timeTransactionscreatorFullName = null, [WorkflowExpression] Func<string> timeTransactionscurrency = null, [WorkflowExpression] Func<string> timeTransactionsdate = null, [WorkflowExpression] Func<int> timeTransactionsdivision = null, [WorkflowExpression] Func<string> timeTransactionsdivisionDescription = null, [WorkflowExpression] Func<string> timeTransactionsemployee = null, [WorkflowExpression] Func<string> timeTransactionsendTime = null, [WorkflowExpression] Func<int> timeTransactionsentryNumber = null, [WorkflowExpression] Func<string> timeTransactionserrorText = null, [WorkflowExpression] Func<double> timeTransactionshourStatus = null, [WorkflowExpression] Func<string> timeTransactionsitemDescription = null, [WorkflowExpression] Func<bool> timeTransactionsitemDivisable = null, [WorkflowExpression] Func<string> timeTransactionsmodified = null, [WorkflowExpression] Func<string> timeTransactionsmodifier = null, [WorkflowExpression] Func<string> timeTransactionsmodifierFullName = null, [WorkflowExpression] Func<string> timeTransactionsnotes = null, [WorkflowExpression] Func<double> timeTransactionsprice = null, [WorkflowExpression] Func<double> timeTransactionspriceFC = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccount = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectAccountName = null, [WorkflowExpression] Func<string> timeTransactionsprojectCode = null, [WorkflowExpression] Func<string> timeTransactionsprojectDescription = null, [WorkflowExpression] Func<bool> timeTransactionsskipValidation = null, [WorkflowExpression] Func<string> timeTransactionsstartTime = null, [WorkflowExpression] Func<string> timeTransactionssubscription = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccount = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountCode = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionAccountName = null, [WorkflowExpression] Func<string> timeTransactionssubscriptionDescription = null, [WorkflowExpression] Func<int> timeTransactionssubscriptionNumber = null, [WorkflowExpression] Func<double> timeTransactionstype = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            var timeTransactions = new JObject();
-            var timeTransactionspropCount = 0;
-            if (timeTransactionsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(timeTransactionsitem, nameof(timeTransactionsitem), required: true);
+            SourceExpression.Validate(timeTransactionsproject, nameof(timeTransactionsproject), required: true);
+            SourceExpression.Validate(timeTransactionsquantity, nameof(timeTransactionsquantity), required: true);
+            SourceExpression.Validate(timeTransactionsiD, nameof(timeTransactionsiD), required: false);
+            SourceExpression.Validate(timeTransactionsaccount, nameof(timeTransactionsaccount), required: false);
+            SourceExpression.Validate(timeTransactionsaccountName, nameof(timeTransactionsaccountName), required: false);
+            SourceExpression.Validate(timeTransactionsactivity, nameof(timeTransactionsactivity), required: false);
+            SourceExpression.Validate(timeTransactionsactivityDescription, nameof(timeTransactionsactivityDescription), required: false);
+            SourceExpression.Validate(timeTransactionsamount, nameof(timeTransactionsamount), required: false);
+            SourceExpression.Validate(timeTransactionsamountFC, nameof(timeTransactionsamountFC), required: false);
+            SourceExpression.Validate(timeTransactionsattachment, nameof(timeTransactionsattachment), required: false);
+            SourceExpression.Validate(timeTransactionscreated, nameof(timeTransactionscreated), required: false);
+            SourceExpression.Validate(timeTransactionscreator, nameof(timeTransactionscreator), required: false);
+            SourceExpression.Validate(timeTransactionscreatorFullName, nameof(timeTransactionscreatorFullName), required: false);
+            SourceExpression.Validate(timeTransactionscurrency, nameof(timeTransactionscurrency), required: false);
+            SourceExpression.Validate(timeTransactionsdate, nameof(timeTransactionsdate), required: false);
+            SourceExpression.Validate(timeTransactionsdivision, nameof(timeTransactionsdivision), required: false);
+            SourceExpression.Validate(timeTransactionsdivisionDescription, nameof(timeTransactionsdivisionDescription), required: false);
+            SourceExpression.Validate(timeTransactionsemployee, nameof(timeTransactionsemployee), required: false);
+            SourceExpression.Validate(timeTransactionsendTime, nameof(timeTransactionsendTime), required: false);
+            SourceExpression.Validate(timeTransactionsentryNumber, nameof(timeTransactionsentryNumber), required: false);
+            SourceExpression.Validate(timeTransactionserrorText, nameof(timeTransactionserrorText), required: false);
+            SourceExpression.Validate(timeTransactionshourStatus, nameof(timeTransactionshourStatus), required: false);
+            SourceExpression.Validate(timeTransactionsitemDescription, nameof(timeTransactionsitemDescription), required: false);
+            SourceExpression.Validate(timeTransactionsitemDivisable, nameof(timeTransactionsitemDivisable), required: false);
+            SourceExpression.Validate(timeTransactionsmodified, nameof(timeTransactionsmodified), required: false);
+            SourceExpression.Validate(timeTransactionsmodifier, nameof(timeTransactionsmodifier), required: false);
+            SourceExpression.Validate(timeTransactionsmodifierFullName, nameof(timeTransactionsmodifierFullName), required: false);
+            SourceExpression.Validate(timeTransactionsnotes, nameof(timeTransactionsnotes), required: false);
+            SourceExpression.Validate(timeTransactionsprice, nameof(timeTransactionsprice), required: false);
+            SourceExpression.Validate(timeTransactionspriceFC, nameof(timeTransactionspriceFC), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccount, nameof(timeTransactionsprojectAccount), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccountCode, nameof(timeTransactionsprojectAccountCode), required: false);
+            SourceExpression.Validate(timeTransactionsprojectAccountName, nameof(timeTransactionsprojectAccountName), required: false);
+            SourceExpression.Validate(timeTransactionsprojectCode, nameof(timeTransactionsprojectCode), required: false);
+            SourceExpression.Validate(timeTransactionsprojectDescription, nameof(timeTransactionsprojectDescription), required: false);
+            SourceExpression.Validate(timeTransactionsskipValidation, nameof(timeTransactionsskipValidation), required: false);
+            SourceExpression.Validate(timeTransactionsstartTime, nameof(timeTransactionsstartTime), required: false);
+            SourceExpression.Validate(timeTransactionssubscription, nameof(timeTransactionssubscription), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccount, nameof(timeTransactionssubscriptionAccount), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccountCode, nameof(timeTransactionssubscriptionAccountCode), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionAccountName, nameof(timeTransactionssubscriptionAccountName), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionDescription, nameof(timeTransactionssubscriptionDescription), required: false);
+            SourceExpression.Validate(timeTransactionssubscriptionNumber, nameof(timeTransactionssubscriptionNumber), required: false);
+            SourceExpression.Validate(timeTransactionstype, nameof(timeTransactionstype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                timeTransactions["ID"] = CSharpExpressionConverter.ConvertToken(timeTransactionsiD);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var timeTransactions = new JObject();
+                var timeTransactionspropCount = 0;
+                if (timeTransactionsiD != null)
+                {
+                    timeTransactions["ID"] = SourceExpressionConverter.ConvertToken(timeTransactionsiD);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsaccount != null)
+                {
+                    timeTransactions["Account"] = SourceExpressionConverter.ConvertToken(timeTransactionsaccount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsaccountName != null)
+                {
+                    timeTransactions["AccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionsaccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsactivity != null)
+                {
+                    timeTransactions["Activity"] = SourceExpressionConverter.ConvertToken(timeTransactionsactivity);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsactivityDescription != null)
+                {
+                    timeTransactions["ActivityDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsactivityDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsamount != null)
+                {
+                    timeTransactions["Amount"] = SourceExpressionConverter.ConvertToken(timeTransactionsamount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsamountFC != null)
+                {
+                    timeTransactions["AmountFC"] = SourceExpressionConverter.ConvertToken(timeTransactionsamountFC);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsattachment != null)
+                {
+                    timeTransactions["Attachment"] = SourceExpressionConverter.ConvertToken(timeTransactionsattachment);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreated != null)
+                {
+                    timeTransactions["Created"] = SourceExpressionConverter.ConvertToken(timeTransactionscreated);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreator != null)
+                {
+                    timeTransactions["Creator"] = SourceExpressionConverter.ConvertToken(timeTransactionscreator);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscreatorFullName != null)
+                {
+                    timeTransactions["CreatorFullName"] = SourceExpressionConverter.ConvertToken(timeTransactionscreatorFullName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionscurrency != null)
+                {
+                    timeTransactions["Currency"] = SourceExpressionConverter.ConvertToken(timeTransactionscurrency);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdate != null)
+                {
+                    timeTransactions["Date"] = SourceExpressionConverter.ConvertToken(timeTransactionsdate);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdivision != null)
+                {
+                    timeTransactions["Division"] = SourceExpressionConverter.ConvertToken(timeTransactionsdivision);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsdivisionDescription != null)
+                {
+                    timeTransactions["DivisionDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsdivisionDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsemployee != null)
+                {
+                    timeTransactions["Employee"] = SourceExpressionConverter.ConvertToken(timeTransactionsemployee);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsendTime != null)
+                {
+                    timeTransactions["EndTime"] = SourceExpressionConverter.ConvertToken(timeTransactionsendTime);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsentryNumber != null)
+                {
+                    timeTransactions["EntryNumber"] = SourceExpressionConverter.ConvertToken(timeTransactionsentryNumber);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionserrorText != null)
+                {
+                    timeTransactions["ErrorText"] = SourceExpressionConverter.ConvertToken(timeTransactionserrorText);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionshourStatus != null)
+                {
+                    timeTransactions["HourStatus"] = SourceExpressionConverter.ConvertToken(timeTransactionshourStatus);
+                    timeTransactionspropCount++;
+                }
+
                 timeTransactionspropCount++;
-            }
+                timeTransactions["Item"] = SourceExpressionConverter.ConvertToken(timeTransactionsitem);
+                if (timeTransactionsitemDescription != null)
+                {
+                    timeTransactions["ItemDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsitemDescription);
+                    timeTransactionspropCount++;
+                }
 
-            if (timeTransactionsaccount != null)
-            {
-                timeTransactions["Account"] = CSharpExpressionConverter.ConvertToken(timeTransactionsaccount);
+                if (timeTransactionsitemDivisable != null)
+                {
+                    timeTransactions["ItemDivisable"] = SourceExpressionConverter.ConvertToken(timeTransactionsitemDivisable);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodified != null)
+                {
+                    timeTransactions["Modified"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodified);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodifier != null)
+                {
+                    timeTransactions["Modifier"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodifier);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsmodifierFullName != null)
+                {
+                    timeTransactions["ModifierFullName"] = SourceExpressionConverter.ConvertToken(timeTransactionsmodifierFullName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsnotes != null)
+                {
+                    timeTransactions["Notes"] = SourceExpressionConverter.ConvertToken(timeTransactionsnotes);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprice != null)
+                {
+                    timeTransactions["Price"] = SourceExpressionConverter.ConvertToken(timeTransactionsprice);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionspriceFC != null)
+                {
+                    timeTransactions["PriceFC"] = SourceExpressionConverter.ConvertToken(timeTransactionspriceFC);
+                    timeTransactionspropCount++;
+                }
+
                 timeTransactionspropCount++;
-            }
+                timeTransactions["Project"] = SourceExpressionConverter.ConvertToken(timeTransactionsproject);
+                if (timeTransactionsprojectAccount != null)
+                {
+                    timeTransactions["ProjectAccount"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccount);
+                    timeTransactionspropCount++;
+                }
 
-            if (timeTransactionsaccountName != null)
-            {
-                timeTransactions["AccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsaccountName);
+                if (timeTransactionsprojectAccountCode != null)
+                {
+                    timeTransactions["ProjectAccountCode"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccountCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectAccountName != null)
+                {
+                    timeTransactions["ProjectAccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectAccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectCode != null)
+                {
+                    timeTransactions["ProjectCode"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsprojectDescription != null)
+                {
+                    timeTransactions["ProjectDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionsprojectDescription);
+                    timeTransactionspropCount++;
+                }
+
                 timeTransactionspropCount++;
+                timeTransactions["Quantity"] = SourceExpressionConverter.ConvertToken(timeTransactionsquantity);
+                if (timeTransactionsskipValidation != null)
+                {
+                    timeTransactions["SkipValidation"] = SourceExpressionConverter.ConvertToken(timeTransactionsskipValidation);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionsstartTime != null)
+                {
+                    timeTransactions["StartTime"] = SourceExpressionConverter.ConvertToken(timeTransactionsstartTime);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscription != null)
+                {
+                    timeTransactions["Subscription"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccount != null)
+                {
+                    timeTransactions["SubscriptionAccount"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccount);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccountCode != null)
+                {
+                    timeTransactions["SubscriptionAccountCode"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountCode);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionAccountName != null)
+                {
+                    timeTransactions["SubscriptionAccountName"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountName);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionDescription != null)
+                {
+                    timeTransactions["SubscriptionDescription"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionDescription);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionssubscriptionNumber != null)
+                {
+                    timeTransactions["SubscriptionNumber"] = SourceExpressionConverter.ConvertToken(timeTransactionssubscriptionNumber);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionstype != null)
+                {
+                    timeTransactions["Type"] = SourceExpressionConverter.ConvertToken(timeTransactionstype);
+                    timeTransactionspropCount++;
+                }
+
+                if (timeTransactionspropCount > 0)
+                {
+                    callPayload.Body = timeTransactions;
+                }
+                return callPayload;
             }
 
-            if (timeTransactionsactivity != null)
-            {
-                timeTransactions["Activity"] = CSharpExpressionConverter.ConvertToken(timeTransactionsactivity);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsactivityDescription != null)
-            {
-                timeTransactions["ActivityDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsactivityDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsamount != null)
-            {
-                timeTransactions["Amount"] = CSharpExpressionConverter.ConvertToken(timeTransactionsamount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsamountFC != null)
-            {
-                timeTransactions["AmountFC"] = CSharpExpressionConverter.ConvertToken(timeTransactionsamountFC);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsattachment != null)
-            {
-                timeTransactions["Attachment"] = CSharpExpressionConverter.ConvertToken(timeTransactionsattachment);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreated != null)
-            {
-                timeTransactions["Created"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreated);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreator != null)
-            {
-                timeTransactions["Creator"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreator);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreatorFullName != null)
-            {
-                timeTransactions["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreatorFullName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscurrency != null)
-            {
-                timeTransactions["Currency"] = CSharpExpressionConverter.ConvertToken(timeTransactionscurrency);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdate != null)
-            {
-                timeTransactions["Date"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdate);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdivision != null)
-            {
-                timeTransactions["Division"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdivision);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdivisionDescription != null)
-            {
-                timeTransactions["DivisionDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdivisionDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsemployee != null)
-            {
-                timeTransactions["Employee"] = CSharpExpressionConverter.ConvertToken(timeTransactionsemployee);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsendTime != null)
-            {
-                timeTransactions["EndTime"] = CSharpExpressionConverter.ConvertToken(timeTransactionsendTime);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsentryNumber != null)
-            {
-                timeTransactions["EntryNumber"] = CSharpExpressionConverter.ConvertToken(timeTransactionsentryNumber);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionserrorText != null)
-            {
-                timeTransactions["ErrorText"] = CSharpExpressionConverter.ConvertToken(timeTransactionserrorText);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionshourStatus != null)
-            {
-                timeTransactions["HourStatus"] = CSharpExpressionConverter.ConvertToken(timeTransactionshourStatus);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Item"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitem);
-            if (timeTransactionsitemDescription != null)
-            {
-                timeTransactions["ItemDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitemDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsitemDivisable != null)
-            {
-                timeTransactions["ItemDivisable"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitemDivisable);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodified != null)
-            {
-                timeTransactions["Modified"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodified);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodifier != null)
-            {
-                timeTransactions["Modifier"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodifier);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodifierFullName != null)
-            {
-                timeTransactions["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodifierFullName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsnotes != null)
-            {
-                timeTransactions["Notes"] = CSharpExpressionConverter.ConvertToken(timeTransactionsnotes);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprice != null)
-            {
-                timeTransactions["Price"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprice);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionspriceFC != null)
-            {
-                timeTransactions["PriceFC"] = CSharpExpressionConverter.ConvertToken(timeTransactionspriceFC);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Project"] = CSharpExpressionConverter.ConvertToken(timeTransactionsproject);
-            if (timeTransactionsprojectAccount != null)
-            {
-                timeTransactions["ProjectAccount"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectAccountCode != null)
-            {
-                timeTransactions["ProjectAccountCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccountCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectAccountName != null)
-            {
-                timeTransactions["ProjectAccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccountName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectCode != null)
-            {
-                timeTransactions["ProjectCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectDescription != null)
-            {
-                timeTransactions["ProjectDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectDescription);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Quantity"] = CSharpExpressionConverter.ConvertToken(timeTransactionsquantity);
-            if (timeTransactionsskipValidation != null)
-            {
-                timeTransactions["SkipValidation"] = CSharpExpressionConverter.ConvertToken(timeTransactionsskipValidation);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsstartTime != null)
-            {
-                timeTransactions["StartTime"] = CSharpExpressionConverter.ConvertToken(timeTransactionsstartTime);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscription != null)
-            {
-                timeTransactions["Subscription"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccount != null)
-            {
-                timeTransactions["SubscriptionAccount"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccountCode != null)
-            {
-                timeTransactions["SubscriptionAccountCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccountName != null)
-            {
-                timeTransactions["SubscriptionAccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionDescription != null)
-            {
-                timeTransactions["SubscriptionDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionNumber != null)
-            {
-                timeTransactions["SubscriptionNumber"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionNumber);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionstype != null)
-            {
-                timeTransactions["Type"] = CSharpExpressionConverter.ConvertToken(timeTransactionstype);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionspropCount > 0)
-            {
-                callPayload.Body = timeTransactions;
-            }
-
-            return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
+            return new ApiConnectionAction<TimeTransactionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> PostTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> timeTransactionsitem, Expression<Func<string>> timeTransactionsproject, Expression<Func<double>> timeTransactionsquantity, Expression<Func<string>> timeTransactionsiD = null, Expression<Func<string>> timeTransactionsaccount = null, Expression<Func<string>> timeTransactionsaccountName = null, Expression<Func<string>> timeTransactionsactivity = null, Expression<Func<string>> timeTransactionsactivityDescription = null, Expression<Func<double>> timeTransactionsamount = null, Expression<Func<double>> timeTransactionsamountFC = null, Expression<Func<string>> timeTransactionsattachment = null, Expression<Func<string>> timeTransactionscreated = null, Expression<Func<string>> timeTransactionscreator = null, Expression<Func<string>> timeTransactionscreatorFullName = null, Expression<Func<string>> timeTransactionscurrency = null, Expression<Func<string>> timeTransactionsdate = null, Expression<Func<int>> timeTransactionsdivision = null, Expression<Func<string>> timeTransactionsdivisionDescription = null, Expression<Func<string>> timeTransactionsemployee = null, Expression<Func<string>> timeTransactionsendTime = null, Expression<Func<int>> timeTransactionsentryNumber = null, Expression<Func<string>> timeTransactionserrorText = null, Expression<Func<double>> timeTransactionshourStatus = null, Expression<Func<string>> timeTransactionsitemDescription = null, Expression<Func<bool>> timeTransactionsitemDivisable = null, Expression<Func<string>> timeTransactionsmodified = null, Expression<Func<string>> timeTransactionsmodifier = null, Expression<Func<string>> timeTransactionsmodifierFullName = null, Expression<Func<string>> timeTransactionsnotes = null, Expression<Func<double>> timeTransactionsprice = null, Expression<Func<double>> timeTransactionspriceFC = null, Expression<Func<string>> timeTransactionsprojectAccount = null, Expression<Func<string>> timeTransactionsprojectAccountCode = null, Expression<Func<string>> timeTransactionsprojectAccountName = null, Expression<Func<string>> timeTransactionsprojectCode = null, Expression<Func<string>> timeTransactionsprojectDescription = null, Expression<Func<bool>> timeTransactionsskipValidation = null, Expression<Func<string>> timeTransactionsstartTime = null, Expression<Func<string>> timeTransactionssubscription = null, Expression<Func<string>> timeTransactionssubscriptionAccount = null, Expression<Func<string>> timeTransactionssubscriptionAccountCode = null, Expression<Func<string>> timeTransactionssubscriptionAccountName = null, Expression<Func<string>> timeTransactionssubscriptionDescription = null, Expression<Func<int>> timeTransactionssubscriptionNumber = null, Expression<Func<double>> timeTransactionstype = null)
+        public IBodyWorkflowAction<TimeTransactionsResponse> DeleteTimeTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var timeTransactions = new JObject();
-            var timeTransactionspropCount = 0;
-            if (timeTransactionsiD != null)
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                timeTransactions["ID"] = CSharpExpressionConverter.ConvertToken(timeTransactionsiD);
-                timeTransactionspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                return callPayload;
             }
 
-            if (timeTransactionsaccount != null)
-            {
-                timeTransactions["Account"] = CSharpExpressionConverter.ConvertToken(timeTransactionsaccount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsaccountName != null)
-            {
-                timeTransactions["AccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsaccountName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsactivity != null)
-            {
-                timeTransactions["Activity"] = CSharpExpressionConverter.ConvertToken(timeTransactionsactivity);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsactivityDescription != null)
-            {
-                timeTransactions["ActivityDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsactivityDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsamount != null)
-            {
-                timeTransactions["Amount"] = CSharpExpressionConverter.ConvertToken(timeTransactionsamount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsamountFC != null)
-            {
-                timeTransactions["AmountFC"] = CSharpExpressionConverter.ConvertToken(timeTransactionsamountFC);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsattachment != null)
-            {
-                timeTransactions["Attachment"] = CSharpExpressionConverter.ConvertToken(timeTransactionsattachment);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreated != null)
-            {
-                timeTransactions["Created"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreated);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreator != null)
-            {
-                timeTransactions["Creator"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreator);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscreatorFullName != null)
-            {
-                timeTransactions["CreatorFullName"] = CSharpExpressionConverter.ConvertToken(timeTransactionscreatorFullName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionscurrency != null)
-            {
-                timeTransactions["Currency"] = CSharpExpressionConverter.ConvertToken(timeTransactionscurrency);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdate != null)
-            {
-                timeTransactions["Date"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdate);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdivision != null)
-            {
-                timeTransactions["Division"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdivision);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsdivisionDescription != null)
-            {
-                timeTransactions["DivisionDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsdivisionDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsemployee != null)
-            {
-                timeTransactions["Employee"] = CSharpExpressionConverter.ConvertToken(timeTransactionsemployee);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsendTime != null)
-            {
-                timeTransactions["EndTime"] = CSharpExpressionConverter.ConvertToken(timeTransactionsendTime);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsentryNumber != null)
-            {
-                timeTransactions["EntryNumber"] = CSharpExpressionConverter.ConvertToken(timeTransactionsentryNumber);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionserrorText != null)
-            {
-                timeTransactions["ErrorText"] = CSharpExpressionConverter.ConvertToken(timeTransactionserrorText);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionshourStatus != null)
-            {
-                timeTransactions["HourStatus"] = CSharpExpressionConverter.ConvertToken(timeTransactionshourStatus);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Item"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitem);
-            if (timeTransactionsitemDescription != null)
-            {
-                timeTransactions["ItemDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitemDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsitemDivisable != null)
-            {
-                timeTransactions["ItemDivisable"] = CSharpExpressionConverter.ConvertToken(timeTransactionsitemDivisable);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodified != null)
-            {
-                timeTransactions["Modified"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodified);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodifier != null)
-            {
-                timeTransactions["Modifier"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodifier);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsmodifierFullName != null)
-            {
-                timeTransactions["ModifierFullName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsmodifierFullName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsnotes != null)
-            {
-                timeTransactions["Notes"] = CSharpExpressionConverter.ConvertToken(timeTransactionsnotes);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprice != null)
-            {
-                timeTransactions["Price"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprice);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionspriceFC != null)
-            {
-                timeTransactions["PriceFC"] = CSharpExpressionConverter.ConvertToken(timeTransactionspriceFC);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Project"] = CSharpExpressionConverter.ConvertToken(timeTransactionsproject);
-            if (timeTransactionsprojectAccount != null)
-            {
-                timeTransactions["ProjectAccount"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectAccountCode != null)
-            {
-                timeTransactions["ProjectAccountCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccountCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectAccountName != null)
-            {
-                timeTransactions["ProjectAccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectAccountName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectCode != null)
-            {
-                timeTransactions["ProjectCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsprojectDescription != null)
-            {
-                timeTransactions["ProjectDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionsprojectDescription);
-                timeTransactionspropCount++;
-            }
-
-            timeTransactionspropCount++;
-            timeTransactions["Quantity"] = CSharpExpressionConverter.ConvertToken(timeTransactionsquantity);
-            if (timeTransactionsskipValidation != null)
-            {
-                timeTransactions["SkipValidation"] = CSharpExpressionConverter.ConvertToken(timeTransactionsskipValidation);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionsstartTime != null)
-            {
-                timeTransactions["StartTime"] = CSharpExpressionConverter.ConvertToken(timeTransactionsstartTime);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscription != null)
-            {
-                timeTransactions["Subscription"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccount != null)
-            {
-                timeTransactions["SubscriptionAccount"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccount);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccountCode != null)
-            {
-                timeTransactions["SubscriptionAccountCode"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountCode);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionAccountName != null)
-            {
-                timeTransactions["SubscriptionAccountName"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionAccountName);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionDescription != null)
-            {
-                timeTransactions["SubscriptionDescription"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionDescription);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionssubscriptionNumber != null)
-            {
-                timeTransactions["SubscriptionNumber"] = CSharpExpressionConverter.ConvertToken(timeTransactionssubscriptionNumber);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionstype != null)
-            {
-                timeTransactions["Type"] = CSharpExpressionConverter.ConvertToken(timeTransactionstype);
-                timeTransactionspropCount++;
-            }
-
-            if (timeTransactionspropCount > 0)
-            {
-                callPayload.Body = timeTransactions;
-            }
-
-            return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
+            return new ApiConnectionAction<TimeTransactionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<TimeTransactionsResponse> DeleteTimeTransactions(Expression<Func<string>> division, Expression<Func<string>> iD)
+        public IBodyWorkflowAction<ProjectTimeCostTransactionsResponse> GetProjectTimeCostTransactions([WorkflowExpression] Func<string> division, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/project/TimeTransactions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            return new ApiConnectionAction<TimeTransactionsResponse>(callPayload);
+            SourceExpression.Validate(division, nameof(division), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/sync/Project/TimeCostTransactions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectTimeCostTransactionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<ProjectTimeCostTransactionsResponse> GetProjectTimeCostTransactions(Expression<Func<string>> division, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<MeResponse> GetMe([WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> skiptoken = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/sync/Project/TimeCostTransactions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(division, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<ProjectTimeCostTransactionsResponse>(callPayload);
-        }
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(skiptoken, nameof(skiptoken), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/current/Me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (skiptoken != null)
+                    callPayload.Queries["$skiptoken"] = SourceExpressionConverter.ConvertO(skiptoken);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "exactonlinetimebilip")]
-        public IBodyWorkflowAction<MeResponse> GetMe(Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> skiptoken = null, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = "/current/Me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (skiptoken != null)
-                callPayload.Queries["$skiptoken"] = CSharpExpressionConverter.ConvertO(skiptoken);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<MeResponse>(callPayload);
+            return new ApiConnectionAction<MeResponse>(BuildSourceInput);
         }
     }
 

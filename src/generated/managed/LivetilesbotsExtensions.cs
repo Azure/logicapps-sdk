@@ -12,236 +12,295 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
     public class LivetilesbotsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptString(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptString([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/String";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/String";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptNumber(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptNumber([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/Number";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/Number";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptForm(Expression<Func<string>> resumptionToken, Expression<Func<bodyformFieldsInputItem[]>> bodyformFields, Expression<Func<string>> bodyprompt = null, Expression<Func<string>> bodytitle = null)
+        public IWorkflowAction PromptForm([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<bodyformFieldsInputItem[]> bodyformFields, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = "/flowCallback/Form";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyformFields, nameof(bodyformFields), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/Form";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
                 bodypropCount++;
+                body["formFields"] = SourceExpressionConverter.ConvertToken(bodyformFields);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["formFields"] = CSharpExpressionConverter.ConvertToken(bodyformFields);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptBoolean(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null)
+        public IWorkflowAction PromptBoolean([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/flowCallback/Bool";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/Bool";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptChoice(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<bodyoptionsInputItem[]>> bodyoptions = null)
+        public IWorkflowAction PromptChoice([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<bodyoptionsInputItem[]> bodyoptions = null)
         {
-            var apiCallPath = "/flowCallback/Choice";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            SourceExpression.Validate(bodyoptions, nameof(bodyoptions), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/Choice";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodyoptions != null)
+                {
+                    body["options"] = SourceExpressionConverter.ConvertToken(bodyoptions);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyoptions != null)
-            {
-                body["options"] = CSharpExpressionConverter.ConvertToken(bodyoptions);
-                bodypropCount++;
-            }
-
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PromptFile(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodyprompt = null, Expression<Func<string[]>> bodycontentTypes = null)
+        public IWorkflowAction PromptFile([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodyprompt = null, [WorkflowExpression] Func<string[]> bodycontentTypes = null)
         {
-            var apiCallPath = "/flowCallback/File";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            SourceExpression.Validate(bodycontentTypes, nameof(bodycontentTypes), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
+                var apiCallPath = "/flowCallback/File";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodycontentTypes != null)
+                {
+                    body["contentTypes"] = SourceExpressionConverter.ConvertToken(bodycontentTypes);
+                    bodypropCount++;
+                }
+
+                body["callbackUri"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycontentTypes != null)
-            {
-                body["contentTypes"] = CSharpExpressionConverter.ConvertToken(bodycontentTypes);
-                bodypropCount++;
-            }
-
-            body["callbackUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction PostMessage(Expression<Func<string>> resumptionToken, Expression<Func<string>> bodymessage = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IWorkflowAction PostMessage([WorkflowExpression] Func<string> resumptionToken, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            var apiCallPath = "/flowCallback/Message";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
+                var apiCallPath = "/flowCallback/Message";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
+                if (bodyattachments != null)
+                {
+                    body["attachments"] = SourceExpressionConverter.ConvertToken(bodyattachments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyattachments != null)
-            {
-                body["attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "livetilesbots")]
-        public IWorkflowAction FlowComplete(Expression<Func<string>> resumptionToken)
+        public IWorkflowAction FlowComplete([WorkflowExpression] Func<string> resumptionToken)
         {
-            var apiCallPath = "/flowCallback/Done";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["resumptionToken"] = CSharpExpressionConverter.ConvertO(resumptionToken);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(resumptionToken, nameof(resumptionToken), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flowCallback/Done";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["resumptionToken"] = SourceExpressionConverter.ConvertO(resumptionToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class LivetilesbotsTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger IntentRecognized(Expression<Func<string>> subscriptionbot, Expression<Func<string>> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger IntentRecognized([WorkflowExpression] Func<string> subscriptionbot, [WorkflowExpression] Func<string> subscriptionflow, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/flows/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscriptionpropCount++;
-            subscription["bot"] = CSharpExpressionConverter.ConvertToken(subscriptionbot);
-            subscriptionpropCount++;
-            subscription["key"] = CSharpExpressionConverter.ConvertToken(subscriptionflow);
-            subscription["callbackUri"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(subscriptionbot, nameof(subscriptionbot), required: true);
+            SourceExpression.Validate(subscriptionflow, nameof(subscriptionflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = "/flows/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscriptionpropCount++;
+                subscription["bot"] = SourceExpressionConverter.ConvertToken(subscriptionbot);
+                subscriptionpropCount++;
+                subscription["key"] = SourceExpressionConverter.ConvertToken(subscriptionflow);
+                subscription["callbackUri"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

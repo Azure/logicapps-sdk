@@ -12,44 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clicksendpostcards
     public class ClicksendpostcardsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia(Expression<Func<string>> bodycontent)
+        public IBodyWorkflowAction<UploadMediaResponse> UploadMedia([WorkflowExpression] Func<string> bodycontent)
         {
-            var apiCallPath = "/uploads";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["convert"] = Convert.ToString("postcard");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/uploads";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["convert"] = Convert.ToString("postcard");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UploadMediaResponse>(callPayload);
+            return new ApiConnectionAction<UploadMediaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clicksendpostcards")]
-        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string[]>> bodyfileUrls)
+        public IBodyWorkflowAction<SendPostcardResponse> SendPostcard([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string[]> bodyfileUrls)
         {
-            var apiCallPath = "/post/postcards/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
-            body["source"] = "MSPowerAutomate-pc";
-            bodypropCount++;
-            bodypropCount++;
-            body["file_urls"] = CSharpExpressionConverter.ConvertToken(bodyfileUrls);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
+            SourceExpression.Validate(bodyfileUrls, nameof(bodyfileUrls), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/post/postcards/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["recipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                body["source"] = "MSPowerAutomate-pc";
+                bodypropCount++;
+                bodypropCount++;
+                body["file_urls"] = SourceExpressionConverter.ConvertToken(bodyfileUrls);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SendPostcardResponse>(callPayload);
+            return new ApiConnectionAction<SendPostcardResponse>(BuildSourceInput);
         }
     }
 

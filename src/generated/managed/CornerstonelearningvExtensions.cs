@@ -12,297 +12,360 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
     public class CornerstonelearningvActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction AddInstructorResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
+        public IWorkflowAction AddInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/response/addInstuctor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/addInstuctor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction GetAttendanceResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<Attendees[]>> bodyattendees = null)
+        public IWorkflowAction GetAttendanceResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<Attendees[]> bodyattendees = null)
         {
-            var apiCallPath = "/response/getAttendance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/getAttendance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodyattendees != null)
+                {
+                    body["attendees"] = SourceExpressionConverter.ConvertToken(bodyattendees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodyattendees != null)
-            {
-                body["attendees"] = CSharpExpressionConverter.ConvertToken(bodyattendees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction LaunchSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodyjoinUrl = null)
+        public IWorkflowAction LaunchSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodyjoinUrl = null)
         {
-            var apiCallPath = "/response/launchSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodyjoinUrl, nameof(bodyjoinUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/launchSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodyjoinUrl != null)
+                {
+                    body["joinUrl"] = SourceExpressionConverter.ConvertToken(bodyjoinUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodyjoinUrl != null)
-            {
-                body["joinUrl"] = CSharpExpressionConverter.ConvertToken(bodyjoinUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction CreateSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycorpId = null, Expression<Func<string>> bodymeetingId = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodyjoinURL = null)
+        public IWorkflowAction CreateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
         {
-            var apiCallPath = "/response/createSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
+            SourceExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
+            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
+            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
+            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            SourceExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/createSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodycorpId != null)
+                {
+                    body["corpId"] = SourceExpressionConverter.ConvertToken(bodycorpId);
+                    bodypropCount++;
+                }
+
+                if (bodymeetingId != null)
+                {
+                    body["meetingId"] = SourceExpressionConverter.ConvertToken(bodymeetingId);
+                    bodypropCount++;
+                }
+
+                if (bodystart != null)
+                {
+                    body["start"] = SourceExpressionConverter.ConvertToken(bodystart);
+                    bodypropCount++;
+                }
+
+                if (bodyend != null)
+                {
+                    body["end"] = SourceExpressionConverter.ConvertToken(bodyend);
+                    bodypropCount++;
+                }
+
+                if (bodyhostEmail != null)
+                {
+                    body["hostEmail"] = SourceExpressionConverter.ConvertToken(bodyhostEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyjoinURL != null)
+                {
+                    body["joinURL"] = SourceExpressionConverter.ConvertToken(bodyjoinURL);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodycorpId != null)
-            {
-                body["corpId"] = CSharpExpressionConverter.ConvertToken(bodycorpId);
-                bodypropCount++;
-            }
-
-            if (bodymeetingId != null)
-            {
-                body["meetingId"] = CSharpExpressionConverter.ConvertToken(bodymeetingId);
-                bodypropCount++;
-            }
-
-            if (bodystart != null)
-            {
-                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
-                bodypropCount++;
-            }
-
-            if (bodyend != null)
-            {
-                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
-                bodypropCount++;
-            }
-
-            if (bodyhostEmail != null)
-            {
-                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
-                bodypropCount++;
-            }
-
-            if (bodyjoinURL != null)
-            {
-                body["joinURL"] = CSharpExpressionConverter.ConvertToken(bodyjoinURL);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction UpdateSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null, Expression<Func<string>> bodycorpId = null, Expression<Func<string>> bodymeetingId = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodyjoinURL = null)
+        public IWorkflowAction UpdateSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> bodycorpId = null, [WorkflowExpression] Func<string> bodymeetingId = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodyjoinURL = null)
         {
-            var apiCallPath = "/response/updateSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(bodycorpId, nameof(bodycorpId), required: false);
+            SourceExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: false);
+            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
+            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
+            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            SourceExpression.Validate(bodyjoinURL, nameof(bodyjoinURL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/updateSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodycorpId != null)
+                {
+                    body["corpId"] = SourceExpressionConverter.ConvertToken(bodycorpId);
+                    bodypropCount++;
+                }
+
+                if (bodymeetingId != null)
+                {
+                    body["meetingId"] = SourceExpressionConverter.ConvertToken(bodymeetingId);
+                    bodypropCount++;
+                }
+
+                if (bodystart != null)
+                {
+                    body["start"] = SourceExpressionConverter.ConvertToken(bodystart);
+                    bodypropCount++;
+                }
+
+                if (bodyend != null)
+                {
+                    body["end"] = SourceExpressionConverter.ConvertToken(bodyend);
+                    bodypropCount++;
+                }
+
+                if (bodyhostEmail != null)
+                {
+                    body["hostEmail"] = SourceExpressionConverter.ConvertToken(bodyhostEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyjoinURL != null)
+                {
+                    body["joinURL"] = SourceExpressionConverter.ConvertToken(bodyjoinURL);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodycorpId != null)
-            {
-                body["corpId"] = CSharpExpressionConverter.ConvertToken(bodycorpId);
-                bodypropCount++;
-            }
-
-            if (bodymeetingId != null)
-            {
-                body["meetingId"] = CSharpExpressionConverter.ConvertToken(bodymeetingId);
-                bodypropCount++;
-            }
-
-            if (bodystart != null)
-            {
-                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
-                bodypropCount++;
-            }
-
-            if (bodyend != null)
-            {
-                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
-                bodypropCount++;
-            }
-
-            if (bodyhostEmail != null)
-            {
-                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
-                bodypropCount++;
-            }
-
-            if (bodyjoinURL != null)
-            {
-                body["joinURL"] = CSharpExpressionConverter.ConvertToken(bodyjoinURL);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction DeleteSessionResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
+        public IWorkflowAction DeleteSessionResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/response/deleteSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/deleteSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cornerstonelearningv")]
-        public IWorkflowAction UpdateInstructorResponse(Expression<Func<string>> bodycorrelationId, Expression<Func<bool>> bodyisSuccessful = null, Expression<Func<string>> bodymessage = null)
+        public IWorkflowAction UpdateInstructorResponse([WorkflowExpression] Func<string> bodycorrelationId, [WorkflowExpression] Func<bool> bodyisSuccessful = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/response/updateInstructor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisSuccessful != null)
+            SourceExpression.Validate(bodycorrelationId, nameof(bodycorrelationId), required: true);
+            SourceExpression.Validate(bodyisSuccessful, nameof(bodyisSuccessful), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isSuccessful"] = CSharpExpressionConverter.ConvertToken(bodyisSuccessful);
+                var apiCallPath = "/response/updateInstructor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisSuccessful != null)
+                {
+                    body["isSuccessful"] = SourceExpressionConverter.ConvertToken(bodyisSuccessful);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["correlationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["correlationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -310,121 +373,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cornerstonelearningv
     {
         public IWorkflowTrigger CreateInstructorSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/addInstructor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/addInstructor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger UpdateInstructorSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/updateInstructor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/updateInstructor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CreateSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/createSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/createSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger UpdateSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/updateSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/updateSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger DeleteSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/deleteSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/deleteSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger LaunchSessionSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/launchSession";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/launchSession";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger GetAttendanceSubscribe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscribe/getAttendance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscribe/getAttendance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

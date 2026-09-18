@@ -12,29 +12,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intellihr
     public class IntellihrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intellihr")]
-        public IBodyWorkflowAction<SingleJob> EndJob(Expression<Func<string>> id, Expression<Func<string>> bodyendDate, Expression<Func<string>> bodyturnoverType, Expression<Func<string>> bodyturnoverReason = null)
+        public IBodyWorkflowAction<SingleJob> EndJob([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<string> bodyturnoverType, [WorkflowExpression] Func<string> bodyturnoverReason = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/job-end/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["endDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
-            bodypropCount++;
-            body["turnoverType"] = CSharpExpressionConverter.ConvertToken(bodyturnoverType);
-            if (bodyturnoverReason != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
+            SourceExpression.Validate(bodyturnoverType, nameof(bodyturnoverType), required: true);
+            SourceExpression.Validate(bodyturnoverReason, nameof(bodyturnoverReason), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["turnoverReason"] = CSharpExpressionConverter.ConvertToken(bodyturnoverReason);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/job-end/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["endDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                bodypropCount++;
+                body["turnoverType"] = SourceExpressionConverter.ConvertToken(bodyturnoverType);
+                if (bodyturnoverReason != null)
+                {
+                    body["turnoverReason"] = SourceExpressionConverter.ConvertToken(bodyturnoverReason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SingleJob>(callPayload);
+            return new ApiConnectionAction<SingleJob>(BuildSourceInput);
         }
     }
 

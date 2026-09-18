@@ -12,97 +12,152 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azuredatalake
     public class AzuredatalakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<FolderResponse> ListFiles(Expression<Func<string>> account, Expression<Func<string>> path = null)
+        public IBodyWorkflowAction<FolderResponse> ListFiles([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> path = null)
         {
-            var apiCallPath = "/store/folders/webhdfs/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("LISTSTATUS");
-            if (path != null)
-                callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            return new ApiConnectionAction<FolderResponse>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(path, nameof(path), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/store/folders/webhdfs/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("LISTSTATUS");
+                if (path != null)
+                    callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<OperationPerformed> CreateFolder(Expression<Func<string>> account, Expression<Func<string>> path)
+        public IBodyWorkflowAction<OperationPerformed> CreateFolder([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> path)
         {
-            var apiCallPath = "/store/folders/webhdfs/v1/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("MKDIRS");
-            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            return new ApiConnectionAction<OperationPerformed>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(path, nameof(path), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/store/folders/webhdfs/v1/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("MKDIRS");
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OperationPerformed>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<string> AppendFileConcurrent(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<appendModeInput>> appendMode = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string> AppendFileConcurrent([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<appendModeInput> appendMode = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhdfsext/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("concurrentappend");
-            callPayload.Queries["appendMode"] = Convert.ToString("autocreate");
-            if (appendMode != null)
-                callPayload.Queries["appendMode"] = CSharpExpressionConverter.Convert(appendMode);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(filepath, nameof(filepath), required: true);
+            SourceExpression.Validate(appendMode, nameof(appendMode), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfsext/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("concurrentappend");
+                callPayload.Queries["appendMode"] = Convert.ToString("autocreate");
+                if (appendMode != null)
+                    callPayload.Queries["appendMode"] = SourceExpressionConverter.Convert(appendMode);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<string> ReadFile(Expression<Func<string>> account, Expression<Func<string>> filepath)
+        public IBodyWorkflowAction<string> ReadFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("OPEN");
-            callPayload.Queries["read"] = Convert.ToString("true");
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(filepath, nameof(filepath), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("OPEN");
+                callPayload.Queries["read"] = Convert.ToString("true");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IWorkflowAction UploadFile(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<bool>> overwrite = null, Expression<Func<string>> body = null)
+        public IWorkflowAction UploadFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<bool> overwrite = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("CREATE");
-            callPayload.Queries["write"] = Convert.ToString("true");
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(filepath, nameof(filepath), required: true);
+            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("CREATE");
+                callPayload.Queries["write"] = Convert.ToString("true");
+                callPayload.Queries["overwrite"] = Convert.ToString(false);
+                if (overwrite != null)
+                    callPayload.Queries["overwrite"] = SourceExpressionConverter.ConvertO(overwrite);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IWorkflowAction AppendFileSequential(Expression<Func<string>> account, Expression<Func<string>> filepath, Expression<Func<string>> body = null, Expression<Func<int>> offset = null)
+        public IWorkflowAction AppendFileSequential([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<int> offset = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("APPEND");
-            callPayload.Queries["append"] = Convert.ToString("true");
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(filepath, nameof(filepath), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("APPEND");
+                callPayload.Queries["append"] = Convert.ToString("true");
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azuredatalake")]
-        public IBodyWorkflowAction<OperationPerformed> DeleteFile(Expression<Func<string>> account, Expression<Func<string>> filepath)
+        public IBodyWorkflowAction<OperationPerformed> DeleteFile([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> filepath)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            callPayload.Queries["op"] = Convert.ToString("DELETE");
-            return new ApiConnectionAction<OperationPerformed>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(filepath, nameof(filepath), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/webhdfs/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filepath, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                callPayload.Queries["op"] = Convert.ToString("DELETE");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OperationPerformed>(BuildSourceInput);
         }
     }
 

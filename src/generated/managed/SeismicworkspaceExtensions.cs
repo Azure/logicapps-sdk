@@ -12,645 +12,888 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicworkspace
     public class SeismicworkspaceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> GetWorkspaceItemComments(Expression<Func<string>> workspaceContentId, Expression<Func<string>> spaceId, Expression<Func<string>> versionId = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SeismicPagingWorkspaceCommentWorkspaceComment> GetWorkspaceItemComments([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> versionId = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (versionId != null)
-                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<SeismicPagingWorkspaceCommentWorkspaceComment>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(versionId, nameof(versionId), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (versionId != null)
+                    callPayload.Queries["versionId"] = SourceExpressionConverter.ConvertO(versionId);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicPagingWorkspaceCommentWorkspaceComment>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> AddWorkspaceItemComments(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> bodytext = null, Expression<Func<bodyannotationtypeInput>> bodyannotationtype = null, Expression<Func<int>> bodyannotationpage = null, Expression<Func<string>> bodyannotationcolor = null, Expression<Func<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]>> bodyannotationpoints = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse> AddWorkspaceItemComments([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<bodyannotationtypeInput> bodyannotationtype = null, [WorkflowExpression] Func<int> bodyannotationpage = null, [WorkflowExpression] Func<string> bodyannotationcolor = null, [WorkflowExpression] Func<SeismicPublicIntegrationApiOriginApiClientModelsContentManagerPointServiceModel[]> bodyannotationpoints = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
+            SourceExpression.Validate(bodyannotationtype, nameof(bodyannotationtype), required: false);
+            SourceExpression.Validate(bodyannotationpage, nameof(bodyannotationpage), required: false);
+            SourceExpression.Validate(bodyannotationcolor, nameof(bodyannotationcolor), required: false);
+            SourceExpression.Validate(bodyannotationpoints, nameof(bodyannotationpoints), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                var annotationObject = new JObject();
+                var annotationObjectpropCount = 0;
+                if (bodyannotationtype != null)
+                {
+                    annotationObject["type"] = SourceExpressionConverter.Convert(bodyannotationtype);
+                    annotationObjectpropCount++;
+                }
+
+                if (bodyannotationpage != null)
+                {
+                    annotationObject["page"] = SourceExpressionConverter.ConvertToken(bodyannotationpage);
+                    annotationObjectpropCount++;
+                }
+
+                if (bodyannotationcolor != null)
+                {
+                    annotationObject["color"] = SourceExpressionConverter.ConvertToken(bodyannotationcolor);
+                    annotationObjectpropCount++;
+                }
+
+                if (bodyannotationpoints != null)
+                {
+                    annotationObject["points"] = SourceExpressionConverter.ConvertToken(bodyannotationpoints);
+                    annotationObjectpropCount++;
+                }
+
+                if (annotationObjectpropCount > 0)
+                {
+                    body["annotation"] = annotationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var annotationObject = new JObject();
-            var annotationObjectpropCount = 0;
-            if (bodyannotationtype != null)
-            {
-                annotationObject["type"] = CSharpExpressionConverter.Convert(bodyannotationtype);
-                annotationObjectpropCount++;
-            }
-
-            if (bodyannotationpage != null)
-            {
-                annotationObject["page"] = CSharpExpressionConverter.ConvertToken(bodyannotationpage);
-                annotationObjectpropCount++;
-            }
-
-            if (bodyannotationcolor != null)
-            {
-                annotationObject["color"] = CSharpExpressionConverter.ConvertToken(bodyannotationcolor);
-                annotationObjectpropCount++;
-            }
-
-            if (bodyannotationpoints != null)
-            {
-                annotationObject["points"] = CSharpExpressionConverter.ConvertToken(bodyannotationpoints);
-                annotationObjectpropCount++;
-            }
-
-            if (annotationObjectpropCount > 0)
-            {
-                body["annotation"] = annotationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse>(callPayload);
+            return new ApiConnectionAction<SeismicWorkspaceCommentsWorkspaceAddCommentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> AddReplyToComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<string>> bodytext = null)
+        public IBodyWorkflowAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse> AddReplyToComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId, [WorkflowExpression] Func<string> bodytext = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
+            SourceExpression.Validate(commentId, nameof(commentId), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse>(callPayload);
+            return new ApiConnectionAction<SeismicWorkspaceCommentsWorkspaceReplyCommentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceItemComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId)
+        public IWorkflowAction DeleteWorkspaceItemComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
+            SourceExpression.Validate(commentId, nameof(commentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceItemCommentsReply(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId, Expression<Func<string>> replyId)
+        public IWorkflowAction DeleteWorkspaceItemCommentsReply([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId, [WorkflowExpression] Func<string> replyId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(replyId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
+            SourceExpression.Validate(commentId, nameof(commentId), required: true);
+            SourceExpression.Validate(replyId, nameof(replyId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/reply/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(replyId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction ResolveWorkspaceItemComment(Expression<Func<string>> spaceId, Expression<Func<string>> workspaceContentId, Expression<Func<string>> workspaceVersionId, Expression<Func<string>> commentId)
+        public IWorkflowAction ResolveWorkspaceItemComment([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> workspaceVersionId, [WorkflowExpression] Func<string> commentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/resolve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(workspaceVersionId, nameof(workspaceVersionId), required: true);
+            SourceExpression.Validate(commentId, nameof(commentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/spaces/{0}/items/{1}/versions/{2}/comments/{3}/resolve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceVersionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(commentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceFolder(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceFolder([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = "/integration/v2/workspace/folders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/integration/v2/workspace/folders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> GetWorkspaceFolderDetails(Expression<Func<string>> workspaceFolderId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> GetWorkspaceFolderDetails([WorkflowExpression] Func<string> workspaceFolderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
+            SourceExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceFolder(Expression<Func<string>> workspaceFolderId)
+        public IWorkflowAction DeleteWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> UpdateWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> UpdateWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> GetWorkspaceFolderItems(Expression<Func<string>> workspaceFolderId)
+        public IBodyWorkflowAction<SeismicCommonWorkSpaceContentManagerWsItemResp> GetWorkspaceFolderItems([WorkflowExpression] Func<string> workspaceFolderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicCommonWorkSpaceContentManagerWsItemResp>(callPayload);
+            SourceExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicCommonWorkSpaceContentManagerWsItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CopyWorkspaceFolder(Expression<Func<string>> workspaceFolderId, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CopyWorkspaceFolder([WorkflowExpression] Func<string> workspaceFolderId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/copy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentFolderId != null)
+            SourceExpression.Validate(workspaceFolderId, nameof(workspaceFolderId), required: true);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/folders/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceFolderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceContextualFolder(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodysystemType = null, Expression<Func<string>> bodycontextType = null, Expression<Func<string>> bodycontextTypePlural = null, Expression<Func<string>> bodycontextId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI> CreateWorkspaceContextualFolder([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodysystemType = null, [WorkflowExpression] Func<string> bodycontextType = null, [WorkflowExpression] Func<string> bodycontextTypePlural = null, [WorkflowExpression] Func<string> bodycontextId = null)
         {
-            var apiCallPath = "/integration/v2/workspace/folders/createContextualFolder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodysystemType, nameof(bodysystemType), required: false);
+            SourceExpression.Validate(bodycontextType, nameof(bodycontextType), required: false);
+            SourceExpression.Validate(bodycontextTypePlural, nameof(bodycontextTypePlural), required: false);
+            SourceExpression.Validate(bodycontextId, nameof(bodycontextId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/integration/v2/workspace/folders/createContextualFolder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodysystemType != null)
+                {
+                    body["systemType"] = SourceExpressionConverter.ConvertToken(bodysystemType);
+                    bodypropCount++;
+                }
+
+                if (bodycontextType != null)
+                {
+                    body["contextType"] = SourceExpressionConverter.ConvertToken(bodycontextType);
+                    bodypropCount++;
+                }
+
+                if (bodycontextTypePlural != null)
+                {
+                    body["contextTypePlural"] = SourceExpressionConverter.ConvertToken(bodycontextTypePlural);
+                    bodypropCount++;
+                }
+
+                if (bodycontextId != null)
+                {
+                    body["contextId"] = SourceExpressionConverter.ConvertToken(bodycontextId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysystemType != null)
-            {
-                body["systemType"] = CSharpExpressionConverter.ConvertToken(bodysystemType);
-                bodypropCount++;
-            }
-
-            if (bodycontextType != null)
-            {
-                body["contextType"] = CSharpExpressionConverter.ConvertToken(bodycontextType);
-                bodypropCount++;
-            }
-
-            if (bodycontextTypePlural != null)
-            {
-                body["contextTypePlural"] = CSharpExpressionConverter.ConvertToken(bodycontextTypePlural);
-                bodypropCount++;
-            }
-
-            if (bodycontextId != null)
-            {
-                body["contextId"] = CSharpExpressionConverter.ConvertToken(bodycontextId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFolderRespForAddAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkSpaceFile(Expression<Func<string>> metadata = null, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkSpaceFile([WorkflowExpression] Func<string> metadata = null, [WorkflowExpression] Func<object> content = null)
         {
-            var apiCallPath = "/integration/v2/workspace/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
+            SourceExpression.Validate(metadata, nameof(metadata), required: false);
+            SourceExpression.Validate(content, nameof(content), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/integration/v2/workspace/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> GetWorkspaceFileDetails(Expression<Func<string>> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> GetWorkspaceFileDetails([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceFile(Expression<Func<string>> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> UpdateWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> UpdateWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CopyWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CopyWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/copy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentFolderId != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadWorkspaceFile(Expression<Func<string>> workspaceContentId, Expression<Func<bool>> redirect = null)
+        public IBodyWorkflowAction<SeismicCommonDownloadLocationResp> DownloadWorkspaceFile([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<bool> redirect = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["redirect"] = Convert.ToString(true);
-            if (redirect != null)
-                callPayload.Queries["redirect"] = CSharpExpressionConverter.ConvertO(redirect);
-            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(redirect, nameof(redirect), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["redirect"] = Convert.ToString(true);
+                if (redirect != null)
+                    callPayload.Queries["redirect"] = SourceExpressionConverter.ConvertO(redirect);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicCommonDownloadLocationResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkspaceFileVersion(Expression<Func<string>> workspaceContentId, Expression<Func<object>> content = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsFileResp> CreateWorkspaceFileVersion([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<object> content = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(content, nameof(content), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/files/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsFileResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CreateWorkspaceUrl(Expression<Func<bool>> openInNewWindow = null, Expression<Func<string>> bodyurlurl = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CreateWorkspaceUrl([WorkflowExpression] Func<bool> openInNewWindow = null, [WorkflowExpression] Func<string> bodyurlurl = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = "/integration/v2/workspace/urls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["openInNewWindow"] = Convert.ToString(false);
-            if (openInNewWindow != null)
-                callPayload.Queries["openInNewWindow"] = CSharpExpressionConverter.ConvertO(openInNewWindow);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var urlObject = new JObject();
-            var urlObjectpropCount = 0;
-            if (bodyurlurl != null)
+            SourceExpression.Validate(openInNewWindow, nameof(openInNewWindow), required: false);
+            SourceExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                urlObject["url"] = CSharpExpressionConverter.ConvertToken(bodyurlurl);
-                urlObjectpropCount++;
+                var apiCallPath = "/integration/v2/workspace/urls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["openInNewWindow"] = Convert.ToString(false);
+                if (openInNewWindow != null)
+                    callPayload.Queries["openInNewWindow"] = SourceExpressionConverter.ConvertO(openInNewWindow);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var urlObject = new JObject();
+                var urlObjectpropCount = 0;
+                if (bodyurlurl != null)
+                {
+                    urlObject["url"] = SourceExpressionConverter.ConvertToken(bodyurlurl);
+                    urlObjectpropCount++;
+                }
+
+                if (urlObjectpropCount > 0)
+                {
+                    body["url"] = urlObject;
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (urlObjectpropCount > 0)
-            {
-                body["url"] = urlObject;
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> GetWorkspaceUrlDetails(Expression<Func<string>> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI> GetWorkspaceUrlDetails([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlRespForGetAPI>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceUrl(Expression<Func<string>> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> UpdateWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null, Expression<Func<string>> bodyurlurl = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> UpdateWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null, [WorkflowExpression] Func<string> bodyurlurl = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            SourceExpression.Validate(bodyurlurl, nameof(bodyurlurl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                var urlObject = new JObject();
+                var urlObjectpropCount = 0;
+                if (bodyurlurl != null)
+                {
+                    urlObject["url"] = SourceExpressionConverter.ConvertToken(bodyurlurl);
+                    urlObjectpropCount++;
+                }
+
+                if (urlObjectpropCount > 0)
+                {
+                    body["url"] = urlObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            var urlObject = new JObject();
-            var urlObjectpropCount = 0;
-            if (bodyurlurl != null)
-            {
-                urlObject["url"] = CSharpExpressionConverter.ConvertToken(bodyurlurl);
-                urlObjectpropCount++;
-            }
-
-            if (urlObjectpropCount > 0)
-            {
-                body["url"] = urlObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CopyWorkspaceUrl(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsUrlResp> CopyWorkspaceUrl([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}/copy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentFolderId != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/urls/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsUrlResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> GetWorkspaceItemDetails(Expression<Func<string>> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> GetWorkspaceItemDetails([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteWorkspaceItem(Expression<Func<string>> workspaceContentId)
+        public IWorkflowAction DeleteWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> UpdateWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> UpdateWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyparentFolderId != null)
-            {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> CopyWorkspaceItem(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyparentFolderId = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> CopyWorkspaceItem([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyparentFolderId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}/copy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentFolderId != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyparentFolderId, nameof(bodyparentFolderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentFolderId"] = CSharpExpressionConverter.ConvertToken(bodyparentFolderId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/items/{0}/copy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentFolderId != null)
+                {
+                    body["parentFolderId"] = SourceExpressionConverter.ConvertToken(bodyparentFolderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> GetWorkspaceItenMembers(Expression<Func<string>> workspaceContentId)
+        public IBodyWorkflowAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]> GetWorkspaceItenMembers([WorkflowExpression] Func<string> workspaceContentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]>(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v2/workspace/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicWorkspacePermissionsAndSharingWorkspaceMemberResponse[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IBodyWorkflowAction<CollaboratorResponse> AddCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyrole = null)
+        public IBodyWorkflowAction<CollaboratorResponse> AddCollaboratorAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyrole = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodyrole, nameof(bodyrole), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyrole != null)
+                {
+                    body["role"] = SourceExpressionConverter.ConvertToken(bodyrole);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrole != null)
-            {
-                body["role"] = CSharpExpressionConverter.ConvertToken(bodyrole);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CollaboratorResponse>(callPayload);
+            return new ApiConnectionAction<CollaboratorResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction DeleteCollaboratorAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> memberId)
+        public IWorkflowAction DeleteCollaboratorAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> memberId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(memberId, nameof(memberId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction TransferOwnerAsync(Expression<Func<string>> workspaceContentId, Expression<Func<string>> bodyownerId = null)
+        public IWorkflowAction TransferOwnerAsync([WorkflowExpression] Func<string> workspaceContentId, [WorkflowExpression] Func<string> bodyownerId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/owner", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyownerId != null)
+            SourceExpression.Validate(workspaceContentId, nameof(workspaceContentId), required: true);
+            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/items/{0}/owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceContentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyownerId != null)
+                {
+                    body["ownerId"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicworkspace")]
-        public IWorkflowAction GetCustomPropertiesByFileId(Expression<Func<string>> fileId, Expression<Func<bool>> includeInvisibledInDC = null)
+        public IWorkflowAction GetCustomPropertiesByFileId([WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<bool> includeInvisibledInDC = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/files/{0}/customProperties", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includeInvisibledInDC"] = Convert.ToString(false);
-            if (includeInvisibledInDC != null)
-                callPayload.Queries["includeInvisibledInDC"] = CSharpExpressionConverter.ConvertO(includeInvisibledInDC);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(fileId, nameof(fileId), required: true);
+            SourceExpression.Validate(includeInvisibledInDC, nameof(includeInvisibledInDC), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/files/{0}/customProperties", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includeInvisibledInDC"] = Convert.ToString(false);
+                if (includeInvisibledInDC != null)
+                    callPayload.Queries["includeInvisibledInDC"] = SourceExpressionConverter.ConvertO(includeInvisibledInDC);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

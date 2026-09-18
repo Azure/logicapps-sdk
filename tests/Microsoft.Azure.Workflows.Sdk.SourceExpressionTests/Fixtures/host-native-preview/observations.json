@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "evidenceKind": "actual-local-logicapps-codeful-runtime",
+  "completedUtc": "2026-09-18T05:39:10.3241777-07:00",
+  "runtime": "4.51.100.26305",
+  "processIds": [
+    91648
+  ],
+  "definitions": [
+    {
+      "name": "NativeProbe",
+      "sha256": "4D9478C64AE67EB1783273B5B8B1341750964E85AB84DDF4504DF4077ED364B5"
+    },
+    {
+      "name": "ConditionProbe",
+      "sha256": "3D4D4651A19E9A56ACBFF866E69E478BB036359D643699F2CBCABD8689714725"
+    },
+    {
+      "name": "ConditionTemplateControl",
+      "sha256": "866285ADF1C643547346A5BA97FBCD3D3F29AF6F1DC11A48794AC9AF247BC320"
+    },
+    {
+      "name": "EncodedJsonProbe",
+      "sha256": "2BCC7D8572A79FCFCFF7BEAD2D0A727D65103C7AEE6D45923EC3517C507B8537"
+    },
+    {
+      "name": "JsonIntrinsicProbe",
+      "sha256": "5FBE35177173A5746F03FB44960432C3D52F5EDC53072D0802C99662527BA4BA"
+    }
+  ],
+  "assemblies": [
+    {
+      "path": "lib\\codeful\\Microsoft.Azure.Workflows.Sdk.dll",
+      "sha256": "D55475362C464A21E2DA2A8BE12A96D893208C07AC2DFD14512A2C8559773067",
+      "version": "1.0.0.0"
+    },
+    {
+      "path": "lib\\codeful\\SourceNativeHostConsumer.dll",
+      "sha256": "12F72A707D07D80D63FB5A73381BC7BDCF38C7915A5CAEDE594811360C48965E",
+      "version": "1.0.0.0"
+    }
+  ],
+  "results": [
+    {
+      "name": "native-arithmetic",
+      "workflow": "NativeProbe",
+      "input": "{}",
+      "expected": "3",
+      "status": 200,
+      "body": "3",
+      "passed": true
+    },
+    {
+      "name": "condition-true",
+      "workflow": "ConditionProbe",
+      "input": "3",
+      "expected": "yes",
+      "status": 502,
+      "body": "{\"error\":{\"code\":\"NoResponse\",\"message\":\"The server did not receive a response from an upstream server. Request tracking id '<redacted>'.\"}}",
+      "passed": false
+    },
+    {
+      "name": "condition-false",
+      "workflow": "ConditionProbe",
+      "input": "4",
+      "expected": "no",
+      "status": 502,
+      "body": "{\"error\":{\"code\":\"NoResponse\",\"message\":\"The server did not receive a response from an upstream server. Request tracking id '<redacted>'.\"}}",
+      "passed": false
+    },
+    {
+      "name": "template-condition-control-true",
+      "workflow": "ConditionTemplateControl",
+      "input": "3",
+      "expected": "yes",
+      "status": 200,
+      "body": "yes",
+      "passed": true
+    },
+    {
+      "name": "template-condition-control-false",
+      "workflow": "ConditionTemplateControl",
+      "input": "4",
+      "expected": "no",
+      "status": 200,
+      "body": "no",
+      "passed": true
+    },
+    {
+      "name": "encoded-json",
+      "workflow": "EncodedJsonProbe",
+      "input": "{}",
+      "expected": "eyJOZXh0Ijo0LCJMYWJlbCI6IkEifQ==",
+      "status": 200,
+      "body": "eyJOZXh0Ijo0LCJMYWJlbCI6IkEifQ==",
+      "passed": true
+    },
+    {
+      "name": "json-intrinsic",
+      "workflow": "JsonIntrinsicProbe",
+      "input": "{}",
+      "expected": "{\"LABEL\":\"A\"}",
+      "status": 200,
+      "body": "{\"LABEL\":\"A\"}",
+      "passed": true
+    }
+  ],
+  "limits": [
+    "No cloud or designer certification.",
+    "Failed cases remain unsupported; a successful arithmetic probe does not approve every native capability."
+  ]
+}

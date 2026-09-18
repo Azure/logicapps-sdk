@@ -12,23 +12,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Transform2all
     public class Transform2allActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "transform2all")]
-        public IWorkflowAction Transform(Expression<Func<string>> bodybase64Content, Expression<Func<string>> bodyconfigId)
+        public IWorkflowAction Transform([WorkflowExpression] Func<string> bodybase64Content, [WorkflowExpression] Func<string> bodyconfigId)
         {
-            var apiCallPath = "/api/1.0/translate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["base64Content"] = CSharpExpressionConverter.ConvertToken(bodybase64Content);
-            bodypropCount++;
-            body["configId"] = CSharpExpressionConverter.ConvertToken(bodyconfigId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodybase64Content, nameof(bodybase64Content), required: true);
+            SourceExpression.Validate(bodyconfigId, nameof(bodyconfigId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/1.0/translate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["base64Content"] = SourceExpressionConverter.ConvertToken(bodybase64Content);
+                bodypropCount++;
+                body["configId"] = SourceExpressionConverter.ConvertToken(bodyconfigId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -15,22 +15,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
 
     public class JotformenterpriseTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger(Expression<Func<string>> workspaceID, Expression<Func<string>> formID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookResponse> WebhookTrigger([WorkflowExpression] Func<string> workspaceID, [WorkflowExpression] Func<string> formID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["workspaceID"] = CSharpExpressionConverter.ConvertO(workspaceID);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(workspaceID, nameof(workspaceID), required: true);
+            SourceExpression.Validate(formID, nameof(formID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/msflow/v2/forms/{0}/webhooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["workspaceID"] = SourceExpressionConverter.ConvertO(workspaceID);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackURL"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebhookResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

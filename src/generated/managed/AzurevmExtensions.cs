@@ -12,143 +12,262 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurevm
     public class AzurevmActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IBodyWorkflowAction<VirtualMachineInScaleSet> VirtualMachineInScaleSetGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IBodyWorkflowAction<VirtualMachineInScaleSet> VirtualMachineInScaleSetGet([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction<VirtualMachineInScaleSet>(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VirtualMachineInScaleSet>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetDeallocate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetDeallocate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/deallocate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/deallocate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetPowerOff(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetPowerOff([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/poweroff", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/poweroff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetRedeploy(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetRedeploy([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/redeploy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/redeploy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetReimage(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetReimage([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/reimage", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/reimage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/restart", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineInScaleSetStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineScaleSetName, Expression<Func<string>> virtualMachineInScaleSetInstanceId)
+        public IWorkflowAction VirtualMachineInScaleSetStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineScaleSetName, [WorkflowExpression] Func<string> virtualMachineInScaleSetInstanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineScaleSetName, nameof(virtualMachineScaleSetName), required: true);
+            SourceExpression.Validate(virtualMachineInScaleSetInstanceId, nameof(virtualMachineInScaleSetInstanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachineScaleSets/{2}/virtualMachines/{3}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineScaleSetName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineInScaleSetInstanceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x-ms-api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IBodyWorkflowAction<VirtualMachine> VirtualMachineGet(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IBodyWorkflowAction<VirtualMachine> VirtualMachineGet([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction<VirtualMachine>(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VirtualMachine>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachineStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineDeallocate(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachineDeallocate([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/deallocate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/deallocate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachinePoweroff(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachinePoweroff([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/powerOff", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/powerOff", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineReapply(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachineReapply([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/reapply", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/reapply", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineRedeploy(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachineRedeploy([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/redeploy", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/redeploy", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurevm")]
-        public IWorkflowAction VirtualMachineRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> virtualMachineName)
+        public IWorkflowAction VirtualMachineRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> virtualMachineName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/restart", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(virtualMachineName, nameof(virtualMachineName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Compute/virtualMachines/{2}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(virtualMachineName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-12-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

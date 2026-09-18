@@ -12,55 +12,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurecommunicationservicessms
     public class AzurecommunicationservicessmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurecommunicationservicessms")]
-        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2(Expression<Func<string>> bodyfromPhoneNumber, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients, Expression<Func<string>> bodymessage, Expression<Func<bool>> bodysmsSendOptionsdeliveryReport = null, Expression<Func<string>> bodysmsSendOptionstag = null)
+        public IBodyWorkflowAction<SendSMSv2Response> SendSMSv2([WorkflowExpression] Func<string> bodyfromPhoneNumber, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<bool> bodysmsSendOptionsdeliveryReport = null, [WorkflowExpression] Func<string> bodysmsSendOptionstag = null)
         {
-            var apiCallPath = "/v2/sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfromPhoneNumber);
-            bodypropCount++;
-            body["smsRecipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            var smsSendOptionsObject = new JObject();
-            var smsSendOptionsObjectpropCount = 0;
-            if (bodysmsSendOptionsdeliveryReport != null)
+            SourceExpression.Validate(bodyfromPhoneNumber, nameof(bodyfromPhoneNumber), required: true);
+            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodysmsSendOptionsdeliveryReport, nameof(bodysmsSendOptionsdeliveryReport), required: false);
+            SourceExpression.Validate(bodysmsSendOptionstag, nameof(bodysmsSendOptionstag), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v2/sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["from"] = SourceExpressionConverter.ConvertToken(bodyfromPhoneNumber);
+                bodypropCount++;
+                body["smsRecipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                var smsSendOptionsObject = new JObject();
+                var smsSendOptionsObjectpropCount = 0;
                 if (bodysmsSendOptionsdeliveryReport != null)
                 {
-                    smsSendOptionsObject["enableDeliveryReport"] = CSharpExpressionConverter.ConvertToken(bodysmsSendOptionsdeliveryReport);
+                    if (bodysmsSendOptionsdeliveryReport != null)
+                    {
+                        smsSendOptionsObject["enableDeliveryReport"] = SourceExpressionConverter.ConvertToken(bodysmsSendOptionsdeliveryReport);
+                        smsSendOptionsObjectpropCount++;
+                    }
+
+                    smsSendOptionsObjectpropCount++;
+                }
+                else
+                {
+                    smsSendOptionsObject["enableDeliveryReport"] = false;
                     smsSendOptionsObjectpropCount++;
                 }
 
-                smsSendOptionsObjectpropCount++;
-            }
-            else
-            {
-                smsSendOptionsObject["enableDeliveryReport"] = false;
-                smsSendOptionsObjectpropCount++;
+                if (bodysmsSendOptionstag != null)
+                {
+                    smsSendOptionsObject["tag"] = SourceExpressionConverter.ConvertToken(bodysmsSendOptionstag);
+                    smsSendOptionsObjectpropCount++;
+                }
+
+                if (smsSendOptionsObjectpropCount > 0)
+                {
+                    body["smsSendOptions"] = smsSendOptionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysmsSendOptionstag != null)
-            {
-                smsSendOptionsObject["tag"] = CSharpExpressionConverter.ConvertToken(bodysmsSendOptionstag);
-                smsSendOptionsObjectpropCount++;
-            }
-
-            if (smsSendOptionsObjectpropCount > 0)
-            {
-                body["smsSendOptions"] = smsSendOptionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSMSv2Response>(callPayload);
+            return new ApiConnectionAction<SendSMSv2Response>(BuildSourceInput);
         }
     }
 

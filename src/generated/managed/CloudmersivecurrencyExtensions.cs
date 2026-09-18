@@ -14,29 +14,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivecurrency
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
         public IBodyWorkflowAction<AvailableCurrencyResponse> CurrencyExchangeGetAvailableCurrencies()
         {
-            var apiCallPath = "/currency/exchange-rates/list-available";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AvailableCurrencyResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/currency/exchange-rates/list-available";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AvailableCurrencyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency(Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<double>> sourcePrice = null)
+        public IBodyWorkflowAction<ConvertedCurrencyResult> CurrencyExchangeConvertCurrency([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<double> sourcePrice = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(sourcePrice);
-            return new ApiConnectionAction<ConvertedCurrencyResult>(callPayload);
+            SourceExpression.Validate(source, nameof(source), required: true);
+            SourceExpression.Validate(destination, nameof(destination), required: true);
+            SourceExpression.Validate(sourcePrice, nameof(sourcePrice), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/convert/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(sourcePrice);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConvertedCurrencyResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivecurrency")]
-        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate(Expression<Func<string>> source, Expression<Func<string>> destination)
+        public IBodyWorkflowAction<ExchangeRateResult> CurrencyExchangeGetExchangeRate([WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExchangeRateResult>(callPayload);
+            SourceExpression.Validate(source, nameof(source), required: true);
+            SourceExpression.Validate(destination, nameof(destination), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/currency/exchange-rates/get/{0}/to/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(source, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(destination, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExchangeRateResult>(BuildSourceInput);
         }
     }
 

@@ -12,285 +12,426 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Screenshotoneip
     public class ScreenshotoneipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        public IBodyWorkflowAction<TakeGetResponse> TakeGet(Expression<Func<string>> url = null, Expression<Func<string>> html = null, Expression<Func<formatInput>> format = null, Expression<Func<responseTypeInput>> responseType = null, Expression<Func<string>> selector = null, Expression<Func<bool>> captureBeyondViewport = null, Expression<Func<string>> scrollIntoView = null, Expression<Func<int>> scrollIntoViewAdjustTop = null, Expression<Func<bool>> fullPage = null, Expression<Func<bool>> fullPageScroll = null, Expression<Func<int>> fullPageScrollDelay = null, Expression<Func<int>> fullPageScrollBy = null, Expression<Func<int>> fullPageMaxHeight = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<int>> imageQuality = null, Expression<Func<int>> imageWidth = null, Expression<Func<int>> imageHeight = null, Expression<Func<bool>> omitBackground = null, Expression<Func<bool>> darkMode = null, Expression<Func<bool>> reducedMotion = null, Expression<Func<string>> mediaType = null, Expression<Func<string>> hideSelectors = null, Expression<Func<string>> scripts = null, Expression<Func<string>> scriptsWaitUntil = null, Expression<Func<string>> styles = null, Expression<Func<string>> click = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeGetResponse> TakeGet([WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<responseTypeInput> responseType = null, [WorkflowExpression] Func<string> selector = null, [WorkflowExpression] Func<bool> captureBeyondViewport = null, [WorkflowExpression] Func<string> scrollIntoView = null, [WorkflowExpression] Func<int> scrollIntoViewAdjustTop = null, [WorkflowExpression] Func<bool> fullPage = null, [WorkflowExpression] Func<bool> fullPageScroll = null, [WorkflowExpression] Func<int> fullPageScrollDelay = null, [WorkflowExpression] Func<int> fullPageScrollBy = null, [WorkflowExpression] Func<int> fullPageMaxHeight = null, [WorkflowExpression] Func<string> viewportDevice = null, [WorkflowExpression] Func<int> viewportWidth = null, [WorkflowExpression] Func<int> viewportHeight = null, [WorkflowExpression] Func<int> deviceScaleFactor = null, [WorkflowExpression] Func<bool> viewportMobile = null, [WorkflowExpression] Func<bool> viewportHasTouch = null, [WorkflowExpression] Func<bool> viewportLandscape = null, [WorkflowExpression] Func<int> imageQuality = null, [WorkflowExpression] Func<int> imageWidth = null, [WorkflowExpression] Func<int> imageHeight = null, [WorkflowExpression] Func<bool> omitBackground = null, [WorkflowExpression] Func<bool> darkMode = null, [WorkflowExpression] Func<bool> reducedMotion = null, [WorkflowExpression] Func<string> mediaType = null, [WorkflowExpression] Func<string> hideSelectors = null, [WorkflowExpression] Func<string> scripts = null, [WorkflowExpression] Func<string> scriptsWaitUntil = null, [WorkflowExpression] Func<string> styles = null, [WorkflowExpression] Func<string> click = null, [WorkflowExpression] Func<bool> blockCookieBanners = null, [WorkflowExpression] Func<bool> blockBannersByHeuristics = null, [WorkflowExpression] Func<bool> blockChats = null, [WorkflowExpression] Func<bool> blockAds = null, [WorkflowExpression] Func<bool> blockTrackers = null, [WorkflowExpression] Func<string> blockRequests = null, [WorkflowExpression] Func<string> blockResources = null, [WorkflowExpression] Func<double> geolocationLatitude = null, [WorkflowExpression] Func<double> geolocationLongitude = null, [WorkflowExpression] Func<int> geolocationAccuracy = null, [WorkflowExpression] Func<ipCountryCodeInput> ipCountryCode = null, [WorkflowExpression] Func<string> proxy = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> authorization = null, [WorkflowExpression] Func<string> cookies = null, [WorkflowExpression] Func<string> headers = null, [WorkflowExpression] Func<timeZoneInput> timeZone = null, [WorkflowExpression] Func<string> waitUntil = null, [WorkflowExpression] Func<int> delay = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<int> navigationTimeout = null, [WorkflowExpression] Func<string> waitForSelector = null, [WorkflowExpression] Func<bool> cache = null, [WorkflowExpression] Func<int> cacheTtl = null, [WorkflowExpression] Func<int> cacheKey = null, [WorkflowExpression] Func<bool> store = null, [WorkflowExpression] Func<string> storagePath = null, [WorkflowExpression] Func<string> storageBucket = null, [WorkflowExpression] Func<storageClassInput> storageClass = null, [WorkflowExpression] Func<string> storageAcl = null, [WorkflowExpression] Func<bool> metadataImageSize = null, [WorkflowExpression] Func<bool> ignoreHostErrors = null, [WorkflowExpression] Func<bool> errorOnSelectorNotFound = null)
         {
-            var apiCallPath = "/take";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (url != null)
-                callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            if (html != null)
-                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
-            callPayload.Queries["format"] = Convert.ToString("jpg");
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Queries["response_type"] = Convert.ToString("by_format");
-            if (responseType != null)
-                callPayload.Queries["response_type"] = CSharpExpressionConverter.Convert(responseType);
-            if (selector != null)
-                callPayload.Queries["selector"] = CSharpExpressionConverter.ConvertO(selector);
-            if (captureBeyondViewport != null)
-                callPayload.Queries["capture_beyond_viewport"] = CSharpExpressionConverter.ConvertO(captureBeyondViewport);
-            if (scrollIntoView != null)
-                callPayload.Queries["scroll_into_view"] = CSharpExpressionConverter.ConvertO(scrollIntoView);
-            if (scrollIntoViewAdjustTop != null)
-                callPayload.Queries["scroll_into_view_adjust_top"] = CSharpExpressionConverter.ConvertO(scrollIntoViewAdjustTop);
-            if (fullPage != null)
-                callPayload.Queries["full_page"] = CSharpExpressionConverter.ConvertO(fullPage);
-            if (fullPageScroll != null)
-                callPayload.Queries["full_page_scroll"] = CSharpExpressionConverter.ConvertO(fullPageScroll);
-            if (fullPageScrollDelay != null)
-                callPayload.Queries["full_page_scroll_delay"] = CSharpExpressionConverter.ConvertO(fullPageScrollDelay);
-            if (fullPageScrollBy != null)
-                callPayload.Queries["full_page_scroll_by"] = CSharpExpressionConverter.ConvertO(fullPageScrollBy);
-            if (fullPageMaxHeight != null)
-                callPayload.Queries["full_page_max_height"] = CSharpExpressionConverter.ConvertO(fullPageMaxHeight);
-            if (viewportDevice != null)
-                callPayload.Queries["viewport_device"] = CSharpExpressionConverter.ConvertO(viewportDevice);
-            if (viewportWidth != null)
-                callPayload.Queries["viewport_width"] = CSharpExpressionConverter.ConvertO(viewportWidth);
-            if (viewportHeight != null)
-                callPayload.Queries["viewport_height"] = CSharpExpressionConverter.ConvertO(viewportHeight);
-            if (deviceScaleFactor != null)
-                callPayload.Queries["device_scale_factor"] = CSharpExpressionConverter.ConvertO(deviceScaleFactor);
-            if (viewportMobile != null)
-                callPayload.Queries["viewport_mobile"] = CSharpExpressionConverter.ConvertO(viewportMobile);
-            if (viewportHasTouch != null)
-                callPayload.Queries["viewport_has_touch"] = CSharpExpressionConverter.ConvertO(viewportHasTouch);
-            if (viewportLandscape != null)
-                callPayload.Queries["viewport_landscape"] = CSharpExpressionConverter.ConvertO(viewportLandscape);
-            if (imageQuality != null)
-                callPayload.Queries["image_quality"] = CSharpExpressionConverter.ConvertO(imageQuality);
-            if (imageWidth != null)
-                callPayload.Queries["image_width"] = CSharpExpressionConverter.ConvertO(imageWidth);
-            if (imageHeight != null)
-                callPayload.Queries["image_height"] = CSharpExpressionConverter.ConvertO(imageHeight);
-            if (omitBackground != null)
-                callPayload.Queries["omit_background"] = CSharpExpressionConverter.ConvertO(omitBackground);
-            if (darkMode != null)
-                callPayload.Queries["dark_mode"] = CSharpExpressionConverter.ConvertO(darkMode);
-            if (reducedMotion != null)
-                callPayload.Queries["reduced_motion"] = CSharpExpressionConverter.ConvertO(reducedMotion);
-            if (mediaType != null)
-                callPayload.Queries["media_type"] = CSharpExpressionConverter.ConvertO(mediaType);
-            if (hideSelectors != null)
-                callPayload.Queries["hide_selectors"] = CSharpExpressionConverter.ConvertO(hideSelectors);
-            if (scripts != null)
-                callPayload.Queries["scripts"] = CSharpExpressionConverter.ConvertO(scripts);
-            if (scriptsWaitUntil != null)
-                callPayload.Queries["scripts_wait_until"] = CSharpExpressionConverter.ConvertO(scriptsWaitUntil);
-            if (styles != null)
-                callPayload.Queries["styles"] = CSharpExpressionConverter.ConvertO(styles);
-            if (click != null)
-                callPayload.Queries["click"] = CSharpExpressionConverter.ConvertO(click);
-            if (blockCookieBanners != null)
-                callPayload.Queries["block_cookie_banners"] = CSharpExpressionConverter.ConvertO(blockCookieBanners);
-            if (blockBannersByHeuristics != null)
-                callPayload.Queries["block_banners_by_heuristics"] = CSharpExpressionConverter.ConvertO(blockBannersByHeuristics);
-            if (blockChats != null)
-                callPayload.Queries["block_chats"] = CSharpExpressionConverter.ConvertO(blockChats);
-            if (blockAds != null)
-                callPayload.Queries["block_ads"] = CSharpExpressionConverter.ConvertO(blockAds);
-            if (blockTrackers != null)
-                callPayload.Queries["block_trackers"] = CSharpExpressionConverter.ConvertO(blockTrackers);
-            if (blockRequests != null)
-                callPayload.Queries["block_requests"] = CSharpExpressionConverter.ConvertO(blockRequests);
-            if (blockResources != null)
-                callPayload.Queries["block_resources"] = CSharpExpressionConverter.ConvertO(blockResources);
-            if (geolocationLatitude != null)
-                callPayload.Queries["geolocation_latitude"] = CSharpExpressionConverter.ConvertO(geolocationLatitude);
-            if (geolocationLongitude != null)
-                callPayload.Queries["geolocation_longitude"] = CSharpExpressionConverter.ConvertO(geolocationLongitude);
-            if (geolocationAccuracy != null)
-                callPayload.Queries["geolocation_accuracy"] = CSharpExpressionConverter.ConvertO(geolocationAccuracy);
-            callPayload.Queries["ip_country_code"] = Convert.ToString("us");
-            if (ipCountryCode != null)
-                callPayload.Queries["ip_country_code"] = CSharpExpressionConverter.Convert(ipCountryCode);
-            if (proxy != null)
-                callPayload.Queries["proxy"] = CSharpExpressionConverter.ConvertO(proxy);
-            if (userAgent != null)
-                callPayload.Queries["user_agent"] = CSharpExpressionConverter.ConvertO(userAgent);
-            if (authorization != null)
-                callPayload.Queries["authorization"] = CSharpExpressionConverter.ConvertO(authorization);
-            if (cookies != null)
-                callPayload.Queries["cookies"] = CSharpExpressionConverter.ConvertO(cookies);
-            if (headers != null)
-                callPayload.Queries["headers"] = CSharpExpressionConverter.ConvertO(headers);
-            if (timeZone != null)
-                callPayload.Queries["time_zone"] = CSharpExpressionConverter.Convert(timeZone);
-            if (waitUntil != null)
-                callPayload.Queries["wait_until"] = CSharpExpressionConverter.ConvertO(waitUntil);
-            if (delay != null)
-                callPayload.Queries["delay"] = CSharpExpressionConverter.ConvertO(delay);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
-            if (navigationTimeout != null)
-                callPayload.Queries["navigation_timeout"] = CSharpExpressionConverter.ConvertO(navigationTimeout);
-            if (waitForSelector != null)
-                callPayload.Queries["wait_for_selector"] = CSharpExpressionConverter.ConvertO(waitForSelector);
-            if (cache != null)
-                callPayload.Queries["cache"] = CSharpExpressionConverter.ConvertO(cache);
-            if (cacheTtl != null)
-                callPayload.Queries["cache_ttl"] = CSharpExpressionConverter.ConvertO(cacheTtl);
-            if (cacheKey != null)
-                callPayload.Queries["cache_key"] = CSharpExpressionConverter.ConvertO(cacheKey);
-            if (store != null)
-                callPayload.Queries["store"] = CSharpExpressionConverter.ConvertO(store);
-            if (storagePath != null)
-                callPayload.Queries["storage_path"] = CSharpExpressionConverter.ConvertO(storagePath);
-            if (storageBucket != null)
-                callPayload.Queries["storage_bucket"] = CSharpExpressionConverter.ConvertO(storageBucket);
-            if (storageClass != null)
-                callPayload.Queries["storage_class"] = CSharpExpressionConverter.Convert(storageClass);
-            if (storageAcl != null)
-                callPayload.Queries["storage_acl"] = CSharpExpressionConverter.ConvertO(storageAcl);
-            if (metadataImageSize != null)
-                callPayload.Queries["metadata_image_size"] = CSharpExpressionConverter.ConvertO(metadataImageSize);
-            if (ignoreHostErrors != null)
-                callPayload.Queries["ignore_host_errors"] = CSharpExpressionConverter.ConvertO(ignoreHostErrors);
-            if (errorOnSelectorNotFound != null)
-                callPayload.Queries["error_on_selector_not_found"] = CSharpExpressionConverter.ConvertO(errorOnSelectorNotFound);
-            return new ApiConnectionAction<TakeGetResponse>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: false);
+            SourceExpression.Validate(html, nameof(html), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(responseType, nameof(responseType), required: false);
+            SourceExpression.Validate(selector, nameof(selector), required: false);
+            SourceExpression.Validate(captureBeyondViewport, nameof(captureBeyondViewport), required: false);
+            SourceExpression.Validate(scrollIntoView, nameof(scrollIntoView), required: false);
+            SourceExpression.Validate(scrollIntoViewAdjustTop, nameof(scrollIntoViewAdjustTop), required: false);
+            SourceExpression.Validate(fullPage, nameof(fullPage), required: false);
+            SourceExpression.Validate(fullPageScroll, nameof(fullPageScroll), required: false);
+            SourceExpression.Validate(fullPageScrollDelay, nameof(fullPageScrollDelay), required: false);
+            SourceExpression.Validate(fullPageScrollBy, nameof(fullPageScrollBy), required: false);
+            SourceExpression.Validate(fullPageMaxHeight, nameof(fullPageMaxHeight), required: false);
+            SourceExpression.Validate(viewportDevice, nameof(viewportDevice), required: false);
+            SourceExpression.Validate(viewportWidth, nameof(viewportWidth), required: false);
+            SourceExpression.Validate(viewportHeight, nameof(viewportHeight), required: false);
+            SourceExpression.Validate(deviceScaleFactor, nameof(deviceScaleFactor), required: false);
+            SourceExpression.Validate(viewportMobile, nameof(viewportMobile), required: false);
+            SourceExpression.Validate(viewportHasTouch, nameof(viewportHasTouch), required: false);
+            SourceExpression.Validate(viewportLandscape, nameof(viewportLandscape), required: false);
+            SourceExpression.Validate(imageQuality, nameof(imageQuality), required: false);
+            SourceExpression.Validate(imageWidth, nameof(imageWidth), required: false);
+            SourceExpression.Validate(imageHeight, nameof(imageHeight), required: false);
+            SourceExpression.Validate(omitBackground, nameof(omitBackground), required: false);
+            SourceExpression.Validate(darkMode, nameof(darkMode), required: false);
+            SourceExpression.Validate(reducedMotion, nameof(reducedMotion), required: false);
+            SourceExpression.Validate(mediaType, nameof(mediaType), required: false);
+            SourceExpression.Validate(hideSelectors, nameof(hideSelectors), required: false);
+            SourceExpression.Validate(scripts, nameof(scripts), required: false);
+            SourceExpression.Validate(scriptsWaitUntil, nameof(scriptsWaitUntil), required: false);
+            SourceExpression.Validate(styles, nameof(styles), required: false);
+            SourceExpression.Validate(click, nameof(click), required: false);
+            SourceExpression.Validate(blockCookieBanners, nameof(blockCookieBanners), required: false);
+            SourceExpression.Validate(blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
+            SourceExpression.Validate(blockChats, nameof(blockChats), required: false);
+            SourceExpression.Validate(blockAds, nameof(blockAds), required: false);
+            SourceExpression.Validate(blockTrackers, nameof(blockTrackers), required: false);
+            SourceExpression.Validate(blockRequests, nameof(blockRequests), required: false);
+            SourceExpression.Validate(blockResources, nameof(blockResources), required: false);
+            SourceExpression.Validate(geolocationLatitude, nameof(geolocationLatitude), required: false);
+            SourceExpression.Validate(geolocationLongitude, nameof(geolocationLongitude), required: false);
+            SourceExpression.Validate(geolocationAccuracy, nameof(geolocationAccuracy), required: false);
+            SourceExpression.Validate(ipCountryCode, nameof(ipCountryCode), required: false);
+            SourceExpression.Validate(proxy, nameof(proxy), required: false);
+            SourceExpression.Validate(userAgent, nameof(userAgent), required: false);
+            SourceExpression.Validate(authorization, nameof(authorization), required: false);
+            SourceExpression.Validate(cookies, nameof(cookies), required: false);
+            SourceExpression.Validate(headers, nameof(headers), required: false);
+            SourceExpression.Validate(timeZone, nameof(timeZone), required: false);
+            SourceExpression.Validate(waitUntil, nameof(waitUntil), required: false);
+            SourceExpression.Validate(delay, nameof(delay), required: false);
+            SourceExpression.Validate(timeout, nameof(timeout), required: false);
+            SourceExpression.Validate(navigationTimeout, nameof(navigationTimeout), required: false);
+            SourceExpression.Validate(waitForSelector, nameof(waitForSelector), required: false);
+            SourceExpression.Validate(cache, nameof(cache), required: false);
+            SourceExpression.Validate(cacheTtl, nameof(cacheTtl), required: false);
+            SourceExpression.Validate(cacheKey, nameof(cacheKey), required: false);
+            SourceExpression.Validate(store, nameof(store), required: false);
+            SourceExpression.Validate(storagePath, nameof(storagePath), required: false);
+            SourceExpression.Validate(storageBucket, nameof(storageBucket), required: false);
+            SourceExpression.Validate(storageClass, nameof(storageClass), required: false);
+            SourceExpression.Validate(storageAcl, nameof(storageAcl), required: false);
+            SourceExpression.Validate(metadataImageSize, nameof(metadataImageSize), required: false);
+            SourceExpression.Validate(ignoreHostErrors, nameof(ignoreHostErrors), required: false);
+            SourceExpression.Validate(errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/take";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (url != null)
+                    callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (html != null)
+                    callPayload.Queries["html"] = SourceExpressionConverter.ConvertO(html);
+                callPayload.Queries["format"] = Convert.ToString("jpg");
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Queries["response_type"] = Convert.ToString("by_format");
+                if (responseType != null)
+                    callPayload.Queries["response_type"] = SourceExpressionConverter.Convert(responseType);
+                if (selector != null)
+                    callPayload.Queries["selector"] = SourceExpressionConverter.ConvertO(selector);
+                if (captureBeyondViewport != null)
+                    callPayload.Queries["capture_beyond_viewport"] = SourceExpressionConverter.ConvertO(captureBeyondViewport);
+                if (scrollIntoView != null)
+                    callPayload.Queries["scroll_into_view"] = SourceExpressionConverter.ConvertO(scrollIntoView);
+                if (scrollIntoViewAdjustTop != null)
+                    callPayload.Queries["scroll_into_view_adjust_top"] = SourceExpressionConverter.ConvertO(scrollIntoViewAdjustTop);
+                if (fullPage != null)
+                    callPayload.Queries["full_page"] = SourceExpressionConverter.ConvertO(fullPage);
+                if (fullPageScroll != null)
+                    callPayload.Queries["full_page_scroll"] = SourceExpressionConverter.ConvertO(fullPageScroll);
+                if (fullPageScrollDelay != null)
+                    callPayload.Queries["full_page_scroll_delay"] = SourceExpressionConverter.ConvertO(fullPageScrollDelay);
+                if (fullPageScrollBy != null)
+                    callPayload.Queries["full_page_scroll_by"] = SourceExpressionConverter.ConvertO(fullPageScrollBy);
+                if (fullPageMaxHeight != null)
+                    callPayload.Queries["full_page_max_height"] = SourceExpressionConverter.ConvertO(fullPageMaxHeight);
+                if (viewportDevice != null)
+                    callPayload.Queries["viewport_device"] = SourceExpressionConverter.ConvertO(viewportDevice);
+                if (viewportWidth != null)
+                    callPayload.Queries["viewport_width"] = SourceExpressionConverter.ConvertO(viewportWidth);
+                if (viewportHeight != null)
+                    callPayload.Queries["viewport_height"] = SourceExpressionConverter.ConvertO(viewportHeight);
+                if (deviceScaleFactor != null)
+                    callPayload.Queries["device_scale_factor"] = SourceExpressionConverter.ConvertO(deviceScaleFactor);
+                if (viewportMobile != null)
+                    callPayload.Queries["viewport_mobile"] = SourceExpressionConverter.ConvertO(viewportMobile);
+                if (viewportHasTouch != null)
+                    callPayload.Queries["viewport_has_touch"] = SourceExpressionConverter.ConvertO(viewportHasTouch);
+                if (viewportLandscape != null)
+                    callPayload.Queries["viewport_landscape"] = SourceExpressionConverter.ConvertO(viewportLandscape);
+                if (imageQuality != null)
+                    callPayload.Queries["image_quality"] = SourceExpressionConverter.ConvertO(imageQuality);
+                if (imageWidth != null)
+                    callPayload.Queries["image_width"] = SourceExpressionConverter.ConvertO(imageWidth);
+                if (imageHeight != null)
+                    callPayload.Queries["image_height"] = SourceExpressionConverter.ConvertO(imageHeight);
+                if (omitBackground != null)
+                    callPayload.Queries["omit_background"] = SourceExpressionConverter.ConvertO(omitBackground);
+                if (darkMode != null)
+                    callPayload.Queries["dark_mode"] = SourceExpressionConverter.ConvertO(darkMode);
+                if (reducedMotion != null)
+                    callPayload.Queries["reduced_motion"] = SourceExpressionConverter.ConvertO(reducedMotion);
+                if (mediaType != null)
+                    callPayload.Queries["media_type"] = SourceExpressionConverter.ConvertO(mediaType);
+                if (hideSelectors != null)
+                    callPayload.Queries["hide_selectors"] = SourceExpressionConverter.ConvertO(hideSelectors);
+                if (scripts != null)
+                    callPayload.Queries["scripts"] = SourceExpressionConverter.ConvertO(scripts);
+                if (scriptsWaitUntil != null)
+                    callPayload.Queries["scripts_wait_until"] = SourceExpressionConverter.ConvertO(scriptsWaitUntil);
+                if (styles != null)
+                    callPayload.Queries["styles"] = SourceExpressionConverter.ConvertO(styles);
+                if (click != null)
+                    callPayload.Queries["click"] = SourceExpressionConverter.ConvertO(click);
+                if (blockCookieBanners != null)
+                    callPayload.Queries["block_cookie_banners"] = SourceExpressionConverter.ConvertO(blockCookieBanners);
+                if (blockBannersByHeuristics != null)
+                    callPayload.Queries["block_banners_by_heuristics"] = SourceExpressionConverter.ConvertO(blockBannersByHeuristics);
+                if (blockChats != null)
+                    callPayload.Queries["block_chats"] = SourceExpressionConverter.ConvertO(blockChats);
+                if (blockAds != null)
+                    callPayload.Queries["block_ads"] = SourceExpressionConverter.ConvertO(blockAds);
+                if (blockTrackers != null)
+                    callPayload.Queries["block_trackers"] = SourceExpressionConverter.ConvertO(blockTrackers);
+                if (blockRequests != null)
+                    callPayload.Queries["block_requests"] = SourceExpressionConverter.ConvertO(blockRequests);
+                if (blockResources != null)
+                    callPayload.Queries["block_resources"] = SourceExpressionConverter.ConvertO(blockResources);
+                if (geolocationLatitude != null)
+                    callPayload.Queries["geolocation_latitude"] = SourceExpressionConverter.ConvertO(geolocationLatitude);
+                if (geolocationLongitude != null)
+                    callPayload.Queries["geolocation_longitude"] = SourceExpressionConverter.ConvertO(geolocationLongitude);
+                if (geolocationAccuracy != null)
+                    callPayload.Queries["geolocation_accuracy"] = SourceExpressionConverter.ConvertO(geolocationAccuracy);
+                callPayload.Queries["ip_country_code"] = Convert.ToString("us");
+                if (ipCountryCode != null)
+                    callPayload.Queries["ip_country_code"] = SourceExpressionConverter.Convert(ipCountryCode);
+                if (proxy != null)
+                    callPayload.Queries["proxy"] = SourceExpressionConverter.ConvertO(proxy);
+                if (userAgent != null)
+                    callPayload.Queries["user_agent"] = SourceExpressionConverter.ConvertO(userAgent);
+                if (authorization != null)
+                    callPayload.Queries["authorization"] = SourceExpressionConverter.ConvertO(authorization);
+                if (cookies != null)
+                    callPayload.Queries["cookies"] = SourceExpressionConverter.ConvertO(cookies);
+                if (headers != null)
+                    callPayload.Queries["headers"] = SourceExpressionConverter.ConvertO(headers);
+                if (timeZone != null)
+                    callPayload.Queries["time_zone"] = SourceExpressionConverter.Convert(timeZone);
+                if (waitUntil != null)
+                    callPayload.Queries["wait_until"] = SourceExpressionConverter.ConvertO(waitUntil);
+                if (delay != null)
+                    callPayload.Queries["delay"] = SourceExpressionConverter.ConvertO(delay);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = SourceExpressionConverter.ConvertO(timeout);
+                if (navigationTimeout != null)
+                    callPayload.Queries["navigation_timeout"] = SourceExpressionConverter.ConvertO(navigationTimeout);
+                if (waitForSelector != null)
+                    callPayload.Queries["wait_for_selector"] = SourceExpressionConverter.ConvertO(waitForSelector);
+                if (cache != null)
+                    callPayload.Queries["cache"] = SourceExpressionConverter.ConvertO(cache);
+                if (cacheTtl != null)
+                    callPayload.Queries["cache_ttl"] = SourceExpressionConverter.ConvertO(cacheTtl);
+                if (cacheKey != null)
+                    callPayload.Queries["cache_key"] = SourceExpressionConverter.ConvertO(cacheKey);
+                if (store != null)
+                    callPayload.Queries["store"] = SourceExpressionConverter.ConvertO(store);
+                if (storagePath != null)
+                    callPayload.Queries["storage_path"] = SourceExpressionConverter.ConvertO(storagePath);
+                if (storageBucket != null)
+                    callPayload.Queries["storage_bucket"] = SourceExpressionConverter.ConvertO(storageBucket);
+                if (storageClass != null)
+                    callPayload.Queries["storage_class"] = SourceExpressionConverter.Convert(storageClass);
+                if (storageAcl != null)
+                    callPayload.Queries["storage_acl"] = SourceExpressionConverter.ConvertO(storageAcl);
+                if (metadataImageSize != null)
+                    callPayload.Queries["metadata_image_size"] = SourceExpressionConverter.ConvertO(metadataImageSize);
+                if (ignoreHostErrors != null)
+                    callPayload.Queries["ignore_host_errors"] = SourceExpressionConverter.ConvertO(ignoreHostErrors);
+                if (errorOnSelectorNotFound != null)
+                    callPayload.Queries["error_on_selector_not_found"] = SourceExpressionConverter.ConvertO(errorOnSelectorNotFound);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TakeGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
-        public IBodyWorkflowAction<TakeAnimatedGetResponse> TakeAnimatedGet(Expression<Func<string>> url = null, Expression<Func<string>> scenario = null, Expression<Func<int>> scrollDelay = null, Expression<Func<int>> scrollDuration = null, Expression<Func<int>> scrollBy = null, Expression<Func<bool>> scrollStartImmediately = null, Expression<Func<bool>> scrollBack = null, Expression<Func<int>> scrollBackAfterDuration = null, Expression<Func<bool>> scrollComplete = null, Expression<Func<int>> scrollStopAfterDuration = null, Expression<Func<scrollEasingInput>> scrollEasing = null, Expression<Func<formatInput>> format = null, Expression<Func<int>> duration = null, Expression<Func<int>> width = null, Expression<Func<int>> height = null, Expression<Func<string>> aspectRatio = null, Expression<Func<string>> viewportDevice = null, Expression<Func<int>> viewportWidth = null, Expression<Func<int>> viewportHeight = null, Expression<Func<int>> deviceScaleFactor = null, Expression<Func<bool>> viewportMobile = null, Expression<Func<bool>> viewportHasTouch = null, Expression<Func<bool>> viewportLandscape = null, Expression<Func<bool>> blockCookieBanners = null, Expression<Func<bool>> blockBannersByHeuristics = null, Expression<Func<bool>> blockChats = null, Expression<Func<bool>> blockAds = null, Expression<Func<bool>> blockTrackers = null, Expression<Func<string>> blockRequests = null, Expression<Func<string>> blockResources = null, Expression<Func<double>> geolocationLatitude = null, Expression<Func<double>> geolocationLongitude = null, Expression<Func<int>> geolocationAccuracy = null, Expression<Func<ipCountryCodeInput>> ipCountryCode = null, Expression<Func<string>> proxy = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> authorization = null, Expression<Func<string>> cookies = null, Expression<Func<string>> headers = null, Expression<Func<timeZoneInput>> timeZone = null, Expression<Func<string>> waitUntil = null, Expression<Func<int>> delay = null, Expression<Func<int>> timeout = null, Expression<Func<int>> navigationTimeout = null, Expression<Func<string>> waitForSelector = null, Expression<Func<bool>> cache = null, Expression<Func<int>> cacheTtl = null, Expression<Func<int>> cacheKey = null, Expression<Func<bool>> store = null, Expression<Func<string>> storagePath = null, Expression<Func<string>> storageBucket = null, Expression<Func<storageClassInput>> storageClass = null, Expression<Func<string>> storageAcl = null, Expression<Func<bool>> metadataImageSize = null, Expression<Func<bool>> ignoreHostErrors = null, Expression<Func<bool>> errorOnSelectorNotFound = null)
+        public IBodyWorkflowAction<TakeAnimatedGetResponse> TakeAnimatedGet([WorkflowExpression] Func<string> url = null, [WorkflowExpression] Func<string> scenario = null, [WorkflowExpression] Func<int> scrollDelay = null, [WorkflowExpression] Func<int> scrollDuration = null, [WorkflowExpression] Func<int> scrollBy = null, [WorkflowExpression] Func<bool> scrollStartImmediately = null, [WorkflowExpression] Func<bool> scrollBack = null, [WorkflowExpression] Func<int> scrollBackAfterDuration = null, [WorkflowExpression] Func<bool> scrollComplete = null, [WorkflowExpression] Func<int> scrollStopAfterDuration = null, [WorkflowExpression] Func<scrollEasingInput> scrollEasing = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<int> duration = null, [WorkflowExpression] Func<int> width = null, [WorkflowExpression] Func<int> height = null, [WorkflowExpression] Func<string> aspectRatio = null, [WorkflowExpression] Func<string> viewportDevice = null, [WorkflowExpression] Func<int> viewportWidth = null, [WorkflowExpression] Func<int> viewportHeight = null, [WorkflowExpression] Func<int> deviceScaleFactor = null, [WorkflowExpression] Func<bool> viewportMobile = null, [WorkflowExpression] Func<bool> viewportHasTouch = null, [WorkflowExpression] Func<bool> viewportLandscape = null, [WorkflowExpression] Func<bool> blockCookieBanners = null, [WorkflowExpression] Func<bool> blockBannersByHeuristics = null, [WorkflowExpression] Func<bool> blockChats = null, [WorkflowExpression] Func<bool> blockAds = null, [WorkflowExpression] Func<bool> blockTrackers = null, [WorkflowExpression] Func<string> blockRequests = null, [WorkflowExpression] Func<string> blockResources = null, [WorkflowExpression] Func<double> geolocationLatitude = null, [WorkflowExpression] Func<double> geolocationLongitude = null, [WorkflowExpression] Func<int> geolocationAccuracy = null, [WorkflowExpression] Func<ipCountryCodeInput> ipCountryCode = null, [WorkflowExpression] Func<string> proxy = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> authorization = null, [WorkflowExpression] Func<string> cookies = null, [WorkflowExpression] Func<string> headers = null, [WorkflowExpression] Func<timeZoneInput> timeZone = null, [WorkflowExpression] Func<string> waitUntil = null, [WorkflowExpression] Func<int> delay = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<int> navigationTimeout = null, [WorkflowExpression] Func<string> waitForSelector = null, [WorkflowExpression] Func<bool> cache = null, [WorkflowExpression] Func<int> cacheTtl = null, [WorkflowExpression] Func<int> cacheKey = null, [WorkflowExpression] Func<bool> store = null, [WorkflowExpression] Func<string> storagePath = null, [WorkflowExpression] Func<string> storageBucket = null, [WorkflowExpression] Func<storageClassInput> storageClass = null, [WorkflowExpression] Func<string> storageAcl = null, [WorkflowExpression] Func<bool> metadataImageSize = null, [WorkflowExpression] Func<bool> ignoreHostErrors = null, [WorkflowExpression] Func<bool> errorOnSelectorNotFound = null)
         {
-            var apiCallPath = "/animate";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (url != null)
-                callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            if (scenario != null)
-                callPayload.Queries["scenario"] = CSharpExpressionConverter.ConvertO(scenario);
-            if (scrollDelay != null)
-                callPayload.Queries["scroll_delay"] = CSharpExpressionConverter.ConvertO(scrollDelay);
-            if (scrollDuration != null)
-                callPayload.Queries["scroll_duration"] = CSharpExpressionConverter.ConvertO(scrollDuration);
-            if (scrollBy != null)
-                callPayload.Queries["scroll_by"] = CSharpExpressionConverter.ConvertO(scrollBy);
-            if (scrollStartImmediately != null)
-                callPayload.Queries["scroll_start_immediately"] = CSharpExpressionConverter.ConvertO(scrollStartImmediately);
-            if (scrollBack != null)
-                callPayload.Queries["scroll_back"] = CSharpExpressionConverter.ConvertO(scrollBack);
-            if (scrollBackAfterDuration != null)
-                callPayload.Queries["scroll_back_after_duration"] = CSharpExpressionConverter.ConvertO(scrollBackAfterDuration);
-            if (scrollComplete != null)
-                callPayload.Queries["scroll_complete"] = CSharpExpressionConverter.ConvertO(scrollComplete);
-            if (scrollStopAfterDuration != null)
-                callPayload.Queries["scroll_stop_after_duration"] = CSharpExpressionConverter.ConvertO(scrollStopAfterDuration);
-            if (scrollEasing != null)
-                callPayload.Queries["scroll_easing"] = CSharpExpressionConverter.Convert(scrollEasing);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            if (duration != null)
-                callPayload.Queries["duration"] = CSharpExpressionConverter.ConvertO(duration);
-            if (width != null)
-                callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
-            if (height != null)
-                callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
-            if (aspectRatio != null)
-                callPayload.Queries["aspect_ratio"] = CSharpExpressionConverter.ConvertO(aspectRatio);
-            if (viewportDevice != null)
-                callPayload.Queries["viewport_device"] = CSharpExpressionConverter.ConvertO(viewportDevice);
-            if (viewportWidth != null)
-                callPayload.Queries["viewport_width"] = CSharpExpressionConverter.ConvertO(viewportWidth);
-            if (viewportHeight != null)
-                callPayload.Queries["viewport_height"] = CSharpExpressionConverter.ConvertO(viewportHeight);
-            if (deviceScaleFactor != null)
-                callPayload.Queries["device_scale_factor"] = CSharpExpressionConverter.ConvertO(deviceScaleFactor);
-            if (viewportMobile != null)
-                callPayload.Queries["viewport_mobile"] = CSharpExpressionConverter.ConvertO(viewportMobile);
-            if (viewportHasTouch != null)
-                callPayload.Queries["viewport_has_touch"] = CSharpExpressionConverter.ConvertO(viewportHasTouch);
-            if (viewportLandscape != null)
-                callPayload.Queries["viewport_landscape"] = CSharpExpressionConverter.ConvertO(viewportLandscape);
-            if (blockCookieBanners != null)
-                callPayload.Queries["block_cookie_banners"] = CSharpExpressionConverter.ConvertO(blockCookieBanners);
-            if (blockBannersByHeuristics != null)
-                callPayload.Queries["block_banners_by_heuristics"] = CSharpExpressionConverter.ConvertO(blockBannersByHeuristics);
-            if (blockChats != null)
-                callPayload.Queries["block_chats"] = CSharpExpressionConverter.ConvertO(blockChats);
-            if (blockAds != null)
-                callPayload.Queries["block_ads"] = CSharpExpressionConverter.ConvertO(blockAds);
-            if (blockTrackers != null)
-                callPayload.Queries["block_trackers"] = CSharpExpressionConverter.ConvertO(blockTrackers);
-            if (blockRequests != null)
-                callPayload.Queries["block_requests"] = CSharpExpressionConverter.ConvertO(blockRequests);
-            if (blockResources != null)
-                callPayload.Queries["block_resources"] = CSharpExpressionConverter.ConvertO(blockResources);
-            if (geolocationLatitude != null)
-                callPayload.Queries["geolocation_latitude"] = CSharpExpressionConverter.ConvertO(geolocationLatitude);
-            if (geolocationLongitude != null)
-                callPayload.Queries["geolocation_longitude"] = CSharpExpressionConverter.ConvertO(geolocationLongitude);
-            if (geolocationAccuracy != null)
-                callPayload.Queries["geolocation_accuracy"] = CSharpExpressionConverter.ConvertO(geolocationAccuracy);
-            callPayload.Queries["ip_country_code"] = Convert.ToString("us");
-            if (ipCountryCode != null)
-                callPayload.Queries["ip_country_code"] = CSharpExpressionConverter.Convert(ipCountryCode);
-            if (proxy != null)
-                callPayload.Queries["proxy"] = CSharpExpressionConverter.ConvertO(proxy);
-            if (userAgent != null)
-                callPayload.Queries["user_agent"] = CSharpExpressionConverter.ConvertO(userAgent);
-            if (authorization != null)
-                callPayload.Queries["authorization"] = CSharpExpressionConverter.ConvertO(authorization);
-            if (cookies != null)
-                callPayload.Queries["cookies"] = CSharpExpressionConverter.ConvertO(cookies);
-            if (headers != null)
-                callPayload.Queries["headers"] = CSharpExpressionConverter.ConvertO(headers);
-            if (timeZone != null)
-                callPayload.Queries["time_zone"] = CSharpExpressionConverter.Convert(timeZone);
-            if (waitUntil != null)
-                callPayload.Queries["wait_until"] = CSharpExpressionConverter.ConvertO(waitUntil);
-            if (delay != null)
-                callPayload.Queries["delay"] = CSharpExpressionConverter.ConvertO(delay);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
-            if (navigationTimeout != null)
-                callPayload.Queries["navigation_timeout"] = CSharpExpressionConverter.ConvertO(navigationTimeout);
-            if (waitForSelector != null)
-                callPayload.Queries["wait_for_selector"] = CSharpExpressionConverter.ConvertO(waitForSelector);
-            if (cache != null)
-                callPayload.Queries["cache"] = CSharpExpressionConverter.ConvertO(cache);
-            if (cacheTtl != null)
-                callPayload.Queries["cache_ttl"] = CSharpExpressionConverter.ConvertO(cacheTtl);
-            if (cacheKey != null)
-                callPayload.Queries["cache_key"] = CSharpExpressionConverter.ConvertO(cacheKey);
-            if (store != null)
-                callPayload.Queries["store"] = CSharpExpressionConverter.ConvertO(store);
-            if (storagePath != null)
-                callPayload.Queries["storage_path"] = CSharpExpressionConverter.ConvertO(storagePath);
-            if (storageBucket != null)
-                callPayload.Queries["storage_bucket"] = CSharpExpressionConverter.ConvertO(storageBucket);
-            if (storageClass != null)
-                callPayload.Queries["storage_class"] = CSharpExpressionConverter.Convert(storageClass);
-            if (storageAcl != null)
-                callPayload.Queries["storage_acl"] = CSharpExpressionConverter.ConvertO(storageAcl);
-            if (metadataImageSize != null)
-                callPayload.Queries["metadata_image_size"] = CSharpExpressionConverter.ConvertO(metadataImageSize);
-            if (ignoreHostErrors != null)
-                callPayload.Queries["ignore_host_errors"] = CSharpExpressionConverter.ConvertO(ignoreHostErrors);
-            if (errorOnSelectorNotFound != null)
-                callPayload.Queries["error_on_selector_not_found"] = CSharpExpressionConverter.ConvertO(errorOnSelectorNotFound);
-            return new ApiConnectionAction<TakeAnimatedGetResponse>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: false);
+            SourceExpression.Validate(scenario, nameof(scenario), required: false);
+            SourceExpression.Validate(scrollDelay, nameof(scrollDelay), required: false);
+            SourceExpression.Validate(scrollDuration, nameof(scrollDuration), required: false);
+            SourceExpression.Validate(scrollBy, nameof(scrollBy), required: false);
+            SourceExpression.Validate(scrollStartImmediately, nameof(scrollStartImmediately), required: false);
+            SourceExpression.Validate(scrollBack, nameof(scrollBack), required: false);
+            SourceExpression.Validate(scrollBackAfterDuration, nameof(scrollBackAfterDuration), required: false);
+            SourceExpression.Validate(scrollComplete, nameof(scrollComplete), required: false);
+            SourceExpression.Validate(scrollStopAfterDuration, nameof(scrollStopAfterDuration), required: false);
+            SourceExpression.Validate(scrollEasing, nameof(scrollEasing), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(duration, nameof(duration), required: false);
+            SourceExpression.Validate(width, nameof(width), required: false);
+            SourceExpression.Validate(height, nameof(height), required: false);
+            SourceExpression.Validate(aspectRatio, nameof(aspectRatio), required: false);
+            SourceExpression.Validate(viewportDevice, nameof(viewportDevice), required: false);
+            SourceExpression.Validate(viewportWidth, nameof(viewportWidth), required: false);
+            SourceExpression.Validate(viewportHeight, nameof(viewportHeight), required: false);
+            SourceExpression.Validate(deviceScaleFactor, nameof(deviceScaleFactor), required: false);
+            SourceExpression.Validate(viewportMobile, nameof(viewportMobile), required: false);
+            SourceExpression.Validate(viewportHasTouch, nameof(viewportHasTouch), required: false);
+            SourceExpression.Validate(viewportLandscape, nameof(viewportLandscape), required: false);
+            SourceExpression.Validate(blockCookieBanners, nameof(blockCookieBanners), required: false);
+            SourceExpression.Validate(blockBannersByHeuristics, nameof(blockBannersByHeuristics), required: false);
+            SourceExpression.Validate(blockChats, nameof(blockChats), required: false);
+            SourceExpression.Validate(blockAds, nameof(blockAds), required: false);
+            SourceExpression.Validate(blockTrackers, nameof(blockTrackers), required: false);
+            SourceExpression.Validate(blockRequests, nameof(blockRequests), required: false);
+            SourceExpression.Validate(blockResources, nameof(blockResources), required: false);
+            SourceExpression.Validate(geolocationLatitude, nameof(geolocationLatitude), required: false);
+            SourceExpression.Validate(geolocationLongitude, nameof(geolocationLongitude), required: false);
+            SourceExpression.Validate(geolocationAccuracy, nameof(geolocationAccuracy), required: false);
+            SourceExpression.Validate(ipCountryCode, nameof(ipCountryCode), required: false);
+            SourceExpression.Validate(proxy, nameof(proxy), required: false);
+            SourceExpression.Validate(userAgent, nameof(userAgent), required: false);
+            SourceExpression.Validate(authorization, nameof(authorization), required: false);
+            SourceExpression.Validate(cookies, nameof(cookies), required: false);
+            SourceExpression.Validate(headers, nameof(headers), required: false);
+            SourceExpression.Validate(timeZone, nameof(timeZone), required: false);
+            SourceExpression.Validate(waitUntil, nameof(waitUntil), required: false);
+            SourceExpression.Validate(delay, nameof(delay), required: false);
+            SourceExpression.Validate(timeout, nameof(timeout), required: false);
+            SourceExpression.Validate(navigationTimeout, nameof(navigationTimeout), required: false);
+            SourceExpression.Validate(waitForSelector, nameof(waitForSelector), required: false);
+            SourceExpression.Validate(cache, nameof(cache), required: false);
+            SourceExpression.Validate(cacheTtl, nameof(cacheTtl), required: false);
+            SourceExpression.Validate(cacheKey, nameof(cacheKey), required: false);
+            SourceExpression.Validate(store, nameof(store), required: false);
+            SourceExpression.Validate(storagePath, nameof(storagePath), required: false);
+            SourceExpression.Validate(storageBucket, nameof(storageBucket), required: false);
+            SourceExpression.Validate(storageClass, nameof(storageClass), required: false);
+            SourceExpression.Validate(storageAcl, nameof(storageAcl), required: false);
+            SourceExpression.Validate(metadataImageSize, nameof(metadataImageSize), required: false);
+            SourceExpression.Validate(ignoreHostErrors, nameof(ignoreHostErrors), required: false);
+            SourceExpression.Validate(errorOnSelectorNotFound, nameof(errorOnSelectorNotFound), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/animate";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (url != null)
+                    callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (scenario != null)
+                    callPayload.Queries["scenario"] = SourceExpressionConverter.ConvertO(scenario);
+                if (scrollDelay != null)
+                    callPayload.Queries["scroll_delay"] = SourceExpressionConverter.ConvertO(scrollDelay);
+                if (scrollDuration != null)
+                    callPayload.Queries["scroll_duration"] = SourceExpressionConverter.ConvertO(scrollDuration);
+                if (scrollBy != null)
+                    callPayload.Queries["scroll_by"] = SourceExpressionConverter.ConvertO(scrollBy);
+                if (scrollStartImmediately != null)
+                    callPayload.Queries["scroll_start_immediately"] = SourceExpressionConverter.ConvertO(scrollStartImmediately);
+                if (scrollBack != null)
+                    callPayload.Queries["scroll_back"] = SourceExpressionConverter.ConvertO(scrollBack);
+                if (scrollBackAfterDuration != null)
+                    callPayload.Queries["scroll_back_after_duration"] = SourceExpressionConverter.ConvertO(scrollBackAfterDuration);
+                if (scrollComplete != null)
+                    callPayload.Queries["scroll_complete"] = SourceExpressionConverter.ConvertO(scrollComplete);
+                if (scrollStopAfterDuration != null)
+                    callPayload.Queries["scroll_stop_after_duration"] = SourceExpressionConverter.ConvertO(scrollStopAfterDuration);
+                if (scrollEasing != null)
+                    callPayload.Queries["scroll_easing"] = SourceExpressionConverter.Convert(scrollEasing);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                if (duration != null)
+                    callPayload.Queries["duration"] = SourceExpressionConverter.ConvertO(duration);
+                if (width != null)
+                    callPayload.Queries["width"] = SourceExpressionConverter.ConvertO(width);
+                if (height != null)
+                    callPayload.Queries["height"] = SourceExpressionConverter.ConvertO(height);
+                if (aspectRatio != null)
+                    callPayload.Queries["aspect_ratio"] = SourceExpressionConverter.ConvertO(aspectRatio);
+                if (viewportDevice != null)
+                    callPayload.Queries["viewport_device"] = SourceExpressionConverter.ConvertO(viewportDevice);
+                if (viewportWidth != null)
+                    callPayload.Queries["viewport_width"] = SourceExpressionConverter.ConvertO(viewportWidth);
+                if (viewportHeight != null)
+                    callPayload.Queries["viewport_height"] = SourceExpressionConverter.ConvertO(viewportHeight);
+                if (deviceScaleFactor != null)
+                    callPayload.Queries["device_scale_factor"] = SourceExpressionConverter.ConvertO(deviceScaleFactor);
+                if (viewportMobile != null)
+                    callPayload.Queries["viewport_mobile"] = SourceExpressionConverter.ConvertO(viewportMobile);
+                if (viewportHasTouch != null)
+                    callPayload.Queries["viewport_has_touch"] = SourceExpressionConverter.ConvertO(viewportHasTouch);
+                if (viewportLandscape != null)
+                    callPayload.Queries["viewport_landscape"] = SourceExpressionConverter.ConvertO(viewportLandscape);
+                if (blockCookieBanners != null)
+                    callPayload.Queries["block_cookie_banners"] = SourceExpressionConverter.ConvertO(blockCookieBanners);
+                if (blockBannersByHeuristics != null)
+                    callPayload.Queries["block_banners_by_heuristics"] = SourceExpressionConverter.ConvertO(blockBannersByHeuristics);
+                if (blockChats != null)
+                    callPayload.Queries["block_chats"] = SourceExpressionConverter.ConvertO(blockChats);
+                if (blockAds != null)
+                    callPayload.Queries["block_ads"] = SourceExpressionConverter.ConvertO(blockAds);
+                if (blockTrackers != null)
+                    callPayload.Queries["block_trackers"] = SourceExpressionConverter.ConvertO(blockTrackers);
+                if (blockRequests != null)
+                    callPayload.Queries["block_requests"] = SourceExpressionConverter.ConvertO(blockRequests);
+                if (blockResources != null)
+                    callPayload.Queries["block_resources"] = SourceExpressionConverter.ConvertO(blockResources);
+                if (geolocationLatitude != null)
+                    callPayload.Queries["geolocation_latitude"] = SourceExpressionConverter.ConvertO(geolocationLatitude);
+                if (geolocationLongitude != null)
+                    callPayload.Queries["geolocation_longitude"] = SourceExpressionConverter.ConvertO(geolocationLongitude);
+                if (geolocationAccuracy != null)
+                    callPayload.Queries["geolocation_accuracy"] = SourceExpressionConverter.ConvertO(geolocationAccuracy);
+                callPayload.Queries["ip_country_code"] = Convert.ToString("us");
+                if (ipCountryCode != null)
+                    callPayload.Queries["ip_country_code"] = SourceExpressionConverter.Convert(ipCountryCode);
+                if (proxy != null)
+                    callPayload.Queries["proxy"] = SourceExpressionConverter.ConvertO(proxy);
+                if (userAgent != null)
+                    callPayload.Queries["user_agent"] = SourceExpressionConverter.ConvertO(userAgent);
+                if (authorization != null)
+                    callPayload.Queries["authorization"] = SourceExpressionConverter.ConvertO(authorization);
+                if (cookies != null)
+                    callPayload.Queries["cookies"] = SourceExpressionConverter.ConvertO(cookies);
+                if (headers != null)
+                    callPayload.Queries["headers"] = SourceExpressionConverter.ConvertO(headers);
+                if (timeZone != null)
+                    callPayload.Queries["time_zone"] = SourceExpressionConverter.Convert(timeZone);
+                if (waitUntil != null)
+                    callPayload.Queries["wait_until"] = SourceExpressionConverter.ConvertO(waitUntil);
+                if (delay != null)
+                    callPayload.Queries["delay"] = SourceExpressionConverter.ConvertO(delay);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = SourceExpressionConverter.ConvertO(timeout);
+                if (navigationTimeout != null)
+                    callPayload.Queries["navigation_timeout"] = SourceExpressionConverter.ConvertO(navigationTimeout);
+                if (waitForSelector != null)
+                    callPayload.Queries["wait_for_selector"] = SourceExpressionConverter.ConvertO(waitForSelector);
+                if (cache != null)
+                    callPayload.Queries["cache"] = SourceExpressionConverter.ConvertO(cache);
+                if (cacheTtl != null)
+                    callPayload.Queries["cache_ttl"] = SourceExpressionConverter.ConvertO(cacheTtl);
+                if (cacheKey != null)
+                    callPayload.Queries["cache_key"] = SourceExpressionConverter.ConvertO(cacheKey);
+                if (store != null)
+                    callPayload.Queries["store"] = SourceExpressionConverter.ConvertO(store);
+                if (storagePath != null)
+                    callPayload.Queries["storage_path"] = SourceExpressionConverter.ConvertO(storagePath);
+                if (storageBucket != null)
+                    callPayload.Queries["storage_bucket"] = SourceExpressionConverter.ConvertO(storageBucket);
+                if (storageClass != null)
+                    callPayload.Queries["storage_class"] = SourceExpressionConverter.Convert(storageClass);
+                if (storageAcl != null)
+                    callPayload.Queries["storage_acl"] = SourceExpressionConverter.ConvertO(storageAcl);
+                if (metadataImageSize != null)
+                    callPayload.Queries["metadata_image_size"] = SourceExpressionConverter.ConvertO(metadataImageSize);
+                if (ignoreHostErrors != null)
+                    callPayload.Queries["ignore_host_errors"] = SourceExpressionConverter.ConvertO(ignoreHostErrors);
+                if (errorOnSelectorNotFound != null)
+                    callPayload.Queries["error_on_selector_not_found"] = SourceExpressionConverter.ConvertO(errorOnSelectorNotFound);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TakeAnimatedGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
         public IBodyWorkflowAction<DeviceGetResponseItem[]> DeviceGet()
         {
-            var apiCallPath = "/devices";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeviceGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/devices";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeviceGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "screenshotoneip")]
         public IBodyWorkflowAction<UsageGetResponse> UsageGet()
         {
-            var apiCallPath = "/usage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/usage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UsageGetResponse>(BuildSourceInput);
         }
     }
 

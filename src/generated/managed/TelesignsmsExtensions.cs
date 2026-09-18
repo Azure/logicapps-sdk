@@ -12,41 +12,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telesignsms
     public class TelesignsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "telesignsms")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyphoneNumber, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodyexternalId = null, Expression<Func<string>> bodymessageType = null, Expression<Func<string>> bodysenderId = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyphoneNumber, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<string> bodymessageType = null, [WorkflowExpression] Func<string> bodysenderId = null)
         {
-            var apiCallPath = "/api/SMS";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PhoneNumber"] = CSharpExpressionConverter.ConvertToken(bodyphoneNumber);
-            if (bodyexternalId != null)
+            SourceExpression.Validate(bodyphoneNumber, nameof(bodyphoneNumber), required: true);
+            SourceExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
+            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
+            SourceExpression.Validate(bodymessageType, nameof(bodymessageType), required: false);
+            SourceExpression.Validate(bodysenderId, nameof(bodysenderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ExternalId"] = CSharpExpressionConverter.ConvertToken(bodyexternalId);
+                var apiCallPath = "/api/SMS";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["PhoneNumber"] = SourceExpressionConverter.ConvertToken(bodyphoneNumber);
+                if (bodyexternalId != null)
+                {
+                    body["ExternalId"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["MessageText"] = CSharpExpressionConverter.ConvertToken(bodymessageText);
-            if (bodymessageType != null)
-            {
-                body["MessageType"] = CSharpExpressionConverter.ConvertToken(bodymessageType);
                 bodypropCount++;
+                body["MessageText"] = SourceExpressionConverter.ConvertToken(bodymessageText);
+                if (bodymessageType != null)
+                {
+                    body["MessageType"] = SourceExpressionConverter.ConvertToken(bodymessageType);
+                    bodypropCount++;
+                }
+
+                if (bodysenderId != null)
+                {
+                    body["SenderId"] = SourceExpressionConverter.ConvertToken(bodysenderId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysenderId != null)
-            {
-                body["SenderId"] = CSharpExpressionConverter.ConvertToken(bodysenderId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            return new ApiConnectionAction<SendSMSResponse>(BuildSourceInput);
         }
     }
 

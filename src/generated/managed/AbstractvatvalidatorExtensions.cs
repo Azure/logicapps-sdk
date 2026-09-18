@@ -12,38 +12,59 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractvatvalidator
     public class AbstractvatvalidatorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<string>> vatNumber)
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<string> vatNumber)
         {
-            var apiCallPath = "/v1/validate/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vat_number"] = CSharpExpressionConverter.ConvertO(vatNumber);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            SourceExpression.Validate(vatNumber, nameof(vatNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/validate/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vat_number"] = SourceExpressionConverter.ConvertO(vatNumber);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<CalculateResponse> Calculate(Expression<Func<string>> amount, Expression<Func<string>> countryCode, Expression<Func<bool>> isVatIncl = null, Expression<Func<string>> vatCategory = null)
+        public IBodyWorkflowAction<CalculateResponse> Calculate([WorkflowExpression] Func<string> amount, [WorkflowExpression] Func<string> countryCode, [WorkflowExpression] Func<bool> isVatIncl = null, [WorkflowExpression] Func<string> vatCategory = null)
         {
-            var apiCallPath = "/v1/calculate/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["amount"] = CSharpExpressionConverter.ConvertO(amount);
-            callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
-            if (isVatIncl != null)
-                callPayload.Queries["is_vat_incl"] = CSharpExpressionConverter.ConvertO(isVatIncl);
-            if (vatCategory != null)
-                callPayload.Queries["vat_category"] = CSharpExpressionConverter.ConvertO(vatCategory);
-            return new ApiConnectionAction<CalculateResponse>(callPayload);
+            SourceExpression.Validate(amount, nameof(amount), required: true);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
+            SourceExpression.Validate(isVatIncl, nameof(isVatIncl), required: false);
+            SourceExpression.Validate(vatCategory, nameof(vatCategory), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/calculate/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["amount"] = SourceExpressionConverter.ConvertO(amount);
+                callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                if (isVatIncl != null)
+                    callPayload.Queries["is_vat_incl"] = SourceExpressionConverter.ConvertO(isVatIncl);
+                if (vatCategory != null)
+                    callPayload.Queries["vat_category"] = SourceExpressionConverter.ConvertO(vatCategory);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CalculateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractvatvalidator")]
-        public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories(Expression<Func<string>> countryCode)
+        public IBodyWorkflowAction<ListCategoriesResponseItem[]> ListCategories([WorkflowExpression] Func<string> countryCode)
         {
-            var apiCallPath = "/v1/categories/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
-            return new ApiConnectionAction<ListCategoriesResponseItem[]>(callPayload);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/categories/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCategoriesResponseItem[]>(BuildSourceInput);
         }
     }
 

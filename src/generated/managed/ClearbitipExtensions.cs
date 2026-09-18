@@ -12,21 +12,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clearbitip
     public class ClearbitipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clearbitip")]
-        public IBodyWorkflowAction<JToken> LogoGet(Expression<Func<string>> domain, Expression<Func<int>> size = null, Expression<Func<formatInput>> format = null, Expression<Func<bool>> greyscale = null)
+        public IBodyWorkflowAction<JToken> LogoGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<formatInput> format = null, [WorkflowExpression] Func<bool> greyscale = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["size"] = Convert.ToString(128);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            callPayload.Queries["format"] = Convert.ToString("png");
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            callPayload.Queries["greyscale"] = Convert.ToString(false);
-            if (greyscale != null)
-                callPayload.Queries["greyscale"] = CSharpExpressionConverter.ConvertO(greyscale);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(greyscale, nameof(greyscale), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["size"] = Convert.ToString(128);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["format"] = Convert.ToString("png");
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                callPayload.Queries["greyscale"] = Convert.ToString(false);
+                if (greyscale != null)
+                    callPayload.Queries["greyscale"] = SourceExpressionConverter.ConvertO(greyscale);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

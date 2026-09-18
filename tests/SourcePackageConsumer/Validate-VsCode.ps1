@@ -1,0 +1,124 @@
+[CmdletBinding()]
+param(
+    [Parameter(Mandatory)][string] $PackagePath,
+    [Parameter(Mandatory)][string] $ExpectedPackageSha256,
+    [Parameter(Mandatory)][string] $CodePath,
+    [Parameter(Mandatory)][string] $CSharpExtensionPath,
+    [Parameter(Mandatory)][string] $RuntimeExtensionPath,
+    [string] $PackageCache = (Join-Path $PSScriptRoot 'obj\package-validation\packages'),
+    [string] $EvidenceDirectory = (Join-Path $PSScriptRoot ("obj\vscode-" + (Get-Date -Format 'yyyyMMdd-HHmmss')))
+)
+
+$ErrorActionPreference = 'Stop'
+$PackagePath = (Resolve-Path $PackagePath).Path
+$CodePath = (Resolve-Path $CodePath).Path
+$PackageCache = (Resolve-Path $PackageCache).Path
+$EvidenceDirectory = [IO.Path]::GetFullPath($EvidenceDirectory)
+if ((Get-FileHash $PackagePath).Hash -ne $ExpectedPackageSha256) { throw 'Package does not match the explicitly pinned hash.' }
+if (Test-Path $EvidenceDirectory) { throw 'Use a new evidence directory; existing evidence is never overwritten.' }
+New-Item -ItemType Directory $EvidenceDirectory | Out-Null
+$workspace = Join-Path $EvidenceDirectory 'LanguageServiceFixture'
+$extensionDirectory = Join-Path $EvidenceDirectory 'extensions'
+$userData = Join-Path $EvidenceDirectory 'user-data'
+$probe = Join-Path $EvidenceDirectory 'VsCodeProbe'
+Copy-Item (Join-Path $PSScriptRoot 'LanguageServiceFixture') $workspace -Recurse
+Copy-Item (Join-Path $PSScriptRoot 'VsCodeProbe') $probe -Recurse
+Copy-Item $PSCommandPath (Join-Path $EvidenceDirectory 'validator.ps1.txt')
+New-Item -ItemType Directory $extensionDirectory,(Join-Path $userData 'User') | Out-Null
+foreach ($extension in @($CSharpExtensionPath, $RuntimeExtensionPath)) {
+    Copy-Item -LiteralPath (Resolve-Path $extension).Path -Destination $extensionDirectory -Recurse
+}
+$dotnet = (Get-Command dotnet).Source
+@{
+    'extensions.autoUpdate' = $false
+    'extensions.autoCheckUpdates' = $false
+    'update.mode' = 'none'
+    'telemetry.telemetryLevel' = 'off'
+    'workbench.enableExperiments' = $false
+    'workbench.startupEditor' = 'none'
+    'security.workspace.trust.enabled' = $false
+    'git.enabled' = $false
+    'chat.disableAIFeatures' = $true
+    'dotnetAcquisitionExtension.sharedExistingDotnetPath' = $dotnet
+} | ConvertTo-Json | Set-Content (Join-Path $userData 'User\settings.json')
+$archive = [IO.Compression.ZipFile]::OpenRead($PackagePath)
+try {
+    $reader = [IO.StreamReader]::new(($archive.Entries | Where-Object FullName -Like '*.nuspec').Open())
+    try { [xml]$nuspec = $reader.ReadToEnd() } finally { $reader.Dispose() }
+    $id = [string]$nuspec.package.metadata.id
+    $version = [string]$nuspec.package.metadata.version
+} finally { $archive.Dispose() }
+if ($id -ne 'Microsoft.Azure.Workflows.Sdk') { throw "Unexpected package $id" }
+$packageRoot = Join-Path (Join-Path $PackageCache $id.ToLowerInvariant()) $version.ToLowerInvariant()
+$cachedPackage = Join-Path $packageRoot "$($id.ToLowerInvariant()).$($version.ToLowerInvariant()).nupkg"
+if ((Get-FileHash $cachedPackage).Hash -ne $ExpectedPackageSha256) { throw 'Cached package differs from pinned package.' }
+$project = Join-Path $workspace 'LanguageServiceFixture.csproj'
+[xml]$projectXml = Get-Content $project -Raw
+$projectXml.Project.PropertyGroup.SdkPackageVersion.InnerText = $version
+$projectXml.Save($project)
+$restoreArgs = @('restore', $project, '--source', (Split-Path $PackagePath), '--packages', $PackageCache, '--verbosity', 'minimal')
+& $dotnet @restoreArgs 2>&1 | Tee-Object (Join-Path $EvidenceDirectory 'restore.log') | Out-Host
+$restoreExit = $LASTEXITCODE
+if ($restoreExit -ne 0) { throw "Restore failed: $restoreExit" }
+$launchArgs = @(
+    '--new-window', '--user-data-dir', $userData, '--extensions-dir', $extensionDirectory,
+    '--extensionDevelopmentPath', $probe, '--extensionTestsPath', (Join-Path $probe 'tests.cjs'),
+    '--skip-welcome', '--skip-release-notes', '--disable-workspace-trust', '--disable-gpu', '--sync', 'off', $workspace
+)
+$provenance = [ordered]@{
+    evidenceKind = 'actual-ide-package-validation'
+    packageStatus = 'Explicitly pinned package; no claim about any other production integration candidate.'
+    packageSha256 = $ExpectedPackageSha256
+    runtimeSha256 = (Get-FileHash (Join-Path $packageRoot 'lib\netstandard2.0\Microsoft.Azure.Workflows.Sdk.dll')).Hash
+    compilerSha256 = (Get-FileHash (Join-Path $packageRoot 'tools\workflow-build\Microsoft.Azure.Workflows.Sdk.Build.dll')).Hash
+    codePath = $CodePath
+    codeVersion = (Get-Item $CodePath).VersionInfo.ProductVersion
+    codeSha256 = (Get-FileHash $CodePath).Hash
+    validatorSha256 = (Get-FileHash $PSCommandPath).Hash
+    restore = @{ executable = $dotnet; argv = $restoreArgs; exitCode = $restoreExit }
+    launch = @{ executable = $CodePath; argv = $launchArgs }
+}
+$start = [Diagnostics.ProcessStartInfo]::new($CodePath)
+foreach ($argument in $launchArgs) { $start.ArgumentList.Add($argument) }
+$start.UseShellExecute = $false
+$start.RedirectStandardOutput = $true
+$start.RedirectStandardError = $true
+$start.Environment.Remove('ELECTRON_RUN_AS_NODE') | Out-Null
+$start.Environment.Remove('VSCODE_IPC_HOOK_CLI') | Out-Null
+$start.Environment.Remove('VSCODE_PORTABLE') | Out-Null
+$start.Environment.Remove('VSCODE_APPDATA') | Out-Null
+$start.Environment['WORKFLOW_IDE_EVIDENCE'] = $EvidenceDirectory
+$start.Environment['WORKFLOW_IDE_DOTNET'] = $dotnet
+$start.Environment['WORKFLOW_LSP_SENTINEL'] = Join-Path $EvidenceDirectory 'authoring-executed.txt'
+$process = [Diagnostics.Process]::Start($start)
+$stdout = $process.StandardOutput.ReadToEndAsync()
+$stderr = $process.StandardError.ReadToEndAsync()
+try {
+    if (!$process.WaitForExit(480000)) {
+        $process.Kill($true)
+        throw 'Isolated VS Code test host timed out.'
+    }
+    $provenance.launch.exitCode = $process.ExitCode
+    if ($process.ExitCode -ne 0) { throw "VS Code test host failed: $($process.ExitCode)" }
+    $result = Get-Content (Join-Path $EvidenceDirectory 'actual-ide-evidence.json') -Raw | ConvertFrom-Json
+    if ($result.status -ne 'passed') { throw 'Actual IDE assertions did not pass.' }
+    if ((Get-FileHash (Join-Path $workspace 'bin\Debug\net9.0\Microsoft.Azure.Workflows.Sdk.dll')).Hash -ne $provenance.runtimeSha256) {
+        throw 'IDE build output differs from the pinned packaged runtime.'
+    }
+    $provenance.status = 'passed'
+    $result.checks | Write-Output
+} catch {
+    $provenance.status = 'failed'
+    $provenance.error = $_.ToString()
+    throw
+} finally {
+    $stdout.GetAwaiter().GetResult() | Set-Content (Join-Path $EvidenceDirectory 'code-stdout.log')
+    $stderr.GetAwaiter().GetResult() | Set-Content (Join-Path $EvidenceDirectory 'code-stderr.log')
+    $provenance.completedUtc = [DateTime]::UtcNow.ToString('o')
+    $provenance.artifacts = @(Get-ChildItem $EvidenceDirectory -File -Recurse |
+        Where-Object { $_.FullName -notlike "$extensionDirectory\*" -and $_.FullName -notlike "$userData\*" -and
+            $_.FullName -notlike "$workspace\obj\*" -and $_.FullName -notlike "$workspace\bin\*" } |
+        ForEach-Object { @{ path = $_.FullName; sha256 = (Get-FileHash $_.FullName).Hash } })
+    $provenance | ConvertTo-Json -Depth 12 | Set-Content (Join-Path $EvidenceDirectory 'provenance.json')
+    $process.Dispose()
+}

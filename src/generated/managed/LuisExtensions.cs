@@ -12,34 +12,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Luis
     public class LuisActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        public IBodyWorkflowAction<PredictResponse> GetPredictions(Expression<Func<string>> appId, Expression<Func<string>> q, Expression<Func<string>> desiredIntent = null, Expression<Func<string>> versionId = null)
+        public IBodyWorkflowAction<PredictResponse> GetPredictions([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> desiredIntent = null, [WorkflowExpression] Func<string> versionId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (desiredIntent != null)
-                callPayload.Queries["desiredIntent"] = CSharpExpressionConverter.ConvertO(desiredIntent);
-            callPayload.Queries["versionId"] = Convert.ToString("0.1");
-            if (versionId != null)
-                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
-            callPayload.Queries["verbose"] = Convert.ToString(true);
-            return new ApiConnectionAction<PredictResponse>(callPayload);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(desiredIntent, nameof(desiredIntent), required: false);
+            SourceExpression.Validate(versionId, nameof(versionId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/luis/v2.0/apps/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (desiredIntent != null)
+                    callPayload.Queries["desiredIntent"] = SourceExpressionConverter.ConvertO(desiredIntent);
+                callPayload.Queries["versionId"] = Convert.ToString("0.1");
+                if (versionId != null)
+                    callPayload.Queries["versionId"] = SourceExpressionConverter.ConvertO(versionId);
+                callPayload.Queries["verbose"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PredictResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "luis")]
-        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity(Expression<Func<string>> appId, Expression<Func<string>> desiredEntity, Expression<Func<string>> versionId = null, Expression<Func<string>> luisPredictionObject = null)
+        public IBodyWorkflowAction<GetTopScoringMatchingEntityResponse> GetTopScoringMatchingEntity([WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> desiredEntity, [WorkflowExpression] Func<string> versionId = null, [WorkflowExpression] Func<string> luisPredictionObject = null)
         {
-            var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["app-id"] = CSharpExpressionConverter.ConvertO(appId);
-            callPayload.Queries["desiredEntity"] = CSharpExpressionConverter.ConvertO(desiredEntity);
-            callPayload.Queries["versionId"] = Convert.ToString("0.1");
-            if (versionId != null)
-                callPayload.Queries["versionId"] = CSharpExpressionConverter.ConvertO(versionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(luisPredictionObject);
-            return new ApiConnectionAction<GetTopScoringMatchingEntityResponse>(callPayload);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            SourceExpression.Validate(desiredEntity, nameof(desiredEntity), required: true);
+            SourceExpression.Validate(versionId, nameof(versionId), required: false);
+            SourceExpression.Validate(luisPredictionObject, nameof(luisPredictionObject), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/noApiCall/GetTopScoringMatchingEntity";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["app-id"] = SourceExpressionConverter.ConvertO(appId);
+                callPayload.Queries["desiredEntity"] = SourceExpressionConverter.ConvertO(desiredEntity);
+                callPayload.Queries["versionId"] = Convert.ToString("0.1");
+                if (versionId != null)
+                    callPayload.Queries["versionId"] = SourceExpressionConverter.ConvertO(versionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(luisPredictionObject);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTopScoringMatchingEntityResponse>(BuildSourceInput);
         }
     }
 

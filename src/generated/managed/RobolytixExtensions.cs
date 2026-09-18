@@ -12,32 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robolytix
     public class RobolytixActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robolytix")]
-        public IBodyWorkflowAction<SonarResponse> Sonar(Expression<Func<string>> bodyname, Expression<Func<string>> bodyprocessid, Expression<Func<string>> bodytype, Expression<Func<string>> bodyrunid = null)
+        public IBodyWorkflowAction<SonarResponse> Sonar([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyprocessid, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodyrunid = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["processid"] = CSharpExpressionConverter.ConvertToken(bodyprocessid);
-            if (bodyrunid != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyprocessid, nameof(bodyprocessid), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodyrunid, nameof(bodyrunid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["runid"] = CSharpExpressionConverter.ConvertToken(bodyrunid);
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["processid"] = SourceExpressionConverter.ConvertToken(bodyprocessid);
+                if (bodyrunid != null)
+                {
+                    body["runid"] = SourceExpressionConverter.ConvertToken(bodyrunid);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SonarResponse>(callPayload);
+            return new ApiConnectionAction<SonarResponse>(BuildSourceInput);
         }
     }
 

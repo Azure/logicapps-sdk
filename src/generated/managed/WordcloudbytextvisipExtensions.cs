@@ -12,57 +12,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordcloudbytextvisip
     public class WordcloudbytextvisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordcloudbytextvisip")]
-        public IBodyWorkflowAction<CloudCreateResponse> CloudCreate(Expression<Func<string>> bodytext, Expression<Func<double>> bodyscale, Expression<Func<int>> bodywidth, Expression<Func<int>> bodyheight, Expression<Func<string[]>> bodycolors = null, Expression<Func<string>> bodyfont = null, Expression<Func<bool>> bodyuseStopwords = null, Expression<Func<string>> bodylanguage = null, Expression<Func<bool>> bodyuppercase = null)
+        public IBodyWorkflowAction<CloudCreateResponse> CloudCreate([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<double> bodyscale, [WorkflowExpression] Func<int> bodywidth, [WorkflowExpression] Func<int> bodyheight, [WorkflowExpression] Func<string[]> bodycolors = null, [WorkflowExpression] Func<string> bodyfont = null, [WorkflowExpression] Func<bool> bodyuseStopwords = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<bool> bodyuppercase = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["scale"] = CSharpExpressionConverter.ConvertToken(bodyscale);
-            bodypropCount++;
-            body["width"] = CSharpExpressionConverter.ConvertToken(bodywidth);
-            bodypropCount++;
-            body["height"] = CSharpExpressionConverter.ConvertToken(bodyheight);
-            if (bodycolors != null)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyscale, nameof(bodyscale), required: true);
+            SourceExpression.Validate(bodywidth, nameof(bodywidth), required: true);
+            SourceExpression.Validate(bodyheight, nameof(bodyheight), required: true);
+            SourceExpression.Validate(bodycolors, nameof(bodycolors), required: false);
+            SourceExpression.Validate(bodyfont, nameof(bodyfont), required: false);
+            SourceExpression.Validate(bodyuseStopwords, nameof(bodyuseStopwords), required: false);
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            SourceExpression.Validate(bodyuppercase, nameof(bodyuppercase), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["colors"] = CSharpExpressionConverter.ConvertToken(bodycolors);
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyfont != null)
-            {
-                body["font"] = CSharpExpressionConverter.ConvertToken(bodyfont);
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
-            }
-
-            if (bodyuseStopwords != null)
-            {
-                body["use_stopwords"] = CSharpExpressionConverter.ConvertToken(bodyuseStopwords);
+                body["scale"] = SourceExpressionConverter.ConvertToken(bodyscale);
                 bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
+                body["width"] = SourceExpressionConverter.ConvertToken(bodywidth);
                 bodypropCount++;
+                body["height"] = SourceExpressionConverter.ConvertToken(bodyheight);
+                if (bodycolors != null)
+                {
+                    body["colors"] = SourceExpressionConverter.ConvertToken(bodycolors);
+                    bodypropCount++;
+                }
+
+                if (bodyfont != null)
+                {
+                    body["font"] = SourceExpressionConverter.ConvertToken(bodyfont);
+                    bodypropCount++;
+                }
+
+                if (bodyuseStopwords != null)
+                {
+                    body["use_stopwords"] = SourceExpressionConverter.ConvertToken(bodyuseStopwords);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodyuppercase != null)
+                {
+                    body["uppercase"] = SourceExpressionConverter.ConvertToken(bodyuppercase);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyuppercase != null)
-            {
-                body["uppercase"] = CSharpExpressionConverter.ConvertToken(bodyuppercase);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloudCreateResponse>(callPayload);
+            return new ApiConnectionAction<CloudCreateResponse>(BuildSourceInput);
         }
     }
 

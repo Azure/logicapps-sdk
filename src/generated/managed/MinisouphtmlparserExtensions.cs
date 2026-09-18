@@ -12,195 +12,230 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Minisouphtmlparser
     public class MinisouphtmlparserActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML(Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<FetchHTMLResponse> FetchHTML([WorkflowExpression] Func<string> bodyurl)
         {
-            var apiCallPath = "/fetch-html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "fetch_html";
-            bodypropCount++;
-            bodypropCount++;
-            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/fetch-html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "fetch_html";
+                bodypropCount++;
+                bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<FetchHTMLResponse>(callPayload);
+            return new ApiConnectionAction<FetchHTMLResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<SelectElementsResponse> SelectElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        public IBodyWorkflowAction<SelectElementsResponse> SelectElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
         {
-            var apiCallPath = "/select";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "select";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
-            bodypropCount++;
-            body["selector"] = CSharpExpressionConverter.ConvertToken(bodyselector);
-            if (bodyselectorType != null)
+            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            SourceExpression.Validate(bodyselector, nameof(bodyselector), required: true);
+            SourceExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/select";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "select";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = SourceExpressionConverter.ConvertToken(bodyhtml);
+                bodypropCount++;
+                body["selector"] = SourceExpressionConverter.ConvertToken(bodyselector);
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = CSharpExpressionConverter.Convert(bodyselectorType);
+                    if (bodyselectorType != null)
+                    {
+                        body["selector_type"] = SourceExpressionConverter.Convert(bodyselectorType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["selector_type"] = "css";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["selector_type"] = "css";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SelectElementsResponse>(callPayload);
+            return new ApiConnectionAction<SelectElementsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodyselector, Expression<Func<string>> bodyattribute, Expression<Func<bodyselectorTypeInput>> bodyselectorType = null)
+        public IBodyWorkflowAction<ExtractValuesResponse> ExtractValues([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodyselector, [WorkflowExpression] Func<string> bodyattribute, [WorkflowExpression] Func<bodyselectorTypeInput> bodyselectorType = null)
         {
-            var apiCallPath = "/extract";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "extract";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
-            bodypropCount++;
-            body["selector"] = CSharpExpressionConverter.ConvertToken(bodyselector);
-            bodypropCount++;
-            body["attribute"] = CSharpExpressionConverter.ConvertToken(bodyattribute);
-            if (bodyselectorType != null)
+            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            SourceExpression.Validate(bodyselector, nameof(bodyselector), required: true);
+            SourceExpression.Validate(bodyattribute, nameof(bodyattribute), required: true);
+            SourceExpression.Validate(bodyselectorType, nameof(bodyselectorType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/extract";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "extract";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = SourceExpressionConverter.ConvertToken(bodyhtml);
+                bodypropCount++;
+                body["selector"] = SourceExpressionConverter.ConvertToken(bodyselector);
+                bodypropCount++;
+                body["attribute"] = SourceExpressionConverter.ConvertToken(bodyattribute);
                 if (bodyselectorType != null)
                 {
-                    body["selector_type"] = CSharpExpressionConverter.Convert(bodyselectorType);
+                    if (bodyselectorType != null)
+                    {
+                        body["selector_type"] = SourceExpressionConverter.Convert(bodyselectorType);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["selector_type"] = "css";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["selector_type"] = "css";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ExtractValuesResponse>(callPayload);
+            return new ApiConnectionAction<ExtractValuesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytagName, Expression<Func<string>> bodyattributesid = null, Expression<Func<string>> bodyattributesClass = null)
+        public IBodyWorkflowAction<FindAllElementsResponse> FindAllElements([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytagName, [WorkflowExpression] Func<string> bodyattributesid = null, [WorkflowExpression] Func<string> bodyattributesClass = null)
         {
-            var apiCallPath = "/find-all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "find_all";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
-            bodypropCount++;
-            body["tag_name"] = CSharpExpressionConverter.ConvertToken(bodytagName);
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodyattributesid != null)
+            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            SourceExpression.Validate(bodytagName, nameof(bodytagName), required: true);
+            SourceExpression.Validate(bodyattributesid, nameof(bodyattributesid), required: false);
+            SourceExpression.Validate(bodyattributesClass, nameof(bodyattributesClass), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                attributesObject["id"] = CSharpExpressionConverter.ConvertToken(bodyattributesid);
-                attributesObjectpropCount++;
-            }
-
-            if (bodyattributesClass != null)
-            {
-                attributesObject["class"] = CSharpExpressionConverter.ConvertToken(bodyattributesClass);
-                attributesObjectpropCount++;
-            }
-
-            if (attributesObjectpropCount > 0)
-            {
-                body["attributes"] = attributesObject;
+                var apiCallPath = "/find-all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "find_all";
                 bodypropCount++;
+                bodypropCount++;
+                body["html"] = SourceExpressionConverter.ConvertToken(bodyhtml);
+                bodypropCount++;
+                body["tag_name"] = SourceExpressionConverter.ConvertToken(bodytagName);
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (bodyattributesid != null)
+                {
+                    attributesObject["id"] = SourceExpressionConverter.ConvertToken(bodyattributesid);
+                    attributesObjectpropCount++;
+                }
+
+                if (bodyattributesClass != null)
+                {
+                    attributesObject["class"] = SourceExpressionConverter.ConvertToken(bodyattributesClass);
+                    attributesObjectpropCount++;
+                }
+
+                if (attributesObjectpropCount > 0)
+                {
+                    body["attributes"] = attributesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FindAllElementsResponse>(callPayload);
+            return new ApiConnectionAction<FindAllElementsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "minisouphtmlparser")]
-        public IBodyWorkflowAction<ParseTableResponse> ParseTable(Expression<Func<string>> bodyhtml, Expression<Func<string>> bodytableSelector = null, Expression<Func<bool>> bodyheaderRowsExist = null)
+        public IBodyWorkflowAction<ParseTableResponse> ParseTable([WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodytableSelector = null, [WorkflowExpression] Func<bool> bodyheaderRowsExist = null)
         {
-            var apiCallPath = "/parse-table";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["operation"] = "parse_table";
-            bodypropCount++;
-            bodypropCount++;
-            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
-            if (bodytableSelector != null)
+            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            SourceExpression.Validate(bodytableSelector, nameof(bodytableSelector), required: false);
+            SourceExpression.Validate(bodyheaderRowsExist, nameof(bodyheaderRowsExist), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/parse-table";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["operation"] = "parse_table";
+                bodypropCount++;
+                bodypropCount++;
+                body["html"] = SourceExpressionConverter.ConvertToken(bodyhtml);
                 if (bodytableSelector != null)
                 {
-                    body["table_selector"] = CSharpExpressionConverter.ConvertToken(bodytableSelector);
+                    if (bodytableSelector != null)
+                    {
+                        body["table_selector"] = SourceExpressionConverter.ConvertToken(bodytableSelector);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["table_selector"] = "table";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["table_selector"] = "table";
-                bodypropCount++;
-            }
-
-            if (bodyheaderRowsExist != null)
-            {
                 if (bodyheaderRowsExist != null)
                 {
-                    body["header_rows_exist"] = CSharpExpressionConverter.ConvertToken(bodyheaderRowsExist);
+                    if (bodyheaderRowsExist != null)
+                    {
+                        body["header_rows_exist"] = SourceExpressionConverter.ConvertToken(bodyheaderRowsExist);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["header_rows_exist"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["header_rows_exist"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ParseTableResponse>(callPayload);
+            return new ApiConnectionAction<ParseTableResponse>(BuildSourceInput);
         }
     }
 

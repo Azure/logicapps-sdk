@@ -14,120 +14,169 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docugenerate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
         public IBodyWorkflowAction<ListTemplatesResponseItem[]> ListTemplates()
         {
-            var apiCallPath = "/template";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTemplatesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GetTemplateResponse> GetTemplate(Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/template/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IWorkflowAction DeleteTemplate(Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/template/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments(Expression<Func<string>> templateId)
-        {
-            var apiCallPath = "/document";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            return new ApiConnectionAction<ListDocumentsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodydata, Expression<Func<string>> bodyname = null, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null)
-        {
-            var apiCallPath = "/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-            bodypropCount++;
-            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-            if (bodyname != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/template";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyoutputFormat != null)
+            return new ApiConnectionAction<ListTemplatesResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        public IBodyWorkflowAction<GetTemplateResponse> GetTemplate([WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                if (bodyoutputFormat != null)
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/template/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        public IWorkflowAction DeleteTemplate([WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/template/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        public IBodyWorkflowAction<ListDocumentsResponseItem[]> ListDocuments([WorkflowExpression] Func<string> templateId)
+        {
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListDocumentsResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null)
+        {
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                bodypropCount++;
+                body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                if (bodyname != null)
                 {
-                    body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["output_format"] = ".pdf";
-                bodypropCount++;
+                if (bodyoutputFormat != null)
+                {
+                    if (bodyoutputFormat != null)
+                    {
+                        body["output_format"] = SourceExpressionConverter.Convert(bodyoutputFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["output_format"] = ".pdf";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            return new ApiConnectionAction<GenerateDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> id)
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docugenerate")]
-        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument(Expression<Func<string>> id, Expression<Func<string>> bodyname = null)
+        public IBodyWorkflowAction<UpdateDocumentResponse> UpdateDocument([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateDocumentResponse>(callPayload);
+            return new ApiConnectionAction<UpdateDocumentResponse>(BuildSourceInput);
         }
     }
 

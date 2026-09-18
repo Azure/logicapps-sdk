@@ -14,88 +14,126 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
         public IBodyWorkflowAction<MeetingArrayItem[]> GetUpcomingMeetings()
         {
-            var apiCallPath = "/upcomingMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeetingArrayItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<Meeting> GetMeeting(Expression<Func<string>> meetingId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Meeting>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IWorkflowAction UpdateMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> meetingsubject, Expression<Func<string>> meetingstartTime, Expression<Func<string>> meetingendTime, Expression<Func<bool>> meetingrequiresPassword, Expression<Func<meetingconferenceCallInfoInput>> meetingconferenceCallInfo, Expression<Func<meetingmeetingTypeInput>> meetingmeetingType = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var meeting = new JObject();
-            var meetingpropCount = 0;
-            meetingpropCount++;
-            meeting["subject"] = CSharpExpressionConverter.ConvertToken(meetingsubject);
-            meetingpropCount++;
-            meeting["starttime"] = CSharpExpressionConverter.ConvertToken(meetingstartTime);
-            meetingpropCount++;
-            meeting["endtime"] = CSharpExpressionConverter.ConvertToken(meetingendTime);
-            meetingpropCount++;
-            meeting["passwordrequired"] = CSharpExpressionConverter.ConvertToken(meetingrequiresPassword);
-            meetingpropCount++;
-            meeting["conferencecallinfo"] = CSharpExpressionConverter.Convert(meetingconferenceCallInfo);
-            if (meetingmeetingType != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                meeting["meetingtype"] = CSharpExpressionConverter.Convert(meetingmeetingType);
+                var apiCallPath = "/upcomingMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MeetingArrayItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
+        public IBodyWorkflowAction<Meeting> GetMeeting([WorkflowExpression] Func<string> meetingId)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Meeting>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
+        public IWorkflowAction UpdateMeeting([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> meetingsubject, [WorkflowExpression] Func<string> meetingstartTime, [WorkflowExpression] Func<string> meetingendTime, [WorkflowExpression] Func<bool> meetingrequiresPassword, [WorkflowExpression] Func<meetingconferenceCallInfoInput> meetingconferenceCallInfo, [WorkflowExpression] Func<meetingmeetingTypeInput> meetingmeetingType = null)
+        {
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(meetingsubject, nameof(meetingsubject), required: true);
+            SourceExpression.Validate(meetingstartTime, nameof(meetingstartTime), required: true);
+            SourceExpression.Validate(meetingendTime, nameof(meetingendTime), required: true);
+            SourceExpression.Validate(meetingrequiresPassword, nameof(meetingrequiresPassword), required: true);
+            SourceExpression.Validate(meetingconferenceCallInfo, nameof(meetingconferenceCallInfo), required: true);
+            SourceExpression.Validate(meetingmeetingType, nameof(meetingmeetingType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var meeting = new JObject();
+                var meetingpropCount = 0;
                 meetingpropCount++;
+                meeting["subject"] = SourceExpressionConverter.ConvertToken(meetingsubject);
+                meetingpropCount++;
+                meeting["starttime"] = SourceExpressionConverter.ConvertToken(meetingstartTime);
+                meetingpropCount++;
+                meeting["endtime"] = SourceExpressionConverter.ConvertToken(meetingendTime);
+                meetingpropCount++;
+                meeting["passwordrequired"] = SourceExpressionConverter.ConvertToken(meetingrequiresPassword);
+                meetingpropCount++;
+                meeting["conferencecallinfo"] = SourceExpressionConverter.Convert(meetingconferenceCallInfo);
+                if (meetingmeetingType != null)
+                {
+                    meeting["meetingtype"] = SourceExpressionConverter.Convert(meetingmeetingType);
+                    meetingpropCount++;
+                }
+
+                if (meetingpropCount > 0)
+                {
+                    callPayload.Body = meeting;
+                }
+                return callPayload;
             }
 
-            if (meetingpropCount > 0)
-            {
-                callPayload.Body = meeting;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees(Expression<Func<string>> meetingId)
+        public IBodyWorkflowAction<Attendee[]> GetMeetingAttendees([WorkflowExpression] Func<string> meetingId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Attendee[]>(callPayload);
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}/attendees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Attendee[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gotomeeting")]
-        public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting(Expression<Func<string>> newMeetingsubject, Expression<Func<string>> newMeetingstartTime, Expression<Func<string>> newMeetingendTime, Expression<Func<bool>> newMeetingrequiresPassword, Expression<Func<newMeetingconferenceCallInfoInput>> newMeetingconferenceCallInfo, Expression<Func<newMeetingmeetingTypeInput>> newMeetingmeetingType)
+        public IBodyWorkflowAction<NewMeetingResponse> CreateMeeting([WorkflowExpression] Func<string> newMeetingsubject, [WorkflowExpression] Func<string> newMeetingstartTime, [WorkflowExpression] Func<string> newMeetingendTime, [WorkflowExpression] Func<bool> newMeetingrequiresPassword, [WorkflowExpression] Func<newMeetingconferenceCallInfoInput> newMeetingconferenceCallInfo, [WorkflowExpression] Func<newMeetingmeetingTypeInput> newMeetingmeetingType)
         {
-            var apiCallPath = "/v2/meetings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var newMeeting = new JObject();
-            var newMeetingpropCount = 0;
-            newMeetingpropCount++;
-            newMeeting["subject"] = CSharpExpressionConverter.ConvertToken(newMeetingsubject);
-            newMeetingpropCount++;
-            newMeeting["starttime"] = CSharpExpressionConverter.ConvertToken(newMeetingstartTime);
-            newMeetingpropCount++;
-            newMeeting["endtime"] = CSharpExpressionConverter.ConvertToken(newMeetingendTime);
-            newMeetingpropCount++;
-            newMeeting["passwordrequired"] = CSharpExpressionConverter.ConvertToken(newMeetingrequiresPassword);
-            newMeetingpropCount++;
-            newMeeting["conferencecallinfo"] = CSharpExpressionConverter.Convert(newMeetingconferenceCallInfo);
-            newMeetingpropCount++;
-            newMeeting["meetingtype"] = CSharpExpressionConverter.Convert(newMeetingmeetingType);
-            if (newMeetingpropCount > 0)
+            SourceExpression.Validate(newMeetingsubject, nameof(newMeetingsubject), required: true);
+            SourceExpression.Validate(newMeetingstartTime, nameof(newMeetingstartTime), required: true);
+            SourceExpression.Validate(newMeetingendTime, nameof(newMeetingendTime), required: true);
+            SourceExpression.Validate(newMeetingrequiresPassword, nameof(newMeetingrequiresPassword), required: true);
+            SourceExpression.Validate(newMeetingconferenceCallInfo, nameof(newMeetingconferenceCallInfo), required: true);
+            SourceExpression.Validate(newMeetingmeetingType, nameof(newMeetingmeetingType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = newMeeting;
+                var apiCallPath = "/v2/meetings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var newMeeting = new JObject();
+                var newMeetingpropCount = 0;
+                newMeetingpropCount++;
+                newMeeting["subject"] = SourceExpressionConverter.ConvertToken(newMeetingsubject);
+                newMeetingpropCount++;
+                newMeeting["starttime"] = SourceExpressionConverter.ConvertToken(newMeetingstartTime);
+                newMeetingpropCount++;
+                newMeeting["endtime"] = SourceExpressionConverter.ConvertToken(newMeetingendTime);
+                newMeetingpropCount++;
+                newMeeting["passwordrequired"] = SourceExpressionConverter.ConvertToken(newMeetingrequiresPassword);
+                newMeetingpropCount++;
+                newMeeting["conferencecallinfo"] = SourceExpressionConverter.Convert(newMeetingconferenceCallInfo);
+                newMeetingpropCount++;
+                newMeeting["meetingtype"] = SourceExpressionConverter.Convert(newMeetingmeetingType);
+                if (newMeetingpropCount > 0)
+                {
+                    callPayload.Body = newMeeting;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<NewMeetingResponse>(callPayload);
+            return new ApiConnectionAction<NewMeetingResponse>(BuildSourceInput);
         }
     }
 
@@ -103,18 +141,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gotomeeting
     {
         public IBodyWorkflowTrigger<MeetingArrayItem[]> OnNewMeeting(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/new_meeting_trigger/upcomingMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<MeetingArrayItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<MeetingArrayItem[]> OnMeetingComplete(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<MeetingArrayItem[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/completed_meeting_trigger/historicalMeetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<MeetingArrayItem[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

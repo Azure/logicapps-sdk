@@ -12,21 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Addresslabs
     public class AddresslabsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "addresslabs")]
-        public IBodyWorkflowAction<ParseAddressResponse> ParseAddress(Expression<Func<string>> bodyaddress)
+        public IBodyWorkflowAction<ParseAddressResponse> ParseAddress([WorkflowExpression] Func<string> bodyaddress)
         {
-            var apiCallPath = "/parsed-address";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/parsed-address";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ParseAddressResponse>(callPayload);
+            return new ApiConnectionAction<ParseAddressResponse>(BuildSourceInput);
         }
     }
 

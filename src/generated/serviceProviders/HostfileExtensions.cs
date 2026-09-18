@@ -14,33 +14,49 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Hostfile
     public class HostfileActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<JToken[]>> rows)
+        public IBodyWorkflowAction<GenerateFileContentsOutput> GenerateFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<JToken[]> rows)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
-            serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
-            serviceProviderParameters["rows"] = CSharpExpressionConverter.ConvertToken(rows);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            SourceExpression.Validate(schema, nameof(schema), required: true);
+            SourceExpression.Validate(rows, nameof(rows), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GenerateFileContentsOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["schema"] = SourceExpressionConverter.ConvertToken(schema);
+                serviceProviderParameters["rows"] = SourceExpressionConverter.ConvertToken(rows);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "generateFileContents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GenerateFileContentsOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "hostfile")]
-        public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents(Expression<Func<string>> hidx, Expression<Func<string>> schema, Expression<Func<string>> contents)
+        public IBodyWorkflowAction<ParseFileContentsOutput> ParseFileContents([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> schema, [WorkflowExpression] Func<string> contents)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
-            serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
-            serviceProviderParameters["contents"] = CSharpExpressionConverter.ConvertToken(contents);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            SourceExpression.Validate(schema, nameof(schema), required: true);
+            SourceExpression.Validate(contents, nameof(contents), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ParseFileContentsOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["schema"] = SourceExpressionConverter.ConvertToken(schema);
+                serviceProviderParameters["contents"] = SourceExpressionConverter.ConvertToken(contents);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/hostfile", operationId: "parseFileContents", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ParseFileContentsOutput>(BuildSourceInput);
         }
     }
 

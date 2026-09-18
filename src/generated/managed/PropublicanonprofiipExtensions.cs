@@ -12,31 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Propublicanonprofiip
     public class PropublicanonprofiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q = null, Expression<Func<int>> page = null, Expression<Func<string>> stateId = null, Expression<Func<int>> nteeId = null, Expression<Func<int>> cCodeId = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> stateId = null, [WorkflowExpression] Func<int> nteeId = null, [WorkflowExpression] Func<int> cCodeId = null)
         {
-            var apiCallPath = "/search.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (stateId != null)
-                callPayload.Queries["state[id]"] = CSharpExpressionConverter.ConvertO(stateId);
-            if (nteeId != null)
-                callPayload.Queries["ntee[id]"] = CSharpExpressionConverter.ConvertO(nteeId);
-            if (cCodeId != null)
-                callPayload.Queries["c_code[id]"] = CSharpExpressionConverter.ConvertO(cCodeId);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(stateId, nameof(stateId), required: false);
+            SourceExpression.Validate(nteeId, nameof(nteeId), required: false);
+            SourceExpression.Validate(cCodeId, nameof(cCodeId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (stateId != null)
+                    callPayload.Queries["state[id]"] = SourceExpressionConverter.ConvertO(stateId);
+                if (nteeId != null)
+                    callPayload.Queries["ntee[id]"] = SourceExpressionConverter.ConvertO(nteeId);
+                if (cCodeId != null)
+                    callPayload.Queries["c_code[id]"] = SourceExpressionConverter.ConvertO(cCodeId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "propublicanonprofiip")]
-        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet(Expression<Func<string>> ein)
+        public IBodyWorkflowAction<NonprofitGetResponse> NonprofitGet([WorkflowExpression] Func<string> ein)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NonprofitGetResponse>(callPayload);
+            SourceExpression.Validate(ein, nameof(ein), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/organizations/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ein, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NonprofitGetResponse>(BuildSourceInput);
         }
     }
 

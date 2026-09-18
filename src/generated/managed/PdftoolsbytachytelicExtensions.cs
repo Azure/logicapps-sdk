@@ -12,85 +12,94 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pdftoolsbytachytelic
     public class PdftoolsbytachytelicActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pdftoolsbytachytelic")]
-        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf(Expression<Func<string>> bodypDFFileContent, Expression<Func<bodymodeInput>> bodymode = null, Expression<Func<int>> bodygarbageLevel = null, Expression<Func<bool>> bodydeflate = null, Expression<Func<bool>> bodyclean = null)
+        public IBodyWorkflowAction<OptimizePdfResponse> OptimizePdf([WorkflowExpression] Func<string> bodypDFFileContent, [WorkflowExpression] Func<bodymodeInput> bodymode = null, [WorkflowExpression] Func<int> bodygarbageLevel = null, [WorkflowExpression] Func<bool> bodydeflate = null, [WorkflowExpression] Func<bool> bodyclean = null)
         {
-            var apiCallPath = "/optimize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["PdfFileContent"] = CSharpExpressionConverter.ConvertToken(bodypDFFileContent);
-            if (bodymode != null)
+            SourceExpression.Validate(bodypDFFileContent, nameof(bodypDFFileContent), required: true);
+            SourceExpression.Validate(bodymode, nameof(bodymode), required: false);
+            SourceExpression.Validate(bodygarbageLevel, nameof(bodygarbageLevel), required: false);
+            SourceExpression.Validate(bodydeflate, nameof(bodydeflate), required: false);
+            SourceExpression.Validate(bodyclean, nameof(bodyclean), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/optimize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["PdfFileContent"] = SourceExpressionConverter.ConvertToken(bodypDFFileContent);
                 if (bodymode != null)
                 {
-                    body["Mode"] = CSharpExpressionConverter.Convert(bodymode);
+                    if (bodymode != null)
+                    {
+                        body["Mode"] = SourceExpressionConverter.Convert(bodymode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Mode"] = "aggressive";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Mode"] = "aggressive";
-                bodypropCount++;
-            }
-
-            if (bodygarbageLevel != null)
-            {
                 if (bodygarbageLevel != null)
                 {
-                    body["Garbage"] = CSharpExpressionConverter.ConvertToken(bodygarbageLevel);
+                    if (bodygarbageLevel != null)
+                    {
+                        body["Garbage"] = SourceExpressionConverter.ConvertToken(bodygarbageLevel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Garbage"] = 4;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Garbage"] = 4;
-                bodypropCount++;
-            }
-
-            if (bodydeflate != null)
-            {
                 if (bodydeflate != null)
                 {
-                    body["Deflate"] = CSharpExpressionConverter.ConvertToken(bodydeflate);
+                    if (bodydeflate != null)
+                    {
+                        body["Deflate"] = SourceExpressionConverter.ConvertToken(bodydeflate);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Deflate"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Deflate"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyclean != null)
-            {
                 if (bodyclean != null)
                 {
-                    body["Clean"] = CSharpExpressionConverter.ConvertToken(bodyclean);
+                    if (bodyclean != null)
+                    {
+                        body["Clean"] = SourceExpressionConverter.ConvertToken(bodyclean);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Clean"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Clean"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OptimizePdfResponse>(callPayload);
+            return new ApiConnectionAction<OptimizePdfResponse>(BuildSourceInput);
         }
     }
 

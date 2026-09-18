@@ -12,33 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureappservice
     public class AzureappserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppStart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppStart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppStop(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppStop([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/stop", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/stop", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureappservice")]
-        public IWorkflowAction WebAppRestart(Expression<Func<string>> subscriptionId, Expression<Func<string>> resourceGroupName, Expression<Func<string>> webAppName)
+        public IWorkflowAction WebAppRestart([WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<string> resourceGroupName, [WorkflowExpression] Func<string> webAppName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/restart", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroupName, nameof(resourceGroupName), required: true);
+            SourceExpression.Validate(webAppName, nameof(webAppName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/subscriptions/{0}/resourcegroups/{1}/providers/Microsoft.Web/sites/{2}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resourceGroupName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webAppName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["api-version"] = Convert.ToString("2019-08-01");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

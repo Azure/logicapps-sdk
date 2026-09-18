@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powellteams
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powellteams")]
         public IBodyWorkflowAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel> GetBetaApprovalsPending()
         {
-            var apiCallPath = "/beta/approvals/pending";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/beta/approvals/pending";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PowellTeamsCommonCoreOperationResultSystemCollectionsGenericListPowellTeamsAPIModelsApprovalApiApprovalModel>(BuildSourceInput);
         }
     }
 

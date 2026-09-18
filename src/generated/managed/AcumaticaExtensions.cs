@@ -12,585 +12,699 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Acumatica
     public class AcumaticaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesCustomerUsingCustomeridResponse> RetrievesCustomerUsingCustomerid(Expression<Func<string>> ids, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<RetrievesCustomerUsingCustomeridResponse> RetrievesCustomerUsingCustomerid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesCustomerUsingCustomeridResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesCustomerUsingCustomeridResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<string> DeletesCustomerUsingCustomerid(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<string> DeletesCustomerUsingCustomerid([WorkflowExpression] Func<string> ids)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Customer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesOpportunityUsingOpportunityidResponse> RetrievesOpportunityUsingOpportunityid(Expression<Func<string>> ids, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<RetrievesOpportunityUsingOpportunityidResponse> RetrievesOpportunityUsingOpportunityid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesOpportunityUsingOpportunityidResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesOpportunityUsingOpportunityidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<string> DeletesOpportunityUsingOpportunityid(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<string> DeletesOpportunityUsingOpportunityid([WorkflowExpression] Func<string> ids)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Opportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesCaseUsingCaseidResponse> RetrievesCaseUsingCaseid(Expression<Func<string>> ids, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<RetrievesCaseUsingCaseidResponse> RetrievesCaseUsingCaseid([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesCaseUsingCaseidResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesCaseUsingCaseidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<string> DeletesCaseUsingCaseid(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<string> DeletesCaseUsingCaseid([WorkflowExpression] Func<string> ids)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entity/Default/17.200.001/Case/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ids, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCustomersThatSatisfyTheSpecifiedConditions(Expression<Func<string>> filter, Expression<Func<string>> skip, Expression<Func<string>> top, Expression<Func<string>> accept)
+        public IBodyWorkflowAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCustomersThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> filter, [WorkflowExpression] Func<string> skip, [WorkflowExpression] Func<string> top, [WorkflowExpression] Func<string> accept)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Customer";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
-            callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
+            SourceExpression.Validate(filter, nameof(filter), required: true);
+            SourceExpression.Validate(skip, nameof(skip), required: true);
+            SourceExpression.Validate(top, nameof(top), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/entity/Default/17.200.001/Customer";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesListOfCustomersThatSatisfyTheSpecifiedConditionsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> CreatesOrUpdatesAnExistingCustomer(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodycustomerIDvalue = null, Expression<Func<string>> bodycustomerNamevalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodyaccountRefvalue = null, Expression<Func<string>> bodycurrencyIDvalue = null, Expression<Func<string>> bodycustomerClassvalue = null, Expression<Func<string>> bodytermsvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCustomerResponse> CreatesOrUpdatesAnExistingCustomer([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycustomerIDvalue = null, [WorkflowExpression] Func<string> bodycustomerNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyaccountRefvalue = null, [WorkflowExpression] Func<string> bodycurrencyIDvalue = null, [WorkflowExpression] Func<string> bodycustomerClassvalue = null, [WorkflowExpression] Func<string> bodytermsvalue = null)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Customer";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var customerIDObject = new JObject();
-            var customerIDObjectpropCount = 0;
-            if (bodycustomerIDvalue != null)
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodycustomerIDvalue, nameof(bodycustomerIDvalue), required: false);
+            SourceExpression.Validate(bodycustomerNamevalue, nameof(bodycustomerNamevalue), required: false);
+            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
+            SourceExpression.Validate(bodyaccountRefvalue, nameof(bodyaccountRefvalue), required: false);
+            SourceExpression.Validate(bodycurrencyIDvalue, nameof(bodycurrencyIDvalue), required: false);
+            SourceExpression.Validate(bodycustomerClassvalue, nameof(bodycustomerClassvalue), required: false);
+            SourceExpression.Validate(bodytermsvalue, nameof(bodytermsvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                customerIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerIDvalue);
-                customerIDObjectpropCount++;
+                var apiCallPath = "/entity/Default/17.200.001/Customer";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var customerIDObject = new JObject();
+                var customerIDObjectpropCount = 0;
+                if (bodycustomerIDvalue != null)
+                {
+                    customerIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycustomerIDvalue);
+                    customerIDObjectpropCount++;
+                }
+
+                if (customerIDObjectpropCount > 0)
+                {
+                    body["CustomerID"] = customerIDObject;
+                    bodypropCount++;
+                }
+
+                var customerNameObject = new JObject();
+                var customerNameObjectpropCount = 0;
+                if (bodycustomerNamevalue != null)
+                {
+                    customerNameObject["value"] = SourceExpressionConverter.ConvertToken(bodycustomerNamevalue);
+                    customerNameObjectpropCount++;
+                }
+
+                if (customerNameObjectpropCount > 0)
+                {
+                    body["CustomerName"] = customerNameObject;
+                    bodypropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (bodystatusvalue != null)
+                {
+                    statusObject["value"] = SourceExpressionConverter.ConvertToken(bodystatusvalue);
+                    statusObjectpropCount++;
+                }
+
+                if (statusObjectpropCount > 0)
+                {
+                    body["Status"] = statusObject;
+                    bodypropCount++;
+                }
+
+                var accountRefObject = new JObject();
+                var accountRefObjectpropCount = 0;
+                if (bodyaccountRefvalue != null)
+                {
+                    accountRefObject["value"] = SourceExpressionConverter.ConvertToken(bodyaccountRefvalue);
+                    accountRefObjectpropCount++;
+                }
+
+                if (accountRefObjectpropCount > 0)
+                {
+                    body["AccountRef"] = accountRefObject;
+                    bodypropCount++;
+                }
+
+                var currencyIDObject = new JObject();
+                var currencyIDObjectpropCount = 0;
+                if (bodycurrencyIDvalue != null)
+                {
+                    currencyIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIDvalue);
+                    currencyIDObjectpropCount++;
+                }
+
+                if (currencyIDObjectpropCount > 0)
+                {
+                    body["CurrencyID"] = currencyIDObject;
+                    bodypropCount++;
+                }
+
+                var customerClassObject = new JObject();
+                var customerClassObjectpropCount = 0;
+                if (bodycustomerClassvalue != null)
+                {
+                    customerClassObject["value"] = SourceExpressionConverter.ConvertToken(bodycustomerClassvalue);
+                    customerClassObjectpropCount++;
+                }
+
+                if (customerClassObjectpropCount > 0)
+                {
+                    body["CustomerClass"] = customerClassObject;
+                    bodypropCount++;
+                }
+
+                var termsObject = new JObject();
+                var termsObjectpropCount = 0;
+                if (bodytermsvalue != null)
+                {
+                    termsObject["value"] = SourceExpressionConverter.ConvertToken(bodytermsvalue);
+                    termsObjectpropCount++;
+                }
+
+                if (termsObjectpropCount > 0)
+                {
+                    body["Terms"] = termsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (customerIDObjectpropCount > 0)
-            {
-                body["CustomerID"] = customerIDObject;
-                bodypropCount++;
-            }
-
-            var customerNameObject = new JObject();
-            var customerNameObjectpropCount = 0;
-            if (bodycustomerNamevalue != null)
-            {
-                customerNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerNamevalue);
-                customerNameObjectpropCount++;
-            }
-
-            if (customerNameObjectpropCount > 0)
-            {
-                body["CustomerName"] = customerNameObject;
-                bodypropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (bodystatusvalue != null)
-            {
-                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
-                statusObjectpropCount++;
-            }
-
-            if (statusObjectpropCount > 0)
-            {
-                body["Status"] = statusObject;
-                bodypropCount++;
-            }
-
-            var accountRefObject = new JObject();
-            var accountRefObjectpropCount = 0;
-            if (bodyaccountRefvalue != null)
-            {
-                accountRefObject["value"] = CSharpExpressionConverter.ConvertToken(bodyaccountRefvalue);
-                accountRefObjectpropCount++;
-            }
-
-            if (accountRefObjectpropCount > 0)
-            {
-                body["AccountRef"] = accountRefObject;
-                bodypropCount++;
-            }
-
-            var currencyIDObject = new JObject();
-            var currencyIDObjectpropCount = 0;
-            if (bodycurrencyIDvalue != null)
-            {
-                currencyIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyIDvalue);
-                currencyIDObjectpropCount++;
-            }
-
-            if (currencyIDObjectpropCount > 0)
-            {
-                body["CurrencyID"] = currencyIDObject;
-                bodypropCount++;
-            }
-
-            var customerClassObject = new JObject();
-            var customerClassObjectpropCount = 0;
-            if (bodycustomerClassvalue != null)
-            {
-                customerClassObject["value"] = CSharpExpressionConverter.ConvertToken(bodycustomerClassvalue);
-                customerClassObjectpropCount++;
-            }
-
-            if (customerClassObjectpropCount > 0)
-            {
-                body["CustomerClass"] = customerClassObject;
-                bodypropCount++;
-            }
-
-            var termsObject = new JObject();
-            var termsObjectpropCount = 0;
-            if (bodytermsvalue != null)
-            {
-                termsObject["value"] = CSharpExpressionConverter.ConvertToken(bodytermsvalue);
-                termsObjectpropCount++;
-            }
-
-            if (termsObjectpropCount > 0)
-            {
-                body["Terms"] = termsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatesOrUpdatesAnExistingCustomerResponse>(callPayload);
+            return new ApiConnectionAction<CreatesOrUpdatesAnExistingCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditions(Expression<Func<string>> accept, Expression<Func<string>> filter = null, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Opportunity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filter"] = Convert.ToString("");
-            if (filter != null)
-                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
-            callPayload.Queries["skip"] = Convert.ToString("");
-            if (skip != null)
-                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            callPayload.Queries["top"] = Convert.ToString("");
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/entity/Default/17.200.001/Opportunity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filter"] = Convert.ToString("");
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["skip"] = Convert.ToString("");
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                callPayload.Queries["top"] = Convert.ToString("");
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesListOfOpportunitiesThatSatisfyTheSpecifiedConditionsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> CreatesOrUpdatesAnExistingOpportunity(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodyopportunityIDvalue = null, Expression<Func<string>> bodysubjectvalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodystagevalue = null, Expression<Func<string>> bodycurrencyIDvalue = null, Expression<Func<string>> bodybusinessAccountvalue = null, Expression<Func<string>> bodycontactDisplayNamevalue = null, Expression<Func<double>> bodyamountvalue = null, Expression<Func<double>> bodydiscountvalue = null, Expression<Func<double>> bodytotalvalue = null, Expression<Func<string>> bodysourcevalue = null, Expression<Func<string>> bodyreasonvalue = null, Expression<Func<string>> bodyprojectvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingOpportunityResponse> CreatesOrUpdatesAnExistingOpportunity([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyopportunityIDvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodystagevalue = null, [WorkflowExpression] Func<string> bodycurrencyIDvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<double> bodyamountvalue = null, [WorkflowExpression] Func<double> bodydiscountvalue = null, [WorkflowExpression] Func<double> bodytotalvalue = null, [WorkflowExpression] Func<string> bodysourcevalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyprojectvalue = null)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Opportunity";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var opportunityIDObject = new JObject();
-            var opportunityIDObjectpropCount = 0;
-            if (bodyopportunityIDvalue != null)
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodyopportunityIDvalue, nameof(bodyopportunityIDvalue), required: false);
+            SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
+            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
+            SourceExpression.Validate(bodystagevalue, nameof(bodystagevalue), required: false);
+            SourceExpression.Validate(bodycurrencyIDvalue, nameof(bodycurrencyIDvalue), required: false);
+            SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
+            SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
+            SourceExpression.Validate(bodyamountvalue, nameof(bodyamountvalue), required: false);
+            SourceExpression.Validate(bodydiscountvalue, nameof(bodydiscountvalue), required: false);
+            SourceExpression.Validate(bodytotalvalue, nameof(bodytotalvalue), required: false);
+            SourceExpression.Validate(bodysourcevalue, nameof(bodysourcevalue), required: false);
+            SourceExpression.Validate(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
+            SourceExpression.Validate(bodyprojectvalue, nameof(bodyprojectvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                opportunityIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodyopportunityIDvalue);
-                opportunityIDObjectpropCount++;
+                var apiCallPath = "/entity/Default/17.200.001/Opportunity";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var opportunityIDObject = new JObject();
+                var opportunityIDObjectpropCount = 0;
+                if (bodyopportunityIDvalue != null)
+                {
+                    opportunityIDObject["value"] = SourceExpressionConverter.ConvertToken(bodyopportunityIDvalue);
+                    opportunityIDObjectpropCount++;
+                }
+
+                if (opportunityIDObjectpropCount > 0)
+                {
+                    body["OpportunityID"] = opportunityIDObject;
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectvalue != null)
+                {
+                    subjectObject["value"] = SourceExpressionConverter.ConvertToken(bodysubjectvalue);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["Subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (bodystatusvalue != null)
+                {
+                    statusObject["value"] = SourceExpressionConverter.ConvertToken(bodystatusvalue);
+                    statusObjectpropCount++;
+                }
+
+                if (statusObjectpropCount > 0)
+                {
+                    body["Status"] = statusObject;
+                    bodypropCount++;
+                }
+
+                var stageObject = new JObject();
+                var stageObjectpropCount = 0;
+                if (bodystagevalue != null)
+                {
+                    stageObject["value"] = SourceExpressionConverter.ConvertToken(bodystagevalue);
+                    stageObjectpropCount++;
+                }
+
+                if (stageObjectpropCount > 0)
+                {
+                    body["Stage"] = stageObject;
+                    bodypropCount++;
+                }
+
+                var currencyIDObject = new JObject();
+                var currencyIDObjectpropCount = 0;
+                if (bodycurrencyIDvalue != null)
+                {
+                    currencyIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycurrencyIDvalue);
+                    currencyIDObjectpropCount++;
+                }
+
+                if (currencyIDObjectpropCount > 0)
+                {
+                    body["CurrencyID"] = currencyIDObject;
+                    bodypropCount++;
+                }
+
+                var businessAccountObject = new JObject();
+                var businessAccountObjectpropCount = 0;
+                if (bodybusinessAccountvalue != null)
+                {
+                    businessAccountObject["value"] = SourceExpressionConverter.ConvertToken(bodybusinessAccountvalue);
+                    businessAccountObjectpropCount++;
+                }
+
+                if (businessAccountObjectpropCount > 0)
+                {
+                    body["BusinessAccount"] = businessAccountObject;
+                    bodypropCount++;
+                }
+
+                var contactDisplayNameObject = new JObject();
+                var contactDisplayNameObjectpropCount = 0;
+                if (bodycontactDisplayNamevalue != null)
+                {
+                    contactDisplayNameObject["value"] = SourceExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
+                    contactDisplayNameObjectpropCount++;
+                }
+
+                if (contactDisplayNameObjectpropCount > 0)
+                {
+                    body["ContactDisplayName"] = contactDisplayNameObject;
+                    bodypropCount++;
+                }
+
+                var amountObject = new JObject();
+                var amountObjectpropCount = 0;
+                if (bodyamountvalue != null)
+                {
+                    amountObject["value"] = SourceExpressionConverter.ConvertToken(bodyamountvalue);
+                    amountObjectpropCount++;
+                }
+
+                if (amountObjectpropCount > 0)
+                {
+                    body["Amount"] = amountObject;
+                    bodypropCount++;
+                }
+
+                var discountObject = new JObject();
+                var discountObjectpropCount = 0;
+                if (bodydiscountvalue != null)
+                {
+                    discountObject["value"] = SourceExpressionConverter.ConvertToken(bodydiscountvalue);
+                    discountObjectpropCount++;
+                }
+
+                if (discountObjectpropCount > 0)
+                {
+                    body["Discount"] = discountObject;
+                    bodypropCount++;
+                }
+
+                var totalObject = new JObject();
+                var totalObjectpropCount = 0;
+                if (bodytotalvalue != null)
+                {
+                    totalObject["value"] = SourceExpressionConverter.ConvertToken(bodytotalvalue);
+                    totalObjectpropCount++;
+                }
+
+                if (totalObjectpropCount > 0)
+                {
+                    body["Total"] = totalObject;
+                    bodypropCount++;
+                }
+
+                var sourceObject = new JObject();
+                var sourceObjectpropCount = 0;
+                if (bodysourcevalue != null)
+                {
+                    sourceObject["value"] = SourceExpressionConverter.ConvertToken(bodysourcevalue);
+                    sourceObjectpropCount++;
+                }
+
+                if (sourceObjectpropCount > 0)
+                {
+                    body["Source"] = sourceObject;
+                    bodypropCount++;
+                }
+
+                var reasonObject = new JObject();
+                var reasonObjectpropCount = 0;
+                if (bodyreasonvalue != null)
+                {
+                    reasonObject["value"] = SourceExpressionConverter.ConvertToken(bodyreasonvalue);
+                    reasonObjectpropCount++;
+                }
+
+                if (reasonObjectpropCount > 0)
+                {
+                    body["Reason"] = reasonObject;
+                    bodypropCount++;
+                }
+
+                var projectObject = new JObject();
+                var projectObjectpropCount = 0;
+                if (bodyprojectvalue != null)
+                {
+                    projectObject["value"] = SourceExpressionConverter.ConvertToken(bodyprojectvalue);
+                    projectObjectpropCount++;
+                }
+
+                if (projectObjectpropCount > 0)
+                {
+                    body["Project"] = projectObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (opportunityIDObjectpropCount > 0)
-            {
-                body["OpportunityID"] = opportunityIDObject;
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectvalue != null)
-            {
-                subjectObject["value"] = CSharpExpressionConverter.ConvertToken(bodysubjectvalue);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["Subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (bodystatusvalue != null)
-            {
-                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
-                statusObjectpropCount++;
-            }
-
-            if (statusObjectpropCount > 0)
-            {
-                body["Status"] = statusObject;
-                bodypropCount++;
-            }
-
-            var stageObject = new JObject();
-            var stageObjectpropCount = 0;
-            if (bodystagevalue != null)
-            {
-                stageObject["value"] = CSharpExpressionConverter.ConvertToken(bodystagevalue);
-                stageObjectpropCount++;
-            }
-
-            if (stageObjectpropCount > 0)
-            {
-                body["Stage"] = stageObject;
-                bodypropCount++;
-            }
-
-            var currencyIDObject = new JObject();
-            var currencyIDObjectpropCount = 0;
-            if (bodycurrencyIDvalue != null)
-            {
-                currencyIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycurrencyIDvalue);
-                currencyIDObjectpropCount++;
-            }
-
-            if (currencyIDObjectpropCount > 0)
-            {
-                body["CurrencyID"] = currencyIDObject;
-                bodypropCount++;
-            }
-
-            var businessAccountObject = new JObject();
-            var businessAccountObjectpropCount = 0;
-            if (bodybusinessAccountvalue != null)
-            {
-                businessAccountObject["value"] = CSharpExpressionConverter.ConvertToken(bodybusinessAccountvalue);
-                businessAccountObjectpropCount++;
-            }
-
-            if (businessAccountObjectpropCount > 0)
-            {
-                body["BusinessAccount"] = businessAccountObject;
-                bodypropCount++;
-            }
-
-            var contactDisplayNameObject = new JObject();
-            var contactDisplayNameObjectpropCount = 0;
-            if (bodycontactDisplayNamevalue != null)
-            {
-                contactDisplayNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
-                contactDisplayNameObjectpropCount++;
-            }
-
-            if (contactDisplayNameObjectpropCount > 0)
-            {
-                body["ContactDisplayName"] = contactDisplayNameObject;
-                bodypropCount++;
-            }
-
-            var amountObject = new JObject();
-            var amountObjectpropCount = 0;
-            if (bodyamountvalue != null)
-            {
-                amountObject["value"] = CSharpExpressionConverter.ConvertToken(bodyamountvalue);
-                amountObjectpropCount++;
-            }
-
-            if (amountObjectpropCount > 0)
-            {
-                body["Amount"] = amountObject;
-                bodypropCount++;
-            }
-
-            var discountObject = new JObject();
-            var discountObjectpropCount = 0;
-            if (bodydiscountvalue != null)
-            {
-                discountObject["value"] = CSharpExpressionConverter.ConvertToken(bodydiscountvalue);
-                discountObjectpropCount++;
-            }
-
-            if (discountObjectpropCount > 0)
-            {
-                body["Discount"] = discountObject;
-                bodypropCount++;
-            }
-
-            var totalObject = new JObject();
-            var totalObjectpropCount = 0;
-            if (bodytotalvalue != null)
-            {
-                totalObject["value"] = CSharpExpressionConverter.ConvertToken(bodytotalvalue);
-                totalObjectpropCount++;
-            }
-
-            if (totalObjectpropCount > 0)
-            {
-                body["Total"] = totalObject;
-                bodypropCount++;
-            }
-
-            var sourceObject = new JObject();
-            var sourceObjectpropCount = 0;
-            if (bodysourcevalue != null)
-            {
-                sourceObject["value"] = CSharpExpressionConverter.ConvertToken(bodysourcevalue);
-                sourceObjectpropCount++;
-            }
-
-            if (sourceObjectpropCount > 0)
-            {
-                body["Source"] = sourceObject;
-                bodypropCount++;
-            }
-
-            var reasonObject = new JObject();
-            var reasonObjectpropCount = 0;
-            if (bodyreasonvalue != null)
-            {
-                reasonObject["value"] = CSharpExpressionConverter.ConvertToken(bodyreasonvalue);
-                reasonObjectpropCount++;
-            }
-
-            if (reasonObjectpropCount > 0)
-            {
-                body["Reason"] = reasonObject;
-                bodypropCount++;
-            }
-
-            var projectObject = new JObject();
-            var projectObjectpropCount = 0;
-            if (bodyprojectvalue != null)
-            {
-                projectObject["value"] = CSharpExpressionConverter.ConvertToken(bodyprojectvalue);
-                projectObjectpropCount++;
-            }
-
-            if (projectObjectpropCount > 0)
-            {
-                body["Project"] = projectObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatesOrUpdatesAnExistingOpportunityResponse>(callPayload);
+            return new ApiConnectionAction<CreatesOrUpdatesAnExistingOpportunityResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCasesThatSatisfyTheSpecifiedConditions(Expression<Func<string>> accept, Expression<Func<string>> filter = null, Expression<Func<string>> skip = null, Expression<Func<string>> top = null)
+        public IBodyWorkflowAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]> RetrievesListOfCasesThatSatisfyTheSpecifiedConditions([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> top = null)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Case";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filter"] = Convert.ToString("");
-            if (filter != null)
-                callPayload.Queries["filter"] = CSharpExpressionConverter.ConvertO(filter);
-            callPayload.Queries["skip"] = Convert.ToString("");
-            if (skip != null)
-                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            callPayload.Queries["top"] = Convert.ToString("");
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]>(callPayload);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/entity/Default/17.200.001/Case";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filter"] = Convert.ToString("");
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["skip"] = Convert.ToString("");
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                callPayload.Queries["top"] = Convert.ToString("");
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrievesListOfCasesThatSatisfyTheSpecifiedConditionsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "acumatica")]
-        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> CreatesOrUpdatesAnExistingCase(Expression<Func<string>> accept, Expression<Func<string>> contentType, Expression<Func<string>> bodycaseIDvalue = null, Expression<Func<string>> bodysubjectvalue = null, Expression<Func<string>> bodyclassIDvalue = null, Expression<Func<string>> bodybusinessAccountvalue = null, Expression<Func<string>> bodydescriptionvalue = null, Expression<Func<string>> bodycontactDisplayNamevalue = null, Expression<Func<string>> bodystatusvalue = null, Expression<Func<string>> bodyreasonvalue = null, Expression<Func<string>> bodyseverityvalue = null, Expression<Func<string>> bodypriorityvalue = null)
+        public IBodyWorkflowAction<CreatesOrUpdatesAnExistingCaseResponse> CreatesOrUpdatesAnExistingCase([WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodycaseIDvalue = null, [WorkflowExpression] Func<string> bodysubjectvalue = null, [WorkflowExpression] Func<string> bodyclassIDvalue = null, [WorkflowExpression] Func<string> bodybusinessAccountvalue = null, [WorkflowExpression] Func<string> bodydescriptionvalue = null, [WorkflowExpression] Func<string> bodycontactDisplayNamevalue = null, [WorkflowExpression] Func<string> bodystatusvalue = null, [WorkflowExpression] Func<string> bodyreasonvalue = null, [WorkflowExpression] Func<string> bodyseverityvalue = null, [WorkflowExpression] Func<string> bodypriorityvalue = null)
         {
-            var apiCallPath = "/entity/Default/17.200.001/Case";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var caseIDObject = new JObject();
-            var caseIDObjectpropCount = 0;
-            if (bodycaseIDvalue != null)
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodycaseIDvalue, nameof(bodycaseIDvalue), required: false);
+            SourceExpression.Validate(bodysubjectvalue, nameof(bodysubjectvalue), required: false);
+            SourceExpression.Validate(bodyclassIDvalue, nameof(bodyclassIDvalue), required: false);
+            SourceExpression.Validate(bodybusinessAccountvalue, nameof(bodybusinessAccountvalue), required: false);
+            SourceExpression.Validate(bodydescriptionvalue, nameof(bodydescriptionvalue), required: false);
+            SourceExpression.Validate(bodycontactDisplayNamevalue, nameof(bodycontactDisplayNamevalue), required: false);
+            SourceExpression.Validate(bodystatusvalue, nameof(bodystatusvalue), required: false);
+            SourceExpression.Validate(bodyreasonvalue, nameof(bodyreasonvalue), required: false);
+            SourceExpression.Validate(bodyseverityvalue, nameof(bodyseverityvalue), required: false);
+            SourceExpression.Validate(bodypriorityvalue, nameof(bodypriorityvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                caseIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodycaseIDvalue);
-                caseIDObjectpropCount++;
+                var apiCallPath = "/entity/Default/17.200.001/Case";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var caseIDObject = new JObject();
+                var caseIDObjectpropCount = 0;
+                if (bodycaseIDvalue != null)
+                {
+                    caseIDObject["value"] = SourceExpressionConverter.ConvertToken(bodycaseIDvalue);
+                    caseIDObjectpropCount++;
+                }
+
+                if (caseIDObjectpropCount > 0)
+                {
+                    body["CaseID"] = caseIDObject;
+                    bodypropCount++;
+                }
+
+                var subjectObject = new JObject();
+                var subjectObjectpropCount = 0;
+                if (bodysubjectvalue != null)
+                {
+                    subjectObject["value"] = SourceExpressionConverter.ConvertToken(bodysubjectvalue);
+                    subjectObjectpropCount++;
+                }
+
+                if (subjectObjectpropCount > 0)
+                {
+                    body["Subject"] = subjectObject;
+                    bodypropCount++;
+                }
+
+                var classIDObject = new JObject();
+                var classIDObjectpropCount = 0;
+                if (bodyclassIDvalue != null)
+                {
+                    classIDObject["value"] = SourceExpressionConverter.ConvertToken(bodyclassIDvalue);
+                    classIDObjectpropCount++;
+                }
+
+                if (classIDObjectpropCount > 0)
+                {
+                    body["ClassID"] = classIDObject;
+                    bodypropCount++;
+                }
+
+                var businessAccountObject = new JObject();
+                var businessAccountObjectpropCount = 0;
+                if (bodybusinessAccountvalue != null)
+                {
+                    businessAccountObject["value"] = SourceExpressionConverter.ConvertToken(bodybusinessAccountvalue);
+                    businessAccountObjectpropCount++;
+                }
+
+                if (businessAccountObjectpropCount > 0)
+                {
+                    body["BusinessAccount"] = businessAccountObject;
+                    bodypropCount++;
+                }
+
+                var descriptionObject = new JObject();
+                var descriptionObjectpropCount = 0;
+                if (bodydescriptionvalue != null)
+                {
+                    descriptionObject["value"] = SourceExpressionConverter.ConvertToken(bodydescriptionvalue);
+                    descriptionObjectpropCount++;
+                }
+
+                if (descriptionObjectpropCount > 0)
+                {
+                    body["Description"] = descriptionObject;
+                    bodypropCount++;
+                }
+
+                var contactDisplayNameObject = new JObject();
+                var contactDisplayNameObjectpropCount = 0;
+                if (bodycontactDisplayNamevalue != null)
+                {
+                    contactDisplayNameObject["value"] = SourceExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
+                    contactDisplayNameObjectpropCount++;
+                }
+
+                if (contactDisplayNameObjectpropCount > 0)
+                {
+                    body["ContactDisplayName"] = contactDisplayNameObject;
+                    bodypropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (bodystatusvalue != null)
+                {
+                    statusObject["value"] = SourceExpressionConverter.ConvertToken(bodystatusvalue);
+                    statusObjectpropCount++;
+                }
+
+                if (statusObjectpropCount > 0)
+                {
+                    body["Status"] = statusObject;
+                    bodypropCount++;
+                }
+
+                var reasonObject = new JObject();
+                var reasonObjectpropCount = 0;
+                if (bodyreasonvalue != null)
+                {
+                    reasonObject["value"] = SourceExpressionConverter.ConvertToken(bodyreasonvalue);
+                    reasonObjectpropCount++;
+                }
+
+                if (reasonObjectpropCount > 0)
+                {
+                    body["Reason"] = reasonObject;
+                    bodypropCount++;
+                }
+
+                var severityObject = new JObject();
+                var severityObjectpropCount = 0;
+                if (bodyseverityvalue != null)
+                {
+                    severityObject["value"] = SourceExpressionConverter.ConvertToken(bodyseverityvalue);
+                    severityObjectpropCount++;
+                }
+
+                if (severityObjectpropCount > 0)
+                {
+                    body["Severity"] = severityObject;
+                    bodypropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (bodypriorityvalue != null)
+                {
+                    priorityObject["value"] = SourceExpressionConverter.ConvertToken(bodypriorityvalue);
+                    priorityObjectpropCount++;
+                }
+
+                if (priorityObjectpropCount > 0)
+                {
+                    body["Priority"] = priorityObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (caseIDObjectpropCount > 0)
-            {
-                body["CaseID"] = caseIDObject;
-                bodypropCount++;
-            }
-
-            var subjectObject = new JObject();
-            var subjectObjectpropCount = 0;
-            if (bodysubjectvalue != null)
-            {
-                subjectObject["value"] = CSharpExpressionConverter.ConvertToken(bodysubjectvalue);
-                subjectObjectpropCount++;
-            }
-
-            if (subjectObjectpropCount > 0)
-            {
-                body["Subject"] = subjectObject;
-                bodypropCount++;
-            }
-
-            var classIDObject = new JObject();
-            var classIDObjectpropCount = 0;
-            if (bodyclassIDvalue != null)
-            {
-                classIDObject["value"] = CSharpExpressionConverter.ConvertToken(bodyclassIDvalue);
-                classIDObjectpropCount++;
-            }
-
-            if (classIDObjectpropCount > 0)
-            {
-                body["ClassID"] = classIDObject;
-                bodypropCount++;
-            }
-
-            var businessAccountObject = new JObject();
-            var businessAccountObjectpropCount = 0;
-            if (bodybusinessAccountvalue != null)
-            {
-                businessAccountObject["value"] = CSharpExpressionConverter.ConvertToken(bodybusinessAccountvalue);
-                businessAccountObjectpropCount++;
-            }
-
-            if (businessAccountObjectpropCount > 0)
-            {
-                body["BusinessAccount"] = businessAccountObject;
-                bodypropCount++;
-            }
-
-            var descriptionObject = new JObject();
-            var descriptionObjectpropCount = 0;
-            if (bodydescriptionvalue != null)
-            {
-                descriptionObject["value"] = CSharpExpressionConverter.ConvertToken(bodydescriptionvalue);
-                descriptionObjectpropCount++;
-            }
-
-            if (descriptionObjectpropCount > 0)
-            {
-                body["Description"] = descriptionObject;
-                bodypropCount++;
-            }
-
-            var contactDisplayNameObject = new JObject();
-            var contactDisplayNameObjectpropCount = 0;
-            if (bodycontactDisplayNamevalue != null)
-            {
-                contactDisplayNameObject["value"] = CSharpExpressionConverter.ConvertToken(bodycontactDisplayNamevalue);
-                contactDisplayNameObjectpropCount++;
-            }
-
-            if (contactDisplayNameObjectpropCount > 0)
-            {
-                body["ContactDisplayName"] = contactDisplayNameObject;
-                bodypropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (bodystatusvalue != null)
-            {
-                statusObject["value"] = CSharpExpressionConverter.ConvertToken(bodystatusvalue);
-                statusObjectpropCount++;
-            }
-
-            if (statusObjectpropCount > 0)
-            {
-                body["Status"] = statusObject;
-                bodypropCount++;
-            }
-
-            var reasonObject = new JObject();
-            var reasonObjectpropCount = 0;
-            if (bodyreasonvalue != null)
-            {
-                reasonObject["value"] = CSharpExpressionConverter.ConvertToken(bodyreasonvalue);
-                reasonObjectpropCount++;
-            }
-
-            if (reasonObjectpropCount > 0)
-            {
-                body["Reason"] = reasonObject;
-                bodypropCount++;
-            }
-
-            var severityObject = new JObject();
-            var severityObjectpropCount = 0;
-            if (bodyseverityvalue != null)
-            {
-                severityObject["value"] = CSharpExpressionConverter.ConvertToken(bodyseverityvalue);
-                severityObjectpropCount++;
-            }
-
-            if (severityObjectpropCount > 0)
-            {
-                body["Severity"] = severityObject;
-                bodypropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (bodypriorityvalue != null)
-            {
-                priorityObject["value"] = CSharpExpressionConverter.ConvertToken(bodypriorityvalue);
-                priorityObjectpropCount++;
-            }
-
-            if (priorityObjectpropCount > 0)
-            {
-                body["Priority"] = priorityObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatesOrUpdatesAnExistingCaseResponse>(callPayload);
+            return new ApiConnectionAction<CreatesOrUpdatesAnExistingCaseResponse>(BuildSourceInput);
         }
     }
 

@@ -12,138 +12,210 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Electricitymapsip
     public class ElectricitymapsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonForecastResponse> CarbonForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<CarbonForecastResponse> CarbonForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            var apiCallPath = "/carbon-intensity/forecast";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            return new ApiConnectionAction<CarbonForecastResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/carbon-intensity/forecast";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CarbonForecastResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonHistoryResponse> CarbonHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonHistoryResponse> CarbonHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            var apiCallPath = "/carbon-intensity/history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (emissionFactorType != null)
-                callPayload.Queries["emissionFactorType"] = CSharpExpressionConverter.Convert(emissionFactorType);
-            if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
-            return new ApiConnectionAction<CarbonHistoryResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(emissionFactorType, nameof(emissionFactorType), required: false);
+            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/carbon-intensity/history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (emissionFactorType != null)
+                    callPayload.Queries["emissionFactorType"] = SourceExpressionConverter.Convert(emissionFactorType);
+                if (disableEstimations != null)
+                    callPayload.Queries["disableEstimations"] = SourceExpressionConverter.ConvertO(disableEstimations);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CarbonHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<CarbonLatestResponse> CarbonLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<emissionFactorTypeInput>> emissionFactorType = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<CarbonLatestResponse> CarbonLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<emissionFactorTypeInput> emissionFactorType = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            var apiCallPath = "/carbon-intensity/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (emissionFactorType != null)
-                callPayload.Queries["emissionFactorType"] = CSharpExpressionConverter.Convert(emissionFactorType);
-            if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
-            return new ApiConnectionAction<CarbonLatestResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(emissionFactorType, nameof(emissionFactorType), required: false);
+            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/carbon-intensity/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (emissionFactorType != null)
+                    callPayload.Queries["emissionFactorType"] = SourceExpressionConverter.Convert(emissionFactorType);
+                if (disableEstimations != null)
+                    callPayload.Queries["disableEstimations"] = SourceExpressionConverter.ConvertO(disableEstimations);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CarbonLatestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownHistoryResponse> BreakdownHistory(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<BreakdownHistoryResponse> BreakdownHistory([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            var apiCallPath = "/power-breakdown/history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
-            return new ApiConnectionAction<BreakdownHistoryResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-breakdown/history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (disableEstimations != null)
+                    callPayload.Queries["disableEstimations"] = SourceExpressionConverter.ConvertO(disableEstimations);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BreakdownHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownLatestResponse> BreakdownLatest(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null, Expression<Func<bool>> disableEstimations = null)
+        public IBodyWorkflowAction<BreakdownLatestResponse> BreakdownLatest([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null, [WorkflowExpression] Func<bool> disableEstimations = null)
         {
-            var apiCallPath = "/power-breakdown/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (disableEstimations != null)
-                callPayload.Queries["disableEstimations"] = CSharpExpressionConverter.ConvertO(disableEstimations);
-            return new ApiConnectionAction<BreakdownLatestResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(disableEstimations, nameof(disableEstimations), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-breakdown/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (disableEstimations != null)
+                    callPayload.Queries["disableEstimations"] = SourceExpressionConverter.ConvertO(disableEstimations);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BreakdownLatestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<ConsumptionForecastResponse> ConsumptionForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<ConsumptionForecastResponse> ConsumptionForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            var apiCallPath = "/power-consumption-breakdown/forecast";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            return new ApiConnectionAction<ConsumptionForecastResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-consumption-breakdown/forecast";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConsumptionForecastResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
-        public IBodyWorkflowAction<BreakdownForecastResponse> BreakdownForecast(Expression<Func<string>> zone = null, Expression<Func<string>> lon = null, Expression<Func<string>> lat = null)
+        public IBodyWorkflowAction<BreakdownForecastResponse> BreakdownForecast([WorkflowExpression] Func<string> zone = null, [WorkflowExpression] Func<string> lon = null, [WorkflowExpression] Func<string> lat = null)
         {
-            var apiCallPath = "/power-production-breakdown/forecast";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (zone != null)
-                callPayload.Queries["zone"] = CSharpExpressionConverter.ConvertO(zone);
-            if (lon != null)
-                callPayload.Queries["lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (lat != null)
-                callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            return new ApiConnectionAction<BreakdownForecastResponse>(callPayload);
+            SourceExpression.Validate(zone, nameof(zone), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-production-breakdown/forecast";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (zone != null)
+                    callPayload.Queries["zone"] = SourceExpressionConverter.ConvertO(zone);
+                if (lon != null)
+                    callPayload.Queries["lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (lat != null)
+                    callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BreakdownForecastResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<GetZonesResponse> GetZones()
         {
-            var apiCallPath = "/zones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetZonesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/zones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetZonesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "electricitymapsip")]
         public IBodyWorkflowAction<CheckHealthResponse> CheckHealth()
         {
-            var apiCallPath = "/health";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CheckHealthResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/health";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CheckHealthResponse>(BuildSourceInput);
         }
     }
 

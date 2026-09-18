@@ -12,259 +12,300 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseroninvoice
     public class TesseroninvoiceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher(Expression<Func<int>> bodyskip, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyorderColumns = null, Expression<Func<bool>> bodyorderByAsc = null, Expression<Func<bool>> bodytakeAll = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeFrom = null, Expression<Func<string>> bodyadditionalSearchDatadateTimeTo = null, Expression<Func<double>> bodyadditionalSearchDataquantityFrom = null, Expression<Func<double>> bodyadditionalSearchDataquantityTo = null, Expression<Func<int[]>> bodyadditionalSearchDatauserIds = null, Expression<Func<string[]>> bodyadditionalSearchDataserviceArticles = null, Expression<Func<int>> bodyadditionalSearchDataassignmentStatusId = null, Expression<Func<bool>> bodyadditionalSearchDataisInvoice = null)
+        public IBodyWorkflowAction<GetServiceAssignmentsDispatcherResponse> GetServiceAssignmentsDispatcher([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyorderColumns = null, [WorkflowExpression] Func<bool> bodyorderByAsc = null, [WorkflowExpression] Func<bool> bodytakeAll = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeFrom = null, [WorkflowExpression] Func<string> bodyadditionalSearchDatadateTimeTo = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityFrom = null, [WorkflowExpression] Func<double> bodyadditionalSearchDataquantityTo = null, [WorkflowExpression] Func<int[]> bodyadditionalSearchDatauserIds = null, [WorkflowExpression] Func<string[]> bodyadditionalSearchDataserviceArticles = null, [WorkflowExpression] Func<int> bodyadditionalSearchDataassignmentStatusId = null, [WorkflowExpression] Func<bool> bodyadditionalSearchDataisInvoice = null)
         {
-            var apiCallPath = "/GetServiceAssignmentsDispatcher";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
-            body["PageSize"] = 25;
-            bodypropCount++;
-            if (bodysearch != null)
+            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
+            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
+            SourceExpression.Validate(bodyorderColumns, nameof(bodyorderColumns), required: false);
+            SourceExpression.Validate(bodyorderByAsc, nameof(bodyorderByAsc), required: false);
+            SourceExpression.Validate(bodytakeAll, nameof(bodytakeAll), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDatadateTimeFrom, nameof(bodyadditionalSearchDatadateTimeFrom), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDatadateTimeTo, nameof(bodyadditionalSearchDatadateTimeTo), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDataquantityFrom, nameof(bodyadditionalSearchDataquantityFrom), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDataquantityTo, nameof(bodyadditionalSearchDataquantityTo), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDatauserIds, nameof(bodyadditionalSearchDatauserIds), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDataserviceArticles, nameof(bodyadditionalSearchDataserviceArticles), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDataassignmentStatusId, nameof(bodyadditionalSearchDataassignmentStatusId), required: false);
+            SourceExpression.Validate(bodyadditionalSearchDataisInvoice, nameof(bodyadditionalSearchDataisInvoice), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
+                var apiCallPath = "/GetServiceAssignmentsDispatcher";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyorderColumns != null)
-            {
-                body["OrderColumns"] = CSharpExpressionConverter.ConvertToken(bodyorderColumns);
+                body["Skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
+                body["PageSize"] = 25;
                 bodypropCount++;
-            }
+                if (bodysearch != null)
+                {
+                    body["Search"] = SourceExpressionConverter.ConvertToken(bodysearch);
+                    bodypropCount++;
+                }
 
-            if (bodyorderByAsc != null)
-            {
+                if (bodyorderColumns != null)
+                {
+                    body["OrderColumns"] = SourceExpressionConverter.ConvertToken(bodyorderColumns);
+                    bodypropCount++;
+                }
+
                 if (bodyorderByAsc != null)
                 {
-                    body["OrderByAsc"] = CSharpExpressionConverter.ConvertToken(bodyorderByAsc);
+                    if (bodyorderByAsc != null)
+                    {
+                        body["OrderByAsc"] = SourceExpressionConverter.ConvertToken(bodyorderByAsc);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["OrderByAsc"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["OrderByAsc"] = false;
-                bodypropCount++;
-            }
-
-            if (bodytakeAll != null)
-            {
                 if (bodytakeAll != null)
                 {
-                    body["TakeAll"] = CSharpExpressionConverter.ConvertToken(bodytakeAll);
+                    if (bodytakeAll != null)
+                    {
+                        body["TakeAll"] = SourceExpressionConverter.ConvertToken(bodytakeAll);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["TakeAll"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["TakeAll"] = false;
-                bodypropCount++;
+                var additionalSearchDataObject = new JObject();
+                var additionalSearchDataObjectpropCount = 0;
+                if (bodyadditionalSearchDatadateTimeFrom != null)
+                {
+                    additionalSearchDataObject["DateTimeFrom"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeFrom);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDatadateTimeTo != null)
+                {
+                    additionalSearchDataObject["DateTimeTo"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeTo);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDataquantityFrom != null)
+                {
+                    additionalSearchDataObject["QuantityFrom"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityFrom);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDataquantityTo != null)
+                {
+                    additionalSearchDataObject["QuantityTo"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityTo);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDatauserIds != null)
+                {
+                    additionalSearchDataObject["UserIds"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDatauserIds);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDataserviceArticles != null)
+                {
+                    additionalSearchDataObject["ServiceArticles"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDataserviceArticles);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDataassignmentStatusId != null)
+                {
+                    additionalSearchDataObject["AssignmentStatusId"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDataassignmentStatusId);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (bodyadditionalSearchDataisInvoice != null)
+                {
+                    additionalSearchDataObject["IsInvoice"] = SourceExpressionConverter.ConvertToken(bodyadditionalSearchDataisInvoice);
+                    additionalSearchDataObjectpropCount++;
+                }
+
+                if (additionalSearchDataObjectpropCount > 0)
+                {
+                    body["AdditionalSearchData"] = additionalSearchDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var additionalSearchDataObject = new JObject();
-            var additionalSearchDataObjectpropCount = 0;
-            if (bodyadditionalSearchDatadateTimeFrom != null)
-            {
-                additionalSearchDataObject["DateTimeFrom"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeFrom);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDatadateTimeTo != null)
-            {
-                additionalSearchDataObject["DateTimeTo"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatadateTimeTo);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDataquantityFrom != null)
-            {
-                additionalSearchDataObject["QuantityFrom"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityFrom);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDataquantityTo != null)
-            {
-                additionalSearchDataObject["QuantityTo"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataquantityTo);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDatauserIds != null)
-            {
-                additionalSearchDataObject["UserIds"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDatauserIds);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDataserviceArticles != null)
-            {
-                additionalSearchDataObject["ServiceArticles"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataserviceArticles);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDataassignmentStatusId != null)
-            {
-                additionalSearchDataObject["AssignmentStatusId"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataassignmentStatusId);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (bodyadditionalSearchDataisInvoice != null)
-            {
-                additionalSearchDataObject["IsInvoice"] = CSharpExpressionConverter.ConvertToken(bodyadditionalSearchDataisInvoice);
-                additionalSearchDataObjectpropCount++;
-            }
-
-            if (additionalSearchDataObjectpropCount > 0)
-            {
-                body["AdditionalSearchData"] = additionalSearchDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetServiceAssignmentsDispatcherResponse>(callPayload);
+            return new ApiConnectionAction<GetServiceAssignmentsDispatcherResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodyquantity = null, Expression<Func<string>> bodydateTo = null, Expression<Func<string>> bodybookText = null, Expression<Func<string>> bodynoteText = null, Expression<Func<int>> bodyprojectId = null, Expression<Func<int>> bodyprojectPhaseId = null, Expression<Func<int>> bodyticketid = null)
+        public IBodyWorkflowAction<CreateActivityRecordingResponse> CreateActivityRecording([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodyquantity = null, [WorkflowExpression] Func<string> bodydateTo = null, [WorkflowExpression] Func<string> bodybookText = null, [WorkflowExpression] Func<string> bodynoteText = null, [WorkflowExpression] Func<int> bodyprojectId = null, [WorkflowExpression] Func<int> bodyprojectPhaseId = null, [WorkflowExpression] Func<int> bodyticketid = null)
         {
-            var apiCallPath = "/CreateActivityRecording";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dateFrom"] = CSharpExpressionConverter.ConvertToken(bodydateFrom);
-            if (bodyquantity != null)
+            SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
+            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
+            SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: false);
+            SourceExpression.Validate(bodybookText, nameof(bodybookText), required: false);
+            SourceExpression.Validate(bodynoteText, nameof(bodynoteText), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            SourceExpression.Validate(bodyprojectPhaseId, nameof(bodyprojectPhaseId), required: false);
+            SourceExpression.Validate(bodyticketid, nameof(bodyticketid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
+                var apiCallPath = "/CreateActivityRecording";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["dateFrom"] = SourceExpressionConverter.ConvertToken(bodydateFrom);
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodydateTo != null)
+                {
+                    body["dateTo"] = SourceExpressionConverter.ConvertToken(bodydateTo);
+                    bodypropCount++;
+                }
+
+                if (bodybookText != null)
+                {
+                    body["bookText"] = SourceExpressionConverter.ConvertToken(bodybookText);
+                    bodypropCount++;
+                }
+
+                if (bodynoteText != null)
+                {
+                    body["noteText"] = SourceExpressionConverter.ConvertToken(bodynoteText);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectPhaseId != null)
+                {
+                    body["projectPhaseId"] = SourceExpressionConverter.ConvertToken(bodyprojectPhaseId);
+                    bodypropCount++;
+                }
+
+                if (bodyticketid != null)
+                {
+                    body["ticketid"] = SourceExpressionConverter.ConvertToken(bodyticketid);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydateTo != null)
-            {
-                body["dateTo"] = CSharpExpressionConverter.ConvertToken(bodydateTo);
-                bodypropCount++;
-            }
-
-            if (bodybookText != null)
-            {
-                body["bookText"] = CSharpExpressionConverter.ConvertToken(bodybookText);
-                bodypropCount++;
-            }
-
-            if (bodynoteText != null)
-            {
-                body["noteText"] = CSharpExpressionConverter.ConvertToken(bodynoteText);
-                bodypropCount++;
-            }
-
-            if (bodyprojectId != null)
-            {
-                body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
-                bodypropCount++;
-            }
-
-            if (bodyprojectPhaseId != null)
-            {
-                body["projectPhaseId"] = CSharpExpressionConverter.ConvertToken(bodyprojectPhaseId);
-                bodypropCount++;
-            }
-
-            if (bodyticketid != null)
-            {
-                body["ticketid"] = CSharpExpressionConverter.ConvertToken(bodyticketid);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateActivityRecordingResponse>(callPayload);
+            return new ApiConnectionAction<CreateActivityRecordingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseroninvoice")]
-        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote(Expression<Func<string>> bodydateFrom, Expression<Func<string>> bodydateTo, Expression<Func<int>> bodypause = null, Expression<Func<bool>> bodynoInvoice = null, Expression<Func<bool>> bodyextraCharge = null, Expression<Func<string>> bodyhint = null, Expression<Func<string>> bodyserviceContractId = null, Expression<Func<string>> bodyuserName = null)
+        public IBodyWorkflowAction<CreateInvoicePositionNoteResponse> CreateInvoicePositionNote([WorkflowExpression] Func<string> bodydateFrom, [WorkflowExpression] Func<string> bodydateTo, [WorkflowExpression] Func<int> bodypause = null, [WorkflowExpression] Func<bool> bodynoInvoice = null, [WorkflowExpression] Func<bool> bodyextraCharge = null, [WorkflowExpression] Func<string> bodyhint = null, [WorkflowExpression] Func<string> bodyserviceContractId = null, [WorkflowExpression] Func<string> bodyuserName = null)
         {
-            var apiCallPath = "/CreateInvoicePositionNote";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["dateFrom"] = CSharpExpressionConverter.ConvertToken(bodydateFrom);
-            bodypropCount++;
-            body["dateTo"] = CSharpExpressionConverter.ConvertToken(bodydateTo);
-            if (bodypause != null)
+            SourceExpression.Validate(bodydateFrom, nameof(bodydateFrom), required: true);
+            SourceExpression.Validate(bodydateTo, nameof(bodydateTo), required: true);
+            SourceExpression.Validate(bodypause, nameof(bodypause), required: false);
+            SourceExpression.Validate(bodynoInvoice, nameof(bodynoInvoice), required: false);
+            SourceExpression.Validate(bodyextraCharge, nameof(bodyextraCharge), required: false);
+            SourceExpression.Validate(bodyhint, nameof(bodyhint), required: false);
+            SourceExpression.Validate(bodyserviceContractId, nameof(bodyserviceContractId), required: false);
+            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["pause"] = CSharpExpressionConverter.ConvertToken(bodypause);
+                var apiCallPath = "/CreateInvoicePositionNote";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["dateFrom"] = SourceExpressionConverter.ConvertToken(bodydateFrom);
+                bodypropCount++;
+                body["dateTo"] = SourceExpressionConverter.ConvertToken(bodydateTo);
+                if (bodypause != null)
+                {
+                    body["pause"] = SourceExpressionConverter.ConvertToken(bodypause);
+                    bodypropCount++;
+                }
 
-            if (bodynoInvoice != null)
-            {
                 if (bodynoInvoice != null)
                 {
-                    body["noInvoice"] = CSharpExpressionConverter.ConvertToken(bodynoInvoice);
+                    if (bodynoInvoice != null)
+                    {
+                        body["noInvoice"] = SourceExpressionConverter.ConvertToken(bodynoInvoice);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["noInvoice"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["noInvoice"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyextraCharge != null)
-            {
                 if (bodyextraCharge != null)
                 {
-                    body["extraCharge"] = CSharpExpressionConverter.ConvertToken(bodyextraCharge);
+                    if (bodyextraCharge != null)
+                    {
+                        body["extraCharge"] = SourceExpressionConverter.ConvertToken(bodyextraCharge);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["extraCharge"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["extraCharge"] = true;
-                bodypropCount++;
+                if (bodyhint != null)
+                {
+                    body["hint"] = SourceExpressionConverter.ConvertToken(bodyhint);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceContractId != null)
+                {
+                    body["serviceContractId"] = SourceExpressionConverter.ConvertToken(bodyserviceContractId);
+                    bodypropCount++;
+                }
+
+                if (bodyuserName != null)
+                {
+                    body["userName"] = SourceExpressionConverter.ConvertToken(bodyuserName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyhint != null)
-            {
-                body["hint"] = CSharpExpressionConverter.ConvertToken(bodyhint);
-                bodypropCount++;
-            }
-
-            if (bodyserviceContractId != null)
-            {
-                body["serviceContractId"] = CSharpExpressionConverter.ConvertToken(bodyserviceContractId);
-                bodypropCount++;
-            }
-
-            if (bodyuserName != null)
-            {
-                body["userName"] = CSharpExpressionConverter.ConvertToken(bodyuserName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateInvoicePositionNoteResponse>(callPayload);
+            return new ApiConnectionAction<CreateInvoicePositionNoteResponse>(BuildSourceInput);
         }
     }
 

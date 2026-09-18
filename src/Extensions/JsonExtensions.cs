@@ -4,6 +4,8 @@
 
 namespace Microsoft.Azure.Workflows.Sdk
 {
+    using System.Globalization;
+    using System.IO;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Converters;
     using Newtonsoft.Json.Linq;
@@ -66,7 +68,12 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <param name="value">The object.</param>
         public static string ToJson(this object value)
         {
-            return JsonConvert.SerializeObject(value, JsonExtensions.ObjectSerializationSettings);
+            using (var text = new StringWriter(CultureInfo.InvariantCulture))
+            using (var writer = new JsonTextWriter(text))
+            {
+                JsonSerializer.Create(JsonExtensions.ObjectSerializationSettings).Serialize(writer, value);
+                return text.ToString();
+            }
         }
     }
 }

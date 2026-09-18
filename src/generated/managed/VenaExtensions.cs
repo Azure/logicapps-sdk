@@ -12,353 +12,403 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vena
     public class VenaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<ETLJob> ETLUpload(Expression<Func<string>> modelIdPath, Expression<Func<string>> templateId, Expression<Func<string>> fileName, Expression<Func<string>> file, Expression<Func<fileTypeInput>> fileType, Expression<Func<fileEncodingInput>> fileEncoding = null)
+        public IBodyWorkflowAction<ETLJob> ETLUpload([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> file, [WorkflowExpression] Func<fileTypeInput> fileType, [WorkflowExpression] Func<fileEncodingInput> fileEncoding = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/templates/{1}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
-            callPayload.Queries["fileType"] = CSharpExpressionConverter.Convert(fileType);
-            callPayload.Queries["fileEncoding"] = Convert.ToString("UTF-8");
-            if (fileEncoding != null)
-                callPayload.Queries["fileEncoding"] = CSharpExpressionConverter.Convert(fileEncoding);
-            return new ApiConnectionAction<ETLJob>(callPayload);
+            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(fileName, nameof(fileName), required: true);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(fileType, nameof(fileType), required: true);
+            SourceExpression.Validate(fileEncoding, nameof(fileEncoding), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/templates/{1}/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
+                callPayload.Queries["fileType"] = SourceExpressionConverter.Convert(fileType);
+                callPayload.Queries["fileEncoding"] = Convert.ToString("UTF-8");
+                if (fileEncoding != null)
+                    callPayload.Queries["fileEncoding"] = SourceExpressionConverter.Convert(fileEncoding);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ETLJob>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportAttributes(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string> ExportAttributes([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> lidsBodyshowHeader = null, [WorkflowExpression] Func<string> lidsBodymQLQueryString = null, [WorkflowExpression] Func<lidsBodyfileFormatInput> lidsBodyfileFormat = null, [WorkflowExpression] Func<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var lidsBody = new JObject();
-            var lidsBodypropCount = 0;
-            if (lidsBodyshowHeader != null)
+            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
+            SourceExpression.Validate(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
+            SourceExpression.Validate(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
+            SourceExpression.Validate(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
+            SourceExpression.Validate(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/attributes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var lidsBody = new JObject();
+                var lidsBodypropCount = 0;
                 if (lidsBodyshowHeader != null)
                 {
-                    lidsBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(lidsBodyshowHeader);
+                    if (lidsBodyshowHeader != null)
+                    {
+                        lidsBody["showHeaders"] = SourceExpressionConverter.ConvertToken(lidsBodyshowHeader);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["showHeaders"] = false;
                     lidsBodypropCount++;
                 }
 
-                lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["showHeaders"] = false;
-                lidsBodypropCount++;
-            }
+                if (lidsBodymQLQueryString != null)
+                {
+                    lidsBody["queryString"] = SourceExpressionConverter.ConvertToken(lidsBodymQLQueryString);
+                    lidsBodypropCount++;
+                }
 
-            if (lidsBodymQLQueryString != null)
-            {
-                lidsBody["queryString"] = CSharpExpressionConverter.ConvertToken(lidsBodymQLQueryString);
-                lidsBodypropCount++;
-            }
-
-            if (lidsBodyfileFormat != null)
-            {
                 if (lidsBodyfileFormat != null)
                 {
-                    lidsBody["format"] = CSharpExpressionConverter.Convert(lidsBodyfileFormat);
+                    if (lidsBodyfileFormat != null)
+                    {
+                        lidsBody["format"] = SourceExpressionConverter.Convert(lidsBodyfileFormat);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["format"] = "CSV";
                     lidsBodypropCount++;
                 }
 
-                lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["format"] = "CSV";
-                lidsBodypropCount++;
-            }
-
-            if (lidsBodyfileEncoding != null)
-            {
                 if (lidsBodyfileEncoding != null)
                 {
-                    lidsBody["encoding"] = CSharpExpressionConverter.Convert(lidsBodyfileEncoding);
+                    if (lidsBodyfileEncoding != null)
+                    {
+                        lidsBody["encoding"] = SourceExpressionConverter.Convert(lidsBodyfileEncoding);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["encoding"] = "UTF-8";
                     lidsBodypropCount++;
                 }
 
+                lidsBody["destination"] = "ToCSV";
                 lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["encoding"] = "UTF-8";
-                lidsBodypropCount++;
+                if (lidsBodypropCount > 0)
+                {
+                    callPayload.Body = lidsBody;
+                }
+                return callPayload;
             }
 
-            lidsBody["destination"] = "ToCSV";
-            lidsBodypropCount++;
-            if (lidsBodypropCount > 0)
-            {
-                callPayload.Body = lidsBody;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportHierarchies(Expression<Func<string>> modelIdPath, Expression<Func<bool>> hierarchiesBodyshowHeader = null, Expression<Func<string>> hierarchiesBodymQLQueryString = null, Expression<Func<hierarchiesBodyfileFormatInput>> hierarchiesBodyfileFormat = null, Expression<Func<hierarchiesBodyfileEncodingInput>> hierarchiesBodyfileEncoding = null, Expression<Func<bool>> hierarchiesBodyexportMemberIDs = null)
+        public IBodyWorkflowAction<string> ExportHierarchies([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> hierarchiesBodyshowHeader = null, [WorkflowExpression] Func<string> hierarchiesBodymQLQueryString = null, [WorkflowExpression] Func<hierarchiesBodyfileFormatInput> hierarchiesBodyfileFormat = null, [WorkflowExpression] Func<hierarchiesBodyfileEncodingInput> hierarchiesBodyfileEncoding = null, [WorkflowExpression] Func<bool> hierarchiesBodyexportMemberIDs = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hierarchiesBody = new JObject();
-            var hierarchiesBodypropCount = 0;
-            if (hierarchiesBodyshowHeader != null)
+            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
+            SourceExpression.Validate(hierarchiesBodyshowHeader, nameof(hierarchiesBodyshowHeader), required: false);
+            SourceExpression.Validate(hierarchiesBodymQLQueryString, nameof(hierarchiesBodymQLQueryString), required: false);
+            SourceExpression.Validate(hierarchiesBodyfileFormat, nameof(hierarchiesBodyfileFormat), required: false);
+            SourceExpression.Validate(hierarchiesBodyfileEncoding, nameof(hierarchiesBodyfileEncoding), required: false);
+            SourceExpression.Validate(hierarchiesBodyexportMemberIDs, nameof(hierarchiesBodyexportMemberIDs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/hierarchies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hierarchiesBody = new JObject();
+                var hierarchiesBodypropCount = 0;
                 if (hierarchiesBodyshowHeader != null)
                 {
-                    hierarchiesBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodyshowHeader);
+                    if (hierarchiesBodyshowHeader != null)
+                    {
+                        hierarchiesBody["showHeaders"] = SourceExpressionConverter.ConvertToken(hierarchiesBodyshowHeader);
+                        hierarchiesBodypropCount++;
+                    }
+
+                    hierarchiesBodypropCount++;
+                }
+                else
+                {
+                    hierarchiesBody["showHeaders"] = false;
                     hierarchiesBodypropCount++;
                 }
 
-                hierarchiesBodypropCount++;
-            }
-            else
-            {
-                hierarchiesBody["showHeaders"] = false;
-                hierarchiesBodypropCount++;
-            }
+                if (hierarchiesBodymQLQueryString != null)
+                {
+                    hierarchiesBody["queryString"] = SourceExpressionConverter.ConvertToken(hierarchiesBodymQLQueryString);
+                    hierarchiesBodypropCount++;
+                }
 
-            if (hierarchiesBodymQLQueryString != null)
-            {
-                hierarchiesBody["queryString"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodymQLQueryString);
-                hierarchiesBodypropCount++;
-            }
-
-            if (hierarchiesBodyfileFormat != null)
-            {
                 if (hierarchiesBodyfileFormat != null)
                 {
-                    hierarchiesBody["format"] = CSharpExpressionConverter.Convert(hierarchiesBodyfileFormat);
+                    if (hierarchiesBodyfileFormat != null)
+                    {
+                        hierarchiesBody["format"] = SourceExpressionConverter.Convert(hierarchiesBodyfileFormat);
+                        hierarchiesBodypropCount++;
+                    }
+
+                    hierarchiesBodypropCount++;
+                }
+                else
+                {
+                    hierarchiesBody["format"] = "CSV";
                     hierarchiesBodypropCount++;
                 }
 
-                hierarchiesBodypropCount++;
-            }
-            else
-            {
-                hierarchiesBody["format"] = "CSV";
-                hierarchiesBodypropCount++;
-            }
-
-            if (hierarchiesBodyfileEncoding != null)
-            {
                 if (hierarchiesBodyfileEncoding != null)
                 {
-                    hierarchiesBody["encoding"] = CSharpExpressionConverter.Convert(hierarchiesBodyfileEncoding);
+                    if (hierarchiesBodyfileEncoding != null)
+                    {
+                        hierarchiesBody["encoding"] = SourceExpressionConverter.Convert(hierarchiesBodyfileEncoding);
+                        hierarchiesBodypropCount++;
+                    }
+
+                    hierarchiesBodypropCount++;
+                }
+                else
+                {
+                    hierarchiesBody["encoding"] = "UTF-8";
                     hierarchiesBodypropCount++;
                 }
 
+                hierarchiesBody["destination"] = "ToCSV";
                 hierarchiesBodypropCount++;
-            }
-            else
-            {
-                hierarchiesBody["encoding"] = "UTF-8";
-                hierarchiesBodypropCount++;
-            }
-
-            hierarchiesBody["destination"] = "ToCSV";
-            hierarchiesBodypropCount++;
-            if (hierarchiesBodyexportMemberIDs != null)
-            {
                 if (hierarchiesBodyexportMemberIDs != null)
                 {
-                    hierarchiesBody["exportMemberIds"] = CSharpExpressionConverter.ConvertToken(hierarchiesBodyexportMemberIDs);
+                    if (hierarchiesBodyexportMemberIDs != null)
+                    {
+                        hierarchiesBody["exportMemberIds"] = SourceExpressionConverter.ConvertToken(hierarchiesBodyexportMemberIDs);
+                        hierarchiesBodypropCount++;
+                    }
+
+                    hierarchiesBodypropCount++;
+                }
+                else
+                {
+                    hierarchiesBody["exportMemberIds"] = false;
                     hierarchiesBodypropCount++;
                 }
 
-                hierarchiesBodypropCount++;
-            }
-            else
-            {
-                hierarchiesBody["exportMemberIds"] = false;
-                hierarchiesBodypropCount++;
-            }
-
-            if (hierarchiesBodypropCount > 0)
-            {
-                callPayload.Body = hierarchiesBody;
+                if (hierarchiesBodypropCount > 0)
+                {
+                    callPayload.Body = hierarchiesBody;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportValues(Expression<Func<string>> modelIdPath, Expression<Func<bool>> valuesBodyshowHeader = null, Expression<Func<string>> valuesBodymQLQueryString = null, Expression<Func<valuesBodyfileFormatInput>> valuesBodyfileFormat = null, Expression<Func<valuesBodyfileEncodingInput>> valuesBodyfileEncoding = null, Expression<Func<bool>> valuesBodyincludeExternalIDs = null, Expression<Func<bool>> valuesBodynamedDimensions = null)
+        public IBodyWorkflowAction<string> ExportValues([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> valuesBodyshowHeader = null, [WorkflowExpression] Func<string> valuesBodymQLQueryString = null, [WorkflowExpression] Func<valuesBodyfileFormatInput> valuesBodyfileFormat = null, [WorkflowExpression] Func<valuesBodyfileEncodingInput> valuesBodyfileEncoding = null, [WorkflowExpression] Func<bool> valuesBodyincludeExternalIDs = null, [WorkflowExpression] Func<bool> valuesBodynamedDimensions = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var valuesBody = new JObject();
-            var valuesBodypropCount = 0;
-            if (valuesBodyshowHeader != null)
+            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
+            SourceExpression.Validate(valuesBodyshowHeader, nameof(valuesBodyshowHeader), required: false);
+            SourceExpression.Validate(valuesBodymQLQueryString, nameof(valuesBodymQLQueryString), required: false);
+            SourceExpression.Validate(valuesBodyfileFormat, nameof(valuesBodyfileFormat), required: false);
+            SourceExpression.Validate(valuesBodyfileEncoding, nameof(valuesBodyfileEncoding), required: false);
+            SourceExpression.Validate(valuesBodyincludeExternalIDs, nameof(valuesBodyincludeExternalIDs), required: false);
+            SourceExpression.Validate(valuesBodynamedDimensions, nameof(valuesBodynamedDimensions), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/intersections2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var valuesBody = new JObject();
+                var valuesBodypropCount = 0;
                 if (valuesBodyshowHeader != null)
                 {
-                    valuesBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(valuesBodyshowHeader);
+                    if (valuesBodyshowHeader != null)
+                    {
+                        valuesBody["showHeaders"] = SourceExpressionConverter.ConvertToken(valuesBodyshowHeader);
+                        valuesBodypropCount++;
+                    }
+
+                    valuesBodypropCount++;
+                }
+                else
+                {
+                    valuesBody["showHeaders"] = false;
                     valuesBodypropCount++;
                 }
 
-                valuesBodypropCount++;
-            }
-            else
-            {
-                valuesBody["showHeaders"] = false;
-                valuesBodypropCount++;
-            }
+                if (valuesBodymQLQueryString != null)
+                {
+                    valuesBody["queryString"] = SourceExpressionConverter.ConvertToken(valuesBodymQLQueryString);
+                    valuesBodypropCount++;
+                }
 
-            if (valuesBodymQLQueryString != null)
-            {
-                valuesBody["queryString"] = CSharpExpressionConverter.ConvertToken(valuesBodymQLQueryString);
-                valuesBodypropCount++;
-            }
-
-            if (valuesBodyfileFormat != null)
-            {
                 if (valuesBodyfileFormat != null)
                 {
-                    valuesBody["format"] = CSharpExpressionConverter.Convert(valuesBodyfileFormat);
+                    if (valuesBodyfileFormat != null)
+                    {
+                        valuesBody["format"] = SourceExpressionConverter.Convert(valuesBodyfileFormat);
+                        valuesBodypropCount++;
+                    }
+
+                    valuesBodypropCount++;
+                }
+                else
+                {
+                    valuesBody["format"] = "CSV";
                     valuesBodypropCount++;
                 }
 
-                valuesBodypropCount++;
-            }
-            else
-            {
-                valuesBody["format"] = "CSV";
-                valuesBodypropCount++;
-            }
-
-            if (valuesBodyfileEncoding != null)
-            {
                 if (valuesBodyfileEncoding != null)
                 {
-                    valuesBody["encoding"] = CSharpExpressionConverter.Convert(valuesBodyfileEncoding);
+                    if (valuesBodyfileEncoding != null)
+                    {
+                        valuesBody["encoding"] = SourceExpressionConverter.Convert(valuesBodyfileEncoding);
+                        valuesBodypropCount++;
+                    }
+
+                    valuesBodypropCount++;
+                }
+                else
+                {
+                    valuesBody["encoding"] = "UTF-8";
                     valuesBodypropCount++;
                 }
 
+                valuesBody["destination"] = "ToCSV";
                 valuesBodypropCount++;
-            }
-            else
-            {
-                valuesBody["encoding"] = "UTF-8";
-                valuesBodypropCount++;
-            }
-
-            valuesBody["destination"] = "ToCSV";
-            valuesBodypropCount++;
-            if (valuesBodyincludeExternalIDs != null)
-            {
                 if (valuesBodyincludeExternalIDs != null)
                 {
-                    valuesBody["includeExternalId"] = CSharpExpressionConverter.ConvertToken(valuesBodyincludeExternalIDs);
+                    if (valuesBodyincludeExternalIDs != null)
+                    {
+                        valuesBody["includeExternalId"] = SourceExpressionConverter.ConvertToken(valuesBodyincludeExternalIDs);
+                        valuesBodypropCount++;
+                    }
+
+                    valuesBodypropCount++;
+                }
+                else
+                {
+                    valuesBody["includeExternalId"] = false;
                     valuesBodypropCount++;
                 }
 
-                valuesBodypropCount++;
-            }
-            else
-            {
-                valuesBody["includeExternalId"] = false;
-                valuesBodypropCount++;
-            }
-
-            if (valuesBodynamedDimensions != null)
-            {
                 if (valuesBodynamedDimensions != null)
                 {
-                    valuesBody["isNamedHeader"] = CSharpExpressionConverter.ConvertToken(valuesBodynamedDimensions);
+                    if (valuesBodynamedDimensions != null)
+                    {
+                        valuesBody["isNamedHeader"] = SourceExpressionConverter.ConvertToken(valuesBodynamedDimensions);
+                        valuesBodypropCount++;
+                    }
+
+                    valuesBodypropCount++;
+                }
+                else
+                {
+                    valuesBody["isNamedHeader"] = false;
                     valuesBodypropCount++;
                 }
 
-                valuesBodypropCount++;
-            }
-            else
-            {
-                valuesBody["isNamedHeader"] = false;
-                valuesBodypropCount++;
-            }
-
-            if (valuesBodypropCount > 0)
-            {
-                callPayload.Body = valuesBody;
+                if (valuesBodypropCount > 0)
+                {
+                    callPayload.Body = valuesBody;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vena")]
-        public IBodyWorkflowAction<string> ExportLIDs(Expression<Func<string>> modelIdPath, Expression<Func<bool>> lidsBodyshowHeader = null, Expression<Func<string>> lidsBodymQLQueryString = null, Expression<Func<lidsBodyfileFormatInput>> lidsBodyfileFormat = null, Expression<Func<lidsBodyfileEncodingInput>> lidsBodyfileEncoding = null)
+        public IBodyWorkflowAction<string> ExportLIDs([WorkflowExpression] Func<string> modelIdPath, [WorkflowExpression] Func<bool> lidsBodyshowHeader = null, [WorkflowExpression] Func<string> lidsBodymQLQueryString = null, [WorkflowExpression] Func<lidsBodyfileFormatInput> lidsBodyfileFormat = null, [WorkflowExpression] Func<lidsBodyfileEncodingInput> lidsBodyfileEncoding = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var lidsBody = new JObject();
-            var lidsBodypropCount = 0;
-            if (lidsBodyshowHeader != null)
+            SourceExpression.Validate(modelIdPath, nameof(modelIdPath), required: true);
+            SourceExpression.Validate(lidsBodyshowHeader, nameof(lidsBodyshowHeader), required: false);
+            SourceExpression.Validate(lidsBodymQLQueryString, nameof(lidsBodymQLQueryString), required: false);
+            SourceExpression.Validate(lidsBodyfileFormat, nameof(lidsBodyfileFormat), required: false);
+            SourceExpression.Validate(lidsBodyfileEncoding, nameof(lidsBodyfileEncoding), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/models/{0}/etl/query/lids2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelIdPath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var lidsBody = new JObject();
+                var lidsBodypropCount = 0;
                 if (lidsBodyshowHeader != null)
                 {
-                    lidsBody["showHeaders"] = CSharpExpressionConverter.ConvertToken(lidsBodyshowHeader);
+                    if (lidsBodyshowHeader != null)
+                    {
+                        lidsBody["showHeaders"] = SourceExpressionConverter.ConvertToken(lidsBodyshowHeader);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["showHeaders"] = false;
                     lidsBodypropCount++;
                 }
 
-                lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["showHeaders"] = false;
-                lidsBodypropCount++;
-            }
+                if (lidsBodymQLQueryString != null)
+                {
+                    lidsBody["queryString"] = SourceExpressionConverter.ConvertToken(lidsBodymQLQueryString);
+                    lidsBodypropCount++;
+                }
 
-            if (lidsBodymQLQueryString != null)
-            {
-                lidsBody["queryString"] = CSharpExpressionConverter.ConvertToken(lidsBodymQLQueryString);
-                lidsBodypropCount++;
-            }
-
-            if (lidsBodyfileFormat != null)
-            {
                 if (lidsBodyfileFormat != null)
                 {
-                    lidsBody["format"] = CSharpExpressionConverter.Convert(lidsBodyfileFormat);
+                    if (lidsBodyfileFormat != null)
+                    {
+                        lidsBody["format"] = SourceExpressionConverter.Convert(lidsBodyfileFormat);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["format"] = "CSV";
                     lidsBodypropCount++;
                 }
 
-                lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["format"] = "CSV";
-                lidsBodypropCount++;
-            }
-
-            if (lidsBodyfileEncoding != null)
-            {
                 if (lidsBodyfileEncoding != null)
                 {
-                    lidsBody["encoding"] = CSharpExpressionConverter.Convert(lidsBodyfileEncoding);
+                    if (lidsBodyfileEncoding != null)
+                    {
+                        lidsBody["encoding"] = SourceExpressionConverter.Convert(lidsBodyfileEncoding);
+                        lidsBodypropCount++;
+                    }
+
+                    lidsBodypropCount++;
+                }
+                else
+                {
+                    lidsBody["encoding"] = "UTF-8";
                     lidsBodypropCount++;
                 }
 
+                lidsBody["destination"] = "ToCSV";
                 lidsBodypropCount++;
-            }
-            else
-            {
-                lidsBody["encoding"] = "UTF-8";
-                lidsBodypropCount++;
+                if (lidsBodypropCount > 0)
+                {
+                    callPayload.Body = lidsBody;
+                }
+                return callPayload;
             }
 
-            lidsBody["destination"] = "ToCSV";
-            lidsBodypropCount++;
-            if (lidsBodypropCount > 0)
-            {
-                callPayload.Body = lidsBody;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

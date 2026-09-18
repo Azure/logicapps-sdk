@@ -12,84 +12,128 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hunterip
     public class HunteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<DomainResponse> Domain(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<typeInput>> type = null, Expression<Func<string>> seniority = null, Expression<Func<string>> department = null)
+        public IBodyWorkflowAction<DomainResponse> Domain([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<string> seniority = null, [WorkflowExpression] Func<string> department = null)
         {
-            var apiCallPath = "/domain-search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (domain != null)
-                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
-            if (company != null)
-                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
-            if (seniority != null)
-                callPayload.Queries["seniority"] = CSharpExpressionConverter.ConvertO(seniority);
-            if (department != null)
-                callPayload.Queries["department"] = CSharpExpressionConverter.ConvertO(department);
-            return new ApiConnectionAction<DomainResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: false);
+            SourceExpression.Validate(company, nameof(company), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            SourceExpression.Validate(seniority, nameof(seniority), required: false);
+            SourceExpression.Validate(department, nameof(department), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/domain-search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (domain != null)
+                    callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                if (company != null)
+                    callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                if (seniority != null)
+                    callPayload.Queries["seniority"] = SourceExpressionConverter.ConvertO(seniority);
+                if (department != null)
+                    callPayload.Queries["department"] = SourceExpressionConverter.ConvertO(department);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DomainResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailResponse> Email(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> fullName = null, Expression<Func<int>> maxDuration = null)
+        public IBodyWorkflowAction<EmailResponse> Email([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<int> maxDuration = null)
         {
-            var apiCallPath = "/email-finder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (domain != null)
-                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
-            if (company != null)
-                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            if (firstName != null)
-                callPayload.Queries["first_name"] = CSharpExpressionConverter.ConvertO(firstName);
-            if (lastName != null)
-                callPayload.Queries["last_name"] = CSharpExpressionConverter.ConvertO(lastName);
-            if (fullName != null)
-                callPayload.Queries["full_name"] = CSharpExpressionConverter.ConvertO(fullName);
-            if (maxDuration != null)
-                callPayload.Queries["max_duration"] = CSharpExpressionConverter.ConvertO(maxDuration);
-            return new ApiConnectionAction<EmailResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: false);
+            SourceExpression.Validate(company, nameof(company), required: false);
+            SourceExpression.Validate(firstName, nameof(firstName), required: false);
+            SourceExpression.Validate(lastName, nameof(lastName), required: false);
+            SourceExpression.Validate(fullName, nameof(fullName), required: false);
+            SourceExpression.Validate(maxDuration, nameof(maxDuration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/email-finder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (domain != null)
+                    callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                if (company != null)
+                    callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (firstName != null)
+                    callPayload.Queries["first_name"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["last_name"] = SourceExpressionConverter.ConvertO(lastName);
+                if (fullName != null)
+                    callPayload.Queries["full_name"] = SourceExpressionConverter.ConvertO(fullName);
+                if (maxDuration != null)
+                    callPayload.Queries["max_duration"] = SourceExpressionConverter.ConvertO(maxDuration);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EmailResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<AuthorResponse> Author(Expression<Func<string>> url, Expression<Func<int>> maxDuration = null)
+        public IBodyWorkflowAction<AuthorResponse> Author([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<int> maxDuration = null)
         {
-            var apiCallPath = "/author-finder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            if (maxDuration != null)
-                callPayload.Queries["max_duration"] = CSharpExpressionConverter.ConvertO(maxDuration);
-            return new ApiConnectionAction<AuthorResponse>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: true);
+            SourceExpression.Validate(maxDuration, nameof(maxDuration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/author-finder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (maxDuration != null)
+                    callPayload.Queries["max_duration"] = SourceExpressionConverter.ConvertO(maxDuration);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AuthorResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailVerifyResponse> EmailVerify(Expression<Func<string>> email)
+        public IBodyWorkflowAction<EmailVerifyResponse> EmailVerify([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/email-verifier";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
-            return new ApiConnectionAction<EmailVerifyResponse>(callPayload);
+            SourceExpression.Validate(email, nameof(email), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/email-verifier";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EmailVerifyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hunterip")]
-        public IBodyWorkflowAction<EmailCountResponse> EmailCount(Expression<Func<string>> domain = null, Expression<Func<string>> company = null, Expression<Func<typeInput>> type = null)
+        public IBodyWorkflowAction<EmailCountResponse> EmailCount([WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<typeInput> type = null)
         {
-            var apiCallPath = "/email-count";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (domain != null)
-                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
-            if (company != null)
-                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
-            return new ApiConnectionAction<EmailCountResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: false);
+            SourceExpression.Validate(company, nameof(company), required: false);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/email-count";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (domain != null)
+                    callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                if (company != null)
+                    callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EmailCountResponse>(BuildSourceInput);
         }
     }
 

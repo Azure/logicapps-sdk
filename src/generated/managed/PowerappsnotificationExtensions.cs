@@ -12,45 +12,52 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerappsnotification
     public class PowerappsnotificationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerappsnotification")]
-        public IWorkflowAction SendPushNotification(Expression<Func<string[]>> payloadrecipients = null, Expression<Func<string>> payloadmessage = null, Expression<Func<bool>> payloadopenApp = null)
+        public IWorkflowAction SendPushNotification([WorkflowExpression] Func<string[]> payloadrecipients = null, [WorkflowExpression] Func<string> payloadmessage = null, [WorkflowExpression] Func<bool> payloadopenApp = null)
         {
-            var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var payload = new JObject();
-            var payloadpropCount = 0;
-            if (payloadrecipients != null)
+            SourceExpression.Validate(payloadrecipients, nameof(payloadrecipients), required: false);
+            SourceExpression.Validate(payloadmessage, nameof(payloadmessage), required: false);
+            SourceExpression.Validate(payloadopenApp, nameof(payloadopenApp), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                payload["recipients"] = CSharpExpressionConverter.ConvertToken(payloadrecipients);
-                payloadpropCount++;
+                var apiCallPath = "/providers/Microsoft.PowerApps/scopes/connector/sendPushNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var payload = new JObject();
+                var payloadpropCount = 0;
+                if (payloadrecipients != null)
+                {
+                    payload["recipients"] = SourceExpressionConverter.ConvertToken(payloadrecipients);
+                    payloadpropCount++;
+                }
+
+                if (payloadmessage != null)
+                {
+                    payload["message"] = SourceExpressionConverter.ConvertToken(payloadmessage);
+                    payloadpropCount++;
+                }
+
+                if (payloadopenApp != null)
+                {
+                    payload["openApp"] = SourceExpressionConverter.ConvertToken(payloadopenApp);
+                    payloadpropCount++;
+                }
+
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    payload["params"] = @paramsObject;
+                    payloadpropCount++;
+                }
+
+                if (payloadpropCount > 0)
+                {
+                    callPayload.Body = payload;
+                }
+                return callPayload;
             }
 
-            if (payloadmessage != null)
-            {
-                payload["message"] = CSharpExpressionConverter.ConvertToken(payloadmessage);
-                payloadpropCount++;
-            }
-
-            if (payloadopenApp != null)
-            {
-                payload["openApp"] = CSharpExpressionConverter.ConvertToken(payloadopenApp);
-                payloadpropCount++;
-            }
-
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                payload["params"] = @paramsObject;
-                payloadpropCount++;
-            }
-
-            if (payloadpropCount > 0)
-            {
-                callPayload.Body = payload;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

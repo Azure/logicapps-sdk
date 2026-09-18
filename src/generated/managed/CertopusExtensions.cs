@@ -12,43 +12,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Certopus
     public class CertopusActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "certopus")]
-        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential(Expression<Func<string>> bodyorganisationId, Expression<Func<string>> bodyeventId, Expression<Func<string>> bodycategoryId, Expression<Func<bool>> bodygenerate = null, Expression<Func<bool>> bodypublish = null, Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null)
+        public IBodyWorkflowAction<CreateCredentialResponse> CreateCredential([WorkflowExpression] Func<string> bodyorganisationId, [WorkflowExpression] Func<string> bodyeventId, [WorkflowExpression] Func<string> bodycategoryId, [WorkflowExpression] Func<bool> bodygenerate = null, [WorkflowExpression] Func<bool> bodypublish = null, [WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null)
         {
-            var apiCallPath = "/certificates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["organisationId"] = CSharpExpressionConverter.ConvertToken(bodyorganisationId);
-            bodypropCount++;
-            body["eventId"] = CSharpExpressionConverter.ConvertToken(bodyeventId);
-            bodypropCount++;
-            body["categoryId"] = CSharpExpressionConverter.ConvertToken(bodycategoryId);
-            if (bodygenerate != null)
+            SourceExpression.Validate(bodyorganisationId, nameof(bodyorganisationId), required: true);
+            SourceExpression.Validate(bodyeventId, nameof(bodyeventId), required: true);
+            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: true);
+            SourceExpression.Validate(bodygenerate, nameof(bodygenerate), required: false);
+            SourceExpression.Validate(bodypublish, nameof(bodypublish), required: false);
+            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["generate"] = CSharpExpressionConverter.ConvertToken(bodygenerate);
+                var apiCallPath = "/certificates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypublish != null)
-            {
-                body["publish"] = CSharpExpressionConverter.ConvertToken(bodypublish);
+                body["organisationId"] = SourceExpressionConverter.ConvertToken(bodyorganisationId);
                 bodypropCount++;
-            }
-
-            if (bodyrecipients != null)
-            {
-                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
+                body["eventId"] = SourceExpressionConverter.ConvertToken(bodyeventId);
                 bodypropCount++;
+                body["categoryId"] = SourceExpressionConverter.ConvertToken(bodycategoryId);
+                if (bodygenerate != null)
+                {
+                    body["generate"] = SourceExpressionConverter.ConvertToken(bodygenerate);
+                    bodypropCount++;
+                }
+
+                if (bodypublish != null)
+                {
+                    body["publish"] = SourceExpressionConverter.ConvertToken(bodypublish);
+                    bodypropCount++;
+                }
+
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCredentialResponse>(callPayload);
+            return new ApiConnectionAction<CreateCredentialResponse>(BuildSourceInput);
         }
     }
 

@@ -12,116 +12,150 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     public class IntercomActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> CreateUser(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<UserResponse> CreateUser([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodycompanyId = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyname != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodycompanyId != null)
+                {
+                    body["companies"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodycompanyId != null)
-            {
-                body["companies"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
         public IBodyWorkflowAction<LeadResponse[]> ListLeads()
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LeadResponse[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadResponse[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> CreateLead(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodyavatarimageURL = null, Expression<Func<string>> bodycompanyId = null)
+        public IBodyWorkflowAction<LeadResponse> CreateLead([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodyavatarimageURL = null, [WorkflowExpression] Func<string> bodycompanyId = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyname != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodyavatarimageURL, nameof(bodyavatarimageURL), required: false);
+            SourceExpression.Validate(bodycompanyId, nameof(bodycompanyId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                var avatarObject = new JObject();
+                var avatarObjectpropCount = 0;
+                if (bodyavatarimageURL != null)
+                {
+                    avatarObject["image_url"] = SourceExpressionConverter.ConvertToken(bodyavatarimageURL);
+                    avatarObjectpropCount++;
+                }
+
+                if (avatarObjectpropCount > 0)
+                {
+                    body["avatar"] = avatarObject;
+                    bodypropCount++;
+                }
+
+                if (bodycompanyId != null)
+                {
+                    body["companies"] = SourceExpressionConverter.ConvertToken(bodycompanyId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-                bodypropCount++;
-            }
-
-            var avatarObject = new JObject();
-            var avatarObjectpropCount = 0;
-            if (bodyavatarimageURL != null)
-            {
-                avatarObject["image_url"] = CSharpExpressionConverter.ConvertToken(bodyavatarimageURL);
-                avatarObjectpropCount++;
-            }
-
-            if (avatarObjectpropCount > 0)
-            {
-                body["avatar"] = avatarObject;
-                bodypropCount++;
-            }
-
-            if (bodycompanyId != null)
-            {
-                body["companies"] = CSharpExpressionConverter.ConvertToken(bodycompanyId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LeadResponse>(callPayload);
+            return new ApiConnectionAction<LeadResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<UserResponse> GetUser(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<UserResponse> GetUser([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "intercom")]
-        public IBodyWorkflowAction<LeadResponse> GetLead(Expression<Func<string>> contactId)
+        public IBodyWorkflowAction<LeadResponse> GetLead([WorkflowExpression] Func<string> contactId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LeadResponse>(callPayload);
+            SourceExpression.Validate(contactId, nameof(contactId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contactId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LeadResponse>(BuildSourceInput);
         }
     }
 
@@ -129,34 +163,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Intercom
     {
         public IBodyWorkflowTrigger<TrigLeadResponse[]> TrigNewLead(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_lead_trigger/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigLeadResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/create_lead_trigger/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TrigLeadResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<TrigUserResponse[]> TrigNewUser(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_user_trigger/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/create_user_trigger/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TrigUserResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<TrigUserResponse[]> TrigUpdateUser(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/update_user_trigger/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigUserResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/update_user_trigger/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TrigUserResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<TrigConversationResponse[]> TrigNewConversation(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/create_conversation_trigger/conversations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<TrigConversationResponse[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/create_conversation_trigger/conversations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TrigConversationResponse[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -14,23 +14,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vatcheckapiip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
         public IBodyWorkflowAction<StatusResponse> Status()
         {
-            var apiCallPath = "/v2/status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatusResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "vatcheckapiip")]
-        public IBodyWorkflowAction<ValidateResponse> Validate(Expression<Func<int>> vatNumber = null, Expression<Func<string>> countryCode = null)
+        public IBodyWorkflowAction<ValidateResponse> Validate([WorkflowExpression] Func<int> vatNumber = null, [WorkflowExpression] Func<string> countryCode = null)
         {
-            var apiCallPath = "/v2/check";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (vatNumber != null)
-                callPayload.Queries["vat_number"] = CSharpExpressionConverter.ConvertO(vatNumber);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
-            return new ApiConnectionAction<ValidateResponse>(callPayload);
+            SourceExpression.Validate(vatNumber, nameof(vatNumber), required: false);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/check";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (vatNumber != null)
+                    callPayload.Queries["vat_number"] = SourceExpressionConverter.ConvertO(vatNumber);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidateResponse>(BuildSourceInput);
         }
     }
 

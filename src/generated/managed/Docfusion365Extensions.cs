@@ -14,48 +14,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docfusion365
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
         public IBodyWorkflowAction<VersionResponse> GetApiVersion()
         {
-            var apiCallPath = "/api/DocFusion365/GetVersion";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VersionResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocFusion365/GetVersion";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VersionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName)
+        public IBodyWorkflowAction<GetLinkedListTemplatesResponse[]> GetTheLinkedListTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName)
         {
-            var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
-            return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(listName, nameof(listName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocFusion365/GetLinkedListTemplates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["listName"] = SourceExpressionConverter.ConvertO(listName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLinkedListTemplatesResponse[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> templateId, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse> ComposeALinkedTemplate([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> templateId, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
-            callPayload.Queries["TemplateId"] = CSharpExpressionConverter.ConvertO(templateId);
-            callPayload.Queries["listItemId"] = CSharpExpressionConverter.ConvertO(listItemId);
-            callPayload.Queries["skipPostProcess"] = CSharpExpressionConverter.ConvertO(skipPostProcess);
-            return new ApiConnectionAction<ComposeLinkedTemplateResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(listName, nameof(listName), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(listItemId, nameof(listItemId), required: true);
+            SourceExpression.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocFusion365/ComposeLinkedTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["listName"] = SourceExpressionConverter.ConvertO(listName);
+                callPayload.Queries["TemplateId"] = SourceExpressionConverter.ConvertO(templateId);
+                callPayload.Queries["listItemId"] = SourceExpressionConverter.ConvertO(listItemId);
+                callPayload.Queries["skipPostProcess"] = SourceExpressionConverter.ConvertO(skipPostProcess);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ComposeLinkedTemplateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "docfusion365")]
-        public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates(Expression<Func<string>> siteUrl, Expression<Func<string>> listName, Expression<Func<int>> listItemId, Expression<Func<bool>> skipPostProcess)
+        public IBodyWorkflowAction<ComposeLinkedTemplateResponse[]> ComposeAllTheLinkedTemplates([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> listName, [WorkflowExpression] Func<int> listItemId, [WorkflowExpression] Func<bool> skipPostProcess)
         {
-            var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["siteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["listName"] = CSharpExpressionConverter.ConvertO(listName);
-            callPayload.Queries["listItemId"] = CSharpExpressionConverter.ConvertO(listItemId);
-            callPayload.Queries["skipPostProcess"] = CSharpExpressionConverter.ConvertO(skipPostProcess);
-            return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(listName, nameof(listName), required: true);
+            SourceExpression.Validate(listItemId, nameof(listItemId), required: true);
+            SourceExpression.Validate(skipPostProcess, nameof(skipPostProcess), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocFusion365/ComposeAllLinkedTemplates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["siteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["listName"] = SourceExpressionConverter.ConvertO(listName);
+                callPayload.Queries["listItemId"] = SourceExpressionConverter.ConvertO(listItemId);
+                callPayload.Queries["skipPostProcess"] = SourceExpressionConverter.ConvertO(skipPostProcess);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ComposeLinkedTemplateResponse[]>(BuildSourceInput);
         }
     }
 

@@ -12,194 +12,293 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serviceobjects
     public class ServiceobjectsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo(Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> outputLanguage = null)
+        public IBodyWorkflowAction<AVIGetAddressInfoResponse> AVIGetAddressInfo([WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> outputLanguage = null)
         {
-            var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (address1 != null)
-                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
-            if (address2 != null)
-                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
-            if (address3 != null)
-                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
-            if (address4 != null)
-                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
-            if (address5 != null)
-                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
-            if (locality != null)
-                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
-            if (administrativeArea != null)
-                callPayload.Queries["AdministrativeArea"] = CSharpExpressionConverter.ConvertO(administrativeArea);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            if (outputLanguage != null)
-                callPayload.Queries["OutputLanguage"] = CSharpExpressionConverter.ConvertO(outputLanguage);
-            return new ApiConnectionAction<AVIGetAddressInfoResponse>(callPayload);
+            SourceExpression.Validate(address1, nameof(address1), required: false);
+            SourceExpression.Validate(address2, nameof(address2), required: false);
+            SourceExpression.Validate(address3, nameof(address3), required: false);
+            SourceExpression.Validate(address4, nameof(address4), required: false);
+            SourceExpression.Validate(address5, nameof(address5), required: false);
+            SourceExpression.Validate(locality, nameof(locality), required: false);
+            SourceExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AVI/api.svc/json/GetAddressInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (address1 != null)
+                    callPayload.Queries["Address1"] = SourceExpressionConverter.ConvertO(address1);
+                if (address2 != null)
+                    callPayload.Queries["Address2"] = SourceExpressionConverter.ConvertO(address2);
+                if (address3 != null)
+                    callPayload.Queries["Address3"] = SourceExpressionConverter.ConvertO(address3);
+                if (address4 != null)
+                    callPayload.Queries["Address4"] = SourceExpressionConverter.ConvertO(address4);
+                if (address5 != null)
+                    callPayload.Queries["Address5"] = SourceExpressionConverter.ConvertO(address5);
+                if (locality != null)
+                    callPayload.Queries["Locality"] = SourceExpressionConverter.ConvertO(locality);
+                if (administrativeArea != null)
+                    callPayload.Queries["AdministrativeArea"] = SourceExpressionConverter.ConvertO(administrativeArea);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                if (outputLanguage != null)
+                    callPayload.Queries["OutputLanguage"] = SourceExpressionConverter.ConvertO(outputLanguage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AVIGetAddressInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch(Expression<Func<string>> singleLine = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> administrativeArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> boundaries = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null, Expression<Func<string>> extras = null)
+        public IBodyWorkflowAction<AGIPlaceSearchResponse> AGIPlaceSearch([WorkflowExpression] Func<string> singleLine = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> administrativeArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> boundaries = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null, [WorkflowExpression] Func<string> extras = null)
         {
-            var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (singleLine != null)
-                callPayload.Queries["SingleLine"] = CSharpExpressionConverter.ConvertO(singleLine);
-            if (address1 != null)
-                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
-            if (address2 != null)
-                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
-            if (address3 != null)
-                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
-            if (address4 != null)
-                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
-            if (address5 != null)
-                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
-            if (locality != null)
-                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
-            if (administrativeArea != null)
-                callPayload.Queries["AdministrativeArea"] = CSharpExpressionConverter.ConvertO(administrativeArea);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            if (boundaries != null)
-                callPayload.Queries["Boundaries"] = CSharpExpressionConverter.ConvertO(boundaries);
-            if (maxResults != null)
-                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            if (searchType != null)
-                callPayload.Queries["SearchType"] = CSharpExpressionConverter.ConvertO(searchType);
-            if (extras != null)
-                callPayload.Queries["Extras"] = CSharpExpressionConverter.ConvertO(extras);
-            return new ApiConnectionAction<AGIPlaceSearchResponse>(callPayload);
+            SourceExpression.Validate(singleLine, nameof(singleLine), required: false);
+            SourceExpression.Validate(address1, nameof(address1), required: false);
+            SourceExpression.Validate(address2, nameof(address2), required: false);
+            SourceExpression.Validate(address3, nameof(address3), required: false);
+            SourceExpression.Validate(address4, nameof(address4), required: false);
+            SourceExpression.Validate(address5, nameof(address5), required: false);
+            SourceExpression.Validate(locality, nameof(locality), required: false);
+            SourceExpression.Validate(administrativeArea, nameof(administrativeArea), required: false);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(boundaries, nameof(boundaries), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            SourceExpression.Validate(searchType, nameof(searchType), required: false);
+            SourceExpression.Validate(extras, nameof(extras), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AGI/api.svc/json/PlaceSearch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (singleLine != null)
+                    callPayload.Queries["SingleLine"] = SourceExpressionConverter.ConvertO(singleLine);
+                if (address1 != null)
+                    callPayload.Queries["Address1"] = SourceExpressionConverter.ConvertO(address1);
+                if (address2 != null)
+                    callPayload.Queries["Address2"] = SourceExpressionConverter.ConvertO(address2);
+                if (address3 != null)
+                    callPayload.Queries["Address3"] = SourceExpressionConverter.ConvertO(address3);
+                if (address4 != null)
+                    callPayload.Queries["Address4"] = SourceExpressionConverter.ConvertO(address4);
+                if (address5 != null)
+                    callPayload.Queries["Address5"] = SourceExpressionConverter.ConvertO(address5);
+                if (locality != null)
+                    callPayload.Queries["Locality"] = SourceExpressionConverter.ConvertO(locality);
+                if (administrativeArea != null)
+                    callPayload.Queries["AdministrativeArea"] = SourceExpressionConverter.ConvertO(administrativeArea);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                if (boundaries != null)
+                    callPayload.Queries["Boundaries"] = SourceExpressionConverter.ConvertO(boundaries);
+                if (maxResults != null)
+                    callPayload.Queries["MaxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                if (searchType != null)
+                    callPayload.Queries["SearchType"] = SourceExpressionConverter.ConvertO(searchType);
+                if (extras != null)
+                    callPayload.Queries["Extras"] = SourceExpressionConverter.ConvertO(extras);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AGIPlaceSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch(Expression<Func<string>> latitude = null, Expression<Func<string>> longitude = null, Expression<Func<string>> searchRadius = null, Expression<Func<string>> country = null, Expression<Func<string>> maxResults = null, Expression<Func<string>> searchType = null)
+        public IBodyWorkflowAction<AGIReverseSearchResponse> AGIReverseSearch([WorkflowExpression] Func<string> latitude = null, [WorkflowExpression] Func<string> longitude = null, [WorkflowExpression] Func<string> searchRadius = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> maxResults = null, [WorkflowExpression] Func<string> searchType = null)
         {
-            var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (latitude != null)
-                callPayload.Queries["Latitude"] = CSharpExpressionConverter.ConvertO(latitude);
-            if (longitude != null)
-                callPayload.Queries["Longitude"] = CSharpExpressionConverter.ConvertO(longitude);
-            if (searchRadius != null)
-                callPayload.Queries["SearchRadius"] = CSharpExpressionConverter.ConvertO(searchRadius);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            if (maxResults != null)
-                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            if (searchType != null)
-                callPayload.Queries["SearchType"] = CSharpExpressionConverter.ConvertO(searchType);
-            return new ApiConnectionAction<AGIReverseSearchResponse>(callPayload);
+            SourceExpression.Validate(latitude, nameof(latitude), required: false);
+            SourceExpression.Validate(longitude, nameof(longitude), required: false);
+            SourceExpression.Validate(searchRadius, nameof(searchRadius), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            SourceExpression.Validate(searchType, nameof(searchType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AGI/api.svc/json/ReverseSearch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (latitude != null)
+                    callPayload.Queries["Latitude"] = SourceExpressionConverter.ConvertO(latitude);
+                if (longitude != null)
+                    callPayload.Queries["Longitude"] = SourceExpressionConverter.ConvertO(longitude);
+                if (searchRadius != null)
+                    callPayload.Queries["SearchRadius"] = SourceExpressionConverter.ConvertO(searchRadius);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                if (maxResults != null)
+                    callPayload.Queries["MaxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                if (searchType != null)
+                    callPayload.Queries["SearchType"] = SourceExpressionConverter.ConvertO(searchType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AGIReverseSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo(Expression<Func<string>> phoneNumber = null, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<PE2IGetInternationalExchangeInfoResponse> PE2IGetInternationalExchangeInfo([WorkflowExpression] Func<string> phoneNumber = null, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/PE2/web.svc/json/GetInternationalExchangeInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (phoneNumber != null)
-                callPayload.Queries["PhoneNumber"] = CSharpExpressionConverter.ConvertO(phoneNumber);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(callPayload);
+            SourceExpression.Validate(phoneNumber, nameof(phoneNumber), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PE2/web.svc/json/GetInternationalExchangeInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (phoneNumber != null)
+                    callPayload.Queries["PhoneNumber"] = SourceExpressionConverter.ConvertO(phoneNumber);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PE2IGetInternationalExchangeInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational(Expression<Func<string>> fullName = null, Expression<Func<string>> salutation = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> businessName = null, Expression<Func<string>> businessDomain = null, Expression<Func<string>> businessEIN = null, Expression<Func<string>> address1 = null, Expression<Func<string>> address2 = null, Expression<Func<string>> address3 = null, Expression<Func<string>> address4 = null, Expression<Func<string>> address5 = null, Expression<Func<string>> locality = null, Expression<Func<string>> adminArea = null, Expression<Func<string>> postalCode = null, Expression<Func<string>> country = null, Expression<Func<string>> phone1 = null, Expression<Func<string>> phone2 = null, Expression<Func<string>> email = null, Expression<Func<string>> iPAddress = null, Expression<Func<string>> gender = null, Expression<Func<string>> dateOfBirth = null, Expression<Func<string>> uTCCaptureTime = null, Expression<Func<string>> outputLanguage = null, Expression<Func<string>> testType = null)
+        public IBodyWorkflowAction<LVIValidateLeadInternationalResponse> LVIValidateLeadInternational([WorkflowExpression] Func<string> fullName = null, [WorkflowExpression] Func<string> salutation = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> businessDomain = null, [WorkflowExpression] Func<string> businessEIN = null, [WorkflowExpression] Func<string> address1 = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> address3 = null, [WorkflowExpression] Func<string> address4 = null, [WorkflowExpression] Func<string> address5 = null, [WorkflowExpression] Func<string> locality = null, [WorkflowExpression] Func<string> adminArea = null, [WorkflowExpression] Func<string> postalCode = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> phone1 = null, [WorkflowExpression] Func<string> phone2 = null, [WorkflowExpression] Func<string> email = null, [WorkflowExpression] Func<string> iPAddress = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> dateOfBirth = null, [WorkflowExpression] Func<string> uTCCaptureTime = null, [WorkflowExpression] Func<string> outputLanguage = null, [WorkflowExpression] Func<string> testType = null)
         {
-            var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fullName != null)
-                callPayload.Queries["FullName"] = CSharpExpressionConverter.ConvertO(fullName);
-            if (salutation != null)
-                callPayload.Queries["Salutation"] = CSharpExpressionConverter.ConvertO(salutation);
-            if (firstName != null)
-                callPayload.Queries["FirstName"] = CSharpExpressionConverter.ConvertO(firstName);
-            if (lastName != null)
-                callPayload.Queries["LastName"] = CSharpExpressionConverter.ConvertO(lastName);
-            if (businessName != null)
-                callPayload.Queries["BusinessName"] = CSharpExpressionConverter.ConvertO(businessName);
-            if (businessDomain != null)
-                callPayload.Queries["BusinessDomain"] = CSharpExpressionConverter.ConvertO(businessDomain);
-            if (businessEIN != null)
-                callPayload.Queries["BusinessEIN"] = CSharpExpressionConverter.ConvertO(businessEIN);
-            if (address1 != null)
-                callPayload.Queries["Address1"] = CSharpExpressionConverter.ConvertO(address1);
-            if (address2 != null)
-                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
-            if (address3 != null)
-                callPayload.Queries["Address3"] = CSharpExpressionConverter.ConvertO(address3);
-            if (address4 != null)
-                callPayload.Queries["Address4"] = CSharpExpressionConverter.ConvertO(address4);
-            if (address5 != null)
-                callPayload.Queries["Address5"] = CSharpExpressionConverter.ConvertO(address5);
-            if (locality != null)
-                callPayload.Queries["Locality"] = CSharpExpressionConverter.ConvertO(locality);
-            if (adminArea != null)
-                callPayload.Queries["AdminArea"] = CSharpExpressionConverter.ConvertO(adminArea);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            if (phone1 != null)
-                callPayload.Queries["Phone1"] = CSharpExpressionConverter.ConvertO(phone1);
-            if (phone2 != null)
-                callPayload.Queries["Phone2"] = CSharpExpressionConverter.ConvertO(phone2);
-            if (email != null)
-                callPayload.Queries["Email"] = CSharpExpressionConverter.ConvertO(email);
-            if (iPAddress != null)
-                callPayload.Queries["IPAddress"] = CSharpExpressionConverter.ConvertO(iPAddress);
-            if (gender != null)
-                callPayload.Queries["Gender"] = CSharpExpressionConverter.ConvertO(gender);
-            if (dateOfBirth != null)
-                callPayload.Queries["DateOfBirth"] = CSharpExpressionConverter.ConvertO(dateOfBirth);
-            if (uTCCaptureTime != null)
-                callPayload.Queries["UTCCaptureTime"] = CSharpExpressionConverter.ConvertO(uTCCaptureTime);
-            if (outputLanguage != null)
-                callPayload.Queries["OutputLanguage"] = CSharpExpressionConverter.ConvertO(outputLanguage);
-            if (testType != null)
-                callPayload.Queries["TestType"] = CSharpExpressionConverter.ConvertO(testType);
-            return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(callPayload);
+            SourceExpression.Validate(fullName, nameof(fullName), required: false);
+            SourceExpression.Validate(salutation, nameof(salutation), required: false);
+            SourceExpression.Validate(firstName, nameof(firstName), required: false);
+            SourceExpression.Validate(lastName, nameof(lastName), required: false);
+            SourceExpression.Validate(businessName, nameof(businessName), required: false);
+            SourceExpression.Validate(businessDomain, nameof(businessDomain), required: false);
+            SourceExpression.Validate(businessEIN, nameof(businessEIN), required: false);
+            SourceExpression.Validate(address1, nameof(address1), required: false);
+            SourceExpression.Validate(address2, nameof(address2), required: false);
+            SourceExpression.Validate(address3, nameof(address3), required: false);
+            SourceExpression.Validate(address4, nameof(address4), required: false);
+            SourceExpression.Validate(address5, nameof(address5), required: false);
+            SourceExpression.Validate(locality, nameof(locality), required: false);
+            SourceExpression.Validate(adminArea, nameof(adminArea), required: false);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(phone1, nameof(phone1), required: false);
+            SourceExpression.Validate(phone2, nameof(phone2), required: false);
+            SourceExpression.Validate(email, nameof(email), required: false);
+            SourceExpression.Validate(iPAddress, nameof(iPAddress), required: false);
+            SourceExpression.Validate(gender, nameof(gender), required: false);
+            SourceExpression.Validate(dateOfBirth, nameof(dateOfBirth), required: false);
+            SourceExpression.Validate(uTCCaptureTime, nameof(uTCCaptureTime), required: false);
+            SourceExpression.Validate(outputLanguage, nameof(outputLanguage), required: false);
+            SourceExpression.Validate(testType, nameof(testType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/LVI/api.svc/json/ValidateLeadInternational";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fullName != null)
+                    callPayload.Queries["FullName"] = SourceExpressionConverter.ConvertO(fullName);
+                if (salutation != null)
+                    callPayload.Queries["Salutation"] = SourceExpressionConverter.ConvertO(salutation);
+                if (firstName != null)
+                    callPayload.Queries["FirstName"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["LastName"] = SourceExpressionConverter.ConvertO(lastName);
+                if (businessName != null)
+                    callPayload.Queries["BusinessName"] = SourceExpressionConverter.ConvertO(businessName);
+                if (businessDomain != null)
+                    callPayload.Queries["BusinessDomain"] = SourceExpressionConverter.ConvertO(businessDomain);
+                if (businessEIN != null)
+                    callPayload.Queries["BusinessEIN"] = SourceExpressionConverter.ConvertO(businessEIN);
+                if (address1 != null)
+                    callPayload.Queries["Address1"] = SourceExpressionConverter.ConvertO(address1);
+                if (address2 != null)
+                    callPayload.Queries["Address2"] = SourceExpressionConverter.ConvertO(address2);
+                if (address3 != null)
+                    callPayload.Queries["Address3"] = SourceExpressionConverter.ConvertO(address3);
+                if (address4 != null)
+                    callPayload.Queries["Address4"] = SourceExpressionConverter.ConvertO(address4);
+                if (address5 != null)
+                    callPayload.Queries["Address5"] = SourceExpressionConverter.ConvertO(address5);
+                if (locality != null)
+                    callPayload.Queries["Locality"] = SourceExpressionConverter.ConvertO(locality);
+                if (adminArea != null)
+                    callPayload.Queries["AdminArea"] = SourceExpressionConverter.ConvertO(adminArea);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                if (phone1 != null)
+                    callPayload.Queries["Phone1"] = SourceExpressionConverter.ConvertO(phone1);
+                if (phone2 != null)
+                    callPayload.Queries["Phone2"] = SourceExpressionConverter.ConvertO(phone2);
+                if (email != null)
+                    callPayload.Queries["Email"] = SourceExpressionConverter.ConvertO(email);
+                if (iPAddress != null)
+                    callPayload.Queries["IPAddress"] = SourceExpressionConverter.ConvertO(iPAddress);
+                if (gender != null)
+                    callPayload.Queries["Gender"] = SourceExpressionConverter.ConvertO(gender);
+                if (dateOfBirth != null)
+                    callPayload.Queries["DateOfBirth"] = SourceExpressionConverter.ConvertO(dateOfBirth);
+                if (uTCCaptureTime != null)
+                    callPayload.Queries["UTCCaptureTime"] = SourceExpressionConverter.ConvertO(uTCCaptureTime);
+                if (outputLanguage != null)
+                    callPayload.Queries["OutputLanguage"] = SourceExpressionConverter.ConvertO(outputLanguage);
+                if (testType != null)
+                    callPayload.Queries["TestType"] = SourceExpressionConverter.ConvertO(testType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LVIValidateLeadInternationalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches(Expression<Func<string>> businessName = null, Expression<Func<string>> address = null, Expression<Func<string>> address2 = null, Expression<Func<string>> city = null, Expression<Func<string>> state = null, Expression<Func<string>> postalCode = null)
+        public IBodyWorkflowAction<AV3GetBestMatchesResponse> AV3GetBestMatches([WorkflowExpression] Func<string> businessName = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> address2 = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> state = null, [WorkflowExpression] Func<string> postalCode = null)
         {
-            var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (businessName != null)
-                callPayload.Queries["BusinessName"] = CSharpExpressionConverter.ConvertO(businessName);
-            if (address != null)
-                callPayload.Queries["Address"] = CSharpExpressionConverter.ConvertO(address);
-            if (address2 != null)
-                callPayload.Queries["Address2"] = CSharpExpressionConverter.ConvertO(address2);
-            if (city != null)
-                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
-            if (state != null)
-                callPayload.Queries["State"] = CSharpExpressionConverter.ConvertO(state);
-            if (postalCode != null)
-                callPayload.Queries["PostalCode"] = CSharpExpressionConverter.ConvertO(postalCode);
-            return new ApiConnectionAction<AV3GetBestMatchesResponse>(callPayload);
+            SourceExpression.Validate(businessName, nameof(businessName), required: false);
+            SourceExpression.Validate(address, nameof(address), required: false);
+            SourceExpression.Validate(address2, nameof(address2), required: false);
+            SourceExpression.Validate(city, nameof(city), required: false);
+            SourceExpression.Validate(state, nameof(state), required: false);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AV3/api.svc/GetBestMatchesJson";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (businessName != null)
+                    callPayload.Queries["BusinessName"] = SourceExpressionConverter.ConvertO(businessName);
+                if (address != null)
+                    callPayload.Queries["Address"] = SourceExpressionConverter.ConvertO(address);
+                if (address2 != null)
+                    callPayload.Queries["Address2"] = SourceExpressionConverter.ConvertO(address2);
+                if (city != null)
+                    callPayload.Queries["City"] = SourceExpressionConverter.ConvertO(city);
+                if (state != null)
+                    callPayload.Queries["State"] = SourceExpressionConverter.ConvertO(state);
+                if (postalCode != null)
+                    callPayload.Queries["PostalCode"] = SourceExpressionConverter.ConvertO(postalCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AV3GetBestMatchesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serviceobjects")]
-        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP(Expression<Func<string>> iPAddress = null)
+        public IBodyWorkflowAction<IPAVGetLocationByIPV4Response> IPAVGetLocationByIP([WorkflowExpression] Func<string> iPAddress = null)
         {
-            var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iPAddress != null)
-                callPayload.Queries["IPAddress"] = CSharpExpressionConverter.ConvertO(iPAddress);
-            return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(callPayload);
+            SourceExpression.Validate(iPAddress, nameof(iPAddress), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GPP/web.svc/json/GetLocationByIP_V4";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (iPAddress != null)
+                    callPayload.Queries["IPAddress"] = SourceExpressionConverter.ConvertO(iPAddress);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IPAVGetLocationByIPV4Response>(BuildSourceInput);
         }
     }
 

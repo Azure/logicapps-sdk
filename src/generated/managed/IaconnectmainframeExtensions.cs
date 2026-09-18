@@ -12,659 +12,823 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iaconnectmainframe
     public class IaconnectmainframeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetHLLAPIDLL(Expression<Func<string>> hLLAPISetHLLAPIDLLdLLFilename, Expression<Func<string>> hLLAPISetHLLAPIDLLworkflow, Expression<Func<string>> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, Expression<Func<string>> hLLAPISetHLLAPIDLLentryPointName = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLisEnhancedInterface = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, Expression<Func<bool>> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
+        public IWorkflowAction HLLAPISetHLLAPIDLL([WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLdLLFilename, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLworkflow, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLiAHLLAPIPath = null, [WorkflowExpression] Func<string> hLLAPISetHLLAPIDLLentryPointName = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLisEnhancedInterface = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLis64BitHLLAPIDLL = null, [WorkflowExpression] Func<bool> hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISetHLLAPIDLL = new JObject();
-            var hLLAPISetHLLAPIDLLpropCount = 0;
-            hLLAPISetHLLAPIDLLpropCount++;
-            hLLAPISetHLLAPIDLL["DLLFilename"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLdLLFilename);
-            if (hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLdLLFilename, nameof(hLLAPISetHLLAPIDLLdLLFilename), required: true);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLworkflow, nameof(hLLAPISetHLLAPIDLLworkflow), required: true);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLiAHLLAPIPath, nameof(hLLAPISetHLLAPIDLLiAHLLAPIPath), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLentryPointName, nameof(hLLAPISetHLLAPIDLLentryPointName), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLisEnhancedInterface, nameof(hLLAPISetHLLAPIDLLisEnhancedInterface), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL), required: false);
+            SourceExpression.Validate(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL, nameof(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLiAHLLAPIPath);
+                var apiCallPath = "/HLLAPI/HLLAPISetHLLAPIDLL";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISetHLLAPIDLL = new JObject();
+                var hLLAPISetHLLAPIDLLpropCount = 0;
                 hLLAPISetHLLAPIDLLpropCount++;
-            }
+                hLLAPISetHLLAPIDLL["DLLFilename"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLdLLFilename);
+                if (hLLAPISetHLLAPIDLLiAHLLAPIPath != null)
+                {
+                    hLLAPISetHLLAPIDLL["IAHLLAPIPath"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLiAHLLAPIPath);
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
 
-            if (hLLAPISetHLLAPIDLLentryPointName != null)
-            {
-                hLLAPISetHLLAPIDLL["EntryPointName"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLentryPointName);
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
+                if (hLLAPISetHLLAPIDLLentryPointName != null)
+                {
+                    hLLAPISetHLLAPIDLL["EntryPointName"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLentryPointName);
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
 
-            if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
-            {
                 if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
                 {
-                    hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLisEnhancedInterface);
+                    if (hLLAPISetHLLAPIDLLisEnhancedInterface != null)
+                    {
+                        hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLisEnhancedInterface);
+                        hLLAPISetHLLAPIDLLpropCount++;
+                    }
+
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+                else
+                {
+                    hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = false;
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
-            else
-            {
-                hLLAPISetHLLAPIDLL["IsEnhancedInterface"] = false;
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
-
-            if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
-            {
                 if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
                 {
-                    hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+                    if (hLLAPISetHLLAPIDLLis64BitHLLAPIDLL != null)
+                    {
+                        hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLis64BitHLLAPIDLL);
+                        hLLAPISetHLLAPIDLLpropCount++;
+                    }
+
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+                else
+                {
+                    hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = false;
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
-            else
-            {
-                hLLAPISetHLLAPIDLL["Is64BitHLLAPIDLL"] = false;
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
-
-            if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
-            {
                 if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
                 {
-                    hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+                    if (hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL != null)
+                    {
+                        hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLuseCOMFor64BitHLLAPIDLL);
+                        hLLAPISetHLLAPIDLLpropCount++;
+                    }
+
+                    hLLAPISetHLLAPIDLLpropCount++;
+                }
+                else
+                {
+                    hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = false;
                     hLLAPISetHLLAPIDLLpropCount++;
                 }
 
                 hLLAPISetHLLAPIDLLpropCount++;
-            }
-            else
-            {
-                hLLAPISetHLLAPIDLL["UseCOMFor64BitHLLAPIDLL"] = false;
-                hLLAPISetHLLAPIDLLpropCount++;
-            }
-
-            hLLAPISetHLLAPIDLLpropCount++;
-            hLLAPISetHLLAPIDLL["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLworkflow);
-            if (hLLAPISetHLLAPIDLLpropCount > 0)
-            {
-                callPayload.Body = hLLAPISetHLLAPIDLL;
+                hLLAPISetHLLAPIDLL["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISetHLLAPIDLLworkflow);
+                if (hLLAPISetHLLAPIDLLpropCount > 0)
+                {
+                    callPayload.Body = hLLAPISetHLLAPIDLL;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIDispose(Expression<Func<string>> hLLAPIDisposeworkflow)
+        public IWorkflowAction HLLAPIDispose([WorkflowExpression] Func<string> hLLAPIDisposeworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIDispose";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIDispose = new JObject();
-            var hLLAPIDisposepropCount = 0;
-            hLLAPIDisposepropCount++;
-            hLLAPIDispose["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIDisposeworkflow);
-            if (hLLAPIDisposepropCount > 0)
+            SourceExpression.Validate(hLLAPIDisposeworkflow, nameof(hLLAPIDisposeworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIDispose;
+                var apiCallPath = "/HLLAPI/HLLAPIDispose";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIDispose = new JObject();
+                var hLLAPIDisposepropCount = 0;
+                hLLAPIDisposepropCount++;
+                hLLAPIDispose["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIDisposeworkflow);
+                if (hLLAPIDisposepropCount > 0)
+                {
+                    callPayload.Body = hLLAPIDispose;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIConnect(Expression<Func<string>> hLLAPIConnectsessionID, Expression<Func<string>> hLLAPIConnectworkflow)
+        public IWorkflowAction HLLAPIConnect([WorkflowExpression] Func<string> hLLAPIConnectsessionID, [WorkflowExpression] Func<string> hLLAPIConnectworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIConnect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIConnect = new JObject();
-            var hLLAPIConnectpropCount = 0;
-            hLLAPIConnectpropCount++;
-            hLLAPIConnect["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIConnectsessionID);
-            hLLAPIConnectpropCount++;
-            hLLAPIConnect["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIConnectworkflow);
-            if (hLLAPIConnectpropCount > 0)
+            SourceExpression.Validate(hLLAPIConnectsessionID, nameof(hLLAPIConnectsessionID), required: true);
+            SourceExpression.Validate(hLLAPIConnectworkflow, nameof(hLLAPIConnectworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIConnect;
+                var apiCallPath = "/HLLAPI/HLLAPIConnect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIConnect = new JObject();
+                var hLLAPIConnectpropCount = 0;
+                hLLAPIConnectpropCount++;
+                hLLAPIConnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIConnectsessionID);
+                hLLAPIConnectpropCount++;
+                hLLAPIConnect["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIConnectworkflow);
+                if (hLLAPIConnectpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIConnect;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus(Expression<Func<string>> hLLAPIGetConnectStatussessionID, Expression<Func<string>> hLLAPIGetConnectStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIGetConnectStatusResponse> HLLAPIGetConnectStatus([WorkflowExpression] Func<string> hLLAPIGetConnectStatussessionID, [WorkflowExpression] Func<string> hLLAPIGetConnectStatusworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIGetConnectStatus = new JObject();
-            var hLLAPIGetConnectStatuspropCount = 0;
-            hLLAPIGetConnectStatuspropCount++;
-            hLLAPIGetConnectStatus["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIGetConnectStatussessionID);
-            hLLAPIGetConnectStatuspropCount++;
-            hLLAPIGetConnectStatus["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIGetConnectStatusworkflow);
-            if (hLLAPIGetConnectStatuspropCount > 0)
+            SourceExpression.Validate(hLLAPIGetConnectStatussessionID, nameof(hLLAPIGetConnectStatussessionID), required: true);
+            SourceExpression.Validate(hLLAPIGetConnectStatusworkflow, nameof(hLLAPIGetConnectStatusworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIGetConnectStatus;
+                var apiCallPath = "/HLLAPI/HLLAPIGetConnectStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIGetConnectStatus = new JObject();
+                var hLLAPIGetConnectStatuspropCount = 0;
+                hLLAPIGetConnectStatuspropCount++;
+                hLLAPIGetConnectStatus["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetConnectStatussessionID);
+                hLLAPIGetConnectStatuspropCount++;
+                hLLAPIGetConnectStatus["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIGetConnectStatusworkflow);
+                if (hLLAPIGetConnectStatuspropCount > 0)
+                {
+                    callPayload.Body = hLLAPIGetConnectStatus;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIGetConnectStatusResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIGetConnectStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIDisconnect(Expression<Func<string>> hLLAPIDisconnectsessionID, Expression<Func<string>> hLLAPIDisconnectworkflow)
+        public IWorkflowAction HLLAPIDisconnect([WorkflowExpression] Func<string> hLLAPIDisconnectsessionID, [WorkflowExpression] Func<string> hLLAPIDisconnectworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIDisconnect = new JObject();
-            var hLLAPIDisconnectpropCount = 0;
-            hLLAPIDisconnectpropCount++;
-            hLLAPIDisconnect["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIDisconnectsessionID);
-            hLLAPIDisconnectpropCount++;
-            hLLAPIDisconnect["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIDisconnectworkflow);
-            if (hLLAPIDisconnectpropCount > 0)
+            SourceExpression.Validate(hLLAPIDisconnectsessionID, nameof(hLLAPIDisconnectsessionID), required: true);
+            SourceExpression.Validate(hLLAPIDisconnectworkflow, nameof(hLLAPIDisconnectworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIDisconnect;
+                var apiCallPath = "/HLLAPI/HLLAPIDisconnect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIDisconnect = new JObject();
+                var hLLAPIDisconnectpropCount = 0;
+                hLLAPIDisconnectpropCount++;
+                hLLAPIDisconnect["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIDisconnectsessionID);
+                hLLAPIDisconnectpropCount++;
+                hLLAPIDisconnect["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIDisconnectworkflow);
+                if (hLLAPIDisconnectpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIDisconnect;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetCursorPos(Expression<Func<string>> hLLAPISetCursorPossessionID, Expression<Func<int>> hLLAPISetCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISetCursorPoscursorColIndex, Expression<Func<string>> hLLAPISetCursorPosworkflow)
+        public IWorkflowAction HLLAPISetCursorPos([WorkflowExpression] Func<string> hLLAPISetCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISetCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISetCursorPosworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISetCursorPos = new JObject();
-            var hLLAPISetCursorPospropCount = 0;
-            hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPISetCursorPossessionID);
-            hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["CursorRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISetCursorPoscursorRowIndex);
-            hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["CursorColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISetCursorPoscursorColIndex);
-            hLLAPISetCursorPospropCount++;
-            hLLAPISetCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISetCursorPosworkflow);
-            if (hLLAPISetCursorPospropCount > 0)
+            SourceExpression.Validate(hLLAPISetCursorPossessionID, nameof(hLLAPISetCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISetCursorPoscursorRowIndex, nameof(hLLAPISetCursorPoscursorRowIndex), required: true);
+            SourceExpression.Validate(hLLAPISetCursorPoscursorColIndex, nameof(hLLAPISetCursorPoscursorColIndex), required: true);
+            SourceExpression.Validate(hLLAPISetCursorPosworkflow, nameof(hLLAPISetCursorPosworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISetCursorPos;
+                var apiCallPath = "/HLLAPI/HLLAPISetCursorPos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISetCursorPos = new JObject();
+                var hLLAPISetCursorPospropCount = 0;
+                hLLAPISetCursorPospropCount++;
+                hLLAPISetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPossessionID);
+                hLLAPISetCursorPospropCount++;
+                hLLAPISetCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPoscursorRowIndex);
+                hLLAPISetCursorPospropCount++;
+                hLLAPISetCursorPos["CursorColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPoscursorColIndex);
+                hLLAPISetCursorPospropCount++;
+                hLLAPISetCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISetCursorPosworkflow);
+                if (hLLAPISetCursorPospropCount > 0)
+                {
+                    callPayload.Body = hLLAPISetCursorPos;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos(Expression<Func<string>> hLLAPIGetCursorPossessionID, Expression<Func<string>> hLLAPIGetCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIGetCursorPosResponse> HLLAPIGetCursorPos([WorkflowExpression] Func<string> hLLAPIGetCursorPossessionID, [WorkflowExpression] Func<string> hLLAPIGetCursorPosworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIGetCursorPos = new JObject();
-            var hLLAPIGetCursorPospropCount = 0;
-            hLLAPIGetCursorPospropCount++;
-            hLLAPIGetCursorPos["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIGetCursorPossessionID);
-            hLLAPIGetCursorPospropCount++;
-            hLLAPIGetCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIGetCursorPosworkflow);
-            if (hLLAPIGetCursorPospropCount > 0)
+            SourceExpression.Validate(hLLAPIGetCursorPossessionID, nameof(hLLAPIGetCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPIGetCursorPosworkflow, nameof(hLLAPIGetCursorPosworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIGetCursorPos;
+                var apiCallPath = "/HLLAPI/HLLAPIGetCursorPos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIGetCursorPos = new JObject();
+                var hLLAPIGetCursorPospropCount = 0;
+                hLLAPIGetCursorPospropCount++;
+                hLLAPIGetCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIGetCursorPossessionID);
+                hLLAPIGetCursorPospropCount++;
+                hLLAPIGetCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIGetCursorPosworkflow);
+                if (hLLAPIGetCursorPospropCount > 0)
+                {
+                    callPayload.Body = hLLAPIGetCursorPos;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIGetCursorPosResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIGetCursorPosResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendString(Expression<Func<string>> hLLAPISendStringinputString, Expression<Func<string>> hLLAPISendStringworkflow)
+        public IWorkflowAction HLLAPISendString([WorkflowExpression] Func<string> hLLAPISendStringinputString, [WorkflowExpression] Func<string> hLLAPISendStringworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISendString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISendString = new JObject();
-            var hLLAPISendStringpropCount = 0;
-            hLLAPISendStringpropCount++;
-            hLLAPISendString["InputString"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringinputString);
-            hLLAPISendStringpropCount++;
-            hLLAPISendString["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringworkflow);
-            if (hLLAPISendStringpropCount > 0)
+            SourceExpression.Validate(hLLAPISendStringinputString, nameof(hLLAPISendStringinputString), required: true);
+            SourceExpression.Validate(hLLAPISendStringworkflow, nameof(hLLAPISendStringworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISendString;
+                var apiCallPath = "/HLLAPI/HLLAPISendString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISendString = new JObject();
+                var hLLAPISendStringpropCount = 0;
+                hLLAPISendStringpropCount++;
+                hLLAPISendString["InputString"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringinputString);
+                hLLAPISendStringpropCount++;
+                hLLAPISendString["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringworkflow);
+                if (hLLAPISendStringpropCount > 0)
+                {
+                    callPayload.Body = hLLAPISendString;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendPassword(Expression<Func<string>> hLLAPISendPasswordinputPassword, Expression<Func<string>> hLLAPISendPasswordworkflow)
+        public IWorkflowAction HLLAPISendPassword([WorkflowExpression] Func<string> hLLAPISendPasswordinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISendPassword";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISendPassword = new JObject();
-            var hLLAPISendPasswordpropCount = 0;
-            hLLAPISendPasswordpropCount++;
-            hLLAPISendPassword["InputPassword"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordinputPassword);
-            hLLAPISendPasswordpropCount++;
-            hLLAPISendPassword["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordworkflow);
-            if (hLLAPISendPasswordpropCount > 0)
+            SourceExpression.Validate(hLLAPISendPasswordinputPassword, nameof(hLLAPISendPasswordinputPassword), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordworkflow, nameof(hLLAPISendPasswordworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISendPassword;
+                var apiCallPath = "/HLLAPI/HLLAPISendPassword";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISendPassword = new JObject();
+                var hLLAPISendPasswordpropCount = 0;
+                hLLAPISendPasswordpropCount++;
+                hLLAPISendPassword["InputPassword"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordinputPassword);
+                hLLAPISendPasswordpropCount++;
+                hLLAPISendPassword["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordworkflow);
+                if (hLLAPISendPasswordpropCount > 0)
+                {
+                    callPayload.Body = hLLAPISendPassword;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendStringAtCursorPos(Expression<Func<string>> hLLAPISendStringAtCursorPossessionID, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendStringAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendStringAtCursorPosinputString, Expression<Func<string>> hLLAPISendStringAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendStringAtCursorPos([WorkflowExpression] Func<string> hLLAPISendStringAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendStringAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosinputString, [WorkflowExpression] Func<string> hLLAPISendStringAtCursorPosworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISendStringAtCursorPos = new JObject();
-            var hLLAPISendStringAtCursorPospropCount = 0;
-            hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPossessionID);
-            hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["CursorRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPoscursorRowIndex);
-            hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["CursorColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPoscursorColIndex);
-            hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["InputString"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPosinputString);
-            hLLAPISendStringAtCursorPospropCount++;
-            hLLAPISendStringAtCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPosworkflow);
-            if (hLLAPISendStringAtCursorPospropCount > 0)
+            SourceExpression.Validate(hLLAPISendStringAtCursorPossessionID, nameof(hLLAPISendStringAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorRowIndex, nameof(hLLAPISendStringAtCursorPoscursorRowIndex), required: true);
+            SourceExpression.Validate(hLLAPISendStringAtCursorPoscursorColIndex, nameof(hLLAPISendStringAtCursorPoscursorColIndex), required: true);
+            SourceExpression.Validate(hLLAPISendStringAtCursorPosinputString, nameof(hLLAPISendStringAtCursorPosinputString), required: true);
+            SourceExpression.Validate(hLLAPISendStringAtCursorPosworkflow, nameof(hLLAPISendStringAtCursorPosworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISendStringAtCursorPos;
+                var apiCallPath = "/HLLAPI/HLLAPISendStringAtCursorPos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISendStringAtCursorPos = new JObject();
+                var hLLAPISendStringAtCursorPospropCount = 0;
+                hLLAPISendStringAtCursorPospropCount++;
+                hLLAPISendStringAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPossessionID);
+                hLLAPISendStringAtCursorPospropCount++;
+                hLLAPISendStringAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPoscursorRowIndex);
+                hLLAPISendStringAtCursorPospropCount++;
+                hLLAPISendStringAtCursorPos["CursorColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPoscursorColIndex);
+                hLLAPISendStringAtCursorPospropCount++;
+                hLLAPISendStringAtCursorPos["InputString"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPosinputString);
+                hLLAPISendStringAtCursorPospropCount++;
+                hLLAPISendStringAtCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISendStringAtCursorPosworkflow);
+                if (hLLAPISendStringAtCursorPospropCount > 0)
+                {
+                    callPayload.Body = hLLAPISendStringAtCursorPos;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISendPasswordAtCursorPos(Expression<Func<string>> hLLAPISendPasswordAtCursorPossessionID, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPISendPasswordAtCursorPoscursorColIndex, Expression<Func<string>> hLLAPISendPasswordAtCursorPosinputPassword, Expression<Func<string>> hLLAPISendPasswordAtCursorPosworkflow)
+        public IWorkflowAction HLLAPISendPasswordAtCursorPos([WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPISendPasswordAtCursorPoscursorColIndex, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosinputPassword, [WorkflowExpression] Func<string> hLLAPISendPasswordAtCursorPosworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISendPasswordAtCursorPos = new JObject();
-            var hLLAPISendPasswordAtCursorPospropCount = 0;
-            hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPossessionID);
-            hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPoscursorRowIndex);
-            hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["CursorColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPoscursorColIndex);
-            hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["InputPassword"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPosinputPassword);
-            hLLAPISendPasswordAtCursorPospropCount++;
-            hLLAPISendPasswordAtCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPosworkflow);
-            if (hLLAPISendPasswordAtCursorPospropCount > 0)
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPossessionID, nameof(hLLAPISendPasswordAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorRowIndex, nameof(hLLAPISendPasswordAtCursorPoscursorRowIndex), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPoscursorColIndex, nameof(hLLAPISendPasswordAtCursorPoscursorColIndex), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPosinputPassword, nameof(hLLAPISendPasswordAtCursorPosinputPassword), required: true);
+            SourceExpression.Validate(hLLAPISendPasswordAtCursorPosworkflow, nameof(hLLAPISendPasswordAtCursorPosworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISendPasswordAtCursorPos;
+                var apiCallPath = "/HLLAPI/HLLAPISendPasswordAtCursorPos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISendPasswordAtCursorPos = new JObject();
+                var hLLAPISendPasswordAtCursorPospropCount = 0;
+                hLLAPISendPasswordAtCursorPospropCount++;
+                hLLAPISendPasswordAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPossessionID);
+                hLLAPISendPasswordAtCursorPospropCount++;
+                hLLAPISendPasswordAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPoscursorRowIndex);
+                hLLAPISendPasswordAtCursorPospropCount++;
+                hLLAPISendPasswordAtCursorPos["CursorColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPoscursorColIndex);
+                hLLAPISendPasswordAtCursorPospropCount++;
+                hLLAPISendPasswordAtCursorPos["InputPassword"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPosinputPassword);
+                hLLAPISendPasswordAtCursorPospropCount++;
+                hLLAPISendPasswordAtCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISendPasswordAtCursorPosworkflow);
+                if (hLLAPISendPasswordAtCursorPospropCount > 0)
+                {
+                    callPayload.Body = hLLAPISendPasswordAtCursorPos;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos(Expression<Func<string>> hLLAPIReadScreenAtCursorPossessionID, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorRowIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPoscursorColIndex, Expression<Func<int>> hLLAPIReadScreenAtCursorPosreadScreenLength, Expression<Func<string>> hLLAPIReadScreenAtCursorPosworkflow)
+        public IBodyWorkflowAction<HLLAPIReadScreenAtCursorPosResponse> HLLAPIReadScreenAtCursorPos([WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPossessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPoscursorColIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenAtCursorPosreadScreenLength, [WorkflowExpression] Func<string> hLLAPIReadScreenAtCursorPosworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIReadScreenAtCursorPos = new JObject();
-            var hLLAPIReadScreenAtCursorPospropCount = 0;
-            hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPossessionID);
-            hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPoscursorRowIndex);
-            hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["CursorColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPoscursorColIndex);
-            hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPosreadScreenLength);
-            hLLAPIReadScreenAtCursorPospropCount++;
-            hLLAPIReadScreenAtCursorPos["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPosworkflow);
-            if (hLLAPIReadScreenAtCursorPospropCount > 0)
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPossessionID, nameof(hLLAPIReadScreenAtCursorPossessionID), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorRowIndex, nameof(hLLAPIReadScreenAtCursorPoscursorRowIndex), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPoscursorColIndex, nameof(hLLAPIReadScreenAtCursorPoscursorColIndex), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPosreadScreenLength, nameof(hLLAPIReadScreenAtCursorPosreadScreenLength), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenAtCursorPosworkflow, nameof(hLLAPIReadScreenAtCursorPosworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIReadScreenAtCursorPos;
+                var apiCallPath = "/HLLAPI/HLLAPIReadScreenAtCursorPos";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIReadScreenAtCursorPos = new JObject();
+                var hLLAPIReadScreenAtCursorPospropCount = 0;
+                hLLAPIReadScreenAtCursorPospropCount++;
+                hLLAPIReadScreenAtCursorPos["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPossessionID);
+                hLLAPIReadScreenAtCursorPospropCount++;
+                hLLAPIReadScreenAtCursorPos["CursorRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPoscursorRowIndex);
+                hLLAPIReadScreenAtCursorPospropCount++;
+                hLLAPIReadScreenAtCursorPos["CursorColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPoscursorColIndex);
+                hLLAPIReadScreenAtCursorPospropCount++;
+                hLLAPIReadScreenAtCursorPos["ReadScreenLength"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPosreadScreenLength);
+                hLLAPIReadScreenAtCursorPospropCount++;
+                hLLAPIReadScreenAtCursorPos["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenAtCursorPosworkflow);
+                if (hLLAPIReadScreenAtCursorPospropCount > 0)
+                {
+                    callPayload.Body = hLLAPIReadScreenAtCursorPos;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIReadScreenAtCursorPosResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIReadScreenAtCursorPosResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus(Expression<Func<string>> hLLAPIQuerySessionStatusworkflow)
+        public IBodyWorkflowAction<HLLAPIQuerySessionStatusResponse> HLLAPIQuerySessionStatus([WorkflowExpression] Func<string> hLLAPIQuerySessionStatusworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIQuerySessionStatus = new JObject();
-            var hLLAPIQuerySessionStatuspropCount = 0;
-            hLLAPIQuerySessionStatuspropCount++;
-            hLLAPIQuerySessionStatus["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIQuerySessionStatusworkflow);
-            if (hLLAPIQuerySessionStatuspropCount > 0)
+            SourceExpression.Validate(hLLAPIQuerySessionStatusworkflow, nameof(hLLAPIQuerySessionStatusworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIQuerySessionStatus;
+                var apiCallPath = "/HLLAPI/HLLAPIQuerySessionStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIQuerySessionStatus = new JObject();
+                var hLLAPIQuerySessionStatuspropCount = 0;
+                hLLAPIQuerySessionStatuspropCount++;
+                hLLAPIQuerySessionStatus["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIQuerySessionStatusworkflow);
+                if (hLLAPIQuerySessionStatuspropCount > 0)
+                {
+                    callPayload.Body = hLLAPIQuerySessionStatus;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIQuerySessionStatusResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIQuerySessionStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows(Expression<Func<string>> hLLAPIReadScreenRowssessionID, Expression<Func<int>> hLLAPIReadScreenRowsstartRowIndex, Expression<Func<int>> hLLAPIReadScreenRowsendRowIndex, Expression<Func<string>> hLLAPIReadScreenRowsworkflow, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfRowsInSession = null, Expression<Func<int>> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
+        public IBodyWorkflowAction<HLLAPIReadScreenRowsResponse> HLLAPIReadScreenRows([WorkflowExpression] Func<string> hLLAPIReadScreenRowssessionID, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsstartRowIndex, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsendRowIndex, [WorkflowExpression] Func<string> hLLAPIReadScreenRowsworkflow, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfRowsInSession = null, [WorkflowExpression] Func<int> hLLAPIReadScreenRowsnumberOfColumnsInSession = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIReadScreenRows = new JObject();
-            var hLLAPIReadScreenRowspropCount = 0;
-            hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowssessionID);
-            hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["StartRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowsstartRowIndex);
-            hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["EndRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowsendRowIndex);
-            if (hLLAPIReadScreenRowsnumberOfRowsInSession != null)
+            SourceExpression.Validate(hLLAPIReadScreenRowssessionID, nameof(hLLAPIReadScreenRowssessionID), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenRowsstartRowIndex, nameof(hLLAPIReadScreenRowsstartRowIndex), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenRowsendRowIndex, nameof(hLLAPIReadScreenRowsendRowIndex), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenRowsworkflow, nameof(hLLAPIReadScreenRowsworkflow), required: true);
+            SourceExpression.Validate(hLLAPIReadScreenRowsnumberOfRowsInSession, nameof(hLLAPIReadScreenRowsnumberOfRowsInSession), required: false);
+            SourceExpression.Validate(hLLAPIReadScreenRowsnumberOfColumnsInSession, nameof(hLLAPIReadScreenRowsnumberOfColumnsInSession), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                hLLAPIReadScreenRows["NumberOfRowsInSession"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowsnumberOfRowsInSession);
+                var apiCallPath = "/HLLAPI/HLLAPIReadScreenRows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIReadScreenRows = new JObject();
+                var hLLAPIReadScreenRowspropCount = 0;
                 hLLAPIReadScreenRowspropCount++;
-            }
-
-            if (hLLAPIReadScreenRowsnumberOfColumnsInSession != null)
-            {
-                hLLAPIReadScreenRows["NumberOfColumnsInSession"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowsnumberOfColumnsInSession);
+                hLLAPIReadScreenRows["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowssessionID);
                 hLLAPIReadScreenRowspropCount++;
+                hLLAPIReadScreenRows["StartRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsstartRowIndex);
+                hLLAPIReadScreenRowspropCount++;
+                hLLAPIReadScreenRows["EndRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsendRowIndex);
+                if (hLLAPIReadScreenRowsnumberOfRowsInSession != null)
+                {
+                    hLLAPIReadScreenRows["NumberOfRowsInSession"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsnumberOfRowsInSession);
+                    hLLAPIReadScreenRowspropCount++;
+                }
+
+                if (hLLAPIReadScreenRowsnumberOfColumnsInSession != null)
+                {
+                    hLLAPIReadScreenRows["NumberOfColumnsInSession"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsnumberOfColumnsInSession);
+                    hLLAPIReadScreenRowspropCount++;
+                }
+
+                hLLAPIReadScreenRowspropCount++;
+                hLLAPIReadScreenRows["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIReadScreenRowsworkflow);
+                if (hLLAPIReadScreenRowspropCount > 0)
+                {
+                    callPayload.Body = hLLAPIReadScreenRows;
+                }
+                return callPayload;
             }
 
-            hLLAPIReadScreenRowspropCount++;
-            hLLAPIReadScreenRows["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIReadScreenRowsworkflow);
-            if (hLLAPIReadScreenRowspropCount > 0)
-            {
-                callPayload.Body = hLLAPIReadScreenRows;
-            }
-
-            return new ApiConnectionAction<HLLAPIReadScreenRowsResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIReadScreenRowsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked(Expression<Func<string>> hLLAPIIsKeyboardUnlockedworkflow)
+        public IBodyWorkflowAction<HLLAPIIsKeyboardUnlockedResponse> HLLAPIIsKeyboardUnlocked([WorkflowExpression] Func<string> hLLAPIIsKeyboardUnlockedworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIIsKeyboardUnlocked = new JObject();
-            var hLLAPIIsKeyboardUnlockedpropCount = 0;
-            hLLAPIIsKeyboardUnlockedpropCount++;
-            hLLAPIIsKeyboardUnlocked["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIIsKeyboardUnlockedworkflow);
-            if (hLLAPIIsKeyboardUnlockedpropCount > 0)
+            SourceExpression.Validate(hLLAPIIsKeyboardUnlockedworkflow, nameof(hLLAPIIsKeyboardUnlockedworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIIsKeyboardUnlocked;
+                var apiCallPath = "/HLLAPI/HLLAPIIsKeyboardUnlocked";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIIsKeyboardUnlocked = new JObject();
+                var hLLAPIIsKeyboardUnlockedpropCount = 0;
+                hLLAPIIsKeyboardUnlockedpropCount++;
+                hLLAPIIsKeyboardUnlocked["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIIsKeyboardUnlockedworkflow);
+                if (hLLAPIIsKeyboardUnlockedpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIIsKeyboardUnlocked;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIIsKeyboardUnlockedResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIIsKeyboardUnlockedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked(Expression<Func<double>> hLLAPIWaitForKeyboardUnlockedsecondsToWait, Expression<Func<string>> hLLAPIWaitForKeyboardUnlockedworkflow, Expression<Func<double>> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForKeyboardUnlockedResponse> HLLAPIWaitForKeyboardUnlocked([WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockedsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForKeyboardUnlockedworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIWaitForKeyboardUnlocked = new JObject();
-            var hLLAPIWaitForKeyboardUnlockedpropCount = 0;
-            hLLAPIWaitForKeyboardUnlockedpropCount++;
-            hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
-            if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
+            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockedsecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockedsecondsToWait), required: true);
+            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockedworkflow, nameof(hLLAPIWaitForKeyboardUnlockedworkflow), required: true);
+            SourceExpression.Validate(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait, nameof(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/HLLAPI/HLLAPIWaitForKeyboardUnlocked";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIWaitForKeyboardUnlocked = new JObject();
+                var hLLAPIWaitForKeyboardUnlockedpropCount = 0;
+                hLLAPIWaitForKeyboardUnlockedpropCount++;
+                hLLAPIWaitForKeyboardUnlocked["SecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockedsecondsToWait);
                 if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
                 {
-                    hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+                    if (hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait != null)
+                    {
+                        hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockeddeltaSecondsToWait);
+                        hLLAPIWaitForKeyboardUnlockedpropCount++;
+                    }
+
+                    hLLAPIWaitForKeyboardUnlockedpropCount++;
+                }
+                else
+                {
+                    hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = 0.05;
                     hLLAPIWaitForKeyboardUnlockedpropCount++;
                 }
 
                 hLLAPIWaitForKeyboardUnlockedpropCount++;
-            }
-            else
-            {
-                hLLAPIWaitForKeyboardUnlocked["DeltaSecondsToWait"] = 0.05;
-                hLLAPIWaitForKeyboardUnlockedpropCount++;
-            }
-
-            hLLAPIWaitForKeyboardUnlockedpropCount++;
-            hLLAPIWaitForKeyboardUnlocked["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockedworkflow);
-            if (hLLAPIWaitForKeyboardUnlockedpropCount > 0)
-            {
-                callPayload.Body = hLLAPIWaitForKeyboardUnlocked;
+                hLLAPIWaitForKeyboardUnlocked["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForKeyboardUnlockedworkflow);
+                if (hLLAPIWaitForKeyboardUnlockedpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIWaitForKeyboardUnlocked;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIWaitForKeyboardUnlockedResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIWaitForKeyboardUnlockedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady(Expression<Func<double>> hLLAPIWaitForSystemReadysecondsToWait, Expression<Func<string>> hLLAPIWaitForSystemReadyworkflow, Expression<Func<double>> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForSystemReadyResponse> HLLAPIWaitForSystemReady([WorkflowExpression] Func<double> hLLAPIWaitForSystemReadysecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForSystemReadyworkflow, [WorkflowExpression] Func<double> hLLAPIWaitForSystemReadydeltaSecondsToWait = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIWaitForSystemReady = new JObject();
-            var hLLAPIWaitForSystemReadypropCount = 0;
-            hLLAPIWaitForSystemReadypropCount++;
-            hLLAPIWaitForSystemReady["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadysecondsToWait);
-            if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
+            SourceExpression.Validate(hLLAPIWaitForSystemReadysecondsToWait, nameof(hLLAPIWaitForSystemReadysecondsToWait), required: true);
+            SourceExpression.Validate(hLLAPIWaitForSystemReadyworkflow, nameof(hLLAPIWaitForSystemReadyworkflow), required: true);
+            SourceExpression.Validate(hLLAPIWaitForSystemReadydeltaSecondsToWait, nameof(hLLAPIWaitForSystemReadydeltaSecondsToWait), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/HLLAPI/HLLAPIWaitForSystemReady";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIWaitForSystemReady = new JObject();
+                var hLLAPIWaitForSystemReadypropCount = 0;
+                hLLAPIWaitForSystemReadypropCount++;
+                hLLAPIWaitForSystemReady["SecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadysecondsToWait);
                 if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
                 {
-                    hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+                    if (hLLAPIWaitForSystemReadydeltaSecondsToWait != null)
+                    {
+                        hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadydeltaSecondsToWait);
+                        hLLAPIWaitForSystemReadypropCount++;
+                    }
+
+                    hLLAPIWaitForSystemReadypropCount++;
+                }
+                else
+                {
+                    hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = 0.05;
                     hLLAPIWaitForSystemReadypropCount++;
                 }
 
                 hLLAPIWaitForSystemReadypropCount++;
-            }
-            else
-            {
-                hLLAPIWaitForSystemReady["DeltaSecondsToWait"] = 0.05;
-                hLLAPIWaitForSystemReadypropCount++;
-            }
-
-            hLLAPIWaitForSystemReadypropCount++;
-            hLLAPIWaitForSystemReady["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadyworkflow);
-            if (hLLAPIWaitForSystemReadypropCount > 0)
-            {
-                callPayload.Body = hLLAPIWaitForSystemReady;
+                hLLAPIWaitForSystemReady["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForSystemReadyworkflow);
+                if (hLLAPIWaitForSystemReadypropCount > 0)
+                {
+                    callPayload.Body = hLLAPIWaitForSystemReady;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIWaitForSystemReadyResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIWaitForSystemReadyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIPressReset(Expression<Func<string>> hLLAPIPressResetworkflow)
+        public IWorkflowAction HLLAPIPressReset([WorkflowExpression] Func<string> hLLAPIPressResetworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIPressReset";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIPressReset = new JObject();
-            var hLLAPIPressResetpropCount = 0;
-            hLLAPIPressResetpropCount++;
-            hLLAPIPressReset["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIPressResetworkflow);
-            if (hLLAPIPressResetpropCount > 0)
+            SourceExpression.Validate(hLLAPIPressResetworkflow, nameof(hLLAPIPressResetworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIPressReset;
+                var apiCallPath = "/HLLAPI/HLLAPIPressReset";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIPressReset = new JObject();
+                var hLLAPIPressResetpropCount = 0;
+                hLLAPIPressResetpropCount++;
+                hLLAPIPressReset["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIPressResetworkflow);
+                if (hLLAPIPressResetpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIPressReset;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString(Expression<Func<string>> hLLAPISearchForStringsessionID, Expression<Func<string>> hLLAPISearchForStringsearchString, Expression<Func<string>> hLLAPISearchForStringworkflow, Expression<Func<bool>> hLLAPISearchForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPISearchForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPISearchForStringsearchStartColIndex = null)
+        public IBodyWorkflowAction<HLLAPISearchForStringResponse> HLLAPISearchForString([WorkflowExpression] Func<string> hLLAPISearchForStringsessionID, [WorkflowExpression] Func<string> hLLAPISearchForStringsearchString, [WorkflowExpression] Func<string> hLLAPISearchForStringworkflow, [WorkflowExpression] Func<bool> hLLAPISearchForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPISearchForStringsearchStartColIndex = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISearchForString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISearchForString = new JObject();
-            var hLLAPISearchForStringpropCount = 0;
-            hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringsessionID);
-            hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["SearchString"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringsearchString);
-            if (hLLAPISearchForStringsearchEntireScreen != null)
+            SourceExpression.Validate(hLLAPISearchForStringsessionID, nameof(hLLAPISearchForStringsessionID), required: true);
+            SourceExpression.Validate(hLLAPISearchForStringsearchString, nameof(hLLAPISearchForStringsearchString), required: true);
+            SourceExpression.Validate(hLLAPISearchForStringworkflow, nameof(hLLAPISearchForStringworkflow), required: true);
+            SourceExpression.Validate(hLLAPISearchForStringsearchEntireScreen, nameof(hLLAPISearchForStringsearchEntireScreen), required: false);
+            SourceExpression.Validate(hLLAPISearchForStringsearchStartRowIndex, nameof(hLLAPISearchForStringsearchStartRowIndex), required: false);
+            SourceExpression.Validate(hLLAPISearchForStringsearchStartColIndex, nameof(hLLAPISearchForStringsearchStartColIndex), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/HLLAPI/HLLAPISearchForString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISearchForString = new JObject();
+                var hLLAPISearchForStringpropCount = 0;
+                hLLAPISearchForStringpropCount++;
+                hLLAPISearchForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsessionID);
+                hLLAPISearchForStringpropCount++;
+                hLLAPISearchForString["SearchString"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsearchString);
                 if (hLLAPISearchForStringsearchEntireScreen != null)
                 {
-                    hLLAPISearchForString["SearchEntireScreen"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringsearchEntireScreen);
+                    if (hLLAPISearchForStringsearchEntireScreen != null)
+                    {
+                        hLLAPISearchForString["SearchEntireScreen"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsearchEntireScreen);
+                        hLLAPISearchForStringpropCount++;
+                    }
+
+                    hLLAPISearchForStringpropCount++;
+                }
+                else
+                {
+                    hLLAPISearchForString["SearchEntireScreen"] = true;
+                    hLLAPISearchForStringpropCount++;
+                }
+
+                if (hLLAPISearchForStringsearchStartRowIndex != null)
+                {
+                    hLLAPISearchForString["SearchStartRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsearchStartRowIndex);
+                    hLLAPISearchForStringpropCount++;
+                }
+
+                if (hLLAPISearchForStringsearchStartColIndex != null)
+                {
+                    hLLAPISearchForString["SearchStartColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringsearchStartColIndex);
                     hLLAPISearchForStringpropCount++;
                 }
 
                 hLLAPISearchForStringpropCount++;
-            }
-            else
-            {
-                hLLAPISearchForString["SearchEntireScreen"] = true;
-                hLLAPISearchForStringpropCount++;
-            }
-
-            if (hLLAPISearchForStringsearchStartRowIndex != null)
-            {
-                hLLAPISearchForString["SearchStartRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringsearchStartRowIndex);
-                hLLAPISearchForStringpropCount++;
+                hLLAPISearchForString["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISearchForStringworkflow);
+                if (hLLAPISearchForStringpropCount > 0)
+                {
+                    callPayload.Body = hLLAPISearchForString;
+                }
+                return callPayload;
             }
 
-            if (hLLAPISearchForStringsearchStartColIndex != null)
-            {
-                hLLAPISearchForString["SearchStartColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringsearchStartColIndex);
-                hLLAPISearchForStringpropCount++;
-            }
-
-            hLLAPISearchForStringpropCount++;
-            hLLAPISearchForString["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISearchForStringworkflow);
-            if (hLLAPISearchForStringpropCount > 0)
-            {
-                callPayload.Body = hLLAPISearchForString;
-            }
-
-            return new ApiConnectionAction<HLLAPISearchForStringResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPISearchForStringResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString(Expression<Func<string>> hLLAPIWaitForStringsessionID, Expression<Func<string>> hLLAPIWaitForStringsearchString, Expression<Func<double>> hLLAPIWaitForStringsecondsToWait, Expression<Func<string>> hLLAPIWaitForStringworkflow, Expression<Func<bool>> hLLAPIWaitForStringsearchEntireScreen = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartRowIndex = null, Expression<Func<int>> hLLAPIWaitForStringsearchStartColIndex = null, Expression<Func<double>> hLLAPIWaitForStringdeltaSecondsToWait = null)
+        public IBodyWorkflowAction<HLLAPIWaitForStringResponse> HLLAPIWaitForString([WorkflowExpression] Func<string> hLLAPIWaitForStringsessionID, [WorkflowExpression] Func<string> hLLAPIWaitForStringsearchString, [WorkflowExpression] Func<double> hLLAPIWaitForStringsecondsToWait, [WorkflowExpression] Func<string> hLLAPIWaitForStringworkflow, [WorkflowExpression] Func<bool> hLLAPIWaitForStringsearchEntireScreen = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartRowIndex = null, [WorkflowExpression] Func<int> hLLAPIWaitForStringsearchStartColIndex = null, [WorkflowExpression] Func<double> hLLAPIWaitForStringdeltaSecondsToWait = null)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIWaitForString = new JObject();
-            var hLLAPIWaitForStringpropCount = 0;
-            hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SessionID"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsessionID);
-            hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SearchString"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchString);
-            if (hLLAPIWaitForStringsearchEntireScreen != null)
+            SourceExpression.Validate(hLLAPIWaitForStringsessionID, nameof(hLLAPIWaitForStringsessionID), required: true);
+            SourceExpression.Validate(hLLAPIWaitForStringsearchString, nameof(hLLAPIWaitForStringsearchString), required: true);
+            SourceExpression.Validate(hLLAPIWaitForStringsecondsToWait, nameof(hLLAPIWaitForStringsecondsToWait), required: true);
+            SourceExpression.Validate(hLLAPIWaitForStringworkflow, nameof(hLLAPIWaitForStringworkflow), required: true);
+            SourceExpression.Validate(hLLAPIWaitForStringsearchEntireScreen, nameof(hLLAPIWaitForStringsearchEntireScreen), required: false);
+            SourceExpression.Validate(hLLAPIWaitForStringsearchStartRowIndex, nameof(hLLAPIWaitForStringsearchStartRowIndex), required: false);
+            SourceExpression.Validate(hLLAPIWaitForStringsearchStartColIndex, nameof(hLLAPIWaitForStringsearchStartColIndex), required: false);
+            SourceExpression.Validate(hLLAPIWaitForStringdeltaSecondsToWait, nameof(hLLAPIWaitForStringdeltaSecondsToWait), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/HLLAPI/HLLAPIWaitForString";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIWaitForString = new JObject();
+                var hLLAPIWaitForStringpropCount = 0;
+                hLLAPIWaitForStringpropCount++;
+                hLLAPIWaitForString["SessionID"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsessionID);
+                hLLAPIWaitForStringpropCount++;
+                hLLAPIWaitForString["SearchString"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchString);
                 if (hLLAPIWaitForStringsearchEntireScreen != null)
                 {
-                    hLLAPIWaitForString["SearchEntireScreen"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchEntireScreen);
+                    if (hLLAPIWaitForStringsearchEntireScreen != null)
+                    {
+                        hLLAPIWaitForString["SearchEntireScreen"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchEntireScreen);
+                        hLLAPIWaitForStringpropCount++;
+                    }
+
+                    hLLAPIWaitForStringpropCount++;
+                }
+                else
+                {
+                    hLLAPIWaitForString["SearchEntireScreen"] = true;
+                    hLLAPIWaitForStringpropCount++;
+                }
+
+                if (hLLAPIWaitForStringsearchStartRowIndex != null)
+                {
+                    hLLAPIWaitForString["SearchStartRowIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchStartRowIndex);
+                    hLLAPIWaitForStringpropCount++;
+                }
+
+                if (hLLAPIWaitForStringsearchStartColIndex != null)
+                {
+                    hLLAPIWaitForString["SearchStartColIndex"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchStartColIndex);
                     hLLAPIWaitForStringpropCount++;
                 }
 
                 hLLAPIWaitForStringpropCount++;
-            }
-            else
-            {
-                hLLAPIWaitForString["SearchEntireScreen"] = true;
-                hLLAPIWaitForStringpropCount++;
-            }
-
-            if (hLLAPIWaitForStringsearchStartRowIndex != null)
-            {
-                hLLAPIWaitForString["SearchStartRowIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchStartRowIndex);
-                hLLAPIWaitForStringpropCount++;
-            }
-
-            if (hLLAPIWaitForStringsearchStartColIndex != null)
-            {
-                hLLAPIWaitForString["SearchStartColIndex"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsearchStartColIndex);
-                hLLAPIWaitForStringpropCount++;
-            }
-
-            hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["SecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringsecondsToWait);
-            if (hLLAPIWaitForStringdeltaSecondsToWait != null)
-            {
+                hLLAPIWaitForString["SecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringsecondsToWait);
                 if (hLLAPIWaitForStringdeltaSecondsToWait != null)
                 {
-                    hLLAPIWaitForString["DeltaSecondsToWait"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringdeltaSecondsToWait);
+                    if (hLLAPIWaitForStringdeltaSecondsToWait != null)
+                    {
+                        hLLAPIWaitForString["DeltaSecondsToWait"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringdeltaSecondsToWait);
+                        hLLAPIWaitForStringpropCount++;
+                    }
+
+                    hLLAPIWaitForStringpropCount++;
+                }
+                else
+                {
+                    hLLAPIWaitForString["DeltaSecondsToWait"] = 0.05;
                     hLLAPIWaitForStringpropCount++;
                 }
 
                 hLLAPIWaitForStringpropCount++;
-            }
-            else
-            {
-                hLLAPIWaitForString["DeltaSecondsToWait"] = 0.05;
-                hLLAPIWaitForStringpropCount++;
-            }
-
-            hLLAPIWaitForStringpropCount++;
-            hLLAPIWaitForString["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIWaitForStringworkflow);
-            if (hLLAPIWaitForStringpropCount > 0)
-            {
-                callPayload.Body = hLLAPIWaitForString;
+                hLLAPIWaitForString["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIWaitForStringworkflow);
+                if (hLLAPIWaitForStringpropCount > 0)
+                {
+                    callPayload.Body = hLLAPIWaitForString;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPIWaitForStringResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPIWaitForStringResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPISetSessionParameter(Expression<Func<string>> hLLAPISetSessionParameterparameter, Expression<Func<string>> hLLAPISetSessionParameterworkflow)
+        public IWorkflowAction HLLAPISetSessionParameter([WorkflowExpression] Func<string> hLLAPISetSessionParameterparameter, [WorkflowExpression] Func<string> hLLAPISetSessionParameterworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPISetSessionParameter = new JObject();
-            var hLLAPISetSessionParameterpropCount = 0;
-            hLLAPISetSessionParameterpropCount++;
-            hLLAPISetSessionParameter["Parameter"] = CSharpExpressionConverter.ConvertToken(hLLAPISetSessionParameterparameter);
-            hLLAPISetSessionParameterpropCount++;
-            hLLAPISetSessionParameter["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPISetSessionParameterworkflow);
-            if (hLLAPISetSessionParameterpropCount > 0)
+            SourceExpression.Validate(hLLAPISetSessionParameterparameter, nameof(hLLAPISetSessionParameterparameter), required: true);
+            SourceExpression.Validate(hLLAPISetSessionParameterworkflow, nameof(hLLAPISetSessionParameterworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPISetSessionParameter;
+                var apiCallPath = "/HLLAPI/HLLAPISetSessionParameter";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPISetSessionParameter = new JObject();
+                var hLLAPISetSessionParameterpropCount = 0;
+                hLLAPISetSessionParameterpropCount++;
+                hLLAPISetSessionParameter["Parameter"] = SourceExpressionConverter.ConvertToken(hLLAPISetSessionParameterparameter);
+                hLLAPISetSessionParameterpropCount++;
+                hLLAPISetSessionParameter["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPISetSessionParameterworkflow);
+                if (hLLAPISetSessionParameterpropCount > 0)
+                {
+                    callPayload.Body = hLLAPISetSessionParameter;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IWorkflowAction HLLAPIResetSystem(Expression<Func<string>> hLLAPIResetSystemworkflow)
+        public IWorkflowAction HLLAPIResetSystem([WorkflowExpression] Func<string> hLLAPIResetSystemworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPIResetSystem = new JObject();
-            var hLLAPIResetSystempropCount = 0;
-            hLLAPIResetSystempropCount++;
-            hLLAPIResetSystem["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPIResetSystemworkflow);
-            if (hLLAPIResetSystempropCount > 0)
+            SourceExpression.Validate(hLLAPIResetSystemworkflow, nameof(hLLAPIResetSystemworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPIResetSystem;
+                var apiCallPath = "/HLLAPI/HLLAPIResetSystem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPIResetSystem = new JObject();
+                var hLLAPIResetSystempropCount = 0;
+                hLLAPIResetSystempropCount++;
+                hLLAPIResetSystem["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPIResetSystemworkflow);
+                if (hLLAPIResetSystempropCount > 0)
+                {
+                    callPayload.Body = hLLAPIResetSystem;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iaconnectmainframe")]
-        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea(Expression<Func<string>> hLLAPICopyOperatorInformationAreaworkflow)
+        public IBodyWorkflowAction<HLLAPICopyOperatorInformationAreaResponse> HLLAPICopyOperatorInformationArea([WorkflowExpression] Func<string> hLLAPICopyOperatorInformationAreaworkflow)
         {
-            var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var hLLAPICopyOperatorInformationArea = new JObject();
-            var hLLAPICopyOperatorInformationAreapropCount = 0;
-            hLLAPICopyOperatorInformationAreapropCount++;
-            hLLAPICopyOperatorInformationArea["Workflow"] = CSharpExpressionConverter.ConvertToken(hLLAPICopyOperatorInformationAreaworkflow);
-            if (hLLAPICopyOperatorInformationAreapropCount > 0)
+            SourceExpression.Validate(hLLAPICopyOperatorInformationAreaworkflow, nameof(hLLAPICopyOperatorInformationAreaworkflow), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = hLLAPICopyOperatorInformationArea;
+                var apiCallPath = "/HLLAPI/HLLAPICopyOperatorInformationArea";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var hLLAPICopyOperatorInformationArea = new JObject();
+                var hLLAPICopyOperatorInformationAreapropCount = 0;
+                hLLAPICopyOperatorInformationAreapropCount++;
+                hLLAPICopyOperatorInformationArea["Workflow"] = SourceExpressionConverter.ConvertToken(hLLAPICopyOperatorInformationAreaworkflow);
+                if (hLLAPICopyOperatorInformationAreapropCount > 0)
+                {
+                    callPayload.Body = hLLAPICopyOperatorInformationArea;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HLLAPICopyOperatorInformationAreaResponse>(callPayload);
+            return new ApiConnectionAction<HLLAPICopyOperatorInformationAreaResponse>(BuildSourceInput);
         }
     }
 

@@ -12,24 +12,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opencagegeocodingip
     public class OpencagegeocodingipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding(Expression<Func<string>> lat, Expression<Func<string>> @long)
+        public IBodyWorkflowAction<ReverseGeocodingResponse> ReverseGeocoding([WorkflowExpression] Func<string> lat, [WorkflowExpression] Func<string> @long)
         {
-            var apiCallPath = "/v1/json/reverse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            callPayload.Headers["long"] = CSharpExpressionConverter.ConvertO(@long);
-            return new ApiConnectionAction<ReverseGeocodingResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: true);
+            SourceExpression.Validate(@long, nameof(@long), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/json/reverse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["lat"] = SourceExpressionConverter.ConvertO(lat);
+                callPayload.Headers["long"] = SourceExpressionConverter.ConvertO(@long);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReverseGeocodingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "opencagegeocodingip")]
-        public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding(Expression<Func<string>> placename)
+        public IBodyWorkflowAction<ForwardGeocodingResponse> ForwardGeocoding([WorkflowExpression] Func<string> placename)
         {
-            var apiCallPath = "/v1/json/forward";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["placename"] = CSharpExpressionConverter.ConvertO(placename);
-            return new ApiConnectionAction<ForwardGeocodingResponse>(callPayload);
+            SourceExpression.Validate(placename, nameof(placename), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/json/forward";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["placename"] = SourceExpressionConverter.ConvertO(placename);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ForwardGeocodingResponse>(BuildSourceInput);
         }
     }
 

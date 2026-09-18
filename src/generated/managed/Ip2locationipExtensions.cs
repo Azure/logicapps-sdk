@@ -12,13 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2locationip
     public class Ip2locationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2locationip")]
-        public IBodyWorkflowAction<LookupIpResponse> LookupIp(Expression<Func<string>> ip)
+        public IBodyWorkflowAction<LookupIpResponse> LookupIp([WorkflowExpression] Func<string> ip)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip"] = CSharpExpressionConverter.ConvertO(ip);
-            return new ApiConnectionAction<LookupIpResponse>(callPayload);
+            SourceExpression.Validate(ip, nameof(ip), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip"] = SourceExpressionConverter.ConvertO(ip);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LookupIpResponse>(BuildSourceInput);
         }
     }
 

@@ -14,51 +14,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pixelencounterip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
         public IBodyWorkflowAction<MonsterResponse> GetRandomMonsterJson()
         {
-            var apiCallPath = "/basic/monsters/random/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/monsters/random/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson(Expression<Func<string>> id)
+        public IBodyWorkflowAction<MonsterResponse> GetMonsterJson([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/basic/monsters/{0}/json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters(Expression<Func<int>> page = null, Expression<Func<int>> startRange = null, Expression<Func<int>> endRange = null)
+        public IBodyWorkflowAction<ListMonstersResponse> ListMonsters([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> startRange = null, [WorkflowExpression] Func<int> endRange = null)
         {
-            var apiCallPath = "/basic/monsters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (startRange != null)
-                callPayload.Queries["startRange"] = CSharpExpressionConverter.ConvertO(startRange);
-            if (endRange != null)
-                callPayload.Queries["endRange"] = CSharpExpressionConverter.ConvertO(endRange);
-            return new ApiConnectionAction<ListMonstersResponse>(callPayload);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(startRange, nameof(startRange), required: false);
+            SourceExpression.Validate(endRange, nameof(endRange), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/monsters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (startRange != null)
+                    callPayload.Queries["startRange"] = SourceExpressionConverter.ConvertO(startRange);
+                if (endRange != null)
+                    callPayload.Queries["endRange"] = SourceExpressionConverter.ConvertO(endRange);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMonstersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pixelencounterip")]
-        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster(Expression<Func<string>> primaryColor = null, Expression<Func<fillTypeInput>> fillType = null, Expression<Func<string>> backgroundColor = null, Expression<Func<string>> secondaryColor = null)
+        public IBodyWorkflowAction<MonsterResponse> GetRandomSvgMonster([WorkflowExpression] Func<string> primaryColor = null, [WorkflowExpression] Func<fillTypeInput> fillType = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<string> secondaryColor = null)
         {
-            var apiCallPath = "/basic/svgmonsters/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (primaryColor != null)
-                callPayload.Queries["primaryColor"] = CSharpExpressionConverter.ConvertO(primaryColor);
-            if (fillType != null)
-                callPayload.Queries["fillType"] = CSharpExpressionConverter.Convert(fillType);
-            if (backgroundColor != null)
-                callPayload.Queries["backgroundColor"] = CSharpExpressionConverter.ConvertO(backgroundColor);
-            if (secondaryColor != null)
-                callPayload.Queries["secondaryColor"] = CSharpExpressionConverter.ConvertO(secondaryColor);
-            return new ApiConnectionAction<MonsterResponse>(callPayload);
+            SourceExpression.Validate(primaryColor, nameof(primaryColor), required: false);
+            SourceExpression.Validate(fillType, nameof(fillType), required: false);
+            SourceExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
+            SourceExpression.Validate(secondaryColor, nameof(secondaryColor), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/basic/svgmonsters/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (primaryColor != null)
+                    callPayload.Queries["primaryColor"] = SourceExpressionConverter.ConvertO(primaryColor);
+                if (fillType != null)
+                    callPayload.Queries["fillType"] = SourceExpressionConverter.Convert(fillType);
+                if (backgroundColor != null)
+                    callPayload.Queries["backgroundColor"] = SourceExpressionConverter.ConvertO(backgroundColor);
+                if (secondaryColor != null)
+                    callPayload.Queries["secondaryColor"] = SourceExpressionConverter.ConvertO(secondaryColor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MonsterResponse>(BuildSourceInput);
         }
     }
 

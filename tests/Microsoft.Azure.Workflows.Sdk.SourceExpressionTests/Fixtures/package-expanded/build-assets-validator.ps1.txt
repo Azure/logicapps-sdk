@@ -1,0 +1,61 @@
+$ErrorActionPreference = 'Stop'
+$PSNativeCommandUseErrorActionPreference = $false
+$project = Join-Path $PSScriptRoot 'BuildAssets.proj'
+& dotnet msbuild $project '-t:ValidateBuildAssets;ValidateDesignTime;ValidateGeneratedSchemaInputs' -p:DesignTimeBuild=true -v:minimal
+if ($LASTEXITCODE -ne 0) { throw 'Independent build-asset targets failed.' }
+
+$root = Join-Path $PSScriptRoot 'obj\build-assets'
+$manifest = Get-Content -LiteralPath (Join-Path $root 'manifest.json') -Raw | ConvertFrom-Json
+$unsigned = Get-Content -LiteralPath (Join-Path $root 'unsigned-manifest.json') -Raw | ConvertFrom-Json
+if ($manifest.sources.Count -ne 1 -or $manifest.references.Count -ne 1 -or
+    $manifest.schemaFiles.Count -ne 1 -or ![IO.Path]::IsPathRooted($manifest.schemaFiles[0]) -or
+    ($manifest.defines -join ',') -ne 'FIRST,SECOND' -or $manifest.languageVersion -ne 'preview' -or
+    $manifest.nullable -ne 'enable' -or !$manifest.allowUnsafe -or !$manifest.checkOverflow -or
+    $manifest.outputKind -ne 'Exe' -or $manifest.platform -ne 'x64' -or
+    $manifest.startupObject -ne 'Fixture.EntryPoint' -or $manifest.assemblyName -ne 'Quoted " assembly' -or
+    !$manifest.signAssembly -or !$manifest.delaySign -or $manifest.publicSign -or
+    ![IO.Path]::IsPathRooted($manifest.keyFile) -or $manifest.keyContainer -ne 'quoted " container') {
+    throw 'Signed/context manifest did not preserve caller settings or JSON escaping.'
+}
+$aliases = @($manifest.referenceAliases.PSObject.Properties)
+if ($aliases.Count -ne 1 -or $aliases[0].Name -ne $manifest.references[0] -or
+    ($aliases[0].Value -join ',') -ne 'global,buildAlias' -or
+    $manifest.embedInteropReferences.Count -ne 1 -or $manifest.embedInteropReferences[0] -ne $manifest.references[0]) {
+    throw 'Reference aliases/EmbedInteropTypes were not preserved.'
+}
+if ($unsigned.signAssembly -or $unsigned.delaySign -or $unsigned.publicSign -or
+    $null -ne $unsigned.keyFile -or $null -ne $unsigned.keyContainer -or
+    $null -ne $unsigned.startupObject -or $unsigned.platform -ne 'AnyCpu' -or
+    $unsigned.schemaFiles.Count -ne 0 -or
+    @($unsigned.referenceAliases.PSObject.Properties).Count -ne 0 -or $unsigned.embedInteropReferences.Count -ne 0) {
+    throw 'Unsigned/default context contains stale signing or reference metadata.'
+}
+$propagation = & dotnet msbuild $project -t:ValidateRequirementPropagation -v:minimal 2>&1
+if ($LASTEXITCODE -ne 0 -or ($propagation -join "`n") -notmatch 'WFSDK1008') {
+    throw "Requirement propagation/no-workflow skip was not explicit: $propagation"
+}
+foreach ($name in @('BuildAssetsFixture', 'Helper')) {
+    $buildCopy = Join-Path $root "requirement-output\$name.workflow-expressions.json"
+    $publishCopy = Join-Path $root "requirement-publish\$name.workflow-expressions.json"
+    if ((Get-FileHash -LiteralPath $buildCopy).Hash -ne (Get-FileHash -LiteralPath $publishCopy).Hash) {
+        throw "Publish changed the opaque $name requirement data."
+    }
+}
+foreach ($negative in @(
+    @{ Target = 'MissingCompiler'; Diagnostic = 'WFSDK1001' },
+    @{ Target = 'DuplicateCompilerInputs'; Diagnostic = 'WFSDK1003: The workflow compiler returned a duplicate compiler input' },
+    @{ Target = 'MissingRequirements'; Diagnostic = 'WFSDK1009' },
+    @{ Target = 'MissingPublishTool'; Diagnostic = 'WFSDK1001' },
+    @{ Target = 'MissingHostProfile'; Diagnostic = 'WFSDK1010' },
+    @{ Target = 'MissingSchema'; Diagnostic = 'WFSDK1014' },
+    @{ Target = 'UndeclaredGeneratedInputs'; Diagnostic = 'WFSDK1003' }
+)) {
+    $output = & dotnet msbuild $project "-t:$($negative.Target)" -v:minimal 2>&1
+    $exitCode = $LASTEXITCODE
+    $output | Set-Content -LiteralPath (Join-Path $root "$($negative.Target).log")
+    if ($exitCode -eq 0 -or ($output -join "`n") -notmatch [regex]::Escape($negative.Diagnostic)) {
+        throw "Expected $($negative.Target) explicit diagnostic: $output"
+    }
+}
+Write-Host 'Independent manifest/context, design-time, requirement propagation, and explicit failure checks passed.'
+exit 0

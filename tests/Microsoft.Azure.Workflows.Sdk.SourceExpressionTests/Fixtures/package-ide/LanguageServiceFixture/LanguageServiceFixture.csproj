@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NuGetAudit>false</NuGetAudit>
+    <SdkPackageVersion Condition="'$(SdkPackageVersion)' == ''">1.0.0-preview.2</SdkPackageVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Azure.Workflows.Sdk" Version="$(SdkPackageVersion)" />
+  </ItemGroup>
+</Project>

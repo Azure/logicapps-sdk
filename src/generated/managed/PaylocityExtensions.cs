@@ -15,27 +15,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
 
     public class PaylocityTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WebhookTrigger(Expression<Func<string>> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookTrigger([WorkflowExpression] Func<string> requestBodyOfWebhookCompanyId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            if (requestBodyOfWebhookCompanyId != null)
+            SourceExpression.Validate(requestBodyOfWebhookCompanyId, nameof(requestBodyOfWebhookCompanyId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBodyOfWebhook["companyId"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhookCompanyId);
+                var apiCallPath = "/api/v2/webhooks/TimeOffRequestApprovalNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                if (requestBodyOfWebhookCompanyId != null)
+                {
+                    requestBodyOfWebhook["companyId"] = SourceExpressionConverter.ConvertToken(requestBodyOfWebhookCompanyId);
+                    requestBodyOfWebhookpropCount++;
+                }
+
+                requestBodyOfWebhook["callbackURL"] = "@listCallbackUrl()";
                 requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+                return callPayload;
             }
 
-            requestBodyOfWebhook["callbackURL"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

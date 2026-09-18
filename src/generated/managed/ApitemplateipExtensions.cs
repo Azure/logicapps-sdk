@@ -12,194 +12,267 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apitemplateip
     public class ApitemplateipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessPDFFile> PDF(Expression<Func<string>> templateId, Expression<Func<string>> exportType = null, Expression<Func<int>> expiration = null, Expression<Func<string>> outputHtml = null, Expression<Func<string>> outputFormat = null, Expression<Func<string>> filename = null, Expression<Func<string>> imageResampleRes = null, Expression<Func<string>> isCmyk = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> meta = null, Expression<Func<string>> async = null, Expression<Func<string>> webhookUrl = null)
+        public IBodyWorkflowAction<ResponseSuccessPDFFile> PDF([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> exportType = null, [WorkflowExpression] Func<int> expiration = null, [WorkflowExpression] Func<string> outputHtml = null, [WorkflowExpression] Func<string> outputFormat = null, [WorkflowExpression] Func<string> filename = null, [WorkflowExpression] Func<string> imageResampleRes = null, [WorkflowExpression] Func<string> isCmyk = null, [WorkflowExpression] Func<int> cloudStorage = null, [WorkflowExpression] Func<string> meta = null, [WorkflowExpression] Func<string> async = null, [WorkflowExpression] Func<string> webhookUrl = null)
         {
-            var apiCallPath = "/v2/create-pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            if (exportType != null)
-                callPayload.Queries["export_type"] = CSharpExpressionConverter.ConvertO(exportType);
-            if (expiration != null)
-                callPayload.Queries["expiration"] = CSharpExpressionConverter.ConvertO(expiration);
-            if (outputHtml != null)
-                callPayload.Queries["output_html"] = CSharpExpressionConverter.ConvertO(outputHtml);
-            if (outputFormat != null)
-                callPayload.Queries["output_format"] = CSharpExpressionConverter.ConvertO(outputFormat);
-            if (filename != null)
-                callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
-            if (imageResampleRes != null)
-                callPayload.Queries["image_resample_res"] = CSharpExpressionConverter.ConvertO(imageResampleRes);
-            if (isCmyk != null)
-                callPayload.Queries["is_cmyk"] = CSharpExpressionConverter.ConvertO(isCmyk);
-            if (cloudStorage != null)
-                callPayload.Queries["cloud_storage"] = CSharpExpressionConverter.ConvertO(cloudStorage);
-            if (meta != null)
-                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
-            if (async != null)
-                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
-            if (webhookUrl != null)
-                callPayload.Queries["webhook_url"] = CSharpExpressionConverter.ConvertO(webhookUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(exportType, nameof(exportType), required: false);
+            SourceExpression.Validate(expiration, nameof(expiration), required: false);
+            SourceExpression.Validate(outputHtml, nameof(outputHtml), required: false);
+            SourceExpression.Validate(outputFormat, nameof(outputFormat), required: false);
+            SourceExpression.Validate(filename, nameof(filename), required: false);
+            SourceExpression.Validate(imageResampleRes, nameof(imageResampleRes), required: false);
+            SourceExpression.Validate(isCmyk, nameof(isCmyk), required: false);
+            SourceExpression.Validate(cloudStorage, nameof(cloudStorage), required: false);
+            SourceExpression.Validate(meta, nameof(meta), required: false);
+            SourceExpression.Validate(async, nameof(async), required: false);
+            SourceExpression.Validate(webhookUrl, nameof(webhookUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v2/create-pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                if (exportType != null)
+                    callPayload.Queries["export_type"] = SourceExpressionConverter.ConvertO(exportType);
+                if (expiration != null)
+                    callPayload.Queries["expiration"] = SourceExpressionConverter.ConvertO(expiration);
+                if (outputHtml != null)
+                    callPayload.Queries["output_html"] = SourceExpressionConverter.ConvertO(outputHtml);
+                if (outputFormat != null)
+                    callPayload.Queries["output_format"] = SourceExpressionConverter.ConvertO(outputFormat);
+                if (filename != null)
+                    callPayload.Queries["filename"] = SourceExpressionConverter.ConvertO(filename);
+                if (imageResampleRes != null)
+                    callPayload.Queries["image_resample_res"] = SourceExpressionConverter.ConvertO(imageResampleRes);
+                if (isCmyk != null)
+                    callPayload.Queries["is_cmyk"] = SourceExpressionConverter.ConvertO(isCmyk);
+                if (cloudStorage != null)
+                    callPayload.Queries["cloud_storage"] = SourceExpressionConverter.ConvertO(cloudStorage);
+                if (meta != null)
+                    callPayload.Queries["meta"] = SourceExpressionConverter.ConvertO(meta);
+                if (async != null)
+                    callPayload.Queries["async"] = SourceExpressionConverter.ConvertO(async);
+                if (webhookUrl != null)
+                    callPayload.Queries["webhook_url"] = SourceExpressionConverter.ConvertO(webhookUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResponseSuccessPDFFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessPDFFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessImageFile> Image(Expression<Func<string>> templateId, Expression<Func<int>> expiration = null, Expression<Func<int>> cloudStorage = null, Expression<Func<string>> outputImageType = null, Expression<Func<string>> meta = null)
+        public IBodyWorkflowAction<ResponseSuccessImageFile> Image([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<int> expiration = null, [WorkflowExpression] Func<int> cloudStorage = null, [WorkflowExpression] Func<string> outputImageType = null, [WorkflowExpression] Func<string> meta = null)
         {
-            var apiCallPath = "/v2/create-image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            if (expiration != null)
-                callPayload.Queries["expiration"] = CSharpExpressionConverter.ConvertO(expiration);
-            if (cloudStorage != null)
-                callPayload.Queries["cloud_storage"] = CSharpExpressionConverter.ConvertO(cloudStorage);
-            if (outputImageType != null)
-                callPayload.Queries["output_image_type"] = CSharpExpressionConverter.ConvertO(outputImageType);
-            if (meta != null)
-                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(expiration, nameof(expiration), required: false);
+            SourceExpression.Validate(cloudStorage, nameof(cloudStorage), required: false);
+            SourceExpression.Validate(outputImageType, nameof(outputImageType), required: false);
+            SourceExpression.Validate(meta, nameof(meta), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v2/create-image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                if (expiration != null)
+                    callPayload.Queries["expiration"] = SourceExpressionConverter.ConvertO(expiration);
+                if (cloudStorage != null)
+                    callPayload.Queries["cloud_storage"] = SourceExpressionConverter.ConvertO(cloudStorage);
+                if (outputImageType != null)
+                    callPayload.Queries["output_image_type"] = SourceExpressionConverter.ConvertO(outputImageType);
+                if (meta != null)
+                    callPayload.Queries["meta"] = SourceExpressionConverter.ConvertO(meta);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResponseSuccessImageFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessImageFile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessListObjects> ObjectsGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> templateId = null, Expression<Func<string>> transactionType = null)
+        public IBodyWorkflowAction<ResponseSuccessListObjects> ObjectsGet([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> templateId = null, [WorkflowExpression] Func<string> transactionType = null)
         {
-            var apiCallPath = "/v2/list-objects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (templateId != null)
-                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            if (transactionType != null)
-                callPayload.Queries["transaction_type"] = CSharpExpressionConverter.ConvertO(transactionType);
-            return new ApiConnectionAction<ResponseSuccessListObjects>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessDeleteObject> ObjectDelete(Expression<Func<string>> transactionRef)
-        {
-            var apiCallPath = "/v2/delete-object";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["transaction_ref"] = CSharpExpressionConverter.ConvertO(transactionRef);
-            return new ApiConnectionAction<ResponseSuccessDeleteObject>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessListTemplates> TemplatesGet(Expression<Func<string>> limit = null, Expression<Func<string>> offset = null, Expression<Func<string>> format = null, Expression<Func<string>> templateId = null, Expression<Func<string>> groupName = null, Expression<Func<string>> withLayerInfo = null)
-        {
-            var apiCallPath = "/v2/list-templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (templateId != null)
-                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            if (groupName != null)
-                callPayload.Queries["group_name"] = CSharpExpressionConverter.ConvertO(groupName);
-            if (withLayerInfo != null)
-                callPayload.Queries["with_layer_info"] = CSharpExpressionConverter.ConvertO(withLayerInfo);
-            return new ApiConnectionAction<ResponseSuccessListTemplates>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessTemplate> TemplateGet(Expression<Func<string>> templateId = null)
-        {
-            var apiCallPath = "/v2/get-template";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (templateId != null)
-                callPayload.Queries["template_id"] = CSharpExpressionConverter.ConvertO(templateId);
-            return new ApiConnectionAction<ResponseSuccessTemplate>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccess> TemplateUpdate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodycss = null)
-        {
-            var apiCallPath = "/v2/update-template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-            if (bodybody != null)
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(templateId, nameof(templateId), required: false);
+            SourceExpression.Validate(transactionType, nameof(transactionType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
+                var apiCallPath = "/v2/list-objects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (templateId != null)
+                    callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                if (transactionType != null)
+                    callPayload.Queries["transaction_type"] = SourceExpressionConverter.ConvertO(transactionType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseSuccessListObjects>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
+        public IBodyWorkflowAction<ResponseSuccessDeleteObject> ObjectDelete([WorkflowExpression] Func<string> transactionRef)
+        {
+            SourceExpression.Validate(transactionRef, nameof(transactionRef), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/delete-object";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["transaction_ref"] = SourceExpressionConverter.ConvertO(transactionRef);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseSuccessDeleteObject>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
+        public IBodyWorkflowAction<ResponseSuccessListTemplates> TemplatesGet([WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> offset = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> templateId = null, [WorkflowExpression] Func<string> groupName = null, [WorkflowExpression] Func<string> withLayerInfo = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(templateId, nameof(templateId), required: false);
+            SourceExpression.Validate(groupName, nameof(groupName), required: false);
+            SourceExpression.Validate(withLayerInfo, nameof(withLayerInfo), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/list-templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (templateId != null)
+                    callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                if (groupName != null)
+                    callPayload.Queries["group_name"] = SourceExpressionConverter.ConvertO(groupName);
+                if (withLayerInfo != null)
+                    callPayload.Queries["with_layer_info"] = SourceExpressionConverter.ConvertO(withLayerInfo);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseSuccessListTemplates>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
+        public IBodyWorkflowAction<ResponseSuccessTemplate> TemplateGet([WorkflowExpression] Func<string> templateId = null)
+        {
+            SourceExpression.Validate(templateId, nameof(templateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/get-template";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (templateId != null)
+                    callPayload.Queries["template_id"] = SourceExpressionConverter.ConvertO(templateId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ResponseSuccessTemplate>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
+        public IBodyWorkflowAction<ResponseSuccess> TemplateUpdate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodycss = null)
+        {
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            SourceExpression.Validate(bodycss, nameof(bodycss), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/update-template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodycss != null)
+                {
+                    body["css"] = SourceExpressionConverter.ConvertToken(bodycss);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycss != null)
-            {
-                body["css"] = CSharpExpressionConverter.ConvertToken(bodycss);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccess>(callPayload);
+            return new ApiConnectionAction<ResponseSuccess>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apitemplateip")]
-        public IBodyWorkflowAction<ResponseSuccessSingleFile> PDFMerge(Expression<Func<string[]>> bodyurls, Expression<Func<string>> meta = null, Expression<Func<string>> bodyexportType = null, Expression<Func<int>> bodyexpiration = null, Expression<Func<int>> bodycloudStorage = null)
+        public IBodyWorkflowAction<ResponseSuccessSingleFile> PDFMerge([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> meta = null, [WorkflowExpression] Func<string> bodyexportType = null, [WorkflowExpression] Func<int> bodyexpiration = null, [WorkflowExpression] Func<int> bodycloudStorage = null)
         {
-            var apiCallPath = "/v2/merge-pdfs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (meta != null)
-                callPayload.Queries["meta"] = CSharpExpressionConverter.ConvertO(meta);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
-            if (bodyexportType != null)
+            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
+            SourceExpression.Validate(meta, nameof(meta), required: false);
+            SourceExpression.Validate(bodyexportType, nameof(bodyexportType), required: false);
+            SourceExpression.Validate(bodyexpiration, nameof(bodyexpiration), required: false);
+            SourceExpression.Validate(bodycloudStorage, nameof(bodycloudStorage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["export_type"] = CSharpExpressionConverter.ConvertToken(bodyexportType);
+                var apiCallPath = "/v2/merge-pdfs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (meta != null)
+                    callPayload.Queries["meta"] = SourceExpressionConverter.ConvertO(meta);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["urls"] = SourceExpressionConverter.ConvertToken(bodyurls);
+                if (bodyexportType != null)
+                {
+                    body["export_type"] = SourceExpressionConverter.ConvertToken(bodyexportType);
+                    bodypropCount++;
+                }
+
+                if (bodyexpiration != null)
+                {
+                    body["expiration"] = SourceExpressionConverter.ConvertToken(bodyexpiration);
+                    bodypropCount++;
+                }
+
+                if (bodycloudStorage != null)
+                {
+                    body["cloud_storage"] = SourceExpressionConverter.ConvertToken(bodycloudStorage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpiration != null)
-            {
-                body["expiration"] = CSharpExpressionConverter.ConvertToken(bodyexpiration);
-                bodypropCount++;
-            }
-
-            if (bodycloudStorage != null)
-            {
-                body["cloud_storage"] = CSharpExpressionConverter.ConvertToken(bodycloudStorage);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResponseSuccessSingleFile>(callPayload);
+            return new ApiConnectionAction<ResponseSuccessSingleFile>(BuildSourceInput);
         }
     }
 

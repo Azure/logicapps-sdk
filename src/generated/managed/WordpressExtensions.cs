@@ -12,62 +12,84 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
     public class WordpressActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<SiteStatsModel> SiteStats(Expression<Func<string>> siteId)
+        public IBodyWorkflowAction<SiteStatsModel> SiteStats([WorkflowExpression] Func<string> siteId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("stats");
-            return new ApiConnectionAction<SiteStatsModel>(callPayload);
+            SourceExpression.Validate(siteId, nameof(siteId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/stats", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("stats");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SiteStatsModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Get(Expression<Func<string>> siteId, Expression<Func<string>> postId)
+        public IBodyWorkflowAction<PostModel> Get([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> postId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PostModel>(callPayload);
+            SourceExpression.Validate(siteId, nameof(siteId), required: true);
+            SourceExpression.Validate(postId, nameof(postId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordpress")]
-        public IBodyWorkflowAction<PostModel> Create(Expression<Func<string>> siteId, Expression<Func<string>> posttitle = null, Expression<Func<string>> postcontent = null, Expression<Func<poststatusInput>> poststatus = null, Expression<Func<string>> posttags = null)
+        public IBodyWorkflowAction<PostModel> Create([WorkflowExpression] Func<string> siteId, [WorkflowExpression] Func<string> posttitle = null, [WorkflowExpression] Func<string> postcontent = null, [WorkflowExpression] Func<poststatusInput> poststatus = null, [WorkflowExpression] Func<string> posttags = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var post = new JObject();
-            var postpropCount = 0;
-            if (posttitle != null)
+            SourceExpression.Validate(siteId, nameof(siteId), required: true);
+            SourceExpression.Validate(posttitle, nameof(posttitle), required: false);
+            SourceExpression.Validate(postcontent, nameof(postcontent), required: false);
+            SourceExpression.Validate(poststatus, nameof(poststatus), required: false);
+            SourceExpression.Validate(posttags, nameof(posttags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                post["title"] = CSharpExpressionConverter.ConvertToken(posttitle);
-                postpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/sites/{0}/posts/new", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(siteId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var post = new JObject();
+                var postpropCount = 0;
+                if (posttitle != null)
+                {
+                    post["title"] = SourceExpressionConverter.ConvertToken(posttitle);
+                    postpropCount++;
+                }
+
+                if (postcontent != null)
+                {
+                    post["content"] = SourceExpressionConverter.ConvertToken(postcontent);
+                    postpropCount++;
+                }
+
+                if (poststatus != null)
+                {
+                    post["status"] = SourceExpressionConverter.Convert(poststatus);
+                    postpropCount++;
+                }
+
+                if (posttags != null)
+                {
+                    post["tags"] = SourceExpressionConverter.ConvertToken(posttags);
+                    postpropCount++;
+                }
+
+                if (postpropCount > 0)
+                {
+                    callPayload.Body = post;
+                }
+                return callPayload;
             }
 
-            if (postcontent != null)
-            {
-                post["content"] = CSharpExpressionConverter.ConvertToken(postcontent);
-                postpropCount++;
-            }
-
-            if (poststatus != null)
-            {
-                post["status"] = CSharpExpressionConverter.Convert(poststatus);
-                postpropCount++;
-            }
-
-            if (posttags != null)
-            {
-                post["tags"] = CSharpExpressionConverter.ConvertToken(posttags);
-                postpropCount++;
-            }
-
-            if (postpropCount > 0)
-            {
-                callPayload.Body = post;
-            }
-
-            return new ApiConnectionAction<PostModel>(callPayload);
+            return new ApiConnectionAction<PostModel>(BuildSourceInput);
         }
     }
 
@@ -75,10 +97,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordpress
     {
         public IBodyWorkflowTrigger<ListPostsResponse> OnTriggerNewPost(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/me/posts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListPostsResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/me/posts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ListPostsResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

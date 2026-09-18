@@ -12,883 +12,1421 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sharepointonline
     public class SharepointonlineActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<TablesList> GetAllTables(Expression<Func<string>> dataset)
+        public IBodyWorkflowAction<TablesList> GetAllTables([WorkflowExpression] Func<string> dataset)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/alltables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<ApproveHubSiteJoinResponse> ApproveHubSiteJoin(Expression<Func<string>> dataset, Expression<Func<string>> joiningSiteId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/approvehubsitejoin", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["joiningSiteId"] = CSharpExpressionConverter.ConvertO(joiningSiteId);
-            return new ApiConnectionAction<ApproveHubSiteJoinResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction CancelHubSiteJoinApproval(Expression<Func<string>> dataset, Expression<Func<string>> approvalCorrelationId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/cancelhubsitejoinapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (approvalCorrelationId != null)
-                callPayload.Queries["approvalCorrelationId"] = CSharpExpressionConverter.ConvertO(approvalCorrelationId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SharingLinkPermission> CreateSharingLink(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> permissionlinkType, Expression<Func<string>> permissionlinkScope, Expression<Func<string>> permissionlinkExpiration = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/codeless/_api/v2.0/sites/root/lists/{1}/items/{2}/driveItem/createLink", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var permission = new JObject();
-            var permissionpropCount = 0;
-            permissionpropCount++;
-            permission["type"] = CSharpExpressionConverter.ConvertToken(permissionlinkType);
-            permissionpropCount++;
-            permission["scope"] = CSharpExpressionConverter.ConvertToken(permissionlinkScope);
-            if (permissionlinkExpiration != null)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                permission["expirationDateTime"] = CSharpExpressionConverter.ConvertToken(permissionlinkExpiration);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/alltables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TablesList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<ApproveHubSiteJoinResponse> ApproveHubSiteJoin([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> joiningSiteId)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(joiningSiteId, nameof(joiningSiteId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/approvehubsitejoin", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["joiningSiteId"] = SourceExpressionConverter.ConvertO(joiningSiteId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ApproveHubSiteJoinResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction CancelHubSiteJoinApproval([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> approvalCorrelationId = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/cancelhubsitejoinapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (approvalCorrelationId != null)
+                    callPayload.Queries["approvalCorrelationId"] = SourceExpressionConverter.ConvertO(approvalCorrelationId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SharingLinkPermission> CreateSharingLink([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> permissionlinkType, [WorkflowExpression] Func<string> permissionlinkScope, [WorkflowExpression] Func<string> permissionlinkExpiration = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(permissionlinkType, nameof(permissionlinkType), required: true);
+            SourceExpression.Validate(permissionlinkScope, nameof(permissionlinkScope), required: true);
+            SourceExpression.Validate(permissionlinkExpiration, nameof(permissionlinkExpiration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/codeless/_api/v2.0/sites/root/lists/{1}/items/{2}/driveItem/createLink", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var permission = new JObject();
+                var permissionpropCount = 0;
                 permissionpropCount++;
+                permission["type"] = SourceExpressionConverter.ConvertToken(permissionlinkType);
+                permissionpropCount++;
+                permission["scope"] = SourceExpressionConverter.ConvertToken(permissionlinkScope);
+                if (permissionlinkExpiration != null)
+                {
+                    permission["expirationDateTime"] = SourceExpressionConverter.ConvertToken(permissionlinkExpiration);
+                    permissionpropCount++;
+                }
+
+                if (permissionpropCount > 0)
+                {
+                    callPayload.Body = permission;
+                }
+                return callPayload;
             }
 
-            if (permissionpropCount > 0)
+            return new ApiConnectionAction<SharingLinkPermission>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<BlobMetadata> CopyFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(source, nameof(source), required: true);
+            SourceExpression.Validate(destination, nameof(destination), required: true);
+            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = permission;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                callPayload.Queries["destination"] = SourceExpressionConverter.ConvertO(destination);
+                callPayload.Queries["overwrite"] = Convert.ToString(false);
+                if (overwrite != null)
+                    callPayload.Queries["overwrite"] = SourceExpressionConverter.ConvertO(overwrite);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SharingLinkPermission>(callPayload);
+            return new ApiConnectionAction<BlobMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata> CopyFile(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFileAsync([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> parametersfileToCopy, [WorkflowExpression] Func<string> parametersdestinationSiteAddress, [WorkflowExpression] Func<string> parametersdestinationFolder, [WorkflowExpression] Func<int> parametersifAnotherFileIsAlreadyThere)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
-            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFileAsync", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["sourceFileId"] = CSharpExpressionConverter.ConvertToken(parametersfileToCopy);
-            parameterspropCount++;
-            parameters["destinationDataset"] = CSharpExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
-            parameterspropCount++;
-            parameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(parametersdestinationFolder);
-            parameterspropCount++;
-            parameters["nameConflictBehavior"] = CSharpExpressionConverter.ConvertToken(parametersifAnotherFileIsAlreadyThere);
-            if (parameterspropCount > 0)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(parametersfileToCopy, nameof(parametersfileToCopy), required: true);
+            SourceExpression.Validate(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            SourceExpression.Validate(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            SourceExpression.Validate(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToCopy, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFolderAsync", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["sourceFolderId"] = CSharpExpressionConverter.ConvertToken(parametersfolderToCopy);
-            parameterspropCount++;
-            parameters["destinationDataset"] = CSharpExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
-            parameterspropCount++;
-            parameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(parametersdestinationFolder);
-            parameterspropCount++;
-            parameters["nameConflictBehavior"] = CSharpExpressionConverter.ConvertToken(parametersifAnotherFolderIsAlreadyThere);
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateFile(Expression<Func<string>> dataset, Expression<Func<string>> folderPath, Expression<Func<string>> name, Expression<Func<string>> body = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadataResponse> UpdateFile(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<string>> body = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<BlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction DeleteFile(Expression<Func<string>> dataset, Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> dataset, Expression<Func<string>> id, Expression<Func<bool>> inferContentType = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[]> ListRootFolder(Expression<Func<string>> dataset)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[]> ListFolder(Expression<Func<string>> dataset, Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileByPath", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            callPayload.SetHiddenQueryDefault("queryParametersSingleEncoded", true);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<string> GetFileContentByPath(Expression<Func<string>> dataset, Expression<Func<string>> path, Expression<Func<bool>> inferContentType = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileContentByPath", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadata(Expression<Func<string>> dataset, Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadataByPath(Expression<Func<string>> dataset, Expression<Func<string>> path)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolderByPath", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction HttpRequest(Expression<Func<string>> dataset, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/httprequest", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["method"] = CSharpExpressionConverter.Convert(parametersmethod);
-            parameterspropCount++;
-            parameters["uri"] = CSharpExpressionConverter.ConvertToken(parametersuri);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                parameters["headers"] = headersObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFileAsync", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
                 parameterspropCount++;
-            }
-
-            if (parametersbody != null)
-            {
-                parameters["body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
+                parameters["sourceFileId"] = SourceExpressionConverter.ConvertToken(parametersfileToCopy);
                 parameterspropCount++;
-            }
-
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction JoinHubSite(Expression<Func<string>> dataset, Expression<Func<string>> hubSiteId, Expression<Func<string>> approvalToken = null, Expression<Func<string>> approvalCorrelationId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/joinhubsite", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["hubSiteId"] = CSharpExpressionConverter.ConvertO(hubSiteId);
-            if (approvalToken != null)
-                callPayload.Queries["approvalToken"] = CSharpExpressionConverter.ConvertO(approvalToken);
-            if (approvalCorrelationId != null)
-                callPayload.Queries["approvalCorrelationId"] = CSharpExpressionConverter.ConvertO(approvalCorrelationId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFileAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfileToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFileIsAlreadyThere)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFileAsync", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["sourceFileId"] = CSharpExpressionConverter.ConvertToken(parametersfileToMove);
-            parameterspropCount++;
-            parameters["destinationDataset"] = CSharpExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
-            parameterspropCount++;
-            parameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(parametersdestinationFolder);
-            parameterspropCount++;
-            parameters["nameConflictBehavior"] = CSharpExpressionConverter.ConvertToken(parametersifAnotherFileIsAlreadyThere);
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFolderAsync(Expression<Func<string>> dataset, Expression<Func<string>> parametersfolderToMove, Expression<Func<string>> parametersdestinationSiteAddress, Expression<Func<string>> parametersdestinationFolder, Expression<Func<int>> parametersifAnotherFolderIsAlreadyThere)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFolderAsync", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["sourceFolderId"] = CSharpExpressionConverter.ConvertToken(parametersfolderToMove);
-            parameterspropCount++;
-            parameters["destinationDataset"] = CSharpExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
-            parameterspropCount++;
-            parameters["destinationFolderPath"] = CSharpExpressionConverter.ConvertToken(parametersdestinationFolder);
-            parameterspropCount++;
-            parameters["nameConflictBehavior"] = CSharpExpressionConverter.ConvertToken(parametersifAnotherFolderIsAlreadyThere);
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction NotifyHubSiteJoinApprovalStarted(Expression<Func<string>> dataset, Expression<Func<string>> approvalCorrelationId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/notifyhubsitejoinapprovalstarted", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (approvalCorrelationId != null)
-                callPayload.Queries["approvalCorrelationId"] = CSharpExpressionConverter.ConvertO(approvalCorrelationId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> dataset)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> CreateNewDocumentSet(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersdocumentSetPath, Expression<Func<string>> parameterscontentTypeId, Expression<Func<object>> parametersdynamicProperties = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewdocumentset", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["path"] = CSharpExpressionConverter.ConvertToken(parametersdocumentSetPath);
-            parameterspropCount++;
-            parameters["contentTypeId"] = CSharpExpressionConverter.ConvertToken(parameterscontentTypeId);
-            if (parametersdynamicProperties != null)
-            {
-                parameters["DynamicProperties"] = CSharpExpressionConverter.ConvertToken(parametersdynamicProperties);
+                parameters["destinationDataset"] = SourceExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
                 parameterspropCount++;
+                parameters["destinationFolderPath"] = SourceExpressionConverter.ConvertToken(parametersdestinationFolder);
+                parameterspropCount++;
+                parameters["nameConflictBehavior"] = SourceExpressionConverter.ConvertToken(parametersifAnotherFileIsAlreadyThere);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            if (parameterspropCount > 0)
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CopyFolderAsync([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> parametersfolderToCopy, [WorkflowExpression] Func<string> parametersdestinationSiteAddress, [WorkflowExpression] Func<string> parametersdestinationFolder, [WorkflowExpression] Func<int> parametersifAnotherFolderIsAlreadyThere)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(parametersfolderToCopy, nameof(parametersfolderToCopy), required: true);
+            SourceExpression.Validate(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            SourceExpression.Validate(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            SourceExpression.Validate(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameters;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/copyFolderAsync", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["sourceFolderId"] = SourceExpressionConverter.ConvertToken(parametersfolderToCopy);
+                parameterspropCount++;
+                parameters["destinationDataset"] = SourceExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
+                parameterspropCount++;
+                parameters["destinationFolderPath"] = SourceExpressionConverter.ConvertToken(parametersdestinationFolder);
+                parameterspropCount++;
+                parameters["nameConflictBehavior"] = SourceExpressionConverter.ConvertToken(parametersifAnotherFolderIsAlreadyThere);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> CreateNewFolder(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> parametersfolderPath, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderPath, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewfolder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["path"] = CSharpExpressionConverter.ConvertToken(parametersfolderPath);
-            if (parameterspropCount > 0)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: true);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameters;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPListExpandedUser> SearchForUser(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> entityId, Expression<Func<string>> searchValue, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadata([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/entities/{2}/searchforuser", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityId, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchValue"] = CSharpExpressionConverter.ConvertO(searchValue);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<SPListExpandedUser>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<ItemsList> GetFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> viewScopeOption = null, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/getfileitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (viewScopeOption != null)
-                callPayload.Queries["viewScopeOption"] = CSharpExpressionConverter.ConvertO(viewScopeOption);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> viewScopeOption = null, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (viewScopeOption != null)
-                callPayload.Queries["viewScopeOption"] = CSharpExpressionConverter.ConvertO(viewScopeOption);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction DeleteItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<ApprovalData> CreateApprovalRequest(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<int>> approvalType, Expression<Func<object>> approvalSchema = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/approval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["approvalType"] = CSharpExpressionConverter.ConvertO(approvalType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(approvalSchema);
-            return new ApiConnectionAction<ApprovalData>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> GetItemChanges(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> since, Expression<Func<string>> until = null, Expression<Func<bool>> includeDrafts = null, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/changes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["since"] = CSharpExpressionConverter.ConvertO(since);
-            if (until != null)
-                callPayload.Queries["until"] = CSharpExpressionConverter.ConvertO(until);
-            callPayload.Queries["includeDrafts"] = Convert.ToString(false);
-            if (includeDrafts != null)
-                callPayload.Queries["includeDrafts"] = CSharpExpressionConverter.ConvertO(includeDrafts);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction CheckInFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametercomments, Expression<Func<int>> parametercheckInType)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkinfile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameter = new JObject();
-            var parameterpropCount = 0;
-            parameterpropCount++;
-            parameter["comment"] = CSharpExpressionConverter.ConvertToken(parametercomments);
-            parameterpropCount++;
-            parameter["checkinType"] = CSharpExpressionConverter.ConvertToken(parametercheckInType);
-            if (parameterpropCount > 0)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameter;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction CheckOutFile(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
+        public IBodyWorkflowAction<BlobMetadataResponse> UpdateFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkoutfile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction DiscardFileCheckOut(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/discardfilecheckout", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<Item> GetFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> view = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/getfileitem", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionAction<Item>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction GrantAccess(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parameterrecipients, Expression<Func<string>> parameterroles, Expression<Func<string>> parametermessage = null, Expression<Func<bool>> parameternotifyRecipients = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/grantaccess", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameter = new JObject();
-            var parameterpropCount = 0;
-            parameterpropCount++;
-            parameter["recipients"] = CSharpExpressionConverter.ConvertToken(parameterrecipients);
-            parameterpropCount++;
-            parameter["roleValue"] = CSharpExpressionConverter.ConvertToken(parameterroles);
-            if (parametermessage != null)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameter["emailBody"] = CSharpExpressionConverter.ConvertToken(parametermessage);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction DeleteFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> inferContentType = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/files/{1}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<BlobMetadata[]> ListRootFolder([WorkflowExpression] Func<string> dataset)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadata[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<BlobMetadata[]> ListFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/folders/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadata[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFileMetadataByPath([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> path)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(path, nameof(path), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.SetHiddenQueryDefault("queryParametersSingleEncoded", true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<string> GetFileContentByPath([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> path, [WorkflowExpression] Func<bool> inferContentType = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(path, nameof(path), required: true);
+            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFileContentByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadata([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> GetFolderMetadataByPath([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> path)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(path, nameof(path), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/GetFolderByPath", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction HttpRequest([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parametersuri, [WorkflowExpression] Func<string> parametersbody = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
+            SourceExpression.Validate(parametersuri, nameof(parametersuri), required: true);
+            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/httprequest", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["method"] = SourceExpressionConverter.Convert(parametersmethod);
+                parameterspropCount++;
+                parameters["uri"] = SourceExpressionConverter.ConvertToken(parametersuri);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    parameters["headers"] = headersObject;
+                    parameterspropCount++;
+                }
+
+                if (parametersbody != null)
+                {
+                    parameters["body"] = SourceExpressionConverter.ConvertToken(parametersbody);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction JoinHubSite([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> hubSiteId, [WorkflowExpression] Func<string> approvalToken = null, [WorkflowExpression] Func<string> approvalCorrelationId = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(hubSiteId, nameof(hubSiteId), required: true);
+            SourceExpression.Validate(approvalToken, nameof(approvalToken), required: false);
+            SourceExpression.Validate(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/joinhubsite", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["hubSiteId"] = SourceExpressionConverter.ConvertO(hubSiteId);
+                if (approvalToken != null)
+                    callPayload.Queries["approvalToken"] = SourceExpressionConverter.ConvertO(approvalToken);
+                if (approvalCorrelationId != null)
+                    callPayload.Queries["approvalCorrelationId"] = SourceExpressionConverter.ConvertO(approvalCorrelationId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFileAsync([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> parametersfileToMove, [WorkflowExpression] Func<string> parametersdestinationSiteAddress, [WorkflowExpression] Func<string> parametersdestinationFolder, [WorkflowExpression] Func<int> parametersifAnotherFileIsAlreadyThere)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(parametersfileToMove, nameof(parametersfileToMove), required: true);
+            SourceExpression.Validate(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            SourceExpression.Validate(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            SourceExpression.Validate(parametersifAnotherFileIsAlreadyThere, nameof(parametersifAnotherFileIsAlreadyThere), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFileAsync", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["sourceFileId"] = SourceExpressionConverter.ConvertToken(parametersfileToMove);
+                parameterspropCount++;
+                parameters["destinationDataset"] = SourceExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
+                parameterspropCount++;
+                parameters["destinationFolderPath"] = SourceExpressionConverter.ConvertToken(parametersdestinationFolder);
+                parameterspropCount++;
+                parameters["nameConflictBehavior"] = SourceExpressionConverter.ConvertToken(parametersifAnotherFileIsAlreadyThere);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> MoveFolderAsync([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> parametersfolderToMove, [WorkflowExpression] Func<string> parametersdestinationSiteAddress, [WorkflowExpression] Func<string> parametersdestinationFolder, [WorkflowExpression] Func<int> parametersifAnotherFolderIsAlreadyThere)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(parametersfolderToMove, nameof(parametersfolderToMove), required: true);
+            SourceExpression.Validate(parametersdestinationSiteAddress, nameof(parametersdestinationSiteAddress), required: true);
+            SourceExpression.Validate(parametersdestinationFolder, nameof(parametersdestinationFolder), required: true);
+            SourceExpression.Validate(parametersifAnotherFolderIsAlreadyThere, nameof(parametersifAnotherFolderIsAlreadyThere), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/moveFolderAsync", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["sourceFolderId"] = SourceExpressionConverter.ConvertToken(parametersfolderToMove);
+                parameterspropCount++;
+                parameters["destinationDataset"] = SourceExpressionConverter.ConvertToken(parametersdestinationSiteAddress);
+                parameterspropCount++;
+                parameters["destinationFolderPath"] = SourceExpressionConverter.ConvertToken(parametersdestinationFolder);
+                parameterspropCount++;
+                parameters["nameConflictBehavior"] = SourceExpressionConverter.ConvertToken(parametersifAnotherFolderIsAlreadyThere);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction NotifyHubSiteJoinApprovalStarted([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> approvalCorrelationId = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(approvalCorrelationId, nameof(approvalCorrelationId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/notifyhubsitejoinapprovalstarted", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (approvalCorrelationId != null)
+                    callPayload.Queries["approvalCorrelationId"] = SourceExpressionConverter.ConvertO(approvalCorrelationId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> dataset)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TablesList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> CreateNewDocumentSet([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> parametersdocumentSetPath, [WorkflowExpression] Func<string> parameterscontentTypeId, [WorkflowExpression] Func<object> parametersdynamicProperties = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(parametersdocumentSetPath, nameof(parametersdocumentSetPath), required: true);
+            SourceExpression.Validate(parameterscontentTypeId, nameof(parameterscontentTypeId), required: true);
+            SourceExpression.Validate(parametersdynamicProperties, nameof(parametersdynamicProperties), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewdocumentset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["path"] = SourceExpressionConverter.ConvertToken(parametersdocumentSetPath);
+                parameterspropCount++;
+                parameters["contentTypeId"] = SourceExpressionConverter.ConvertToken(parameterscontentTypeId);
+                if (parametersdynamicProperties != null)
+                {
+                    parameters["DynamicProperties"] = SourceExpressionConverter.ConvertToken(parametersdynamicProperties);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> CreateNewFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> parametersfolderPath, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(parametersfolderPath, nameof(parametersfolderPath), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/createnewfolder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                parameterspropCount++;
+                parameters["path"] = SourceExpressionConverter.ConvertToken(parametersfolderPath);
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPListExpandedUser> SearchForUser([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> entityId, [WorkflowExpression] Func<string> searchValue, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(entityId, nameof(entityId), required: true);
+            SourceExpression.Validate(searchValue, nameof(searchValue), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/entities/{2}/searchforuser", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entityId, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchValue"] = SourceExpressionConverter.ConvertO(searchValue);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPListExpandedUser>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<ItemsList> GetFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> viewScopeOption = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(viewScopeOption, nameof(viewScopeOption), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/getfileitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (viewScopeOption != null)
+                    callPayload.Queries["viewScopeOption"] = SourceExpressionConverter.ConvertO(viewScopeOption);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> viewScopeOption = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(viewScopeOption, nameof(viewScopeOption), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (viewScopeOption != null)
+                    callPayload.Queries["viewScopeOption"] = SourceExpressionConverter.ConvertO(viewScopeOption);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<ApprovalData> CreateApprovalRequest([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<int> approvalType, [WorkflowExpression] Func<object> approvalSchema = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(approvalType, nameof(approvalType), required: true);
+            SourceExpression.Validate(approvalSchema, nameof(approvalSchema), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/approval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["approvalType"] = SourceExpressionConverter.ConvertO(approvalType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(approvalSchema);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ApprovalData>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<JToken> GetItemChanges([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> since, [WorkflowExpression] Func<string> until = null, [WorkflowExpression] Func<bool> includeDrafts = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(since, nameof(since), required: true);
+            SourceExpression.Validate(until, nameof(until), required: false);
+            SourceExpression.Validate(includeDrafts, nameof(includeDrafts), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/changes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["since"] = SourceExpressionConverter.ConvertO(since);
+                if (until != null)
+                    callPayload.Queries["until"] = SourceExpressionConverter.ConvertO(until);
+                callPayload.Queries["includeDrafts"] = Convert.ToString(false);
+                if (includeDrafts != null)
+                    callPayload.Queries["includeDrafts"] = SourceExpressionConverter.ConvertO(includeDrafts);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction CheckInFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> parametercomments, [WorkflowExpression] Func<int> parametercheckInType)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(parametercomments, nameof(parametercomments), required: true);
+            SourceExpression.Validate(parametercheckInType, nameof(parametercheckInType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkinfile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameter = new JObject();
+                var parameterpropCount = 0;
                 parameterpropCount++;
-            }
-
-            if (parameternotifyRecipients != null)
-            {
-                parameter["sendEmail"] = CSharpExpressionConverter.ConvertToken(parameternotifyRecipients);
+                parameter["comment"] = SourceExpressionConverter.ConvertToken(parametercomments);
                 parameterpropCount++;
+                parameter["checkinType"] = SourceExpressionConverter.ConvertToken(parametercheckInType);
+                if (parameterpropCount > 0)
+                {
+                    callPayload.Body = parameter;
+                }
+                return callPayload;
             }
 
-            if (parameterpropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction CheckOutFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameter;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/checkoutfile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<JToken> PatchFileItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<object>> item = null, Expression<Func<string>> view = null)
+        public IWorkflowAction DiscardFileCheckOut([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitem", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<Item> PatchFileItemWithPredictedValues(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<string>> parametersmodelId = null, Expression<Func<string>> parameterspredictResult = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitemwithpredictedvalues", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            if (parametersmodelId != null)
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["modelId"] = CSharpExpressionConverter.ConvertToken(parametersmodelId);
-                parameterspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/discardfilecheckout", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (parameterspredictResult != null)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<Item> GetFileItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["predictResult"] = CSharpExpressionConverter.ConvertToken(parameterspredictResult);
-                parameterspropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/getfileitem", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
             }
 
-            if (parameterspropCount > 0)
+            return new ApiConnectionAction<Item>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IWorkflowAction GrantAccess([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> parameterrecipients, [WorkflowExpression] Func<string> parameterroles, [WorkflowExpression] Func<string> parametermessage = null, [WorkflowExpression] Func<bool> parameternotifyRecipients = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(parameterrecipients, nameof(parameterrecipients), required: true);
+            SourceExpression.Validate(parameterroles, nameof(parameterroles), required: true);
+            SourceExpression.Validate(parametermessage, nameof(parametermessage), required: false);
+            SourceExpression.Validate(parameternotifyRecipients, nameof(parameternotifyRecipients), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = parameters;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/grantaccess", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameter = new JObject();
+                var parameterpropCount = 0;
+                parameterpropCount++;
+                parameter["recipients"] = SourceExpressionConverter.ConvertToken(parameterrecipients);
+                parameterpropCount++;
+                parameter["roleValue"] = SourceExpressionConverter.ConvertToken(parameterroles);
+                if (parametermessage != null)
+                {
+                    parameter["emailBody"] = SourceExpressionConverter.ConvertToken(parametermessage);
+                    parameterpropCount++;
+                }
+
+                if (parameternotifyRecipients != null)
+                {
+                    parameter["sendEmail"] = SourceExpressionConverter.ConvertToken(parameternotifyRecipients);
+                    parameterpropCount++;
+                }
+
+                if (parameterpropCount > 0)
+                {
+                    callPayload.Body = parameter;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Item>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SetApprovalStatusOutput> SetApprovalStatus(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id, Expression<Func<approvalActionInput>> approvalAction, Expression<Func<string>> comments = null, Expression<Func<string>> entityTag = null)
+        public IBodyWorkflowAction<JToken> PatchFileItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> view = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/setapprovalstatus", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["approvalAction"] = CSharpExpressionConverter.Convert(approvalAction);
-            callPayload.Queries["comments"] = Convert.ToString("");
-            if (comments != null)
-                callPayload.Queries["comments"] = CSharpExpressionConverter.ConvertO(comments);
-            callPayload.Queries["entityTag"] = Convert.ToString("");
-            if (entityTag != null)
-                callPayload.Queries["entityTag"] = CSharpExpressionConverter.ConvertO(entityTag);
-            return new ApiConnectionAction<SetApprovalStatusOutput>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitem", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction UnshareItem(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> id)
+        public IBodyWorkflowAction<Item> PatchFileItemWithPredictedValues([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<string> parametersmodelId = null, [WorkflowExpression] Func<string> parameterspredictResult = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/unshare", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(parametersmodelId, nameof(parametersmodelId), required: false);
+            SourceExpression.Validate(parameterspredictResult, nameof(parameterspredictResult), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/patchfileitemwithpredictedvalues", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
+                if (parametersmodelId != null)
+                {
+                    parameters["modelId"] = SourceExpressionConverter.ConvertToken(parametersmodelId);
+                    parameterspropCount++;
+                }
+
+                if (parameterspredictResult != null)
+                {
+                    parameters["predictResult"] = SourceExpressionConverter.ConvertToken(parameterspredictResult);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPListItemAttachment[]> GetItemAttachments(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> itemId)
+        public IBodyWorkflowAction<SetApprovalStatusOutput> SetApprovalStatus([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id, [WorkflowExpression] Func<approvalActionInput> approvalAction, [WorkflowExpression] Func<string> comments = null, [WorkflowExpression] Func<string> entityTag = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemId, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SPListItemAttachment[]>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(approvalAction, nameof(approvalAction), required: true);
+            SourceExpression.Validate(comments, nameof(comments), required: false);
+            SourceExpression.Validate(entityTag, nameof(entityTag), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/setapprovalstatus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["approvalAction"] = SourceExpressionConverter.Convert(approvalAction);
+                callPayload.Queries["comments"] = Convert.ToString("");
+                if (comments != null)
+                    callPayload.Queries["comments"] = SourceExpressionConverter.ConvertO(comments);
+                callPayload.Queries["entityTag"] = Convert.ToString("");
+                if (entityTag != null)
+                    callPayload.Queries["entityTag"] = SourceExpressionConverter.ConvertO(entityTag);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SetApprovalStatusOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPListItemAttachment> CreateAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> displayName, Expression<Func<string>> body = null)
+        public IWorkflowAction UnshareItem([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["displayName"] = CSharpExpressionConverter.ConvertO(displayName);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<SPListItemAttachment>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/unshare", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(id, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IWorkflowAction DeleteAttachment(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> attachmentId)
+        public IBodyWorkflowAction<SPListItemAttachment[]> GetItemAttachments([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> itemId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemId, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPListItemAttachment[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<string> GetAttachmentContent(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<int>> itemId, Expression<Func<string>> attachmentId)
+        public IBodyWorkflowAction<SPListItemAttachment> CreateAttachment([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<string> displayName, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}/$value", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            SourceExpression.Validate(displayName, nameof(displayName), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["displayName"] = SourceExpressionConverter.ConvertO(displayName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPListItemAttachment>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateContentAssemblyDocument(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> folderPath = null, Expression<Func<string>> fileName = null, Expression<Func<string>> view = null)
+        public IWorkflowAction DeleteAttachment([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<string> attachmentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/templates/{2}/createnewdocument", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (fileName != null)
-                callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<Table[]> GetTableViews(Expression<Func<string>> dataset, Expression<Func<string>> table)
+        public IBodyWorkflowAction<string> GetAttachmentContent([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<int> itemId, [WorkflowExpression] Func<string> attachmentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/views", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Table[]>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(itemId, nameof(itemId), required: true);
+            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items/{2}/attachments/{3}/$value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncodingWithInt(itemId, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateAgreementsSolutionDocument(Expression<Func<string>> dataset, Expression<Func<string>> template, Expression<Func<object>> item = null, Expression<Func<string>> documentName = null, Expression<Func<string>> table = null, Expression<Func<string>> view = null)
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateContentAssemblyDocument([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> template, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> fileName = null, [WorkflowExpression] Func<string> view = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (documentName != null)
-                callPayload.Queries["documentName"] = CSharpExpressionConverter.ConvertO(documentName);
-            if (table != null)
-                callPayload.Queries["table"] = CSharpExpressionConverter.ConvertO(table);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<SPBlobMetadataResponse>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(template, nameof(template), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(fileName, nameof(fileName), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/templates/{2}/createnewdocument", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (fileName != null)
+                    callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
-        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder(Expression<Func<string>> dataset, Expression<Func<string>> source, Expression<Func<string>> destination, Expression<Func<bool>> overwrite = null)
+        public IBodyWorkflowAction<Table[]> GetTableViews([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/extractFolderV2", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
-            callPayload.Queries["destination"] = CSharpExpressionConverter.ConvertO(destination);
-            callPayload.Queries["overwrite"] = Convert.ToString(false);
-            if (overwrite != null)
-                callPayload.Queries["overwrite"] = CSharpExpressionConverter.ConvertO(overwrite);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionAction<BlobMetadata[]>(callPayload);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/views", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Table[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<SPBlobMetadataResponse> CreateAgreementsSolutionDocument([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> template, [WorkflowExpression] Func<object> item = null, [WorkflowExpression] Func<string> documentName = null, [WorkflowExpression] Func<string> table = null, [WorkflowExpression] Func<string> view = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(template, nameof(template), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            SourceExpression.Validate(documentName, nameof(documentName), required: false);
+            SourceExpression.Validate(table, nameof(table), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/agreements/templates/{1}/createnewdocument", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(template, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (documentName != null)
+                    callPayload.Queries["documentName"] = SourceExpressionConverter.ConvertO(documentName);
+                if (table != null)
+                    callPayload.Queries["table"] = SourceExpressionConverter.ConvertO(table);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SPBlobMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sharepointonline")]
+        public IBodyWorkflowAction<BlobMetadata[]> ExtractFolder([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> source, [WorkflowExpression] Func<string> destination, [WorkflowExpression] Func<bool> overwrite = null)
+        {
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(source, nameof(source), required: true);
+            SourceExpression.Validate(destination, nameof(destination), required: true);
+            SourceExpression.Validate(overwrite, nameof(overwrite), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/extractFolderV2", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                callPayload.Queries["destination"] = SourceExpressionConverter.ConvertO(destination);
+                callPayload.Queries["overwrite"] = Convert.ToString(false);
+                if (overwrite != null)
+                    callPayload.Queries["overwrite"] = SourceExpressionConverter.ConvertO(overwrite);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BlobMetadata[]>(BuildSourceInput);
         }
     }
 
     public class SharepointonlineTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ItemsList> OnChangedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnChangedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onchangeditems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onchangeditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeletedfileitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeletedfileitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<DeletedItemList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DeletedItemList> OnDeletedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeleteditems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<DeletedItemList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/ondeleteditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<DeletedItemList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnNewFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewfileitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewfileitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnNewItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnNewItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onnewitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileClassifiedTimes([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileclassifiedtimes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileclassifiedtimes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> folderPath = null, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedFileItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> folderPath = null, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileitems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (folderPath != null)
-                callPayload.Queries["folderPath"] = CSharpExpressionConverter.ConvertO(folderPath);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(folderPath, nameof(folderPath), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdatedfileitems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (folderPath != null)
+                    callPayload.Queries["folderPath"] = SourceExpressionConverter.ConvertO(folderPath);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems(Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> view = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ItemsList> OnUpdatedItems([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> view = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdateditems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            return new ApiConnectionTrigger<ItemsList>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/onupdateditems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ItemsList>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> OnNewFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnNewFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onnewfile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onnewfile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<string> OnUpdatedFile(Expression<Func<string>> dataset, Expression<Func<string>> folderId, Expression<Func<bool>> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<string> OnUpdatedFile([WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<bool> inferContentType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onupdatedfile", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folderId"] = CSharpExpressionConverter.ConvertO(folderId);
-            callPayload.Queries["includeFileContent"] = Convert.ToString(true);
-            callPayload.Queries["inferContentType"] = Convert.ToString(true);
-            if (inferContentType != null)
-                callPayload.Queries["inferContentType"] = CSharpExpressionConverter.ConvertO(inferContentType);
-            callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(inferContentType, nameof(inferContentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/triggers/onupdatedfile", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folderId"] = SourceExpressionConverter.ConvertO(folderId);
+                callPayload.Queries["includeFileContent"] = Convert.ToString(true);
+                callPayload.Queries["inferContentType"] = Convert.ToString(true);
+                if (inferContentType != null)
+                    callPayload.Queries["inferContentType"] = SourceExpressionConverter.ConvertO(inferContentType);
+                callPayload.Queries["queryParametersSingleEncoded"] = Convert.ToString(true);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

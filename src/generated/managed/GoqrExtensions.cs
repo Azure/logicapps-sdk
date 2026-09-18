@@ -12,40 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goqr
     public class GoqrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goqr")]
-        public IBodyWorkflowAction<string> Create(Expression<Func<string>> data, Expression<Func<string>> size = null, Expression<Func<charsetSourceInput>> charsetSource = null, Expression<Func<charsetTargetInput>> charsetTarget = null, Expression<Func<string>> ecc = null, Expression<Func<string>> color = null, Expression<Func<string>> bgcolor = null, Expression<Func<int>> margin = null, Expression<Func<int>> qzone = null, Expression<Func<formatInput>> format = null)
+        public IBodyWorkflowAction<string> Create([WorkflowExpression] Func<string> data, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<charsetSourceInput> charsetSource = null, [WorkflowExpression] Func<charsetTargetInput> charsetTarget = null, [WorkflowExpression] Func<string> ecc = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<string> bgcolor = null, [WorkflowExpression] Func<int> margin = null, [WorkflowExpression] Func<int> qzone = null, [WorkflowExpression] Func<formatInput> format = null)
         {
-            var apiCallPath = "/create-qr-code/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["data"] = CSharpExpressionConverter.ConvertO(data);
-            callPayload.Queries["size"] = Convert.ToString("200x200");
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            callPayload.Queries["charset-source"] = Convert.ToString("UTF-8");
-            if (charsetSource != null)
-                callPayload.Queries["charset-source"] = CSharpExpressionConverter.Convert(charsetSource);
-            callPayload.Queries["charset-target"] = Convert.ToString("UTF-8");
-            if (charsetTarget != null)
-                callPayload.Queries["charset-target"] = CSharpExpressionConverter.Convert(charsetTarget);
-            callPayload.Queries["ecc"] = Convert.ToString("L");
-            if (ecc != null)
-                callPayload.Queries["ecc"] = CSharpExpressionConverter.ConvertO(ecc);
-            callPayload.Queries["color"] = Convert.ToString("0-0-0");
-            if (color != null)
-                callPayload.Queries["color"] = CSharpExpressionConverter.ConvertO(color);
-            callPayload.Queries["bgcolor"] = Convert.ToString("255-255-255");
-            if (bgcolor != null)
-                callPayload.Queries["bgcolor"] = CSharpExpressionConverter.ConvertO(bgcolor);
-            callPayload.Queries["margin"] = Convert.ToString(1);
-            if (margin != null)
-                callPayload.Queries["margin"] = CSharpExpressionConverter.ConvertO(margin);
-            callPayload.Queries["qzone"] = Convert.ToString(0);
-            if (qzone != null)
-                callPayload.Queries["qzone"] = CSharpExpressionConverter.ConvertO(qzone);
-            callPayload.Queries["format"] = Convert.ToString("png");
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(data, nameof(data), required: true);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(charsetSource, nameof(charsetSource), required: false);
+            SourceExpression.Validate(charsetTarget, nameof(charsetTarget), required: false);
+            SourceExpression.Validate(ecc, nameof(ecc), required: false);
+            SourceExpression.Validate(color, nameof(color), required: false);
+            SourceExpression.Validate(bgcolor, nameof(bgcolor), required: false);
+            SourceExpression.Validate(margin, nameof(margin), required: false);
+            SourceExpression.Validate(qzone, nameof(qzone), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/create-qr-code/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["data"] = SourceExpressionConverter.ConvertO(data);
+                callPayload.Queries["size"] = Convert.ToString("200x200");
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["charset-source"] = Convert.ToString("UTF-8");
+                if (charsetSource != null)
+                    callPayload.Queries["charset-source"] = SourceExpressionConverter.Convert(charsetSource);
+                callPayload.Queries["charset-target"] = Convert.ToString("UTF-8");
+                if (charsetTarget != null)
+                    callPayload.Queries["charset-target"] = SourceExpressionConverter.Convert(charsetTarget);
+                callPayload.Queries["ecc"] = Convert.ToString("L");
+                if (ecc != null)
+                    callPayload.Queries["ecc"] = SourceExpressionConverter.ConvertO(ecc);
+                callPayload.Queries["color"] = Convert.ToString("0-0-0");
+                if (color != null)
+                    callPayload.Queries["color"] = SourceExpressionConverter.ConvertO(color);
+                callPayload.Queries["bgcolor"] = Convert.ToString("255-255-255");
+                if (bgcolor != null)
+                    callPayload.Queries["bgcolor"] = SourceExpressionConverter.ConvertO(bgcolor);
+                callPayload.Queries["margin"] = Convert.ToString(1);
+                if (margin != null)
+                    callPayload.Queries["margin"] = SourceExpressionConverter.ConvertO(margin);
+                callPayload.Queries["qzone"] = Convert.ToString(0);
+                if (qzone != null)
+                    callPayload.Queries["qzone"] = SourceExpressionConverter.ConvertO(qzone);
+                callPayload.Queries["format"] = Convert.ToString("png");
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

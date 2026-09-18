@@ -12,471 +12,535 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tendocsdocuments
     public class TendocsdocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiCompareResponse> AiCompare(Expression<Func<string>> requestsourceDocumentfirstFile = null, Expression<Func<string>> requestcomparisonDocumentsecondFile = null, Expression<Func<requestconfigurationprofessionInput>> requestconfigurationprofession = null)
+        public IBodyWorkflowAction<AiCompareResponse> AiCompare([WorkflowExpression] Func<string> requestsourceDocumentfirstFile = null, [WorkflowExpression] Func<string> requestcomparisonDocumentsecondFile = null, [WorkflowExpression] Func<requestconfigurationprofessionInput> requestconfigurationprofession = null)
         {
-            var apiCallPath = "/ai/v1/tasks/compare";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var sourceDocumentObject = new JObject();
-            var sourceDocumentObjectpropCount = 0;
-            if (requestsourceDocumentfirstFile != null)
+            SourceExpression.Validate(requestsourceDocumentfirstFile, nameof(requestsourceDocumentfirstFile), required: false);
+            SourceExpression.Validate(requestcomparisonDocumentsecondFile, nameof(requestcomparisonDocumentsecondFile), required: false);
+            SourceExpression.Validate(requestconfigurationprofession, nameof(requestconfigurationprofession), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                sourceDocumentObject["file"] = CSharpExpressionConverter.ConvertToken(requestsourceDocumentfirstFile);
-                sourceDocumentObjectpropCount++;
+                var apiCallPath = "/ai/v1/tasks/compare";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var sourceDocumentObject = new JObject();
+                var sourceDocumentObjectpropCount = 0;
+                if (requestsourceDocumentfirstFile != null)
+                {
+                    sourceDocumentObject["file"] = SourceExpressionConverter.ConvertToken(requestsourceDocumentfirstFile);
+                    sourceDocumentObjectpropCount++;
+                }
+
+                if (sourceDocumentObjectpropCount > 0)
+                {
+                    request["sourceDocument"] = sourceDocumentObject;
+                    requestpropCount++;
+                }
+
+                var comparisonDocumentObject = new JObject();
+                var comparisonDocumentObjectpropCount = 0;
+                if (requestcomparisonDocumentsecondFile != null)
+                {
+                    comparisonDocumentObject["file"] = SourceExpressionConverter.ConvertToken(requestcomparisonDocumentsecondFile);
+                    comparisonDocumentObjectpropCount++;
+                }
+
+                if (comparisonDocumentObjectpropCount > 0)
+                {
+                    request["comparisonDocument"] = comparisonDocumentObject;
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (requestconfigurationprofession != null)
+                {
+                    configurationObject["profession"] = SourceExpressionConverter.Convert(requestconfigurationprofession);
+                    configurationObjectpropCount++;
+                }
+
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (sourceDocumentObjectpropCount > 0)
-            {
-                request["sourceDocument"] = sourceDocumentObject;
-                requestpropCount++;
-            }
-
-            var comparisonDocumentObject = new JObject();
-            var comparisonDocumentObjectpropCount = 0;
-            if (requestcomparisonDocumentsecondFile != null)
-            {
-                comparisonDocumentObject["file"] = CSharpExpressionConverter.ConvertToken(requestcomparisonDocumentsecondFile);
-                comparisonDocumentObjectpropCount++;
-            }
-
-            if (comparisonDocumentObjectpropCount > 0)
-            {
-                request["comparisonDocument"] = comparisonDocumentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationprofession != null)
-            {
-                configurationObject["profession"] = CSharpExpressionConverter.Convert(requestconfigurationprofession);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiCompareResponse>(callPayload);
+            return new ApiConnectionAction<AiCompareResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiSummaryResponse> AiSummary(Expression<Func<string>> requestdocumentfile = null, Expression<Func<int>> requestconfigurationtargetWordCount = null)
+        public IBodyWorkflowAction<AiSummaryResponse> AiSummary([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<int> requestconfigurationtargetWordCount = null)
         {
-            var apiCallPath = "/ai/v1/tasks/summary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (requestdocumentfile != null)
+            SourceExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            SourceExpression.Validate(requestconfigurationtargetWordCount, nameof(requestconfigurationtargetWordCount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentfile);
-                documentObjectpropCount++;
+                var apiCallPath = "/ai/v1/tasks/summary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (requestdocumentfile != null)
+                {
+                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentfile);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    request["document"] = documentObject;
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (requestconfigurationtargetWordCount != null)
+                {
+                    configurationObject["targetWords"] = SourceExpressionConverter.ConvertToken(requestconfigurationtargetWordCount);
+                    configurationObjectpropCount++;
+                }
+
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (documentObjectpropCount > 0)
-            {
-                request["document"] = documentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationtargetWordCount != null)
-            {
-                configurationObject["targetWords"] = CSharpExpressionConverter.ConvertToken(requestconfigurationtargetWordCount);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiSummaryResponse>(callPayload);
+            return new ApiConnectionAction<AiSummaryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder(Expression<Func<string>> requestdescribeTheDocument1000Chars)
+        public IBodyWorkflowAction<AiTemplateBuilderResponse> AiTemplateBuilder([WorkflowExpression] Func<string> requestdescribeTheDocument1000Chars)
         {
-            var apiCallPath = "/ai/v1/tasks/templateBuilder";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["description"] = CSharpExpressionConverter.ConvertToken(requestdescribeTheDocument1000Chars);
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
+            SourceExpression.Validate(requestdescribeTheDocument1000Chars, nameof(requestdescribeTheDocument1000Chars), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
+                var apiCallPath = "/ai/v1/tasks/templateBuilder";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["description"] = SourceExpressionConverter.ConvertToken(requestdescribeTheDocument1000Chars);
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<AiTemplateBuilderResponse>(callPayload);
+            return new ApiConnectionAction<AiTemplateBuilderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> ConversionConvert(Expression<Func<string>> requestdocumentfile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> ConversionConvert([WorkflowExpression] Func<string> requestdocumentfile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            var apiCallPath = "/conversion/v1/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (requestdocumentfile != null)
+            SourceExpression.Validate(requestdocumentfile, nameof(requestdocumentfile), required: false);
+            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentfile);
-                documentObjectpropCount++;
+                var apiCallPath = "/conversion/v1/convert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (requestdocumentfile != null)
+                {
+                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentfile);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    request["document"] = documentObject;
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (requestconfigurationdocumentFormat != null)
+                {
+                    configurationObject["documentResponseFormat"] = SourceExpressionConverter.Convert(requestconfigurationdocumentFormat);
+                    configurationObjectpropCount++;
+                }
+
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (documentObjectpropCount > 0)
-            {
-                request["document"] = documentObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationdocumentFormat != null)
-            {
-                configurationObject["documentResponseFormat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> DocumentJsonTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> DocumentJsonTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            var apiCallPath = "/documents/v1/jsonTemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (requesttemplatetemplateFile != null)
+            SourceExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                templateObject["file"] = CSharpExpressionConverter.ConvertToken(requesttemplatetemplateFile);
-                templateObjectpropCount++;
+                var apiCallPath = "/documents/v1/jsonTemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (requesttemplatetemplateFile != null)
+                {
+                    templateObject["file"] = SourceExpressionConverter.ConvertToken(requesttemplatetemplateFile);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    request["template"] = templateObject;
+                    requestpropCount++;
+                }
+
+                var jsonObject = new JObject();
+                var jsonObjectpropCount = 0;
+                if (jsonObjectpropCount > 0)
+                {
+                    request["json"] = jsonObject;
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (requestconfigurationdocumentFormat != null)
+                {
+                    configurationObject["documentResponseFormat"] = SourceExpressionConverter.Convert(requestconfigurationdocumentFormat);
+                    configurationObjectpropCount++;
+                }
+
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (templateObjectpropCount > 0)
-            {
-                request["template"] = templateObject;
-                requestpropCount++;
-            }
-
-            var jsonObject = new JObject();
-            var jsonObjectpropCount = 0;
-            if (jsonObjectpropCount > 0)
-            {
-                request["json"] = jsonObject;
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationdocumentFormat != null)
-            {
-                configurationObject["documentResponseFormat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<string> DocumentTemplate(Expression<Func<string>> requesttemplatetemplateFile = null, Expression<Func<requestimageInputItem[]>> requestimage = null, Expression<Func<requestdocumentInputItem[]>> requestdocument = null, Expression<Func<requesttableInputItem[]>> requesttable = null, Expression<Func<requestconfigurationdocumentFormatInput>> requestconfigurationdocumentFormat = null)
+        public IBodyWorkflowAction<string> DocumentTemplate([WorkflowExpression] Func<string> requesttemplatetemplateFile = null, [WorkflowExpression] Func<requestimageInputItem[]> requestimage = null, [WorkflowExpression] Func<requestdocumentInputItem[]> requestdocument = null, [WorkflowExpression] Func<requesttableInputItem[]> requesttable = null, [WorkflowExpression] Func<requestconfigurationdocumentFormatInput> requestconfigurationdocumentFormat = null)
         {
-            var apiCallPath = "/documents/v1/template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var templateObject = new JObject();
-            var templateObjectpropCount = 0;
-            if (requesttemplatetemplateFile != null)
+            SourceExpression.Validate(requesttemplatetemplateFile, nameof(requesttemplatetemplateFile), required: false);
+            SourceExpression.Validate(requestimage, nameof(requestimage), required: false);
+            SourceExpression.Validate(requestdocument, nameof(requestdocument), required: false);
+            SourceExpression.Validate(requesttable, nameof(requesttable), required: false);
+            SourceExpression.Validate(requestconfigurationdocumentFormat, nameof(requestconfigurationdocumentFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                templateObject["file"] = CSharpExpressionConverter.ConvertToken(requesttemplatetemplateFile);
-                templateObjectpropCount++;
+                var apiCallPath = "/documents/v1/template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var templateObject = new JObject();
+                var templateObjectpropCount = 0;
+                if (requesttemplatetemplateFile != null)
+                {
+                    templateObject["file"] = SourceExpressionConverter.ConvertToken(requesttemplatetemplateFile);
+                    templateObjectpropCount++;
+                }
+
+                if (templateObjectpropCount > 0)
+                {
+                    request["template"] = templateObject;
+                    requestpropCount++;
+                }
+
+                if (requestimage != null)
+                {
+                    request["images"] = SourceExpressionConverter.ConvertToken(requestimage);
+                    requestpropCount++;
+                }
+
+                var textObject = new JObject();
+                var textObjectpropCount = 0;
+                if (textObjectpropCount > 0)
+                {
+                    request["text"] = textObject;
+                    requestpropCount++;
+                }
+
+                if (requestdocument != null)
+                {
+                    request["substituteDocuments"] = SourceExpressionConverter.ConvertToken(requestdocument);
+                    requestpropCount++;
+                }
+
+                if (requesttable != null)
+                {
+                    request["tables"] = SourceExpressionConverter.ConvertToken(requesttable);
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                if (requestconfigurationdocumentFormat != null)
+                {
+                    configurationObject["documentresponseformat"] = SourceExpressionConverter.Convert(requestconfigurationdocumentFormat);
+                    configurationObjectpropCount++;
+                }
+
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (templateObjectpropCount > 0)
-            {
-                request["template"] = templateObject;
-                requestpropCount++;
-            }
-
-            if (requestimage != null)
-            {
-                request["images"] = CSharpExpressionConverter.ConvertToken(requestimage);
-                requestpropCount++;
-            }
-
-            var textObject = new JObject();
-            var textObjectpropCount = 0;
-            if (textObjectpropCount > 0)
-            {
-                request["text"] = textObject;
-                requestpropCount++;
-            }
-
-            if (requestdocument != null)
-            {
-                request["substituteDocuments"] = CSharpExpressionConverter.ConvertToken(requestdocument);
-                requestpropCount++;
-            }
-
-            if (requesttable != null)
-            {
-                request["tables"] = CSharpExpressionConverter.ConvertToken(requesttable);
-                requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            if (requestconfigurationdocumentFormat != null)
-            {
-                configurationObject["documentresponseformat"] = CSharpExpressionConverter.Convert(requestconfigurationdocumentFormat);
-                configurationObjectpropCount++;
-            }
-
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tendocsdocuments")]
-        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances(Expression<Func<string>> requestdocumentTitle, Expression<Func<string>> requestdocumentIntroduction, Expression<Func<string>> requestrecipientEmail, Expression<Func<string>> requestrecipientFirstName, Expression<Func<string>> requestrecipientLastName, Expression<Func<string>> requestexpiryDate, Expression<Func<bool>> requestsignatureRequired, Expression<Func<string>> requestorgansiationTitle, Expression<Func<string>> requestorganisationEmail, Expression<Func<string>> requestorganisationOwner, Expression<Func<string>> requestdocumentpDFDocument = null, Expression<Func<string>> requestdocumentLogo = null, Expression<Func<string>> requestcheckbox = null, Expression<Func<string>> requestorganisationWebsite = null, Expression<Func<string>> requestorganisationPhone = null, Expression<Func<string>> requestoragnisationOwnerTitle = null, Expression<Func<bool>> requestcomments = null, Expression<Func<string>> requestprojectID = null, Expression<Func<string>> requestcompleteButtonLabel = null, Expression<Func<string>> requestcompleteDocumentLabel = null, Expression<Func<string>> requestincompleteDocumentLabel = null)
+        public IBodyWorkflowAction<InstancesResponse> EnvelopesInstances([WorkflowExpression] Func<string> requestdocumentTitle, [WorkflowExpression] Func<string> requestdocumentIntroduction, [WorkflowExpression] Func<string> requestrecipientEmail, [WorkflowExpression] Func<string> requestrecipientFirstName, [WorkflowExpression] Func<string> requestrecipientLastName, [WorkflowExpression] Func<string> requestexpiryDate, [WorkflowExpression] Func<bool> requestsignatureRequired, [WorkflowExpression] Func<string> requestorgansiationTitle, [WorkflowExpression] Func<string> requestorganisationEmail, [WorkflowExpression] Func<string> requestorganisationOwner, [WorkflowExpression] Func<string> requestdocumentpDFDocument = null, [WorkflowExpression] Func<string> requestdocumentLogo = null, [WorkflowExpression] Func<string> requestcheckbox = null, [WorkflowExpression] Func<string> requestorganisationWebsite = null, [WorkflowExpression] Func<string> requestorganisationPhone = null, [WorkflowExpression] Func<string> requestoragnisationOwnerTitle = null, [WorkflowExpression] Func<bool> requestcomments = null, [WorkflowExpression] Func<string> requestprojectID = null, [WorkflowExpression] Func<string> requestcompleteButtonLabel = null, [WorkflowExpression] Func<string> requestcompleteDocumentLabel = null, [WorkflowExpression] Func<string> requestincompleteDocumentLabel = null)
         {
-            var apiCallPath = "/envelopes/v1/instances";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (requestdocumentpDFDocument != null)
+            SourceExpression.Validate(requestdocumentTitle, nameof(requestdocumentTitle), required: true);
+            SourceExpression.Validate(requestdocumentIntroduction, nameof(requestdocumentIntroduction), required: true);
+            SourceExpression.Validate(requestrecipientEmail, nameof(requestrecipientEmail), required: true);
+            SourceExpression.Validate(requestrecipientFirstName, nameof(requestrecipientFirstName), required: true);
+            SourceExpression.Validate(requestrecipientLastName, nameof(requestrecipientLastName), required: true);
+            SourceExpression.Validate(requestexpiryDate, nameof(requestexpiryDate), required: true);
+            SourceExpression.Validate(requestsignatureRequired, nameof(requestsignatureRequired), required: true);
+            SourceExpression.Validate(requestorgansiationTitle, nameof(requestorgansiationTitle), required: true);
+            SourceExpression.Validate(requestorganisationEmail, nameof(requestorganisationEmail), required: true);
+            SourceExpression.Validate(requestorganisationOwner, nameof(requestorganisationOwner), required: true);
+            SourceExpression.Validate(requestdocumentpDFDocument, nameof(requestdocumentpDFDocument), required: false);
+            SourceExpression.Validate(requestdocumentLogo, nameof(requestdocumentLogo), required: false);
+            SourceExpression.Validate(requestcheckbox, nameof(requestcheckbox), required: false);
+            SourceExpression.Validate(requestorganisationWebsite, nameof(requestorganisationWebsite), required: false);
+            SourceExpression.Validate(requestorganisationPhone, nameof(requestorganisationPhone), required: false);
+            SourceExpression.Validate(requestoragnisationOwnerTitle, nameof(requestoragnisationOwnerTitle), required: false);
+            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
+            SourceExpression.Validate(requestprojectID, nameof(requestprojectID), required: false);
+            SourceExpression.Validate(requestcompleteButtonLabel, nameof(requestcompleteButtonLabel), required: false);
+            SourceExpression.Validate(requestcompleteDocumentLabel, nameof(requestcompleteDocumentLabel), required: false);
+            SourceExpression.Validate(requestincompleteDocumentLabel, nameof(requestincompleteDocumentLabel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                documentObject["file"] = CSharpExpressionConverter.ConvertToken(requestdocumentpDFDocument);
-                documentObjectpropCount++;
-            }
+                var apiCallPath = "/envelopes/v1/instances";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (requestdocumentpDFDocument != null)
+                {
+                    documentObject["file"] = SourceExpressionConverter.ConvertToken(requestdocumentpDFDocument);
+                    documentObjectpropCount++;
+                }
 
-            if (documentObjectpropCount > 0)
-            {
-                request["document"] = documentObject;
+                if (documentObjectpropCount > 0)
+                {
+                    request["document"] = documentObject;
+                    requestpropCount++;
+                }
+
+                var configurationObject = new JObject();
+                var configurationObjectpropCount = 0;
+                var keysObject = new JObject();
+                var keysObjectpropCount = 0;
+                if (keysObjectpropCount > 0)
+                {
+                    configurationObject["keys"] = keysObject;
+                    configurationObjectpropCount++;
+                }
+
+                if (configurationObjectpropCount > 0)
+                {
+                    request["configuration"] = configurationObject;
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
-            }
-
-            var configurationObject = new JObject();
-            var configurationObjectpropCount = 0;
-            var keysObject = new JObject();
-            var keysObjectpropCount = 0;
-            if (keysObjectpropCount > 0)
-            {
-                configurationObject["keys"] = keysObject;
-                configurationObjectpropCount++;
-            }
-
-            if (configurationObjectpropCount > 0)
-            {
-                request["configuration"] = configurationObject;
+                request["title"] = SourceExpressionConverter.ConvertToken(requestdocumentTitle);
                 requestpropCount++;
-            }
+                request["introduction"] = SourceExpressionConverter.ConvertToken(requestdocumentIntroduction);
+                if (requestdocumentLogo != null)
+                {
+                    request["logoUrl"] = SourceExpressionConverter.ConvertToken(requestdocumentLogo);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["title"] = CSharpExpressionConverter.ConvertToken(requestdocumentTitle);
-            requestpropCount++;
-            request["introduction"] = CSharpExpressionConverter.ConvertToken(requestdocumentIntroduction);
-            if (requestdocumentLogo != null)
-            {
-                request["logoUrl"] = CSharpExpressionConverter.ConvertToken(requestdocumentLogo);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["email"] = CSharpExpressionConverter.ConvertToken(requestrecipientEmail);
-            requestpropCount++;
-            request["firstName"] = CSharpExpressionConverter.ConvertToken(requestrecipientFirstName);
-            requestpropCount++;
-            request["lastName"] = CSharpExpressionConverter.ConvertToken(requestrecipientLastName);
-            if (requestcheckbox != null)
-            {
-                request["checkboxText"] = CSharpExpressionConverter.ConvertToken(requestcheckbox);
+                request["email"] = SourceExpressionConverter.ConvertToken(requestrecipientEmail);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["expiry"] = CSharpExpressionConverter.ConvertToken(requestexpiryDate);
-            requestpropCount++;
-            request["isSignatureRequired"] = CSharpExpressionConverter.ConvertToken(requestsignatureRequired);
-            requestpropCount++;
-            request["organisationTitle"] = CSharpExpressionConverter.ConvertToken(requestorgansiationTitle);
-            if (requestorganisationWebsite != null)
-            {
-                request["organisationWebsite"] = CSharpExpressionConverter.ConvertToken(requestorganisationWebsite);
+                request["firstName"] = SourceExpressionConverter.ConvertToken(requestrecipientFirstName);
                 requestpropCount++;
-            }
+                request["lastName"] = SourceExpressionConverter.ConvertToken(requestrecipientLastName);
+                if (requestcheckbox != null)
+                {
+                    request["checkboxText"] = SourceExpressionConverter.ConvertToken(requestcheckbox);
+                    requestpropCount++;
+                }
 
-            requestpropCount++;
-            request["organisationContactEmail"] = CSharpExpressionConverter.ConvertToken(requestorganisationEmail);
-            if (requestorganisationPhone != null)
-            {
-                request["organisationContactPhone"] = CSharpExpressionConverter.ConvertToken(requestorganisationPhone);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["organisationContactName"] = CSharpExpressionConverter.ConvertToken(requestorganisationOwner);
-            if (requestoragnisationOwnerTitle != null)
-            {
-                request["organisationContactTitle"] = CSharpExpressionConverter.ConvertToken(requestoragnisationOwnerTitle);
+                request["expiry"] = SourceExpressionConverter.ConvertToken(requestexpiryDate);
                 requestpropCount++;
-            }
-
-            if (requestcomments != null)
-            {
-                request["commentsEnabled"] = CSharpExpressionConverter.ConvertToken(requestcomments);
+                request["isSignatureRequired"] = SourceExpressionConverter.ConvertToken(requestsignatureRequired);
                 requestpropCount++;
-            }
+                request["organisationTitle"] = SourceExpressionConverter.ConvertToken(requestorgansiationTitle);
+                if (requestorganisationWebsite != null)
+                {
+                    request["organisationWebsite"] = SourceExpressionConverter.ConvertToken(requestorganisationWebsite);
+                    requestpropCount++;
+                }
 
-            if (requestprojectID != null)
-            {
-                request["projectIdentifier"] = CSharpExpressionConverter.ConvertToken(requestprojectID);
                 requestpropCount++;
-            }
+                request["organisationContactEmail"] = SourceExpressionConverter.ConvertToken(requestorganisationEmail);
+                if (requestorganisationPhone != null)
+                {
+                    request["organisationContactPhone"] = SourceExpressionConverter.ConvertToken(requestorganisationPhone);
+                    requestpropCount++;
+                }
 
-            if (requestcompleteButtonLabel != null)
-            {
-                request["completeButtonLabel"] = CSharpExpressionConverter.ConvertToken(requestcompleteButtonLabel);
                 requestpropCount++;
+                request["organisationContactName"] = SourceExpressionConverter.ConvertToken(requestorganisationOwner);
+                if (requestoragnisationOwnerTitle != null)
+                {
+                    request["organisationContactTitle"] = SourceExpressionConverter.ConvertToken(requestoragnisationOwnerTitle);
+                    requestpropCount++;
+                }
+
+                if (requestcomments != null)
+                {
+                    request["commentsEnabled"] = SourceExpressionConverter.ConvertToken(requestcomments);
+                    requestpropCount++;
+                }
+
+                if (requestprojectID != null)
+                {
+                    request["projectIdentifier"] = SourceExpressionConverter.ConvertToken(requestprojectID);
+                    requestpropCount++;
+                }
+
+                if (requestcompleteButtonLabel != null)
+                {
+                    request["completeButtonLabel"] = SourceExpressionConverter.ConvertToken(requestcompleteButtonLabel);
+                    requestpropCount++;
+                }
+
+                if (requestcompleteDocumentLabel != null)
+                {
+                    request["completeStatusLabel"] = SourceExpressionConverter.ConvertToken(requestcompleteDocumentLabel);
+                    requestpropCount++;
+                }
+
+                if (requestincompleteDocumentLabel != null)
+                {
+                    request["incompleteStatusLabel"] = SourceExpressionConverter.ConvertToken(requestincompleteDocumentLabel);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestcompleteDocumentLabel != null)
-            {
-                request["completeStatusLabel"] = CSharpExpressionConverter.ConvertToken(requestcompleteDocumentLabel);
-                requestpropCount++;
-            }
-
-            if (requestincompleteDocumentLabel != null)
-            {
-                request["incompleteStatusLabel"] = CSharpExpressionConverter.ConvertToken(requestincompleteDocumentLabel);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<InstancesResponse>(callPayload);
+            return new ApiConnectionAction<InstancesResponse>(BuildSourceInput);
         }
     }
 

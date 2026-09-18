@@ -12,127 +12,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgeonerecfind6
     public class Knowledgeonerecfind6Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<QueryListResponse> QueryList(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null)
+        public IBodyWorkflowAction<QueryListResponse> QueryList([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null)
         {
-            var apiCallPath = "/QueryList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
-            if (userName != null)
-                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
-            return new ApiConnectionAction<QueryListResponse>(callPayload);
+            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
+            SourceExpression.Validate(userName, nameof(userName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/QueryList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hostUrl != null)
+                    callPayload.Queries["HostUrl"] = SourceExpressionConverter.ConvertO(hostUrl);
+                if (userName != null)
+                    callPayload.Queries["UserName"] = SourceExpressionConverter.ConvertO(userName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<JToken[]> QueryTable(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<string>> searchText = null)
+        public IBodyWorkflowAction<JToken[]> QueryTable([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<string> searchText = null)
         {
-            var apiCallPath = "/QueryTable";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
-            if (userName != null)
-                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
-            if (queryName != null)
-                callPayload.Queries["QueryName"] = CSharpExpressionConverter.ConvertO(queryName);
-            if (searchText != null)
-                callPayload.Queries["SearchText"] = CSharpExpressionConverter.ConvertO(searchText);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
+            SourceExpression.Validate(userName, nameof(userName), required: false);
+            SourceExpression.Validate(queryName, nameof(queryName), required: false);
+            SourceExpression.Validate(searchText, nameof(searchText), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/QueryTable";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hostUrl != null)
+                    callPayload.Queries["HostUrl"] = SourceExpressionConverter.ConvertO(hostUrl);
+                if (userName != null)
+                    callPayload.Queries["UserName"] = SourceExpressionConverter.ConvertO(userName);
+                if (queryName != null)
+                    callPayload.Queries["QueryName"] = SourceExpressionConverter.ConvertO(queryName);
+                if (searchText != null)
+                    callPayload.Queries["SearchText"] = SourceExpressionConverter.ConvertO(searchText);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<QueryDataResponse> QueryData(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> queryName = null, Expression<Func<int>> startPosition = null, Expression<Func<int>> numberOfRecords = null, Expression<Func<string>> searchText = null)
+        public IBodyWorkflowAction<QueryDataResponse> QueryData([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> queryName = null, [WorkflowExpression] Func<int> startPosition = null, [WorkflowExpression] Func<int> numberOfRecords = null, [WorkflowExpression] Func<string> searchText = null)
         {
-            var apiCallPath = "/QueryData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
-            if (userName != null)
-                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
-            if (queryName != null)
-                callPayload.Queries["QueryName"] = CSharpExpressionConverter.ConvertO(queryName);
-            if (startPosition != null)
-                callPayload.Queries["StartPosition"] = CSharpExpressionConverter.ConvertO(startPosition);
-            if (numberOfRecords != null)
-                callPayload.Queries["NumberOfRecords"] = CSharpExpressionConverter.ConvertO(numberOfRecords);
-            if (searchText != null)
-                callPayload.Queries["SearchText"] = CSharpExpressionConverter.ConvertO(searchText);
-            return new ApiConnectionAction<QueryDataResponse>(callPayload);
+            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
+            SourceExpression.Validate(userName, nameof(userName), required: false);
+            SourceExpression.Validate(queryName, nameof(queryName), required: false);
+            SourceExpression.Validate(startPosition, nameof(startPosition), required: false);
+            SourceExpression.Validate(numberOfRecords, nameof(numberOfRecords), required: false);
+            SourceExpression.Validate(searchText, nameof(searchText), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/QueryData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hostUrl != null)
+                    callPayload.Queries["HostUrl"] = SourceExpressionConverter.ConvertO(hostUrl);
+                if (userName != null)
+                    callPayload.Queries["UserName"] = SourceExpressionConverter.ConvertO(userName);
+                if (queryName != null)
+                    callPayload.Queries["QueryName"] = SourceExpressionConverter.ConvertO(queryName);
+                if (startPosition != null)
+                    callPayload.Queries["StartPosition"] = SourceExpressionConverter.ConvertO(startPosition);
+                if (numberOfRecords != null)
+                    callPayload.Queries["NumberOfRecords"] = SourceExpressionConverter.ConvertO(numberOfRecords);
+                if (searchText != null)
+                    callPayload.Queries["SearchText"] = SourceExpressionConverter.ConvertO(searchText);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryDataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<JToken[]> SavedSearch(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> savedSearchName = null, Expression<Func<string>> queryParams = null)
+        public IBodyWorkflowAction<JToken[]> SavedSearch([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> savedSearchName = null, [WorkflowExpression] Func<string> queryParams = null)
         {
-            var apiCallPath = "/SavedSearch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
-            if (userName != null)
-                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
-            if (savedSearchName != null)
-                callPayload.Queries["SavedSearchName"] = CSharpExpressionConverter.ConvertO(savedSearchName);
-            if (queryParams != null)
-                callPayload.Queries["QueryParams"] = CSharpExpressionConverter.ConvertO(queryParams);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
+            SourceExpression.Validate(userName, nameof(userName), required: false);
+            SourceExpression.Validate(savedSearchName, nameof(savedSearchName), required: false);
+            SourceExpression.Validate(queryParams, nameof(queryParams), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SavedSearch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hostUrl != null)
+                    callPayload.Queries["HostUrl"] = SourceExpressionConverter.ConvertO(hostUrl);
+                if (userName != null)
+                    callPayload.Queries["UserName"] = SourceExpressionConverter.ConvertO(userName);
+                if (savedSearchName != null)
+                    callPayload.Queries["SavedSearchName"] = SourceExpressionConverter.ConvertO(savedSearchName);
+                if (queryParams != null)
+                    callPayload.Queries["QueryParams"] = SourceExpressionConverter.ConvertO(queryParams);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgeonerecfind6")]
-        public IBodyWorkflowAction<SendFileResponse> SendFile(Expression<Func<string>> hostUrl = null, Expression<Func<string>> userName = null, Expression<Func<string>> bodyfileContents = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodycreatedDate = null, Expression<Func<string>> bodyeDOCType = null, Expression<Func<bodyextraFieldsInputItem[]>> bodyextraFields = null)
+        public IBodyWorkflowAction<SendFileResponse> SendFile([WorkflowExpression] Func<string> hostUrl = null, [WorkflowExpression] Func<string> userName = null, [WorkflowExpression] Func<string> bodyfileContents = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodycreatedDate = null, [WorkflowExpression] Func<string> bodyeDOCType = null, [WorkflowExpression] Func<bodyextraFieldsInputItem[]> bodyextraFields = null)
         {
-            var apiCallPath = "/SendFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (hostUrl != null)
-                callPayload.Queries["HostUrl"] = CSharpExpressionConverter.ConvertO(hostUrl);
-            if (userName != null)
-                callPayload.Queries["UserName"] = CSharpExpressionConverter.ConvertO(userName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileContents != null)
+            SourceExpression.Validate(hostUrl, nameof(hostUrl), required: false);
+            SourceExpression.Validate(userName, nameof(userName), required: false);
+            SourceExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: false);
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodycreatedDate, nameof(bodycreatedDate), required: false);
+            SourceExpression.Validate(bodyeDOCType, nameof(bodyeDOCType), required: false);
+            SourceExpression.Validate(bodyextraFields, nameof(bodyextraFields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FileContents"] = CSharpExpressionConverter.ConvertToken(bodyfileContents);
-                bodypropCount++;
+                var apiCallPath = "/SendFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (hostUrl != null)
+                    callPayload.Queries["HostUrl"] = SourceExpressionConverter.ConvertO(hostUrl);
+                if (userName != null)
+                    callPayload.Queries["UserName"] = SourceExpressionConverter.ConvertO(userName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileContents != null)
+                {
+                    body["FileContents"] = SourceExpressionConverter.ConvertToken(bodyfileContents);
+                    bodypropCount++;
+                }
+
+                if (bodyfileName != null)
+                {
+                    body["FileName"] = SourceExpressionConverter.ConvertToken(bodyfileName);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedDate != null)
+                {
+                    body["CreatedDate"] = SourceExpressionConverter.ConvertToken(bodycreatedDate);
+                    bodypropCount++;
+                }
+
+                if (bodyeDOCType != null)
+                {
+                    body["EDOCType"] = SourceExpressionConverter.ConvertToken(bodyeDOCType);
+                    bodypropCount++;
+                }
+
+                if (bodyextraFields != null)
+                {
+                    body["ExtraFields"] = SourceExpressionConverter.ConvertToken(bodyextraFields);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfileName != null)
-            {
-                body["FileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodycreatedDate != null)
-            {
-                body["CreatedDate"] = CSharpExpressionConverter.ConvertToken(bodycreatedDate);
-                bodypropCount++;
-            }
-
-            if (bodyeDOCType != null)
-            {
-                body["EDOCType"] = CSharpExpressionConverter.ConvertToken(bodyeDOCType);
-                bodypropCount++;
-            }
-
-            if (bodyextraFields != null)
-            {
-                body["ExtraFields"] = CSharpExpressionConverter.ConvertToken(bodyextraFields);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendFileResponse>(callPayload);
+            return new ApiConnectionAction<SendFileResponse>(BuildSourceInput);
         }
     }
 

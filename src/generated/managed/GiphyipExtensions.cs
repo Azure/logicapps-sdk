@@ -12,22 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Giphyip
     public class GiphyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "giphyip")]
-        public IBodyWorkflowAction<GetGIFResponse> GetGIF(Expression<Func<string>> aPIKEY, Expression<Func<string>> q, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> rating = null, Expression<Func<string>> lang = null)
+        public IBodyWorkflowAction<GetGIFResponse> GetGIF([WorkflowExpression] Func<string> aPIKEY, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> rating = null, [WorkflowExpression] Func<string> lang = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["API_KEY"] = CSharpExpressionConverter.ConvertO(aPIKEY);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (rating != null)
-                callPayload.Queries["rating"] = CSharpExpressionConverter.ConvertO(rating);
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            return new ApiConnectionAction<GetGIFResponse>(callPayload);
+            SourceExpression.Validate(aPIKEY, nameof(aPIKEY), required: true);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(rating, nameof(rating), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["API_KEY"] = SourceExpressionConverter.ConvertO(aPIKEY);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (rating != null)
+                    callPayload.Queries["rating"] = SourceExpressionConverter.ConvertO(rating);
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGIFResponse>(BuildSourceInput);
         }
     }
 

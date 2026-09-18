@@ -12,25 +12,32 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cioplenu
     public class CioplenuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cioplenu")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> taskDatatitle, Expression<Func<string>> taskDatadescription, Expression<Func<int>> taskDatapriority)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> taskDatatitle, [WorkflowExpression] Func<string> taskDatadescription, [WorkflowExpression] Func<int> taskDatapriority)
         {
-            var apiCallPath = "/task";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var taskData = new JObject();
-            var taskDatapropCount = 0;
-            taskDatapropCount++;
-            taskData["title"] = CSharpExpressionConverter.ConvertToken(taskDatatitle);
-            taskDatapropCount++;
-            taskData["description"] = CSharpExpressionConverter.ConvertToken(taskDatadescription);
-            taskDatapropCount++;
-            taskData["priority"] = CSharpExpressionConverter.ConvertToken(taskDatapriority);
-            if (taskDatapropCount > 0)
+            SourceExpression.Validate(taskDatatitle, nameof(taskDatatitle), required: true);
+            SourceExpression.Validate(taskDatadescription, nameof(taskDatadescription), required: true);
+            SourceExpression.Validate(taskDatapriority, nameof(taskDatapriority), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = taskData;
+                var apiCallPath = "/task";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var taskData = new JObject();
+                var taskDatapropCount = 0;
+                taskDatapropCount++;
+                taskData["title"] = SourceExpressionConverter.ConvertToken(taskDatatitle);
+                taskDatapropCount++;
+                taskData["description"] = SourceExpressionConverter.ConvertToken(taskDatadescription);
+                taskDatapropCount++;
+                taskData["priority"] = SourceExpressionConverter.ConvertToken(taskDatapriority);
+                if (taskDatapropCount > 0)
+                {
+                    callPayload.Body = taskData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
         }
     }
 

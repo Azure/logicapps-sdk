@@ -12,32 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newsdataio
     public class NewsdataioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newsdataio")]
-        public IBodyWorkflowAction<LatestGetResponse> LatestGet(Expression<Func<string>> q = null, Expression<Func<string>> qInTitle = null, Expression<Func<string>> country = null, Expression<Func<string>> category = null, Expression<Func<string>> language = null, Expression<Func<string>> domain = null, Expression<Func<fullContentInput>> fullContent = null, Expression<Func<imageInput>> image = null, Expression<Func<videoInput>> video = null, Expression<Func<string>> page = null)
+        public IBodyWorkflowAction<LatestGetResponse> LatestGet([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> qInTitle = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<string> domain = null, [WorkflowExpression] Func<fullContentInput> fullContent = null, [WorkflowExpression] Func<imageInput> image = null, [WorkflowExpression] Func<videoInput> video = null, [WorkflowExpression] Func<string> page = null)
         {
-            var apiCallPath = "/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (qInTitle != null)
-                callPayload.Queries["qInTitle"] = CSharpExpressionConverter.ConvertO(qInTitle);
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            if (language != null)
-                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
-            if (domain != null)
-                callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
-            if (fullContent != null)
-                callPayload.Queries["full_content"] = CSharpExpressionConverter.Convert(fullContent);
-            if (image != null)
-                callPayload.Queries["image"] = CSharpExpressionConverter.Convert(image);
-            if (video != null)
-                callPayload.Queries["video"] = CSharpExpressionConverter.Convert(video);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<LatestGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: false);
+            SourceExpression.Validate(qInTitle, nameof(qInTitle), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(language, nameof(language), required: false);
+            SourceExpression.Validate(domain, nameof(domain), required: false);
+            SourceExpression.Validate(fullContent, nameof(fullContent), required: false);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            SourceExpression.Validate(video, nameof(video), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (qInTitle != null)
+                    callPayload.Queries["qInTitle"] = SourceExpressionConverter.ConvertO(qInTitle);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                if (domain != null)
+                    callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                if (fullContent != null)
+                    callPayload.Queries["full_content"] = SourceExpressionConverter.Convert(fullContent);
+                if (image != null)
+                    callPayload.Queries["image"] = SourceExpressionConverter.Convert(image);
+                if (video != null)
+                    callPayload.Queries["video"] = SourceExpressionConverter.Convert(video);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LatestGetResponse>(BuildSourceInput);
         }
     }
 

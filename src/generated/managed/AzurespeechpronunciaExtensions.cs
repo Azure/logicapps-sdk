@@ -12,25 +12,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azurespeechpronuncia
     public class AzurespeechpronunciaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azurespeechpronuncia")]
-        public IWorkflowAction SpeechRecognitionConversationCognitiveServices(Expression<Func<string>> referenceText, Expression<Func<string>> language, Expression<Func<string>> audioContent = null, Expression<Func<gradingSystemInput>> gradingSystem = null, Expression<Func<granularityInput>> granularity = null, Expression<Func<dimensionInput>> dimension = null, Expression<Func<bool>> enableMiscue = null, Expression<Func<string>> scenarioId = null)
+        public IWorkflowAction SpeechRecognitionConversationCognitiveServices([WorkflowExpression] Func<string> referenceText, [WorkflowExpression] Func<string> language, [WorkflowExpression] Func<string> audioContent = null, [WorkflowExpression] Func<gradingSystemInput> gradingSystem = null, [WorkflowExpression] Func<granularityInput> granularity = null, [WorkflowExpression] Func<dimensionInput> dimension = null, [WorkflowExpression] Func<bool> enableMiscue = null, [WorkflowExpression] Func<string> scenarioId = null)
         {
-            var apiCallPath = "/conversation/cognitiveservices/v1";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
-            callPayload.Headers["ReferenceText"] = CSharpExpressionConverter.ConvertO(referenceText);
-            if (gradingSystem != null)
-                callPayload.Headers["GradingSystem"] = CSharpExpressionConverter.Convert(gradingSystem);
-            if (granularity != null)
-                callPayload.Headers["Granularity"] = CSharpExpressionConverter.Convert(granularity);
-            if (dimension != null)
-                callPayload.Headers["Dimension"] = CSharpExpressionConverter.Convert(dimension);
-            if (enableMiscue != null)
-                callPayload.Headers["EnableMiscue"] = CSharpExpressionConverter.ConvertO(enableMiscue);
-            if (scenarioId != null)
-                callPayload.Headers["ScenarioId"] = CSharpExpressionConverter.ConvertO(scenarioId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(audioContent);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(referenceText, nameof(referenceText), required: true);
+            SourceExpression.Validate(language, nameof(language), required: true);
+            SourceExpression.Validate(audioContent, nameof(audioContent), required: false);
+            SourceExpression.Validate(gradingSystem, nameof(gradingSystem), required: false);
+            SourceExpression.Validate(granularity, nameof(granularity), required: false);
+            SourceExpression.Validate(dimension, nameof(dimension), required: false);
+            SourceExpression.Validate(enableMiscue, nameof(enableMiscue), required: false);
+            SourceExpression.Validate(scenarioId, nameof(scenarioId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/conversation/cognitiveservices/v1";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                callPayload.Headers["ReferenceText"] = SourceExpressionConverter.ConvertO(referenceText);
+                if (gradingSystem != null)
+                    callPayload.Headers["GradingSystem"] = SourceExpressionConverter.Convert(gradingSystem);
+                if (granularity != null)
+                    callPayload.Headers["Granularity"] = SourceExpressionConverter.Convert(granularity);
+                if (dimension != null)
+                    callPayload.Headers["Dimension"] = SourceExpressionConverter.Convert(dimension);
+                if (enableMiscue != null)
+                    callPayload.Headers["EnableMiscue"] = SourceExpressionConverter.ConvertO(enableMiscue);
+                if (scenarioId != null)
+                    callPayload.Headers["ScenarioId"] = SourceExpressionConverter.ConvertO(scenarioId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(audioContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

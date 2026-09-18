@@ -15,23 +15,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Poka
 
     public class PokaTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook(Expression<Func<string>> bodyselectALanguage, Expression<Func<string>> item, Expression<Func<string>> operationName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookDetail> CreateWebhook([WorkflowExpression] Func<string> bodyselectALanguage, [WorkflowExpression] Func<string> item, [WorkflowExpression] Func<string> operationName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(item, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["language"] = CSharpExpressionConverter.ConvertToken(bodyselectALanguage);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyselectALanguage, nameof(bodyselectALanguage), required: true);
+            SourceExpression.Validate(item, nameof(item), required: true);
+            SourceExpression.Validate(operationName, nameof(operationName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2.2/web-hooks/register/{0}/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(item, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(operationName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                bodypropCount++;
+                body["language"] = SourceExpressionConverter.ConvertToken(bodyselectALanguage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebHookDetail>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookDetail>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,13 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flotiqheadlesscms
     public class FlotiqheadlesscmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flotiqheadlesscms")]
-        public IWorkflowAction CreateContentObject(Expression<Func<string>> contentTypeId, Expression<Func<object>> body = null)
+        public IWorkflowAction CreateContentObject([WorkflowExpression] Func<string> contentTypeId, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/content/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentTypeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(contentTypeId, nameof(contentTypeId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/content/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(contentTypeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

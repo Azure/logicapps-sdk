@@ -12,129 +12,164 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Threadsip
     public class ThreadsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadPostResponse> Thread(Expression<Func<string>> bodychannel = null, Expression<Func<string>> bodychannelID = null, Expression<Func<string[]>> bodyblocks = null)
+        public IBodyWorkflowAction<ThreadPostResponse> Thread([WorkflowExpression] Func<string> bodychannel = null, [WorkflowExpression] Func<string> bodychannelID = null, [WorkflowExpression] Func<string[]> bodyblocks = null)
         {
-            var apiCallPath = "/postThread";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodychannel != null)
+            SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
+            SourceExpression.Validate(bodychannelID, nameof(bodychannelID), required: false);
+            SourceExpression.Validate(bodyblocks, nameof(bodyblocks), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["channel"] = CSharpExpressionConverter.ConvertToken(bodychannel);
-                bodypropCount++;
+                var apiCallPath = "/postThread";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodychannel != null)
+                {
+                    body["channel"] = SourceExpressionConverter.ConvertToken(bodychannel);
+                    bodypropCount++;
+                }
+
+                if (bodychannelID != null)
+                {
+                    body["channelID"] = SourceExpressionConverter.ConvertToken(bodychannelID);
+                    bodypropCount++;
+                }
+
+                if (bodyblocks != null)
+                {
+                    body["blocks"] = SourceExpressionConverter.ConvertToken(bodyblocks);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodychannelID != null)
-            {
-                body["channelID"] = CSharpExpressionConverter.ConvertToken(bodychannelID);
-                bodypropCount++;
-            }
-
-            if (bodyblocks != null)
-            {
-                body["blocks"] = CSharpExpressionConverter.ConvertToken(bodyblocks);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ThreadPostResponse>(callPayload);
+            return new ApiConnectionAction<ThreadPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete(Expression<Func<string>> bodythreadID)
+        public IBodyWorkflowAction<ThreadDeleteResponse> ThreadDelete([WorkflowExpression] Func<string> bodythreadID)
         {
-            var apiCallPath = "/deleteThread";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["threadID"] = CSharpExpressionConverter.ConvertToken(bodythreadID);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodythreadID, nameof(bodythreadID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/deleteThread";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["threadID"] = SourceExpressionConverter.ConvertToken(bodythreadID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ThreadDeleteResponse>(callPayload);
+            return new ApiConnectionAction<ThreadDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
         public IBodyWorkflowAction<ChannelsPostResponse> Channels()
         {
-            var apiCallPath = "/channels";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ChannelsPostResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/channels";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ChannelsPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatPostResponse> Chat(Expression<Func<string>> bodychat = null, Expression<Func<string>> bodychatID = null, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<ChatPostResponse> Chat([WorkflowExpression] Func<string> bodychat = null, [WorkflowExpression] Func<string> bodychatID = null, [WorkflowExpression] Func<string> bodybody = null)
         {
-            var apiCallPath = "/postChatMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodychat != null)
+            SourceExpression.Validate(bodychat, nameof(bodychat), required: false);
+            SourceExpression.Validate(bodychatID, nameof(bodychatID), required: false);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["chat"] = CSharpExpressionConverter.ConvertToken(bodychat);
-                bodypropCount++;
+                var apiCallPath = "/postChatMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodychat != null)
+                {
+                    body["chat"] = SourceExpressionConverter.ConvertToken(bodychat);
+                    bodypropCount++;
+                }
+
+                if (bodychatID != null)
+                {
+                    body["chatID"] = SourceExpressionConverter.ConvertToken(bodychatID);
+                    bodypropCount++;
+                }
+
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodychatID != null)
-            {
-                body["chatID"] = CSharpExpressionConverter.ConvertToken(bodychatID);
-                bodypropCount++;
-            }
-
-            if (bodybody != null)
-            {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatPostResponse>(callPayload);
+            return new ApiConnectionAction<ChatPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete(Expression<Func<string>> bodymessageID = null)
+        public IBodyWorkflowAction<ChatDeleteResponse> ChatDelete([WorkflowExpression] Func<string> bodymessageID = null)
         {
-            var apiCallPath = "/deleteChatMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessageID != null)
+            SourceExpression.Validate(bodymessageID, nameof(bodymessageID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["messageID"] = CSharpExpressionConverter.ConvertToken(bodymessageID);
-                bodypropCount++;
+                var apiCallPath = "/deleteChatMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessageID != null)
+                {
+                    body["messageID"] = SourceExpressionConverter.ConvertToken(bodymessageID);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatDeleteResponse>(callPayload);
+            return new ApiConnectionAction<ChatDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "threadsip")]
-        public IBodyWorkflowAction<FilePostResponse> File(Expression<Func<object>> data = null)
+        public IBodyWorkflowAction<FilePostResponse> File([WorkflowExpression] Func<object> data = null)
         {
-            var apiCallPath = "/uploadFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilePostResponse>(callPayload);
+            SourceExpression.Validate(data, nameof(data), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/uploadFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FilePostResponse>(BuildSourceInput);
         }
     }
 

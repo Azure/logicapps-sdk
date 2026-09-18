@@ -10,7 +10,46 @@
     <LangVersion>latest</LangVersion>
     <Authors>Microsoft Corporation</Authors>
     <Description>Microsoft Azure Logic Apps SDK</Description>
+    <TargetsForTfmSpecificContentInPackage>$(TargetsForTfmSpecificContentInPackage);IncludeWorkflowBuildTool</TargetsForTfmSpecificContentInPackage>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Build\**\*.cs" />
+    <Compile Remove="Utils\CSharpExpressionConverter.cs" />
+    <Compile Remove="Utils\ExpressionConverter.cs" />
+    <Compile Remove="Expressions\CapturedValueResolver.cs" />
+    <Compile Remove="Expressions\ComplexObjectConverter.cs" />
+    <Compile Remove="Expressions\CSharpExpressionConverter.cs" />
+    <Compile Remove="Expressions\ExpressionExtensions.cs" />
+    <Compile Remove="Expressions\ExpressionRenderer.cs" />
+    <Compile Remove="Expressions\ExpressionVisitor.cs" />
+    <Compile Remove="Expressions\LogicExpression.cs" />
+    <Compile Remove="Expressions\LogicExpressionConverter.cs" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" />
+    <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" />
+    <ProjectReference Include="Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+                      ReferenceOutputAssembly="false" PrivateAssets="all"
+                      SkipGetTargetFrameworkProperties="true"
+                      GlobalPropertiesToRemove="TargetFramework;RuntimeIdentifier;SelfContained" />
+  </ItemGroup>
+
+  <Target Name="IncludeWorkflowBuildTool">
+    <MSBuild Projects="$(MSBuildProjectDirectory)\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"
+             Targets="GetTargetPath" Properties="Configuration=$(Configuration)"
+             RemoveProperties="TargetFramework;RuntimeIdentifier;SelfContained">
+      <Output TaskParameter="TargetOutputs" ItemName="_WorkflowBuildToolAssembly" />
+    </MSBuild>
+    <PropertyGroup>
+      <_WorkflowBuildToolDirectory>@(_WorkflowBuildToolAssembly->'%(RootDir)%(Directory)')</_WorkflowBuildToolDirectory>
+    </PropertyGroup>
+    <Error Condition="!Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.dll') or !Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.deps.json') or !Exists('$(_WorkflowBuildToolDirectory)Microsoft.Azure.Workflows.Sdk.Build.runtimeconfig.json')"
+           Text="The workflow compiler must be built before packing the SDK. Build the SDK and its build-tool project before using --no-build." />
+    <ItemGroup>
+      <TfmSpecificPackageFile Include="$(_WorkflowBuildToolDirectory)**\*">
+        <PackagePath>tools\workflow-build\%(RecursiveDir)%(Filename)%(Extension)</PackagePath>
+      </TfmSpecificPackageFile>
+    </ItemGroup>
+  </Target>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Rpc" Version="1.0.1" />

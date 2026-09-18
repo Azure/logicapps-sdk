@@ -12,531 +12,630 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webexintegrationip
     public class WebexintegrationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings(Expression<Func<string>> contentType = null, Expression<Func<string>> password = null, Expression<Func<string>> timezone = null)
+        public IBodyWorkflowAction<ReadMeetingResponse> ReadMeetings([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> timezone = null)
         {
-            var apiCallPath = "/meetings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            if (password != null)
-                callPayload.Headers["password"] = CSharpExpressionConverter.ConvertO(password);
-            if (timezone != null)
-                callPayload.Headers["timezone"] = CSharpExpressionConverter.ConvertO(timezone);
-            return new ApiConnectionAction<ReadMeetingResponse>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(password, nameof(password), required: false);
+            SourceExpression.Validate(timezone, nameof(timezone), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/meetings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                if (password != null)
+                    callPayload.Headers["password"] = SourceExpressionConverter.ConvertO(password);
+                if (timezone != null)
+                    callPayload.Headers["timezone"] = SourceExpressionConverter.ConvertO(timezone);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReadMeetingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting(Expression<Func<string>> contentType, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystart, Expression<Func<string>> bodyend, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null)
+        public IBodyWorkflowAction<CreateAMeetingResponse> CreateAMeeting([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystart, [WorkflowExpression] Func<string> bodyend, [WorkflowExpression] Func<string> bodyagenda = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<bool> bodyenabledAutoRecordMeeting = null, [WorkflowExpression] Func<bool> bodyallowAnyUserToBeCoHost = null)
         {
-            var apiCallPath = "/meetings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            if (bodyagenda != null)
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodystart, nameof(bodystart), required: true);
+            SourceExpression.Validate(bodyend, nameof(bodyend), required: true);
+            SourceExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
+            SourceExpression.Validate(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            SourceExpression.Validate(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["agenda"] = CSharpExpressionConverter.ConvertToken(bodyagenda);
+                var apiCallPath = "/meetings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodyagenda != null)
+                {
+                    body["agenda"] = SourceExpressionConverter.ConvertToken(bodyagenda);
+                    bodypropCount++;
+                }
 
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
-            bodypropCount++;
-            body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
-            if (bodytimezone != null)
-            {
+                body["start"] = SourceExpressionConverter.ConvertToken(bodystart);
+                bodypropCount++;
+                body["end"] = SourceExpressionConverter.ConvertToken(bodyend);
                 if (bodytimezone != null)
                 {
-                    body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
+                    if (bodytimezone != null)
+                    {
+                        body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["timezone"] = "Europe/London";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["timezone"] = "Europe/London";
-                bodypropCount++;
-            }
-
-            if (bodyenabledAutoRecordMeeting != null)
-            {
                 if (bodyenabledAutoRecordMeeting != null)
                 {
-                    body["enabledAutoRecordMeeting"] = CSharpExpressionConverter.ConvertToken(bodyenabledAutoRecordMeeting);
+                    if (bodyenabledAutoRecordMeeting != null)
+                    {
+                        body["enabledAutoRecordMeeting"] = SourceExpressionConverter.ConvertToken(bodyenabledAutoRecordMeeting);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enabledAutoRecordMeeting"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["enabledAutoRecordMeeting"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyallowAnyUserToBeCoHost != null)
-            {
                 if (bodyallowAnyUserToBeCoHost != null)
                 {
-                    body["allowAnyUserToBeCoHost"] = CSharpExpressionConverter.ConvertToken(bodyallowAnyUserToBeCoHost);
+                    if (bodyallowAnyUserToBeCoHost != null)
+                    {
+                        body["allowAnyUserToBeCoHost"] = SourceExpressionConverter.ConvertToken(bodyallowAnyUserToBeCoHost);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["allowAnyUserToBeCoHost"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["allowAnyUserToBeCoHost"] = false;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateAMeetingResponse>(callPayload);
+            return new ApiConnectionAction<CreateAMeetingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction CreateAInvitee(Expression<Func<string>> bodymeetingId, Expression<Func<string>> bodyemail, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodycoHost = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysendEmail = null, Expression<Func<string>> bodypanelist = null)
+        public IWorkflowAction CreateAInvitee([WorkflowExpression] Func<string> bodymeetingId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodycoHost = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodysendEmail = null, [WorkflowExpression] Func<string> bodypanelist = null)
         {
-            var apiCallPath = "/meetingInvitees";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["meetingId"] = CSharpExpressionConverter.ConvertToken(bodymeetingId);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodydisplayName != null)
+            SourceExpression.Validate(bodymeetingId, nameof(bodymeetingId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodycoHost, nameof(bodycoHost), required: false);
+            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            SourceExpression.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
+            SourceExpression.Validate(bodypanelist, nameof(bodypanelist), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
+                var apiCallPath = "/meetingInvitees";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycoHost != null)
-            {
-                body["coHost"] = CSharpExpressionConverter.ConvertToken(bodycoHost);
+                body["meetingId"] = SourceExpressionConverter.ConvertToken(bodymeetingId);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodycoHost != null)
+                {
+                    body["coHost"] = SourceExpressionConverter.ConvertToken(bodycoHost);
+                    bodypropCount++;
+                }
+
+                if (bodyhostEmail != null)
+                {
+                    body["hostEmail"] = SourceExpressionConverter.ConvertToken(bodyhostEmail);
+                    bodypropCount++;
+                }
+
+                if (bodysendEmail != null)
+                {
+                    body["sendEmail"] = SourceExpressionConverter.ConvertToken(bodysendEmail);
+                    bodypropCount++;
+                }
+
+                if (bodypanelist != null)
+                {
+                    body["panelist"] = SourceExpressionConverter.ConvertToken(bodypanelist);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyhostEmail != null)
-            {
-                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
-                bodypropCount++;
-            }
-
-            if (bodysendEmail != null)
-            {
-                body["sendEmail"] = CSharpExpressionConverter.ConvertToken(bodysendEmail);
-                bodypropCount++;
-            }
-
-            if (bodypanelist != null)
-            {
-                body["panelist"] = CSharpExpressionConverter.ConvertToken(bodypanelist);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction DeleteAMeeting(Expression<Func<string>> meetingId)
+        public IWorkflowAction DeleteAMeeting([WorkflowExpression] Func<string> meetingId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webexintegrationip")]
-        public IWorkflowAction UpdateAMeeting(Expression<Func<string>> meetingId, Expression<Func<string>> contentType = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodyagenda = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodytimezone = null, Expression<Func<string>> bodystart = null, Expression<Func<string>> bodyend = null, Expression<Func<bool>> bodyenabledAutoRecordMeeting = null, Expression<Func<bool>> bodyallowAnyUserToBeCoHost = null, Expression<Func<bool>> bodyenabledJoinBeforeHost = null, Expression<Func<bool>> bodyenableConnectAudioBeforeHost = null, Expression<Func<int>> bodyjoinBeforeHostMinutes = null, Expression<Func<bool>> bodyexcludePassword = null, Expression<Func<bool>> bodypublicMeeting = null, Expression<Func<int>> bodyreminderTime = null, Expression<Func<string>> bodyunlockedMeetingJoinSecurity = null, Expression<Func<bool>> bodyenableAutomaticLock = null, Expression<Func<int>> bodyautomaticLockMinutes = null, Expression<Func<bool>> bodyallowFirstUserToBeCoHost = null, Expression<Func<bool>> bodyallowAuthenticatedDevices = null, Expression<Func<bool>> bodysendEmail = null, Expression<Func<string>> bodyhostEmail = null, Expression<Func<string>> bodysiteUrl = null, Expression<Func<bool>> bodymeetingOptionsenabledChat = null, Expression<Func<bool>> bodymeetingOptionsenabledVideo = null, Expression<Func<bool>> bodymeetingOptionsenabledPolling = null, Expression<Func<bool>> bodymeetingOptionsenabledNote = null, Expression<Func<string>> bodymeetingOptionsnoteType = null, Expression<Func<bool>> bodymeetingOptionsenabledClosedCaptions = null, Expression<Func<bool>> bodymeetingOptionsenabledFileTransfer = null, Expression<Func<bool>> bodymeetingOptionsenabledUCFRichMedia = null, Expression<Func<bool>> bodyattendeePrivilegesenabledShareContent = null, Expression<Func<bool>> bodyattendeePrivilegesenabledSaveDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledPrintDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledAnnotate = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewParticipantList = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewThumbnails = null, Expression<Func<bool>> bodyattendeePrivilegesenabledRemoteControl = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyDocument = null, Expression<Func<bool>> bodyattendeePrivilegesenabledViewAnyPage = null, Expression<Func<bool>> bodyattendeePrivilegesenabledContactOperatorPrivately = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatHost = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatPresenter = null, Expression<Func<bool>> bodyattendeePrivilegesenabledChatOtherParticipants = null, Expression<Func<string[]>> bodyintegrationTags = null, Expression<Func<bool>> bodyenabledBreakoutSessions = null, Expression<Func<bodytrackingCodesInputItem[]>> bodytrackingCodes = null, Expression<Func<string>> bodyaudioConnectionOptionsaudioConnectionType = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledGlobalCallIn = null, Expression<Func<bool>> bodyaudioConnectionOptionsenabledAudienceCallBack = null, Expression<Func<string>> bodyaudioConnectionOptionsentryAndExitTone = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, Expression<Func<bool>> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, Expression<Func<bool>> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
+        public IWorkflowAction UpdateAMeeting([WorkflowExpression] Func<string> meetingId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodyagenda = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodytimezone = null, [WorkflowExpression] Func<string> bodystart = null, [WorkflowExpression] Func<string> bodyend = null, [WorkflowExpression] Func<bool> bodyenabledAutoRecordMeeting = null, [WorkflowExpression] Func<bool> bodyallowAnyUserToBeCoHost = null, [WorkflowExpression] Func<bool> bodyenabledJoinBeforeHost = null, [WorkflowExpression] Func<bool> bodyenableConnectAudioBeforeHost = null, [WorkflowExpression] Func<int> bodyjoinBeforeHostMinutes = null, [WorkflowExpression] Func<bool> bodyexcludePassword = null, [WorkflowExpression] Func<bool> bodypublicMeeting = null, [WorkflowExpression] Func<int> bodyreminderTime = null, [WorkflowExpression] Func<string> bodyunlockedMeetingJoinSecurity = null, [WorkflowExpression] Func<bool> bodyenableAutomaticLock = null, [WorkflowExpression] Func<int> bodyautomaticLockMinutes = null, [WorkflowExpression] Func<bool> bodyallowFirstUserToBeCoHost = null, [WorkflowExpression] Func<bool> bodyallowAuthenticatedDevices = null, [WorkflowExpression] Func<bool> bodysendEmail = null, [WorkflowExpression] Func<string> bodyhostEmail = null, [WorkflowExpression] Func<string> bodysiteUrl = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledChat = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledVideo = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledPolling = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledNote = null, [WorkflowExpression] Func<string> bodymeetingOptionsnoteType = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledClosedCaptions = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledFileTransfer = null, [WorkflowExpression] Func<bool> bodymeetingOptionsenabledUCFRichMedia = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledShareContent = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledSaveDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledPrintDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledAnnotate = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewParticipantList = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewThumbnails = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledRemoteControl = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewAnyDocument = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledViewAnyPage = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledContactOperatorPrivately = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatHost = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatPresenter = null, [WorkflowExpression] Func<bool> bodyattendeePrivilegesenabledChatOtherParticipants = null, [WorkflowExpression] Func<string[]> bodyintegrationTags = null, [WorkflowExpression] Func<bool> bodyenabledBreakoutSessions = null, [WorkflowExpression] Func<bodytrackingCodesInputItem[]> bodytrackingCodes = null, [WorkflowExpression] Func<string> bodyaudioConnectionOptionsaudioConnectionType = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledTollFreeCallIn = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledGlobalCallIn = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsenabledAudienceCallBack = null, [WorkflowExpression] Func<string> bodyaudioConnectionOptionsentryAndExitTone = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsallowHostToUnmuteParticipants = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf = null, [WorkflowExpression] Func<bool> bodyaudioConnectionOptionsmuteAttendeeUponEntry = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meetings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytitle != null)
+            SourceExpression.Validate(meetingId, nameof(meetingId), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodytimezone, nameof(bodytimezone), required: false);
+            SourceExpression.Validate(bodystart, nameof(bodystart), required: false);
+            SourceExpression.Validate(bodyend, nameof(bodyend), required: false);
+            SourceExpression.Validate(bodyenabledAutoRecordMeeting, nameof(bodyenabledAutoRecordMeeting), required: false);
+            SourceExpression.Validate(bodyallowAnyUserToBeCoHost, nameof(bodyallowAnyUserToBeCoHost), required: false);
+            SourceExpression.Validate(bodyenabledJoinBeforeHost, nameof(bodyenabledJoinBeforeHost), required: false);
+            SourceExpression.Validate(bodyenableConnectAudioBeforeHost, nameof(bodyenableConnectAudioBeforeHost), required: false);
+            SourceExpression.Validate(bodyjoinBeforeHostMinutes, nameof(bodyjoinBeforeHostMinutes), required: false);
+            SourceExpression.Validate(bodyexcludePassword, nameof(bodyexcludePassword), required: false);
+            SourceExpression.Validate(bodypublicMeeting, nameof(bodypublicMeeting), required: false);
+            SourceExpression.Validate(bodyreminderTime, nameof(bodyreminderTime), required: false);
+            SourceExpression.Validate(bodyunlockedMeetingJoinSecurity, nameof(bodyunlockedMeetingJoinSecurity), required: false);
+            SourceExpression.Validate(bodyenableAutomaticLock, nameof(bodyenableAutomaticLock), required: false);
+            SourceExpression.Validate(bodyautomaticLockMinutes, nameof(bodyautomaticLockMinutes), required: false);
+            SourceExpression.Validate(bodyallowFirstUserToBeCoHost, nameof(bodyallowFirstUserToBeCoHost), required: false);
+            SourceExpression.Validate(bodyallowAuthenticatedDevices, nameof(bodyallowAuthenticatedDevices), required: false);
+            SourceExpression.Validate(bodysendEmail, nameof(bodysendEmail), required: false);
+            SourceExpression.Validate(bodyhostEmail, nameof(bodyhostEmail), required: false);
+            SourceExpression.Validate(bodysiteUrl, nameof(bodysiteUrl), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledChat, nameof(bodymeetingOptionsenabledChat), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledVideo, nameof(bodymeetingOptionsenabledVideo), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledPolling, nameof(bodymeetingOptionsenabledPolling), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledNote, nameof(bodymeetingOptionsenabledNote), required: false);
+            SourceExpression.Validate(bodymeetingOptionsnoteType, nameof(bodymeetingOptionsnoteType), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledClosedCaptions, nameof(bodymeetingOptionsenabledClosedCaptions), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledFileTransfer, nameof(bodymeetingOptionsenabledFileTransfer), required: false);
+            SourceExpression.Validate(bodymeetingOptionsenabledUCFRichMedia, nameof(bodymeetingOptionsenabledUCFRichMedia), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledShareContent, nameof(bodyattendeePrivilegesenabledShareContent), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledSaveDocument, nameof(bodyattendeePrivilegesenabledSaveDocument), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledPrintDocument, nameof(bodyattendeePrivilegesenabledPrintDocument), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledAnnotate, nameof(bodyattendeePrivilegesenabledAnnotate), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledViewParticipantList, nameof(bodyattendeePrivilegesenabledViewParticipantList), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledViewThumbnails, nameof(bodyattendeePrivilegesenabledViewThumbnails), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledRemoteControl, nameof(bodyattendeePrivilegesenabledRemoteControl), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledViewAnyDocument, nameof(bodyattendeePrivilegesenabledViewAnyDocument), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledViewAnyPage, nameof(bodyattendeePrivilegesenabledViewAnyPage), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledContactOperatorPrivately, nameof(bodyattendeePrivilegesenabledContactOperatorPrivately), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledChatHost, nameof(bodyattendeePrivilegesenabledChatHost), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledChatPresenter, nameof(bodyattendeePrivilegesenabledChatPresenter), required: false);
+            SourceExpression.Validate(bodyattendeePrivilegesenabledChatOtherParticipants, nameof(bodyattendeePrivilegesenabledChatOtherParticipants), required: false);
+            SourceExpression.Validate(bodyintegrationTags, nameof(bodyintegrationTags), required: false);
+            SourceExpression.Validate(bodyenabledBreakoutSessions, nameof(bodyenabledBreakoutSessions), required: false);
+            SourceExpression.Validate(bodytrackingCodes, nameof(bodytrackingCodes), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsaudioConnectionType, nameof(bodyaudioConnectionOptionsaudioConnectionType), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsenabledTollFreeCallIn, nameof(bodyaudioConnectionOptionsenabledTollFreeCallIn), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsenabledGlobalCallIn, nameof(bodyaudioConnectionOptionsenabledGlobalCallIn), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsenabledAudienceCallBack, nameof(bodyaudioConnectionOptionsenabledAudienceCallBack), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsentryAndExitTone, nameof(bodyaudioConnectionOptionsentryAndExitTone), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsallowHostToUnmuteParticipants, nameof(bodyaudioConnectionOptionsallowHostToUnmuteParticipants), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf, nameof(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf), required: false);
+            SourceExpression.Validate(bodyaudioConnectionOptionsmuteAttendeeUponEntry, nameof(bodyaudioConnectionOptionsmuteAttendeeUponEntry), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meetings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(meetingId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodyagenda != null)
+                {
+                    body["agenda"] = SourceExpressionConverter.ConvertToken(bodyagenda);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodytimezone != null)
+                {
+                    body["timezone"] = SourceExpressionConverter.ConvertToken(bodytimezone);
+                    bodypropCount++;
+                }
+
+                if (bodystart != null)
+                {
+                    body["start"] = SourceExpressionConverter.ConvertToken(bodystart);
+                    bodypropCount++;
+                }
+
+                if (bodyend != null)
+                {
+                    body["end"] = SourceExpressionConverter.ConvertToken(bodyend);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledAutoRecordMeeting != null)
+                {
+                    body["enabledAutoRecordMeeting"] = SourceExpressionConverter.ConvertToken(bodyenabledAutoRecordMeeting);
+                    bodypropCount++;
+                }
+
+                if (bodyallowAnyUserToBeCoHost != null)
+                {
+                    body["allowAnyUserToBeCoHost"] = SourceExpressionConverter.ConvertToken(bodyallowAnyUserToBeCoHost);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledJoinBeforeHost != null)
+                {
+                    body["enabledJoinBeforeHost"] = SourceExpressionConverter.ConvertToken(bodyenabledJoinBeforeHost);
+                    bodypropCount++;
+                }
+
+                if (bodyenableConnectAudioBeforeHost != null)
+                {
+                    body["enableConnectAudioBeforeHost"] = SourceExpressionConverter.ConvertToken(bodyenableConnectAudioBeforeHost);
+                    bodypropCount++;
+                }
+
+                if (bodyjoinBeforeHostMinutes != null)
+                {
+                    body["joinBeforeHostMinutes"] = SourceExpressionConverter.ConvertToken(bodyjoinBeforeHostMinutes);
+                    bodypropCount++;
+                }
+
+                if (bodyexcludePassword != null)
+                {
+                    body["excludePassword"] = SourceExpressionConverter.ConvertToken(bodyexcludePassword);
+                    bodypropCount++;
+                }
+
+                if (bodypublicMeeting != null)
+                {
+                    body["publicMeeting"] = SourceExpressionConverter.ConvertToken(bodypublicMeeting);
+                    bodypropCount++;
+                }
+
+                if (bodyreminderTime != null)
+                {
+                    body["reminderTime"] = SourceExpressionConverter.ConvertToken(bodyreminderTime);
+                    bodypropCount++;
+                }
+
+                if (bodyunlockedMeetingJoinSecurity != null)
+                {
+                    body["unlockedMeetingJoinSecurity"] = SourceExpressionConverter.ConvertToken(bodyunlockedMeetingJoinSecurity);
+                    bodypropCount++;
+                }
+
+                if (bodyenableAutomaticLock != null)
+                {
+                    body["enableAutomaticLock"] = SourceExpressionConverter.ConvertToken(bodyenableAutomaticLock);
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticLockMinutes != null)
+                {
+                    body["automaticLockMinutes"] = SourceExpressionConverter.ConvertToken(bodyautomaticLockMinutes);
+                    bodypropCount++;
+                }
+
+                if (bodyallowFirstUserToBeCoHost != null)
+                {
+                    body["allowFirstUserToBeCoHost"] = SourceExpressionConverter.ConvertToken(bodyallowFirstUserToBeCoHost);
+                    bodypropCount++;
+                }
+
+                if (bodyallowAuthenticatedDevices != null)
+                {
+                    body["allowAuthenticatedDevices"] = SourceExpressionConverter.ConvertToken(bodyallowAuthenticatedDevices);
+                    bodypropCount++;
+                }
+
+                if (bodysendEmail != null)
+                {
+                    body["sendEmail"] = SourceExpressionConverter.ConvertToken(bodysendEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyhostEmail != null)
+                {
+                    body["hostEmail"] = SourceExpressionConverter.ConvertToken(bodyhostEmail);
+                    bodypropCount++;
+                }
+
+                if (bodysiteUrl != null)
+                {
+                    body["siteUrl"] = SourceExpressionConverter.ConvertToken(bodysiteUrl);
+                    bodypropCount++;
+                }
+
+                var meetingOptionsObject = new JObject();
+                var meetingOptionsObjectpropCount = 0;
+                if (bodymeetingOptionsenabledChat != null)
+                {
+                    meetingOptionsObject["enabledChat"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledChat);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledVideo != null)
+                {
+                    meetingOptionsObject["enabledVideo"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledVideo);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledPolling != null)
+                {
+                    meetingOptionsObject["enabledPolling"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledPolling);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledNote != null)
+                {
+                    meetingOptionsObject["enabledNote"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledNote);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsnoteType != null)
+                {
+                    meetingOptionsObject["noteType"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsnoteType);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledClosedCaptions != null)
+                {
+                    meetingOptionsObject["enabledClosedCaptions"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledClosedCaptions);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledFileTransfer != null)
+                {
+                    meetingOptionsObject["enabledFileTransfer"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledFileTransfer);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (bodymeetingOptionsenabledUCFRichMedia != null)
+                {
+                    meetingOptionsObject["enabledUCFRichMedia"] = SourceExpressionConverter.ConvertToken(bodymeetingOptionsenabledUCFRichMedia);
+                    meetingOptionsObjectpropCount++;
+                }
+
+                if (meetingOptionsObjectpropCount > 0)
+                {
+                    body["meetingOptions"] = meetingOptionsObject;
+                    bodypropCount++;
+                }
+
+                var attendeePrivilegesObject = new JObject();
+                var attendeePrivilegesObjectpropCount = 0;
+                if (bodyattendeePrivilegesenabledShareContent != null)
+                {
+                    attendeePrivilegesObject["enabledShareContent"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledShareContent);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledSaveDocument != null)
+                {
+                    attendeePrivilegesObject["enabledSaveDocument"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledSaveDocument);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledPrintDocument != null)
+                {
+                    attendeePrivilegesObject["enabledPrintDocument"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledPrintDocument);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledAnnotate != null)
+                {
+                    attendeePrivilegesObject["enabledAnnotate"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledAnnotate);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledViewParticipantList != null)
+                {
+                    attendeePrivilegesObject["enabledViewParticipantList"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewParticipantList);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledViewThumbnails != null)
+                {
+                    attendeePrivilegesObject["enabledViewThumbnails"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewThumbnails);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledRemoteControl != null)
+                {
+                    attendeePrivilegesObject["enabledRemoteControl"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledRemoteControl);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledViewAnyDocument != null)
+                {
+                    attendeePrivilegesObject["enabledViewAnyDocument"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewAnyDocument);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledViewAnyPage != null)
+                {
+                    attendeePrivilegesObject["enabledViewAnyPage"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewAnyPage);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledContactOperatorPrivately != null)
+                {
+                    attendeePrivilegesObject["enabledContactOperatorPrivately"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledContactOperatorPrivately);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledChatHost != null)
+                {
+                    attendeePrivilegesObject["enabledChatHost"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatHost);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledChatPresenter != null)
+                {
+                    attendeePrivilegesObject["enabledChatPresenter"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatPresenter);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (bodyattendeePrivilegesenabledChatOtherParticipants != null)
+                {
+                    attendeePrivilegesObject["enabledChatOtherParticipants"] = SourceExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatOtherParticipants);
+                    attendeePrivilegesObjectpropCount++;
+                }
+
+                if (attendeePrivilegesObjectpropCount > 0)
+                {
+                    body["attendeePrivileges"] = attendeePrivilegesObject;
+                    bodypropCount++;
+                }
+
+                if (bodyintegrationTags != null)
+                {
+                    body["integrationTags"] = SourceExpressionConverter.ConvertToken(bodyintegrationTags);
+                    bodypropCount++;
+                }
+
+                if (bodyenabledBreakoutSessions != null)
+                {
+                    body["enabledBreakoutSessions"] = SourceExpressionConverter.ConvertToken(bodyenabledBreakoutSessions);
+                    bodypropCount++;
+                }
+
+                if (bodytrackingCodes != null)
+                {
+                    body["trackingCodes"] = SourceExpressionConverter.ConvertToken(bodytrackingCodes);
+                    bodypropCount++;
+                }
+
+                var audioConnectionOptionsObject = new JObject();
+                var audioConnectionOptionsObjectpropCount = 0;
+                if (bodyaudioConnectionOptionsaudioConnectionType != null)
+                {
+                    audioConnectionOptionsObject["audioConnectionType"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsaudioConnectionType);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsenabledTollFreeCallIn != null)
+                {
+                    audioConnectionOptionsObject["enabledTollFreeCallIn"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledTollFreeCallIn);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsenabledGlobalCallIn != null)
+                {
+                    audioConnectionOptionsObject["enabledGlobalCallIn"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledGlobalCallIn);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsenabledAudienceCallBack != null)
+                {
+                    audioConnectionOptionsObject["enabledAudienceCallBack"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledAudienceCallBack);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsentryAndExitTone != null)
+                {
+                    audioConnectionOptionsObject["entryAndExitTone"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsentryAndExitTone);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsallowHostToUnmuteParticipants != null)
+                {
+                    audioConnectionOptionsObject["allowHostToUnmuteParticipants"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf != null)
+                {
+                    audioConnectionOptionsObject["allowAttendeeToUnmuteSelf"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (bodyaudioConnectionOptionsmuteAttendeeUponEntry != null)
+                {
+                    audioConnectionOptionsObject["muteAttendeeUponEntry"] = SourceExpressionConverter.ConvertToken(bodyaudioConnectionOptionsmuteAttendeeUponEntry);
+                    audioConnectionOptionsObjectpropCount++;
+                }
+
+                if (audioConnectionOptionsObjectpropCount > 0)
+                {
+                    body["audioConnectionOptions"] = audioConnectionOptionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyagenda != null)
-            {
-                body["agenda"] = CSharpExpressionConverter.ConvertToken(bodyagenda);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodytimezone != null)
-            {
-                body["timezone"] = CSharpExpressionConverter.ConvertToken(bodytimezone);
-                bodypropCount++;
-            }
-
-            if (bodystart != null)
-            {
-                body["start"] = CSharpExpressionConverter.ConvertToken(bodystart);
-                bodypropCount++;
-            }
-
-            if (bodyend != null)
-            {
-                body["end"] = CSharpExpressionConverter.ConvertToken(bodyend);
-                bodypropCount++;
-            }
-
-            if (bodyenabledAutoRecordMeeting != null)
-            {
-                body["enabledAutoRecordMeeting"] = CSharpExpressionConverter.ConvertToken(bodyenabledAutoRecordMeeting);
-                bodypropCount++;
-            }
-
-            if (bodyallowAnyUserToBeCoHost != null)
-            {
-                body["allowAnyUserToBeCoHost"] = CSharpExpressionConverter.ConvertToken(bodyallowAnyUserToBeCoHost);
-                bodypropCount++;
-            }
-
-            if (bodyenabledJoinBeforeHost != null)
-            {
-                body["enabledJoinBeforeHost"] = CSharpExpressionConverter.ConvertToken(bodyenabledJoinBeforeHost);
-                bodypropCount++;
-            }
-
-            if (bodyenableConnectAudioBeforeHost != null)
-            {
-                body["enableConnectAudioBeforeHost"] = CSharpExpressionConverter.ConvertToken(bodyenableConnectAudioBeforeHost);
-                bodypropCount++;
-            }
-
-            if (bodyjoinBeforeHostMinutes != null)
-            {
-                body["joinBeforeHostMinutes"] = CSharpExpressionConverter.ConvertToken(bodyjoinBeforeHostMinutes);
-                bodypropCount++;
-            }
-
-            if (bodyexcludePassword != null)
-            {
-                body["excludePassword"] = CSharpExpressionConverter.ConvertToken(bodyexcludePassword);
-                bodypropCount++;
-            }
-
-            if (bodypublicMeeting != null)
-            {
-                body["publicMeeting"] = CSharpExpressionConverter.ConvertToken(bodypublicMeeting);
-                bodypropCount++;
-            }
-
-            if (bodyreminderTime != null)
-            {
-                body["reminderTime"] = CSharpExpressionConverter.ConvertToken(bodyreminderTime);
-                bodypropCount++;
-            }
-
-            if (bodyunlockedMeetingJoinSecurity != null)
-            {
-                body["unlockedMeetingJoinSecurity"] = CSharpExpressionConverter.ConvertToken(bodyunlockedMeetingJoinSecurity);
-                bodypropCount++;
-            }
-
-            if (bodyenableAutomaticLock != null)
-            {
-                body["enableAutomaticLock"] = CSharpExpressionConverter.ConvertToken(bodyenableAutomaticLock);
-                bodypropCount++;
-            }
-
-            if (bodyautomaticLockMinutes != null)
-            {
-                body["automaticLockMinutes"] = CSharpExpressionConverter.ConvertToken(bodyautomaticLockMinutes);
-                bodypropCount++;
-            }
-
-            if (bodyallowFirstUserToBeCoHost != null)
-            {
-                body["allowFirstUserToBeCoHost"] = CSharpExpressionConverter.ConvertToken(bodyallowFirstUserToBeCoHost);
-                bodypropCount++;
-            }
-
-            if (bodyallowAuthenticatedDevices != null)
-            {
-                body["allowAuthenticatedDevices"] = CSharpExpressionConverter.ConvertToken(bodyallowAuthenticatedDevices);
-                bodypropCount++;
-            }
-
-            if (bodysendEmail != null)
-            {
-                body["sendEmail"] = CSharpExpressionConverter.ConvertToken(bodysendEmail);
-                bodypropCount++;
-            }
-
-            if (bodyhostEmail != null)
-            {
-                body["hostEmail"] = CSharpExpressionConverter.ConvertToken(bodyhostEmail);
-                bodypropCount++;
-            }
-
-            if (bodysiteUrl != null)
-            {
-                body["siteUrl"] = CSharpExpressionConverter.ConvertToken(bodysiteUrl);
-                bodypropCount++;
-            }
-
-            var meetingOptionsObject = new JObject();
-            var meetingOptionsObjectpropCount = 0;
-            if (bodymeetingOptionsenabledChat != null)
-            {
-                meetingOptionsObject["enabledChat"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledChat);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledVideo != null)
-            {
-                meetingOptionsObject["enabledVideo"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledVideo);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledPolling != null)
-            {
-                meetingOptionsObject["enabledPolling"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledPolling);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledNote != null)
-            {
-                meetingOptionsObject["enabledNote"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledNote);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsnoteType != null)
-            {
-                meetingOptionsObject["noteType"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsnoteType);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledClosedCaptions != null)
-            {
-                meetingOptionsObject["enabledClosedCaptions"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledClosedCaptions);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledFileTransfer != null)
-            {
-                meetingOptionsObject["enabledFileTransfer"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledFileTransfer);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (bodymeetingOptionsenabledUCFRichMedia != null)
-            {
-                meetingOptionsObject["enabledUCFRichMedia"] = CSharpExpressionConverter.ConvertToken(bodymeetingOptionsenabledUCFRichMedia);
-                meetingOptionsObjectpropCount++;
-            }
-
-            if (meetingOptionsObjectpropCount > 0)
-            {
-                body["meetingOptions"] = meetingOptionsObject;
-                bodypropCount++;
-            }
-
-            var attendeePrivilegesObject = new JObject();
-            var attendeePrivilegesObjectpropCount = 0;
-            if (bodyattendeePrivilegesenabledShareContent != null)
-            {
-                attendeePrivilegesObject["enabledShareContent"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledShareContent);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledSaveDocument != null)
-            {
-                attendeePrivilegesObject["enabledSaveDocument"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledSaveDocument);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledPrintDocument != null)
-            {
-                attendeePrivilegesObject["enabledPrintDocument"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledPrintDocument);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledAnnotate != null)
-            {
-                attendeePrivilegesObject["enabledAnnotate"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledAnnotate);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledViewParticipantList != null)
-            {
-                attendeePrivilegesObject["enabledViewParticipantList"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewParticipantList);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledViewThumbnails != null)
-            {
-                attendeePrivilegesObject["enabledViewThumbnails"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewThumbnails);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledRemoteControl != null)
-            {
-                attendeePrivilegesObject["enabledRemoteControl"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledRemoteControl);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledViewAnyDocument != null)
-            {
-                attendeePrivilegesObject["enabledViewAnyDocument"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewAnyDocument);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledViewAnyPage != null)
-            {
-                attendeePrivilegesObject["enabledViewAnyPage"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledViewAnyPage);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledContactOperatorPrivately != null)
-            {
-                attendeePrivilegesObject["enabledContactOperatorPrivately"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledContactOperatorPrivately);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledChatHost != null)
-            {
-                attendeePrivilegesObject["enabledChatHost"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatHost);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledChatPresenter != null)
-            {
-                attendeePrivilegesObject["enabledChatPresenter"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatPresenter);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (bodyattendeePrivilegesenabledChatOtherParticipants != null)
-            {
-                attendeePrivilegesObject["enabledChatOtherParticipants"] = CSharpExpressionConverter.ConvertToken(bodyattendeePrivilegesenabledChatOtherParticipants);
-                attendeePrivilegesObjectpropCount++;
-            }
-
-            if (attendeePrivilegesObjectpropCount > 0)
-            {
-                body["attendeePrivileges"] = attendeePrivilegesObject;
-                bodypropCount++;
-            }
-
-            if (bodyintegrationTags != null)
-            {
-                body["integrationTags"] = CSharpExpressionConverter.ConvertToken(bodyintegrationTags);
-                bodypropCount++;
-            }
-
-            if (bodyenabledBreakoutSessions != null)
-            {
-                body["enabledBreakoutSessions"] = CSharpExpressionConverter.ConvertToken(bodyenabledBreakoutSessions);
-                bodypropCount++;
-            }
-
-            if (bodytrackingCodes != null)
-            {
-                body["trackingCodes"] = CSharpExpressionConverter.ConvertToken(bodytrackingCodes);
-                bodypropCount++;
-            }
-
-            var audioConnectionOptionsObject = new JObject();
-            var audioConnectionOptionsObjectpropCount = 0;
-            if (bodyaudioConnectionOptionsaudioConnectionType != null)
-            {
-                audioConnectionOptionsObject["audioConnectionType"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsaudioConnectionType);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsenabledTollFreeCallIn != null)
-            {
-                audioConnectionOptionsObject["enabledTollFreeCallIn"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledTollFreeCallIn);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsenabledGlobalCallIn != null)
-            {
-                audioConnectionOptionsObject["enabledGlobalCallIn"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledGlobalCallIn);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsenabledAudienceCallBack != null)
-            {
-                audioConnectionOptionsObject["enabledAudienceCallBack"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsenabledAudienceCallBack);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsentryAndExitTone != null)
-            {
-                audioConnectionOptionsObject["entryAndExitTone"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsentryAndExitTone);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsallowHostToUnmuteParticipants != null)
-            {
-                audioConnectionOptionsObject["allowHostToUnmuteParticipants"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsallowHostToUnmuteParticipants);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf != null)
-            {
-                audioConnectionOptionsObject["allowAttendeeToUnmuteSelf"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsallowAttendeeToUnmuteSelf);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (bodyaudioConnectionOptionsmuteAttendeeUponEntry != null)
-            {
-                audioConnectionOptionsObject["muteAttendeeUponEntry"] = CSharpExpressionConverter.ConvertToken(bodyaudioConnectionOptionsmuteAttendeeUponEntry);
-                audioConnectionOptionsObjectpropCount++;
-            }
-
-            if (audioConnectionOptionsObjectpropCount > 0)
-            {
-                body["audioConnectionOptions"] = audioConnectionOptionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

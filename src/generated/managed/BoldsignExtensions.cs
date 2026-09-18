@@ -12,107 +12,152 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Boldsign
     public class BoldsignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate(Expression<Func<string>> templateId, Expression<Func<bool>> isSandbox, Expression<Func<string>> title, Expression<Func<string>> message = null, Expression<Func<string>> cc = null, Expression<Func<string>> brandId = null, Expression<Func<string>> onBehalfOf = null, Expression<Func<int>> expiryDays = null, Expression<Func<string>> labels = null, Expression<Func<bool>> hideDocumentId = null, Expression<Func<bool>> enablePrintAndSign = null, Expression<Func<bool>> enableReassign = null, Expression<Func<bool>> enableAutoReminder = null, Expression<Func<object>> signers = null)
+        public IBodyWorkflowAction<SendDocumentFromTemplateResponse> SendDocumentFromTemplate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<bool> isSandbox, [WorkflowExpression] Func<string> title, [WorkflowExpression] Func<string> message = null, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> brandId = null, [WorkflowExpression] Func<string> onBehalfOf = null, [WorkflowExpression] Func<int> expiryDays = null, [WorkflowExpression] Func<string> labels = null, [WorkflowExpression] Func<bool> hideDocumentId = null, [WorkflowExpression] Func<bool> enablePrintAndSign = null, [WorkflowExpression] Func<bool> enableReassign = null, [WorkflowExpression] Func<bool> enableAutoReminder = null, [WorkflowExpression] Func<object> signers = null)
         {
-            var apiCallPath = "/v1/template/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["templateId"] = CSharpExpressionConverter.ConvertO(templateId);
-            callPayload.Queries["isSandbox"] = CSharpExpressionConverter.ConvertO(isSandbox);
-            callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
-            if (message != null)
-                callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
-            if (cc != null)
-                callPayload.Queries["cc"] = CSharpExpressionConverter.ConvertO(cc);
-            if (brandId != null)
-                callPayload.Queries["brandId"] = CSharpExpressionConverter.ConvertO(brandId);
-            if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
-            callPayload.Queries["expiryDays"] = Convert.ToString(60);
-            if (expiryDays != null)
-                callPayload.Queries["expiryDays"] = CSharpExpressionConverter.ConvertO(expiryDays);
-            if (labels != null)
-                callPayload.Queries["labels"] = CSharpExpressionConverter.ConvertO(labels);
-            if (hideDocumentId != null)
-                callPayload.Queries["hideDocumentId"] = CSharpExpressionConverter.ConvertO(hideDocumentId);
-            callPayload.Queries["enablePrintAndSign"] = Convert.ToString(false);
-            if (enablePrintAndSign != null)
-                callPayload.Queries["enablePrintAndSign"] = CSharpExpressionConverter.ConvertO(enablePrintAndSign);
-            callPayload.Queries["enableReassign"] = Convert.ToString(true);
-            if (enableReassign != null)
-                callPayload.Queries["enableReassign"] = CSharpExpressionConverter.ConvertO(enableReassign);
-            callPayload.Queries["enableAutoReminder"] = Convert.ToString(false);
-            if (enableAutoReminder != null)
-                callPayload.Queries["enableAutoReminder"] = CSharpExpressionConverter.ConvertO(enableAutoReminder);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(signers);
-            return new ApiConnectionAction<SendDocumentFromTemplateResponse>(callPayload);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(isSandbox, nameof(isSandbox), required: true);
+            SourceExpression.Validate(title, nameof(title), required: true);
+            SourceExpression.Validate(message, nameof(message), required: false);
+            SourceExpression.Validate(cc, nameof(cc), required: false);
+            SourceExpression.Validate(brandId, nameof(brandId), required: false);
+            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
+            SourceExpression.Validate(expiryDays, nameof(expiryDays), required: false);
+            SourceExpression.Validate(labels, nameof(labels), required: false);
+            SourceExpression.Validate(hideDocumentId, nameof(hideDocumentId), required: false);
+            SourceExpression.Validate(enablePrintAndSign, nameof(enablePrintAndSign), required: false);
+            SourceExpression.Validate(enableReassign, nameof(enableReassign), required: false);
+            SourceExpression.Validate(enableAutoReminder, nameof(enableAutoReminder), required: false);
+            SourceExpression.Validate(signers, nameof(signers), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/template/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["templateId"] = SourceExpressionConverter.ConvertO(templateId);
+                callPayload.Queries["isSandbox"] = SourceExpressionConverter.ConvertO(isSandbox);
+                callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
+                if (message != null)
+                    callPayload.Queries["message"] = SourceExpressionConverter.ConvertO(message);
+                if (cc != null)
+                    callPayload.Queries["cc"] = SourceExpressionConverter.ConvertO(cc);
+                if (brandId != null)
+                    callPayload.Queries["brandId"] = SourceExpressionConverter.ConvertO(brandId);
+                if (onBehalfOf != null)
+                    callPayload.Queries["onBehalfOf"] = SourceExpressionConverter.ConvertO(onBehalfOf);
+                callPayload.Queries["expiryDays"] = Convert.ToString(60);
+                if (expiryDays != null)
+                    callPayload.Queries["expiryDays"] = SourceExpressionConverter.ConvertO(expiryDays);
+                if (labels != null)
+                    callPayload.Queries["labels"] = SourceExpressionConverter.ConvertO(labels);
+                if (hideDocumentId != null)
+                    callPayload.Queries["hideDocumentId"] = SourceExpressionConverter.ConvertO(hideDocumentId);
+                callPayload.Queries["enablePrintAndSign"] = Convert.ToString(false);
+                if (enablePrintAndSign != null)
+                    callPayload.Queries["enablePrintAndSign"] = SourceExpressionConverter.ConvertO(enablePrintAndSign);
+                callPayload.Queries["enableReassign"] = Convert.ToString(true);
+                if (enableReassign != null)
+                    callPayload.Queries["enableReassign"] = SourceExpressionConverter.ConvertO(enableReassign);
+                callPayload.Queries["enableAutoReminder"] = Convert.ToString(false);
+                if (enableAutoReminder != null)
+                    callPayload.Queries["enableAutoReminder"] = SourceExpressionConverter.ConvertO(enableAutoReminder);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(signers);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendDocumentFromTemplateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadDocument(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction DownloadDocument([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
-            var apiCallPath = "/v1/document/download";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/document/download";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentId"] = SourceExpressionConverter.ConvertO(documentId);
+                if (onBehalfOf != null)
+                    callPayload.Queries["onBehalfOf"] = SourceExpressionConverter.ConvertO(onBehalfOf);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IWorkflowAction DownloadAuditTrail(Expression<Func<string>> documentId, Expression<Func<string>> onBehalfOf = null)
+        public IWorkflowAction DownloadAuditTrail([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> onBehalfOf = null)
         {
-            var apiCallPath = "/v1/document/downloadAuditLog";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            if (onBehalfOf != null)
-                callPayload.Queries["onBehalfOf"] = CSharpExpressionConverter.ConvertO(onBehalfOf);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(onBehalfOf, nameof(onBehalfOf), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/document/downloadAuditLog";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentId"] = SourceExpressionConverter.ConvertO(documentId);
+                if (onBehalfOf != null)
+                    callPayload.Queries["onBehalfOf"] = SourceExpressionConverter.ConvertO(onBehalfOf);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "boldsign")]
-        public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus(Expression<Func<string>> documentId)
+        public IBodyWorkflowAction<DocumentPropertiesResponse> GetDocumentStatus([WorkflowExpression] Func<string> documentId)
         {
-            var apiCallPath = "/v1/document/properties";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["documentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            return new ApiConnectionAction<DocumentPropertiesResponse>(callPayload);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/document/properties";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["documentId"] = SourceExpressionConverter.ConvertO(documentId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentPropertiesResponse>(BuildSourceInput);
         }
     }
 
     public class BoldsignTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks(Expression<Func<eventsInput>> events, Expression<Func<bool>> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<AddWebHooksResponse> WebHooks([WorkflowExpression] Func<eventsInput> events, [WorkflowExpression] Func<bool> bodyadminMode, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["events"] = CSharpExpressionConverter.Convert(events);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["name"] = "Power Automate Webhook";
-            bodypropCount++;
-            body["events"] = "Sent";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["environment"] = "Live";
-            bodypropCount++;
-            body["isActive"] = true;
-            bodypropCount++;
-            body["webhookType"] = "AccountCallback";
-            bodypropCount++;
-            bodypropCount++;
-            body["adminMode"] = CSharpExpressionConverter.ConvertToken(bodyadminMode);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(events, nameof(events), required: true);
+            SourceExpression.Validate(bodyadminMode, nameof(bodyadminMode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/WebHooks/AddWebHooksAPIForPowerAutomate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["events"] = SourceExpressionConverter.Convert(events);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["name"] = "Power Automate Webhook";
+                bodypropCount++;
+                body["events"] = "Sent";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["environment"] = "Live";
+                bodypropCount++;
+                body["isActive"] = true;
+                bodypropCount++;
+                body["webhookType"] = "AccountCallback";
+                bodypropCount++;
+                bodypropCount++;
+                body["adminMode"] = SourceExpressionConverter.ConvertToken(bodyadminMode);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<AddWebHooksResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<AddWebHooksResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -14,408 +14,510 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
         public IBodyWorkflowAction<ListProjectsResponse> ListProjects()
         {
-            var apiCallPath = "/projects.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListProjectsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/projects.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateProjectResponse> CreateProject(Expression<Func<string>> bodyprojectname = null, Expression<Func<string>> bodyprojectdescription = null, Expression<Func<string>> bodyprojectcategoryId = null, Expression<Func<string>> bodyprojectcompanyId = null, Expression<Func<string>> bodyprojectnewCompany = null, Expression<Func<string>> bodyprojectstartDate = null, Expression<Func<string>> bodyprojectendDate = null, Expression<Func<string>> bodyprojecttags = null)
+        public IBodyWorkflowAction<CreateProjectResponse> CreateProject([WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<string> bodyprojectdescription = null, [WorkflowExpression] Func<string> bodyprojectcategoryId = null, [WorkflowExpression] Func<string> bodyprojectcompanyId = null, [WorkflowExpression] Func<string> bodyprojectnewCompany = null, [WorkflowExpression] Func<string> bodyprojectstartDate = null, [WorkflowExpression] Func<string> bodyprojectendDate = null, [WorkflowExpression] Func<string> bodyprojecttags = null)
         {
-            var apiCallPath = "/projects.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var projectObject = new JObject();
-            var projectObjectpropCount = 0;
-            if (bodyprojectname != null)
+            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            SourceExpression.Validate(bodyprojectdescription, nameof(bodyprojectdescription), required: false);
+            SourceExpression.Validate(bodyprojectcategoryId, nameof(bodyprojectcategoryId), required: false);
+            SourceExpression.Validate(bodyprojectcompanyId, nameof(bodyprojectcompanyId), required: false);
+            SourceExpression.Validate(bodyprojectnewCompany, nameof(bodyprojectnewCompany), required: false);
+            SourceExpression.Validate(bodyprojectstartDate, nameof(bodyprojectstartDate), required: false);
+            SourceExpression.Validate(bodyprojectendDate, nameof(bodyprojectendDate), required: false);
+            SourceExpression.Validate(bodyprojecttags, nameof(bodyprojecttags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                projectObject["name"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
-                projectObjectpropCount++;
+                var apiCallPath = "/projects.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var projectObject = new JObject();
+                var projectObjectpropCount = 0;
+                if (bodyprojectname != null)
+                {
+                    projectObject["name"] = SourceExpressionConverter.ConvertToken(bodyprojectname);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectdescription != null)
+                {
+                    projectObject["description"] = SourceExpressionConverter.ConvertToken(bodyprojectdescription);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectcategoryId != null)
+                {
+                    projectObject["category-id"] = SourceExpressionConverter.ConvertToken(bodyprojectcategoryId);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectcompanyId != null)
+                {
+                    projectObject["companyId"] = SourceExpressionConverter.ConvertToken(bodyprojectcompanyId);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectnewCompany != null)
+                {
+                    projectObject["newCompany"] = SourceExpressionConverter.ConvertToken(bodyprojectnewCompany);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectstartDate != null)
+                {
+                    projectObject["startDate"] = SourceExpressionConverter.ConvertToken(bodyprojectstartDate);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojectendDate != null)
+                {
+                    projectObject["endDate"] = SourceExpressionConverter.ConvertToken(bodyprojectendDate);
+                    projectObjectpropCount++;
+                }
+
+                if (bodyprojecttags != null)
+                {
+                    projectObject["tags"] = SourceExpressionConverter.ConvertToken(bodyprojecttags);
+                    projectObjectpropCount++;
+                }
+
+                if (projectObjectpropCount > 0)
+                {
+                    body["project"] = projectObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyprojectdescription != null)
-            {
-                projectObject["description"] = CSharpExpressionConverter.ConvertToken(bodyprojectdescription);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectcategoryId != null)
-            {
-                projectObject["category-id"] = CSharpExpressionConverter.ConvertToken(bodyprojectcategoryId);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectcompanyId != null)
-            {
-                projectObject["companyId"] = CSharpExpressionConverter.ConvertToken(bodyprojectcompanyId);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectnewCompany != null)
-            {
-                projectObject["newCompany"] = CSharpExpressionConverter.ConvertToken(bodyprojectnewCompany);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectstartDate != null)
-            {
-                projectObject["startDate"] = CSharpExpressionConverter.ConvertToken(bodyprojectstartDate);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectendDate != null)
-            {
-                projectObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodyprojectendDate);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojecttags != null)
-            {
-                projectObject["tags"] = CSharpExpressionConverter.ConvertToken(bodyprojecttags);
-                projectObjectpropCount++;
-            }
-
-            if (projectObjectpropCount > 0)
-            {
-                body["project"] = projectObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateProjectResponse>(callPayload);
+            return new ApiConnectionAction<CreateProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<ListTasksResponse> ListTasks(Expression<Func<string>> projectId, Expression<Func<string>> taskListId)
+        public IBodyWorkflowAction<ListTasksResponse> ListTasks([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskListId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            return new ApiConnectionAction<ListTasksResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListTasksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse> CreateTask(Expression<Func<string>> projectId, Expression<Func<string>> taskListId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedMinutes = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
+        public IBodyWorkflowAction<UpsertTaskResponse> CreateTask([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> taskListId, [WorkflowExpression] Func<string> bodytodoItemname = null, [WorkflowExpression] Func<string> bodytodoItemdescription = null, [WorkflowExpression] Func<string> bodytodoItemprogress = null, [WorkflowExpression] Func<string> bodytodoItemassignTo = null, [WorkflowExpression] Func<string> bodytodoItemstartDate = null, [WorkflowExpression] Func<string> bodytodoItemdueDate = null, [WorkflowExpression] Func<string> bodytodoItemestimatedMinutes = null, [WorkflowExpression] Func<bodytodoItempriorityInput> bodytodoItempriority = null, [WorkflowExpression] Func<bool> bodytodoItemnotifyPeople = null, [WorkflowExpression] Func<bool> bodytodoItemisPrivate = null, [WorkflowExpression] Func<string> bodytodoItemtags = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["projectId"] = CSharpExpressionConverter.ConvertO(projectId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var todoItemObject = new JObject();
-            var todoItemObjectpropCount = 0;
-            if (bodytodoItemname != null)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(taskListId, nameof(taskListId), required: true);
+            SourceExpression.Validate(bodytodoItemname, nameof(bodytodoItemname), required: false);
+            SourceExpression.Validate(bodytodoItemdescription, nameof(bodytodoItemdescription), required: false);
+            SourceExpression.Validate(bodytodoItemprogress, nameof(bodytodoItemprogress), required: false);
+            SourceExpression.Validate(bodytodoItemassignTo, nameof(bodytodoItemassignTo), required: false);
+            SourceExpression.Validate(bodytodoItemstartDate, nameof(bodytodoItemstartDate), required: false);
+            SourceExpression.Validate(bodytodoItemdueDate, nameof(bodytodoItemdueDate), required: false);
+            SourceExpression.Validate(bodytodoItemestimatedMinutes, nameof(bodytodoItemestimatedMinutes), required: false);
+            SourceExpression.Validate(bodytodoItempriority, nameof(bodytodoItempriority), required: false);
+            SourceExpression.Validate(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
+            SourceExpression.Validate(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
+            SourceExpression.Validate(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                todoItemObject["content"] = CSharpExpressionConverter.ConvertToken(bodytodoItemname);
-                todoItemObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasklists/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskListId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["projectId"] = SourceExpressionConverter.ConvertO(projectId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var todoItemObject = new JObject();
+                var todoItemObjectpropCount = 0;
+                if (bodytodoItemname != null)
+                {
+                    todoItemObject["content"] = SourceExpressionConverter.ConvertToken(bodytodoItemname);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemdescription != null)
+                {
+                    todoItemObject["description"] = SourceExpressionConverter.ConvertToken(bodytodoItemdescription);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemprogress != null)
+                {
+                    todoItemObject["progress"] = SourceExpressionConverter.ConvertToken(bodytodoItemprogress);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemassignTo != null)
+                {
+                    todoItemObject["responsible-party-id"] = SourceExpressionConverter.ConvertToken(bodytodoItemassignTo);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemstartDate != null)
+                {
+                    todoItemObject["start-date"] = SourceExpressionConverter.ConvertToken(bodytodoItemstartDate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemdueDate != null)
+                {
+                    todoItemObject["due-date"] = SourceExpressionConverter.ConvertToken(bodytodoItemdueDate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemestimatedMinutes != null)
+                {
+                    todoItemObject["estimated-minutes"] = SourceExpressionConverter.ConvertToken(bodytodoItemestimatedMinutes);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItempriority != null)
+                {
+                    todoItemObject["priority"] = SourceExpressionConverter.Convert(bodytodoItempriority);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemnotifyPeople != null)
+                {
+                    todoItemObject["notify"] = SourceExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemisPrivate != null)
+                {
+                    todoItemObject["private"] = SourceExpressionConverter.ConvertToken(bodytodoItemisPrivate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemtags != null)
+                {
+                    todoItemObject["tags"] = SourceExpressionConverter.ConvertToken(bodytodoItemtags);
+                    todoItemObjectpropCount++;
+                }
+
+                if (todoItemObjectpropCount > 0)
+                {
+                    body["todo-item"] = todoItemObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytodoItemdescription != null)
-            {
-                todoItemObject["description"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdescription);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemprogress != null)
-            {
-                todoItemObject["progress"] = CSharpExpressionConverter.ConvertToken(bodytodoItemprogress);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemassignTo != null)
-            {
-                todoItemObject["responsible-party-id"] = CSharpExpressionConverter.ConvertToken(bodytodoItemassignTo);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemstartDate != null)
-            {
-                todoItemObject["start-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemstartDate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemdueDate != null)
-            {
-                todoItemObject["due-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdueDate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemestimatedMinutes != null)
-            {
-                todoItemObject["estimated-minutes"] = CSharpExpressionConverter.ConvertToken(bodytodoItemestimatedMinutes);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItempriority != null)
-            {
-                todoItemObject["priority"] = CSharpExpressionConverter.Convert(bodytodoItempriority);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemnotifyPeople != null)
-            {
-                todoItemObject["notify"] = CSharpExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemisPrivate != null)
-            {
-                todoItemObject["private"] = CSharpExpressionConverter.ConvertToken(bodytodoItemisPrivate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemtags != null)
-            {
-                todoItemObject["tags"] = CSharpExpressionConverter.ConvertToken(bodytodoItemtags);
-                todoItemObjectpropCount++;
-            }
-
-            if (todoItemObjectpropCount > 0)
-            {
-                body["todo-item"] = todoItemObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpsertTaskResponse>(callPayload);
+            return new ApiConnectionAction<UpsertTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskResponse> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponse>(callPayload);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<UpsertTaskResponse> UpdateTask(Expression<Func<string>> taskId, Expression<Func<string>> bodytodoItemname = null, Expression<Func<string>> bodytodoItemdescription = null, Expression<Func<string>> bodytodoItemprogress = null, Expression<Func<string>> bodytodoItemassignTo = null, Expression<Func<string>> bodytodoItemstartDate = null, Expression<Func<string>> bodytodoItemdueDate = null, Expression<Func<string>> bodytodoItemestimatedTime = null, Expression<Func<bodytodoItempriorityInput>> bodytodoItempriority = null, Expression<Func<bool>> bodytodoItemnotifyPeople = null, Expression<Func<bool>> bodytodoItemisPrivate = null, Expression<Func<string>> bodytodoItemtags = null)
+        public IBodyWorkflowAction<UpsertTaskResponse> UpdateTask([WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> bodytodoItemname = null, [WorkflowExpression] Func<string> bodytodoItemdescription = null, [WorkflowExpression] Func<string> bodytodoItemprogress = null, [WorkflowExpression] Func<string> bodytodoItemassignTo = null, [WorkflowExpression] Func<string> bodytodoItemstartDate = null, [WorkflowExpression] Func<string> bodytodoItemdueDate = null, [WorkflowExpression] Func<string> bodytodoItemestimatedTime = null, [WorkflowExpression] Func<bodytodoItempriorityInput> bodytodoItempriority = null, [WorkflowExpression] Func<bool> bodytodoItemnotifyPeople = null, [WorkflowExpression] Func<bool> bodytodoItemisPrivate = null, [WorkflowExpression] Func<string> bodytodoItemtags = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var todoItemObject = new JObject();
-            var todoItemObjectpropCount = 0;
-            if (bodytodoItemname != null)
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(bodytodoItemname, nameof(bodytodoItemname), required: false);
+            SourceExpression.Validate(bodytodoItemdescription, nameof(bodytodoItemdescription), required: false);
+            SourceExpression.Validate(bodytodoItemprogress, nameof(bodytodoItemprogress), required: false);
+            SourceExpression.Validate(bodytodoItemassignTo, nameof(bodytodoItemassignTo), required: false);
+            SourceExpression.Validate(bodytodoItemstartDate, nameof(bodytodoItemstartDate), required: false);
+            SourceExpression.Validate(bodytodoItemdueDate, nameof(bodytodoItemdueDate), required: false);
+            SourceExpression.Validate(bodytodoItemestimatedTime, nameof(bodytodoItemestimatedTime), required: false);
+            SourceExpression.Validate(bodytodoItempriority, nameof(bodytodoItempriority), required: false);
+            SourceExpression.Validate(bodytodoItemnotifyPeople, nameof(bodytodoItemnotifyPeople), required: false);
+            SourceExpression.Validate(bodytodoItemisPrivate, nameof(bodytodoItemisPrivate), required: false);
+            SourceExpression.Validate(bodytodoItemtags, nameof(bodytodoItemtags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                todoItemObject["content"] = CSharpExpressionConverter.ConvertToken(bodytodoItemname);
-                todoItemObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var todoItemObject = new JObject();
+                var todoItemObjectpropCount = 0;
+                if (bodytodoItemname != null)
+                {
+                    todoItemObject["content"] = SourceExpressionConverter.ConvertToken(bodytodoItemname);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemdescription != null)
+                {
+                    todoItemObject["description"] = SourceExpressionConverter.ConvertToken(bodytodoItemdescription);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemprogress != null)
+                {
+                    todoItemObject["progress"] = SourceExpressionConverter.ConvertToken(bodytodoItemprogress);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemassignTo != null)
+                {
+                    todoItemObject["responsible-party-id"] = SourceExpressionConverter.ConvertToken(bodytodoItemassignTo);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemstartDate != null)
+                {
+                    todoItemObject["start-date"] = SourceExpressionConverter.ConvertToken(bodytodoItemstartDate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemdueDate != null)
+                {
+                    todoItemObject["due-date"] = SourceExpressionConverter.ConvertToken(bodytodoItemdueDate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemestimatedTime != null)
+                {
+                    todoItemObject["estimated-minutes"] = SourceExpressionConverter.ConvertToken(bodytodoItemestimatedTime);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItempriority != null)
+                {
+                    todoItemObject["priority"] = SourceExpressionConverter.Convert(bodytodoItempriority);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemnotifyPeople != null)
+                {
+                    todoItemObject["notify"] = SourceExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemisPrivate != null)
+                {
+                    todoItemObject["private"] = SourceExpressionConverter.ConvertToken(bodytodoItemisPrivate);
+                    todoItemObjectpropCount++;
+                }
+
+                if (bodytodoItemtags != null)
+                {
+                    todoItemObject["tags"] = SourceExpressionConverter.ConvertToken(bodytodoItemtags);
+                    todoItemObjectpropCount++;
+                }
+
+                if (todoItemObjectpropCount > 0)
+                {
+                    body["todo-item"] = todoItemObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytodoItemdescription != null)
-            {
-                todoItemObject["description"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdescription);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemprogress != null)
-            {
-                todoItemObject["progress"] = CSharpExpressionConverter.ConvertToken(bodytodoItemprogress);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemassignTo != null)
-            {
-                todoItemObject["responsible-party-id"] = CSharpExpressionConverter.ConvertToken(bodytodoItemassignTo);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemstartDate != null)
-            {
-                todoItemObject["start-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemstartDate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemdueDate != null)
-            {
-                todoItemObject["due-date"] = CSharpExpressionConverter.ConvertToken(bodytodoItemdueDate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemestimatedTime != null)
-            {
-                todoItemObject["estimated-minutes"] = CSharpExpressionConverter.ConvertToken(bodytodoItemestimatedTime);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItempriority != null)
-            {
-                todoItemObject["priority"] = CSharpExpressionConverter.Convert(bodytodoItempriority);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemnotifyPeople != null)
-            {
-                todoItemObject["notify"] = CSharpExpressionConverter.ConvertToken(bodytodoItemnotifyPeople);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemisPrivate != null)
-            {
-                todoItemObject["private"] = CSharpExpressionConverter.ConvertToken(bodytodoItemisPrivate);
-                todoItemObjectpropCount++;
-            }
-
-            if (bodytodoItemtags != null)
-            {
-                todoItemObject["tags"] = CSharpExpressionConverter.ConvertToken(bodytodoItemtags);
-                todoItemObjectpropCount++;
-            }
-
-            if (todoItemObjectpropCount > 0)
-            {
-                body["todo-item"] = todoItemObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpsertTaskResponse>(callPayload);
+            return new ApiConnectionAction<UpsertTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<ListUsersResponse> ListUsers(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ListUsersResponse> ListUsers([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/people.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListUsersResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/people.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListUsersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodypersonemailAddress = null, Expression<Func<string>> bodypersonfirstName = null, Expression<Func<string>> bodypersonlastName = null, Expression<Func<string>> bodypersoncompanyId = null, Expression<Func<string>> bodypersonjobTitle = null, Expression<Func<string>> bodypersonhome = null, Expression<Func<string>> bodypersonmobile = null, Expression<Func<string>> bodypersonoffice = null, Expression<Func<string>> bodypersonofficeExtension = null, Expression<Func<string>> bodypersonfax = null, Expression<Func<string>> bodypersonusername = null)
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodypersonemailAddress = null, [WorkflowExpression] Func<string> bodypersonfirstName = null, [WorkflowExpression] Func<string> bodypersonlastName = null, [WorkflowExpression] Func<string> bodypersoncompanyId = null, [WorkflowExpression] Func<string> bodypersonjobTitle = null, [WorkflowExpression] Func<string> bodypersonhome = null, [WorkflowExpression] Func<string> bodypersonmobile = null, [WorkflowExpression] Func<string> bodypersonoffice = null, [WorkflowExpression] Func<string> bodypersonofficeExtension = null, [WorkflowExpression] Func<string> bodypersonfax = null, [WorkflowExpression] Func<string> bodypersonusername = null)
         {
-            var apiCallPath = "/people.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var personObject = new JObject();
-            var personObjectpropCount = 0;
-            if (bodypersonemailAddress != null)
+            SourceExpression.Validate(bodypersonemailAddress, nameof(bodypersonemailAddress), required: false);
+            SourceExpression.Validate(bodypersonfirstName, nameof(bodypersonfirstName), required: false);
+            SourceExpression.Validate(bodypersonlastName, nameof(bodypersonlastName), required: false);
+            SourceExpression.Validate(bodypersoncompanyId, nameof(bodypersoncompanyId), required: false);
+            SourceExpression.Validate(bodypersonjobTitle, nameof(bodypersonjobTitle), required: false);
+            SourceExpression.Validate(bodypersonhome, nameof(bodypersonhome), required: false);
+            SourceExpression.Validate(bodypersonmobile, nameof(bodypersonmobile), required: false);
+            SourceExpression.Validate(bodypersonoffice, nameof(bodypersonoffice), required: false);
+            SourceExpression.Validate(bodypersonofficeExtension, nameof(bodypersonofficeExtension), required: false);
+            SourceExpression.Validate(bodypersonfax, nameof(bodypersonfax), required: false);
+            SourceExpression.Validate(bodypersonusername, nameof(bodypersonusername), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                personObject["email-address"] = CSharpExpressionConverter.ConvertToken(bodypersonemailAddress);
-                personObjectpropCount++;
+                var apiCallPath = "/people.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var personObject = new JObject();
+                var personObjectpropCount = 0;
+                if (bodypersonemailAddress != null)
+                {
+                    personObject["email-address"] = SourceExpressionConverter.ConvertToken(bodypersonemailAddress);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonfirstName != null)
+                {
+                    personObject["first-name"] = SourceExpressionConverter.ConvertToken(bodypersonfirstName);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonlastName != null)
+                {
+                    personObject["last-name"] = SourceExpressionConverter.ConvertToken(bodypersonlastName);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersoncompanyId != null)
+                {
+                    personObject["company-id"] = SourceExpressionConverter.ConvertToken(bodypersoncompanyId);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonjobTitle != null)
+                {
+                    personObject["title"] = SourceExpressionConverter.ConvertToken(bodypersonjobTitle);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonhome != null)
+                {
+                    personObject["phone-number-home"] = SourceExpressionConverter.ConvertToken(bodypersonhome);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonmobile != null)
+                {
+                    personObject["phone-number-mobile"] = SourceExpressionConverter.ConvertToken(bodypersonmobile);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonoffice != null)
+                {
+                    personObject["phone-number-office"] = SourceExpressionConverter.ConvertToken(bodypersonoffice);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonofficeExtension != null)
+                {
+                    personObject["phone-number-office-ext"] = SourceExpressionConverter.ConvertToken(bodypersonofficeExtension);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonfax != null)
+                {
+                    personObject["phone-number-fax"] = SourceExpressionConverter.ConvertToken(bodypersonfax);
+                    personObjectpropCount++;
+                }
+
+                if (bodypersonusername != null)
+                {
+                    personObject["user-name"] = SourceExpressionConverter.ConvertToken(bodypersonusername);
+                    personObjectpropCount++;
+                }
+
+                if (personObjectpropCount > 0)
+                {
+                    body["person"] = personObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypersonfirstName != null)
-            {
-                personObject["first-name"] = CSharpExpressionConverter.ConvertToken(bodypersonfirstName);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonlastName != null)
-            {
-                personObject["last-name"] = CSharpExpressionConverter.ConvertToken(bodypersonlastName);
-                personObjectpropCount++;
-            }
-
-            if (bodypersoncompanyId != null)
-            {
-                personObject["company-id"] = CSharpExpressionConverter.ConvertToken(bodypersoncompanyId);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonjobTitle != null)
-            {
-                personObject["title"] = CSharpExpressionConverter.ConvertToken(bodypersonjobTitle);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonhome != null)
-            {
-                personObject["phone-number-home"] = CSharpExpressionConverter.ConvertToken(bodypersonhome);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonmobile != null)
-            {
-                personObject["phone-number-mobile"] = CSharpExpressionConverter.ConvertToken(bodypersonmobile);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonoffice != null)
-            {
-                personObject["phone-number-office"] = CSharpExpressionConverter.ConvertToken(bodypersonoffice);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonofficeExtension != null)
-            {
-                personObject["phone-number-office-ext"] = CSharpExpressionConverter.ConvertToken(bodypersonofficeExtension);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonfax != null)
-            {
-                personObject["phone-number-fax"] = CSharpExpressionConverter.ConvertToken(bodypersonfax);
-                personObjectpropCount++;
-            }
-
-            if (bodypersonusername != null)
-            {
-                personObject["user-name"] = CSharpExpressionConverter.ConvertToken(bodypersonusername);
-                personObjectpropCount++;
-            }
-
-            if (personObjectpropCount > 0)
-            {
-                body["person"] = personObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            return new ApiConnectionAction<CreateUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamwork")]
-        public IBodyWorkflowAction<GetUserResponse> GetUser(Expression<Func<string>> personId)
+        public IBodyWorkflowAction<GetUserResponse> GetUser([WorkflowExpression] Func<string> personId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/people/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            SourceExpression.Validate(personId, nameof(personId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/people/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(personId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserResponse>(BuildSourceInput);
         }
     }
 
@@ -423,95 +525,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
     {
         public IBodyWorkflowTrigger<string> WebhookCreateProject(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook1/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "PROJECT.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "@listCallbackUrl()";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook1/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "PROJECT.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<string> WebhookCreateTask(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook2/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "TASK.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "@listCallbackUrl()";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook2/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "TASK.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<string> WebhookCreateUser(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook3/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["STATUS"] = "OK";
-            bodypropCount++;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            webhookObject["event"] = "USER.CREATED";
-            webhookObjectpropCount++;
-            webhookObject["status"] = "ACTIVE";
-            webhookObjectpropCount++;
-            webhookObject["url"] = "@listCallbackUrl()";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["webhook"] = webhookObject;
+                var apiCallPath = "/webhook3/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["STATUS"] = "OK";
                 bodypropCount++;
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                webhookObject["event"] = "USER.CREATED";
+                webhookObjectpropCount++;
+                webhookObject["status"] = "ACTIVE";
+                webhookObjectpropCount++;
+                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<string>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<string>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

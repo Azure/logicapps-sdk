@@ -12,29 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Triggercmd
     public class TriggercmdActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "triggercmd")]
-        public IBodyWorkflowAction<string> RunCommand(Expression<Func<string>> bodycomputer, Expression<Func<string>> bodytrigger, Expression<Func<string>> bodyParams = null)
+        public IBodyWorkflowAction<string> RunCommand([WorkflowExpression] Func<string> bodycomputer, [WorkflowExpression] Func<string> bodytrigger, [WorkflowExpression] Func<string> bodyParams = null)
         {
-            var apiCallPath = "/oauth/flow/trigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["computer"] = CSharpExpressionConverter.ConvertToken(bodycomputer);
-            bodypropCount++;
-            body["trigger"] = CSharpExpressionConverter.ConvertToken(bodytrigger);
-            if (bodyParams != null)
+            SourceExpression.Validate(bodycomputer, nameof(bodycomputer), required: true);
+            SourceExpression.Validate(bodytrigger, nameof(bodytrigger), required: true);
+            SourceExpression.Validate(bodyParams, nameof(bodyParams), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["params"] = CSharpExpressionConverter.ConvertToken(bodyParams);
+                var apiCallPath = "/oauth/flow/trigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["computer"] = SourceExpressionConverter.ConvertToken(bodycomputer);
+                bodypropCount++;
+                body["trigger"] = SourceExpressionConverter.ConvertToken(bodytrigger);
+                if (bodyParams != null)
+                {
+                    body["params"] = SourceExpressionConverter.ConvertToken(bodyParams);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

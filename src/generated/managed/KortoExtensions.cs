@@ -12,154 +12,235 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Korto
     public class KortoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<QueryTagsResponse> GetTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
+        public IBodyWorkflowAction<QueryTagsResponse> GetTag([WorkflowExpression] Func<int> tagID = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            var apiCallPath = "/Tag/v2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tagID != null)
-                callPayload.Queries["tagID"] = CSharpExpressionConverter.ConvertO(tagID);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            return new ApiConnectionAction<QueryTagsResponse>(callPayload);
+            SourceExpression.Validate(tagID, nameof(tagID), required: false);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Tag/v2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tagID != null)
+                    callPayload.Queries["tagID"] = SourceExpressionConverter.ConvertO(tagID);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryTagsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteTag(Expression<Func<int>> tagID = null, Expression<Func<string>> tagName = null)
+        public IWorkflowAction DeleteTag([WorkflowExpression] Func<int> tagID = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            var apiCallPath = "/Tag/v2";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tagID != null)
-                callPayload.Queries["tagID"] = CSharpExpressionConverter.ConvertO(tagID);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(tagID, nameof(tagID), required: false);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Tag/v2";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tagID != null)
+                    callPayload.Queries["tagID"] = SourceExpressionConverter.ConvertO(tagID);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<QueryTagResponseItem> CreateTag(Expression<Func<string>> tagName = null, Expression<Func<int>> tagType = null, Expression<Func<int>> tagValueType = null)
+        public IBodyWorkflowAction<QueryTagResponseItem> CreateTag([WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<int> tagType = null, [WorkflowExpression] Func<int> tagValueType = null)
         {
-            var apiCallPath = "/Tag/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            callPayload.Queries["tagType"] = Convert.ToString(1);
-            if (tagType != null)
-                callPayload.Queries["tagType"] = CSharpExpressionConverter.ConvertO(tagType);
-            if (tagValueType != null)
-                callPayload.Queries["tagValueType"] = CSharpExpressionConverter.ConvertO(tagValueType);
-            return new ApiConnectionAction<QueryTagResponseItem>(callPayload);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            SourceExpression.Validate(tagType, nameof(tagType), required: false);
+            SourceExpression.Validate(tagValueType, nameof(tagValueType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Tag/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                callPayload.Queries["tagType"] = Convert.ToString(1);
+                if (tagType != null)
+                    callPayload.Queries["tagType"] = SourceExpressionConverter.ConvertO(tagType);
+                if (tagValueType != null)
+                    callPayload.Queries["tagValueType"] = SourceExpressionConverter.ConvertO(tagValueType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryTagResponseItem>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> GetRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
         {
-            var apiCallPath = "/Record/v2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Record/v2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecordQueryResponseItem>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IWorkflowAction DeleteRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
         {
-            var apiCallPath = "/Record/v2";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Record/v2";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord(Expression<Func<object>> file, Expression<Func<string>> name = null, Expression<Func<string>> actor = null, Expression<Func<string>> externalid = null, Expression<Func<string>> externalurl = null, Expression<Func<string>> createdAt = null, Expression<Func<string>> createdBy = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> CreateRecord([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> actor = null, [WorkflowExpression] Func<string> externalid = null, [WorkflowExpression] Func<string> externalurl = null, [WorkflowExpression] Func<string> createdAt = null, [WorkflowExpression] Func<string> createdBy = null)
         {
-            var apiCallPath = "/Record/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (actor != null)
-                callPayload.Queries["actor"] = CSharpExpressionConverter.ConvertO(actor);
-            if (externalid != null)
-                callPayload.Queries["externalid"] = CSharpExpressionConverter.ConvertO(externalid);
-            if (externalurl != null)
-                callPayload.Queries["externalurl"] = CSharpExpressionConverter.ConvertO(externalurl);
-            if (createdAt != null)
-                callPayload.Queries["createdAt"] = CSharpExpressionConverter.ConvertO(createdAt);
-            if (createdBy != null)
-                callPayload.Queries["createdBy"] = CSharpExpressionConverter.ConvertO(createdBy);
-            return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(actor, nameof(actor), required: false);
+            SourceExpression.Validate(externalid, nameof(externalid), required: false);
+            SourceExpression.Validate(externalurl, nameof(externalurl), required: false);
+            SourceExpression.Validate(createdAt, nameof(createdAt), required: false);
+            SourceExpression.Validate(createdBy, nameof(createdBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Record/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (actor != null)
+                    callPayload.Queries["actor"] = SourceExpressionConverter.ConvertO(actor);
+                if (externalid != null)
+                    callPayload.Queries["externalid"] = SourceExpressionConverter.ConvertO(externalid);
+                if (externalurl != null)
+                    callPayload.Queries["externalurl"] = SourceExpressionConverter.ConvertO(externalurl);
+                if (createdAt != null)
+                    callPayload.Queries["createdAt"] = SourceExpressionConverter.ConvertO(createdAt);
+                if (createdBy != null)
+                    callPayload.Queries["createdBy"] = SourceExpressionConverter.ConvertO(createdBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecordQueryResponseItem>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null)
+        public IBodyWorkflowAction<DownloadUrlMessage> DownloadRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null)
         {
-            var apiCallPath = "/Record/v2/download";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            return new ApiConnectionAction<DownloadUrlMessage>(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Record/v2/download";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DownloadUrlMessage>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IWorkflowAction DeleteTagFromRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null)
+        public IWorkflowAction DeleteTagFromRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null)
         {
-            var apiCallPath = "/RecordTagValue/v2";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RecordTagValue/v2";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> AddTagToRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
         {
-            var apiCallPath = "/RecordTagValue/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            if (tagValue != null)
-                callPayload.Queries["tagValue"] = CSharpExpressionConverter.ConvertO(tagValue);
-            return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            SourceExpression.Validate(tagValue, nameof(tagValue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RecordTagValue/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                if (tagValue != null)
+                    callPayload.Queries["tagValue"] = SourceExpressionConverter.ConvertO(tagValue);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecordQueryResponseItem>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "korto")]
-        public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord(Expression<Func<int>> recordID = null, Expression<Func<string>> externalRecordID = null, Expression<Func<string>> tagName = null, Expression<Func<string>> tagValue = null)
+        public IBodyWorkflowAction<RecordQueryResponseItem> UpdateTagOnRecord([WorkflowExpression] Func<int> recordID = null, [WorkflowExpression] Func<string> externalRecordID = null, [WorkflowExpression] Func<string> tagName = null, [WorkflowExpression] Func<string> tagValue = null)
         {
-            var apiCallPath = "/RecordTagValue/v2";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordID != null)
-                callPayload.Queries["recordID"] = CSharpExpressionConverter.ConvertO(recordID);
-            if (externalRecordID != null)
-                callPayload.Queries["externalRecordID"] = CSharpExpressionConverter.ConvertO(externalRecordID);
-            if (tagName != null)
-                callPayload.Queries["tagName"] = CSharpExpressionConverter.ConvertO(tagName);
-            if (tagValue != null)
-                callPayload.Queries["tagValue"] = CSharpExpressionConverter.ConvertO(tagValue);
-            return new ApiConnectionAction<RecordQueryResponseItem>(callPayload);
+            SourceExpression.Validate(recordID, nameof(recordID), required: false);
+            SourceExpression.Validate(externalRecordID, nameof(externalRecordID), required: false);
+            SourceExpression.Validate(tagName, nameof(tagName), required: false);
+            SourceExpression.Validate(tagValue, nameof(tagValue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RecordTagValue/v2";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordID != null)
+                    callPayload.Queries["recordID"] = SourceExpressionConverter.ConvertO(recordID);
+                if (externalRecordID != null)
+                    callPayload.Queries["externalRecordID"] = SourceExpressionConverter.ConvertO(externalRecordID);
+                if (tagName != null)
+                    callPayload.Queries["tagName"] = SourceExpressionConverter.ConvertO(tagName);
+                if (tagValue != null)
+                    callPayload.Queries["tagValue"] = SourceExpressionConverter.ConvertO(tagValue);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecordQueryResponseItem>(BuildSourceInput);
         }
     }
 

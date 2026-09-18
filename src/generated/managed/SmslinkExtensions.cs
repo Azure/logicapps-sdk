@@ -12,23 +12,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smslink
     public class SmslinkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smslink")]
-        public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS(Expression<Func<string>> bodyto, Expression<Func<string>> bodymessage)
+        public IBodyWorkflowAction<SMSLinkSendSMSResponse> SMSLinkSendSMS([WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<string> bodymessage)
         {
-            var apiCallPath = "/sms/gateway/integration/powerautomate.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/sms/gateway/integration/powerautomate.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SMSLinkSendSMSResponse>(callPayload);
+            return new ApiConnectionAction<SMSLinkSendSMSResponse>(BuildSourceInput);
         }
     }
 

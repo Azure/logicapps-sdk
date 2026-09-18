@@ -12,179 +12,256 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailinatorip
     public class MailinatoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<InboxGetResponse> InboxGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<int>> limit = null, Expression<Func<string>> sort = null, Expression<Func<int>> skip = null, Expression<Func<bool>> decodeSubject = null)
+        public IBodyWorkflowAction<InboxGetResponse> InboxGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> decodeSubject = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (skip != null)
-                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            if (decodeSubject != null)
-                callPayload.Queries["decode_subject"] = CSharpExpressionConverter.ConvertO(decodeSubject);
-            return new ApiConnectionAction<InboxGetResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(decodeSubject, nameof(decodeSubject), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (decodeSubject != null)
+                    callPayload.Queries["decode_subject"] = SourceExpressionConverter.ConvertO(decodeSubject);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InboxGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessageGetResponse> MessageGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageGetResponse> MessageGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageGetResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessageDeleteResponse> MessageDelete(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageDeleteResponse> MessageDelete([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageDeleteResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessageAttachmentsGetResponse> MessageAttachmentsGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageAttachmentsGetResponse> MessageAttachmentsGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageAttachmentsGetResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageAttachmentsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessageLinksGetResponse> MessageLinksGet(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<MessageLinksGetResponse> MessageLinksGet([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MessageLinksGetResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages/{2}/links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageLinksGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> domain, Expression<Func<string>> inbox, Expression<Func<string>> bodyfromfull = null, Expression<Func<string>> bodyheadersmimeVersion = null, Expression<Func<string>> bodyheadersdate = null, Expression<Func<string>> bodyheaderssubject = null, Expression<Func<string>> bodyheaderscontentType = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodypartsInputItem[]>> bodyparts = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyid = null, Expression<Func<int>> bodytime = null, Expression<Func<int>> bodysecondsAgo = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> domain, [WorkflowExpression] Func<string> inbox, [WorkflowExpression] Func<string> bodyfromfull = null, [WorkflowExpression] Func<string> bodyheadersmimeVersion = null, [WorkflowExpression] Func<string> bodyheadersdate = null, [WorkflowExpression] Func<string> bodyheaderssubject = null, [WorkflowExpression] Func<string> bodyheaderscontentType = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodypartsInputItem[]> bodyparts = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<int> bodytime = null, [WorkflowExpression] Func<int> bodysecondsAgo = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfromfull != null)
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            SourceExpression.Validate(inbox, nameof(inbox), required: true);
+            SourceExpression.Validate(bodyfromfull, nameof(bodyfromfull), required: false);
+            SourceExpression.Validate(bodyheadersmimeVersion, nameof(bodyheadersmimeVersion), required: false);
+            SourceExpression.Validate(bodyheadersdate, nameof(bodyheadersdate), required: false);
+            SourceExpression.Validate(bodyheaderssubject, nameof(bodyheaderssubject), required: false);
+            SourceExpression.Validate(bodyheaderscontentType, nameof(bodyheaderscontentType), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodyparts, nameof(bodyparts), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodytime, nameof(bodytime), required: false);
+            SourceExpression.Validate(bodysecondsAgo, nameof(bodysecondsAgo), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fromfull"] = CSharpExpressionConverter.ConvertToken(bodyfromfull);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}/inboxes/{1}/messages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inbox, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfromfull != null)
+                {
+                    body["fromfull"] = SourceExpressionConverter.ConvertToken(bodyfromfull);
+                    bodypropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (bodyheadersmimeVersion != null)
+                {
+                    headersObject["mime-version"] = SourceExpressionConverter.ConvertToken(bodyheadersmimeVersion);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheadersdate != null)
+                {
+                    headersObject["date"] = SourceExpressionConverter.ConvertToken(bodyheadersdate);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheaderssubject != null)
+                {
+                    headersObject["subject"] = SourceExpressionConverter.ConvertToken(bodyheaderssubject);
+                    headersObjectpropCount++;
+                }
+
+                if (bodyheaderscontentType != null)
+                {
+                    headersObject["content-type"] = SourceExpressionConverter.ConvertToken(bodyheaderscontentType);
+                    headersObjectpropCount++;
+                }
+
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodyparts != null)
+                {
+                    body["parts"] = SourceExpressionConverter.ConvertToken(bodyparts);
+                    bodypropCount++;
+                }
+
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodytime != null)
+                {
+                    body["time"] = SourceExpressionConverter.ConvertToken(bodytime);
+                    bodypropCount++;
+                }
+
+                if (bodysecondsAgo != null)
+                {
+                    body["seconds_ago"] = SourceExpressionConverter.ConvertToken(bodysecondsAgo);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (bodyheadersmimeVersion != null)
-            {
-                headersObject["mime-version"] = CSharpExpressionConverter.ConvertToken(bodyheadersmimeVersion);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheadersdate != null)
-            {
-                headersObject["date"] = CSharpExpressionConverter.ConvertToken(bodyheadersdate);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheaderssubject != null)
-            {
-                headersObject["subject"] = CSharpExpressionConverter.ConvertToken(bodyheaderssubject);
-                headersObjectpropCount++;
-            }
-
-            if (bodyheaderscontentType != null)
-            {
-                headersObject["content-type"] = CSharpExpressionConverter.ConvertToken(bodyheaderscontentType);
-                headersObjectpropCount++;
-            }
-
-            if (headersObjectpropCount > 0)
-            {
-                body["headers"] = headersObject;
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodyparts != null)
-            {
-                body["parts"] = CSharpExpressionConverter.ConvertToken(bodyparts);
-                bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyto != null)
-            {
-                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
-                bodypropCount++;
-            }
-
-            if (bodyid != null)
-            {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodytime != null)
-            {
-                body["time"] = CSharpExpressionConverter.ConvertToken(bodytime);
-                bodypropCount++;
-            }
-
-            if (bodysecondsAgo != null)
-            {
-                body["seconds_ago"] = CSharpExpressionConverter.ConvertToken(bodysecondsAgo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            return new ApiConnectionAction<MessagePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<StatsGetResponse> StatsGet()
         {
-            var apiCallPath = "/team/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/team/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
         public IBodyWorkflowAction<DomainsGetResponse> DomainsGet()
         {
-            var apiCallPath = "/domains/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DomainsGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/domains/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DomainsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailinatorip")]
-        public IBodyWorkflowAction<DomainGetResponse> DomainGet(Expression<Func<string>> domainId)
+        public IBodyWorkflowAction<DomainGetResponse> DomainGet([WorkflowExpression] Func<string> domainId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/domains/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DomainGetResponse>(callPayload);
+            SourceExpression.Validate(domainId, nameof(domainId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DomainGetResponse>(BuildSourceInput);
         }
     }
 

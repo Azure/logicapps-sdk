@@ -12,261 +12,327 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Letterdrop
     public class LetterdropActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber(Expression<Func<string>> bodyemail, Expression<Func<bool>> bodywelcomeEmail = null, Expression<Func<string>> bodyadditionalDataname = null, Expression<Func<string>> bodyadditionalDatalocation = null, Expression<Func<string>> bodyadditionalDatatitle = null, Expression<Func<string>> bodyadditionalDatacompany = null, Expression<Func<int>> bodyadditionalDatacompanySize = null, Expression<Func<string>> bodyadditionalDataindustry = null, Expression<Func<string>> bodyadditionalDatatwitter = null, Expression<Func<int>> bodyadditionalDatatwitterFollowers = null, Expression<Func<string>> bodyadditionalDatalinkedin = null, Expression<Func<string>> bodyadditionalDatagithub = null, Expression<Func<string>> bodyadditionalDatafacebook = null)
+        public IBodyWorkflowAction<SubscriberPostResponse> Subscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<bool> bodywelcomeEmail = null, [WorkflowExpression] Func<string> bodyadditionalDataname = null, [WorkflowExpression] Func<string> bodyadditionalDatalocation = null, [WorkflowExpression] Func<string> bodyadditionalDatatitle = null, [WorkflowExpression] Func<string> bodyadditionalDatacompany = null, [WorkflowExpression] Func<int> bodyadditionalDatacompanySize = null, [WorkflowExpression] Func<string> bodyadditionalDataindustry = null, [WorkflowExpression] Func<string> bodyadditionalDatatwitter = null, [WorkflowExpression] Func<int> bodyadditionalDatatwitterFollowers = null, [WorkflowExpression] Func<string> bodyadditionalDatalinkedin = null, [WorkflowExpression] Func<string> bodyadditionalDatagithub = null, [WorkflowExpression] Func<string> bodyadditionalDatafacebook = null)
         {
-            var apiCallPath = "/subscriber/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodywelcomeEmail != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodywelcomeEmail, nameof(bodywelcomeEmail), required: false);
+            SourceExpression.Validate(bodyadditionalDataname, nameof(bodyadditionalDataname), required: false);
+            SourceExpression.Validate(bodyadditionalDatalocation, nameof(bodyadditionalDatalocation), required: false);
+            SourceExpression.Validate(bodyadditionalDatatitle, nameof(bodyadditionalDatatitle), required: false);
+            SourceExpression.Validate(bodyadditionalDatacompany, nameof(bodyadditionalDatacompany), required: false);
+            SourceExpression.Validate(bodyadditionalDatacompanySize, nameof(bodyadditionalDatacompanySize), required: false);
+            SourceExpression.Validate(bodyadditionalDataindustry, nameof(bodyadditionalDataindustry), required: false);
+            SourceExpression.Validate(bodyadditionalDatatwitter, nameof(bodyadditionalDatatwitter), required: false);
+            SourceExpression.Validate(bodyadditionalDatatwitterFollowers, nameof(bodyadditionalDatatwitterFollowers), required: false);
+            SourceExpression.Validate(bodyadditionalDatalinkedin, nameof(bodyadditionalDatalinkedin), required: false);
+            SourceExpression.Validate(bodyadditionalDatagithub, nameof(bodyadditionalDatagithub), required: false);
+            SourceExpression.Validate(bodyadditionalDatafacebook, nameof(bodyadditionalDatafacebook), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["welcomeEmail"] = CSharpExpressionConverter.ConvertToken(bodywelcomeEmail);
+                var apiCallPath = "/subscriber/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodywelcomeEmail != null)
+                {
+                    body["welcomeEmail"] = SourceExpressionConverter.ConvertToken(bodywelcomeEmail);
+                    bodypropCount++;
+                }
+
+                var additionalDataObject = new JObject();
+                var additionalDataObjectpropCount = 0;
+                if (bodyadditionalDataname != null)
+                {
+                    additionalDataObject["name"] = SourceExpressionConverter.ConvertToken(bodyadditionalDataname);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatalocation != null)
+                {
+                    additionalDataObject["location"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatalocation);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatatitle != null)
+                {
+                    additionalDataObject["title"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatatitle);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatacompany != null)
+                {
+                    additionalDataObject["company"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatacompany);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatacompanySize != null)
+                {
+                    additionalDataObject["companySize"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatacompanySize);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDataindustry != null)
+                {
+                    additionalDataObject["industry"] = SourceExpressionConverter.ConvertToken(bodyadditionalDataindustry);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatatwitter != null)
+                {
+                    additionalDataObject["twitter"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatatwitter);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatatwitterFollowers != null)
+                {
+                    additionalDataObject["twitterFollowers"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatatwitterFollowers);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatalinkedin != null)
+                {
+                    additionalDataObject["linkedin"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatalinkedin);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatagithub != null)
+                {
+                    additionalDataObject["github"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatagithub);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (bodyadditionalDatafacebook != null)
+                {
+                    additionalDataObject["facebook"] = SourceExpressionConverter.ConvertToken(bodyadditionalDatafacebook);
+                    additionalDataObjectpropCount++;
+                }
+
+                if (additionalDataObjectpropCount > 0)
+                {
+                    body["additionalData"] = additionalDataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var additionalDataObject = new JObject();
-            var additionalDataObjectpropCount = 0;
-            if (bodyadditionalDataname != null)
-            {
-                additionalDataObject["name"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDataname);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatalocation != null)
-            {
-                additionalDataObject["location"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatalocation);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatatitle != null)
-            {
-                additionalDataObject["title"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatitle);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatacompany != null)
-            {
-                additionalDataObject["company"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatacompany);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatacompanySize != null)
-            {
-                additionalDataObject["companySize"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatacompanySize);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDataindustry != null)
-            {
-                additionalDataObject["industry"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDataindustry);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatatwitter != null)
-            {
-                additionalDataObject["twitter"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatwitter);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatatwitterFollowers != null)
-            {
-                additionalDataObject["twitterFollowers"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatatwitterFollowers);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatalinkedin != null)
-            {
-                additionalDataObject["linkedin"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatalinkedin);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatagithub != null)
-            {
-                additionalDataObject["github"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatagithub);
-                additionalDataObjectpropCount++;
-            }
-
-            if (bodyadditionalDatafacebook != null)
-            {
-                additionalDataObject["facebook"] = CSharpExpressionConverter.ConvertToken(bodyadditionalDatafacebook);
-                additionalDataObjectpropCount++;
-            }
-
-            if (additionalDataObjectpropCount > 0)
-            {
-                body["additionalData"] = additionalDataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SubscriberPostResponse>(callPayload);
+            return new ApiConnectionAction<SubscriberPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove(Expression<Func<string>> email)
+        public IBodyWorkflowAction<SubscriberRemovePostResponse> SubscriberRemove([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/subscriber/remove";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
-            return new ApiConnectionAction<SubscriberRemovePostResponse>(callPayload);
+            SourceExpression.Validate(email, nameof(email), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/subscriber/remove";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SubscriberRemovePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostsGetPostResponse> PostsGet(Expression<Func<string>> bodyquery, Expression<Func<int>> bodyoffset = null, Expression<Func<int>> bodylimit = null)
+        public IBodyWorkflowAction<PostsGetPostResponse> PostsGet([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<int> bodyoffset = null, [WorkflowExpression] Func<int> bodylimit = null)
         {
-            var apiCallPath = "/posts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-            if (bodyoffset != null)
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodyoffset, nameof(bodyoffset), required: false);
+            SourceExpression.Validate(bodylimit, nameof(bodylimit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/posts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
                 if (bodyoffset != null)
                 {
-                    body["offset"] = CSharpExpressionConverter.ConvertToken(bodyoffset);
+                    if (bodyoffset != null)
+                    {
+                        body["offset"] = SourceExpressionConverter.ConvertToken(bodyoffset);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["offset"] = 0;
+                    bodypropCount++;
+                }
+
+                if (bodylimit != null)
+                {
+                    body["limit"] = SourceExpressionConverter.ConvertToken(bodylimit);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostsGetPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
+        public IBodyWorkflowAction<PostGetPostResponse> PostGet([WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/post/get/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostGetPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
+        public IBodyWorkflowAction<PostDraftPostResponse> PostDraft([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyhtml, [WorkflowExpression] Func<string> bodysubtitle = null)
+        {
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodyhtml, nameof(bodyhtml), required: true);
+            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/post/draft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodysubtitle != null)
+                {
+                    body["subtitle"] = SourceExpressionConverter.ConvertToken(bodysubtitle);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["offset"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodylimit != null)
-            {
-                body["limit"] = CSharpExpressionConverter.ConvertToken(bodylimit);
-                bodypropCount++;
+                body["html"] = SourceExpressionConverter.ConvertToken(bodyhtml);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostsGetPostResponse>(callPayload);
+            return new ApiConnectionAction<PostDraftPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostGetPostResponse> PostGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/post/get/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PostGetPostResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/project/get/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectGetPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<PostDraftPostResponse> PostDraft(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyhtml, Expression<Func<string>> bodysubtitle = null)
+        public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodysuggestedBy, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodykeyword = null, [WorkflowExpression] Func<string[]> bodylabels = null)
         {
-            var apiCallPath = "/post/draft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            if (bodysubtitle != null)
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodysuggestedBy, nameof(bodysuggestedBy), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodykeyword, nameof(bodykeyword), required: false);
+            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
+                var apiCallPath = "/idea/new";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["suggestedBy"] = SourceExpressionConverter.ConvertToken(bodysuggestedBy);
+                if (bodykeyword != null)
+                {
+                    body["keyword"] = SourceExpressionConverter.ConvertToken(bodykeyword);
+                    bodypropCount++;
+                }
+
+                if (bodylabels != null)
+                {
+                    body["labels"] = SourceExpressionConverter.ConvertToken(bodylabels);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["html"] = CSharpExpressionConverter.ConvertToken(bodyhtml);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostDraftPostResponse>(callPayload);
+            return new ApiConnectionAction<IdeaCreatePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<ProjectGetPostResponse> ProjectGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<string> bodyassignTo, [WorkflowExpression] Func<string> bodypublishOn, [WorkflowExpression] Func<string[]> bodyapprovers = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/project/get/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectGetPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaCreatePostResponse> IdeaCreate(Expression<Func<string>> bodytitle, Expression<Func<string>> bodysuggestedBy, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodykeyword = null, Expression<Func<string[]>> bodylabels = null)
-        {
-            var apiCallPath = "/idea/new";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            if (bodydescription != null)
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
+            SourceExpression.Validate(bodyassignTo, nameof(bodyassignTo), required: true);
+            SourceExpression.Validate(bodypublishOn, nameof(bodypublishOn), required: true);
+            SourceExpression.Validate(bodyapprovers, nameof(bodyapprovers), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
+                var apiCallPath = "/idea/assign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["suggestedBy"] = CSharpExpressionConverter.ConvertToken(bodysuggestedBy);
-            if (bodykeyword != null)
-            {
-                body["keyword"] = CSharpExpressionConverter.ConvertToken(bodykeyword);
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
                 bodypropCount++;
-            }
-
-            if (bodylabels != null)
-            {
-                body["labels"] = CSharpExpressionConverter.ConvertToken(bodylabels);
+                body["assignTo"] = SourceExpressionConverter.ConvertToken(bodyassignTo);
                 bodypropCount++;
+                body["publishOn"] = SourceExpressionConverter.ConvertToken(bodypublishOn);
+                if (bodyapprovers != null)
+                {
+                    body["approvers"] = SourceExpressionConverter.ConvertToken(bodyapprovers);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IdeaCreatePostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "letterdrop")]
-        public IBodyWorkflowAction<IdeaAssignPostResponse> IdeaAssign(Expression<Func<string>> bodyid, Expression<Func<string>> bodyassignTo, Expression<Func<string>> bodypublishOn, Expression<Func<string[]>> bodyapprovers = null)
-        {
-            var apiCallPath = "/idea/assign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-            bodypropCount++;
-            body["assignTo"] = CSharpExpressionConverter.ConvertToken(bodyassignTo);
-            bodypropCount++;
-            body["publishOn"] = CSharpExpressionConverter.ConvertToken(bodypublishOn);
-            if (bodyapprovers != null)
-            {
-                body["approvers"] = CSharpExpressionConverter.ConvertToken(bodyapprovers);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<IdeaAssignPostResponse>(callPayload);
+            return new ApiConnectionAction<IdeaAssignPostResponse>(BuildSourceInput);
         }
     }
 

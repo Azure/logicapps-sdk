@@ -1,0 +1,34 @@
+Scope: actual local codeful workflow runtime; X06 only is promoted from this probe.
+Measured Functions runtime: 4.51.100.26305.
+Measured preview workflow components: 1.187.0.10.
+This is not public extension bundle 1.170.91, cloud, or designer certification.
+
+The repository SourceNativeHostConsumer generates the five preserved definitions
+using the real SDK and the explicit version-1 destinations.schema.json.
+Program.cs.txt, the project, schema, README, and Probe.ps1.txt are exact repository
+source snapshots observed at import. Definition hashes match the actual probe
+record. Source hashes observed at import are not independent generation attestations.
+
+See README.md.txt for the codeful worker/export steps and isolated local-host setup.
+Run Probe.ps1 against that separately supplied local runtime, using BaseUri,
+HostDirectory, DefinitionsDirectory, and OutputPath. No private runtime binaries,
+archives, acquisition URLs, internal PR URLs, or branch details are included.
+The preserved sources do not imply that this preview runtime is publicly available.
+
+The complete probe FAILED (reported exit code 1): five observations passed and two
+native Condition observations failed with HTTP 502 NoResponse. Their independent
+template Condition controls passed yes/no. No SDK fallback was used.
+X06 alone returned HTTP 200 and eyJOZXh0Ijo0LCJMYWJlbCI6IkEifQ==, decoding exactly
+to {"Next":4,"Label":"A"}. Do not infer broad native capability from this result.
+
+Sanitization of native-json-fixed.json:
+- Removed the two private runtime assembly inventory entries; their common version
+  is recorded above, without copying either binary.
+- Redacted request-tracking identifiers in the two failure response messages.
+- Preserved every input, expected value, status, pass/fail flag, definition hash,
+  success response, listener PID, and SDK/consumer assembly hash.
+- Retained no callback URLs or credentials.
+
+The probe JSON does not contain the host exception stack. The reported missing
+Count-context root cause is not independently attested by these sanitized files;
+the preserved negative evidence is the two failed HTTP observations and controls.

@@ -12,75 +12,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip
     public class AbortionpolicyapiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStateResponse> GetGestationalLimitsbyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/states/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(callPayload);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGestationalLimitsbyStateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetGestationalLimitsbyStatebyZipResponse> GetGestationalLimitsbyStatebyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/zips/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(callPayload);
+            SourceExpression.Validate(zipCode, nameof(zipCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/gestational_limits/zips/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGestationalLimitsbyStatebyZipResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyStateResponse> GetInsuranceCoveragebyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/states/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(callPayload);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetInsuranceCoveragebyStateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetInsuranceCoveragebyZipResponse> GetInsuranceCoveragebyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/zips/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(callPayload);
+            SourceExpression.Validate(zipCode, nameof(zipCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/insurance_coverage/zips/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetInsuranceCoveragebyZipResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetMinorsInfobyStateResponse> GetMinorsInfobyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/minors/states/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMinorsInfobyStateResponse>(callPayload);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/minors/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMinorsInfobyStateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetMinorsInfobyZipResponse> GetMinorsInfobyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/minors/zips/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetMinorsInfobyZipResponse>(callPayload);
+            SourceExpression.Validate(zipCode, nameof(zipCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/minors/zips/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMinorsInfobyZipResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState(Expression<Func<stateInput>> state)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyStateResponse> GetWaitingPeriodsInfobyState([WorkflowExpression] Func<stateInput> state)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/states/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(callPayload);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/states/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWaitingPeriodsInfobyStateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abortionpolicyapiip")]
-        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip(Expression<Func<string>> zipCode)
+        public IBodyWorkflowAction<GetWaitingPeriodsInfobyZipResponse> GetWaitingPeriodsInfobyZip([WorkflowExpression] Func<string> zipCode)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/zips/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(callPayload);
+            SourceExpression.Validate(zipCode, nameof(zipCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/waiting_periods/zips/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(zipCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWaitingPeriodsInfobyZipResponse>(BuildSourceInput);
         }
     }
 

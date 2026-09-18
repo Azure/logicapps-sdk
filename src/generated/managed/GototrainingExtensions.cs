@@ -12,52 +12,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gototraining
     public class GototrainingActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Training> GetTraining(Expression<Func<string>> trainingid)
+        public IBodyWorkflowAction<Training> GetTraining([WorkflowExpression] Func<string> trainingid)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Training>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Registrant[]> ListRegistrations(Expression<Func<string>> trainingid)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Registrant[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> bodyregistrantEmail, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyregistrantEmail);
-            bodypropCount++;
-            body["givenName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-            bodypropCount++;
-            body["surname"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AddRegistrantResponse>(callPayload);
+            return new ApiConnectionAction<Training>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
-        public IBodyWorkflowAction<Registrant> GetRegistrant(Expression<Func<string>> trainingid, Expression<Func<string>> registrantKey)
+        public IBodyWorkflowAction<Registrant[]> ListRegistrations([WorkflowExpression] Func<string> trainingid)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(registrantKey, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Registrant>(callPayload);
+            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Registrant[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
+        public IBodyWorkflowAction<AddRegistrantResponse> AddRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> bodyregistrantEmail, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName)
+        {
+            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
+            SourceExpression.Validate(bodyregistrantEmail, nameof(bodyregistrantEmail), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyregistrantEmail);
+                bodypropCount++;
+                body["givenName"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                bodypropCount++;
+                body["surname"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AddRegistrantResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gototraining")]
+        public IBodyWorkflowAction<Registrant> GetRegistrant([WorkflowExpression] Func<string> trainingid, [WorkflowExpression] Func<string> registrantKey)
+        {
+            SourceExpression.Validate(trainingid, nameof(trainingid), required: true);
+            SourceExpression.Validate(registrantKey, nameof(registrantKey), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/G2T/rest/organizers/organizerKey/trainings/{0}/registrants/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trainingid, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(registrantKey, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Registrant>(BuildSourceInput);
         }
     }
 

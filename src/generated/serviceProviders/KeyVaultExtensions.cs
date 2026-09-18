@@ -14,192 +14,287 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.KeyVault
     public class KeyVaultActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretOutput> GetSecret(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<GetSecretOutput> GetSecret([WorkflowExpression] Func<string> secretName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecret", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSecretOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["secretName"] = SourceExpressionConverter.ConvertToken(secretName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecret", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSecretOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetSecretVersionOutput> GetSecretVersion([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> version)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
-            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersion", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSecretVersionOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["secretName"] = SourceExpressionConverter.ConvertToken(secretName);
+                serviceProviderParameters["version"] = SourceExpressionConverter.ConvertToken(version);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersion", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSecretVersionOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListSecretMetadataOutputItem[]> ListSecretMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretMetadata", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ListSecretMetadataOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<GetSecretMetadataOutput> GetSecretMetadata([WorkflowExpression] Func<string> secretName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSecretMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["secretName"] = SourceExpressionConverter.ConvertToken(secretName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSecretMetadataOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetSecretVersionMetadataOutput> GetSecretVersionMetadata([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> version)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
-            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersionMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSecretVersionMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["secretName"] = SourceExpressionConverter.ConvertToken(secretName);
+                serviceProviderParameters["version"] = SourceExpressionConverter.ConvertToken(version);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getSecretVersionMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSecretVersionMetadataOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<ListSecretVersionMetadataOutputItem[]> ListSecretVersionMetadata([WorkflowExpression] Func<string> secretName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["secretName"] = CSharpExpressionConverter.ConvertToken(secretName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretVersionMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ListSecretVersionMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["secretName"] = SourceExpressionConverter.ConvertToken(secretName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listSecretVersionMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ListSecretVersionMetadataOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<GetKeyMetadataOutput> GetKeyMetadata([WorkflowExpression] Func<string> keyName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetKeyMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetKeyMetadataOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
         public IBodyWorkflowAction<ListKeyMetadataOutputItem[]> ListKeyMetadata()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyMetadata", connectionName: connectionId)
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ListKeyMetadataOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> version)
+        public IBodyWorkflowAction<GetKeyVersionMetadataOutput> GetKeyVersionMetadata([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyVersionMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetKeyVersionMetadataOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                serviceProviderParameters["version"] = SourceExpressionConverter.ConvertToken(version);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "getKeyVersionMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetKeyVersionMetadataOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata(Expression<Func<string>> keyName)
+        public IBodyWorkflowAction<ListKeyVersionMetadataOutputItem[]> ListKeyVersionMetadata([WorkflowExpression] Func<string> keyName)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyVersionMetadata", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ListKeyVersionMetadataOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "listKeyVersionMetadata", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<ListKeyVersionMetadataOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<DecryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
+        public IBodyWorkflowAction<DecryptDataWithKeyOutput> DecryptDataWithKey([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<DecryptDataWithKeyInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> encryptedData)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
-            serviceProviderParameters["encryptedData"] = CSharpExpressionConverter.ConvertToken(encryptedData);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
+            SourceExpression.Validate(encryptedData, nameof(encryptedData), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKey", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<DecryptDataWithKeyOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                serviceProviderParameters["algorithm"] = SourceExpressionConverter.ConvertToken(algorithm);
+                serviceProviderParameters["encryptedData"] = SourceExpressionConverter.ConvertToken(encryptedData);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKey", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<DecryptDataWithKeyOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<DecryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> encryptedData)
+        public IBodyWorkflowAction<DecryptDataWithKeyVersionOutput> DecryptDataWithKeyVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<DecryptDataWithKeyVersionInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> encryptedData)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
-            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
-            serviceProviderParameters["encryptedData"] = CSharpExpressionConverter.ConvertToken(encryptedData);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
+            SourceExpression.Validate(encryptedData, nameof(encryptedData), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKeyVersion", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<DecryptDataWithKeyVersionOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                serviceProviderParameters["version"] = SourceExpressionConverter.ConvertToken(version);
+                serviceProviderParameters["algorithm"] = SourceExpressionConverter.ConvertToken(algorithm);
+                serviceProviderParameters["encryptedData"] = SourceExpressionConverter.ConvertToken(encryptedData);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "decryptDataWithKeyVersion", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<DecryptDataWithKeyVersionOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey(Expression<Func<string>> keyName, Expression<Func<EncryptDataWithKeyInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
+        public IBodyWorkflowAction<EncryptDataWithKeyOutput> EncryptDataWithKey([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<EncryptDataWithKeyInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> rawData)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
-            serviceProviderParameters["rawData"] = CSharpExpressionConverter.ConvertToken(rawData);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
+            SourceExpression.Validate(rawData, nameof(rawData), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKey", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<EncryptDataWithKeyOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                serviceProviderParameters["algorithm"] = SourceExpressionConverter.ConvertToken(algorithm);
+                serviceProviderParameters["rawData"] = SourceExpressionConverter.ConvertToken(rawData);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKey", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<EncryptDataWithKeyOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "keyVault")]
-        public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion(Expression<Func<string>> keyName, Expression<Func<string>> version, Expression<Func<EncryptDataWithKeyVersionInputAlgorithmType>> algorithm, Expression<Func<string>> rawData)
+        public IBodyWorkflowAction<EncryptDataWithKeyVersionOutput> EncryptDataWithKeyVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<EncryptDataWithKeyVersionInputAlgorithmType> algorithm, [WorkflowExpression] Func<string> rawData)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["keyName"] = CSharpExpressionConverter.ConvertToken(keyName);
-            serviceProviderParameters["version"] = CSharpExpressionConverter.ConvertToken(version);
-            serviceProviderParameters["algorithm"] = CSharpExpressionConverter.ConvertToken(algorithm);
-            serviceProviderParameters["rawData"] = CSharpExpressionConverter.ConvertToken(rawData);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(algorithm, nameof(algorithm), required: true);
+            SourceExpression.Validate(rawData, nameof(rawData), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKeyVersion", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<EncryptDataWithKeyVersionOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["keyName"] = SourceExpressionConverter.ConvertToken(keyName);
+                serviceProviderParameters["version"] = SourceExpressionConverter.ConvertToken(version);
+                serviceProviderParameters["algorithm"] = SourceExpressionConverter.ConvertToken(algorithm);
+                serviceProviderParameters["rawData"] = SourceExpressionConverter.ConvertToken(rawData);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/keyVault", operationId: "encryptDataWithKeyVersion", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<EncryptDataWithKeyVersionOutput>(BuildSourceInput);
         }
     }
 

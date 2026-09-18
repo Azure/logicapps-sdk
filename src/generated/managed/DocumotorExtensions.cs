@@ -12,22 +12,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documotor
     public class DocumotorActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documotor")]
-        public IBodyWorkflowAction<string> GenerateDoc(Expression<Func<string>> templateId, Expression<Func<acceptInput>> accept, Expression<Func<string>> stageId = null)
+        public IBodyWorkflowAction<string> GenerateDoc([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<acceptInput> accept, [WorkflowExpression] Func<string> stageId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/template/{0}/generate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.Convert(accept);
-            if (stageId != null)
-                callPayload.Headers["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            var documentData = new JObject();
-            var documentDatapropCount = 0;
-            if (documentDatapropCount > 0)
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(stageId, nameof(stageId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = documentData;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/template/{0}/generate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.Convert(accept);
+                if (stageId != null)
+                    callPayload.Headers["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                var documentData = new JObject();
+                var documentDatapropCount = 0;
+                if (documentDatapropCount > 0)
+                {
+                    callPayload.Body = documentData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

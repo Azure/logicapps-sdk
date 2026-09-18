@@ -12,59 +12,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copyaiip
     public class CopyaiipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet(Expression<Func<string>> workflowId, Expression<Func<int>> size = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<WorkflowsGetResponse> WorkflowsGet([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["size"] = Convert.ToString(10);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<WorkflowsGetResponse>(callPayload);
+            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["size"] = Convert.ToString(10);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WorkflowsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowPostResponse> Workflow(Expression<Func<string>> workflowId)
+        public IBodyWorkflowAction<WorkflowPostResponse> Workflow([WorkflowExpression] Func<string> workflowId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var startVariablesObject = new JObject();
-            var startVariablesObjectpropCount = 0;
-            if (startVariablesObjectpropCount > 0)
+            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["startVariables"] = startVariablesObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var startVariablesObject = new JObject();
+                var startVariablesObjectpropCount = 0;
+                if (startVariablesObjectpropCount > 0)
+                {
+                    body["startVariables"] = startVariablesObject;
+                    bodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WorkflowPostResponse>(callPayload);
+            return new ApiConnectionAction<WorkflowPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copyaiip")]
-        public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet(Expression<Func<string>> workflowId, Expression<Func<string>> runId)
+        public IBodyWorkflowAction<WorkflowGetResponse> WorkflowGet([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> runId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<WorkflowGetResponse>(callPayload);
+            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
+            SourceExpression.Validate(runId, nameof(runId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/workflow/{0}/run/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workflowId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(runId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WorkflowGetResponse>(BuildSourceInput);
         }
     }
 

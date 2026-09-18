@@ -15,50 +15,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lawlift
 
     public class LawliftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftExportTriggerResponse> LawliftExportTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/export";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyflowName != null)
+            SourceExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["flowName"] = CSharpExpressionConverter.ConvertToken(bodyflowName);
+                var apiCallPath = "/webhooks/export";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodyflowName != null)
+                {
+                    body["flowName"] = SourceExpressionConverter.ConvertToken(bodyflowName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<LawliftExportTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<LawliftExportTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger(Expression<Func<string>> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<LawliftNotificationTriggerResponse> LawliftNotificationTrigger([WorkflowExpression] Func<string> bodyflowName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/notifications";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyflowName != null)
+            SourceExpression.Validate(bodyflowName, nameof(bodyflowName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["flowName"] = CSharpExpressionConverter.ConvertToken(bodyflowName);
+                var apiCallPath = "/webhooks/notifications";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodyflowName != null)
+                {
+                    body["flowName"] = SourceExpressionConverter.ConvertToken(bodyflowName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<LawliftNotificationTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

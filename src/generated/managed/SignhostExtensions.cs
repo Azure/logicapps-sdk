@@ -12,189 +12,241 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signhost
     public class SignhostActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Getdetails(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<Transaction> Getdetails([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Transaction>(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Transaction>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Delete(Expression<Func<string>> transactionId, Expression<Func<bool>> bodysendNotifications = null, Expression<Func<string>> bodyreason = null)
+        public IBodyWorkflowAction<ErrorModel> Delete([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<bool> bodysendNotifications = null, [WorkflowExpression] Func<string> bodyreason = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysendNotifications != null)
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            SourceExpression.Validate(bodysendNotifications, nameof(bodysendNotifications), required: false);
+            SourceExpression.Validate(bodyreason, nameof(bodyreason), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodysendNotifications != null)
                 {
-                    body["SendNotifications"] = CSharpExpressionConverter.ConvertToken(bodysendNotifications);
+                    if (bodysendNotifications != null)
+                    {
+                        body["SendNotifications"] = SourceExpressionConverter.ConvertToken(bodysendNotifications);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["SendNotifications"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["SendNotifications"] = false;
-                bodypropCount++;
+                if (bodyreason != null)
+                {
+                    body["Reason"] = SourceExpressionConverter.ConvertToken(bodyreason);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreason != null)
-            {
-                body["Reason"] = CSharpExpressionConverter.ConvertToken(bodyreason);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+            return new ApiConnectionAction<ErrorModel>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadpdf(Expression<Func<string>> transactionId, Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string> Downloadpdf([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            SourceExpression.Validate(fileId, nameof(fileId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<string> Downloadreceipt(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<string> Downloadreceipt([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/file/receipt/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<Transaction> Create(Expression<Func<transactionlanguageInput>> transactionlanguage = null, Expression<Func<bool>> transactionseal = null, Expression<Func<transactionsignersInputItem[]>> transactionsigners = null, Expression<Func<transactionreceiversInputItem[]>> transactionreceivers = null, Expression<Func<string>> transactionreference = null, Expression<Func<string>> transactionpostbackUrl = null, Expression<Func<int>> transactionsignRequestMode = null, Expression<Func<int>> transactiondaysToExpire = null)
+        public IBodyWorkflowAction<Transaction> Create([WorkflowExpression] Func<transactionlanguageInput> transactionlanguage = null, [WorkflowExpression] Func<bool> transactionseal = null, [WorkflowExpression] Func<transactionsignersInputItem[]> transactionsigners = null, [WorkflowExpression] Func<transactionreceiversInputItem[]> transactionreceivers = null, [WorkflowExpression] Func<string> transactionreference = null, [WorkflowExpression] Func<string> transactionpostbackUrl = null, [WorkflowExpression] Func<int> transactionsignRequestMode = null, [WorkflowExpression] Func<int> transactiondaysToExpire = null)
         {
-            var apiCallPath = "/api/transaction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var transaction = new JObject();
-            var transactionpropCount = 0;
-            var filesObject = new JObject();
-            var filesObjectpropCount = 0;
-            if (filesObjectpropCount > 0)
+            SourceExpression.Validate(transactionlanguage, nameof(transactionlanguage), required: false);
+            SourceExpression.Validate(transactionseal, nameof(transactionseal), required: false);
+            SourceExpression.Validate(transactionsigners, nameof(transactionsigners), required: false);
+            SourceExpression.Validate(transactionreceivers, nameof(transactionreceivers), required: false);
+            SourceExpression.Validate(transactionreference, nameof(transactionreference), required: false);
+            SourceExpression.Validate(transactionpostbackUrl, nameof(transactionpostbackUrl), required: false);
+            SourceExpression.Validate(transactionsignRequestMode, nameof(transactionsignRequestMode), required: false);
+            SourceExpression.Validate(transactiondaysToExpire, nameof(transactiondaysToExpire), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                transaction["Files"] = filesObject;
-                transactionpropCount++;
-            }
+                var apiCallPath = "/api/transaction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var transaction = new JObject();
+                var transactionpropCount = 0;
+                var filesObject = new JObject();
+                var filesObjectpropCount = 0;
+                if (filesObjectpropCount > 0)
+                {
+                    transaction["Files"] = filesObject;
+                    transactionpropCount++;
+                }
 
-            if (transactionlanguage != null)
-            {
-                transaction["Language"] = CSharpExpressionConverter.Convert(transactionlanguage);
-                transactionpropCount++;
-            }
+                if (transactionlanguage != null)
+                {
+                    transaction["Language"] = SourceExpressionConverter.Convert(transactionlanguage);
+                    transactionpropCount++;
+                }
 
-            if (transactionseal != null)
-            {
                 if (transactionseal != null)
                 {
-                    transaction["Seal"] = CSharpExpressionConverter.ConvertToken(transactionseal);
+                    if (transactionseal != null)
+                    {
+                        transaction["Seal"] = SourceExpressionConverter.ConvertToken(transactionseal);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["Seal"] = false;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["Seal"] = false;
-                transactionpropCount++;
-            }
+                if (transactionsigners != null)
+                {
+                    transaction["Signers"] = SourceExpressionConverter.ConvertToken(transactionsigners);
+                    transactionpropCount++;
+                }
 
-            if (transactionsigners != null)
-            {
-                transaction["Signers"] = CSharpExpressionConverter.ConvertToken(transactionsigners);
-                transactionpropCount++;
-            }
+                if (transactionreceivers != null)
+                {
+                    transaction["Receivers"] = SourceExpressionConverter.ConvertToken(transactionreceivers);
+                    transactionpropCount++;
+                }
 
-            if (transactionreceivers != null)
-            {
-                transaction["Receivers"] = CSharpExpressionConverter.ConvertToken(transactionreceivers);
-                transactionpropCount++;
-            }
+                if (transactionreference != null)
+                {
+                    transaction["Reference"] = SourceExpressionConverter.ConvertToken(transactionreference);
+                    transactionpropCount++;
+                }
 
-            if (transactionreference != null)
-            {
-                transaction["Reference"] = CSharpExpressionConverter.ConvertToken(transactionreference);
-                transactionpropCount++;
-            }
+                if (transactionpostbackUrl != null)
+                {
+                    transaction["PostbackUrl"] = SourceExpressionConverter.ConvertToken(transactionpostbackUrl);
+                    transactionpropCount++;
+                }
 
-            if (transactionpostbackUrl != null)
-            {
-                transaction["PostbackUrl"] = CSharpExpressionConverter.ConvertToken(transactionpostbackUrl);
-                transactionpropCount++;
-            }
-
-            if (transactionsignRequestMode != null)
-            {
                 if (transactionsignRequestMode != null)
                 {
-                    transaction["SignRequestMode"] = CSharpExpressionConverter.ConvertToken(transactionsignRequestMode);
+                    if (transactionsignRequestMode != null)
+                    {
+                        transaction["SignRequestMode"] = SourceExpressionConverter.ConvertToken(transactionsignRequestMode);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["SignRequestMode"] = 2;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["SignRequestMode"] = 2;
-                transactionpropCount++;
-            }
-
-            if (transactiondaysToExpire != null)
-            {
                 if (transactiondaysToExpire != null)
                 {
-                    transaction["DaysToExpire"] = CSharpExpressionConverter.ConvertToken(transactiondaysToExpire);
+                    if (transactiondaysToExpire != null)
+                    {
+                        transaction["DaysToExpire"] = SourceExpressionConverter.ConvertToken(transactiondaysToExpire);
+                        transactionpropCount++;
+                    }
+
+                    transactionpropCount++;
+                }
+                else
+                {
+                    transaction["DaysToExpire"] = 60;
                     transactionpropCount++;
                 }
 
-                transactionpropCount++;
-            }
-            else
-            {
-                transaction["DaysToExpire"] = 60;
-                transactionpropCount++;
-            }
-
-            if (transactionpropCount > 0)
-            {
-                callPayload.Body = transaction;
+                if (transactionpropCount > 0)
+                {
+                    callPayload.Body = transaction;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<Transaction>(callPayload);
+            return new ApiConnectionAction<Transaction>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IWorkflowAction Addfile(Expression<Func<string>> transactionId, Expression<Func<string>> fileId, Expression<Func<string>> body = null)
+        public IWorkflowAction Addfile([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> fileId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            SourceExpression.Validate(fileId, nameof(fileId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/file/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signhost")]
-        public IBodyWorkflowAction<ErrorModel> Start(Expression<Func<string>> transactionId)
+        public IBodyWorkflowAction<ErrorModel> Start([WorkflowExpression] Func<string> transactionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ErrorModel>(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/transaction/{0}/start", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ErrorModel>(BuildSourceInput);
         }
     }
 

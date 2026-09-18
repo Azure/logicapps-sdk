@@ -12,549 +12,701 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Corptaxsandbox
     public class CorptaxsandboxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEntityViews(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyqualifiedviewName = null)
+        public IWorkflowAction CorptaxEntityViews([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyqualifiedviewName = null)
         {
-            var apiCallPath = "/entityView";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyqualifiedviewName != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodyqualifiedviewName, nameof(bodyqualifiedviewName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["qualifiedviewName"] = CSharpExpressionConverter.ConvertToken(bodyqualifiedviewName);
-                bodypropCount++;
+                var apiCallPath = "/entityView";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyqualifiedviewName != null)
+                {
+                    body["qualifiedviewName"] = SourceExpressionConverter.ConvertToken(bodyqualifiedviewName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction DataExchangeLookup(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<lookupTypeInput>> lookupType, Expression<Func<bool>> bodydetails, Expression<Func<string>> bodylookupName = null)
+        public IWorkflowAction DataExchangeLookup([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<lookupTypeInput> lookupType, [WorkflowExpression] Func<bool> bodydetails, [WorkflowExpression] Func<string> bodylookupName = null)
         {
-            var apiCallPath = "/DataExchangeLookup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            callPayload.Headers["lookupType"] = CSharpExpressionConverter.Convert(lookupType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylookupName != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(lookupType, nameof(lookupType), required: true);
+            SourceExpression.Validate(bodydetails, nameof(bodydetails), required: true);
+            SourceExpression.Validate(bodylookupName, nameof(bodylookupName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["lookupName"] = CSharpExpressionConverter.ConvertToken(bodylookupName);
+                var apiCallPath = "/DataExchangeLookup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                callPayload.Headers["lookupType"] = SourceExpressionConverter.Convert(lookupType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylookupName != null)
+                {
+                    body["lookupName"] = SourceExpressionConverter.ConvertToken(bodylookupName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["details"] = SourceExpressionConverter.ConvertToken(bodydetails);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["details"] = CSharpExpressionConverter.ConvertToken(bodydetails);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction EntityList(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<bool>> bodyactive = null, Expression<Func<string>> bodyperiodName = null, Expression<Func<string>> bodyviewName = null)
+        public IWorkflowAction EntityList([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<bool> bodyactive = null, [WorkflowExpression] Func<string> bodyperiodName = null, [WorkflowExpression] Func<string> bodyviewName = null)
         {
-            var apiCallPath = "/EntityLists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyactive != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodyactive, nameof(bodyactive), required: false);
+            SourceExpression.Validate(bodyperiodName, nameof(bodyperiodName), required: false);
+            SourceExpression.Validate(bodyviewName, nameof(bodyviewName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["active"] = CSharpExpressionConverter.ConvertToken(bodyactive);
-                bodypropCount++;
+                var apiCallPath = "/EntityLists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyactive != null)
+                {
+                    body["active"] = SourceExpressionConverter.ConvertToken(bodyactive);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodName != null)
+                {
+                    body["periodName"] = SourceExpressionConverter.ConvertToken(bodyperiodName);
+                    bodypropCount++;
+                }
+
+                if (bodyviewName != null)
+                {
+                    body["viewName"] = SourceExpressionConverter.ConvertToken(bodyviewName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyperiodName != null)
-            {
-                body["periodName"] = CSharpExpressionConverter.ConvertToken(bodyperiodName);
-                bodypropCount++;
-            }
-
-            if (bodyviewName != null)
-            {
-                body["viewName"] = CSharpExpressionConverter.ConvertToken(bodyviewName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        public IWorkflowAction ExportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/dataExport";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodynamedContext != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
+            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            SourceExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            SourceExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
+                var apiCallPath = "/dataExport";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = SourceExpressionConverter.ConvertToken(bodynamedContext);
+                    bodypropCount++;
+                }
+
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = SourceExpressionConverter.ConvertToken(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = SourceExpressionConverter.ConvertToken(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = SourceExpressionConverter.ConvertToken(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = SourceExpressionConverter.ConvertToken(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["packageName"] = SourceExpressionConverter.ConvertToken(bodypackageName);
+                if (bodyinternationalTaxName != null)
+                {
+                    body["internationalTaxName"] = SourceExpressionConverter.ConvertToken(bodyinternationalTaxName);
+                    bodypropCount++;
+                }
+
+                if (bodyprovisionName != null)
+                {
+                    body["provisionName"] = SourceExpressionConverter.ConvertToken(bodyprovisionName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
-                bodypropCount++;
-            }
-
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
-                bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
-                bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["packageName"] = CSharpExpressionConverter.ConvertToken(bodypackageName);
-            if (bodyinternationalTaxName != null)
-            {
-                body["internationalTaxName"] = CSharpExpressionConverter.ConvertToken(bodyinternationalTaxName);
-                bodypropCount++;
-            }
-
-            if (bodyprovisionName != null)
-            {
-                body["provisionName"] = CSharpExpressionConverter.ConvertToken(bodyprovisionName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ExportDataWithDataSource(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodydataSource, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyinternationalTaxName = null, Expression<Func<string>> bodyprovisionName = null)
+        public IWorkflowAction ExportDataWithDataSource([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodydataSource, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyinternationalTaxName = null, [WorkflowExpression] Func<string> bodyprovisionName = null)
         {
-            var apiCallPath = "/dataExportWithDataSource";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodynamedContext != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodydataSource, nameof(bodydataSource), required: true);
+            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            SourceExpression.Validate(bodyinternationalTaxName, nameof(bodyinternationalTaxName), required: false);
+            SourceExpression.Validate(bodyprovisionName, nameof(bodyprovisionName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
+                var apiCallPath = "/dataExportWithDataSource";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = SourceExpressionConverter.ConvertToken(bodynamedContext);
+                    bodypropCount++;
+                }
+
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = SourceExpressionConverter.ConvertToken(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = SourceExpressionConverter.ConvertToken(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = SourceExpressionConverter.ConvertToken(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = SourceExpressionConverter.ConvertToken(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["dataSource"] = SourceExpressionConverter.ConvertToken(bodydataSource);
+                if (bodyinternationalTaxName != null)
+                {
+                    body["internationalTaxName"] = SourceExpressionConverter.ConvertToken(bodyinternationalTaxName);
+                    bodypropCount++;
+                }
+
+                if (bodyprovisionName != null)
+                {
+                    body["provisionName"] = SourceExpressionConverter.ConvertToken(bodyprovisionName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
-                bodypropCount++;
-            }
-
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
-                bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
-                bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["dataSource"] = CSharpExpressionConverter.ConvertToken(bodydataSource);
-            if (bodyinternationalTaxName != null)
-            {
-                body["internationalTaxName"] = CSharpExpressionConverter.ConvertToken(bodyinternationalTaxName);
-                bodypropCount++;
-            }
-
-            if (bodyprovisionName != null)
-            {
-                body["provisionName"] = CSharpExpressionConverter.ConvertToken(bodyprovisionName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerCartResponse> TriggerCart(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodycartName, Expression<Func<bodytypeOfActionInput>> bodytypeOfAction, Expression<Func<string>> bodynamedContext = null, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<string>> bodyledgerName = null, Expression<Func<string>> bodyisoCurrencyCode = null)
+        public IBodyWorkflowAction<TriggerCartResponse> TriggerCart([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodycartName, [WorkflowExpression] Func<bodytypeOfActionInput> bodytypeOfAction, [WorkflowExpression] Func<string> bodynamedContext = null, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<string> bodyledgerName = null, [WorkflowExpression] Func<string> bodyisoCurrencyCode = null)
         {
-            var apiCallPath = "/triggerCart";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["cartName"] = CSharpExpressionConverter.ConvertToken(bodycartName);
-            bodypropCount++;
-            body["typeOfAction"] = CSharpExpressionConverter.Convert(bodytypeOfAction);
-            if (bodynamedContext != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodycartName, nameof(bodycartName), required: true);
+            SourceExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            SourceExpression.Validate(bodynamedContext, nameof(bodynamedContext), required: false);
+            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            SourceExpression.Validate(bodyledgerName, nameof(bodyledgerName), required: false);
+            SourceExpression.Validate(bodyisoCurrencyCode, nameof(bodyisoCurrencyCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["namedContext"] = CSharpExpressionConverter.ConvertToken(bodynamedContext);
+                var apiCallPath = "/triggerCart";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyentityCode != null)
-            {
-                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
+                body["cartName"] = SourceExpressionConverter.ConvertToken(bodycartName);
                 bodypropCount++;
+                body["typeOfAction"] = SourceExpressionConverter.Convert(bodytypeOfAction);
+                if (bodynamedContext != null)
+                {
+                    body["namedContext"] = SourceExpressionConverter.ConvertToken(bodynamedContext);
+                    bodypropCount++;
+                }
+
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = SourceExpressionConverter.ConvertToken(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = SourceExpressionConverter.ConvertToken(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = SourceExpressionConverter.ConvertToken(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = SourceExpressionConverter.ConvertToken(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyledgerName != null)
+                {
+                    body["ledgerName"] = SourceExpressionConverter.ConvertToken(bodyledgerName);
+                    bodypropCount++;
+                }
+
+                if (bodyisoCurrencyCode != null)
+                {
+                    body["isoCurrencyCode"] = SourceExpressionConverter.ConvertToken(bodyisoCurrencyCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
-                bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
-                bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
-                bodypropCount++;
-            }
-
-            if (bodyledgerName != null)
-            {
-                body["ledgerName"] = CSharpExpressionConverter.ConvertToken(bodyledgerName);
-                bodypropCount++;
-            }
-
-            if (bodyisoCurrencyCode != null)
-            {
-                body["isoCurrencyCode"] = CSharpExpressionConverter.ConvertToken(bodyisoCurrencyCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TriggerCartResponse>(callPayload);
+            return new ApiConnectionAction<TriggerCartResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName, Expression<Func<string>> bodytypeOfAction)
+        public IBodyWorkflowAction<TriggerReturnResponse> TriggerReturn([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName, [WorkflowExpression] Func<string> bodytypeOfAction)
         {
-            var apiCallPath = "/triggerReturn";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnName"] = CSharpExpressionConverter.ConvertToken(bodyreturnName);
-            bodypropCount++;
-            body["typeOfAction"] = CSharpExpressionConverter.ConvertToken(bodytypeOfAction);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
+            SourceExpression.Validate(bodytypeOfAction, nameof(bodytypeOfAction), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/triggerReturn";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnName"] = SourceExpressionConverter.ConvertToken(bodyreturnName);
+                bodypropCount++;
+                body["typeOfAction"] = SourceExpressionConverter.ConvertToken(bodytypeOfAction);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TriggerReturnResponse>(callPayload);
+            return new ApiConnectionAction<TriggerReturnResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        public IBodyWorkflowAction<DownloadContentsResponseItem[]> DownloadContents([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
         {
-            var apiCallPath = "/downloadContents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            callPayload.Headers["typeOfAction"] = CSharpExpressionConverter.Convert(typeOfAction);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnOrCartName"] = CSharpExpressionConverter.ConvertToken(bodyreturnOrCartName);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
+            SourceExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/downloadContents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                callPayload.Headers["typeOfAction"] = SourceExpressionConverter.Convert(typeOfAction);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnOrCartName"] = SourceExpressionConverter.ConvertToken(bodyreturnOrCartName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<DownloadContentsResponseItem[]>(callPayload);
+            return new ApiConnectionAction<DownloadContentsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<typeOfActionInput>> typeOfAction, Expression<Func<string>> bodyreturnOrCartName)
+        public IBodyWorkflowAction<CheckTriggerStatusResponse> CheckTriggerStatus([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<typeOfActionInput> typeOfAction, [WorkflowExpression] Func<string> bodyreturnOrCartName)
         {
-            var apiCallPath = "/checkTriggerStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            callPayload.Headers["typeOfAction"] = CSharpExpressionConverter.Convert(typeOfAction);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnOrCartName"] = CSharpExpressionConverter.ConvertToken(bodyreturnOrCartName);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(typeOfAction, nameof(typeOfAction), required: true);
+            SourceExpression.Validate(bodyreturnOrCartName, nameof(bodyreturnOrCartName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/checkTriggerStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                callPayload.Headers["typeOfAction"] = SourceExpressionConverter.Convert(typeOfAction);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnOrCartName"] = SourceExpressionConverter.ConvertToken(bodyreturnOrCartName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CheckTriggerStatusResponse>(callPayload);
+            return new ApiConnectionAction<CheckTriggerStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<ImportDataResponse> ImportData(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodypackageName, Expression<Func<string>> bodyfileContents, Expression<Func<string>> bodyfileName, Expression<Func<bodyimportTransactionTypeInput>> bodyimportTransactionType, Expression<Func<string>> bodychartOfAccountsName, Expression<Func<bool>> bodyrecognizeFunctionalCurrency, Expression<Func<bool>> bodystopOnLookupErrors, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodycaseCode = null, Expression<Func<string>> bodyperiodCode = null, Expression<Func<string>> bodyjurisdictionCode = null, Expression<Func<bodyledgerAmountTypeInput>> bodyledgerAmountType = null, Expression<Func<string>> bodyfunctionalCurrencyValue = null)
+        public IBodyWorkflowAction<ImportDataResponse> ImportData([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodypackageName, [WorkflowExpression] Func<string> bodyfileContents, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<bodyimportTransactionTypeInput> bodyimportTransactionType, [WorkflowExpression] Func<string> bodychartOfAccountsName, [WorkflowExpression] Func<bool> bodyrecognizeFunctionalCurrency, [WorkflowExpression] Func<bool> bodystopOnLookupErrors, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodycaseCode = null, [WorkflowExpression] Func<string> bodyperiodCode = null, [WorkflowExpression] Func<string> bodyjurisdictionCode = null, [WorkflowExpression] Func<bodyledgerAmountTypeInput> bodyledgerAmountType = null, [WorkflowExpression] Func<string> bodyfunctionalCurrencyValue = null)
         {
-            var apiCallPath = "/importData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentityCode != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodypackageName, nameof(bodypackageName), required: true);
+            SourceExpression.Validate(bodyfileContents, nameof(bodyfileContents), required: true);
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            SourceExpression.Validate(bodyimportTransactionType, nameof(bodyimportTransactionType), required: true);
+            SourceExpression.Validate(bodychartOfAccountsName, nameof(bodychartOfAccountsName), required: true);
+            SourceExpression.Validate(bodyrecognizeFunctionalCurrency, nameof(bodyrecognizeFunctionalCurrency), required: true);
+            SourceExpression.Validate(bodystopOnLookupErrors, nameof(bodystopOnLookupErrors), required: true);
+            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            SourceExpression.Validate(bodycaseCode, nameof(bodycaseCode), required: false);
+            SourceExpression.Validate(bodyperiodCode, nameof(bodyperiodCode), required: false);
+            SourceExpression.Validate(bodyjurisdictionCode, nameof(bodyjurisdictionCode), required: false);
+            SourceExpression.Validate(bodyledgerAmountType, nameof(bodyledgerAmountType), required: false);
+            SourceExpression.Validate(bodyfunctionalCurrencyValue, nameof(bodyfunctionalCurrencyValue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
+                var apiCallPath = "/importData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = SourceExpressionConverter.ConvertToken(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodycaseCode != null)
+                {
+                    body["caseCode"] = SourceExpressionConverter.ConvertToken(bodycaseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyperiodCode != null)
+                {
+                    body["periodCode"] = SourceExpressionConverter.ConvertToken(bodyperiodCode);
+                    bodypropCount++;
+                }
+
+                if (bodyjurisdictionCode != null)
+                {
+                    body["jurisdictionCode"] = SourceExpressionConverter.ConvertToken(bodyjurisdictionCode);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodycaseCode != null)
-            {
-                body["caseCode"] = CSharpExpressionConverter.ConvertToken(bodycaseCode);
+                body["packageName"] = SourceExpressionConverter.ConvertToken(bodypackageName);
                 bodypropCount++;
-            }
-
-            if (bodyperiodCode != null)
-            {
-                body["periodCode"] = CSharpExpressionConverter.ConvertToken(bodyperiodCode);
+                body["fileContents"] = SourceExpressionConverter.ConvertToken(bodyfileContents);
                 bodypropCount++;
-            }
-
-            if (bodyjurisdictionCode != null)
-            {
-                body["jurisdictionCode"] = CSharpExpressionConverter.ConvertToken(bodyjurisdictionCode);
+                body["fileName"] = SourceExpressionConverter.ConvertToken(bodyfileName);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["packageName"] = CSharpExpressionConverter.ConvertToken(bodypackageName);
-            bodypropCount++;
-            body["fileContents"] = CSharpExpressionConverter.ConvertToken(bodyfileContents);
-            bodypropCount++;
-            body["fileName"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-            bodypropCount++;
-            body["importTransactionType"] = CSharpExpressionConverter.Convert(bodyimportTransactionType);
-            bodypropCount++;
-            body["chartOfAccountsName"] = CSharpExpressionConverter.ConvertToken(bodychartOfAccountsName);
-            bodypropCount++;
-            body["recognizeFunctionalCurrency"] = CSharpExpressionConverter.ConvertToken(bodyrecognizeFunctionalCurrency);
-            bodypropCount++;
-            body["stopOnLookupErrors"] = CSharpExpressionConverter.ConvertToken(bodystopOnLookupErrors);
-            if (bodyledgerAmountType != null)
-            {
-                body["ledgerAmountType"] = CSharpExpressionConverter.Convert(bodyledgerAmountType);
+                body["importTransactionType"] = SourceExpressionConverter.Convert(bodyimportTransactionType);
                 bodypropCount++;
-            }
-
-            if (bodyfunctionalCurrencyValue != null)
-            {
-                body["functionalCurrencyValue"] = CSharpExpressionConverter.ConvertToken(bodyfunctionalCurrencyValue);
+                body["chartOfAccountsName"] = SourceExpressionConverter.ConvertToken(bodychartOfAccountsName);
                 bodypropCount++;
+                body["recognizeFunctionalCurrency"] = SourceExpressionConverter.ConvertToken(bodyrecognizeFunctionalCurrency);
+                bodypropCount++;
+                body["stopOnLookupErrors"] = SourceExpressionConverter.ConvertToken(bodystopOnLookupErrors);
+                if (bodyledgerAmountType != null)
+                {
+                    body["ledgerAmountType"] = SourceExpressionConverter.Convert(bodyledgerAmountType);
+                    bodypropCount++;
+                }
+
+                if (bodyfunctionalCurrencyValue != null)
+                {
+                    body["functionalCurrencyValue"] = SourceExpressionConverter.ConvertToken(bodyfunctionalCurrencyValue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ImportDataResponse>(callPayload);
+            return new ApiConnectionAction<ImportDataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfileGroups(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup = null)
+        public IWorkflowAction CorptaxEfileGroups([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup = null)
         {
-            var apiCallPath = "/efileGroups";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            if (filingGroup != null)
-                callPayload.Headers["filingGroup"] = CSharpExpressionConverter.ConvertO(filingGroup);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(filingGroup, nameof(filingGroup), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/efileGroups";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                if (filingGroup != null)
+                    callPayload.Headers["filingGroup"] = SourceExpressionConverter.ConvertO(filingGroup);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction CorptaxEfilePackage(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> filingGroup, Expression<Func<bool>> bodyefilePackageDetails, Expression<Func<string>> bodyentityCode = null, Expression<Func<string>> bodyform = null)
+        public IWorkflowAction CorptaxEfilePackage([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> filingGroup, [WorkflowExpression] Func<bool> bodyefilePackageDetails, [WorkflowExpression] Func<string> bodyentityCode = null, [WorkflowExpression] Func<string> bodyform = null)
         {
-            var apiCallPath = "/efilePackage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            callPayload.Headers["filingGroup"] = CSharpExpressionConverter.ConvertO(filingGroup);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyentityCode != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(filingGroup, nameof(filingGroup), required: true);
+            SourceExpression.Validate(bodyefilePackageDetails, nameof(bodyefilePackageDetails), required: true);
+            SourceExpression.Validate(bodyentityCode, nameof(bodyentityCode), required: false);
+            SourceExpression.Validate(bodyform, nameof(bodyform), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["entityCode"] = CSharpExpressionConverter.ConvertToken(bodyentityCode);
+                var apiCallPath = "/efilePackage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                callPayload.Headers["filingGroup"] = SourceExpressionConverter.ConvertO(filingGroup);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyentityCode != null)
+                {
+                    body["entityCode"] = SourceExpressionConverter.ConvertToken(bodyentityCode);
+                    bodypropCount++;
+                }
+
+                if (bodyform != null)
+                {
+                    body["form"] = SourceExpressionConverter.ConvertToken(bodyform);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["efilePackageDetails"] = SourceExpressionConverter.ConvertToken(bodyefilePackageDetails);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyform != null)
-            {
-                body["form"] = CSharpExpressionConverter.ConvertToken(bodyform);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["efilePackageDetails"] = CSharpExpressionConverter.ConvertToken(bodyefilePackageDetails);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory(Expression<Func<string>> environmentName, Expression<Func<string>> bodyjobToken, Expression<Func<bodyreportInput>> bodyreport = null, Expression<Func<bodyreportFormatInput>> bodyreportFormat = null)
+        public IBodyWorkflowAction<GetJobHistoryResponse> GetJobHistory([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> bodyjobToken, [WorkflowExpression] Func<bodyreportInput> bodyreport = null, [WorkflowExpression] Func<bodyreportFormatInput> bodyreportFormat = null)
         {
-            var apiCallPath = "/JobHistoryReports";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["jobToken"] = CSharpExpressionConverter.ConvertToken(bodyjobToken);
-            if (bodyreport != null)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(bodyjobToken, nameof(bodyjobToken), required: true);
+            SourceExpression.Validate(bodyreport, nameof(bodyreport), required: false);
+            SourceExpression.Validate(bodyreportFormat, nameof(bodyreportFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/JobHistoryReports";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["jobToken"] = SourceExpressionConverter.ConvertToken(bodyjobToken);
                 if (bodyreport != null)
                 {
-                    body["report"] = CSharpExpressionConverter.Convert(bodyreport);
+                    if (bodyreport != null)
+                    {
+                        body["report"] = SourceExpressionConverter.Convert(bodyreport);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["report"] = "Summary";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["report"] = "Summary";
-                bodypropCount++;
-            }
-
-            if (bodyreportFormat != null)
-            {
                 if (bodyreportFormat != null)
                 {
-                    body["reportFormat"] = CSharpExpressionConverter.Convert(bodyreportFormat);
+                    if (bodyreportFormat != null)
+                    {
+                        body["reportFormat"] = SourceExpressionConverter.Convert(bodyreportFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["reportFormat"] = "Pdf";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["reportFormat"] = "Pdf";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetJobHistoryResponse>(callPayload);
+            return new ApiConnectionAction<GetJobHistoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction GetGmtDiagnostics(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodygmtSetting, Expression<Func<string>> bodygmtDiagnosticName)
+        public IWorkflowAction GetGmtDiagnostics([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodygmtSetting, [WorkflowExpression] Func<string> bodygmtDiagnosticName)
         {
-            var apiCallPath = "/gmtDiagnosticsData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["gmtSetting"] = CSharpExpressionConverter.ConvertToken(bodygmtSetting);
-            bodypropCount++;
-            body["gmtDiagnosticName"] = CSharpExpressionConverter.ConvertToken(bodygmtDiagnosticName);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodygmtSetting, nameof(bodygmtSetting), required: true);
+            SourceExpression.Validate(bodygmtDiagnosticName, nameof(bodygmtDiagnosticName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/gmtDiagnosticsData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["gmtSetting"] = SourceExpressionConverter.ConvertToken(bodygmtSetting);
+                bodypropCount++;
+                body["gmtDiagnosticName"] = SourceExpressionConverter.ConvertToken(bodygmtDiagnosticName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "corptaxsandbox")]
-        public IWorkflowAction ReturnCalculationDetails(Expression<Func<string>> environmentName, Expression<Func<string>> enterpriseName, Expression<Func<string>> bodyreturnName)
+        public IWorkflowAction ReturnCalculationDetails([WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<string> enterpriseName, [WorkflowExpression] Func<string> bodyreturnName)
         {
-            var apiCallPath = "/ReturnCalculationDetails";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["environmentName"] = CSharpExpressionConverter.ConvertO(environmentName);
-            callPayload.Headers["enterpriseName"] = CSharpExpressionConverter.ConvertO(enterpriseName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["returnName"] = CSharpExpressionConverter.ConvertToken(bodyreturnName);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(enterpriseName, nameof(enterpriseName), required: true);
+            SourceExpression.Validate(bodyreturnName, nameof(bodyreturnName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/ReturnCalculationDetails";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["environmentName"] = SourceExpressionConverter.ConvertO(environmentName);
+                callPayload.Headers["enterpriseName"] = SourceExpressionConverter.ConvertO(enterpriseName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["returnName"] = SourceExpressionConverter.ConvertToken(bodyreturnName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

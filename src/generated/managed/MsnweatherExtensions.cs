@@ -12,57 +12,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Msnweather
     public class MsnweatherActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<CurrentWeather> CurrentWeather(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<CurrentWeather> CurrentWeather([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/current/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
-            return new ApiConnectionAction<CurrentWeather>(callPayload);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(units, nameof(units), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/current/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CurrentWeather>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast> TodaysForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast> TodaysForecast([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forecast/today/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
-            return new ApiConnectionAction<WeatherForecast>(callPayload);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(units, nameof(units), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecast/today/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WeatherForecast>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "msnweather")]
-        public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast(Expression<Func<string>> location, Expression<Func<unitsInput>> units)
+        public IBodyWorkflowAction<WeatherForecast> TomorrowsForecast([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forecast/tomorrow/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
-            return new ApiConnectionAction<WeatherForecast>(callPayload);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(units, nameof(units), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forecast/tomorrow/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WeatherForecast>(BuildSourceInput);
         }
     }
 
     public class MsnweatherTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange(Expression<Func<string>> location, Expression<Func<measureInput>> measure, Expression<Func<whenInput>> when, Expression<Func<double>> target, Expression<Func<string>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentWeatherChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<measureInput> measure, [WorkflowExpression] Func<whenInput> when, [WorkflowExpression] Func<double> target, [WorkflowExpression] Func<string> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/current/weather/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Measure"] = CSharpExpressionConverter.Convert(measure);
-            callPayload.Queries["When"] = CSharpExpressionConverter.Convert(when);
-            callPayload.Queries["Target"] = CSharpExpressionConverter.ConvertO(target);
-            callPayload.Queries["units"] = CSharpExpressionConverter.ConvertO(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(measure, nameof(measure), required: true);
+            SourceExpression.Validate(when, nameof(when), required: true);
+            SourceExpression.Validate(target, nameof(target), required: true);
+            SourceExpression.Validate(units, nameof(units), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/current/weather/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Measure"] = SourceExpressionConverter.Convert(measure);
+                callPayload.Queries["When"] = SourceExpressionConverter.Convert(when);
+                callPayload.Queries["Target"] = SourceExpressionConverter.ConvertO(target);
+                callPayload.Queries["units"] = SourceExpressionConverter.ConvertO(units);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CurrentWeather>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange(Expression<Func<string>> location, Expression<Func<unitsInput>> units, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CurrentWeather> OnCurrentConditionsChange([WorkflowExpression] Func<string> location, [WorkflowExpression] Func<unitsInput> units, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/current/conditions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["units"] = CSharpExpressionConverter.Convert(units);
-            return new ApiConnectionTrigger<CurrentWeather>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(units, nameof(units), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/current/conditions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["units"] = SourceExpressionConverter.Convert(units);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CurrentWeather>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

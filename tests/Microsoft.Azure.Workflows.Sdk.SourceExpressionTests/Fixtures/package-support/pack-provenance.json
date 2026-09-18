@@ -1,0 +1,22 @@
+{
+  "packageSha256": "7F1BC5DE34316BF878DD4280C2B4E03459FD3D6755A7A041E05AEEBB539C1DFA",
+  "argv": [
+    "pack",
+    "src\\Microsoft.Azure.Workflows.Sdk.csproj",
+    "--no-build",
+    "--no-restore",
+    "-c",
+    "Debug",
+    "-p:GeneratePackageOnBuild=false",
+    "-p:PackageOutputPath=D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\package",
+    "-p:NuspecOutputPath=D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\package",
+    "-v:quiet"
+  ],
+  "executable": "dotnet",
+  "package": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\package\\Microsoft.Azure.Workflows.Sdk.1.0.0-preview.2.nupkg",
+  "logSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855",
+  "completedUtc": "2026-09-18T13:14:23.9054090Z",
+  "exitCode": 0,
+  "runtimeSha256": "D55475362C464A21E2DA2A8BE12A96D893208C07AC2DFD14512A2C8559773067",
+  "compilerSha256": "42F0284B176BBE875BCA2890DE5FC7B5259AECF7B05B40026C4E5FF486C4897C"
+}

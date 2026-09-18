@@ -12,117 +12,147 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Honeywellforge
     public class HoneywellforgeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IBodyWorkflowAction<CloseCaseResponse> CloseServiceCaseAtForge(Expression<Func<string>> projectId, Expression<Func<string>> serviceCaseNumber, Expression<Func<string>> bodysiteId, Expression<Func<string>> bodyresolutionText, Expression<Func<string>> bodyworkOrderIDs = null, Expression<Func<string>> bodypriority = null, Expression<Func<string>> bodyresolutionCode = null, Expression<Func<string>> bodyrootCauseCode = null, Expression<Func<int>> bodyserviceCaseClosedOn = null)
+        public IBodyWorkflowAction<CloseCaseResponse> CloseServiceCaseAtForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> serviceCaseNumber, [WorkflowExpression] Func<string> bodysiteId, [WorkflowExpression] Func<string> bodyresolutionText, [WorkflowExpression] Func<string> bodyworkOrderIDs = null, [WorkflowExpression] Func<string> bodypriority = null, [WorkflowExpression] Func<string> bodyresolutionCode = null, [WorkflowExpression] Func<string> bodyrootCauseCode = null, [WorkflowExpression] Func<int> bodyserviceCaseClosedOn = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/service-cases/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceCaseNumber, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["siteId"] = CSharpExpressionConverter.ConvertToken(bodysiteId);
-            body["status"] = "Closed";
-            bodypropCount++;
-            if (bodyworkOrderIDs != null)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(serviceCaseNumber, nameof(serviceCaseNumber), required: true);
+            SourceExpression.Validate(bodysiteId, nameof(bodysiteId), required: true);
+            SourceExpression.Validate(bodyresolutionText, nameof(bodyresolutionText), required: true);
+            SourceExpression.Validate(bodyworkOrderIDs, nameof(bodyworkOrderIDs), required: false);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            SourceExpression.Validate(bodyresolutionCode, nameof(bodyresolutionCode), required: false);
+            SourceExpression.Validate(bodyrootCauseCode, nameof(bodyrootCauseCode), required: false);
+            SourceExpression.Validate(bodyserviceCaseClosedOn, nameof(bodyserviceCaseClosedOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workOrderIDs"] = CSharpExpressionConverter.ConvertToken(bodyworkOrderIDs);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/service-cases/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(serviceCaseNumber, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["siteId"] = SourceExpressionConverter.ConvertToken(bodysiteId);
+                body["status"] = "Closed";
+                bodypropCount++;
+                if (bodyworkOrderIDs != null)
+                {
+                    body["workOrderIDs"] = SourceExpressionConverter.ConvertToken(bodyworkOrderIDs);
+                    bodypropCount++;
+                }
 
-            if (bodypriority != null)
-            {
                 if (bodypriority != null)
                 {
-                    body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
+                    if (bodypriority != null)
+                    {
+                        body["priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["priority"] = "Medium";
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["priority"] = "Medium";
-                bodypropCount++;
+                body["resolutionText"] = SourceExpressionConverter.ConvertToken(bodyresolutionText);
+                if (bodyresolutionCode != null)
+                {
+                    body["resolutionCode"] = SourceExpressionConverter.ConvertToken(bodyresolutionCode);
+                    bodypropCount++;
+                }
+
+                if (bodyrootCauseCode != null)
+                {
+                    body["rootCauseCode"] = SourceExpressionConverter.ConvertToken(bodyrootCauseCode);
+                    bodypropCount++;
+                }
+
+                if (bodyserviceCaseClosedOn != null)
+                {
+                    body["serviceCaseClosedOn"] = SourceExpressionConverter.ConvertToken(bodyserviceCaseClosedOn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["resolutionText"] = CSharpExpressionConverter.ConvertToken(bodyresolutionText);
-            if (bodyresolutionCode != null)
-            {
-                body["resolutionCode"] = CSharpExpressionConverter.ConvertToken(bodyresolutionCode);
-                bodypropCount++;
-            }
-
-            if (bodyrootCauseCode != null)
-            {
-                body["rootCauseCode"] = CSharpExpressionConverter.ConvertToken(bodyrootCauseCode);
-                bodypropCount++;
-            }
-
-            if (bodyserviceCaseClosedOn != null)
-            {
-                body["serviceCaseClosedOn"] = CSharpExpressionConverter.ConvertToken(bodyserviceCaseClosedOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseCaseResponse>(callPayload);
+            return new ApiConnectionAction<CloseCaseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "honeywellforge")]
-        public IWorkflowAction SendEventToForge(Expression<Func<string>> projectId, Expression<Func<string>> bodyeventName, Expression<Func<string>> bodyeventType, Expression<Func<string>> bodymessage, Expression<Func<string>> bodycorrelationID, Expression<Func<string>> bodysource, Expression<Func<string>> bodyconnectorID = null)
+        public IWorkflowAction SendEventToForge([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyeventName, [WorkflowExpression] Func<string> bodyeventType, [WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodycorrelationID, [WorkflowExpression] Func<string> bodysource, [WorkflowExpression] Func<string> bodyconnectorID = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/transactionEvent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event"] = CSharpExpressionConverter.ConvertToken(bodyeventName);
-            bodypropCount++;
-            body["eventType"] = CSharpExpressionConverter.ConvertToken(bodyeventType);
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            bodypropCount++;
-            body["corelationId"] = CSharpExpressionConverter.ConvertToken(bodycorrelationID);
-            if (bodyconnectorID != null)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(bodyeventName, nameof(bodyeventName), required: true);
+            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodycorrelationID, nameof(bodycorrelationID), required: true);
+            SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
+            SourceExpression.Validate(bodyconnectorID, nameof(bodyconnectorID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["connectorId"] = CSharpExpressionConverter.ConvertToken(bodyconnectorID);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/transactionEvent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["event"] = SourceExpressionConverter.ConvertToken(bodyeventName);
+                bodypropCount++;
+                body["eventType"] = SourceExpressionConverter.ConvertToken(bodyeventType);
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                bodypropCount++;
+                body["corelationId"] = SourceExpressionConverter.ConvertToken(bodycorrelationID);
+                if (bodyconnectorID != null)
+                {
+                    body["connectorId"] = SourceExpressionConverter.ConvertToken(bodyconnectorID);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class HoneywellforgeTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ServiceCaseCreated(Expression<Func<string>> projectId, Expression<Func<string>> connectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ServiceCaseCreated([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> connectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/webhooks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectorId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(connectorId, nameof(connectorId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/webhooks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(connectorId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,115 +12,133 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trustual
     public class TrustualActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput> CertifyFile(Expression<Func<string>> bodyfileContent = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput> CertifyFile([WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            var apiCallPath = "/certify_file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileContent != null)
+            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            SourceExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
+            SourceExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file_base_64"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
-                bodypropCount++;
-            }
-
-            if (bodycertificateLanguage != null)
-            {
-                if (bodycertificateLanguage != null)
+                var apiCallPath = "/certify_file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileContent != null)
                 {
-                    body["language"] = CSharpExpressionConverter.Convert(bodycertificateLanguage);
+                    body["file_base_64"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
+                if (bodycertificateLanguage != null)
+                {
+                    if (bodycertificateLanguage != null)
+                    {
+                        body["language"] = SourceExpressionConverter.Convert(bodycertificateLanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
+                    bodypropCount++;
+                }
+
+                if (bodytimeZoneOffset != null)
+                {
+                    body["offset"] = SourceExpressionConverter.ConvertToken(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
+
+                if (bodyreference != null)
+                {
+                    body["reference"] = SourceExpressionConverter.ConvertToken(bodyreference);
+                    bodypropCount++;
+                }
+
+                if (bodysandboxMode != null)
+                {
+                    body["sandbox"] = SourceExpressionConverter.ConvertToken(bodysandboxMode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytimeZoneOffset != null)
-            {
-                body["offset"] = CSharpExpressionConverter.ConvertToken(bodytimeZoneOffset);
-                bodypropCount++;
-            }
-
-            if (bodyreference != null)
-            {
-                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
-                bodypropCount++;
-            }
-
-            if (bodysandboxMode != null)
-            {
-                body["sandbox"] = CSharpExpressionConverter.ConvertToken(bodysandboxMode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CertificationOutput>(callPayload);
+            return new ApiConnectionAction<CertificationOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "trustual")]
-        public IBodyWorkflowAction<CertificationOutput> CertifyHash(Expression<Func<string>> bodyhash = null, Expression<Func<bodycertificateLanguageInput>> bodycertificateLanguage = null, Expression<Func<double>> bodytimeZoneOffset = null, Expression<Func<string>> bodyreference = null, Expression<Func<bool>> bodysandboxMode = null)
+        public IBodyWorkflowAction<CertificationOutput> CertifyHash([WorkflowExpression] Func<string> bodyhash = null, [WorkflowExpression] Func<bodycertificateLanguageInput> bodycertificateLanguage = null, [WorkflowExpression] Func<double> bodytimeZoneOffset = null, [WorkflowExpression] Func<string> bodyreference = null, [WorkflowExpression] Func<bool> bodysandboxMode = null)
         {
-            var apiCallPath = "/certify_hash";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyhash != null)
+            SourceExpression.Validate(bodyhash, nameof(bodyhash), required: false);
+            SourceExpression.Validate(bodycertificateLanguage, nameof(bodycertificateLanguage), required: false);
+            SourceExpression.Validate(bodytimeZoneOffset, nameof(bodytimeZoneOffset), required: false);
+            SourceExpression.Validate(bodyreference, nameof(bodyreference), required: false);
+            SourceExpression.Validate(bodysandboxMode, nameof(bodysandboxMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["hash"] = CSharpExpressionConverter.ConvertToken(bodyhash);
-                bodypropCount++;
-            }
-
-            if (bodycertificateLanguage != null)
-            {
-                if (bodycertificateLanguage != null)
+                var apiCallPath = "/certify_hash";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyhash != null)
                 {
-                    body["language"] = CSharpExpressionConverter.Convert(bodycertificateLanguage);
+                    body["hash"] = SourceExpressionConverter.ConvertToken(bodyhash);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["language"] = "en";
-                bodypropCount++;
+                if (bodycertificateLanguage != null)
+                {
+                    if (bodycertificateLanguage != null)
+                    {
+                        body["language"] = SourceExpressionConverter.Convert(bodycertificateLanguage);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["language"] = "en";
+                    bodypropCount++;
+                }
+
+                if (bodytimeZoneOffset != null)
+                {
+                    body["offset"] = SourceExpressionConverter.ConvertToken(bodytimeZoneOffset);
+                    bodypropCount++;
+                }
+
+                if (bodyreference != null)
+                {
+                    body["reference"] = SourceExpressionConverter.ConvertToken(bodyreference);
+                    bodypropCount++;
+                }
+
+                if (bodysandboxMode != null)
+                {
+                    body["sandbox"] = SourceExpressionConverter.ConvertToken(bodysandboxMode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytimeZoneOffset != null)
-            {
-                body["offset"] = CSharpExpressionConverter.ConvertToken(bodytimeZoneOffset);
-                bodypropCount++;
-            }
-
-            if (bodyreference != null)
-            {
-                body["reference"] = CSharpExpressionConverter.ConvertToken(bodyreference);
-                bodypropCount++;
-            }
-
-            if (bodysandboxMode != null)
-            {
-                body["sandbox"] = CSharpExpressionConverter.ConvertToken(bodysandboxMode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CertificationOutput>(callPayload);
+            return new ApiConnectionAction<CertificationOutput>(BuildSourceInput);
         }
     }
 

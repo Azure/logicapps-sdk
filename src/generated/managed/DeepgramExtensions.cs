@@ -12,212 +12,320 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Deepgram
     public class DeepgramActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<TranscribePostResponse> Transcribe(Expression<Func<string>> bodyurl, Expression<Func<modelInput>> model = null, Expression<Func<tierInput>> tier = null, Expression<Func<versionInput>> version = null, Expression<Func<string>> language = null, Expression<Func<bool>> detectLanguage = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<redactInput>> redact = null, Expression<Func<bool>> diarize = null, Expression<Func<string>> diarizeVersion = null, Expression<Func<bool>> smartFormat = null, Expression<Func<bool>> fillerWords = null, Expression<Func<bool>> multichannel = null, Expression<Func<int>> alternatives = null, Expression<Func<string>> search = null, Expression<Func<string>> replace = null, Expression<Func<string>> callback = null, Expression<Func<string>> keywords = null, Expression<Func<bool>> paragraphs = null, Expression<Func<string>> summarize = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> utterances = null, Expression<Func<double>> uttSplit = null, Expression<Func<string>> tag = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> measurements = null, Expression<Func<bool>> dictation = null)
+        public IBodyWorkflowAction<TranscribePostResponse> Transcribe([WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<modelInput> model = null, [WorkflowExpression] Func<tierInput> tier = null, [WorkflowExpression] Func<versionInput> version = null, [WorkflowExpression] Func<string> language = null, [WorkflowExpression] Func<bool> detectLanguage = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<redactInput> redact = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<string> diarizeVersion = null, [WorkflowExpression] Func<bool> smartFormat = null, [WorkflowExpression] Func<bool> fillerWords = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<int> alternatives = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> replace = null, [WorkflowExpression] Func<string> callback = null, [WorkflowExpression] Func<string> keywords = null, [WorkflowExpression] Func<bool> paragraphs = null, [WorkflowExpression] Func<string> summarize = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<double> uttSplit = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> measurements = null, [WorkflowExpression] Func<bool> dictation = null)
         {
-            var apiCallPath = "/listen";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (model != null)
-                callPayload.Queries["model"] = CSharpExpressionConverter.Convert(model);
-            if (tier != null)
-                callPayload.Queries["tier"] = CSharpExpressionConverter.Convert(tier);
-            if (version != null)
-                callPayload.Queries["version"] = CSharpExpressionConverter.Convert(version);
-            if (language != null)
-                callPayload.Queries["language"] = CSharpExpressionConverter.ConvertO(language);
-            if (detectLanguage != null)
-                callPayload.Queries["detect_language"] = CSharpExpressionConverter.ConvertO(detectLanguage);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = CSharpExpressionConverter.ConvertO(punctuate);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = CSharpExpressionConverter.ConvertO(profanityFilter);
-            if (redact != null)
-                callPayload.Queries["redact"] = CSharpExpressionConverter.Convert(redact);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = CSharpExpressionConverter.ConvertO(diarize);
-            if (diarizeVersion != null)
-                callPayload.Queries["diarize_version"] = CSharpExpressionConverter.ConvertO(diarizeVersion);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = CSharpExpressionConverter.ConvertO(smartFormat);
-            if (fillerWords != null)
-                callPayload.Queries["filler_words"] = CSharpExpressionConverter.ConvertO(fillerWords);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = CSharpExpressionConverter.ConvertO(multichannel);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = CSharpExpressionConverter.ConvertO(alternatives);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (replace != null)
-                callPayload.Queries["replace"] = CSharpExpressionConverter.ConvertO(replace);
-            if (callback != null)
-                callPayload.Queries["callback"] = CSharpExpressionConverter.ConvertO(callback);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
-            if (paragraphs != null)
-                callPayload.Queries["paragraphs"] = CSharpExpressionConverter.ConvertO(paragraphs);
-            if (summarize != null)
-                callPayload.Queries["summarize"] = CSharpExpressionConverter.ConvertO(summarize);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = CSharpExpressionConverter.ConvertO(detectTopics);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = CSharpExpressionConverter.ConvertO(utterances);
-            if (uttSplit != null)
-                callPayload.Queries["utt_split"] = CSharpExpressionConverter.ConvertO(uttSplit);
-            if (tag != null)
-                callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = CSharpExpressionConverter.ConvertO(numerals);
-            if (ner != null)
-                callPayload.Queries["ner"] = CSharpExpressionConverter.ConvertO(ner);
-            if (measurements != null)
-                callPayload.Queries["measurements"] = CSharpExpressionConverter.ConvertO(measurements);
-            if (dictation != null)
-                callPayload.Queries["dictation"] = CSharpExpressionConverter.ConvertO(dictation);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            SourceExpression.Validate(model, nameof(model), required: false);
+            SourceExpression.Validate(tier, nameof(tier), required: false);
+            SourceExpression.Validate(version, nameof(version), required: false);
+            SourceExpression.Validate(language, nameof(language), required: false);
+            SourceExpression.Validate(detectLanguage, nameof(detectLanguage), required: false);
+            SourceExpression.Validate(punctuate, nameof(punctuate), required: false);
+            SourceExpression.Validate(profanityFilter, nameof(profanityFilter), required: false);
+            SourceExpression.Validate(redact, nameof(redact), required: false);
+            SourceExpression.Validate(diarize, nameof(diarize), required: false);
+            SourceExpression.Validate(diarizeVersion, nameof(diarizeVersion), required: false);
+            SourceExpression.Validate(smartFormat, nameof(smartFormat), required: false);
+            SourceExpression.Validate(fillerWords, nameof(fillerWords), required: false);
+            SourceExpression.Validate(multichannel, nameof(multichannel), required: false);
+            SourceExpression.Validate(alternatives, nameof(alternatives), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(replace, nameof(replace), required: false);
+            SourceExpression.Validate(callback, nameof(callback), required: false);
+            SourceExpression.Validate(keywords, nameof(keywords), required: false);
+            SourceExpression.Validate(paragraphs, nameof(paragraphs), required: false);
+            SourceExpression.Validate(summarize, nameof(summarize), required: false);
+            SourceExpression.Validate(detectTopics, nameof(detectTopics), required: false);
+            SourceExpression.Validate(utterances, nameof(utterances), required: false);
+            SourceExpression.Validate(uttSplit, nameof(uttSplit), required: false);
+            SourceExpression.Validate(tag, nameof(tag), required: false);
+            SourceExpression.Validate(numerals, nameof(numerals), required: false);
+            SourceExpression.Validate(ner, nameof(ner), required: false);
+            SourceExpression.Validate(measurements, nameof(measurements), required: false);
+            SourceExpression.Validate(dictation, nameof(dictation), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/listen";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (model != null)
+                    callPayload.Queries["model"] = SourceExpressionConverter.Convert(model);
+                if (tier != null)
+                    callPayload.Queries["tier"] = SourceExpressionConverter.Convert(tier);
+                if (version != null)
+                    callPayload.Queries["version"] = SourceExpressionConverter.Convert(version);
+                if (language != null)
+                    callPayload.Queries["language"] = SourceExpressionConverter.ConvertO(language);
+                if (detectLanguage != null)
+                    callPayload.Queries["detect_language"] = SourceExpressionConverter.ConvertO(detectLanguage);
+                if (punctuate != null)
+                    callPayload.Queries["punctuate"] = SourceExpressionConverter.ConvertO(punctuate);
+                if (profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = SourceExpressionConverter.ConvertO(profanityFilter);
+                if (redact != null)
+                    callPayload.Queries["redact"] = SourceExpressionConverter.Convert(redact);
+                if (diarize != null)
+                    callPayload.Queries["diarize"] = SourceExpressionConverter.ConvertO(diarize);
+                if (diarizeVersion != null)
+                    callPayload.Queries["diarize_version"] = SourceExpressionConverter.ConvertO(diarizeVersion);
+                if (smartFormat != null)
+                    callPayload.Queries["smart_format"] = SourceExpressionConverter.ConvertO(smartFormat);
+                if (fillerWords != null)
+                    callPayload.Queries["filler_words"] = SourceExpressionConverter.ConvertO(fillerWords);
+                if (multichannel != null)
+                    callPayload.Queries["multichannel"] = SourceExpressionConverter.ConvertO(multichannel);
+                if (alternatives != null)
+                    callPayload.Queries["alternatives"] = SourceExpressionConverter.ConvertO(alternatives);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (replace != null)
+                    callPayload.Queries["replace"] = SourceExpressionConverter.ConvertO(replace);
+                if (callback != null)
+                    callPayload.Queries["callback"] = SourceExpressionConverter.ConvertO(callback);
+                if (keywords != null)
+                    callPayload.Queries["keywords"] = SourceExpressionConverter.ConvertO(keywords);
+                if (paragraphs != null)
+                    callPayload.Queries["paragraphs"] = SourceExpressionConverter.ConvertO(paragraphs);
+                if (summarize != null)
+                    callPayload.Queries["summarize"] = SourceExpressionConverter.ConvertO(summarize);
+                if (detectTopics != null)
+                    callPayload.Queries["detect_topics"] = SourceExpressionConverter.ConvertO(detectTopics);
+                if (utterances != null)
+                    callPayload.Queries["utterances"] = SourceExpressionConverter.ConvertO(utterances);
+                if (uttSplit != null)
+                    callPayload.Queries["utt_split"] = SourceExpressionConverter.ConvertO(uttSplit);
+                if (tag != null)
+                    callPayload.Queries["tag"] = SourceExpressionConverter.ConvertO(tag);
+                if (numerals != null)
+                    callPayload.Queries["numerals"] = SourceExpressionConverter.ConvertO(numerals);
+                if (ner != null)
+                    callPayload.Queries["ner"] = SourceExpressionConverter.ConvertO(ner);
+                if (measurements != null)
+                    callPayload.Queries["measurements"] = SourceExpressionConverter.ConvertO(measurements);
+                if (dictation != null)
+                    callPayload.Queries["dictation"] = SourceExpressionConverter.ConvertO(dictation);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TranscribePostResponse>(callPayload);
+            return new ApiConnectionAction<TranscribePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
         public IBodyWorkflowAction<ProjectsGetResponse> ProjectsGet()
         {
-            var apiCallPath = "/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectsGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<JToken> ProjectDelete(Expression<Func<string>> projectId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch(Expression<Func<string>> projectId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ProjectPatchResponse>(callPayload);
+            return new ApiConnectionAction<ProjectsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<RequestsGetResponse> RequestsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> limit = null, Expression<Func<statusInput>> status = null)
+        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
-            return new ApiConnectionAction<RequestsGetResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<RequestGetResponse> RequestGet(Expression<Func<string>> projectId, Expression<Func<string>> requestId)
+        public IBodyWorkflowAction<JToken> ProjectDelete([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RequestGetResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<UsageGetResponse> UsageGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> accessor = null, Expression<Func<string>> tag = null, Expression<Func<methodInput>> method = null, Expression<Func<string>> model = null, Expression<Func<bool>> multichannel = null, Expression<Func<bool>> interimResults = null, Expression<Func<bool>> punctuate = null, Expression<Func<bool>> ner = null, Expression<Func<bool>> utterances = null, Expression<Func<bool>> replace = null, Expression<Func<bool>> profanityFilter = null, Expression<Func<bool>> keywords = null, Expression<Func<bool>> detectTopics = null, Expression<Func<bool>> diarize = null, Expression<Func<bool>> search = null, Expression<Func<bool>> redact = null, Expression<Func<bool>> alternatives = null, Expression<Func<bool>> numerals = null, Expression<Func<bool>> smartFormat = null)
+        public IBodyWorkflowAction<ProjectPatchResponse> ProjectPatch([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            if (accessor != null)
-                callPayload.Queries["accessor"] = CSharpExpressionConverter.ConvertO(accessor);
-            if (tag != null)
-                callPayload.Queries["tag"] = CSharpExpressionConverter.ConvertO(tag);
-            if (method != null)
-                callPayload.Queries["method"] = CSharpExpressionConverter.Convert(method);
-            if (model != null)
-                callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
-            if (multichannel != null)
-                callPayload.Queries["multichannel"] = CSharpExpressionConverter.ConvertO(multichannel);
-            if (interimResults != null)
-                callPayload.Queries["interim_results"] = CSharpExpressionConverter.ConvertO(interimResults);
-            if (punctuate != null)
-                callPayload.Queries["punctuate"] = CSharpExpressionConverter.ConvertO(punctuate);
-            if (ner != null)
-                callPayload.Queries["ner"] = CSharpExpressionConverter.ConvertO(ner);
-            if (utterances != null)
-                callPayload.Queries["utterances"] = CSharpExpressionConverter.ConvertO(utterances);
-            if (replace != null)
-                callPayload.Queries["replace"] = CSharpExpressionConverter.ConvertO(replace);
-            if (profanityFilter != null)
-                callPayload.Queries["profanity_filter"] = CSharpExpressionConverter.ConvertO(profanityFilter);
-            if (keywords != null)
-                callPayload.Queries["keywords"] = CSharpExpressionConverter.ConvertO(keywords);
-            if (detectTopics != null)
-                callPayload.Queries["detect_topics"] = CSharpExpressionConverter.ConvertO(detectTopics);
-            if (diarize != null)
-                callPayload.Queries["diarize"] = CSharpExpressionConverter.ConvertO(diarize);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (redact != null)
-                callPayload.Queries["redact"] = CSharpExpressionConverter.ConvertO(redact);
-            if (alternatives != null)
-                callPayload.Queries["alternatives"] = CSharpExpressionConverter.ConvertO(alternatives);
-            if (numerals != null)
-                callPayload.Queries["numerals"] = CSharpExpressionConverter.ConvertO(numerals);
-            if (smartFormat != null)
-                callPayload.Queries["smart_format"] = CSharpExpressionConverter.ConvertO(smartFormat);
-            return new ApiConnectionAction<UsageGetResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectPatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
-        public IBodyWorkflowAction<FieldsGetResponse> FieldsGet(Expression<Func<string>> projectId, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IBodyWorkflowAction<RequestsGetResponse> RequestsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<statusInput> status = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            return new ApiConnectionAction<FieldsGetResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RequestsGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
+        public IBodyWorkflowAction<RequestGetResponse> RequestGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> requestId)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(requestId, nameof(requestId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RequestGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
+        public IBodyWorkflowAction<UsageGetResponse> UsageGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> accessor = null, [WorkflowExpression] Func<string> tag = null, [WorkflowExpression] Func<methodInput> method = null, [WorkflowExpression] Func<string> model = null, [WorkflowExpression] Func<bool> multichannel = null, [WorkflowExpression] Func<bool> interimResults = null, [WorkflowExpression] Func<bool> punctuate = null, [WorkflowExpression] Func<bool> ner = null, [WorkflowExpression] Func<bool> utterances = null, [WorkflowExpression] Func<bool> replace = null, [WorkflowExpression] Func<bool> profanityFilter = null, [WorkflowExpression] Func<bool> keywords = null, [WorkflowExpression] Func<bool> detectTopics = null, [WorkflowExpression] Func<bool> diarize = null, [WorkflowExpression] Func<bool> search = null, [WorkflowExpression] Func<bool> redact = null, [WorkflowExpression] Func<bool> alternatives = null, [WorkflowExpression] Func<bool> numerals = null, [WorkflowExpression] Func<bool> smartFormat = null)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            SourceExpression.Validate(accessor, nameof(accessor), required: false);
+            SourceExpression.Validate(tag, nameof(tag), required: false);
+            SourceExpression.Validate(method, nameof(method), required: false);
+            SourceExpression.Validate(model, nameof(model), required: false);
+            SourceExpression.Validate(multichannel, nameof(multichannel), required: false);
+            SourceExpression.Validate(interimResults, nameof(interimResults), required: false);
+            SourceExpression.Validate(punctuate, nameof(punctuate), required: false);
+            SourceExpression.Validate(ner, nameof(ner), required: false);
+            SourceExpression.Validate(utterances, nameof(utterances), required: false);
+            SourceExpression.Validate(replace, nameof(replace), required: false);
+            SourceExpression.Validate(profanityFilter, nameof(profanityFilter), required: false);
+            SourceExpression.Validate(keywords, nameof(keywords), required: false);
+            SourceExpression.Validate(detectTopics, nameof(detectTopics), required: false);
+            SourceExpression.Validate(diarize, nameof(diarize), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(redact, nameof(redact), required: false);
+            SourceExpression.Validate(alternatives, nameof(alternatives), required: false);
+            SourceExpression.Validate(numerals, nameof(numerals), required: false);
+            SourceExpression.Validate(smartFormat, nameof(smartFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                if (accessor != null)
+                    callPayload.Queries["accessor"] = SourceExpressionConverter.ConvertO(accessor);
+                if (tag != null)
+                    callPayload.Queries["tag"] = SourceExpressionConverter.ConvertO(tag);
+                if (method != null)
+                    callPayload.Queries["method"] = SourceExpressionConverter.Convert(method);
+                if (model != null)
+                    callPayload.Queries["model"] = SourceExpressionConverter.ConvertO(model);
+                if (multichannel != null)
+                    callPayload.Queries["multichannel"] = SourceExpressionConverter.ConvertO(multichannel);
+                if (interimResults != null)
+                    callPayload.Queries["interim_results"] = SourceExpressionConverter.ConvertO(interimResults);
+                if (punctuate != null)
+                    callPayload.Queries["punctuate"] = SourceExpressionConverter.ConvertO(punctuate);
+                if (ner != null)
+                    callPayload.Queries["ner"] = SourceExpressionConverter.ConvertO(ner);
+                if (utterances != null)
+                    callPayload.Queries["utterances"] = SourceExpressionConverter.ConvertO(utterances);
+                if (replace != null)
+                    callPayload.Queries["replace"] = SourceExpressionConverter.ConvertO(replace);
+                if (profanityFilter != null)
+                    callPayload.Queries["profanity_filter"] = SourceExpressionConverter.ConvertO(profanityFilter);
+                if (keywords != null)
+                    callPayload.Queries["keywords"] = SourceExpressionConverter.ConvertO(keywords);
+                if (detectTopics != null)
+                    callPayload.Queries["detect_topics"] = SourceExpressionConverter.ConvertO(detectTopics);
+                if (diarize != null)
+                    callPayload.Queries["diarize"] = SourceExpressionConverter.ConvertO(diarize);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (redact != null)
+                    callPayload.Queries["redact"] = SourceExpressionConverter.ConvertO(redact);
+                if (alternatives != null)
+                    callPayload.Queries["alternatives"] = SourceExpressionConverter.ConvertO(alternatives);
+                if (numerals != null)
+                    callPayload.Queries["numerals"] = SourceExpressionConverter.ConvertO(numerals);
+                if (smartFormat != null)
+                    callPayload.Queries["smart_format"] = SourceExpressionConverter.ConvertO(smartFormat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UsageGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "deepgram")]
+        public IBodyWorkflowAction<FieldsGetResponse> FieldsGet([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/usage/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FieldsGetResponse>(BuildSourceInput);
         }
     }
 

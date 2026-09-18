@@ -14,26 +14,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zforms")]
         public IBodyWorkflowAction<GetAvailableFormsResponse> GetAvailableForms()
         {
-            var apiCallPath = "/api/zforms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
-            return new ApiConnectionAction<GetAvailableFormsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/zforms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAvailableFormsResponse>(BuildSourceInput);
         }
     }
 
     public class ZformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted(Expression<Func<string>> formlinkname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormSubmittedResponse> FormSubmitted([WorkflowExpression] Func<string> formlinkname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/resthooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["formlinkname"] = CSharpExpressionConverter.ConvertO(formlinkname);
-            callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
-            callPayload.Headers["zf_version"] = Convert.ToString(2);
-            callPayload.Headers["webhooks_url"] = Convert.ToString("@listCallbackUrl()");
-            return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(formlinkname, nameof(formlinkname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/resthooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["formlinkname"] = SourceExpressionConverter.ConvertO(formlinkname);
+                callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
+                callPayload.Headers["zf_version"] = Convert.ToString(2);
+                callPayload.Headers["webhooks_url"] = Convert.ToString("@listCallbackUrl()");
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<FormSubmittedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

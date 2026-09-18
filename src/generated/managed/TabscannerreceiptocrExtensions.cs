@@ -12,58 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tabscannerreceiptocr
     public class TabscannerreceiptocrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Process> Process(Expression<Func<string>> bodyimage = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodydocumentType = null, Expression<Func<string>> bodydefaultDateParsing = null, Expression<Func<string>> bodydecimalPlaces = null)
+        public IBodyWorkflowAction<Process> Process([WorkflowExpression] Func<string> bodyimage = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodydocumentType = null, [WorkflowExpression] Func<string> bodydefaultDateParsing = null, [WorkflowExpression] Func<string> bodydecimalPlaces = null)
         {
-            var apiCallPath = "/api/2/processbase64";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyimage != null)
+            SourceExpression.Validate(bodyimage, nameof(bodyimage), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodydocumentType, nameof(bodydocumentType), required: false);
+            SourceExpression.Validate(bodydefaultDateParsing, nameof(bodydefaultDateParsing), required: false);
+            SourceExpression.Validate(bodydecimalPlaces, nameof(bodydecimalPlaces), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["image"] = CSharpExpressionConverter.ConvertToken(bodyimage);
-                bodypropCount++;
+                var apiCallPath = "/api/2/processbase64";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyimage != null)
+                {
+                    body["image"] = SourceExpressionConverter.ConvertToken(bodyimage);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentType != null)
+                {
+                    body["documentType"] = SourceExpressionConverter.ConvertToken(bodydocumentType);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultDateParsing != null)
+                {
+                    body["defaultDateParsing"] = SourceExpressionConverter.ConvertToken(bodydefaultDateParsing);
+                    bodypropCount++;
+                }
+
+                if (bodydecimalPlaces != null)
+                {
+                    body["decimalPlaces"] = SourceExpressionConverter.ConvertToken(bodydecimalPlaces);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodydocumentType != null)
-            {
-                body["documentType"] = CSharpExpressionConverter.ConvertToken(bodydocumentType);
-                bodypropCount++;
-            }
-
-            if (bodydefaultDateParsing != null)
-            {
-                body["defaultDateParsing"] = CSharpExpressionConverter.ConvertToken(bodydefaultDateParsing);
-                bodypropCount++;
-            }
-
-            if (bodydecimalPlaces != null)
-            {
-                body["decimalPlaces"] = CSharpExpressionConverter.ConvertToken(bodydecimalPlaces);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Process>(callPayload);
+            return new ApiConnectionAction<Process>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tabscannerreceiptocr")]
-        public IBodyWorkflowAction<Result> Result(Expression<Func<string>> token)
+        public IBodyWorkflowAction<Result> Result([WorkflowExpression] Func<string> token)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/result/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Result>(callPayload);
+            SourceExpression.Validate(token, nameof(token), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/result/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(token, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Result>(BuildSourceInput);
         }
     }
 

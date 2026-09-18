@@ -12,89 +12,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Twilio
     public class TwilioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> SendMessage(Expression<Func<string>> sendMessageRequestfrom, Expression<Func<string>> sendMessageRequestto, Expression<Func<string>> sendMessageRequestbody, Expression<Func<string[]>> sendMessageRequestmediaUrl = null, Expression<Func<string>> sendMessageRequeststatusCallback = null, Expression<Func<string>> sendMessageRequestmessagingServiceSid = null, Expression<Func<string>> sendMessageRequestapplicationSid = null, Expression<Func<string>> sendMessageRequestmaxPrice = null, Expression<Func<string>> sendMessageRequestvalidityPeriod = null)
+        public IBodyWorkflowAction<Message> SendMessage([WorkflowExpression] Func<string> sendMessageRequestfrom, [WorkflowExpression] Func<string> sendMessageRequestto, [WorkflowExpression] Func<string> sendMessageRequestbody, [WorkflowExpression] Func<string[]> sendMessageRequestmediaUrl = null, [WorkflowExpression] Func<string> sendMessageRequeststatusCallback = null, [WorkflowExpression] Func<string> sendMessageRequestmessagingServiceSid = null, [WorkflowExpression] Func<string> sendMessageRequestapplicationSid = null, [WorkflowExpression] Func<string> sendMessageRequestmaxPrice = null, [WorkflowExpression] Func<string> sendMessageRequestvalidityPeriod = null)
         {
-            var apiCallPath = "/Messages.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var sendMessageRequest = new JObject();
-            var sendMessageRequestpropCount = 0;
-            sendMessageRequestpropCount++;
-            sendMessageRequest["from"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestfrom);
-            sendMessageRequestpropCount++;
-            sendMessageRequest["to"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestto);
-            sendMessageRequestpropCount++;
-            sendMessageRequest["body"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestbody);
-            if (sendMessageRequestmediaUrl != null)
+            SourceExpression.Validate(sendMessageRequestfrom, nameof(sendMessageRequestfrom), required: true);
+            SourceExpression.Validate(sendMessageRequestto, nameof(sendMessageRequestto), required: true);
+            SourceExpression.Validate(sendMessageRequestbody, nameof(sendMessageRequestbody), required: true);
+            SourceExpression.Validate(sendMessageRequestmediaUrl, nameof(sendMessageRequestmediaUrl), required: false);
+            SourceExpression.Validate(sendMessageRequeststatusCallback, nameof(sendMessageRequeststatusCallback), required: false);
+            SourceExpression.Validate(sendMessageRequestmessagingServiceSid, nameof(sendMessageRequestmessagingServiceSid), required: false);
+            SourceExpression.Validate(sendMessageRequestapplicationSid, nameof(sendMessageRequestapplicationSid), required: false);
+            SourceExpression.Validate(sendMessageRequestmaxPrice, nameof(sendMessageRequestmaxPrice), required: false);
+            SourceExpression.Validate(sendMessageRequestvalidityPeriod, nameof(sendMessageRequestvalidityPeriod), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                sendMessageRequest["media_url"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmediaUrl);
+                var apiCallPath = "/Messages.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var sendMessageRequest = new JObject();
+                var sendMessageRequestpropCount = 0;
                 sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequeststatusCallback != null)
-            {
-                sendMessageRequest["StatusCallback"] = CSharpExpressionConverter.ConvertToken(sendMessageRequeststatusCallback);
+                sendMessageRequest["from"] = SourceExpressionConverter.ConvertToken(sendMessageRequestfrom);
                 sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestmessagingServiceSid != null)
-            {
-                sendMessageRequest["messaging_service_sid"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmessagingServiceSid);
+                sendMessageRequest["to"] = SourceExpressionConverter.ConvertToken(sendMessageRequestto);
                 sendMessageRequestpropCount++;
+                sendMessageRequest["body"] = SourceExpressionConverter.ConvertToken(sendMessageRequestbody);
+                if (sendMessageRequestmediaUrl != null)
+                {
+                    sendMessageRequest["media_url"] = SourceExpressionConverter.ConvertToken(sendMessageRequestmediaUrl);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequeststatusCallback != null)
+                {
+                    sendMessageRequest["StatusCallback"] = SourceExpressionConverter.ConvertToken(sendMessageRequeststatusCallback);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequestmessagingServiceSid != null)
+                {
+                    sendMessageRequest["messaging_service_sid"] = SourceExpressionConverter.ConvertToken(sendMessageRequestmessagingServiceSid);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequestapplicationSid != null)
+                {
+                    sendMessageRequest["application_sid"] = SourceExpressionConverter.ConvertToken(sendMessageRequestapplicationSid);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequestmaxPrice != null)
+                {
+                    sendMessageRequest["max_price"] = SourceExpressionConverter.ConvertToken(sendMessageRequestmaxPrice);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequestvalidityPeriod != null)
+                {
+                    sendMessageRequest["validity_period"] = SourceExpressionConverter.ConvertToken(sendMessageRequestvalidityPeriod);
+                    sendMessageRequestpropCount++;
+                }
+
+                if (sendMessageRequestpropCount > 0)
+                {
+                    callPayload.Body = sendMessageRequest;
+                }
+                return callPayload;
             }
 
-            if (sendMessageRequestapplicationSid != null)
-            {
-                sendMessageRequest["application_sid"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestapplicationSid);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestmaxPrice != null)
-            {
-                sendMessageRequest["max_price"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestmaxPrice);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestvalidityPeriod != null)
-            {
-                sendMessageRequest["validity_period"] = CSharpExpressionConverter.ConvertToken(sendMessageRequestvalidityPeriod);
-                sendMessageRequestpropCount++;
-            }
-
-            if (sendMessageRequestpropCount > 0)
-            {
-                callPayload.Body = sendMessageRequest;
-            }
-
-            return new ApiConnectionAction<Message>(callPayload);
+            return new ApiConnectionAction<Message>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<Message> GetMessage(Expression<Func<string>> messageId)
+        public IBodyWorkflowAction<Message> GetMessage([WorkflowExpression] Func<string> messageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Messages/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Message>(callPayload);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Messages/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Message>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "twilio")]
-        public IBodyWorkflowAction<MessageListV2> ListMessages(Expression<Func<string>> to = null, Expression<Func<string>> from = null, Expression<Func<string>> dateSent = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<MessageListV2> ListMessages([WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> dateSent = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = "/v2/Messages.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (to != null)
-                callPayload.Queries["To"] = CSharpExpressionConverter.ConvertO(to);
-            if (from != null)
-                callPayload.Queries["From"] = CSharpExpressionConverter.ConvertO(from);
-            if (dateSent != null)
-                callPayload.Queries["DateSent"] = CSharpExpressionConverter.ConvertO(dateSent);
-            callPayload.Queries["PageSize"] = Convert.ToString(50);
-            if (pageSize != null)
-                callPayload.Queries["PageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            callPayload.Queries["Page"] = Convert.ToString(0);
-            return new ApiConnectionAction<MessageListV2>(callPayload);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(dateSent, nameof(dateSent), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/Messages.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (to != null)
+                    callPayload.Queries["To"] = SourceExpressionConverter.ConvertO(to);
+                if (from != null)
+                    callPayload.Queries["From"] = SourceExpressionConverter.ConvertO(from);
+                if (dateSent != null)
+                    callPayload.Queries["DateSent"] = SourceExpressionConverter.ConvertO(dateSent);
+                callPayload.Queries["PageSize"] = Convert.ToString(50);
+                if (pageSize != null)
+                    callPayload.Queries["PageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                callPayload.Queries["Page"] = Convert.ToString(0);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MessageListV2>(BuildSourceInput);
         }
     }
 

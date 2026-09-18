@@ -12,152 +12,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mistral
     public class MistralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages, Expression<Func<double>> bodytemperature = null, Expression<Func<double>> bodytopP = null, Expression<Func<int>> bodymaxTokens = null, Expression<Func<bool>> bodystream = null, Expression<Func<bool>> bodysafePrompt = null, Expression<Func<int>> bodyrandomSeed = null)
+        public IBodyWorkflowAction<ChatCompletionResponse> CreateChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages, [WorkflowExpression] Func<double> bodytemperature = null, [WorkflowExpression] Func<double> bodytopP = null, [WorkflowExpression] Func<int> bodymaxTokens = null, [WorkflowExpression] Func<bool> bodystream = null, [WorkflowExpression] Func<bool> bodysafePrompt = null, [WorkflowExpression] Func<int> bodyrandomSeed = null)
         {
-            var apiCallPath = "/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
-            bodypropCount++;
-            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
-            if (bodytemperature != null)
+            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
+            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
+            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
+            SourceExpression.Validate(bodytopP, nameof(bodytopP), required: false);
+            SourceExpression.Validate(bodymaxTokens, nameof(bodymaxTokens), required: false);
+            SourceExpression.Validate(bodystream, nameof(bodystream), required: false);
+            SourceExpression.Validate(bodysafePrompt, nameof(bodysafePrompt), required: false);
+            SourceExpression.Validate(bodyrandomSeed, nameof(bodyrandomSeed), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = SourceExpressionConverter.ConvertToken(bodymodel);
+                bodypropCount++;
+                body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
                 if (bodytemperature != null)
                 {
-                    body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
+                    if (bodytemperature != null)
+                    {
+                        body["temperature"] = SourceExpressionConverter.ConvertToken(bodytemperature);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["temperature"] = 0.7;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["temperature"] = 0.7;
-                bodypropCount++;
-            }
-
-            if (bodytopP != null)
-            {
                 if (bodytopP != null)
                 {
-                    body["top_p"] = CSharpExpressionConverter.ConvertToken(bodytopP);
+                    if (bodytopP != null)
+                    {
+                        body["top_p"] = SourceExpressionConverter.ConvertToken(bodytopP);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["top_p"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["top_p"] = 1;
-                bodypropCount++;
-            }
+                if (bodymaxTokens != null)
+                {
+                    body["max_tokens"] = SourceExpressionConverter.ConvertToken(bodymaxTokens);
+                    bodypropCount++;
+                }
 
-            if (bodymaxTokens != null)
-            {
-                body["max_tokens"] = CSharpExpressionConverter.ConvertToken(bodymaxTokens);
-                bodypropCount++;
-            }
-
-            if (bodystream != null)
-            {
                 if (bodystream != null)
                 {
-                    body["stream"] = CSharpExpressionConverter.ConvertToken(bodystream);
+                    if (bodystream != null)
+                    {
+                        body["stream"] = SourceExpressionConverter.ConvertToken(bodystream);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["stream"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["stream"] = false;
-                bodypropCount++;
-            }
-
-            if (bodysafePrompt != null)
-            {
                 if (bodysafePrompt != null)
                 {
-                    body["safe_prompt"] = CSharpExpressionConverter.ConvertToken(bodysafePrompt);
+                    if (bodysafePrompt != null)
+                    {
+                        body["safe_prompt"] = SourceExpressionConverter.ConvertToken(bodysafePrompt);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["safe_prompt"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["safe_prompt"] = false;
-                bodypropCount++;
+                if (bodyrandomSeed != null)
+                {
+                    body["random_seed"] = SourceExpressionConverter.ConvertToken(bodyrandomSeed);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrandomSeed != null)
-            {
-                body["random_seed"] = CSharpExpressionConverter.ConvertToken(bodyrandomSeed);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            return new ApiConnectionAction<ChatCompletionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
-        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding(Expression<Func<string>> bodymodel = null, Expression<Func<string[]>> bodyinput = null, Expression<Func<bodyencodingFormatInput>> bodyencodingFormat = null)
+        public IBodyWorkflowAction<EmbeddingResponse> CreateEmbedding([WorkflowExpression] Func<string> bodymodel = null, [WorkflowExpression] Func<string[]> bodyinput = null, [WorkflowExpression] Func<bodyencodingFormatInput> bodyencodingFormat = null)
         {
-            var apiCallPath = "/embeddings";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymodel != null)
+            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: false);
+            SourceExpression.Validate(bodyinput, nameof(bodyinput), required: false);
+            SourceExpression.Validate(bodyencodingFormat, nameof(bodyencodingFormat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/embeddings";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodymodel != null)
                 {
-                    body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
+                    if (bodymodel != null)
+                    {
+                        body["model"] = SourceExpressionConverter.ConvertToken(bodymodel);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["model"] = "mistral-embed";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["model"] = "mistral-embed";
-                bodypropCount++;
+                if (bodyinput != null)
+                {
+                    body["input"] = SourceExpressionConverter.ConvertToken(bodyinput);
+                    bodypropCount++;
+                }
+
+                if (bodyencodingFormat != null)
+                {
+                    body["encoding_format"] = SourceExpressionConverter.Convert(bodyencodingFormat);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinput != null)
-            {
-                body["input"] = CSharpExpressionConverter.ConvertToken(bodyinput);
-                bodypropCount++;
-            }
-
-            if (bodyencodingFormat != null)
-            {
-                body["encoding_format"] = CSharpExpressionConverter.Convert(bodyencodingFormat);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EmbeddingResponse>(callPayload);
+            return new ApiConnectionAction<EmbeddingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mistral")]
         public IBodyWorkflowAction<ModelList> ListModels()
         {
-            var apiCallPath = "/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ModelList>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ModelList>(BuildSourceInput);
         }
     }
 

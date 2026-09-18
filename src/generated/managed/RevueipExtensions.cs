@@ -14,222 +14,304 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Revueip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<List[]> GetAllLists()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<List[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<List[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<List> GetList(Expression<Func<string>> id)
+        public IBodyWorkflowAction<List> GetList([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<List>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<List>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> GetExport(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Export> GetExport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/exports/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Export>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/exports/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Export>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Export> StartExport(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Export> StartExport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/exports/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Export>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/exports/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Export>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Item[]> GetItems()
         {
-            var apiCallPath = "/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Item[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Item[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<SentIssue> GetLatestIssue()
         {
-            var apiCallPath = "/issues/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentIssue>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/issues/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentIssue>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<SentIssue[]> GetAllSentIssues()
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentIssue[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentIssue[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Issue[]> GetCurrentIssue()
         {
-            var apiCallPath = "/issues/current";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Issue[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/issues/current";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Issue[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber[]> GetAllSubscribers()
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subscriber[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Subscriber[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> AddSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber> AddSubscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyfirstName != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleOptIn != null)
+                {
+                    body["double_opt_in"] = SourceExpressionConverter.ConvertToken(bodydoubleOptIn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydoubleOptIn != null)
-            {
-                body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Subscriber>(callPayload);
+            return new ApiConnectionAction<Subscriber>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UpdateSubscriber(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber> UpdateSubscriber([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyfirstName != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
+                var apiCallPath = "/subscribers";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleOptIn != null)
+                {
+                    body["double_opt_in"] = SourceExpressionConverter.ConvertToken(bodydoubleOptIn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydoubleOptIn != null)
-            {
-                body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Subscriber>(callPayload);
+            return new ApiConnectionAction<Subscriber>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Subscriber[]> GetUnsubscribed()
         {
-            var apiCallPath = "/subscribers/unsubscribed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Subscriber[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/subscribers/unsubscribed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Subscriber[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
-        public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber(Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bool>> bodydoubleOptIn = null)
+        public IBodyWorkflowAction<Subscriber> UnsubscribeSubscriber([WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bool> bodydoubleOptIn = null)
         {
-            var apiCallPath = "/subscribers/unsubscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodydoubleOptIn, nameof(bodydoubleOptIn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydoubleOptIn != null)
-            {
-                if (bodydoubleOptIn != null)
+                var apiCallPath = "/subscribers/unsubscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
                 {
-                    body["double_opt_in"] = CSharpExpressionConverter.ConvertToken(bodydoubleOptIn);
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["double_opt_in"] = true;
-                bodypropCount++;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydoubleOptIn != null)
+                {
+                    if (bodydoubleOptIn != null)
+                    {
+                        body["double_opt_in"] = SourceExpressionConverter.ConvertToken(bodydoubleOptIn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["double_opt_in"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Subscriber>(callPayload);
+            return new ApiConnectionAction<Subscriber>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "revueip")]
         public IBodyWorkflowAction<Account> GetProfileURL()
         {
-            var apiCallPath = "/accounts/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Account>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/accounts/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Account>(BuildSourceInput);
         }
     }
 

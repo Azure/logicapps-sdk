@@ -12,69 +12,88 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mintlifyip
     public class MintlifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
-        public IBodyWorkflowAction<DocGenResponse> DocGen(Expression<Func<bodylanguageInput>> bodylanguage, Expression<Func<string>> bodycode, Expression<Func<bool>> bodycommented = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodycontext = null)
+        public IBodyWorkflowAction<DocGenResponse> DocGen([WorkflowExpression] Func<bodylanguageInput> bodylanguage, [WorkflowExpression] Func<string> bodycode, [WorkflowExpression] Func<bool> bodycommented = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodycontext = null)
         {
-            var apiCallPath = "/v1/document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycommented != null)
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            SourceExpression.Validate(bodycode, nameof(bodycode), required: true);
+            SourceExpression.Validate(bodycommented, nameof(bodycommented), required: false);
+            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
+            SourceExpression.Validate(bodycontext, nameof(bodycontext), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v1/document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodycommented != null)
                 {
-                    body["commented"] = CSharpExpressionConverter.ConvertToken(bodycommented);
+                    if (bodycommented != null)
+                    {
+                        body["commented"] = SourceExpressionConverter.ConvertToken(bodycommented);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["commented"] = true;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["commented"] = true;
+                body["language"] = SourceExpressionConverter.Convert(bodylanguage);
                 bodypropCount++;
+                body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                if (bodyformat != null)
+                {
+                    body["format"] = SourceExpressionConverter.Convert(bodyformat);
+                    bodypropCount++;
+                }
+
+                if (bodycontext != null)
+                {
+                    body["context"] = SourceExpressionConverter.ConvertToken(bodycontext);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["language"] = CSharpExpressionConverter.Convert(bodylanguage);
-            bodypropCount++;
-            body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
-            if (bodyformat != null)
-            {
-                body["format"] = CSharpExpressionConverter.Convert(bodyformat);
-                bodypropCount++;
-            }
-
-            if (bodycontext != null)
-            {
-                body["context"] = CSharpExpressionConverter.ConvertToken(bodycontext);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocGenResponse>(callPayload);
+            return new ApiConnectionAction<DocGenResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<LanguageListResponse> LanguageList()
         {
-            var apiCallPath = "/v1/list/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguageListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/list/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LanguageListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mintlifyip")]
         public IBodyWorkflowAction<DocListResponse> DocList()
         {
-            var apiCallPath = "/v1/list/formats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DocListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/list/formats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocListResponse>(BuildSourceInput);
         }
     }
 

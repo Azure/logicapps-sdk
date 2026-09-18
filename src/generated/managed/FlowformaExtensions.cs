@@ -12,15 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flowforma
     public class FlowformaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "flowforma")]
-        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm(Expression<Func<string>> connectionUrl, Expression<Func<string>> flows, Expression<Func<object>> question = null)
+        public IBodyWorkflowAction<FlowCreatedResponse> CreateForm([WorkflowExpression] Func<string> connectionUrl, [WorkflowExpression] Func<string> flows, [WorkflowExpression] Func<object> question = null)
         {
-            var apiCallPath = "/api/flowforma";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["connectionUrl"] = CSharpExpressionConverter.ConvertO(connectionUrl);
-            callPayload.Queries["flows"] = CSharpExpressionConverter.ConvertO(flows);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(question);
-            return new ApiConnectionAction<FlowCreatedResponse>(callPayload);
+            SourceExpression.Validate(connectionUrl, nameof(connectionUrl), required: true);
+            SourceExpression.Validate(flows, nameof(flows), required: true);
+            SourceExpression.Validate(question, nameof(question), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/flowforma";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["connectionUrl"] = SourceExpressionConverter.ConvertO(connectionUrl);
+                callPayload.Queries["flows"] = SourceExpressionConverter.ConvertO(flows);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(question);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FlowCreatedResponse>(BuildSourceInput);
         }
     }
 

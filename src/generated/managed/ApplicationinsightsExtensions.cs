@@ -12,32 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Applicationinsights
     public class ApplicationinsightsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<Table> RunQuery(Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<Table> RunQuery([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
         {
-            var apiCallPath = "/api/QueryDraft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-            if (timerange != null)
-                callPayload.Queries["timerange"] = CSharpExpressionConverter.Convert(timerange);
-            callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
-            return new ApiConnectionAction<Table>(callPayload);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            SourceExpression.Validate(timerange, nameof(timerange), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/QueryDraft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timerange"] = Convert.ToString("Last hour");
+                if (timerange != null)
+                    callPayload.Queries["timerange"] = SourceExpressionConverter.Convert(timerange);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Body = SourceExpressionConverter.ConvertToken(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Table>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "applicationinsights")]
-        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery(Expression<Func<chartTypeInput>> chartType, Expression<Func<string>> query = null, Expression<Func<timerangeInput>> timerange = null)
+        public IBodyWorkflowAction<VisualizeResults> VisualizeQuery([WorkflowExpression] Func<chartTypeInput> chartType, [WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<timerangeInput> timerange = null)
         {
-            var apiCallPath = "/api/VisualizeQueryDraft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timerange"] = Convert.ToString("Last hour");
-            if (timerange != null)
-                callPayload.Queries["timerange"] = CSharpExpressionConverter.Convert(timerange);
-            callPayload.Queries["version"] = Convert.ToString("2");
-            callPayload.Queries["chartType"] = CSharpExpressionConverter.Convert(chartType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
-            return new ApiConnectionAction<VisualizeResults>(callPayload);
+            SourceExpression.Validate(chartType, nameof(chartType), required: true);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            SourceExpression.Validate(timerange, nameof(timerange), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/VisualizeQueryDraft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timerange"] = Convert.ToString("Last hour");
+                if (timerange != null)
+                    callPayload.Queries["timerange"] = SourceExpressionConverter.Convert(timerange);
+                callPayload.Queries["version"] = Convert.ToString("2");
+                callPayload.Queries["chartType"] = SourceExpressionConverter.Convert(chartType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VisualizeResults>(BuildSourceInput);
         }
     }
 

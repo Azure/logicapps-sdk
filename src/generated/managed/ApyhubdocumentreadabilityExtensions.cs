@@ -12,12 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubdocumentreadability
     public class ApyhubdocumentreadabilityActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubdocumentreadability")]
-        public IBodyWorkflowAction<ScorePostResponse> Score(Expression<Func<object>> file, Expression<Func<contentTypeInput>> contentType)
+        public IBodyWorkflowAction<ScorePostResponse> Score([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<contentTypeInput> contentType)
         {
-            var apiCallPath = "/extract/document/readability-score/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ScorePostResponse>(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/extract/document/readability-score/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ScorePostResponse>(BuildSourceInput);
         }
     }
 

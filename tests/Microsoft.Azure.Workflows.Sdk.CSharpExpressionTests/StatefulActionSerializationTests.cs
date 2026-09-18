@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                       },
                       "Runtime_expression": {
                         "type": "Compose",
-                        "inputs": "@add(outputs('Integer_value'), 2)",
+                        "inputs": "@csharp{outputs(\"Integer_value\").ToObject<int>() + 2}",
                         "runAfter": {
                           "Integer_value": [
                             "SUCCEEDED"

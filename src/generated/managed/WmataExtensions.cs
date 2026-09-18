@@ -12,329 +12,512 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wmata
     public class WmataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses(Expression<Func<string>> stopID)
+        public IBodyWorkflowAction<GetNextBusesResponse> GetNextBuses([WorkflowExpression] Func<string> stopID)
         {
-            var apiCallPath = "/NextBusService.svc/json/jPredictions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = CSharpExpressionConverter.ConvertO(stopID);
-            return new ApiConnectionAction<GetNextBusesResponse>(callPayload);
+            SourceExpression.Validate(stopID, nameof(stopID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/NextBusService.svc/json/jPredictions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopID);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetNextBusesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions(Expression<Func<string>> routeID = null, Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
+        public IBodyWorkflowAction<GetBusPositionsResponse> GetBusPositions([WorkflowExpression] Func<string> routeID = null, [WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            var apiCallPath = "/Bus.svc/json/jBusPositions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (routeID != null)
-                callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
-            if (lat != null)
-                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
-            return new ApiConnectionAction<GetBusPositionsResponse>(callPayload);
+            SourceExpression.Validate(routeID, nameof(routeID), required: false);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jBusPositions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (routeID != null)
+                    callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                if (lat != null)
+                    callPayload.Queries["Lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lon != null)
+                    callPayload.Queries["Lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (radius != null)
+                    callPayload.Queries["Radius"] = SourceExpressionConverter.ConvertO(radius);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusPositionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetRouteDetailsResponse> GetRouteDetails([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jRouteDetails";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
-            if (date != null)
-                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
-            return new ApiConnectionAction<GetRouteDetailsResponse>(callPayload);
+            SourceExpression.Validate(routeID, nameof(routeID), required: true);
+            SourceExpression.Validate(date, nameof(date), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jRouteDetails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                if (date != null)
+                    callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRouteDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetBusRoutesResponse> GetBusRoutes()
         {
-            var apiCallPath = "/Bus.svc/json/jRoutes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBusRoutesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jRoutes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusRoutesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule(Expression<Func<string>> routeID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetBusRouteScheduleResponse> GetBusRouteSchedule([WorkflowExpression] Func<string> routeID, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jRouteSchedule";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RouteID"] = CSharpExpressionConverter.ConvertO(routeID);
-            if (date != null)
-                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
-            return new ApiConnectionAction<GetBusRouteScheduleResponse>(callPayload);
+            SourceExpression.Validate(routeID, nameof(routeID), required: true);
+            SourceExpression.Validate(date, nameof(date), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jRouteSchedule";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RouteID"] = SourceExpressionConverter.ConvertO(routeID);
+                if (date != null)
+                    callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusRouteScheduleResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule(Expression<Func<string>> stopID, Expression<Func<string>> date = null)
+        public IBodyWorkflowAction<GetBusStopScheduleResponse> GetBusStopSchedule([WorkflowExpression] Func<string> stopID, [WorkflowExpression] Func<string> date = null)
         {
-            var apiCallPath = "/Bus.svc/json/jStopSchedule";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StopID"] = CSharpExpressionConverter.ConvertO(stopID);
-            if (date != null)
-                callPayload.Queries["Date"] = CSharpExpressionConverter.ConvertO(date);
-            return new ApiConnectionAction<GetBusStopScheduleResponse>(callPayload);
+            SourceExpression.Validate(stopID, nameof(stopID), required: true);
+            SourceExpression.Validate(date, nameof(date), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jStopSchedule";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StopID"] = SourceExpressionConverter.ConvertO(stopID);
+                if (date != null)
+                    callPayload.Queries["Date"] = SourceExpressionConverter.ConvertO(date);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusStopScheduleResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
+        public IBodyWorkflowAction<GetBusStopsResponse> GetBusStops([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            var apiCallPath = "/Bus.svc/json/jStops";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
-            return new ApiConnectionAction<GetBusStopsResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Bus.svc/json/jStops";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["Lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lon != null)
+                    callPayload.Queries["Lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (radius != null)
+                    callPayload.Queries["Radius"] = SourceExpressionConverter.ConvertO(radius);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusStopsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains(Expression<Func<string>> stationCodes)
+        public IBodyWorkflowAction<GetNextTrainsResponse> GetNextTrains([WorkflowExpression] Func<string> stationCodes)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCodes, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetNextTrainsResponse>(callPayload);
+            SourceExpression.Validate(stationCodes, nameof(stationCodes), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/StationPrediction.svc/json/GetPrediction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationCodes, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetNextTrainsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRailLinesResponse> GetRailLines()
         {
-            var apiCallPath = "/Rail.svc/json/jLines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRailLinesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jLines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRailLinesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking(Expression<Func<string>> stationCode = null)
+        public IBodyWorkflowAction<GetStationParkingResponse> GetStationParking([WorkflowExpression] Func<string> stationCode = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStationParking";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
-            return new ApiConnectionAction<GetStationParkingResponse>(callPayload);
+            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jStationParking";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["StationCode"] = SourceExpressionConverter.ConvertO(stationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationParkingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
+        public IBodyWorkflowAction<GetPathBetweenStationsResponse> GetPathBetweenStations([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jPath";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = CSharpExpressionConverter.ConvertO(fromStationCode);
-            callPayload.Queries["ToStationCode"] = CSharpExpressionConverter.ConvertO(toStationCode);
-            return new ApiConnectionAction<GetPathBetweenStationsResponse>(callPayload);
+            SourceExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
+            SourceExpression.Validate(toStationCode, nameof(toStationCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jPath";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FromStationCode"] = SourceExpressionConverter.ConvertO(fromStationCode);
+                callPayload.Queries["ToStationCode"] = SourceExpressionConverter.ConvertO(toStationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPathBetweenStationsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations(Expression<Func<string>> lineCode = null)
+        public IBodyWorkflowAction<GetJsonStationsResponse> GetJsonStations([WorkflowExpression] Func<string> lineCode = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lineCode != null)
-                callPayload.Queries["LineCode"] = CSharpExpressionConverter.ConvertO(lineCode);
-            return new ApiConnectionAction<GetJsonStationsResponse>(callPayload);
+            SourceExpression.Validate(lineCode, nameof(lineCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jStations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lineCode != null)
+                    callPayload.Queries["LineCode"] = SourceExpressionConverter.ConvertO(lineCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetJsonStationsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances(Expression<Func<double>> lat = null, Expression<Func<double>> lon = null, Expression<Func<double>> radius = null)
+        public IBodyWorkflowAction<GetStationEntrancesResponse> GetStationEntrances([WorkflowExpression] Func<double> lat = null, [WorkflowExpression] Func<double> lon = null, [WorkflowExpression] Func<double> radius = null)
         {
-            var apiCallPath = "/Rail.svc/json/jStationEntrances";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lat != null)
-                callPayload.Queries["Lat"] = CSharpExpressionConverter.ConvertO(lat);
-            if (lon != null)
-                callPayload.Queries["Lon"] = CSharpExpressionConverter.ConvertO(lon);
-            if (radius != null)
-                callPayload.Queries["Radius"] = CSharpExpressionConverter.ConvertO(radius);
-            return new ApiConnectionAction<GetStationEntrancesResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: false);
+            SourceExpression.Validate(lon, nameof(lon), required: false);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jStationEntrances";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lat != null)
+                    callPayload.Queries["Lat"] = SourceExpressionConverter.ConvertO(lat);
+                if (lon != null)
+                    callPayload.Queries["Lon"] = SourceExpressionConverter.ConvertO(lon);
+                if (radius != null)
+                    callPayload.Queries["Radius"] = SourceExpressionConverter.ConvertO(radius);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationEntrancesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo(Expression<Func<string>> stationCode)
+        public IBodyWorkflowAction<GetStationInfoResponse> GetStationInfo([WorkflowExpression] Func<string> stationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jStationInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
-            return new ApiConnectionAction<GetStationInfoResponse>(callPayload);
+            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jStationInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StationCode"] = SourceExpressionConverter.ConvertO(stationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes(Expression<Func<string>> stationCode)
+        public IBodyWorkflowAction<GetStationTimesResponse> GetStationTimes([WorkflowExpression] Func<string> stationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jStationTimes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
-            return new ApiConnectionAction<GetStationTimesResponse>(callPayload);
+            SourceExpression.Validate(stationCode, nameof(stationCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jStationTimes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["StationCode"] = SourceExpressionConverter.ConvertO(stationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationTimesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo(Expression<Func<string>> fromStationCode, Expression<Func<string>> toStationCode)
+        public IBodyWorkflowAction<GetStationToStationInfoResponse> GetStationToStationInfo([WorkflowExpression] Func<string> fromStationCode, [WorkflowExpression] Func<string> toStationCode)
         {
-            var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FromStationCode"] = CSharpExpressionConverter.ConvertO(fromStationCode);
-            callPayload.Queries["ToStationCode"] = CSharpExpressionConverter.ConvertO(toStationCode);
-            return new ApiConnectionAction<GetStationToStationInfoResponse>(callPayload);
+            SourceExpression.Validate(fromStationCode, nameof(fromStationCode), required: true);
+            SourceExpression.Validate(toStationCode, nameof(toStationCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Rail.svc/json/jSrcStationToDstStationInfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FromStationCode"] = SourceExpressionConverter.ConvertO(fromStationCode);
+                callPayload.Queries["ToStationCode"] = SourceExpressionConverter.ConvertO(toStationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStationToStationInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetTrainPositionsResponse> GetTrainPositions()
         {
-            var apiCallPath = "/TrainPositions/TrainPositions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetTrainPositionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/TrainPositions/TrainPositions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTrainPositionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetStandardRoutesResponse> GetStandardRoutes()
         {
-            var apiCallPath = "/TrainPositions/StandardRoutes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetStandardRoutesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/TrainPositions/StandardRoutes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStandardRoutesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetTrackCircuitsResponse> GetTrackCircuits()
         {
-            var apiCallPath = "/TrainPositions/TrackCircuits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["contentType"] = Convert.ToString("json");
-            return new ApiConnectionAction<GetTrackCircuitsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/TrainPositions/TrackCircuits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["contentType"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTrackCircuitsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents(Expression<Func<string>> route = null)
+        public IBodyWorkflowAction<GetBusIncidentsResponse> GetBusIncidents([WorkflowExpression] Func<string> route = null)
         {
-            var apiCallPath = "/Incidents.svc/json/BusIncidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (route != null)
-                callPayload.Queries["Route"] = CSharpExpressionConverter.ConvertO(route);
-            return new ApiConnectionAction<GetBusIncidentsResponse>(callPayload);
+            SourceExpression.Validate(route, nameof(route), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Incidents.svc/json/BusIncidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (route != null)
+                    callPayload.Queries["Route"] = SourceExpressionConverter.ConvertO(route);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBusIncidentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
-        public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents(Expression<Func<string>> stationCode = null)
+        public IBodyWorkflowAction<GetElevatorIncidentsResponse> GetElevatorIncidents([WorkflowExpression] Func<string> stationCode = null)
         {
-            var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (stationCode != null)
-                callPayload.Queries["StationCode"] = CSharpExpressionConverter.ConvertO(stationCode);
-            return new ApiConnectionAction<GetElevatorIncidentsResponse>(callPayload);
+            SourceExpression.Validate(stationCode, nameof(stationCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Incidents.svc/json/ElevatorIncidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (stationCode != null)
+                    callPayload.Queries["StationCode"] = SourceExpressionConverter.ConvertO(stationCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetElevatorIncidentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<GetRailIncidentsResponse> GetRailIncidents()
         {
-            var apiCallPath = "/Incidents.svc/json/Incidents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRailIncidentsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Incidents.svc/json/Incidents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRailIncidentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetBusGtfsStatic()
         {
-            var apiCallPath = "/gtfs/bus-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/bus-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetBusGtfsRtAlerts()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-alerts.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-alerts.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetBusGtfsRtTripUpdates()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-tripupdates.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-tripupdates.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetBusGtfsRtVehiclePositions()
         {
-            var apiCallPath = "/gtfs/bus-gtfsrt-vehiclepositions.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/bus-gtfsrt-vehiclepositions.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetRailGtfsStatic()
         {
-            var apiCallPath = "/gtfs/rail-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/rail-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetRailGtfsRtAlerts()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-alerts.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-alerts.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetRailGtfsRtTripUpdates()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-tripupdates.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-tripupdates.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetRailGtfsRtVehiclePositions()
         {
-            var apiCallPath = "/gtfs/rail-gtfsrt-vehiclepositions.pb";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/rail-gtfsrt-vehiclepositions.pb";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wmata")]
         public IBodyWorkflowAction<string> GetRailBusCombinedGtfsStatic()
         {
-            var apiCallPath = "/gtfs/rail-bus-gtfs-static.zip";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gtfs/rail-bus-gtfs-static.zip";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

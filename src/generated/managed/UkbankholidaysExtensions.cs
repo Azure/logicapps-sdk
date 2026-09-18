@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ukbankholidays
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ukbankholidays")]
         public IBodyWorkflowAction<AllKingdomHolidaysResponse> AllKingdomHolidays()
         {
-            var apiCallPath = "/bank-holidays.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AllKingdomHolidaysResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bank-holidays.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AllKingdomHolidaysResponse>(BuildSourceInput);
         }
     }
 

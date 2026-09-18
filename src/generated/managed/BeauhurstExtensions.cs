@@ -12,35 +12,54 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Beauhurst
     public class BeauhurstActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid(Expression<Func<string>> names)
+        public IBodyWorkflowAction<GetCompanyFidResponse> GetCompanyFid([WorkflowExpression] Func<string> names)
         {
-            var apiCallPath = "/_api/v1/companies/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["names"] = CSharpExpressionConverter.ConvertO(names);
-            return new ApiConnectionAction<GetCompanyFidResponse>(callPayload);
+            SourceExpression.Validate(names, nameof(names), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/_api/v1/companies/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["names"] = SourceExpressionConverter.ConvertO(names);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCompanyFidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID(Expression<Func<string>> fID)
+        public IBodyWorkflowAction<CompanyInfoByFIDResponse> CompanyInfoByFID([WorkflowExpression] Func<string> fID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
-            return new ApiConnectionAction<CompanyInfoByFIDResponse>(callPayload);
+            SourceExpression.Validate(fID, nameof(fID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/_api/v1/companies/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["includes"] = Convert.ToString("registered_name&includes=registration_date&includes=other_trading_names&includes=companies_house_id&includes=employee_count_range&includes=last_modified_date&includes=website&includes=tracked_status&includes=company_status&includes=is_sme&includes=sectors&includes=top_level_sector_groups&includes=latest_stage_of_evolution&includes=description&includes=tracking_reasons&includes=target_markets&includes=founder_female_percentage&includes=sic_codes&includes=actively_hiring&includes=n_fundraisings&includes=total_amount_fundraisings&includes=n_grants&includes=total_amount_grants&includes=latest_valuation&includes=country&includes=lep&includes=region&includes=postcode&includes=address&includes=emails&includes=telephone&includes=key_contacts&includes=year_end_date&includes=turnover&includes=ebitda&includes=total_assets&includes=number_of_employees&includes=cash&includes=total_liabilities&includes=net_assets");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyInfoByFIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "beauhurst")]
-        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID(Expression<Func<string>> companyIds, Expression<Func<includesInput>> includes)
+        public IBodyWorkflowAction<FundsByFIDResponse> FundsByFID([WorkflowExpression] Func<string> companyIds, [WorkflowExpression] Func<includesInput> includes)
         {
-            var apiCallPath = "/_api/v1/transactions/company";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company_ids"] = CSharpExpressionConverter.ConvertO(companyIds);
-            callPayload.Queries["includes"] = CSharpExpressionConverter.Convert(includes);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<FundsByFIDResponse>(callPayload);
+            SourceExpression.Validate(companyIds, nameof(companyIds), required: true);
+            SourceExpression.Validate(includes, nameof(includes), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/_api/v1/transactions/company";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company_ids"] = SourceExpressionConverter.ConvertO(companyIds);
+                callPayload.Queries["includes"] = SourceExpressionConverter.Convert(includes);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FundsByFIDResponse>(BuildSourceInput);
         }
     }
 

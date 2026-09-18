@@ -12,174 +12,216 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seismicengagement
     public class SeismicengagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions(Expression<Func<bool>> enabled = null)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryOption[]> GetListOfDeliveryOptions([WorkflowExpression] Func<bool> enabled = null)
         {
-            var apiCallPath = "/delivery";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (enabled != null)
-                callPayload.Queries["Enabled"] = CSharpExpressionConverter.ConvertO(enabled);
-            return new ApiConnectionAction<SeismicDeliveryDeliveryOption[]>(callPayload);
+            SourceExpression.Validate(enabled, nameof(enabled), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/delivery";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (enabled != null)
+                    callPayload.Queries["Enabled"] = SourceExpressionConverter.ConvertO(enabled);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicDeliveryDeliveryOption[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs(Expression<Func<string>> deliveryOptionId)
+        public IBodyWorkflowAction<SeismicDeliveryDeliveryFormInputs> GetDeliveryOptionFormInputs([WorkflowExpression] Func<string> deliveryOptionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryOptionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(callPayload);
+            SourceExpression.Validate(deliveryOptionId, nameof(deliveryOptionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/customDelivery/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deliveryOptionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicDeliveryDeliveryFormInputs>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IWorkflowAction DeliverViaCustomDelivery(Expression<Func<string>> bodydeliveryOption = null, Expression<Func<string>> bodydeliveryOptionId = null, Expression<Func<SeismicDeliveryCustomDeliveryAdHocInput[]>> bodyadHocInput = null, Expression<Func<SeismicDeliveryCustomDeliveryContent[]>> bodycontent = null)
+        public IWorkflowAction DeliverViaCustomDelivery([WorkflowExpression] Func<string> bodydeliveryOption = null, [WorkflowExpression] Func<string> bodydeliveryOptionId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryAdHocInput[]> bodyadHocInput = null, [WorkflowExpression] Func<SeismicDeliveryCustomDeliveryContent[]> bodycontent = null)
         {
-            var apiCallPath = "/customDelivery";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydeliveryOption != null)
+            SourceExpression.Validate(bodydeliveryOption, nameof(bodydeliveryOption), required: false);
+            SourceExpression.Validate(bodydeliveryOptionId, nameof(bodydeliveryOptionId), required: false);
+            SourceExpression.Validate(bodyadHocInput, nameof(bodyadHocInput), required: false);
+            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["deliveryOption"] = CSharpExpressionConverter.ConvertToken(bodydeliveryOption);
-                bodypropCount++;
+                var apiCallPath = "/customDelivery";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydeliveryOption != null)
+                {
+                    body["deliveryOption"] = SourceExpressionConverter.ConvertToken(bodydeliveryOption);
+                    bodypropCount++;
+                }
+
+                if (bodydeliveryOptionId != null)
+                {
+                    body["deliveryOptionId"] = SourceExpressionConverter.ConvertToken(bodydeliveryOptionId);
+                    bodypropCount++;
+                }
+
+                if (bodyadHocInput != null)
+                {
+                    body["adHocInputs"] = SourceExpressionConverter.ConvertToken(bodyadHocInput);
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydeliveryOptionId != null)
-            {
-                body["deliveryOptionId"] = CSharpExpressionConverter.ConvertToken(bodydeliveryOptionId);
-                bodypropCount++;
-            }
-
-            if (bodyadHocInput != null)
-            {
-                body["adHocInputs"] = CSharpExpressionConverter.ConvertToken(bodyadHocInput);
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace(Expression<Func<string>> bodyworkspaceOptionsworkspaceFolderId = null, Expression<Func<SeismicDeliveryCustomDelContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicWorkSpaceContentManagerWsItemResp> SaveToWorkspace([WorkflowExpression] Func<string> bodyworkspaceOptionsworkspaceFolderId = null, [WorkflowExpression] Func<SeismicDeliveryCustomDelContent[]> bodycontent = null)
         {
-            var apiCallPath = "/saveToWorkspace";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var workspaceOptionsObject = new JObject();
-            var workspaceOptionsObjectpropCount = 0;
-            if (bodyworkspaceOptionsworkspaceFolderId != null)
+            SourceExpression.Validate(bodyworkspaceOptionsworkspaceFolderId, nameof(bodyworkspaceOptionsworkspaceFolderId), required: false);
+            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                workspaceOptionsObject["workspaceFolderId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceOptionsworkspaceFolderId);
-                workspaceOptionsObjectpropCount++;
+                var apiCallPath = "/saveToWorkspace";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var workspaceOptionsObject = new JObject();
+                var workspaceOptionsObjectpropCount = 0;
+                if (bodyworkspaceOptionsworkspaceFolderId != null)
+                {
+                    workspaceOptionsObject["workspaceFolderId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceOptionsworkspaceFolderId);
+                    workspaceOptionsObjectpropCount++;
+                }
+
+                if (workspaceOptionsObjectpropCount > 0)
+                {
+                    body["workspaceOptions"] = workspaceOptionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (workspaceOptionsObjectpropCount > 0)
-            {
-                body["workspaceOptions"] = workspaceOptionsObject;
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(callPayload);
+            return new ApiConnectionAction<SeismicWorkSpaceContentManagerWsItemResp>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
-        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink(Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodysettingsexpiresAt = null, Expression<Func<string>> bodysettingspassword = null, Expression<Func<bool>> bodysettingsallowDownload = null, Expression<Func<string>> bodysettingsnotificationType = null, Expression<Func<bool>> bodysettingssingleView = null, Expression<Func<SeismicLiveSendLiveSendLinkContent[]>> bodycontent = null)
+        public IBodyWorkflowAction<SeismicLiveSendLiveSendLinkResponse> CreateLiveSendLink([WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodysettingsexpiresAt = null, [WorkflowExpression] Func<string> bodysettingspassword = null, [WorkflowExpression] Func<bool> bodysettingsallowDownload = null, [WorkflowExpression] Func<string> bodysettingsnotificationType = null, [WorkflowExpression] Func<bool> bodysettingssingleView = null, [WorkflowExpression] Func<SeismicLiveSendLiveSendLinkContent[]> bodycontent = null)
         {
-            var apiCallPath = "/liveSend/links";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytags != null)
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            SourceExpression.Validate(bodysettingsexpiresAt, nameof(bodysettingsexpiresAt), required: false);
+            SourceExpression.Validate(bodysettingspassword, nameof(bodysettingspassword), required: false);
+            SourceExpression.Validate(bodysettingsallowDownload, nameof(bodysettingsallowDownload), required: false);
+            SourceExpression.Validate(bodysettingsnotificationType, nameof(bodysettingsnotificationType), required: false);
+            SourceExpression.Validate(bodysettingssingleView, nameof(bodysettingssingleView), required: false);
+            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
-                bodypropCount++;
+                var apiCallPath = "/liveSend/links";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingsexpiresAt != null)
+                {
+                    settingsObject["expiresAt"] = SourceExpressionConverter.ConvertToken(bodysettingsexpiresAt);
+                    settingsObjectpropCount++;
+                }
+
+                if (bodysettingspassword != null)
+                {
+                    settingsObject["password"] = SourceExpressionConverter.ConvertToken(bodysettingspassword);
+                    settingsObjectpropCount++;
+                }
+
+                if (bodysettingsallowDownload != null)
+                {
+                    settingsObject["allowDownload"] = SourceExpressionConverter.ConvertToken(bodysettingsallowDownload);
+                    settingsObjectpropCount++;
+                }
+
+                if (bodysettingsnotificationType != null)
+                {
+                    settingsObject["notificationType"] = SourceExpressionConverter.ConvertToken(bodysettingsnotificationType);
+                    settingsObjectpropCount++;
+                }
+
+                if (bodysettingssingleView != null)
+                {
+                    settingsObject["singleView"] = SourceExpressionConverter.ConvertToken(bodysettingssingleView);
+                    settingsObjectpropCount++;
+                }
+
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsexpiresAt != null)
-            {
-                settingsObject["expiresAt"] = CSharpExpressionConverter.ConvertToken(bodysettingsexpiresAt);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingspassword != null)
-            {
-                settingsObject["password"] = CSharpExpressionConverter.ConvertToken(bodysettingspassword);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingsallowDownload != null)
-            {
-                settingsObject["allowDownload"] = CSharpExpressionConverter.ConvertToken(bodysettingsallowDownload);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingsnotificationType != null)
-            {
-                settingsObject["notificationType"] = CSharpExpressionConverter.ConvertToken(bodysettingsnotificationType);
-                settingsObjectpropCount++;
-            }
-
-            if (bodysettingssingleView != null)
-            {
-                settingsObject["singleView"] = CSharpExpressionConverter.ConvertToken(bodysettingssingleView);
-                settingsObjectpropCount++;
-            }
-
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
-
-            if (bodycontent != null)
-            {
-                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SeismicLiveSendLiveSendLinkResponse>(callPayload);
+            return new ApiConnectionAction<SeismicLiveSendLiveSendLinkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seismicengagement")]
         public IBodyWorkflowAction<SeismicLiveSendLiveSendSettingsResponse> GetLiveSendSettings()
         {
-            var apiCallPath = "/liveSend/settings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SeismicLiveSendLiveSendSettingsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/liveSend/settings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SeismicLiveSendLiveSendSettingsResponse>(BuildSourceInput);
         }
     }
 

@@ -12,614 +12,788 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     public class Lms365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction ApproveEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction ApproveEnrollmentRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<EnrollUserToCourseResponse> EnrollUserToCourse(Expression<Func<string>> courseId, Expression<Func<string>> bodyuserLoginName, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<EnrollUserToCourseResponse> EnrollUserToCourse([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> bodyuserLoginName, [WorkflowExpression] Func<string> bodycourseSessionId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userLoginName"] = CSharpExpressionConverter.ConvertToken(bodyuserLoginName);
-            if (bodycourseSessionId != null)
+            SourceExpression.Validate(courseId, nameof(courseId), required: true);
+            SourceExpression.Validate(bodyuserLoginName, nameof(bodyuserLoginName), required: true);
+            SourceExpression.Validate(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["courseSessionId"] = CSharpExpressionConverter.ConvertToken(bodycourseSessionId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/Enroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["userLoginName"] = SourceExpressionConverter.ConvertToken(bodyuserLoginName);
+                if (bodycourseSessionId != null)
+                {
+                    body["courseSessionId"] = SourceExpressionConverter.ConvertToken(bodycourseSessionId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<EnrollUserToCourseResponse>(callPayload);
+            return new ApiConnectionAction<EnrollUserToCourseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction RejectEnrollmentRequest(Expression<Func<string>> id, Expression<Func<string>> bodymessage = null, Expression<Func<string>> lMS365UserId = null)
+        public IWorkflowAction RejectEnrollmentRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodymessage = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Reject", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetCourseCategoriesResponse> GetCourseCategories(Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetCourseCategoriesResponse> GetCourseCategories([WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/odata/v2/CourseCategories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            return new ApiConnectionAction<GetCourseCategoriesResponse>(callPayload);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/odata/v2/CourseCategories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCourseCategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseCategoryResponse> CreateCourseCategory(Expression<Func<string>> bodycategoryName, Expression<Func<string>> bodycourseCatalogId, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseCategoryResponse> CreateCourseCategory([WorkflowExpression] Func<string> bodycategoryName, [WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            var apiCallPath = "/odata/v2/CourseCategories";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Name"] = CSharpExpressionConverter.ConvertToken(bodycategoryName);
-            bodypropCount++;
-            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodycategoryName, nameof(bodycategoryName), required: true);
+            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/odata/v2/CourseCategories";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Name"] = SourceExpressionConverter.ConvertToken(bodycategoryName);
+                bodypropCount++;
+                body["CourseCatalogId"] = SourceExpressionConverter.ConvertToken(bodycourseCatalogId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateCourseCategoryResponse>(callPayload);
+            return new ApiConnectionAction<CreateCourseCategoryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseResponse> CreateCourse(Expression<Func<string>> bodycourseCatalogId, Expression<Func<bodycoursetypeInput>> bodycoursetype, Expression<Func<string>> bodytrainingTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodyculture, Expression<Func<string>> bodyuICulture, Expression<Func<string>> bodyurl, Expression<Func<bodycategoriesInputItem[]>> bodycategories = null, Expression<Func<bodytagsInputItem[]>> bodytags = null, Expression<Func<bodyenrollmentFlowInput>> bodyenrollmentFlow = null, Expression<Func<string>> bodysiteTemplate = null, Expression<Func<string[]>> bodylearningModules = null, Expression<Func<string[]>> bodyquizzes = null, Expression<Func<bool>> bodyautoResolveUrlConflict = null, Expression<Func<string>> bodycourseLayoutId = null, Expression<Func<bodycourseSessionEnrollmentTypeInput>> bodycourseSessionEnrollmentType = null, Expression<Func<string[]>> bodyteacherLogins = null, Expression<Func<string[]>> bodytrainerLogins = null, Expression<Func<string>> bodycertificateTemplateId = null, Expression<Func<string>> bodycourseID = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodylongDescription = null, Expression<Func<bool>> bodypublishingSettingsisEnabled = null, Expression<Func<string>> bodypublishingSettingsstartDate = null, Expression<Func<string>> bodypublishingSettingsendDate = null, Expression<Func<bool>> bodyexpirySettingsisEnabled = null, Expression<Func<string>> bodyexpirySettingsfixedDate = null, Expression<Func<string>> bodyexpirySettingsdaysAfterCompletion = null, Expression<Func<bool>> bodydueDateSettingsisEnabled = null, Expression<Func<string>> bodydueDateSettingsfixedDate = null, Expression<Func<string>> bodydueDateSettingsdaysAfterEnrollment = null, Expression<Func<bool>> bodyshowInCatalog = null, Expression<Func<double>> bodycontinuingEducationUnits = null, Expression<Func<string>> bodyimageUrl = null, Expression<Func<string>> bodyfailedCourseId = null, Expression<Func<string>> lMS365UserId = null)
+        public IBodyWorkflowAction<CreateCourseResponse> CreateCourse([WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<bodycoursetypeInput> bodycoursetype, [WorkflowExpression] Func<string> bodytrainingTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodyculture, [WorkflowExpression] Func<string> bodyuICulture, [WorkflowExpression] Func<string> bodyurl, [WorkflowExpression] Func<bodycategoriesInputItem[]> bodycategories = null, [WorkflowExpression] Func<bodytagsInputItem[]> bodytags = null, [WorkflowExpression] Func<bodyenrollmentFlowInput> bodyenrollmentFlow = null, [WorkflowExpression] Func<string> bodysiteTemplate = null, [WorkflowExpression] Func<string[]> bodylearningModules = null, [WorkflowExpression] Func<string[]> bodyquizzes = null, [WorkflowExpression] Func<bool> bodyautoResolveUrlConflict = null, [WorkflowExpression] Func<string> bodycourseLayoutId = null, [WorkflowExpression] Func<bodycourseSessionEnrollmentTypeInput> bodycourseSessionEnrollmentType = null, [WorkflowExpression] Func<string[]> bodyteacherLogins = null, [WorkflowExpression] Func<string[]> bodytrainerLogins = null, [WorkflowExpression] Func<string> bodycertificateTemplateId = null, [WorkflowExpression] Func<string> bodycourseID = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodylongDescription = null, [WorkflowExpression] Func<bool> bodypublishingSettingsisEnabled = null, [WorkflowExpression] Func<string> bodypublishingSettingsstartDate = null, [WorkflowExpression] Func<string> bodypublishingSettingsendDate = null, [WorkflowExpression] Func<bool> bodyexpirySettingsisEnabled = null, [WorkflowExpression] Func<string> bodyexpirySettingsfixedDate = null, [WorkflowExpression] Func<string> bodyexpirySettingsdaysAfterCompletion = null, [WorkflowExpression] Func<bool> bodydueDateSettingsisEnabled = null, [WorkflowExpression] Func<string> bodydueDateSettingsfixedDate = null, [WorkflowExpression] Func<string> bodydueDateSettingsdaysAfterEnrollment = null, [WorkflowExpression] Func<bool> bodyshowInCatalog = null, [WorkflowExpression] Func<double> bodycontinuingEducationUnits = null, [WorkflowExpression] Func<string> bodyimageUrl = null, [WorkflowExpression] Func<string> bodyfailedCourseId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
         {
-            var apiCallPath = "/odata/v2/Courses";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
-            bodypropCount++;
-            body["CourseType"] = CSharpExpressionConverter.Convert(bodycoursetype);
-            bodypropCount++;
-            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytrainingTitle);
-            bodypropCount++;
-            body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-            bodypropCount++;
-            body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
-            bodypropCount++;
-            body["UICulture"] = CSharpExpressionConverter.ConvertToken(bodyuICulture);
-            if (bodycategories != null)
+            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            SourceExpression.Validate(bodycoursetype, nameof(bodycoursetype), required: true);
+            SourceExpression.Validate(bodytrainingTitle, nameof(bodytrainingTitle), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: true);
+            SourceExpression.Validate(bodyuICulture, nameof(bodyuICulture), required: true);
+            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            SourceExpression.Validate(bodyenrollmentFlow, nameof(bodyenrollmentFlow), required: false);
+            SourceExpression.Validate(bodysiteTemplate, nameof(bodysiteTemplate), required: false);
+            SourceExpression.Validate(bodylearningModules, nameof(bodylearningModules), required: false);
+            SourceExpression.Validate(bodyquizzes, nameof(bodyquizzes), required: false);
+            SourceExpression.Validate(bodyautoResolveUrlConflict, nameof(bodyautoResolveUrlConflict), required: false);
+            SourceExpression.Validate(bodycourseLayoutId, nameof(bodycourseLayoutId), required: false);
+            SourceExpression.Validate(bodycourseSessionEnrollmentType, nameof(bodycourseSessionEnrollmentType), required: false);
+            SourceExpression.Validate(bodyteacherLogins, nameof(bodyteacherLogins), required: false);
+            SourceExpression.Validate(bodytrainerLogins, nameof(bodytrainerLogins), required: false);
+            SourceExpression.Validate(bodycertificateTemplateId, nameof(bodycertificateTemplateId), required: false);
+            SourceExpression.Validate(bodycourseID, nameof(bodycourseID), required: false);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            SourceExpression.Validate(bodylongDescription, nameof(bodylongDescription), required: false);
+            SourceExpression.Validate(bodypublishingSettingsisEnabled, nameof(bodypublishingSettingsisEnabled), required: false);
+            SourceExpression.Validate(bodypublishingSettingsstartDate, nameof(bodypublishingSettingsstartDate), required: false);
+            SourceExpression.Validate(bodypublishingSettingsendDate, nameof(bodypublishingSettingsendDate), required: false);
+            SourceExpression.Validate(bodyexpirySettingsisEnabled, nameof(bodyexpirySettingsisEnabled), required: false);
+            SourceExpression.Validate(bodyexpirySettingsfixedDate, nameof(bodyexpirySettingsfixedDate), required: false);
+            SourceExpression.Validate(bodyexpirySettingsdaysAfterCompletion, nameof(bodyexpirySettingsdaysAfterCompletion), required: false);
+            SourceExpression.Validate(bodydueDateSettingsisEnabled, nameof(bodydueDateSettingsisEnabled), required: false);
+            SourceExpression.Validate(bodydueDateSettingsfixedDate, nameof(bodydueDateSettingsfixedDate), required: false);
+            SourceExpression.Validate(bodydueDateSettingsdaysAfterEnrollment, nameof(bodydueDateSettingsdaysAfterEnrollment), required: false);
+            SourceExpression.Validate(bodyshowInCatalog, nameof(bodyshowInCatalog), required: false);
+            SourceExpression.Validate(bodycontinuingEducationUnits, nameof(bodycontinuingEducationUnits), required: false);
+            SourceExpression.Validate(bodyimageUrl, nameof(bodyimageUrl), required: false);
+            SourceExpression.Validate(bodyfailedCourseId, nameof(bodyfailedCourseId), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
+                var apiCallPath = "/odata/v2/Courses";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["Tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
+                body["CourseCatalogId"] = SourceExpressionConverter.ConvertToken(bodycourseCatalogId);
                 bodypropCount++;
-            }
-
-            if (bodyenrollmentFlow != null)
-            {
-                body["EnrollmentFlow"] = CSharpExpressionConverter.Convert(bodyenrollmentFlow);
+                body["CourseType"] = SourceExpressionConverter.Convert(bodycoursetype);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
-            if (bodysiteTemplate != null)
-            {
-                body["SiteTemplate"] = CSharpExpressionConverter.ConvertToken(bodysiteTemplate);
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytrainingTitle);
                 bodypropCount++;
-            }
-
-            if (bodylearningModules != null)
-            {
-                body["LearningModules"] = CSharpExpressionConverter.ConvertToken(bodylearningModules);
+                body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
                 bodypropCount++;
-            }
-
-            if (bodyquizzes != null)
-            {
-                body["Quizzes"] = CSharpExpressionConverter.ConvertToken(bodyquizzes);
+                body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
                 bodypropCount++;
-            }
+                body["UICulture"] = SourceExpressionConverter.ConvertToken(bodyuICulture);
+                if (bodycategories != null)
+                {
+                    body["Categories"] = SourceExpressionConverter.ConvertToken(bodycategories);
+                    bodypropCount++;
+                }
 
-            if (bodyautoResolveUrlConflict != null)
-            {
-                body["AutoResolveUrlConflict"] = CSharpExpressionConverter.ConvertToken(bodyautoResolveUrlConflict);
+                if (bodytags != null)
+                {
+                    body["Tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodyenrollmentFlow != null)
+                {
+                    body["EnrollmentFlow"] = SourceExpressionConverter.Convert(bodyenrollmentFlow);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["Url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                if (bodysiteTemplate != null)
+                {
+                    body["SiteTemplate"] = SourceExpressionConverter.ConvertToken(bodysiteTemplate);
+                    bodypropCount++;
+                }
 
-            if (bodycourseLayoutId != null)
-            {
-                body["CourseLayoutId"] = CSharpExpressionConverter.ConvertToken(bodycourseLayoutId);
-                bodypropCount++;
-            }
+                if (bodylearningModules != null)
+                {
+                    body["LearningModules"] = SourceExpressionConverter.ConvertToken(bodylearningModules);
+                    bodypropCount++;
+                }
 
-            if (bodycourseSessionEnrollmentType != null)
-            {
-                body["CourseSessionEnrollmentType"] = CSharpExpressionConverter.Convert(bodycourseSessionEnrollmentType);
-                bodypropCount++;
-            }
+                if (bodyquizzes != null)
+                {
+                    body["Quizzes"] = SourceExpressionConverter.ConvertToken(bodyquizzes);
+                    bodypropCount++;
+                }
 
-            if (bodyteacherLogins != null)
-            {
-                body["TeacherLogins"] = CSharpExpressionConverter.ConvertToken(bodyteacherLogins);
-                bodypropCount++;
-            }
+                if (bodyautoResolveUrlConflict != null)
+                {
+                    body["AutoResolveUrlConflict"] = SourceExpressionConverter.ConvertToken(bodyautoResolveUrlConflict);
+                    bodypropCount++;
+                }
 
-            if (bodytrainerLogins != null)
-            {
-                body["TrainerLogins"] = CSharpExpressionConverter.ConvertToken(bodytrainerLogins);
-                bodypropCount++;
-            }
+                if (bodycourseLayoutId != null)
+                {
+                    body["CourseLayoutId"] = SourceExpressionConverter.ConvertToken(bodycourseLayoutId);
+                    bodypropCount++;
+                }
 
-            if (bodycertificateTemplateId != null)
-            {
-                body["CertificateTemplateId"] = CSharpExpressionConverter.ConvertToken(bodycertificateTemplateId);
-                bodypropCount++;
-            }
+                if (bodycourseSessionEnrollmentType != null)
+                {
+                    body["CourseSessionEnrollmentType"] = SourceExpressionConverter.Convert(bodycourseSessionEnrollmentType);
+                    bodypropCount++;
+                }
 
-            if (bodycourseID != null)
-            {
-                body["CourseID"] = CSharpExpressionConverter.ConvertToken(bodycourseID);
-                bodypropCount++;
-            }
+                if (bodyteacherLogins != null)
+                {
+                    body["TeacherLogins"] = SourceExpressionConverter.ConvertToken(bodyteacherLogins);
+                    bodypropCount++;
+                }
 
-            if (bodyduration != null)
-            {
-                body["Duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
-                bodypropCount++;
-            }
+                if (bodytrainerLogins != null)
+                {
+                    body["TrainerLogins"] = SourceExpressionConverter.ConvertToken(bodytrainerLogins);
+                    bodypropCount++;
+                }
 
-            if (bodylongDescription != null)
-            {
-                body["LongDescription"] = CSharpExpressionConverter.ConvertToken(bodylongDescription);
-                bodypropCount++;
-            }
+                if (bodycertificateTemplateId != null)
+                {
+                    body["CertificateTemplateId"] = SourceExpressionConverter.ConvertToken(bodycertificateTemplateId);
+                    bodypropCount++;
+                }
 
-            var publishingSettingsObject = new JObject();
-            var publishingSettingsObjectpropCount = 0;
-            if (bodypublishingSettingsisEnabled != null)
-            {
+                if (bodycourseID != null)
+                {
+                    body["CourseID"] = SourceExpressionConverter.ConvertToken(bodycourseID);
+                    bodypropCount++;
+                }
+
+                if (bodyduration != null)
+                {
+                    body["Duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                    bodypropCount++;
+                }
+
+                if (bodylongDescription != null)
+                {
+                    body["LongDescription"] = SourceExpressionConverter.ConvertToken(bodylongDescription);
+                    bodypropCount++;
+                }
+
+                var publishingSettingsObject = new JObject();
+                var publishingSettingsObjectpropCount = 0;
                 if (bodypublishingSettingsisEnabled != null)
                 {
-                    publishingSettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsisEnabled);
+                    if (bodypublishingSettingsisEnabled != null)
+                    {
+                        publishingSettingsObject["IsEnabled"] = SourceExpressionConverter.ConvertToken(bodypublishingSettingsisEnabled);
+                        publishingSettingsObjectpropCount++;
+                    }
+
+                    publishingSettingsObjectpropCount++;
+                }
+                else
+                {
+                    publishingSettingsObject["IsEnabled"] = true;
                     publishingSettingsObjectpropCount++;
                 }
 
-                publishingSettingsObjectpropCount++;
-            }
-            else
-            {
-                publishingSettingsObject["IsEnabled"] = true;
-                publishingSettingsObjectpropCount++;
-            }
-
-            if (bodypublishingSettingsstartDate != null)
-            {
-                publishingSettingsObject["StartDate"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsstartDate);
-                publishingSettingsObjectpropCount++;
-            }
-
-            if (bodypublishingSettingsendDate != null)
-            {
-                publishingSettingsObject["EndDate"] = CSharpExpressionConverter.ConvertToken(bodypublishingSettingsendDate);
-                publishingSettingsObjectpropCount++;
-            }
-
-            if (publishingSettingsObjectpropCount > 0)
-            {
-                body["PublishingSettings"] = publishingSettingsObject;
-                bodypropCount++;
-            }
-
-            var expirySettingsObject = new JObject();
-            var expirySettingsObjectpropCount = 0;
-            if (bodyexpirySettingsisEnabled != null)
-            {
-                expirySettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsisEnabled);
-                expirySettingsObjectpropCount++;
-            }
-
-            if (bodyexpirySettingsfixedDate != null)
-            {
-                expirySettingsObject["FixedDate"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsfixedDate);
-                expirySettingsObjectpropCount++;
-            }
-
-            if (bodyexpirySettingsdaysAfterCompletion != null)
-            {
-                expirySettingsObject["DaysAfterCompletion"] = CSharpExpressionConverter.ConvertToken(bodyexpirySettingsdaysAfterCompletion);
-                expirySettingsObjectpropCount++;
-            }
-
-            if (expirySettingsObjectpropCount > 0)
-            {
-                body["ExpirySettings"] = expirySettingsObject;
-                bodypropCount++;
-            }
-
-            var dueDateSettingsObject = new JObject();
-            var dueDateSettingsObjectpropCount = 0;
-            if (bodydueDateSettingsisEnabled != null)
-            {
-                dueDateSettingsObject["IsEnabled"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsisEnabled);
-                dueDateSettingsObjectpropCount++;
-            }
-
-            if (bodydueDateSettingsfixedDate != null)
-            {
-                dueDateSettingsObject["FixedDate"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsfixedDate);
-                dueDateSettingsObjectpropCount++;
-            }
-
-            if (bodydueDateSettingsdaysAfterEnrollment != null)
-            {
-                dueDateSettingsObject["DaysAfterEnrollment"] = CSharpExpressionConverter.ConvertToken(bodydueDateSettingsdaysAfterEnrollment);
-                dueDateSettingsObjectpropCount++;
-            }
-
-            if (dueDateSettingsObjectpropCount > 0)
-            {
-                body["DueDateSettings"] = dueDateSettingsObject;
-                bodypropCount++;
-            }
-
-            if (bodyshowInCatalog != null)
-            {
-                body["ShowInCatalog"] = CSharpExpressionConverter.ConvertToken(bodyshowInCatalog);
-                bodypropCount++;
-            }
-
-            if (bodycontinuingEducationUnits != null)
-            {
-                body["CEU"] = CSharpExpressionConverter.ConvertToken(bodycontinuingEducationUnits);
-                bodypropCount++;
-            }
-
-            if (bodyimageUrl != null)
-            {
-                body["ImageUrl"] = CSharpExpressionConverter.ConvertToken(bodyimageUrl);
-                bodypropCount++;
-            }
-
-            if (bodyfailedCourseId != null)
-            {
-                body["FailedCourseId"] = CSharpExpressionConverter.ConvertToken(bodyfailedCourseId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCourseResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetCourseInfoResponse> GetCourseInfo(Expression<Func<string>> courseId, Expression<Func<string>> expand = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$expand"] = Convert.ToString("DueDate,Publishing,CertificateExpiry,SharepointWeb($select=Url),Categories,Tags,CourseSessions,ProvisioningProgress,Trainers");
-            if (expand != null)
-                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
-            return new ApiConnectionAction<GetCourseInfoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction CompleteEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> lMS365UserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction RetakeEnrollmentById(Expression<Func<string>> id, Expression<Func<string>> bodycourseSessionId = null, Expression<Func<string>> lMS365UserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycourseSessionId != null)
-            {
-                body["courseSessionId"] = CSharpExpressionConverter.ConvertToken(bodycourseSessionId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetCourseTagsResponse> GetCourseTags(Expression<Func<string>> filter = null)
-        {
-            var apiCallPath = "/odata/v2/CourseTags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            return new ApiConnectionAction<GetCourseTagsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<CreateCourseTagResponse> CreateCourseTag(Expression<Func<string>> bodyname, Expression<Func<string>> bodycourseCatalogId, Expression<Func<string>> lMS365UserId = null)
-        {
-            var apiCallPath = "/odata/v2/CourseTags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["CourseCatalogId"] = CSharpExpressionConverter.ConvertToken(bodycourseCatalogId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCourseTagResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetCourseProvisioningStatusResponse> GetCourseProvisioningStatus(Expression<Func<string>> expand = null, Expression<Func<string>> filter = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/odata/v2/Courses/IncludeNotCreated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$expand"] = Convert.ToString("ProvisioningProgress,SharepointWeb");
-            if (expand != null)
-                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            callPayload.Queries["$select"] = Convert.ToString("Id");
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            return new ApiConnectionAction<GetCourseProvisioningStatusResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetCoursesFromCatalogResponse> GetCoursesFromCatalog(Expression<Func<string>> courseCatalogId, Expression<Func<string>> expand = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseCatalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$expand"] = Convert.ToString("Courses($expand=SharepointWeb)");
-            if (expand != null)
-                callPayload.Queries["$expand"] = CSharpExpressionConverter.ConvertO(expand);
-            return new ApiConnectionAction<GetCoursesFromCatalogResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetEnrollmentByIdResponse> GetEnrollmentById(Expression<Func<string>> enrollmentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetEnrollmentByIdResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction CancelEnrollment(Expression<Func<string>> enrollmentId, Expression<Func<string>> bodycancellationMessage = null, Expression<Func<string>> lMS365UserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycancellationMessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodycancellationMessage);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> filter = null)
-        {
-            var apiCallPath = "/odata/v2/Users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = Convert.ToString("Email eq '{UserEmail}'");
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            return new ApiConnectionAction<GetUsersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction CreateCourseSession(Expression<Func<string>> courseId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodyendDate, Expression<Func<bodytimeZoneInput>> bodytimeZone, Expression<Func<string>> bodyenrollmentDeadline = null, Expression<Func<string>> bodyroomemailAddress = null, Expression<Func<string>> bodyroomtitle = null, Expression<Func<string>> bodyroomlocation = null, Expression<Func<bodyroomsourceInput>> bodyroomsource = null, Expression<Func<string>> bodymeetingUrl = null, Expression<Func<string>> bodymaxAttendees = null, Expression<Func<string>> lMS365UserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (lMS365UserId != null)
-                callPayload.Headers["LMS365-User-Id"] = CSharpExpressionConverter.ConvertO(lMS365UserId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            bodypropCount++;
-            body["StartDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
-            bodypropCount++;
-            body["EndDate"] = CSharpExpressionConverter.ConvertToken(bodyendDate);
-            bodypropCount++;
-            body["TimeZone"] = CSharpExpressionConverter.Convert(bodytimeZone);
-            if (bodyenrollmentDeadline != null)
-            {
-                body["EnrollmentDeadline"] = CSharpExpressionConverter.ConvertToken(bodyenrollmentDeadline);
-                bodypropCount++;
-            }
-
-            var roomObject = new JObject();
-            var roomObjectpropCount = 0;
-            if (bodyroomemailAddress != null)
-            {
-                roomObject["EmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyroomemailAddress);
-                roomObjectpropCount++;
-            }
-
-            if (bodyroomtitle != null)
-            {
-                roomObject["Title"] = CSharpExpressionConverter.ConvertToken(bodyroomtitle);
-                roomObjectpropCount++;
-            }
-
-            if (bodyroomlocation != null)
-            {
-                roomObject["Location"] = CSharpExpressionConverter.ConvertToken(bodyroomlocation);
-                roomObjectpropCount++;
-            }
-
-            if (bodyroomsource != null)
-            {
-                if (bodyroomsource != null)
+                if (bodypublishingSettingsstartDate != null)
                 {
-                    roomObject["Source"] = CSharpExpressionConverter.Convert(bodyroomsource);
+                    publishingSettingsObject["StartDate"] = SourceExpressionConverter.ConvertToken(bodypublishingSettingsstartDate);
+                    publishingSettingsObjectpropCount++;
+                }
+
+                if (bodypublishingSettingsendDate != null)
+                {
+                    publishingSettingsObject["EndDate"] = SourceExpressionConverter.ConvertToken(bodypublishingSettingsendDate);
+                    publishingSettingsObjectpropCount++;
+                }
+
+                if (publishingSettingsObjectpropCount > 0)
+                {
+                    body["PublishingSettings"] = publishingSettingsObject;
+                    bodypropCount++;
+                }
+
+                var expirySettingsObject = new JObject();
+                var expirySettingsObjectpropCount = 0;
+                if (bodyexpirySettingsisEnabled != null)
+                {
+                    expirySettingsObject["IsEnabled"] = SourceExpressionConverter.ConvertToken(bodyexpirySettingsisEnabled);
+                    expirySettingsObjectpropCount++;
+                }
+
+                if (bodyexpirySettingsfixedDate != null)
+                {
+                    expirySettingsObject["FixedDate"] = SourceExpressionConverter.ConvertToken(bodyexpirySettingsfixedDate);
+                    expirySettingsObjectpropCount++;
+                }
+
+                if (bodyexpirySettingsdaysAfterCompletion != null)
+                {
+                    expirySettingsObject["DaysAfterCompletion"] = SourceExpressionConverter.ConvertToken(bodyexpirySettingsdaysAfterCompletion);
+                    expirySettingsObjectpropCount++;
+                }
+
+                if (expirySettingsObjectpropCount > 0)
+                {
+                    body["ExpirySettings"] = expirySettingsObject;
+                    bodypropCount++;
+                }
+
+                var dueDateSettingsObject = new JObject();
+                var dueDateSettingsObjectpropCount = 0;
+                if (bodydueDateSettingsisEnabled != null)
+                {
+                    dueDateSettingsObject["IsEnabled"] = SourceExpressionConverter.ConvertToken(bodydueDateSettingsisEnabled);
+                    dueDateSettingsObjectpropCount++;
+                }
+
+                if (bodydueDateSettingsfixedDate != null)
+                {
+                    dueDateSettingsObject["FixedDate"] = SourceExpressionConverter.ConvertToken(bodydueDateSettingsfixedDate);
+                    dueDateSettingsObjectpropCount++;
+                }
+
+                if (bodydueDateSettingsdaysAfterEnrollment != null)
+                {
+                    dueDateSettingsObject["DaysAfterEnrollment"] = SourceExpressionConverter.ConvertToken(bodydueDateSettingsdaysAfterEnrollment);
+                    dueDateSettingsObjectpropCount++;
+                }
+
+                if (dueDateSettingsObjectpropCount > 0)
+                {
+                    body["DueDateSettings"] = dueDateSettingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodyshowInCatalog != null)
+                {
+                    body["ShowInCatalog"] = SourceExpressionConverter.ConvertToken(bodyshowInCatalog);
+                    bodypropCount++;
+                }
+
+                if (bodycontinuingEducationUnits != null)
+                {
+                    body["CEU"] = SourceExpressionConverter.ConvertToken(bodycontinuingEducationUnits);
+                    bodypropCount++;
+                }
+
+                if (bodyimageUrl != null)
+                {
+                    body["ImageUrl"] = SourceExpressionConverter.ConvertToken(bodyimageUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyfailedCourseId != null)
+                {
+                    body["FailedCourseId"] = SourceExpressionConverter.ConvertToken(bodyfailedCourseId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateCourseResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetCourseInfoResponse> GetCourseInfo([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> expand = null)
+        {
+            SourceExpression.Validate(courseId, nameof(courseId), required: true);
+            SourceExpression.Validate(expand, nameof(expand), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$expand"] = Convert.ToString("DueDate,Publishing,CertificateExpiry,SharepointWeb($select=Url),Categories,Tags,CourseSessions,ProvisioningProgress,Trainers");
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCourseInfoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IWorkflowAction CompleteEnrollmentById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> lMS365UserId = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Complete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IWorkflowAction RetakeEnrollmentById([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodycourseSessionId = null, [WorkflowExpression] Func<string> lMS365UserId = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodycourseSessionId, nameof(bodycourseSessionId), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Retake", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycourseSessionId != null)
+                {
+                    body["courseSessionId"] = SourceExpressionConverter.ConvertToken(bodycourseSessionId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetCourseTagsResponse> GetCourseTags([WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/odata/v2/CourseTags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCourseTagsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<CreateCourseTagResponse> CreateCourseTag([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycourseCatalogId, [WorkflowExpression] Func<string> lMS365UserId = null)
+        {
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodycourseCatalogId, nameof(bodycourseCatalogId), required: true);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/odata/v2/CourseTags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["CourseCatalogId"] = SourceExpressionConverter.ConvertToken(bodycourseCatalogId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateCourseTagResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetCourseProvisioningStatusResponse> GetCourseProvisioningStatus([WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null)
+        {
+            SourceExpression.Validate(expand, nameof(expand), required: false);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/odata/v2/Courses/IncludeNotCreated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$expand"] = Convert.ToString("ProvisioningProgress,SharepointWeb");
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["$select"] = Convert.ToString("Id");
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCourseProvisioningStatusResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetCoursesFromCatalogResponse> GetCoursesFromCatalog([WorkflowExpression] Func<string> courseCatalogId, [WorkflowExpression] Func<string> expand = null)
+        {
+            SourceExpression.Validate(courseCatalogId, nameof(courseCatalogId), required: true);
+            SourceExpression.Validate(expand, nameof(expand), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/CourseCatalogs({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseCatalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$expand"] = Convert.ToString("Courses($expand=SharepointWeb)");
+                if (expand != null)
+                    callPayload.Queries["$expand"] = SourceExpressionConverter.ConvertO(expand);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCoursesFromCatalogResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetEnrollmentByIdResponse> GetEnrollmentById([WorkflowExpression] Func<string> enrollmentId)
+        {
+            SourceExpression.Validate(enrollmentId, nameof(enrollmentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEnrollmentByIdResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IWorkflowAction CancelEnrollment([WorkflowExpression] Func<string> enrollmentId, [WorkflowExpression] Func<string> bodycancellationMessage = null, [WorkflowExpression] Func<string> lMS365UserId = null)
+        {
+            SourceExpression.Validate(enrollmentId, nameof(enrollmentId), required: true);
+            SourceExpression.Validate(bodycancellationMessage, nameof(bodycancellationMessage), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Enrollments({0})/Cancel", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(enrollmentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycancellationMessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodycancellationMessage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> filter = null)
+        {
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/odata/v2/Users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = Convert.ToString("Email eq '{UserEmail}'");
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUsersResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
+        public IWorkflowAction CreateCourseSession([WorkflowExpression] Func<string> courseId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodyendDate, [WorkflowExpression] Func<bodytimeZoneInput> bodytimeZone, [WorkflowExpression] Func<string> bodyenrollmentDeadline = null, [WorkflowExpression] Func<string> bodyroomemailAddress = null, [WorkflowExpression] Func<string> bodyroomtitle = null, [WorkflowExpression] Func<string> bodyroomlocation = null, [WorkflowExpression] Func<bodyroomsourceInput> bodyroomsource = null, [WorkflowExpression] Func<string> bodymeetingUrl = null, [WorkflowExpression] Func<string> bodymaxAttendees = null, [WorkflowExpression] Func<string> lMS365UserId = null)
+        {
+            SourceExpression.Validate(courseId, nameof(courseId), required: true);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
+            SourceExpression.Validate(bodyendDate, nameof(bodyendDate), required: true);
+            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: true);
+            SourceExpression.Validate(bodyenrollmentDeadline, nameof(bodyenrollmentDeadline), required: false);
+            SourceExpression.Validate(bodyroomemailAddress, nameof(bodyroomemailAddress), required: false);
+            SourceExpression.Validate(bodyroomtitle, nameof(bodyroomtitle), required: false);
+            SourceExpression.Validate(bodyroomlocation, nameof(bodyroomlocation), required: false);
+            SourceExpression.Validate(bodyroomsource, nameof(bodyroomsource), required: false);
+            SourceExpression.Validate(bodymeetingUrl, nameof(bodymeetingUrl), required: false);
+            SourceExpression.Validate(bodymaxAttendees, nameof(bodymaxAttendees), required: false);
+            SourceExpression.Validate(lMS365UserId, nameof(lMS365UserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/odata/v2/Courses({0})/CourseSessions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (lMS365UserId != null)
+                    callPayload.Headers["LMS365-User-Id"] = SourceExpressionConverter.ConvertO(lMS365UserId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                bodypropCount++;
+                body["StartDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                bodypropCount++;
+                body["EndDate"] = SourceExpressionConverter.ConvertToken(bodyendDate);
+                bodypropCount++;
+                body["TimeZone"] = SourceExpressionConverter.Convert(bodytimeZone);
+                if (bodyenrollmentDeadline != null)
+                {
+                    body["EnrollmentDeadline"] = SourceExpressionConverter.ConvertToken(bodyenrollmentDeadline);
+                    bodypropCount++;
+                }
+
+                var roomObject = new JObject();
+                var roomObjectpropCount = 0;
+                if (bodyroomemailAddress != null)
+                {
+                    roomObject["EmailAddress"] = SourceExpressionConverter.ConvertToken(bodyroomemailAddress);
                     roomObjectpropCount++;
                 }
 
-                roomObjectpropCount++;
-            }
-            else
-            {
-                roomObject["Source"] = "Unknown";
-                roomObjectpropCount++;
+                if (bodyroomtitle != null)
+                {
+                    roomObject["Title"] = SourceExpressionConverter.ConvertToken(bodyroomtitle);
+                    roomObjectpropCount++;
+                }
+
+                if (bodyroomlocation != null)
+                {
+                    roomObject["Location"] = SourceExpressionConverter.ConvertToken(bodyroomlocation);
+                    roomObjectpropCount++;
+                }
+
+                if (bodyroomsource != null)
+                {
+                    if (bodyroomsource != null)
+                    {
+                        roomObject["Source"] = SourceExpressionConverter.Convert(bodyroomsource);
+                        roomObjectpropCount++;
+                    }
+
+                    roomObjectpropCount++;
+                }
+                else
+                {
+                    roomObject["Source"] = "Unknown";
+                    roomObjectpropCount++;
+                }
+
+                if (roomObjectpropCount > 0)
+                {
+                    body["Room"] = roomObject;
+                    bodypropCount++;
+                }
+
+                if (bodymeetingUrl != null)
+                {
+                    body["MeetingUrl"] = SourceExpressionConverter.ConvertToken(bodymeetingUrl);
+                    bodypropCount++;
+                }
+
+                if (bodymaxAttendees != null)
+                {
+                    body["MaxAttendees"] = SourceExpressionConverter.ConvertToken(bodymaxAttendees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (roomObjectpropCount > 0)
-            {
-                body["Room"] = roomObject;
-                bodypropCount++;
-            }
-
-            if (bodymeetingUrl != null)
-            {
-                body["MeetingUrl"] = CSharpExpressionConverter.ConvertToken(bodymeetingUrl);
-                bodypropCount++;
-            }
-
-            if (bodymaxAttendees != null)
-            {
-                body["MaxAttendees"] = CSharpExpressionConverter.ConvertToken(bodymaxAttendees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction FileUpload(Expression<Func<string>> fileUploadUrl, Expression<Func<object>> file)
+        public IWorkflowAction FileUpload([WorkflowExpression] Func<string> fileUploadUrl, [WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileUploadUrl, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(fileUploadUrl, nameof(fileUploadUrl), required: true);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileUploadUrl, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lms365")]
-        public IWorkflowAction HttpRequest(Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parametersuri, Expression<Func<string>> parametersbody = null)
+        public IWorkflowAction HttpRequest([WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parametersuri, [WorkflowExpression] Func<string> parametersbody = null)
         {
-            var apiCallPath = "/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["method"] = CSharpExpressionConverter.Convert(parametersmethod);
-            parameterspropCount++;
-            parameters["uri"] = CSharpExpressionConverter.ConvertToken(parametersuri);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
+            SourceExpression.Validate(parametersuri, nameof(parametersuri), required: true);
+            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["headers"] = headersObject;
+                var apiCallPath = "/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
                 parameterspropCount++;
-            }
-
-            if (parametersbody != null)
-            {
-                parameters["body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
+                parameters["method"] = SourceExpressionConverter.Convert(parametersmethod);
                 parameterspropCount++;
+                parameters["uri"] = SourceExpressionConverter.ConvertToken(parametersuri);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    parameters["headers"] = headersObject;
+                    parameterspropCount++;
+                }
+
+                if (parametersbody != null)
+                {
+                    parameters["body"] = SourceExpressionConverter.ConvertToken(parametersbody);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -627,189 +801,233 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lms365
     {
         public IWorkflowTrigger EnrollmentApprovalRequest(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/EnrollmentApprovalRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseEnrollment(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseEnrollment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseUnenrollment(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseUnenrollment";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseStarted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseStarted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseStarted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseCompleted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseCompleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseCompleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CoursePublished(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CoursePublished";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CoursePublished";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseUnpublished(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseUnpublished";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger UserCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/UserCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/UserCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger UserDeleted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/UserDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/UserDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CourseDeleted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/subscribe/CourseDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["WebHookUri"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/subscribe/CourseDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["WebHookUri"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -15,22 +15,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Okdokumentip
 
     public class OkdokumentipTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WaitForSignature(Expression<Func<string>> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WaitForSignature([WorkflowExpression] Func<string> signatureRequestId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureRequestId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["sendInfoURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(signatureRequestId, nameof(signatureRequestId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/signatureRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureRequestId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["sendInfoURL"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

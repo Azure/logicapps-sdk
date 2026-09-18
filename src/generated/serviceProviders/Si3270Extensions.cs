@@ -14,18 +14,26 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Si3270
     public class Si3270Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "si3270")]
-        public IBodyWorkflowAction<JToken> ExecuteMethod(Expression<Func<string>> hidx, Expression<Func<string>> method, Expression<Func<object>> inputParameters)
+        public IBodyWorkflowAction<JToken> ExecuteMethod([WorkflowExpression] Func<string> hidx, [WorkflowExpression] Func<string> method, [WorkflowExpression] Func<object> inputParameters)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["hidx"] = CSharpExpressionConverter.ConvertToken(hidx);
-            serviceProviderParameters["method"] = CSharpExpressionConverter.ConvertToken(method);
-            serviceProviderParameters["inputParameters"] = CSharpExpressionConverter.ConvertToken(inputParameters);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(hidx, nameof(hidx), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(inputParameters, nameof(inputParameters), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "executeMethod", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["hidx"] = SourceExpressionConverter.ConvertToken(hidx);
+                serviceProviderParameters["method"] = SourceExpressionConverter.ConvertToken(method);
+                serviceProviderParameters["inputParameters"] = SourceExpressionConverter.ConvertToken(inputParameters);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/si3270", operationId: "executeMethod", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
         }
     }
 }

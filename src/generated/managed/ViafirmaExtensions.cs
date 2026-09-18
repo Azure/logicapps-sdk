@@ -12,133 +12,154 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Viafirma
     public class ViafirmaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodynotificationsharedLinkemail, Expression<Func<string>> bodynotificationtext = null, Expression<Func<string>> bodynotificationdetail = null, Expression<Func<string>> bodynotificationsharedLinksubject = null, Expression<Func<string>> bodydocumenttemplateCode = null, Expression<Func<string>> bodycallbackMails = null)
+        public IBodyWorkflowAction<SendSignRequestResponse> SendSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodynotificationsharedLinkemail, [WorkflowExpression] Func<string> bodynotificationtext = null, [WorkflowExpression] Func<string> bodynotificationdetail = null, [WorkflowExpression] Func<string> bodynotificationsharedLinksubject = null, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null, [WorkflowExpression] Func<string> bodycallbackMails = null)
         {
-            var apiCallPath = "/documents/api/v3/messages/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["groupCode"] = CSharpExpressionConverter.ConvertToken(bodygroupCode);
-            var workflowObject = new JObject();
-            var workflowObjectpropCount = 0;
-            workflowObject["type"] = "WEB";
-            workflowObjectpropCount++;
-            if (workflowObjectpropCount > 0)
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
+            SourceExpression.Validate(bodynotificationsharedLinkemail, nameof(bodynotificationsharedLinkemail), required: true);
+            SourceExpression.Validate(bodynotificationtext, nameof(bodynotificationtext), required: false);
+            SourceExpression.Validate(bodynotificationdetail, nameof(bodynotificationdetail), required: false);
+            SourceExpression.Validate(bodynotificationsharedLinksubject, nameof(bodynotificationsharedLinksubject), required: false);
+            SourceExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            SourceExpression.Validate(bodycallbackMails, nameof(bodycallbackMails), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = workflowObject;
+                var apiCallPath = "/documents/api/v3/messages/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["groupCode"] = SourceExpressionConverter.ConvertToken(bodygroupCode);
+                var workflowObject = new JObject();
+                var workflowObjectpropCount = 0;
+                workflowObject["type"] = "WEB";
+                workflowObjectpropCount++;
+                if (workflowObjectpropCount > 0)
+                {
+                    body["workflow"] = workflowObject;
+                    bodypropCount++;
+                }
 
-            var notificationObject = new JObject();
-            var notificationObjectpropCount = 0;
-            if (bodynotificationtext != null)
-            {
-                notificationObject["text"] = CSharpExpressionConverter.ConvertToken(bodynotificationtext);
-                notificationObjectpropCount++;
-            }
+                var notificationObject = new JObject();
+                var notificationObjectpropCount = 0;
+                if (bodynotificationtext != null)
+                {
+                    notificationObject["text"] = SourceExpressionConverter.ConvertToken(bodynotificationtext);
+                    notificationObjectpropCount++;
+                }
 
-            if (bodynotificationdetail != null)
-            {
-                notificationObject["detail"] = CSharpExpressionConverter.ConvertToken(bodynotificationdetail);
-                notificationObjectpropCount++;
-            }
+                if (bodynotificationdetail != null)
+                {
+                    notificationObject["detail"] = SourceExpressionConverter.ConvertToken(bodynotificationdetail);
+                    notificationObjectpropCount++;
+                }
 
-            var sharedLinkObject = new JObject();
-            var sharedLinkObjectpropCount = 0;
-            sharedLinkObjectpropCount++;
-            sharedLinkObject["email"] = CSharpExpressionConverter.ConvertToken(bodynotificationsharedLinkemail);
-            if (bodynotificationsharedLinksubject != null)
-            {
-                sharedLinkObject["subject"] = CSharpExpressionConverter.ConvertToken(bodynotificationsharedLinksubject);
+                var sharedLinkObject = new JObject();
+                var sharedLinkObjectpropCount = 0;
                 sharedLinkObjectpropCount++;
+                sharedLinkObject["email"] = SourceExpressionConverter.ConvertToken(bodynotificationsharedLinkemail);
+                if (bodynotificationsharedLinksubject != null)
+                {
+                    sharedLinkObject["subject"] = SourceExpressionConverter.ConvertToken(bodynotificationsharedLinksubject);
+                    sharedLinkObjectpropCount++;
+                }
+
+                if (sharedLinkObjectpropCount > 0)
+                {
+                    notificationObject["sharedLink"] = sharedLinkObject;
+                    notificationObjectpropCount++;
+                }
+
+                if (notificationObjectpropCount > 0)
+                {
+                    body["notification"] = notificationObject;
+                    bodypropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumenttemplateCode != null)
+                {
+                    documentObject["templateCode"] = SourceExpressionConverter.ConvertToken(bodydocumenttemplateCode);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
+                if (bodycallbackMails != null)
+                {
+                    body["callbackMails"] = SourceExpressionConverter.ConvertToken(bodycallbackMails);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (sharedLinkObjectpropCount > 0)
-            {
-                notificationObject["sharedLink"] = sharedLinkObject;
-                notificationObjectpropCount++;
-            }
-
-            if (notificationObjectpropCount > 0)
-            {
-                body["notification"] = notificationObject;
-                bodypropCount++;
-            }
-
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumenttemplateCode != null)
-            {
-                documentObject["templateCode"] = CSharpExpressionConverter.ConvertToken(bodydocumenttemplateCode);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            if (bodycallbackMails != null)
-            {
-                body["callbackMails"] = CSharpExpressionConverter.ConvertToken(bodycallbackMails);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSignRequestResponse>(callPayload);
+            return new ApiConnectionAction<SendSignRequestResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "viafirma")]
-        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest(Expression<Func<string>> contentType, Expression<Func<string>> accept, Expression<Func<string>> bodygroupCode, Expression<Func<string>> bodydocumenttemplateCode = null)
+        public IBodyWorkflowAction<CreateSignRequestResponse> CreateSignRequest([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> accept, [WorkflowExpression] Func<string> bodygroupCode, [WorkflowExpression] Func<string> bodydocumenttemplateCode = null)
         {
-            var apiCallPath = "/documents/api/v3/messages/dispatch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["groupCode"] = CSharpExpressionConverter.ConvertToken(bodygroupCode);
-            var workflowObject = new JObject();
-            var workflowObjectpropCount = 0;
-            workflowObject["type"] = "PRESENTIAL";
-            workflowObjectpropCount++;
-            if (workflowObjectpropCount > 0)
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: true);
+            SourceExpression.Validate(bodygroupCode, nameof(bodygroupCode), required: true);
+            SourceExpression.Validate(bodydocumenttemplateCode, nameof(bodydocumenttemplateCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = workflowObject;
+                var apiCallPath = "/documents/api/v3/messages/dispatch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["groupCode"] = SourceExpressionConverter.ConvertToken(bodygroupCode);
+                var workflowObject = new JObject();
+                var workflowObjectpropCount = 0;
+                workflowObject["type"] = "PRESENTIAL";
+                workflowObjectpropCount++;
+                if (workflowObjectpropCount > 0)
+                {
+                    body["workflow"] = workflowObject;
+                    bodypropCount++;
+                }
+
+                var documentObject = new JObject();
+                var documentObjectpropCount = 0;
+                if (bodydocumenttemplateCode != null)
+                {
+                    documentObject["templateCode"] = SourceExpressionConverter.ConvertToken(bodydocumenttemplateCode);
+                    documentObjectpropCount++;
+                }
+
+                if (documentObjectpropCount > 0)
+                {
+                    body["document"] = documentObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var documentObject = new JObject();
-            var documentObjectpropCount = 0;
-            if (bodydocumenttemplateCode != null)
-            {
-                documentObject["templateCode"] = CSharpExpressionConverter.ConvertToken(bodydocumenttemplateCode);
-                documentObjectpropCount++;
-            }
-
-            if (documentObjectpropCount > 0)
-            {
-                body["document"] = documentObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSignRequestResponse>(callPayload);
+            return new ApiConnectionAction<CreateSignRequestResponse>(BuildSourceInput);
         }
     }
 

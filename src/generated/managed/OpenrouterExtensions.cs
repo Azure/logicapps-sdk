@@ -14,78 +14,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Openrouter
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<GetCreditsResponse> GetCredits()
         {
-            var apiCallPath = "/v1/credits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCreditsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/credits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreditsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints(Expression<Func<string>> author, Expression<Func<string>> slug)
+        public IBodyWorkflowAction<ListModelEndpointsResponse> ListModelEndpoints([WorkflowExpression] Func<string> author, [WorkflowExpression] Func<string> slug)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(author, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListModelEndpointsResponse>(callPayload);
+            SourceExpression.Validate(author, nameof(author), required: true);
+            SourceExpression.Validate(slug, nameof(slug), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/models/{0}/{1}/endpoints", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(author, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slug, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListModelEndpointsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
         public IBodyWorkflowAction<ListModelsResponse> ListModels()
         {
-            var apiCallPath = "/v1/models";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListModelsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration(Expression<Func<string>> id)
-        {
-            var apiCallPath = "/v1/generation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction<GetGenerationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion(Expression<Func<string>> bodymodel, Expression<Func<bodymessagesInputItem[]>> bodymessages)
-        {
-            var apiCallPath = "/v1/chat/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
-            bodypropCount++;
-            body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/models";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ChatCompletionResponse>(callPayload);
+            return new ApiConnectionAction<ListModelsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
-        public IBodyWorkflowAction<CompletionResponse> Completion(Expression<Func<string>> bodymodel, Expression<Func<string>> bodyprompt)
+        public IBodyWorkflowAction<GetGenerationResponse> GetGeneration([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/v1/completions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodel);
-            bodypropCount++;
-            body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/generation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CompletionResponse>(callPayload);
+            return new ApiConnectionAction<GetGenerationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
+        public IBodyWorkflowAction<ChatCompletionResponse> ChatCompletion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages)
+        {
+            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
+            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/chat/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = SourceExpressionConverter.ConvertToken(bodymodel);
+                bodypropCount++;
+                body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ChatCompletionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "openrouter")]
+        public IBodyWorkflowAction<CompletionResponse> Completion([WorkflowExpression] Func<string> bodymodel, [WorkflowExpression] Func<string> bodyprompt)
+        {
+            SourceExpression.Validate(bodymodel, nameof(bodymodel), required: true);
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/completions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["model"] = SourceExpressionConverter.ConvertToken(bodymodel);
+                bodypropCount++;
+                body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompletionResponse>(BuildSourceInput);
         }
     }
 

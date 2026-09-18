@@ -12,80 +12,127 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shorturl
     public class ShorturlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl(Expression<Func<string>> longUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> shortUrl = null, Expression<Func<string>> generatedBy = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> password = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken> ShortUrlCreateShortUrl([WorkflowExpression] Func<string> longUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> shortUrl = null, [WorkflowExpression] Func<string> generatedBy = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
-            var apiCallPath = "/api/shorturl/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["longUrl"] = CSharpExpressionConverter.ConvertO(longUrl);
-            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
-            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
-            if (shortUrl != null)
-                callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
-            if (generatedBy != null)
-                callPayload.Queries["generatedBy"] = CSharpExpressionConverter.ConvertO(generatedBy);
-            if (maxUses != null)
-                callPayload.Queries["maxUses"] = CSharpExpressionConverter.ConvertO(maxUses);
-            if (password != null)
-                callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
-            if (expiryDate != null)
-                callPayload.Queries["expiryDate"] = CSharpExpressionConverter.ConvertO(expiryDate);
-            callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
-            if (redirectionCode != null)
-                callPayload.Queries["redirectionCode"] = CSharpExpressionConverter.Convert(redirectionCode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(longUrl, nameof(longUrl), required: true);
+            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
+            SourceExpression.Validate(username, nameof(username), required: true);
+            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
+            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: false);
+            SourceExpression.Validate(generatedBy, nameof(generatedBy), required: false);
+            SourceExpression.Validate(maxUses, nameof(maxUses), required: false);
+            SourceExpression.Validate(password, nameof(password), required: false);
+            SourceExpression.Validate(expiryDate, nameof(expiryDate), required: false);
+            SourceExpression.Validate(redirectionCode, nameof(redirectionCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shorturl/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["longUrl"] = SourceExpressionConverter.ConvertO(longUrl);
+                callPayload.Queries["baseDomain"] = SourceExpressionConverter.Convert(baseDomain);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["licenseKey"] = SourceExpressionConverter.ConvertO(licenseKey);
+                if (shortUrl != null)
+                    callPayload.Queries["shortUrl"] = SourceExpressionConverter.ConvertO(shortUrl);
+                if (generatedBy != null)
+                    callPayload.Queries["generatedBy"] = SourceExpressionConverter.ConvertO(generatedBy);
+                if (maxUses != null)
+                    callPayload.Queries["maxUses"] = SourceExpressionConverter.ConvertO(maxUses);
+                if (password != null)
+                    callPayload.Queries["password"] = SourceExpressionConverter.ConvertO(password);
+                if (expiryDate != null)
+                    callPayload.Queries["expiryDate"] = SourceExpressionConverter.ConvertO(expiryDate);
+                callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
+                if (redirectionCode != null)
+                    callPayload.Queries["redirectionCode"] = SourceExpressionConverter.Convert(redirectionCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey)
+        public IBodyWorkflowAction<JToken> ShortUrlDeleteShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey)
         {
-            var apiCallPath = "/api/shorturl/delete";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
-            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
-            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: true);
+            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
+            SourceExpression.Validate(username, nameof(username), required: true);
+            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shorturl/delete";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["shortUrl"] = SourceExpressionConverter.ConvertO(shortUrl);
+                callPayload.Queries["baseDomain"] = SourceExpressionConverter.Convert(baseDomain);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["licenseKey"] = SourceExpressionConverter.ConvertO(licenseKey);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls(Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> generatedBy = null)
+        public IBodyWorkflowAction<JToken> ShortUrlGetAllShortUrls([WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> generatedBy = null)
         {
-            var apiCallPath = "/api/shorturl/getall";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
-            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
-            if (generatedBy != null)
-                callPayload.Queries["generatedBy"] = CSharpExpressionConverter.ConvertO(generatedBy);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
+            SourceExpression.Validate(username, nameof(username), required: true);
+            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
+            SourceExpression.Validate(generatedBy, nameof(generatedBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shorturl/getall";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseDomain"] = SourceExpressionConverter.Convert(baseDomain);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["licenseKey"] = SourceExpressionConverter.ConvertO(licenseKey);
+                if (generatedBy != null)
+                    callPayload.Queries["generatedBy"] = SourceExpressionConverter.ConvertO(generatedBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shorturl")]
-        public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl(Expression<Func<string>> shortUrl, Expression<Func<baseDomainInput>> baseDomain, Expression<Func<string>> username, Expression<Func<string>> licenseKey, Expression<Func<string>> newLongUrl = null, Expression<Func<string>> password = null, Expression<Func<int>> maxUses = null, Expression<Func<string>> expiryDate = null, Expression<Func<redirectionCodeInput>> redirectionCode = null)
+        public IBodyWorkflowAction<JToken> ShortUrlModifyShortUrl([WorkflowExpression] Func<string> shortUrl, [WorkflowExpression] Func<baseDomainInput> baseDomain, [WorkflowExpression] Func<string> username, [WorkflowExpression] Func<string> licenseKey, [WorkflowExpression] Func<string> newLongUrl = null, [WorkflowExpression] Func<string> password = null, [WorkflowExpression] Func<int> maxUses = null, [WorkflowExpression] Func<string> expiryDate = null, [WorkflowExpression] Func<redirectionCodeInput> redirectionCode = null)
         {
-            var apiCallPath = "/api/shorturl/modify";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["shortUrl"] = CSharpExpressionConverter.ConvertO(shortUrl);
-            callPayload.Queries["baseDomain"] = CSharpExpressionConverter.Convert(baseDomain);
-            callPayload.Queries["username"] = CSharpExpressionConverter.ConvertO(username);
-            callPayload.Queries["licenseKey"] = CSharpExpressionConverter.ConvertO(licenseKey);
-            if (newLongUrl != null)
-                callPayload.Queries["newLongUrl"] = CSharpExpressionConverter.ConvertO(newLongUrl);
-            if (password != null)
-                callPayload.Queries["password"] = CSharpExpressionConverter.ConvertO(password);
-            if (maxUses != null)
-                callPayload.Queries["maxUses"] = CSharpExpressionConverter.ConvertO(maxUses);
-            if (expiryDate != null)
-                callPayload.Queries["expiryDate"] = CSharpExpressionConverter.ConvertO(expiryDate);
-            callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
-            if (redirectionCode != null)
-                callPayload.Queries["redirectionCode"] = CSharpExpressionConverter.Convert(redirectionCode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(shortUrl, nameof(shortUrl), required: true);
+            SourceExpression.Validate(baseDomain, nameof(baseDomain), required: true);
+            SourceExpression.Validate(username, nameof(username), required: true);
+            SourceExpression.Validate(licenseKey, nameof(licenseKey), required: true);
+            SourceExpression.Validate(newLongUrl, nameof(newLongUrl), required: false);
+            SourceExpression.Validate(password, nameof(password), required: false);
+            SourceExpression.Validate(maxUses, nameof(maxUses), required: false);
+            SourceExpression.Validate(expiryDate, nameof(expiryDate), required: false);
+            SourceExpression.Validate(redirectionCode, nameof(redirectionCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shorturl/modify";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["shortUrl"] = SourceExpressionConverter.ConvertO(shortUrl);
+                callPayload.Queries["baseDomain"] = SourceExpressionConverter.Convert(baseDomain);
+                callPayload.Queries["username"] = SourceExpressionConverter.ConvertO(username);
+                callPayload.Queries["licenseKey"] = SourceExpressionConverter.ConvertO(licenseKey);
+                if (newLongUrl != null)
+                    callPayload.Queries["newLongUrl"] = SourceExpressionConverter.ConvertO(newLongUrl);
+                if (password != null)
+                    callPayload.Queries["password"] = SourceExpressionConverter.ConvertO(password);
+                if (maxUses != null)
+                    callPayload.Queries["maxUses"] = SourceExpressionConverter.ConvertO(maxUses);
+                if (expiryDate != null)
+                    callPayload.Queries["expiryDate"] = SourceExpressionConverter.ConvertO(expiryDate);
+                callPayload.Queries["redirectionCode"] = Convert.ToString("301 - Moved Permanently");
+                if (redirectionCode != null)
+                    callPayload.Queries["redirectionCode"] = SourceExpressionConverter.Convert(redirectionCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

@@ -12,322 +12,468 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersivepdf
     public class CloudmersivepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfAddAnnotations(Expression<Func<PdfAnnotation[]>> requestannotationsToAdd = null, Expression<Func<string>> requestinputFileBytes = null)
+        public IBodyWorkflowAction<string> EditPdfAddAnnotations([WorkflowExpression] Func<PdfAnnotation[]> requestannotationsToAdd = null, [WorkflowExpression] Func<string> requestinputFileBytes = null)
         {
-            var apiCallPath = "/convert/edit/pdf/annotations/add-item";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestannotationsToAdd != null)
+            SourceExpression.Validate(requestannotationsToAdd, nameof(requestannotationsToAdd), required: false);
+            SourceExpression.Validate(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["AnnotationsToAdd"] = CSharpExpressionConverter.ConvertToken(requestannotationsToAdd);
-                requestpropCount++;
+                var apiCallPath = "/convert/edit/pdf/annotations/add-item";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestannotationsToAdd != null)
+                {
+                    request["AnnotationsToAdd"] = SourceExpressionConverter.ConvertToken(requestannotationsToAdd);
+                    requestpropCount++;
+                }
+
+                if (requestinputFileBytes != null)
+                {
+                    request["InputFileBytes"] = SourceExpressionConverter.ConvertToken(requestinputFileBytes);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestinputFileBytes != null)
-            {
-                request["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(requestinputFileBytes);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<GetPdfAnnotationsResult> EditPdfGetAnnotations(Expression<Func<object>> inputFile)
+        public IBodyWorkflowAction<GetPdfAnnotationsResult> EditPdfGetAnnotations([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/pdf/annotations/list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPdfAnnotationsResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfRemoveAllAnnotations(Expression<Func<object>> inputFile)
-        {
-            var apiCallPath = "/convert/edit/pdf/annotations/remove-all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfRemoveAnnotationItem(Expression<Func<object>> inputFile, Expression<Func<int>> annotationIndex)
-        {
-            var apiCallPath = "/convert/edit/pdf/annotations/remove-item";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["annotationIndex"] = CSharpExpressionConverter.ConvertO(annotationIndex);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfDecrypt(Expression<Func<string>> password, Expression<Func<object>> inputFile)
-        {
-            var apiCallPath = "/convert/edit/pdf/decrypt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["password"] = CSharpExpressionConverter.ConvertO(password);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfEncrypt(Expression<Func<object>> inputFile, Expression<Func<string>> userPassword = null, Expression<Func<string>> ownerPassword = null, Expression<Func<string>> encryptionKeyLength = null)
-        {
-            var apiCallPath = "/convert/edit/pdf/encrypt";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userPassword != null)
-                callPayload.Headers["userPassword"] = CSharpExpressionConverter.ConvertO(userPassword);
-            if (ownerPassword != null)
-                callPayload.Headers["ownerPassword"] = CSharpExpressionConverter.ConvertO(ownerPassword);
-            if (encryptionKeyLength != null)
-                callPayload.Headers["encryptionKeyLength"] = CSharpExpressionConverter.ConvertO(encryptionKeyLength);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfSetPermissions(Expression<Func<string>> ownerPassword, Expression<Func<string>> userPassword, Expression<Func<object>> inputFile, Expression<Func<string>> encryptionKeyLength = null, Expression<Func<bool>> allowPrinting = null, Expression<Func<bool>> allowDocumentAssembly = null, Expression<Func<bool>> allowContentExtraction = null, Expression<Func<bool>> allowFormFilling = null, Expression<Func<bool>> allowEditing = null, Expression<Func<bool>> allowAnnotations = null, Expression<Func<bool>> allowDegradedPrinting = null)
-        {
-            var apiCallPath = "/convert/edit/pdf/encrypt/set-permissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ownerPassword"] = CSharpExpressionConverter.ConvertO(ownerPassword);
-            callPayload.Headers["userPassword"] = CSharpExpressionConverter.ConvertO(userPassword);
-            if (encryptionKeyLength != null)
-                callPayload.Headers["encryptionKeyLength"] = CSharpExpressionConverter.ConvertO(encryptionKeyLength);
-            if (allowPrinting != null)
-                callPayload.Headers["allowPrinting"] = CSharpExpressionConverter.ConvertO(allowPrinting);
-            if (allowDocumentAssembly != null)
-                callPayload.Headers["allowDocumentAssembly"] = CSharpExpressionConverter.ConvertO(allowDocumentAssembly);
-            if (allowContentExtraction != null)
-                callPayload.Headers["allowContentExtraction"] = CSharpExpressionConverter.ConvertO(allowContentExtraction);
-            if (allowFormFilling != null)
-                callPayload.Headers["allowFormFilling"] = CSharpExpressionConverter.ConvertO(allowFormFilling);
-            if (allowEditing != null)
-                callPayload.Headers["allowEditing"] = CSharpExpressionConverter.ConvertO(allowEditing);
-            if (allowAnnotations != null)
-                callPayload.Headers["allowAnnotations"] = CSharpExpressionConverter.ConvertO(allowAnnotations);
-            if (allowDegradedPrinting != null)
-                callPayload.Headers["allowDegradedPrinting"] = CSharpExpressionConverter.ConvertO(allowDegradedPrinting);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<PdfFormFields> EditPdfGetFormFields(Expression<Func<object>> inputFile)
-        {
-            var apiCallPath = "/convert/edit/pdf/form/get-fields";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PdfFormFields>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfSetFormFields(Expression<Func<SetFormFieldValue[]>> fieldValuesfieldValues = null, Expression<Func<string>> fieldValuesinputFileBytes = null)
-        {
-            var apiCallPath = "/convert/edit/pdf/form/set-fields";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var fieldValues = new JObject();
-            var fieldValuespropCount = 0;
-            if (fieldValuesfieldValues != null)
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fieldValues["FieldValues"] = CSharpExpressionConverter.ConvertToken(fieldValuesfieldValues);
-                fieldValuespropCount++;
+                var apiCallPath = "/convert/edit/pdf/annotations/list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (fieldValuesinputFileBytes != null)
-            {
-                fieldValues["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(fieldValuesinputFileBytes);
-                fieldValuespropCount++;
-            }
-
-            if (fieldValuespropCount > 0)
-            {
-                callPayload.Body = fieldValues;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<GetPdfAnnotationsResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<PdfMetadata> EditPdfGetMetadata(Expression<Func<object>> inputFile)
+        public IBodyWorkflowAction<string> EditPdfRemoveAllAnnotations([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/pdf/get-metadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PdfMetadata>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/annotations/remove-all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfDeletePages(Expression<Func<object>> inputFile, Expression<Func<int>> pageStart, Expression<Func<int>> pageEnd)
+        public IBodyWorkflowAction<string> EditPdfRemoveAnnotationItem([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<int> annotationIndex)
         {
-            var apiCallPath = "/convert/edit/pdf/pages/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["pageStart"] = CSharpExpressionConverter.ConvertO(pageStart);
-            callPayload.Headers["pageEnd"] = CSharpExpressionConverter.ConvertO(pageEnd);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(annotationIndex, nameof(annotationIndex), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/annotations/remove-item";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["annotationIndex"] = SourceExpressionConverter.ConvertO(annotationIndex);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<PdfTextByPageResult> EditPdfGetPdfTextByPages(Expression<Func<object>> inputFile)
+        public IBodyWorkflowAction<string> EditPdfDecrypt([WorkflowExpression] Func<string> password, [WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/pdf/pages/get-text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PdfTextByPageResult>(callPayload);
+            SourceExpression.Validate(password, nameof(password), required: true);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/decrypt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["password"] = SourceExpressionConverter.ConvertO(password);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfInsertPages(Expression<Func<object>> sourceFile, Expression<Func<object>> destinationFile, Expression<Func<int>> pageStartSource, Expression<Func<int>> pageEndSource, Expression<Func<int>> pageInsertBeforeDesitnation)
+        public IBodyWorkflowAction<string> EditPdfEncrypt([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<string> userPassword = null, [WorkflowExpression] Func<string> ownerPassword = null, [WorkflowExpression] Func<string> encryptionKeyLength = null)
         {
-            var apiCallPath = "/convert/edit/pdf/pages/insert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["pageStartSource"] = CSharpExpressionConverter.ConvertO(pageStartSource);
-            callPayload.Headers["pageEndSource"] = CSharpExpressionConverter.ConvertO(pageEndSource);
-            callPayload.Headers["pageInsertBeforeDesitnation"] = CSharpExpressionConverter.ConvertO(pageInsertBeforeDesitnation);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(userPassword, nameof(userPassword), required: false);
+            SourceExpression.Validate(ownerPassword, nameof(ownerPassword), required: false);
+            SourceExpression.Validate(encryptionKeyLength, nameof(encryptionKeyLength), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/encrypt";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userPassword != null)
+                    callPayload.Headers["userPassword"] = SourceExpressionConverter.ConvertO(userPassword);
+                if (ownerPassword != null)
+                    callPayload.Headers["ownerPassword"] = SourceExpressionConverter.ConvertO(ownerPassword);
+                if (encryptionKeyLength != null)
+                    callPayload.Headers["encryptionKeyLength"] = SourceExpressionConverter.ConvertO(encryptionKeyLength);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfRotateAllPages(Expression<Func<object>> inputFile, Expression<Func<int>> rotationAngle)
+        public IBodyWorkflowAction<string> EditPdfSetPermissions([WorkflowExpression] Func<string> ownerPassword, [WorkflowExpression] Func<string> userPassword, [WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<string> encryptionKeyLength = null, [WorkflowExpression] Func<bool> allowPrinting = null, [WorkflowExpression] Func<bool> allowDocumentAssembly = null, [WorkflowExpression] Func<bool> allowContentExtraction = null, [WorkflowExpression] Func<bool> allowFormFilling = null, [WorkflowExpression] Func<bool> allowEditing = null, [WorkflowExpression] Func<bool> allowAnnotations = null, [WorkflowExpression] Func<bool> allowDegradedPrinting = null)
         {
-            var apiCallPath = "/convert/edit/pdf/pages/rotate/all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["rotationAngle"] = CSharpExpressionConverter.ConvertO(rotationAngle);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(ownerPassword, nameof(ownerPassword), required: true);
+            SourceExpression.Validate(userPassword, nameof(userPassword), required: true);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(encryptionKeyLength, nameof(encryptionKeyLength), required: false);
+            SourceExpression.Validate(allowPrinting, nameof(allowPrinting), required: false);
+            SourceExpression.Validate(allowDocumentAssembly, nameof(allowDocumentAssembly), required: false);
+            SourceExpression.Validate(allowContentExtraction, nameof(allowContentExtraction), required: false);
+            SourceExpression.Validate(allowFormFilling, nameof(allowFormFilling), required: false);
+            SourceExpression.Validate(allowEditing, nameof(allowEditing), required: false);
+            SourceExpression.Validate(allowAnnotations, nameof(allowAnnotations), required: false);
+            SourceExpression.Validate(allowDegradedPrinting, nameof(allowDegradedPrinting), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/encrypt/set-permissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["ownerPassword"] = SourceExpressionConverter.ConvertO(ownerPassword);
+                callPayload.Headers["userPassword"] = SourceExpressionConverter.ConvertO(userPassword);
+                if (encryptionKeyLength != null)
+                    callPayload.Headers["encryptionKeyLength"] = SourceExpressionConverter.ConvertO(encryptionKeyLength);
+                if (allowPrinting != null)
+                    callPayload.Headers["allowPrinting"] = SourceExpressionConverter.ConvertO(allowPrinting);
+                if (allowDocumentAssembly != null)
+                    callPayload.Headers["allowDocumentAssembly"] = SourceExpressionConverter.ConvertO(allowDocumentAssembly);
+                if (allowContentExtraction != null)
+                    callPayload.Headers["allowContentExtraction"] = SourceExpressionConverter.ConvertO(allowContentExtraction);
+                if (allowFormFilling != null)
+                    callPayload.Headers["allowFormFilling"] = SourceExpressionConverter.ConvertO(allowFormFilling);
+                if (allowEditing != null)
+                    callPayload.Headers["allowEditing"] = SourceExpressionConverter.ConvertO(allowEditing);
+                if (allowAnnotations != null)
+                    callPayload.Headers["allowAnnotations"] = SourceExpressionConverter.ConvertO(allowAnnotations);
+                if (allowDegradedPrinting != null)
+                    callPayload.Headers["allowDegradedPrinting"] = SourceExpressionConverter.ConvertO(allowDegradedPrinting);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfRotatePageRange(Expression<Func<object>> inputFile, Expression<Func<int>> rotationAngle, Expression<Func<int>> pageStart, Expression<Func<int>> pageEnd)
+        public IBodyWorkflowAction<PdfFormFields> EditPdfGetFormFields([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/pdf/pages/rotate/page-range";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["rotationAngle"] = CSharpExpressionConverter.ConvertO(rotationAngle);
-            callPayload.Headers["pageStart"] = CSharpExpressionConverter.ConvertO(pageStart);
-            callPayload.Headers["pageEnd"] = CSharpExpressionConverter.ConvertO(pageEnd);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/form/get-fields";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PdfFormFields>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfRasterize(Expression<Func<object>> inputFile)
+        public IBodyWorkflowAction<string> EditPdfSetFormFields([WorkflowExpression] Func<SetFormFieldValue[]> fieldValuesfieldValues = null, [WorkflowExpression] Func<string> fieldValuesinputFileBytes = null)
         {
-            var apiCallPath = "/convert/edit/pdf/rasterize";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(fieldValuesfieldValues, nameof(fieldValuesfieldValues), required: false);
+            SourceExpression.Validate(fieldValuesinputFileBytes, nameof(fieldValuesinputFileBytes), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/form/set-fields";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var fieldValues = new JObject();
+                var fieldValuespropCount = 0;
+                if (fieldValuesfieldValues != null)
+                {
+                    fieldValues["FieldValues"] = SourceExpressionConverter.ConvertToken(fieldValuesfieldValues);
+                    fieldValuespropCount++;
+                }
+
+                if (fieldValuesinputFileBytes != null)
+                {
+                    fieldValues["InputFileBytes"] = SourceExpressionConverter.ConvertToken(fieldValuesinputFileBytes);
+                    fieldValuespropCount++;
+                }
+
+                if (fieldValuespropCount > 0)
+                {
+                    callPayload.Body = fieldValues;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfSetMetadata(Expression<Func<string>> requestinputFileBytes = null, Expression<Func<string>> requestmetadataToSetauthor = null, Expression<Func<string>> requestmetadataToSetcreator = null, Expression<Func<string>> requestmetadataToSetdateCreated = null, Expression<Func<string>> requestmetadataToSetdateModified = null, Expression<Func<string>> requestmetadataToSetkeywords = null, Expression<Func<int>> requestmetadataToSetpageCount = null, Expression<Func<string>> requestmetadataToSetsubject = null, Expression<Func<bool>> requestmetadataToSetsuccessful = null, Expression<Func<string>> requestmetadataToSettitle = null)
+        public IBodyWorkflowAction<PdfMetadata> EditPdfGetMetadata([WorkflowExpression] Func<object> inputFile)
         {
-            var apiCallPath = "/convert/edit/pdf/set-metadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestinputFileBytes != null)
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["InputFileBytes"] = CSharpExpressionConverter.ConvertToken(requestinputFileBytes);
-                requestpropCount++;
+                var apiCallPath = "/convert/edit/pdf/get-metadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var metadataToSetObject = new JObject();
-            var metadataToSetObjectpropCount = 0;
-            if (requestmetadataToSetauthor != null)
-            {
-                metadataToSetObject["Author"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetauthor);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetcreator != null)
-            {
-                metadataToSetObject["Creator"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetcreator);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetdateCreated != null)
-            {
-                metadataToSetObject["DateCreated"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetdateCreated);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetdateModified != null)
-            {
-                metadataToSetObject["DateModified"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetdateModified);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetkeywords != null)
-            {
-                metadataToSetObject["Keywords"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetkeywords);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetpageCount != null)
-            {
-                metadataToSetObject["PageCount"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetpageCount);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetsubject != null)
-            {
-                metadataToSetObject["Subject"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetsubject);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSetsuccessful != null)
-            {
-                metadataToSetObject["Successful"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSetsuccessful);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (requestmetadataToSettitle != null)
-            {
-                metadataToSetObject["Title"] = CSharpExpressionConverter.ConvertToken(requestmetadataToSettitle);
-                metadataToSetObjectpropCount++;
-            }
-
-            if (metadataToSetObjectpropCount > 0)
-            {
-                request["MetadataToSet"] = metadataToSetObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<PdfMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
-        public IBodyWorkflowAction<string> EditPdfWatermarkText(Expression<Func<string>> watermarkText, Expression<Func<object>> inputFile, Expression<Func<string>> fontName = null, Expression<Func<double>> fontSize = null, Expression<Func<string>> fontColor = null, Expression<Func<double>> fontTransparency = null)
+        public IBodyWorkflowAction<string> EditPdfDeletePages([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<int> pageStart, [WorkflowExpression] Func<int> pageEnd)
         {
-            var apiCallPath = "/convert/edit/pdf/watermark/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["watermarkText"] = CSharpExpressionConverter.ConvertO(watermarkText);
-            if (fontName != null)
-                callPayload.Headers["fontName"] = CSharpExpressionConverter.ConvertO(fontName);
-            if (fontSize != null)
-                callPayload.Headers["fontSize"] = CSharpExpressionConverter.ConvertO(fontSize);
-            if (fontColor != null)
-                callPayload.Headers["fontColor"] = CSharpExpressionConverter.ConvertO(fontColor);
-            if (fontTransparency != null)
-                callPayload.Headers["fontTransparency"] = CSharpExpressionConverter.ConvertO(fontTransparency);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(pageStart, nameof(pageStart), required: true);
+            SourceExpression.Validate(pageEnd, nameof(pageEnd), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/pages/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["pageStart"] = SourceExpressionConverter.ConvertO(pageStart);
+                callPayload.Headers["pageEnd"] = SourceExpressionConverter.ConvertO(pageEnd);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<PdfTextByPageResult> EditPdfGetPdfTextByPages([WorkflowExpression] Func<object> inputFile)
+        {
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/pages/get-text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PdfTextByPageResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfInsertPages([WorkflowExpression] Func<object> sourceFile, [WorkflowExpression] Func<object> destinationFile, [WorkflowExpression] Func<int> pageStartSource, [WorkflowExpression] Func<int> pageEndSource, [WorkflowExpression] Func<int> pageInsertBeforeDesitnation)
+        {
+            SourceExpression.Validate(sourceFile, nameof(sourceFile), required: true);
+            SourceExpression.Validate(destinationFile, nameof(destinationFile), required: true);
+            SourceExpression.Validate(pageStartSource, nameof(pageStartSource), required: true);
+            SourceExpression.Validate(pageEndSource, nameof(pageEndSource), required: true);
+            SourceExpression.Validate(pageInsertBeforeDesitnation, nameof(pageInsertBeforeDesitnation), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/pages/insert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["pageStartSource"] = SourceExpressionConverter.ConvertO(pageStartSource);
+                callPayload.Headers["pageEndSource"] = SourceExpressionConverter.ConvertO(pageEndSource);
+                callPayload.Headers["pageInsertBeforeDesitnation"] = SourceExpressionConverter.ConvertO(pageInsertBeforeDesitnation);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfRotateAllPages([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<int> rotationAngle)
+        {
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(rotationAngle, nameof(rotationAngle), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/pages/rotate/all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["rotationAngle"] = SourceExpressionConverter.ConvertO(rotationAngle);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfRotatePageRange([WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<int> rotationAngle, [WorkflowExpression] Func<int> pageStart, [WorkflowExpression] Func<int> pageEnd)
+        {
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(rotationAngle, nameof(rotationAngle), required: true);
+            SourceExpression.Validate(pageStart, nameof(pageStart), required: true);
+            SourceExpression.Validate(pageEnd, nameof(pageEnd), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/pages/rotate/page-range";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["rotationAngle"] = SourceExpressionConverter.ConvertO(rotationAngle);
+                callPayload.Headers["pageStart"] = SourceExpressionConverter.ConvertO(pageStart);
+                callPayload.Headers["pageEnd"] = SourceExpressionConverter.ConvertO(pageEnd);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfRasterize([WorkflowExpression] Func<object> inputFile)
+        {
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/rasterize";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfSetMetadata([WorkflowExpression] Func<string> requestinputFileBytes = null, [WorkflowExpression] Func<string> requestmetadataToSetauthor = null, [WorkflowExpression] Func<string> requestmetadataToSetcreator = null, [WorkflowExpression] Func<string> requestmetadataToSetdateCreated = null, [WorkflowExpression] Func<string> requestmetadataToSetdateModified = null, [WorkflowExpression] Func<string> requestmetadataToSetkeywords = null, [WorkflowExpression] Func<int> requestmetadataToSetpageCount = null, [WorkflowExpression] Func<string> requestmetadataToSetsubject = null, [WorkflowExpression] Func<bool> requestmetadataToSetsuccessful = null, [WorkflowExpression] Func<string> requestmetadataToSettitle = null)
+        {
+            SourceExpression.Validate(requestinputFileBytes, nameof(requestinputFileBytes), required: false);
+            SourceExpression.Validate(requestmetadataToSetauthor, nameof(requestmetadataToSetauthor), required: false);
+            SourceExpression.Validate(requestmetadataToSetcreator, nameof(requestmetadataToSetcreator), required: false);
+            SourceExpression.Validate(requestmetadataToSetdateCreated, nameof(requestmetadataToSetdateCreated), required: false);
+            SourceExpression.Validate(requestmetadataToSetdateModified, nameof(requestmetadataToSetdateModified), required: false);
+            SourceExpression.Validate(requestmetadataToSetkeywords, nameof(requestmetadataToSetkeywords), required: false);
+            SourceExpression.Validate(requestmetadataToSetpageCount, nameof(requestmetadataToSetpageCount), required: false);
+            SourceExpression.Validate(requestmetadataToSetsubject, nameof(requestmetadataToSetsubject), required: false);
+            SourceExpression.Validate(requestmetadataToSetsuccessful, nameof(requestmetadataToSetsuccessful), required: false);
+            SourceExpression.Validate(requestmetadataToSettitle, nameof(requestmetadataToSettitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/set-metadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestinputFileBytes != null)
+                {
+                    request["InputFileBytes"] = SourceExpressionConverter.ConvertToken(requestinputFileBytes);
+                    requestpropCount++;
+                }
+
+                var metadataToSetObject = new JObject();
+                var metadataToSetObjectpropCount = 0;
+                if (requestmetadataToSetauthor != null)
+                {
+                    metadataToSetObject["Author"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetauthor);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetcreator != null)
+                {
+                    metadataToSetObject["Creator"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetcreator);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetdateCreated != null)
+                {
+                    metadataToSetObject["DateCreated"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetdateCreated);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetdateModified != null)
+                {
+                    metadataToSetObject["DateModified"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetdateModified);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetkeywords != null)
+                {
+                    metadataToSetObject["Keywords"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetkeywords);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetpageCount != null)
+                {
+                    metadataToSetObject["PageCount"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetpageCount);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetsubject != null)
+                {
+                    metadataToSetObject["Subject"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetsubject);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSetsuccessful != null)
+                {
+                    metadataToSetObject["Successful"] = SourceExpressionConverter.ConvertToken(requestmetadataToSetsuccessful);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (requestmetadataToSettitle != null)
+                {
+                    metadataToSetObject["Title"] = SourceExpressionConverter.ConvertToken(requestmetadataToSettitle);
+                    metadataToSetObjectpropCount++;
+                }
+
+                if (metadataToSetObjectpropCount > 0)
+                {
+                    request["MetadataToSet"] = metadataToSetObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersivepdf")]
+        public IBodyWorkflowAction<string> EditPdfWatermarkText([WorkflowExpression] Func<string> watermarkText, [WorkflowExpression] Func<object> inputFile, [WorkflowExpression] Func<string> fontName = null, [WorkflowExpression] Func<double> fontSize = null, [WorkflowExpression] Func<string> fontColor = null, [WorkflowExpression] Func<double> fontTransparency = null)
+        {
+            SourceExpression.Validate(watermarkText, nameof(watermarkText), required: true);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            SourceExpression.Validate(fontName, nameof(fontName), required: false);
+            SourceExpression.Validate(fontSize, nameof(fontSize), required: false);
+            SourceExpression.Validate(fontColor, nameof(fontColor), required: false);
+            SourceExpression.Validate(fontTransparency, nameof(fontTransparency), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/convert/edit/pdf/watermark/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["watermarkText"] = SourceExpressionConverter.ConvertO(watermarkText);
+                if (fontName != null)
+                    callPayload.Headers["fontName"] = SourceExpressionConverter.ConvertO(fontName);
+                if (fontSize != null)
+                    callPayload.Headers["fontSize"] = SourceExpressionConverter.ConvertO(fontSize);
+                if (fontColor != null)
+                    callPayload.Headers["fontColor"] = SourceExpressionConverter.ConvertO(fontColor);
+                if (fontTransparency != null)
+                    callPayload.Headers["fontTransparency"] = SourceExpressionConverter.ConvertO(fontTransparency);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

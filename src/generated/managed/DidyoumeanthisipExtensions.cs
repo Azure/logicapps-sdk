@@ -12,13 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Didyoumeanthisip
     public class DidyoumeanthisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "didyoumeanthisip")]
-        public IBodyWorkflowAction<CheckResponse> Check(Expression<Func<string>> q)
+        public IBodyWorkflowAction<CheckResponse> Check([WorkflowExpression] Func<string> q)
         {
-            var apiCallPath = "/did_you_mean_this";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            return new ApiConnectionAction<CheckResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/did_you_mean_this";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CheckResponse>(BuildSourceInput);
         }
     }
 

@@ -12,49 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Seektable
     public class SeektableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> CubeImportCsv(Expression<Func<string>> cubeId, Expression<Func<string>> filename = null)
+        public IBodyWorkflowAction<string> CubeImportCsv([WorkflowExpression] Func<string> cubeId, [WorkflowExpression] Func<string> filename = null)
         {
-            var apiCallPath = "/api/cube/import/csv";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cubeId"] = CSharpExpressionConverter.ConvertO(cubeId);
-            if (filename != null)
-                callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
-            var cSVContent = new JObject();
-            var cSVContentpropCount = 0;
-            if (cSVContentpropCount > 0)
+            SourceExpression.Validate(cubeId, nameof(cubeId), required: true);
+            SourceExpression.Validate(filename, nameof(filename), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = cSVContent;
+                var apiCallPath = "/api/cube/import/csv";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cubeId"] = SourceExpressionConverter.ConvertO(cubeId);
+                if (filename != null)
+                    callPayload.Queries["filename"] = SourceExpressionConverter.ConvertO(filename);
+                var cSVContent = new JObject();
+                var cSVContentpropCount = 0;
+                if (cSVContentpropCount > 0)
+                {
+                    callPayload.Body = cSVContent;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportExport(Expression<Func<string>> reportId, Expression<Func<formatInput>> format, Expression<Func<bool>> htmlInlineStyle = null, Expression<Func<bool>> chartOnly = null)
+        public IBodyWorkflowAction<string> ReportExport([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<bool> htmlInlineStyle = null, [WorkflowExpression] Func<bool> chartOnly = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/report/{0}/export", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["format"] = CSharpExpressionConverter.Convert(format);
-            if (htmlInlineStyle != null)
-                callPayload.Queries["html_inline_style"] = CSharpExpressionConverter.ConvertO(htmlInlineStyle);
-            if (chartOnly != null)
-                callPayload.Queries["chart_only"] = CSharpExpressionConverter.ConvertO(chartOnly);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(reportId, nameof(reportId), required: true);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(htmlInlineStyle, nameof(htmlInlineStyle), required: false);
+            SourceExpression.Validate(chartOnly, nameof(chartOnly), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/report/{0}/export", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["format"] = SourceExpressionConverter.Convert(format);
+                if (htmlInlineStyle != null)
+                    callPayload.Queries["html_inline_style"] = SourceExpressionConverter.ConvertO(htmlInlineStyle);
+                if (chartOnly != null)
+                    callPayload.Queries["chart_only"] = SourceExpressionConverter.ConvertO(chartOnly);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "seektable")]
-        public IBodyWorkflowAction<string> ReportShareByEmail(Expression<Func<string>> reportId, Expression<Func<string>> to, Expression<Func<string>> subject, Expression<Func<string>> message = null)
+        public IBodyWorkflowAction<string> ReportShareByEmail([WorkflowExpression] Func<string> reportId, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> subject, [WorkflowExpression] Func<string> message = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/report/{0}/share/email", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            callPayload.Queries["subject"] = CSharpExpressionConverter.ConvertO(subject);
-            if (message != null)
-                callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(reportId, nameof(reportId), required: true);
+            SourceExpression.Validate(to, nameof(to), required: true);
+            SourceExpression.Validate(subject, nameof(subject), required: true);
+            SourceExpression.Validate(message, nameof(message), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/report/{0}/share/email", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                callPayload.Queries["subject"] = SourceExpressionConverter.ConvertO(subject);
+                if (message != null)
+                    callPayload.Queries["message"] = SourceExpressionConverter.ConvertO(message);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

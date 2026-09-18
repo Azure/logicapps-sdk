@@ -12,61 +12,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubip
     public class ApyhubipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveFilePostResponse> ArchiveFile(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveFilePostResponse> ArchiveFile([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> output = null)
         {
-            var apiCallPath = "/generate/archive/file-urls/archive-file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (output != null)
-                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
+            SourceExpression.Validate(output, nameof(output), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/generate/archive/file-urls/archive-file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["urls"] = SourceExpressionConverter.ConvertToken(bodyurls);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ArchiveFilePostResponse>(callPayload);
+            return new ApiConnectionAction<ArchiveFilePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<ArchiveURLPostResponse> ArchiveURL(Expression<Func<string[]>> bodyurls, Expression<Func<string>> output = null)
+        public IBodyWorkflowAction<ArchiveURLPostResponse> ArchiveURL([WorkflowExpression] Func<string[]> bodyurls, [WorkflowExpression] Func<string> output = null)
         {
-            var apiCallPath = "/generate/archive/file-urls/archive-url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (output != null)
-                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["urls"] = CSharpExpressionConverter.ConvertToken(bodyurls);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyurls, nameof(bodyurls), required: true);
+            SourceExpression.Validate(output, nameof(output), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/generate/archive/file-urls/archive-url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["urls"] = SourceExpressionConverter.ConvertToken(bodyurls);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ArchiveURLPostResponse>(callPayload);
+            return new ApiConnectionAction<ArchiveURLPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubip")]
-        public IBodyWorkflowAction<UnarchiveURLPostResponse> UnarchiveURL(Expression<Func<string>> bodyurl)
+        public IBodyWorkflowAction<UnarchiveURLPostResponse> UnarchiveURL([WorkflowExpression] Func<string> bodyurl)
         {
-            var apiCallPath = "/extract/archive/url/file-urls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["url"] = CSharpExpressionConverter.ConvertToken(bodyurl);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyurl, nameof(bodyurl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/extract/archive/url/file-urls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["url"] = SourceExpressionConverter.ConvertToken(bodyurl);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UnarchiveURLPostResponse>(callPayload);
+            return new ApiConnectionAction<UnarchiveURLPostResponse>(BuildSourceInput);
         }
     }
 

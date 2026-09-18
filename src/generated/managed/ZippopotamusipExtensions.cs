@@ -12,21 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zippopotamusip
     public class ZippopotamusipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode(Expression<Func<countryInput>> country, Expression<Func<string>> postalCode)
+        public IBodyWorkflowAction<GetDetailsByPostalCodeResponse> GetDetailsByPostalCode([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> postalCode)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(postalCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(callPayload);
+            SourceExpression.Validate(country, nameof(country), required: true);
+            SourceExpression.Validate(postalCode, nameof(postalCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(postalCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDetailsByPostalCodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zippopotamusip")]
-        public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity(Expression<Func<countryInput>> country, Expression<Func<string>> state, Expression<Func<string>> city)
+        public IBodyWorkflowAction<GetDetailsByStateCityResponse> GetDetailsByStateCity([WorkflowExpression] Func<countryInput> country, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> city)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(city, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsByStateCityResponse>(callPayload);
+            SourceExpression.Validate(country, nameof(country), required: true);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            SourceExpression.Validate(city, nameof(city), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(state, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(city, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDetailsByStateCityResponse>(BuildSourceInput);
         }
     }
 

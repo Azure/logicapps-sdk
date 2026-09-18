@@ -12,152 +12,230 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airlabsip
     public class AirlabsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListFlightsResponse> ListFlights(Expression<Func<string>> flag = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> depIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> arrIata = null)
+        public IBodyWorkflowAction<ListFlightsResponse> ListFlights([WorkflowExpression] Func<string> flag = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> arrIata = null)
         {
-            var apiCallPath = "/flights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (flag != null)
-                callPayload.Queries["flag"] = CSharpExpressionConverter.ConvertO(flag);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
-            return new ApiConnectionAction<ListFlightsResponse>(callPayload);
+            SourceExpression.Validate(flag, nameof(flag), required: false);
+            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
+            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
+            SourceExpression.Validate(depIata, nameof(depIata), required: false);
+            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (flag != null)
+                    callPayload.Queries["flag"] = SourceExpressionConverter.ConvertO(flag);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = SourceExpressionConverter.ConvertO(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = SourceExpressionConverter.ConvertO(flightIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = SourceExpressionConverter.ConvertO(depIcao);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = SourceExpressionConverter.ConvertO(depIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = SourceExpressionConverter.ConvertO(arrIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = SourceExpressionConverter.ConvertO(arrIata);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListFlightsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<GetFlightResponse> GetFlight(Expression<Func<string>> flightIata = null, Expression<Func<string>> flightIcao = null)
+        public IBodyWorkflowAction<GetFlightResponse> GetFlight([WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> flightIcao = null)
         {
-            var apiCallPath = "/flight";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
-            return new ApiConnectionAction<GetFlightResponse>(callPayload);
+            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
+            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/flight";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = SourceExpressionConverter.ConvertO(flightIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = SourceExpressionConverter.ConvertO(flightIcao);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFlightResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines(Expression<Func<string>> iataCode = null, Expression<Func<string>> iataPrefix = null, Expression<Func<string>> iataAccounting = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> callsign = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListAirlinesResponse> ListAirlines([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> iataPrefix = null, [WorkflowExpression] Func<string> iataAccounting = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> callsign = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/airlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iataCode != null)
-                callPayload.Queries["iata_code"] = CSharpExpressionConverter.ConvertO(iataCode);
-            if (iataPrefix != null)
-                callPayload.Queries["iata_prefix"] = CSharpExpressionConverter.ConvertO(iataPrefix);
-            if (iataAccounting != null)
-                callPayload.Queries["iata_accounting"] = CSharpExpressionConverter.ConvertO(iataAccounting);
-            if (icaoCode != null)
-                callPayload.Queries["icao_code"] = CSharpExpressionConverter.ConvertO(icaoCode);
-            if (callsign != null)
-                callPayload.Queries["callsign"] = CSharpExpressionConverter.ConvertO(callsign);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
-            return new ApiConnectionAction<ListAirlinesResponse>(callPayload);
+            SourceExpression.Validate(iataCode, nameof(iataCode), required: false);
+            SourceExpression.Validate(iataPrefix, nameof(iataPrefix), required: false);
+            SourceExpression.Validate(iataAccounting, nameof(iataAccounting), required: false);
+            SourceExpression.Validate(icaoCode, nameof(icaoCode), required: false);
+            SourceExpression.Validate(callsign, nameof(callsign), required: false);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            SourceExpression.Validate(Fields, nameof(Fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/airlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (iataCode != null)
+                    callPayload.Queries["iata_code"] = SourceExpressionConverter.ConvertO(iataCode);
+                if (iataPrefix != null)
+                    callPayload.Queries["iata_prefix"] = SourceExpressionConverter.ConvertO(iataPrefix);
+                if (iataAccounting != null)
+                    callPayload.Queries["iata_accounting"] = SourceExpressionConverter.ConvertO(iataAccounting);
+                if (icaoCode != null)
+                    callPayload.Queries["icao_code"] = SourceExpressionConverter.ConvertO(icaoCode);
+                if (callsign != null)
+                    callPayload.Queries["callsign"] = SourceExpressionConverter.ConvertO(callsign);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = SourceExpressionConverter.ConvertO(Fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAirlinesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListRoutesResponse> ListRoutes(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListRoutesResponse> ListRoutes([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/routes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
-            if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = CSharpExpressionConverter.ConvertO(airlineIcao);
-            if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = CSharpExpressionConverter.ConvertO(airlineIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
-            return new ApiConnectionAction<ListRoutesResponse>(callPayload);
+            SourceExpression.Validate(depIata, nameof(depIata), required: false);
+            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
+            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
+            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            SourceExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
+            SourceExpression.Validate(airlineIata, nameof(airlineIata), required: false);
+            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
+            SourceExpression.Validate(Fields, nameof(Fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/routes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = SourceExpressionConverter.ConvertO(depIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = SourceExpressionConverter.ConvertO(depIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = SourceExpressionConverter.ConvertO(arrIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = SourceExpressionConverter.ConvertO(arrIcao);
+                if (airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = SourceExpressionConverter.ConvertO(airlineIcao);
+                if (airlineIata != null)
+                    callPayload.Queries["airline_iata"] = SourceExpressionConverter.ConvertO(airlineIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = SourceExpressionConverter.ConvertO(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = SourceExpressionConverter.ConvertO(flightIata);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = SourceExpressionConverter.ConvertO(Fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRoutesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules(Expression<Func<string>> depIata = null, Expression<Func<string>> depIcao = null, Expression<Func<string>> arrIata = null, Expression<Func<string>> arrIcao = null, Expression<Func<string>> airlineIcao = null, Expression<Func<string>> airlineIata = null, Expression<Func<string>> flightIcao = null, Expression<Func<string>> flightIata = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListSchedulesResponse> ListSchedules([WorkflowExpression] Func<string> depIata = null, [WorkflowExpression] Func<string> depIcao = null, [WorkflowExpression] Func<string> arrIata = null, [WorkflowExpression] Func<string> arrIcao = null, [WorkflowExpression] Func<string> airlineIcao = null, [WorkflowExpression] Func<string> airlineIata = null, [WorkflowExpression] Func<string> flightIcao = null, [WorkflowExpression] Func<string> flightIata = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/schedules";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (depIata != null)
-                callPayload.Queries["dep_iata"] = CSharpExpressionConverter.ConvertO(depIata);
-            if (depIcao != null)
-                callPayload.Queries["dep_icao"] = CSharpExpressionConverter.ConvertO(depIcao);
-            if (arrIata != null)
-                callPayload.Queries["arr_iata"] = CSharpExpressionConverter.ConvertO(arrIata);
-            if (arrIcao != null)
-                callPayload.Queries["arr_icao"] = CSharpExpressionConverter.ConvertO(arrIcao);
-            if (airlineIcao != null)
-                callPayload.Queries["airline_icao"] = CSharpExpressionConverter.ConvertO(airlineIcao);
-            if (airlineIata != null)
-                callPayload.Queries["airline_iata"] = CSharpExpressionConverter.ConvertO(airlineIata);
-            if (flightIcao != null)
-                callPayload.Queries["flight_icao"] = CSharpExpressionConverter.ConvertO(flightIcao);
-            if (flightIata != null)
-                callPayload.Queries["flight_iata"] = CSharpExpressionConverter.ConvertO(flightIata);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
-            return new ApiConnectionAction<ListSchedulesResponse>(callPayload);
+            SourceExpression.Validate(depIata, nameof(depIata), required: false);
+            SourceExpression.Validate(depIcao, nameof(depIcao), required: false);
+            SourceExpression.Validate(arrIata, nameof(arrIata), required: false);
+            SourceExpression.Validate(arrIcao, nameof(arrIcao), required: false);
+            SourceExpression.Validate(airlineIcao, nameof(airlineIcao), required: false);
+            SourceExpression.Validate(airlineIata, nameof(airlineIata), required: false);
+            SourceExpression.Validate(flightIcao, nameof(flightIcao), required: false);
+            SourceExpression.Validate(flightIata, nameof(flightIata), required: false);
+            SourceExpression.Validate(Fields, nameof(Fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/schedules";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (depIata != null)
+                    callPayload.Queries["dep_iata"] = SourceExpressionConverter.ConvertO(depIata);
+                if (depIcao != null)
+                    callPayload.Queries["dep_icao"] = SourceExpressionConverter.ConvertO(depIcao);
+                if (arrIata != null)
+                    callPayload.Queries["arr_iata"] = SourceExpressionConverter.ConvertO(arrIata);
+                if (arrIcao != null)
+                    callPayload.Queries["arr_icao"] = SourceExpressionConverter.ConvertO(arrIcao);
+                if (airlineIcao != null)
+                    callPayload.Queries["airline_icao"] = SourceExpressionConverter.ConvertO(airlineIcao);
+                if (airlineIata != null)
+                    callPayload.Queries["airline_iata"] = SourceExpressionConverter.ConvertO(airlineIata);
+                if (flightIcao != null)
+                    callPayload.Queries["flight_icao"] = SourceExpressionConverter.ConvertO(flightIcao);
+                if (flightIata != null)
+                    callPayload.Queries["flight_iata"] = SourceExpressionConverter.ConvertO(flightIata);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = SourceExpressionConverter.ConvertO(Fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListSchedulesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListAirportsResponse> ListAirports(Expression<Func<string>> iataCode = null, Expression<Func<string>> icaoCode = null, Expression<Func<string>> cityCode = null, Expression<Func<string>> countryCode = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListAirportsResponse> ListAirports([WorkflowExpression] Func<string> iataCode = null, [WorkflowExpression] Func<string> icaoCode = null, [WorkflowExpression] Func<string> cityCode = null, [WorkflowExpression] Func<string> countryCode = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/airports";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (iataCode != null)
-                callPayload.Queries["iata_code"] = CSharpExpressionConverter.ConvertO(iataCode);
-            if (icaoCode != null)
-                callPayload.Queries["icao_code"] = CSharpExpressionConverter.ConvertO(icaoCode);
-            if (cityCode != null)
-                callPayload.Queries["city_code"] = CSharpExpressionConverter.ConvertO(cityCode);
-            if (countryCode != null)
-                callPayload.Queries["country_code"] = CSharpExpressionConverter.ConvertO(countryCode);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
-            return new ApiConnectionAction<ListAirportsResponse>(callPayload);
+            SourceExpression.Validate(iataCode, nameof(iataCode), required: false);
+            SourceExpression.Validate(icaoCode, nameof(icaoCode), required: false);
+            SourceExpression.Validate(cityCode, nameof(cityCode), required: false);
+            SourceExpression.Validate(countryCode, nameof(countryCode), required: false);
+            SourceExpression.Validate(Fields, nameof(Fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/airports";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (iataCode != null)
+                    callPayload.Queries["iata_code"] = SourceExpressionConverter.ConvertO(iataCode);
+                if (icaoCode != null)
+                    callPayload.Queries["icao_code"] = SourceExpressionConverter.ConvertO(icaoCode);
+                if (cityCode != null)
+                    callPayload.Queries["city_code"] = SourceExpressionConverter.ConvertO(cityCode);
+                if (countryCode != null)
+                    callPayload.Queries["country_code"] = SourceExpressionConverter.ConvertO(countryCode);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = SourceExpressionConverter.ConvertO(Fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAirportsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airlabsip")]
-        public IBodyWorkflowAction<ListCountriesResponse> ListCountries(Expression<Func<string>> code = null, Expression<Func<string>> code3 = null, Expression<Func<string>> continent = null, Expression<Func<string>> Fields = null)
+        public IBodyWorkflowAction<ListCountriesResponse> ListCountries([WorkflowExpression] Func<string> code = null, [WorkflowExpression] Func<string> code3 = null, [WorkflowExpression] Func<string> continent = null, [WorkflowExpression] Func<string> Fields = null)
         {
-            var apiCallPath = "/countries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (code != null)
-                callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
-            if (code3 != null)
-                callPayload.Queries["code3"] = CSharpExpressionConverter.ConvertO(code3);
-            if (continent != null)
-                callPayload.Queries["continent"] = CSharpExpressionConverter.ConvertO(continent);
-            if (Fields != null)
-                callPayload.Queries["_fields"] = CSharpExpressionConverter.ConvertO(Fields);
-            return new ApiConnectionAction<ListCountriesResponse>(callPayload);
+            SourceExpression.Validate(code, nameof(code), required: false);
+            SourceExpression.Validate(code3, nameof(code3), required: false);
+            SourceExpression.Validate(continent, nameof(continent), required: false);
+            SourceExpression.Validate(Fields, nameof(Fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/countries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (code != null)
+                    callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                if (code3 != null)
+                    callPayload.Queries["code3"] = SourceExpressionConverter.ConvertO(code3);
+                if (continent != null)
+                    callPayload.Queries["continent"] = SourceExpressionConverter.ConvertO(continent);
+                if (Fields != null)
+                    callPayload.Queries["_fields"] = SourceExpressionConverter.ConvertO(Fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCountriesResponse>(BuildSourceInput);
         }
     }
 

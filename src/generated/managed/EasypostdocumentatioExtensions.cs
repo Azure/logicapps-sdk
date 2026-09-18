@@ -12,33 +12,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easypostdocumentatio
     public class EasypostdocumentatioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId(Expression<Func<string>> account)
+        public IBodyWorkflowAction<GetSessionIdResponse> GetSessionId([WorkflowExpression] Func<string> account)
         {
-            var apiCallPath = "/publicinterface/get_session_id.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["account"] = CSharpExpressionConverter.ConvertO(account);
-            return new ApiConnectionAction<GetSessionIdResponse>(callPayload);
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/publicinterface/get_session_id.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["account"] = SourceExpressionConverter.ConvertO(account);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSessionIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        public IWorkflowAction PutSessionUpload(Expression<Func<string>> sessionId, Expression<Func<string>> fileName, Expression<Func<string>> fileContent = null)
+        public IWorkflowAction PutSessionUpload([WorkflowExpression] Func<string> sessionId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fileContent = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileContent);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
+            SourceExpression.Validate(fileName, nameof(fileName), required: true);
+            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/direct_upload/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sessionId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fileContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easypostdocumentatio")]
-        public IBodyWorkflowAction<EndSessionResponse> EndSession(Expression<Func<string>> sessionId)
+        public IBodyWorkflowAction<EndSessionResponse> EndSession([WorkflowExpression] Func<string> sessionId)
         {
-            var apiCallPath = "/publicinterface/end_session.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["session_id"] = CSharpExpressionConverter.ConvertO(sessionId);
-            return new ApiConnectionAction<EndSessionResponse>(callPayload);
+            SourceExpression.Validate(sessionId, nameof(sessionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/publicinterface/end_session.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["session_id"] = SourceExpressionConverter.ConvertO(sessionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EndSessionResponse>(BuildSourceInput);
         }
     }
 

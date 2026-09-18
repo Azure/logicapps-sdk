@@ -12,41 +12,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Searchapigooglesearch
     public class SearchapigooglesearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "searchapigooglesearch")]
-        public IBodyWorkflowAction<SearchGetResponse> SearchGet(Expression<Func<string>> q, Expression<Func<deviceInput>> device = null, Expression<Func<string>> location = null, Expression<Func<string>> uule = null, Expression<Func<string>> googleDomain = null, Expression<Func<string>> gl = null, Expression<Func<string>> hl = null, Expression<Func<string>> lr = null, Expression<Func<string>> cr = null, Expression<Func<nfprInput>> nfpr = null, Expression<Func<filterInput>> filter = null, Expression<Func<safeInput>> safe = null, Expression<Func<int>> num = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<SearchGetResponse> SearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<deviceInput> device = null, [WorkflowExpression] Func<string> location = null, [WorkflowExpression] Func<string> uule = null, [WorkflowExpression] Func<string> googleDomain = null, [WorkflowExpression] Func<string> gl = null, [WorkflowExpression] Func<string> hl = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> cr = null, [WorkflowExpression] Func<nfprInput> nfpr = null, [WorkflowExpression] Func<filterInput> filter = null, [WorkflowExpression] Func<safeInput> safe = null, [WorkflowExpression] Func<int> num = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["engine"] = Convert.ToString("google");
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["device"] = Convert.ToString("desktop");
-            if (device != null)
-                callPayload.Queries["device"] = CSharpExpressionConverter.Convert(device);
-            if (location != null)
-                callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
-            if (uule != null)
-                callPayload.Queries["uule"] = CSharpExpressionConverter.ConvertO(uule);
-            if (googleDomain != null)
-                callPayload.Queries["google_domain"] = CSharpExpressionConverter.ConvertO(googleDomain);
-            if (gl != null)
-                callPayload.Queries["gl"] = CSharpExpressionConverter.ConvertO(gl);
-            if (hl != null)
-                callPayload.Queries["hl"] = CSharpExpressionConverter.ConvertO(hl);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (cr != null)
-                callPayload.Queries["cr"] = CSharpExpressionConverter.ConvertO(cr);
-            if (nfpr != null)
-                callPayload.Queries["nfpr"] = CSharpExpressionConverter.Convert(nfpr);
-            if (filter != null)
-                callPayload.Queries["filter"] = CSharpExpressionConverter.Convert(filter);
-            if (safe != null)
-                callPayload.Queries["safe"] = CSharpExpressionConverter.Convert(safe);
-            if (num != null)
-                callPayload.Queries["num"] = CSharpExpressionConverter.ConvertO(num);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<SearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(device, nameof(device), required: false);
+            SourceExpression.Validate(location, nameof(location), required: false);
+            SourceExpression.Validate(uule, nameof(uule), required: false);
+            SourceExpression.Validate(googleDomain, nameof(googleDomain), required: false);
+            SourceExpression.Validate(gl, nameof(gl), required: false);
+            SourceExpression.Validate(hl, nameof(hl), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(cr, nameof(cr), required: false);
+            SourceExpression.Validate(nfpr, nameof(nfpr), required: false);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(safe, nameof(safe), required: false);
+            SourceExpression.Validate(num, nameof(num), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["engine"] = Convert.ToString("google");
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["device"] = Convert.ToString("desktop");
+                if (device != null)
+                    callPayload.Queries["device"] = SourceExpressionConverter.Convert(device);
+                if (location != null)
+                    callPayload.Queries["location"] = SourceExpressionConverter.ConvertO(location);
+                if (uule != null)
+                    callPayload.Queries["uule"] = SourceExpressionConverter.ConvertO(uule);
+                if (googleDomain != null)
+                    callPayload.Queries["google_domain"] = SourceExpressionConverter.ConvertO(googleDomain);
+                if (gl != null)
+                    callPayload.Queries["gl"] = SourceExpressionConverter.ConvertO(gl);
+                if (hl != null)
+                    callPayload.Queries["hl"] = SourceExpressionConverter.ConvertO(hl);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (cr != null)
+                    callPayload.Queries["cr"] = SourceExpressionConverter.ConvertO(cr);
+                if (nfpr != null)
+                    callPayload.Queries["nfpr"] = SourceExpressionConverter.Convert(nfpr);
+                if (filter != null)
+                    callPayload.Queries["filter"] = SourceExpressionConverter.Convert(filter);
+                if (safe != null)
+                    callPayload.Queries["safe"] = SourceExpressionConverter.Convert(safe);
+                if (num != null)
+                    callPayload.Queries["num"] = SourceExpressionConverter.ConvertO(num);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchGetResponse>(BuildSourceInput);
         }
     }
 

@@ -12,12 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Githubdata
     public class GithubdataActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "githubdata")]
-        public IBodyWorkflowAction<string> RetrieveData(Expression<Func<string>> githubname, Expression<Func<string>> reponame, Expression<Func<string>> filewithpath)
+        public IBodyWorkflowAction<string> RetrieveData([WorkflowExpression] Func<string> githubname, [WorkflowExpression] Func<string> reponame, [WorkflowExpression] Func<string> filewithpath)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(githubname, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reponame, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(filewithpath, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(githubname, nameof(githubname), required: true);
+            SourceExpression.Validate(reponame, nameof(reponame), required: true);
+            SourceExpression.Validate(filewithpath, nameof(filewithpath), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(githubname, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reponame, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(filewithpath, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

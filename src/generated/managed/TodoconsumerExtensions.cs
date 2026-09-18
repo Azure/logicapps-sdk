@@ -14,284 +14,370 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todoconsumer
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
         public IBodyWorkflowAction<TodoList[]> GetAllTodoLists()
         {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TodoList[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> CreateToDoList(Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = "/lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TodoList>(callPayload);
+            return new ApiConnectionAction<TodoList[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> GetToDoList(Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<TodoList> CreateToDoList([WorkflowExpression] Func<string> bodyname)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TodoList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<TodoList> UpdateToDoList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["displayName"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TodoList>(callPayload);
+            return new ApiConnectionAction<TodoList>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IWorkflowAction DeleteToDoList(Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<TodoList> GetToDoList([WorkflowExpression] Func<string> folderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo[]> ListToDosByFolder(Expression<Func<string>> folderId, Expression<Func<int>> top = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<ToDo[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> CreateToDo(Expression<Func<string>> folderId, Expression<Func<string>> bodytitle, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dueDateTimeObject = new JObject();
-            var dueDateTimeObjectpropCount = 0;
-            if (bodydueDateTimedueDate != null)
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dueDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTimedueDate);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TodoList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
+        public IBodyWorkflowAction<TodoList> UpdateToDoList([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname)
+        {
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["displayName"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TodoList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
+        public IWorkflowAction DeleteToDoList([WorkflowExpression] Func<string> folderId)
+        {
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
+        public IBodyWorkflowAction<ToDo[]> ListToDosByFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<int> top = null)
+        {
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ToDo[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
+        public IBodyWorkflowAction<ToDo> CreateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
+        {
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            SourceExpression.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
+            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dueDateTimeObject = new JObject();
+                var dueDateTimeObjectpropCount = 0;
+                if (bodydueDateTimedueDate != null)
+                {
+                    dueDateTimeObject["dateTime"] = SourceExpressionConverter.ConvertToken(bodydueDateTimedueDate);
+                    dueDateTimeObjectpropCount++;
+                }
+
+                dueDateTimeObject["timeZone"] = "UTC";
                 dueDateTimeObjectpropCount++;
-            }
+                if (dueDateTimeObjectpropCount > 0)
+                {
+                    body["dueDateTime"] = dueDateTimeObject;
+                    bodypropCount++;
+                }
 
-            dueDateTimeObject["timeZone"] = "UTC";
-            dueDateTimeObjectpropCount++;
-            if (dueDateTimeObjectpropCount > 0)
-            {
-                body["dueDateTime"] = dueDateTimeObject;
-                bodypropCount++;
-            }
+                var reminderDateTimeObject = new JObject();
+                var reminderDateTimeObjectpropCount = 0;
+                if (bodyreminderDateTimereminderDateTime != null)
+                {
+                    reminderDateTimeObject["dateTime"] = SourceExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
+                    reminderDateTimeObjectpropCount++;
+                }
 
-            var reminderDateTimeObject = new JObject();
-            var reminderDateTimeObjectpropCount = 0;
-            if (bodyreminderDateTimereminderDateTime != null)
-            {
-                reminderDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["timeZone"] = "UTC";
                 reminderDateTimeObjectpropCount++;
-            }
+                if (reminderDateTimeObjectpropCount > 0)
+                {
+                    body["reminderDateTime"] = reminderDateTimeObject;
+                    bodypropCount++;
+                }
 
-            reminderDateTimeObject["timeZone"] = "UTC";
-            reminderDateTimeObjectpropCount++;
-            if (reminderDateTimeObjectpropCount > 0)
-            {
-                body["reminderDateTime"] = reminderDateTimeObject;
+                if (bodyimportance != null)
+                {
+                    body["importance"] = SourceExpressionConverter.Convert(bodyimportance);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.Convert(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
-                bodypropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodybodycontent != null)
-            {
-                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodycontent);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
+                if (bodybodycontent != null)
+                {
+                    bodyObject["content"] = SourceExpressionConverter.ConvertToken(bodybodycontent);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
+
+                if (bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = SourceExpressionConverter.ConvertToken(bodyisReminderOn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
-
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ToDo>(callPayload);
+            return new ApiConnectionAction<ToDo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> GetToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ToDo> GetToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToDo>(callPayload);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ToDo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IBodyWorkflowAction<ToDo> UpdateToDo(Expression<Func<string>> folderId, Expression<Func<string>> id, Expression<Func<string>> bodydueDateTimedueDate = null, Expression<Func<string>> bodyreminderDateTimereminderDateTime = null, Expression<Func<bodyimportanceInput>> bodyimportance = null, Expression<Func<string>> bodytitle = null, Expression<Func<bodystatusInput>> bodystatus = null, Expression<Func<string>> bodybodycontent = null, Expression<Func<bool>> bodyisReminderOn = null)
+        public IBodyWorkflowAction<ToDo> UpdateToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydueDateTimedueDate = null, [WorkflowExpression] Func<string> bodyreminderDateTimereminderDateTime = null, [WorkflowExpression] Func<bodyimportanceInput> bodyimportance = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<bodystatusInput> bodystatus = null, [WorkflowExpression] Func<string> bodybodycontent = null, [WorkflowExpression] Func<bool> bodyisReminderOn = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dueDateTimeObject = new JObject();
-            var dueDateTimeObjectpropCount = 0;
-            if (bodydueDateTimedueDate != null)
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodydueDateTimedueDate, nameof(bodydueDateTimedueDate), required: false);
+            SourceExpression.Validate(bodyreminderDateTimereminderDateTime, nameof(bodyreminderDateTimereminderDateTime), required: false);
+            SourceExpression.Validate(bodyimportance, nameof(bodyimportance), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodybodycontent, nameof(bodybodycontent), required: false);
+            SourceExpression.Validate(bodyisReminderOn, nameof(bodyisReminderOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dueDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodydueDateTimedueDate);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dueDateTimeObject = new JObject();
+                var dueDateTimeObjectpropCount = 0;
+                if (bodydueDateTimedueDate != null)
+                {
+                    dueDateTimeObject["dateTime"] = SourceExpressionConverter.ConvertToken(bodydueDateTimedueDate);
+                    dueDateTimeObjectpropCount++;
+                }
+
+                dueDateTimeObject["timeZone"] = "UTC";
                 dueDateTimeObjectpropCount++;
-            }
+                if (dueDateTimeObjectpropCount > 0)
+                {
+                    body["dueDateTime"] = dueDateTimeObject;
+                    bodypropCount++;
+                }
 
-            dueDateTimeObject["timeZone"] = "UTC";
-            dueDateTimeObjectpropCount++;
-            if (dueDateTimeObjectpropCount > 0)
-            {
-                body["dueDateTime"] = dueDateTimeObject;
-                bodypropCount++;
-            }
+                var reminderDateTimeObject = new JObject();
+                var reminderDateTimeObjectpropCount = 0;
+                if (bodyreminderDateTimereminderDateTime != null)
+                {
+                    reminderDateTimeObject["dateTime"] = SourceExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
+                    reminderDateTimeObjectpropCount++;
+                }
 
-            var reminderDateTimeObject = new JObject();
-            var reminderDateTimeObjectpropCount = 0;
-            if (bodyreminderDateTimereminderDateTime != null)
-            {
-                reminderDateTimeObject["dateTime"] = CSharpExpressionConverter.ConvertToken(bodyreminderDateTimereminderDateTime);
+                reminderDateTimeObject["timeZone"] = "UTC";
                 reminderDateTimeObjectpropCount++;
-            }
+                if (reminderDateTimeObjectpropCount > 0)
+                {
+                    body["reminderDateTime"] = reminderDateTimeObject;
+                    bodypropCount++;
+                }
 
-            reminderDateTimeObject["timeZone"] = "UTC";
-            reminderDateTimeObjectpropCount++;
-            if (reminderDateTimeObjectpropCount > 0)
-            {
-                body["reminderDateTime"] = reminderDateTimeObject;
-                bodypropCount++;
-            }
+                if (bodyimportance != null)
+                {
+                    body["importance"] = SourceExpressionConverter.Convert(bodyimportance);
+                    bodypropCount++;
+                }
 
-            if (bodyimportance != null)
-            {
-                body["importance"] = CSharpExpressionConverter.Convert(bodyimportance);
-                bodypropCount++;
-            }
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
 
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.Convert(bodystatus);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.Convert(bodystatus);
-                bodypropCount++;
-            }
-
-            var bodyObject = new JObject();
-            var bodyObjectpropCount = 0;
-            bodyObject["contentType"] = "html";
-            bodyObjectpropCount++;
-            if (bodybodycontent != null)
-            {
-                bodyObject["content"] = CSharpExpressionConverter.ConvertToken(bodybodycontent);
+                var bodyObject = new JObject();
+                var bodyObjectpropCount = 0;
+                bodyObject["contentType"] = "html";
                 bodyObjectpropCount++;
+                if (bodybodycontent != null)
+                {
+                    bodyObject["content"] = SourceExpressionConverter.ConvertToken(bodybodycontent);
+                    bodyObjectpropCount++;
+                }
+
+                if (bodyObjectpropCount > 0)
+                {
+                    body["body"] = bodyObject;
+                    bodypropCount++;
+                }
+
+                if (bodyisReminderOn != null)
+                {
+                    body["isReminderOn"] = SourceExpressionConverter.ConvertToken(bodyisReminderOn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyObjectpropCount > 0)
-            {
-                body["body"] = bodyObject;
-                bodypropCount++;
-            }
-
-            if (bodyisReminderOn != null)
-            {
-                body["isReminderOn"] = CSharpExpressionConverter.ConvertToken(bodyisReminderOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ToDo>(callPayload);
+            return new ApiConnectionAction<ToDo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todoconsumer")]
-        public IWorkflowAction DeleteToDo(Expression<Func<string>> folderId, Expression<Func<string>> id)
+        public IWorkflowAction DeleteToDo([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/lists/{0}/tasks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class TodoconsumerTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> OnNewToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/onNewToDoInFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/onNewToDoInFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ToDo[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ToDo[]> OnUpdateToDoInFolder([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/onUpdateToDoInFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ToDo[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/onUpdateToDoInFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ToDo[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

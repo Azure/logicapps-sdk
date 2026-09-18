@@ -12,16 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dexcomip
     public class DexcomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dexcomip")]
-        public IBodyWorkflowAction<GetEGVsResponse> GetEGVs(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<GetEGVsResponse> GetEGVs([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/v2/users/self/egvs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
-            return new ApiConnectionAction<GetEGVsResponse>(callPayload);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/users/self/egvs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEGVsResponse>(BuildSourceInput);
         }
     }
 

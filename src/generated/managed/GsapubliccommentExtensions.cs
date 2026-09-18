@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gsapubliccomment
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gsapubliccomment")]
         public IBodyWorkflowAction<GetCommentsResponse> GetComments()
         {
-            var apiCallPath = "/comments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCommentsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/comments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCommentsResponse>(BuildSourceInput);
         }
     }
 

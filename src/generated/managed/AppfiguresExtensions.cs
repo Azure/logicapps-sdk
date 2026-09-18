@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "appfigures")]
         public IBodyWorkflowAction<MyProductsResponse> GetMyProducts()
         {
-            var apiCallPath = "/products/mine";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MyProductsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/products/mine";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MyProductsResponse>(BuildSourceInput);
         }
     }
 
@@ -25,30 +30,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appfigures
     {
         public IBodyWorkflowTrigger<Event[]> OnNewEvent(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/event_trigger/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Event[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/event_trigger/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Event[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ReviewInfo[]> OnNewReview([WorkflowExpression] Func<string> products = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/reviews_trigger/reviews";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = CSharpExpressionConverter.ConvertO(products);
-            return new ApiConnectionTrigger<ReviewInfo[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(products, nameof(products), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reviews_trigger/reviews";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (products != null)
+                    callPayload.Queries["products"] = SourceExpressionConverter.ConvertO(products);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ReviewInfo[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<Rating[]> OnNewRating(Expression<Func<string>> products = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<Rating[]> OnNewRating([WorkflowExpression] Func<string> products = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/ratings_trigger/ratings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (products != null)
-                callPayload.Queries["products"] = CSharpExpressionConverter.ConvertO(products);
-            return new ApiConnectionTrigger<Rating[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(products, nameof(products), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ratings_trigger/ratings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (products != null)
+                    callPayload.Queries["products"] = SourceExpressionConverter.ConvertO(products);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Rating[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

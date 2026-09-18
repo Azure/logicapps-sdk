@@ -12,34 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
     public class TegolysignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tegolysign")]
-        public IWorkflowAction ImportPDF(Expression<Func<object>> file)
+        public IWorkflowAction ImportPDF([WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = "/api/webhook/create-draft";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/webhook/create-draft";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class TegolysignTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CompletelySigned(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CompletelySigned([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhook/end-trigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            body["delivery_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhook/end-trigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                body["delivery_url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

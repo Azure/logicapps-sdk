@@ -12,50 +12,76 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instagrambasicdispip
     public class InstagrambasicdispipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMyMediaResponse> GetMyMedia([WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/me/media";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<GetMyMediaResponse>(callPayload);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/me/media";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMyMediaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMyDetailsResponse> GetMyDetails([WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("id,media_count,username,account_type");
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<GetMyDetailsResponse>(callPayload);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("id,media_count,username,account_type");
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMyDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails(Expression<Func<string>> mediaId, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<GetMediaDetailsResponse> GetMediaDetails([WorkflowExpression] Func<string> mediaId, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<GetMediaDetailsResponse>(callPayload);
+            SourceExpression.Validate(mediaId, nameof(mediaId), required: true);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mediaId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("caption,media_type,media_url,permalink,timestamp,username,thumbnail_url");
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMediaDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instagrambasicdispip")]
-        public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken(Expression<Func<string>> grantType, Expression<Func<string>> accessToken)
+        public IBodyWorkflowAction<RefreshTokenResponse> RefreshToken([WorkflowExpression] Func<string> grantType, [WorkflowExpression] Func<string> accessToken)
         {
-            var apiCallPath = "/refresh_access_token";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["grant_type"] = CSharpExpressionConverter.ConvertO(grantType);
-            callPayload.Queries["access_token"] = CSharpExpressionConverter.ConvertO(accessToken);
-            return new ApiConnectionAction<RefreshTokenResponse>(callPayload);
+            SourceExpression.Validate(grantType, nameof(grantType), required: true);
+            SourceExpression.Validate(accessToken, nameof(accessToken), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/refresh_access_token";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["grant_type"] = SourceExpressionConverter.ConvertO(grantType);
+                callPayload.Queries["access_token"] = SourceExpressionConverter.ConvertO(accessToken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RefreshTokenResponse>(BuildSourceInput);
         }
     }
 

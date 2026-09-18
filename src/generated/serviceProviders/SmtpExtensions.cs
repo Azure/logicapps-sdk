@@ -14,66 +14,82 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Smtp
     public class SmtpActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Smtp")]
-        public IOutputWorkflowAction<SendEmailOutput> SendEmail(Expression<Func<string>> from, Expression<Func<string>> to, Expression<Func<string>> cc = null, Expression<Func<string>> subject = null, Expression<Func<string>> body = null, Expression<Func<bool>> isHTML = null, Expression<Func<string>> bcc = null, Expression<Func<string>> importance = null, Expression<Func<string>> readReceipt = null, Expression<Func<string>> deliveryReceipt = null, Expression<Func<SendEmailInputAttachmentTypeItem[]>> attachment = null)
+        public IOutputWorkflowAction<SendEmailOutput> SendEmail([WorkflowExpression] Func<string> from, [WorkflowExpression] Func<string> to, [WorkflowExpression] Func<string> cc = null, [WorkflowExpression] Func<string> subject = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<bool> isHTML = null, [WorkflowExpression] Func<string> bcc = null, [WorkflowExpression] Func<string> importance = null, [WorkflowExpression] Func<string> readReceipt = null, [WorkflowExpression] Func<string> deliveryReceipt = null, [WorkflowExpression] Func<SendEmailInputAttachmentTypeItem[]> attachment = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["from"] = CSharpExpressionConverter.ConvertToken(from);
-            serviceProviderParameters["to"] = CSharpExpressionConverter.ConvertToken(to);
-            if (cc != null)
+            SourceExpression.Validate(from, nameof(from), required: true);
+            SourceExpression.Validate(to, nameof(to), required: true);
+            SourceExpression.Validate(cc, nameof(cc), required: false);
+            SourceExpression.Validate(subject, nameof(subject), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            SourceExpression.Validate(isHTML, nameof(isHTML), required: false);
+            SourceExpression.Validate(bcc, nameof(bcc), required: false);
+            SourceExpression.Validate(importance, nameof(importance), required: false);
+            SourceExpression.Validate(readReceipt, nameof(readReceipt), required: false);
+            SourceExpression.Validate(deliveryReceipt, nameof(deliveryReceipt), required: false);
+            SourceExpression.Validate(attachment, nameof(attachment), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["cc"] = CSharpExpressionConverter.ConvertToken(cc);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["from"] = SourceExpressionConverter.ConvertToken(from);
+                serviceProviderParameters["to"] = SourceExpressionConverter.ConvertToken(to);
+                if (cc != null)
+                {
+                    serviceProviderParameters["cc"] = SourceExpressionConverter.ConvertToken(cc);
+                }
+
+                if (subject != null)
+                {
+                    serviceProviderParameters["subject"] = SourceExpressionConverter.ConvertToken(subject);
+                }
+
+                if (body != null)
+                {
+                    serviceProviderParameters["body"] = SourceExpressionConverter.ConvertToken(body);
+                }
+
+                if (isHTML != null)
+                {
+                    serviceProviderParameters["isHTML"] = SourceExpressionConverter.ConvertToken(isHTML);
+                }
+
+                if (bcc != null)
+                {
+                    serviceProviderParameters["bcc"] = SourceExpressionConverter.ConvertToken(bcc);
+                }
+
+                if (importance != null)
+                {
+                    serviceProviderParameters["importance"] = SourceExpressionConverter.ConvertToken(importance);
+                }
+                else
+                {
+                    serviceProviderParameters["importance"] = "Normal";
+                }
+
+                if (readReceipt != null)
+                {
+                    serviceProviderParameters["readReceipt"] = SourceExpressionConverter.ConvertToken(readReceipt);
+                }
+
+                if (deliveryReceipt != null)
+                {
+                    serviceProviderParameters["deliveryReceipt"] = SourceExpressionConverter.ConvertToken(deliveryReceipt);
+                }
+
+                if (attachment != null)
+                {
+                    serviceProviderParameters["attachment"] = SourceExpressionConverter.ConvertToken(attachment);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (subject != null)
-            {
-                serviceProviderParameters["subject"] = CSharpExpressionConverter.ConvertToken(subject);
-            }
-
-            if (body != null)
-            {
-                serviceProviderParameters["body"] = CSharpExpressionConverter.ConvertToken(body);
-            }
-
-            if (isHTML != null)
-            {
-                serviceProviderParameters["isHTML"] = CSharpExpressionConverter.ConvertToken(isHTML);
-            }
-
-            if (bcc != null)
-            {
-                serviceProviderParameters["bcc"] = CSharpExpressionConverter.ConvertToken(bcc);
-            }
-
-            if (importance != null)
-            {
-                serviceProviderParameters["importance"] = CSharpExpressionConverter.ConvertToken(importance);
-            }
-            else
-            {
-                serviceProviderParameters["importance"] = "Normal";
-            }
-
-            if (readReceipt != null)
-            {
-                serviceProviderParameters["readReceipt"] = CSharpExpressionConverter.ConvertToken(readReceipt);
-            }
-
-            if (deliveryReceipt != null)
-            {
-                serviceProviderParameters["deliveryReceipt"] = CSharpExpressionConverter.ConvertToken(deliveryReceipt);
-            }
-
-            if (attachment != null)
-            {
-                serviceProviderParameters["attachment"] = CSharpExpressionConverter.ConvertToken(attachment);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Smtp", operationId: "sendEmail", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<SendEmailOutput>(serviceProviderInput);
+            return new ServiceProviderOutputAction<SendEmailOutput>(BuildSourceInput);
         }
     }
 

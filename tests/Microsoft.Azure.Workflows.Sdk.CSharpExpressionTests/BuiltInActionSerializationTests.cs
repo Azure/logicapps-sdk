@@ -112,9 +112,8 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             var action = WorkflowActions.BuiltIn.Response();
 
-            Assert.Equal(HttpStatusCode.OK, Assert.IsType<ResponseAction<JToken>>(action).StatusCode);
-
             var actual = JObject.Parse(action.GetActionDefinition("workflow").ToJson());
+            Assert.Equal((int)HttpStatusCode.OK, actual["inputs"]["statusCode"].Value<int>());
             var expected = JObject.Parse(
                 """
                 {
@@ -191,10 +190,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                     },
                 });
 
-            Assert.Equal("@outputs('Source')", action.Messages[0].Content);
-            Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
-                action.Messages[1].Content);
+            var messages = action.GetActionDefinition("workflow").Inputs.ToJToken()["parameters"]["messages"];
+            Assert.Equal("@outputs('Source')", messages[0]["content"].Value<string>());
+            using var compiled = EmittedExpressionCompiler.Compile(messages[1]["content"].Value<string>());
+            Assert.Equal("HELLO", compiled.Evaluate(new Dictionary<string, JToken> { ["Source"] = "hello" }));
         }
 
         [Fact]
@@ -429,16 +428,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                       "inputs": "true"
                     }
                   },
-                  "expression": {
-                    "and": [
-                      {
-                        "equals": [
-                          "ready",
-                          "ready"
-                        ]
-                      }
-                    ]
-                  },
+                  "expression": "@csharp{\"ready\" == \"ready\"}",
                   "runAfter": {},
                   "else": {
                     "actions": {

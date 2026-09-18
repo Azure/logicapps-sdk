@@ -12,152 +12,212 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fluxx
     public class FluxxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<object> DownloadDocument(Expression<Func<string>> id)
+        public IBodyWorkflowAction<object> DownloadDocument([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/model_document_download/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/model_document_download/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<JToken> CustomAction(Expression<Func<string>> endpoint, Expression<Func<methodInput>> method, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<JToken> CustomAction([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/custom_action/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["method"] = CSharpExpressionConverter.Convert(method);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/custom_action/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["method"] = SourceExpressionConverter.Convert(method);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<object>> content, Expression<Func<string>> dataOwnerModelModelType, Expression<Func<int>> dataOwnerModelId, Expression<Func<string>> dataContentType, Expression<Func<int>> dataCreatedById)
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<object> content, [WorkflowExpression] Func<string> dataOwnerModelModelType, [WorkflowExpression] Func<int> dataOwnerModelId, [WorkflowExpression] Func<string> dataContentType, [WorkflowExpression] Func<int> dataCreatedById)
         {
-            var apiCallPath = "/api/rest/v2/model_document";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["cols"] = Convert.ToString("[\"document_file_name\",\"document_content_type\",\"doc_label\"]");
-            return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            SourceExpression.Validate(content, nameof(content), required: true);
+            SourceExpression.Validate(dataOwnerModelModelType, nameof(dataOwnerModelModelType), required: true);
+            SourceExpression.Validate(dataOwnerModelId, nameof(dataOwnerModelId), required: true);
+            SourceExpression.Validate(dataContentType, nameof(dataContentType), required: true);
+            SourceExpression.Validate(dataCreatedById, nameof(dataCreatedById), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/rest/v2/model_document";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["cols"] = Convert.ToString("[\"document_file_name\",\"document_content_type\",\"doc_label\"]");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UploadDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> CreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse> CreateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["all_core"] = Convert.ToString(1);
-            callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            SourceExpression.Validate(typeId, nameof(typeId), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["all_core"] = Convert.ToString(1);
+                callPayload.Queries["all_dynamic"] = Convert.ToString(1);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModelResponse>(callPayload);
+            return new ApiConnectionAction<ModelResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindRecords(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse> FindRecords([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["all_core"] = Convert.ToString(1);
-            callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-            callPayload.Queries["current_page"] = Convert.ToString(1);
-            if (currentPage != null)
-                callPayload.Queries["current_page"] = CSharpExpressionConverter.ConvertO(currentPage);
-            callPayload.Queries["per_page"] = Convert.ToString(10);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            SourceExpression.Validate(typeId, nameof(typeId), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
+            SourceExpression.Validate(currentPage, nameof(currentPage), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["all_core"] = Convert.ToString(1);
+                callPayload.Queries["all_dynamic"] = Convert.ToString(1);
+                callPayload.Queries["current_page"] = Convert.ToString(1);
+                if (currentPage != null)
+                    callPayload.Queries["current_page"] = SourceExpressionConverter.ConvertO(currentPage);
+                callPayload.Queries["per_page"] = Convert.ToString(10);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModelArrayResponse>(callPayload);
+            return new ApiConnectionAction<ModelArrayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord(Expression<Func<string>> typeId, Expression<Func<object>> bodydata = null, Expression<Func<int>> currentPage = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<ModelArrayResponse> FindOrCreateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<object> bodydata = null, [WorkflowExpression] Func<int> currentPage = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["all_core"] = Convert.ToString(1);
-            callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-            callPayload.Queries["current_page"] = Convert.ToString(1);
-            if (currentPage != null)
-                callPayload.Queries["current_page"] = CSharpExpressionConverter.ConvertO(currentPage);
-            callPayload.Queries["per_page"] = Convert.ToString(10);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            SourceExpression.Validate(typeId, nameof(typeId), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
+            SourceExpression.Validate(currentPage, nameof(currentPage), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["all_core"] = Convert.ToString(1);
+                callPayload.Queries["all_dynamic"] = Convert.ToString(1);
+                callPayload.Queries["current_page"] = Convert.ToString(1);
+                if (currentPage != null)
+                    callPayload.Queries["current_page"] = SourceExpressionConverter.ConvertO(currentPage);
+                callPayload.Queries["per_page"] = Convert.ToString(10);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModelArrayResponse>(callPayload);
+            return new ApiConnectionAction<ModelArrayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> FindRecord(Expression<Func<string>> typeId, Expression<Func<string>> id)
+        public IBodyWorkflowAction<ModelResponse> FindRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["all_core"] = Convert.ToString(1);
-            callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-            return new ApiConnectionAction<ModelResponse>(callPayload);
+            SourceExpression.Validate(typeId, nameof(typeId), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["all_core"] = Convert.ToString(1);
+                callPayload.Queries["all_dynamic"] = Convert.ToString(1);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ModelResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fluxx")]
-        public IBodyWorkflowAction<ModelResponse> UpdateRecord(Expression<Func<string>> typeId, Expression<Func<string>> id, Expression<Func<object>> bodydata = null)
+        public IBodyWorkflowAction<ModelResponse> UpdateRecord([WorkflowExpression] Func<string> typeId, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> bodydata = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["all_core"] = Convert.ToString(1);
-            callPayload.Queries["all_dynamic"] = Convert.ToString(1);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydata != null)
+            SourceExpression.Validate(typeId, nameof(typeId), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rest/v2/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(typeId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["all_core"] = Convert.ToString(1);
+                callPayload.Queries["all_dynamic"] = Convert.ToString(1);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydata != null)
+                {
+                    body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ModelResponse>(callPayload);
+            return new ApiConnectionAction<ModelResponse>(BuildSourceInput);
         }
     }
 

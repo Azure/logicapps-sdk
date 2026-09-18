@@ -14,91 +14,128 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parseur
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<ListMailboxItem[]> ListMailbox()
         {
-            var apiCallPath = "/user/parser_set";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListMailboxItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user/parser_set";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListMailboxItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
         public IBodyWorkflowAction<ListTableItem[]> ListTable()
         {
-            var apiCallPath = "/user/table_set";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListTableItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user/table_set";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListTableItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        public IBodyWorkflowAction<JToken> GetMailboxSchema(Expression<Func<string>> mailboxID)
+        public IBodyWorkflowAction<JToken> GetMailboxSchema([WorkflowExpression] Func<string> mailboxID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "parseur")]
-        public IBodyWorkflowAction<JToken> GetTableSchema(Expression<Func<string>> tableID)
+        public IBodyWorkflowAction<JToken> GetTableSchema([WorkflowExpression] Func<string> tableID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(tableID, nameof(tableID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/schema", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class ParseurTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded(Expression<Func<string>> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> NewDocumentExpanded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> TemplateNeeded(Expression<Func<string>> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TemplateNeeded([WorkflowExpression] Func<string> mailboxID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(mailboxID, nameof(mailboxID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parser/{0}/flow_webhook/document.template_needed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(mailboxID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> TableProcessed(Expression<Func<string>> tableID, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> TableProcessed([WorkflowExpression] Func<string> tableID, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["target"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(tableID, nameof(tableID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/table/{0}/flow_webhook/table.processed", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tableID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["target"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

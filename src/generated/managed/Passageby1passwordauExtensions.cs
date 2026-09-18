@@ -12,12 +12,18 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Passageby1passwordau
     public class Passageby1passwordauActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "passageby1passwordau")]
-        public IBodyWorkflowAction<OpenIdConfiguration> GetOpenIdConfiguration(Expression<Func<string>> appId)
+        public IBodyWorkflowAction<OpenIdConfiguration> GetOpenIdConfiguration([WorkflowExpression] Func<string> appId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/apps/{0}/.well-known/openid-configuration", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<OpenIdConfiguration>(callPayload);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/apps/{0}/.well-known/openid-configuration", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpenIdConfiguration>(BuildSourceInput);
         }
     }
 

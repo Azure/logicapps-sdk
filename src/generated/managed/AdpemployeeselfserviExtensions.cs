@@ -12,257 +12,324 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Adpemployeeselfservi
     public class AdpemployeeselfserviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<CreateContactResponse> CreateContact(Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<CreateContactResponse> CreateContact([WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/create-emergency-contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["contactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
-            if (bodyaddressLine1 != null)
+            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
+            SourceExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
+            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            SourceExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
+            SourceExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            SourceExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
+            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["addressLine1"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine1);
+                var apiCallPath = "/api/create-emergency-contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["contactName"] = SourceExpressionConverter.ConvertToken(bodycontactName);
+                if (bodyaddressLine1 != null)
+                {
+                    body["addressLine1"] = SourceExpressionConverter.ConvertToken(bodyaddressLine1);
+                    bodypropCount++;
+                }
 
-            if (bodyaddressLine2 != null)
-            {
-                body["addressLine2"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine2);
+                if (bodyaddressLine2 != null)
+                {
+                    body["addressLine2"] = SourceExpressionConverter.ConvertToken(bodyaddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine3 != null)
+                {
+                    body["addressLine3"] = SourceExpressionConverter.ConvertToken(bodyaddressLine3);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCity != null)
+                {
+                    body["addressCity"] = SourceExpressionConverter.ConvertToken(bodyaddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressState != null)
+                {
+                    body["addressState"] = SourceExpressionConverter.ConvertToken(bodyaddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCountry != null)
+                {
+                    body["addressCountry"] = SourceExpressionConverter.ConvertToken(bodyaddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressPostalCode != null)
+                {
+                    body["addressPostalCode"] = SourceExpressionConverter.ConvertToken(bodyaddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphones != null)
+                {
+                    body["phones"] = SourceExpressionConverter.ConvertToken(bodyphones);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = SourceExpressionConverter.ConvertToken(bodyemails);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyaddressLine3 != null)
-            {
-                body["addressLine3"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine3);
+                body["relation"] = SourceExpressionConverter.Convert(bodyrelation);
                 bodypropCount++;
+                body["isPrimary"] = SourceExpressionConverter.ConvertToken(bodyisPrimary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddressCity != null)
-            {
-                body["addressCity"] = CSharpExpressionConverter.ConvertToken(bodyaddressCity);
-                bodypropCount++;
-            }
-
-            if (bodyaddressState != null)
-            {
-                body["addressState"] = CSharpExpressionConverter.ConvertToken(bodyaddressState);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCountry != null)
-            {
-                body["addressCountry"] = CSharpExpressionConverter.ConvertToken(bodyaddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyaddressPostalCode != null)
-            {
-                body["addressPostalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyphones != null)
-            {
-                body["phones"] = CSharpExpressionConverter.ConvertToken(bodyphones);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["relation"] = CSharpExpressionConverter.Convert(bodyrelation);
-            bodypropCount++;
-            body["isPrimary"] = CSharpExpressionConverter.ConvertToken(bodyisPrimary);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateContactResponse>(callPayload);
+            return new ApiConnectionAction<CreateContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts(Expression<Func<string[]>> bodyitemIds)
+        public IBodyWorkflowAction<DeleteContactsResponse> DeleteContacts([WorkflowExpression] Func<string[]> bodyitemIds)
         {
-            var apiCallPath = "/api/delete-emergency-contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["itemIds"] = CSharpExpressionConverter.ConvertToken(bodyitemIds);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyitemIds, nameof(bodyitemIds), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/delete-emergency-contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["itemIds"] = SourceExpressionConverter.ConvertToken(bodyitemIds);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<DeleteContactsResponse>(callPayload);
+            return new ApiConnectionAction<DeleteContactsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetContactsResponse> GetContacts()
         {
-            var apiCallPath = "/api/get-emergency-contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContactsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/get-emergency-contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContactsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetPayDistributionsResponse> GetPayDistributions()
         {
-            var apiCallPath = "/api/get-pay-distributions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPayDistributionsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/get-pay-distributions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPayDistributionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetPayStatementsResponse> GetPayStatements()
         {
-            var apiCallPath = "/api/get-pay-statements";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPayStatementsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/get-pay-statements";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPayStatementsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
         public IBodyWorkflowAction<GetUserResponse> GetUser()
         {
-            var apiCallPath = "/api/get-worker";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/get-worker";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact(Expression<Func<string>> bodyitemId, Expression<Func<string>> bodycontactName, Expression<Func<bodyrelationInput>> bodyrelation, Expression<Func<bool>> bodyisPrimary, Expression<Func<string>> bodyaddressLine1 = null, Expression<Func<string>> bodyaddressLine2 = null, Expression<Func<string>> bodyaddressLine3 = null, Expression<Func<string>> bodyaddressCity = null, Expression<Func<string>> bodyaddressState = null, Expression<Func<string>> bodyaddressCountry = null, Expression<Func<string>> bodyaddressPostalCode = null, Expression<Func<bodyphonesInputItem2[]>> bodyphones = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null)
+        public IBodyWorkflowAction<UpdateContactResponse> UpdateContact([WorkflowExpression] Func<string> bodyitemId, [WorkflowExpression] Func<string> bodycontactName, [WorkflowExpression] Func<bodyrelationInput> bodyrelation, [WorkflowExpression] Func<bool> bodyisPrimary, [WorkflowExpression] Func<string> bodyaddressLine1 = null, [WorkflowExpression] Func<string> bodyaddressLine2 = null, [WorkflowExpression] Func<string> bodyaddressLine3 = null, [WorkflowExpression] Func<string> bodyaddressCity = null, [WorkflowExpression] Func<string> bodyaddressState = null, [WorkflowExpression] Func<string> bodyaddressCountry = null, [WorkflowExpression] Func<string> bodyaddressPostalCode = null, [WorkflowExpression] Func<bodyphonesInputItem2[]> bodyphones = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null)
         {
-            var apiCallPath = "/api/update-emergency-contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["itemId"] = CSharpExpressionConverter.ConvertToken(bodyitemId);
-            bodypropCount++;
-            body["contactName"] = CSharpExpressionConverter.ConvertToken(bodycontactName);
-            if (bodyaddressLine1 != null)
+            SourceExpression.Validate(bodyitemId, nameof(bodyitemId), required: true);
+            SourceExpression.Validate(bodycontactName, nameof(bodycontactName), required: true);
+            SourceExpression.Validate(bodyrelation, nameof(bodyrelation), required: true);
+            SourceExpression.Validate(bodyisPrimary, nameof(bodyisPrimary), required: true);
+            SourceExpression.Validate(bodyaddressLine1, nameof(bodyaddressLine1), required: false);
+            SourceExpression.Validate(bodyaddressLine2, nameof(bodyaddressLine2), required: false);
+            SourceExpression.Validate(bodyaddressLine3, nameof(bodyaddressLine3), required: false);
+            SourceExpression.Validate(bodyaddressCity, nameof(bodyaddressCity), required: false);
+            SourceExpression.Validate(bodyaddressState, nameof(bodyaddressState), required: false);
+            SourceExpression.Validate(bodyaddressCountry, nameof(bodyaddressCountry), required: false);
+            SourceExpression.Validate(bodyaddressPostalCode, nameof(bodyaddressPostalCode), required: false);
+            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
+            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["addressLine1"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine1);
+                var apiCallPath = "/api/update-emergency-contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyaddressLine2 != null)
-            {
-                body["addressLine2"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine2);
+                body["itemId"] = SourceExpressionConverter.ConvertToken(bodyitemId);
                 bodypropCount++;
-            }
+                body["contactName"] = SourceExpressionConverter.ConvertToken(bodycontactName);
+                if (bodyaddressLine1 != null)
+                {
+                    body["addressLine1"] = SourceExpressionConverter.ConvertToken(bodyaddressLine1);
+                    bodypropCount++;
+                }
 
-            if (bodyaddressLine3 != null)
-            {
-                body["addressLine3"] = CSharpExpressionConverter.ConvertToken(bodyaddressLine3);
+                if (bodyaddressLine2 != null)
+                {
+                    body["addressLine2"] = SourceExpressionConverter.ConvertToken(bodyaddressLine2);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressLine3 != null)
+                {
+                    body["addressLine3"] = SourceExpressionConverter.ConvertToken(bodyaddressLine3);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCity != null)
+                {
+                    body["addressCity"] = SourceExpressionConverter.ConvertToken(bodyaddressCity);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressState != null)
+                {
+                    body["addressState"] = SourceExpressionConverter.ConvertToken(bodyaddressState);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressCountry != null)
+                {
+                    body["addressCountry"] = SourceExpressionConverter.ConvertToken(bodyaddressCountry);
+                    bodypropCount++;
+                }
+
+                if (bodyaddressPostalCode != null)
+                {
+                    body["addressPostalCode"] = SourceExpressionConverter.ConvertToken(bodyaddressPostalCode);
+                    bodypropCount++;
+                }
+
+                if (bodyphones != null)
+                {
+                    body["phones"] = SourceExpressionConverter.ConvertToken(bodyphones);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = SourceExpressionConverter.ConvertToken(bodyemails);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyaddressCity != null)
-            {
-                body["addressCity"] = CSharpExpressionConverter.ConvertToken(bodyaddressCity);
+                body["relation"] = SourceExpressionConverter.Convert(bodyrelation);
                 bodypropCount++;
+                body["isPrimary"] = SourceExpressionConverter.ConvertToken(bodyisPrimary);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddressState != null)
-            {
-                body["addressState"] = CSharpExpressionConverter.ConvertToken(bodyaddressState);
-                bodypropCount++;
-            }
-
-            if (bodyaddressCountry != null)
-            {
-                body["addressCountry"] = CSharpExpressionConverter.ConvertToken(bodyaddressCountry);
-                bodypropCount++;
-            }
-
-            if (bodyaddressPostalCode != null)
-            {
-                body["addressPostalCode"] = CSharpExpressionConverter.ConvertToken(bodyaddressPostalCode);
-                bodypropCount++;
-            }
-
-            if (bodyphones != null)
-            {
-                body["phones"] = CSharpExpressionConverter.ConvertToken(bodyphones);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["relation"] = CSharpExpressionConverter.Convert(bodyrelation);
-            bodypropCount++;
-            body["isPrimary"] = CSharpExpressionConverter.ConvertToken(bodyisPrimary);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateContactResponse>(callPayload);
+            return new ApiConnectionAction<UpdateContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "adpemployeeselfservi")]
-        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobileCountry = null, Expression<Func<string>> bodymobileArea = null, Expression<Func<string>> bodymobileNumber = null)
+        public IBodyWorkflowAction<UpdateUserResponse> UpdateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodymobileCountry = null, [WorkflowExpression] Func<string> bodymobileArea = null, [WorkflowExpression] Func<string> bodymobileNumber = null)
         {
-            var apiCallPath = "/api/update-profile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodymobileCountry, nameof(bodymobileCountry), required: false);
+            SourceExpression.Validate(bodymobileArea, nameof(bodymobileArea), required: false);
+            SourceExpression.Validate(bodymobileNumber, nameof(bodymobileNumber), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/api/update-profile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodymobileCountry != null)
+                {
+                    body["mobileCountry"] = SourceExpressionConverter.ConvertToken(bodymobileCountry);
+                    bodypropCount++;
+                }
+
+                if (bodymobileArea != null)
+                {
+                    body["mobileArea"] = SourceExpressionConverter.ConvertToken(bodymobileArea);
+                    bodypropCount++;
+                }
+
+                if (bodymobileNumber != null)
+                {
+                    body["mobileNumber"] = SourceExpressionConverter.ConvertToken(bodymobileNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyemail != null)
-            {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodymobileCountry != null)
-            {
-                body["mobileCountry"] = CSharpExpressionConverter.ConvertToken(bodymobileCountry);
-                bodypropCount++;
-            }
-
-            if (bodymobileArea != null)
-            {
-                body["mobileArea"] = CSharpExpressionConverter.ConvertToken(bodymobileArea);
-                bodypropCount++;
-            }
-
-            if (bodymobileNumber != null)
-            {
-                body["mobileNumber"] = CSharpExpressionConverter.ConvertToken(bodymobileNumber);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateUserResponse>(callPayload);
+            return new ApiConnectionAction<UpdateUserResponse>(BuildSourceInput);
         }
     }
 

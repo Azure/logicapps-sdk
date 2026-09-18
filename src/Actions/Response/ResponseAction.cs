@@ -56,6 +56,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 this.StatusCode = statusCode == null
                     ? HttpStatusCode.OK
                     : (HttpStatusCode)statusCode.Value<int>();
+                if ((int)this.StatusCode == 0)
+                {
+                    throw new System.ArgumentOutOfRangeException(nameof(statusCode),
+                        "Response statusCode cannot be zero. Omit the argument to use the default status code 200.");
+                }
             }
             else
             {

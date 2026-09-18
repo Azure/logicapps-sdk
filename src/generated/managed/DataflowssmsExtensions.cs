@@ -12,51 +12,77 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dataflowssms
     public class DataflowssmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSResponse> SendSMSGet(Expression<Func<string>> recipient, Expression<Func<string>> senderId, Expression<Func<string>> message, Expression<Func<string>> type = null)
+        public IBodyWorkflowAction<SMSResponse> SendSMSGet([WorkflowExpression] Func<string> recipient, [WorkflowExpression] Func<string> senderId, [WorkflowExpression] Func<string> message, [WorkflowExpression] Func<string> type = null)
         {
-            var apiCallPath = "/sms/send";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["recipient"] = CSharpExpressionConverter.ConvertO(recipient);
-            callPayload.Queries["sender_id"] = CSharpExpressionConverter.ConvertO(senderId);
-            callPayload.Queries["message"] = CSharpExpressionConverter.ConvertO(message);
-            callPayload.Queries["type"] = Convert.ToString("plain");
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
-            return new ApiConnectionAction<SMSResponse>(callPayload);
+            SourceExpression.Validate(recipient, nameof(recipient), required: true);
+            SourceExpression.Validate(senderId, nameof(senderId), required: true);
+            SourceExpression.Validate(message, nameof(message), required: true);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sms/send";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["recipient"] = SourceExpressionConverter.ConvertO(recipient);
+                callPayload.Queries["sender_id"] = SourceExpressionConverter.ConvertO(senderId);
+                callPayload.Queries["message"] = SourceExpressionConverter.ConvertO(message);
+                callPayload.Queries["type"] = Convert.ToString("plain");
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SMSResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
-        public IBodyWorkflowAction<SMSList> ListSMS(Expression<Func<int>> page = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<SMSList> ListSMS([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["limit"] = Convert.ToString(20);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<SMSList>(callPayload);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SMSList>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<Profile> GetProfile()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Profile>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Profile>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dataflowssms")]
         public IBodyWorkflowAction<Balance> GetBalance()
         {
-            var apiCallPath = "/balance";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Balance>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/balance";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Balance>(BuildSourceInput);
         }
     }
 

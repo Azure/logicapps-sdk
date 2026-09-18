@@ -12,495 +12,605 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tilkee
     public class TilkeeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate(Expression<Func<string>> bodyprojectid = null, Expression<Func<string>> bodyprojectname = null, Expression<Func<bool>> bodyprojectcanBeDownloaded = null, Expression<Func<bool>> bodyprojectconsultable = null, Expression<Func<string>> bodyprojectconsultableUntil = null, Expression<Func<string[]>> bodyprojecttags = null, Expression<Func<JToken[]>> bodyprojectcollaborators = null, Expression<Func<bool>> bodyprojectisTemplate = null, Expression<Func<string>> bodyprojectexternalId = null, Expression<Func<int>> bodyprojectthemeid = null, Expression<Func<bodydocumentsInputItem[]>> bodydocuments = null, Expression<Func<bodypersonInputItem[]>> bodyperson = null)
+        public IBodyWorkflowAction<ProjectCreateResponse> ProjectCreate([WorkflowExpression] Func<string> bodyprojectid = null, [WorkflowExpression] Func<string> bodyprojectname = null, [WorkflowExpression] Func<bool> bodyprojectcanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyprojectconsultable = null, [WorkflowExpression] Func<string> bodyprojectconsultableUntil = null, [WorkflowExpression] Func<string[]> bodyprojecttags = null, [WorkflowExpression] Func<JToken[]> bodyprojectcollaborators = null, [WorkflowExpression] Func<bool> bodyprojectisTemplate = null, [WorkflowExpression] Func<string> bodyprojectexternalId = null, [WorkflowExpression] Func<int> bodyprojectthemeid = null, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments = null, [WorkflowExpression] Func<bodypersonInputItem[]> bodyperson = null)
         {
-            var apiCallPath = "/wrapper/token_from_files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var projectObject = new JObject();
-            var projectObjectpropCount = 0;
-            if (bodyprojectid != null)
+            SourceExpression.Validate(bodyprojectid, nameof(bodyprojectid), required: false);
+            SourceExpression.Validate(bodyprojectname, nameof(bodyprojectname), required: false);
+            SourceExpression.Validate(bodyprojectcanBeDownloaded, nameof(bodyprojectcanBeDownloaded), required: false);
+            SourceExpression.Validate(bodyprojectconsultable, nameof(bodyprojectconsultable), required: false);
+            SourceExpression.Validate(bodyprojectconsultableUntil, nameof(bodyprojectconsultableUntil), required: false);
+            SourceExpression.Validate(bodyprojecttags, nameof(bodyprojecttags), required: false);
+            SourceExpression.Validate(bodyprojectcollaborators, nameof(bodyprojectcollaborators), required: false);
+            SourceExpression.Validate(bodyprojectisTemplate, nameof(bodyprojectisTemplate), required: false);
+            SourceExpression.Validate(bodyprojectexternalId, nameof(bodyprojectexternalId), required: false);
+            SourceExpression.Validate(bodyprojectthemeid, nameof(bodyprojectthemeid), required: false);
+            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: false);
+            SourceExpression.Validate(bodyperson, nameof(bodyperson), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                projectObject["id"] = CSharpExpressionConverter.ConvertToken(bodyprojectid);
-                projectObjectpropCount++;
-            }
+                var apiCallPath = "/wrapper/token_from_files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var projectObject = new JObject();
+                var projectObjectpropCount = 0;
+                if (bodyprojectid != null)
+                {
+                    projectObject["id"] = SourceExpressionConverter.ConvertToken(bodyprojectid);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojectname != null)
-            {
-                projectObject["name"] = CSharpExpressionConverter.ConvertToken(bodyprojectname);
-                projectObjectpropCount++;
-            }
+                if (bodyprojectname != null)
+                {
+                    projectObject["name"] = SourceExpressionConverter.ConvertToken(bodyprojectname);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojectcanBeDownloaded != null)
-            {
-                projectObject["can_be_downloaded"] = CSharpExpressionConverter.ConvertToken(bodyprojectcanBeDownloaded);
-                projectObjectpropCount++;
-            }
+                if (bodyprojectcanBeDownloaded != null)
+                {
+                    projectObject["can_be_downloaded"] = SourceExpressionConverter.ConvertToken(bodyprojectcanBeDownloaded);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojectconsultable != null)
-            {
                 if (bodyprojectconsultable != null)
                 {
-                    projectObject["consultable"] = CSharpExpressionConverter.ConvertToken(bodyprojectconsultable);
+                    if (bodyprojectconsultable != null)
+                    {
+                        projectObject["consultable"] = SourceExpressionConverter.ConvertToken(bodyprojectconsultable);
+                        projectObjectpropCount++;
+                    }
+
+                    projectObjectpropCount++;
+                }
+                else
+                {
+                    projectObject["consultable"] = true;
                     projectObjectpropCount++;
                 }
 
-                projectObjectpropCount++;
-            }
-            else
-            {
-                projectObject["consultable"] = true;
-                projectObjectpropCount++;
-            }
+                if (bodyprojectconsultableUntil != null)
+                {
+                    projectObject["consultable_until"] = SourceExpressionConverter.ConvertToken(bodyprojectconsultableUntil);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojectconsultableUntil != null)
-            {
-                projectObject["consultable_until"] = CSharpExpressionConverter.ConvertToken(bodyprojectconsultableUntil);
-                projectObjectpropCount++;
-            }
+                if (bodyprojecttags != null)
+                {
+                    projectObject["tags"] = SourceExpressionConverter.ConvertToken(bodyprojecttags);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojecttags != null)
-            {
-                projectObject["tags"] = CSharpExpressionConverter.ConvertToken(bodyprojecttags);
-                projectObjectpropCount++;
-            }
+                if (bodyprojectcollaborators != null)
+                {
+                    projectObject["collaborators"] = SourceExpressionConverter.ConvertToken(bodyprojectcollaborators);
+                    projectObjectpropCount++;
+                }
 
-            if (bodyprojectcollaborators != null)
-            {
-                projectObject["collaborators"] = CSharpExpressionConverter.ConvertToken(bodyprojectcollaborators);
-                projectObjectpropCount++;
-            }
-
-            if (bodyprojectisTemplate != null)
-            {
                 if (bodyprojectisTemplate != null)
                 {
-                    projectObject["is_template"] = CSharpExpressionConverter.ConvertToken(bodyprojectisTemplate);
+                    if (bodyprojectisTemplate != null)
+                    {
+                        projectObject["is_template"] = SourceExpressionConverter.ConvertToken(bodyprojectisTemplate);
+                        projectObjectpropCount++;
+                    }
+
+                    projectObjectpropCount++;
+                }
+                else
+                {
+                    projectObject["is_template"] = false;
                     projectObjectpropCount++;
                 }
 
-                projectObjectpropCount++;
-            }
-            else
-            {
-                projectObject["is_template"] = false;
-                projectObjectpropCount++;
+                if (bodyprojectexternalId != null)
+                {
+                    projectObject["external_id"] = SourceExpressionConverter.ConvertToken(bodyprojectexternalId);
+                    projectObjectpropCount++;
+                }
+
+                var themeObject = new JObject();
+                var themeObjectpropCount = 0;
+                if (bodyprojectthemeid != null)
+                {
+                    themeObject["id"] = SourceExpressionConverter.ConvertToken(bodyprojectthemeid);
+                    themeObjectpropCount++;
+                }
+
+                if (themeObjectpropCount > 0)
+                {
+                    projectObject["theme"] = themeObject;
+                    projectObjectpropCount++;
+                }
+
+                if (projectObjectpropCount > 0)
+                {
+                    body["project"] = projectObject;
+                    bodypropCount++;
+                }
+
+                if (bodydocuments != null)
+                {
+                    body["documents"] = SourceExpressionConverter.ConvertToken(bodydocuments);
+                    bodypropCount++;
+                }
+
+                if (bodyperson != null)
+                {
+                    body["person"] = SourceExpressionConverter.ConvertToken(bodyperson);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyprojectexternalId != null)
-            {
-                projectObject["external_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectexternalId);
-                projectObjectpropCount++;
-            }
-
-            var themeObject = new JObject();
-            var themeObjectpropCount = 0;
-            if (bodyprojectthemeid != null)
-            {
-                themeObject["id"] = CSharpExpressionConverter.ConvertToken(bodyprojectthemeid);
-                themeObjectpropCount++;
-            }
-
-            if (themeObjectpropCount > 0)
-            {
-                projectObject["theme"] = themeObject;
-                projectObjectpropCount++;
-            }
-
-            if (projectObjectpropCount > 0)
-            {
-                body["project"] = projectObject;
-                bodypropCount++;
-            }
-
-            if (bodydocuments != null)
-            {
-                body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
-                bodypropCount++;
-            }
-
-            if (bodyperson != null)
-            {
-                body["person"] = CSharpExpressionConverter.ConvertToken(bodyperson);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectCreateResponse>(callPayload);
+            return new ApiConnectionAction<ProjectCreateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectListResponse> ProjectList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> order, Expression<Func<bool>> isTemplate, Expression<Func<bool>> isOwner, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
+        public IBodyWorkflowAction<ProjectListResponse> ProjectList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> order, [WorkflowExpression] Func<bool> isTemplate, [WorkflowExpression] Func<bool> isOwner, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
         {
-            var apiCallPath = "/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
-            callPayload.Queries["is_template"] = CSharpExpressionConverter.ConvertO(isTemplate);
-            if (tags != null)
-                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
-            if (tagOperator != null)
-                callPayload.Queries["tagOperator"] = CSharpExpressionConverter.ConvertO(tagOperator);
-            callPayload.Queries["is_owner"] = CSharpExpressionConverter.ConvertO(isOwner);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<ProjectListResponse>(callPayload);
+            SourceExpression.Validate(limit, nameof(limit), required: true);
+            SourceExpression.Validate(offset, nameof(offset), required: true);
+            SourceExpression.Validate(order, nameof(order), required: true);
+            SourceExpression.Validate(isTemplate, nameof(isTemplate), required: true);
+            SourceExpression.Validate(isOwner, nameof(isOwner), required: true);
+            SourceExpression.Validate(tags, nameof(tags), required: false);
+            SourceExpression.Validate(tagOperator, nameof(tagOperator), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                callPayload.Queries["order"] = SourceExpressionConverter.ConvertO(order);
+                callPayload.Queries["is_template"] = SourceExpressionConverter.ConvertO(isTemplate);
+                if (tags != null)
+                    callPayload.Queries["tags"] = SourceExpressionConverter.ConvertO(tags);
+                if (tagOperator != null)
+                    callPayload.Queries["tagOperator"] = SourceExpressionConverter.ConvertO(tagOperator);
+                callPayload.Queries["is_owner"] = SourceExpressionConverter.ConvertO(isOwner);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ProjectGetResponse> ProjectGet([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["iframe_url"] = Convert.ToString(true);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<ProjectGetResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["iframe_url"] = Convert.ToString(true);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodycanBeDownloaded = null, Expression<Func<bool>> bodyconsultable = null, Expression<Func<string>> bodyconsultableUntil = null, Expression<Func<string>> bodyduration = null, Expression<Func<string>> bodyexternalId = null, Expression<Func<bool>> bodystarred = null, Expression<Func<string[]>> bodytags = null, Expression<Func<bodyverdictInput>> bodyverdict = null, Expression<Func<JToken[]>> bodycollaborators = null, Expression<Func<bool>> bodyisTemplate = null, Expression<Func<int>> bodyvcardId = null, Expression<Func<bool>> bodyalertOn = null, Expression<Func<string[]>> bodyemailCible = null, Expression<Func<int>> bodythemeid = null)
+        public IBodyWorkflowAction<ProjectUpdateResponse> ProjectUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodycanBeDownloaded = null, [WorkflowExpression] Func<bool> bodyconsultable = null, [WorkflowExpression] Func<string> bodyconsultableUntil = null, [WorkflowExpression] Func<string> bodyduration = null, [WorkflowExpression] Func<string> bodyexternalId = null, [WorkflowExpression] Func<bool> bodystarred = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<bodyverdictInput> bodyverdict = null, [WorkflowExpression] Func<JToken[]> bodycollaborators = null, [WorkflowExpression] Func<bool> bodyisTemplate = null, [WorkflowExpression] Func<int> bodyvcardId = null, [WorkflowExpression] Func<bool> bodyalertOn = null, [WorkflowExpression] Func<string[]> bodyemailCible = null, [WorkflowExpression] Func<int> bodythemeid = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycanBeDownloaded, nameof(bodycanBeDownloaded), required: false);
+            SourceExpression.Validate(bodyconsultable, nameof(bodyconsultable), required: false);
+            SourceExpression.Validate(bodyconsultableUntil, nameof(bodyconsultableUntil), required: false);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            SourceExpression.Validate(bodyexternalId, nameof(bodyexternalId), required: false);
+            SourceExpression.Validate(bodystarred, nameof(bodystarred), required: false);
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            SourceExpression.Validate(bodyverdict, nameof(bodyverdict), required: false);
+            SourceExpression.Validate(bodycollaborators, nameof(bodycollaborators), required: false);
+            SourceExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
+            SourceExpression.Validate(bodyvcardId, nameof(bodyvcardId), required: false);
+            SourceExpression.Validate(bodyalertOn, nameof(bodyalertOn), required: false);
+            SourceExpression.Validate(bodyemailCible, nameof(bodyemailCible), required: false);
+            SourceExpression.Validate(bodythemeid, nameof(bodythemeid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycanBeDownloaded != null)
+                {
+                    body["can_be_downloaded"] = SourceExpressionConverter.ConvertToken(bodycanBeDownloaded);
+                    bodypropCount++;
+                }
+
+                if (bodyconsultable != null)
+                {
+                    body["consultable"] = SourceExpressionConverter.ConvertToken(bodyconsultable);
+                    bodypropCount++;
+                }
+
+                if (bodyconsultableUntil != null)
+                {
+                    body["consultable_until"] = SourceExpressionConverter.ConvertToken(bodyconsultableUntil);
+                    bodypropCount++;
+                }
+
+                if (bodyduration != null)
+                {
+                    body["duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalId != null)
+                {
+                    body["external_id"] = SourceExpressionConverter.ConvertToken(bodyexternalId);
+                    bodypropCount++;
+                }
+
+                if (bodystarred != null)
+                {
+                    body["starred"] = SourceExpressionConverter.ConvertToken(bodystarred);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodyverdict != null)
+                {
+                    body["verdict"] = SourceExpressionConverter.Convert(bodyverdict);
+                    bodypropCount++;
+                }
+
+                if (bodycollaborators != null)
+                {
+                    body["collaborators"] = SourceExpressionConverter.ConvertToken(bodycollaborators);
+                    bodypropCount++;
+                }
+
+                if (bodyisTemplate != null)
+                {
+                    body["is_template"] = SourceExpressionConverter.ConvertToken(bodyisTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyvcardId != null)
+                {
+                    body["vcard_id"] = SourceExpressionConverter.ConvertToken(bodyvcardId);
+                    bodypropCount++;
+                }
+
+                if (bodyalertOn != null)
+                {
+                    body["alert_on"] = SourceExpressionConverter.ConvertToken(bodyalertOn);
+                    bodypropCount++;
+                }
+
+                if (bodyemailCible != null)
+                {
+                    body["email_cible"] = SourceExpressionConverter.ConvertToken(bodyemailCible);
+                    bodypropCount++;
+                }
+
+                var themeObject = new JObject();
+                var themeObjectpropCount = 0;
+                if (bodythemeid != null)
+                {
+                    themeObject["id"] = SourceExpressionConverter.ConvertToken(bodythemeid);
+                    themeObjectpropCount++;
+                }
+
+                if (themeObjectpropCount > 0)
+                {
+                    body["theme"] = themeObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycanBeDownloaded != null)
-            {
-                body["can_be_downloaded"] = CSharpExpressionConverter.ConvertToken(bodycanBeDownloaded);
-                bodypropCount++;
-            }
-
-            if (bodyconsultable != null)
-            {
-                body["consultable"] = CSharpExpressionConverter.ConvertToken(bodyconsultable);
-                bodypropCount++;
-            }
-
-            if (bodyconsultableUntil != null)
-            {
-                body["consultable_until"] = CSharpExpressionConverter.ConvertToken(bodyconsultableUntil);
-                bodypropCount++;
-            }
-
-            if (bodyduration != null)
-            {
-                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
-                bodypropCount++;
-            }
-
-            if (bodyexternalId != null)
-            {
-                body["external_id"] = CSharpExpressionConverter.ConvertToken(bodyexternalId);
-                bodypropCount++;
-            }
-
-            if (bodystarred != null)
-            {
-                body["starred"] = CSharpExpressionConverter.ConvertToken(bodystarred);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodyverdict != null)
-            {
-                body["verdict"] = CSharpExpressionConverter.Convert(bodyverdict);
-                bodypropCount++;
-            }
-
-            if (bodycollaborators != null)
-            {
-                body["collaborators"] = CSharpExpressionConverter.ConvertToken(bodycollaborators);
-                bodypropCount++;
-            }
-
-            if (bodyisTemplate != null)
-            {
-                body["is_template"] = CSharpExpressionConverter.ConvertToken(bodyisTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyvcardId != null)
-            {
-                body["vcard_id"] = CSharpExpressionConverter.ConvertToken(bodyvcardId);
-                bodypropCount++;
-            }
-
-            if (bodyalertOn != null)
-            {
-                body["alert_on"] = CSharpExpressionConverter.ConvertToken(bodyalertOn);
-                bodypropCount++;
-            }
-
-            if (bodyemailCible != null)
-            {
-                body["email_cible"] = CSharpExpressionConverter.ConvertToken(bodyemailCible);
-                bodypropCount++;
-            }
-
-            var themeObject = new JObject();
-            var themeObjectpropCount = 0;
-            if (bodythemeid != null)
-            {
-                themeObject["id"] = CSharpExpressionConverter.ConvertToken(bodythemeid);
-                themeObjectpropCount++;
-            }
-
-            if (themeObjectpropCount > 0)
-            {
-                body["theme"] = themeObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProjectUpdateResponse>(callPayload);
+            return new ApiConnectionAction<ProjectUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate(Expression<Func<string>> projectId, Expression<Func<bodyaccessLinkInputItem[]>> bodyaccessLink = null)
+        public IBodyWorkflowAction<AccessLinkCreateResponse> AccessLinkCreate([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyaccessLinkInputItem[]> bodyaccessLink = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccessLink != null)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(bodyaccessLink, nameof(bodyaccessLink), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["persons"] = CSharpExpressionConverter.ConvertToken(bodyaccessLink);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/tokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccessLink != null)
+                {
+                    body["persons"] = SourceExpressionConverter.ConvertToken(bodyaccessLink);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccessLinkCreateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
+        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<bodyitemsInputItem[]> bodyitems = null)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(bodyitems, nameof(bodyitems), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyitems != null)
+                {
+                    body["items"] = SourceExpressionConverter.ConvertToken(bodyitems);
+                    bodypropCount++;
+                }
+
+                body["type"] = "ProjectItem";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<AddItemToProjectResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
+        public IBodyWorkflowAction<ItemListResponse> ItemList([WorkflowExpression] Func<int> limit, [WorkflowExpression] Func<int> offset, [WorkflowExpression] Func<string> tags = null, [WorkflowExpression] Func<string> tagOperator = null, [WorkflowExpression] Func<string> search = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: true);
+            SourceExpression.Validate(offset, nameof(offset), required: true);
+            SourceExpression.Validate(tags, nameof(tags), required: false);
+            SourceExpression.Validate(tagOperator, nameof(tagOperator), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/items";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (tags != null)
+                    callPayload.Queries["tags"] = SourceExpressionConverter.ConvertO(tags);
+                if (tagOperator != null)
+                    callPayload.Queries["tagOperator"] = SourceExpressionConverter.ConvertO(tagOperator);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AccessLinkCreateResponse>(callPayload);
+            return new ApiConnectionAction<ItemListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<AddItemToProjectResponseItem[]> AddItemToProject(Expression<Func<string>> projectId, Expression<Func<bodyitemsInputItem[]>> bodyitems = null)
+        public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/projects/{0}/add_items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyitems != null)
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["items"] = CSharpExpressionConverter.ConvertToken(bodyitems);
-                bodypropCount++;
+                var apiCallPath = "/items";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
             }
 
-            body["type"] = "ProjectItem";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<ItemCreateResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
+        public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation([WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> originalFilename, [WorkflowExpression] Func<bool> checkExisting = null)
+        {
+            SourceExpression.Validate(filename, nameof(filename), required: true);
+            SourceExpression.Validate(originalFilename, nameof(originalFilename), required: true);
+            SourceExpression.Validate(checkExisting, nameof(checkExisting), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/direct_upload_data";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filename"] = SourceExpressionConverter.ConvertO(filename);
+                callPayload.Queries["original_filename"] = SourceExpressionConverter.ConvertO(originalFilename);
+                if (checkExisting != null)
+                    callPayload.Queries["check_existing"] = SourceExpressionConverter.ConvertO(checkExisting);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AddItemToProjectResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ItemListResponse> ItemList(Expression<Func<int>> limit, Expression<Func<int>> offset, Expression<Func<string>> tags = null, Expression<Func<string>> tagOperator = null, Expression<Func<string>> search = null)
-        {
-            var apiCallPath = "/items";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (tags != null)
-                callPayload.Queries["tags"] = CSharpExpressionConverter.ConvertO(tags);
-            if (tagOperator != null)
-                callPayload.Queries["tagOperator"] = CSharpExpressionConverter.ConvertO(tagOperator);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<ItemListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<ItemCreateResponseItem[]> ItemCreate(Expression<Func<bodyInputItem[]>> body = null)
-        {
-            var apiCallPath = "/items";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<ItemCreateResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tilkee")]
-        public IBodyWorkflowAction<DirectUploadInformationResponse> DirectUploadInformation(Expression<Func<string>> filename, Expression<Func<string>> originalFilename, Expression<Func<bool>> checkExisting = null)
-        {
-            var apiCallPath = "/direct_upload_data";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
-            callPayload.Queries["original_filename"] = CSharpExpressionConverter.ConvertO(originalFilename);
-            if (checkExisting != null)
-                callPayload.Queries["check_existing"] = CSharpExpressionConverter.ConvertO(checkExisting);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            return new ApiConnectionAction<DirectUploadInformationResponse>(callPayload);
+            return new ApiConnectionAction<DirectUploadInformationResponse>(BuildSourceInput);
         }
     }
 
     public class TilkeeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent(Expression<Func<bodyruleInput>> bodyrule, Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEvent([WorkflowExpression] Func<bodyruleInput> bodyrule, [WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/notifications";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["rule"] = CSharpExpressionConverter.Convert(bodyrule);
-            if (bodyuserId != null)
+            SourceExpression.Validate(bodyrule, nameof(bodyrule), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
+                var apiCallPath = "/notifications";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["rule"] = SourceExpressionConverter.Convert(bodyrule);
+                if (bodyuserId != null)
+                {
+                    body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectId != null)
-            {
-                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodyprojectId != null)
+                {
+                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                body["target"] = "Webhook";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["target"] = "Webhook";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventEnded([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/notifications/connexion_ended";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["rule"] = "connexion_ended";
-            bodypropCount++;
-            if (bodyuserId != null)
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
+                var apiCallPath = "/notifications/connexion_ended";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["rule"] = "connexion_ended";
                 bodypropCount++;
-            }
+                if (bodyuserId != null)
+                {
+                    body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectId != null)
-            {
-                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodyprojectId != null)
+                {
+                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                body["target"] = "Webhook";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["target"] = "Webhook";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned(Expression<Func<string>> bodyuserId = null, Expression<Func<string>> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> OnTilkeeEventSigned([WorkflowExpression] Func<string> bodyuserId = null, [WorkflowExpression] Func<string> bodyprojectId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/notifications/token_signed";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["rule"] = "token_signed";
-            bodypropCount++;
-            if (bodyuserId != null)
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
+                var apiCallPath = "/notifications/token_signed";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["x_tilk_ref"] = Convert.ToString("PowerAutomate");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["rule"] = "token_signed";
                 bodypropCount++;
-            }
+                if (bodyuserId != null)
+                {
+                    body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectId != null)
-            {
-                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodyprojectId != null)
+                {
+                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                body["target"] = "Webhook";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["target"] = "Webhook";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

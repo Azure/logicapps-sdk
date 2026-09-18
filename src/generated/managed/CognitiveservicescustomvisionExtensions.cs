@@ -12,59 +12,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitiveservicescustomvision
     public class CognitiveservicescustomvisionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
+        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImage([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> publishedName, [WorkflowExpression] Func<string> image = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<PredictImageResponseV3>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyimageURL);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(publishedName, nameof(publishedName), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PredictImageResponseV3>(callPayload);
+            return new ApiConnectionAction<PredictImageResponseV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> DetectImage(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> image = null)
+        public IBodyWorkflowAction<PredictImageResponseV3> ClassifyImageUrl([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> publishedName, [WorkflowExpression] Func<string> bodyimageURL)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(image);
-            return new ApiConnectionAction<PredictImageResponseV3>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
-        public IBodyWorkflowAction<PredictImageResponseV3> DetectImageUrl(Expression<Func<string>> projectId, Expression<Func<string>> publishedName, Expression<Func<string>> bodyimageURL)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Url"] = CSharpExpressionConverter.ConvertToken(bodyimageURL);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(publishedName, nameof(publishedName), required: true);
+            SourceExpression.Validate(bodyimageURL, nameof(bodyimageURL), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/classify/iterations/{1}/url", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = SourceExpressionConverter.ConvertToken(bodyimageURL);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PredictImageResponseV3>(callPayload);
+            return new ApiConnectionAction<PredictImageResponseV3>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
+        public IBodyWorkflowAction<PredictImageResponseV3> DetectImage([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> publishedName, [WorkflowExpression] Func<string> image = null)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(publishedName, nameof(publishedName), required: true);
+            SourceExpression.Validate(image, nameof(image), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/image", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(image);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PredictImageResponseV3>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cognitiveservicescustomvision")]
+        public IBodyWorkflowAction<PredictImageResponseV3> DetectImageUrl([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> publishedName, [WorkflowExpression] Func<string> bodyimageURL)
+        {
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(publishedName, nameof(publishedName), required: true);
+            SourceExpression.Validate(bodyimageURL, nameof(bodyimageURL), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/customvision/v3.0/Prediction/{0}/detect/iterations/{1}/url", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(publishedName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Url"] = SourceExpressionConverter.ConvertToken(bodyimageURL);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PredictImageResponseV3>(BuildSourceInput);
         }
     }
 

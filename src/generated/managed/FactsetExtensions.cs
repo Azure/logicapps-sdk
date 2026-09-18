@@ -12,238 +12,332 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Factset
     public class FactsetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines(Expression<Func<string>> createdGt = null, Expression<Func<string>> createdLt = null, Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
+        public IBodyWorkflowAction<GetHeadlinesResponse> GetHeadlines([WorkflowExpression] Func<string> createdGt = null, [WorkflowExpression] Func<string> createdLt = null, [WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
         {
-            var apiCallPath = "/signals/v2/events/headlines";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (createdGt != null)
-                callPayload.Queries["created[gt]"] = CSharpExpressionConverter.ConvertO(createdGt);
-            if (createdLt != null)
-                callPayload.Queries["created[lt]"] = CSharpExpressionConverter.ConvertO(createdLt);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
-            return new ApiConnectionAction<GetHeadlinesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
-        {
-            var apiCallPath = "/signals/v2/events/details";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
-            return new ApiConnectionAction<GetDetailsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard(Expression<Func<string>> signalIds = null, Expression<Func<string>> ids = null, Expression<Func<double>> userRelevanceScoreGt = null, Expression<Func<string>> sort = null, Expression<Func<double>> userRelevanceScoreLt = null, Expression<Func<double>> userRelevanceScoreLte = null, Expression<Func<double>> userRelevanceScoreGte = null, Expression<Func<string>> updatedGt = null, Expression<Func<string>> updatedLt = null, Expression<Func<string>> createdGte = null, Expression<Func<string>> updatedGte = null, Expression<Func<string>> createdLte = null, Expression<Func<string>> updatedLte = null, Expression<Func<string>> portfolios = null, Expression<Func<string>> themes = null, Expression<Func<string>> categories = null)
-        {
-            var apiCallPath = "/signals/v2/events/adaptive-cards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (signalIds != null)
-                callPayload.Queries["signalIds"] = CSharpExpressionConverter.ConvertO(signalIds);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (userRelevanceScoreGt != null)
-                callPayload.Queries["userRelevanceScore[gt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGt);
-            callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (userRelevanceScoreLt != null)
-                callPayload.Queries["userRelevanceScore[lt]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLt);
-            if (userRelevanceScoreLte != null)
-                callPayload.Queries["userRelevanceScore[lte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreLte);
-            if (userRelevanceScoreGte != null)
-                callPayload.Queries["userRelevanceScore[gte]"] = CSharpExpressionConverter.ConvertO(userRelevanceScoreGte);
-            if (updatedGt != null)
-                callPayload.Queries["updated[gt]"] = CSharpExpressionConverter.ConvertO(updatedGt);
-            if (updatedLt != null)
-                callPayload.Queries["updated[lt]"] = CSharpExpressionConverter.ConvertO(updatedLt);
-            if (createdGte != null)
-                callPayload.Queries["created[gte]"] = CSharpExpressionConverter.ConvertO(createdGte);
-            if (updatedGte != null)
-                callPayload.Queries["updated[gte]"] = CSharpExpressionConverter.ConvertO(updatedGte);
-            if (createdLte != null)
-                callPayload.Queries["created[lte]"] = CSharpExpressionConverter.ConvertO(createdLte);
-            if (updatedLte != null)
-                callPayload.Queries["updated[lte]"] = CSharpExpressionConverter.ConvertO(updatedLte);
-            if (portfolios != null)
-                callPayload.Queries["portfolios"] = CSharpExpressionConverter.ConvertO(portfolios);
-            if (themes != null)
-                callPayload.Queries["themes"] = CSharpExpressionConverter.ConvertO(themes);
-            if (categories != null)
-                callPayload.Queries["categories"] = CSharpExpressionConverter.ConvertO(categories);
-            return new ApiConnectionAction<GetAdaptiveCardResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<NEREntitiesResponse> NEREntities(Expression<Func<string>> bodytext, Expression<Func<bool>> bodyfilterEntities = null, Expression<Func<bool>> bodyenableIdLookup = null)
-        {
-            var apiCallPath = "/cognitive/ner/v2/entities";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodyfilterEntities != null)
+            SourceExpression.Validate(createdGt, nameof(createdGt), required: false);
+            SourceExpression.Validate(createdLt, nameof(createdLt), required: false);
+            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
+            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
+            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
+            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
+            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
+            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
+            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
+            SourceExpression.Validate(themes, nameof(themes), required: false);
+            SourceExpression.Validate(categories, nameof(categories), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/signals/v2/events/headlines";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (createdGt != null)
+                    callPayload.Queries["created[gt]"] = SourceExpressionConverter.ConvertO(createdGt);
+                if (createdLt != null)
+                    callPayload.Queries["created[lt]"] = SourceExpressionConverter.ConvertO(createdLt);
+                if (signalIds != null)
+                    callPayload.Queries["signalIds"] = SourceExpressionConverter.ConvertO(signalIds);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGt);
+                if (userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGte);
+                if (userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLte);
+                if (updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = SourceExpressionConverter.ConvertO(updatedGt);
+                if (updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = SourceExpressionConverter.ConvertO(updatedLt);
+                if (createdGte != null)
+                    callPayload.Queries["created[gte]"] = SourceExpressionConverter.ConvertO(createdGte);
+                if (updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = SourceExpressionConverter.ConvertO(updatedGte);
+                if (createdLte != null)
+                    callPayload.Queries["created[lte]"] = SourceExpressionConverter.ConvertO(createdLte);
+                if (updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = SourceExpressionConverter.ConvertO(updatedLte);
+                if (portfolios != null)
+                    callPayload.Queries["portfolios"] = SourceExpressionConverter.ConvertO(portfolios);
+                if (themes != null)
+                    callPayload.Queries["themes"] = SourceExpressionConverter.ConvertO(themes);
+                if (categories != null)
+                    callPayload.Queries["categories"] = SourceExpressionConverter.ConvertO(categories);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetHeadlinesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
+        public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
+        {
+            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
+            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
+            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
+            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
+            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
+            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
+            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
+            SourceExpression.Validate(themes, nameof(themes), required: false);
+            SourceExpression.Validate(categories, nameof(categories), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/signals/v2/events/details";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (signalIds != null)
+                    callPayload.Queries["signalIds"] = SourceExpressionConverter.ConvertO(signalIds);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLt);
+                if (userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLte);
+                if (userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGte);
+                if (updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = SourceExpressionConverter.ConvertO(updatedGt);
+                if (updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = SourceExpressionConverter.ConvertO(updatedLt);
+                if (createdGte != null)
+                    callPayload.Queries["created[gte]"] = SourceExpressionConverter.ConvertO(createdGte);
+                if (updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = SourceExpressionConverter.ConvertO(updatedGte);
+                if (createdLte != null)
+                    callPayload.Queries["created[lte]"] = SourceExpressionConverter.ConvertO(createdLte);
+                if (updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = SourceExpressionConverter.ConvertO(updatedLte);
+                if (portfolios != null)
+                    callPayload.Queries["portfolios"] = SourceExpressionConverter.ConvertO(portfolios);
+                if (themes != null)
+                    callPayload.Queries["themes"] = SourceExpressionConverter.ConvertO(themes);
+                if (categories != null)
+                    callPayload.Queries["categories"] = SourceExpressionConverter.ConvertO(categories);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDetailsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
+        public IBodyWorkflowAction<GetAdaptiveCardResponse> GetAdaptiveCard([WorkflowExpression] Func<string> signalIds = null, [WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<double> userRelevanceScoreGt = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<double> userRelevanceScoreLt = null, [WorkflowExpression] Func<double> userRelevanceScoreLte = null, [WorkflowExpression] Func<double> userRelevanceScoreGte = null, [WorkflowExpression] Func<string> updatedGt = null, [WorkflowExpression] Func<string> updatedLt = null, [WorkflowExpression] Func<string> createdGte = null, [WorkflowExpression] Func<string> updatedGte = null, [WorkflowExpression] Func<string> createdLte = null, [WorkflowExpression] Func<string> updatedLte = null, [WorkflowExpression] Func<string> portfolios = null, [WorkflowExpression] Func<string> themes = null, [WorkflowExpression] Func<string> categories = null)
+        {
+            SourceExpression.Validate(signalIds, nameof(signalIds), required: false);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(userRelevanceScoreGt, nameof(userRelevanceScoreGt), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(userRelevanceScoreLt, nameof(userRelevanceScoreLt), required: false);
+            SourceExpression.Validate(userRelevanceScoreLte, nameof(userRelevanceScoreLte), required: false);
+            SourceExpression.Validate(userRelevanceScoreGte, nameof(userRelevanceScoreGte), required: false);
+            SourceExpression.Validate(updatedGt, nameof(updatedGt), required: false);
+            SourceExpression.Validate(updatedLt, nameof(updatedLt), required: false);
+            SourceExpression.Validate(createdGte, nameof(createdGte), required: false);
+            SourceExpression.Validate(updatedGte, nameof(updatedGte), required: false);
+            SourceExpression.Validate(createdLte, nameof(createdLte), required: false);
+            SourceExpression.Validate(updatedLte, nameof(updatedLte), required: false);
+            SourceExpression.Validate(portfolios, nameof(portfolios), required: false);
+            SourceExpression.Validate(themes, nameof(themes), required: false);
+            SourceExpression.Validate(categories, nameof(categories), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/signals/v2/events/adaptive-cards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (signalIds != null)
+                    callPayload.Queries["signalIds"] = SourceExpressionConverter.ConvertO(signalIds);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (userRelevanceScoreGt != null)
+                    callPayload.Queries["userRelevanceScore[gt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGt);
+                callPayload.Queries["sort"] = Convert.ToString("-userRelevanceScore,-eventDate");
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (userRelevanceScoreLt != null)
+                    callPayload.Queries["userRelevanceScore[lt]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLt);
+                if (userRelevanceScoreLte != null)
+                    callPayload.Queries["userRelevanceScore[lte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreLte);
+                if (userRelevanceScoreGte != null)
+                    callPayload.Queries["userRelevanceScore[gte]"] = SourceExpressionConverter.ConvertO(userRelevanceScoreGte);
+                if (updatedGt != null)
+                    callPayload.Queries["updated[gt]"] = SourceExpressionConverter.ConvertO(updatedGt);
+                if (updatedLt != null)
+                    callPayload.Queries["updated[lt]"] = SourceExpressionConverter.ConvertO(updatedLt);
+                if (createdGte != null)
+                    callPayload.Queries["created[gte]"] = SourceExpressionConverter.ConvertO(createdGte);
+                if (updatedGte != null)
+                    callPayload.Queries["updated[gte]"] = SourceExpressionConverter.ConvertO(updatedGte);
+                if (createdLte != null)
+                    callPayload.Queries["created[lte]"] = SourceExpressionConverter.ConvertO(createdLte);
+                if (updatedLte != null)
+                    callPayload.Queries["updated[lte]"] = SourceExpressionConverter.ConvertO(updatedLte);
+                if (portfolios != null)
+                    callPayload.Queries["portfolios"] = SourceExpressionConverter.ConvertO(portfolios);
+                if (themes != null)
+                    callPayload.Queries["themes"] = SourceExpressionConverter.ConvertO(themes);
+                if (categories != null)
+                    callPayload.Queries["categories"] = SourceExpressionConverter.ConvertO(categories);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAdaptiveCardResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
+        public IBodyWorkflowAction<NEREntitiesResponse> NEREntities([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyfilterEntities = null, [WorkflowExpression] Func<bool> bodyenableIdLookup = null)
+        {
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyfilterEntities, nameof(bodyfilterEntities), required: false);
+            SourceExpression.Validate(bodyenableIdLookup, nameof(bodyenableIdLookup), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/cognitive/ner/v2/entities";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 if (bodyfilterEntities != null)
                 {
-                    body["filterEntities"] = CSharpExpressionConverter.ConvertToken(bodyfilterEntities);
+                    if (bodyfilterEntities != null)
+                    {
+                        body["filterEntities"] = SourceExpressionConverter.ConvertToken(bodyfilterEntities);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["filterEntities"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["filterEntities"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyenableIdLookup != null)
-            {
                 if (bodyenableIdLookup != null)
                 {
-                    body["enableIdLookup"] = CSharpExpressionConverter.ConvertToken(bodyenableIdLookup);
+                    if (bodyenableIdLookup != null)
+                    {
+                        body["enableIdLookup"] = SourceExpressionConverter.ConvertToken(bodyenableIdLookup);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["enableIdLookup"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["enableIdLookup"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<NEREntitiesResponse>(callPayload);
+            return new ApiConnectionAction<NEREntitiesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetBookListResponseItem[]> GetBookList()
         {
-            var apiCallPath = "/book-builder-api/v1/book-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBookListResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/book-builder-api/v1/book-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBookListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
         public IBodyWorkflowAction<GetTemplateListResponseItem[]> GetTemplateList()
         {
-            var apiCallPath = "/book-builder-api/v1/template-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTemplateListResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/book-builder-api/v1/template-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplateListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate(Expression<Func<string>> bodyticker = null, Expression<Func<string>> bodytemplateId = null)
+        public IBodyWorkflowAction<CreateBookFromTemplateResponse> CreateBookFromTemplate([WorkflowExpression] Func<string> bodyticker = null, [WorkflowExpression] Func<string> bodytemplateId = null)
         {
-            var apiCallPath = "/book-builder-api/v1/create-book-from-template";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyticker != null)
+            SourceExpression.Validate(bodyticker, nameof(bodyticker), required: false);
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ticker"] = CSharpExpressionConverter.ConvertToken(bodyticker);
-                bodypropCount++;
+                var apiCallPath = "/book-builder-api/v1/create-book-from-template";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyticker != null)
+                {
+                    body["ticker"] = SourceExpressionConverter.ConvertToken(bodyticker);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateId != null)
+                {
+                    body["template_id"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytemplateId != null)
-            {
-                body["template_id"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateBookFromTemplateResponse>(callPayload);
+            return new ApiConnectionAction<CreateBookFromTemplateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "factset")]
-        public IBodyWorkflowAction<JToken> GetPDF(Expression<Func<string>> bookId)
+        public IBodyWorkflowAction<JToken> GetPDF([WorkflowExpression] Func<string> bookId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(bookId, nameof(bookId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/book-builder-api/v1/download-api-book/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

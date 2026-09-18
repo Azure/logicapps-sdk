@@ -12,89 +12,106 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ilovesign
     public class IlovesignActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ilovesign")]
-        public IBodyWorkflowAction<SignResponse> Sign(Expression<Func<bodyfileSourceInput>> bodyfileSource, Expression<Func<string>> bodyfileName, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyfileUrl = null, Expression<Func<string>> bodysigners = null, Expression<Func<string>> bodysignersEmails = null, Expression<Func<string>> bodysignsPositions = null, Expression<Func<bodysignTypeInput>> bodysignType = null, Expression<Func<string>> bodyexpirationDays = null, Expression<Func<bodysignerRemindersInput>> bodysignerReminders = null, Expression<Func<string>> bodysignerReminderDaysCycle = null, Expression<Func<string>> bodypages = null, Expression<Func<string>> bodysize = null)
+        public IBodyWorkflowAction<SignResponse> Sign([WorkflowExpression] Func<bodyfileSourceInput> bodyfileSource, [WorkflowExpression] Func<string> bodyfileName, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyfileUrl = null, [WorkflowExpression] Func<string> bodysigners = null, [WorkflowExpression] Func<string> bodysignersEmails = null, [WorkflowExpression] Func<string> bodysignsPositions = null, [WorkflowExpression] Func<bodysignTypeInput> bodysignType = null, [WorkflowExpression] Func<string> bodyexpirationDays = null, [WorkflowExpression] Func<bodysignerRemindersInput> bodysignerReminders = null, [WorkflowExpression] Func<string> bodysignerReminderDaysCycle = null, [WorkflowExpression] Func<string> bodypages = null, [WorkflowExpression] Func<string> bodysize = null)
         {
-            var apiCallPath = "/sign";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["file_source"] = CSharpExpressionConverter.Convert(bodyfileSource);
-            bodypropCount++;
-            body["file_name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-            if (bodyfile != null)
+            SourceExpression.Validate(bodyfileSource, nameof(bodyfileSource), required: true);
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: true);
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyfileUrl, nameof(bodyfileUrl), required: false);
+            SourceExpression.Validate(bodysigners, nameof(bodysigners), required: false);
+            SourceExpression.Validate(bodysignersEmails, nameof(bodysignersEmails), required: false);
+            SourceExpression.Validate(bodysignsPositions, nameof(bodysignsPositions), required: false);
+            SourceExpression.Validate(bodysignType, nameof(bodysignType), required: false);
+            SourceExpression.Validate(bodyexpirationDays, nameof(bodyexpirationDays), required: false);
+            SourceExpression.Validate(bodysignerReminders, nameof(bodysignerReminders), required: false);
+            SourceExpression.Validate(bodysignerReminderDaysCycle, nameof(bodysignerReminderDaysCycle), required: false);
+            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
+            SourceExpression.Validate(bodysize, nameof(bodysize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
+                var apiCallPath = "/sign";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyfileUrl != null)
-            {
-                body["file_url"] = CSharpExpressionConverter.ConvertToken(bodyfileUrl);
+                body["file_source"] = SourceExpressionConverter.Convert(bodyfileSource);
                 bodypropCount++;
+                body["file_name"] = SourceExpressionConverter.ConvertToken(bodyfileName);
+                if (bodyfile != null)
+                {
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    bodypropCount++;
+                }
+
+                if (bodyfileUrl != null)
+                {
+                    body["file_url"] = SourceExpressionConverter.ConvertToken(bodyfileUrl);
+                    bodypropCount++;
+                }
+
+                if (bodysigners != null)
+                {
+                    body["signers"] = SourceExpressionConverter.ConvertToken(bodysigners);
+                    bodypropCount++;
+                }
+
+                if (bodysignersEmails != null)
+                {
+                    body["signers_emails"] = SourceExpressionConverter.ConvertToken(bodysignersEmails);
+                    bodypropCount++;
+                }
+
+                if (bodysignsPositions != null)
+                {
+                    body["signs_positions"] = SourceExpressionConverter.ConvertToken(bodysignsPositions);
+                    bodypropCount++;
+                }
+
+                if (bodysignType != null)
+                {
+                    body["sign_type"] = SourceExpressionConverter.Convert(bodysignType);
+                    bodypropCount++;
+                }
+
+                if (bodyexpirationDays != null)
+                {
+                    body["expiration_days"] = SourceExpressionConverter.ConvertToken(bodyexpirationDays);
+                    bodypropCount++;
+                }
+
+                if (bodysignerReminders != null)
+                {
+                    body["signer_reminders"] = SourceExpressionConverter.Convert(bodysignerReminders);
+                    bodypropCount++;
+                }
+
+                if (bodysignerReminderDaysCycle != null)
+                {
+                    body["signer_reminder_days_cycle"] = SourceExpressionConverter.ConvertToken(bodysignerReminderDaysCycle);
+                    bodypropCount++;
+                }
+
+                if (bodypages != null)
+                {
+                    body["pages"] = SourceExpressionConverter.ConvertToken(bodypages);
+                    bodypropCount++;
+                }
+
+                if (bodysize != null)
+                {
+                    body["size"] = SourceExpressionConverter.ConvertToken(bodysize);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysigners != null)
-            {
-                body["signers"] = CSharpExpressionConverter.ConvertToken(bodysigners);
-                bodypropCount++;
-            }
-
-            if (bodysignersEmails != null)
-            {
-                body["signers_emails"] = CSharpExpressionConverter.ConvertToken(bodysignersEmails);
-                bodypropCount++;
-            }
-
-            if (bodysignsPositions != null)
-            {
-                body["signs_positions"] = CSharpExpressionConverter.ConvertToken(bodysignsPositions);
-                bodypropCount++;
-            }
-
-            if (bodysignType != null)
-            {
-                body["sign_type"] = CSharpExpressionConverter.Convert(bodysignType);
-                bodypropCount++;
-            }
-
-            if (bodyexpirationDays != null)
-            {
-                body["expiration_days"] = CSharpExpressionConverter.ConvertToken(bodyexpirationDays);
-                bodypropCount++;
-            }
-
-            if (bodysignerReminders != null)
-            {
-                body["signer_reminders"] = CSharpExpressionConverter.Convert(bodysignerReminders);
-                bodypropCount++;
-            }
-
-            if (bodysignerReminderDaysCycle != null)
-            {
-                body["signer_reminder_days_cycle"] = CSharpExpressionConverter.ConvertToken(bodysignerReminderDaysCycle);
-                bodypropCount++;
-            }
-
-            if (bodypages != null)
-            {
-                body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
-                bodypropCount++;
-            }
-
-            if (bodysize != null)
-            {
-                body["size"] = CSharpExpressionConverter.ConvertToken(bodysize);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SignResponse>(callPayload);
+            return new ApiConnectionAction<SignResponse>(BuildSourceInput);
         }
     }
 

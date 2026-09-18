@@ -12,94 +12,114 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ottobot
     public class OttobotActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IWorkflowAction SendAttachmentsToUrl(Expression<Func<string>> bodyaPIURL, Expression<Func<string>> bodyattachmentURL, Expression<Func<string>> bodyattachmentFileName)
+        public IWorkflowAction SendAttachmentsToUrl([WorkflowExpression] Func<string> bodyaPIURL, [WorkflowExpression] Func<string> bodyattachmentURL, [WorkflowExpression] Func<string> bodyattachmentFileName)
         {
-            var apiCallPath = "/attachments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var additionalParametersObject = new JObject();
-            var additionalParametersObjectpropCount = 0;
-            if (additionalParametersObjectpropCount > 0)
+            SourceExpression.Validate(bodyaPIURL, nameof(bodyaPIURL), required: true);
+            SourceExpression.Validate(bodyattachmentURL, nameof(bodyattachmentURL), required: true);
+            SourceExpression.Validate(bodyattachmentFileName, nameof(bodyattachmentFileName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["additionalParameters"] = additionalParametersObject;
+                var apiCallPath = "/attachments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var additionalParametersObject = new JObject();
+                var additionalParametersObjectpropCount = 0;
+                if (additionalParametersObjectpropCount > 0)
+                {
+                    body["additionalParameters"] = additionalParametersObject;
+                    bodypropCount++;
+                }
+
+                var apiRequestHeadersObject = new JObject();
+                var apiRequestHeadersObjectpropCount = 0;
+                if (apiRequestHeadersObjectpropCount > 0)
+                {
+                    body["apiRequestHeaders"] = apiRequestHeadersObject;
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            var apiRequestHeadersObject = new JObject();
-            var apiRequestHeadersObjectpropCount = 0;
-            if (apiRequestHeadersObjectpropCount > 0)
-            {
-                body["apiRequestHeaders"] = apiRequestHeadersObject;
+                body["apiUrl"] = SourceExpressionConverter.ConvertToken(bodyaPIURL);
                 bodypropCount++;
+                body["attachmentUrl"] = SourceExpressionConverter.ConvertToken(bodyattachmentURL);
+                bodypropCount++;
+                body["filename"] = SourceExpressionConverter.ConvertToken(bodyattachmentFileName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["apiUrl"] = CSharpExpressionConverter.ConvertToken(bodyaPIURL);
-            bodypropCount++;
-            body["attachmentUrl"] = CSharpExpressionConverter.ConvertToken(bodyattachmentURL);
-            bodypropCount++;
-            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyattachmentFileName);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ottobot")]
-        public IBodyWorkflowAction<Response> ReturnResultsToBot(Expression<Func<string>> returnResultURL, Expression<Func<string>> bodyadaptiveCardadaptiveCardSchema, Expression<Func<string>> bodyadaptiveCardadaptiveCardType, Expression<Func<string>> bodyadaptiveCardadaptiveCardVersion, Expression<Func<string>> bodytext, Expression<Func<bool>> bodyendRequest, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardActions = null, Expression<Func<JToken[]>> bodyadaptiveCardadaptiveCardBody = null, Expression<Func<bool>> bodyrenderPreformattedText = null)
+        public IBodyWorkflowAction<Response> ReturnResultsToBot([WorkflowExpression] Func<string> returnResultURL, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardSchema, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardType, [WorkflowExpression] Func<string> bodyadaptiveCardadaptiveCardVersion, [WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodyendRequest, [WorkflowExpression] Func<JToken[]> bodyadaptiveCardadaptiveCardActions = null, [WorkflowExpression] Func<JToken[]> bodyadaptiveCardadaptiveCardBody = null, [WorkflowExpression] Func<bool> bodyrenderPreformattedText = null)
         {
-            var apiCallPath = "/skills/results";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["returnResultURL"] = CSharpExpressionConverter.ConvertO(returnResultURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var adaptiveCardObject = new JObject();
-            var adaptiveCardObjectpropCount = 0;
-            adaptiveCardObjectpropCount++;
-            adaptiveCardObject["$schema"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardSchema);
-            if (bodyadaptiveCardadaptiveCardActions != null)
+            SourceExpression.Validate(returnResultURL, nameof(returnResultURL), required: true);
+            SourceExpression.Validate(bodyadaptiveCardadaptiveCardSchema, nameof(bodyadaptiveCardadaptiveCardSchema), required: true);
+            SourceExpression.Validate(bodyadaptiveCardadaptiveCardType, nameof(bodyadaptiveCardadaptiveCardType), required: true);
+            SourceExpression.Validate(bodyadaptiveCardadaptiveCardVersion, nameof(bodyadaptiveCardadaptiveCardVersion), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyendRequest, nameof(bodyendRequest), required: true);
+            SourceExpression.Validate(bodyadaptiveCardadaptiveCardActions, nameof(bodyadaptiveCardadaptiveCardActions), required: false);
+            SourceExpression.Validate(bodyadaptiveCardadaptiveCardBody, nameof(bodyadaptiveCardadaptiveCardBody), required: false);
+            SourceExpression.Validate(bodyrenderPreformattedText, nameof(bodyrenderPreformattedText), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                adaptiveCardObject["actions"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardActions);
+                var apiCallPath = "/skills/results";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["returnResultURL"] = SourceExpressionConverter.ConvertO(returnResultURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var adaptiveCardObject = new JObject();
+                var adaptiveCardObjectpropCount = 0;
                 adaptiveCardObjectpropCount++;
-            }
+                adaptiveCardObject["$schema"] = SourceExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardSchema);
+                if (bodyadaptiveCardadaptiveCardActions != null)
+                {
+                    adaptiveCardObject["actions"] = SourceExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardActions);
+                    adaptiveCardObjectpropCount++;
+                }
 
-            if (bodyadaptiveCardadaptiveCardBody != null)
-            {
-                adaptiveCardObject["body"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardBody);
+                if (bodyadaptiveCardadaptiveCardBody != null)
+                {
+                    adaptiveCardObject["body"] = SourceExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardBody);
+                    adaptiveCardObjectpropCount++;
+                }
+
                 adaptiveCardObjectpropCount++;
-            }
+                adaptiveCardObject["type"] = SourceExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardType);
+                adaptiveCardObjectpropCount++;
+                adaptiveCardObject["version"] = SourceExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardVersion);
+                if (adaptiveCardObjectpropCount > 0)
+                {
+                    body["adaptiveCard"] = adaptiveCardObject;
+                    bodypropCount++;
+                }
 
-            adaptiveCardObjectpropCount++;
-            adaptiveCardObject["type"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardType);
-            adaptiveCardObjectpropCount++;
-            adaptiveCardObject["version"] = CSharpExpressionConverter.ConvertToken(bodyadaptiveCardadaptiveCardVersion);
-            if (adaptiveCardObjectpropCount > 0)
-            {
-                body["adaptiveCard"] = adaptiveCardObject;
+                if (bodyrenderPreformattedText != null)
+                {
+                    body["renderPreformattedText"] = SourceExpressionConverter.ConvertToken(bodyrenderPreformattedText);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyrenderPreformattedText != null)
-            {
-                body["renderPreformattedText"] = CSharpExpressionConverter.ConvertToken(bodyrenderPreformattedText);
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
+                body["endRequest"] = SourceExpressionConverter.ConvertToken(bodyendRequest);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["endRequest"] = CSharpExpressionConverter.ConvertToken(bodyendRequest);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Response>(callPayload);
+            return new ApiConnectionAction<Response>(BuildSourceInput);
         }
     }
 

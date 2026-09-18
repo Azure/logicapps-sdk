@@ -14,19 +14,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Todayinhistoryip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
         public IBodyWorkflowAction<TodayGetResponse> TodayGet()
         {
-            var apiCallPath = "/date";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TodayGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/date";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TodayGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "todayinhistoryip")]
-        public IBodyWorkflowAction<DayGetResponse> DayGet(Expression<Func<string>> month, Expression<Func<string>> day)
+        public IBodyWorkflowAction<DayGetResponse> DayGet([WorkflowExpression] Func<string> month, [WorkflowExpression] Func<string> day)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DayGetResponse>(callPayload);
+            SourceExpression.Validate(month, nameof(month), required: true);
+            SourceExpression.Validate(day, nameof(day), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/date/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(month, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(day, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DayGetResponse>(BuildSourceInput);
         }
     }
 

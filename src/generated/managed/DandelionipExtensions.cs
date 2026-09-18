@@ -12,116 +12,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dandelionip
     public class DandelionipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<EntityGetResponse> EntityGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null, Expression<Func<int>> topEntities = null, Expression<Func<int>> minConfidence = null, Expression<Func<int>> minLength = null, Expression<Func<bool>> socialHashtag = null, Expression<Func<bool>> socialMention = null, Expression<Func<string>> include = null, Expression<Func<string>> extraTypes = null, Expression<Func<string>> country = null, Expression<Func<double>> epsilon = null)
+        public IBodyWorkflowAction<EntityGetResponse> EntityGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<int> topEntities = null, [WorkflowExpression] Func<int> minConfidence = null, [WorkflowExpression] Func<int> minLength = null, [WorkflowExpression] Func<bool> socialHashtag = null, [WorkflowExpression] Func<bool> socialMention = null, [WorkflowExpression] Func<string> include = null, [WorkflowExpression] Func<string> extraTypes = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<double> epsilon = null)
         {
-            var apiCallPath = "/datatxt/nex/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (text != null)
-                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
-            if (html != null)
-                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
-            if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            if (topEntities != null)
-                callPayload.Queries["top_entities"] = CSharpExpressionConverter.ConvertO(topEntities);
-            if (minConfidence != null)
-                callPayload.Queries["min_confidence"] = CSharpExpressionConverter.ConvertO(minConfidence);
-            if (minLength != null)
-                callPayload.Queries["min_length"] = CSharpExpressionConverter.ConvertO(minLength);
-            if (socialHashtag != null)
-                callPayload.Queries["social.hashtag"] = CSharpExpressionConverter.ConvertO(socialHashtag);
-            if (socialMention != null)
-                callPayload.Queries["social.mention"] = CSharpExpressionConverter.ConvertO(socialMention);
-            if (include != null)
-                callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
-            if (extraTypes != null)
-                callPayload.Queries["extra_types"] = CSharpExpressionConverter.ConvertO(extraTypes);
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
-            if (epsilon != null)
-                callPayload.Queries["epsilon"] = CSharpExpressionConverter.ConvertO(epsilon);
-            return new ApiConnectionAction<EntityGetResponse>(callPayload);
+            SourceExpression.Validate(text, nameof(text), required: false);
+            SourceExpression.Validate(html, nameof(html), required: false);
+            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            SourceExpression.Validate(topEntities, nameof(topEntities), required: false);
+            SourceExpression.Validate(minConfidence, nameof(minConfidence), required: false);
+            SourceExpression.Validate(minLength, nameof(minLength), required: false);
+            SourceExpression.Validate(socialHashtag, nameof(socialHashtag), required: false);
+            SourceExpression.Validate(socialMention, nameof(socialMention), required: false);
+            SourceExpression.Validate(include, nameof(include), required: false);
+            SourceExpression.Validate(extraTypes, nameof(extraTypes), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(epsilon, nameof(epsilon), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datatxt/nex/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (text != null)
+                    callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                if (html != null)
+                    callPayload.Queries["html"] = SourceExpressionConverter.ConvertO(html);
+                if (htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = SourceExpressionConverter.ConvertO(htmlFragment);
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                if (topEntities != null)
+                    callPayload.Queries["top_entities"] = SourceExpressionConverter.ConvertO(topEntities);
+                if (minConfidence != null)
+                    callPayload.Queries["min_confidence"] = SourceExpressionConverter.ConvertO(minConfidence);
+                if (minLength != null)
+                    callPayload.Queries["min_length"] = SourceExpressionConverter.ConvertO(minLength);
+                if (socialHashtag != null)
+                    callPayload.Queries["social.hashtag"] = SourceExpressionConverter.ConvertO(socialHashtag);
+                if (socialMention != null)
+                    callPayload.Queries["social.mention"] = SourceExpressionConverter.ConvertO(socialMention);
+                if (include != null)
+                    callPayload.Queries["include"] = SourceExpressionConverter.ConvertO(include);
+                if (extraTypes != null)
+                    callPayload.Queries["extra_types"] = SourceExpressionConverter.ConvertO(extraTypes);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                if (epsilon != null)
+                    callPayload.Queries["epsilon"] = SourceExpressionConverter.ConvertO(epsilon);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntityGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet(Expression<Func<string>> text1 = null, Expression<Func<string>> html1 = null, Expression<Func<string>> htmlFragment1 = null, Expression<Func<string>> text2 = null, Expression<Func<string>> html2 = null, Expression<Func<string>> htmlFragment2 = null, Expression<Func<string>> lang = null, Expression<Func<bowInput>> bow = null)
+        public IBodyWorkflowAction<SimilarityGetResponse> SimilarityGet([WorkflowExpression] Func<string> text1 = null, [WorkflowExpression] Func<string> html1 = null, [WorkflowExpression] Func<string> htmlFragment1 = null, [WorkflowExpression] Func<string> text2 = null, [WorkflowExpression] Func<string> html2 = null, [WorkflowExpression] Func<string> htmlFragment2 = null, [WorkflowExpression] Func<string> lang = null, [WorkflowExpression] Func<bowInput> bow = null)
         {
-            var apiCallPath = "/datatxt/sim/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (text1 != null)
-                callPayload.Queries["text1"] = CSharpExpressionConverter.ConvertO(text1);
-            if (html1 != null)
-                callPayload.Queries["html1"] = CSharpExpressionConverter.ConvertO(html1);
-            if (htmlFragment1 != null)
-                callPayload.Queries["html_fragment1"] = CSharpExpressionConverter.ConvertO(htmlFragment1);
-            if (text2 != null)
-                callPayload.Queries["text2"] = CSharpExpressionConverter.ConvertO(text2);
-            if (html2 != null)
-                callPayload.Queries["html2"] = CSharpExpressionConverter.ConvertO(html2);
-            if (htmlFragment2 != null)
-                callPayload.Queries["html_fragment2"] = CSharpExpressionConverter.ConvertO(htmlFragment2);
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            if (bow != null)
-                callPayload.Queries["bow"] = CSharpExpressionConverter.Convert(bow);
-            return new ApiConnectionAction<SimilarityGetResponse>(callPayload);
+            SourceExpression.Validate(text1, nameof(text1), required: false);
+            SourceExpression.Validate(html1, nameof(html1), required: false);
+            SourceExpression.Validate(htmlFragment1, nameof(htmlFragment1), required: false);
+            SourceExpression.Validate(text2, nameof(text2), required: false);
+            SourceExpression.Validate(html2, nameof(html2), required: false);
+            SourceExpression.Validate(htmlFragment2, nameof(htmlFragment2), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            SourceExpression.Validate(bow, nameof(bow), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datatxt/sim/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (text1 != null)
+                    callPayload.Queries["text1"] = SourceExpressionConverter.ConvertO(text1);
+                if (html1 != null)
+                    callPayload.Queries["html1"] = SourceExpressionConverter.ConvertO(html1);
+                if (htmlFragment1 != null)
+                    callPayload.Queries["html_fragment1"] = SourceExpressionConverter.ConvertO(htmlFragment1);
+                if (text2 != null)
+                    callPayload.Queries["text2"] = SourceExpressionConverter.ConvertO(text2);
+                if (html2 != null)
+                    callPayload.Queries["html2"] = SourceExpressionConverter.ConvertO(html2);
+                if (htmlFragment2 != null)
+                    callPayload.Queries["html_fragment2"] = SourceExpressionConverter.ConvertO(htmlFragment2);
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                if (bow != null)
+                    callPayload.Queries["bow"] = SourceExpressionConverter.Convert(bow);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SimilarityGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<bool>> clean = null)
+        public IBodyWorkflowAction<LanguageGetResponse> LanguageGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<bool> clean = null)
         {
-            var apiCallPath = "/datatxt/li/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (text != null)
-                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
-            if (html != null)
-                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
-            if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
-            if (clean != null)
-                callPayload.Queries["clean"] = CSharpExpressionConverter.ConvertO(clean);
-            return new ApiConnectionAction<LanguageGetResponse>(callPayload);
+            SourceExpression.Validate(text, nameof(text), required: false);
+            SourceExpression.Validate(html, nameof(html), required: false);
+            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
+            SourceExpression.Validate(clean, nameof(clean), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datatxt/li/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (text != null)
+                    callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                if (html != null)
+                    callPayload.Queries["html"] = SourceExpressionConverter.ConvertO(html);
+                if (htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = SourceExpressionConverter.ConvertO(htmlFragment);
+                if (clean != null)
+                    callPayload.Queries["clean"] = SourceExpressionConverter.ConvertO(clean);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LanguageGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<SentimentGetResponse> SentimentGet(Expression<Func<string>> text = null, Expression<Func<string>> html = null, Expression<Func<string>> htmlFragment = null, Expression<Func<string>> lang = null)
+        public IBodyWorkflowAction<SentimentGetResponse> SentimentGet([WorkflowExpression] Func<string> text = null, [WorkflowExpression] Func<string> html = null, [WorkflowExpression] Func<string> htmlFragment = null, [WorkflowExpression] Func<string> lang = null)
         {
-            var apiCallPath = "/datatxt/sent/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (text != null)
-                callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
-            if (html != null)
-                callPayload.Queries["html"] = CSharpExpressionConverter.ConvertO(html);
-            if (htmlFragment != null)
-                callPayload.Queries["html_fragment"] = CSharpExpressionConverter.ConvertO(htmlFragment);
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            return new ApiConnectionAction<SentimentGetResponse>(callPayload);
+            SourceExpression.Validate(text, nameof(text), required: false);
+            SourceExpression.Validate(html, nameof(html), required: false);
+            SourceExpression.Validate(htmlFragment, nameof(htmlFragment), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datatxt/sent/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (text != null)
+                    callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                if (html != null)
+                    callPayload.Queries["html"] = SourceExpressionConverter.ConvertO(html);
+                if (htmlFragment != null)
+                    callPayload.Queries["html_fragment"] = SourceExpressionConverter.ConvertO(htmlFragment);
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentimentGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dandelionip")]
-        public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet(Expression<Func<string>> text, Expression<Func<langInput>> lang, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<queryInput>> query = null, Expression<Func<string>> include = null)
+        public IBodyWorkflowAction<WikipediaGetResponse> WikipediaGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<langInput> lang, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<queryInput> query = null, [WorkflowExpression] Func<string> include = null)
         {
-            var apiCallPath = "/datagraph/wikisearch/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
-            callPayload.Queries["lang"] = CSharpExpressionConverter.Convert(lang);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (query != null)
-                callPayload.Queries["query"] = CSharpExpressionConverter.Convert(query);
-            if (include != null)
-                callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
-            return new ApiConnectionAction<WikipediaGetResponse>(callPayload);
+            SourceExpression.Validate(text, nameof(text), required: true);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            SourceExpression.Validate(include, nameof(include), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/datagraph/wikisearch/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                callPayload.Queries["lang"] = SourceExpressionConverter.Convert(lang);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (query != null)
+                    callPayload.Queries["query"] = SourceExpressionConverter.Convert(query);
+                if (include != null)
+                    callPayload.Queries["include"] = SourceExpressionConverter.ConvertO(include);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WikipediaGetResponse>(BuildSourceInput);
         }
     }
 

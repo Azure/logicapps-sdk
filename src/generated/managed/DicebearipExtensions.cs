@@ -12,64 +12,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dicebearip
     public class DicebearipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dicebearip")]
-        public IBodyWorkflowAction<AvatarGetResponse> AvatarGet(Expression<Func<versionInput>> version, Expression<Func<styleNameInput>> styleName, Expression<Func<fileFormatInput>> fileFormat, Expression<Func<string>> seed = null, Expression<Func<string>> hair = null, Expression<Func<bool>> flip = null, Expression<Func<int>> rotate = null, Expression<Func<int>> scale = null, Expression<Func<int>> radius = null, Expression<Func<int>> size = null, Expression<Func<string>> backgroundColor = null, Expression<Func<backgroundTypeInput>> backgroundType = null, Expression<Func<int>> backgroundRotations = null, Expression<Func<int>> translateX = null, Expression<Func<int>> translateY = null, Expression<Func<bool>> clip = null, Expression<Func<string>> @base = null, Expression<Func<string>> earrings = null, Expression<Func<int>> earringsProbabilty = null, Expression<Func<string>> eyebrows = null, Expression<Func<string>> eyes = null, Expression<Func<string>> features = null, Expression<Func<int>> featuresProbability = null, Expression<Func<string>> glasses = null, Expression<Func<int>> glassesProbability = null, Expression<Func<string>> hairColor = null, Expression<Func<int>> hairProbability = null, Expression<Func<string>> mouth = null, Expression<Func<string>> skinColor = null)
+        public IBodyWorkflowAction<AvatarGetResponse> AvatarGet([WorkflowExpression] Func<versionInput> version, [WorkflowExpression] Func<styleNameInput> styleName, [WorkflowExpression] Func<fileFormatInput> fileFormat, [WorkflowExpression] Func<string> seed = null, [WorkflowExpression] Func<string> hair = null, [WorkflowExpression] Func<bool> flip = null, [WorkflowExpression] Func<int> rotate = null, [WorkflowExpression] Func<int> scale = null, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<int> size = null, [WorkflowExpression] Func<string> backgroundColor = null, [WorkflowExpression] Func<backgroundTypeInput> backgroundType = null, [WorkflowExpression] Func<int> backgroundRotations = null, [WorkflowExpression] Func<int> translateX = null, [WorkflowExpression] Func<int> translateY = null, [WorkflowExpression] Func<bool> clip = null, [WorkflowExpression] Func<string> @base = null, [WorkflowExpression] Func<string> earrings = null, [WorkflowExpression] Func<int> earringsProbabilty = null, [WorkflowExpression] Func<string> eyebrows = null, [WorkflowExpression] Func<string> eyes = null, [WorkflowExpression] Func<string> features = null, [WorkflowExpression] Func<int> featuresProbability = null, [WorkflowExpression] Func<string> glasses = null, [WorkflowExpression] Func<int> glassesProbability = null, [WorkflowExpression] Func<string> hairColor = null, [WorkflowExpression] Func<int> hairProbability = null, [WorkflowExpression] Func<string> mouth = null, [WorkflowExpression] Func<string> skinColor = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(styleName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileFormat, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (seed != null)
-                callPayload.Queries["seed"] = CSharpExpressionConverter.ConvertO(seed);
-            if (hair != null)
-                callPayload.Queries["hair"] = CSharpExpressionConverter.ConvertO(hair);
-            if (flip != null)
-                callPayload.Queries["flip"] = CSharpExpressionConverter.ConvertO(flip);
-            if (rotate != null)
-                callPayload.Queries["rotate"] = CSharpExpressionConverter.ConvertO(rotate);
-            if (scale != null)
-                callPayload.Queries["scale"] = CSharpExpressionConverter.ConvertO(scale);
-            if (radius != null)
-                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            if (backgroundColor != null)
-                callPayload.Queries["backgroundColor"] = CSharpExpressionConverter.ConvertO(backgroundColor);
-            if (backgroundType != null)
-                callPayload.Queries["backgroundType"] = CSharpExpressionConverter.Convert(backgroundType);
-            if (backgroundRotations != null)
-                callPayload.Queries["backgroundRotations"] = CSharpExpressionConverter.ConvertO(backgroundRotations);
-            if (translateX != null)
-                callPayload.Queries["translateX"] = CSharpExpressionConverter.ConvertO(translateX);
-            if (translateY != null)
-                callPayload.Queries["translateY"] = CSharpExpressionConverter.ConvertO(translateY);
-            if (clip != null)
-                callPayload.Queries["clip"] = CSharpExpressionConverter.ConvertO(clip);
-            if (@base != null)
-                callPayload.Queries["base"] = CSharpExpressionConverter.ConvertO(@base);
-            if (earrings != null)
-                callPayload.Queries["earrings"] = CSharpExpressionConverter.ConvertO(earrings);
-            if (earringsProbabilty != null)
-                callPayload.Queries["earringsProbabilty"] = CSharpExpressionConverter.ConvertO(earringsProbabilty);
-            if (eyebrows != null)
-                callPayload.Queries["eyebrows"] = CSharpExpressionConverter.ConvertO(eyebrows);
-            if (eyes != null)
-                callPayload.Queries["eyes"] = CSharpExpressionConverter.ConvertO(eyes);
-            if (features != null)
-                callPayload.Queries["features"] = CSharpExpressionConverter.ConvertO(features);
-            if (featuresProbability != null)
-                callPayload.Queries["featuresProbability"] = CSharpExpressionConverter.ConvertO(featuresProbability);
-            if (glasses != null)
-                callPayload.Queries["glasses"] = CSharpExpressionConverter.ConvertO(glasses);
-            if (glassesProbability != null)
-                callPayload.Queries["glassesProbability"] = CSharpExpressionConverter.ConvertO(glassesProbability);
-            if (hairColor != null)
-                callPayload.Queries["hairColor"] = CSharpExpressionConverter.ConvertO(hairColor);
-            if (hairProbability != null)
-                callPayload.Queries["hairProbability"] = CSharpExpressionConverter.ConvertO(hairProbability);
-            if (mouth != null)
-                callPayload.Queries["mouth"] = CSharpExpressionConverter.ConvertO(mouth);
-            if (skinColor != null)
-                callPayload.Queries["skinColor"] = CSharpExpressionConverter.ConvertO(skinColor);
-            return new ApiConnectionAction<AvatarGetResponse>(callPayload);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(styleName, nameof(styleName), required: true);
+            SourceExpression.Validate(fileFormat, nameof(fileFormat), required: true);
+            SourceExpression.Validate(seed, nameof(seed), required: false);
+            SourceExpression.Validate(hair, nameof(hair), required: false);
+            SourceExpression.Validate(flip, nameof(flip), required: false);
+            SourceExpression.Validate(rotate, nameof(rotate), required: false);
+            SourceExpression.Validate(scale, nameof(scale), required: false);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(backgroundColor, nameof(backgroundColor), required: false);
+            SourceExpression.Validate(backgroundType, nameof(backgroundType), required: false);
+            SourceExpression.Validate(backgroundRotations, nameof(backgroundRotations), required: false);
+            SourceExpression.Validate(translateX, nameof(translateX), required: false);
+            SourceExpression.Validate(translateY, nameof(translateY), required: false);
+            SourceExpression.Validate(clip, nameof(clip), required: false);
+            SourceExpression.Validate(@base, nameof(@base), required: false);
+            SourceExpression.Validate(earrings, nameof(earrings), required: false);
+            SourceExpression.Validate(earringsProbabilty, nameof(earringsProbabilty), required: false);
+            SourceExpression.Validate(eyebrows, nameof(eyebrows), required: false);
+            SourceExpression.Validate(eyes, nameof(eyes), required: false);
+            SourceExpression.Validate(features, nameof(features), required: false);
+            SourceExpression.Validate(featuresProbability, nameof(featuresProbability), required: false);
+            SourceExpression.Validate(glasses, nameof(glasses), required: false);
+            SourceExpression.Validate(glassesProbability, nameof(glassesProbability), required: false);
+            SourceExpression.Validate(hairColor, nameof(hairColor), required: false);
+            SourceExpression.Validate(hairProbability, nameof(hairProbability), required: false);
+            SourceExpression.Validate(mouth, nameof(mouth), required: false);
+            SourceExpression.Validate(skinColor, nameof(skinColor), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(styleName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileFormat, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (seed != null)
+                    callPayload.Queries["seed"] = SourceExpressionConverter.ConvertO(seed);
+                if (hair != null)
+                    callPayload.Queries["hair"] = SourceExpressionConverter.ConvertO(hair);
+                if (flip != null)
+                    callPayload.Queries["flip"] = SourceExpressionConverter.ConvertO(flip);
+                if (rotate != null)
+                    callPayload.Queries["rotate"] = SourceExpressionConverter.ConvertO(rotate);
+                if (scale != null)
+                    callPayload.Queries["scale"] = SourceExpressionConverter.ConvertO(scale);
+                if (radius != null)
+                    callPayload.Queries["radius"] = SourceExpressionConverter.ConvertO(radius);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (backgroundColor != null)
+                    callPayload.Queries["backgroundColor"] = SourceExpressionConverter.ConvertO(backgroundColor);
+                if (backgroundType != null)
+                    callPayload.Queries["backgroundType"] = SourceExpressionConverter.Convert(backgroundType);
+                if (backgroundRotations != null)
+                    callPayload.Queries["backgroundRotations"] = SourceExpressionConverter.ConvertO(backgroundRotations);
+                if (translateX != null)
+                    callPayload.Queries["translateX"] = SourceExpressionConverter.ConvertO(translateX);
+                if (translateY != null)
+                    callPayload.Queries["translateY"] = SourceExpressionConverter.ConvertO(translateY);
+                if (clip != null)
+                    callPayload.Queries["clip"] = SourceExpressionConverter.ConvertO(clip);
+                if (@base != null)
+                    callPayload.Queries["base"] = SourceExpressionConverter.ConvertO(@base);
+                if (earrings != null)
+                    callPayload.Queries["earrings"] = SourceExpressionConverter.ConvertO(earrings);
+                if (earringsProbabilty != null)
+                    callPayload.Queries["earringsProbabilty"] = SourceExpressionConverter.ConvertO(earringsProbabilty);
+                if (eyebrows != null)
+                    callPayload.Queries["eyebrows"] = SourceExpressionConverter.ConvertO(eyebrows);
+                if (eyes != null)
+                    callPayload.Queries["eyes"] = SourceExpressionConverter.ConvertO(eyes);
+                if (features != null)
+                    callPayload.Queries["features"] = SourceExpressionConverter.ConvertO(features);
+                if (featuresProbability != null)
+                    callPayload.Queries["featuresProbability"] = SourceExpressionConverter.ConvertO(featuresProbability);
+                if (glasses != null)
+                    callPayload.Queries["glasses"] = SourceExpressionConverter.ConvertO(glasses);
+                if (glassesProbability != null)
+                    callPayload.Queries["glassesProbability"] = SourceExpressionConverter.ConvertO(glassesProbability);
+                if (hairColor != null)
+                    callPayload.Queries["hairColor"] = SourceExpressionConverter.ConvertO(hairColor);
+                if (hairProbability != null)
+                    callPayload.Queries["hairProbability"] = SourceExpressionConverter.ConvertO(hairProbability);
+                if (mouth != null)
+                    callPayload.Queries["mouth"] = SourceExpressionConverter.ConvertO(mouth);
+                if (skinColor != null)
+                    callPayload.Queries["skinColor"] = SourceExpressionConverter.ConvertO(skinColor);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AvatarGetResponse>(BuildSourceInput);
         }
     }
 

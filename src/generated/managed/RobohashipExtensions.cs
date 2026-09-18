@@ -12,20 +12,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Robohaship
     public class RobohashipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "robohaship")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> text, Expression<Func<setInput>> set, Expression<Func<string>> size = null, Expression<Func<string>> bgset = null, Expression<Func<gravatarInput>> gravatar = null)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> text, [WorkflowExpression] Func<setInput> set, [WorkflowExpression] Func<string> size = null, [WorkflowExpression] Func<string> bgset = null, [WorkflowExpression] Func<gravatarInput> gravatar = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(text, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["set"] = CSharpExpressionConverter.Convert(set);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            if (bgset != null)
-                callPayload.Queries["bgset"] = CSharpExpressionConverter.ConvertO(bgset);
-            callPayload.Queries["gravatar"] = Convert.ToString("no");
-            if (gravatar != null)
-                callPayload.Queries["gravatar"] = CSharpExpressionConverter.Convert(gravatar);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            SourceExpression.Validate(text, nameof(text), required: true);
+            SourceExpression.Validate(set, nameof(set), required: true);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(bgset, nameof(bgset), required: false);
+            SourceExpression.Validate(gravatar, nameof(gravatar), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(text, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["set"] = SourceExpressionConverter.Convert(set);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                if (bgset != null)
+                    callPayload.Queries["bgset"] = SourceExpressionConverter.ConvertO(bgset);
+                callPayload.Queries["gravatar"] = Convert.ToString("no");
+                if (gravatar != null)
+                    callPayload.Queries["gravatar"] = SourceExpressionConverter.Convert(gravatar);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageGetResponse>(BuildSourceInput);
         }
     }
 

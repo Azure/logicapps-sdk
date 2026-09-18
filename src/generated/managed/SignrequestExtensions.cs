@@ -12,319 +12,372 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
     public class SignrequestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "signrequest")]
-        public IBodyWorkflowAction<SignRequestQuickCreate> SignrequestQuickCreateCreate(Expression<Func<Signer[]>> datasigners, Expression<Func<int>> dataautoDeleteDays = null, Expression<Func<int>> dataautoExpireDays = null, Expression<Func<bool>> datadisableAttachments = null, Expression<Func<bool>> datadisableBlockchainProof = null, Expression<Func<bool>> datadisableDate = null, Expression<Func<bool>> datadisableEmails = null, Expression<Func<bool>> datadisableText = null, Expression<Func<bool>> datadisableTextSignatures = null, Expression<Func<bool>> datadisableUploadSignatures = null, Expression<Func<string>> datadocument = null, Expression<Func<string>> dataeventsCallbackUrl = null, Expression<Func<string>> dataexternalId = null, Expression<Func<string>> datafile = null, Expression<Func<string>> datafileFromContent = null, Expression<Func<string>> datafileFromContentName = null, Expression<Func<string>> datafileFromUrl = null, Expression<Func<string>> datafromEmail = null, Expression<Func<string>> datafromEmailName = null, Expression<Func<string>> datafrontendId = null, Expression<Func<bool>> dataisBeingPrepared = null, Expression<Func<string>> datamessage = null, Expression<Func<string>> dataname = null, Expression<Func<InlinePrefillTags[]>> dataprefillTags = null, Expression<Func<string>> dataprepareUrl = null, Expression<Func<string>> dataredirectUrl = null, Expression<Func<string>> dataredirectUrlDeclined = null, Expression<Func<RequiredAttachment[]>> datarequiredAttachments = null, Expression<Func<bool>> datasendReminders = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datasubject = null, Expression<Func<string>> datatemplate = null, Expression<Func<bool>> datatextMessageVerificationLocked = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, Expression<Func<datawhoInput>> datawho = null)
+        public IBodyWorkflowAction<SignRequestQuickCreate> SignrequestQuickCreateCreate([WorkflowExpression] Func<Signer[]> datasigners, [WorkflowExpression] Func<int> dataautoDeleteDays = null, [WorkflowExpression] Func<int> dataautoExpireDays = null, [WorkflowExpression] Func<bool> datadisableAttachments = null, [WorkflowExpression] Func<bool> datadisableBlockchainProof = null, [WorkflowExpression] Func<bool> datadisableDate = null, [WorkflowExpression] Func<bool> datadisableEmails = null, [WorkflowExpression] Func<bool> datadisableText = null, [WorkflowExpression] Func<bool> datadisableTextSignatures = null, [WorkflowExpression] Func<bool> datadisableUploadSignatures = null, [WorkflowExpression] Func<string> datadocument = null, [WorkflowExpression] Func<string> dataeventsCallbackUrl = null, [WorkflowExpression] Func<string> dataexternalId = null, [WorkflowExpression] Func<string> datafile = null, [WorkflowExpression] Func<string> datafileFromContent = null, [WorkflowExpression] Func<string> datafileFromContentName = null, [WorkflowExpression] Func<string> datafileFromUrl = null, [WorkflowExpression] Func<string> datafromEmail = null, [WorkflowExpression] Func<string> datafromEmailName = null, [WorkflowExpression] Func<string> datafrontendId = null, [WorkflowExpression] Func<bool> dataisBeingPrepared = null, [WorkflowExpression] Func<string> datamessage = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<InlinePrefillTags[]> dataprefillTags = null, [WorkflowExpression] Func<string> dataprepareUrl = null, [WorkflowExpression] Func<string> dataredirectUrl = null, [WorkflowExpression] Func<string> dataredirectUrlDeclined = null, [WorkflowExpression] Func<RequiredAttachment[]> datarequiredAttachments = null, [WorkflowExpression] Func<bool> datasendReminders = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datasubject = null, [WorkflowExpression] Func<string> datatemplate = null, [WorkflowExpression] Func<bool> datatextMessageVerificationLocked = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, [WorkflowExpression] Func<datawhoInput> datawho = null)
         {
-            var apiCallPath = "/signrequest-quick-create/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            if (dataautoDeleteDays != null)
+            SourceExpression.Validate(datasigners, nameof(datasigners), required: true);
+            SourceExpression.Validate(dataautoDeleteDays, nameof(dataautoDeleteDays), required: false);
+            SourceExpression.Validate(dataautoExpireDays, nameof(dataautoExpireDays), required: false);
+            SourceExpression.Validate(datadisableAttachments, nameof(datadisableAttachments), required: false);
+            SourceExpression.Validate(datadisableBlockchainProof, nameof(datadisableBlockchainProof), required: false);
+            SourceExpression.Validate(datadisableDate, nameof(datadisableDate), required: false);
+            SourceExpression.Validate(datadisableEmails, nameof(datadisableEmails), required: false);
+            SourceExpression.Validate(datadisableText, nameof(datadisableText), required: false);
+            SourceExpression.Validate(datadisableTextSignatures, nameof(datadisableTextSignatures), required: false);
+            SourceExpression.Validate(datadisableUploadSignatures, nameof(datadisableUploadSignatures), required: false);
+            SourceExpression.Validate(datadocument, nameof(datadocument), required: false);
+            SourceExpression.Validate(dataeventsCallbackUrl, nameof(dataeventsCallbackUrl), required: false);
+            SourceExpression.Validate(dataexternalId, nameof(dataexternalId), required: false);
+            SourceExpression.Validate(datafile, nameof(datafile), required: false);
+            SourceExpression.Validate(datafileFromContent, nameof(datafileFromContent), required: false);
+            SourceExpression.Validate(datafileFromContentName, nameof(datafileFromContentName), required: false);
+            SourceExpression.Validate(datafileFromUrl, nameof(datafileFromUrl), required: false);
+            SourceExpression.Validate(datafromEmail, nameof(datafromEmail), required: false);
+            SourceExpression.Validate(datafromEmailName, nameof(datafromEmailName), required: false);
+            SourceExpression.Validate(datafrontendId, nameof(datafrontendId), required: false);
+            SourceExpression.Validate(dataisBeingPrepared, nameof(dataisBeingPrepared), required: false);
+            SourceExpression.Validate(datamessage, nameof(datamessage), required: false);
+            SourceExpression.Validate(dataname, nameof(dataname), required: false);
+            SourceExpression.Validate(dataprefillTags, nameof(dataprefillTags), required: false);
+            SourceExpression.Validate(dataprepareUrl, nameof(dataprepareUrl), required: false);
+            SourceExpression.Validate(dataredirectUrl, nameof(dataredirectUrl), required: false);
+            SourceExpression.Validate(dataredirectUrlDeclined, nameof(dataredirectUrlDeclined), required: false);
+            SourceExpression.Validate(datarequiredAttachments, nameof(datarequiredAttachments), required: false);
+            SourceExpression.Validate(datasendReminders, nameof(datasendReminders), required: false);
+            SourceExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
+            SourceExpression.Validate(datasubject, nameof(datasubject), required: false);
+            SourceExpression.Validate(datatemplate, nameof(datatemplate), required: false);
+            SourceExpression.Validate(datatextMessageVerificationLocked, nameof(datatextMessageVerificationLocked), required: false);
+            SourceExpression.Validate(dataurl, nameof(dataurl), required: false);
+            SourceExpression.Validate(datauuid, nameof(datauuid), required: false);
+            SourceExpression.Validate(datawho, nameof(datawho), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                data["auto_delete_days"] = CSharpExpressionConverter.ConvertToken(dataautoDeleteDays);
-                datapropCount++;
-            }
-
-            if (dataautoExpireDays != null)
-            {
-                data["auto_expire_days"] = CSharpExpressionConverter.ConvertToken(dataautoExpireDays);
-                datapropCount++;
-            }
-
-            if (datadisableAttachments != null)
-            {
-                data["disable_attachments"] = CSharpExpressionConverter.ConvertToken(datadisableAttachments);
-                datapropCount++;
-            }
-
-            if (datadisableBlockchainProof != null)
-            {
-                data["disable_blockchain_proof"] = CSharpExpressionConverter.ConvertToken(datadisableBlockchainProof);
-                datapropCount++;
-            }
-
-            if (datadisableDate != null)
-            {
-                data["disable_date"] = CSharpExpressionConverter.ConvertToken(datadisableDate);
-                datapropCount++;
-            }
-
-            if (datadisableEmails != null)
-            {
-                data["disable_emails"] = CSharpExpressionConverter.ConvertToken(datadisableEmails);
-                datapropCount++;
-            }
-
-            if (datadisableText != null)
-            {
-                data["disable_text"] = CSharpExpressionConverter.ConvertToken(datadisableText);
-                datapropCount++;
-            }
-
-            if (datadisableTextSignatures != null)
-            {
-                data["disable_text_signatures"] = CSharpExpressionConverter.ConvertToken(datadisableTextSignatures);
-                datapropCount++;
-            }
-
-            if (datadisableUploadSignatures != null)
-            {
-                data["disable_upload_signatures"] = CSharpExpressionConverter.ConvertToken(datadisableUploadSignatures);
-                datapropCount++;
-            }
-
-            if (datadocument != null)
-            {
-                data["document"] = CSharpExpressionConverter.ConvertToken(datadocument);
-                datapropCount++;
-            }
-
-            if (dataeventsCallbackUrl != null)
-            {
-                data["events_callback_url"] = CSharpExpressionConverter.ConvertToken(dataeventsCallbackUrl);
-                datapropCount++;
-            }
-
-            if (dataexternalId != null)
-            {
-                data["external_id"] = CSharpExpressionConverter.ConvertToken(dataexternalId);
-                datapropCount++;
-            }
-
-            if (datafile != null)
-            {
-                data["file"] = CSharpExpressionConverter.ConvertToken(datafile);
-                datapropCount++;
-            }
-
-            if (datafileFromContent != null)
-            {
-                data["file_from_content"] = CSharpExpressionConverter.ConvertToken(datafileFromContent);
-                datapropCount++;
-            }
-
-            if (datafileFromContentName != null)
-            {
-                data["file_from_content_name"] = CSharpExpressionConverter.ConvertToken(datafileFromContentName);
-                datapropCount++;
-            }
-
-            if (datafileFromUrl != null)
-            {
-                data["file_from_url"] = CSharpExpressionConverter.ConvertToken(datafileFromUrl);
-                datapropCount++;
-            }
-
-            if (datafromEmail != null)
-            {
-                data["from_email"] = CSharpExpressionConverter.ConvertToken(datafromEmail);
-                datapropCount++;
-            }
-
-            if (datafromEmailName != null)
-            {
-                data["from_email_name"] = CSharpExpressionConverter.ConvertToken(datafromEmailName);
-                datapropCount++;
-            }
-
-            if (datafrontendId != null)
-            {
-                data["frontend_id"] = CSharpExpressionConverter.ConvertToken(datafrontendId);
-                datapropCount++;
-            }
-
-            if (dataisBeingPrepared != null)
-            {
-                data["is_being_prepared"] = CSharpExpressionConverter.ConvertToken(dataisBeingPrepared);
-                datapropCount++;
-            }
-
-            if (datamessage != null)
-            {
-                data["message"] = CSharpExpressionConverter.ConvertToken(datamessage);
-                datapropCount++;
-            }
-
-            if (dataname != null)
-            {
-                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
-                datapropCount++;
-            }
-
-            if (dataprefillTags != null)
-            {
-                data["prefill_tags"] = CSharpExpressionConverter.ConvertToken(dataprefillTags);
-                datapropCount++;
-            }
-
-            if (dataprepareUrl != null)
-            {
-                data["prepare_url"] = CSharpExpressionConverter.ConvertToken(dataprepareUrl);
-                datapropCount++;
-            }
-
-            if (dataredirectUrl != null)
-            {
-                data["redirect_url"] = CSharpExpressionConverter.ConvertToken(dataredirectUrl);
-                datapropCount++;
-            }
-
-            if (dataredirectUrlDeclined != null)
-            {
-                data["redirect_url_declined"] = CSharpExpressionConverter.ConvertToken(dataredirectUrlDeclined);
-                datapropCount++;
-            }
-
-            if (datarequiredAttachments != null)
-            {
-                data["required_attachments"] = CSharpExpressionConverter.ConvertToken(datarequiredAttachments);
-                datapropCount++;
-            }
-
-            if (datasendReminders != null)
-            {
-                data["send_reminders"] = CSharpExpressionConverter.ConvertToken(datasendReminders);
-                datapropCount++;
-            }
-
-            datapropCount++;
-            data["signers"] = CSharpExpressionConverter.ConvertToken(datasigners);
-            if (datasubdomain != null)
-            {
-                data["subdomain"] = CSharpExpressionConverter.ConvertToken(datasubdomain);
-                datapropCount++;
-            }
-
-            if (datasubject != null)
-            {
-                data["subject"] = CSharpExpressionConverter.ConvertToken(datasubject);
-                datapropCount++;
-            }
-
-            if (datatemplate != null)
-            {
-                data["template"] = CSharpExpressionConverter.ConvertToken(datatemplate);
-                datapropCount++;
-            }
-
-            if (datatextMessageVerificationLocked != null)
-            {
-                data["text_message_verification_locked"] = CSharpExpressionConverter.ConvertToken(datatextMessageVerificationLocked);
-                datapropCount++;
-            }
-
-            if (dataurl != null)
-            {
-                data["url"] = CSharpExpressionConverter.ConvertToken(dataurl);
-                datapropCount++;
-            }
-
-            if (datauuid != null)
-            {
-                data["uuid"] = CSharpExpressionConverter.ConvertToken(datauuid);
-                datapropCount++;
-            }
-
-            if (datawho != null)
-            {
-                if (datawho != null)
+                var apiCallPath = "/signrequest-quick-create/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                if (dataautoDeleteDays != null)
                 {
-                    data["who"] = CSharpExpressionConverter.Convert(datawho);
+                    data["auto_delete_days"] = SourceExpressionConverter.ConvertToken(dataautoDeleteDays);
+                    datapropCount++;
+                }
+
+                if (dataautoExpireDays != null)
+                {
+                    data["auto_expire_days"] = SourceExpressionConverter.ConvertToken(dataautoExpireDays);
+                    datapropCount++;
+                }
+
+                if (datadisableAttachments != null)
+                {
+                    data["disable_attachments"] = SourceExpressionConverter.ConvertToken(datadisableAttachments);
+                    datapropCount++;
+                }
+
+                if (datadisableBlockchainProof != null)
+                {
+                    data["disable_blockchain_proof"] = SourceExpressionConverter.ConvertToken(datadisableBlockchainProof);
+                    datapropCount++;
+                }
+
+                if (datadisableDate != null)
+                {
+                    data["disable_date"] = SourceExpressionConverter.ConvertToken(datadisableDate);
+                    datapropCount++;
+                }
+
+                if (datadisableEmails != null)
+                {
+                    data["disable_emails"] = SourceExpressionConverter.ConvertToken(datadisableEmails);
+                    datapropCount++;
+                }
+
+                if (datadisableText != null)
+                {
+                    data["disable_text"] = SourceExpressionConverter.ConvertToken(datadisableText);
+                    datapropCount++;
+                }
+
+                if (datadisableTextSignatures != null)
+                {
+                    data["disable_text_signatures"] = SourceExpressionConverter.ConvertToken(datadisableTextSignatures);
+                    datapropCount++;
+                }
+
+                if (datadisableUploadSignatures != null)
+                {
+                    data["disable_upload_signatures"] = SourceExpressionConverter.ConvertToken(datadisableUploadSignatures);
+                    datapropCount++;
+                }
+
+                if (datadocument != null)
+                {
+                    data["document"] = SourceExpressionConverter.ConvertToken(datadocument);
+                    datapropCount++;
+                }
+
+                if (dataeventsCallbackUrl != null)
+                {
+                    data["events_callback_url"] = SourceExpressionConverter.ConvertToken(dataeventsCallbackUrl);
+                    datapropCount++;
+                }
+
+                if (dataexternalId != null)
+                {
+                    data["external_id"] = SourceExpressionConverter.ConvertToken(dataexternalId);
+                    datapropCount++;
+                }
+
+                if (datafile != null)
+                {
+                    data["file"] = SourceExpressionConverter.ConvertToken(datafile);
+                    datapropCount++;
+                }
+
+                if (datafileFromContent != null)
+                {
+                    data["file_from_content"] = SourceExpressionConverter.ConvertToken(datafileFromContent);
+                    datapropCount++;
+                }
+
+                if (datafileFromContentName != null)
+                {
+                    data["file_from_content_name"] = SourceExpressionConverter.ConvertToken(datafileFromContentName);
+                    datapropCount++;
+                }
+
+                if (datafileFromUrl != null)
+                {
+                    data["file_from_url"] = SourceExpressionConverter.ConvertToken(datafileFromUrl);
+                    datapropCount++;
+                }
+
+                if (datafromEmail != null)
+                {
+                    data["from_email"] = SourceExpressionConverter.ConvertToken(datafromEmail);
+                    datapropCount++;
+                }
+
+                if (datafromEmailName != null)
+                {
+                    data["from_email_name"] = SourceExpressionConverter.ConvertToken(datafromEmailName);
+                    datapropCount++;
+                }
+
+                if (datafrontendId != null)
+                {
+                    data["frontend_id"] = SourceExpressionConverter.ConvertToken(datafrontendId);
+                    datapropCount++;
+                }
+
+                if (dataisBeingPrepared != null)
+                {
+                    data["is_being_prepared"] = SourceExpressionConverter.ConvertToken(dataisBeingPrepared);
+                    datapropCount++;
+                }
+
+                if (datamessage != null)
+                {
+                    data["message"] = SourceExpressionConverter.ConvertToken(datamessage);
+                    datapropCount++;
+                }
+
+                if (dataname != null)
+                {
+                    data["name"] = SourceExpressionConverter.ConvertToken(dataname);
+                    datapropCount++;
+                }
+
+                if (dataprefillTags != null)
+                {
+                    data["prefill_tags"] = SourceExpressionConverter.ConvertToken(dataprefillTags);
+                    datapropCount++;
+                }
+
+                if (dataprepareUrl != null)
+                {
+                    data["prepare_url"] = SourceExpressionConverter.ConvertToken(dataprepareUrl);
+                    datapropCount++;
+                }
+
+                if (dataredirectUrl != null)
+                {
+                    data["redirect_url"] = SourceExpressionConverter.ConvertToken(dataredirectUrl);
+                    datapropCount++;
+                }
+
+                if (dataredirectUrlDeclined != null)
+                {
+                    data["redirect_url_declined"] = SourceExpressionConverter.ConvertToken(dataredirectUrlDeclined);
+                    datapropCount++;
+                }
+
+                if (datarequiredAttachments != null)
+                {
+                    data["required_attachments"] = SourceExpressionConverter.ConvertToken(datarequiredAttachments);
+                    datapropCount++;
+                }
+
+                if (datasendReminders != null)
+                {
+                    data["send_reminders"] = SourceExpressionConverter.ConvertToken(datasendReminders);
                     datapropCount++;
                 }
 
                 datapropCount++;
-            }
-            else
-            {
-                data["who"] = "o";
-                datapropCount++;
+                data["signers"] = SourceExpressionConverter.ConvertToken(datasigners);
+                if (datasubdomain != null)
+                {
+                    data["subdomain"] = SourceExpressionConverter.ConvertToken(datasubdomain);
+                    datapropCount++;
+                }
+
+                if (datasubject != null)
+                {
+                    data["subject"] = SourceExpressionConverter.ConvertToken(datasubject);
+                    datapropCount++;
+                }
+
+                if (datatemplate != null)
+                {
+                    data["template"] = SourceExpressionConverter.ConvertToken(datatemplate);
+                    datapropCount++;
+                }
+
+                if (datatextMessageVerificationLocked != null)
+                {
+                    data["text_message_verification_locked"] = SourceExpressionConverter.ConvertToken(datatextMessageVerificationLocked);
+                    datapropCount++;
+                }
+
+                if (dataurl != null)
+                {
+                    data["url"] = SourceExpressionConverter.ConvertToken(dataurl);
+                    datapropCount++;
+                }
+
+                if (datauuid != null)
+                {
+                    data["uuid"] = SourceExpressionConverter.ConvertToken(datauuid);
+                    datapropCount++;
+                }
+
+                if (datawho != null)
+                {
+                    if (datawho != null)
+                    {
+                        data["who"] = SourceExpressionConverter.Convert(datawho);
+                        datapropCount++;
+                    }
+
+                    datapropCount++;
+                }
+                else
+                {
+                    data["who"] = "o";
+                    datapropCount++;
+                }
+
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
             }
 
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionAction<SignRequestQuickCreate>(callPayload);
+            return new ApiConnectionAction<SignRequestQuickCreate>(BuildSourceInput);
         }
     }
 
     public class SignrequestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate(Expression<Func<dataeventTypeInput>> dataeventType, Expression<Func<string>> datacreated = null, Expression<Func<string>> dataname = null, Expression<Func<string>> datasubdomain = null, Expression<Func<string>> datateamname = null, Expression<Func<string>> datateamsubdomain = null, Expression<Func<string>> datateamurl = null, Expression<Func<string>> dataurl = null, Expression<Func<string>> datauuid = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookSubscription> WebhooksCreate([WorkflowExpression] Func<dataeventTypeInput> dataeventType, [WorkflowExpression] Func<string> datacreated = null, [WorkflowExpression] Func<string> dataname = null, [WorkflowExpression] Func<string> datasubdomain = null, [WorkflowExpression] Func<string> datateamname = null, [WorkflowExpression] Func<string> datateamsubdomain = null, [WorkflowExpression] Func<string> datateamurl = null, [WorkflowExpression] Func<string> dataurl = null, [WorkflowExpression] Func<string> datauuid = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var data = new JObject();
-            var datapropCount = 0;
-            data["callback_url"] = "@listCallbackUrl()";
-            datapropCount++;
-            if (datacreated != null)
+            SourceExpression.Validate(dataeventType, nameof(dataeventType), required: true);
+            SourceExpression.Validate(datacreated, nameof(datacreated), required: false);
+            SourceExpression.Validate(dataname, nameof(dataname), required: false);
+            SourceExpression.Validate(datasubdomain, nameof(datasubdomain), required: false);
+            SourceExpression.Validate(datateamname, nameof(datateamname), required: false);
+            SourceExpression.Validate(datateamsubdomain, nameof(datateamsubdomain), required: false);
+            SourceExpression.Validate(datateamurl, nameof(datateamurl), required: false);
+            SourceExpression.Validate(dataurl, nameof(dataurl), required: false);
+            SourceExpression.Validate(datauuid, nameof(datauuid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                data["created"] = CSharpExpressionConverter.ConvertToken(datacreated);
+                var apiCallPath = "/webhooks/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var data = new JObject();
+                var datapropCount = 0;
+                data["callback_url"] = "@listCallbackUrl()";
                 datapropCount++;
-            }
+                if (datacreated != null)
+                {
+                    data["created"] = SourceExpressionConverter.ConvertToken(datacreated);
+                    datapropCount++;
+                }
 
-            datapropCount++;
-            data["event_type"] = CSharpExpressionConverter.Convert(dataeventType);
-            if (dataname != null)
-            {
-                data["name"] = CSharpExpressionConverter.ConvertToken(dataname);
                 datapropCount++;
+                data["event_type"] = SourceExpressionConverter.Convert(dataeventType);
+                if (dataname != null)
+                {
+                    data["name"] = SourceExpressionConverter.ConvertToken(dataname);
+                    datapropCount++;
+                }
+
+                if (datasubdomain != null)
+                {
+                    data["subdomain"] = SourceExpressionConverter.ConvertToken(datasubdomain);
+                    datapropCount++;
+                }
+
+                var teamObject = new JObject();
+                var teamObjectpropCount = 0;
+                if (datateamname != null)
+                {
+                    teamObject["name"] = SourceExpressionConverter.ConvertToken(datateamname);
+                    teamObjectpropCount++;
+                }
+
+                if (datateamsubdomain != null)
+                {
+                    teamObject["subdomain"] = SourceExpressionConverter.ConvertToken(datateamsubdomain);
+                    teamObjectpropCount++;
+                }
+
+                if (datateamurl != null)
+                {
+                    teamObject["url"] = SourceExpressionConverter.ConvertToken(datateamurl);
+                    teamObjectpropCount++;
+                }
+
+                if (teamObjectpropCount > 0)
+                {
+                    data["team"] = teamObject;
+                    datapropCount++;
+                }
+
+                if (dataurl != null)
+                {
+                    data["url"] = SourceExpressionConverter.ConvertToken(dataurl);
+                    datapropCount++;
+                }
+
+                if (datauuid != null)
+                {
+                    data["uuid"] = SourceExpressionConverter.ConvertToken(datauuid);
+                    datapropCount++;
+                }
+
+                if (datapropCount > 0)
+                {
+                    callPayload.Body = data;
+                }
+                return callPayload;
             }
 
-            if (datasubdomain != null)
-            {
-                data["subdomain"] = CSharpExpressionConverter.ConvertToken(datasubdomain);
-                datapropCount++;
-            }
-
-            var teamObject = new JObject();
-            var teamObjectpropCount = 0;
-            if (datateamname != null)
-            {
-                teamObject["name"] = CSharpExpressionConverter.ConvertToken(datateamname);
-                teamObjectpropCount++;
-            }
-
-            if (datateamsubdomain != null)
-            {
-                teamObject["subdomain"] = CSharpExpressionConverter.ConvertToken(datateamsubdomain);
-                teamObjectpropCount++;
-            }
-
-            if (datateamurl != null)
-            {
-                teamObject["url"] = CSharpExpressionConverter.ConvertToken(datateamurl);
-                teamObjectpropCount++;
-            }
-
-            if (teamObjectpropCount > 0)
-            {
-                data["team"] = teamObject;
-                datapropCount++;
-            }
-
-            if (dataurl != null)
-            {
-                data["url"] = CSharpExpressionConverter.ConvertToken(dataurl);
-                datapropCount++;
-            }
-
-            if (datauuid != null)
-            {
-                data["uuid"] = CSharpExpressionConverter.ConvertToken(datauuid);
-                datapropCount++;
-            }
-
-            if (datapropCount > 0)
-            {
-                callPayload.Body = data;
-            }
-
-            return new ApiConnectionTrigger<WebhookSubscription>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookSubscription>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

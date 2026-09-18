@@ -12,31 +12,37 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbauddocuments
     public class BlackbauddocumentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbauddocuments")]
-        public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument(Expression<Func<string>> bodyfileName = null, Expression<Func<bool>> bodyincludeThumbnail = null)
+        public IBodyWorkflowAction<ConstituentApiFileDefinition> CreateDocument([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<bool> bodyincludeThumbnail = null)
         {
-            var apiCallPath = "/constituent/v1/documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileName != null)
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
+            SourceExpression.Validate(bodyincludeThumbnail, nameof(bodyincludeThumbnail), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file_name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-                bodypropCount++;
+                var apiCallPath = "/constituent/v1/documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileName != null)
+                {
+                    body["file_name"] = SourceExpressionConverter.ConvertToken(bodyfileName);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeThumbnail != null)
+                {
+                    body["upload_thumbnail"] = SourceExpressionConverter.ConvertToken(bodyincludeThumbnail);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyincludeThumbnail != null)
-            {
-                body["upload_thumbnail"] = CSharpExpressionConverter.ConvertToken(bodyincludeThumbnail);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ConstituentApiFileDefinition>(callPayload);
+            return new ApiConnectionAction<ConstituentApiFileDefinition>(BuildSourceInput);
         }
     }
 

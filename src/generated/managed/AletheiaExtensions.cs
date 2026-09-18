@@ -12,212 +12,330 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
     public class AletheiaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings(Expression<Func<string>> id, Expression<Func<string>> filing = null, Expression<Func<int>> before = null)
+        public IBodyWorkflowAction<EntityFilingsResponseItem[]> EntityFilings([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> filing = null, [WorkflowExpression] Func<int> before = null)
         {
-            var apiCallPath = "/EntityFilings";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            if (filing != null)
-                callPayload.Queries["filing"] = CSharpExpressionConverter.ConvertO(filing);
-            if (before != null)
-                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
-            return new ApiConnectionAction<EntityFilingsResponseItem[]>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(filing, nameof(filing), required: false);
+            SourceExpression.Validate(before, nameof(before), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EntityFilings";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (filing != null)
+                    callPayload.Queries["filing"] = SourceExpressionConverter.ConvertO(filing);
+                if (before != null)
+                    callPayload.Queries["before"] = SourceExpressionConverter.ConvertO(before);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntityFilingsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenForm4Response> OpenForm4(Expression<Func<string>> filingurl)
+        public IBodyWorkflowAction<OpenForm4Response> OpenForm4([WorkflowExpression] Func<string> filingurl)
         {
-            var apiCallPath = "/OpenForm4";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = CSharpExpressionConverter.ConvertO(filingurl);
-            return new ApiConnectionAction<OpenForm4Response>(callPayload);
+            SourceExpression.Validate(filingurl, nameof(filingurl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OpenForm4";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = SourceExpressionConverter.ConvertO(filingurl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpenForm4Response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials(Expression<Func<string>> filingurl)
+        public IBodyWorkflowAction<OpenCommonFinancialsResponse> OpenCommonFinancials([WorkflowExpression] Func<string> filingurl)
         {
-            var apiCallPath = "/OpenCommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filingurl"] = CSharpExpressionConverter.ConvertO(filingurl);
-            return new ApiConnectionAction<OpenCommonFinancialsResponse>(callPayload);
+            SourceExpression.Validate(filingurl, nameof(filingurl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OpenCommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filingurl"] = SourceExpressionConverter.ConvertO(filingurl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OpenCommonFinancialsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities(Expression<Func<string>> term, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<SearchEntitiesResponseItem[]> SearchEntities([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/SearchEntities";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
-            callPayload.Queries["top"] = Convert.ToString(12);
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<SearchEntitiesResponseItem[]>(callPayload);
+            SourceExpression.Validate(term, nameof(term), required: true);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SearchEntities";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["term"] = SourceExpressionConverter.ConvertO(term);
+                callPayload.Queries["top"] = Convert.ToString(12);
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchEntitiesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetEntityResponse> GetEntity(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetEntityResponse> GetEntity([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/GetEntity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction<GetEntityResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetEntity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetEntityResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetFilingResponse> GetFiling(Expression<Func<string>> id = null, Expression<Func<string>> url = null)
+        public IBodyWorkflowAction<GetFilingResponse> GetFiling([WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> url = null)
         {
-            var apiCallPath = "/GetFiling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (id != null)
-                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            if (url != null)
-                callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            return new ApiConnectionAction<GetFilingResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: false);
+            SourceExpression.Validate(url, nameof(url), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetFiling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (url != null)
+                    callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFilingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions(Expression<Func<string>> issuer = null, Expression<Func<int>> owner = null, Expression<Func<int>> top = null, Expression<Func<string>> before = null, Expression<Func<int>> securitytype = null, Expression<Func<int>> transactiontype = null, Expression<Func<bool>> cascade = null)
+        public IBodyWorkflowAction<LatestTransactionsResponseItem[]> LatestTransactions([WorkflowExpression] Func<string> issuer = null, [WorkflowExpression] Func<int> owner = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<string> before = null, [WorkflowExpression] Func<int> securitytype = null, [WorkflowExpression] Func<int> transactiontype = null, [WorkflowExpression] Func<bool> cascade = null)
         {
-            var apiCallPath = "/LatestTransactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (issuer != null)
-                callPayload.Queries["issuer"] = CSharpExpressionConverter.ConvertO(issuer);
-            if (owner != null)
-                callPayload.Queries["owner"] = CSharpExpressionConverter.ConvertO(owner);
-            callPayload.Queries["top"] = Convert.ToString(20);
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            if (before != null)
-                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
-            if (securitytype != null)
-                callPayload.Queries["securitytype"] = CSharpExpressionConverter.ConvertO(securitytype);
-            if (transactiontype != null)
-                callPayload.Queries["transactiontype"] = CSharpExpressionConverter.ConvertO(transactiontype);
-            if (cascade != null)
-                callPayload.Queries["cascade"] = CSharpExpressionConverter.ConvertO(cascade);
-            return new ApiConnectionAction<LatestTransactionsResponseItem[]>(callPayload);
+            SourceExpression.Validate(issuer, nameof(issuer), required: false);
+            SourceExpression.Validate(owner, nameof(owner), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(before, nameof(before), required: false);
+            SourceExpression.Validate(securitytype, nameof(securitytype), required: false);
+            SourceExpression.Validate(transactiontype, nameof(transactiontype), required: false);
+            SourceExpression.Validate(cascade, nameof(cascade), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/LatestTransactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (issuer != null)
+                    callPayload.Queries["issuer"] = SourceExpressionConverter.ConvertO(issuer);
+                if (owner != null)
+                    callPayload.Queries["owner"] = SourceExpressionConverter.ConvertO(owner);
+                callPayload.Queries["top"] = Convert.ToString(20);
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                if (before != null)
+                    callPayload.Queries["before"] = SourceExpressionConverter.ConvertO(before);
+                if (securitytype != null)
+                    callPayload.Queries["securitytype"] = SourceExpressionConverter.ConvertO(securitytype);
+                if (transactiontype != null)
+                    callPayload.Queries["transactiontype"] = SourceExpressionConverter.ConvertO(transactiontype);
+                if (cascade != null)
+                    callPayload.Queries["cascade"] = SourceExpressionConverter.ConvertO(cascade);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LatestTransactionsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners(Expression<Func<string>> id)
+        public IBodyWorkflowAction<AffiliatedOwnersResponseItem[]> AffiliatedOwners([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/AffiliatedOwners";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AffiliatedOwners";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AffiliatedOwnersResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials(Expression<Func<string>> id, Expression<Func<periodInput>> period = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<GetCommonFinancialsResponse> GetCommonFinancials([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<periodInput> period = null, [WorkflowExpression] Func<string> before = null)
         {
-            var apiCallPath = "/CommonFinancials";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            if (period != null)
-                callPayload.Queries["period"] = CSharpExpressionConverter.Convert(period);
-            if (before != null)
-                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
-            return new ApiConnectionAction<GetCommonFinancialsResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(period, nameof(period), required: false);
+            SourceExpression.Validate(before, nameof(before), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/CommonFinancials";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (period != null)
+                    callPayload.Queries["period"] = SourceExpressionConverter.Convert(period);
+                if (before != null)
+                    callPayload.Queries["before"] = SourceExpressionConverter.ConvertO(before);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCommonFinancialsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend(Expression<Func<string>> id, Expression<Func<int>> label, Expression<Func<int>> period = null, Expression<Func<string>> after = null, Expression<Func<string>> before = null)
+        public IBodyWorkflowAction<FinancialFactTrendResponseItem[]> FinancialFactTrend([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<int> label, [WorkflowExpression] Func<int> period = null, [WorkflowExpression] Func<string> after = null, [WorkflowExpression] Func<string> before = null)
         {
-            var apiCallPath = "/FinancialFactTrend";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            callPayload.Queries["label"] = CSharpExpressionConverter.ConvertO(label);
-            if (period != null)
-                callPayload.Queries["period"] = CSharpExpressionConverter.ConvertO(period);
-            if (after != null)
-                callPayload.Queries["after"] = CSharpExpressionConverter.ConvertO(after);
-            if (before != null)
-                callPayload.Queries["before"] = CSharpExpressionConverter.ConvertO(before);
-            return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(label, nameof(label), required: true);
+            SourceExpression.Validate(period, nameof(period), required: false);
+            SourceExpression.Validate(after, nameof(after), required: false);
+            SourceExpression.Validate(before, nameof(before), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FinancialFactTrend";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["label"] = SourceExpressionConverter.ConvertO(label);
+                if (period != null)
+                    callPayload.Queries["period"] = SourceExpressionConverter.ConvertO(period);
+                if (after != null)
+                    callPayload.Queries["after"] = SourceExpressionConverter.ConvertO(after);
+                if (before != null)
+                    callPayload.Queries["before"] = SourceExpressionConverter.ConvertO(before);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FinancialFactTrendResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls(Expression<Func<string>> company = null, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<SearchEarningsCallsResponseItem[]> SearchEarningsCalls([WorkflowExpression] Func<string> company = null, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/SearchEarningsCalls";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (company != null)
-                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            if (year != null)
-                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
-            if (quarter != null)
-                callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(callPayload);
+            SourceExpression.Validate(company, nameof(company), required: false);
+            SourceExpression.Validate(year, nameof(year), required: false);
+            SourceExpression.Validate(quarter, nameof(quarter), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SearchEarningsCalls";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (company != null)
+                    callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (year != null)
+                    callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                if (quarter != null)
+                    callPayload.Queries["quarter"] = SourceExpressionConverter.ConvertO(quarter);
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchEarningsCallsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall(Expression<Func<string>> company, Expression<Func<int>> year = null, Expression<Func<string>> quarter = null, Expression<Func<int>> begin = null, Expression<Func<int>> end = null)
+        public IBodyWorkflowAction<EarningsCallResponse> EarningsCall([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> quarter = null, [WorkflowExpression] Func<int> begin = null, [WorkflowExpression] Func<int> end = null)
         {
-            var apiCallPath = "/EarningsCall";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            if (year != null)
-                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
-            if (quarter != null)
-                callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
-            if (begin != null)
-                callPayload.Queries["begin"] = CSharpExpressionConverter.ConvertO(begin);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            return new ApiConnectionAction<EarningsCallResponse>(callPayload);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(year, nameof(year), required: false);
+            SourceExpression.Validate(quarter, nameof(quarter), required: false);
+            SourceExpression.Validate(begin, nameof(begin), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EarningsCall";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                if (year != null)
+                    callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                if (quarter != null)
+                    callPayload.Queries["quarter"] = SourceExpressionConverter.ConvertO(quarter);
+                if (begin != null)
+                    callPayload.Queries["begin"] = SourceExpressionConverter.ConvertO(begin);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EarningsCallResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights(Expression<Func<string>> company, Expression<Func<int>> year, Expression<Func<string>> quarter, Expression<Func<int>> category = null, Expression<Func<int>> top = null)
+        public IBodyWorkflowAction<EarningsCallHighlightsResponseItem[]> EarningsCallHighlights([WorkflowExpression] Func<string> company, [WorkflowExpression] Func<int> year, [WorkflowExpression] Func<string> quarter, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<int> top = null)
         {
-            var apiCallPath = "/EarningsCallHighlights";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
-            callPayload.Queries["quarter"] = CSharpExpressionConverter.ConvertO(quarter);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            if (top != null)
-                callPayload.Queries["top"] = CSharpExpressionConverter.ConvertO(top);
-            return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(callPayload);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(year, nameof(year), required: true);
+            SourceExpression.Validate(quarter, nameof(quarter), required: true);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EarningsCallHighlights";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                callPayload.Queries["quarter"] = SourceExpressionConverter.ConvertO(quarter);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (top != null)
+                    callPayload.Queries["top"] = SourceExpressionConverter.ConvertO(top);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EarningsCallHighlightsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote(Expression<Func<string>> symbol)
+        public IBodyWorkflowAction<CryptoQuoteResponse> CryptoQuote([WorkflowExpression] Func<string> symbol)
         {
-            var apiCallPath = "/Crypto";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
-            return new ApiConnectionAction<CryptoQuoteResponse>(callPayload);
+            SourceExpression.Validate(symbol, nameof(symbol), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Crypto";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = SourceExpressionConverter.ConvertO(symbol);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CryptoQuoteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aletheia")]
-        public IBodyWorkflowAction<StockDataV2Response> StockData(Expression<Func<string>> symbol, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<StockDataV2Response> StockData([WorkflowExpression] Func<string> symbol, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/v2/StockData";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["symbol"] = CSharpExpressionConverter.ConvertO(symbol);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            callPayload.Headers["Accept-Version"] = Convert.ToString(2);
-            return new ApiConnectionAction<StockDataV2Response>(callPayload);
+            SourceExpression.Validate(symbol, nameof(symbol), required: true);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/StockData";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["symbol"] = SourceExpressionConverter.ConvertO(symbol);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                callPayload.Headers["Accept-Version"] = Convert.ToString(2);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StockDataV2Response>(BuildSourceInput);
         }
     }
 
@@ -225,60 +343,72 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aletheia
     {
         public IWorkflowTrigger NewFilings(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/SubscribeToNewFilingsWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["endpoint"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/SubscribeToNewFilingsWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["endpoint"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger InsiderTrading(Expression<Func<string>> bodyissuer = null, Expression<Func<int>> bodyowner = null, Expression<Func<bodytransactionTypeInput>> bodytransactionType = null, Expression<Func<bodysecurityTypeInput>> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InsiderTrading([WorkflowExpression] Func<string> bodyissuer = null, [WorkflowExpression] Func<int> bodyowner = null, [WorkflowExpression] Func<bodytransactionTypeInput> bodytransactionType = null, [WorkflowExpression] Func<bodysecurityTypeInput> bodysecurityType = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/SubscribeToInsiderTradingWebhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["endpoint"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyissuer != null)
+            SourceExpression.Validate(bodyissuer, nameof(bodyissuer), required: false);
+            SourceExpression.Validate(bodyowner, nameof(bodyowner), required: false);
+            SourceExpression.Validate(bodytransactionType, nameof(bodytransactionType), required: false);
+            SourceExpression.Validate(bodysecurityType, nameof(bodysecurityType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["issuer"] = CSharpExpressionConverter.ConvertToken(bodyissuer);
+                var apiCallPath = "/SubscribeToInsiderTradingWebhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["endpoint"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodyissuer != null)
+                {
+                    body["issuer"] = SourceExpressionConverter.ConvertToken(bodyissuer);
+                    bodypropCount++;
+                }
+
+                if (bodyowner != null)
+                {
+                    body["owner"] = SourceExpressionConverter.ConvertToken(bodyowner);
+                    bodypropCount++;
+                }
+
+                if (bodytransactionType != null)
+                {
+                    body["transactionType"] = SourceExpressionConverter.Convert(bodytransactionType);
+                    bodypropCount++;
+                }
+
+                if (bodysecurityType != null)
+                {
+                    body["securityType"] = SourceExpressionConverter.Convert(bodysecurityType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyowner != null)
-            {
-                body["owner"] = CSharpExpressionConverter.ConvertToken(bodyowner);
-                bodypropCount++;
-            }
-
-            if (bodytransactionType != null)
-            {
-                body["transactionType"] = CSharpExpressionConverter.Convert(bodytransactionType);
-                bodypropCount++;
-            }
-
-            if (bodysecurityType != null)
-            {
-                body["securityType"] = CSharpExpressionConverter.Convert(bodysecurityType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

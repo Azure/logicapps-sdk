@@ -12,119 +12,161 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apppowerforms
     public class ApppowerformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddForm(Expression<Func<string>> bodyformName, Expression<Func<string>> bodyformDescription = null, Expression<Func<string>> bodythankYouText = null)
+        public IBodyWorkflowAction<JToken> AddForm([WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyformDescription = null, [WorkflowExpression] Func<string> bodythankYouText = null)
         {
-            var apiCallPath = "/AddNewForm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["formTitle"] = CSharpExpressionConverter.ConvertToken(bodyformName);
-            if (bodyformDescription != null)
+            SourceExpression.Validate(bodyformName, nameof(bodyformName), required: true);
+            SourceExpression.Validate(bodyformDescription, nameof(bodyformDescription), required: false);
+            SourceExpression.Validate(bodythankYouText, nameof(bodythankYouText), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["welcomeText"] = CSharpExpressionConverter.ConvertToken(bodyformDescription);
+                var apiCallPath = "/AddNewForm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["formTitle"] = SourceExpressionConverter.ConvertToken(bodyformName);
+                if (bodyformDescription != null)
+                {
+                    body["welcomeText"] = SourceExpressionConverter.ConvertToken(bodyformDescription);
+                    bodypropCount++;
+                }
+
+                if (bodythankYouText != null)
+                {
+                    body["thankYouText"] = SourceExpressionConverter.ConvertToken(bodythankYouText);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodythankYouText != null)
-            {
-                body["thankYouText"] = CSharpExpressionConverter.ConvertToken(bodythankYouText);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddFormField(Expression<Func<string>> bodyformID, Expression<Func<string>> bodyformName, Expression<Func<string>> bodyfieldName, Expression<Func<string>> bodyfieldType, Expression<Func<object>> bodyfieldConfiguration = null)
+        public IBodyWorkflowAction<JToken> AddFormField([WorkflowExpression] Func<string> bodyformID, [WorkflowExpression] Func<string> bodyformName, [WorkflowExpression] Func<string> bodyfieldName, [WorkflowExpression] Func<string> bodyfieldType, [WorkflowExpression] Func<object> bodyfieldConfiguration = null)
         {
-            var apiCallPath = "/AddFormField";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["instanceId"] = CSharpExpressionConverter.ConvertToken(bodyformID);
-            bodypropCount++;
-            body["formName"] = CSharpExpressionConverter.ConvertToken(bodyformName);
-            bodypropCount++;
-            body["fieldName"] = CSharpExpressionConverter.ConvertToken(bodyfieldName);
-            bodypropCount++;
-            body["fieldType"] = CSharpExpressionConverter.ConvertToken(bodyfieldType);
-            if (bodyfieldConfiguration != null)
+            SourceExpression.Validate(bodyformID, nameof(bodyformID), required: true);
+            SourceExpression.Validate(bodyformName, nameof(bodyformName), required: true);
+            SourceExpression.Validate(bodyfieldName, nameof(bodyfieldName), required: true);
+            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: true);
+            SourceExpression.Validate(bodyfieldConfiguration, nameof(bodyfieldConfiguration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["fieldConfiguration"] = CSharpExpressionConverter.ConvertToken(bodyfieldConfiguration);
+                var apiCallPath = "/AddFormField";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> AddAdaptiveCard(Expression<Func<string>> bodyname, Expression<Func<string>> bodycard, Expression<Func<string>> bodycardAfterSubmit = null)
-        {
-            var apiCallPath = "/AddAdaptiveCard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["card"] = CSharpExpressionConverter.ConvertToken(bodycard);
-            if (bodycardAfterSubmit != null)
-            {
-                body["cardAfterSubmit"] = CSharpExpressionConverter.ConvertToken(bodycardAfterSubmit);
+                body["instanceId"] = SourceExpressionConverter.ConvertToken(bodyformID);
                 bodypropCount++;
+                body["formName"] = SourceExpressionConverter.ConvertToken(bodyformName);
+                bodypropCount++;
+                body["fieldName"] = SourceExpressionConverter.ConvertToken(bodyfieldName);
+                bodypropCount++;
+                body["fieldType"] = SourceExpressionConverter.ConvertToken(bodyfieldType);
+                if (bodyfieldConfiguration != null)
+                {
+                    body["fieldConfiguration"] = SourceExpressionConverter.ConvertToken(bodyfieldConfiguration);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
+        public IBodyWorkflowAction<JToken> AddAdaptiveCard([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodycard, [WorkflowExpression] Func<string> bodycardAfterSubmit = null)
+        {
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodycard, nameof(bodycard), required: true);
+            SourceExpression.Validate(bodycardAfterSubmit, nameof(bodycardAfterSubmit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/AddAdaptiveCard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["card"] = SourceExpressionConverter.ConvertToken(bodycard);
+                if (bodycardAfterSubmit != null)
+                {
+                    body["cardAfterSubmit"] = SourceExpressionConverter.ConvertToken(bodycardAfterSubmit);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<JToken> GetCardResponse(Expression<Func<string>> instanceId, Expression<Func<string>> name)
+        public IBodyWorkflowAction<JToken> GetCardResponse([WorkflowExpression] Func<string> instanceId, [WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/GetCardResponse/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apppowerforms")]
-        public IBodyWorkflowAction<string> GetFormAdaptiveCardJson(Expression<Func<string>> instanceId)
+        public IBodyWorkflowAction<string> GetFormAdaptiveCardJson([WorkflowExpression] Func<string> instanceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(instanceId, nameof(instanceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/GetFormAdaptiveCardJson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(instanceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class ApppowerformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse(Expression<Func<string>> name, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerGetCardResponseResponse> TriggerGetCardResponse([WorkflowExpression] Func<string> name, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
-            return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/TriggerGetCardResponse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(name, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["timestamp"] = Convert.ToString("2021-12-31");
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerGetCardResponseResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

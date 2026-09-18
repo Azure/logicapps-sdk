@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "-NoProfile",
+    "-File",
+    "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\Validate-BuildAssets.ps1"
+  ],
+  "executable": "pwsh",
+  "validatorSha256": "058D11396A448C10423EC9E8446F61CD5F67E8B29C3D17506FAE0F8BB7D2F17F",
+  "exitCode": 0,
+  "completedUtc": "2026-09-18T13:21:55.6202650Z",
+  "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\build-assets.log",
+  "logSha256": "EEBE537475DC8592A81FFCC19AF1327B48585FEDA12F14E08F5298D167C15126"
+}

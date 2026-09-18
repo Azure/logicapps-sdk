@@ -12,63 +12,98 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.As2
     public class As2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues(Expression<Func<As2ReplicableMicContent[]>> micContent = null)
+        public IBodyWorkflowAction<MicUpdateResponse[]> AddOrUpdateMicValues([WorkflowExpression] Func<As2ReplicableMicContent[]> micContent = null)
         {
-            var apiCallPath = "/createOrUpdateMicValues";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(micContent);
-            return new ApiConnectionAction<MicUpdateResponse[]>(callPayload);
+            SourceExpression.Validate(micContent, nameof(micContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/createOrUpdateMicValues";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(micContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MicUpdateResponse[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement(Expression<Func<string>> as2From, Expression<Func<string>> as2To)
+        public IBodyWorkflowAction<As2AgreementProperties> ResolveAgreement([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To)
         {
-            var apiCallPath = "/resolveAgreement";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["as2From"] = CSharpExpressionConverter.ConvertO(as2From);
-            callPayload.Queries["as2To"] = CSharpExpressionConverter.ConvertO(as2To);
-            return new ApiConnectionAction<As2AgreementProperties>(callPayload);
+            SourceExpression.Validate(as2From, nameof(as2From), required: true);
+            SourceExpression.Validate(as2To, nameof(as2To), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/resolveAgreement";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["as2From"] = SourceExpressionConverter.ConvertO(as2From);
+                callPayload.Queries["as2To"] = SourceExpressionConverter.ConvertO(as2To);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<As2AgreementProperties>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2DecodeResponse> Decode(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<As2DecodeResponse> Decode([WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/decode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<As2DecodeResponse>(callPayload);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/decode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<As2DecodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "as2")]
-        public IBodyWorkflowAction<As2EncodeResponse> Encode(Expression<Func<string>> as2From, Expression<Func<string>> as2To, Expression<Func<string>> fileName = null, Expression<Func<string>> body = null, Expression<Func<string>> contentType = null)
+        public IBodyWorkflowAction<As2EncodeResponse> Encode([WorkflowExpression] Func<string> as2From, [WorkflowExpression] Func<string> as2To, [WorkflowExpression] Func<string> fileName = null, [WorkflowExpression] Func<string> body = null, [WorkflowExpression] Func<string> contentType = null)
         {
-            var apiCallPath = "/encode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["as2From"] = CSharpExpressionConverter.ConvertO(as2From);
-            callPayload.Queries["as2To"] = CSharpExpressionConverter.ConvertO(as2To);
-            if (fileName != null)
-                callPayload.Queries["fileName"] = CSharpExpressionConverter.ConvertO(fileName);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<As2EncodeResponse>(callPayload);
+            SourceExpression.Validate(as2From, nameof(as2From), required: true);
+            SourceExpression.Validate(as2To, nameof(as2To), required: true);
+            SourceExpression.Validate(fileName, nameof(fileName), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/encode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["as2From"] = SourceExpressionConverter.ConvertO(as2From);
+                callPayload.Queries["as2To"] = SourceExpressionConverter.ConvertO(as2To);
+                if (fileName != null)
+                    callPayload.Queries["fileName"] = SourceExpressionConverter.ConvertO(fileName);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<As2EncodeResponse>(BuildSourceInput);
         }
     }
 
     public class As2Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues(Expression<Func<string>> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<As2ReplicableMicContent[]> OnCreatedMicValues([WorkflowExpression] Func<string> startSyncTime = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers/onCreatedMicValues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startSyncTime != null)
-                callPayload.Queries["startSyncTime"] = CSharpExpressionConverter.ConvertO(startSyncTime);
-            return new ApiConnectionTrigger<As2ReplicableMicContent[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(startSyncTime, nameof(startSyncTime), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/triggers/onCreatedMicValues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startSyncTime != null)
+                    callPayload.Queries["startSyncTime"] = SourceExpressionConverter.ConvertO(startSyncTime);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<As2ReplicableMicContent[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

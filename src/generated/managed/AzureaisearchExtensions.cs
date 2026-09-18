@@ -12,250 +12,330 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Azureaisearch
     public class AzureaisearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> IndexDocument(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<JToken> IndexDocument([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = "/indexDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            var documentToIndex = new JObject();
-            var documentToIndexpropCount = 0;
-            if (documentToIndexpropCount > 0)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = documentToIndex;
+                var apiCallPath = "/indexDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                var documentToIndex = new JObject();
+                var documentToIndexpropCount = 0;
+                if (documentToIndexpropCount > 0)
+                {
+                    callPayload.Body = documentToIndex;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> IndexDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentToIndex = null)
+        public IBodyWorkflowAction<JToken> IndexDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documentToIndex = null)
         {
-            var apiCallPath = "/indexDocuments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(documentToIndex);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(documentToIndex, nameof(documentToIndex), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/indexDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(documentToIndex);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> GetIndexesSchema(Expression<Func<bool>> onlyIntegratedVectorIndexes = null)
+        public IBodyWorkflowAction<JToken[]> GetIndexesSchema([WorkflowExpression] Func<bool> onlyIntegratedVectorIndexes = null)
         {
-            var apiCallPath = "/indexesSchema";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["onlyIntegratedVectorIndexes"] = Convert.ToString(true);
-            if (onlyIntegratedVectorIndexes != null)
-                callPayload.Queries["onlyIntegratedVectorIndexes"] = CSharpExpressionConverter.ConvertO(onlyIntegratedVectorIndexes);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            SourceExpression.Validate(onlyIntegratedVectorIndexes, nameof(onlyIntegratedVectorIndexes), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/indexesSchema";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["onlyIntegratedVectorIndexes"] = Convert.ToString(true);
+                if (onlyIntegratedVectorIndexes != null)
+                    callPayload.Queries["onlyIntegratedVectorIndexes"] = SourceExpressionConverter.ConvertO(onlyIntegratedVectorIndexes);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken> GetIndexStatistics(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<JToken> GetIndexStatistics([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/indexStatistics/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/indexStatistics/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> IntegratedVectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> integratedVectorSearchRequestsearchText = null, Expression<Func<string[]>> integratedVectorSearchRequestvectorizedSearchFields = null, Expression<Func<string[]>> integratedVectorSearchRequestselectFields = null, Expression<Func<string>> integratedVectorSearchRequestfilterCondition = null, Expression<Func<string>> integratedVectorSearchRequestsessionId = null, Expression<Func<int>> integratedVectorSearchRequestnearestNeighbors = null, Expression<Func<int>> integratedVectorSearchRequesttopSearches = null, Expression<Func<int>> integratedVectorSearchRequestskipSearches = null)
+        public IBodyWorkflowAction<JToken[]> IntegratedVectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> integratedVectorSearchRequestsearchText = null, [WorkflowExpression] Func<string[]> integratedVectorSearchRequestvectorizedSearchFields = null, [WorkflowExpression] Func<string[]> integratedVectorSearchRequestselectFields = null, [WorkflowExpression] Func<string> integratedVectorSearchRequestfilterCondition = null, [WorkflowExpression] Func<string> integratedVectorSearchRequestsessionId = null, [WorkflowExpression] Func<int> integratedVectorSearchRequestnearestNeighbors = null, [WorkflowExpression] Func<int> integratedVectorSearchRequesttopSearches = null, [WorkflowExpression] Func<int> integratedVectorSearchRequestskipSearches = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integratedVectorSearch/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var integratedVectorSearchRequest = new JObject();
-            var integratedVectorSearchRequestpropCount = 0;
-            if (integratedVectorSearchRequestsearchText != null)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(integratedVectorSearchRequestsearchText, nameof(integratedVectorSearchRequestsearchText), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestvectorizedSearchFields, nameof(integratedVectorSearchRequestvectorizedSearchFields), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestselectFields, nameof(integratedVectorSearchRequestselectFields), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestfilterCondition, nameof(integratedVectorSearchRequestfilterCondition), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestsessionId, nameof(integratedVectorSearchRequestsessionId), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestnearestNeighbors, nameof(integratedVectorSearchRequestnearestNeighbors), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequesttopSearches, nameof(integratedVectorSearchRequesttopSearches), required: false);
+            SourceExpression.Validate(integratedVectorSearchRequestskipSearches, nameof(integratedVectorSearchRequestskipSearches), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                integratedVectorSearchRequest["searchText"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestsearchText);
-                integratedVectorSearchRequestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integratedVectorSearch/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var integratedVectorSearchRequest = new JObject();
+                var integratedVectorSearchRequestpropCount = 0;
+                if (integratedVectorSearchRequestsearchText != null)
+                {
+                    integratedVectorSearchRequest["searchText"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestsearchText);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestvectorizedSearchFields != null)
+                {
+                    integratedVectorSearchRequest["vectorizedSearchFields"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestvectorizedSearchFields);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestselectFields != null)
+                {
+                    integratedVectorSearchRequest["selectFields"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestselectFields);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestfilterCondition != null)
+                {
+                    integratedVectorSearchRequest["filterCondition"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestfilterCondition);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestsessionId != null)
+                {
+                    integratedVectorSearchRequest["sessionId"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestsessionId);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestnearestNeighbors != null)
+                {
+                    integratedVectorSearchRequest["nearestNeighbors"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestnearestNeighbors);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequesttopSearches != null)
+                {
+                    integratedVectorSearchRequest["top"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequesttopSearches);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestskipSearches != null)
+                {
+                    integratedVectorSearchRequest["skipSearches"] = SourceExpressionConverter.ConvertToken(integratedVectorSearchRequestskipSearches);
+                    integratedVectorSearchRequestpropCount++;
+                }
+
+                if (integratedVectorSearchRequestpropCount > 0)
+                {
+                    callPayload.Body = integratedVectorSearchRequest;
+                }
+                return callPayload;
             }
 
-            if (integratedVectorSearchRequestvectorizedSearchFields != null)
-            {
-                integratedVectorSearchRequest["vectorizedSearchFields"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestvectorizedSearchFields);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestselectFields != null)
-            {
-                integratedVectorSearchRequest["selectFields"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestselectFields);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestfilterCondition != null)
-            {
-                integratedVectorSearchRequest["filterCondition"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestfilterCondition);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestsessionId != null)
-            {
-                integratedVectorSearchRequest["sessionId"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestsessionId);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestnearestNeighbors != null)
-            {
-                integratedVectorSearchRequest["nearestNeighbors"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestnearestNeighbors);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequesttopSearches != null)
-            {
-                integratedVectorSearchRequest["top"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequesttopSearches);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestskipSearches != null)
-            {
-                integratedVectorSearchRequest["skipSearches"] = CSharpExpressionConverter.ConvertToken(integratedVectorSearchRequestskipSearches);
-                integratedVectorSearchRequestpropCount++;
-            }
-
-            if (integratedVectorSearchRequestpropCount > 0)
-            {
-                callPayload.Body = integratedVectorSearchRequest;
-            }
-
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<JToken[]> SemanticHybridSearch(Expression<Func<string>> indexName, Expression<Func<string>> semanticHybridSearchRequestsearchText = null, Expression<Func<string[]>> semanticHybridSearchRequestvectorizedSearchFields = null, Expression<Func<string>> semanticHybridSearchRequestsemanticConfiguration = null, Expression<Func<string[]>> semanticHybridSearchRequestselectFields = null, Expression<Func<string>> semanticHybridSearchRequestfilterCondition = null, Expression<Func<string>> semanticHybridSearchRequestsessionId = null, Expression<Func<int>> semanticHybridSearchRequestnearestNeighbors = null, Expression<Func<int>> semanticHybridSearchRequesttopSearches = null, Expression<Func<int>> semanticHybridSearchRequestskipSearches = null)
+        public IBodyWorkflowAction<JToken[]> SemanticHybridSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> semanticHybridSearchRequestsearchText = null, [WorkflowExpression] Func<string[]> semanticHybridSearchRequestvectorizedSearchFields = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestsemanticConfiguration = null, [WorkflowExpression] Func<string[]> semanticHybridSearchRequestselectFields = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestfilterCondition = null, [WorkflowExpression] Func<string> semanticHybridSearchRequestsessionId = null, [WorkflowExpression] Func<int> semanticHybridSearchRequestnearestNeighbors = null, [WorkflowExpression] Func<int> semanticHybridSearchRequesttopSearches = null, [WorkflowExpression] Func<int> semanticHybridSearchRequestskipSearches = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/semanticHybridSearch/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var semanticHybridSearchRequest = new JObject();
-            var semanticHybridSearchRequestpropCount = 0;
-            if (semanticHybridSearchRequestsearchText != null)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(semanticHybridSearchRequestsearchText, nameof(semanticHybridSearchRequestsearchText), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestvectorizedSearchFields, nameof(semanticHybridSearchRequestvectorizedSearchFields), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestsemanticConfiguration, nameof(semanticHybridSearchRequestsemanticConfiguration), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestselectFields, nameof(semanticHybridSearchRequestselectFields), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestfilterCondition, nameof(semanticHybridSearchRequestfilterCondition), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestsessionId, nameof(semanticHybridSearchRequestsessionId), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestnearestNeighbors, nameof(semanticHybridSearchRequestnearestNeighbors), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequesttopSearches, nameof(semanticHybridSearchRequesttopSearches), required: false);
+            SourceExpression.Validate(semanticHybridSearchRequestskipSearches, nameof(semanticHybridSearchRequestskipSearches), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                semanticHybridSearchRequest["searchText"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestsearchText);
-                semanticHybridSearchRequestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/semanticHybridSearch/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var semanticHybridSearchRequest = new JObject();
+                var semanticHybridSearchRequestpropCount = 0;
+                if (semanticHybridSearchRequestsearchText != null)
+                {
+                    semanticHybridSearchRequest["searchText"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestsearchText);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestvectorizedSearchFields != null)
+                {
+                    semanticHybridSearchRequest["vectorizedSearchFields"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestvectorizedSearchFields);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestsemanticConfiguration != null)
+                {
+                    semanticHybridSearchRequest["semanticConfiguration"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestsemanticConfiguration);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestselectFields != null)
+                {
+                    semanticHybridSearchRequest["selectFields"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestselectFields);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestfilterCondition != null)
+                {
+                    semanticHybridSearchRequest["filterCondition"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestfilterCondition);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestsessionId != null)
+                {
+                    semanticHybridSearchRequest["sessionId"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestsessionId);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestnearestNeighbors != null)
+                {
+                    semanticHybridSearchRequest["nearestNeighbors"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestnearestNeighbors);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequesttopSearches != null)
+                {
+                    semanticHybridSearchRequest["top"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequesttopSearches);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestskipSearches != null)
+                {
+                    semanticHybridSearchRequest["skipSearches"] = SourceExpressionConverter.ConvertToken(semanticHybridSearchRequestskipSearches);
+                    semanticHybridSearchRequestpropCount++;
+                }
+
+                if (semanticHybridSearchRequestpropCount > 0)
+                {
+                    callPayload.Body = semanticHybridSearchRequest;
+                }
+                return callPayload;
             }
 
-            if (semanticHybridSearchRequestvectorizedSearchFields != null)
-            {
-                semanticHybridSearchRequest["vectorizedSearchFields"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestvectorizedSearchFields);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestsemanticConfiguration != null)
-            {
-                semanticHybridSearchRequest["semanticConfiguration"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestsemanticConfiguration);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestselectFields != null)
-            {
-                semanticHybridSearchRequest["selectFields"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestselectFields);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestfilterCondition != null)
-            {
-                semanticHybridSearchRequest["filterCondition"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestfilterCondition);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestsessionId != null)
-            {
-                semanticHybridSearchRequest["sessionId"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestsessionId);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestnearestNeighbors != null)
-            {
-                semanticHybridSearchRequest["nearestNeighbors"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestnearestNeighbors);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequesttopSearches != null)
-            {
-                semanticHybridSearchRequest["top"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequesttopSearches);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestskipSearches != null)
-            {
-                semanticHybridSearchRequest["skipSearches"] = CSharpExpressionConverter.ConvertToken(semanticHybridSearchRequestskipSearches);
-                semanticHybridSearchRequestpropCount++;
-            }
-
-            if (semanticHybridSearchRequestpropCount > 0)
-            {
-                callPayload.Body = semanticHybridSearchRequest;
-            }
-
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> indexName)
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = "/deleteDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            var documentToDelete = new JObject();
-            var documentToDeletepropCount = 0;
-            if (documentToDeletepropCount > 0)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = documentToDelete;
+                var apiCallPath = "/deleteDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                var documentToDelete = new JObject();
+                var documentToDeletepropCount = 0;
+                if (documentToDeletepropCount > 0)
+                {
+                    callPayload.Body = documentToDelete;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction DeleteDocuments(Expression<Func<string>> indexName, Expression<Func<JToken[]>> documentsToDelete = null)
+        public IWorkflowAction DeleteDocuments([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<JToken[]> documentsToDelete = null)
         {
-            var apiCallPath = "/deleteDocuments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(documentsToDelete);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IWorkflowAction MergeDocument(Expression<Func<string>> indexName)
-        {
-            var apiCallPath = "/mergeDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            var documentToMerge = new JObject();
-            var documentToMergepropCount = 0;
-            if (documentToMergepropCount > 0)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(documentsToDelete, nameof(documentsToDelete), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = documentToMerge;
+                var apiCallPath = "/deleteDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(documentsToDelete);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
-        public IBodyWorkflowAction<string[]> VectorSearch(Expression<Func<string>> indexName, Expression<Func<string>> vectorFieldsName, Expression<Func<int>> nearestNeighbors, Expression<Func<double[]>> vectorFieldsValue = null, Expression<Func<string>> searchQuery = null, Expression<Func<searchModeInput>> searchMode = null, Expression<Func<string>> filterCondition = null)
+        public IWorkflowAction MergeDocument([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = "/vectorSearch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["indexName"] = CSharpExpressionConverter.ConvertO(indexName);
-            callPayload.Queries["vectorFieldsName"] = CSharpExpressionConverter.ConvertO(vectorFieldsName);
-            callPayload.Queries["nearestNeighbors"] = CSharpExpressionConverter.ConvertO(nearestNeighbors);
-            if (searchQuery != null)
-                callPayload.Queries["searchQuery"] = CSharpExpressionConverter.ConvertO(searchQuery);
-            if (searchMode != null)
-                callPayload.Queries["searchMode"] = CSharpExpressionConverter.Convert(searchMode);
-            if (filterCondition != null)
-                callPayload.Queries["filterCondition"] = CSharpExpressionConverter.ConvertO(filterCondition);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(vectorFieldsValue);
-            return new ApiConnectionAction<string[]>(callPayload);
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/mergeDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                var documentToMerge = new JObject();
+                var documentToMergepropCount = 0;
+                if (documentToMergepropCount > 0)
+                {
+                    callPayload.Body = documentToMerge;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "azureaisearch")]
+        public IBodyWorkflowAction<string[]> VectorSearch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<string> vectorFieldsName, [WorkflowExpression] Func<int> nearestNeighbors, [WorkflowExpression] Func<double[]> vectorFieldsValue = null, [WorkflowExpression] Func<string> searchQuery = null, [WorkflowExpression] Func<searchModeInput> searchMode = null, [WorkflowExpression] Func<string> filterCondition = null)
+        {
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(vectorFieldsName, nameof(vectorFieldsName), required: true);
+            SourceExpression.Validate(nearestNeighbors, nameof(nearestNeighbors), required: true);
+            SourceExpression.Validate(vectorFieldsValue, nameof(vectorFieldsValue), required: false);
+            SourceExpression.Validate(searchQuery, nameof(searchQuery), required: false);
+            SourceExpression.Validate(searchMode, nameof(searchMode), required: false);
+            SourceExpression.Validate(filterCondition, nameof(filterCondition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/vectorSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["indexName"] = SourceExpressionConverter.ConvertO(indexName);
+                callPayload.Queries["vectorFieldsName"] = SourceExpressionConverter.ConvertO(vectorFieldsName);
+                callPayload.Queries["nearestNeighbors"] = SourceExpressionConverter.ConvertO(nearestNeighbors);
+                if (searchQuery != null)
+                    callPayload.Queries["searchQuery"] = SourceExpressionConverter.ConvertO(searchQuery);
+                if (searchMode != null)
+                    callPayload.Queries["searchMode"] = SourceExpressionConverter.Convert(searchMode);
+                if (filterCondition != null)
+                    callPayload.Queries["filterCondition"] = SourceExpressionConverter.ConvertO(filterCondition);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(vectorFieldsValue);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
     }
 

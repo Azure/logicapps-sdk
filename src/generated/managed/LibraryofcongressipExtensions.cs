@@ -12,72 +12,113 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Libraryofcongressip
     public class LibraryofcongressipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = "/search/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
-            if (c != null)
-                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
-            if (at != null)
-                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(fa, nameof(fa), required: false);
+            SourceExpression.Validate(c, nameof(c), required: false);
+            SourceExpression.Validate(sp, nameof(sp), required: false);
+            SourceExpression.Validate(at, nameof(at), required: false);
+            SourceExpression.Validate(sb, nameof(sb), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = SourceExpressionConverter.ConvertO(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = SourceExpressionConverter.ConvertO(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = SourceExpressionConverter.ConvertO(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = SourceExpressionConverter.ConvertO(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = SourceExpressionConverter.ConvertO(sb);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<CollectionResponse> Collection(Expression<Func<string>> collection, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<CollectionResponse> Collection([WorkflowExpression] Func<string> collection, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collection, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
-            if (c != null)
-                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
-            if (at != null)
-                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
-            return new ApiConnectionAction<CollectionResponse>(callPayload);
+            SourceExpression.Validate(collection, nameof(collection), required: true);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(fa, nameof(fa), required: false);
+            SourceExpression.Validate(c, nameof(c), required: false);
+            SourceExpression.Validate(sp, nameof(sp), required: false);
+            SourceExpression.Validate(at, nameof(at), required: false);
+            SourceExpression.Validate(sb, nameof(sb), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collection, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = SourceExpressionConverter.ConvertO(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = SourceExpressionConverter.ConvertO(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = SourceExpressionConverter.ConvertO(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = SourceExpressionConverter.ConvertO(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = SourceExpressionConverter.ConvertO(sb);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CollectionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<FormatResponse> Format(Expression<Func<formatInput>> format, Expression<Func<string>> q, Expression<Func<string>> fa = null, Expression<Func<int>> c = null, Expression<Func<int>> sp = null, Expression<Func<string>> at = null, Expression<Func<string>> sb = null)
+        public IBodyWorkflowAction<FormatResponse> Format([WorkflowExpression] Func<formatInput> format, [WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> fa = null, [WorkflowExpression] Func<int> c = null, [WorkflowExpression] Func<int> sp = null, [WorkflowExpression] Func<string> at = null, [WorkflowExpression] Func<string> sb = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (fa != null)
-                callPayload.Queries["fa"] = CSharpExpressionConverter.ConvertO(fa);
-            if (c != null)
-                callPayload.Queries["c"] = CSharpExpressionConverter.ConvertO(c);
-            if (sp != null)
-                callPayload.Queries["sp"] = CSharpExpressionConverter.ConvertO(sp);
-            if (at != null)
-                callPayload.Queries["at"] = CSharpExpressionConverter.ConvertO(at);
-            if (sb != null)
-                callPayload.Queries["sb"] = CSharpExpressionConverter.ConvertO(sb);
-            return new ApiConnectionAction<FormatResponse>(callPayload);
+            SourceExpression.Validate(format, nameof(format), required: true);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(fa, nameof(fa), required: false);
+            SourceExpression.Validate(c, nameof(c), required: false);
+            SourceExpression.Validate(sp, nameof(sp), required: false);
+            SourceExpression.Validate(at, nameof(at), required: false);
+            SourceExpression.Validate(sb, nameof(sb), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(format, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (fa != null)
+                    callPayload.Queries["fa"] = SourceExpressionConverter.ConvertO(fa);
+                if (c != null)
+                    callPayload.Queries["c"] = SourceExpressionConverter.ConvertO(c);
+                if (sp != null)
+                    callPayload.Queries["sp"] = SourceExpressionConverter.ConvertO(sp);
+                if (at != null)
+                    callPayload.Queries["at"] = SourceExpressionConverter.ConvertO(at);
+                if (sb != null)
+                    callPayload.Queries["sb"] = SourceExpressionConverter.ConvertO(sb);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FormatResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "libraryofcongressip")]
-        public IBodyWorkflowAction<ItemResponse> Item(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<ItemResponse> Item([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/item/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ItemResponse>(callPayload);
+            SourceExpression.Validate(identifier, nameof(identifier), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/item/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemResponse>(BuildSourceInput);
         }
     }
 

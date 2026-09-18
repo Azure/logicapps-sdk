@@ -12,15 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Waybackmachineip
     public class WaybackmachineipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "waybackmachineip")]
-        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot(Expression<Func<string>> url, Expression<Func<string>> timestamp = null)
+        public IBodyWorkflowAction<GetSnapshotResponse> GetSnapshot([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> timestamp = null)
         {
-            var apiCallPath = "/wayback/available";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            if (timestamp != null)
-                callPayload.Queries["timestamp"] = CSharpExpressionConverter.ConvertO(timestamp);
-            return new ApiConnectionAction<GetSnapshotResponse>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: true);
+            SourceExpression.Validate(timestamp, nameof(timestamp), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/wayback/available";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (timestamp != null)
+                    callPayload.Queries["timestamp"] = SourceExpressionConverter.ConvertO(timestamp);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSnapshotResponse>(BuildSourceInput);
         }
     }
 

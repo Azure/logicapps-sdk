@@ -12,231 +12,286 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudfenxtquery
     public class BlackbaudfenxtqueryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus(Expression<Func<moduleInput>> module, Expression<Func<string>> jobId, Expression<Func<includeReadUrlInput>> includeReadUrl = null, Expression<Func<contentDispositionInput>> contentDisposition = null)
+        public IBodyWorkflowAction<QueryApiQueryExecutionJob> GetQueryJobStatus([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<string> jobId, [WorkflowExpression] Func<includeReadUrlInput> includeReadUrl = null, [WorkflowExpression] Func<contentDispositionInput> contentDisposition = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
-            callPayload.Queries["include_read_url"] = Convert.ToString("OnceCompleted");
-            if (includeReadUrl != null)
-                callPayload.Queries["include_read_url"] = CSharpExpressionConverter.Convert(includeReadUrl);
-            callPayload.Queries["content_disposition"] = Convert.ToString("Attachment");
-            if (contentDisposition != null)
-                callPayload.Queries["content_disposition"] = CSharpExpressionConverter.Convert(contentDisposition);
-            return new ApiConnectionAction<QueryApiQueryExecutionJob>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries(Expression<Func<moduleInput>> module, Expression<Func<int>> queryTypeId = null, Expression<Func<int>> category = null, Expression<Func<queryFormatInput>> queryFormat = null, Expression<Func<string>> searchText = null, Expression<Func<bool>> myFavQueriesOnly = null, Expression<Func<bool>> myQueriesOnly = null, Expression<Func<bool>> mergedQueriesOnly = null, Expression<Func<sortColumnInput>> sortColumn = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> addedBy = null, Expression<Func<bool>> sortDescending = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null)
-        {
-            var apiCallPath = "/query/queries";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
-            if (queryTypeId != null)
-                callPayload.Queries["query_type_id"] = CSharpExpressionConverter.ConvertO(queryTypeId);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            if (queryFormat != null)
-                callPayload.Queries["query_format"] = CSharpExpressionConverter.Convert(queryFormat);
-            if (searchText != null)
-                callPayload.Queries["search_text"] = CSharpExpressionConverter.ConvertO(searchText);
-            if (myFavQueriesOnly != null)
-                callPayload.Queries["my_fav_queries_only"] = CSharpExpressionConverter.ConvertO(myFavQueriesOnly);
-            if (myQueriesOnly != null)
-                callPayload.Queries["my_queries_only"] = CSharpExpressionConverter.ConvertO(myQueriesOnly);
-            if (mergedQueriesOnly != null)
-                callPayload.Queries["merged_queries_only"] = CSharpExpressionConverter.ConvertO(mergedQueriesOnly);
-            if (sortColumn != null)
-                callPayload.Queries["sort_column"] = CSharpExpressionConverter.Convert(sortColumn);
-            if (dateAdded != null)
-                callPayload.Queries["date_added"] = CSharpExpressionConverter.ConvertO(dateAdded);
-            if (addedBy != null)
-                callPayload.Queries["added_by"] = CSharpExpressionConverter.ConvertO(addedBy);
-            if (sortDescending != null)
-                callPayload.Queries["sort_descending"] = CSharpExpressionConverter.ConvertO(sortDescending);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            return new ApiConnectionAction<QueryApiQuerySummaryCollection>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<string>> bodyfilename = null)
-        {
-            var apiCallPath = "/query/queries/execute";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (queryObjectpropCount > 0)
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(jobId, nameof(jobId), required: true);
+            SourceExpression.Validate(includeReadUrl, nameof(includeReadUrl), required: false);
+            SourceExpression.Validate(contentDisposition, nameof(contentDisposition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["query"] = queryObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/query/jobs/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(jobId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                callPayload.Queries["include_read_url"] = Convert.ToString("OnceCompleted");
+                if (includeReadUrl != null)
+                    callPayload.Queries["include_read_url"] = SourceExpressionConverter.Convert(includeReadUrl);
+                callPayload.Queries["content_disposition"] = Convert.ToString("Attachment");
+                if (contentDisposition != null)
+                    callPayload.Queries["content_disposition"] = SourceExpressionConverter.Convert(contentDisposition);
+                return callPayload;
             }
 
-            if (bodyoutputFormat != null)
+            return new ApiConnectionAction<QueryApiQueryExecutionJob>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
+        public IBodyWorkflowAction<QueryApiQuerySummaryCollection> ListQueries([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> queryTypeId = null, [WorkflowExpression] Func<int> category = null, [WorkflowExpression] Func<queryFormatInput> queryFormat = null, [WorkflowExpression] Func<string> searchText = null, [WorkflowExpression] Func<bool> myFavQueriesOnly = null, [WorkflowExpression] Func<bool> myQueriesOnly = null, [WorkflowExpression] Func<bool> mergedQueriesOnly = null, [WorkflowExpression] Func<sortColumnInput> sortColumn = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> addedBy = null, [WorkflowExpression] Func<bool> sortDescending = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null)
+        {
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(queryTypeId, nameof(queryTypeId), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(queryFormat, nameof(queryFormat), required: false);
+            SourceExpression.Validate(searchText, nameof(searchText), required: false);
+            SourceExpression.Validate(myFavQueriesOnly, nameof(myFavQueriesOnly), required: false);
+            SourceExpression.Validate(myQueriesOnly, nameof(myQueriesOnly), required: false);
+            SourceExpression.Validate(mergedQueriesOnly, nameof(mergedQueriesOnly), required: false);
+            SourceExpression.Validate(sortColumn, nameof(sortColumn), required: false);
+            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
+            SourceExpression.Validate(addedBy, nameof(addedBy), required: false);
+            SourceExpression.Validate(sortDescending, nameof(sortDescending), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/query/queries";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                if (queryTypeId != null)
+                    callPayload.Queries["query_type_id"] = SourceExpressionConverter.ConvertO(queryTypeId);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                if (queryFormat != null)
+                    callPayload.Queries["query_format"] = SourceExpressionConverter.Convert(queryFormat);
+                if (searchText != null)
+                    callPayload.Queries["search_text"] = SourceExpressionConverter.ConvertO(searchText);
+                if (myFavQueriesOnly != null)
+                    callPayload.Queries["my_fav_queries_only"] = SourceExpressionConverter.ConvertO(myFavQueriesOnly);
+                if (myQueriesOnly != null)
+                    callPayload.Queries["my_queries_only"] = SourceExpressionConverter.ConvertO(myQueriesOnly);
+                if (mergedQueriesOnly != null)
+                    callPayload.Queries["merged_queries_only"] = SourceExpressionConverter.ConvertO(mergedQueriesOnly);
+                if (sortColumn != null)
+                    callPayload.Queries["sort_column"] = SourceExpressionConverter.Convert(sortColumn);
+                if (dateAdded != null)
+                    callPayload.Queries["date_added"] = SourceExpressionConverter.ConvertO(dateAdded);
+                if (addedBy != null)
+                    callPayload.Queries["added_by"] = SourceExpressionConverter.ConvertO(addedBy);
+                if (sortDescending != null)
+                    callPayload.Queries["sort_descending"] = SourceExpressionConverter.ConvertO(sortDescending);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<QueryApiQuerySummaryCollection>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartAdHocQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<string> bodyfilename = null)
+        {
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            SourceExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
+            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/query/queries/execute";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (queryObjectpropCount > 0)
+                {
+                    body["query"] = queryObject;
+                    bodypropCount++;
+                }
+
                 if (bodyoutputFormat != null)
                 {
-                    body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
+                    if (bodyoutputFormat != null)
+                    {
+                        body["output_format"] = SourceExpressionConverter.Convert(bodyoutputFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["output_format"] = "Csv";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["output_format"] = "Csv";
-                bodypropCount++;
-            }
-
-            if (bodyformattingMode != null)
-            {
                 if (bodyformattingMode != null)
                 {
-                    body["formatting_mode"] = CSharpExpressionConverter.Convert(bodyformattingMode);
+                    if (bodyformattingMode != null)
+                    {
+                        body["formatting_mode"] = SourceExpressionConverter.Convert(bodyformattingMode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["formatting_mode"] = "None";
                     bodypropCount++;
                 }
 
+                if (bodyfilename != null)
+                {
+                    body["results_file_name"] = SourceExpressionConverter.ConvertToken(bodyfilename);
+                    bodypropCount++;
+                }
+
+                body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
-            }
-            else
-            {
-                body["formatting_mode"] = "None";
-                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfilename != null)
-            {
-                body["results_file_name"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
-                bodypropCount++;
-            }
-
-            body["ux_mode"] = "Asynchronous";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
+            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery, Expression<Func<bodyoutputFormatInput>> bodyoutputFormat = null, Expression<Func<bodyformattingModeInput>> bodyformattingMode = null, Expression<Func<bodysQLGenerationModeInput>> bodysQLGenerationMode = null, Expression<Func<bool>> bodyuseStaticQuery = null, Expression<Func<string>> bodyfilename = null)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery, [WorkflowExpression] Func<bodyoutputFormatInput> bodyoutputFormat = null, [WorkflowExpression] Func<bodyformattingModeInput> bodyformattingMode = null, [WorkflowExpression] Func<bodysQLGenerationModeInput> bodysQLGenerationMode = null, [WorkflowExpression] Func<bool> bodyuseStaticQuery = null, [WorkflowExpression] Func<string> bodyfilename = null)
         {
-            var apiCallPath = "/query/queries/executebyid";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["v_query_type_id"] = CSharpExpressionConverter.ConvertToken(bodytype);
-            bodypropCount++;
-            body["id"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-            if (bodyoutputFormat != null)
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodyoutputFormat, nameof(bodyoutputFormat), required: false);
+            SourceExpression.Validate(bodyformattingMode, nameof(bodyformattingMode), required: false);
+            SourceExpression.Validate(bodysQLGenerationMode, nameof(bodysQLGenerationMode), required: false);
+            SourceExpression.Validate(bodyuseStaticQuery, nameof(bodyuseStaticQuery), required: false);
+            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/query/queries/executebyid";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["v_query_type_id"] = SourceExpressionConverter.ConvertToken(bodytype);
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyquery);
                 if (bodyoutputFormat != null)
                 {
-                    body["output_format"] = CSharpExpressionConverter.Convert(bodyoutputFormat);
+                    if (bodyoutputFormat != null)
+                    {
+                        body["output_format"] = SourceExpressionConverter.Convert(bodyoutputFormat);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["output_format"] = "Csv";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["output_format"] = "Csv";
-                bodypropCount++;
-            }
-
-            if (bodyformattingMode != null)
-            {
                 if (bodyformattingMode != null)
                 {
-                    body["formatting_mode"] = CSharpExpressionConverter.Convert(bodyformattingMode);
+                    if (bodyformattingMode != null)
+                    {
+                        body["formatting_mode"] = SourceExpressionConverter.Convert(bodyformattingMode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["formatting_mode"] = "None";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["formatting_mode"] = "None";
-                bodypropCount++;
-            }
-
-            if (bodysQLGenerationMode != null)
-            {
                 if (bodysQLGenerationMode != null)
                 {
-                    body["sql_generation_mode"] = CSharpExpressionConverter.Convert(bodysQLGenerationMode);
+                    if (bodysQLGenerationMode != null)
+                    {
+                        body["sql_generation_mode"] = SourceExpressionConverter.Convert(bodysQLGenerationMode);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["sql_generation_mode"] = "Query";
                     bodypropCount++;
                 }
 
+                if (bodyuseStaticQuery != null)
+                {
+                    body["use_static_query_id_set"] = SourceExpressionConverter.ConvertToken(bodyuseStaticQuery);
+                    bodypropCount++;
+                }
+
+                if (bodyfilename != null)
+                {
+                    body["results_file_name"] = SourceExpressionConverter.ConvertToken(bodyfilename);
+                    bodypropCount++;
+                }
+
+                body["ux_mode"] = "Asynchronous";
                 bodypropCount++;
-            }
-            else
-            {
-                body["sql_generation_mode"] = "Query";
-                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyuseStaticQuery != null)
-            {
-                body["use_static_query_id_set"] = CSharpExpressionConverter.ConvertToken(bodyuseStaticQuery);
-                bodypropCount++;
-            }
-
-            if (bodyfilename != null)
-            {
-                body["results_file_name"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
-                bodypropCount++;
-            }
-
-            body["ux_mode"] = "Asynchronous";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
+            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudfenxtquery")]
-        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob(Expression<Func<moduleInput>> module, Expression<Func<int>> bodytype, Expression<Func<int>> bodyquery)
+        public IBodyWorkflowAction<QueryApiExecuteQueryResponse> StartRefreshStaticQueryExecutionJob([WorkflowExpression] Func<moduleInput> module, [WorkflowExpression] Func<int> bodytype, [WorkflowExpression] Func<int> bodyquery)
         {
-            var apiCallPath = "/query/queries/refreshstaticquery";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["product"] = Convert.ToString("FE");
-            callPayload.Queries["module"] = CSharpExpressionConverter.Convert(module);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["v_query_type_id"] = CSharpExpressionConverter.ConvertToken(bodytype);
-            bodypropCount++;
-            body["id"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-            body["ux_mode"] = "Asynchronous";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(module, nameof(module), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/query/queries/refreshstaticquery";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["product"] = Convert.ToString("FE");
+                callPayload.Queries["module"] = SourceExpressionConverter.Convert(module);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["v_query_type_id"] = SourceExpressionConverter.ConvertToken(bodytype);
+                bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                body["ux_mode"] = "Asynchronous";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(callPayload);
+            return new ApiConnectionAction<QueryApiExecuteQueryResponse>(BuildSourceInput);
         }
     }
 

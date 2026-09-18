@@ -12,224 +12,304 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Treenationip
     public class TreenationipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList(Expression<Func<string>> status)
+        public IBodyWorkflowAction<ProjectListResponseItem[]> ProjectList([WorkflowExpression] Func<string> status)
         {
-            var apiCallPath = "/api/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
-            return new ApiConnectionAction<ProjectListResponseItem[]>(callPayload);
+            SourceExpression.Validate(status, nameof(status), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<ProjectDetailsResponse> ProjectDetails([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProjectDetailsResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SitesListResponseItem[]> SitesList(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<SitesListResponseItem[]> SitesList([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SitesListResponseItem[]>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/planting-sites", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SitesListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<SpeciesListResponseItem[]> SpeciesList([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SpeciesListResponseItem[]>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/projects/{0}/species", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpeciesListResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails(Expression<Func<string>> speciesId)
+        public IBodyWorkflowAction<SpeciesDetailsResponse> SpeciesDetails([WorkflowExpression] Func<string> speciesId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/species/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(speciesId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SpeciesDetailsResponse>(callPayload);
+            SourceExpression.Validate(speciesId, nameof(speciesId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/species/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(speciesId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpeciesDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<ForestDetailsResponse> ForestDetails([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ForestDetailsResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forests/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ForestDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount(Expression<Func<string>> userSlug, Expression<Func<string>> period)
+        public IBodyWorkflowAction<ForestTreeCountResponse> ForestTreeCount([WorkflowExpression] Func<string> userSlug, [WorkflowExpression] Func<string> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userSlug, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ForestTreeCountResponse>(callPayload);
+            SourceExpression.Validate(userSlug, nameof(userSlug), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/forests/{0}/tree_counter/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userSlug, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ForestTreeCountResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<PlantResponse> Plant(Expression<Func<bodyrecipientsInputItem[]>> bodyrecipients = null, Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyspeciesId = null, Expression<Func<int>> bodyquantity = null, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<PlantResponse> Plant([WorkflowExpression] Func<bodyrecipientsInputItem[]> bodyrecipients = null, [WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyspeciesId = null, [WorkflowExpression] Func<int> bodyquantity = null, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = "/api/plant";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrecipients != null)
+            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            SourceExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
+            SourceExpression.Validate(bodyspeciesId, nameof(bodyspeciesId), required: false);
+            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
-                bodypropCount++;
+                var apiCallPath = "/api/plant";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                    bodypropCount++;
+                }
+
+                if (bodyplanterId != null)
+                {
+                    body["planter_id"] = SourceExpressionConverter.ConvertToken(bodyplanterId);
+                    bodypropCount++;
+                }
+
+                if (bodyspeciesId != null)
+                {
+                    body["species_id"] = SourceExpressionConverter.ConvertToken(bodyspeciesId);
+                    bodypropCount++;
+                }
+
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyplanterId != null)
-            {
-                body["planter_id"] = CSharpExpressionConverter.ConvertToken(bodyplanterId);
-                bodypropCount++;
-            }
-
-            if (bodyspeciesId != null)
-            {
-                body["species_id"] = CSharpExpressionConverter.ConvertToken(bodyspeciesId);
-                bodypropCount++;
-            }
-
-            if (bodyquantity != null)
-            {
-                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
-                bodypropCount++;
-            }
-
-            if (bodymessage != null)
-            {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PlantResponse>(callPayload);
+            return new ApiConnectionAction<PlantResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<CreateUserResponse> CreateUser(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodyresponsibleName = null, Expression<Func<string>> bodyorganizationWebsite = null)
+        public IBodyWorkflowAction<CreateUserResponse> CreateUser([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodyresponsibleName = null, [WorkflowExpression] Func<string> bodyorganizationWebsite = null)
         {
-            var apiCallPath = "/api/user/b2b";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodyresponsibleName, nameof(bodyresponsibleName), required: false);
+            SourceExpression.Validate(bodyorganizationWebsite, nameof(bodyorganizationWebsite), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/api/user/b2b";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodyresponsibleName != null)
+                {
+                    body["responsible_name"] = SourceExpressionConverter.ConvertToken(bodyresponsibleName);
+                    bodypropCount++;
+                }
+
+                if (bodyorganizationWebsite != null)
+                {
+                    body["organization_website"] = SourceExpressionConverter.ConvertToken(bodyorganizationWebsite);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyemail != null)
-            {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodyresponsibleName != null)
-            {
-                body["responsible_name"] = CSharpExpressionConverter.ConvertToken(bodyresponsibleName);
-                bodypropCount++;
-            }
-
-            if (bodyorganizationWebsite != null)
-            {
-                body["organization_website"] = CSharpExpressionConverter.ConvertToken(bodyorganizationWebsite);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUserResponse>(callPayload);
+            return new ApiConnectionAction<CreateUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails(Expression<Func<string>> planterId)
+        public IBodyWorkflowAction<TreeTemplateDetailsResponse> TreeTemplateDetails([WorkflowExpression] Func<string> planterId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TreeTemplateDetailsResponse>(callPayload);
+            SourceExpression.Validate(planterId, nameof(planterId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TreeTemplateDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate(Expression<Func<string>> planterId, Expression<Func<string>> bodymessage = null)
+        public IBodyWorkflowAction<UpdateTreeTemplateResponse> UpdateTreeTemplate([WorkflowExpression] Func<string> planterId, [WorkflowExpression] Func<string> bodymessage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessage != null)
+            SourceExpression.Validate(planterId, nameof(planterId), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/tree_templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(planterId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessage != null)
+                {
+                    body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateTreeTemplateResponse>(callPayload);
+            return new ApiConnectionAction<UpdateTreeTemplateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "treenationip")]
-        public IBodyWorkflowAction<BuyCreditResponse> BuyCredit(Expression<Func<int>> bodyplanterId = null, Expression<Func<int>> bodyamount = null)
+        public IBodyWorkflowAction<BuyCreditResponse> BuyCredit([WorkflowExpression] Func<int> bodyplanterId = null, [WorkflowExpression] Func<int> bodyamount = null)
         {
-            var apiCallPath = "/api/credit";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyplanterId != null)
+            SourceExpression.Validate(bodyplanterId, nameof(bodyplanterId), required: false);
+            SourceExpression.Validate(bodyamount, nameof(bodyamount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["planter_id"] = CSharpExpressionConverter.ConvertToken(bodyplanterId);
-                bodypropCount++;
+                var apiCallPath = "/api/credit";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyplanterId != null)
+                {
+                    body["planter_id"] = SourceExpressionConverter.ConvertToken(bodyplanterId);
+                    bodypropCount++;
+                }
+
+                if (bodyamount != null)
+                {
+                    body["amount"] = SourceExpressionConverter.ConvertToken(bodyamount);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyamount != null)
-            {
-                body["amount"] = CSharpExpressionConverter.ConvertToken(bodyamount);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BuyCreditResponse>(callPayload);
+            return new ApiConnectionAction<BuyCreditResponse>(BuildSourceInput);
         }
     }
 

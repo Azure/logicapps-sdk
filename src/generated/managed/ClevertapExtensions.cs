@@ -12,21 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clevertap
     public class ClevertapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clevertap")]
-        public IWorkflowAction UploadProfiles(Expression<Func<bodydInputItem[]>> bodyd)
+        public IWorkflowAction UploadProfiles([WorkflowExpression] Func<bodydInputItem[]> bodyd)
         {
-            var apiCallPath = "/1/upload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["d"] = CSharpExpressionConverter.ConvertToken(bodyd);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyd, nameof(bodyd), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/1/upload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["d"] = SourceExpressionConverter.ConvertToken(bodyd);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

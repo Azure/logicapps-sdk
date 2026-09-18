@@ -14,46 +14,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Decentralandip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
         public IBodyWorkflowAction<GetDistrictsResponse> GetDistricts()
         {
-            var apiCallPath = "/districts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDistrictsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/districts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDistrictsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails(Expression<Func<string>> x, Expression<Func<string>> y)
+        public IBodyWorkflowAction<GetParcelDetailsResponse> GetParcelDetails([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetParcelDetailsResponse>(callPayload);
+            SourceExpression.Validate(x, nameof(x), required: true);
+            SourceExpression.Validate(y, nameof(y), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetParcelDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap(Expression<Func<string>> x, Expression<Func<string>> y, Expression<Func<int>> width, Expression<Func<int>> height, Expression<Func<int>> size, Expression<Func<bool>> publication)
+        public IBodyWorkflowAction<GetParcelMapResponse> GetParcelMap([WorkflowExpression] Func<string> x, [WorkflowExpression] Func<string> y, [WorkflowExpression] Func<int> width, [WorkflowExpression] Func<int> height, [WorkflowExpression] Func<int> size, [WorkflowExpression] Func<bool> publication)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["width"] = CSharpExpressionConverter.ConvertO(width);
-            callPayload.Queries["height"] = CSharpExpressionConverter.ConvertO(height);
-            callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            callPayload.Queries["publication"] = CSharpExpressionConverter.ConvertO(publication);
-            return new ApiConnectionAction<GetParcelMapResponse>(callPayload);
+            SourceExpression.Validate(x, nameof(x), required: true);
+            SourceExpression.Validate(y, nameof(y), required: true);
+            SourceExpression.Validate(width, nameof(width), required: true);
+            SourceExpression.Validate(height, nameof(height), required: true);
+            SourceExpression.Validate(size, nameof(size), required: true);
+            SourceExpression.Validate(publication, nameof(publication), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/parcels/{0}/{1}/map.png", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(x, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(y, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["width"] = SourceExpressionConverter.ConvertO(width);
+                callPayload.Queries["height"] = SourceExpressionConverter.ConvertO(height);
+                callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                callPayload.Queries["publication"] = SourceExpressionConverter.ConvertO(publication);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetParcelMapResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "decentralandip")]
-        public IBodyWorkflowAction<GetTilesResponse> GetId(Expression<Func<string>> x1, Expression<Func<string>> x2, Expression<Func<string>> y1, Expression<Func<string>> y2, Expression<Func<string>> include)
+        public IBodyWorkflowAction<GetTilesResponse> GetId([WorkflowExpression] Func<string> x1, [WorkflowExpression] Func<string> x2, [WorkflowExpression] Func<string> y1, [WorkflowExpression] Func<string> y2, [WorkflowExpression] Func<string> include)
         {
-            var apiCallPath = "/tiles";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["x1"] = CSharpExpressionConverter.ConvertO(x1);
-            callPayload.Queries["x2"] = CSharpExpressionConverter.ConvertO(x2);
-            callPayload.Queries["y1"] = CSharpExpressionConverter.ConvertO(y1);
-            callPayload.Queries["y2"] = CSharpExpressionConverter.ConvertO(y2);
-            callPayload.Queries["include"] = CSharpExpressionConverter.ConvertO(include);
-            return new ApiConnectionAction<GetTilesResponse>(callPayload);
+            SourceExpression.Validate(x1, nameof(x1), required: true);
+            SourceExpression.Validate(x2, nameof(x2), required: true);
+            SourceExpression.Validate(y1, nameof(y1), required: true);
+            SourceExpression.Validate(y2, nameof(y2), required: true);
+            SourceExpression.Validate(include, nameof(include), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tiles";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["x1"] = SourceExpressionConverter.ConvertO(x1);
+                callPayload.Queries["x2"] = SourceExpressionConverter.ConvertO(x2);
+                callPayload.Queries["y1"] = SourceExpressionConverter.ConvertO(y1);
+                callPayload.Queries["y2"] = SourceExpressionConverter.ConvertO(y2);
+                callPayload.Queries["include"] = SourceExpressionConverter.ConvertO(include);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTilesResponse>(BuildSourceInput);
         }
     }
 

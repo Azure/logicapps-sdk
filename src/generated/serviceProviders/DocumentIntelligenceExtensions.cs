@@ -14,21 +14,28 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DocumentIntelligence
     public class DocumentIntelligenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "documentIntelligence")]
-        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument(Expression<Func<AnalyzeDocumentInputModelIdType>> modelId, Expression<Func<object>> modelIdInputs = null)
+        public IBodyWorkflowAction<AnalyzeDocumentOutput> AnalyzeDocument([WorkflowExpression] Func<AnalyzeDocumentInputModelIdType> modelId, [WorkflowExpression] Func<object> modelIdInputs = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["modelId"] = CSharpExpressionConverter.ConvertToken(modelId);
-            if (modelIdInputs != null)
+            SourceExpression.Validate(modelId, nameof(modelId), required: true);
+            SourceExpression.Validate(modelIdInputs, nameof(modelIdInputs), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["modelIdInputs"] = CSharpExpressionConverter.ConvertToken(modelIdInputs);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["modelId"] = SourceExpressionConverter.ConvertToken(modelId);
+                if (modelIdInputs != null)
+                {
+                    serviceProviderParameters["modelIdInputs"] = SourceExpressionConverter.ConvertToken(modelIdInputs);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/documentIntelligence", operationId: "analyzeDocument", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<AnalyzeDocumentOutput>(serviceProviderInput);
+            return new ServiceProviderAction<AnalyzeDocumentOutput>(BuildSourceInput);
         }
     }
 

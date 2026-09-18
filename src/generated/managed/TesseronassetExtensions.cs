@@ -12,259 +12,315 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tesseronasset
     public class TesseronassetActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<AddAssetResponse> AddAsset(Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<string>> bodyliveCycleName = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<AddAssetResponse> AddAsset([WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<string> bodydocumentationName = null, [WorkflowExpression] Func<string> bodyliveCycleName = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            var apiCallPath = "/AddAsset";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
-            if (bodyenterpriseId != null)
+            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
+            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            SourceExpression.Validate(bodydocumentationName, nameof(bodydocumentationName), required: false);
+            SourceExpression.Validate(bodyliveCycleName, nameof(bodyliveCycleName), required: false);
+            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
+                var apiCallPath = "/AddAsset";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["AssetTemplateId"] = SourceExpressionConverter.ConvertToken(bodyassetTemplateId);
+                if (bodyenterpriseId != null)
+                {
+                    body["EnterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
 
-            if (bodystatus != null)
-            {
-                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyreferenceNumber != null)
+                {
+                    body["ReferenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentationId != null)
+                {
+                    body["DocumentationId"] = SourceExpressionConverter.ConvertToken(bodydocumentationId);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentationName != null)
+                {
+                    body["DocumentationName"] = SourceExpressionConverter.ConvertToken(bodydocumentationName);
+                    bodypropCount++;
+                }
+
+                if (bodyliveCycleName != null)
+                {
+                    body["LiveCycleName"] = SourceExpressionConverter.ConvertToken(bodyliveCycleName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["Fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodyattachments != null)
+                {
+                    body["Attachments"] = SourceExpressionConverter.ConvertToken(bodyattachments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreferenceNumber != null)
-            {
-                body["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
-                bodypropCount++;
-            }
-
-            if (bodydocumentationId != null)
-            {
-                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
-                bodypropCount++;
-            }
-
-            if (bodydocumentationName != null)
-            {
-                body["DocumentationName"] = CSharpExpressionConverter.ConvertToken(bodydocumentationName);
-                bodypropCount++;
-            }
-
-            if (bodyliveCycleName != null)
-            {
-                body["LiveCycleName"] = CSharpExpressionConverter.ConvertToken(bodyliveCycleName);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
-            if (bodyattachments != null)
-            {
-                body["Attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddAssetResponse>(callPayload);
+            return new ApiConnectionAction<AddAssetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<int>> bodyassetId, Expression<Func<int>> bodyassetTemplateId, Expression<Func<bodyfieldsInputItem[]>> bodyfields, Expression<Func<string>> bodyreferenceNumber = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<string>> bodydocumentationName = null, Expression<Func<int>> bodystatus = null, Expression<Func<string>> bodyliveCycleState = null, Expression<Func<bodyattachmentsInputItem[]>> bodyattachments = null)
+        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<int> bodyassetId, [WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<bodyfieldsInputItem[]> bodyfields, [WorkflowExpression] Func<string> bodyreferenceNumber = null, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<string> bodydocumentationName = null, [WorkflowExpression] Func<int> bodystatus = null, [WorkflowExpression] Func<string> bodyliveCycleState = null, [WorkflowExpression] Func<bodyattachmentsInputItem[]> bodyattachments = null)
         {
-            var apiCallPath = "/UpdateAsset";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["AssetId"] = CSharpExpressionConverter.ConvertToken(bodyassetId);
-            bodypropCount++;
-            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
-            if (bodyreferenceNumber != null)
+            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: true);
+            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            SourceExpression.Validate(bodyfields, nameof(bodyfields), required: true);
+            SourceExpression.Validate(bodyreferenceNumber, nameof(bodyreferenceNumber), required: false);
+            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            SourceExpression.Validate(bodydocumentationName, nameof(bodydocumentationName), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodyliveCycleState, nameof(bodyliveCycleState), required: false);
+            SourceExpression.Validate(bodyattachments, nameof(bodyattachments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ReferenceNumber"] = CSharpExpressionConverter.ConvertToken(bodyreferenceNumber);
+                var apiCallPath = "/UpdateAsset";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyenterpriseId != null)
-            {
-                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
+                body["AssetId"] = SourceExpressionConverter.ConvertToken(bodyassetId);
                 bodypropCount++;
-            }
+                body["AssetTemplateId"] = SourceExpressionConverter.ConvertToken(bodyassetTemplateId);
+                if (bodyreferenceNumber != null)
+                {
+                    body["ReferenceNumber"] = SourceExpressionConverter.ConvertToken(bodyreferenceNumber);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentationId != null)
-            {
-                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
+                if (bodyenterpriseId != null)
+                {
+                    body["EnterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentationId != null)
+                {
+                    body["DocumentationId"] = SourceExpressionConverter.ConvertToken(bodydocumentationId);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentationName != null)
+                {
+                    body["DocumentationName"] = SourceExpressionConverter.ConvertToken(bodydocumentationName);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["Status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodyliveCycleState != null)
+                {
+                    body["LiveCycleState"] = SourceExpressionConverter.ConvertToken(bodyliveCycleState);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["Fields"] = SourceExpressionConverter.ConvertToken(bodyfields);
+                if (bodyattachments != null)
+                {
+                    body["Attachments"] = SourceExpressionConverter.ConvertToken(bodyattachments);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydocumentationName != null)
-            {
-                body["DocumentationName"] = CSharpExpressionConverter.ConvertToken(bodydocumentationName);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["Status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodyliveCycleState != null)
-            {
-                body["LiveCycleState"] = CSharpExpressionConverter.ConvertToken(bodyliveCycleState);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Fields"] = CSharpExpressionConverter.ConvertToken(bodyfields);
-            if (bodyattachments != null)
-            {
-                body["Attachments"] = CSharpExpressionConverter.ConvertToken(bodyattachments);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateAssetResponse>(callPayload);
+            return new ApiConnectionAction<UpdateAssetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch(Expression<Func<int>> bodyskip, Expression<Func<int>> bodypageSize, Expression<Func<int>> bodyassetTemplateId, Expression<Func<string>> bodysearch = null, Expression<Func<int>> bodyenterpriseId = null, Expression<Func<int>> bodydocumentationId = null, Expression<Func<int>> bodyassetStatus = null, Expression<Func<bool>> bodyisDeprecated = null, Expression<Func<string>> bodylastUpdateDateStart = null, Expression<Func<string>> bodylastUpdateDateEnd = null, Expression<Func<int>> bodyresponseType = null, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null)
+        public IBodyWorkflowAction<GetAssetSearchResponse> GetAssetSearch([WorkflowExpression] Func<int> bodyskip, [WorkflowExpression] Func<int> bodypageSize, [WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<string> bodysearch = null, [WorkflowExpression] Func<int> bodyenterpriseId = null, [WorkflowExpression] Func<int> bodydocumentationId = null, [WorkflowExpression] Func<int> bodyassetStatus = null, [WorkflowExpression] Func<bool> bodyisDeprecated = null, [WorkflowExpression] Func<string> bodylastUpdateDateStart = null, [WorkflowExpression] Func<string> bodylastUpdateDateEnd = null, [WorkflowExpression] Func<int> bodyresponseType = null, [WorkflowExpression] Func<bool> bodyincludeAccessAuditedFieldValues = null)
         {
-            var apiCallPath = "/GetAssetSearch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Skip"] = CSharpExpressionConverter.ConvertToken(bodyskip);
-            bodypropCount++;
-            body["PageSize"] = CSharpExpressionConverter.ConvertToken(bodypageSize);
-            if (bodysearch != null)
+            SourceExpression.Validate(bodyskip, nameof(bodyskip), required: true);
+            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: true);
+            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            SourceExpression.Validate(bodysearch, nameof(bodysearch), required: false);
+            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            SourceExpression.Validate(bodydocumentationId, nameof(bodydocumentationId), required: false);
+            SourceExpression.Validate(bodyassetStatus, nameof(bodyassetStatus), required: false);
+            SourceExpression.Validate(bodyisDeprecated, nameof(bodyisDeprecated), required: false);
+            SourceExpression.Validate(bodylastUpdateDateStart, nameof(bodylastUpdateDateStart), required: false);
+            SourceExpression.Validate(bodylastUpdateDateEnd, nameof(bodylastUpdateDateEnd), required: false);
+            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
+            SourceExpression.Validate(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["search"] = CSharpExpressionConverter.ConvertToken(bodysearch);
+                var apiCallPath = "/GetAssetSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
-            if (bodyenterpriseId != null)
-            {
-                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
+                body["Skip"] = SourceExpressionConverter.ConvertToken(bodyskip);
                 bodypropCount++;
-            }
+                body["PageSize"] = SourceExpressionConverter.ConvertToken(bodypageSize);
+                if (bodysearch != null)
+                {
+                    body["search"] = SourceExpressionConverter.ConvertToken(bodysearch);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentationId != null)
-            {
-                body["DocumentationId"] = CSharpExpressionConverter.ConvertToken(bodydocumentationId);
                 bodypropCount++;
+                body["AssetTemplateId"] = SourceExpressionConverter.ConvertToken(bodyassetTemplateId);
+                if (bodyenterpriseId != null)
+                {
+                    body["EnterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentationId != null)
+                {
+                    body["DocumentationId"] = SourceExpressionConverter.ConvertToken(bodydocumentationId);
+                    bodypropCount++;
+                }
+
+                if (bodyassetStatus != null)
+                {
+                    body["AssetStatus"] = SourceExpressionConverter.ConvertToken(bodyassetStatus);
+                    bodypropCount++;
+                }
+
+                if (bodyisDeprecated != null)
+                {
+                    body["IsDeprecated"] = SourceExpressionConverter.ConvertToken(bodyisDeprecated);
+                    bodypropCount++;
+                }
+
+                if (bodylastUpdateDateStart != null)
+                {
+                    body["LastUpdateDateStart"] = SourceExpressionConverter.ConvertToken(bodylastUpdateDateStart);
+                    bodypropCount++;
+                }
+
+                if (bodylastUpdateDateEnd != null)
+                {
+                    body["LastUpdateDateEnd"] = SourceExpressionConverter.ConvertToken(bodylastUpdateDateEnd);
+                    bodypropCount++;
+                }
+
+                if (bodyresponseType != null)
+                {
+                    body["ResponseType"] = SourceExpressionConverter.ConvertToken(bodyresponseType);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeAccessAuditedFieldValues != null)
+                {
+                    body["IncludeAccessAuditedFieldValues"] = SourceExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyassetStatus != null)
-            {
-                body["AssetStatus"] = CSharpExpressionConverter.ConvertToken(bodyassetStatus);
-                bodypropCount++;
-            }
-
-            if (bodyisDeprecated != null)
-            {
-                body["IsDeprecated"] = CSharpExpressionConverter.ConvertToken(bodyisDeprecated);
-                bodypropCount++;
-            }
-
-            if (bodylastUpdateDateStart != null)
-            {
-                body["LastUpdateDateStart"] = CSharpExpressionConverter.ConvertToken(bodylastUpdateDateStart);
-                bodypropCount++;
-            }
-
-            if (bodylastUpdateDateEnd != null)
-            {
-                body["LastUpdateDateEnd"] = CSharpExpressionConverter.ConvertToken(bodylastUpdateDateEnd);
-                bodypropCount++;
-            }
-
-            if (bodyresponseType != null)
-            {
-                body["ResponseType"] = CSharpExpressionConverter.ConvertToken(bodyresponseType);
-                bodypropCount++;
-            }
-
-            if (bodyincludeAccessAuditedFieldValues != null)
-            {
-                body["IncludeAccessAuditedFieldValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAssetSearchResponse>(callPayload);
+            return new ApiConnectionAction<GetAssetSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo(Expression<Func<int>> bodyassetId, Expression<Func<bool>> bodyincludeAccessAuditedFieldValues = null, Expression<Func<int>> bodyresponseType = null)
+        public IBodyWorkflowAction<GetAssetInfoResponse> GetAssetInfo([WorkflowExpression] Func<int> bodyassetId, [WorkflowExpression] Func<bool> bodyincludeAccessAuditedFieldValues = null, [WorkflowExpression] Func<int> bodyresponseType = null)
         {
-            var apiCallPath = "/GetAssetInfo";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["AssetId"] = CSharpExpressionConverter.ConvertToken(bodyassetId);
-            if (bodyincludeAccessAuditedFieldValues != null)
+            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: true);
+            SourceExpression.Validate(bodyincludeAccessAuditedFieldValues, nameof(bodyincludeAccessAuditedFieldValues), required: false);
+            SourceExpression.Validate(bodyresponseType, nameof(bodyresponseType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["IncludeAccessAuditedFieldValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
+                var apiCallPath = "/GetAssetInfo";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["AssetId"] = SourceExpressionConverter.ConvertToken(bodyassetId);
+                if (bodyincludeAccessAuditedFieldValues != null)
+                {
+                    body["IncludeAccessAuditedFieldValues"] = SourceExpressionConverter.ConvertToken(bodyincludeAccessAuditedFieldValues);
+                    bodypropCount++;
+                }
+
+                if (bodyresponseType != null)
+                {
+                    body["ResponseType"] = SourceExpressionConverter.ConvertToken(bodyresponseType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyresponseType != null)
-            {
-                body["ResponseType"] = CSharpExpressionConverter.ConvertToken(bodyresponseType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetAssetInfoResponse>(callPayload);
+            return new ApiConnectionAction<GetAssetInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tesseronasset")]
-        public IBodyWorkflowAction<GetConfigResponse> GetConfig(Expression<Func<int>> bodyassetTemplateId, Expression<Func<int>> bodyenterpriseId = null)
+        public IBodyWorkflowAction<GetConfigResponse> GetConfig([WorkflowExpression] Func<int> bodyassetTemplateId, [WorkflowExpression] Func<int> bodyenterpriseId = null)
         {
-            var apiCallPath = "/GetConfig";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["AssetTemplateId"] = CSharpExpressionConverter.ConvertToken(bodyassetTemplateId);
-            if (bodyenterpriseId != null)
+            SourceExpression.Validate(bodyassetTemplateId, nameof(bodyassetTemplateId), required: true);
+            SourceExpression.Validate(bodyenterpriseId, nameof(bodyenterpriseId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["EnterpriseId"] = CSharpExpressionConverter.ConvertToken(bodyenterpriseId);
+                var apiCallPath = "/GetConfig";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["AssetTemplateId"] = SourceExpressionConverter.ConvertToken(bodyassetTemplateId);
+                if (bodyenterpriseId != null)
+                {
+                    body["EnterpriseId"] = SourceExpressionConverter.ConvertToken(bodyenterpriseId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetConfigResponse>(callPayload);
+            return new ApiConnectionAction<GetConfigResponse>(BuildSourceInput);
         }
     }
 

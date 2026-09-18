@@ -14,124 +14,162 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Oracledb
     public class OracledbActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables(Expression<Func<bool>> ownedTables = null)
+        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables([WorkflowExpression] Func<bool> ownedTables = null)
         {
-            var serviceProviderParameters = new JObject();
-            if (ownedTables != null)
+            SourceExpression.Validate(ownedTables, nameof(ownedTables), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["ownedTables"] = CSharpExpressionConverter.ConvertToken(ownedTables);
-            }
-            else
-            {
-                serviceProviderParameters["ownedTables"] = false;
+                var serviceProviderParameters = new JObject();
+                if (ownedTables != null)
+                {
+                    serviceProviderParameters["ownedTables"] = SourceExpressionConverter.ConvertToken(ownedTables);
+                }
+                else
+                {
+                    serviceProviderParameters["ownedTables"] = false;
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getTables", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getTables", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+            return new ServiceProviderAction<GetTablesOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
-            if (queryParameters != null)
+            SourceExpression.Validate(query, nameof(query), required: true);
+            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["query"] = SourceExpressionConverter.ConvertToken(query);
+                if (queryParameters != null)
+                {
+                    serviceProviderParameters["queryParameters"] = SourceExpressionConverter.ConvertToken(queryParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeQuery", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeQuery", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            return new ServiceProviderAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IBodyWorkflowAction<JToken[]> GetRows(Expression<Func<string>> tableName, Expression<Func<object>> columnValuesForWhereCondition = null, Expression<Func<int>> skipCount = null, Expression<Func<int>> maxCount = null, Expression<Func<string>> orderBy = null, Expression<Func<string[]>> filterBy = null)
+        public IBodyWorkflowAction<JToken[]> GetRows([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> columnValuesForWhereCondition = null, [WorkflowExpression] Func<int> skipCount = null, [WorkflowExpression] Func<int> maxCount = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<string[]> filterBy = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
-            if (columnValuesForWhereCondition != null)
+            SourceExpression.Validate(tableName, nameof(tableName), required: true);
+            SourceExpression.Validate(columnValuesForWhereCondition, nameof(columnValuesForWhereCondition), required: false);
+            SourceExpression.Validate(skipCount, nameof(skipCount), required: false);
+            SourceExpression.Validate(maxCount, nameof(maxCount), required: false);
+            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
+            SourceExpression.Validate(filterBy, nameof(filterBy), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["columnValuesForWhereCondition"] = CSharpExpressionConverter.ConvertToken(columnValuesForWhereCondition);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = SourceExpressionConverter.ConvertToken(tableName);
+                if (columnValuesForWhereCondition != null)
+                {
+                    serviceProviderParameters["columnValuesForWhereCondition"] = SourceExpressionConverter.ConvertToken(columnValuesForWhereCondition);
+                }
+
+                if (skipCount != null)
+                {
+                    serviceProviderParameters["skipCount"] = SourceExpressionConverter.ConvertToken(skipCount);
+                }
+                else
+                {
+                    serviceProviderParameters["skipCount"] = 0;
+                }
+
+                if (maxCount != null)
+                {
+                    serviceProviderParameters["maxCount"] = SourceExpressionConverter.ConvertToken(maxCount);
+                }
+                else
+                {
+                    serviceProviderParameters["maxCount"] = 0;
+                }
+
+                if (orderBy != null)
+                {
+                    serviceProviderParameters["orderBy"] = SourceExpressionConverter.ConvertToken(orderBy);
+                }
+
+                if (filterBy != null)
+                {
+                    serviceProviderParameters["filterBy"] = SourceExpressionConverter.ConvertToken(filterBy);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getRows", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (skipCount != null)
-            {
-                serviceProviderParameters["skipCount"] = CSharpExpressionConverter.ConvertToken(skipCount);
-            }
-            else
-            {
-                serviceProviderParameters["skipCount"] = 0;
-            }
-
-            if (maxCount != null)
-            {
-                serviceProviderParameters["maxCount"] = CSharpExpressionConverter.ConvertToken(maxCount);
-            }
-            else
-            {
-                serviceProviderParameters["maxCount"] = 0;
-            }
-
-            if (orderBy != null)
-            {
-                serviceProviderParameters["orderBy"] = CSharpExpressionConverter.ConvertToken(orderBy);
-            }
-
-            if (filterBy != null)
-            {
-                serviceProviderParameters["filterBy"] = CSharpExpressionConverter.ConvertToken(filterBy);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "getRows", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            return new ServiceProviderAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IBodyWorkflowAction<JToken> InsertRow(Expression<Func<string>> tableName, Expression<Func<object>> setColumns = null)
+        public IBodyWorkflowAction<JToken> InsertRow([WorkflowExpression] Func<string> tableName, [WorkflowExpression] Func<object> setColumns = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
-            if (setColumns != null)
+            SourceExpression.Validate(tableName, nameof(tableName), required: true);
+            SourceExpression.Validate(setColumns, nameof(setColumns), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["setColumns"] = CSharpExpressionConverter.ConvertToken(setColumns);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = SourceExpressionConverter.ConvertToken(tableName);
+                if (setColumns != null)
+                {
+                    serviceProviderParameters["setColumns"] = SourceExpressionConverter.ConvertToken(setColumns);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "insertRow", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "insertRow", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken>(serviceProviderInput);
+            return new ServiceProviderAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "oracledb")]
-        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure(Expression<Func<string>> storedProcedure, Expression<Func<object>> storedProcedureParameters = null)
+        public IBodyWorkflowAction<ExecuteStoredProcedureOutput> ExecuteStoredProcedure([WorkflowExpression] Func<string> storedProcedure, [WorkflowExpression] Func<object> storedProcedureParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["storedProcedure"] = CSharpExpressionConverter.ConvertToken(storedProcedure);
-            if (storedProcedureParameters != null)
+            SourceExpression.Validate(storedProcedure, nameof(storedProcedure), required: true);
+            SourceExpression.Validate(storedProcedureParameters, nameof(storedProcedureParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["storedProcedureParameters"] = CSharpExpressionConverter.ConvertToken(storedProcedureParameters);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["storedProcedure"] = SourceExpressionConverter.ConvertToken(storedProcedure);
+                if (storedProcedureParameters != null)
+                {
+                    serviceProviderParameters["storedProcedureParameters"] = SourceExpressionConverter.ConvertToken(storedProcedureParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeStoredProcedure", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/oracledb", operationId: "executeStoredProcedure", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(serviceProviderInput);
+            return new ServiceProviderAction<ExecuteStoredProcedureOutput>(BuildSourceInput);
         }
     }
 

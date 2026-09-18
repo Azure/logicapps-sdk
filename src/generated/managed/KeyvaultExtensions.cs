@@ -14,171 +14,262 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Keyvault
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<KeyMetadataCollection> ListKeys()
         {
-            var apiCallPath = "/keys";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions(Expression<Func<string>> keyName)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadataCollection>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata(Expression<Func<string>> keyName)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KeyMetadata>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = CSharpExpressionConverter.Convert(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["rawData"] = CSharpExpressionConverter.ConvertToken(operationInputrawData);
-            if (operationInputpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = operationInput;
+                var apiCallPath = "/keys";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+            return new ApiConnectionAction<KeyMetadataCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputrawData)
+        public IBodyWorkflowAction<KeyMetadataCollection> ListKeyVersions([WorkflowExpression] Func<string> keyName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = CSharpExpressionConverter.Convert(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["rawData"] = CSharpExpressionConverter.ConvertToken(operationInputrawData);
-            if (operationInputpropCount > 0)
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = operationInput;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<KeyEncryptOutput>(callPayload);
+            return new ApiConnectionAction<KeyMetadataCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData(Expression<Func<string>> keyName, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyMetadata> GetKeyMetadata([WorkflowExpression] Func<string> keyName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = CSharpExpressionConverter.Convert(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["encryptedData"] = CSharpExpressionConverter.ConvertToken(operationInputencryptedData);
-            if (operationInputpropCount > 0)
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = operationInput;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+            return new ApiConnectionAction<KeyMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion(Expression<Func<string>> keyName, Expression<Func<string>> keyVersion, Expression<Func<operationInputalgorithmInput>> operationInputalgorithm, Expression<Func<string>> operationInputencryptedData)
+        public IBodyWorkflowAction<KeyMetadata> GetKeyVersionMetadata([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var operationInput = new JObject();
-            var operationInputpropCount = 0;
-            operationInputpropCount++;
-            operationInput["algorithm"] = CSharpExpressionConverter.Convert(operationInputalgorithm);
-            operationInputpropCount++;
-            operationInput["encryptedData"] = CSharpExpressionConverter.ConvertToken(operationInputencryptedData);
-            if (operationInputpropCount > 0)
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = operationInput;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<KeyDecryptOutput>(callPayload);
+            return new ApiConnectionAction<KeyMetadata>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
+        {
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            SourceExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/encrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = SourceExpressionConverter.Convert(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["rawData"] = SourceExpressionConverter.ConvertToken(operationInputrawData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KeyEncryptOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        public IBodyWorkflowAction<KeyEncryptOutput> EncryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputrawData)
+        {
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            SourceExpression.Validate(operationInputrawData, nameof(operationInputrawData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/encrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = SourceExpressionConverter.Convert(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["rawData"] = SourceExpressionConverter.ConvertToken(operationInputrawData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KeyEncryptOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptData([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
+        {
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            SourceExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/decrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = SourceExpressionConverter.Convert(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["encryptedData"] = SourceExpressionConverter.ConvertToken(operationInputencryptedData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KeyDecryptOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
+        public IBodyWorkflowAction<KeyDecryptOutput> DecryptDataWithVersion([WorkflowExpression] Func<string> keyName, [WorkflowExpression] Func<string> keyVersion, [WorkflowExpression] Func<operationInputalgorithmInput> operationInputalgorithm, [WorkflowExpression] Func<string> operationInputencryptedData)
+        {
+            SourceExpression.Validate(keyName, nameof(keyName), required: true);
+            SourceExpression.Validate(keyVersion, nameof(keyVersion), required: true);
+            SourceExpression.Validate(operationInputalgorithm, nameof(operationInputalgorithm), required: true);
+            SourceExpression.Validate(operationInputencryptedData, nameof(operationInputencryptedData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/keys/{0}/versions/{1}/decrypt", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(keyVersion, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var operationInput = new JObject();
+                var operationInputpropCount = 0;
+                operationInputpropCount++;
+                operationInput["algorithm"] = SourceExpressionConverter.Convert(operationInputalgorithm);
+                operationInputpropCount++;
+                operationInput["encryptedData"] = SourceExpressionConverter.ConvertToken(operationInputencryptedData);
+                if (operationInputpropCount > 0)
+                {
+                    callPayload.Body = operationInput;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KeyDecryptOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
         public IBodyWorkflowAction<SecretMetadataCollection> ListSecrets()
         {
-            var apiCallPath = "/secrets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/secrets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SecretMetadataCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadataCollection> ListSecretVersions([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadataCollection>(callPayload);
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SecretMetadataCollection>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<SecretMetadata> GetSecretMetadata([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadata>(callPayload);
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SecretMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<SecretMetadata> GetSecretVersionMetadata([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SecretMetadata>(callPayload);
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            SourceExpression.Validate(secretVersion, nameof(secretVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SecretMetadata>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecret(Expression<Func<string>> secretName)
+        public IBodyWorkflowAction<Secret> GetSecret([WorkflowExpression] Func<string> secretName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Secret>(callPayload);
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Secret>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "keyvault")]
-        public IBodyWorkflowAction<Secret> GetSecretVersion(Expression<Func<string>> secretName, Expression<Func<string>> secretVersion)
+        public IBodyWorkflowAction<Secret> GetSecretVersion([WorkflowExpression] Func<string> secretName, [WorkflowExpression] Func<string> secretVersion)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Secret>(callPayload);
+            SourceExpression.Validate(secretName, nameof(secretName), required: true);
+            SourceExpression.Validate(secretVersion, nameof(secretVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/secrets/{0}/versions/{1}/value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(secretVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Secret>(BuildSourceInput);
         }
     }
 

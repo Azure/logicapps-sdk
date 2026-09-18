@@ -12,38 +12,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Everyip
     public class EveryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<BrowseResponse> Browse(Expression<Func<string>> cause, Expression<Func<int>> take = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<BrowseResponse> Browse([WorkflowExpression] Func<string> cause, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/browse/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cause, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (take != null)
-                callPayload.Queries["take"] = CSharpExpressionConverter.ConvertO(take);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<BrowseResponse>(callPayload);
+            SourceExpression.Validate(cause, nameof(cause), required: true);
+            SourceExpression.Validate(take, nameof(take), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/browse/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cause, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (take != null)
+                    callPayload.Queries["take"] = SourceExpressionConverter.ConvertO(take);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BrowseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> term, Expression<Func<int>> take = null, Expression<Func<string>> cause = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<int> take = null, [WorkflowExpression] Func<string> cause = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/search/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(term, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (take != null)
-                callPayload.Queries["take"] = CSharpExpressionConverter.ConvertO(take);
-            if (cause != null)
-                callPayload.Queries["cause"] = CSharpExpressionConverter.ConvertO(cause);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            SourceExpression.Validate(term, nameof(term), required: true);
+            SourceExpression.Validate(take, nameof(take), required: false);
+            SourceExpression.Validate(cause, nameof(cause), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/search/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(term, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (take != null)
+                    callPayload.Queries["take"] = SourceExpressionConverter.ConvertO(take);
+                if (cause != null)
+                    callPayload.Queries["cause"] = SourceExpressionConverter.ConvertO(cause);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "everyip")]
-        public IBodyWorkflowAction<DetailsResponse> Details(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<DetailsResponse> Details([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/nonprofit/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DetailsResponse>(callPayload);
+            SourceExpression.Validate(identifier, nameof(identifier), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/nonprofit/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetailsResponse>(BuildSourceInput);
         }
     }
 

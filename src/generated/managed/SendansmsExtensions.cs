@@ -12,48 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sendansms
     public class SendansmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sendansms")]
-        public IWorkflowAction SendSms(Expression<Func<string>> xTopMessageKey, Expression<Func<string>> contentType = null, Expression<Func<string>> bodydatafrom = null, Expression<Func<string[]>> bodydatato = null, Expression<Func<string>> bodydatatext = null)
+        public IWorkflowAction SendSms([WorkflowExpression] Func<string> xTopMessageKey, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> bodydatafrom = null, [WorkflowExpression] Func<string[]> bodydatato = null, [WorkflowExpression] Func<string> bodydatatext = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-TopMessage-Key"] = CSharpExpressionConverter.ConvertO(xTopMessageKey);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodydatafrom != null)
+            SourceExpression.Validate(xTopMessageKey, nameof(xTopMessageKey), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(bodydatafrom, nameof(bodydatafrom), required: false);
+            SourceExpression.Validate(bodydatato, nameof(bodydatato), required: false);
+            SourceExpression.Validate(bodydatatext, nameof(bodydatatext), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dataObject["from"] = CSharpExpressionConverter.ConvertToken(bodydatafrom);
-                dataObjectpropCount++;
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-TopMessage-Key"] = SourceExpressionConverter.ConvertO(xTopMessageKey);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodydatafrom != null)
+                {
+                    dataObject["from"] = SourceExpressionConverter.ConvertToken(bodydatafrom);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatato != null)
+                {
+                    dataObject["to"] = SourceExpressionConverter.ConvertToken(bodydatato);
+                    dataObjectpropCount++;
+                }
+
+                if (bodydatatext != null)
+                {
+                    dataObject["text"] = SourceExpressionConverter.ConvertToken(bodydatatext);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydatato != null)
-            {
-                dataObject["to"] = CSharpExpressionConverter.ConvertToken(bodydatato);
-                dataObjectpropCount++;
-            }
-
-            if (bodydatatext != null)
-            {
-                dataObject["text"] = CSharpExpressionConverter.ConvertToken(bodydatatext);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

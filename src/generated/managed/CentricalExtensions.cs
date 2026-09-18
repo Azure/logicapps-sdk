@@ -12,63 +12,83 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Centrical
     public class CentricalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction PostLearning(Expression<Func<string>> learningType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodycourseName, Expression<Func<double>> bodyscore, Expression<Func<string>> bodycontentCategory = null)
+        public IWorkflowAction PostLearning([WorkflowExpression] Func<string> learningType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodycourseName, [WorkflowExpression] Func<double> bodyscore, [WorkflowExpression] Func<string> bodycontentCategory = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(learningType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event_time"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
-            bodypropCount++;
-            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
-            bodypropCount++;
-            body["course_name"] = CSharpExpressionConverter.ConvertToken(bodycourseName);
-            bodypropCount++;
-            body["score"] = CSharpExpressionConverter.ConvertToken(bodyscore);
-            if (bodycontentCategory != null)
+            SourceExpression.Validate(learningType, nameof(learningType), required: true);
+            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
+            SourceExpression.Validate(bodycourseName, nameof(bodycourseName), required: true);
+            SourceExpression.Validate(bodyscore, nameof(bodyscore), required: true);
+            SourceExpression.Validate(bodycontentCategory, nameof(bodycontentCategory), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["course_category"] = CSharpExpressionConverter.ConvertToken(bodycontentCategory);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/push/lms_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(learningType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["event_time"] = SourceExpressionConverter.ConvertToken(bodydateTime);
+                bodypropCount++;
+                body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                bodypropCount++;
+                body["course_name"] = SourceExpressionConverter.ConvertToken(bodycourseName);
+                bodypropCount++;
+                body["score"] = SourceExpressionConverter.ConvertToken(bodyscore);
+                if (bodycontentCategory != null)
+                {
+                    body["course_category"] = SourceExpressionConverter.ConvertToken(bodycontentCategory);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "centrical")]
-        public IWorkflowAction PostPerformance(Expression<Func<string>> performanceType, Expression<Func<string>> bodydateTime, Expression<Func<string>> bodyuserId, Expression<Func<string>> bodykpiName, Expression<Func<double>> bodykpiValue, Expression<Func<string>> bodyadditionalData = null)
+        public IWorkflowAction PostPerformance([WorkflowExpression] Func<string> performanceType, [WorkflowExpression] Func<string> bodydateTime, [WorkflowExpression] Func<string> bodyuserId, [WorkflowExpression] Func<string> bodykpiName, [WorkflowExpression] Func<double> bodykpiValue, [WorkflowExpression] Func<string> bodyadditionalData = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(performanceType, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["event_time"] = CSharpExpressionConverter.ConvertToken(bodydateTime);
-            bodypropCount++;
-            body["user_id"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
-            bodypropCount++;
-            body["kpi_name"] = CSharpExpressionConverter.ConvertToken(bodykpiName);
-            bodypropCount++;
-            body["kpi_value"] = CSharpExpressionConverter.ConvertToken(bodykpiValue);
-            if (bodyadditionalData != null)
+            SourceExpression.Validate(performanceType, nameof(performanceType), required: true);
+            SourceExpression.Validate(bodydateTime, nameof(bodydateTime), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: true);
+            SourceExpression.Validate(bodykpiName, nameof(bodykpiName), required: true);
+            SourceExpression.Validate(bodykpiValue, nameof(bodykpiValue), required: true);
+            SourceExpression.Validate(bodyadditionalData, nameof(bodyadditionalData), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["additional_data"] = CSharpExpressionConverter.ConvertToken(bodyadditionalData);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/import/push/kpi_{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(performanceType, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["event_time"] = SourceExpressionConverter.ConvertToken(bodydateTime);
+                bodypropCount++;
+                body["user_id"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                bodypropCount++;
+                body["kpi_name"] = SourceExpressionConverter.ConvertToken(bodykpiName);
+                bodypropCount++;
+                body["kpi_value"] = SourceExpressionConverter.ConvertToken(bodykpiValue);
+                if (bodyadditionalData != null)
+                {
+                    body["additional_data"] = SourceExpressionConverter.ConvertToken(bodyadditionalData);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

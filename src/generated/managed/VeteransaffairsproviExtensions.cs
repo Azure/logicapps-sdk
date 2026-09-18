@@ -12,143 +12,221 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsprovi
     public class VeteransaffairsproviActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<LocationBundle> GetLocation(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<LocationBundle> GetLocation([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            var apiCallPath = "/Location";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
-            if (address != null)
-                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
-            if (addressCity != null)
-                callPayload.Queries["address-city"] = CSharpExpressionConverter.ConvertO(addressCity);
-            if (addressState != null)
-                callPayload.Queries["address-state"] = CSharpExpressionConverter.ConvertO(addressState);
-            if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = CSharpExpressionConverter.ConvertO(addressPostalcode);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
-            return new ApiConnectionAction<LocationBundle>(callPayload);
+            SourceExpression.Validate(Id, nameof(Id), required: false);
+            SourceExpression.Validate(identifier, nameof(identifier), required: false);
+            SourceExpression.Validate(address, nameof(address), required: false);
+            SourceExpression.Validate(addressCity, nameof(addressCity), required: false);
+            SourceExpression.Validate(addressState, nameof(addressState), required: false);
+            SourceExpression.Validate(addressPostalcode, nameof(addressPostalcode), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(Count, nameof(Count), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Location";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Id != null)
+                    callPayload.Queries["_id"] = SourceExpressionConverter.ConvertO(Id);
+                if (identifier != null)
+                    callPayload.Queries["identifier"] = SourceExpressionConverter.ConvertO(identifier);
+                if (address != null)
+                    callPayload.Queries["address"] = SourceExpressionConverter.ConvertO(address);
+                if (addressCity != null)
+                    callPayload.Queries["address-city"] = SourceExpressionConverter.ConvertO(addressCity);
+                if (addressState != null)
+                    callPayload.Queries["address-state"] = SourceExpressionConverter.ConvertO(addressState);
+                if (addressPostalcode != null)
+                    callPayload.Queries["address-postalcode"] = SourceExpressionConverter.ConvertO(addressPostalcode);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = SourceExpressionConverter.ConvertO(LastUpdated);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LocationBundle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Location> GetLocationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Location> GetLocationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Location/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Location>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Location/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Location>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<OrganizationBundle> ListOrganizations(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> address = null, Expression<Func<string>> addressCity = null, Expression<Func<string>> addressState = null, Expression<Func<string>> addressPostalcode = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<OrganizationBundle> ListOrganizations([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<string> addressCity = null, [WorkflowExpression] Func<string> addressState = null, [WorkflowExpression] Func<string> addressPostalcode = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            var apiCallPath = "/Organization";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
-            if (address != null)
-                callPayload.Queries["address"] = CSharpExpressionConverter.ConvertO(address);
-            if (addressCity != null)
-                callPayload.Queries["address-city"] = CSharpExpressionConverter.ConvertO(addressCity);
-            if (addressState != null)
-                callPayload.Queries["address-state"] = CSharpExpressionConverter.ConvertO(addressState);
-            if (addressPostalcode != null)
-                callPayload.Queries["address-postalcode"] = CSharpExpressionConverter.ConvertO(addressPostalcode);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
-            return new ApiConnectionAction<OrganizationBundle>(callPayload);
+            SourceExpression.Validate(Id, nameof(Id), required: false);
+            SourceExpression.Validate(identifier, nameof(identifier), required: false);
+            SourceExpression.Validate(address, nameof(address), required: false);
+            SourceExpression.Validate(addressCity, nameof(addressCity), required: false);
+            SourceExpression.Validate(addressState, nameof(addressState), required: false);
+            SourceExpression.Validate(addressPostalcode, nameof(addressPostalcode), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(Count, nameof(Count), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Organization";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Id != null)
+                    callPayload.Queries["_id"] = SourceExpressionConverter.ConvertO(Id);
+                if (identifier != null)
+                    callPayload.Queries["identifier"] = SourceExpressionConverter.ConvertO(identifier);
+                if (address != null)
+                    callPayload.Queries["address"] = SourceExpressionConverter.ConvertO(address);
+                if (addressCity != null)
+                    callPayload.Queries["address-city"] = SourceExpressionConverter.ConvertO(addressCity);
+                if (addressState != null)
+                    callPayload.Queries["address-state"] = SourceExpressionConverter.ConvertO(addressState);
+                if (addressPostalcode != null)
+                    callPayload.Queries["address-postalcode"] = SourceExpressionConverter.ConvertO(addressPostalcode);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = SourceExpressionConverter.ConvertO(LastUpdated);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OrganizationBundle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Organization> GetOrganizationById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Organization> GetOrganizationById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Organization/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Organization>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Organization/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Organization>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerBundle> ListPractitioners(Expression<Func<string>> Id = null, Expression<Func<string>> identifier = null, Expression<Func<string>> family = null, Expression<Func<string>> given = null, Expression<Func<string>> name = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerBundle> ListPractitioners([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> identifier = null, [WorkflowExpression] Func<string> family = null, [WorkflowExpression] Func<string> given = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            var apiCallPath = "/Practitioner";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
-            if (identifier != null)
-                callPayload.Queries["identifier"] = CSharpExpressionConverter.ConvertO(identifier);
-            if (family != null)
-                callPayload.Queries["family"] = CSharpExpressionConverter.ConvertO(family);
-            if (given != null)
-                callPayload.Queries["given"] = CSharpExpressionConverter.ConvertO(given);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
-            return new ApiConnectionAction<PractitionerBundle>(callPayload);
+            SourceExpression.Validate(Id, nameof(Id), required: false);
+            SourceExpression.Validate(identifier, nameof(identifier), required: false);
+            SourceExpression.Validate(family, nameof(family), required: false);
+            SourceExpression.Validate(given, nameof(given), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(Count, nameof(Count), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Practitioner";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Id != null)
+                    callPayload.Queries["_id"] = SourceExpressionConverter.ConvertO(Id);
+                if (identifier != null)
+                    callPayload.Queries["identifier"] = SourceExpressionConverter.ConvertO(identifier);
+                if (family != null)
+                    callPayload.Queries["family"] = SourceExpressionConverter.ConvertO(family);
+                if (given != null)
+                    callPayload.Queries["given"] = SourceExpressionConverter.ConvertO(given);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = SourceExpressionConverter.ConvertO(LastUpdated);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PractitionerBundle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<Practitioner> GetPractitionerById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Practitioner> GetPractitionerById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Practitioner>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Practitioner/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Practitioner>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles(Expression<Func<string>> Id = null, Expression<Func<string>> practitionerIdentifier = null, Expression<Func<string>> practitionerName = null, Expression<Func<string>> LastUpdated = null, Expression<Func<int>> page = null, Expression<Func<int>> Count = null)
+        public IBodyWorkflowAction<PractitionerRoleBundle> ListPractitionerRoles([WorkflowExpression] Func<string> Id = null, [WorkflowExpression] Func<string> practitionerIdentifier = null, [WorkflowExpression] Func<string> practitionerName = null, [WorkflowExpression] Func<string> LastUpdated = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> Count = null)
         {
-            var apiCallPath = "/PractitionerRole";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (Id != null)
-                callPayload.Queries["_id"] = CSharpExpressionConverter.ConvertO(Id);
-            if (practitionerIdentifier != null)
-                callPayload.Queries["practitioner.identifier"] = CSharpExpressionConverter.ConvertO(practitionerIdentifier);
-            if (practitionerName != null)
-                callPayload.Queries["practitioner.name"] = CSharpExpressionConverter.ConvertO(practitionerName);
-            if (LastUpdated != null)
-                callPayload.Queries["_lastUpdated"] = CSharpExpressionConverter.ConvertO(LastUpdated);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (Count != null)
-                callPayload.Queries["_count"] = CSharpExpressionConverter.ConvertO(Count);
-            return new ApiConnectionAction<PractitionerRoleBundle>(callPayload);
+            SourceExpression.Validate(Id, nameof(Id), required: false);
+            SourceExpression.Validate(practitionerIdentifier, nameof(practitionerIdentifier), required: false);
+            SourceExpression.Validate(practitionerName, nameof(practitionerName), required: false);
+            SourceExpression.Validate(LastUpdated, nameof(LastUpdated), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(Count, nameof(Count), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PractitionerRole";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (Id != null)
+                    callPayload.Queries["_id"] = SourceExpressionConverter.ConvertO(Id);
+                if (practitionerIdentifier != null)
+                    callPayload.Queries["practitioner.identifier"] = SourceExpressionConverter.ConvertO(practitionerIdentifier);
+                if (practitionerName != null)
+                    callPayload.Queries["practitioner.name"] = SourceExpressionConverter.ConvertO(practitionerName);
+                if (LastUpdated != null)
+                    callPayload.Queries["_lastUpdated"] = SourceExpressionConverter.ConvertO(LastUpdated);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (Count != null)
+                    callPayload.Queries["_count"] = SourceExpressionConverter.ConvertO(Count);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PractitionerRoleBundle>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsprovi")]
-        public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PractitionerRole> GetPractitionerRoleById([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PractitionerRole>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PractitionerRole/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PractitionerRole>(BuildSourceInput);
         }
     }
 

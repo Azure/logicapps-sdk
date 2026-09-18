@@ -12,26 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstracttimezones
     public class AbstracttimezonesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
-        public IBodyWorkflowAction<GetCurrentTimeResponse> GetCurrentTime(Expression<Func<string>> location)
+        public IBodyWorkflowAction<GetCurrentTimeResponse> GetCurrentTime([WorkflowExpression] Func<string> location)
         {
-            var apiCallPath = "/v1/current_time";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["location"] = CSharpExpressionConverter.ConvertO(location);
-            return new ApiConnectionAction<GetCurrentTimeResponse>(callPayload);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/current_time";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["location"] = SourceExpressionConverter.ConvertO(location);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCurrentTimeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstracttimezones")]
-        public IBodyWorkflowAction<ConvertTimeResponse> ConvertTime(Expression<Func<string>> baseLocation, Expression<Func<string>> targetLocation, Expression<Func<string>> baseDatetime = null)
+        public IBodyWorkflowAction<ConvertTimeResponse> ConvertTime([WorkflowExpression] Func<string> baseLocation, [WorkflowExpression] Func<string> targetLocation, [WorkflowExpression] Func<string> baseDatetime = null)
         {
-            var apiCallPath = "/v1/convert_time";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["base_location"] = CSharpExpressionConverter.ConvertO(baseLocation);
-            callPayload.Queries["target_location"] = CSharpExpressionConverter.ConvertO(targetLocation);
-            if (baseDatetime != null)
-                callPayload.Queries["base_datetime"] = CSharpExpressionConverter.ConvertO(baseDatetime);
-            return new ApiConnectionAction<ConvertTimeResponse>(callPayload);
+            SourceExpression.Validate(baseLocation, nameof(baseLocation), required: true);
+            SourceExpression.Validate(targetLocation, nameof(targetLocation), required: true);
+            SourceExpression.Validate(baseDatetime, nameof(baseDatetime), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/convert_time";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["base_location"] = SourceExpressionConverter.ConvertO(baseLocation);
+                callPayload.Queries["target_location"] = SourceExpressionConverter.ConvertO(targetLocation);
+                if (baseDatetime != null)
+                    callPayload.Queries["base_datetime"] = SourceExpressionConverter.ConvertO(baseDatetime);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConvertTimeResponse>(BuildSourceInput);
         }
     }
 

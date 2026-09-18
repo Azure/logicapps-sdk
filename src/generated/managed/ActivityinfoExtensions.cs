@@ -15,97 +15,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
 
     public class ActivityinfoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JToken> AddRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> AddRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/add", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["label"] = CSharpExpressionConverter.ConvertToken(bodylabel);
-            var actionObject = new JObject();
-            var actionObjectpropCount = 0;
-            actionObject["type"] = "WEBHOOK";
-            actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
-            actionObjectpropCount++;
-            if (actionObjectpropCount > 0)
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = actionObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["label"] = SourceExpressionConverter.ConvertToken(bodylabel);
+                var actionObject = new JObject();
+                var actionObjectpropCount = 0;
+                actionObject["type"] = "WEBHOOK";
+                actionObjectpropCount++;
+                actionObject["url"] = "@listCallbackUrl()";
+                actionObjectpropCount++;
+                if (actionObjectpropCount > 0)
+                {
+                    body["action"] = actionObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> EditRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> EditRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/edit", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["label"] = CSharpExpressionConverter.ConvertToken(bodylabel);
-            var actionObject = new JObject();
-            var actionObjectpropCount = 0;
-            actionObject["type"] = "WEBHOOK";
-            actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
-            actionObjectpropCount++;
-            if (actionObjectpropCount > 0)
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = actionObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/edit", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["label"] = SourceExpressionConverter.ConvertToken(bodylabel);
+                var actionObject = new JObject();
+                var actionObjectpropCount = 0;
+                actionObject["type"] = "WEBHOOK";
+                actionObjectpropCount++;
+                actionObject["url"] = "@listCallbackUrl()";
+                actionObjectpropCount++;
+                if (actionObjectpropCount > 0)
+                {
+                    body["action"] = actionObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger(Expression<Func<string>> formId, Expression<Func<string>> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JToken> DeleteRecordTrigger([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodylabel, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/delete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["label"] = CSharpExpressionConverter.ConvertToken(bodylabel);
-            var actionObject = new JObject();
-            var actionObjectpropCount = 0;
-            actionObject["type"] = "WEBHOOK";
-            actionObjectpropCount++;
-            actionObject["url"] = "@listCallbackUrl()";
-            actionObjectpropCount++;
-            if (actionObjectpropCount > 0)
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(bodylabel, nameof(bodylabel), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["action"] = actionObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/powerautomate/v1/forms/{0}/automation/delete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["label"] = SourceExpressionConverter.ConvertToken(bodylabel);
+                var actionObject = new JObject();
+                var actionObjectpropCount = 0;
+                actionObject["type"] = "WEBHOOK";
+                actionObjectpropCount++;
+                actionObject["url"] = "@listCallbackUrl()";
+                actionObjectpropCount++;
+                if (actionObjectpropCount > 0)
+                {
+                    body["action"] = actionObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<JToken>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JToken>(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

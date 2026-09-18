@@ -12,33 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rss
     public class RssActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rss")]
-        public IBodyWorkflowAction<FeedItem[]> ListFeedItems(Expression<Func<string>> feedUrl, Expression<Func<string>> since = null, Expression<Func<sincePropertyInput>> sinceProperty = null)
+        public IBodyWorkflowAction<FeedItem[]> ListFeedItems([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<string> since = null, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null)
         {
-            var apiCallPath = "/ListFeedItems";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = CSharpExpressionConverter.ConvertO(feedUrl);
-            if (since != null)
-                callPayload.Queries["since"] = CSharpExpressionConverter.ConvertO(since);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = CSharpExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionAction<FeedItem[]>(callPayload);
+            SourceExpression.Validate(feedUrl, nameof(feedUrl), required: true);
+            SourceExpression.Validate(since, nameof(since), required: false);
+            SourceExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ListFeedItems";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = SourceExpressionConverter.ConvertO(feedUrl);
+                if (since != null)
+                    callPayload.Queries["since"] = SourceExpressionConverter.ConvertO(since);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = SourceExpressionConverter.Convert(sinceProperty);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedItem[]>(BuildSourceInput);
         }
     }
 
     public class RssTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed(Expression<Func<string>> feedUrl, Expression<Func<sincePropertyInput>> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerBatchResponseFeedItem> OnNewFeed([WorkflowExpression] Func<string> feedUrl, [WorkflowExpression] Func<sincePropertyInput> sinceProperty = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/OnNewFeed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["feedUrl"] = CSharpExpressionConverter.ConvertO(feedUrl);
-            callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
-            if (sinceProperty != null)
-                callPayload.Queries["sinceProperty"] = CSharpExpressionConverter.Convert(sinceProperty);
-            return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(feedUrl, nameof(feedUrl), required: true);
+            SourceExpression.Validate(sinceProperty, nameof(sinceProperty), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OnNewFeed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["feedUrl"] = SourceExpressionConverter.ConvertO(feedUrl);
+                callPayload.Queries["sinceProperty"] = Convert.ToString("PublishDate");
+                if (sinceProperty != null)
+                    callPayload.Queries["sinceProperty"] = SourceExpressionConverter.Convert(sinceProperty);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerBatchResponseFeedItem>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

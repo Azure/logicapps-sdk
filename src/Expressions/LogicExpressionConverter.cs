@@ -164,6 +164,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 };
             }
 
+            if (CapturedValueResolver.TryResolve(e, out var capturedValue, out var capturedType))
+            {
+                return new LiteralNode
+                {
+                    Type = capturedValue is Enum ? typeof(string) : capturedType,
+                    Value = capturedValue is Enum enumValue
+                        ? Utility.GetEnumMemberValue(enumValue)
+                        : capturedValue
+                };
+            }
+
             // Custom logic for MemberExpression
             var obj = e.Expression.Visit(this, p);
 

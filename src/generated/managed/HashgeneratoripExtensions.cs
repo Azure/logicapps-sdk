@@ -12,37 +12,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hashgeneratorip
     public class HashgeneratoripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hashgeneratorip")]
-        public IBodyWorkflowAction<HashResponse> Hash(Expression<Func<string>> bodystring, Expression<Func<bodytypeInput>> bodytype = null)
+        public IBodyWorkflowAction<HashResponse> Hash([WorkflowExpression] Func<string> bodystring, [WorkflowExpression] Func<bodytypeInput> bodytype = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["string"] = CSharpExpressionConverter.ConvertToken(bodystring);
-            if (bodytype != null)
+            SourceExpression.Validate(bodystring, nameof(bodystring), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["string"] = SourceExpressionConverter.ConvertToken(bodystring);
                 if (bodytype != null)
                 {
-                    body["type"] = CSharpExpressionConverter.Convert(bodytype);
+                    if (bodytype != null)
+                    {
+                        body["type"] = SourceExpressionConverter.Convert(bodytype);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["type"] = "sha1";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["type"] = "sha1";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<HashResponse>(callPayload);
+            return new ApiConnectionAction<HashResponse>(BuildSourceInput);
         }
     }
 

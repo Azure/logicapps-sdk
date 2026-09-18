@@ -12,29 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencore
     public class RencoreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencore")]
-        public IWorkflowAction ApiAnalyze(Expression<Func<string>> analysisRequestfile, Expression<Func<string>> analysisRequestfileName, Expression<Func<string>> analysisRequestlicense = null)
+        public IWorkflowAction ApiAnalyze([WorkflowExpression] Func<string> analysisRequestfile, [WorkflowExpression] Func<string> analysisRequestfileName, [WorkflowExpression] Func<string> analysisRequestlicense = null)
         {
-            var apiCallPath = "/api/analyze";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var analysisRequest = new JObject();
-            var analysisRequestpropCount = 0;
-            analysisRequestpropCount++;
-            analysisRequest["file"] = CSharpExpressionConverter.ConvertToken(analysisRequestfile);
-            analysisRequestpropCount++;
-            analysisRequest["fileName"] = CSharpExpressionConverter.ConvertToken(analysisRequestfileName);
-            if (analysisRequestlicense != null)
+            SourceExpression.Validate(analysisRequestfile, nameof(analysisRequestfile), required: true);
+            SourceExpression.Validate(analysisRequestfileName, nameof(analysisRequestfileName), required: true);
+            SourceExpression.Validate(analysisRequestlicense, nameof(analysisRequestlicense), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                analysisRequest["license"] = CSharpExpressionConverter.ConvertToken(analysisRequestlicense);
+                var apiCallPath = "/api/analyze";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var analysisRequest = new JObject();
+                var analysisRequestpropCount = 0;
                 analysisRequestpropCount++;
+                analysisRequest["file"] = SourceExpressionConverter.ConvertToken(analysisRequestfile);
+                analysisRequestpropCount++;
+                analysisRequest["fileName"] = SourceExpressionConverter.ConvertToken(analysisRequestfileName);
+                if (analysisRequestlicense != null)
+                {
+                    analysisRequest["license"] = SourceExpressionConverter.ConvertToken(analysisRequestlicense);
+                    analysisRequestpropCount++;
+                }
+
+                if (analysisRequestpropCount > 0)
+                {
+                    callPayload.Body = analysisRequest;
+                }
+                return callPayload;
             }
 
-            if (analysisRequestpropCount > 0)
-            {
-                callPayload.Body = analysisRequest;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

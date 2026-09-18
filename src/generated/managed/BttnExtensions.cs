@@ -14,73 +14,101 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
         public IBodyWorkflowAction<BttnListData[]> ListBttns()
         {
-            var apiCallPath = "/bttns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("bid,name_id");
-            callPayload.Queries["filter"] = Convert.ToString("all");
-            return new ApiConnectionAction<BttnListData[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IWorkflowAction ReturnFlowResult(Expression<Func<string>> callbackId, Expression<Func<callbackBodyflowResultInput>> callbackBodyflowResult = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/callback/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(callbackId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var callbackBody = new JObject();
-            var callbackBodypropCount = 0;
-            if (callbackBodyflowResult != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callbackBody["result"] = CSharpExpressionConverter.Convert(callbackBodyflowResult);
-                callbackBodypropCount++;
+                var apiCallPath = "/bttns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("bid,name_id");
+                callPayload.Queries["filter"] = Convert.ToString("all");
+                return callPayload;
             }
 
-            if (callbackBodypropCount > 0)
+            return new ApiConnectionAction<BttnListData[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
+        public IWorkflowAction ReturnFlowResult([WorkflowExpression] Func<string> callbackId, [WorkflowExpression] Func<callbackBodyflowResultInput> callbackBodyflowResult = null)
+        {
+            SourceExpression.Validate(callbackId, nameof(callbackId), required: true);
+            SourceExpression.Validate(callbackBodyflowResult, nameof(callbackBodyflowResult), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = callbackBody;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/callback/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(callbackId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var callbackBody = new JObject();
+                var callbackBodypropCount = 0;
+                if (callbackBodyflowResult != null)
+                {
+                    callbackBody["result"] = SourceExpressionConverter.Convert(callbackBodyflowResult);
+                    callbackBodypropCount++;
+                }
+
+                if (callbackBodypropCount > 0)
+                {
+                    callPayload.Body = callbackBody;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BttnApiInfo> GetBttnInfo([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/info", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BttnApiInfo>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/info", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BttnApiInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bttn")]
-        public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter(Expression<Func<string>> id)
+        public IBodyWorkflowAction<BttnApiCounter> GetBttnCounter([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/counter", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BttnApiCounter>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/counter", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BttnApiCounter>(BuildSourceInput);
         }
     }
 
     public class BttnTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger RegisterWebhook(Expression<Func<string>> id, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger RegisterWebhook([WorkflowExpression] Func<string> id, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            var webhookRequestBody = new JObject();
-            var webhookRequestBodypropCount = 0;
-            webhookRequestBody["url"] = "@listCallbackUrl()";
-            webhookRequestBodypropCount++;
-            if (webhookRequestBodypropCount > 0)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = webhookRequestBody;
+                var apiCallPath = "/hook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                var webhookRequestBody = new JObject();
+                var webhookRequestBodypropCount = 0;
+                webhookRequestBody["url"] = "@listCallbackUrl()";
+                webhookRequestBodypropCount++;
+                if (webhookRequestBodypropCount > 0)
+                {
+                    callPayload.Body = webhookRequestBody;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

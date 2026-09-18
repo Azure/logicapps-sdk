@@ -14,217 +14,281 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Openai
     public class OpenaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings(Expression<Func<string>> deploymentId, Expression<Func<JToken[]>> input)
+        public IBodyWorkflowAction<GetArrayEmbeddingsOutput> GetArrayEmbeddings([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<JToken[]> input)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            serviceProviderParameters["input"] = CSharpExpressionConverter.ConvertToken(input);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(input, nameof(input), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetArrayEmbeddingsOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                serviceProviderParameters["input"] = SourceExpressionConverter.ConvertToken(input);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getArrayEmbeddings", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetArrayEmbeddingsOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding(Expression<Func<string>> deploymentId, Expression<Func<string>> input)
+        public IBodyWorkflowAction<GetSingleEmbeddingOutput> GetSingleEmbedding([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> input)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            serviceProviderParameters["input"] = CSharpExpressionConverter.ConvertToken(input);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(input, nameof(input), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSingleEmbeddingOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                serviceProviderParameters["input"] = SourceExpressionConverter.ConvertToken(input);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getSingleEmbedding", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSingleEmbeddingOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsOutput> GetChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            if (temperature != null)
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(messages, nameof(messages), required: true);
+            SourceExpression.Validate(temperature, nameof(temperature), required: false);
+            SourceExpression.Validate(topP, nameof(topP), required: false);
+            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
+            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
+            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
-            }
-            else
-            {
-                serviceProviderParameters["temperature"] = 1;
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                if (temperature != null)
+                {
+                    serviceProviderParameters["temperature"] = SourceExpressionConverter.ConvertToken(temperature);
+                }
+                else
+                {
+                    serviceProviderParameters["temperature"] = 1;
+                }
+
+                serviceProviderParameters["messages"] = SourceExpressionConverter.ConvertToken(messages);
+                if (topP != null)
+                {
+                    serviceProviderParameters["top_p"] = SourceExpressionConverter.ConvertToken(topP);
+                }
+
+                if (maxTokens != null)
+                {
+                    serviceProviderParameters["max_tokens"] = SourceExpressionConverter.ConvertToken(maxTokens);
+                }
+
+                if (presencePenalty != null)
+                {
+                    serviceProviderParameters["presence_penalty"] = SourceExpressionConverter.ConvertToken(presencePenalty);
+                }
+
+                if (frequencyPenalty != null)
+                {
+                    serviceProviderParameters["frequency_penalty"] = SourceExpressionConverter.ConvertToken(frequencyPenalty);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletions", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            serviceProviderParameters["messages"] = CSharpExpressionConverter.ConvertToken(messages);
-            if (topP != null)
-            {
-                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
-            }
-
-            if (maxTokens != null)
-            {
-                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
-            }
-
-            if (presencePenalty != null)
-            {
-                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
-            }
-
-            if (frequencyPenalty != null)
-            {
-                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletions", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetChatCompletionsOutput>(serviceProviderInput);
+            return new ServiceProviderAction<GetChatCompletionsOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions(Expression<Func<string>> deploymentId, Expression<Func<GetMultipleChatCompletionsInputMessagesTypeItem[]>> messages, Expression<Func<double>> temperature = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<int>> n = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetMultipleChatCompletionsOutput> GetMultipleChatCompletions([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<GetMultipleChatCompletionsInputMessagesTypeItem[]> messages, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<int> n = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            if (temperature != null)
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(messages, nameof(messages), required: true);
+            SourceExpression.Validate(temperature, nameof(temperature), required: false);
+            SourceExpression.Validate(topP, nameof(topP), required: false);
+            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
+            SourceExpression.Validate(n, nameof(n), required: false);
+            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
+            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
-            }
-            else
-            {
-                serviceProviderParameters["temperature"] = 1;
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                if (temperature != null)
+                {
+                    serviceProviderParameters["temperature"] = SourceExpressionConverter.ConvertToken(temperature);
+                }
+                else
+                {
+                    serviceProviderParameters["temperature"] = 1;
+                }
+
+                serviceProviderParameters["messages"] = SourceExpressionConverter.ConvertToken(messages);
+                if (topP != null)
+                {
+                    serviceProviderParameters["top_p"] = SourceExpressionConverter.ConvertToken(topP);
+                }
+
+                if (maxTokens != null)
+                {
+                    serviceProviderParameters["max_tokens"] = SourceExpressionConverter.ConvertToken(maxTokens);
+                }
+
+                if (n != null)
+                {
+                    serviceProviderParameters["n"] = SourceExpressionConverter.ConvertToken(n);
+                }
+                else
+                {
+                    serviceProviderParameters["n"] = 1;
+                }
+
+                if (presencePenalty != null)
+                {
+                    serviceProviderParameters["presence_penalty"] = SourceExpressionConverter.ConvertToken(presencePenalty);
+                }
+
+                if (frequencyPenalty != null)
+                {
+                    serviceProviderParameters["frequency_penalty"] = SourceExpressionConverter.ConvertToken(frequencyPenalty);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getMultipleChatCompletions", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            serviceProviderParameters["messages"] = CSharpExpressionConverter.ConvertToken(messages);
-            if (topP != null)
-            {
-                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
-            }
-
-            if (maxTokens != null)
-            {
-                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
-            }
-
-            if (n != null)
-            {
-                serviceProviderParameters["n"] = CSharpExpressionConverter.ConvertToken(n);
-            }
-            else
-            {
-                serviceProviderParameters["n"] = 1;
-            }
-
-            if (presencePenalty != null)
-            {
-                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
-            }
-
-            if (frequencyPenalty != null)
-            {
-                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getMultipleChatCompletions", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(serviceProviderInput);
+            return new ServiceProviderAction<GetMultipleChatCompletionsOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetCompletionOutput> GetCompletion(Expression<Func<string>> deploymentId, Expression<Func<string[]>> prompts, Expression<Func<double>> temperature = null, Expression<Func<string[]>> stopSequences = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetCompletionOutput> GetCompletion([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string[]> prompts, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<string[]> stopSequences = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            if (temperature != null)
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(prompts, nameof(prompts), required: true);
+            SourceExpression.Validate(temperature, nameof(temperature), required: false);
+            SourceExpression.Validate(stopSequences, nameof(stopSequences), required: false);
+            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
+            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
+            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
-            }
-            else
-            {
-                serviceProviderParameters["temperature"] = 1;
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                if (temperature != null)
+                {
+                    serviceProviderParameters["temperature"] = SourceExpressionConverter.ConvertToken(temperature);
+                }
+                else
+                {
+                    serviceProviderParameters["temperature"] = 1;
+                }
+
+                serviceProviderParameters["prompts"] = SourceExpressionConverter.ConvertToken(prompts);
+                if (stopSequences != null)
+                {
+                    serviceProviderParameters["stopSequences"] = SourceExpressionConverter.ConvertToken(stopSequences);
+                }
+
+                if (maxTokens != null)
+                {
+                    serviceProviderParameters["max_tokens"] = SourceExpressionConverter.ConvertToken(maxTokens);
+                }
+
+                if (presencePenalty != null)
+                {
+                    serviceProviderParameters["presence_penalty"] = SourceExpressionConverter.ConvertToken(presencePenalty);
+                }
+
+                if (frequencyPenalty != null)
+                {
+                    serviceProviderParameters["frequency_penalty"] = SourceExpressionConverter.ConvertToken(frequencyPenalty);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getCompletion", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            serviceProviderParameters["prompts"] = CSharpExpressionConverter.ConvertToken(prompts);
-            if (stopSequences != null)
-            {
-                serviceProviderParameters["stopSequences"] = CSharpExpressionConverter.ConvertToken(stopSequences);
-            }
-
-            if (maxTokens != null)
-            {
-                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
-            }
-
-            if (presencePenalty != null)
-            {
-                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
-            }
-
-            if (frequencyPenalty != null)
-            {
-                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getCompletion", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetCompletionOutput>(serviceProviderInput);
+            return new ServiceProviderAction<GetCompletionOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "openai")]
-        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate(Expression<Func<string>> deploymentId, Expression<Func<string>> promptTemplateInput, Expression<Func<double>> temperature = null, Expression<Func<object>> promptTemplateInputVariables = null, Expression<Func<double>> topP = null, Expression<Func<int>> maxTokens = null, Expression<Func<double>> presencePenalty = null, Expression<Func<double>> frequencyPenalty = null)
+        public IBodyWorkflowAction<GetChatCompletionsUsingPromptTemplateOutput> GetChatCompletionsUsingPromptTemplate([WorkflowExpression] Func<string> deploymentId, [WorkflowExpression] Func<string> promptTemplateInput, [WorkflowExpression] Func<double> temperature = null, [WorkflowExpression] Func<object> promptTemplateInputVariables = null, [WorkflowExpression] Func<double> topP = null, [WorkflowExpression] Func<int> maxTokens = null, [WorkflowExpression] Func<double> presencePenalty = null, [WorkflowExpression] Func<double> frequencyPenalty = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["deploymentId"] = CSharpExpressionConverter.ConvertToken(deploymentId);
-            if (temperature != null)
+            SourceExpression.Validate(deploymentId, nameof(deploymentId), required: true);
+            SourceExpression.Validate(promptTemplateInput, nameof(promptTemplateInput), required: true);
+            SourceExpression.Validate(temperature, nameof(temperature), required: false);
+            SourceExpression.Validate(promptTemplateInputVariables, nameof(promptTemplateInputVariables), required: false);
+            SourceExpression.Validate(topP, nameof(topP), required: false);
+            SourceExpression.Validate(maxTokens, nameof(maxTokens), required: false);
+            SourceExpression.Validate(presencePenalty, nameof(presencePenalty), required: false);
+            SourceExpression.Validate(frequencyPenalty, nameof(frequencyPenalty), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["temperature"] = CSharpExpressionConverter.ConvertToken(temperature);
-            }
-            else
-            {
-                serviceProviderParameters["temperature"] = 1;
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["deploymentId"] = SourceExpressionConverter.ConvertToken(deploymentId);
+                if (temperature != null)
+                {
+                    serviceProviderParameters["temperature"] = SourceExpressionConverter.ConvertToken(temperature);
+                }
+                else
+                {
+                    serviceProviderParameters["temperature"] = 1;
+                }
+
+                serviceProviderParameters["promptTemplateInput"] = SourceExpressionConverter.ConvertToken(promptTemplateInput);
+                if (promptTemplateInputVariables != null)
+                {
+                    serviceProviderParameters["promptTemplateInputVariables"] = SourceExpressionConverter.ConvertToken(promptTemplateInputVariables);
+                }
+
+                if (topP != null)
+                {
+                    serviceProviderParameters["top_p"] = SourceExpressionConverter.ConvertToken(topP);
+                }
+
+                if (maxTokens != null)
+                {
+                    serviceProviderParameters["max_tokens"] = SourceExpressionConverter.ConvertToken(maxTokens);
+                }
+
+                if (presencePenalty != null)
+                {
+                    serviceProviderParameters["presence_penalty"] = SourceExpressionConverter.ConvertToken(presencePenalty);
+                }
+
+                if (frequencyPenalty != null)
+                {
+                    serviceProviderParameters["frequency_penalty"] = SourceExpressionConverter.ConvertToken(frequencyPenalty);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletionsUsingPromptTemplate", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            serviceProviderParameters["promptTemplateInput"] = CSharpExpressionConverter.ConvertToken(promptTemplateInput);
-            if (promptTemplateInputVariables != null)
-            {
-                serviceProviderParameters["promptTemplateInputVariables"] = CSharpExpressionConverter.ConvertToken(promptTemplateInputVariables);
-            }
-
-            if (topP != null)
-            {
-                serviceProviderParameters["top_p"] = CSharpExpressionConverter.ConvertToken(topP);
-            }
-
-            if (maxTokens != null)
-            {
-                serviceProviderParameters["max_tokens"] = CSharpExpressionConverter.ConvertToken(maxTokens);
-            }
-
-            if (presencePenalty != null)
-            {
-                serviceProviderParameters["presence_penalty"] = CSharpExpressionConverter.ConvertToken(presencePenalty);
-            }
-
-            if (frequencyPenalty != null)
-            {
-                serviceProviderParameters["frequency_penalty"] = CSharpExpressionConverter.ConvertToken(frequencyPenalty);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/openai", operationId: "getChatCompletionsUsingPromptTemplate", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(serviceProviderInput);
+            return new ServiceProviderAction<GetChatCompletionsUsingPromptTemplateOutput>(BuildSourceInput);
         }
     }
 

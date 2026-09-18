@@ -12,13 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
     public class NitroActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nitro")]
-        public IBodyWorkflowAction<Error> TemplateSignatureRequest(Expression<Func<string>> id, Expression<Func<object>> dynamicSchema = null)
+        public IBodyWorkflowAction<Error> TemplateSignatureRequest([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> dynamicSchema = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicSchema);
-            return new ApiConnectionAction<Error>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}/signature-requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicSchema);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Error>(BuildSourceInput);
         }
     }
 
@@ -26,21 +33,25 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
     {
         public IBodyWorkflowTrigger<Error> WebhookDocumentSignedTrigger(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["endpoint"] = "@listCallbackUrl()";
-            requestpropCount++;
-            request["event"] = "esign.request.completed";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/v2/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["endpoint"] = "@listCallbackUrl()";
+                requestpropCount++;
+                request["event"] = "esign.request.completed";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<Error>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<Error>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

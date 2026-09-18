@@ -12,40 +12,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bbcnews
     public class BbcnewsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetNewsByTopic(Expression<Func<string>> lang, Expression<Func<string>> topic = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<NewsResponse> GetNewsByTopic([WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<string> topic = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/news";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (topic != null)
-                callPayload.Queries["topic"] = CSharpExpressionConverter.ConvertO(topic);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            return new ApiConnectionAction<NewsResponse>(callPayload);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(topic, nameof(topic), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/news";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (topic != null)
+                    callPayload.Queries["topic"] = SourceExpressionConverter.ConvertO(topic);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NewsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
-        public IBodyWorkflowAction<NewsResponse> GetLatestNews(Expression<Func<string>> lang, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<NewsResponse> GetLatestNews([WorkflowExpression] Func<string> lang, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/latest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(10);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Queries["lang"] = CSharpExpressionConverter.ConvertO(lang);
-            return new ApiConnectionAction<NewsResponse>(callPayload);
+            SourceExpression.Validate(lang, nameof(lang), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/latest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(10);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["lang"] = SourceExpressionConverter.ConvertO(lang);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NewsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bbcnews")]
         public IBodyWorkflowAction<LanguagesResponse> GetLanguages()
         {
-            var apiCallPath = "/languages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LanguagesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/languages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LanguagesResponse>(BuildSourceInput);
         }
     }
 

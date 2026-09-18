@@ -12,14 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalizeioip
     public class NationalizeioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalizeioip")]
-        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality(Expression<Func<string>> name)
+        public IBodyWorkflowAction<CheckNamesNationalityResponseItem[]> CheckNamesNationality([WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CheckNamesNationalityResponseItem[]>(BuildSourceInput);
         }
     }
 

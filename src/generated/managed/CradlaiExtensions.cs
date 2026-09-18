@@ -12,218 +12,276 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cradlai
     public class CradlaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> CreateDocumentDeprecated(Expression<Func<string>> name, Expression<Func<string>> fileContent = null)
+        public IBodyWorkflowAction<CreateDocumentDeprecatedResponse> CreateDocumentDeprecated([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> fileContent = null)
         {
-            var apiCallPath = "/documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(fileContent);
-            return new ApiConnectionAction<CreateDocumentDeprecatedResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> documentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/metadata/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDocumentMetadataResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<string> GetDocument(Expression<Func<string>> documentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/documents/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated(Expression<Func<string>> requestmodel, Expression<Func<string>> requestdocumentID, Expression<Func<requestpostprocessingtheOutputFormatInput>> requestpostprocessingtheOutputFormat = null, Expression<Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput>> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, Expression<Func<bool>> requestpreprocessingautoRotate = null, Expression<Func<int>> requestpreprocessingmaxPages = null, Expression<Func<string>> requestpreprocessingimageQuality = null)
-        {
-            var apiCallPath = "/predictions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["modelId"] = CSharpExpressionConverter.ConvertToken(requestmodel);
-            requestpropCount++;
-            request["documentId"] = CSharpExpressionConverter.ConvertToken(requestdocumentID);
-            var postprocessConfigObject = new JObject();
-            var postprocessConfigObjectpropCount = 0;
-            if (requestpostprocessingtheOutputFormat != null)
+            SourceExpression.Validate(name, nameof(name), required: true);
+            SourceExpression.Validate(fileContent, nameof(fileContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(fileContent);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateDocumentDeprecatedResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
+        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata([WorkflowExpression] Func<string> documentId)
+        {
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/metadata/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentMetadataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
+        public IBodyWorkflowAction<string> GetDocument([WorkflowExpression] Func<string> documentId)
+        {
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/documents/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
+        public IBodyWorkflowAction<ParseDocumentDeprecatedResponse> ParseDocumentDeprecated([WorkflowExpression] Func<string> requestmodel, [WorkflowExpression] Func<string> requestdocumentID, [WorkflowExpression] Func<requestpostprocessingtheOutputFormatInput> requestpostprocessingtheOutputFormat = null, [WorkflowExpression] Func<requestpostprocessingtheStrategyUsedForAggregatingPredictionsInput> requestpostprocessingtheStrategyUsedForAggregatingPredictions = null, [WorkflowExpression] Func<bool> requestpreprocessingautoRotate = null, [WorkflowExpression] Func<int> requestpreprocessingmaxPages = null, [WorkflowExpression] Func<string> requestpreprocessingimageQuality = null)
+        {
+            SourceExpression.Validate(requestmodel, nameof(requestmodel), required: true);
+            SourceExpression.Validate(requestdocumentID, nameof(requestdocumentID), required: true);
+            SourceExpression.Validate(requestpostprocessingtheOutputFormat, nameof(requestpostprocessingtheOutputFormat), required: false);
+            SourceExpression.Validate(requestpostprocessingtheStrategyUsedForAggregatingPredictions, nameof(requestpostprocessingtheStrategyUsedForAggregatingPredictions), required: false);
+            SourceExpression.Validate(requestpreprocessingautoRotate, nameof(requestpreprocessingautoRotate), required: false);
+            SourceExpression.Validate(requestpreprocessingmaxPages, nameof(requestpreprocessingmaxPages), required: false);
+            SourceExpression.Validate(requestpreprocessingimageQuality, nameof(requestpreprocessingimageQuality), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/predictions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["modelId"] = SourceExpressionConverter.ConvertToken(requestmodel);
+                requestpropCount++;
+                request["documentId"] = SourceExpressionConverter.ConvertToken(requestdocumentID);
+                var postprocessConfigObject = new JObject();
+                var postprocessConfigObjectpropCount = 0;
                 if (requestpostprocessingtheOutputFormat != null)
                 {
-                    postprocessConfigObject["outputFormat"] = CSharpExpressionConverter.Convert(requestpostprocessingtheOutputFormat);
+                    if (requestpostprocessingtheOutputFormat != null)
+                    {
+                        postprocessConfigObject["outputFormat"] = SourceExpressionConverter.Convert(requestpostprocessingtheOutputFormat);
+                        postprocessConfigObjectpropCount++;
+                    }
+
+                    postprocessConfigObjectpropCount++;
+                }
+                else
+                {
+                    postprocessConfigObject["outputFormat"] = "v2";
                     postprocessConfigObjectpropCount++;
                 }
 
-                postprocessConfigObjectpropCount++;
-            }
-            else
-            {
-                postprocessConfigObject["outputFormat"] = "v2";
-                postprocessConfigObjectpropCount++;
-            }
-
-            if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
-            {
                 if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
                 {
-                    postprocessConfigObject["strategy"] = CSharpExpressionConverter.Convert(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
+                    if (requestpostprocessingtheStrategyUsedForAggregatingPredictions != null)
+                    {
+                        postprocessConfigObject["strategy"] = SourceExpressionConverter.Convert(requestpostprocessingtheStrategyUsedForAggregatingPredictions);
+                        postprocessConfigObjectpropCount++;
+                    }
+
+                    postprocessConfigObjectpropCount++;
+                }
+                else
+                {
+                    postprocessConfigObject["strategy"] = "BEST_FIRST";
                     postprocessConfigObjectpropCount++;
                 }
 
-                postprocessConfigObjectpropCount++;
-            }
-            else
-            {
-                postprocessConfigObject["strategy"] = "BEST_FIRST";
-                postprocessConfigObjectpropCount++;
+                if (postprocessConfigObjectpropCount > 0)
+                {
+                    request["postprocessConfig"] = postprocessConfigObject;
+                    requestpropCount++;
+                }
+
+                var preprocessConfigObject = new JObject();
+                var preprocessConfigObjectpropCount = 0;
+                if (requestpreprocessingautoRotate != null)
+                {
+                    preprocessConfigObject["autoRotate"] = SourceExpressionConverter.ConvertToken(requestpreprocessingautoRotate);
+                    preprocessConfigObjectpropCount++;
+                }
+
+                if (requestpreprocessingmaxPages != null)
+                {
+                    preprocessConfigObject["maxPages"] = SourceExpressionConverter.ConvertToken(requestpreprocessingmaxPages);
+                    preprocessConfigObjectpropCount++;
+                }
+
+                if (requestpreprocessingimageQuality != null)
+                {
+                    preprocessConfigObject["imageQuality"] = SourceExpressionConverter.ConvertToken(requestpreprocessingimageQuality);
+                    preprocessConfigObjectpropCount++;
+                }
+
+                if (preprocessConfigObjectpropCount > 0)
+                {
+                    request["preprocessConfig"] = preprocessConfigObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (postprocessConfigObjectpropCount > 0)
-            {
-                request["postprocessConfig"] = postprocessConfigObject;
-                requestpropCount++;
-            }
-
-            var preprocessConfigObject = new JObject();
-            var preprocessConfigObjectpropCount = 0;
-            if (requestpreprocessingautoRotate != null)
-            {
-                preprocessConfigObject["autoRotate"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingautoRotate);
-                preprocessConfigObjectpropCount++;
-            }
-
-            if (requestpreprocessingmaxPages != null)
-            {
-                preprocessConfigObject["maxPages"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingmaxPages);
-                preprocessConfigObjectpropCount++;
-            }
-
-            if (requestpreprocessingimageQuality != null)
-            {
-                preprocessConfigObject["imageQuality"] = CSharpExpressionConverter.ConvertToken(requestpreprocessingimageQuality);
-                preprocessConfigObjectpropCount++;
-            }
-
-            if (preprocessConfigObjectpropCount > 0)
-            {
-                request["preprocessConfig"] = preprocessConfigObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<ParseDocumentDeprecatedResponse>(callPayload);
+            return new ApiConnectionAction<ParseDocumentDeprecatedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateRunResponse> CreateRun(Expression<Func<string>> agentId, Expression<Func<string>> variables = null, Expression<Func<string>> title = null, Expression<Func<string>> document = null)
+        public IBodyWorkflowAction<CreateRunResponse> CreateRun([WorkflowExpression] Func<string> agentId, [WorkflowExpression] Func<string> variables = null, [WorkflowExpression] Func<string> title = null, [WorkflowExpression] Func<string> document = null)
         {
-            var apiCallPath = "/agents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["AgentId"] = CSharpExpressionConverter.ConvertO(agentId);
-            if (variables != null)
-                callPayload.Headers["variables"] = CSharpExpressionConverter.ConvertO(variables);
-            if (title != null)
-                callPayload.Headers["title"] = CSharpExpressionConverter.ConvertO(title);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(document);
-            return new ApiConnectionAction<CreateRunResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IWorkflowAction Validate(Expression<Func<string>> actionId, Expression<Func<string>> xCradlSharedSecret)
-        {
-            var apiCallPath = "/validate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ActionId"] = CSharpExpressionConverter.ConvertO(actionId);
-            callPayload.Headers["X-Cradl-Shared-Secret"] = CSharpExpressionConverter.ConvertO(xCradlSharedSecret);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
-        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated(Expression<Func<string>> workflowId, Expression<Func<string>> requestinputdocumentID, Expression<Func<string>> requestinputtitle = null)
-        {
-            var apiCallPath = "/workflows";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WorkflowId"] = CSharpExpressionConverter.ConvertO(workflowId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var inputObject = new JObject();
-            var inputObjectpropCount = 0;
-            inputObjectpropCount++;
-            inputObject["documentId"] = CSharpExpressionConverter.ConvertToken(requestinputdocumentID);
-            if (requestinputtitle != null)
+            SourceExpression.Validate(agentId, nameof(agentId), required: true);
+            SourceExpression.Validate(variables, nameof(variables), required: false);
+            SourceExpression.Validate(title, nameof(title), required: false);
+            SourceExpression.Validate(document, nameof(document), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputObject["title"] = CSharpExpressionConverter.ConvertToken(requestinputtitle);
+                var apiCallPath = "/agents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["AgentId"] = SourceExpressionConverter.ConvertO(agentId);
+                if (variables != null)
+                    callPayload.Headers["variables"] = SourceExpressionConverter.ConvertO(variables);
+                if (title != null)
+                    callPayload.Headers["title"] = SourceExpressionConverter.ConvertO(title);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(document);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateRunResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
+        public IWorkflowAction Validate([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> xCradlSharedSecret)
+        {
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            SourceExpression.Validate(xCradlSharedSecret, nameof(xCradlSharedSecret), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/validate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["ActionId"] = SourceExpressionConverter.ConvertO(actionId);
+                callPayload.Headers["X-Cradl-Shared-Secret"] = SourceExpressionConverter.ConvertO(xCradlSharedSecret);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cradlai")]
+        public IBodyWorkflowAction<CreateExecutionDeprecatedResponse> CreateExecutionDeprecated([WorkflowExpression] Func<string> workflowId, [WorkflowExpression] Func<string> requestinputdocumentID, [WorkflowExpression] Func<string> requestinputtitle = null)
+        {
+            SourceExpression.Validate(workflowId, nameof(workflowId), required: true);
+            SourceExpression.Validate(requestinputdocumentID, nameof(requestinputdocumentID), required: true);
+            SourceExpression.Validate(requestinputtitle, nameof(requestinputtitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/workflows";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WorkflowId"] = SourceExpressionConverter.ConvertO(workflowId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var inputObject = new JObject();
+                var inputObjectpropCount = 0;
                 inputObjectpropCount++;
+                inputObject["documentId"] = SourceExpressionConverter.ConvertToken(requestinputdocumentID);
+                if (requestinputtitle != null)
+                {
+                    inputObject["title"] = SourceExpressionConverter.ConvertToken(requestinputtitle);
+                    inputObjectpropCount++;
+                }
+
+                var predictionsObject = new JObject();
+                var predictionsObjectpropCount = 0;
+                if (predictionsObjectpropCount > 0)
+                {
+                    inputObject["predictions"] = predictionsObject;
+                    inputObjectpropCount++;
+                }
+
+                if (inputObjectpropCount > 0)
+                {
+                    request["input"] = inputObject;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            var predictionsObject = new JObject();
-            var predictionsObjectpropCount = 0;
-            if (predictionsObjectpropCount > 0)
-            {
-                inputObject["predictions"] = predictionsObject;
-                inputObjectpropCount++;
-            }
-
-            if (inputObjectpropCount > 0)
-            {
-                request["input"] = inputObject;
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<CreateExecutionDeprecatedResponse>(callPayload);
+            return new ApiConnectionAction<CreateExecutionDeprecatedResponse>(BuildSourceInput);
         }
     }
 
     public class CradlaiTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted(Expression<Func<string>> actionId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<RunCompletedResponse> RunCompleted([WorkflowExpression] Func<string> actionId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/actions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["ActionId"] = CSharpExpressionConverter.ConvertO(actionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["enabled"] = true;
-            bodypropCount++;
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            configObject["httpMethod"] = "POST";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["config"] = configObject;
+                var apiCallPath = "/actions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["ActionId"] = SourceExpressionConverter.ConvertO(actionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["enabled"] = true;
                 bodypropCount++;
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                configObject["httpMethod"] = "POST";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<RunCompletedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<RunCompletedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

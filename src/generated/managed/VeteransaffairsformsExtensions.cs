@@ -12,23 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Veteransaffairsforms
     public class VeteransaffairsformsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<ListFormsResponse> ListForms(Expression<Func<string>> query = null)
+        public IBodyWorkflowAction<ListFormsResponse> ListForms([WorkflowExpression] Func<string> query = null)
         {
-            var apiCallPath = "/forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction<ListFormsResponse>(callPayload);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListFormsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "veteransaffairsforms")]
-        public IBodyWorkflowAction<FormShow> GetFormByName(Expression<Func<string>> formName)
+        public IBodyWorkflowAction<FormShow> GetFormByName([WorkflowExpression] Func<string> formName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forms/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormShow>(callPayload);
+            SourceExpression.Validate(formName, nameof(formName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FormShow>(BuildSourceInput);
         }
     }
 

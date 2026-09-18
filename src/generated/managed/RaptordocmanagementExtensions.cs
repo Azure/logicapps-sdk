@@ -12,871 +12,1192 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Raptordocmanagement
     public class RaptordocmanagementActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<string> GetUserToken(Expression<Func<string>> externalSystemID, Expression<Func<string>> secret, Expression<Func<string>> externalUserName)
+        public IBodyWorkflowAction<string> GetUserToken([WorkflowExpression] Func<string> externalSystemID, [WorkflowExpression] Func<string> secret, [WorkflowExpression] Func<string> externalUserName)
         {
-            var apiCallPath = "/User/getusertoken";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["externalSystemID"] = CSharpExpressionConverter.ConvertO(externalSystemID);
-            callPayload.Queries["secret"] = CSharpExpressionConverter.ConvertO(secret);
-            callPayload.Queries["externalUserName"] = CSharpExpressionConverter.ConvertO(externalUserName);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(externalSystemID, nameof(externalSystemID), required: true);
+            SourceExpression.Validate(secret, nameof(secret), required: true);
+            SourceExpression.Validate(externalUserName, nameof(externalUserName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/User/getusertoken";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["externalSystemID"] = SourceExpressionConverter.ConvertO(externalSystemID);
+                callPayload.Queries["secret"] = SourceExpressionConverter.ConvertO(secret);
+                callPayload.Queries["externalUserName"] = SourceExpressionConverter.ConvertO(externalUserName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<string> DownloadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> DownloadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/content", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction RemoveTagFromDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> tagId)
+        public IWorkflowAction RemoveTagFromDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction TagDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> tagId, Expression<Func<bool>> reTag = null)
+        public IWorkflowAction TagDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> tagId, [WorkflowExpression] Func<bool> reTag = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (reTag != null)
-                callPayload.Queries["reTag"] = CSharpExpressionConverter.ConvertO(reTag);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            SourceExpression.Validate(reTag, nameof(reTag), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/tag/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (reTag != null)
+                    callPayload.Queries["reTag"] = SourceExpressionConverter.ConvertO(reTag);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction AddFieldToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction AddFieldToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (method != null)
-                callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(method, nameof(method), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (method != null)
+                    callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyvalue != null)
-            {
-                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction UpdateFieldOnDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> documentId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyvalue = null)
+        public IWorkflowAction UpdateFieldOnDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/field", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyvalue != null)
-            {
-                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction AddTemplateToDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId, Expression<Func<string[]>> body = null)
+        public IWorkflowAction AddTemplateToDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string[]> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/multidoc/template/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryDocumentsResponse> QueryDocuments(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyobligatoryTags = null, Expression<Func<string[]>> bodytagsInHierarchy = null, Expression<Func<string[]>> bodyexcludeTagsInHierarchy = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bodyorderByInput>> bodyorderBy = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryDocumentsResponse> QueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyobligatoryTags = null, [WorkflowExpression] Func<string[]> bodytagsInHierarchy = null, [WorkflowExpression] Func<string[]> bodyexcludeTagsInHierarchy = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bodyorderByInput> bodyorderBy = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
         {
-            var apiCallPath = "/meta/document/QueryDocuments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyobligatoryTags != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodyobligatoryTags, nameof(bodyobligatoryTags), required: false);
+            SourceExpression.Validate(bodytagsInHierarchy, nameof(bodytagsInHierarchy), required: false);
+            SourceExpression.Validate(bodyexcludeTagsInHierarchy, nameof(bodyexcludeTagsInHierarchy), required: false);
+            SourceExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
+            SourceExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
+            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            SourceExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["obligatoryTags"] = CSharpExpressionConverter.ConvertToken(bodyobligatoryTags);
-                bodypropCount++;
+                var apiCallPath = "/meta/document/QueryDocuments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyobligatoryTags != null)
+                {
+                    body["obligatoryTags"] = SourceExpressionConverter.ConvertToken(bodyobligatoryTags);
+                    bodypropCount++;
+                }
+
+                if (bodytagsInHierarchy != null)
+                {
+                    body["tagsInHierarchy"] = SourceExpressionConverter.ConvertToken(bodytagsInHierarchy);
+                    bodypropCount++;
+                }
+
+                var fieldQueryExpressionObject = new JObject();
+                var fieldQueryExpressionObjectpropCount = 0;
+                if (fieldQueryExpressionObjectpropCount > 0)
+                {
+                    body["fieldQueryExpression"] = fieldQueryExpressionObject;
+                    bodypropCount++;
+                }
+
+                if (bodyexcludeTagsInHierarchy != null)
+                {
+                    body["excludeTagsInHierarchy"] = SourceExpressionConverter.ConvertToken(bodyexcludeTagsInHierarchy);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeTotalCount != null)
+                {
+                    body["includeTotalCount"] = SourceExpressionConverter.ConvertToken(bodyincludeTotalCount);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycontainsName != null)
+                {
+                    body["containsName"] = SourceExpressionConverter.ConvertToken(bodycontainsName);
+                    bodypropCount++;
+                }
+
+                if (bodyorderBy != null)
+                {
+                    body["orderBy"] = SourceExpressionConverter.Convert(bodyorderBy);
+                    bodypropCount++;
+                }
+
+                if (bodyorderAscending != null)
+                {
+                    body["orderAscending"] = SourceExpressionConverter.ConvertToken(bodyorderAscending);
+                    bodypropCount++;
+                }
+
+                if (bodycontinuationToken != null)
+                {
+                    body["continuationToken"] = SourceExpressionConverter.ConvertToken(bodycontinuationToken);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytagsInHierarchy != null)
-            {
-                body["tagsInHierarchy"] = CSharpExpressionConverter.ConvertToken(bodytagsInHierarchy);
-                bodypropCount++;
-            }
-
-            var fieldQueryExpressionObject = new JObject();
-            var fieldQueryExpressionObjectpropCount = 0;
-            if (fieldQueryExpressionObjectpropCount > 0)
-            {
-                body["fieldQueryExpression"] = fieldQueryExpressionObject;
-                bodypropCount++;
-            }
-
-            if (bodyexcludeTagsInHierarchy != null)
-            {
-                body["excludeTagsInHierarchy"] = CSharpExpressionConverter.ConvertToken(bodyexcludeTagsInHierarchy);
-                bodypropCount++;
-            }
-
-            if (bodyincludeTotalCount != null)
-            {
-                body["includeTotalCount"] = CSharpExpressionConverter.ConvertToken(bodyincludeTotalCount);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodycontainsName != null)
-            {
-                body["containsName"] = CSharpExpressionConverter.ConvertToken(bodycontainsName);
-                bodypropCount++;
-            }
-
-            if (bodyorderBy != null)
-            {
-                body["orderBy"] = CSharpExpressionConverter.Convert(bodyorderBy);
-                bodypropCount++;
-            }
-
-            if (bodyorderAscending != null)
-            {
-                body["orderAscending"] = CSharpExpressionConverter.ConvertToken(bodyorderAscending);
-                bodypropCount++;
-            }
-
-            if (bodycontinuationToken != null)
-            {
-                body["continuationToken"] = CSharpExpressionConverter.ConvertToken(bodycontinuationToken);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryDocumentsResponse>(callPayload);
+            return new ApiConnectionAction<QueryDocumentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetTagByTagIdResponse> GetTagByTagId(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> tagId)
+        public IBodyWorkflowAction<GetTagByTagIdResponse> GetTagByTagId([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> tagId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetTagByTagIdResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(tagId, nameof(tagId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/tags/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTagByTagIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetTagByCodeResponse> GetTagByCode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
+        public IBodyWorkflowAction<GetTagByCodeResponse> GetTagByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/taxonomy/tags/tag";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetTagByCodeResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(code, nameof(code), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/taxonomy/tags/tag";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTagByCodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> GetMultipleTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string[]>> bodyids = null)
+        public IBodyWorkflowAction<GetMultipleTagsResponseItem[]> GetMultipleTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string[]> bodyids = null)
         {
-            var apiCallPath = "/taxonomy/tags/selection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyids != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodyids, nameof(bodyids), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ids"] = CSharpExpressionConverter.ConvertToken(bodyids);
-                bodypropCount++;
+                var apiCallPath = "/taxonomy/tags/selection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyids != null)
+                {
+                    body["ids"] = SourceExpressionConverter.ConvertToken(bodyids);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetMultipleTagsResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GetMultipleTagsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTagsResponse> QueryTags(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyparentTagId = null, Expression<Func<string>> bodydirectParentTagId = null, Expression<Func<bool>> bodyhasNoParentTag = null, Expression<Func<bool>> bodyincludeTotalCount = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryTagsResponse> QueryTags([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyparentTagId = null, [WorkflowExpression] Func<string> bodydirectParentTagId = null, [WorkflowExpression] Func<bool> bodyhasNoParentTag = null, [WorkflowExpression] Func<bool> bodyincludeTotalCount = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
         {
-            var apiCallPath = "/taxonomy/tags/querytags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyparentTagId != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            SourceExpression.Validate(bodydirectParentTagId, nameof(bodydirectParentTagId), required: false);
+            SourceExpression.Validate(bodyhasNoParentTag, nameof(bodyhasNoParentTag), required: false);
+            SourceExpression.Validate(bodyincludeTotalCount, nameof(bodyincludeTotalCount), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
+            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["parentTagId"] = CSharpExpressionConverter.ConvertToken(bodyparentTagId);
-                bodypropCount++;
+                var apiCallPath = "/taxonomy/tags/querytags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyparentTagId != null)
+                {
+                    body["parentTagId"] = SourceExpressionConverter.ConvertToken(bodyparentTagId);
+                    bodypropCount++;
+                }
+
+                if (bodydirectParentTagId != null)
+                {
+                    body["directParentTagId"] = SourceExpressionConverter.ConvertToken(bodydirectParentTagId);
+                    bodypropCount++;
+                }
+
+                if (bodyhasNoParentTag != null)
+                {
+                    body["hasNoParentTag"] = SourceExpressionConverter.ConvertToken(bodyhasNoParentTag);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeTotalCount != null)
+                {
+                    body["includeTotalCount"] = SourceExpressionConverter.ConvertToken(bodyincludeTotalCount);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycontainsName != null)
+                {
+                    body["containsName"] = SourceExpressionConverter.ConvertToken(bodycontainsName);
+                    bodypropCount++;
+                }
+
+                if (bodyorderAscending != null)
+                {
+                    body["orderAscending"] = SourceExpressionConverter.ConvertToken(bodyorderAscending);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydirectParentTagId != null)
-            {
-                body["directParentTagId"] = CSharpExpressionConverter.ConvertToken(bodydirectParentTagId);
-                bodypropCount++;
-            }
-
-            if (bodyhasNoParentTag != null)
-            {
-                body["hasNoParentTag"] = CSharpExpressionConverter.ConvertToken(bodyhasNoParentTag);
-                bodypropCount++;
-            }
-
-            if (bodyincludeTotalCount != null)
-            {
-                body["includeTotalCount"] = CSharpExpressionConverter.ConvertToken(bodyincludeTotalCount);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodycontainsName != null)
-            {
-                body["containsName"] = CSharpExpressionConverter.ConvertToken(bodycontainsName);
-                bodypropCount++;
-            }
-
-            if (bodyorderAscending != null)
-            {
-                body["orderAscending"] = CSharpExpressionConverter.ConvertToken(bodyorderAscending);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryTagsResponse>(callPayload);
+            return new ApiConnectionAction<QueryTagsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<CreateFieldResponse> CreateField(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> method = null, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodytenantId = null, Expression<Func<string>> bodycode = null, Expression<Func<int>> bodyfieldType = null, Expression<Func<bool>> bodyisRequired = null, Expression<Func<bool>> bodyisReadOnly = null, Expression<Func<string>> bodydefaultValue = null, Expression<Func<bodylabelsInputItem[]>> bodylabels = null, Expression<Func<string>> bodyvalidatingRegExp = null, Expression<Func<bodyvalidationMessageInputItem[]>> bodyvalidationMessage = null, Expression<Func<int>> bodyrowAmount = null, Expression<Func<string>> bodyparentTagId = null)
+        public IBodyWorkflowAction<CreateFieldResponse> CreateField([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> method = null, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodytenantId = null, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<int> bodyfieldType = null, [WorkflowExpression] Func<bool> bodyisRequired = null, [WorkflowExpression] Func<bool> bodyisReadOnly = null, [WorkflowExpression] Func<string> bodydefaultValue = null, [WorkflowExpression] Func<bodylabelsInputItem[]> bodylabels = null, [WorkflowExpression] Func<string> bodyvalidatingRegExp = null, [WorkflowExpression] Func<bodyvalidationMessageInputItem[]> bodyvalidationMessage = null, [WorkflowExpression] Func<int> bodyrowAmount = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
         {
-            var apiCallPath = "/taxonomy/fields";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (method != null)
-                callPayload.Queries["method"] = CSharpExpressionConverter.ConvertO(method);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(method, nameof(method), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodytenantId, nameof(bodytenantId), required: false);
+            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
+            SourceExpression.Validate(bodyfieldType, nameof(bodyfieldType), required: false);
+            SourceExpression.Validate(bodyisRequired, nameof(bodyisRequired), required: false);
+            SourceExpression.Validate(bodyisReadOnly, nameof(bodyisReadOnly), required: false);
+            SourceExpression.Validate(bodydefaultValue, nameof(bodydefaultValue), required: false);
+            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
+            SourceExpression.Validate(bodyvalidatingRegExp, nameof(bodyvalidatingRegExp), required: false);
+            SourceExpression.Validate(bodyvalidationMessage, nameof(bodyvalidationMessage), required: false);
+            SourceExpression.Validate(bodyrowAmount, nameof(bodyrowAmount), required: false);
+            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = "/taxonomy/fields";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (method != null)
+                    callPayload.Queries["method"] = SourceExpressionConverter.ConvertO(method);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodytenantId != null)
+                {
+                    body["tenantId"] = SourceExpressionConverter.ConvertToken(bodytenantId);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldType != null)
+                {
+                    body["fieldType"] = SourceExpressionConverter.ConvertToken(bodyfieldType);
+                    bodypropCount++;
+                }
+
+                if (bodyisRequired != null)
+                {
+                    body["isRequired"] = SourceExpressionConverter.ConvertToken(bodyisRequired);
+                    bodypropCount++;
+                }
+
+                if (bodyisReadOnly != null)
+                {
+                    body["isReadOnly"] = SourceExpressionConverter.ConvertToken(bodyisReadOnly);
+                    bodypropCount++;
+                }
+
+                if (bodydefaultValue != null)
+                {
+                    body["defaultValue"] = SourceExpressionConverter.ConvertToken(bodydefaultValue);
+                    bodypropCount++;
+                }
+
+                if (bodylabels != null)
+                {
+                    body["labels"] = SourceExpressionConverter.ConvertToken(bodylabels);
+                    bodypropCount++;
+                }
+
+                if (bodyvalidatingRegExp != null)
+                {
+                    body["validatingRegExp"] = SourceExpressionConverter.ConvertToken(bodyvalidatingRegExp);
+                    bodypropCount++;
+                }
+
+                if (bodyvalidationMessage != null)
+                {
+                    body["validationMessage"] = SourceExpressionConverter.ConvertToken(bodyvalidationMessage);
+                    bodypropCount++;
+                }
+
+                if (bodyrowAmount != null)
+                {
+                    body["rowAmount"] = SourceExpressionConverter.ConvertToken(bodyrowAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyparentTagId != null)
+                {
+                    body["parentTagId"] = SourceExpressionConverter.ConvertToken(bodyparentTagId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytenantId != null)
-            {
-                body["tenantId"] = CSharpExpressionConverter.ConvertToken(bodytenantId);
-                bodypropCount++;
-            }
-
-            if (bodycode != null)
-            {
-                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodyfieldType != null)
-            {
-                body["fieldType"] = CSharpExpressionConverter.ConvertToken(bodyfieldType);
-                bodypropCount++;
-            }
-
-            if (bodyisRequired != null)
-            {
-                body["isRequired"] = CSharpExpressionConverter.ConvertToken(bodyisRequired);
-                bodypropCount++;
-            }
-
-            if (bodyisReadOnly != null)
-            {
-                body["isReadOnly"] = CSharpExpressionConverter.ConvertToken(bodyisReadOnly);
-                bodypropCount++;
-            }
-
-            if (bodydefaultValue != null)
-            {
-                body["defaultValue"] = CSharpExpressionConverter.ConvertToken(bodydefaultValue);
-                bodypropCount++;
-            }
-
-            if (bodylabels != null)
-            {
-                body["labels"] = CSharpExpressionConverter.ConvertToken(bodylabels);
-                bodypropCount++;
-            }
-
-            if (bodyvalidatingRegExp != null)
-            {
-                body["validatingRegExp"] = CSharpExpressionConverter.ConvertToken(bodyvalidatingRegExp);
-                bodypropCount++;
-            }
-
-            if (bodyvalidationMessage != null)
-            {
-                body["validationMessage"] = CSharpExpressionConverter.ConvertToken(bodyvalidationMessage);
-                bodypropCount++;
-            }
-
-            if (bodyrowAmount != null)
-            {
-                body["rowAmount"] = CSharpExpressionConverter.ConvertToken(bodyrowAmount);
-                bodypropCount++;
-            }
-
-            if (bodyparentTagId != null)
-            {
-                body["parentTagId"] = CSharpExpressionConverter.ConvertToken(bodyparentTagId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateFieldResponse>(callPayload);
+            return new ApiConnectionAction<CreateFieldResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetFieldByIdResponse> GetFieldById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fieldId)
+        public IBodyWorkflowAction<GetFieldByIdResponse> GetFieldById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fieldId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetFieldByIdResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(fieldId, nameof(fieldId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/fields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fieldId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFieldByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetFieldByCodeResponse> GetFieldByCode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
+        public IBodyWorkflowAction<GetFieldByCodeResponse> GetFieldByCode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/taxonomy/fields/field";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetFieldByCodeResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(code, nameof(code), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/taxonomy/fields/field";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFieldByCodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> GetTemplateFields(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<GetTemplateFieldsResponseItem[]> GetTemplateFields([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetTemplateFieldsResponseItem[]>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}/fields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplateFieldsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetTemplatebyidResponse> GetTemplatebyid(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<GetTemplatebyidResponse> GetTemplatebyid([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> templateId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetTemplatebyidResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/taxonomy/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplatebyidResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetTemplatebycodeResponse> GetTemplatebycode(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> code)
+        public IBodyWorkflowAction<GetTemplatebycodeResponse> GetTemplatebycode([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/taxonomy/templates/template";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetTemplatebycodeResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(code, nameof(code), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/taxonomy/templates/template";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTemplatebycodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryUsersResponse> QueryUsers(Expression<Func<string>> exaAuthPlugin, Expression<Func<bool>> bodyexcludeActiveUsers = null, Expression<Func<bool>> bodyexcludeInactiveUsers = null, Expression<Func<bool>> bodyexcludeNormalUsers = null, Expression<Func<bool>> bodyexcludeSystemUsers = null, Expression<Func<string>> bodycontainsEmail = null, Expression<Func<string[]>> bodyroleIds = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null)
+        public IBodyWorkflowAction<QueryUsersResponse> QueryUsers([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<bool> bodyexcludeActiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeInactiveUsers = null, [WorkflowExpression] Func<bool> bodyexcludeNormalUsers = null, [WorkflowExpression] Func<bool> bodyexcludeSystemUsers = null, [WorkflowExpression] Func<string> bodycontainsEmail = null, [WorkflowExpression] Func<string[]> bodyroleIds = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null)
         {
-            var apiCallPath = "/user/queryusers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyexcludeActiveUsers != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodyexcludeActiveUsers, nameof(bodyexcludeActiveUsers), required: false);
+            SourceExpression.Validate(bodyexcludeInactiveUsers, nameof(bodyexcludeInactiveUsers), required: false);
+            SourceExpression.Validate(bodyexcludeNormalUsers, nameof(bodyexcludeNormalUsers), required: false);
+            SourceExpression.Validate(bodyexcludeSystemUsers, nameof(bodyexcludeSystemUsers), required: false);
+            SourceExpression.Validate(bodycontainsEmail, nameof(bodycontainsEmail), required: false);
+            SourceExpression.Validate(bodyroleIds, nameof(bodyroleIds), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
+            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["excludeActiveUsers"] = CSharpExpressionConverter.ConvertToken(bodyexcludeActiveUsers);
-                bodypropCount++;
+                var apiCallPath = "/user/queryusers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyexcludeActiveUsers != null)
+                {
+                    body["excludeActiveUsers"] = SourceExpressionConverter.ConvertToken(bodyexcludeActiveUsers);
+                    bodypropCount++;
+                }
+
+                if (bodyexcludeInactiveUsers != null)
+                {
+                    body["excludeInactiveUsers"] = SourceExpressionConverter.ConvertToken(bodyexcludeInactiveUsers);
+                    bodypropCount++;
+                }
+
+                if (bodyexcludeNormalUsers != null)
+                {
+                    body["excludeNormalUsers"] = SourceExpressionConverter.ConvertToken(bodyexcludeNormalUsers);
+                    bodypropCount++;
+                }
+
+                if (bodyexcludeSystemUsers != null)
+                {
+                    body["excludeSystemUsers"] = SourceExpressionConverter.ConvertToken(bodyexcludeSystemUsers);
+                    bodypropCount++;
+                }
+
+                if (bodycontainsEmail != null)
+                {
+                    body["containsEmail"] = SourceExpressionConverter.ConvertToken(bodycontainsEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyroleIds != null)
+                {
+                    body["roleIds"] = SourceExpressionConverter.ConvertToken(bodyroleIds);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycontainsName != null)
+                {
+                    body["containsName"] = SourceExpressionConverter.ConvertToken(bodycontainsName);
+                    bodypropCount++;
+                }
+
+                if (bodyorderAscending != null)
+                {
+                    body["orderAscending"] = SourceExpressionConverter.ConvertToken(bodyorderAscending);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexcludeInactiveUsers != null)
-            {
-                body["excludeInactiveUsers"] = CSharpExpressionConverter.ConvertToken(bodyexcludeInactiveUsers);
-                bodypropCount++;
-            }
-
-            if (bodyexcludeNormalUsers != null)
-            {
-                body["excludeNormalUsers"] = CSharpExpressionConverter.ConvertToken(bodyexcludeNormalUsers);
-                bodypropCount++;
-            }
-
-            if (bodyexcludeSystemUsers != null)
-            {
-                body["excludeSystemUsers"] = CSharpExpressionConverter.ConvertToken(bodyexcludeSystemUsers);
-                bodypropCount++;
-            }
-
-            if (bodycontainsEmail != null)
-            {
-                body["containsEmail"] = CSharpExpressionConverter.ConvertToken(bodycontainsEmail);
-                bodypropCount++;
-            }
-
-            if (bodyroleIds != null)
-            {
-                body["roleIds"] = CSharpExpressionConverter.ConvertToken(bodyroleIds);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodycontainsName != null)
-            {
-                body["containsName"] = CSharpExpressionConverter.ConvertToken(bodycontainsName);
-                bodypropCount++;
-            }
-
-            if (bodyorderAscending != null)
-            {
-                body["orderAscending"] = CSharpExpressionConverter.ConvertToken(bodyorderAscending);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryUsersResponse>(callPayload);
+            return new ApiConnectionAction<QueryUsersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetExternalSystemByIdResponse> GetExternalSystemById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> externalSystemId)
+        public IBodyWorkflowAction<GetExternalSystemByIdResponse> GetExternalSystemById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> externalSystemId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalSystemId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetExternalSystemByIdResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(externalSystemId, nameof(externalSystemId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/systems/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(externalSystemId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetExternalSystemByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodysource = null, Expression<Func<string>> bodyentityName = null, Expression<Func<string>> bodylegalEntity = null)
+        public IBodyWorkflowAction<ResolveContextResponse> ResolveContext([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodysource = null, [WorkflowExpression] Func<string> bodyentityName = null, [WorkflowExpression] Func<string> bodylegalEntity = null)
         {
-            var apiCallPath = "/integration/resolvecontext";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysource != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
+            SourceExpression.Validate(bodyentityName, nameof(bodyentityName), required: false);
+            SourceExpression.Validate(bodylegalEntity, nameof(bodylegalEntity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
-                bodypropCount++;
+                var apiCallPath = "/integration/resolvecontext";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysource != null)
+                {
+                    body["source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodyentityName != null)
+                {
+                    body["entityName"] = SourceExpressionConverter.ConvertToken(bodyentityName);
+                    bodypropCount++;
+                }
+
+                if (bodylegalEntity != null)
+                {
+                    body["legalEntity"] = SourceExpressionConverter.ConvertToken(bodylegalEntity);
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityName != null)
-            {
-                body["entityName"] = CSharpExpressionConverter.ConvertToken(bodyentityName);
-                bodypropCount++;
-            }
-
-            if (bodylegalEntity != null)
-            {
-                body["legalEntity"] = CSharpExpressionConverter.ConvertToken(bodylegalEntity);
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResolveContextResponse>(callPayload);
+            return new ApiConnectionAction<ResolveContextResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> AdvancedSearchQueryDocuments(Expression<Func<string>> exaAuthPlugin)
+        public IBodyWorkflowAction<AdvancedSearchQueryDocumentsResponse> AdvancedSearchQueryDocuments([WorkflowExpression] Func<string> exaAuthPlugin)
         {
-            var apiCallPath = "/meta/document/query/v2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/meta/document/query/v2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AdvancedSearchQueryDocumentsResponse>(callPayload);
+            return new ApiConnectionAction<AdvancedSearchQueryDocumentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<InsertExternalFileResponse> InsertExternalFile(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> filename, Expression<Func<string>> bodybody = null)
+        public IBodyWorkflowAction<InsertExternalFileResponse> InsertExternalFile([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> filename, [WorkflowExpression] Func<string> bodybody = null)
         {
-            var apiCallPath = "/meta/document/insertexternalfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["filename"] = CSharpExpressionConverter.ConvertO(filename);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybody != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(filename, nameof(filename), required: true);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-                bodypropCount++;
+                var apiCallPath = "/meta/document/insertexternalfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["filename"] = SourceExpressionConverter.ConvertO(filename);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<InsertExternalFileResponse>(callPayload);
+            return new ApiConnectionAction<InsertExternalFileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetDocumentMetadataResponse> GetDocumentMetadata([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetDocumentMetadataResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentMetadataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction AddSiteToStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id, Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction AddSiteToStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}/sites/add", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> GetDocumentMetadataByFileReference(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId)
+        public IBodyWorkflowAction<GetDocumentMetadataByFileReferenceResponse> GetDocumentMetadataByFileReference([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetDocumentMetadataByFileReferenceResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}/meta/document", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentMetadataByFileReferenceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<GetStorageProviderByIdResponse> GetStorageProviderById(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetStorageProviderByIdResponse> GetStorageProviderById([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<GetStorageProviderByIdResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/config/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStorageProviderByIdResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> name, Expression<Func<contentTypeInput>> contentType, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<UploadDocumentResponse> UploadDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> name, [WorkflowExpression] Func<contentTypeInput> contentType, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/meta/document/content";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.Convert(contentType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<UploadDocumentResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/meta/document/content";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.Convert(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UploadDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> SetPrimaryStorageProvider(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> storageProviderId, Expression<Func<bool>> removeRaptorStorage = null)
+        public IBodyWorkflowAction<SetPrimaryStorageProviderResponse> SetPrimaryStorageProvider([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<bool> removeRaptorStorage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (removeRaptorStorage != null)
-                callPayload.Queries["removeRaptorStorage"] = CSharpExpressionConverter.ConvertO(removeRaptorStorage);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<SetPrimaryStorageProviderResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
+            SourceExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
+            SourceExpression.Validate(removeRaptorStorage, nameof(removeRaptorStorage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/Files/{0}/primarystorageprovider/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (removeRaptorStorage != null)
+                    callPayload.Queries["removeRaptorStorage"] = SourceExpressionConverter.ConvertO(removeRaptorStorage);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SetPrimaryStorageProviderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<SetExternalSourceResponse> SetExternalSource(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> fileReferenceId, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<SetExternalSourceResponse> SetExternalSource([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> fileReferenceId, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<SetExternalSourceResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(fileReferenceId, nameof(fileReferenceId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}/externalsource", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileReferenceId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SetExternalSourceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction GenerateSiteSubscriptions(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> storageProviderId, Expression<Func<string>> contentType = null, Expression<Func<string>> body = null)
+        public IWorkflowAction GenerateSiteSubscriptions([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> storageProviderId, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(storageProviderId, nameof(storageProviderId), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/storageproviders/sharepoint/subscriptions/{0}/generate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storageProviderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<QueryTemplatesResponse> QueryTemplates(Expression<Func<string>> exaAuthPlugin, Expression<Func<int>> bodylanguageCode = null, Expression<Func<string[]>> bodycontextTags = null, Expression<Func<int>> bodyorderBy = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycontainsName = null, Expression<Func<bool>> bodyorderAscending = null, Expression<Func<string>> bodycontinuationToken = null)
+        public IBodyWorkflowAction<QueryTemplatesResponse> QueryTemplates([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<int> bodylanguageCode = null, [WorkflowExpression] Func<string[]> bodycontextTags = null, [WorkflowExpression] Func<int> bodyorderBy = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycontainsName = null, [WorkflowExpression] Func<bool> bodyorderAscending = null, [WorkflowExpression] Func<string> bodycontinuationToken = null)
         {
-            var apiCallPath = "/taxonomy/templates/querytemplates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodylanguageCode != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodylanguageCode, nameof(bodylanguageCode), required: false);
+            SourceExpression.Validate(bodycontextTags, nameof(bodycontextTags), required: false);
+            SourceExpression.Validate(bodyorderBy, nameof(bodyorderBy), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycontainsName, nameof(bodycontainsName), required: false);
+            SourceExpression.Validate(bodyorderAscending, nameof(bodyorderAscending), required: false);
+            SourceExpression.Validate(bodycontinuationToken, nameof(bodycontinuationToken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["languageCode"] = CSharpExpressionConverter.ConvertToken(bodylanguageCode);
-                bodypropCount++;
+                var apiCallPath = "/taxonomy/templates/querytemplates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodylanguageCode != null)
+                {
+                    body["languageCode"] = SourceExpressionConverter.ConvertToken(bodylanguageCode);
+                    bodypropCount++;
+                }
+
+                if (bodycontextTags != null)
+                {
+                    body["contextTags"] = SourceExpressionConverter.ConvertToken(bodycontextTags);
+                    bodypropCount++;
+                }
+
+                if (bodyorderBy != null)
+                {
+                    body["orderBy"] = SourceExpressionConverter.ConvertToken(bodyorderBy);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycontainsName != null)
+                {
+                    body["containsName"] = SourceExpressionConverter.ConvertToken(bodycontainsName);
+                    bodypropCount++;
+                }
+
+                if (bodyorderAscending != null)
+                {
+                    body["orderAscending"] = SourceExpressionConverter.ConvertToken(bodyorderAscending);
+                    bodypropCount++;
+                }
+
+                if (bodycontinuationToken != null)
+                {
+                    body["continuationToken"] = SourceExpressionConverter.ConvertToken(bodycontinuationToken);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycontextTags != null)
-            {
-                body["contextTags"] = CSharpExpressionConverter.ConvertToken(bodycontextTags);
-                bodypropCount++;
-            }
-
-            if (bodyorderBy != null)
-            {
-                body["orderBy"] = CSharpExpressionConverter.ConvertToken(bodyorderBy);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodycontainsName != null)
-            {
-                body["containsName"] = CSharpExpressionConverter.ConvertToken(bodycontainsName);
-                bodypropCount++;
-            }
-
-            if (bodyorderAscending != null)
-            {
-                body["orderAscending"] = CSharpExpressionConverter.ConvertToken(bodyorderAscending);
-                bodypropCount++;
-            }
-
-            if (bodycontinuationToken != null)
-            {
-                body["continuationToken"] = CSharpExpressionConverter.ConvertToken(bodycontinuationToken);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryTemplatesResponse>(callPayload);
+            return new ApiConnectionAction<QueryTemplatesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IBodyWorkflowAction<FindDocumentResponse> FindDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> azureDirectoryId, Expression<Func<string>> driveId, Expression<Func<string>> driveItemId)
+        public IBodyWorkflowAction<FindDocumentResponse> FindDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> azureDirectoryId, [WorkflowExpression] Func<string> driveId, [WorkflowExpression] Func<string> driveItemId)
         {
-            var apiCallPath = "/storageproviders/sharepoint/file/find-document";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["azureDirectoryId"] = CSharpExpressionConverter.ConvertO(azureDirectoryId);
-            callPayload.Queries["driveId"] = CSharpExpressionConverter.ConvertO(driveId);
-            callPayload.Queries["driveItemId"] = CSharpExpressionConverter.ConvertO(driveItemId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction<FindDocumentResponse>(callPayload);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(azureDirectoryId, nameof(azureDirectoryId), required: true);
+            SourceExpression.Validate(driveId, nameof(driveId), required: true);
+            SourceExpression.Validate(driveItemId, nameof(driveItemId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/storageproviders/sharepoint/file/find-document";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["azureDirectoryId"] = SourceExpressionConverter.ConvertO(azureDirectoryId);
+                callPayload.Queries["driveId"] = SourceExpressionConverter.ConvertO(driveId);
+                callPayload.Queries["driveItemId"] = SourceExpressionConverter.ConvertO(driveItemId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FindDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction DetachDocument(Expression<Func<string>> exaAuthPlugin, Expression<Func<string>> bodyazureDirectoryId = null, Expression<Func<string>> bodydriveId = null, Expression<Func<string>> bodydriveItemId = null)
+        public IWorkflowAction DetachDocument([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<string> bodyazureDirectoryId = null, [WorkflowExpression] Func<string> bodydriveId = null, [WorkflowExpression] Func<string> bodydriveItemId = null)
         {
-            var apiCallPath = "/storageproviders/sharepoint/file/detach";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyazureDirectoryId != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(bodyazureDirectoryId, nameof(bodyazureDirectoryId), required: false);
+            SourceExpression.Validate(bodydriveId, nameof(bodydriveId), required: false);
+            SourceExpression.Validate(bodydriveItemId, nameof(bodydriveItemId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["azureDirectoryId"] = CSharpExpressionConverter.ConvertToken(bodyazureDirectoryId);
-                bodypropCount++;
+                var apiCallPath = "/storageproviders/sharepoint/file/detach";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyazureDirectoryId != null)
+                {
+                    body["azureDirectoryId"] = SourceExpressionConverter.ConvertToken(bodyazureDirectoryId);
+                    bodypropCount++;
+                }
+
+                if (bodydriveId != null)
+                {
+                    body["driveId"] = SourceExpressionConverter.ConvertToken(bodydriveId);
+                    bodypropCount++;
+                }
+
+                if (bodydriveItemId != null)
+                {
+                    body["driveItemId"] = SourceExpressionConverter.ConvertToken(bodydriveItemId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydriveId != null)
-            {
-                body["driveId"] = CSharpExpressionConverter.ConvertToken(bodydriveId);
-                bodypropCount++;
-            }
-
-            if (bodydriveItemId != null)
-            {
-                body["driveItemId"] = CSharpExpressionConverter.ConvertToken(bodydriveItemId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction GetOrCreateTag(Expression<Func<string>> exaAuthPlugin, Expression<Func<methodInput>> method, Expression<Func<string>> bodycode = null, Expression<Func<bodylabelsInputItem2[]>> bodylabels = null, Expression<Func<string>> bodyparentTagId = null)
+        public IWorkflowAction GetOrCreateTag([WorkflowExpression] Func<string> exaAuthPlugin, [WorkflowExpression] Func<methodInput> method, [WorkflowExpression] Func<string> bodycode = null, [WorkflowExpression] Func<bodylabelsInputItem2[]> bodylabels = null, [WorkflowExpression] Func<string> bodyparentTagId = null)
         {
-            var apiCallPath = "/taxonomy/tags";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["method"] = CSharpExpressionConverter.Convert(method);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycode != null)
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            SourceExpression.Validate(method, nameof(method), required: true);
+            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
+            SourceExpression.Validate(bodylabels, nameof(bodylabels), required: false);
+            SourceExpression.Validate(bodyparentTagId, nameof(bodyparentTagId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
-                bodypropCount++;
+                var apiCallPath = "/taxonomy/tags";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["method"] = SourceExpressionConverter.Convert(method);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodylabels != null)
+                {
+                    body["labels"] = SourceExpressionConverter.ConvertToken(bodylabels);
+                    bodypropCount++;
+                }
+
+                if (bodyparentTagId != null)
+                {
+                    body["parentTagId"] = SourceExpressionConverter.ConvertToken(bodyparentTagId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodylabels != null)
-            {
-                body["labels"] = CSharpExpressionConverter.ConvertToken(bodylabels);
-                bodypropCount++;
-            }
-
-            if (bodyparentTagId != null)
-            {
-                body["parentTagId"] = CSharpExpressionConverter.ConvertToken(bodyparentTagId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "raptordocmanagement")]
-        public IWorkflowAction AddTemplateToDocumentSingle(Expression<Func<string>> documentId, Expression<Func<string>> templateId, Expression<Func<string>> exaAuthPlugin)
+        public IWorkflowAction AddTemplateToDocumentSingle([WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> exaAuthPlugin)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["exa-auth-plugin"] = CSharpExpressionConverter.ConvertO(exaAuthPlugin);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(exaAuthPlugin, nameof(exaAuthPlugin), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/meta/document/{0}/template/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["exa-auth-plugin"] = SourceExpressionConverter.ConvertO(exaAuthPlugin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

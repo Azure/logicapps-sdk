@@ -14,68 +14,93 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zreports
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
         public IBodyWorkflowAction<GetStoresResponseItem[]> GetStores()
         {
-            var apiCallPath = "/stores";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetStoresResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stores";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetStoresResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zreports")]
-        public IWorkflowAction UploadDocument(Expression<Func<string>> brandId, Expression<Func<string>> storeId, Expression<Func<object>> document)
+        public IWorkflowAction UploadDocument([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> storeId, [WorkflowExpression] Func<object> document)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(storeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(brandId, nameof(brandId), required: true);
+            SourceExpression.Validate(storeId, nameof(storeId), required: true);
+            SourceExpression.Validate(document, nameof(document), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(storeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class ZreportsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewDispatchAdvice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystoreIds != null)
+            SourceExpression.Validate(brandId, nameof(brandId), required: true);
+            SourceExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["storeIds"] = CSharpExpressionConverter.ConvertToken(bodystoreIds);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/despatch-advice-hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystoreIds != null)
+                {
+                    body["storeIds"] = SourceExpressionConverter.ConvertToken(bodystoreIds);
+                    bodypropCount++;
+                }
+
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreateWebhookResponseBody>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice(Expression<Func<string>> brandId, Expression<Func<string>> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<CreateWebhookResponseBody> NewInvoice([WorkflowExpression] Func<string> brandId, [WorkflowExpression] Func<string> bodystoreIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystoreIds != null)
+            SourceExpression.Validate(brandId, nameof(brandId), required: true);
+            SourceExpression.Validate(bodystoreIds, nameof(bodystoreIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["storeIds"] = CSharpExpressionConverter.ConvertToken(bodystoreIds);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/invoice-hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(brandId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystoreIds != null)
+                {
+                    body["storeIds"] = SourceExpressionConverter.ConvertToken(bodystoreIds);
+                    bodypropCount++;
+                }
+
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<CreateWebhookResponseBody>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<CreateWebhookResponseBody>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

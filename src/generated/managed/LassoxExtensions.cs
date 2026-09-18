@@ -12,25 +12,39 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lassox
     public class LassoxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction ActivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction ActivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
         {
-            var apiCallPath = "/users/activatefromproduct";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = CSharpExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = CSharpExpressionConverter.ConvertO(productUserId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(product, nameof(product), required: true);
+            SourceExpression.Validate(productUserId, nameof(productUserId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/activatefromproduct";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Product"] = SourceExpressionConverter.Convert(product);
+                callPayload.Queries["ProductUserId"] = SourceExpressionConverter.ConvertO(productUserId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lassox")]
-        public IWorkflowAction DeactivateUser(Expression<Func<productInput>> product, Expression<Func<string>> productUserId)
+        public IWorkflowAction DeactivateUser([WorkflowExpression] Func<productInput> product, [WorkflowExpression] Func<string> productUserId)
         {
-            var apiCallPath = "/users/deactivatefromproduct";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Product"] = CSharpExpressionConverter.Convert(product);
-            callPayload.Queries["ProductUserId"] = CSharpExpressionConverter.ConvertO(productUserId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(product, nameof(product), required: true);
+            SourceExpression.Validate(productUserId, nameof(productUserId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/deactivatefromproduct";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Product"] = SourceExpressionConverter.Convert(product);
+                callPayload.Queries["ProductUserId"] = SourceExpressionConverter.ConvertO(productUserId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

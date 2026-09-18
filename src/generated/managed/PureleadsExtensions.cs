@@ -12,51 +12,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     public class PureleadsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pureleads")]
-        public IWorkflowAction NewLeadSubmission(Expression<Func<string>> bodyemail, Expression<Func<string>> bodyname, Expression<Func<string>> bodymobileNo = null, Expression<Func<string>> bodysecondaryEmail = null, Expression<Func<int>> bodylifecycleStageName = null)
+        public IWorkflowAction NewLeadSubmission([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodymobileNo = null, [WorkflowExpression] Func<string> bodysecondaryEmail = null, [WorkflowExpression] Func<int> bodylifecycleStageName = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodymobileNo != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodymobileNo, nameof(bodymobileNo), required: false);
+            SourceExpression.Validate(bodysecondaryEmail, nameof(bodysecondaryEmail), required: false);
+            SourceExpression.Validate(bodylifecycleStageName, nameof(bodylifecycleStageName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["mobile_no"] = CSharpExpressionConverter.ConvertToken(bodymobileNo);
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysecondaryEmail != null)
-            {
-                body["secondary_email"] = CSharpExpressionConverter.ConvertToken(bodysecondaryEmail);
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
-            }
-
-            if (bodylifecycleStageName != null)
-            {
-                if (bodylifecycleStageName != null)
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodymobileNo != null)
                 {
-                    body["lifecycle_stage_name"] = CSharpExpressionConverter.ConvertToken(bodylifecycleStageName);
+                    body["mobile_no"] = SourceExpressionConverter.ConvertToken(bodymobileNo);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["lifecycle_stage_name"] = 1;
-                bodypropCount++;
+                if (bodysecondaryEmail != null)
+                {
+                    body["secondary_email"] = SourceExpressionConverter.ConvertToken(bodysecondaryEmail);
+                    bodypropCount++;
+                }
+
+                if (bodylifecycleStageName != null)
+                {
+                    if (bodylifecycleStageName != null)
+                    {
+                        body["lifecycle_stage_name"] = SourceExpressionConverter.ConvertToken(bodylifecycleStageName);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["lifecycle_stage_name"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
@@ -64,10 +73,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pureleads
     {
         public IBodyWorkflowTrigger<CreatedLeadSubmissionResponse> CreatedLeadSubmission(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<CreatedLeadSubmissionResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

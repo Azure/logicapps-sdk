@@ -14,70 +14,100 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.AzureAutomation
     public class AzureAutomationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
-        public IBodyWorkflowAction<CreateJobOutput> CreateJob(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> runbookName, Expression<Func<bool>> waitForJob = null, Expression<Func<object>> hybridAutomationWorkerGroup = null, Expression<Func<object>> runbookParameters = null)
+        public IBodyWorkflowAction<CreateJobOutput> CreateJob([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> runbookName, [WorkflowExpression] Func<bool> waitForJob = null, [WorkflowExpression] Func<object> hybridAutomationWorkerGroup = null, [WorkflowExpression] Func<object> runbookParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
-            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
-            if (waitForJob != null)
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
+            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
+            SourceExpression.Validate(runbookName, nameof(runbookName), required: true);
+            SourceExpression.Validate(waitForJob, nameof(waitForJob), required: false);
+            SourceExpression.Validate(hybridAutomationWorkerGroup, nameof(hybridAutomationWorkerGroup), required: false);
+            SourceExpression.Validate(runbookParameters, nameof(runbookParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["waitForJob"] = CSharpExpressionConverter.ConvertToken(waitForJob);
-            }
-            else
-            {
-                serviceProviderParameters["waitForJob"] = false;
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["subscriptionId"] = SourceExpressionConverter.ConvertToken(subscriptionId);
+                serviceProviderParameters["resourceGroup"] = SourceExpressionConverter.ConvertToken(resourceGroup);
+                serviceProviderParameters["automationAccount"] = SourceExpressionConverter.ConvertToken(automationAccount);
+                if (waitForJob != null)
+                {
+                    serviceProviderParameters["waitForJob"] = SourceExpressionConverter.ConvertToken(waitForJob);
+                }
+                else
+                {
+                    serviceProviderParameters["waitForJob"] = false;
+                }
+
+                if (hybridAutomationWorkerGroup != null)
+                {
+                    serviceProviderParameters["hybridAutomationWorkerGroup"] = SourceExpressionConverter.ConvertToken(hybridAutomationWorkerGroup);
+                }
+
+                serviceProviderParameters["runbookName"] = SourceExpressionConverter.ConvertToken(runbookName);
+                if (runbookParameters != null)
+                {
+                    serviceProviderParameters["runbookParameters"] = SourceExpressionConverter.ConvertToken(runbookParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "createJob", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            if (hybridAutomationWorkerGroup != null)
-            {
-                serviceProviderParameters["hybridAutomationWorkerGroup"] = CSharpExpressionConverter.ConvertToken(hybridAutomationWorkerGroup);
-            }
-
-            serviceProviderParameters["runbookName"] = CSharpExpressionConverter.ConvertToken(runbookName);
-            if (runbookParameters != null)
-            {
-                serviceProviderParameters["runbookParameters"] = CSharpExpressionConverter.ConvertToken(runbookParameters);
-            }
-
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "createJob", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<CreateJobOutput>(serviceProviderInput);
+            return new ServiceProviderAction<CreateJobOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
-        public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
+        public IBodyWorkflowAction<GetJobStatusOutput> GetJobStatus([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
-            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
-            serviceProviderParameters["jobId"] = CSharpExpressionConverter.ConvertToken(jobId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
+            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
+            SourceExpression.Validate(jobId, nameof(jobId), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetJobStatusOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["subscriptionId"] = SourceExpressionConverter.ConvertToken(subscriptionId);
+                serviceProviderParameters["resourceGroup"] = SourceExpressionConverter.ConvertToken(resourceGroup);
+                serviceProviderParameters["automationAccount"] = SourceExpressionConverter.ConvertToken(automationAccount);
+                serviceProviderParameters["jobId"] = SourceExpressionConverter.ConvertToken(jobId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobStatus", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetJobStatusOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "azureAutomation")]
-        public IBodyWorkflowAction<string> GetJobOutput(Expression<Func<object>> subscriptionId, Expression<Func<object>> resourceGroup, Expression<Func<object>> automationAccount, Expression<Func<object>> jobId)
+        public IBodyWorkflowAction<string> GetJobOutput([WorkflowExpression] Func<object> subscriptionId, [WorkflowExpression] Func<object> resourceGroup, [WorkflowExpression] Func<object> automationAccount, [WorkflowExpression] Func<object> jobId)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["subscriptionId"] = CSharpExpressionConverter.ConvertToken(subscriptionId);
-            serviceProviderParameters["resourceGroup"] = CSharpExpressionConverter.ConvertToken(resourceGroup);
-            serviceProviderParameters["automationAccount"] = CSharpExpressionConverter.ConvertToken(automationAccount);
-            serviceProviderParameters["jobId"] = CSharpExpressionConverter.ConvertToken(jobId);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(resourceGroup, nameof(resourceGroup), required: true);
+            SourceExpression.Validate(automationAccount, nameof(automationAccount), required: true);
+            SourceExpression.Validate(jobId, nameof(jobId), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobOutput", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<string>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["subscriptionId"] = SourceExpressionConverter.ConvertToken(subscriptionId);
+                serviceProviderParameters["resourceGroup"] = SourceExpressionConverter.ConvertToken(resourceGroup);
+                serviceProviderParameters["automationAccount"] = SourceExpressionConverter.ConvertToken(automationAccount);
+                serviceProviderParameters["jobId"] = SourceExpressionConverter.ConvertToken(jobId);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/azureAutomation", operationId: "getJobOutput", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<string>(BuildSourceInput);
         }
     }
 

@@ -12,51 +12,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Diffcheckerip
     public class DiffcheckeripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckTextResponse> CheckText(Expression<Func<string>> bodyleft, Expression<Func<string>> bodyright, Expression<Func<diffLevelInput>> diffLevel = null)
+        public IBodyWorkflowAction<CheckTextResponse> CheckText([WorkflowExpression] Func<string> bodyleft, [WorkflowExpression] Func<string> bodyright, [WorkflowExpression] Func<diffLevelInput> diffLevel = null)
         {
-            var apiCallPath = "/public/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Queries["diff_level"] = Convert.ToString("word");
-            if (diffLevel != null)
-                callPayload.Queries["diff_level"] = CSharpExpressionConverter.Convert(diffLevel);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left"] = CSharpExpressionConverter.ConvertToken(bodyleft);
-            bodypropCount++;
-            body["right"] = CSharpExpressionConverter.ConvertToken(bodyright);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyleft, nameof(bodyleft), required: true);
+            SourceExpression.Validate(bodyright, nameof(bodyright), required: true);
+            SourceExpression.Validate(diffLevel, nameof(diffLevel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/public/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Queries["diff_level"] = Convert.ToString("word");
+                if (diffLevel != null)
+                    callPayload.Queries["diff_level"] = SourceExpressionConverter.Convert(diffLevel);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left"] = SourceExpressionConverter.ConvertToken(bodyleft);
+                bodypropCount++;
+                body["right"] = SourceExpressionConverter.ConvertToken(bodyright);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CheckTextResponse>(callPayload);
+            return new ApiConnectionAction<CheckTextResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "diffcheckerip")]
-        public IBodyWorkflowAction<CheckImageResponse> CheckImage(Expression<Func<string>> bodyleftImage, Expression<Func<string>> bodyrightImage)
+        public IBodyWorkflowAction<CheckImageResponse> CheckImage([WorkflowExpression] Func<string> bodyleftImage, [WorkflowExpression] Func<string> bodyrightImage)
         {
-            var apiCallPath = "/public/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["input_type"] = Convert.ToString("json");
-            callPayload.Queries["output_type"] = Convert.ToString("json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["left_image"] = CSharpExpressionConverter.ConvertToken(bodyleftImage);
-            bodypropCount++;
-            body["right_image"] = CSharpExpressionConverter.ConvertToken(bodyrightImage);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyleftImage, nameof(bodyleftImage), required: true);
+            SourceExpression.Validate(bodyrightImage, nameof(bodyrightImage), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/public/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["input_type"] = Convert.ToString("json");
+                callPayload.Queries["output_type"] = Convert.ToString("json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["left_image"] = SourceExpressionConverter.ConvertToken(bodyleftImage);
+                bodypropCount++;
+                body["right_image"] = SourceExpressionConverter.ConvertToken(bodyrightImage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CheckImageResponse>(callPayload);
+            return new ApiConnectionAction<CheckImageResponse>(BuildSourceInput);
         }
     }
 

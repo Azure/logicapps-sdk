@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Youneedabudgetip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "youneedabudgetip")]
         public IBodyWorkflowAction<UserResponse> GetUser()
         {
-            var apiCallPath = "/user";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
         }
     }
 

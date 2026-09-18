@@ -12,85 +12,110 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Langai
     public class LangaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId)
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyprojectId)
         {
-            var apiCallPath = "/api/v1/analyze";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/analyze";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                bodypropCount++;
+                body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            return new ApiConnectionAction<AnalyzeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<DocumentsResponse> Documents(Expression<Func<string>> bodytext, Expression<Func<string>> bodyprojectId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodydate = null)
+        public IBodyWorkflowAction<DocumentsResponse> Documents([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodyprojectId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodydate = null)
         {
-            var apiCallPath = "/api/v1/documents";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["projectId"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
-            if (bodyid != null)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
+                var apiCallPath = "/api/v1/documents";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydate != null)
-            {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
+                body["projectId"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
-            {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentsResponse>(callPayload);
+            return new ApiConnectionAction<DocumentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
         public IBodyWorkflowAction<ProjectsResponseItem[]> Projects()
         {
-            var apiCallPath = "/api/v1/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ProjectsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProjectsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "langai")]
-        public IBodyWorkflowAction<TagsResponse> Tags(Expression<Func<string>> projectId)
+        public IBodyWorkflowAction<TagsResponse> Tags([WorkflowExpression] Func<string> projectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<TagsResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/projects/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TagsResponse>(BuildSourceInput);
         }
     }
 

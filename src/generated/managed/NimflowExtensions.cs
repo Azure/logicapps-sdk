@@ -12,249 +12,300 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
     public class NimflowActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction(Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandreference, Expression<Func<string>> commandaction, Expression<Func<string>> commandsubject = null)
+        public IBodyWorkflowAction<DispatchContextActionResult> ContextsDispatchAction([WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandreference, [WorkflowExpression] Func<string> commandaction, [WorkflowExpression] Func<string> commandsubject = null)
         {
-            var apiCallPath = "/Contexts/DispatchAction";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["contextTypeName"] = CSharpExpressionConverter.ConvertToken(commandcontextTypeName);
-            commandpropCount++;
-            command["reference"] = CSharpExpressionConverter.ConvertToken(commandreference);
-            commandpropCount++;
-            command["action"] = CSharpExpressionConverter.ConvertToken(commandaction);
-            var payloadObject = new JObject();
-            var payloadObjectpropCount = 0;
-            if (payloadObjectpropCount > 0)
+            SourceExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            SourceExpression.Validate(commandreference, nameof(commandreference), required: true);
+            SourceExpression.Validate(commandaction, nameof(commandaction), required: true);
+            SourceExpression.Validate(commandsubject, nameof(commandsubject), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                command["payload"] = payloadObject;
+                var apiCallPath = "/Contexts/DispatchAction";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
-            }
-
-            if (commandsubject != null)
-            {
-                command["subject"] = CSharpExpressionConverter.ConvertToken(commandsubject);
+                command["contextTypeName"] = SourceExpressionConverter.ConvertToken(commandcontextTypeName);
                 commandpropCount++;
+                command["reference"] = SourceExpressionConverter.ConvertToken(commandreference);
+                commandpropCount++;
+                command["action"] = SourceExpressionConverter.ConvertToken(commandaction);
+                var payloadObject = new JObject();
+                var payloadObjectpropCount = 0;
+                if (payloadObjectpropCount > 0)
+                {
+                    command["payload"] = payloadObject;
+                    commandpropCount++;
+                }
+
+                if (commandsubject != null)
+                {
+                    command["subject"] = SourceExpressionConverter.ConvertToken(commandsubject);
+                    commandpropCount++;
+                }
+
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
+                return callPayload;
             }
 
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
-
-            return new ApiConnectionAction<DispatchContextActionResult>(callPayload);
+            return new ApiConnectionAction<DispatchContextActionResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nimflow")]
-        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse(Expression<Func<string>> commandcontextReference, Expression<Func<string>> commandcontextTypeName, Expression<Func<string>> commandtaskTypeName, Expression<Func<string>> commandresponseTypeName, Expression<Func<string>> commandsentBy = null, Expression<Func<string>> commandstartedOn = null, Expression<Func<string>> commandsentOn = null, Expression<Func<string>> commandsubject = null, Expression<Func<string>> commanditemKey = null)
+        public IBodyWorkflowAction<AddTaskResponseResult> TasksAddResponse([WorkflowExpression] Func<string> commandcontextReference, [WorkflowExpression] Func<string> commandcontextTypeName, [WorkflowExpression] Func<string> commandtaskTypeName, [WorkflowExpression] Func<string> commandresponseTypeName, [WorkflowExpression] Func<string> commandsentBy = null, [WorkflowExpression] Func<string> commandstartedOn = null, [WorkflowExpression] Func<string> commandsentOn = null, [WorkflowExpression] Func<string> commandsubject = null, [WorkflowExpression] Func<string> commanditemKey = null)
         {
-            var apiCallPath = "/Tasks/AddResponse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var command = new JObject();
-            var commandpropCount = 0;
-            commandpropCount++;
-            command["contextReference"] = CSharpExpressionConverter.ConvertToken(commandcontextReference);
-            if (commandsentBy != null)
+            SourceExpression.Validate(commandcontextReference, nameof(commandcontextReference), required: true);
+            SourceExpression.Validate(commandcontextTypeName, nameof(commandcontextTypeName), required: true);
+            SourceExpression.Validate(commandtaskTypeName, nameof(commandtaskTypeName), required: true);
+            SourceExpression.Validate(commandresponseTypeName, nameof(commandresponseTypeName), required: true);
+            SourceExpression.Validate(commandsentBy, nameof(commandsentBy), required: false);
+            SourceExpression.Validate(commandstartedOn, nameof(commandstartedOn), required: false);
+            SourceExpression.Validate(commandsentOn, nameof(commandsentOn), required: false);
+            SourceExpression.Validate(commandsubject, nameof(commandsubject), required: false);
+            SourceExpression.Validate(commanditemKey, nameof(commanditemKey), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                command["sentBy"] = CSharpExpressionConverter.ConvertToken(commandsentBy);
+                var apiCallPath = "/Tasks/AddResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var command = new JObject();
+                var commandpropCount = 0;
                 commandpropCount++;
-            }
+                command["contextReference"] = SourceExpressionConverter.ConvertToken(commandcontextReference);
+                if (commandsentBy != null)
+                {
+                    command["sentBy"] = SourceExpressionConverter.ConvertToken(commandsentBy);
+                    commandpropCount++;
+                }
 
-            var payloadObject = new JObject();
-            var payloadObjectpropCount = 0;
-            if (payloadObjectpropCount > 0)
-            {
-                command["payload"] = payloadObject;
+                var payloadObject = new JObject();
+                var payloadObjectpropCount = 0;
+                if (payloadObjectpropCount > 0)
+                {
+                    command["payload"] = payloadObject;
+                    commandpropCount++;
+                }
+
+                if (commandstartedOn != null)
+                {
+                    command["startedOn"] = SourceExpressionConverter.ConvertToken(commandstartedOn);
+                    commandpropCount++;
+                }
+
+                if (commandsentOn != null)
+                {
+                    command["sentOn"] = SourceExpressionConverter.ConvertToken(commandsentOn);
+                    commandpropCount++;
+                }
+
+                if (commandsubject != null)
+                {
+                    command["subject"] = SourceExpressionConverter.ConvertToken(commandsubject);
+                    commandpropCount++;
+                }
+
                 commandpropCount++;
-            }
-
-            if (commandstartedOn != null)
-            {
-                command["startedOn"] = CSharpExpressionConverter.ConvertToken(commandstartedOn);
+                command["contextTypeName"] = SourceExpressionConverter.ConvertToken(commandcontextTypeName);
                 commandpropCount++;
-            }
-
-            if (commandsentOn != null)
-            {
-                command["sentOn"] = CSharpExpressionConverter.ConvertToken(commandsentOn);
+                command["taskTypeName"] = SourceExpressionConverter.ConvertToken(commandtaskTypeName);
                 commandpropCount++;
+                command["responseTypeName"] = SourceExpressionConverter.ConvertToken(commandresponseTypeName);
+                if (commanditemKey != null)
+                {
+                    command["itemKey"] = SourceExpressionConverter.ConvertToken(commanditemKey);
+                    commandpropCount++;
+                }
+
+                if (commandpropCount > 0)
+                {
+                    callPayload.Body = command;
+                }
+                return callPayload;
             }
 
-            if (commandsubject != null)
-            {
-                command["subject"] = CSharpExpressionConverter.ConvertToken(commandsubject);
-                commandpropCount++;
-            }
-
-            commandpropCount++;
-            command["contextTypeName"] = CSharpExpressionConverter.ConvertToken(commandcontextTypeName);
-            commandpropCount++;
-            command["taskTypeName"] = CSharpExpressionConverter.ConvertToken(commandtaskTypeName);
-            commandpropCount++;
-            command["responseTypeName"] = CSharpExpressionConverter.ConvertToken(commandresponseTypeName);
-            if (commanditemKey != null)
-            {
-                command["itemKey"] = CSharpExpressionConverter.ConvertToken(commanditemKey);
-                commandpropCount++;
-            }
-
-            if (commandpropCount > 0)
-            {
-                callPayload.Body = command;
-            }
-
-            return new ApiConnectionAction<AddTaskResponseResult>(callPayload);
+            return new ApiConnectionAction<AddTaskResponseResult>(BuildSourceInput);
         }
     }
 
     public class NimflowTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger WhenTaskCreatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskCreatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "@listCallbackUrl()";
                 requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = SourceExpressionConverter.ConvertToken(requestcontextTypeName);
+                    requestpropCount++;
+                }
+
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = SourceExpressionConverter.ConvertToken(requesttaskTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WhenTaskUpdatedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskUpdatedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "@listCallbackUrl()";
                 requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = SourceExpressionConverter.ConvertToken(requestcontextTypeName);
+                    requestpropCount++;
+                }
+
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = SourceExpressionConverter.ConvertToken(requesttaskTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WhenTaskArchivedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenTaskArchivedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requesttaskTypeName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenTaskArchived";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            SourceExpression.Validate(requesttaskTypeName, nameof(requesttaskTypeName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
+                var apiCallPath = "/WhenTaskArchived";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "@listCallbackUrl()";
                 requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = SourceExpressionConverter.ConvertToken(requestcontextTypeName);
+                    requestpropCount++;
+                }
+
+                if (requesttaskTypeName != null)
+                {
+                    request["taskTypeName"] = SourceExpressionConverter.ConvertToken(requesttaskTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requesttaskTypeName != null)
-            {
-                request["taskTypeName"] = CSharpExpressionConverter.ConvertToken(requesttaskTypeName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WhenMilestoneReachedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneReachedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenMilestoneReached";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            SourceExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
+                var apiCallPath = "/WhenMilestoneReached";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "@listCallbackUrl()";
                 requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = SourceExpressionConverter.ConvertToken(requestcontextTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestmilestoneName != null)
+                {
+                    request["milestoneName"] = SourceExpressionConverter.ConvertToken(requestmilestoneName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestmilestoneName != null)
-            {
-                request["milestoneName"] = CSharpExpressionConverter.ConvertToken(requestmilestoneName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WhenMilestoneClearedPost(Expression<Func<string>> requestcontextTypeName = null, Expression<Func<string>> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WhenMilestoneClearedPost([WorkflowExpression] Func<string> requestcontextTypeName = null, [WorkflowExpression] Func<string> requestmilestoneName = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/WhenMilestoneCleared";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            request["callbackUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestcontextTypeName != null)
+            SourceExpression.Validate(requestcontextTypeName, nameof(requestcontextTypeName), required: false);
+            SourceExpression.Validate(requestmilestoneName, nameof(requestmilestoneName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["contextTypeName"] = CSharpExpressionConverter.ConvertToken(requestcontextTypeName);
+                var apiCallPath = "/WhenMilestoneCleared";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                request["callbackUrl"] = "@listCallbackUrl()";
                 requestpropCount++;
+                if (requestcontextTypeName != null)
+                {
+                    request["contextTypeName"] = SourceExpressionConverter.ConvertToken(requestcontextTypeName);
+                    requestpropCount++;
+                }
+
+                if (requestmilestoneName != null)
+                {
+                    request["milestoneName"] = SourceExpressionConverter.ConvertToken(requestmilestoneName);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestmilestoneName != null)
-            {
-                request["milestoneName"] = CSharpExpressionConverter.ConvertToken(requestmilestoneName);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,1156 +12,1409 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infoshare
     public class InfoshareActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonResponse> Logon(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodytenantname = null)
+        public IBodyWorkflowAction<LogonResponse> Logon([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodytenantname = null)
         {
-            var apiCallPath = "/api/Logon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["Username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
-            bodypropCount++;
-            body["Password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-            if (bodytenantname != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
+            SourceExpression.Validate(bodytenantname, nameof(bodytenantname), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Tenantname"] = CSharpExpressionConverter.ConvertToken(bodytenantname);
+                var apiCallPath = "/api/Logon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["Username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["Password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                if (bodytenantname != null)
+                {
+                    body["Tenantname"] = SourceExpressionConverter.ConvertToken(bodytenantname);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LogonResponse>(callPayload);
+            return new ApiConnectionAction<LogonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyassignUserLoginNames, Expression<Func<string>> bodytaskId = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<CloseTaskAndAssignToUsersResponse> CloseTaskAndAssignToUsers([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyassignUserLoginNames, [WorkflowExpression] Func<string> bodytaskId = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            var apiCallPath = "/api/CloseTaskAndAssignToUsers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodytaskId != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            SourceExpression.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: true);
+            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["TaskId"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
+                var apiCallPath = "/api/CloseTaskAndAssignToUsers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
                 bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodytaskId != null)
+                {
+                    body["TaskId"] = SourceExpressionConverter.ConvertToken(bodytaskId);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["AssignUserLoginNames"] = SourceExpressionConverter.ConvertToken(bodyassignUserLoginNames);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["AssignUserLoginNames"] = CSharpExpressionConverter.ConvertToken(bodyassignUserLoginNames);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseTaskAndAssignToUsersResponse>(callPayload);
+            return new ApiConnectionAction<CloseTaskAndAssignToUsersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogoffResponse> Logoff(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId)
+        public IBodyWorkflowAction<LogoffResponse> Logoff([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId)
         {
-            var apiCallPath = "/api/Logoff";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/Logoff";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<LogoffResponse>(callPayload);
+            return new ApiConnectionAction<LogoffResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<GetDocumentPropertiesResponseItem[]> GetDocumentProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/GetDocumentProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            if (bodyculture != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
+                var apiCallPath = "/api/GetDocumentProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetDocumentPropertiesResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GetDocumentPropertiesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyculture = null)
+        public IBodyWorkflowAction<GetProcessPropertiesResponseItem[]> GetProcessProperties([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/GetProcessProperties";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodyculture != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
+                var apiCallPath = "/api/GetProcessProperties";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodyculture != null)
+                {
+                    body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetProcessPropertiesResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GetProcessPropertiesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContent(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyignoreHashValidation = null)
+        public IBodyWorkflowAction<JToken> GetFileContent([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyignoreHashValidation = null)
         {
-            var apiCallPath = "/api/GetFileContent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            if (bodyversionId != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            SourceExpression.Validate(bodyversionId, nameof(bodyversionId), required: false);
+            SourceExpression.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            SourceExpression.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            SourceExpression.Validate(bodyignoreHashValidation, nameof(bodyignoreHashValidation), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["VersionId"] = CSharpExpressionConverter.ConvertToken(bodyversionId);
+                var apiCallPath = "/api/GetFileContent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydocumentDataId != null)
-            {
-                body["DocumentDataId"] = CSharpExpressionConverter.ConvertToken(bodydocumentDataId);
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
                 bodypropCount++;
-            }
-
-            if (bodyrenditionId != null)
-            {
-                body["RenditionId"] = CSharpExpressionConverter.ConvertToken(bodyrenditionId);
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
                 bodypropCount++;
-            }
+                body["DocumentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                if (bodyversionId != null)
+                {
+                    body["VersionId"] = SourceExpressionConverter.ConvertToken(bodyversionId);
+                    bodypropCount++;
+                }
 
-            if (bodyignoreHashValidation != null)
-            {
+                if (bodydocumentDataId != null)
+                {
+                    body["DocumentDataId"] = SourceExpressionConverter.ConvertToken(bodydocumentDataId);
+                    bodypropCount++;
+                }
+
+                if (bodyrenditionId != null)
+                {
+                    body["RenditionId"] = SourceExpressionConverter.ConvertToken(bodyrenditionId);
+                    bodypropCount++;
+                }
+
                 if (bodyignoreHashValidation != null)
                 {
-                    body["IgnoreHashValidation"] = CSharpExpressionConverter.ConvertToken(bodyignoreHashValidation);
+                    if (bodyignoreHashValidation != null)
+                    {
+                        body["IgnoreHashValidation"] = SourceExpressionConverter.ConvertToken(bodyignoreHashValidation);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["IgnoreHashValidation"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<CloseProcessResponse> CloseProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodycomment = null)
+        {
+            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Process/CloseProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = SourceExpressionConverter.ConvertO(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["connectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CloseProcessResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyuserName, [WorkflowExpression] Func<string> bodypasswordHashed, [WorkflowExpression] Func<string> bodytenantName = null)
+        {
+            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            SourceExpression.Validate(bodyuserName, nameof(bodyuserName), required: true);
+            SourceExpression.Validate(bodypasswordHashed, nameof(bodypasswordHashed), required: true);
+            SourceExpression.Validate(bodytenantName, nameof(bodytenantName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Authentication/Logon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = SourceExpressionConverter.ConvertO(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["userName"] = SourceExpressionConverter.ConvertToken(bodyuserName);
+                bodypropCount++;
+                body["passwordHashed"] = SourceExpressionConverter.ConvertToken(bodypasswordHashed);
+                if (bodytenantName != null)
+                {
+                    body["tenantName"] = SourceExpressionConverter.ConvertToken(bodytenantName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LogonWithHashedPasswordResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<CloseTaskResponse> CloseTask([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<bool> bodyassignUsers, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodytaskId = null)
+        {
+            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            SourceExpression.Validate(bodyassignUsers, nameof(bodyassignUsers), required: true);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Process/CloseTask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = SourceExpressionConverter.ConvertO(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["connectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodytaskId != null)
+                {
+                    body["taskId"] = SourceExpressionConverter.ConvertToken(bodytaskId);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["IgnoreHashValidation"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                body["assignUsers"] = SourceExpressionConverter.ConvertToken(bodyassignUsers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<CloseTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseProcessResponse> CloseProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<GetDocumentResponse> GetDocument([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId)
         {
-            var apiCallPath = "/Process/CloseProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = CSharpExpressionConverter.ConvertO(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodycomment != null)
+            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
+                var apiCallPath = "/Document/GetDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = SourceExpressionConverter.ConvertO(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["connectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["documentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseProcessResponse>(callPayload);
+            return new ApiConnectionAction<GetDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<LogonWithHashedPasswordResponse> LogonWithHashedPassword(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyuserName, Expression<Func<string>> bodypasswordHashed, Expression<Func<string>> bodytenantName = null)
+        public IBodyWorkflowAction<GetProcessResponse> GetProcess([WorkflowExpression] Func<string> archiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId)
         {
-            var apiCallPath = "/Authentication/Logon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = CSharpExpressionConverter.ConvertO(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["userName"] = CSharpExpressionConverter.ConvertToken(bodyuserName);
-            bodypropCount++;
-            body["passwordHashed"] = CSharpExpressionConverter.ConvertToken(bodypasswordHashed);
-            if (bodytenantName != null)
+            SourceExpression.Validate(archiveUrl, nameof(archiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenantName"] = CSharpExpressionConverter.ConvertToken(bodytenantName);
+                var apiCallPath = "/Process/GetProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ArchiveUrl"] = SourceExpressionConverter.ConvertO(archiveUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["connectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["processId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<LogonWithHashedPasswordResponse>(callPayload);
+            return new ApiConnectionAction<GetProcessResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CloseTaskResponse> CloseTask(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<bool>> bodyassignUsers, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodytaskId = null)
+        public IBodyWorkflowAction<JToken> GetFileContentConverted([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodytargetFormat, [WorkflowExpression] Func<string> bodyversionId = null, [WorkflowExpression] Func<string> bodydocumentDataId = null, [WorkflowExpression] Func<string> bodyrenditionId = null, [WorkflowExpression] Func<bool> bodyaddAnnotatins = null, [WorkflowExpression] Func<bool> bodyaddOverlay = null)
         {
-            var apiCallPath = "/Process/CloseTask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = CSharpExpressionConverter.ConvertO(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodycomment != null)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            SourceExpression.Validate(bodytargetFormat, nameof(bodytargetFormat), required: true);
+            SourceExpression.Validate(bodyversionId, nameof(bodyversionId), required: false);
+            SourceExpression.Validate(bodydocumentDataId, nameof(bodydocumentDataId), required: false);
+            SourceExpression.Validate(bodyrenditionId, nameof(bodyrenditionId), required: false);
+            SourceExpression.Validate(bodyaddAnnotatins, nameof(bodyaddAnnotatins), required: false);
+            SourceExpression.Validate(bodyaddOverlay, nameof(bodyaddOverlay), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
+                var apiCallPath = "/api/GetFileContentConverted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodytaskId != null)
-            {
-                body["taskId"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["assignUsers"] = CSharpExpressionConverter.ConvertToken(bodyassignUsers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseTaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetDocumentResponse> GetDocument(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId)
-        {
-            var apiCallPath = "/Document/GetDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = CSharpExpressionConverter.ConvertO(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["documentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetDocumentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetProcessResponse> GetProcess(Expression<Func<string>> archiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId)
-        {
-            var apiCallPath = "/Process/GetProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ArchiveUrl"] = CSharpExpressionConverter.ConvertO(archiveUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["connectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["processId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetProcessResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<JToken> GetFileContentConverted(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodytargetFormat, Expression<Func<string>> bodyversionId = null, Expression<Func<string>> bodydocumentDataId = null, Expression<Func<string>> bodyrenditionId = null, Expression<Func<bool>> bodyaddAnnotatins = null, Expression<Func<bool>> bodyaddOverlay = null)
-        {
-            var apiCallPath = "/api/GetFileContentConverted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            if (bodyversionId != null)
-            {
-                body["VersionId"] = CSharpExpressionConverter.ConvertToken(bodyversionId);
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
                 bodypropCount++;
-            }
+                body["DocumentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                if (bodyversionId != null)
+                {
+                    body["VersionId"] = SourceExpressionConverter.ConvertToken(bodyversionId);
+                    bodypropCount++;
+                }
 
-            if (bodydocumentDataId != null)
-            {
-                body["DocumentDataId"] = CSharpExpressionConverter.ConvertToken(bodydocumentDataId);
+                if (bodydocumentDataId != null)
+                {
+                    body["DocumentDataId"] = SourceExpressionConverter.ConvertToken(bodydocumentDataId);
+                    bodypropCount++;
+                }
+
+                if (bodyrenditionId != null)
+                {
+                    body["RenditionId"] = SourceExpressionConverter.ConvertToken(bodyrenditionId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyrenditionId != null)
-            {
-                body["RenditionId"] = CSharpExpressionConverter.ConvertToken(bodyrenditionId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["TargetFormat"] = CSharpExpressionConverter.ConvertToken(bodytargetFormat);
-            if (bodyaddAnnotatins != null)
-            {
+                body["TargetFormat"] = SourceExpressionConverter.ConvertToken(bodytargetFormat);
                 if (bodyaddAnnotatins != null)
                 {
-                    body["AddAnnotatins"] = CSharpExpressionConverter.ConvertToken(bodyaddAnnotatins);
+                    if (bodyaddAnnotatins != null)
+                    {
+                        body["AddAnnotatins"] = SourceExpressionConverter.ConvertToken(bodyaddAnnotatins);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["AddAnnotatins"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["AddAnnotatins"] = true;
-                bodypropCount++;
-            }
-
-            if (bodyaddOverlay != null)
-            {
                 if (bodyaddOverlay != null)
                 {
-                    body["AddOverlay"] = CSharpExpressionConverter.ConvertToken(bodyaddOverlay);
+                    if (bodyaddOverlay != null)
+                    {
+                        body["AddOverlay"] = SourceExpressionConverter.ConvertToken(bodyaddOverlay);
+                        bodypropCount++;
+                    }
+
                     bodypropCount++;
                 }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["AddOverlay"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessTemplateName, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodydocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyculture = null)
-        {
-            var apiCallPath = "/api/CreateProcess";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            if (bodyprocessProperties != null)
-            {
-                body["ProcessProperties"] = CSharpExpressionConverter.ConvertToken(bodyprocessProperties);
-                bodypropCount++;
-            }
-
-            if (bodycustomProperties != null)
-            {
-                body["CustomProperties"] = CSharpExpressionConverter.ConvertToken(bodycustomProperties);
-                bodypropCount++;
-            }
-
-            if (bodydocumentIds != null)
-            {
-                body["DocumentIds"] = CSharpExpressionConverter.ConvertToken(bodydocumentIds);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["ProcessTemplateName"] = CSharpExpressionConverter.ConvertToken(bodyprocessTemplateName);
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["Priority"] = CSharpExpressionConverter.Convert(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateProcessResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null, Expression<Func<string>> bodyorderByClause = null, Expression<Func<bool>> bodyaddColumnHeaders = null)
-        {
-            var apiCallPath = "/api/UserTableGetRecords";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = CSharpExpressionConverter.ConvertToken(bodyuserTable);
-            if (bodywhereClause != null)
-            {
-                body["WhereClause"] = CSharpExpressionConverter.ConvertToken(bodywhereClause);
-                bodypropCount++;
-            }
-
-            if (bodyorderByClause != null)
-            {
-                body["OrderByClause"] = CSharpExpressionConverter.ConvertToken(bodyorderByClause);
-                bodypropCount++;
-            }
-
-            if (bodyaddColumnHeaders != null)
-            {
-                body["AddColumnHeaders"] = CSharpExpressionConverter.ConvertToken(bodyaddColumnHeaders);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableGetRecordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyvalues, Expression<Func<bool>> bodydeleteAllValues = null, Expression<Func<bool>> bodyfirstRowContainsColumnHeaders = null)
-        {
-            var apiCallPath = "/api/UserTableImportData";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = CSharpExpressionConverter.ConvertToken(bodyuserTable);
-            bodypropCount++;
-            body["Values"] = CSharpExpressionConverter.ConvertToken(bodyvalues);
-            if (bodydeleteAllValues != null)
-            {
-                if (bodydeleteAllValues != null)
+                else
                 {
-                    body["DeleteAllValues"] = CSharpExpressionConverter.ConvertToken(bodydeleteAllValues);
+                    body["AddOverlay"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["DeleteAllValues"] = false;
-                bodypropCount++;
-            }
-
-            if (bodyfirstRowContainsColumnHeaders != null)
-            {
-                if (bodyfirstRowContainsColumnHeaders != null)
+                if (bodypropCount > 0)
                 {
-                    body["FirstRowContainsColumnHeaders"] = CSharpExpressionConverter.ConvertToken(bodyfirstRowContainsColumnHeaders);
-                    bodypropCount++;
+                    callPayload.Body = body;
                 }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["FirstRowContainsColumnHeaders"] = false;
-                bodypropCount++;
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableImportDataResponse>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodycolumnHeaders)
+        public IBodyWorkflowAction<CreateProcessResponse> CreateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessTemplateName, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodydocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyculture = null)
         {
-            var apiCallPath = "/api/UserTableCreateTable";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = CSharpExpressionConverter.ConvertToken(bodyuserTable);
-            bodypropCount++;
-            body["ColumnHeaders"] = CSharpExpressionConverter.ConvertToken(bodycolumnHeaders);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessTemplateName, nameof(bodyprocessTemplateName), required: true);
+            SourceExpression.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            SourceExpression.Validate(bodydocumentIds, nameof(bodydocumentIds), required: false);
+            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableCreateTableResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodywhereClause = null)
-        {
-            var apiCallPath = "/api/UserTableDeleteRecords";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = CSharpExpressionConverter.ConvertToken(bodyuserTable);
-            if (bodywhereClause != null)
-            {
-                body["WhereClause"] = CSharpExpressionConverter.ConvertToken(bodywhereClause);
+                var apiCallPath = "/api/CreateProcess";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableDeleteRecordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentIdToAppend, Expression<Func<bool>> bodyforceUndoCheckout = null)
-        {
-            var apiCallPath = "/api/MergePDFDocumentsToVersion";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            bodypropCount++;
-            body["DocumentIdToAppend"] = CSharpExpressionConverter.ConvertToken(bodydocumentIdToAppend);
-            if (bodyforceUndoCheckout != null)
-            {
-                body["ForceUndoCheckout"] = CSharpExpressionConverter.ConvertToken(bodyforceUndoCheckout);
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyculture = null)
-        {
-            var apiCallPath = "/api/ProcessSearch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            if (bodyconditions != null)
-            {
-                body["Conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodyresultProperties != null)
-            {
-                body["ResultProperties"] = CSharpExpressionConverter.ConvertToken(bodyresultProperties);
-                bodypropCount++;
-            }
-
-            if (bodymaxSerchResults != null)
-            {
-                body["MaxSerchResults"] = CSharpExpressionConverter.ConvertToken(bodymaxSerchResults);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                if (bodyprocessProperties != null)
                 {
-                    body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
+                    body["ProcessProperties"] = SourceExpressionConverter.ConvertToken(bodyprocessProperties);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ProcessSearchResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyuserTable, Expression<Func<string>> bodyrowData)
-        {
-            var apiCallPath = "/api/UserTableUpdateRow";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["UserTable"] = CSharpExpressionConverter.ConvertToken(bodyuserTable);
-            bodypropCount++;
-            body["RowData"] = CSharpExpressionConverter.ConvertToken(bodyrowData);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserTableUpdateRowResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<GetSelectionResponse> GetSelection(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyselectionId)
-        {
-            var apiCallPath = "/api/GetSelection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["SelectionId"] = CSharpExpressionConverter.ConvertToken(bodyselectionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSelectionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentTitle, Expression<Func<string>> bodyfileContent, Expression<Func<string>> bodyimportTemplate = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyblog = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyinfoStore = null, Expression<Func<string>> bodylifeCycle = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyoriginalFileFormat = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/CreateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["DocumentTitle"] = CSharpExpressionConverter.ConvertToken(bodydocumentTitle);
-            if (bodyimportTemplate != null)
-            {
-                body["ImportTemplate"] = CSharpExpressionConverter.ConvertToken(bodyimportTemplate);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = CSharpExpressionConverter.ConvertToken(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = CSharpExpressionConverter.ConvertToken(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
+                if (bodycustomProperties != null)
                 {
-                    body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
+                    body["CustomProperties"] = SourceExpressionConverter.ConvertToken(bodycustomProperties);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodyinfoStore != null)
-            {
-                body["InfoStore"] = CSharpExpressionConverter.ConvertToken(bodyinfoStore);
-                bodypropCount++;
-            }
-
-            if (bodylifeCycle != null)
-            {
-                body["LifeCycle"] = CSharpExpressionConverter.ConvertToken(bodylifeCycle);
-                bodypropCount++;
-            }
-
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = CSharpExpressionConverter.ConvertToken(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                if (bodyuploadMethod != null)
+                if (bodydocumentIds != null)
                 {
-                    body["UploadMethod"] = CSharpExpressionConverter.Convert(bodyuploadMethod);
+                    body["DocumentIds"] = SourceExpressionConverter.ConvertToken(bodydocumentIds);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["UploadMethod"] = "UploadFileBytesLarge";
-                bodypropCount++;
-            }
-
-            if (bodyoriginalFileFormat != null)
-            {
-                body["OriginalFileFormat"] = CSharpExpressionConverter.ConvertToken(bodyoriginalFileFormat);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                if (bodychunkSize != null)
+                body["ProcessTemplateName"] = SourceExpressionConverter.ConvertToken(bodyprocessTemplateName);
+                if (bodydueDate != null)
                 {
-                    body["ChunkSize"] = CSharpExpressionConverter.ConvertToken(bodychunkSize);
+                    body["DueDate"] = SourceExpressionConverter.ConvertToken(bodydueDate);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ChunkSize"] = 262144;
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyconditions = null, Expression<Func<string>> bodymaxSerchResults = null, Expression<Func<string>> bodyresultProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodystores = null)
-        {
-            var apiCallPath = "/api/DocumentSearchV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            if (bodyconditions != null)
-            {
-                body["Conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodymaxSerchResults != null)
-            {
-                body["MaxSerchResults"] = CSharpExpressionConverter.ConvertToken(bodymaxSerchResults);
-                bodypropCount++;
-            }
-
-            if (bodyresultProperties != null)
-            {
-                body["ResultProperties"] = CSharpExpressionConverter.ConvertToken(bodyresultProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
-                {
-                    body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            if (bodystores != null)
-            {
-                body["Stores"] = CSharpExpressionConverter.ConvertToken(bodystores);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentSearchV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodydocumentId, Expression<Func<string>> bodydocumentTitle = null, Expression<Func<string>> bodydocumentProperties = null, Expression<Func<string>> bodyremoveDocumentProperties = null, Expression<Func<string>> bodyculture = null, Expression<Func<string>> bodyprotectionDomain = null, Expression<Func<string>> bodyblog = null, Expression<Func<bodyuploadMethodInput>> bodyuploadMethod = null, Expression<Func<string>> bodyfileContent = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<int>> bodychunkSize = null)
-        {
-            var apiCallPath = "/api/UpdateDocumentV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            if (bodydocumentTitle != null)
-            {
-                body["DocumentTitle"] = CSharpExpressionConverter.ConvertToken(bodydocumentTitle);
-                bodypropCount++;
-            }
-
-            if (bodydocumentProperties != null)
-            {
-                body["DocumentProperties"] = CSharpExpressionConverter.ConvertToken(bodydocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyremoveDocumentProperties != null)
-            {
-                body["RemoveDocumentProperties"] = CSharpExpressionConverter.ConvertToken(bodyremoveDocumentProperties);
-                bodypropCount++;
-            }
-
-            if (bodyculture != null)
-            {
-                if (bodyculture != null)
-                {
-                    body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["DocumentId"] = CSharpExpressionConverter.ConvertToken(bodydocumentId);
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = CSharpExpressionConverter.ConvertToken(bodyprotectionDomain);
-                bodypropCount++;
-            }
-
-            if (bodyblog != null)
-            {
-                body["Blog"] = CSharpExpressionConverter.ConvertToken(bodyblog);
-                bodypropCount++;
-            }
-
-            if (bodyuploadMethod != null)
-            {
-                if (bodyuploadMethod != null)
-                {
-                    body["UploadMethod"] = CSharpExpressionConverter.Convert(bodyuploadMethod);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["UploadMethod"] = "UploadFileBytesLarge";
-                bodypropCount++;
-            }
-
-            if (bodyfileContent != null)
-            {
-                body["FileContent"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
-                bodypropCount++;
-            }
-
-            if (bodyforceUndoCheckout != null)
-            {
-                body["ForceUndoCheckout"] = CSharpExpressionConverter.ConvertToken(bodyforceUndoCheckout);
-                bodypropCount++;
-            }
-
-            if (bodychunkSize != null)
-            {
-                if (bodychunkSize != null)
-                {
-                    body["ChunkSize"] = CSharpExpressionConverter.ConvertToken(bodychunkSize);
-                    bodypropCount++;
-                }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["ChunkSize"] = 262144;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateDocumentV2Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
-        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess(Expression<Func<string>> bodyarchiveUrl, Expression<Func<string>> bodyconnectionId, Expression<Func<string>> bodyprocessId, Expression<Func<string>> bodyprocessProperties = null, Expression<Func<string>> bodyremoveProcessProperties = null, Expression<Func<string>> bodycustomProperties = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodyassignUserLoginNames = null, Expression<Func<string>> bodyaddDocumentIds = null, Expression<Func<string>> bodyremoveDocumentIds = null, Expression<Func<string>> bodydueDate = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodyculture = null, Expression<Func<bool>> bodyforceUndoCheckout = null, Expression<Func<string>> bodyprotectionDomain = null)
-        {
-            var apiCallPath = "/api/UpdateProcessV2";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ArchiveUrl"] = CSharpExpressionConverter.ConvertToken(bodyarchiveUrl);
-            bodypropCount++;
-            body["ConnectionId"] = CSharpExpressionConverter.ConvertToken(bodyconnectionId);
-            bodypropCount++;
-            body["ProcessId"] = CSharpExpressionConverter.ConvertToken(bodyprocessId);
-            if (bodyprocessProperties != null)
-            {
-                body["ProcessProperties"] = CSharpExpressionConverter.ConvertToken(bodyprocessProperties);
-                bodypropCount++;
-            }
-
-            if (bodyremoveProcessProperties != null)
-            {
-                body["RemoveProcessProperties"] = CSharpExpressionConverter.ConvertToken(bodyremoveProcessProperties);
-                bodypropCount++;
-            }
-
-            if (bodycustomProperties != null)
-            {
-                body["CustomProperties"] = CSharpExpressionConverter.ConvertToken(bodycustomProperties);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodyassignUserLoginNames != null)
-            {
-                body["AssignUserLoginNames"] = CSharpExpressionConverter.ConvertToken(bodyassignUserLoginNames);
-                bodypropCount++;
-            }
-
-            if (bodyaddDocumentIds != null)
-            {
-                body["AddDocumentIds"] = CSharpExpressionConverter.ConvertToken(bodyaddDocumentIds);
-                bodypropCount++;
-            }
-
-            if (bodyremoveDocumentIds != null)
-            {
-                body["RemoveDocumentIds"] = CSharpExpressionConverter.ConvertToken(bodyremoveDocumentIds);
-                bodypropCount++;
-            }
-
-            if (bodydueDate != null)
-            {
-                body["DueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
                 if (bodypriority != null)
                 {
-                    body["Priority"] = CSharpExpressionConverter.Convert(bodypriority);
+                    body["Priority"] = SourceExpressionConverter.Convert(bodypriority);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Priority"] = "Normal";
-                bodypropCount++;
-            }
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
 
-            if (bodyculture != null)
-            {
                 if (bodyculture != null)
                 {
-                    body["Culture"] = CSharpExpressionConverter.ConvertToken(bodyculture);
+                    body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["Culture"] = "de";
-                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyforceUndoCheckout != null)
+            return new ApiConnectionAction<CreateProcessResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UserTableGetRecordsResponse> UserTableGetRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null, [WorkflowExpression] Func<string> bodyorderByClause = null, [WorkflowExpression] Func<bool> bodyaddColumnHeaders = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            SourceExpression.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
+            SourceExpression.Validate(bodyorderByClause, nameof(bodyorderByClause), required: false);
+            SourceExpression.Validate(bodyaddColumnHeaders, nameof(bodyaddColumnHeaders), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/api/UserTableGetRecords";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = SourceExpressionConverter.ConvertToken(bodyuserTable);
+                if (bodywhereClause != null)
+                {
+                    body["WhereClause"] = SourceExpressionConverter.ConvertToken(bodywhereClause);
+                    bodypropCount++;
+                }
+
+                if (bodyorderByClause != null)
+                {
+                    body["OrderByClause"] = SourceExpressionConverter.ConvertToken(bodyorderByClause);
+                    bodypropCount++;
+                }
+
+                if (bodyaddColumnHeaders != null)
+                {
+                    body["AddColumnHeaders"] = SourceExpressionConverter.ConvertToken(bodyaddColumnHeaders);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserTableGetRecordsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UserTableImportDataResponse> UserTableImportData([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyvalues, [WorkflowExpression] Func<bool> bodydeleteAllValues = null, [WorkflowExpression] Func<bool> bodyfirstRowContainsColumnHeaders = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            SourceExpression.Validate(bodyvalues, nameof(bodyvalues), required: true);
+            SourceExpression.Validate(bodydeleteAllValues, nameof(bodydeleteAllValues), required: false);
+            SourceExpression.Validate(bodyfirstRowContainsColumnHeaders, nameof(bodyfirstRowContainsColumnHeaders), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/UserTableImportData";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = SourceExpressionConverter.ConvertToken(bodyuserTable);
+                bodypropCount++;
+                body["Values"] = SourceExpressionConverter.ConvertToken(bodyvalues);
+                if (bodydeleteAllValues != null)
+                {
+                    if (bodydeleteAllValues != null)
+                    {
+                        body["DeleteAllValues"] = SourceExpressionConverter.ConvertToken(bodydeleteAllValues);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["DeleteAllValues"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyfirstRowContainsColumnHeaders != null)
+                {
+                    if (bodyfirstRowContainsColumnHeaders != null)
+                    {
+                        body["FirstRowContainsColumnHeaders"] = SourceExpressionConverter.ConvertToken(bodyfirstRowContainsColumnHeaders);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["FirstRowContainsColumnHeaders"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserTableImportDataResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UserTableCreateTableResponse> UserTableCreateTable([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodycolumnHeaders)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            SourceExpression.Validate(bodycolumnHeaders, nameof(bodycolumnHeaders), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/UserTableCreateTable";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = SourceExpressionConverter.ConvertToken(bodyuserTable);
+                bodypropCount++;
+                body["ColumnHeaders"] = SourceExpressionConverter.ConvertToken(bodycolumnHeaders);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserTableCreateTableResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UserTableDeleteRecordsResponse> UserTableDeleteRecords([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodywhereClause = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            SourceExpression.Validate(bodywhereClause, nameof(bodywhereClause), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/UserTableDeleteRecords";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = SourceExpressionConverter.ConvertToken(bodyuserTable);
+                if (bodywhereClause != null)
+                {
+                    body["WhereClause"] = SourceExpressionConverter.ConvertToken(bodywhereClause);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserTableDeleteRecordsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<MergePDFDocumentsToVersionResponse> MergePDFDocumentsToVersion([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentIdToAppend, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            SourceExpression.Validate(bodydocumentIdToAppend, nameof(bodydocumentIdToAppend), required: true);
+            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/MergePDFDocumentsToVersion";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                bodypropCount++;
+                body["DocumentIdToAppend"] = SourceExpressionConverter.ConvertToken(bodydocumentIdToAppend);
                 if (bodyforceUndoCheckout != null)
                 {
-                    body["ForceUndoCheckout"] = CSharpExpressionConverter.ConvertToken(bodyforceUndoCheckout);
+                    body["ForceUndoCheckout"] = SourceExpressionConverter.ConvertToken(bodyforceUndoCheckout);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MergePDFDocumentsToVersionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<ProcessSearchResponse> ProcessSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyculture = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            SourceExpression.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/ProcessSearch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                if (bodyconditions != null)
+                {
+                    body["Conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
+
+                if (bodyresultProperties != null)
+                {
+                    body["ResultProperties"] = SourceExpressionConverter.ConvertToken(bodyresultProperties);
+                    bodypropCount++;
+                }
+
+                if (bodymaxSerchResults != null)
+                {
+                    body["MaxSerchResults"] = SourceExpressionConverter.ConvertToken(bodymaxSerchResults);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProcessSearchResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UserTableUpdateRowResponse> UserTableUpdateRow([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyuserTable, [WorkflowExpression] Func<string> bodyrowData)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyuserTable, nameof(bodyuserTable), required: true);
+            SourceExpression.Validate(bodyrowData, nameof(bodyrowData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/UserTableUpdateRow";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["UserTable"] = SourceExpressionConverter.ConvertToken(bodyuserTable);
+                bodypropCount++;
+                body["RowData"] = SourceExpressionConverter.ConvertToken(bodyrowData);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserTableUpdateRowResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<GetSelectionResponse> GetSelection([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyselectionId)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyselectionId, nameof(bodyselectionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/GetSelection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["SelectionId"] = SourceExpressionConverter.ConvertToken(bodyselectionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSelectionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<CreateDocumentV2Response> CreateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentTitle, [WorkflowExpression] Func<string> bodyfileContent, [WorkflowExpression] Func<string> bodyimportTemplate = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyinfoStore = null, [WorkflowExpression] Func<string> bodylifeCycle = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyoriginalFileFormat = null, [WorkflowExpression] Func<int> bodychunkSize = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: true);
+            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: true);
+            SourceExpression.Validate(bodyimportTemplate, nameof(bodyimportTemplate), required: false);
+            SourceExpression.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            SourceExpression.Validate(bodyblog, nameof(bodyblog), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            SourceExpression.Validate(bodyinfoStore, nameof(bodyinfoStore), required: false);
+            SourceExpression.Validate(bodylifeCycle, nameof(bodylifeCycle), required: false);
+            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            SourceExpression.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            SourceExpression.Validate(bodyoriginalFileFormat, nameof(bodyoriginalFileFormat), required: false);
+            SourceExpression.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/CreateDocumentV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["DocumentTitle"] = SourceExpressionConverter.ConvertToken(bodydocumentTitle);
+                if (bodyimportTemplate != null)
+                {
+                    body["ImportTemplate"] = SourceExpressionConverter.ConvertToken(bodyimportTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentProperties != null)
+                {
+                    body["DocumentProperties"] = SourceExpressionConverter.ConvertToken(bodydocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyblog != null)
+                {
+                    body["Blog"] = SourceExpressionConverter.ConvertToken(bodyblog);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodyinfoStore != null)
+                {
+                    body["InfoStore"] = SourceExpressionConverter.ConvertToken(bodyinfoStore);
+                    bodypropCount++;
+                }
+
+                if (bodylifeCycle != null)
+                {
+                    body["LifeCycle"] = SourceExpressionConverter.ConvertToken(bodylifeCycle);
+                    bodypropCount++;
+                }
+
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = SourceExpressionConverter.ConvertToken(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadMethod != null)
+                {
+                    if (bodyuploadMethod != null)
+                    {
+                        body["UploadMethod"] = SourceExpressionConverter.Convert(bodyuploadMethod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["UploadMethod"] = "UploadFileBytesLarge";
+                    bodypropCount++;
+                }
+
+                if (bodyoriginalFileFormat != null)
+                {
+                    body["OriginalFileFormat"] = SourceExpressionConverter.ConvertToken(bodyoriginalFileFormat);
+                    bodypropCount++;
+                }
+
+                if (bodychunkSize != null)
+                {
+                    if (bodychunkSize != null)
+                    {
+                        body["ChunkSize"] = SourceExpressionConverter.ConvertToken(bodychunkSize);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ChunkSize"] = 262144;
                     bodypropCount++;
                 }
 
                 bodypropCount++;
+                body["FileContent"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
-            else
+
+            return new ApiConnectionAction<CreateDocumentV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<DocumentSearchV2Response> DocumentSearch([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyconditions = null, [WorkflowExpression] Func<string> bodymaxSerchResults = null, [WorkflowExpression] Func<string> bodyresultProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodystores = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodymaxSerchResults, nameof(bodymaxSerchResults), required: false);
+            SourceExpression.Validate(bodyresultProperties, nameof(bodyresultProperties), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            SourceExpression.Validate(bodystores, nameof(bodystores), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ForceUndoCheckout"] = true;
+                var apiCallPath = "/api/DocumentSearchV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyprotectionDomain != null)
-            {
-                body["ProtectionDomain"] = CSharpExpressionConverter.ConvertToken(bodyprotectionDomain);
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
                 bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                if (bodyconditions != null)
+                {
+                    body["Conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
+
+                if (bodymaxSerchResults != null)
+                {
+                    body["MaxSerchResults"] = SourceExpressionConverter.ConvertToken(bodymaxSerchResults);
+                    bodypropCount++;
+                }
+
+                if (bodyresultProperties != null)
+                {
+                    body["ResultProperties"] = SourceExpressionConverter.ConvertToken(bodyresultProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodystores != null)
+                {
+                    body["Stores"] = SourceExpressionConverter.ConvertToken(bodystores);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<DocumentSearchV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UpdateDocumentV2Response> UpdateDocument([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodydocumentId, [WorkflowExpression] Func<string> bodydocumentTitle = null, [WorkflowExpression] Func<string> bodydocumentProperties = null, [WorkflowExpression] Func<string> bodyremoveDocumentProperties = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null, [WorkflowExpression] Func<string> bodyblog = null, [WorkflowExpression] Func<bodyuploadMethodInput> bodyuploadMethod = null, [WorkflowExpression] Func<string> bodyfileContent = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<int> bodychunkSize = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodydocumentId, nameof(bodydocumentId), required: true);
+            SourceExpression.Validate(bodydocumentTitle, nameof(bodydocumentTitle), required: false);
+            SourceExpression.Validate(bodydocumentProperties, nameof(bodydocumentProperties), required: false);
+            SourceExpression.Validate(bodyremoveDocumentProperties, nameof(bodyremoveDocumentProperties), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            SourceExpression.Validate(bodyblog, nameof(bodyblog), required: false);
+            SourceExpression.Validate(bodyuploadMethod, nameof(bodyuploadMethod), required: false);
+            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            SourceExpression.Validate(bodychunkSize, nameof(bodychunkSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/UpdateDocumentV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                if (bodydocumentTitle != null)
+                {
+                    body["DocumentTitle"] = SourceExpressionConverter.ConvertToken(bodydocumentTitle);
+                    bodypropCount++;
+                }
+
+                if (bodydocumentProperties != null)
+                {
+                    body["DocumentProperties"] = SourceExpressionConverter.ConvertToken(bodydocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveDocumentProperties != null)
+                {
+                    body["RemoveDocumentProperties"] = SourceExpressionConverter.ConvertToken(bodyremoveDocumentProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["DocumentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = SourceExpressionConverter.ConvertToken(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodyblog != null)
+                {
+                    body["Blog"] = SourceExpressionConverter.ConvertToken(bodyblog);
+                    bodypropCount++;
+                }
+
+                if (bodyuploadMethod != null)
+                {
+                    if (bodyuploadMethod != null)
+                    {
+                        body["UploadMethod"] = SourceExpressionConverter.Convert(bodyuploadMethod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["UploadMethod"] = "UploadFileBytesLarge";
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["FileContent"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                if (bodyforceUndoCheckout != null)
+                {
+                    body["ForceUndoCheckout"] = SourceExpressionConverter.ConvertToken(bodyforceUndoCheckout);
+                    bodypropCount++;
+                }
+
+                if (bodychunkSize != null)
+                {
+                    if (bodychunkSize != null)
+                    {
+                        body["ChunkSize"] = SourceExpressionConverter.ConvertToken(bodychunkSize);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ChunkSize"] = 262144;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UpdateProcessV2Response>(callPayload);
+            return new ApiConnectionAction<UpdateDocumentV2Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "infoshare")]
+        public IBodyWorkflowAction<UpdateProcessV2Response> UpdateProcess([WorkflowExpression] Func<string> bodyarchiveUrl, [WorkflowExpression] Func<string> bodyconnectionId, [WorkflowExpression] Func<string> bodyprocessId, [WorkflowExpression] Func<string> bodyprocessProperties = null, [WorkflowExpression] Func<string> bodyremoveProcessProperties = null, [WorkflowExpression] Func<string> bodycustomProperties = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodyassignUserLoginNames = null, [WorkflowExpression] Func<string> bodyaddDocumentIds = null, [WorkflowExpression] Func<string> bodyremoveDocumentIds = null, [WorkflowExpression] Func<string> bodydueDate = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodyculture = null, [WorkflowExpression] Func<bool> bodyforceUndoCheckout = null, [WorkflowExpression] Func<string> bodyprotectionDomain = null)
+        {
+            SourceExpression.Validate(bodyarchiveUrl, nameof(bodyarchiveUrl), required: true);
+            SourceExpression.Validate(bodyconnectionId, nameof(bodyconnectionId), required: true);
+            SourceExpression.Validate(bodyprocessId, nameof(bodyprocessId), required: true);
+            SourceExpression.Validate(bodyprocessProperties, nameof(bodyprocessProperties), required: false);
+            SourceExpression.Validate(bodyremoveProcessProperties, nameof(bodyremoveProcessProperties), required: false);
+            SourceExpression.Validate(bodycustomProperties, nameof(bodycustomProperties), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodyassignUserLoginNames, nameof(bodyassignUserLoginNames), required: false);
+            SourceExpression.Validate(bodyaddDocumentIds, nameof(bodyaddDocumentIds), required: false);
+            SourceExpression.Validate(bodyremoveDocumentIds, nameof(bodyremoveDocumentIds), required: false);
+            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: false);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            SourceExpression.Validate(bodyculture, nameof(bodyculture), required: false);
+            SourceExpression.Validate(bodyforceUndoCheckout, nameof(bodyforceUndoCheckout), required: false);
+            SourceExpression.Validate(bodyprotectionDomain, nameof(bodyprotectionDomain), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/UpdateProcessV2";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ArchiveUrl"] = SourceExpressionConverter.ConvertToken(bodyarchiveUrl);
+                bodypropCount++;
+                body["ConnectionId"] = SourceExpressionConverter.ConvertToken(bodyconnectionId);
+                bodypropCount++;
+                body["ProcessId"] = SourceExpressionConverter.ConvertToken(bodyprocessId);
+                if (bodyprocessProperties != null)
+                {
+                    body["ProcessProperties"] = SourceExpressionConverter.ConvertToken(bodyprocessProperties);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveProcessProperties != null)
+                {
+                    body["RemoveProcessProperties"] = SourceExpressionConverter.ConvertToken(bodyremoveProcessProperties);
+                    bodypropCount++;
+                }
+
+                if (bodycustomProperties != null)
+                {
+                    body["CustomProperties"] = SourceExpressionConverter.ConvertToken(bodycustomProperties);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodyassignUserLoginNames != null)
+                {
+                    body["AssignUserLoginNames"] = SourceExpressionConverter.ConvertToken(bodyassignUserLoginNames);
+                    bodypropCount++;
+                }
+
+                if (bodyaddDocumentIds != null)
+                {
+                    body["AddDocumentIds"] = SourceExpressionConverter.ConvertToken(bodyaddDocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveDocumentIds != null)
+                {
+                    body["RemoveDocumentIds"] = SourceExpressionConverter.ConvertToken(bodyremoveDocumentIds);
+                    bodypropCount++;
+                }
+
+                if (bodydueDate != null)
+                {
+                    body["DueDate"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    if (bodypriority != null)
+                    {
+                        body["Priority"] = SourceExpressionConverter.Convert(bodypriority);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Priority"] = "Normal";
+                    bodypropCount++;
+                }
+
+                if (bodyculture != null)
+                {
+                    if (bodyculture != null)
+                    {
+                        body["Culture"] = SourceExpressionConverter.ConvertToken(bodyculture);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["Culture"] = "de";
+                    bodypropCount++;
+                }
+
+                if (bodyforceUndoCheckout != null)
+                {
+                    if (bodyforceUndoCheckout != null)
+                    {
+                        body["ForceUndoCheckout"] = SourceExpressionConverter.ConvertToken(bodyforceUndoCheckout);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ForceUndoCheckout"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodyprotectionDomain != null)
+                {
+                    body["ProtectionDomain"] = SourceExpressionConverter.ConvertToken(bodyprotectionDomain);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateProcessV2Response>(BuildSourceInput);
         }
     }
 

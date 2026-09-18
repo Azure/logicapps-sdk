@@ -14,48 +14,64 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shipstationip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<StoresResponseItem[]> StoresGet()
         {
-            var apiCallPath = "/stores";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StoresResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stores";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StoresResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
         public IBodyWorkflowAction<MarketplacesResponseItem[]> StoresMarketplacesGet()
         {
-            var apiCallPath = "/stores/marketplaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MarketplacesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stores/marketplaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MarketplacesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shipstationip")]
-        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore(Expression<Func<int>> bodystoreId = null, Expression<Func<string>> bodyrefreshDate = null)
+        public IBodyWorkflowAction<RefreshStoreResponse> StoresRefreshStore([WorkflowExpression] Func<int> bodystoreId = null, [WorkflowExpression] Func<string> bodyrefreshDate = null)
         {
-            var apiCallPath = "/stores/refreshstore";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodystoreId != null)
+            SourceExpression.Validate(bodystoreId, nameof(bodystoreId), required: false);
+            SourceExpression.Validate(bodyrefreshDate, nameof(bodyrefreshDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["storeId"] = CSharpExpressionConverter.ConvertToken(bodystoreId);
-                bodypropCount++;
+                var apiCallPath = "/stores/refreshstore";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodystoreId != null)
+                {
+                    body["storeId"] = SourceExpressionConverter.ConvertToken(bodystoreId);
+                    bodypropCount++;
+                }
+
+                if (bodyrefreshDate != null)
+                {
+                    body["refreshDate"] = SourceExpressionConverter.ConvertToken(bodyrefreshDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrefreshDate != null)
-            {
-                body["refreshDate"] = CSharpExpressionConverter.ConvertToken(bodyrefreshDate);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RefreshStoreResponse>(callPayload);
+            return new ApiConnectionAction<RefreshStoreResponse>(BuildSourceInput);
         }
     }
 

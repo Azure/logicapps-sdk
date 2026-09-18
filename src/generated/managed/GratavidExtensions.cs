@@ -12,148 +12,178 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
     public class GratavidActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyemail, Expression<Func<string>> bodycomments, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null, Expression<Func<string>> bodyassignedTo = null)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodycomments, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null, [WorkflowExpression] Func<string> bodyassignedTo = null)
         {
-            var apiCallPath = "/api/integrationsEndpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("createTask");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyfirstName != null)
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodycomments, nameof(bodycomments), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            SourceExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            SourceExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            SourceExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
+            SourceExpression.Validate(bodyassignedTo, nameof(bodyassignedTo), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
+                var apiCallPath = "/api/integrationsEndpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("createTask");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
 
-            if (bodylastName != null)
-            {
-                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
+                if (bodylastName != null)
+                {
+                    body["lastName"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomUserId != null)
+                {
+                    body["customUserId"] = SourceExpressionConverter.ConvertToken(bodycustomUserId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomAccountId != null)
+                {
+                    body["customAccountId"] = SourceExpressionConverter.ConvertToken(bodycustomAccountId);
+                    bodypropCount++;
+                }
+
+                if (bodytextOptIn != null)
+                {
+                    body["textOptIn"] = SourceExpressionConverter.ConvertToken(bodytextOptIn);
+                    bodypropCount++;
+                }
+
+                if (bodycellNumber != null)
+                {
+                    body["cellNumber"] = SourceExpressionConverter.ConvertToken(bodycellNumber);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["comments"] = SourceExpressionConverter.ConvertToken(bodycomments);
+                if (bodyassignedTo != null)
+                {
+                    body["assignedTo"] = SourceExpressionConverter.ConvertToken(bodyassignedTo);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycustomUserId != null)
-            {
-                body["customUserId"] = CSharpExpressionConverter.ConvertToken(bodycustomUserId);
-                bodypropCount++;
-            }
-
-            if (bodycustomAccountId != null)
-            {
-                body["customAccountId"] = CSharpExpressionConverter.ConvertToken(bodycustomAccountId);
-                bodypropCount++;
-            }
-
-            if (bodytextOptIn != null)
-            {
-                body["textOptIn"] = CSharpExpressionConverter.ConvertToken(bodytextOptIn);
-                bodypropCount++;
-            }
-
-            if (bodycellNumber != null)
-            {
-                body["cellNumber"] = CSharpExpressionConverter.ConvertToken(bodycellNumber);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["comments"] = CSharpExpressionConverter.ConvertToken(bodycomments);
-            if (bodyassignedTo != null)
-            {
-                body["assignedTo"] = CSharpExpressionConverter.ConvertToken(bodyassignedTo);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "gratavid")]
-        public IBodyWorkflowAction<SendNoteResponse> SendNote(Expression<Func<string>> bodynoteId, Expression<Func<string>> bodyemail, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodycustomUserId = null, Expression<Func<string>> bodycustomAccountId = null, Expression<Func<string>> bodytextOptIn = null, Expression<Func<string>> bodycellNumber = null)
+        public IBodyWorkflowAction<SendNoteResponse> SendNote([WorkflowExpression] Func<string> bodynoteId, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodycustomUserId = null, [WorkflowExpression] Func<string> bodycustomAccountId = null, [WorkflowExpression] Func<string> bodytextOptIn = null, [WorkflowExpression] Func<string> bodycellNumber = null)
         {
-            var apiCallPath = "/api/integrationsEndpoint";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("sendNote");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["noteId"] = CSharpExpressionConverter.ConvertToken(bodynoteId);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodyfirstName != null)
+            SourceExpression.Validate(bodynoteId, nameof(bodynoteId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodycustomUserId, nameof(bodycustomUserId), required: false);
+            SourceExpression.Validate(bodycustomAccountId, nameof(bodycustomAccountId), required: false);
+            SourceExpression.Validate(bodytextOptIn, nameof(bodytextOptIn), required: false);
+            SourceExpression.Validate(bodycellNumber, nameof(bodycellNumber), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["firstName"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
+                var apiCallPath = "/api/integrationsEndpoint";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("sendNote");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["lastName"] = CSharpExpressionConverter.ConvertToken(bodylastName);
+                body["noteId"] = SourceExpressionConverter.ConvertToken(bodynoteId);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodyfirstName != null)
+                {
+                    body["firstName"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["lastName"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodycustomUserId != null)
+                {
+                    body["customUserId"] = SourceExpressionConverter.ConvertToken(bodycustomUserId);
+                    bodypropCount++;
+                }
+
+                if (bodycustomAccountId != null)
+                {
+                    body["customAccountId"] = SourceExpressionConverter.ConvertToken(bodycustomAccountId);
+                    bodypropCount++;
+                }
+
+                if (bodytextOptIn != null)
+                {
+                    body["textOptIn"] = SourceExpressionConverter.ConvertToken(bodytextOptIn);
+                    bodypropCount++;
+                }
+
+                if (bodycellNumber != null)
+                {
+                    body["cellNumber"] = SourceExpressionConverter.ConvertToken(bodycellNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycustomUserId != null)
-            {
-                body["customUserId"] = CSharpExpressionConverter.ConvertToken(bodycustomUserId);
-                bodypropCount++;
-            }
-
-            if (bodycustomAccountId != null)
-            {
-                body["customAccountId"] = CSharpExpressionConverter.ConvertToken(bodycustomAccountId);
-                bodypropCount++;
-            }
-
-            if (bodytextOptIn != null)
-            {
-                body["textOptIn"] = CSharpExpressionConverter.ConvertToken(bodytextOptIn);
-                bodypropCount++;
-            }
-
-            if (bodycellNumber != null)
-            {
-                body["cellNumber"] = CSharpExpressionConverter.ConvertToken(bodycellNumber);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendNoteResponse>(callPayload);
+            return new ApiConnectionAction<SendNoteResponse>(BuildSourceInput);
         }
     }
 
     public class GratavidTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NewEvent(Expression<Func<webookHookEventInput>> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NewEvent([WorkflowExpression] Func<webookHookEventInput> webookHookEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/manageIntegrations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
-            callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
-            callPayload.Queries["webookHookEvent"] = CSharpExpressionConverter.Convert(webookHookEvent);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhookURL"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(webookHookEvent, nameof(webookHookEvent), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/manageIntegrations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["source"] = Convert.ToString("microsoftPowerAutomate");
+                callPayload.Queries["event"] = Convert.ToString("webhookSubscribe");
+                callPayload.Queries["webookHookEvent"] = SourceExpressionConverter.Convert(webookHookEvent);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhookURL"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

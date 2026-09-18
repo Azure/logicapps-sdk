@@ -12,198 +12,266 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Huddleforusgovhealth
     public class HuddleforusgovhealthActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodytextContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFormSubmissionAsNewFileResponse> UploadFormSubmissionAsNewFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytextContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodytextContent != null)
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(requestBodytextContent, nameof(requestBodytextContent), required: false);
+            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
+            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["content"] = CSharpExpressionConverter.ConvertToken(requestBodytextContent);
-                requestBodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/file/upload/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodytextContent != null)
+                {
+                    requestBody["content"] = SourceExpressionConverter.ConvertToken(requestBodytextContent);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydescription != null)
+                {
+                    requestBody["description"] = SourceExpressionConverter.ConvertToken(requestBodydescription);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodytitle != null)
+                {
+                    requestBody["title"] = SourceExpressionConverter.ConvertToken(requestBodytitle);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodydescription != null)
-            {
-                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
-                requestBodypropCount++;
-            }
-
-            if (requestBodytitle != null)
-            {
-                requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<UploadFormSubmissionAsNewFileResponse>(callPayload);
+            return new ApiConnectionAction<UploadFormSubmissionAsNewFileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<string> GetFile(Expression<Func<string>> fileId)
+        public IBodyWorkflowAction<string> GetFile([WorkflowExpression] Func<string> fileId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(fileId, nameof(fileId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/file/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fileId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder(Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<DeleteFolderResponse> DeleteFolder([WorkflowExpression] Func<string> folderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteFolderResponse>(callPayload);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<Folder> CreateFolder(Expression<Func<string>> folderId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodydescription = null)
+        public IBodyWorkflowAction<Folder> CreateFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodydescription = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            requestBodypropCount++;
-            requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
-            if (requestBodydescription != null)
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
+            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
                 requestBodypropCount++;
+                requestBody["title"] = SourceExpressionConverter.ConvertToken(requestBodytitle);
+                if (requestBodydescription != null)
+                {
+                    requestBody["description"] = SourceExpressionConverter.ConvertToken(requestBodydescription);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<Folder>(callPayload);
+            return new ApiConnectionAction<Folder>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<UploadFileResponse> UploadFile(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, Expression<Func<string>> requestBodyfileContent = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodytitle = null)
+        public IBodyWorkflowAction<UploadFileResponse> UploadFile([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> requestBodyfileContent = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodytitle = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodyfileContent != null)
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(requestBodyfileContent, nameof(requestBodyfileContent), required: false);
+            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
+            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["content"] = CSharpExpressionConverter.ConvertToken(requestBodyfileContent);
-                requestBodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/folder/{0}/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodyfileContent != null)
+                {
+                    requestBody["content"] = SourceExpressionConverter.ConvertToken(requestBodyfileContent);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydescription != null)
+                {
+                    requestBody["description"] = SourceExpressionConverter.ConvertToken(requestBodydescription);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodytitle != null)
+                {
+                    requestBody["title"] = SourceExpressionConverter.ConvertToken(requestBodytitle);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodydescription != null)
-            {
-                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
-                requestBodypropCount++;
-            }
-
-            if (requestBodytitle != null)
-            {
-                requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
-                requestBodypropCount++;
-            }
-
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<UploadFileResponse>(callPayload);
+            return new ApiConnectionAction<UploadFileResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<TaskObject> MarkTaskComplete(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<TaskObject> MarkTaskComplete([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskObject>(callPayload);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/task/{0}/markComplete", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TaskObject>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "huddleforusgovhealth")]
-        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask(Expression<Func<string>> workspaceId, Expression<Func<string>> requestBodytitle, Expression<Func<string>> requestBodyassignee = null, Expression<Func<string>> requestBodydescription = null, Expression<Func<string>> requestBodydueDate = null, Expression<Func<string>> requestBodyfileID = null, Expression<Func<string>> requestBodytaskID = null, Expression<Func<string>> requestBodystatus = null)
+        public IBodyWorkflowAction<CreateWorkspaceTaskResponse> CreateWorkspaceTask([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> requestBodytitle, [WorkflowExpression] Func<string> requestBodyassignee = null, [WorkflowExpression] Func<string> requestBodydescription = null, [WorkflowExpression] Func<string> requestBodydueDate = null, [WorkflowExpression] Func<string> requestBodyfileID = null, [WorkflowExpression] Func<string> requestBodytaskID = null, [WorkflowExpression] Func<string> requestBodystatus = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBody = new JObject();
-            var requestBodypropCount = 0;
-            if (requestBodyassignee != null)
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(requestBodytitle, nameof(requestBodytitle), required: true);
+            SourceExpression.Validate(requestBodyassignee, nameof(requestBodyassignee), required: false);
+            SourceExpression.Validate(requestBodydescription, nameof(requestBodydescription), required: false);
+            SourceExpression.Validate(requestBodydueDate, nameof(requestBodydueDate), required: false);
+            SourceExpression.Validate(requestBodyfileID, nameof(requestBodyfileID), required: false);
+            SourceExpression.Validate(requestBodytaskID, nameof(requestBodytaskID), required: false);
+            SourceExpression.Validate(requestBodystatus, nameof(requestBodystatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBody["assignee"] = CSharpExpressionConverter.ConvertToken(requestBodyassignee);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/workspace/{0}/task", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBody = new JObject();
+                var requestBodypropCount = 0;
+                if (requestBodyassignee != null)
+                {
+                    requestBody["assignee"] = SourceExpressionConverter.ConvertToken(requestBodyassignee);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydescription != null)
+                {
+                    requestBody["description"] = SourceExpressionConverter.ConvertToken(requestBodydescription);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodydueDate != null)
+                {
+                    requestBody["dueDate"] = SourceExpressionConverter.ConvertToken(requestBodydueDate);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodyfileID != null)
+                {
+                    requestBody["fileId"] = SourceExpressionConverter.ConvertToken(requestBodyfileID);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodytaskID != null)
+                {
+                    requestBody["id"] = SourceExpressionConverter.ConvertToken(requestBodytaskID);
+                    requestBodypropCount++;
+                }
+
+                if (requestBodystatus != null)
+                {
+                    requestBody["status"] = SourceExpressionConverter.ConvertToken(requestBodystatus);
+                    requestBodypropCount++;
+                }
+
                 requestBodypropCount++;
+                requestBody["title"] = SourceExpressionConverter.ConvertToken(requestBodytitle);
+                if (requestBodypropCount > 0)
+                {
+                    callPayload.Body = requestBody;
+                }
+                return callPayload;
             }
 
-            if (requestBodydescription != null)
-            {
-                requestBody["description"] = CSharpExpressionConverter.ConvertToken(requestBodydescription);
-                requestBodypropCount++;
-            }
-
-            if (requestBodydueDate != null)
-            {
-                requestBody["dueDate"] = CSharpExpressionConverter.ConvertToken(requestBodydueDate);
-                requestBodypropCount++;
-            }
-
-            if (requestBodyfileID != null)
-            {
-                requestBody["fileId"] = CSharpExpressionConverter.ConvertToken(requestBodyfileID);
-                requestBodypropCount++;
-            }
-
-            if (requestBodytaskID != null)
-            {
-                requestBody["id"] = CSharpExpressionConverter.ConvertToken(requestBodytaskID);
-                requestBodypropCount++;
-            }
-
-            if (requestBodystatus != null)
-            {
-                requestBody["status"] = CSharpExpressionConverter.ConvertToken(requestBodystatus);
-                requestBodypropCount++;
-            }
-
-            requestBodypropCount++;
-            requestBody["title"] = CSharpExpressionConverter.ConvertToken(requestBodytitle);
-            if (requestBodypropCount > 0)
-            {
-                callPayload.Body = requestBody;
-            }
-
-            return new ApiConnectionAction<CreateWorkspaceTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateWorkspaceTaskResponse>(BuildSourceInput);
         }
     }
 
     public class HuddleforusgovhealthTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload(Expression<Func<string>> workspaceId, Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollFolderForFileUploadResponse> PollFolderForFileUpload([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
-            return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/folder/{0}/upload", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PollFolderForFileUploadResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval(Expression<Func<string>> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollWorkspaceForNewApprovalResponse> PollWorkspaceForNewApproval([WorkflowExpression] Func<string> workspaceId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/v2/poll/workspace/{0}/approvals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PollWorkspaceForNewApprovalResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,466 +12,585 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudinteraction
     public class BlackbaudinteractionActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> ListActions(Expression<Func<string>> listId = null, Expression<Func<string>> computedStatus = null, Expression<Func<string>> statusCode = null, Expression<Func<int>> limit = null, Expression<Func<int>> offset = null, Expression<Func<string>> dateAdded = null, Expression<Func<string>> lastModified = null)
+        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> ListActions([WorkflowExpression] Func<string> listId = null, [WorkflowExpression] Func<string> computedStatus = null, [WorkflowExpression] Func<string> statusCode = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dateAdded = null, [WorkflowExpression] Func<string> lastModified = null)
         {
-            var apiCallPath = "/constituent/v1/actions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (listId != null)
-                callPayload.Queries["list_id"] = CSharpExpressionConverter.ConvertO(listId);
-            if (computedStatus != null)
-                callPayload.Queries["computed_status"] = CSharpExpressionConverter.ConvertO(computedStatus);
-            if (statusCode != null)
-                callPayload.Queries["status_code"] = CSharpExpressionConverter.ConvertO(statusCode);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (dateAdded != null)
-                callPayload.Queries["date_added"] = CSharpExpressionConverter.ConvertO(dateAdded);
-            if (lastModified != null)
-                callPayload.Queries["last_modified"] = CSharpExpressionConverter.ConvertO(lastModified);
-            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionRead>(callPayload);
+            SourceExpression.Validate(listId, nameof(listId), required: false);
+            SourceExpression.Validate(computedStatus, nameof(computedStatus), required: false);
+            SourceExpression.Validate(statusCode, nameof(statusCode), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(dateAdded, nameof(dateAdded), required: false);
+            SourceExpression.Validate(lastModified, nameof(lastModified), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/constituent/v1/actions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (listId != null)
+                    callPayload.Queries["list_id"] = SourceExpressionConverter.ConvertO(listId);
+                if (computedStatus != null)
+                    callPayload.Queries["computed_status"] = SourceExpressionConverter.ConvertO(computedStatus);
+                if (statusCode != null)
+                    callPayload.Queries["status_code"] = SourceExpressionConverter.ConvertO(statusCode);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (dateAdded != null)
+                    callPayload.Queries["date_added"] = SourceExpressionConverter.ConvertO(dateAdded);
+                if (lastModified != null)
+                    callPayload.Queries["last_modified"] = SourceExpressionConverter.ConvertO(lastModified);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionRead>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedAction> CreateAction(Expression<Func<string>> bodyconstituentID, Expression<Func<string>> bodydate, Expression<Func<bodycategoryInput>> bodycategory, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityID = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodyauthor = null, Expression<Func<string[]>> bodyfundraiserS = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedAction> CreateAction([WorkflowExpression] Func<string> bodyconstituentID, [WorkflowExpression] Func<string> bodydate, [WorkflowExpression] Func<bodycategoryInput> bodycategory, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<bool> bodycompleted = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodydirectionInput> bodydirection = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyopportunityID = null, [WorkflowExpression] Func<bodyoutcomeInput> bodyoutcome = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodyauthor = null, [WorkflowExpression] Func<string[]> bodyfundraiserS = null)
         {
-            var apiCallPath = "/constituent/v1/actions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["constituent_id"] = CSharpExpressionConverter.ConvertToken(bodyconstituentID);
-            bodypropCount++;
-            body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
-            bodypropCount++;
-            body["category"] = CSharpExpressionConverter.Convert(bodycategory);
-            if (bodytype != null)
+            SourceExpression.Validate(bodyconstituentID, nameof(bodyconstituentID), required: true);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: true);
+            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
+            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
+            SourceExpression.Validate(bodycompleted, nameof(bodycompleted), required: false);
+            SourceExpression.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodydirection, nameof(bodydirection), required: false);
+            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            SourceExpression.Validate(bodyopportunityID, nameof(bodyopportunityID), required: false);
+            SourceExpression.Validate(bodyoutcome, nameof(bodyoutcome), required: false);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            SourceExpression.Validate(bodyauthor, nameof(bodyauthor), required: false);
+            SourceExpression.Validate(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
+                var apiCallPath = "/constituent/v1/actions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodysummary != null)
-            {
-                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
+                body["constituent_id"] = SourceExpressionConverter.ConvertToken(bodyconstituentID);
                 bodypropCount++;
-            }
-
-            if (bodynote != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodynote);
+                body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
                 bodypropCount++;
+                body["category"] = SourceExpressionConverter.Convert(bodycategory);
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodysummary != null)
+                {
+                    body["summary"] = SourceExpressionConverter.ConvertToken(bodysummary);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodycompleted != null)
+                {
+                    body["completed"] = SourceExpressionConverter.ConvertToken(bodycompleted);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedOn != null)
+                {
+                    body["completed_date"] = SourceExpressionConverter.ConvertToken(bodycompletedOn);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodydirection != null)
+                {
+                    body["direction"] = SourceExpressionConverter.Convert(bodydirection);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = SourceExpressionConverter.ConvertToken(bodylocation);
+                    bodypropCount++;
+                }
+
+                if (bodyopportunityID != null)
+                {
+                    body["opportunity_id"] = SourceExpressionConverter.ConvertToken(bodyopportunityID);
+                    bodypropCount++;
+                }
+
+                if (bodyoutcome != null)
+                {
+                    body["outcome"] = SourceExpressionConverter.Convert(bodyoutcome);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.Convert(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["start_time"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["end_time"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyauthor != null)
+                {
+                    body["author"] = SourceExpressionConverter.ConvertToken(bodyauthor);
+                    bodypropCount++;
+                }
+
+                if (bodyfundraiserS != null)
+                {
+                    body["fundraisers"] = SourceExpressionConverter.ConvertToken(bodyfundraiserS);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycompleted != null)
-            {
-                body["completed"] = CSharpExpressionConverter.ConvertToken(bodycompleted);
-                bodypropCount++;
-            }
-
-            if (bodycompletedOn != null)
-            {
-                body["completed_date"] = CSharpExpressionConverter.ConvertToken(bodycompletedOn);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodydirection != null)
-            {
-                body["direction"] = CSharpExpressionConverter.Convert(bodydirection);
-                bodypropCount++;
-            }
-
-            if (bodylocation != null)
-            {
-                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
-                bodypropCount++;
-            }
-
-            if (bodyopportunityID != null)
-            {
-                body["opportunity_id"] = CSharpExpressionConverter.ConvertToken(bodyopportunityID);
-                bodypropCount++;
-            }
-
-            if (bodyoutcome != null)
-            {
-                body["outcome"] = CSharpExpressionConverter.Convert(bodyoutcome);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = CSharpExpressionConverter.Convert(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodyauthor != null)
-            {
-                body["author"] = CSharpExpressionConverter.ConvertToken(bodyauthor);
-                bodypropCount++;
-            }
-
-            if (bodyfundraiserS != null)
-            {
-                body["fundraisers"] = CSharpExpressionConverter.ConvertToken(bodyfundraiserS);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ConstituentApiCreatedAction>(callPayload);
+            return new ApiConnectionAction<ConstituentApiCreatedAction>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiActionRead> GetAction(Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<ConstituentApiActionRead> GetAction([WorkflowExpression] Func<string> actionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ConstituentApiActionRead>(callPayload);
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConstituentApiActionRead>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction EditAction(Expression<Func<string>> actionId, Expression<Func<string>> bodydate = null, Expression<Func<bodycategoryInput>> bodycategory = null, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodynote = null, Expression<Func<bool>> bodycompleted = null, Expression<Func<string>> bodycompletedOn = null, Expression<Func<string>> bodystatus = null, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodyopportunityID = null, Expression<Func<bodyoutcomeInput>> bodyoutcome = null, Expression<Func<bodypriorityInput>> bodypriority = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string[]>> bodyfundraiserS = null)
+        public IWorkflowAction EditAction([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<bodycategoryInput> bodycategory = null, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodynote = null, [WorkflowExpression] Func<bool> bodycompleted = null, [WorkflowExpression] Func<string> bodycompletedOn = null, [WorkflowExpression] Func<string> bodystatus = null, [WorkflowExpression] Func<bodydirectionInput> bodydirection = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodyopportunityID = null, [WorkflowExpression] Func<bodyoutcomeInput> bodyoutcome = null, [WorkflowExpression] Func<bodypriorityInput> bodypriority = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string[]> bodyfundraiserS = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydate != null)
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
+            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
+            SourceExpression.Validate(bodycompleted, nameof(bodycompleted), required: false);
+            SourceExpression.Validate(bodycompletedOn, nameof(bodycompletedOn), required: false);
+            SourceExpression.Validate(bodystatus, nameof(bodystatus), required: false);
+            SourceExpression.Validate(bodydirection, nameof(bodydirection), required: false);
+            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            SourceExpression.Validate(bodyopportunityID, nameof(bodyopportunityID), required: false);
+            SourceExpression.Validate(bodyoutcome, nameof(bodyoutcome), required: false);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            SourceExpression.Validate(bodyfundraiserS, nameof(bodyfundraiserS), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.Convert(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodysummary != null)
+                {
+                    body["summary"] = SourceExpressionConverter.ConvertToken(bodysummary);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodycompleted != null)
+                {
+                    body["completed"] = SourceExpressionConverter.ConvertToken(bodycompleted);
+                    bodypropCount++;
+                }
+
+                if (bodycompletedOn != null)
+                {
+                    body["completed_date"] = SourceExpressionConverter.ConvertToken(bodycompletedOn);
+                    bodypropCount++;
+                }
+
+                if (bodystatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodystatus);
+                    bodypropCount++;
+                }
+
+                if (bodydirection != null)
+                {
+                    body["direction"] = SourceExpressionConverter.Convert(bodydirection);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = SourceExpressionConverter.ConvertToken(bodylocation);
+                    bodypropCount++;
+                }
+
+                if (bodyopportunityID != null)
+                {
+                    body["opportunity_id"] = SourceExpressionConverter.ConvertToken(bodyopportunityID);
+                    bodypropCount++;
+                }
+
+                if (bodyoutcome != null)
+                {
+                    body["outcome"] = SourceExpressionConverter.Convert(bodyoutcome);
+                    bodypropCount++;
+                }
+
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.Convert(bodypriority);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["start_time"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["end_time"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodyfundraiserS != null)
+                {
+                    body["fundraisers"] = SourceExpressionConverter.ConvertToken(bodyfundraiserS);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycategory != null)
-            {
-                body["category"] = CSharpExpressionConverter.Convert(bodycategory);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodysummary != null)
-            {
-                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
-                bodypropCount++;
-            }
-
-            if (bodynote != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodynote);
-                bodypropCount++;
-            }
-
-            if (bodycompleted != null)
-            {
-                body["completed"] = CSharpExpressionConverter.ConvertToken(bodycompleted);
-                bodypropCount++;
-            }
-
-            if (bodycompletedOn != null)
-            {
-                body["completed_date"] = CSharpExpressionConverter.ConvertToken(bodycompletedOn);
-                bodypropCount++;
-            }
-
-            if (bodystatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.ConvertToken(bodystatus);
-                bodypropCount++;
-            }
-
-            if (bodydirection != null)
-            {
-                body["direction"] = CSharpExpressionConverter.Convert(bodydirection);
-                bodypropCount++;
-            }
-
-            if (bodylocation != null)
-            {
-                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
-                bodypropCount++;
-            }
-
-            if (bodyopportunityID != null)
-            {
-                body["opportunity_id"] = CSharpExpressionConverter.ConvertToken(bodyopportunityID);
-                bodypropCount++;
-            }
-
-            if (bodyoutcome != null)
-            {
-                body["outcome"] = CSharpExpressionConverter.Convert(bodyoutcome);
-                bodypropCount++;
-            }
-
-            if (bodypriority != null)
-            {
-                body["priority"] = CSharpExpressionConverter.Convert(bodypriority);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodyfundraiserS != null)
-            {
-                body["fundraisers"] = CSharpExpressionConverter.ConvertToken(bodyfundraiserS);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionAttachmentRead> ListActionAttachments(Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionAttachmentRead> ListActionAttachments([WorkflowExpression] Func<string> actionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/attachments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionAttachmentRead>(callPayload);
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/attachments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionAttachmentRead>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionCustomFieldRead> ListActionCustomFields(Expression<Func<string>> actionId)
+        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionCustomFieldRead> ListActionCustomFields([WorkflowExpression] Func<string> actionId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/customfields", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionCustomFieldRead>(callPayload);
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/{0}/customfields", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionCustomFieldRead>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment> CreateActionAttachment(Expression<Func<string>> bodyactionID, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string>> bodyfileName = null, Expression<Func<string>> bodyfileID = null, Expression<Func<string>> bodythumbnailID = null, Expression<Func<string[]>> bodytags = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionAttachment> CreateActionAttachment([WorkflowExpression] Func<string> bodyactionID, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<string> bodyfileID = null, [WorkflowExpression] Func<string> bodythumbnailID = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            var apiCallPath = "/constituent/v1/actions/attachments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parent_id"] = CSharpExpressionConverter.ConvertToken(bodyactionID);
-            bodypropCount++;
-            body["type"] = CSharpExpressionConverter.Convert(bodytype);
-            if (bodyname != null)
+            SourceExpression.Validate(bodyactionID, nameof(bodyactionID), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
+            SourceExpression.Validate(bodyfileID, nameof(bodyfileID), required: false);
+            SourceExpression.Validate(bodythumbnailID, nameof(bodythumbnailID), required: false);
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
+                var apiCallPath = "/constituent/v1/actions/attachments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydate != null)
-            {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
+                body["parent_id"] = SourceExpressionConverter.ConvertToken(bodyactionID);
                 bodypropCount++;
+                body["type"] = SourceExpressionConverter.Convert(bodytype);
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodyuRL != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyuRL);
+                    bodypropCount++;
+                }
+
+                if (bodyfileName != null)
+                {
+                    body["file_name"] = SourceExpressionConverter.ConvertToken(bodyfileName);
+                    bodypropCount++;
+                }
+
+                if (bodyfileID != null)
+                {
+                    body["file_id"] = SourceExpressionConverter.ConvertToken(bodyfileID);
+                    bodypropCount++;
+                }
+
+                if (bodythumbnailID != null)
+                {
+                    body["thumbnail_id"] = SourceExpressionConverter.ConvertToken(bodythumbnailID);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyuRL != null)
-            {
-                body["url"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
-                bodypropCount++;
-            }
-
-            if (bodyfileName != null)
-            {
-                body["file_name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-                bodypropCount++;
-            }
-
-            if (bodyfileID != null)
-            {
-                body["file_id"] = CSharpExpressionConverter.ConvertToken(bodyfileID);
-                bodypropCount++;
-            }
-
-            if (bodythumbnailID != null)
-            {
-                body["thumbnail_id"] = CSharpExpressionConverter.ConvertToken(bodythumbnailID);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ConstituentApiCreatedActionAttachment>(callPayload);
+            return new ApiConnectionAction<ConstituentApiCreatedActionAttachment>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction EditActionAttachment(Expression<Func<string>> attachmentId, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodyuRL = null, Expression<Func<string[]>> bodytags = null)
+        public IWorkflowAction EditActionAttachment([WorkflowExpression] Func<string> attachmentId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodyuRL = null, [WorkflowExpression] Func<string[]> bodytags = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/attachments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodyuRL, nameof(bodyuRL), required: false);
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodyuRL != null)
+                {
+                    body["url"] = SourceExpressionConverter.ConvertToken(bodyuRL);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydate != null)
-            {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
-                bodypropCount++;
-            }
-
-            if (bodyuRL != null)
-            {
-                body["url"] = CSharpExpressionConverter.ConvertToken(bodyuRL);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField> CreateActionCustomField(Expression<Func<string>> bodyactionID, Expression<Func<string>> bodycategory, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IBodyWorkflowAction<ConstituentApiCreatedActionCustomField> CreateActionCustomField([WorkflowExpression] Func<string> bodyactionID, [WorkflowExpression] Func<string> bodycategory, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            var apiCallPath = "/constituent/v1/actions/customfields";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["parent_id"] = CSharpExpressionConverter.ConvertToken(bodyactionID);
-            bodypropCount++;
-            body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
-            if (bodyvalue != null)
+            SourceExpression.Validate(bodyactionID, nameof(bodyactionID), required: true);
+            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: true);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
+                var apiCallPath = "/constituent/v1/actions/customfields";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodydate != null)
-            {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
+                body["parent_id"] = SourceExpressionConverter.ConvertToken(bodyactionID);
                 bodypropCount++;
+                body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycomment != null)
-            {
-                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ConstituentApiCreatedActionCustomField>(callPayload);
+            return new ApiConnectionAction<ConstituentApiCreatedActionCustomField>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IWorkflowAction EditActionCustomField(Expression<Func<string>> customFieldId, Expression<Func<string>> bodycategory = null, Expression<Func<object>> bodyvalue = null, Expression<Func<string>> bodydate = null, Expression<Func<string>> bodycomment = null)
+        public IWorkflowAction EditActionCustomField([WorkflowExpression] Func<string> customFieldId, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<object> bodyvalue = null, [WorkflowExpression] Func<string> bodydate = null, [WorkflowExpression] Func<string> bodycomment = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/customfields/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycategory != null)
+            SourceExpression.Validate(customFieldId, nameof(customFieldId), required: true);
+            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            SourceExpression.Validate(bodydate, nameof(bodydate), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/actions/customfields/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customFieldId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodydate != null)
+                {
+                    body["date"] = SourceExpressionConverter.ConvertToken(bodydate);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyvalue != null)
-            {
-                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodydate != null)
-            {
-                body["date"] = CSharpExpressionConverter.ConvertToken(bodydate);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudinteraction")]
-        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> ListConstituentActions(Expression<Func<string>> constituentId)
+        public IBodyWorkflowAction<ConstituentApiApiCollectionOfActionRead> ListConstituentActions([WorkflowExpression] Func<string> constituentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionRead>(callPayload);
+            SourceExpression.Validate(constituentId, nameof(constituentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/constituent/v1/constituents/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(constituentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ConstituentApiApiCollectionOfActionRead>(BuildSourceInput);
         }
     }
 

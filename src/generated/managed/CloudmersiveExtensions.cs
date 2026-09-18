@@ -12,34 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudmersive
     public class CloudmersiveActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<VirusScanResult> ScanFile(Expression<Func<string>> inputFile)
+        public IBodyWorkflowAction<VirusScanResult> ScanFile([WorkflowExpression] Func<string> inputFile)
         {
-            var apiCallPath = "/virus/scan/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<VirusScanResult>(callPayload);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/virus/scan/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VirusScanResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cloudmersive")]
-        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite(Expression<Func<string>> inputurl = null)
+        public IBodyWorkflowAction<WebsiteScanResult> ScanWebsite([WorkflowExpression] Func<string> inputurl = null)
         {
-            var apiCallPath = "/virus/scan/website";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var input = new JObject();
-            var inputpropCount = 0;
-            if (inputurl != null)
+            SourceExpression.Validate(inputurl, nameof(inputurl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                input["Url"] = CSharpExpressionConverter.ConvertToken(inputurl);
-                inputpropCount++;
+                var apiCallPath = "/virus/scan/website";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var input = new JObject();
+                var inputpropCount = 0;
+                if (inputurl != null)
+                {
+                    input["Url"] = SourceExpressionConverter.ConvertToken(inputurl);
+                    inputpropCount++;
+                }
+
+                if (inputpropCount > 0)
+                {
+                    callPayload.Body = input;
+                }
+                return callPayload;
             }
 
-            if (inputpropCount > 0)
-            {
-                callPayload.Body = input;
-            }
-
-            return new ApiConnectionAction<WebsiteScanResult>(callPayload);
+            return new ApiConnectionAction<WebsiteScanResult>(BuildSourceInput);
         }
     }
 

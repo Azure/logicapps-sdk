@@ -12,595 +12,701 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jasperip
     public class JasperipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<CommandPostResponse> Command(Expression<Func<string>> bodyinputscommand = null, Expression<Func<string>> bodyinputscontext = null, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null, Expression<Func<bodyoptionscompletionTypeInput>> bodyoptionscompletionType = null)
+        public IBodyWorkflowAction<CommandPostResponse> Command([WorkflowExpression] Func<string> bodyinputscommand = null, [WorkflowExpression] Func<string> bodyinputscontext = null, [WorkflowExpression] Func<int> bodyoptionsoutputCount = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null, [WorkflowExpression] Func<bodyoptionscompletionTypeInput> bodyoptionscompletionType = null)
         {
-            var apiCallPath = "/v1/command";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (bodyinputscommand != null)
+            SourceExpression.Validate(bodyinputscommand, nameof(bodyinputscommand), required: false);
+            SourceExpression.Validate(bodyinputscontext, nameof(bodyinputscontext), required: false);
+            SourceExpression.Validate(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            SourceExpression.Validate(bodyoptionscompletionType, nameof(bodyoptionscompletionType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputsObject["command"] = CSharpExpressionConverter.ConvertToken(bodyinputscommand);
-                inputsObjectpropCount++;
-            }
-
-            if (bodyinputscontext != null)
-            {
-                inputsObject["context"] = CSharpExpressionConverter.ConvertToken(bodyinputscontext);
-                inputsObjectpropCount++;
-            }
-
-            if (inputsObjectpropCount > 0)
-            {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
-
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsoutputCount != null)
-            {
-                if (bodyoptionsoutputCount != null)
+                var apiCallPath = "/v1/command";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (bodyinputscommand != null)
                 {
-                    optionsObject["outputCount"] = CSharpExpressionConverter.ConvertToken(bodyoptionsoutputCount);
-                    optionsObjectpropCount++;
-                }
-
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputCount"] = 3;
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsinputLanguage != null)
-            {
-                if (bodyoptionsinputLanguage != null)
-                {
-                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
-                    optionsObjectpropCount++;
-                }
-
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
-                if (bodyoptionsoutputLanguage != null)
-                {
-                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
-                    optionsObjectpropCount++;
-                }
-
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
-                if (bodyoptionslanguageFormality != null)
-                {
-                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
-                    optionsObjectpropCount++;
-                }
-
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionscompletionType != null)
-            {
-                if (bodyoptionscompletionType != null)
-                {
-                    optionsObject["completionType"] = CSharpExpressionConverter.Convert(bodyoptionscompletionType);
-                    optionsObjectpropCount++;
-                }
-
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["completionType"] = "performance";
-                optionsObjectpropCount++;
-            }
-
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CommandPostResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting(Expression<Func<bodyinputstypeInput>> bodyinputstype = null, Expression<Func<string>> bodyinputsvalue = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
-        {
-            var apiCallPath = "/v1/keep-writing";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (bodyinputstype != null)
-            {
-                if (bodyinputstype != null)
-                {
-                    inputsObject["type"] = CSharpExpressionConverter.Convert(bodyinputstype);
+                    inputsObject["command"] = SourceExpressionConverter.ConvertToken(bodyinputscommand);
                     inputsObjectpropCount++;
                 }
 
-                inputsObjectpropCount++;
-            }
-            else
-            {
-                inputsObject["type"] = "text";
-                inputsObjectpropCount++;
-            }
+                if (bodyinputscontext != null)
+                {
+                    inputsObject["context"] = SourceExpressionConverter.ConvertToken(bodyinputscontext);
+                    inputsObjectpropCount++;
+                }
 
-            if (bodyinputsvalue != null)
-            {
-                inputsObject["value"] = CSharpExpressionConverter.ConvertToken(bodyinputsvalue);
-                inputsObjectpropCount++;
-            }
+                if (inputsObjectpropCount > 0)
+                {
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
 
-            if (inputsObjectpropCount > 0)
-            {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (bodyoptionsoutputCount != null)
+                {
+                    if (bodyoptionsoutputCount != null)
+                    {
+                        optionsObject["outputCount"] = SourceExpressionConverter.ConvertToken(bodyoptionsoutputCount);
+                        optionsObjectpropCount++;
+                    }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsinputLanguage != null)
-            {
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputCount"] = 3;
+                    optionsObjectpropCount++;
+                }
+
                 if (bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
+                    if (bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
                 if (bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
+                    if (bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
                 if (bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
+                    if (bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = SourceExpressionConverter.Convert(bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
+                if (bodyoptionscompletionType != null)
+                {
+                    if (bodyoptionscompletionType != null)
+                    {
+                        optionsObject["completionType"] = SourceExpressionConverter.Convert(bodyoptionscompletionType);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["completionType"] = "performance";
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
+            return new ApiConnectionAction<CommandPostResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
+        public IBodyWorkflowAction<KeepWritingPostResponse> KeepWriting([WorkflowExpression] Func<bodyinputstypeInput> bodyinputstype = null, [WorkflowExpression] Func<string> bodyinputsvalue = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
+        {
+            SourceExpression.Validate(bodyinputstype, nameof(bodyinputstype), required: false);
+            SourceExpression.Validate(bodyinputsvalue, nameof(bodyinputsvalue), required: false);
+            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["options"] = optionsObject;
-                bodypropCount++;
+                var apiCallPath = "/v1/keep-writing";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (bodyinputstype != null)
+                {
+                    if (bodyinputstype != null)
+                    {
+                        inputsObject["type"] = SourceExpressionConverter.Convert(bodyinputstype);
+                        inputsObjectpropCount++;
+                    }
+
+                    inputsObjectpropCount++;
+                }
+                else
+                {
+                    inputsObject["type"] = "text";
+                    inputsObjectpropCount++;
+                }
+
+                if (bodyinputsvalue != null)
+                {
+                    inputsObject["value"] = SourceExpressionConverter.ConvertToken(bodyinputsvalue);
+                    inputsObjectpropCount++;
+                }
+
+                if (inputsObjectpropCount > 0)
+                {
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
+
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (bodyoptionsinputLanguage != null)
+                {
+                    if (bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
+                    optionsObjectpropCount++;
+                }
+
+                if (bodyoptionsoutputLanguage != null)
+                {
+                    if (bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
+                    optionsObjectpropCount++;
+                }
+
+                if (bodyoptionslanguageFormality != null)
+                {
+                    if (bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = SourceExpressionConverter.Convert(bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
+                    optionsObjectpropCount++;
+                }
+
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KeepWritingPostResponse>(callPayload);
+            return new ApiConnectionAction<KeepWritingPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TemplatesGetResponse> TemplatesGet()
         {
-            var apiCallPath = "/v1/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplatesGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TemplatesGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateId)
+        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TemplateGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TemplatePostResponse> Template(Expression<Func<string>> templateId, Expression<Func<int>> bodyoptionsoutputCount = null, Expression<Func<bodyoptionsinputLanguageInput>> bodyoptionsinputLanguage = null, Expression<Func<bodyoptionsoutputLanguageInput>> bodyoptionsoutputLanguage = null, Expression<Func<bodyoptionslanguageFormalityInput>> bodyoptionslanguageFormality = null)
+        public IBodyWorkflowAction<TemplatePostResponse> Template([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<int> bodyoptionsoutputCount = null, [WorkflowExpression] Func<bodyoptionsinputLanguageInput> bodyoptionsinputLanguage = null, [WorkflowExpression] Func<bodyoptionsoutputLanguageInput> bodyoptionsoutputLanguage = null, [WorkflowExpression] Func<bodyoptionslanguageFormalityInput> bodyoptionslanguageFormality = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var inputsObject = new JObject();
-            var inputsObjectpropCount = 0;
-            if (inputsObjectpropCount > 0)
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(bodyoptionsoutputCount, nameof(bodyoptionsoutputCount), required: false);
+            SourceExpression.Validate(bodyoptionsinputLanguage, nameof(bodyoptionsinputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionsoutputLanguage, nameof(bodyoptionsoutputLanguage), required: false);
+            SourceExpression.Validate(bodyoptionslanguageFormality, nameof(bodyoptionslanguageFormality), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["inputs"] = inputsObject;
-                bodypropCount++;
-            }
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/templates/{0}/run", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var inputsObject = new JObject();
+                var inputsObjectpropCount = 0;
+                if (inputsObjectpropCount > 0)
+                {
+                    body["inputs"] = inputsObject;
+                    bodypropCount++;
+                }
 
-            var optionsObject = new JObject();
-            var optionsObjectpropCount = 0;
-            if (bodyoptionsoutputCount != null)
-            {
-                optionsObject["outputCount"] = CSharpExpressionConverter.ConvertToken(bodyoptionsoutputCount);
-                optionsObjectpropCount++;
-            }
+                var optionsObject = new JObject();
+                var optionsObjectpropCount = 0;
+                if (bodyoptionsoutputCount != null)
+                {
+                    optionsObject["outputCount"] = SourceExpressionConverter.ConvertToken(bodyoptionsoutputCount);
+                    optionsObjectpropCount++;
+                }
 
-            if (bodyoptionsinputLanguage != null)
-            {
                 if (bodyoptionsinputLanguage != null)
                 {
-                    optionsObject["inputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsinputLanguage);
+                    if (bodyoptionsinputLanguage != null)
+                    {
+                        optionsObject["inputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsinputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["inputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["inputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionsoutputLanguage != null)
-            {
                 if (bodyoptionsoutputLanguage != null)
                 {
-                    optionsObject["outputLanguage"] = CSharpExpressionConverter.Convert(bodyoptionsoutputLanguage);
+                    if (bodyoptionsoutputLanguage != null)
+                    {
+                        optionsObject["outputLanguage"] = SourceExpressionConverter.Convert(bodyoptionsoutputLanguage);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["outputLanguage"] = "English";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["outputLanguage"] = "English";
-                optionsObjectpropCount++;
-            }
-
-            if (bodyoptionslanguageFormality != null)
-            {
                 if (bodyoptionslanguageFormality != null)
                 {
-                    optionsObject["languageFormality"] = CSharpExpressionConverter.Convert(bodyoptionslanguageFormality);
+                    if (bodyoptionslanguageFormality != null)
+                    {
+                        optionsObject["languageFormality"] = SourceExpressionConverter.Convert(bodyoptionslanguageFormality);
+                        optionsObjectpropCount++;
+                    }
+
+                    optionsObjectpropCount++;
+                }
+                else
+                {
+                    optionsObject["languageFormality"] = "default";
                     optionsObjectpropCount++;
                 }
 
-                optionsObjectpropCount++;
-            }
-            else
-            {
-                optionsObject["languageFormality"] = "default";
-                optionsObjectpropCount++;
+                if (optionsObjectpropCount > 0)
+                {
+                    body["options"] = optionsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (optionsObjectpropCount > 0)
-            {
-                body["options"] = optionsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TemplatePostResponse>(callPayload);
+            return new ApiConnectionAction<TemplatePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<KnowledgesGetResponse> KnowledgesGet([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/v1/knowledge";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            return new ApiConnectionAction<KnowledgesGetResponse>(callPayload);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/knowledge";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KnowledgesGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge(Expression<Func<string>> bodyname, Expression<Func<string>> bodyfile, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<KnowledgePostResponse> Knowledge([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyfile, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
-            var apiCallPath = "/v1/knowledge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: true);
+            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/knowledge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
                 if (bodysettingsappVisibility != null)
                 {
-                    settingsObject["appVisibility"] = CSharpExpressionConverter.Convert(bodysettingsappVisibility);
+                    if (bodysettingsappVisibility != null)
+                    {
+                        settingsObject["appVisibility"] = SourceExpressionConverter.Convert(bodysettingsappVisibility);
+                        settingsObjectpropCount++;
+                    }
+
+                    settingsObjectpropCount++;
+                }
+                else
+                {
+                    settingsObject["appVisibility"] = "visible";
                     settingsObjectpropCount++;
                 }
 
-                settingsObjectpropCount++;
-            }
-            else
-            {
-                settingsObject["appVisibility"] = "visible";
-                settingsObjectpropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KnowledgePostResponse>(callPayload);
+            return new ApiConnectionAction<KnowledgePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet(Expression<Func<string>> knowledgeId)
+        public IBodyWorkflowAction<KnowledgeGetResponse> KnowledgeGet([WorkflowExpression] Func<string> knowledgeId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KnowledgeGetResponse>(callPayload);
+            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KnowledgeGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete(Expression<Func<string>> knowledgeId)
+        public IBodyWorkflowAction<KnowledgeDeleteResponse> KnowledgeDelete([WorkflowExpression] Func<string> knowledgeId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<KnowledgeDeleteResponse>(callPayload);
+            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<KnowledgeDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch(Expression<Func<string>> knowledgeId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyfile = null)
+        public IBodyWorkflowAction<KnowledgePatchResponse> KnowledgePatch([WorkflowExpression] Func<string> knowledgeId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyfile = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            SourceExpression.Validate(knowledgeId, nameof(knowledgeId), required: true);
+            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/knowledge/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(knowledgeId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = SourceExpressionConverter.ConvertToken(bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
+
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyfile != null)
+                {
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                settingsObject["appVisibility"] = CSharpExpressionConverter.ConvertToken(bodysettingsappVisibility);
-                settingsObjectpropCount++;
-            }
-
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyfile != null)
-            {
-                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<KnowledgePatchResponse>(callPayload);
+            return new ApiConnectionAction<KnowledgePatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
         public IBodyWorkflowAction<TonesGetResponseItem[]> TonesGet()
         {
-            var apiCallPath = "/v1/tones";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TonesGetResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/tones";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TonesGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePostResponse> Tone(Expression<Func<string>> bodyname, Expression<Func<string>> bodyvalue, Expression<Func<bodysettingsappVisibilityInput>> bodysettingsappVisibility = null)
+        public IBodyWorkflowAction<TonePostResponse> Tone([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyvalue, [WorkflowExpression] Func<bodysettingsappVisibilityInput> bodysettingsappVisibility = null)
         {
-            var apiCallPath = "/v1/tones";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1/tones";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
                 if (bodysettingsappVisibility != null)
                 {
-                    settingsObject["appVisibility"] = CSharpExpressionConverter.Convert(bodysettingsappVisibility);
+                    if (bodysettingsappVisibility != null)
+                    {
+                        settingsObject["appVisibility"] = SourceExpressionConverter.Convert(bodysettingsappVisibility);
+                        settingsObjectpropCount++;
+                    }
+
+                    settingsObjectpropCount++;
+                }
+                else
+                {
+                    settingsObject["appVisibility"] = "visible";
                     settingsObjectpropCount++;
                 }
 
-                settingsObjectpropCount++;
-            }
-            else
-            {
-                settingsObject["appVisibility"] = "visible";
-                settingsObjectpropCount++;
-            }
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
 
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TonePostResponse>(callPayload);
+            return new ApiConnectionAction<TonePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<ToneGetResponse> ToneGet(Expression<Func<string>> toneId)
+        public IBodyWorkflowAction<ToneGetResponse> ToneGet([WorkflowExpression] Func<string> toneId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToneGetResponse>(callPayload);
+            SourceExpression.Validate(toneId, nameof(toneId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ToneGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<TonePatchResponse> TonePatch(Expression<Func<string>> toneId, Expression<Func<string>> bodysettingsappVisibility = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyvalue = null)
+        public IBodyWorkflowAction<TonePatchResponse> TonePatch([WorkflowExpression] Func<string> toneId, [WorkflowExpression] Func<string> bodysettingsappVisibility = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyvalue = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var metadataObject = new JObject();
-            var metadataObjectpropCount = 0;
-            if (metadataObjectpropCount > 0)
+            SourceExpression.Validate(toneId, nameof(toneId), required: true);
+            SourceExpression.Validate(bodysettingsappVisibility, nameof(bodysettingsappVisibility), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metadata"] = metadataObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var metadataObject = new JObject();
+                var metadataObjectpropCount = 0;
+                if (metadataObjectpropCount > 0)
+                {
+                    body["metadata"] = metadataObject;
+                    bodypropCount++;
+                }
+
+                var settingsObject = new JObject();
+                var settingsObjectpropCount = 0;
+                if (bodysettingsappVisibility != null)
+                {
+                    settingsObject["appVisibility"] = SourceExpressionConverter.ConvertToken(bodysettingsappVisibility);
+                    settingsObjectpropCount++;
+                }
+
+                if (settingsObjectpropCount > 0)
+                {
+                    body["settings"] = settingsObject;
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyvalue != null)
+                {
+                    body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var settingsObject = new JObject();
-            var settingsObjectpropCount = 0;
-            if (bodysettingsappVisibility != null)
-            {
-                settingsObject["appVisibility"] = CSharpExpressionConverter.ConvertToken(bodysettingsappVisibility);
-                settingsObjectpropCount++;
-            }
-
-            if (settingsObjectpropCount > 0)
-            {
-                body["settings"] = settingsObject;
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodyvalue != null)
-            {
-                body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TonePatchResponse>(callPayload);
+            return new ApiConnectionAction<TonePatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jasperip")]
-        public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete(Expression<Func<string>> toneId)
+        public IBodyWorkflowAction<ToneDeleteResponse> ToneDelete([WorkflowExpression] Func<string> toneId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ToneDeleteResponse>(callPayload);
+            SourceExpression.Validate(toneId, nameof(toneId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/tones/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(toneId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ToneDeleteResponse>(BuildSourceInput);
         }
     }
 

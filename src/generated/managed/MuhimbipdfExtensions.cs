@@ -12,4553 +12,5134 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Muhimbipdf
     public class MuhimbipdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> CompositeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkData, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> CompositeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkData, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/composite_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatawatermarkData, nameof(inputDatawatermarkData), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
-
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
-                inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["watermark_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkData);
-            if (inputDatafailOnError != null)
-            {
-                if (inputDatafailOnError != null)
+                var apiCallPath = "/v1/operations/composite_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
+
+                inputData["use_async_pattern"] = false;
+                inputDatapropCount++;
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
+                inputData["watermark_data"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkData);
+                if (inputDatafailOnError != null)
+                {
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> CompressPdf(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDataremoveAnnotationsInput>> inputPdfDataremoveAnnotations = null, Expression<Func<inputPdfDataremoveBlankPagesInput>> inputPdfDataremoveBlankPages = null, Expression<Func<inputPdfDataremoveBookmarksInput>> inputPdfDataremoveBookmarks = null, Expression<Func<inputPdfDataremoveEmbeddedFilesInput>> inputPdfDataremoveEmbeddedFiles = null, Expression<Func<inputPdfDataremoveFormFieldsInput>> inputPdfDataremoveFormFields = null, Expression<Func<inputPdfDataremoveHyperlinksInput>> inputPdfDataremoveHyperlinks = null, Expression<Func<inputPdfDataremoveJavaScriptInput>> inputPdfDataremoveJavaScript = null, Expression<Func<inputPdfDataremoveMetadataInput>> inputPdfDataremoveMetadata = null, Expression<Func<inputPdfDataremovePageThumbnailsInput>> inputPdfDataremovePageThumbnails = null, Expression<Func<inputPdfDatapackFontsInput>> inputPdfDatapackFonts = null, Expression<Func<inputPdfDatapackDocumentInput>> inputPdfDatapackDocument = null, Expression<Func<inputPdfDatarecompressImagesInput>> inputPdfDatarecompressImages = null, Expression<Func<inputPdfDataenableMRCInput>> inputPdfDataenableMRC = null, Expression<Func<int>> inputPdfDatadownscaleResolutionMRC = null, Expression<Func<inputPdfDatapreserveSmoothingInput>> inputPdfDatapreserveSmoothing = null, Expression<Func<inputPdfDataimageQualityInput>> inputPdfDataimageQuality = null, Expression<Func<inputPdfDatadownscaleImagesInput>> inputPdfDatadownscaleImages = null, Expression<Func<int>> inputPdfDatadownscaleResolution = null, Expression<Func<inputPdfDataenableColorDetectionInput>> inputPdfDataenableColorDetection = null, Expression<Func<inputPdfDataenableCharRepairInput>> inputPdfDataenableCharRepair = null, Expression<Func<inputPdfDataenableJPEG2000Input>> inputPdfDataenableJPEG2000 = null, Expression<Func<inputPdfDataenableJBIG2Input>> inputPdfDataenableJBIG2 = null, Expression<Func<int>> inputPdfDatajBIG2PMSThreshold = null, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> CompressPdf([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDataremoveAnnotationsInput> inputPdfDataremoveAnnotations = null, [WorkflowExpression] Func<inputPdfDataremoveBlankPagesInput> inputPdfDataremoveBlankPages = null, [WorkflowExpression] Func<inputPdfDataremoveBookmarksInput> inputPdfDataremoveBookmarks = null, [WorkflowExpression] Func<inputPdfDataremoveEmbeddedFilesInput> inputPdfDataremoveEmbeddedFiles = null, [WorkflowExpression] Func<inputPdfDataremoveFormFieldsInput> inputPdfDataremoveFormFields = null, [WorkflowExpression] Func<inputPdfDataremoveHyperlinksInput> inputPdfDataremoveHyperlinks = null, [WorkflowExpression] Func<inputPdfDataremoveJavaScriptInput> inputPdfDataremoveJavaScript = null, [WorkflowExpression] Func<inputPdfDataremoveMetadataInput> inputPdfDataremoveMetadata = null, [WorkflowExpression] Func<inputPdfDataremovePageThumbnailsInput> inputPdfDataremovePageThumbnails = null, [WorkflowExpression] Func<inputPdfDatapackFontsInput> inputPdfDatapackFonts = null, [WorkflowExpression] Func<inputPdfDatapackDocumentInput> inputPdfDatapackDocument = null, [WorkflowExpression] Func<inputPdfDatarecompressImagesInput> inputPdfDatarecompressImages = null, [WorkflowExpression] Func<inputPdfDataenableMRCInput> inputPdfDataenableMRC = null, [WorkflowExpression] Func<int> inputPdfDatadownscaleResolutionMRC = null, [WorkflowExpression] Func<inputPdfDatapreserveSmoothingInput> inputPdfDatapreserveSmoothing = null, [WorkflowExpression] Func<inputPdfDataimageQualityInput> inputPdfDataimageQuality = null, [WorkflowExpression] Func<inputPdfDatadownscaleImagesInput> inputPdfDatadownscaleImages = null, [WorkflowExpression] Func<int> inputPdfDatadownscaleResolution = null, [WorkflowExpression] Func<inputPdfDataenableColorDetectionInput> inputPdfDataenableColorDetection = null, [WorkflowExpression] Func<inputPdfDataenableCharRepairInput> inputPdfDataenableCharRepair = null, [WorkflowExpression] Func<inputPdfDataenableJPEG2000Input> inputPdfDataenableJPEG2000 = null, [WorkflowExpression] Func<inputPdfDataenableJBIG2Input> inputPdfDataenableJBIG2 = null, [WorkflowExpression] Func<int> inputPdfDatajBIG2PMSThreshold = null, [WorkflowExpression] Func<string> inputPdfDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/compress_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPdfData = new JObject();
-            var inputPdfDatapropCount = 0;
-            inputPdfData["use_async_pattern"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputPdfDataremoveAnnotations, nameof(inputPdfDataremoveAnnotations), required: false);
+            SourceExpression.Validate(inputPdfDataremoveBlankPages, nameof(inputPdfDataremoveBlankPages), required: false);
+            SourceExpression.Validate(inputPdfDataremoveBookmarks, nameof(inputPdfDataremoveBookmarks), required: false);
+            SourceExpression.Validate(inputPdfDataremoveEmbeddedFiles, nameof(inputPdfDataremoveEmbeddedFiles), required: false);
+            SourceExpression.Validate(inputPdfDataremoveFormFields, nameof(inputPdfDataremoveFormFields), required: false);
+            SourceExpression.Validate(inputPdfDataremoveHyperlinks, nameof(inputPdfDataremoveHyperlinks), required: false);
+            SourceExpression.Validate(inputPdfDataremoveJavaScript, nameof(inputPdfDataremoveJavaScript), required: false);
+            SourceExpression.Validate(inputPdfDataremoveMetadata, nameof(inputPdfDataremoveMetadata), required: false);
+            SourceExpression.Validate(inputPdfDataremovePageThumbnails, nameof(inputPdfDataremovePageThumbnails), required: false);
+            SourceExpression.Validate(inputPdfDatapackFonts, nameof(inputPdfDatapackFonts), required: false);
+            SourceExpression.Validate(inputPdfDatapackDocument, nameof(inputPdfDatapackDocument), required: false);
+            SourceExpression.Validate(inputPdfDatarecompressImages, nameof(inputPdfDatarecompressImages), required: false);
+            SourceExpression.Validate(inputPdfDataenableMRC, nameof(inputPdfDataenableMRC), required: false);
+            SourceExpression.Validate(inputPdfDatadownscaleResolutionMRC, nameof(inputPdfDatadownscaleResolutionMRC), required: false);
+            SourceExpression.Validate(inputPdfDatapreserveSmoothing, nameof(inputPdfDatapreserveSmoothing), required: false);
+            SourceExpression.Validate(inputPdfDataimageQuality, nameof(inputPdfDataimageQuality), required: false);
+            SourceExpression.Validate(inputPdfDatadownscaleImages, nameof(inputPdfDatadownscaleImages), required: false);
+            SourceExpression.Validate(inputPdfDatadownscaleResolution, nameof(inputPdfDatadownscaleResolution), required: false);
+            SourceExpression.Validate(inputPdfDataenableColorDetection, nameof(inputPdfDataenableColorDetection), required: false);
+            SourceExpression.Validate(inputPdfDataenableCharRepair, nameof(inputPdfDataenableCharRepair), required: false);
+            SourceExpression.Validate(inputPdfDataenableJPEG2000, nameof(inputPdfDataenableJPEG2000), required: false);
+            SourceExpression.Validate(inputPdfDataenableJBIG2, nameof(inputPdfDataenableJBIG2), required: false);
+            SourceExpression.Validate(inputPdfDatajBIG2PMSThreshold, nameof(inputPdfDatajBIG2PMSThreshold), required: false);
+            SourceExpression.Validate(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/compress_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPdfData = new JObject();
+                var inputPdfDatapropCount = 0;
+                inputPdfData["use_async_pattern"] = false;
                 inputPdfDatapropCount++;
-            }
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputPdfData["sharepoint_file"] = sharepointFileObject;
+                    inputPdfDatapropCount++;
+                }
 
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
-            if (inputPdfDataremoveAnnotations != null)
-            {
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
                 if (inputPdfDataremoveAnnotations != null)
                 {
-                    inputPdfData["remove_annotations"] = CSharpExpressionConverter.Convert(inputPdfDataremoveAnnotations);
+                    if (inputPdfDataremoveAnnotations != null)
+                    {
+                        inputPdfData["remove_annotations"] = SourceExpressionConverter.Convert(inputPdfDataremoveAnnotations);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_annotations"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_annotations"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveBlankPages != null)
-            {
                 if (inputPdfDataremoveBlankPages != null)
                 {
-                    inputPdfData["remove_blank_pages"] = CSharpExpressionConverter.Convert(inputPdfDataremoveBlankPages);
+                    if (inputPdfDataremoveBlankPages != null)
+                    {
+                        inputPdfData["remove_blank_pages"] = SourceExpressionConverter.Convert(inputPdfDataremoveBlankPages);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_blank_pages"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_blank_pages"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveBookmarks != null)
-            {
                 if (inputPdfDataremoveBookmarks != null)
                 {
-                    inputPdfData["remove_bookmarks"] = CSharpExpressionConverter.Convert(inputPdfDataremoveBookmarks);
+                    if (inputPdfDataremoveBookmarks != null)
+                    {
+                        inputPdfData["remove_bookmarks"] = SourceExpressionConverter.Convert(inputPdfDataremoveBookmarks);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_bookmarks"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_bookmarks"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveEmbeddedFiles != null)
-            {
                 if (inputPdfDataremoveEmbeddedFiles != null)
                 {
-                    inputPdfData["remove_embedded_files"] = CSharpExpressionConverter.Convert(inputPdfDataremoveEmbeddedFiles);
+                    if (inputPdfDataremoveEmbeddedFiles != null)
+                    {
+                        inputPdfData["remove_embedded_files"] = SourceExpressionConverter.Convert(inputPdfDataremoveEmbeddedFiles);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_embedded_files"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_embedded_files"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveFormFields != null)
-            {
                 if (inputPdfDataremoveFormFields != null)
                 {
-                    inputPdfData["remove_form_fields"] = CSharpExpressionConverter.Convert(inputPdfDataremoveFormFields);
+                    if (inputPdfDataremoveFormFields != null)
+                    {
+                        inputPdfData["remove_form_fields"] = SourceExpressionConverter.Convert(inputPdfDataremoveFormFields);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_form_fields"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_form_fields"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveHyperlinks != null)
-            {
                 if (inputPdfDataremoveHyperlinks != null)
                 {
-                    inputPdfData["remove_hyperlinks"] = CSharpExpressionConverter.Convert(inputPdfDataremoveHyperlinks);
+                    if (inputPdfDataremoveHyperlinks != null)
+                    {
+                        inputPdfData["remove_hyperlinks"] = SourceExpressionConverter.Convert(inputPdfDataremoveHyperlinks);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_hyperlinks"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_hyperlinks"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveJavaScript != null)
-            {
                 if (inputPdfDataremoveJavaScript != null)
                 {
-                    inputPdfData["remove_javascript"] = CSharpExpressionConverter.Convert(inputPdfDataremoveJavaScript);
+                    if (inputPdfDataremoveJavaScript != null)
+                    {
+                        inputPdfData["remove_javascript"] = SourceExpressionConverter.Convert(inputPdfDataremoveJavaScript);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_javascript"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_javascript"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremoveMetadata != null)
-            {
                 if (inputPdfDataremoveMetadata != null)
                 {
-                    inputPdfData["remove_metadata"] = CSharpExpressionConverter.Convert(inputPdfDataremoveMetadata);
+                    if (inputPdfDataremoveMetadata != null)
+                    {
+                        inputPdfData["remove_metadata"] = SourceExpressionConverter.Convert(inputPdfDataremoveMetadata);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_metadata"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_metadata"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataremovePageThumbnails != null)
-            {
                 if (inputPdfDataremovePageThumbnails != null)
                 {
-                    inputPdfData["remove_page_thumbnails"] = CSharpExpressionConverter.Convert(inputPdfDataremovePageThumbnails);
+                    if (inputPdfDataremovePageThumbnails != null)
+                    {
+                        inputPdfData["remove_page_thumbnails"] = SourceExpressionConverter.Convert(inputPdfDataremovePageThumbnails);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["remove_page_thumbnails"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["remove_page_thumbnails"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapackFonts != null)
-            {
                 if (inputPdfDatapackFonts != null)
                 {
-                    inputPdfData["pack_fonts"] = CSharpExpressionConverter.Convert(inputPdfDatapackFonts);
+                    if (inputPdfDatapackFonts != null)
+                    {
+                        inputPdfData["pack_fonts"] = SourceExpressionConverter.Convert(inputPdfDatapackFonts);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["pack_fonts"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["pack_fonts"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapackDocument != null)
-            {
                 if (inputPdfDatapackDocument != null)
                 {
-                    inputPdfData["pack_document"] = CSharpExpressionConverter.Convert(inputPdfDatapackDocument);
+                    if (inputPdfDatapackDocument != null)
+                    {
+                        inputPdfData["pack_document"] = SourceExpressionConverter.Convert(inputPdfDatapackDocument);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["pack_document"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["pack_document"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatarecompressImages != null)
-            {
                 if (inputPdfDatarecompressImages != null)
                 {
-                    inputPdfData["recompress_images"] = CSharpExpressionConverter.Convert(inputPdfDatarecompressImages);
+                    if (inputPdfDatarecompressImages != null)
+                    {
+                        inputPdfData["recompress_images"] = SourceExpressionConverter.Convert(inputPdfDatarecompressImages);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["recompress_images"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["recompress_images"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataenableMRC != null)
-            {
                 if (inputPdfDataenableMRC != null)
                 {
-                    inputPdfData["enable_mrc"] = CSharpExpressionConverter.Convert(inputPdfDataenableMRC);
+                    if (inputPdfDataenableMRC != null)
+                    {
+                        inputPdfData["enable_mrc"] = SourceExpressionConverter.Convert(inputPdfDataenableMRC);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["enable_mrc"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["enable_mrc"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatadownscaleResolutionMRC != null)
-            {
                 if (inputPdfDatadownscaleResolutionMRC != null)
                 {
-                    inputPdfData["downscale_resolution_mrc"] = CSharpExpressionConverter.ConvertToken(inputPdfDatadownscaleResolutionMRC);
+                    if (inputPdfDatadownscaleResolutionMRC != null)
+                    {
+                        inputPdfData["downscale_resolution_mrc"] = SourceExpressionConverter.ConvertToken(inputPdfDatadownscaleResolutionMRC);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["downscale_resolution_mrc"] = 100;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["downscale_resolution_mrc"] = 100;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapreserveSmoothing != null)
-            {
                 if (inputPdfDatapreserveSmoothing != null)
                 {
-                    inputPdfData["preserve_smoothing"] = CSharpExpressionConverter.Convert(inputPdfDatapreserveSmoothing);
+                    if (inputPdfDatapreserveSmoothing != null)
+                    {
+                        inputPdfData["preserve_smoothing"] = SourceExpressionConverter.Convert(inputPdfDatapreserveSmoothing);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["preserve_smoothing"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["preserve_smoothing"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataimageQuality != null)
-            {
                 if (inputPdfDataimageQuality != null)
                 {
-                    inputPdfData["image_quality"] = CSharpExpressionConverter.Convert(inputPdfDataimageQuality);
+                    if (inputPdfDataimageQuality != null)
+                    {
+                        inputPdfData["image_quality"] = SourceExpressionConverter.Convert(inputPdfDataimageQuality);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["image_quality"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["image_quality"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatadownscaleImages != null)
-            {
                 if (inputPdfDatadownscaleImages != null)
                 {
-                    inputPdfData["downscale_images"] = CSharpExpressionConverter.Convert(inputPdfDatadownscaleImages);
+                    if (inputPdfDatadownscaleImages != null)
+                    {
+                        inputPdfData["downscale_images"] = SourceExpressionConverter.Convert(inputPdfDatadownscaleImages);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["downscale_images"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["downscale_images"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatadownscaleResolution != null)
-            {
                 if (inputPdfDatadownscaleResolution != null)
                 {
-                    inputPdfData["downscale_resolution"] = CSharpExpressionConverter.ConvertToken(inputPdfDatadownscaleResolution);
+                    if (inputPdfDatadownscaleResolution != null)
+                    {
+                        inputPdfData["downscale_resolution"] = SourceExpressionConverter.ConvertToken(inputPdfDatadownscaleResolution);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["downscale_resolution"] = 200;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["downscale_resolution"] = 200;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataenableColorDetection != null)
-            {
                 if (inputPdfDataenableColorDetection != null)
                 {
-                    inputPdfData["enable_color_detection"] = CSharpExpressionConverter.Convert(inputPdfDataenableColorDetection);
+                    if (inputPdfDataenableColorDetection != null)
+                    {
+                        inputPdfData["enable_color_detection"] = SourceExpressionConverter.Convert(inputPdfDataenableColorDetection);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["enable_color_detection"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["enable_color_detection"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataenableCharRepair != null)
-            {
                 if (inputPdfDataenableCharRepair != null)
                 {
-                    inputPdfData["enable_char_repair"] = CSharpExpressionConverter.Convert(inputPdfDataenableCharRepair);
+                    if (inputPdfDataenableCharRepair != null)
+                    {
+                        inputPdfData["enable_char_repair"] = SourceExpressionConverter.Convert(inputPdfDataenableCharRepair);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["enable_char_repair"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["enable_char_repair"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataenableJPEG2000 != null)
-            {
                 if (inputPdfDataenableJPEG2000 != null)
                 {
-                    inputPdfData["enable_jpeg2000"] = CSharpExpressionConverter.Convert(inputPdfDataenableJPEG2000);
+                    if (inputPdfDataenableJPEG2000 != null)
+                    {
+                        inputPdfData["enable_jpeg2000"] = SourceExpressionConverter.Convert(inputPdfDataenableJPEG2000);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["enable_jpeg2000"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["enable_jpeg2000"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataenableJBIG2 != null)
-            {
                 if (inputPdfDataenableJBIG2 != null)
                 {
-                    inputPdfData["enable_jbig2"] = CSharpExpressionConverter.Convert(inputPdfDataenableJBIG2);
+                    if (inputPdfDataenableJBIG2 != null)
+                    {
+                        inputPdfData["enable_jbig2"] = SourceExpressionConverter.Convert(inputPdfDataenableJBIG2);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["enable_jbig2"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["enable_jbig2"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatajBIG2PMSThreshold != null)
-            {
                 if (inputPdfDatajBIG2PMSThreshold != null)
                 {
-                    inputPdfData["jbig2_pms_threshold"] = CSharpExpressionConverter.ConvertToken(inputPdfDatajBIG2PMSThreshold);
+                    if (inputPdfDatajBIG2PMSThreshold != null)
+                    {
+                        inputPdfData["jbig2_pms_threshold"] = SourceExpressionConverter.ConvertToken(inputPdfDatajBIG2PMSThreshold);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["jbig2_pms_threshold"] = 85;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["jbig2_pms_threshold"] = 85;
-                inputPdfDatapropCount++;
-            }
+                if (inputPdfDataoverrideSettings != null)
+                {
+                    inputPdfData["override_settings"] = SourceExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
+                    inputPdfDatapropCount++;
+                }
 
-            if (inputPdfDataoverrideSettings != null)
-            {
-                inputPdfData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatafailOnError != null)
-            {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                    if (inputPdfDatafailOnError != null)
+                    {
+                        inputPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["fail_on_error"] = true;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["fail_on_error"] = true;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputPdfData;
+                if (inputPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputPdfData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> Convert(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDataoutputFormatInput>> inputDataoutputFormat, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<string>> inputDatatemplateFileContent = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> Convert([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDataoutputFormatInput> inputDataoutputFormat, [WorkflowExpression] Func<string> inputDataoverrideSettings = null, [WorkflowExpression] Func<string> inputDatatemplateFileContent = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDataoutputFormat, nameof(inputDataoutputFormat), required: true);
+            SourceExpression.Validate(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputDatatemplateFileContent, nameof(inputDatatemplateFileContent), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["output_format"] = CSharpExpressionConverter.Convert(inputDataoutputFormat);
-            inputData["copy_metadata"] = false;
-            inputDatapropCount++;
-            if (inputDataoverrideSettings != null)
-            {
-                inputData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputDataoverrideSettings);
                 inputDatapropCount++;
-            }
-
-            if (inputDatatemplateFileContent != null)
-            {
-                inputData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatatemplateFileContent);
+                inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
                 inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
-                if (inputDatafailOnError != null)
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
+                inputData["output_format"] = SourceExpressionConverter.Convert(inputDataoutputFormat);
+                inputData["copy_metadata"] = false;
                 inputDatapropCount++;
+                if (inputDataoverrideSettings != null)
+                {
+                    inputData["override_settings"] = SourceExpressionConverter.ConvertToken(inputDataoverrideSettings);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatatemplateFileContent != null)
+                {
+                    inputData["template_file_content"] = SourceExpressionConverter.ConvertToken(inputDatatemplateFileContent);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatafailOnError != null)
+                {
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertCad(Expression<Func<string>> inputCadDatasourceFileName, Expression<Func<string>> inputCadDatasourceFileContent, Expression<Func<inputCadDatapaperSizeInput>> inputCadDatapaperSize = null, Expression<Func<string>> inputCadDatapaperSizeCustom = null, Expression<Func<string>> inputCadDatapageMargins = null, Expression<Func<string>> inputCadDatabackgroundColor = null, Expression<Func<inputCadDataforegroundColorInput>> inputCadDataforegroundColor = null, Expression<Func<string>> inputCadDataforegroundColorCustom = null, Expression<Func<inputCadDataemptyLayoutDetectionInput>> inputCadDataemptyLayoutDetection = null, Expression<Func<inputCadDatalayoutSortOrderInput>> inputCadDatalayoutSortOrder = null, Expression<Func<int>> inputCadDatastartPage = null, Expression<Func<int>> inputCadDataendPage = null, Expression<Func<string>> inputCadDataoverrideSettings = null, Expression<Func<bool>> inputCadDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertCad([WorkflowExpression] Func<string> inputCadDatasourceFileName, [WorkflowExpression] Func<string> inputCadDatasourceFileContent, [WorkflowExpression] Func<inputCadDatapaperSizeInput> inputCadDatapaperSize = null, [WorkflowExpression] Func<string> inputCadDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputCadDatapageMargins = null, [WorkflowExpression] Func<string> inputCadDatabackgroundColor = null, [WorkflowExpression] Func<inputCadDataforegroundColorInput> inputCadDataforegroundColor = null, [WorkflowExpression] Func<string> inputCadDataforegroundColorCustom = null, [WorkflowExpression] Func<inputCadDataemptyLayoutDetectionInput> inputCadDataemptyLayoutDetection = null, [WorkflowExpression] Func<inputCadDatalayoutSortOrderInput> inputCadDatalayoutSortOrder = null, [WorkflowExpression] Func<int> inputCadDatastartPage = null, [WorkflowExpression] Func<int> inputCadDataendPage = null, [WorkflowExpression] Func<string> inputCadDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputCadDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_cad";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputCadData = new JObject();
-            var inputCadDatapropCount = 0;
-            inputCadData["use_async_pattern"] = false;
-            inputCadDatapropCount++;
-            inputCadDatapropCount++;
-            inputCadData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputCadDatasourceFileName, nameof(inputCadDatasourceFileName), required: true);
+            SourceExpression.Validate(inputCadDatasourceFileContent, nameof(inputCadDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputCadDatapaperSize, nameof(inputCadDatapaperSize), required: false);
+            SourceExpression.Validate(inputCadDatapaperSizeCustom, nameof(inputCadDatapaperSizeCustom), required: false);
+            SourceExpression.Validate(inputCadDatapageMargins, nameof(inputCadDatapageMargins), required: false);
+            SourceExpression.Validate(inputCadDatabackgroundColor, nameof(inputCadDatabackgroundColor), required: false);
+            SourceExpression.Validate(inputCadDataforegroundColor, nameof(inputCadDataforegroundColor), required: false);
+            SourceExpression.Validate(inputCadDataforegroundColorCustom, nameof(inputCadDataforegroundColorCustom), required: false);
+            SourceExpression.Validate(inputCadDataemptyLayoutDetection, nameof(inputCadDataemptyLayoutDetection), required: false);
+            SourceExpression.Validate(inputCadDatalayoutSortOrder, nameof(inputCadDatalayoutSortOrder), required: false);
+            SourceExpression.Validate(inputCadDatastartPage, nameof(inputCadDatastartPage), required: false);
+            SourceExpression.Validate(inputCadDataendPage, nameof(inputCadDataendPage), required: false);
+            SourceExpression.Validate(inputCadDataoverrideSettings, nameof(inputCadDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputCadDatafailOnError, nameof(inputCadDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputCadData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_cad";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputCadData = new JObject();
+                var inputCadDatapropCount = 0;
+                inputCadData["use_async_pattern"] = false;
                 inputCadDatapropCount++;
-            }
+                inputCadDatapropCount++;
+                inputCadData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputCadDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputCadData["sharepoint_file"] = sharepointFileObject;
+                    inputCadDatapropCount++;
+                }
 
-            inputCadDatapropCount++;
-            inputCadData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputCadDatasourceFileContent);
-            inputCadData["copy_metadata"] = false;
-            inputCadDatapropCount++;
-            if (inputCadDatapaperSize != null)
-            {
+                inputCadDatapropCount++;
+                inputCadData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputCadDatasourceFileContent);
+                inputCadData["copy_metadata"] = false;
+                inputCadDatapropCount++;
                 if (inputCadDatapaperSize != null)
                 {
-                    inputCadData["paper_size"] = CSharpExpressionConverter.Convert(inputCadDatapaperSize);
+                    if (inputCadDatapaperSize != null)
+                    {
+                        inputCadData["paper_size"] = SourceExpressionConverter.Convert(inputCadDatapaperSize);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["paper_size"] = "Letter";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["paper_size"] = "Letter";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDatapaperSizeCustom != null)
+                {
+                    inputCadData["paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputCadDatapaperSizeCustom);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDatapaperSizeCustom != null)
-            {
-                inputCadData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDatapaperSizeCustom);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatapageMargins != null)
-            {
                 if (inputCadDatapageMargins != null)
                 {
-                    inputCadData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputCadDatapageMargins);
+                    if (inputCadDatapageMargins != null)
+                    {
+                        inputCadData["page_margins"] = SourceExpressionConverter.ConvertToken(inputCadDatapageMargins);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["page_margins"] = "0.25";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["page_margins"] = "0.25";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatabackgroundColor != null)
-            {
                 if (inputCadDatabackgroundColor != null)
                 {
-                    inputCadData["background_color"] = CSharpExpressionConverter.ConvertToken(inputCadDatabackgroundColor);
+                    if (inputCadDatabackgroundColor != null)
+                    {
+                        inputCadData["background_color"] = SourceExpressionConverter.ConvertToken(inputCadDatabackgroundColor);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["background_color"] = "White";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["background_color"] = "White";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDataforegroundColor != null)
-            {
                 if (inputCadDataforegroundColor != null)
                 {
-                    inputCadData["foreground_color"] = CSharpExpressionConverter.Convert(inputCadDataforegroundColor);
+                    if (inputCadDataforegroundColor != null)
+                    {
+                        inputCadData["foreground_color"] = SourceExpressionConverter.Convert(inputCadDataforegroundColor);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["foreground_color"] = "GreyscaleDarken";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["foreground_color"] = "GreyscaleDarken";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataforegroundColorCustom != null)
+                {
+                    inputCadData["foreground_color_custom"] = SourceExpressionConverter.ConvertToken(inputCadDataforegroundColorCustom);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataforegroundColorCustom != null)
-            {
-                inputCadData["foreground_color_custom"] = CSharpExpressionConverter.ConvertToken(inputCadDataforegroundColorCustom);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDataemptyLayoutDetection != null)
-            {
                 if (inputCadDataemptyLayoutDetection != null)
                 {
-                    inputCadData["empty_layout_detection_mode"] = CSharpExpressionConverter.Convert(inputCadDataemptyLayoutDetection);
+                    if (inputCadDataemptyLayoutDetection != null)
+                    {
+                        inputCadData["empty_layout_detection_mode"] = SourceExpressionConverter.Convert(inputCadDataemptyLayoutDetection);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["empty_layout_detection_mode"] = "SkipEmptyLayouts";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["empty_layout_detection_mode"] = "SkipEmptyLayouts";
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatalayoutSortOrder != null)
-            {
                 if (inputCadDatalayoutSortOrder != null)
                 {
-                    inputCadData["layout_sort_order"] = CSharpExpressionConverter.Convert(inputCadDatalayoutSortOrder);
+                    if (inputCadDatalayoutSortOrder != null)
+                    {
+                        inputCadData["layout_sort_order"] = SourceExpressionConverter.Convert(inputCadDatalayoutSortOrder);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["layout_sort_order"] = "Ascending";
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["layout_sort_order"] = "Ascending";
-                inputCadDatapropCount++;
-            }
+                if (inputCadDatastartPage != null)
+                {
+                    inputCadData["start_page"] = SourceExpressionConverter.ConvertToken(inputCadDatastartPage);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDatastartPage != null)
-            {
-                inputCadData["start_page"] = CSharpExpressionConverter.ConvertToken(inputCadDatastartPage);
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataendPage != null)
+                {
+                    inputCadData["end_page"] = SourceExpressionConverter.ConvertToken(inputCadDataendPage);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataendPage != null)
-            {
-                inputCadData["end_page"] = CSharpExpressionConverter.ConvertToken(inputCadDataendPage);
-                inputCadDatapropCount++;
-            }
+                if (inputCadDataoverrideSettings != null)
+                {
+                    inputCadData["override_settings"] = SourceExpressionConverter.ConvertToken(inputCadDataoverrideSettings);
+                    inputCadDatapropCount++;
+                }
 
-            if (inputCadDataoverrideSettings != null)
-            {
-                inputCadData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputCadDataoverrideSettings);
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatafailOnError != null)
-            {
                 if (inputCadDatafailOnError != null)
                 {
-                    inputCadData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputCadDatafailOnError);
+                    if (inputCadDatafailOnError != null)
+                    {
+                        inputCadData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputCadDatafailOnError);
+                        inputCadDatapropCount++;
+                    }
+
+                    inputCadDatapropCount++;
+                }
+                else
+                {
+                    inputCadData["fail_on_error"] = true;
                     inputCadDatapropCount++;
                 }
 
-                inputCadDatapropCount++;
-            }
-            else
-            {
-                inputCadData["fail_on_error"] = true;
-                inputCadDatapropCount++;
-            }
-
-            if (inputCadDatapropCount > 0)
-            {
-                callPayload.Body = inputCadData;
+                if (inputCadDatapropCount > 0)
+                {
+                    callPayload.Body = inputCadData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertEmail(Expression<Func<string>> inputEmailDatasourceFileName, Expression<Func<string>> inputEmailDatasourceFileContent, Expression<Func<bool>> inputEmailDataincludeAttachments = null, Expression<Func<inputEmailDataattachmentActionInput>> inputEmailDataattachmentAction = null, Expression<Func<bool>> inputEmailDataattachmentSummary = null, Expression<Func<inputEmailDataunsupportedAttachmentActionInput>> inputEmailDataunsupportedAttachmentAction = null, Expression<Func<string>> inputEmailDataincludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataexcludeAttachmentFilter = null, Expression<Func<string>> inputEmailDataviewportSize = null, Expression<Func<inputEmailDatapaperSizeInput>> inputEmailDatapaperSize = null, Expression<Func<string>> inputEmailDatapaperSizeCustom = null, Expression<Func<string>> inputEmailDatapageMargins = null, Expression<Func<bool>> inputEmailDataattachmentErrors = null, Expression<Func<int>> inputEmailDataminImageSize = null, Expression<Func<bool>> inputEmailDataofflineMode = null, Expression<Func<int>> inputEmailDatastartPage = null, Expression<Func<int>> inputEmailDataendPage = null, Expression<Func<inputEmailDataconversionQualityInput>> inputEmailDataconversionQuality = null, Expression<Func<string>> inputEmailDataoverrideSettings = null, Expression<Func<bool>> inputEmailDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertEmail([WorkflowExpression] Func<string> inputEmailDatasourceFileName, [WorkflowExpression] Func<string> inputEmailDatasourceFileContent, [WorkflowExpression] Func<bool> inputEmailDataincludeAttachments = null, [WorkflowExpression] Func<inputEmailDataattachmentActionInput> inputEmailDataattachmentAction = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentSummary = null, [WorkflowExpression] Func<inputEmailDataunsupportedAttachmentActionInput> inputEmailDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<string> inputEmailDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputEmailDataviewportSize = null, [WorkflowExpression] Func<inputEmailDatapaperSizeInput> inputEmailDatapaperSize = null, [WorkflowExpression] Func<string> inputEmailDatapaperSizeCustom = null, [WorkflowExpression] Func<string> inputEmailDatapageMargins = null, [WorkflowExpression] Func<bool> inputEmailDataattachmentErrors = null, [WorkflowExpression] Func<int> inputEmailDataminImageSize = null, [WorkflowExpression] Func<bool> inputEmailDataofflineMode = null, [WorkflowExpression] Func<int> inputEmailDatastartPage = null, [WorkflowExpression] Func<int> inputEmailDataendPage = null, [WorkflowExpression] Func<inputEmailDataconversionQualityInput> inputEmailDataconversionQuality = null, [WorkflowExpression] Func<string> inputEmailDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputEmailDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_email";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputEmailData = new JObject();
-            var inputEmailDatapropCount = 0;
-            inputEmailData["use_async_pattern"] = false;
-            inputEmailDatapropCount++;
-            inputEmailDatapropCount++;
-            inputEmailData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputEmailDatasourceFileName, nameof(inputEmailDatasourceFileName), required: true);
+            SourceExpression.Validate(inputEmailDatasourceFileContent, nameof(inputEmailDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputEmailDataincludeAttachments, nameof(inputEmailDataincludeAttachments), required: false);
+            SourceExpression.Validate(inputEmailDataattachmentAction, nameof(inputEmailDataattachmentAction), required: false);
+            SourceExpression.Validate(inputEmailDataattachmentSummary, nameof(inputEmailDataattachmentSummary), required: false);
+            SourceExpression.Validate(inputEmailDataunsupportedAttachmentAction, nameof(inputEmailDataunsupportedAttachmentAction), required: false);
+            SourceExpression.Validate(inputEmailDataincludeAttachmentFilter, nameof(inputEmailDataincludeAttachmentFilter), required: false);
+            SourceExpression.Validate(inputEmailDataexcludeAttachmentFilter, nameof(inputEmailDataexcludeAttachmentFilter), required: false);
+            SourceExpression.Validate(inputEmailDataviewportSize, nameof(inputEmailDataviewportSize), required: false);
+            SourceExpression.Validate(inputEmailDatapaperSize, nameof(inputEmailDatapaperSize), required: false);
+            SourceExpression.Validate(inputEmailDatapaperSizeCustom, nameof(inputEmailDatapaperSizeCustom), required: false);
+            SourceExpression.Validate(inputEmailDatapageMargins, nameof(inputEmailDatapageMargins), required: false);
+            SourceExpression.Validate(inputEmailDataattachmentErrors, nameof(inputEmailDataattachmentErrors), required: false);
+            SourceExpression.Validate(inputEmailDataminImageSize, nameof(inputEmailDataminImageSize), required: false);
+            SourceExpression.Validate(inputEmailDataofflineMode, nameof(inputEmailDataofflineMode), required: false);
+            SourceExpression.Validate(inputEmailDatastartPage, nameof(inputEmailDatastartPage), required: false);
+            SourceExpression.Validate(inputEmailDataendPage, nameof(inputEmailDataendPage), required: false);
+            SourceExpression.Validate(inputEmailDataconversionQuality, nameof(inputEmailDataconversionQuality), required: false);
+            SourceExpression.Validate(inputEmailDataoverrideSettings, nameof(inputEmailDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputEmailDatafailOnError, nameof(inputEmailDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputEmailData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_email";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputEmailData = new JObject();
+                var inputEmailDatapropCount = 0;
+                inputEmailData["use_async_pattern"] = false;
                 inputEmailDatapropCount++;
-            }
+                inputEmailDatapropCount++;
+                inputEmailData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputEmailDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputEmailData["sharepoint_file"] = sharepointFileObject;
+                    inputEmailDatapropCount++;
+                }
 
-            inputEmailDatapropCount++;
-            inputEmailData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputEmailDatasourceFileContent);
-            inputEmailData["copy_metadata"] = false;
-            inputEmailDatapropCount++;
-            if (inputEmailDataincludeAttachments != null)
-            {
+                inputEmailDatapropCount++;
+                inputEmailData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputEmailDatasourceFileContent);
+                inputEmailData["copy_metadata"] = false;
+                inputEmailDatapropCount++;
                 if (inputEmailDataincludeAttachments != null)
                 {
-                    inputEmailData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachments);
+                    if (inputEmailDataincludeAttachments != null)
+                    {
+                        inputEmailData["convert_attachments"] = SourceExpressionConverter.ConvertToken(inputEmailDataincludeAttachments);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["convert_attachments"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["convert_attachments"] = true;
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataattachmentAction != null)
+                {
+                    inputEmailData["attachment_merge_mode"] = SourceExpressionConverter.Convert(inputEmailDataattachmentAction);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataattachmentAction != null)
-            {
-                inputEmailData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputEmailDataattachmentAction);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataattachmentSummary != null)
-            {
                 if (inputEmailDataattachmentSummary != null)
                 {
-                    inputEmailData["display_attachment_summary"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentSummary);
+                    if (inputEmailDataattachmentSummary != null)
+                    {
+                        inputEmailData["display_attachment_summary"] = SourceExpressionConverter.ConvertToken(inputEmailDataattachmentSummary);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["display_attachment_summary"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["display_attachment_summary"] = true;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataunsupportedAttachmentAction != null)
-            {
                 if (inputEmailDataunsupportedAttachmentAction != null)
                 {
-                    inputEmailData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputEmailDataunsupportedAttachmentAction);
+                    if (inputEmailDataunsupportedAttachmentAction != null)
+                    {
+                        inputEmailData["unsupported_attachment_behaviour"] = SourceExpressionConverter.Convert(inputEmailDataunsupportedAttachmentAction);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["unsupported_attachment_behaviour"] = "Error";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["unsupported_attachment_behaviour"] = "Error";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataincludeAttachmentFilter != null)
+                {
+                    inputEmailData["include_attachment_types"] = SourceExpressionConverter.ConvertToken(inputEmailDataincludeAttachmentFilter);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataincludeAttachmentFilter != null)
-            {
-                inputEmailData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataincludeAttachmentFilter);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataexcludeAttachmentFilter != null)
+                {
+                    inputEmailData["exclude_attachment_types"] = SourceExpressionConverter.ConvertToken(inputEmailDataexcludeAttachmentFilter);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataexcludeAttachmentFilter != null)
-            {
-                inputEmailData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputEmailDataexcludeAttachmentFilter);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataviewportSize != null)
-            {
                 if (inputEmailDataviewportSize != null)
                 {
-                    inputEmailData["viewport_Size"] = CSharpExpressionConverter.ConvertToken(inputEmailDataviewportSize);
+                    if (inputEmailDataviewportSize != null)
+                    {
+                        inputEmailData["viewport_Size"] = SourceExpressionConverter.ConvertToken(inputEmailDataviewportSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["viewport_Size"] = "Paper";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["viewport_Size"] = "Paper";
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapaperSize != null)
-            {
                 if (inputEmailDatapaperSize != null)
                 {
-                    inputEmailData["paper_size"] = CSharpExpressionConverter.Convert(inputEmailDatapaperSize);
+                    if (inputEmailDatapaperSize != null)
+                    {
+                        inputEmailData["paper_size"] = SourceExpressionConverter.Convert(inputEmailDatapaperSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["paper_size"] = "Letter";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["paper_size"] = "Letter";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDatapaperSizeCustom != null)
+                {
+                    inputEmailData["paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputEmailDatapaperSizeCustom);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDatapaperSizeCustom != null)
-            {
-                inputEmailData["paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapaperSizeCustom);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapageMargins != null)
-            {
                 if (inputEmailDatapageMargins != null)
                 {
-                    inputEmailData["page_margins"] = CSharpExpressionConverter.ConvertToken(inputEmailDatapageMargins);
+                    if (inputEmailDatapageMargins != null)
+                    {
+                        inputEmailData["page_margins"] = SourceExpressionConverter.ConvertToken(inputEmailDatapageMargins);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["page_margins"] = "0.5,0.5,0.5,0.5";
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["page_margins"] = "0.5,0.5,0.5,0.5";
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataattachmentErrors != null)
+                {
+                    inputEmailData["break_merge_on_error"] = SourceExpressionConverter.ConvertToken(inputEmailDataattachmentErrors);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataattachmentErrors != null)
-            {
-                inputEmailData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDataattachmentErrors);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataminImageSize != null)
-            {
                 if (inputEmailDataminImageSize != null)
                 {
-                    inputEmailData["minimum_image_attachment_dimension"] = CSharpExpressionConverter.ConvertToken(inputEmailDataminImageSize);
+                    if (inputEmailDataminImageSize != null)
+                    {
+                        inputEmailData["minimum_image_attachment_dimension"] = SourceExpressionConverter.ConvertToken(inputEmailDataminImageSize);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["minimum_image_attachment_dimension"] = 150;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["minimum_image_attachment_dimension"] = 150;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDataofflineMode != null)
-            {
                 if (inputEmailDataofflineMode != null)
                 {
-                    inputEmailData["enable_offline_mode"] = CSharpExpressionConverter.ConvertToken(inputEmailDataofflineMode);
+                    if (inputEmailDataofflineMode != null)
+                    {
+                        inputEmailData["enable_offline_mode"] = SourceExpressionConverter.ConvertToken(inputEmailDataofflineMode);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["enable_offline_mode"] = false;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["enable_offline_mode"] = false;
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDatastartPage != null)
+                {
+                    inputEmailData["start_page"] = SourceExpressionConverter.ConvertToken(inputEmailDatastartPage);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDatastartPage != null)
-            {
-                inputEmailData["start_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDatastartPage);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataendPage != null)
+                {
+                    inputEmailData["end_page"] = SourceExpressionConverter.ConvertToken(inputEmailDataendPage);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataendPage != null)
-            {
-                inputEmailData["end_page"] = CSharpExpressionConverter.ConvertToken(inputEmailDataendPage);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataconversionQuality != null)
+                {
+                    inputEmailData["quality"] = SourceExpressionConverter.Convert(inputEmailDataconversionQuality);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataconversionQuality != null)
-            {
-                inputEmailData["quality"] = CSharpExpressionConverter.Convert(inputEmailDataconversionQuality);
-                inputEmailDatapropCount++;
-            }
+                if (inputEmailDataoverrideSettings != null)
+                {
+                    inputEmailData["override_settings"] = SourceExpressionConverter.ConvertToken(inputEmailDataoverrideSettings);
+                    inputEmailDatapropCount++;
+                }
 
-            if (inputEmailDataoverrideSettings != null)
-            {
-                inputEmailData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputEmailDataoverrideSettings);
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatafailOnError != null)
-            {
                 if (inputEmailDatafailOnError != null)
                 {
-                    inputEmailData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputEmailDatafailOnError);
+                    if (inputEmailDatafailOnError != null)
+                    {
+                        inputEmailData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputEmailDatafailOnError);
+                        inputEmailDatapropCount++;
+                    }
+
+                    inputEmailDatapropCount++;
+                }
+                else
+                {
+                    inputEmailData["fail_on_error"] = true;
                     inputEmailDatapropCount++;
                 }
 
-                inputEmailDatapropCount++;
-            }
-            else
-            {
-                inputEmailData["fail_on_error"] = true;
-                inputEmailDatapropCount++;
-            }
-
-            if (inputEmailDatapropCount > 0)
-            {
-                callPayload.Body = inputEmailData;
+                if (inputEmailDatapropCount > 0)
+                {
+                    callPayload.Body = inputEmailData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertExcel(Expression<Func<string>> inputExcelDatasourceFileName, Expression<Func<string>> inputExcelDatasourceFileContent, Expression<Func<inputExcelDataoutputFormatInput>> inputExcelDataoutputFormat, Expression<Func<inputExcelDatarangeInput>> inputExcelDatarange = null, Expression<Func<bool>> inputExcelDatarevealHiddenRows = null, Expression<Func<bool>> inputExcelDatarevealHiddenColumns = null, Expression<Func<int>> inputExcelDatafitToPagesWide = null, Expression<Func<int>> inputExcelDatafitToPagesTall = null, Expression<Func<int>> inputExcelDatastartPage = null, Expression<Func<int>> inputExcelDataendPage = null, Expression<Func<inputExcelDataqualityInput>> inputExcelDataquality = null, Expression<Func<string>> inputExcelDataoverrideSettings = null, Expression<Func<bool>> inputExcelDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertExcel([WorkflowExpression] Func<string> inputExcelDatasourceFileName, [WorkflowExpression] Func<string> inputExcelDatasourceFileContent, [WorkflowExpression] Func<inputExcelDataoutputFormatInput> inputExcelDataoutputFormat, [WorkflowExpression] Func<inputExcelDatarangeInput> inputExcelDatarange = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenRows = null, [WorkflowExpression] Func<bool> inputExcelDatarevealHiddenColumns = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesWide = null, [WorkflowExpression] Func<int> inputExcelDatafitToPagesTall = null, [WorkflowExpression] Func<int> inputExcelDatastartPage = null, [WorkflowExpression] Func<int> inputExcelDataendPage = null, [WorkflowExpression] Func<inputExcelDataqualityInput> inputExcelDataquality = null, [WorkflowExpression] Func<string> inputExcelDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputExcelDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_excel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputExcelData = new JObject();
-            var inputExcelDatapropCount = 0;
-            inputExcelData["use_async_pattern"] = false;
-            inputExcelDatapropCount++;
-            inputExcelDatapropCount++;
-            inputExcelData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputExcelDatasourceFileName, nameof(inputExcelDatasourceFileName), required: true);
+            SourceExpression.Validate(inputExcelDatasourceFileContent, nameof(inputExcelDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputExcelDataoutputFormat, nameof(inputExcelDataoutputFormat), required: true);
+            SourceExpression.Validate(inputExcelDatarange, nameof(inputExcelDatarange), required: false);
+            SourceExpression.Validate(inputExcelDatarevealHiddenRows, nameof(inputExcelDatarevealHiddenRows), required: false);
+            SourceExpression.Validate(inputExcelDatarevealHiddenColumns, nameof(inputExcelDatarevealHiddenColumns), required: false);
+            SourceExpression.Validate(inputExcelDatafitToPagesWide, nameof(inputExcelDatafitToPagesWide), required: false);
+            SourceExpression.Validate(inputExcelDatafitToPagesTall, nameof(inputExcelDatafitToPagesTall), required: false);
+            SourceExpression.Validate(inputExcelDatastartPage, nameof(inputExcelDatastartPage), required: false);
+            SourceExpression.Validate(inputExcelDataendPage, nameof(inputExcelDataendPage), required: false);
+            SourceExpression.Validate(inputExcelDataquality, nameof(inputExcelDataquality), required: false);
+            SourceExpression.Validate(inputExcelDataoverrideSettings, nameof(inputExcelDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputExcelDatafailOnError, nameof(inputExcelDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputExcelData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_excel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputExcelData = new JObject();
+                var inputExcelDatapropCount = 0;
+                inputExcelData["use_async_pattern"] = false;
                 inputExcelDatapropCount++;
-            }
-
-            inputExcelDatapropCount++;
-            inputExcelData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputExcelDatasourceFileContent);
-            inputExcelDatapropCount++;
-            inputExcelData["output_format"] = CSharpExpressionConverter.Convert(inputExcelDataoutputFormat);
-            inputExcelData["copy_metadata"] = false;
-            inputExcelDatapropCount++;
-            if (inputExcelDatarange != null)
-            {
-                inputExcelData["range"] = CSharpExpressionConverter.Convert(inputExcelDatarange);
                 inputExcelDatapropCount++;
-            }
+                inputExcelData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputExcelDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputExcelData["sharepoint_file"] = sharepointFileObject;
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatarevealHiddenRows != null)
-            {
+                inputExcelDatapropCount++;
+                inputExcelData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputExcelDatasourceFileContent);
+                inputExcelDatapropCount++;
+                inputExcelData["output_format"] = SourceExpressionConverter.Convert(inputExcelDataoutputFormat);
+                inputExcelData["copy_metadata"] = false;
+                inputExcelDatapropCount++;
+                if (inputExcelDatarange != null)
+                {
+                    inputExcelData["range"] = SourceExpressionConverter.Convert(inputExcelDatarange);
+                    inputExcelDatapropCount++;
+                }
+
                 if (inputExcelDatarevealHiddenRows != null)
                 {
-                    inputExcelData["unhide_all_rows"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenRows);
+                    if (inputExcelDatarevealHiddenRows != null)
+                    {
+                        inputExcelData["unhide_all_rows"] = SourceExpressionConverter.ConvertToken(inputExcelDatarevealHiddenRows);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["unhide_all_rows"] = false;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["unhide_all_rows"] = false;
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatarevealHiddenColumns != null)
-            {
                 if (inputExcelDatarevealHiddenColumns != null)
                 {
-                    inputExcelData["unhide_all_columns"] = CSharpExpressionConverter.ConvertToken(inputExcelDatarevealHiddenColumns);
+                    if (inputExcelDatarevealHiddenColumns != null)
+                    {
+                        inputExcelData["unhide_all_columns"] = SourceExpressionConverter.ConvertToken(inputExcelDatarevealHiddenColumns);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["unhide_all_columns"] = false;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["unhide_all_columns"] = false;
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatafitToPagesWide != null)
+                {
+                    inputExcelData["fit_to_pages_wide"] = SourceExpressionConverter.ConvertToken(inputExcelDatafitToPagesWide);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatafitToPagesWide != null)
-            {
-                inputExcelData["fit_to_pages_wide"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesWide);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatafitToPagesTall != null)
+                {
+                    inputExcelData["fit_to_pages_tall"] = SourceExpressionConverter.ConvertToken(inputExcelDatafitToPagesTall);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatafitToPagesTall != null)
-            {
-                inputExcelData["fit_to_pages_tall"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafitToPagesTall);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDatastartPage != null)
+                {
+                    inputExcelData["start_page"] = SourceExpressionConverter.ConvertToken(inputExcelDatastartPage);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDatastartPage != null)
-            {
-                inputExcelData["start_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDatastartPage);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataendPage != null)
+                {
+                    inputExcelData["end_page"] = SourceExpressionConverter.ConvertToken(inputExcelDataendPage);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataendPage != null)
-            {
-                inputExcelData["end_page"] = CSharpExpressionConverter.ConvertToken(inputExcelDataendPage);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataquality != null)
+                {
+                    inputExcelData["quality"] = SourceExpressionConverter.Convert(inputExcelDataquality);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataquality != null)
-            {
-                inputExcelData["quality"] = CSharpExpressionConverter.Convert(inputExcelDataquality);
-                inputExcelDatapropCount++;
-            }
+                if (inputExcelDataoverrideSettings != null)
+                {
+                    inputExcelData["override_settings"] = SourceExpressionConverter.ConvertToken(inputExcelDataoverrideSettings);
+                    inputExcelDatapropCount++;
+                }
 
-            if (inputExcelDataoverrideSettings != null)
-            {
-                inputExcelData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputExcelDataoverrideSettings);
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatafailOnError != null)
-            {
                 if (inputExcelDatafailOnError != null)
                 {
-                    inputExcelData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputExcelDatafailOnError);
+                    if (inputExcelDatafailOnError != null)
+                    {
+                        inputExcelData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputExcelDatafailOnError);
+                        inputExcelDatapropCount++;
+                    }
+
+                    inputExcelDatapropCount++;
+                }
+                else
+                {
+                    inputExcelData["fail_on_error"] = true;
                     inputExcelDatapropCount++;
                 }
 
-                inputExcelDatapropCount++;
-            }
-            else
-            {
-                inputExcelData["fail_on_error"] = true;
-                inputExcelDatapropCount++;
-            }
-
-            if (inputExcelDatapropCount > 0)
-            {
-                callPayload.Body = inputExcelData;
+                if (inputExcelDatapropCount > 0)
+                {
+                    callPayload.Body = inputExcelData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertHtml(Expression<Func<string>> inputDatasourceURLOrHTML, Expression<Func<inputDatapageOrientationInput>> inputDatapageOrientation = null, Expression<Func<inputDatamediaTypeInput>> inputDatamediaType = null, Expression<Func<inputDataauthenticationTypeInput>> inputDataauthenticationType = null, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDataviewportSize = null, Expression<Func<int>> inputDataconversionDelay = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertHtml([WorkflowExpression] Func<string> inputDatasourceURLOrHTML, [WorkflowExpression] Func<inputDatapageOrientationInput> inputDatapageOrientation = null, [WorkflowExpression] Func<inputDatamediaTypeInput> inputDatamediaType = null, [WorkflowExpression] Func<inputDataauthenticationTypeInput> inputDataauthenticationType = null, [WorkflowExpression] Func<string> inputDatauserName = null, [WorkflowExpression] Func<string> inputDatapassword = null, [WorkflowExpression] Func<string> inputDataviewportSize = null, [WorkflowExpression] Func<int> inputDataconversionDelay = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_html";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_url_or_html"] = CSharpExpressionConverter.ConvertToken(inputDatasourceURLOrHTML);
-            if (inputDatapageOrientation != null)
+            SourceExpression.Validate(inputDatasourceURLOrHTML, nameof(inputDatasourceURLOrHTML), required: true);
+            SourceExpression.Validate(inputDatapageOrientation, nameof(inputDatapageOrientation), required: false);
+            SourceExpression.Validate(inputDatamediaType, nameof(inputDatamediaType), required: false);
+            SourceExpression.Validate(inputDataauthenticationType, nameof(inputDataauthenticationType), required: false);
+            SourceExpression.Validate(inputDatauserName, nameof(inputDatauserName), required: false);
+            SourceExpression.Validate(inputDatapassword, nameof(inputDatapassword), required: false);
+            SourceExpression.Validate(inputDataviewportSize, nameof(inputDataviewportSize), required: false);
+            SourceExpression.Validate(inputDataconversionDelay, nameof(inputDataconversionDelay), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/v1/operations/convert_html";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
+                inputDatapropCount++;
+                inputDatapropCount++;
+                inputData["source_url_or_html"] = SourceExpressionConverter.ConvertToken(inputDatasourceURLOrHTML);
                 if (inputDatapageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatapageOrientation);
+                    if (inputDatapageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatapageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Portrait";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Portrait";
-                inputDatapropCount++;
-            }
-
-            if (inputDatamediaType != null)
-            {
                 if (inputDatamediaType != null)
                 {
-                    inputData["media_type"] = CSharpExpressionConverter.Convert(inputDatamediaType);
+                    if (inputDatamediaType != null)
+                    {
+                        inputData["media_type"] = SourceExpressionConverter.Convert(inputDatamediaType);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["media_type"] = "Screen";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["media_type"] = "Screen";
-                inputDatapropCount++;
-            }
-
-            if (inputDataauthenticationType != null)
-            {
                 if (inputDataauthenticationType != null)
                 {
-                    inputData["authentication_type"] = CSharpExpressionConverter.Convert(inputDataauthenticationType);
+                    if (inputDataauthenticationType != null)
+                    {
+                        inputData["authentication_type"] = SourceExpressionConverter.Convert(inputDataauthenticationType);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["authentication_type"] = "Anonymous";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["authentication_type"] = "Anonymous";
-                inputDatapropCount++;
-            }
+                if (inputDatauserName != null)
+                {
+                    inputData["username"] = SourceExpressionConverter.ConvertToken(inputDatauserName);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatauserName != null)
-            {
-                inputData["username"] = CSharpExpressionConverter.ConvertToken(inputDatauserName);
-                inputDatapropCount++;
-            }
+                if (inputDatapassword != null)
+                {
+                    inputData["password"] = SourceExpressionConverter.ConvertToken(inputDatapassword);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatapassword != null)
-            {
-                inputData["password"] = CSharpExpressionConverter.ConvertToken(inputDatapassword);
-                inputDatapropCount++;
-            }
+                if (inputDataviewportSize != null)
+                {
+                    inputData["viewport_size"] = SourceExpressionConverter.ConvertToken(inputDataviewportSize);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataviewportSize != null)
-            {
-                inputData["viewport_size"] = CSharpExpressionConverter.ConvertToken(inputDataviewportSize);
-                inputDatapropCount++;
-            }
+                if (inputDataconversionDelay != null)
+                {
+                    inputData["conversion_delay"] = SourceExpressionConverter.ConvertToken(inputDataconversionDelay);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataconversionDelay != null)
-            {
-                inputData["conversion_delay"] = CSharpExpressionConverter.ConvertToken(inputDataconversionDelay);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertInfopath(Expression<Func<string>> inputInfopathDatasourceFileName, Expression<Func<string>> inputInfopathDatasourceFileContent, Expression<Func<inputInfopathDataoutputFormatInput>> inputInfopathDataoutputFormat, Expression<Func<string>> inputInfopathDatatemplateFileContent = null, Expression<Func<string>> inputInfopathDataviewNames = null, Expression<Func<bool>> inputInfopathDataincludeAttachment = null, Expression<Func<inputInfopathDataattachmentActionInput>> inputInfopathDataattachmentAction = null, Expression<Func<inputInfopathDataunsupportedAttachmentActionInput>> inputInfopathDataunsupportedAttachmentAction = null, Expression<Func<bool>> inputInfopathDatabreakMergeOnError = null, Expression<Func<string>> inputInfopathDataincludeAttachmentFilter = null, Expression<Func<string>> inputInfopathDataexcludeAttachmentFilter = null, Expression<Func<inputInfopathDatadefaultPaperSizeInput>> inputInfopathDatadefaultPaperSize = null, Expression<Func<string>> inputInfopathDatadefaultPaperSizeCustom = null, Expression<Func<inputInfopathDataforcePaperSizeInput>> inputInfopathDataforcePaperSize = null, Expression<Func<string>> inputInfopathDataforcePaperSizeCustom = null, Expression<Func<inputInfopathDatadefaultPageOrientationInput>> inputInfopathDatadefaultPageOrientation = null, Expression<Func<inputInfopathDataforcePageOrientationInput>> inputInfopathDataforcePageOrientation = null, Expression<Func<int>> inputInfopathDatastartPage = null, Expression<Func<int>> inputInfopathDataendPage = null, Expression<Func<inputInfopathDataconversionQualityInput>> inputInfopathDataconversionQuality = null, Expression<Func<string>> inputInfopathDataoverrideSettings = null, Expression<Func<bool>> inputInfopathDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertInfopath([WorkflowExpression] Func<string> inputInfopathDatasourceFileName, [WorkflowExpression] Func<string> inputInfopathDatasourceFileContent, [WorkflowExpression] Func<inputInfopathDataoutputFormatInput> inputInfopathDataoutputFormat, [WorkflowExpression] Func<string> inputInfopathDatatemplateFileContent = null, [WorkflowExpression] Func<string> inputInfopathDataviewNames = null, [WorkflowExpression] Func<bool> inputInfopathDataincludeAttachment = null, [WorkflowExpression] Func<inputInfopathDataattachmentActionInput> inputInfopathDataattachmentAction = null, [WorkflowExpression] Func<inputInfopathDataunsupportedAttachmentActionInput> inputInfopathDataunsupportedAttachmentAction = null, [WorkflowExpression] Func<bool> inputInfopathDatabreakMergeOnError = null, [WorkflowExpression] Func<string> inputInfopathDataincludeAttachmentFilter = null, [WorkflowExpression] Func<string> inputInfopathDataexcludeAttachmentFilter = null, [WorkflowExpression] Func<inputInfopathDatadefaultPaperSizeInput> inputInfopathDatadefaultPaperSize = null, [WorkflowExpression] Func<string> inputInfopathDatadefaultPaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDataforcePaperSizeInput> inputInfopathDataforcePaperSize = null, [WorkflowExpression] Func<string> inputInfopathDataforcePaperSizeCustom = null, [WorkflowExpression] Func<inputInfopathDatadefaultPageOrientationInput> inputInfopathDatadefaultPageOrientation = null, [WorkflowExpression] Func<inputInfopathDataforcePageOrientationInput> inputInfopathDataforcePageOrientation = null, [WorkflowExpression] Func<int> inputInfopathDatastartPage = null, [WorkflowExpression] Func<int> inputInfopathDataendPage = null, [WorkflowExpression] Func<inputInfopathDataconversionQualityInput> inputInfopathDataconversionQuality = null, [WorkflowExpression] Func<string> inputInfopathDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputInfopathDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_infopath";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputInfopathData = new JObject();
-            var inputInfopathDatapropCount = 0;
-            inputInfopathData["use_async_pattern"] = false;
-            inputInfopathDatapropCount++;
-            inputInfopathDatapropCount++;
-            inputInfopathData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputInfopathDatasourceFileName, nameof(inputInfopathDatasourceFileName), required: true);
+            SourceExpression.Validate(inputInfopathDatasourceFileContent, nameof(inputInfopathDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputInfopathDataoutputFormat, nameof(inputInfopathDataoutputFormat), required: true);
+            SourceExpression.Validate(inputInfopathDatatemplateFileContent, nameof(inputInfopathDatatemplateFileContent), required: false);
+            SourceExpression.Validate(inputInfopathDataviewNames, nameof(inputInfopathDataviewNames), required: false);
+            SourceExpression.Validate(inputInfopathDataincludeAttachment, nameof(inputInfopathDataincludeAttachment), required: false);
+            SourceExpression.Validate(inputInfopathDataattachmentAction, nameof(inputInfopathDataattachmentAction), required: false);
+            SourceExpression.Validate(inputInfopathDataunsupportedAttachmentAction, nameof(inputInfopathDataunsupportedAttachmentAction), required: false);
+            SourceExpression.Validate(inputInfopathDatabreakMergeOnError, nameof(inputInfopathDatabreakMergeOnError), required: false);
+            SourceExpression.Validate(inputInfopathDataincludeAttachmentFilter, nameof(inputInfopathDataincludeAttachmentFilter), required: false);
+            SourceExpression.Validate(inputInfopathDataexcludeAttachmentFilter, nameof(inputInfopathDataexcludeAttachmentFilter), required: false);
+            SourceExpression.Validate(inputInfopathDatadefaultPaperSize, nameof(inputInfopathDatadefaultPaperSize), required: false);
+            SourceExpression.Validate(inputInfopathDatadefaultPaperSizeCustom, nameof(inputInfopathDatadefaultPaperSizeCustom), required: false);
+            SourceExpression.Validate(inputInfopathDataforcePaperSize, nameof(inputInfopathDataforcePaperSize), required: false);
+            SourceExpression.Validate(inputInfopathDataforcePaperSizeCustom, nameof(inputInfopathDataforcePaperSizeCustom), required: false);
+            SourceExpression.Validate(inputInfopathDatadefaultPageOrientation, nameof(inputInfopathDatadefaultPageOrientation), required: false);
+            SourceExpression.Validate(inputInfopathDataforcePageOrientation, nameof(inputInfopathDataforcePageOrientation), required: false);
+            SourceExpression.Validate(inputInfopathDatastartPage, nameof(inputInfopathDatastartPage), required: false);
+            SourceExpression.Validate(inputInfopathDataendPage, nameof(inputInfopathDataendPage), required: false);
+            SourceExpression.Validate(inputInfopathDataconversionQuality, nameof(inputInfopathDataconversionQuality), required: false);
+            SourceExpression.Validate(inputInfopathDataoverrideSettings, nameof(inputInfopathDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputInfopathDatafailOnError, nameof(inputInfopathDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputInfopathData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_infopath";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputInfopathData = new JObject();
+                var inputInfopathDatapropCount = 0;
+                inputInfopathData["use_async_pattern"] = false;
                 inputInfopathDatapropCount++;
-            }
-
-            inputInfopathDatapropCount++;
-            inputInfopathData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatasourceFileContent);
-            inputInfopathDatapropCount++;
-            inputInfopathData["output_format"] = CSharpExpressionConverter.Convert(inputInfopathDataoutputFormat);
-            inputInfopathData["copy_metadata"] = false;
-            inputInfopathDatapropCount++;
-            if (inputInfopathDatatemplateFileContent != null)
-            {
-                inputInfopathData["template_file_content"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatatemplateFileContent);
                 inputInfopathDatapropCount++;
-            }
+                inputInfopathData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputInfopathDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputInfopathData["sharepoint_file"] = sharepointFileObject;
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataviewNames != null)
-            {
-                inputInfopathData["views_to_convert"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataviewNames);
                 inputInfopathDatapropCount++;
-            }
+                inputInfopathData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputInfopathDatasourceFileContent);
+                inputInfopathDatapropCount++;
+                inputInfopathData["output_format"] = SourceExpressionConverter.Convert(inputInfopathDataoutputFormat);
+                inputInfopathData["copy_metadata"] = false;
+                inputInfopathDatapropCount++;
+                if (inputInfopathDatatemplateFileContent != null)
+                {
+                    inputInfopathData["template_file_content"] = SourceExpressionConverter.ConvertToken(inputInfopathDatatemplateFileContent);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataincludeAttachment != null)
-            {
+                if (inputInfopathDataviewNames != null)
+                {
+                    inputInfopathData["views_to_convert"] = SourceExpressionConverter.ConvertToken(inputInfopathDataviewNames);
+                    inputInfopathDatapropCount++;
+                }
+
                 if (inputInfopathDataincludeAttachment != null)
                 {
-                    inputInfopathData["convert_attachments"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachment);
+                    if (inputInfopathDataincludeAttachment != null)
+                    {
+                        inputInfopathData["convert_attachments"] = SourceExpressionConverter.ConvertToken(inputInfopathDataincludeAttachment);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["convert_attachments"] = true;
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["convert_attachments"] = true;
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataattachmentAction != null)
+                {
+                    inputInfopathData["attachment_merge_mode"] = SourceExpressionConverter.Convert(inputInfopathDataattachmentAction);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataattachmentAction != null)
-            {
-                inputInfopathData["attachment_merge_mode"] = CSharpExpressionConverter.Convert(inputInfopathDataattachmentAction);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataunsupportedAttachmentAction != null)
+                {
+                    inputInfopathData["unsupported_attachment_behaviour"] = SourceExpressionConverter.Convert(inputInfopathDataunsupportedAttachmentAction);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataunsupportedAttachmentAction != null)
-            {
-                inputInfopathData["unsupported_attachment_behaviour"] = CSharpExpressionConverter.Convert(inputInfopathDataunsupportedAttachmentAction);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatabreakMergeOnError != null)
+                {
+                    inputInfopathData["break_merge_on_error"] = SourceExpressionConverter.ConvertToken(inputInfopathDatabreakMergeOnError);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatabreakMergeOnError != null)
-            {
-                inputInfopathData["break_merge_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatabreakMergeOnError);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataincludeAttachmentFilter != null)
+                {
+                    inputInfopathData["include_attachment_types"] = SourceExpressionConverter.ConvertToken(inputInfopathDataincludeAttachmentFilter);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataincludeAttachmentFilter != null)
-            {
-                inputInfopathData["include_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataincludeAttachmentFilter);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataexcludeAttachmentFilter != null)
+                {
+                    inputInfopathData["exclude_attachment_types"] = SourceExpressionConverter.ConvertToken(inputInfopathDataexcludeAttachmentFilter);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataexcludeAttachmentFilter != null)
-            {
-                inputInfopathData["exclude_attachment_types"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataexcludeAttachmentFilter);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatadefaultPaperSize != null)
+                {
+                    inputInfopathData["default_paper_size"] = SourceExpressionConverter.Convert(inputInfopathDatadefaultPaperSize);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatadefaultPaperSize != null)
-            {
-                inputInfopathData["default_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPaperSize);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatadefaultPaperSizeCustom != null)
+                {
+                    inputInfopathData["default_paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputInfopathDatadefaultPaperSizeCustom);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatadefaultPaperSizeCustom != null)
-            {
-                inputInfopathData["default_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatadefaultPaperSizeCustom);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePaperSize != null)
+                {
+                    inputInfopathData["force_paper_size"] = SourceExpressionConverter.Convert(inputInfopathDataforcePaperSize);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePaperSize != null)
-            {
-                inputInfopathData["force_paper_size"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePaperSize);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePaperSizeCustom != null)
+                {
+                    inputInfopathData["force_paper_size_custom"] = SourceExpressionConverter.ConvertToken(inputInfopathDataforcePaperSizeCustom);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePaperSizeCustom != null)
-            {
-                inputInfopathData["force_paper_size_custom"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataforcePaperSizeCustom);
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatadefaultPageOrientation != null)
-            {
                 if (inputInfopathDatadefaultPageOrientation != null)
                 {
-                    inputInfopathData["default_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDatadefaultPageOrientation);
+                    if (inputInfopathDatadefaultPageOrientation != null)
+                    {
+                        inputInfopathData["default_page_orientation"] = SourceExpressionConverter.Convert(inputInfopathDatadefaultPageOrientation);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["default_page_orientation"] = "Default";
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["default_page_orientation"] = "Default";
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataforcePageOrientation != null)
+                {
+                    inputInfopathData["force_page_orientation"] = SourceExpressionConverter.Convert(inputInfopathDataforcePageOrientation);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataforcePageOrientation != null)
-            {
-                inputInfopathData["force_page_orientation"] = CSharpExpressionConverter.Convert(inputInfopathDataforcePageOrientation);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDatastartPage != null)
+                {
+                    inputInfopathData["start_page"] = SourceExpressionConverter.ConvertToken(inputInfopathDatastartPage);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDatastartPage != null)
-            {
-                inputInfopathData["start_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatastartPage);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataendPage != null)
+                {
+                    inputInfopathData["end_page"] = SourceExpressionConverter.ConvertToken(inputInfopathDataendPage);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataendPage != null)
-            {
-                inputInfopathData["end_page"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataendPage);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataconversionQuality != null)
+                {
+                    inputInfopathData["quality"] = SourceExpressionConverter.Convert(inputInfopathDataconversionQuality);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataconversionQuality != null)
-            {
-                inputInfopathData["quality"] = CSharpExpressionConverter.Convert(inputInfopathDataconversionQuality);
-                inputInfopathDatapropCount++;
-            }
+                if (inputInfopathDataoverrideSettings != null)
+                {
+                    inputInfopathData["override_settings"] = SourceExpressionConverter.ConvertToken(inputInfopathDataoverrideSettings);
+                    inputInfopathDatapropCount++;
+                }
 
-            if (inputInfopathDataoverrideSettings != null)
-            {
-                inputInfopathData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputInfopathDataoverrideSettings);
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatafailOnError != null)
-            {
                 if (inputInfopathDatafailOnError != null)
                 {
-                    inputInfopathData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputInfopathDatafailOnError);
+                    if (inputInfopathDatafailOnError != null)
+                    {
+                        inputInfopathData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputInfopathDatafailOnError);
+                        inputInfopathDatapropCount++;
+                    }
+
+                    inputInfopathDatapropCount++;
+                }
+                else
+                {
+                    inputInfopathData["fail_on_error"] = true;
                     inputInfopathDatapropCount++;
                 }
 
-                inputInfopathDatapropCount++;
-            }
-            else
-            {
-                inputInfopathData["fail_on_error"] = true;
-                inputInfopathDatapropCount++;
-            }
-
-            if (inputInfopathDatapropCount > 0)
-            {
-                callPayload.Body = inputInfopathData;
+                if (inputInfopathDatapropCount > 0)
+                {
+                    callPayload.Body = inputInfopathData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPdfa(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<inputPdfDatapDFProfileInput>> inputPdfDatapDFProfile, Expression<Func<string>> inputPdfDataoverrideSettings = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertPdfa([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<inputPdfDatapDFProfileInput> inputPdfDatapDFProfile, [WorkflowExpression] Func<string> inputPdfDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_pdfa";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPdfData = new JObject();
-            var inputPdfDatapropCount = 0;
-            inputPdfData["use_async_pattern"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputPdfDatapDFProfile, nameof(inputPdfDatapDFProfile), required: true);
+            SourceExpression.Validate(inputPdfDataoverrideSettings, nameof(inputPdfDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_pdfa";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPdfData = new JObject();
+                var inputPdfDatapropCount = 0;
+                inputPdfData["use_async_pattern"] = false;
                 inputPdfDatapropCount++;
-            }
-
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
-            inputPdfData["copy_metadata"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["pdf_profile"] = CSharpExpressionConverter.Convert(inputPdfDatapDFProfile);
-            if (inputPdfDataoverrideSettings != null)
-            {
-                inputPdfData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
                 inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatafailOnError != null)
-            {
-                if (inputPdfDatafailOnError != null)
+                inputPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                    inputPdfData["sharepoint_file"] = sharepointFileObject;
                     inputPdfDatapropCount++;
                 }
 
                 inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["fail_on_error"] = true;
+                inputPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
+                inputPdfData["copy_metadata"] = false;
                 inputPdfDatapropCount++;
+                inputPdfDatapropCount++;
+                inputPdfData["pdf_profile"] = SourceExpressionConverter.Convert(inputPdfDatapDFProfile);
+                if (inputPdfDataoverrideSettings != null)
+                {
+                    inputPdfData["override_settings"] = SourceExpressionConverter.ConvertToken(inputPdfDataoverrideSettings);
+                    inputPdfDatapropCount++;
+                }
+
+                if (inputPdfDatafailOnError != null)
+                {
+                    if (inputPdfDatafailOnError != null)
+                    {
+                        inputPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["fail_on_error"] = true;
+                    inputPdfDatapropCount++;
+                }
+
+                if (inputPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputPdfData;
+                }
+                return callPayload;
             }
 
-            if (inputPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputPdfData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint(Expression<Func<string>> inputPowerpointDatasourceFileName, Expression<Func<string>> inputPowerpointDatasourceFileContent, Expression<Func<inputPowerpointDataoutputFormatInput>> inputPowerpointDataoutputFormat, Expression<Func<inputPowerpointDatarangeInput>> inputPowerpointDatarange = null, Expression<Func<inputPowerpointDataprintLayoutHandoutsInput>> inputPowerpointDataprintLayoutHandouts = null, Expression<Func<bool>> inputPowerpointDataframeSlides = null, Expression<Func<int>> inputPowerpointDatastartPage = null, Expression<Func<int>> inputPowerpointDataendPage = null, Expression<Func<inputPowerpointDataqualityInput>> inputPowerpointDataquality = null, Expression<Func<string>> inputPowerpointDataoverrideSettings = null, Expression<Func<bool>> inputPowerpointDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertPowerpoint([WorkflowExpression] Func<string> inputPowerpointDatasourceFileName, [WorkflowExpression] Func<string> inputPowerpointDatasourceFileContent, [WorkflowExpression] Func<inputPowerpointDataoutputFormatInput> inputPowerpointDataoutputFormat, [WorkflowExpression] Func<inputPowerpointDatarangeInput> inputPowerpointDatarange = null, [WorkflowExpression] Func<inputPowerpointDataprintLayoutHandoutsInput> inputPowerpointDataprintLayoutHandouts = null, [WorkflowExpression] Func<bool> inputPowerpointDataframeSlides = null, [WorkflowExpression] Func<int> inputPowerpointDatastartPage = null, [WorkflowExpression] Func<int> inputPowerpointDataendPage = null, [WorkflowExpression] Func<inputPowerpointDataqualityInput> inputPowerpointDataquality = null, [WorkflowExpression] Func<string> inputPowerpointDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputPowerpointDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_powerpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPowerpointData = new JObject();
-            var inputPowerpointDatapropCount = 0;
-            inputPowerpointData["use_async_pattern"] = false;
-            inputPowerpointDatapropCount++;
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputPowerpointDatasourceFileName, nameof(inputPowerpointDatasourceFileName), required: true);
+            SourceExpression.Validate(inputPowerpointDatasourceFileContent, nameof(inputPowerpointDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputPowerpointDataoutputFormat, nameof(inputPowerpointDataoutputFormat), required: true);
+            SourceExpression.Validate(inputPowerpointDatarange, nameof(inputPowerpointDatarange), required: false);
+            SourceExpression.Validate(inputPowerpointDataprintLayoutHandouts, nameof(inputPowerpointDataprintLayoutHandouts), required: false);
+            SourceExpression.Validate(inputPowerpointDataframeSlides, nameof(inputPowerpointDataframeSlides), required: false);
+            SourceExpression.Validate(inputPowerpointDatastartPage, nameof(inputPowerpointDatastartPage), required: false);
+            SourceExpression.Validate(inputPowerpointDataendPage, nameof(inputPowerpointDataendPage), required: false);
+            SourceExpression.Validate(inputPowerpointDataquality, nameof(inputPowerpointDataquality), required: false);
+            SourceExpression.Validate(inputPowerpointDataoverrideSettings, nameof(inputPowerpointDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputPowerpointDatafailOnError, nameof(inputPowerpointDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPowerpointData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_powerpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPowerpointData = new JObject();
+                var inputPowerpointDatapropCount = 0;
+                inputPowerpointData["use_async_pattern"] = false;
                 inputPowerpointDatapropCount++;
-            }
-
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatasourceFileContent);
-            inputPowerpointDatapropCount++;
-            inputPowerpointData["output_format"] = CSharpExpressionConverter.Convert(inputPowerpointDataoutputFormat);
-            inputPowerpointData["copy_metadata"] = false;
-            inputPowerpointDatapropCount++;
-            if (inputPowerpointDatarange != null)
-            {
-                inputPowerpointData["range"] = CSharpExpressionConverter.Convert(inputPowerpointDatarange);
                 inputPowerpointDatapropCount++;
-            }
+                inputPowerpointData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputPowerpointData["sharepoint_file"] = sharepointFileObject;
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataprintLayoutHandouts != null)
-            {
+                inputPowerpointDatapropCount++;
+                inputPowerpointData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatasourceFileContent);
+                inputPowerpointDatapropCount++;
+                inputPowerpointData["output_format"] = SourceExpressionConverter.Convert(inputPowerpointDataoutputFormat);
+                inputPowerpointData["copy_metadata"] = false;
+                inputPowerpointDatapropCount++;
+                if (inputPowerpointDatarange != null)
+                {
+                    inputPowerpointData["range"] = SourceExpressionConverter.Convert(inputPowerpointDatarange);
+                    inputPowerpointDatapropCount++;
+                }
+
                 if (inputPowerpointDataprintLayoutHandouts != null)
                 {
-                    inputPowerpointData["print_output_type"] = CSharpExpressionConverter.Convert(inputPowerpointDataprintLayoutHandouts);
+                    if (inputPowerpointDataprintLayoutHandouts != null)
+                    {
+                        inputPowerpointData["print_output_type"] = SourceExpressionConverter.Convert(inputPowerpointDataprintLayoutHandouts);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["print_output_type"] = "Slides";
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["print_output_type"] = "Slides";
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDataframeSlides != null)
-            {
                 if (inputPowerpointDataframeSlides != null)
                 {
-                    inputPowerpointData["frame_slides"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataframeSlides);
+                    if (inputPowerpointDataframeSlides != null)
+                    {
+                        inputPowerpointData["frame_slides"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataframeSlides);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["frame_slides"] = true;
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["frame_slides"] = true;
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDatastartPage != null)
+                {
+                    inputPowerpointData["start_page"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatastartPage);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDatastartPage != null)
-            {
-                inputPowerpointData["start_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatastartPage);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataendPage != null)
+                {
+                    inputPowerpointData["end_page"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataendPage);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataendPage != null)
-            {
-                inputPowerpointData["end_page"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataendPage);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataquality != null)
+                {
+                    inputPowerpointData["quality"] = SourceExpressionConverter.Convert(inputPowerpointDataquality);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataquality != null)
-            {
-                inputPowerpointData["quality"] = CSharpExpressionConverter.Convert(inputPowerpointDataquality);
-                inputPowerpointDatapropCount++;
-            }
+                if (inputPowerpointDataoverrideSettings != null)
+                {
+                    inputPowerpointData["override_settings"] = SourceExpressionConverter.ConvertToken(inputPowerpointDataoverrideSettings);
+                    inputPowerpointDatapropCount++;
+                }
 
-            if (inputPowerpointDataoverrideSettings != null)
-            {
-                inputPowerpointData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDataoverrideSettings);
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDatafailOnError != null)
-            {
                 if (inputPowerpointDatafailOnError != null)
                 {
-                    inputPowerpointData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPowerpointDatafailOnError);
+                    if (inputPowerpointDatafailOnError != null)
+                    {
+                        inputPowerpointData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPowerpointDatafailOnError);
+                        inputPowerpointDatapropCount++;
+                    }
+
+                    inputPowerpointDatapropCount++;
+                }
+                else
+                {
+                    inputPowerpointData["fail_on_error"] = true;
                     inputPowerpointDatapropCount++;
                 }
 
-                inputPowerpointDatapropCount++;
-            }
-            else
-            {
-                inputPowerpointData["fail_on_error"] = true;
-                inputPowerpointDatapropCount++;
-            }
-
-            if (inputPowerpointDatapropCount > 0)
-            {
-                callPayload.Body = inputPowerpointData;
+                if (inputPowerpointDatapropCount > 0)
+                {
+                    callPayload.Body = inputPowerpointData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertVisio(Expression<Func<string>> inputVisioDatasourceFileName, Expression<Func<string>> inputVisioDatasourceFileContent, Expression<Func<inputVisioDataoutputFormatInput>> inputVisioDataoutputFormat, Expression<Func<inputVisioDatarangeInput>> inputVisioDatarange = null, Expression<Func<int>> inputVisioDatastartPage = null, Expression<Func<int>> inputVisioDataendPage = null, Expression<Func<inputVisioDataqualityInput>> inputVisioDataquality = null, Expression<Func<string>> inputVisioDataoverrideSettings = null, Expression<Func<bool>> inputVisioDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertVisio([WorkflowExpression] Func<string> inputVisioDatasourceFileName, [WorkflowExpression] Func<string> inputVisioDatasourceFileContent, [WorkflowExpression] Func<inputVisioDataoutputFormatInput> inputVisioDataoutputFormat, [WorkflowExpression] Func<inputVisioDatarangeInput> inputVisioDatarange = null, [WorkflowExpression] Func<int> inputVisioDatastartPage = null, [WorkflowExpression] Func<int> inputVisioDataendPage = null, [WorkflowExpression] Func<inputVisioDataqualityInput> inputVisioDataquality = null, [WorkflowExpression] Func<string> inputVisioDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputVisioDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_visio";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputVisioData = new JObject();
-            var inputVisioDatapropCount = 0;
-            inputVisioData["use_async_pattern"] = false;
-            inputVisioDatapropCount++;
-            inputVisioDatapropCount++;
-            inputVisioData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputVisioDatasourceFileName, nameof(inputVisioDatasourceFileName), required: true);
+            SourceExpression.Validate(inputVisioDatasourceFileContent, nameof(inputVisioDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputVisioDataoutputFormat, nameof(inputVisioDataoutputFormat), required: true);
+            SourceExpression.Validate(inputVisioDatarange, nameof(inputVisioDatarange), required: false);
+            SourceExpression.Validate(inputVisioDatastartPage, nameof(inputVisioDatastartPage), required: false);
+            SourceExpression.Validate(inputVisioDataendPage, nameof(inputVisioDataendPage), required: false);
+            SourceExpression.Validate(inputVisioDataquality, nameof(inputVisioDataquality), required: false);
+            SourceExpression.Validate(inputVisioDataoverrideSettings, nameof(inputVisioDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputVisioDatafailOnError, nameof(inputVisioDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputVisioData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_visio";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputVisioData = new JObject();
+                var inputVisioDatapropCount = 0;
+                inputVisioData["use_async_pattern"] = false;
                 inputVisioDatapropCount++;
-            }
-
-            inputVisioDatapropCount++;
-            inputVisioData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputVisioDatasourceFileContent);
-            inputVisioDatapropCount++;
-            inputVisioData["output_format"] = CSharpExpressionConverter.Convert(inputVisioDataoutputFormat);
-            inputVisioData["copy_metadata"] = false;
-            inputVisioDatapropCount++;
-            if (inputVisioDatarange != null)
-            {
-                inputVisioData["range"] = CSharpExpressionConverter.Convert(inputVisioDatarange);
                 inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDatastartPage != null)
-            {
-                inputVisioData["start_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDatastartPage);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataendPage != null)
-            {
-                inputVisioData["end_page"] = CSharpExpressionConverter.ConvertToken(inputVisioDataendPage);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataquality != null)
-            {
-                inputVisioData["quality"] = CSharpExpressionConverter.Convert(inputVisioDataquality);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDataoverrideSettings != null)
-            {
-                inputVisioData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputVisioDataoverrideSettings);
-                inputVisioDatapropCount++;
-            }
-
-            if (inputVisioDatafailOnError != null)
-            {
-                if (inputVisioDatafailOnError != null)
+                inputVisioData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputVisioDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputVisioData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputVisioDatafailOnError);
+                    inputVisioData["sharepoint_file"] = sharepointFileObject;
                     inputVisioDatapropCount++;
                 }
 
                 inputVisioDatapropCount++;
-            }
-            else
-            {
-                inputVisioData["fail_on_error"] = true;
+                inputVisioData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputVisioDatasourceFileContent);
                 inputVisioDatapropCount++;
+                inputVisioData["output_format"] = SourceExpressionConverter.Convert(inputVisioDataoutputFormat);
+                inputVisioData["copy_metadata"] = false;
+                inputVisioDatapropCount++;
+                if (inputVisioDatarange != null)
+                {
+                    inputVisioData["range"] = SourceExpressionConverter.Convert(inputVisioDatarange);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatastartPage != null)
+                {
+                    inputVisioData["start_page"] = SourceExpressionConverter.ConvertToken(inputVisioDatastartPage);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataendPage != null)
+                {
+                    inputVisioData["end_page"] = SourceExpressionConverter.ConvertToken(inputVisioDataendPage);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataquality != null)
+                {
+                    inputVisioData["quality"] = SourceExpressionConverter.Convert(inputVisioDataquality);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDataoverrideSettings != null)
+                {
+                    inputVisioData["override_settings"] = SourceExpressionConverter.ConvertToken(inputVisioDataoverrideSettings);
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatafailOnError != null)
+                {
+                    if (inputVisioDatafailOnError != null)
+                    {
+                        inputVisioData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputVisioDatafailOnError);
+                        inputVisioDatapropCount++;
+                    }
+
+                    inputVisioDatapropCount++;
+                }
+                else
+                {
+                    inputVisioData["fail_on_error"] = true;
+                    inputVisioDatapropCount++;
+                }
+
+                if (inputVisioDatapropCount > 0)
+                {
+                    callPayload.Body = inputVisioData;
+                }
+                return callPayload;
             }
 
-            if (inputVisioDatapropCount > 0)
-            {
-                callPayload.Body = inputVisioData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ConvertWord(Expression<Func<string>> inputWordDatasourceFileName, Expression<Func<string>> inputWordDatasourceFileContent, Expression<Func<inputWordDataoutputFormatInput>> inputWordDataoutputFormat, Expression<Func<inputWordDatadisplayForReviewInput>> inputWordDatadisplayForReview = null, Expression<Func<inputWordDatareviewMarkupModeInput>> inputWordDatareviewMarkupMode = null, Expression<Func<inputWordDatagenerateBookmarksInput>> inputWordDatagenerateBookmarks = null, Expression<Func<int>> inputWordDatastartPage = null, Expression<Func<int>> inputWordDataendPage = null, Expression<Func<inputWordDataqualityInput>> inputWordDataquality = null, Expression<Func<string>> inputWordDataoverrideSettings = null, Expression<Func<bool>> inputWordDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ConvertWord([WorkflowExpression] Func<string> inputWordDatasourceFileName, [WorkflowExpression] Func<string> inputWordDatasourceFileContent, [WorkflowExpression] Func<inputWordDataoutputFormatInput> inputWordDataoutputFormat, [WorkflowExpression] Func<inputWordDatadisplayForReviewInput> inputWordDatadisplayForReview = null, [WorkflowExpression] Func<inputWordDatareviewMarkupModeInput> inputWordDatareviewMarkupMode = null, [WorkflowExpression] Func<inputWordDatagenerateBookmarksInput> inputWordDatagenerateBookmarks = null, [WorkflowExpression] Func<int> inputWordDatastartPage = null, [WorkflowExpression] Func<int> inputWordDataendPage = null, [WorkflowExpression] Func<inputWordDataqualityInput> inputWordDataquality = null, [WorkflowExpression] Func<string> inputWordDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputWordDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/convert_word";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputWordData = new JObject();
-            var inputWordDatapropCount = 0;
-            inputWordData["use_async_pattern"] = false;
-            inputWordDatapropCount++;
-            inputWordDatapropCount++;
-            inputWordData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputWordDatasourceFileName, nameof(inputWordDatasourceFileName), required: true);
+            SourceExpression.Validate(inputWordDatasourceFileContent, nameof(inputWordDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputWordDataoutputFormat, nameof(inputWordDataoutputFormat), required: true);
+            SourceExpression.Validate(inputWordDatadisplayForReview, nameof(inputWordDatadisplayForReview), required: false);
+            SourceExpression.Validate(inputWordDatareviewMarkupMode, nameof(inputWordDatareviewMarkupMode), required: false);
+            SourceExpression.Validate(inputWordDatagenerateBookmarks, nameof(inputWordDatagenerateBookmarks), required: false);
+            SourceExpression.Validate(inputWordDatastartPage, nameof(inputWordDatastartPage), required: false);
+            SourceExpression.Validate(inputWordDataendPage, nameof(inputWordDataendPage), required: false);
+            SourceExpression.Validate(inputWordDataquality, nameof(inputWordDataquality), required: false);
+            SourceExpression.Validate(inputWordDataoverrideSettings, nameof(inputWordDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputWordDatafailOnError, nameof(inputWordDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputWordData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/convert_word";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputWordData = new JObject();
+                var inputWordDatapropCount = 0;
+                inputWordData["use_async_pattern"] = false;
                 inputWordDatapropCount++;
-            }
+                inputWordDatapropCount++;
+                inputWordData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputWordDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputWordData["sharepoint_file"] = sharepointFileObject;
+                    inputWordDatapropCount++;
+                }
 
-            inputWordDatapropCount++;
-            inputWordData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputWordDatasourceFileContent);
-            inputWordDatapropCount++;
-            inputWordData["output_format"] = CSharpExpressionConverter.Convert(inputWordDataoutputFormat);
-            inputWordData["copy_metadata"] = false;
-            inputWordDatapropCount++;
-            if (inputWordDatadisplayForReview != null)
-            {
+                inputWordDatapropCount++;
+                inputWordData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputWordDatasourceFileContent);
+                inputWordDatapropCount++;
+                inputWordData["output_format"] = SourceExpressionConverter.Convert(inputWordDataoutputFormat);
+                inputWordData["copy_metadata"] = false;
+                inputWordDatapropCount++;
                 if (inputWordDatadisplayForReview != null)
                 {
-                    inputWordData["revisions_and_comments_display_mode"] = CSharpExpressionConverter.Convert(inputWordDatadisplayForReview);
+                    if (inputWordDatadisplayForReview != null)
+                    {
+                        inputWordData["revisions_and_comments_display_mode"] = SourceExpressionConverter.Convert(inputWordDatadisplayForReview);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["revisions_and_comments_display_mode"] = "Final";
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["revisions_and_comments_display_mode"] = "Final";
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatareviewMarkupMode != null)
-            {
                 if (inputWordDatareviewMarkupMode != null)
                 {
-                    inputWordData["revisions_and_comments_markup_mode"] = CSharpExpressionConverter.Convert(inputWordDatareviewMarkupMode);
+                    if (inputWordDatareviewMarkupMode != null)
+                    {
+                        inputWordData["revisions_and_comments_markup_mode"] = SourceExpressionConverter.Convert(inputWordDatareviewMarkupMode);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["revisions_and_comments_markup_mode"] = "InLine";
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["revisions_and_comments_markup_mode"] = "InLine";
-                inputWordDatapropCount++;
-            }
+                if (inputWordDatagenerateBookmarks != null)
+                {
+                    inputWordData["generate_bookmarks"] = SourceExpressionConverter.Convert(inputWordDatagenerateBookmarks);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDatagenerateBookmarks != null)
-            {
-                inputWordData["generate_bookmarks"] = CSharpExpressionConverter.Convert(inputWordDatagenerateBookmarks);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDatastartPage != null)
+                {
+                    inputWordData["start_page"] = SourceExpressionConverter.ConvertToken(inputWordDatastartPage);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDatastartPage != null)
-            {
-                inputWordData["start_page"] = CSharpExpressionConverter.ConvertToken(inputWordDatastartPage);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataendPage != null)
+                {
+                    inputWordData["end_page"] = SourceExpressionConverter.ConvertToken(inputWordDataendPage);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataendPage != null)
-            {
-                inputWordData["end_page"] = CSharpExpressionConverter.ConvertToken(inputWordDataendPage);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataquality != null)
+                {
+                    inputWordData["quality"] = SourceExpressionConverter.Convert(inputWordDataquality);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataquality != null)
-            {
-                inputWordData["quality"] = CSharpExpressionConverter.Convert(inputWordDataquality);
-                inputWordDatapropCount++;
-            }
+                if (inputWordDataoverrideSettings != null)
+                {
+                    inputWordData["override_settings"] = SourceExpressionConverter.ConvertToken(inputWordDataoverrideSettings);
+                    inputWordDatapropCount++;
+                }
 
-            if (inputWordDataoverrideSettings != null)
-            {
-                inputWordData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputWordDataoverrideSettings);
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatafailOnError != null)
-            {
                 if (inputWordDatafailOnError != null)
                 {
-                    inputWordData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputWordDatafailOnError);
+                    if (inputWordDatafailOnError != null)
+                    {
+                        inputWordData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputWordDatafailOnError);
+                        inputWordDatapropCount++;
+                    }
+
+                    inputWordDatapropCount++;
+                }
+                else
+                {
+                    inputWordData["fail_on_error"] = true;
                     inputWordDatapropCount++;
                 }
 
-                inputWordDatapropCount++;
-            }
-            else
-            {
-                inputWordData["fail_on_error"] = true;
-                inputWordDatapropCount++;
-            }
-
-            if (inputWordDatapropCount > 0)
-            {
-                callPayload.Body = inputWordData;
+                if (inputWordDatapropCount > 0)
+                {
+                    callPayload.Body = inputWordData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponseCommon> CopyMetadata(Expression<Func<string>> inputDatasiteUrl, Expression<Func<string>> inputDatasourceFileUrl, Expression<Func<string>> inputDatadestinationFilePath, Expression<Func<string>> inputDatauserName = null, Expression<Func<string>> inputDatapassword = null, Expression<Func<string>> inputDatafieldsToCopy = null, Expression<Func<string>> inputDatadestinationContentType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponseCommon> CopyMetadata([WorkflowExpression] Func<string> inputDatasiteUrl, [WorkflowExpression] Func<string> inputDatasourceFileUrl, [WorkflowExpression] Func<string> inputDatadestinationFilePath, [WorkflowExpression] Func<string> inputDatauserName = null, [WorkflowExpression] Func<string> inputDatapassword = null, [WorkflowExpression] Func<string> inputDatafieldsToCopy = null, [WorkflowExpression] Func<string> inputDatadestinationContentType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/copy_metadata";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputDatapropCount++;
-            inputData["site_url"] = CSharpExpressionConverter.ConvertToken(inputDatasiteUrl);
-            inputDatapropCount++;
-            inputData["source_file_url"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileUrl);
-            inputDatapropCount++;
-            inputData["destination_file_url"] = CSharpExpressionConverter.ConvertToken(inputDatadestinationFilePath);
-            if (inputDatauserName != null)
+            SourceExpression.Validate(inputDatasiteUrl, nameof(inputDatasiteUrl), required: true);
+            SourceExpression.Validate(inputDatasourceFileUrl, nameof(inputDatasourceFileUrl), required: true);
+            SourceExpression.Validate(inputDatadestinationFilePath, nameof(inputDatadestinationFilePath), required: true);
+            SourceExpression.Validate(inputDatauserName, nameof(inputDatauserName), required: false);
+            SourceExpression.Validate(inputDatapassword, nameof(inputDatapassword), required: false);
+            SourceExpression.Validate(inputDatafieldsToCopy, nameof(inputDatafieldsToCopy), required: false);
+            SourceExpression.Validate(inputDatadestinationContentType, nameof(inputDatadestinationContentType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["username"] = CSharpExpressionConverter.ConvertToken(inputDatauserName);
+                var apiCallPath = "/v1/operations/copy_metadata";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
                 inputDatapropCount++;
-            }
-
-            if (inputDatapassword != null)
-            {
-                inputData["password"] = CSharpExpressionConverter.ConvertToken(inputDatapassword);
+                inputData["site_url"] = SourceExpressionConverter.ConvertToken(inputDatasiteUrl);
                 inputDatapropCount++;
-            }
-
-            if (inputDatafieldsToCopy != null)
-            {
-                inputData["copy_fields"] = CSharpExpressionConverter.ConvertToken(inputDatafieldsToCopy);
+                inputData["source_file_url"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileUrl);
                 inputDatapropCount++;
-            }
+                inputData["destination_file_url"] = SourceExpressionConverter.ConvertToken(inputDatadestinationFilePath);
+                if (inputDatauserName != null)
+                {
+                    inputData["username"] = SourceExpressionConverter.ConvertToken(inputDatauserName);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatadestinationContentType != null)
-            {
-                inputData["content_type"] = CSharpExpressionConverter.ConvertToken(inputDatadestinationContentType);
-                inputDatapropCount++;
-            }
+                if (inputDatapassword != null)
+                {
+                    inputData["password"] = SourceExpressionConverter.ConvertToken(inputDatapassword);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafailOnError != null)
-            {
+                if (inputDatafieldsToCopy != null)
+                {
+                    inputData["copy_fields"] = SourceExpressionConverter.ConvertToken(inputDatafieldsToCopy);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatadestinationContentType != null)
+                {
+                    inputData["content_type"] = SourceExpressionConverter.ConvertToken(inputDatadestinationContentType);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OperationResponseCommon>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
+        public IBodyWorkflowAction<OperationResponse> EllipseWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafillColor = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
+        {
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatafillColor, nameof(inputDatafillColor), required: false);
+            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
+            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/operations/ellipse_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
+
+                inputData["use_async_pattern"] = false;
+                inputDatapropCount++;
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
                 inputDatapropCount++;
-            }
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
 
-            return new ApiConnectionAction<OperationResponseCommon>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> EllipseWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatafillColor = null, Expression<Func<string>> inputDatalineColor = null, Expression<Func<string>> inputDatalineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
-        {
-            var apiCallPath = "/v1/operations/ellipse_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
-            {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
-
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
-                inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
-                inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
-                inputDatapropCount++;
-            }
-
-            if (inputDatalayer != null)
-            {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatafillColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatafillColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafillColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafillColor);
-                inputDatapropCount++;
-            }
+                if (inputDatalineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatalineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatalineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatalineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ExportFormData(Expression<Func<string>> inputFromPdfDatasourceFileName, Expression<Func<string>> inputFromPdfDatasourceFileContent, Expression<Func<inputFromPdfDataoutputDataFormatInput>> inputFromPdfDataoutputDataFormat, Expression<Func<bool>> inputFromPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ExportFormData([WorkflowExpression] Func<string> inputFromPdfDatasourceFileName, [WorkflowExpression] Func<string> inputFromPdfDatasourceFileContent, [WorkflowExpression] Func<inputFromPdfDataoutputDataFormatInput> inputFromPdfDataoutputDataFormat, [WorkflowExpression] Func<bool> inputFromPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/export_form_data";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputFromPdfData = new JObject();
-            var inputFromPdfDatapropCount = 0;
-            inputFromPdfData["use_async_pattern"] = false;
-            inputFromPdfDatapropCount++;
-            inputFromPdfDatapropCount++;
-            inputFromPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputFromPdfDatasourceFileName, nameof(inputFromPdfDatasourceFileName), required: true);
+            SourceExpression.Validate(inputFromPdfDatasourceFileContent, nameof(inputFromPdfDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputFromPdfDataoutputDataFormat, nameof(inputFromPdfDataoutputDataFormat), required: true);
+            SourceExpression.Validate(inputFromPdfDatafailOnError, nameof(inputFromPdfDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputFromPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/export_form_data";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputFromPdfData = new JObject();
+                var inputFromPdfDatapropCount = 0;
+                inputFromPdfData["use_async_pattern"] = false;
                 inputFromPdfDatapropCount++;
-            }
-
-            inputFromPdfDatapropCount++;
-            inputFromPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatasourceFileContent);
-            inputFromPdfDatapropCount++;
-            inputFromPdfData["output_format"] = CSharpExpressionConverter.Convert(inputFromPdfDataoutputDataFormat);
-            inputFromPdfData["copy_metadata"] = false;
-            inputFromPdfDatapropCount++;
-            if (inputFromPdfDatafailOnError != null)
-            {
-                if (inputFromPdfDatafailOnError != null)
+                inputFromPdfDatapropCount++;
+                inputFromPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputFromPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputFromPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputFromPdfDatafailOnError);
+                    inputFromPdfData["sharepoint_file"] = sharepointFileObject;
                     inputFromPdfDatapropCount++;
                 }
 
                 inputFromPdfDatapropCount++;
-            }
-            else
-            {
-                inputFromPdfData["fail_on_error"] = true;
+                inputFromPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputFromPdfDatasourceFileContent);
                 inputFromPdfDatapropCount++;
+                inputFromPdfData["output_format"] = SourceExpressionConverter.Convert(inputFromPdfDataoutputDataFormat);
+                inputFromPdfData["copy_metadata"] = false;
+                inputFromPdfDatapropCount++;
+                if (inputFromPdfDatafailOnError != null)
+                {
+                    if (inputFromPdfDatafailOnError != null)
+                    {
+                        inputFromPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputFromPdfDatafailOnError);
+                        inputFromPdfDatapropCount++;
+                    }
+
+                    inputFromPdfDatapropCount++;
+                }
+                else
+                {
+                    inputFromPdfData["fail_on_error"] = true;
+                    inputFromPdfDatapropCount++;
+                }
+
+                if (inputFromPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputFromPdfData;
+                }
+                return callPayload;
             }
 
-            if (inputFromPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputFromPdfData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ExtractText(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<string>> inputPdfDatapageRange = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ExtractText([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/extract_text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPdfData = new JObject();
-            var inputPdfDatapropCount = 0;
-            inputPdfData["use_async_pattern"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
+            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/extract_text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPdfData = new JObject();
+                var inputPdfDatapropCount = 0;
+                inputPdfData["use_async_pattern"] = false;
                 inputPdfDatapropCount++;
-            }
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputPdfData["sharepoint_file"] = sharepointFileObject;
+                    inputPdfDatapropCount++;
+                }
 
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
-            if (inputPdfDatapageRange != null)
-            {
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
+                    if (inputPdfDatapageRange != null)
+                    {
+                        inputPdfData["page_range"] = SourceExpressionConverter.ConvertToken(inputPdfDatapageRange);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["page_range"] = "*";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["page_range"] = "*";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatafailOnError != null)
-            {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                    if (inputPdfDatafailOnError != null)
+                    {
+                        inputPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["fail_on_error"] = true;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["fail_on_error"] = true;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputPdfData;
+                if (inputPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputPdfData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ImageWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDataimage, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ImageWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDataimage, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/image_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDataimage, nameof(inputDataimage), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/image_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["image_file"] = CSharpExpressionConverter.ConvertToken(inputDataimage);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["image_file"] = SourceExpressionConverter.ConvertToken(inputDataimage);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkBackgroundColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkBackgroundColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ImportFormData(Expression<Func<string>> inputXmlDatasourceFileName, Expression<Func<string>> inputXmlDatasourceFileContent, Expression<Func<string>> inputXmlDatapDFFormFileContent = null, Expression<Func<string>> inputXmlDatapDFFormURL = null, Expression<Func<string>> inputXmlDatausername = null, Expression<Func<string>> inputXmlDatadomain = null, Expression<Func<string>> inputXmlDatapassword = null, Expression<Func<inputXmlDataflattenInput>> inputXmlDataflatten = null, Expression<Func<inputXmlDatareadOnlyInput>> inputXmlDatareadOnly = null, Expression<Func<string>> inputXmlDataoverrideSettings = null, Expression<Func<bool>> inputXmlDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ImportFormData([WorkflowExpression] Func<string> inputXmlDatasourceFileName, [WorkflowExpression] Func<string> inputXmlDatasourceFileContent, [WorkflowExpression] Func<string> inputXmlDatapDFFormFileContent = null, [WorkflowExpression] Func<string> inputXmlDatapDFFormURL = null, [WorkflowExpression] Func<string> inputXmlDatausername = null, [WorkflowExpression] Func<string> inputXmlDatadomain = null, [WorkflowExpression] Func<string> inputXmlDatapassword = null, [WorkflowExpression] Func<inputXmlDataflattenInput> inputXmlDataflatten = null, [WorkflowExpression] Func<inputXmlDatareadOnlyInput> inputXmlDatareadOnly = null, [WorkflowExpression] Func<string> inputXmlDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputXmlDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/import_form_data";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputXmlData = new JObject();
-            var inputXmlDatapropCount = 0;
-            inputXmlData["use_async_pattern"] = false;
-            inputXmlDatapropCount++;
-            inputXmlDatapropCount++;
-            inputXmlData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputXmlDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputXmlDatasourceFileName, nameof(inputXmlDatasourceFileName), required: true);
+            SourceExpression.Validate(inputXmlDatasourceFileContent, nameof(inputXmlDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputXmlDatapDFFormFileContent, nameof(inputXmlDatapDFFormFileContent), required: false);
+            SourceExpression.Validate(inputXmlDatapDFFormURL, nameof(inputXmlDatapDFFormURL), required: false);
+            SourceExpression.Validate(inputXmlDatausername, nameof(inputXmlDatausername), required: false);
+            SourceExpression.Validate(inputXmlDatadomain, nameof(inputXmlDatadomain), required: false);
+            SourceExpression.Validate(inputXmlDatapassword, nameof(inputXmlDatapassword), required: false);
+            SourceExpression.Validate(inputXmlDataflatten, nameof(inputXmlDataflatten), required: false);
+            SourceExpression.Validate(inputXmlDatareadOnly, nameof(inputXmlDatareadOnly), required: false);
+            SourceExpression.Validate(inputXmlDataoverrideSettings, nameof(inputXmlDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputXmlDatafailOnError, nameof(inputXmlDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputXmlData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/import_form_data";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputXmlData = new JObject();
+                var inputXmlDatapropCount = 0;
+                inputXmlData["use_async_pattern"] = false;
                 inputXmlDatapropCount++;
-            }
-
-            inputXmlDatapropCount++;
-            inputXmlData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputXmlDatasourceFileContent);
-            inputXmlData["copy_metadata"] = false;
-            inputXmlDatapropCount++;
-            if (inputXmlDatapDFFormFileContent != null)
-            {
-                inputXmlData["pdf_template_file_content"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapDFFormFileContent);
                 inputXmlDatapropCount++;
-            }
+                inputXmlData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputXmlDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputXmlData["sharepoint_file"] = sharepointFileObject;
+                    inputXmlDatapropCount++;
+                }
 
-            if (inputXmlDatapDFFormURL != null)
-            {
-                inputXmlData["pdf_template_url"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapDFFormURL);
                 inputXmlDatapropCount++;
-            }
-
-            if (inputXmlDatausername != null)
-            {
-                inputXmlData["pdf_template_username"] = CSharpExpressionConverter.ConvertToken(inputXmlDatausername);
+                inputXmlData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputXmlDatasourceFileContent);
+                inputXmlData["copy_metadata"] = false;
                 inputXmlDatapropCount++;
-            }
+                if (inputXmlDatapDFFormFileContent != null)
+                {
+                    inputXmlData["pdf_template_file_content"] = SourceExpressionConverter.ConvertToken(inputXmlDatapDFFormFileContent);
+                    inputXmlDatapropCount++;
+                }
 
-            if (inputXmlDatadomain != null)
-            {
-                inputXmlData["pdf_template_domain"] = CSharpExpressionConverter.ConvertToken(inputXmlDatadomain);
-                inputXmlDatapropCount++;
-            }
+                if (inputXmlDatapDFFormURL != null)
+                {
+                    inputXmlData["pdf_template_url"] = SourceExpressionConverter.ConvertToken(inputXmlDatapDFFormURL);
+                    inputXmlDatapropCount++;
+                }
 
-            if (inputXmlDatapassword != null)
-            {
-                inputXmlData["pdf_template_password"] = CSharpExpressionConverter.ConvertToken(inputXmlDatapassword);
-                inputXmlDatapropCount++;
-            }
+                if (inputXmlDatausername != null)
+                {
+                    inputXmlData["pdf_template_username"] = SourceExpressionConverter.ConvertToken(inputXmlDatausername);
+                    inputXmlDatapropCount++;
+                }
 
-            if (inputXmlDataflatten != null)
-            {
+                if (inputXmlDatadomain != null)
+                {
+                    inputXmlData["pdf_template_domain"] = SourceExpressionConverter.ConvertToken(inputXmlDatadomain);
+                    inputXmlDatapropCount++;
+                }
+
+                if (inputXmlDatapassword != null)
+                {
+                    inputXmlData["pdf_template_password"] = SourceExpressionConverter.ConvertToken(inputXmlDatapassword);
+                    inputXmlDatapropCount++;
+                }
+
                 if (inputXmlDataflatten != null)
                 {
-                    inputXmlData["flatten"] = CSharpExpressionConverter.Convert(inputXmlDataflatten);
+                    if (inputXmlDataflatten != null)
+                    {
+                        inputXmlData["flatten"] = SourceExpressionConverter.Convert(inputXmlDataflatten);
+                        inputXmlDatapropCount++;
+                    }
+
+                    inputXmlDatapropCount++;
+                }
+                else
+                {
+                    inputXmlData["flatten"] = "Default";
                     inputXmlDatapropCount++;
                 }
 
-                inputXmlDatapropCount++;
-            }
-            else
-            {
-                inputXmlData["flatten"] = "Default";
-                inputXmlDatapropCount++;
-            }
-
-            if (inputXmlDatareadOnly != null)
-            {
                 if (inputXmlDatareadOnly != null)
                 {
-                    inputXmlData["read_only"] = CSharpExpressionConverter.Convert(inputXmlDatareadOnly);
+                    if (inputXmlDatareadOnly != null)
+                    {
+                        inputXmlData["read_only"] = SourceExpressionConverter.Convert(inputXmlDatareadOnly);
+                        inputXmlDatapropCount++;
+                    }
+
+                    inputXmlDatapropCount++;
+                }
+                else
+                {
+                    inputXmlData["read_only"] = "Default";
                     inputXmlDatapropCount++;
                 }
 
-                inputXmlDatapropCount++;
-            }
-            else
-            {
-                inputXmlData["read_only"] = "Default";
-                inputXmlDatapropCount++;
-            }
+                if (inputXmlDataoverrideSettings != null)
+                {
+                    inputXmlData["override_settings"] = SourceExpressionConverter.ConvertToken(inputXmlDataoverrideSettings);
+                    inputXmlDatapropCount++;
+                }
 
-            if (inputXmlDataoverrideSettings != null)
-            {
-                inputXmlData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputXmlDataoverrideSettings);
-                inputXmlDatapropCount++;
-            }
-
-            if (inputXmlDatafailOnError != null)
-            {
                 if (inputXmlDatafailOnError != null)
                 {
-                    inputXmlData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputXmlDatafailOnError);
+                    if (inputXmlDatafailOnError != null)
+                    {
+                        inputXmlData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputXmlDatafailOnError);
+                        inputXmlDatapropCount++;
+                    }
+
+                    inputXmlDatapropCount++;
+                }
+                else
+                {
+                    inputXmlData["fail_on_error"] = true;
                     inputXmlDatapropCount++;
                 }
 
-                inputXmlDatapropCount++;
-            }
-            else
-            {
-                inputXmlData["fail_on_error"] = true;
-                inputXmlDatapropCount++;
-            }
-
-            if (inputXmlDatapropCount > 0)
-            {
-                callPayload.Body = inputXmlData;
+                if (inputXmlDatapropCount > 0)
+                {
+                    callPayload.Body = inputXmlData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> ExtractKeyValuePairs(Expression<Func<string>> inputPdfDatasourceFileName, Expression<Func<string>> inputPdfDatasourceFileContent, Expression<Func<string>> inputPdfDataoCRLanguage = null, Expression<Func<inputPdfDatadPIInput>> inputPdfDatadPI = null, Expression<Func<inputPdfDatakVPOutputFormatInput>> inputPdfDatakVPOutputFormat = null, Expression<Func<string>> inputPdfDatapageRange = null, Expression<Func<inputPdfDataautorotateInput>> inputPdfDataautorotate = null, Expression<Func<inputPdfDatatrimSymbolsInput>> inputPdfDatatrimSymbols = null, Expression<Func<inputPdfDataincludeKeyBoundingBoxInput>> inputPdfDataincludeKeyBoundingBox = null, Expression<Func<inputPdfDataincludeValueBoundingBoxInput>> inputPdfDataincludeValueBoundingBox = null, Expression<Func<inputPdfDataincludePageNumberInput>> inputPdfDataincludePageNumber = null, Expression<Func<inputPdfDataincludeConfidenceInput>> inputPdfDataincludeConfidence = null, Expression<Func<int>> inputPdfDataconfidenceThreshold = null, Expression<Func<inputPdfDataincludeTypeInput>> inputPdfDataincludeType = null, Expression<Func<string>> inputPdfDataexpectedKeys = null, Expression<Func<bool>> inputPdfDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> ExtractKeyValuePairs([WorkflowExpression] Func<string> inputPdfDatasourceFileName, [WorkflowExpression] Func<string> inputPdfDatasourceFileContent, [WorkflowExpression] Func<string> inputPdfDataoCRLanguage = null, [WorkflowExpression] Func<inputPdfDatadPIInput> inputPdfDatadPI = null, [WorkflowExpression] Func<inputPdfDatakVPOutputFormatInput> inputPdfDatakVPOutputFormat = null, [WorkflowExpression] Func<string> inputPdfDatapageRange = null, [WorkflowExpression] Func<inputPdfDataautorotateInput> inputPdfDataautorotate = null, [WorkflowExpression] Func<inputPdfDatatrimSymbolsInput> inputPdfDatatrimSymbols = null, [WorkflowExpression] Func<inputPdfDataincludeKeyBoundingBoxInput> inputPdfDataincludeKeyBoundingBox = null, [WorkflowExpression] Func<inputPdfDataincludeValueBoundingBoxInput> inputPdfDataincludeValueBoundingBox = null, [WorkflowExpression] Func<inputPdfDataincludePageNumberInput> inputPdfDataincludePageNumber = null, [WorkflowExpression] Func<inputPdfDataincludeConfidenceInput> inputPdfDataincludeConfidence = null, [WorkflowExpression] Func<int> inputPdfDataconfidenceThreshold = null, [WorkflowExpression] Func<inputPdfDataincludeTypeInput> inputPdfDataincludeType = null, [WorkflowExpression] Func<string> inputPdfDataexpectedKeys = null, [WorkflowExpression] Func<bool> inputPdfDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/key_value_pairs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputPdfData = new JObject();
-            var inputPdfDatapropCount = 0;
-            inputPdfData["use_async_pattern"] = false;
-            inputPdfDatapropCount++;
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputPdfDatasourceFileName, nameof(inputPdfDatasourceFileName), required: true);
+            SourceExpression.Validate(inputPdfDatasourceFileContent, nameof(inputPdfDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputPdfDataoCRLanguage, nameof(inputPdfDataoCRLanguage), required: false);
+            SourceExpression.Validate(inputPdfDatadPI, nameof(inputPdfDatadPI), required: false);
+            SourceExpression.Validate(inputPdfDatakVPOutputFormat, nameof(inputPdfDatakVPOutputFormat), required: false);
+            SourceExpression.Validate(inputPdfDatapageRange, nameof(inputPdfDatapageRange), required: false);
+            SourceExpression.Validate(inputPdfDataautorotate, nameof(inputPdfDataautorotate), required: false);
+            SourceExpression.Validate(inputPdfDatatrimSymbols, nameof(inputPdfDatatrimSymbols), required: false);
+            SourceExpression.Validate(inputPdfDataincludeKeyBoundingBox, nameof(inputPdfDataincludeKeyBoundingBox), required: false);
+            SourceExpression.Validate(inputPdfDataincludeValueBoundingBox, nameof(inputPdfDataincludeValueBoundingBox), required: false);
+            SourceExpression.Validate(inputPdfDataincludePageNumber, nameof(inputPdfDataincludePageNumber), required: false);
+            SourceExpression.Validate(inputPdfDataincludeConfidence, nameof(inputPdfDataincludeConfidence), required: false);
+            SourceExpression.Validate(inputPdfDataconfidenceThreshold, nameof(inputPdfDataconfidenceThreshold), required: false);
+            SourceExpression.Validate(inputPdfDataincludeType, nameof(inputPdfDataincludeType), required: false);
+            SourceExpression.Validate(inputPdfDataexpectedKeys, nameof(inputPdfDataexpectedKeys), required: false);
+            SourceExpression.Validate(inputPdfDatafailOnError, nameof(inputPdfDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputPdfData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/key_value_pairs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputPdfData = new JObject();
+                var inputPdfDatapropCount = 0;
+                inputPdfData["use_async_pattern"] = false;
                 inputPdfDatapropCount++;
-            }
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileName);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputPdfData["sharepoint_file"] = sharepointFileObject;
+                    inputPdfDatapropCount++;
+                }
 
-            inputPdfDatapropCount++;
-            inputPdfData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
-            if (inputPdfDataoCRLanguage != null)
-            {
+                inputPdfDatapropCount++;
+                inputPdfData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputPdfDatasourceFileContent);
                 if (inputPdfDataoCRLanguage != null)
                 {
-                    inputPdfData["ocr_language"] = CSharpExpressionConverter.ConvertToken(inputPdfDataoCRLanguage);
+                    if (inputPdfDataoCRLanguage != null)
+                    {
+                        inputPdfData["ocr_language"] = SourceExpressionConverter.ConvertToken(inputPdfDataoCRLanguage);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["ocr_language"] = "eng";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["ocr_language"] = "eng";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatadPI != null)
-            {
                 if (inputPdfDatadPI != null)
                 {
-                    inputPdfData["dpi"] = CSharpExpressionConverter.Convert(inputPdfDatadPI);
+                    if (inputPdfDatadPI != null)
+                    {
+                        inputPdfData["dpi"] = SourceExpressionConverter.Convert(inputPdfDatadPI);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["dpi"] = "300";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["dpi"] = "300";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatakVPOutputFormat != null)
-            {
                 if (inputPdfDatakVPOutputFormat != null)
                 {
-                    inputPdfData["kvp_format"] = CSharpExpressionConverter.Convert(inputPdfDatakVPOutputFormat);
+                    if (inputPdfDatakVPOutputFormat != null)
+                    {
+                        inputPdfData["kvp_format"] = SourceExpressionConverter.Convert(inputPdfDatakVPOutputFormat);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["kvp_format"] = "json";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["kvp_format"] = "json";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapageRange != null)
-            {
                 if (inputPdfDatapageRange != null)
                 {
-                    inputPdfData["page_range"] = CSharpExpressionConverter.ConvertToken(inputPdfDatapageRange);
+                    if (inputPdfDatapageRange != null)
+                    {
+                        inputPdfData["page_range"] = SourceExpressionConverter.ConvertToken(inputPdfDatapageRange);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["page_range"] = "*";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["page_range"] = "*";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataautorotate != null)
-            {
                 if (inputPdfDataautorotate != null)
                 {
-                    inputPdfData["autorotate"] = CSharpExpressionConverter.Convert(inputPdfDataautorotate);
+                    if (inputPdfDataautorotate != null)
+                    {
+                        inputPdfData["autorotate"] = SourceExpressionConverter.Convert(inputPdfDataautorotate);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["autorotate"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["autorotate"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatatrimSymbols != null)
-            {
                 if (inputPdfDatatrimSymbols != null)
                 {
-                    inputPdfData["trim_symbols"] = CSharpExpressionConverter.Convert(inputPdfDatatrimSymbols);
+                    if (inputPdfDatatrimSymbols != null)
+                    {
+                        inputPdfData["trim_symbols"] = SourceExpressionConverter.Convert(inputPdfDatatrimSymbols);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["trim_symbols"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["trim_symbols"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataincludeKeyBoundingBox != null)
-            {
                 if (inputPdfDataincludeKeyBoundingBox != null)
                 {
-                    inputPdfData["include_key_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeKeyBoundingBox);
+                    if (inputPdfDataincludeKeyBoundingBox != null)
+                    {
+                        inputPdfData["include_key_bounding_box"] = SourceExpressionConverter.Convert(inputPdfDataincludeKeyBoundingBox);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["include_key_bounding_box"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["include_key_bounding_box"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataincludeValueBoundingBox != null)
-            {
                 if (inputPdfDataincludeValueBoundingBox != null)
                 {
-                    inputPdfData["include_value_bounding_box"] = CSharpExpressionConverter.Convert(inputPdfDataincludeValueBoundingBox);
+                    if (inputPdfDataincludeValueBoundingBox != null)
+                    {
+                        inputPdfData["include_value_bounding_box"] = SourceExpressionConverter.Convert(inputPdfDataincludeValueBoundingBox);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["include_value_bounding_box"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["include_value_bounding_box"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataincludePageNumber != null)
-            {
                 if (inputPdfDataincludePageNumber != null)
                 {
-                    inputPdfData["include_page_number"] = CSharpExpressionConverter.Convert(inputPdfDataincludePageNumber);
+                    if (inputPdfDataincludePageNumber != null)
+                    {
+                        inputPdfData["include_page_number"] = SourceExpressionConverter.Convert(inputPdfDataincludePageNumber);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["include_page_number"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["include_page_number"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataincludeConfidence != null)
-            {
                 if (inputPdfDataincludeConfidence != null)
                 {
-                    inputPdfData["include_confidence"] = CSharpExpressionConverter.Convert(inputPdfDataincludeConfidence);
+                    if (inputPdfDataincludeConfidence != null)
+                    {
+                        inputPdfData["include_confidence"] = SourceExpressionConverter.Convert(inputPdfDataincludeConfidence);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["include_confidence"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["include_confidence"] = "Default";
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataconfidenceThreshold != null)
-            {
                 if (inputPdfDataconfidenceThreshold != null)
                 {
-                    inputPdfData["confidence_threshold"] = CSharpExpressionConverter.ConvertToken(inputPdfDataconfidenceThreshold);
+                    if (inputPdfDataconfidenceThreshold != null)
+                    {
+                        inputPdfData["confidence_threshold"] = SourceExpressionConverter.ConvertToken(inputPdfDataconfidenceThreshold);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["confidence_threshold"] = 50;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["confidence_threshold"] = 50;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDataincludeType != null)
-            {
                 if (inputPdfDataincludeType != null)
                 {
-                    inputPdfData["include_type"] = CSharpExpressionConverter.Convert(inputPdfDataincludeType);
+                    if (inputPdfDataincludeType != null)
+                    {
+                        inputPdfData["include_type"] = SourceExpressionConverter.Convert(inputPdfDataincludeType);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["include_type"] = "Default";
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["include_type"] = "Default";
-                inputPdfDatapropCount++;
-            }
+                if (inputPdfDataexpectedKeys != null)
+                {
+                    inputPdfData["expected_keys"] = SourceExpressionConverter.ConvertToken(inputPdfDataexpectedKeys);
+                    inputPdfDatapropCount++;
+                }
 
-            if (inputPdfDataexpectedKeys != null)
-            {
-                inputPdfData["expected_keys"] = CSharpExpressionConverter.ConvertToken(inputPdfDataexpectedKeys);
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatafailOnError != null)
-            {
                 if (inputPdfDatafailOnError != null)
                 {
-                    inputPdfData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                    if (inputPdfDatafailOnError != null)
+                    {
+                        inputPdfData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputPdfDatafailOnError);
+                        inputPdfDatapropCount++;
+                    }
+
+                    inputPdfDatapropCount++;
+                }
+                else
+                {
+                    inputPdfData["fail_on_error"] = true;
                     inputPdfDatapropCount++;
                 }
 
-                inputPdfDatapropCount++;
-            }
-            else
-            {
-                inputPdfData["fail_on_error"] = true;
-                inputPdfDatapropCount++;
-            }
-
-            if (inputPdfDatapropCount > 0)
-            {
-                callPayload.Body = inputPdfData;
+                if (inputPdfDatapropCount > 0)
+                {
+                    callPayload.Body = inputPdfData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> LineWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDataxCoordinateStart, Expression<Func<string>> inputDatayCoordinateStart, Expression<Func<string>> inputDataxCoordinateEnd, Expression<Func<string>> inputDatayCoordinateEnd, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatalineColor = null, Expression<Func<string>> inputDatalineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> LineWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDataxCoordinateStart, [WorkflowExpression] Func<string> inputDatayCoordinateStart, [WorkflowExpression] Func<string> inputDataxCoordinateEnd, [WorkflowExpression] Func<string> inputDatayCoordinateEnd, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatalineColor = null, [WorkflowExpression] Func<string> inputDatalineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/line_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDataxCoordinateStart, nameof(inputDataxCoordinateStart), required: true);
+            SourceExpression.Validate(inputDatayCoordinateStart, nameof(inputDatayCoordinateStart), required: true);
+            SourceExpression.Validate(inputDataxCoordinateEnd, nameof(inputDataxCoordinateEnd), required: true);
+            SourceExpression.Validate(inputDatayCoordinateEnd, nameof(inputDatayCoordinateEnd), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatalineColor, nameof(inputDatalineColor), required: false);
+            SourceExpression.Validate(inputDatalineWidth, nameof(inputDatalineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/line_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            inputDatapropCount++;
-            inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateStart);
-            inputDatapropCount++;
-            inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateStart);
-            inputDatapropCount++;
-            inputData["end_x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinateEnd);
-            inputDatapropCount++;
-            inputData["end_y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinateEnd);
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinateStart);
+                inputDatapropCount++;
+                inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinateStart);
+                inputDatapropCount++;
+                inputData["end_x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinateEnd);
+                inputDatapropCount++;
+                inputData["end_y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinateEnd);
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatalineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatalineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatalineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatalineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatalineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatalineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> LinearBarcodeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatabarcodeContent, Expression<Func<inputDatabarcodeTypeInput>> inputDatabarcodeType, Expression<Func<inputDatadisableCheckDigitInput>> inputDatadisableCheckDigit, Expression<Func<inputDatashowCheckDigitInput>> inputDatashowCheckDigit, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<inputDataomitEncodingOfStartStopSymbolsInput>> inputDataomitEncodingOfStartStopSymbols = null, Expression<Func<string>> inputDatamargin = null, Expression<Func<string>> inputDatafontFamily = null, Expression<Func<string>> inputDatafontSize = null, Expression<Func<string>> inputDatafontStyle = null, Expression<Func<inputDatalabelPlacementInput>> inputDatalabelPlacement = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatabarcodeBackgroundColor = null, Expression<Func<string>> inputDatabarcodeBarColor = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> LinearBarcodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatabarcodeContent, [WorkflowExpression] Func<inputDatabarcodeTypeInput> inputDatabarcodeType, [WorkflowExpression] Func<inputDatadisableCheckDigitInput> inputDatadisableCheckDigit, [WorkflowExpression] Func<inputDatashowCheckDigitInput> inputDatashowCheckDigit, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<inputDataomitEncodingOfStartStopSymbolsInput> inputDataomitEncodingOfStartStopSymbols = null, [WorkflowExpression] Func<string> inputDatamargin = null, [WorkflowExpression] Func<string> inputDatafontFamily = null, [WorkflowExpression] Func<string> inputDatafontSize = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<inputDatalabelPlacementInput> inputDatalabelPlacement = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatabarcodeBackgroundColor = null, [WorkflowExpression] Func<string> inputDatabarcodeBarColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/linear_barcode_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatabarcodeContent, nameof(inputDatabarcodeContent), required: true);
+            SourceExpression.Validate(inputDatabarcodeType, nameof(inputDatabarcodeType), required: true);
+            SourceExpression.Validate(inputDatadisableCheckDigit, nameof(inputDatadisableCheckDigit), required: true);
+            SourceExpression.Validate(inputDatashowCheckDigit, nameof(inputDatashowCheckDigit), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataomitEncodingOfStartStopSymbols, nameof(inputDataomitEncodingOfStartStopSymbols), required: false);
+            SourceExpression.Validate(inputDatamargin, nameof(inputDatamargin), required: false);
+            SourceExpression.Validate(inputDatafontFamily, nameof(inputDatafontFamily), required: false);
+            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: false);
+            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
+            SourceExpression.Validate(inputDatalabelPlacement, nameof(inputDatalabelPlacement), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatabarcodeBackgroundColor, nameof(inputDatabarcodeBackgroundColor), required: false);
+            SourceExpression.Validate(inputDatabarcodeBarColor, nameof(inputDatabarcodeBarColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/linear_barcode_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                inputDatapropCount++;
+                inputData["content"] = SourceExpressionConverter.ConvertToken(inputDatabarcodeContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            inputDatapropCount++;
-            inputData["barcode_type"] = CSharpExpressionConverter.Convert(inputDatabarcodeType);
-            if (inputDataomitEncodingOfStartStopSymbols != null)
-            {
+                inputDatapropCount++;
+                inputData["barcode_type"] = SourceExpressionConverter.Convert(inputDatabarcodeType);
                 if (inputDataomitEncodingOfStartStopSymbols != null)
                 {
-                    inputData["omit_start_stop_symbols"] = CSharpExpressionConverter.Convert(inputDataomitEncodingOfStartStopSymbols);
+                    if (inputDataomitEncodingOfStartStopSymbols != null)
+                    {
+                        inputData["omit_start_stop_symbols"] = SourceExpressionConverter.Convert(inputDataomitEncodingOfStartStopSymbols);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["omit_start_stop_symbols"] = "false";
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["omit_start_stop_symbols"] = "false";
+                inputData["disable_checkdigit"] = SourceExpressionConverter.Convert(inputDatadisableCheckDigit);
                 inputDatapropCount++;
-            }
+                inputData["show_checkdigit"] = SourceExpressionConverter.Convert(inputDatashowCheckDigit);
+                if (inputDatamargin != null)
+                {
+                    inputData["margin"] = SourceExpressionConverter.ConvertToken(inputDatamargin);
+                    inputDatapropCount++;
+                }
 
-            inputDatapropCount++;
-            inputData["disable_checkdigit"] = CSharpExpressionConverter.Convert(inputDatadisableCheckDigit);
-            inputDatapropCount++;
-            inputData["show_checkdigit"] = CSharpExpressionConverter.Convert(inputDatashowCheckDigit);
-            if (inputDatamargin != null)
-            {
-                inputData["margin"] = CSharpExpressionConverter.ConvertToken(inputDatamargin);
-                inputDatapropCount++;
-            }
+                if (inputDatafontFamily != null)
+                {
+                    inputData["font_family_name"] = SourceExpressionConverter.ConvertToken(inputDatafontFamily);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontFamily != null)
-            {
-                inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamily);
-                inputDatapropCount++;
-            }
+                if (inputDatafontSize != null)
+                {
+                    inputData["font_size"] = SourceExpressionConverter.ConvertToken(inputDatafontSize);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontSize != null)
-            {
-                inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
-                inputDatapropCount++;
-            }
+                if (inputDatafontStyle != null)
+                {
+                    inputData["font_style"] = SourceExpressionConverter.ConvertToken(inputDatafontStyle);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontStyle != null)
-            {
-                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
-                inputDatapropCount++;
-            }
-
-            if (inputDatalabelPlacement != null)
-            {
                 if (inputDatalabelPlacement != null)
                 {
-                    inputData["label_placement"] = CSharpExpressionConverter.Convert(inputDatalabelPlacement);
+                    if (inputDatalabelPlacement != null)
+                    {
+                        inputData["label_placement"] = SourceExpressionConverter.Convert(inputDatalabelPlacement);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["label_placement"] = "Bottom Center";
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["label_placement"] = "Bottom Center";
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
                 inputDatapropCount++;
-            }
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
-                inputDatapropCount++;
-            }
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatabarcodeBackgroundColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatabarcodeBackgroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatabarcodeBackgroundColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBackgroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatabarcodeBarColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatabarcodeBarColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatabarcodeBarColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatabarcodeBarColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> MergeToPdf(Expression<Func<string>> inputDatasourceFileName1 = null, Expression<Func<string>> inputDatasourceFileContent1 = null, Expression<Func<string>> inputDatasourceFileName2 = null, Expression<Func<string>> inputDatasourceFileContent2 = null, Expression<Func<string>> inputDatasourceFileName3 = null, Expression<Func<string>> inputDatasourceFileContent3 = null, Expression<Func<string>> inputDatasourceFileName4 = null, Expression<Func<string>> inputDatasourceFileContent4 = null, Expression<Func<string>> inputDatasourceFileName5 = null, Expression<Func<string>> inputDatasourceFileContent5 = null, Expression<Func<inputDataeachDocumentInput>> inputDataeachDocument = null, Expression<Func<MergeSourceFile[]>> inputDatasourceFiles = null, Expression<Func<string>> inputDataoverrideSettings = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> MergeToPdf([WorkflowExpression] Func<string> inputDatasourceFileName1 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent1 = null, [WorkflowExpression] Func<string> inputDatasourceFileName2 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent2 = null, [WorkflowExpression] Func<string> inputDatasourceFileName3 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent3 = null, [WorkflowExpression] Func<string> inputDatasourceFileName4 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent4 = null, [WorkflowExpression] Func<string> inputDatasourceFileName5 = null, [WorkflowExpression] Func<string> inputDatasourceFileContent5 = null, [WorkflowExpression] Func<inputDataeachDocumentInput> inputDataeachDocument = null, [WorkflowExpression] Func<MergeSourceFile[]> inputDatasourceFiles = null, [WorkflowExpression] Func<string> inputDataoverrideSettings = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/merge_to_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            if (inputDatasourceFileName1 != null)
+            SourceExpression.Validate(inputDatasourceFileName1, nameof(inputDatasourceFileName1), required: false);
+            SourceExpression.Validate(inputDatasourceFileContent1, nameof(inputDatasourceFileContent1), required: false);
+            SourceExpression.Validate(inputDatasourceFileName2, nameof(inputDatasourceFileName2), required: false);
+            SourceExpression.Validate(inputDatasourceFileContent2, nameof(inputDatasourceFileContent2), required: false);
+            SourceExpression.Validate(inputDatasourceFileName3, nameof(inputDatasourceFileName3), required: false);
+            SourceExpression.Validate(inputDatasourceFileContent3, nameof(inputDatasourceFileContent3), required: false);
+            SourceExpression.Validate(inputDatasourceFileName4, nameof(inputDatasourceFileName4), required: false);
+            SourceExpression.Validate(inputDatasourceFileContent4, nameof(inputDatasourceFileContent4), required: false);
+            SourceExpression.Validate(inputDatasourceFileName5, nameof(inputDatasourceFileName5), required: false);
+            SourceExpression.Validate(inputDatasourceFileContent5, nameof(inputDatasourceFileContent5), required: false);
+            SourceExpression.Validate(inputDataeachDocument, nameof(inputDataeachDocument), required: false);
+            SourceExpression.Validate(inputDatasourceFiles, nameof(inputDatasourceFiles), required: false);
+            SourceExpression.Validate(inputDataoverrideSettings, nameof(inputDataoverrideSettings), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name_1"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName1);
+                var apiCallPath = "/v1/operations/merge_to_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
+                if (inputDatasourceFileName1 != null)
+                {
+                    inputData["source_file_name_1"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName1);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileContent1 != null)
-            {
-                inputData["source_file_content_1"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent1);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileContent1 != null)
+                {
+                    inputData["source_file_content_1"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent1);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileName2 != null)
-            {
-                inputData["source_file_name_2"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName2);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileName2 != null)
+                {
+                    inputData["source_file_name_2"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName2);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileContent2 != null)
-            {
-                inputData["source_file_content_2"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent2);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileContent2 != null)
+                {
+                    inputData["source_file_content_2"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent2);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileName3 != null)
-            {
-                inputData["source_file_name_3"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName3);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileName3 != null)
+                {
+                    inputData["source_file_name_3"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName3);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileContent3 != null)
-            {
-                inputData["source_file_content_3"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent3);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileContent3 != null)
+                {
+                    inputData["source_file_content_3"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent3);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileName4 != null)
-            {
-                inputData["source_file_name_4"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName4);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileName4 != null)
+                {
+                    inputData["source_file_name_4"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName4);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileContent4 != null)
-            {
-                inputData["source_file_content_4"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent4);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileContent4 != null)
+                {
+                    inputData["source_file_content_4"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent4);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileName5 != null)
-            {
-                inputData["source_file_name_5"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName5);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileName5 != null)
+                {
+                    inputData["source_file_name_5"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName5);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFileContent5 != null)
-            {
-                inputData["source_file_content_5"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent5);
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFileContent5 != null)
+                {
+                    inputData["source_file_content_5"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent5);
+                    inputDatapropCount++;
+                }
 
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
-                inputDatapropCount++;
-            }
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDataeachDocument != null)
-            {
                 if (inputDataeachDocument != null)
                 {
-                    inputData["document_start_page"] = CSharpExpressionConverter.Convert(inputDataeachDocument);
+                    if (inputDataeachDocument != null)
+                    {
+                        inputData["document_start_page"] = SourceExpressionConverter.Convert(inputDataeachDocument);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["document_start_page"] = "Starts on the next page";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["document_start_page"] = "Starts on the next page";
-                inputDatapropCount++;
-            }
+                if (inputDatasourceFiles != null)
+                {
+                    inputData["source_files"] = SourceExpressionConverter.ConvertToken(inputDatasourceFiles);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatasourceFiles != null)
-            {
-                inputData["source_files"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFiles);
-                inputDatapropCount++;
-            }
+                if (inputDataoverrideSettings != null)
+                {
+                    inputData["override_settings"] = SourceExpressionConverter.ConvertToken(inputDataoverrideSettings);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataoverrideSettings != null)
-            {
-                inputData["override_settings"] = CSharpExpressionConverter.ConvertToken(inputDataoverrideSettings);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> OcrPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<string>> inputDataregions = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> OcrPdf([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<string> inputDataregions = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/ocr_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
+            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
+            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
+            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
+            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
+            SourceExpression.Validate(inputDataregions, nameof(inputDataregions), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/ocr_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputData["copy_metadata"] = false;
-            inputDatapropCount++;
-            if (inputDatalanguage != null)
-            {
-                if (inputDatalanguage != null)
+                inputDatapropCount++;
+                inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
+                inputData["copy_metadata"] = false;
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["language"] = "English";
-                inputDatapropCount++;
-            }
+                if (inputDatalanguage != null)
+                {
+                    if (inputDatalanguage != null)
+                    {
+                        inputData["language"] = SourceExpressionConverter.Convert(inputDatalanguage);
+                        inputDatapropCount++;
+                    }
 
-            if (inputDataperformance != null)
-            {
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["language"] = "English";
+                    inputDatapropCount++;
+                }
+
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
+                    if (inputDataperformance != null)
+                    {
+                        inputData["performance"] = SourceExpressionConverter.Convert(inputDataperformance);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["performance"] = "Slow but accurate";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["performance"] = "Slow but accurate";
-                inputDatapropCount++;
-            }
-
-            if (inputDatablacklistWhitelist != null)
-            {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
+                    if (inputDatablacklistWhitelist != null)
+                    {
+                        inputData["characters_option"] = SourceExpressionConverter.Convert(inputDatablacklistWhitelist);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["characters_option"] = "None";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["characters_option"] = "None";
-                inputDatapropCount++;
-            }
+                if (inputDatacharacters != null)
+                {
+                    inputData["characters"] = SourceExpressionConverter.ConvertToken(inputDatacharacters);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatacharacters != null)
-            {
-                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
-                inputDatapropCount++;
-            }
-
-            if (inputDatausePagination != null)
-            {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
+                    if (inputDatausePagination != null)
+                    {
+                        inputData["paginate"] = SourceExpressionConverter.ConvertToken(inputDatausePagination);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["paginate"] = false;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["paginate"] = false;
-                inputDatapropCount++;
-            }
+                if (inputDataregions != null)
+                {
+                    inputData["regions"] = SourceExpressionConverter.ConvertToken(inputDataregions);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataregions != null)
-            {
-                inputData["regions"] = CSharpExpressionConverter.ConvertToken(inputDataregions);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OcrOperationResponse> OcrText(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatalanguageInput>> inputDatalanguage = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<string>> inputDatawidth = null, Expression<Func<string>> inputDataheight = null, Expression<Func<string>> inputDatapageNumber = null, Expression<Func<inputDataperformanceInput>> inputDataperformance = null, Expression<Func<inputDatablacklistWhitelistInput>> inputDatablacklistWhitelist = null, Expression<Func<string>> inputDatacharacters = null, Expression<Func<bool>> inputDatausePagination = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OcrOperationResponse> OcrText([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatalanguageInput> inputDatalanguage = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<string> inputDatawidth = null, [WorkflowExpression] Func<string> inputDataheight = null, [WorkflowExpression] Func<string> inputDatapageNumber = null, [WorkflowExpression] Func<inputDataperformanceInput> inputDataperformance = null, [WorkflowExpression] Func<inputDatablacklistWhitelistInput> inputDatablacklistWhitelist = null, [WorkflowExpression] Func<string> inputDatacharacters = null, [WorkflowExpression] Func<bool> inputDatausePagination = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/ocr_text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatalanguage, nameof(inputDatalanguage), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: false);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: false);
+            SourceExpression.Validate(inputDatapageNumber, nameof(inputDatapageNumber), required: false);
+            SourceExpression.Validate(inputDataperformance, nameof(inputDataperformance), required: false);
+            SourceExpression.Validate(inputDatablacklistWhitelist, nameof(inputDatablacklistWhitelist), required: false);
+            SourceExpression.Validate(inputDatacharacters, nameof(inputDatacharacters), required: false);
+            SourceExpression.Validate(inputDatausePagination, nameof(inputDatausePagination), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/ocr_text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            if (inputDatalanguage != null)
-            {
-                if (inputDatalanguage != null)
+                inputDatapropCount++;
+                inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputData["language"] = CSharpExpressionConverter.Convert(inputDatalanguage);
+                    inputData["sharepoint_file"] = sharepointFileObject;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["language"] = "English";
-                inputDatapropCount++;
-            }
+                if (inputDatalanguage != null)
+                {
+                    if (inputDatalanguage != null)
+                    {
+                        inputData["language"] = SourceExpressionConverter.Convert(inputDatalanguage);
+                        inputDatapropCount++;
+                    }
 
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
-                inputDatapropCount++;
-            }
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["language"] = "English";
+                    inputDatapropCount++;
+                }
 
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
-                inputDatapropCount++;
-            }
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawidth != null)
-            {
-                inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-                inputDatapropCount++;
-            }
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
 
-            if (inputDataheight != null)
-            {
-                inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-                inputDatapropCount++;
-            }
+                if (inputDatawidth != null)
+                {
+                    inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatapageNumber != null)
-            {
+                if (inputDataheight != null)
+                {
+                    inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatapageNumber != null)
                 {
-                    inputData["page_number"] = CSharpExpressionConverter.ConvertToken(inputDatapageNumber);
+                    if (inputDatapageNumber != null)
+                    {
+                        inputData["page_number"] = SourceExpressionConverter.ConvertToken(inputDatapageNumber);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_number"] = "";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_number"] = "";
-                inputDatapropCount++;
-            }
-
-            if (inputDataperformance != null)
-            {
                 if (inputDataperformance != null)
                 {
-                    inputData["performance"] = CSharpExpressionConverter.Convert(inputDataperformance);
+                    if (inputDataperformance != null)
+                    {
+                        inputData["performance"] = SourceExpressionConverter.Convert(inputDataperformance);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["performance"] = "Slow but accurate";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["performance"] = "Slow but accurate";
-                inputDatapropCount++;
-            }
-
-            if (inputDatablacklistWhitelist != null)
-            {
                 if (inputDatablacklistWhitelist != null)
                 {
-                    inputData["characters_option"] = CSharpExpressionConverter.Convert(inputDatablacklistWhitelist);
+                    if (inputDatablacklistWhitelist != null)
+                    {
+                        inputData["characters_option"] = SourceExpressionConverter.Convert(inputDatablacklistWhitelist);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["characters_option"] = "None";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["characters_option"] = "None";
-                inputDatapropCount++;
-            }
+                if (inputDatacharacters != null)
+                {
+                    inputData["characters"] = SourceExpressionConverter.ConvertToken(inputDatacharacters);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatacharacters != null)
-            {
-                inputData["characters"] = CSharpExpressionConverter.ConvertToken(inputDatacharacters);
-                inputDatapropCount++;
-            }
-
-            if (inputDatausePagination != null)
-            {
                 if (inputDatausePagination != null)
                 {
-                    inputData["paginate"] = CSharpExpressionConverter.ConvertToken(inputDatausePagination);
+                    if (inputDatausePagination != null)
+                    {
+                        inputData["paginate"] = SourceExpressionConverter.ConvertToken(inputDatausePagination);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["paginate"] = false;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["paginate"] = false;
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OcrOperationResponse>(callPayload);
+            return new ApiConnectionAction<OcrOperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> PdfWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatapDFWatermark, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> PdfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatapDFWatermark, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/pdf_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatapDFWatermark, nameof(inputDatapDFWatermark), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/pdf_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["pdf_file"] = CSharpExpressionConverter.ConvertToken(inputDatapDFWatermark);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["pdf_file"] = SourceExpressionConverter.ConvertToken(inputDatapDFWatermark);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> QrCodeWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatacontent, Expression<Func<inputDataversionInput>> inputDataversion, Expression<Func<inputDatainputModeInput>> inputDatainputMode, Expression<Func<inputDataerrorCorrectionLevelInput>> inputDataerrorCorrectionLevel, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkForegroundColor = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> QrCodeWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatacontent, [WorkflowExpression] Func<inputDataversionInput> inputDataversion, [WorkflowExpression] Func<inputDatainputModeInput> inputDatainputMode, [WorkflowExpression] Func<inputDataerrorCorrectionLevelInput> inputDataerrorCorrectionLevel, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkForegroundColor = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/qr_code_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatacontent, nameof(inputDatacontent), required: true);
+            SourceExpression.Validate(inputDataversion, nameof(inputDataversion), required: true);
+            SourceExpression.Validate(inputDatainputMode, nameof(inputDatainputMode), required: true);
+            SourceExpression.Validate(inputDataerrorCorrectionLevel, nameof(inputDataerrorCorrectionLevel), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkForegroundColor, nameof(inputDatawatermarkForegroundColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/qr_code_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatacontent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["version"] = CSharpExpressionConverter.Convert(inputDataversion);
-            inputDatapropCount++;
-            inputData["input_mode"] = CSharpExpressionConverter.Convert(inputDatainputMode);
-            inputDatapropCount++;
-            inputData["error_correction_level"] = CSharpExpressionConverter.Convert(inputDataerrorCorrectionLevel);
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["content"] = SourceExpressionConverter.ConvertToken(inputDatacontent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["version"] = SourceExpressionConverter.Convert(inputDataversion);
+                inputDatapropCount++;
+                inputData["input_mode"] = SourceExpressionConverter.Convert(inputDatainputMode);
+                inputDatapropCount++;
+                inputData["error_correction_level"] = SourceExpressionConverter.Convert(inputDataerrorCorrectionLevel);
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkBackgroundColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkBackgroundColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkForegroundColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkForegroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkForegroundColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkForegroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> RectangleWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> RectangleWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/rectangle_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/rectangle_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkBackgroundColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkBackgroundColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> RtfWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkContent, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatawatermarkBackgroundColor = null, Expression<Func<string>> inputDatawatermarkOutlineColor = null, Expression<Func<string>> inputDatawatermarkOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> RtfWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatawatermarkBackgroundColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineColor = null, [WorkflowExpression] Func<string> inputDatawatermarkOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/rtf_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatawatermarkBackgroundColor, nameof(inputDatawatermarkBackgroundColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineColor, nameof(inputDatawatermarkOutlineColor), required: false);
+            SourceExpression.Validate(inputDatawatermarkOutlineWidth, nameof(inputDatawatermarkOutlineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/rtf_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["rtf_data"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["rtf_data"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkBackgroundColor != null)
+                {
+                    inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkBackgroundColor != null)
-            {
-                inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkBackgroundColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkOutlineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkOutlineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkOutlineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> SecurePdf(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataopenPassword = null, Expression<Func<string>> inputDataownerPassword = null, Expression<Func<string>> inputDatapDFRestrictions = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> SecurePdf([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataopenPassword = null, [WorkflowExpression] Func<string> inputDataownerPassword = null, [WorkflowExpression] Func<string> inputDatapDFRestrictions = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/secure_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataopenPassword, nameof(inputDataopenPassword), required: false);
+            SourceExpression.Validate(inputDataownerPassword, nameof(inputDataownerPassword), required: false);
+            SourceExpression.Validate(inputDatapDFRestrictions, nameof(inputDatapDFRestrictions), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
+                var apiCallPath = "/v1/operations/secure_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
-                inputDatapropCount++;
-            }
-
-            if (inputDataopenPassword != null)
-            {
-                inputData["open_password"] = CSharpExpressionConverter.ConvertToken(inputDataopenPassword);
-                inputDatapropCount++;
-            }
-
-            if (inputDataownerPassword != null)
-            {
-                inputData["owner_password"] = CSharpExpressionConverter.ConvertToken(inputDataownerPassword);
-                inputDatapropCount++;
-            }
-
-            if (inputDatapDFRestrictions != null)
-            {
-                inputData["security_options"] = CSharpExpressionConverter.ConvertToken(inputDatapDFRestrictions);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
-                if (inputDatafailOnError != null)
+                if (inputDatasourceFileName != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
+
+                if (inputDataopenPassword != null)
+                {
+                    inputData["open_password"] = SourceExpressionConverter.ConvertToken(inputDataopenPassword);
+                    inputDatapropCount++;
+                }
+
+                if (inputDataownerPassword != null)
+                {
+                    inputData["owner_password"] = SourceExpressionConverter.ConvertToken(inputDataownerPassword);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapDFRestrictions != null)
+                {
+                    inputData["security_options"] = SourceExpressionConverter.ConvertToken(inputDatapDFRestrictions);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatafailOnError != null)
+                {
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
-
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<SplitOperationResponse> SplitPdf(Expression<Func<string>> inputDatasourceFileName, Expression<Func<string>> inputDatasourceFileContent, Expression<Func<inputDatasplitByInput>> inputDatasplitBy, Expression<Func<int>> inputDatasplitParameter, Expression<Func<string>> inputDatafileNameTemplate = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<SplitOperationResponse> SplitPdf([WorkflowExpression] Func<string> inputDatasourceFileName, [WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<inputDatasplitByInput> inputDatasplitBy, [WorkflowExpression] Func<int> inputDatasplitParameter, [WorkflowExpression] Func<string> inputDatafileNameTemplate = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/split_pdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: true);
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatasplitBy, nameof(inputDatasplitBy), required: true);
+            SourceExpression.Validate(inputDatasplitParameter, nameof(inputDatasplitParameter), required: true);
+            SourceExpression.Validate(inputDatafileNameTemplate, nameof(inputDatafileNameTemplate), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                var apiCallPath = "/v1/operations/split_pdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            if (inputDatafileNameTemplate != null)
-            {
-                inputData["file_name_template"] = CSharpExpressionConverter.ConvertToken(inputDatafileNameTemplate);
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["file_split_by"] = CSharpExpressionConverter.Convert(inputDatasplitBy);
-            inputDatapropCount++;
-            inputData["split_parameter"] = CSharpExpressionConverter.ConvertToken(inputDatasplitParameter);
-            if (inputDatafailOnError != null)
-            {
-                if (inputDatafailOnError != null)
+                inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                inputDatapropCount++;
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatafileNameTemplate != null)
+                {
+                    inputData["file_name_template"] = SourceExpressionConverter.ConvertToken(inputDatafileNameTemplate);
                     inputDatapropCount++;
                 }
 
                 inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
+                inputData["file_split_by"] = SourceExpressionConverter.Convert(inputDatasplitBy);
                 inputDatapropCount++;
+                inputData["split_parameter"] = SourceExpressionConverter.ConvertToken(inputDatasplitParameter);
+                if (inputDatafailOnError != null)
+                {
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
+                    inputDatapropCount++;
+                }
+
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
-            }
-
-            return new ApiConnectionAction<SplitOperationResponse>(callPayload);
+            return new ApiConnectionAction<SplitOperationResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "muhimbipdf")]
-        public IBodyWorkflowAction<OperationResponse> TextWatermark(Expression<Func<string>> inputDatasourceFileContent, Expression<Func<string>> inputDatawatermarkContent, Expression<Func<string>> inputDatafontFamilyName, Expression<Func<string>> inputDatafontSize, Expression<Func<string>> inputDatafontColor, Expression<Func<inputDatatextAlignmentInput>> inputDatatextAlignment, Expression<Func<inputDatawordWrapInput>> inputDatawordWrap, Expression<Func<inputDatapositionInput>> inputDataposition, Expression<Func<string>> inputDatawidth, Expression<Func<string>> inputDataheight, Expression<Func<string>> inputDatasourceFileName = null, Expression<Func<string>> inputDataxCoordinate = null, Expression<Func<string>> inputDatayCoordinate = null, Expression<Func<inputDatalayerInput>> inputDatalayer = null, Expression<Func<string>> inputDatarotation = null, Expression<Func<string>> inputDataopacity = null, Expression<Func<string>> inputDatafontStyle = null, Expression<Func<string>> inputDatafontOutlineColor = null, Expression<Func<string>> inputDatafontOutlineWidth = null, Expression<Func<int>> inputDatawatermarkStartPage = null, Expression<Func<int>> inputDatawatermarkEndPage = null, Expression<Func<int>> inputDatawatermarkPageInterval = null, Expression<Func<inputDatawatermarkPageOrientationInput>> inputDatawatermarkPageOrientation = null, Expression<Func<inputDataprintOnlyInput>> inputDataprintOnly = null, Expression<Func<int>> inputDatawatermarkStartSection = null, Expression<Func<int>> inputDatawatermarkEndSection = null, Expression<Func<string>> inputDatawatermarkPageType = null, Expression<Func<bool>> inputDatafailOnError = null)
+        public IBodyWorkflowAction<OperationResponse> TextWatermark([WorkflowExpression] Func<string> inputDatasourceFileContent, [WorkflowExpression] Func<string> inputDatawatermarkContent, [WorkflowExpression] Func<string> inputDatafontFamilyName, [WorkflowExpression] Func<string> inputDatafontSize, [WorkflowExpression] Func<string> inputDatafontColor, [WorkflowExpression] Func<inputDatatextAlignmentInput> inputDatatextAlignment, [WorkflowExpression] Func<inputDatawordWrapInput> inputDatawordWrap, [WorkflowExpression] Func<inputDatapositionInput> inputDataposition, [WorkflowExpression] Func<string> inputDatawidth, [WorkflowExpression] Func<string> inputDataheight, [WorkflowExpression] Func<string> inputDatasourceFileName = null, [WorkflowExpression] Func<string> inputDataxCoordinate = null, [WorkflowExpression] Func<string> inputDatayCoordinate = null, [WorkflowExpression] Func<inputDatalayerInput> inputDatalayer = null, [WorkflowExpression] Func<string> inputDatarotation = null, [WorkflowExpression] Func<string> inputDataopacity = null, [WorkflowExpression] Func<string> inputDatafontStyle = null, [WorkflowExpression] Func<string> inputDatafontOutlineColor = null, [WorkflowExpression] Func<string> inputDatafontOutlineWidth = null, [WorkflowExpression] Func<int> inputDatawatermarkStartPage = null, [WorkflowExpression] Func<int> inputDatawatermarkEndPage = null, [WorkflowExpression] Func<int> inputDatawatermarkPageInterval = null, [WorkflowExpression] Func<inputDatawatermarkPageOrientationInput> inputDatawatermarkPageOrientation = null, [WorkflowExpression] Func<inputDataprintOnlyInput> inputDataprintOnly = null, [WorkflowExpression] Func<int> inputDatawatermarkStartSection = null, [WorkflowExpression] Func<int> inputDatawatermarkEndSection = null, [WorkflowExpression] Func<string> inputDatawatermarkPageType = null, [WorkflowExpression] Func<bool> inputDatafailOnError = null)
         {
-            var apiCallPath = "/v1/operations/text_watermark";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inputData = new JObject();
-            var inputDatapropCount = 0;
-            if (inputDatasourceFileName != null)
+            SourceExpression.Validate(inputDatasourceFileContent, nameof(inputDatasourceFileContent), required: true);
+            SourceExpression.Validate(inputDatawatermarkContent, nameof(inputDatawatermarkContent), required: true);
+            SourceExpression.Validate(inputDatafontFamilyName, nameof(inputDatafontFamilyName), required: true);
+            SourceExpression.Validate(inputDatafontSize, nameof(inputDatafontSize), required: true);
+            SourceExpression.Validate(inputDatafontColor, nameof(inputDatafontColor), required: true);
+            SourceExpression.Validate(inputDatatextAlignment, nameof(inputDatatextAlignment), required: true);
+            SourceExpression.Validate(inputDatawordWrap, nameof(inputDatawordWrap), required: true);
+            SourceExpression.Validate(inputDataposition, nameof(inputDataposition), required: true);
+            SourceExpression.Validate(inputDatawidth, nameof(inputDatawidth), required: true);
+            SourceExpression.Validate(inputDataheight, nameof(inputDataheight), required: true);
+            SourceExpression.Validate(inputDatasourceFileName, nameof(inputDatasourceFileName), required: false);
+            SourceExpression.Validate(inputDataxCoordinate, nameof(inputDataxCoordinate), required: false);
+            SourceExpression.Validate(inputDatayCoordinate, nameof(inputDatayCoordinate), required: false);
+            SourceExpression.Validate(inputDatalayer, nameof(inputDatalayer), required: false);
+            SourceExpression.Validate(inputDatarotation, nameof(inputDatarotation), required: false);
+            SourceExpression.Validate(inputDataopacity, nameof(inputDataopacity), required: false);
+            SourceExpression.Validate(inputDatafontStyle, nameof(inputDatafontStyle), required: false);
+            SourceExpression.Validate(inputDatafontOutlineColor, nameof(inputDatafontOutlineColor), required: false);
+            SourceExpression.Validate(inputDatafontOutlineWidth, nameof(inputDatafontOutlineWidth), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartPage, nameof(inputDatawatermarkStartPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndPage, nameof(inputDatawatermarkEndPage), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageInterval, nameof(inputDatawatermarkPageInterval), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageOrientation, nameof(inputDatawatermarkPageOrientation), required: false);
+            SourceExpression.Validate(inputDataprintOnly, nameof(inputDataprintOnly), required: false);
+            SourceExpression.Validate(inputDatawatermarkStartSection, nameof(inputDatawatermarkStartSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkEndSection, nameof(inputDatawatermarkEndSection), required: false);
+            SourceExpression.Validate(inputDatawatermarkPageType, nameof(inputDatawatermarkPageType), required: false);
+            SourceExpression.Validate(inputDatafailOnError, nameof(inputDatafailOnError), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inputData["source_file_name"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileName);
-                inputDatapropCount++;
-            }
+                var apiCallPath = "/v1/operations/text_watermark";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inputData = new JObject();
+                var inputDatapropCount = 0;
+                if (inputDatasourceFileName != null)
+                {
+                    inputData["source_file_name"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileName);
+                    inputDatapropCount++;
+                }
 
-            inputData["use_async_pattern"] = false;
-            inputDatapropCount++;
-            inputDatapropCount++;
-            inputData["source_file_content"] = CSharpExpressionConverter.ConvertToken(inputDatasourceFileContent);
-            inputDatapropCount++;
-            inputData["content"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkContent);
-            var sharepointFileObject = new JObject();
-            var sharepointFileObjectpropCount = 0;
-            if (sharepointFileObjectpropCount > 0)
-            {
-                inputData["sharepoint_file"] = sharepointFileObject;
+                inputData["use_async_pattern"] = false;
                 inputDatapropCount++;
-            }
-
-            inputDatapropCount++;
-            inputData["font_family_name"] = CSharpExpressionConverter.ConvertToken(inputDatafontFamilyName);
-            inputDatapropCount++;
-            inputData["font_size"] = CSharpExpressionConverter.ConvertToken(inputDatafontSize);
-            inputDatapropCount++;
-            inputData["fill_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontColor);
-            inputDatapropCount++;
-            inputData["alignment"] = CSharpExpressionConverter.Convert(inputDatatextAlignment);
-            inputDatapropCount++;
-            inputData["word_wrap"] = CSharpExpressionConverter.Convert(inputDatawordWrap);
-            inputDatapropCount++;
-            inputData["position"] = CSharpExpressionConverter.Convert(inputDataposition);
-            inputDatapropCount++;
-            inputData["width"] = CSharpExpressionConverter.ConvertToken(inputDatawidth);
-            inputDatapropCount++;
-            inputData["height"] = CSharpExpressionConverter.ConvertToken(inputDataheight);
-            if (inputDataxCoordinate != null)
-            {
-                inputData["x"] = CSharpExpressionConverter.ConvertToken(inputDataxCoordinate);
                 inputDatapropCount++;
-            }
-
-            if (inputDatayCoordinate != null)
-            {
-                inputData["y"] = CSharpExpressionConverter.ConvertToken(inputDatayCoordinate);
+                inputData["source_file_content"] = SourceExpressionConverter.ConvertToken(inputDatasourceFileContent);
                 inputDatapropCount++;
-            }
+                inputData["content"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkContent);
+                var sharepointFileObject = new JObject();
+                var sharepointFileObjectpropCount = 0;
+                if (sharepointFileObjectpropCount > 0)
+                {
+                    inputData["sharepoint_file"] = sharepointFileObject;
+                    inputDatapropCount++;
+                }
 
-            if (inputDatalayer != null)
-            {
+                inputDatapropCount++;
+                inputData["font_family_name"] = SourceExpressionConverter.ConvertToken(inputDatafontFamilyName);
+                inputDatapropCount++;
+                inputData["font_size"] = SourceExpressionConverter.ConvertToken(inputDatafontSize);
+                inputDatapropCount++;
+                inputData["fill_color"] = SourceExpressionConverter.ConvertToken(inputDatafontColor);
+                inputDatapropCount++;
+                inputData["alignment"] = SourceExpressionConverter.Convert(inputDatatextAlignment);
+                inputDatapropCount++;
+                inputData["word_wrap"] = SourceExpressionConverter.Convert(inputDatawordWrap);
+                inputDatapropCount++;
+                inputData["position"] = SourceExpressionConverter.Convert(inputDataposition);
+                inputDatapropCount++;
+                inputData["width"] = SourceExpressionConverter.ConvertToken(inputDatawidth);
+                inputDatapropCount++;
+                inputData["height"] = SourceExpressionConverter.ConvertToken(inputDataheight);
+                if (inputDataxCoordinate != null)
+                {
+                    inputData["x"] = SourceExpressionConverter.ConvertToken(inputDataxCoordinate);
+                    inputDatapropCount++;
+                }
+
+                if (inputDatayCoordinate != null)
+                {
+                    inputData["y"] = SourceExpressionConverter.ConvertToken(inputDatayCoordinate);
+                    inputDatapropCount++;
+                }
+
                 if (inputDatalayer != null)
                 {
-                    inputData["layer"] = CSharpExpressionConverter.Convert(inputDatalayer);
+                    if (inputDatalayer != null)
+                    {
+                        inputData["layer"] = SourceExpressionConverter.Convert(inputDatalayer);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["layer"] = "Foreground";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["layer"] = "Foreground";
-                inputDatapropCount++;
-            }
+                if (inputDatarotation != null)
+                {
+                    inputData["rotation"] = SourceExpressionConverter.ConvertToken(inputDatarotation);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatarotation != null)
-            {
-                inputData["rotation"] = CSharpExpressionConverter.ConvertToken(inputDatarotation);
-                inputDatapropCount++;
-            }
-
-            if (inputDataopacity != null)
-            {
                 if (inputDataopacity != null)
                 {
-                    inputData["opacity"] = CSharpExpressionConverter.ConvertToken(inputDataopacity);
+                    if (inputDataopacity != null)
+                    {
+                        inputData["opacity"] = SourceExpressionConverter.ConvertToken(inputDataopacity);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["opacity"] = "100";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["opacity"] = "100";
-                inputDatapropCount++;
-            }
+                if (inputDatafontStyle != null)
+                {
+                    inputData["font_style"] = SourceExpressionConverter.ConvertToken(inputDatafontStyle);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontStyle != null)
-            {
-                inputData["font_style"] = CSharpExpressionConverter.ConvertToken(inputDatafontStyle);
-                inputDatapropCount++;
-            }
+                if (inputDatafontOutlineColor != null)
+                {
+                    inputData["line_color"] = SourceExpressionConverter.ConvertToken(inputDatafontOutlineColor);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontOutlineColor != null)
-            {
-                inputData["line_color"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineColor);
-                inputDatapropCount++;
-            }
+                if (inputDatafontOutlineWidth != null)
+                {
+                    inputData["line_width"] = SourceExpressionConverter.ConvertToken(inputDatafontOutlineWidth);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatafontOutlineWidth != null)
-            {
-                inputData["line_width"] = CSharpExpressionConverter.ConvertToken(inputDatafontOutlineWidth);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartPage != null)
+                {
+                    inputData["start_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartPage != null)
-            {
-                inputData["start_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndPage != null)
+                {
+                    inputData["end_page"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndPage != null)
-            {
-                inputData["end_page"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndPage);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageInterval != null)
+                {
+                    inputData["page_interval"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageInterval != null)
-            {
-                inputData["page_interval"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageInterval);
-                inputDatapropCount++;
-            }
-
-            if (inputDatawatermarkPageOrientation != null)
-            {
                 if (inputDatawatermarkPageOrientation != null)
                 {
-                    inputData["page_orientation"] = CSharpExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                    if (inputDatawatermarkPageOrientation != null)
+                    {
+                        inputData["page_orientation"] = SourceExpressionConverter.Convert(inputDatawatermarkPageOrientation);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["page_orientation"] = "Both";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["page_orientation"] = "Both";
-                inputDatapropCount++;
-            }
-
-            if (inputDataprintOnly != null)
-            {
                 if (inputDataprintOnly != null)
                 {
-                    inputData["print_only"] = CSharpExpressionConverter.Convert(inputDataprintOnly);
+                    if (inputDataprintOnly != null)
+                    {
+                        inputData["print_only"] = SourceExpressionConverter.Convert(inputDataprintOnly);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["print_only"] = "false";
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["print_only"] = "false";
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkStartSection != null)
+                {
+                    inputData["start_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkStartSection != null)
-            {
-                inputData["start_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkStartSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkEndSection != null)
+                {
+                    inputData["end_section"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkEndSection != null)
-            {
-                inputData["end_section"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkEndSection);
-                inputDatapropCount++;
-            }
+                if (inputDatawatermarkPageType != null)
+                {
+                    inputData["page_type"] = SourceExpressionConverter.ConvertToken(inputDatawatermarkPageType);
+                    inputDatapropCount++;
+                }
 
-            if (inputDatawatermarkPageType != null)
-            {
-                inputData["page_type"] = CSharpExpressionConverter.ConvertToken(inputDatawatermarkPageType);
-                inputDatapropCount++;
-            }
-
-            if (inputDatafailOnError != null)
-            {
                 if (inputDatafailOnError != null)
                 {
-                    inputData["fail_on_error"] = CSharpExpressionConverter.ConvertToken(inputDatafailOnError);
+                    if (inputDatafailOnError != null)
+                    {
+                        inputData["fail_on_error"] = SourceExpressionConverter.ConvertToken(inputDatafailOnError);
+                        inputDatapropCount++;
+                    }
+
+                    inputDatapropCount++;
+                }
+                else
+                {
+                    inputData["fail_on_error"] = true;
                     inputDatapropCount++;
                 }
 
-                inputDatapropCount++;
-            }
-            else
-            {
-                inputData["fail_on_error"] = true;
-                inputDatapropCount++;
-            }
-
-            if (inputDatapropCount > 0)
-            {
-                callPayload.Body = inputData;
+                if (inputDatapropCount > 0)
+                {
+                    callPayload.Body = inputData;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<OperationResponse>(callPayload);
+            return new ApiConnectionAction<OperationResponse>(BuildSourceInput);
         }
     }
 

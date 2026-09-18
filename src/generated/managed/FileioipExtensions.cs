@@ -12,118 +12,155 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fileioip
     public class FileioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileListResponse> FileList(Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<int>> offset = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<FileListResponse> FileList([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<FileListResponse>(callPayload);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FileListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUploadResponse> FileUpload(Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUploadResponse> FileUpload([WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
+            SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-                bodypropCount++;
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfile != null)
+                {
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    bodypropCount++;
+                }
+
+                if (bodyexpires != null)
+                {
+                    body["expires"] = SourceExpressionConverter.ConvertToken(bodyexpires);
+                    bodypropCount++;
+                }
+
+                if (bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = SourceExpressionConverter.ConvertToken(bodymaxDownloads);
+                    bodypropCount++;
+                }
+
+                if (bodyautoDelete != null)
+                {
+                    body["autoDelete"] = SourceExpressionConverter.ConvertToken(bodyautoDelete);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpires != null)
-            {
-                body["expires"] = CSharpExpressionConverter.ConvertToken(bodyexpires);
-                bodypropCount++;
-            }
-
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = CSharpExpressionConverter.ConvertToken(bodymaxDownloads);
-                bodypropCount++;
-            }
-
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = CSharpExpressionConverter.ConvertToken(bodyautoDelete);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FileUploadResponse>(callPayload);
+            return new ApiConnectionAction<FileUploadResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate(Expression<Func<string>> key, Expression<Func<string>> bodyfile = null, Expression<Func<string>> bodyexpires = null, Expression<Func<int>> bodymaxDownloads = null, Expression<Func<bool>> bodyautoDelete = null)
+        public IBodyWorkflowAction<FileUpdateResponse> FileUpdate([WorkflowExpression] Func<string> key, [WorkflowExpression] Func<string> bodyfile = null, [WorkflowExpression] Func<string> bodyexpires = null, [WorkflowExpression] Func<int> bodymaxDownloads = null, [WorkflowExpression] Func<bool> bodyautoDelete = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfile != null)
+            SourceExpression.Validate(key, nameof(key), required: true);
+            SourceExpression.Validate(bodyfile, nameof(bodyfile), required: false);
+            SourceExpression.Validate(bodyexpires, nameof(bodyexpires), required: false);
+            SourceExpression.Validate(bodymaxDownloads, nameof(bodymaxDownloads), required: false);
+            SourceExpression.Validate(bodyautoDelete, nameof(bodyautoDelete), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["file"] = CSharpExpressionConverter.ConvertToken(bodyfile);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfile != null)
+                {
+                    body["file"] = SourceExpressionConverter.ConvertToken(bodyfile);
+                    bodypropCount++;
+                }
+
+                if (bodyexpires != null)
+                {
+                    body["expires"] = SourceExpressionConverter.ConvertToken(bodyexpires);
+                    bodypropCount++;
+                }
+
+                if (bodymaxDownloads != null)
+                {
+                    body["maxDownloads"] = SourceExpressionConverter.ConvertToken(bodymaxDownloads);
+                    bodypropCount++;
+                }
+
+                if (bodyautoDelete != null)
+                {
+                    body["autoDelete"] = SourceExpressionConverter.ConvertToken(bodyautoDelete);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyexpires != null)
-            {
-                body["expires"] = CSharpExpressionConverter.ConvertToken(bodyexpires);
-                bodypropCount++;
-            }
-
-            if (bodymaxDownloads != null)
-            {
-                body["maxDownloads"] = CSharpExpressionConverter.ConvertToken(bodymaxDownloads);
-                bodypropCount++;
-            }
-
-            if (bodyautoDelete != null)
-            {
-                body["autoDelete"] = CSharpExpressionConverter.ConvertToken(bodyautoDelete);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FileUpdateResponse>(callPayload);
+            return new ApiConnectionAction<FileUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
-        public IBodyWorkflowAction<FileDeleteResponse> FileDelete(Expression<Func<string>> key)
+        public IBodyWorkflowAction<FileDeleteResponse> FileDelete([WorkflowExpression] Func<string> key)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FileDeleteResponse>(callPayload);
+            SourceExpression.Validate(key, nameof(key), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(key, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FileDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fileioip")]
         public IBodyWorkflowAction<MeResponse> Me()
         {
-            var apiCallPath = "/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MeResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MeResponse>(BuildSourceInput);
         }
     }
 

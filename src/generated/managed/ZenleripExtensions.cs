@@ -12,728 +12,1006 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zenlerip
     public class ZenleripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserListResponse> UserList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> role = null)
+        public IBodyWorkflowAction<UserListResponse> UserList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> role = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(15);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            if (order != null)
-                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (role != null)
-                callPayload.Queries["role"] = CSharpExpressionConverter.ConvertO(role);
-            return new ApiConnectionAction<UserListResponse>(callPayload);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(order, nameof(order), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(role, nameof(role), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(15);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (role != null)
+                    callPayload.Queries["role"] = SourceExpressionConverter.ConvertO(role);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserPostResponse> User(Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodypassword, Expression<Func<int>> bodycommission, Expression<Func<string>> bodyroles, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
+        public IBodyWorkflowAction<UserPostResponse> User([WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-            bodypropCount++;
-            body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            bodypropCount++;
-            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-            bodypropCount++;
-            body["commission"] = CSharpExpressionConverter.ConvertToken(bodycommission);
-            bodypropCount++;
-            body["roles"] = CSharpExpressionConverter.ConvertToken(bodyroles);
-            if (bodyaddress != null)
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
+            SourceExpression.Validate(bodycommission, nameof(bodycommission), required: true);
+            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: true);
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
+            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
+            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
+                body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
+                body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
+                body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
+                body["commission"] = SourceExpressionConverter.ConvertToken(bodycommission);
                 bodypropCount++;
+                body["roles"] = SourceExpressionConverter.ConvertToken(bodyroles);
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodygdprConsentStatus != null)
+                {
+                    body["gdpr_consent_status"] = SourceExpressionConverter.ConvertToken(bodygdprConsentStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygdprConsentStatus != null)
-            {
-                body["gdpr_consent_status"] = CSharpExpressionConverter.ConvertToken(bodygdprConsentStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserPostResponse>(callPayload);
+            return new ApiConnectionAction<UserPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserGetResponse> UserGet(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<UserGetResponse> UserGet([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserGetResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserDeleteResponse> UserDelete(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<UserDeleteResponse> UserDelete([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserDeleteResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDeleteResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserPutResponse> UserPut(Expression<Func<string>> userId, Expression<Func<string>> bodyfirstName, Expression<Func<string>> bodylastName, Expression<Func<string>> bodyemail, Expression<Func<string>> bodypassword, Expression<Func<int>> bodycommission, Expression<Func<string>> bodyroles, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
+        public IBodyWorkflowAction<UserPutResponse> UserPut([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodyfirstName, [WorkflowExpression] Func<string> bodylastName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<int> bodycommission, [WorkflowExpression] Func<string> bodyroles, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-            bodypropCount++;
-            body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            bodypropCount++;
-            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-            bodypropCount++;
-            body["commission"] = CSharpExpressionConverter.ConvertToken(bodycommission);
-            bodypropCount++;
-            body["roles"] = CSharpExpressionConverter.ConvertToken(bodyroles);
-            if (bodyaddress != null)
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
+            SourceExpression.Validate(bodycommission, nameof(bodycommission), required: true);
+            SourceExpression.Validate(bodyroles, nameof(bodyroles), required: true);
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
+            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
+            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
+                body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
                 bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
+                body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
                 bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                 bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
+                body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
                 bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
+                body["commission"] = SourceExpressionConverter.ConvertToken(bodycommission);
                 bodypropCount++;
+                body["roles"] = SourceExpressionConverter.ConvertToken(bodyroles);
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodygdprConsentStatus != null)
+                {
+                    body["gdpr_consent_status"] = SourceExpressionConverter.ConvertToken(bodygdprConsentStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygdprConsentStatus != null)
-            {
-                body["gdpr_consent_status"] = CSharpExpressionConverter.ConvertToken(bodygdprConsentStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserPutResponse>(callPayload);
+            return new ApiConnectionAction<UserPutResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserEnrollResponse> UserEnroll(Expression<Func<string>> userId, Expression<Func<string>> bodycourseId, Expression<Func<string>> bodyplanId = null)
+        public IBodyWorkflowAction<UserEnrollResponse> UserEnroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId, [WorkflowExpression] Func<string> bodyplanId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["course_id"] = CSharpExpressionConverter.ConvertToken(bodycourseId);
-            if (bodyplanId != null)
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
+            SourceExpression.Validate(bodyplanId, nameof(bodyplanId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["plan_id"] = CSharpExpressionConverter.ConvertToken(bodyplanId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/enroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["course_id"] = SourceExpressionConverter.ConvertToken(bodycourseId);
+                if (bodyplanId != null)
+                {
+                    body["plan_id"] = SourceExpressionConverter.ConvertToken(bodyplanId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<UserEnrollResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<UserUnenrollResponse> UserUnenroll([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> bodycourseId)
+        {
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(bodycourseId, nameof(bodycourseId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserEnrollResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<UserUnenrollResponse> UserUnenroll(Expression<Func<string>> userId, Expression<Func<string>> bodycourseId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["course_id"] = CSharpExpressionConverter.ConvertToken(bodycourseId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UserUnenrollResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<CourseListResponse> CourseList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<string>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> type = null, Expression<Func<int>> status = null)
-        {
-            var apiCallPath = "/courses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            if (order != null)
-                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
-            return new ApiConnectionAction<CourseListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<CourseGetResponse> CourseGet(Expression<Func<string>> courseId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/courses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CourseGetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelListResponse> FunnelList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<string>> order = null, Expression<Func<string>> search = null, Expression<Func<int>> status = null)
-        {
-            var apiCallPath = "/funnels";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            if (order != null)
-                callPayload.Queries["order"] = CSharpExpressionConverter.ConvertO(order);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
-            return new ApiConnectionAction<FunnelListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelEnrollmentResponse> FunnelEnrollment(Expression<Func<string>> funnelId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FunnelEnrollmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelSubscribeResponse> FunnelSubscribe(Expression<Func<string>> funnelId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null, Expression<Func<string>> bodycountry = null, Expression<Func<int>> bodygdprConsentStatus = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/users/{0}/unenroll", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["course_id"] = SourceExpressionConverter.ConvertToken(bodycourseId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddress != null)
-            {
-                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
-                bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodystate != null)
-            {
-                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
-                bodypropCount++;
-            }
-
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodyzipCode != null)
-            {
-                body["zip_code"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
-                bodypropCount++;
-            }
-
-            if (bodycountry != null)
-            {
-                body["country"] = CSharpExpressionConverter.ConvertToken(bodycountry);
-                bodypropCount++;
-            }
-
-            if (bodygdprConsentStatus != null)
-            {
-                body["gdpr_consent_status"] = CSharpExpressionConverter.ConvertToken(bodygdprConsentStatus);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FunnelSubscribeResponse>(callPayload);
+            return new ApiConnectionAction<UserUnenrollResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<FunnelUnsubscribeResponse> FunnelUnsubscribe(Expression<Func<string>> funnelId, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<CourseListResponse> CourseList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> type = null, [WorkflowExpression] Func<int> status = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(order, nameof(order), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
+                var apiCallPath = "/courses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.ConvertO(order);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CourseListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<CourseGetResponse> CourseGet([WorkflowExpression] Func<string> courseId)
+        {
+            SourceExpression.Validate(courseId, nameof(courseId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/courses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(courseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CourseGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<FunnelListResponse> FunnelList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<string> order = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<int> status = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(order, nameof(order), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/funnels";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.ConvertO(order);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FunnelListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<FunnelEnrollmentResponse> FunnelEnrollment([WorkflowExpression] Func<string> funnelId)
+        {
+            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/enrollments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FunnelEnrollmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<FunnelSubscribeResponse> FunnelSubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null, [WorkflowExpression] Func<string> bodycountry = null, [WorkflowExpression] Func<int> bodygdprConsentStatus = null)
+        {
+            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
+            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            SourceExpression.Validate(bodycountry, nameof(bodycountry), required: false);
+            SourceExpression.Validate(bodygdprConsentStatus, nameof(bodygdprConsentStatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/{0}/subscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FunnelUnsubscribeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassListResponse> ClassList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
-        {
-            var apiCallPath = "/live-class/get-live-classes-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            if (order != null)
-                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            return new ApiConnectionAction<ClassListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassRegisterResponse> ClassRegister(Expression<Func<string>> liveclassId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodycountry != null)
+                {
+                    body["country"] = SourceExpressionConverter.ConvertToken(bodycountry);
+                    bodypropCount++;
+                }
+
+                if (bodygdprConsentStatus != null)
+                {
+                    body["gdpr_consent_status"] = SourceExpressionConverter.ConvertToken(bodygdprConsentStatus);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ClassRegisterResponse>(callPayload);
+            return new ApiConnectionAction<FunnelSubscribeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ClassUnregisterResponse> ClassUnregister(Expression<Func<string>> liveclassId, Expression<Func<string>> bodyemail = null)
+        public IBodyWorkflowAction<FunnelUnsubscribeResponse> FunnelUnsubscribe([WorkflowExpression] Func<string> funnelId, [WorkflowExpression] Func<string> bodyemail = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            SourceExpression.Validate(funnelId, nameof(funnelId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funnels/{0}/unsubscribe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(funnelId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FunnelUnsubscribeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ClassListResponse> ClassList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(order, nameof(order), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/live-class/get-live-classes-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ClassListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ClassRegisterResponse> ClassRegister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null)
+        {
+            SourceExpression.Validate(liveclassId, nameof(liveclassId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-class/{0}/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ClassUnregisterResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarListResponse> WebinarList(Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> orderby = null, Expression<Func<orderInput>> order = null, Expression<Func<string>> search = null)
-        {
-            var apiCallPath = "/live-webinar/get-live-webinars-list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (orderby != null)
-                callPayload.Queries["orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            callPayload.Queries["order"] = Convert.ToString("desc");
-            if (order != null)
-                callPayload.Queries["order"] = CSharpExpressionConverter.Convert(order);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            return new ApiConnectionAction<WebinarListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarRegisterResponse> WebinarRegister(Expression<Func<string>> webinarId, Expression<Func<string>> bodyname, Expression<Func<string>> bodyemail, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodystate = null, Expression<Func<string>> bodyphone = null, Expression<Func<int>> bodyzipCode = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyaddress != null)
+            return new ApiConnectionAction<ClassRegisterResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ClassUnregisterResponse> ClassUnregister([WorkflowExpression] Func<string> liveclassId, [WorkflowExpression] Func<string> bodyemail = null)
+        {
+            SourceExpression.Validate(liveclassId, nameof(liveclassId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-class/{0}/unregister", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(liveclassId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ClassUnregisterResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<WebinarListResponse> WebinarList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<orderInput> order = null, [WorkflowExpression] Func<string> search = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(order, nameof(order), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/live-webinar/get-live-webinars-list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (orderby != null)
+                    callPayload.Queries["orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                callPayload.Queries["order"] = Convert.ToString("desc");
+                if (order != null)
+                    callPayload.Queries["order"] = SourceExpressionConverter.Convert(order);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebinarListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<WebinarRegisterResponse> WebinarRegister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodystate = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<int> bodyzipCode = null)
+        {
+            SourceExpression.Validate(webinarId, nameof(webinarId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
+            SourceExpression.Validate(bodystate, nameof(bodystate), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodyzipCode, nameof(bodyzipCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/register", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycity != null)
-            {
-                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodystate != null)
+                {
+                    body["state"] = SourceExpressionConverter.ConvertToken(bodystate);
+                    bodypropCount++;
+                }
+
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodyzipCode != null)
+                {
+                    body["zip_code"] = SourceExpressionConverter.ConvertToken(bodyzipCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodystate != null)
+            return new ApiConnectionAction<WebinarRegisterResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<WebinarUnregisterResponse> WebinarUnregister([WorkflowExpression] Func<string> webinarId, [WorkflowExpression] Func<string> bodyemail)
+        {
+            SourceExpression.Validate(webinarId, nameof(webinarId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["state"] = CSharpExpressionConverter.ConvertToken(bodystate);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyphone != null)
+            return new ApiConnectionAction<WebinarUnregisterResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ReportEnrollBriefResponse> ReportEnrollBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(courseId, nameof(courseId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-                bodypropCount++;
+                var apiCallPath = "/reports/enrollments/brief";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (courseId != null)
+                    callPayload.Queries["course_id"] = SourceExpressionConverter.ConvertO(courseId);
+                return callPayload;
             }
 
-            if (bodyzipCode != null)
+            return new ApiConnectionAction<ReportEnrollBriefResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ReportEnrollDetailResponse> ReportEnrollDetail([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> courseId = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(courseId, nameof(courseId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["zip_code"] = CSharpExpressionConverter.ConvertToken(bodyzipCode);
-                bodypropCount++;
+                var apiCallPath = "/reports/enrollments/detailed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (courseId != null)
+                    callPayload.Queries["course_id"] = SourceExpressionConverter.ConvertO(courseId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<ReportEnrollDetailResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
+        public IBodyWorkflowAction<ReportSalesBriefResponse> ReportSalesBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> groupby = null, [WorkflowExpression] Func<string> courseIds = null)
+        {
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(groupby, nameof(groupby), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/reports/sales/brief";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (groupby != null)
+                    callPayload.Queries["groupby"] = SourceExpressionConverter.ConvertO(groupby);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids"] = SourceExpressionConverter.ConvertO(courseIds);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebinarRegisterResponse>(callPayload);
+            return new ApiConnectionAction<ReportSalesBriefResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<WebinarUnregisterResponse> WebinarUnregister(Expression<Func<string>> webinarId, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ReportSalesDetailedResponse> ReportSalesDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<int> paymentType = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/live-webinar/{0}/unregister", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webinarId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/reports/sales/detailed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids"] = SourceExpressionConverter.ConvertO(courseIds);
+                if (paymentType != null)
+                    callPayload.Queries["payment_type"] = SourceExpressionConverter.ConvertO(paymentType);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebinarUnregisterResponse>(callPayload);
+            return new ApiConnectionAction<ReportSalesDetailedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportEnrollBriefResponse> ReportEnrollBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> courseId = null)
+        public IBodyWorkflowAction<ReportProgressBriefResponse> ReportProgressBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null)
         {
-            var apiCallPath = "/reports/enrollments/brief";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (courseId != null)
-                callPayload.Queries["course_id"] = CSharpExpressionConverter.ConvertO(courseId);
-            return new ApiConnectionAction<ReportEnrollBriefResponse>(callPayload);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reports/course-progress/brief";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids[]"] = SourceExpressionConverter.ConvertO(courseIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReportProgressBriefResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportEnrollDetailResponse> ReportEnrollDetail(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> courseId = null)
+        public IBodyWorkflowAction<ReportProgressDetailedResponse> ReportProgressDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<int> paymentType = null)
         {
-            var apiCallPath = "/reports/enrollments/detailed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (courseId != null)
-                callPayload.Queries["course_id"] = CSharpExpressionConverter.ConvertO(courseId);
-            return new ApiConnectionAction<ReportEnrollDetailResponse>(callPayload);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            SourceExpression.Validate(afV, nameof(afV), required: false);
+            SourceExpression.Validate(couponIs, nameof(couponIs), required: false);
+            SourceExpression.Validate(couponLike, nameof(couponLike), required: false);
+            SourceExpression.Validate(nameIs, nameof(nameIs), required: false);
+            SourceExpression.Validate(nameLike, nameof(nameLike), required: false);
+            SourceExpression.Validate(emailIs, nameof(emailIs), required: false);
+            SourceExpression.Validate(emailLike, nameof(emailLike), required: false);
+            SourceExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
+            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reports/course-progress/detailed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids[]"] = SourceExpressionConverter.ConvertO(courseIds);
+                if (afV != null)
+                    callPayload.Queries["af_v"] = SourceExpressionConverter.ConvertO(afV);
+                if (couponIs != null)
+                    callPayload.Queries["coupon_is[]"] = SourceExpressionConverter.ConvertO(couponIs);
+                if (couponLike != null)
+                    callPayload.Queries["coupon_like[]"] = SourceExpressionConverter.ConvertO(couponLike);
+                if (nameIs != null)
+                    callPayload.Queries["name_is[]"] = SourceExpressionConverter.ConvertO(nameIs);
+                if (nameLike != null)
+                    callPayload.Queries["name_like[]"] = SourceExpressionConverter.ConvertO(nameLike);
+                if (emailIs != null)
+                    callPayload.Queries["email_is[]"] = SourceExpressionConverter.ConvertO(emailIs);
+                if (emailLike != null)
+                    callPayload.Queries["email_like[]"] = SourceExpressionConverter.ConvertO(emailLike);
+                if (affiliateIs != null)
+                    callPayload.Queries["affiliate_is[]"] = SourceExpressionConverter.ConvertO(affiliateIs);
+                if (paymentType != null)
+                    callPayload.Queries["payment_type"] = SourceExpressionConverter.ConvertO(paymentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReportProgressDetailedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportSalesBriefResponse> ReportSalesBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> groupby = null, Expression<Func<string>> courseIds = null)
+        public IBodyWorkflowAction<ReportAffiliateBriefResponse> ReportAffiliateBrief([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null)
         {
-            var apiCallPath = "/reports/sales/brief";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (groupby != null)
-                callPayload.Queries["groupby"] = CSharpExpressionConverter.ConvertO(groupby);
-            if (courseIds != null)
-                callPayload.Queries["course_ids"] = CSharpExpressionConverter.ConvertO(courseIds);
-            return new ApiConnectionAction<ReportSalesBriefResponse>(callPayload);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            SourceExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reports/affiliates/brief";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids[]"] = SourceExpressionConverter.ConvertO(courseIds);
+                if (affiliateIds != null)
+                    callPayload.Queries["affiliate_ids[]"] = SourceExpressionConverter.ConvertO(affiliateIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReportAffiliateBriefResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportSalesDetailedResponse> ReportSalesDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<int>> paymentType = null)
+        public IBodyWorkflowAction<ReportAffiliateDetailedResponse> ReportAffiliateDetailed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<string> courseIds = null, [WorkflowExpression] Func<string> affiliateIds = null, [WorkflowExpression] Func<string> afV = null, [WorkflowExpression] Func<string> couponIs = null, [WorkflowExpression] Func<string> couponLike = null, [WorkflowExpression] Func<string> nameIs = null, [WorkflowExpression] Func<string> nameLike = null, [WorkflowExpression] Func<string> emailIs = null, [WorkflowExpression] Func<string> emailLike = null, [WorkflowExpression] Func<string> affiliateIs = null, [WorkflowExpression] Func<string> paymentType = null)
         {
-            var apiCallPath = "/reports/sales/detailed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (courseIds != null)
-                callPayload.Queries["course_ids"] = CSharpExpressionConverter.ConvertO(courseIds);
-            if (paymentType != null)
-                callPayload.Queries["payment_type"] = CSharpExpressionConverter.ConvertO(paymentType);
-            return new ApiConnectionAction<ReportSalesDetailedResponse>(callPayload);
-        }
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(courseIds, nameof(courseIds), required: false);
+            SourceExpression.Validate(affiliateIds, nameof(affiliateIds), required: false);
+            SourceExpression.Validate(afV, nameof(afV), required: false);
+            SourceExpression.Validate(couponIs, nameof(couponIs), required: false);
+            SourceExpression.Validate(couponLike, nameof(couponLike), required: false);
+            SourceExpression.Validate(nameIs, nameof(nameIs), required: false);
+            SourceExpression.Validate(nameLike, nameof(nameLike), required: false);
+            SourceExpression.Validate(emailIs, nameof(emailIs), required: false);
+            SourceExpression.Validate(emailLike, nameof(emailLike), required: false);
+            SourceExpression.Validate(affiliateIs, nameof(affiliateIs), required: false);
+            SourceExpression.Validate(paymentType, nameof(paymentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reports/affiliates/detailed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (courseIds != null)
+                    callPayload.Queries["course_ids[]"] = SourceExpressionConverter.ConvertO(courseIds);
+                if (affiliateIds != null)
+                    callPayload.Queries["affiliate_ids[]"] = SourceExpressionConverter.ConvertO(affiliateIds);
+                if (afV != null)
+                    callPayload.Queries["af_v"] = SourceExpressionConverter.ConvertO(afV);
+                if (couponIs != null)
+                    callPayload.Queries["coupon_is[]"] = SourceExpressionConverter.ConvertO(couponIs);
+                if (couponLike != null)
+                    callPayload.Queries["coupon_like[]"] = SourceExpressionConverter.ConvertO(couponLike);
+                if (nameIs != null)
+                    callPayload.Queries["name_is[]"] = SourceExpressionConverter.ConvertO(nameIs);
+                if (nameLike != null)
+                    callPayload.Queries["name_like[]"] = SourceExpressionConverter.ConvertO(nameLike);
+                if (emailIs != null)
+                    callPayload.Queries["email_is[]"] = SourceExpressionConverter.ConvertO(emailIs);
+                if (emailLike != null)
+                    callPayload.Queries["email_like[]"] = SourceExpressionConverter.ConvertO(emailLike);
+                if (affiliateIs != null)
+                    callPayload.Queries["affiliate_is[]"] = SourceExpressionConverter.ConvertO(affiliateIs);
+                if (paymentType != null)
+                    callPayload.Queries["payment_type"] = SourceExpressionConverter.ConvertO(paymentType);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportProgressBriefResponse> ReportProgressBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null)
-        {
-            var apiCallPath = "/reports/course-progress/brief";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (courseIds != null)
-                callPayload.Queries["course_ids[]"] = CSharpExpressionConverter.ConvertO(courseIds);
-            return new ApiConnectionAction<ReportProgressBriefResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportProgressDetailedResponse> ReportProgressDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> afV = null, Expression<Func<string>> couponIs = null, Expression<Func<string>> couponLike = null, Expression<Func<string>> nameIs = null, Expression<Func<string>> nameLike = null, Expression<Func<string>> emailIs = null, Expression<Func<string>> emailLike = null, Expression<Func<string>> affiliateIs = null, Expression<Func<int>> paymentType = null)
-        {
-            var apiCallPath = "/reports/course-progress/detailed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (courseIds != null)
-                callPayload.Queries["course_ids[]"] = CSharpExpressionConverter.ConvertO(courseIds);
-            if (afV != null)
-                callPayload.Queries["af_v"] = CSharpExpressionConverter.ConvertO(afV);
-            if (couponIs != null)
-                callPayload.Queries["coupon_is[]"] = CSharpExpressionConverter.ConvertO(couponIs);
-            if (couponLike != null)
-                callPayload.Queries["coupon_like[]"] = CSharpExpressionConverter.ConvertO(couponLike);
-            if (nameIs != null)
-                callPayload.Queries["name_is[]"] = CSharpExpressionConverter.ConvertO(nameIs);
-            if (nameLike != null)
-                callPayload.Queries["name_like[]"] = CSharpExpressionConverter.ConvertO(nameLike);
-            if (emailIs != null)
-                callPayload.Queries["email_is[]"] = CSharpExpressionConverter.ConvertO(emailIs);
-            if (emailLike != null)
-                callPayload.Queries["email_like[]"] = CSharpExpressionConverter.ConvertO(emailLike);
-            if (affiliateIs != null)
-                callPayload.Queries["affiliate_is[]"] = CSharpExpressionConverter.ConvertO(affiliateIs);
-            if (paymentType != null)
-                callPayload.Queries["payment_type"] = CSharpExpressionConverter.ConvertO(paymentType);
-            return new ApiConnectionAction<ReportProgressDetailedResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportAffiliateBriefResponse> ReportAffiliateBrief(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> affiliateIds = null)
-        {
-            var apiCallPath = "/reports/affiliates/brief";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (courseIds != null)
-                callPayload.Queries["course_ids[]"] = CSharpExpressionConverter.ConvertO(courseIds);
-            if (affiliateIds != null)
-                callPayload.Queries["affiliate_ids[]"] = CSharpExpressionConverter.ConvertO(affiliateIds);
-            return new ApiConnectionAction<ReportAffiliateBriefResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zenlerip")]
-        public IBodyWorkflowAction<ReportAffiliateDetailedResponse> ReportAffiliateDetailed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<int>> limit = null, Expression<Func<int>> page = null, Expression<Func<string>> courseIds = null, Expression<Func<string>> affiliateIds = null, Expression<Func<string>> afV = null, Expression<Func<string>> couponIs = null, Expression<Func<string>> couponLike = null, Expression<Func<string>> nameIs = null, Expression<Func<string>> nameLike = null, Expression<Func<string>> emailIs = null, Expression<Func<string>> emailLike = null, Expression<Func<string>> affiliateIs = null, Expression<Func<string>> paymentType = null)
-        {
-            var apiCallPath = "/reports/affiliates/detailed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (courseIds != null)
-                callPayload.Queries["course_ids[]"] = CSharpExpressionConverter.ConvertO(courseIds);
-            if (affiliateIds != null)
-                callPayload.Queries["affiliate_ids[]"] = CSharpExpressionConverter.ConvertO(affiliateIds);
-            if (afV != null)
-                callPayload.Queries["af_v"] = CSharpExpressionConverter.ConvertO(afV);
-            if (couponIs != null)
-                callPayload.Queries["coupon_is[]"] = CSharpExpressionConverter.ConvertO(couponIs);
-            if (couponLike != null)
-                callPayload.Queries["coupon_like[]"] = CSharpExpressionConverter.ConvertO(couponLike);
-            if (nameIs != null)
-                callPayload.Queries["name_is[]"] = CSharpExpressionConverter.ConvertO(nameIs);
-            if (nameLike != null)
-                callPayload.Queries["name_like[]"] = CSharpExpressionConverter.ConvertO(nameLike);
-            if (emailIs != null)
-                callPayload.Queries["email_is[]"] = CSharpExpressionConverter.ConvertO(emailIs);
-            if (emailLike != null)
-                callPayload.Queries["email_like[]"] = CSharpExpressionConverter.ConvertO(emailLike);
-            if (affiliateIs != null)
-                callPayload.Queries["affiliate_is[]"] = CSharpExpressionConverter.ConvertO(affiliateIs);
-            if (paymentType != null)
-                callPayload.Queries["payment_type"] = CSharpExpressionConverter.ConvertO(paymentType);
-            return new ApiConnectionAction<ReportAffiliateDetailedResponse>(callPayload);
+            return new ApiConnectionAction<ReportAffiliateDetailedResponse>(BuildSourceInput);
         }
     }
 

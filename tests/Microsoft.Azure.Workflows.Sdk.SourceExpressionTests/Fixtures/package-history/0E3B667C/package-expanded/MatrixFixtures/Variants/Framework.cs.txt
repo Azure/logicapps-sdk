@@ -1,0 +1,16 @@
+using Microsoft.Azure.Workflows.Sdk;
+
+internal static class FixtureWorkflow
+{
+    public static object Run()
+    {
+#if NET8_0
+        var action = WorkflowActions.BuiltIn.Compose(() => "net8.0");
+#elif NET9_0
+        var action = WorkflowActions.BuiltIn.Compose(() => "net9.0");
+#else
+#error Unsupported fixture framework.
+#endif
+        return new { input = FixtureAssert.Input(action) };
+    }
+}

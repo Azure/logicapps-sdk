@@ -12,131 +12,149 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Thebotplatform
     public class ThebotplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage(Expression<Func<bodydataattributesmessagesInputItem[]>> bodydataattributesmessages = null, Expression<Func<string>> bodydataattributesrecipient = null)
+        public IBodyWorkflowAction<SimpleTextMessageResponse> SimpleTextMessage([WorkflowExpression] Func<bodydataattributesmessagesInputItem[]> bodydataattributesmessages = null, [WorkflowExpression] Func<string> bodydataattributesrecipient = null)
         {
-            var apiCallPath = "/v1.0/activity/external";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodydataattributesmessages != null)
+            SourceExpression.Validate(bodydataattributesmessages, nameof(bodydataattributesmessages), required: false);
+            SourceExpression.Validate(bodydataattributesrecipient, nameof(bodydataattributesrecipient), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                attributesObject["messages"] = CSharpExpressionConverter.ConvertToken(bodydataattributesmessages);
-                attributesObjectpropCount++;
-            }
+                var apiCallPath = "/v1.0/activity/external";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (bodydataattributesmessages != null)
+                {
+                    attributesObject["messages"] = SourceExpressionConverter.ConvertToken(bodydataattributesmessages);
+                    attributesObjectpropCount++;
+                }
 
-            if (bodydataattributesrecipient != null)
-            {
-                attributesObject["recipient"] = CSharpExpressionConverter.ConvertToken(bodydataattributesrecipient);
-                attributesObjectpropCount++;
-            }
+                if (bodydataattributesrecipient != null)
+                {
+                    attributesObject["recipient"] = SourceExpressionConverter.ConvertToken(bodydataattributesrecipient);
+                    attributesObjectpropCount++;
+                }
 
-            if (attributesObjectpropCount > 0)
-            {
-                dataObject["attributes"] = attributesObject;
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
+
+                dataObject["type"] = "external-activity";
                 dataObjectpropCount++;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            dataObject["type"] = "external-activity";
-            dataObjectpropCount++;
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SimpleTextMessageResponse>(callPayload);
+            return new ApiConnectionAction<SimpleTextMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute(Expression<Func<string>> bodydataattributesname = null, Expression<Func<bodydataattributesisPiiInput>> bodydataattributesisPii = null)
+        public IBodyWorkflowAction<CreateUserAttributeResponse> CreateUserAttribute([WorkflowExpression] Func<string> bodydataattributesname = null, [WorkflowExpression] Func<bodydataattributesisPiiInput> bodydataattributesisPii = null)
         {
-            var apiCallPath = "/v1.0/userattributes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            dataObject["type"] = "userattribute";
-            dataObjectpropCount++;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            if (bodydataattributesname != null)
+            SourceExpression.Validate(bodydataattributesname, nameof(bodydataattributesname), required: false);
+            SourceExpression.Validate(bodydataattributesisPii, nameof(bodydataattributesisPii), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                attributesObject["name"] = CSharpExpressionConverter.ConvertToken(bodydataattributesname);
-                attributesObjectpropCount++;
-            }
-
-            if (bodydataattributesisPii != null)
-            {
-                attributesObject["is_pii"] = CSharpExpressionConverter.Convert(bodydataattributesisPii);
-                attributesObjectpropCount++;
-            }
-
-            if (attributesObjectpropCount > 0)
-            {
-                dataObject["attributes"] = attributesObject;
+                var apiCallPath = "/v1.0/userattributes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                dataObject["type"] = "userattribute";
                 dataObjectpropCount++;
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                if (bodydataattributesname != null)
+                {
+                    attributesObject["name"] = SourceExpressionConverter.ConvertToken(bodydataattributesname);
+                    attributesObjectpropCount++;
+                }
+
+                if (bodydataattributesisPii != null)
+                {
+                    attributesObject["is_pii"] = SourceExpressionConverter.Convert(bodydataattributesisPii);
+                    attributesObjectpropCount++;
+                }
+
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUserAttributeResponse>(callPayload);
+            return new ApiConnectionAction<CreateUserAttributeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "thebotplatform")]
-        public IWorkflowAction SetUserAttribute(Expression<Func<string>> emailaddress, Expression<Func<bodydataattributesstateInputItem[]>> bodydataattributesstate)
+        public IWorkflowAction SetUserAttribute([WorkflowExpression] Func<string> emailaddress, [WorkflowExpression] Func<bodydataattributesstateInputItem[]> bodydataattributesstate)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailaddress, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            dataObject["type"] = "user";
-            dataObjectpropCount++;
-            var attributesObject = new JObject();
-            var attributesObjectpropCount = 0;
-            attributesObjectpropCount++;
-            attributesObject["state"] = CSharpExpressionConverter.ConvertToken(bodydataattributesstate);
-            if (attributesObjectpropCount > 0)
+            SourceExpression.Validate(emailaddress, nameof(emailaddress), required: true);
+            SourceExpression.Validate(bodydataattributesstate, nameof(bodydataattributesstate), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dataObject["attributes"] = attributesObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1.0/users/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(emailaddress, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                dataObject["type"] = "user";
                 dataObjectpropCount++;
+                var attributesObject = new JObject();
+                var attributesObjectpropCount = 0;
+                attributesObjectpropCount++;
+                attributesObject["state"] = SourceExpressionConverter.ConvertToken(bodydataattributesstate);
+                if (attributesObjectpropCount > 0)
+                {
+                    dataObject["attributes"] = attributesObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -12,21 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Funtranslationsip
     public class FuntranslationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "funtranslationsip")]
-        public IBodyWorkflowAction<TranslatePostResponse> Translate(Expression<Func<languageInput>> language, Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<TranslatePostResponse> Translate([WorkflowExpression] Func<languageInput> language, [WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(language, nameof(language), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(language, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<TranslatePostResponse>(callPayload);
+            return new ApiConnectionAction<TranslatePostResponse>(BuildSourceInput);
         }
     }
 

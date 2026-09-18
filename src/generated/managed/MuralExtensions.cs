@@ -12,65 +12,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mural
     public class MuralActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural(Expression<Func<string>> bodyworkspaceId, Expression<Func<int>> bodyroomId, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewMuralResponse> CreateNewMural([WorkflowExpression] Func<string> bodyworkspaceId, [WorkflowExpression] Func<int> bodyroomId, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = "/api/public/v1/murals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-            bodypropCount++;
-            body["roomId"] = CSharpExpressionConverter.ConvertToken(bodyroomId);
-            if (bodytitle != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            SourceExpression.Validate(bodyroomId, nameof(bodyroomId), required: true);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
+                var apiCallPath = "/api/public/v1/murals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["roomId"] = SourceExpressionConverter.ConvertToken(bodyroomId);
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateNewMuralResponse>(callPayload);
+            return new ApiConnectionAction<CreateNewMuralResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mural")]
-        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote(Expression<Func<string>> workspaceId, Expression<Func<string>> roomId, Expression<Func<string>> muralId, Expression<Func<bodyshapeInput>> bodyshape, Expression<Func<string>> bodytext = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<CreateNewStickyNoteResponse> CreateNewStickyNote([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> muralId, [WorkflowExpression] Func<bodyshapeInput> bodyshape, [WorkflowExpression] Func<string> bodytext = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(muralId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["workspaceId"] = CSharpExpressionConverter.ConvertO(workspaceId);
-            callPayload.Queries["roomId"] = CSharpExpressionConverter.ConvertO(roomId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytext != null)
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            SourceExpression.Validate(muralId, nameof(muralId), required: true);
+            SourceExpression.Validate(bodyshape, nameof(bodyshape), required: true);
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/public/v1/murals/{0}/widgets/sticky-note", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(muralId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["workspaceId"] = SourceExpressionConverter.ConvertO(workspaceId);
+                callPayload.Queries["roomId"] = SourceExpressionConverter.ConvertO(roomId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytext != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
+                body["shape"] = SourceExpressionConverter.Convert(bodyshape);
+                body["x"] = 150;
                 bodypropCount++;
+                body["y"] = 250;
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["shape"] = CSharpExpressionConverter.Convert(bodyshape);
-            body["x"] = 150;
-            bodypropCount++;
-            body["y"] = 250;
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateNewStickyNoteResponse>(callPayload);
+            return new ApiConnectionAction<CreateNewStickyNoteResponse>(BuildSourceInput);
         }
     }
 

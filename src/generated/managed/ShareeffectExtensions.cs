@@ -12,154 +12,199 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shareeffect
     public class ShareeffectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        public IBodyWorkflowAction<AddUpdateTermResponse> AddUpdateTerm([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            var apiCallPath = "/AddUpdateTerm";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isavailable"] = CSharpExpressionConverter.ConvertToken(bodyisavailable);
-            if (bodyotherlabels != null)
+            SourceExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
+            SourceExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
+            SourceExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            SourceExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
+            SourceExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            SourceExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["otherlabels"] = CSharpExpressionConverter.ConvertToken(bodyotherlabels);
+                var apiCallPath = "/AddUpdateTerm";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["isavailable"] = SourceExpressionConverter.ConvertToken(bodyisavailable);
+                if (bodyotherlabels != null)
+                {
+                    body["otherlabels"] = SourceExpressionConverter.ConvertToken(bodyotherlabels);
+                    bodypropCount++;
+                }
 
-            if (bodyparentterm != null)
-            {
-                body["parentterm"] = CSharpExpressionConverter.ConvertToken(bodyparentterm);
+                if (bodyparentterm != null)
+                {
+                    body["parentterm"] = SourceExpressionConverter.ConvertToken(bodyparentterm);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["termlabel"] = SourceExpressionConverter.ConvertToken(bodytermlabel);
+                bodypropCount++;
+                body["termsgroup"] = SourceExpressionConverter.ConvertToken(bodytermsgroup);
+                bodypropCount++;
+                body["termsset"] = SourceExpressionConverter.ConvertToken(bodytermsset);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["termlabel"] = CSharpExpressionConverter.ConvertToken(bodytermlabel);
-            bodypropCount++;
-            body["termsgroup"] = CSharpExpressionConverter.ConvertToken(bodytermsgroup);
-            bodypropCount++;
-            body["termsset"] = CSharpExpressionConverter.ConvertToken(bodytermsset);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddUpdateTermResponse>(callPayload);
+            return new ApiConnectionAction<AddUpdateTermResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue(Expression<Func<bool>> bodyisavailable, Expression<Func<string>> bodykeyvalue, Expression<Func<string>> bodytermlabel, Expression<Func<string>> bodytermsgroup, Expression<Func<string>> bodytermsset, Expression<Func<string>> bodyotherlabels = null, Expression<Func<string>> bodyparentterm = null)
+        public IBodyWorkflowAction<AddUpdateTermByKeyValueResponse> AddUpdateTermByKeyValue([WorkflowExpression] Func<bool> bodyisavailable, [WorkflowExpression] Func<string> bodykeyvalue, [WorkflowExpression] Func<string> bodytermlabel, [WorkflowExpression] Func<string> bodytermsgroup, [WorkflowExpression] Func<string> bodytermsset, [WorkflowExpression] Func<string> bodyotherlabels = null, [WorkflowExpression] Func<string> bodyparentterm = null)
         {
-            var apiCallPath = "/AddUpdateTermByKeyvalue";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["isavailable"] = CSharpExpressionConverter.ConvertToken(bodyisavailable);
-            bodypropCount++;
-            body["keyvalue"] = CSharpExpressionConverter.ConvertToken(bodykeyvalue);
-            if (bodyotherlabels != null)
+            SourceExpression.Validate(bodyisavailable, nameof(bodyisavailable), required: true);
+            SourceExpression.Validate(bodykeyvalue, nameof(bodykeyvalue), required: true);
+            SourceExpression.Validate(bodytermlabel, nameof(bodytermlabel), required: true);
+            SourceExpression.Validate(bodytermsgroup, nameof(bodytermsgroup), required: true);
+            SourceExpression.Validate(bodytermsset, nameof(bodytermsset), required: true);
+            SourceExpression.Validate(bodyotherlabels, nameof(bodyotherlabels), required: false);
+            SourceExpression.Validate(bodyparentterm, nameof(bodyparentterm), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["otherlabels"] = CSharpExpressionConverter.ConvertToken(bodyotherlabels);
+                var apiCallPath = "/AddUpdateTermByKeyvalue";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyparentterm != null)
-            {
-                body["parentterm"] = CSharpExpressionConverter.ConvertToken(bodyparentterm);
+                body["isavailable"] = SourceExpressionConverter.ConvertToken(bodyisavailable);
                 bodypropCount++;
+                body["keyvalue"] = SourceExpressionConverter.ConvertToken(bodykeyvalue);
+                if (bodyotherlabels != null)
+                {
+                    body["otherlabels"] = SourceExpressionConverter.ConvertToken(bodyotherlabels);
+                    bodypropCount++;
+                }
+
+                if (bodyparentterm != null)
+                {
+                    body["parentterm"] = SourceExpressionConverter.ConvertToken(bodyparentterm);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["termlabel"] = SourceExpressionConverter.ConvertToken(bodytermlabel);
+                bodypropCount++;
+                body["termsgroup"] = SourceExpressionConverter.ConvertToken(bodytermsgroup);
+                bodypropCount++;
+                body["termsset"] = SourceExpressionConverter.ConvertToken(bodytermsset);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["termlabel"] = CSharpExpressionConverter.ConvertToken(bodytermlabel);
-            bodypropCount++;
-            body["termsgroup"] = CSharpExpressionConverter.ConvertToken(bodytermsgroup);
-            bodypropCount++;
-            body["termsset"] = CSharpExpressionConverter.ConvertToken(bodytermsset);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddUpdateTermByKeyValueResponse>(callPayload);
+            return new ApiConnectionAction<AddUpdateTermByKeyValueResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue(Expression<Func<string>> searchValue)
+        public IBodyWorkflowAction<GetTermByKeyValueResponseItem[]> GetTermByKeyValue([WorkflowExpression] Func<string> searchValue)
         {
-            var apiCallPath = "/GetTermsByProperty";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchProperty"] = Convert.ToString("KeyValue");
-            callPayload.Queries["searchValue"] = CSharpExpressionConverter.ConvertO(searchValue);
-            return new ApiConnectionAction<GetTermByKeyValueResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel(Expression<Func<string>> searchValue)
-        {
-            var apiCallPath = "/GetTermsByTermLabel";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["searchValue"] = CSharpExpressionConverter.ConvertO(searchValue);
-            return new ApiConnectionAction<GetTermByLabelResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate(Expression<Func<string>> bodytemplateId, Expression<Func<string>> bodytemplate)
-        {
-            var apiCallPath = "/uploadtemplate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-            bodypropCount++;
-            body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(searchValue, nameof(searchValue), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/GetTermsByProperty";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchProperty"] = Convert.ToString("KeyValue");
+                callPayload.Queries["searchValue"] = SourceExpressionConverter.ConvertO(searchValue);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UploadTemplateResponse>(callPayload);
+            return new ApiConnectionAction<GetTermByKeyValueResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
-        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument(Expression<Func<string>> bodytemplateId, Expression<Func<bodyoutputformatInput>> bodyoutputformat)
+        public IBodyWorkflowAction<GetTermByLabelResponseItem[]> GetTermByLabel([WorkflowExpression] Func<string> searchValue)
         {
-            var apiCallPath = "/GenerateDocument";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-            bodypropCount++;
-            body["outputformat"] = CSharpExpressionConverter.Convert(bodyoutputformat);
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
+            SourceExpression.Validate(searchValue, nameof(searchValue), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = dataObject;
+                var apiCallPath = "/GetTermsByTermLabel";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["searchValue"] = SourceExpressionConverter.ConvertO(searchValue);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTermByLabelResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
+        public IBodyWorkflowAction<UploadTemplateResponse> UploadTemplate([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<string> bodytemplate)
+        {
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/uploadtemplate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                body["properties"] = propertiesObject;
+                body["templateId"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
                 bodypropCount++;
+                body["template"] = SourceExpressionConverter.ConvertToken(bodytemplate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<UploadTemplateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shareeffect")]
+        public IBodyWorkflowAction<GenerateDocumentResponse> GenerateDocument([WorkflowExpression] Func<string> bodytemplateId, [WorkflowExpression] Func<bodyoutputformatInput> bodyoutputformat)
+        {
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: true);
+            SourceExpression.Validate(bodyoutputformat, nameof(bodyoutputformat), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/GenerateDocument";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["templateId"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                bodypropCount++;
+                body["outputformat"] = SourceExpressionConverter.Convert(bodyoutputformat);
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    body["properties"] = propertiesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GenerateDocumentResponse>(callPayload);
+            return new ApiConnectionAction<GenerateDocumentResponse>(BuildSourceInput);
         }
     }
 

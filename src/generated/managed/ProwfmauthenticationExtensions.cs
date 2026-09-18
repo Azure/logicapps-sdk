@@ -12,33 +12,41 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prowfmauthentication
     public class ProwfmauthenticationActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prowfmauthentication")]
-        public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodyclientId, Expression<Func<string>> bodyclientSecret)
+        public IBodyWorkflowAction<GetAccessTokenResponse> GetAccessToken([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodyclientId, [WorkflowExpression] Func<string> bodyclientSecret)
         {
-            var apiCallPath = "/api/authentication/access_token";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/x-www-form-urlencoded");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
-            bodypropCount++;
-            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-            bodypropCount++;
-            body["client_id"] = CSharpExpressionConverter.ConvertToken(bodyclientId);
-            bodypropCount++;
-            body["client_secret"] = CSharpExpressionConverter.ConvertToken(bodyclientSecret);
-            body["grant_type"] = "password";
-            bodypropCount++;
-            body["auth_chain"] = "OAuthLdapService";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
+            SourceExpression.Validate(bodyclientId, nameof(bodyclientId), required: true);
+            SourceExpression.Validate(bodyclientSecret, nameof(bodyclientSecret), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/authentication/access_token";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/x-www-form-urlencoded");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/x-www-form-urlencoded");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                bodypropCount++;
+                body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                bodypropCount++;
+                body["client_id"] = SourceExpressionConverter.ConvertToken(bodyclientId);
+                bodypropCount++;
+                body["client_secret"] = SourceExpressionConverter.ConvertToken(bodyclientSecret);
+                body["grant_type"] = "password";
+                bodypropCount++;
+                body["auth_chain"] = "OAuthLdapService";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetAccessTokenResponse>(callPayload);
+            return new ApiConnectionAction<GetAccessTokenResponse>(BuildSourceInput);
         }
     }
 

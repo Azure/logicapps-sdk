@@ -12,39 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciscowebexmeetings
     public class CiscowebexmeetingsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ciscowebexmeetings")]
-        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting(Expression<Func<string>> bodytopic, Expression<Func<string>> bodystartTime, Expression<Func<string>> bodyendTime, Expression<Func<string>> bodyattendees = null, Expression<Func<string>> bodyagenda = null)
+        public IBodyWorkflowAction<NewMeetingResponse> NewMeeting([WorkflowExpression] Func<string> bodytopic, [WorkflowExpression] Func<string> bodystartTime, [WorkflowExpression] Func<string> bodyendTime, [WorkflowExpression] Func<string> bodyattendees = null, [WorkflowExpression] Func<string> bodyagenda = null)
         {
-            var apiCallPath = "/workflow/meetings/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["topic"] = CSharpExpressionConverter.ConvertToken(bodytopic);
-            bodypropCount++;
-            body["startTime"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
-            bodypropCount++;
-            body["endTime"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
-            if (bodyattendees != null)
+            SourceExpression.Validate(bodytopic, nameof(bodytopic), required: true);
+            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: true);
+            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: true);
+            SourceExpression.Validate(bodyattendees, nameof(bodyattendees), required: false);
+            SourceExpression.Validate(bodyagenda, nameof(bodyagenda), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["attendees"] = CSharpExpressionConverter.ConvertToken(bodyattendees);
+                var apiCallPath = "/workflow/meetings/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyagenda != null)
-            {
-                body["agenda"] = CSharpExpressionConverter.ConvertToken(bodyagenda);
+                body["topic"] = SourceExpressionConverter.ConvertToken(bodytopic);
                 bodypropCount++;
+                body["startTime"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                bodypropCount++;
+                body["endTime"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                if (bodyattendees != null)
+                {
+                    body["attendees"] = SourceExpressionConverter.ConvertToken(bodyattendees);
+                    bodypropCount++;
+                }
+
+                if (bodyagenda != null)
+                {
+                    body["agenda"] = SourceExpressionConverter.ConvertToken(bodyagenda);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<NewMeetingResponse>(callPayload);
+            return new ApiConnectionAction<NewMeetingResponse>(BuildSourceInput);
         }
     }
 

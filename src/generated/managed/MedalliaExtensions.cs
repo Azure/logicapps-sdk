@@ -12,41 +12,53 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medallia
     public class MedalliaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction TriggerInvitation(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
+        public IWorkflowAction TriggerInvitation([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = CSharpExpressionConverter.ConvertO(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(service, nameof(service), required: true);
+            SourceExpression.Validate(instanceURL, nameof(instanceURL), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = SourceExpressionConverter.ConvertO(instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "medallia")]
-        public IWorkflowAction SendExperienceSignals(Expression<Func<string>> service, Expression<Func<string>> instanceURL)
+        public IWorkflowAction SendExperienceSignals([WorkflowExpression] Func<string> service, [WorkflowExpression] Func<string> instanceURL)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance-URL"] = CSharpExpressionConverter.ConvertO(instanceURL);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(service, nameof(service), required: true);
+            SourceExpression.Validate(instanceURL, nameof(instanceURL), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inbound/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance-URL"] = SourceExpressionConverter.ConvertO(instanceURL);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

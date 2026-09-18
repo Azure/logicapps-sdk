@@ -12,65 +12,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
     public class PushcutActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pushcut")]
-        public IWorkflowAction SendNotification(Expression<Func<string>> notificationName, Expression<Func<string>> bodydynamicText = null, Expression<Func<string>> bodydynamicTitle = null, Expression<Func<string>> bodyinputParameter = null, Expression<Func<string[]>> bodydevices = null)
+        public IWorkflowAction SendNotification([WorkflowExpression] Func<string> notificationName, [WorkflowExpression] Func<string> bodydynamicText = null, [WorkflowExpression] Func<string> bodydynamicTitle = null, [WorkflowExpression] Func<string> bodyinputParameter = null, [WorkflowExpression] Func<string[]> bodydevices = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/notifications/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(notificationName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydynamicText != null)
+            SourceExpression.Validate(notificationName, nameof(notificationName), required: true);
+            SourceExpression.Validate(bodydynamicText, nameof(bodydynamicText), required: false);
+            SourceExpression.Validate(bodydynamicTitle, nameof(bodydynamicTitle), required: false);
+            SourceExpression.Validate(bodyinputParameter, nameof(bodyinputParameter), required: false);
+            SourceExpression.Validate(bodydevices, nameof(bodydevices), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["text"] = CSharpExpressionConverter.ConvertToken(bodydynamicText);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/notifications/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(notificationName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydynamicText != null)
+                {
+                    body["text"] = SourceExpressionConverter.ConvertToken(bodydynamicText);
+                    bodypropCount++;
+                }
+
+                if (bodydynamicTitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodydynamicTitle);
+                    bodypropCount++;
+                }
+
+                if (bodyinputParameter != null)
+                {
+                    body["input"] = SourceExpressionConverter.ConvertToken(bodyinputParameter);
+                    bodypropCount++;
+                }
+
+                if (bodydevices != null)
+                {
+                    body["devices"] = SourceExpressionConverter.ConvertToken(bodydevices);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydynamicTitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodydynamicTitle);
-                bodypropCount++;
-            }
-
-            if (bodyinputParameter != null)
-            {
-                body["input"] = CSharpExpressionConverter.ConvertToken(bodyinputParameter);
-                bodypropCount++;
-            }
-
-            if (bodydevices != null)
-            {
-                body["devices"] = CSharpExpressionConverter.ConvertToken(bodydevices);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class PushcutTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger ActionExecuted(Expression<Func<string>> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger ActionExecuted([WorkflowExpression] Func<string> bodyactionName, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/subscriptions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["actionName"] = CSharpExpressionConverter.ConvertToken(bodyactionName);
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyactionName, nameof(bodyactionName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/subscriptions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["actionName"] = SourceExpressionConverter.ConvertToken(bodyactionName);
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

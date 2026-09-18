@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 1,
+  "evidenceKind": "external-package-validation",
+  "catalog": "D:\\dev\\logicapps-sdk\\tests\\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests\\Fixtures\\approved-catalog.md",
+  "catalogSection": "14.6",
+  "catalogLines": "1001-1020",
+  "catalogSha256": "4096FB6421DA3F9BCF2DB0F188FC826EB540018F759690B127E1B96A70714759",
+  "catalogRecords": "D:\\dev\\logicapps-sdk\\tests\\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests\\catalog-coverage.json",
+  "catalogRecordSelection": "cases filtered by id matching ^PK\\d+$",
+  "provenance": "final-validation-provenance.json",
+  "log": "final-validation.log",
+  "packageSha256": "0E3B667CC0411B74C18CC7A1958D5A347723B56E2DD5382B2A22780B3513A98F",
+  "runtimeSha256": "548E5B809EFC1126C02729CB224F6AA0499324171D2A2EDA756A5CBFC5073D4B",
+  "compilerSha256": "AE86772DEDB4A9945D6836D032644B0697290C8BB405D9CDACBEE8924980B7E9",
+  "matrixExitCode": 0,
+  "repositoryWorkerExitCode": 0,
+  "sampleStage": "Not run: parent explicitly excluded unrelated existing-sample definition generation from final gates. Earlier failure and 18-provider/25-definition evidence remain historical only.",
+  "freshness": "Exact packaged SDK/compiler match frozen inputs; shared hashes remained unchanged throughout full validation and final Worker build.",
+  "previousSnapshot": "last4-bounded-snapshot-04977273",
+  "commandEvidence": "Exact dotnet argv, exit codes and log line numbers are persisted in final-validation-provenance.json.commands. Check locations are persisted in checkLocations.",
+  "cases": [
+    {
+      "id": "PK01",
+      "status": "passed",
+      "logLines": [
+        26
+      ],
+      "command": "dotnet build Consumer\\Consumer.csproj --no-restore -c Release -v:q with package version and isolated restore path from provenance",
+      "exitCode": 0,
+      "checks": [
+        "Only main SDK PackageReference in baseline build",
+        "Supplied nupkg selected by hash",
+        "Automatic transformed inputs and manifest under obj",
+        "Original source SHA256 unchanged"
+      ],
+      "sourceSha256": "5CC1C8C2999A714C222C7A1BE399FD93E294DB934C653C2ACED86140D2E83849",
+      "original": "| PK01 | dotnet build Consumer.csproj using only SDK PackageReference | Automatic transformation, successful compilation, source hash unchanged, generated compiler inputs under obj |",
+      "input": "dotnet build Consumer.csproj using only SDK PackageReference",
+      "expected": "Automatic transformation, successful compilation, source hash unchanged, generated compiler inputs under obj",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK02",
+      "status": "passed",
+      "checks": [
+        "Exact CB01 output",
+        "Zero reads at the first expression-body operation through serialization",
+        "Positive counter control observes one read"
+      ],
+      "details": {
+        "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\002.log",
+        "exitCode": 0,
+        "consumerSourceSha256": "5CC1C8C2999A714C222C7A1BE399FD93E294DB934C653C2ACED86140D2E83849"
+      },
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\Consumer\\\\bin\\\\Release\\\\net9.0\\\\Consumer.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\002.log",
+      "commandCount": 2,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        88
+      ],
+      "original": "| PK02 | dotnet run --project Consumer.csproj | Serialized field equals CB01's C# string; authoring lambda never invoked |",
+      "input": "dotnet run --project Consumer.csproj",
+      "expected": "Serialized field equals CB01's C# string; authoring lambda never invoked",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK03",
+      "status": "passed",
+      "logLines": [
+        33
+      ],
+      "command": "dotnet publish Consumer\\Consumer.csproj --no-restore -c Release -o isolated publish directory, then dotnet published Consumer.dll",
+      "exitCode": 0,
+      "checks": [
+        "Published JSON equals original run output",
+        "No Microsoft.CodeAnalysis* or Microsoft.Azure.Workflows.Sdk.Build* files in publish"
+      ],
+      "original": "| PK03 | dotnet publish Consumer.csproj -c Release | Published app produces the same definition; no Roslyn build-tool assemblies included solely for transformation |",
+      "input": "dotnet publish Consumer.csproj -c Release",
+      "expected": "Published app produces the same definition; no Roslyn build-tool assemblies included solely for transformation",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK04",
+      "status": "passed",
+      "logLines": [
+        28
+      ],
+      "command": "Repeat identical Consumer build and run commands without source changes",
+      "exitCode": 0,
+      "checks": [
+        "Four unique transformed inputs",
+        "Same ordered input paths",
+        "Identical SHA256 for each transformed source",
+        "Identical workflow JSON"
+      ],
+      "limit": "Always-regenerate implementation; not evidence of optimized incremental performance or mutation invalidation.",
+      "original": "| PK04 | Build twice without changes | Identical descriptor content and workflow JSON; incremental behavior follows declared inputs without accumulating duplicate transformed items |",
+      "input": "Build twice without changes",
+      "expected": "Identical descriptor content and workflow JSON; incremental behavior follows declared inputs without accumulating duplicate transformed items",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK05",
+      "status": "passed",
+      "checks": [
+        "Changed suffix initializer ! to ?",
+        "Rebuilt unchanged project/intermediate path",
+        "Observed exact updated CB01"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\007.log",
+      "commandCount": 7,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        99
+      ],
+      "original": "| PK05 | Change suffix initializer from \"!\" to \"?\" and rebuild | Output changes from CB01 trailing \"!\" to \"?\"; no stale descriptor |",
+      "input": "Change suffix initializer from \"!\" to \"?\" and rebuild",
+      "expected": "Output changes from CB01 trailing \"!\" to \"?\"; no stale descriptor",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK06",
+      "status": "passed",
+      "checks": [
+        "Renamed original source and removed call sites",
+        "No stale transformed original file or descriptors",
+        "No duplicate action result"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\011.log",
+      "commandCount": 11,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        108
+      ],
+      "original": "| PK06 | Delete/rename the CB01 call site and rebuild | No stale generated expression or duplicate call-site metadata |",
+      "input": "Delete/rename the CB01 call site and rebuild",
+      "expected": "No stale generated expression or duplicate call-site metadata",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK07",
+      "status": "passed",
+      "checks": [
+        "Independent LABEL_A/LABEL_B configurations",
+        "Exact A/B definitions and manifest symbols"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\LabelB\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\015.log",
+      "commandCount": 15,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        117
+      ],
+      "original": "| PK07 | Build configurations defining LABEL_A versus LABEL_B, source #if selects literal \"A\"/\"B\" | Definitions contain the selected literal, never both branches or stale prior-configuration source |",
+      "input": "Build configurations defining LABEL_A versus LABEL_B, source #if selects literal \"A\"/\"B\"",
+      "expected": "Definitions contain the selected literal, never both branches or stale prior-configuration source",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK08",
+      "status": "passed",
+      "checks": [
+        "One multi-target project: net8.0 and net9.0",
+        "Distinct intermediate paths, framework-specific definitions/reference packs/language settings"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\018.log",
+      "commandCount": 18,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        124
+      ],
+      "original": "| PK08 | Multi-target fixture using two supported TFMs | Separate intermediate artifacts; no cross-target writes; each output uses its target's references and parse settings |",
+      "input": "Multi-target fixture using two supported TFMs",
+      "expected": "Separate intermediate artifacts; no cross-target writes; each output uses its target's references and parse settings",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK09",
+      "status": "passed",
+      "checks": [
+        "Same physical Workflow.cs linked into two consumer projects",
+        "Independent generated inputs and identical CB01 definitions"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\LinkedConsumer\\\\bin\\\\Release\\\\net9.0\\\\LinkedConsumer.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\023.log",
+      "commandCount": 23,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        135
+      ],
+      "original": "| PK09 | Compile linked Workflow.cs in two consumer projects | Independent binding artifacts; no file-name-only identity collision |",
+      "input": "Compile linked Workflow.cs in two consumer projects",
+      "expected": "Independent binding artifacts; no file-name-only identity collision",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK10",
+      "status": "passed",
+      "checks": [
+        "Two real Compose calls on one source line",
+        "Distinct exact A and B inputs"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\025.log",
+      "commandCount": 25,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        140
+      ],
+      "original": "| PK10 | Two Compose calls on one source line, one returns \"A\", other \"B\" | Distinct correct action inputs, not a line-number registry collision |",
+      "input": "Two Compose calls on one source line, one returns \"A\", other \"B\"",
+      "expected": "Distinct correct action inputs, not a line-number registry collision",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK11",
+      "status": "passed",
+      "checks": [
+        "CB08 helper built and packed separately",
+        "Consumer references package, not project/source",
+        "Helper source unavailable during consumer compile/run",
+        "Exact CB08 output"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\LibraryConsumer\\\\bin\\\\Release\\\\net9.0\\\\LibraryConsumer.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\033.log",
+      "commandCount": 33,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        158
+      ],
+      "original": "| PK11 | Compile a helper library containing CB08 with the SDK package, reference it from an app | Library's transformed helper works; consumers need no source access to a previously transformed body |",
+      "input": "Compile a helper library containing CB08 with the SDK package, reference it from an app",
+      "expected": "Library's transformed helper works; consumers need no source access to a previously transformed body",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK12",
+      "status": "negative-case-passed",
+      "logLines": [
+        63
+      ],
+      "command": "dotnet build Consumer\\Consumer.csproj --no-restore -c Release -v:q -p:IncludeWorkflowGenerator=true with package properties from provenance",
+      "exitCode": 1,
+      "checks": [
+        "Real workflow-emitting generator rejected explicitly",
+        "WFSDK1002: Unsupported source-generator metadata",
+        "Diagnostic names Generator.dll"
+      ],
+      "positiveSupport": "unverified",
+      "limit": "Catalog permits explicit rejection as an outcome, but this is not arbitrary generated-workflow support. Pinned Worker coexistence is separate evidence.",
+      "original": "| PK12 | A source generator emits a method containing Compose(inputs: () => \"generated\") | Either integrated ordering yields J: \"generated\", or explicit unsupported generated-source diagnostic; no silent untransformed call |",
+      "input": "A source generator emits a method containing Compose(inputs: () => \"generated\")",
+      "expected": "Either integrated ordering yields J: \"generated\", or explicit unsupported generated-source diagnostic; no silent untransformed call",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK13",
+      "status": "partial",
+      "checks": [
+        "Executable MSBuild design-time skip with missing compiler",
+        "WFSDK1004 emitted",
+        "Original Compile items retained without duplicates"
+      ],
+      "details": {
+        "unverified": "Actual IDE IntelliSense/diagnostic certification is not established by an MSBuild command."
+      },
+      "command": "dotnet [\"msbuild\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"-t:Compile\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-p:DesignTimeBuild=true\",\"-p:SkipCompilerExecution=true\",\"-p:ProvideCommandLineArgs=true\",\"-p:TargetFramework=net9.0\",\"-p:Configuration=DesignTime\",\"-p:WorkflowBuildToolPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\absent-compiler.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\052.log",
+      "commandCount": 52,
+      "unverified": "Actual IDE IntelliSense/diagnostic certification is not established by an MSBuild command.",
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        202
+      ],
+      "original": "| PK13 | IDE design-time build of CB01 | Correct action API IntelliSense and diagnostics; no authoring lambda execution, duplicate obj source diagnostics, or required manual build script |",
+      "input": "IDE design-time build of CB01",
+      "expected": "Correct action API IntelliSense and diagnostics; no authoring lambda execution, duplicate obj source diagnostics, or required manual build script",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK14",
+      "status": "passed",
+      "checks": [
+        "Missing identifier produces nonzero build exit",
+        "CS0103 names missingName at original Workflow.cs line/column"
+      ],
+      "details": {
+        "exitCode": 1,
+        "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\026.log"
+      },
+      "command": "dotnet [\"build\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-restore\",\"-c\",\"Release\",\"-v:q\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-p:TargetFramework=net9.0\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\026.log",
+      "commandCount": 26,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        143
+      ],
+      "original": "| PK14 | Compile source.Output + missingName in a workflow file | Error points to original file/line and identifier, not only an opaque obj artifact |",
+      "input": "Compile source.Output + missingName in a workflow file",
+      "expected": "Error points to original file/line and identifier, not only an opaque obj artifact",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK15",
+      "status": "unverified",
+      "reason": "No incompatible runtime/descriptor version exercised in this package run; separate xUnit evidence may apply.",
+      "original": "| PK15 | Use runtime SDK version incompatible with build descriptor version | Explicit version mismatch diagnostic naming both versions |",
+      "input": "Use runtime SDK version incompatible with build descriptor version",
+      "expected": "Explicit version mismatch diagnostic naming both versions",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK16",
+      "status": "unverified",
+      "reason": "No disabled-transform authoring execution case in this package run; separate xUnit evidence may apply.",
+      "original": "| PK16 | Disable/miss required build transformation and execute an authoring entry point | Clear missing-transform error, no execution of Func body and no old converter fallback |",
+      "input": "Disable/miss required build transformation and execute an authoring entry point",
+      "expected": "Clear missing-transform error, no execution of Func body and no old converter fallback",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK17",
+      "status": "unverified",
+      "reason": "Windows dotnet SDK 9.0.318 only. No cross-platform/IDE-host matrix.",
+      "original": "| PK17 | Restore/build on each supported command-line/IDE platform | No hard-coded local SDK paths; same approved definition output |",
+      "input": "Restore/build on each supported command-line/IDE platform",
+      "expected": "No hard-coded local SDK paths; same approved definition output",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK18",
+      "status": "passed",
+      "checks": [
+        "Library references only Helpers package, SDK is indirect",
+        "buildTransitive automatically transforms that library",
+        "Application consumes both packaged libraries without direct SDK reference"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\LibraryConsumer\\\\bin\\\\Release\\\\net9.0\\\\LibraryConsumer.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\033.log",
+      "commandCount": 33,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        159
+      ],
+      "original": "| PK18 | Build library that sees SDK only through an indirect package reference | Verify intended buildTransitive behavior; if unsupported by policy, give clear package-reference requirement rather than silently skipping |",
+      "input": "Build library that sees SDK only through an indirect package reference",
+      "expected": "Verify intended buildTransitive behavior; if unsupported by policy, give clear package-reference requirement rather than silently skipping",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK19",
+      "status": "passed",
+      "checks": [
+        "Changed referenced helper signature string to int",
+        "Reference assembly hash changed",
+        "Original call now fails CS1503, corrected call rebuilds successfully"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\039.log",
+      "commandCount": 39,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        173
+      ],
+      "original": "| PK19 | Change referenced helper assembly signature and rebuild | Semantic analysis rebinds; valid updated output or compiler error, not cached source with obsolete overload |",
+      "input": "Change referenced helper assembly signature and rebuild",
+      "expected": "Semantic analysis rebinds; valid updated output or compiler error, not cached source with obsolete overload",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    },
+    {
+      "id": "PK20",
+      "status": "passed",
+      "checks": [
+        "Explicit Compose<string> inside named ordinary argument evaluation",
+        "WithName and surrounding arguments each evaluated once in lexical C# order",
+        "Typed string action and exact literal result preserved"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\041.log",
+      "commandCount": 41,
+      "provenance": "final-expanded\\expanded-pk-evidence.json",
+      "logLines": [
+        178
+      ],
+      "original": "| PK20 | Generate workflow calls with explicit generic arguments and ordinary non-workflow arguments with counters | Same action result type and one evaluation of each ordinary argument in C# call order |",
+      "input": "Generate workflow calls with explicit generic arguments and ordinary non-workflow arguments with counters",
+      "expected": "Same action result type and one evaluation of each ordinary argument in C# call order",
+      "heading": "### 14.6 Build, packaging, and tooling tests"
+    }
+  ],
+  "additionalChecks": [
+    {
+      "id": "DEP-NuGetSidecars",
+      "status": "passed",
+      "checks": [
+        "TFM-specific, assembly-specific requirements in both library packages",
+        "Direct and transitive library manifests copied beside consumer DLLs"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\LibraryConsumer\\\\bin\\\\Release\\\\net9.0\\\\LibraryConsumer.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\033.log",
+      "commandCount": 33
+    },
+    {
+      "id": "GEN-SchemaPackage",
+      "status": "passed",
+      "checks": [
+        "WorkflowExpressionSchema uses the production packaged CLI before semantic analysis",
+        "Consumer authors no workflow attributes; generated API/model metadata is reflected",
+        "Deterministic repeat, schema-content edit, API rename, missing file and item removal are exercised",
+        "Generated inputs cannot accumulate after schema removal"
+      ],
+      "details": {
+        "schema": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\Schemas\\operations.json"
+      },
+      "command": "dotnet [\"build\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-restore\",\"-c\",\"Release\",\"-v:q\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-p:TargetFramework=net9.0\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\051.log",
+      "commandCount": 51
+    },
+    {
+      "id": "CTX-Nullable",
+      "status": "passed",
+      "checks": [
+        "Same source fails original-line CS8600 with nullable enabled/warnings-as-errors",
+        "Nullable disabled compiles/runs",
+        "Manifest matches caller"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\055.log",
+      "commandCount": 55
+    },
+    {
+      "id": "CTX-Unsafe",
+      "status": "passed",
+      "checks": [
+        "Unsafe disabled fails CS0227 at original source",
+        "Enabled builds/runs and is in manifest"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\058.log",
+      "commandCount": 58
+    },
+    {
+      "id": "CTX-Language",
+      "status": "passed",
+      "checks": [
+        "C#12 collection-expression source fails under C#11",
+        "C#12 builds/runs using requested parse options"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\061.log",
+      "commandCount": 61
+    },
+    {
+      "id": "CTX-Checked",
+      "status": "passed",
+      "checks": [
+        "Checked and unchecked rebuilds execute distinct overflow behavior",
+        "Manifest and native checked expression preserve context"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\065.log",
+      "commandCount": 65
+    },
+    {
+      "id": "CTX-ReferenceAliases",
+      "status": "passed",
+      "checks": [
+        "Real extern-alias-only ProjectReference compiles",
+        "Resolved alias metadata reaches analysis and actual Csc"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\068.log",
+      "commandCount": 68
+    },
+    {
+      "id": "CTX-SigningPlatformStartup",
+      "status": "passed",
+      "checks": [
+        "Delay-signed x64 WinExe executes selected Main despite second Main",
+        "Public-key identity present",
+        "Manifest key path/platform/output kind/startup object preserved"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\070.log",
+      "commandCount": 70
+    },
+    {
+      "id": "CTX-SignedFriend",
+      "status": "passed",
+      "checks": [
+        "Signed helper grants Matrix access via the SDK public key",
+        "Caller analysis and actual compiler accept internal access",
+        "No stripping of IVT or signing"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\073.log",
+      "commandCount": 73
+    },
+    {
+      "id": "CTX-PublicSign",
+      "status": "passed",
+      "checks": [
+        "Public-signed executable builds/runs",
+        "Manifest distinguishes public sign from delay sign"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\075.log",
+      "commandCount": 75
+    },
+    {
+      "id": "CTX-Library",
+      "status": "passed",
+      "checks": [
+        "Library output builds without an entry point",
+        "Library output kind and null startup object reach semantic compilation"
+      ],
+      "details": null,
+      "command": "dotnet [\"build\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-restore\",\"-c\",\"Release\",\"-v:q\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-p:OutputType=Library\",\"-p:StartupObject=\",\"-p:TargetFramework=net9.0\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\076.log",
+      "commandCount": 76
+    },
+    {
+      "id": "CTX-TargetName",
+      "status": "passed",
+      "checks": [
+        "Custom TargetName matches actual managed assembly identity and analysis manifest"
+      ],
+      "details": null,
+      "command": "dotnet [\"exec\",\"--runtimeconfig\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.runtimeconfig.json\",\"--depsfile\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.deps.json\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\RenamedMatrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\078.log",
+      "commandCount": 78
+    },
+    {
+      "id": "DEP-PublishCodeless",
+      "status": "passed",
+      "checks": [
+        "Actual workflow.json triggers post-publish validator",
+        "Codeless artifact passes without a host profile",
+        "Current requirements copied; authoring application not executed"
+      ],
+      "details": {
+        "exitCode": 0,
+        "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\081.log"
+      },
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\081.log",
+      "commandCount": 81
+    },
+    {
+      "id": "DEP-ProfileForwarding",
+      "status": "passed",
+      "checks": [
+        "Documented version1 profile passed through the publish target",
+        "Codeless artifacts validated; no native capability certification claimed"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\",\"-p:WorkflowExpressionHostProfile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\host-profile.json\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\082.log",
+      "commandCount": 82
+    },
+    {
+      "id": "DEP-Aggregation",
+      "status": "passed",
+      "checks": [
+        "Directory input reads every assembly-specific sidecar",
+        "Invalid additional sidecar fails closed with WFDEP001"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\\\\microsoft.azure.workflows.sdk\\\\1.0.0-preview.2\\\\tools\\\\workflow-build\\\\Microsoft.Azure.Workflows.Sdk.Build.dll\",\"validate-deployment\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\083.log",
+      "commandCount": 83
+    },
+    {
+      "id": "DEP-Unapproved",
+      "status": "passed",
+      "checks": [
+        "Mandatory publish validation rejects a used custom dependency without approval",
+        "WFDEP002 propagates as a nonzero publish exit"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\unapproved\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\084.log",
+      "commandCount": 84
+    },
+    {
+      "id": "DEP-MissingOrHash",
+      "status": "passed",
+      "checks": [
+        "Directory aggregation reads actual compiler reports",
+        "Used approved helper requires a present matching managed DLL",
+        "Missing DLL and wrong SHA both fail WFDEP003"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\\\\microsoft.azure.workflows.sdk\\\\1.0.0-preview.2\\\\tools\\\\workflow-build\\\\Microsoft.Azure.Workflows.Sdk.Build.dll\",\"validate-deployment\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\codeless\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\host-profile.json\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\086.log",
+      "commandCount": 86
+    },
+    {
+      "id": "DEP-WFDEP009",
+      "status": "passed",
+      "checks": [
+        "Real publish artifact rejected with WFDEP009",
+        "No capability silently enabled"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\native\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\087.log",
+      "commandCount": 87
+    },
+    {
+      "id": "DEP-WFDEP004",
+      "status": "passed",
+      "checks": [
+        "Real publish artifact rejected with WFDEP004",
+        "No capability silently enabled"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\marker\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\088.log",
+      "commandCount": 88
+    },
+    {
+      "id": "DEP-WFDEP005",
+      "status": "passed",
+      "checks": [
+        "Real publish artifact rejected with WFDEP005",
+        "No capability silently enabled"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\condition\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\089.log",
+      "commandCount": 89
+    },
+    {
+      "id": "DEP-WFDEP006",
+      "status": "passed",
+      "checks": [
+        "Real publish artifact rejected with WFDEP006",
+        "No capability silently enabled"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\syntax\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\090.log",
+      "commandCount": 90
+    },
+    {
+      "id": "DEP-NativeProfileDenied",
+      "status": "passed",
+      "checks": [
+        "Ordinary native Compose is blocked independently of Condition/custom dependencies",
+        "Explicit nativeExpressionsVerified=false produces WFDEP009"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\native-profile-denied\",\"-p:WorkflowExpressionHostProfile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\host-profile.json\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\091.log",
+      "commandCount": 91
+    },
+    {
+      "id": "DEP-ExtensionImport",
+      "status": "passed",
+      "checks": [
+        "Actual compiled extension dependency requirement",
+        "Instance-style extension syntax requires namespaceImports",
+        "Missing import fails WFDEP008; native host remains unapproved"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\extension-import\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\093.log",
+      "commandCount": 93
+    },
+    {
+      "id": "DEP-InvalidProfile",
+      "status": "passed",
+      "checks": [
+        "WorkflowExpressionHostProfile is forwarded to the CLI",
+        "Invalid version fails WFDEP001"
+      ],
+      "details": null,
+      "command": "dotnet [\"publish\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\Matrix.csproj\",\"--no-build\",\"--no-restore\",\"-c\",\"Release\",\"-p:TargetFramework=net9.0\",\"-p:WorkflowFixtureFile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\published-workflow.json\",\"-p:UseReferenceHelper=true\",\"-v:minimal\",\"-p:SdkPackageVersion=1.0.0-preview.2\",\"-p:RestorePackagesPath=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\",\"-o\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\invalid-profile\",\"-p:WorkflowExpressionHostProfile=D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\host-profile.json\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\094.log",
+      "commandCount": 94
+    },
+    {
+      "id": "DEP-NoWorkflows",
+      "status": "passed",
+      "checks": [
+        "Library publication explicitly skips deployment validation",
+        "Direct CLI does not misreport an empty deployment as verified"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\packages\\\\microsoft.azure.workflows.sdk\\\\1.0.0-preview.2\\\\tools\\\\workflow-build\\\\Microsoft.Azure.Workflows.Sdk.Build.dll\",\"validate-deployment\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\library\",\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\deployments\\\\library\"]",
+      "exitCode": 1,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\096.log",
+      "commandCount": 96
+    },
+    {
+      "id": "DEP-NoAuthoringExecution",
+      "status": "passed",
+      "checks": [
+        "No app execution in publish or validation",
+        "Explicit test-only app invocation activates the sentinel positive control"
+      ],
+      "details": null,
+      "command": "dotnet [\"D:\\\\dev\\\\logicapps-sdk\\\\tests\\\\SourcePackageConsumer\\\\obj\\\\package-validation\\\\matrix workspace\\\\Matrix\\\\bin\\\\Release\\\\net9.0\\\\Matrix.dll\"]",
+      "exitCode": 0,
+      "log": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\matrix workspace\\logs\\097.log",
+      "commandCount": 97
+    }
+  ],
+  "completedUtc": "2026-09-18T11:50:02.0223503Z",
+  "expandedEvidence": "final-expanded\\expanded-pk-evidence.json",
+  "remainingGateFailures": []
+}

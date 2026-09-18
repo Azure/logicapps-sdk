@@ -12,14 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Itautomate
     public class ItautomateActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "itautomate")]
-        public IBodyWorkflowAction<JToken> RunCommand(Expression<Func<int>> id, Expression<Func<object>> commandInput = null)
+        public IBodyWorkflowAction<JToken> RunCommand([WorkflowExpression] Func<int> id, [WorkflowExpression] Func<object> commandInput = null)
         {
-            var apiCallPath = "/RunCommand";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(commandInput);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(commandInput, nameof(commandInput), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RunCommand";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(commandInput);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

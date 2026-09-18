@@ -12,22 +12,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abbreviationsip
     public class AbbreviationsipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abbreviationsip")]
-        public IBodyWorkflowAction<AbbrGetResponse> AbbrGet(Expression<Func<string>> term, Expression<Func<string>> categoryid = null, Expression<Func<sortbyInput>> sortby = null, Expression<Func<searchtypeInput>> searchtype = null)
+        public IBodyWorkflowAction<AbbrGetResponse> AbbrGet([WorkflowExpression] Func<string> term, [WorkflowExpression] Func<string> categoryid = null, [WorkflowExpression] Func<sortbyInput> sortby = null, [WorkflowExpression] Func<searchtypeInput> searchtype = null)
         {
-            var apiCallPath = "/abbr.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["term"] = CSharpExpressionConverter.ConvertO(term);
-            if (categoryid != null)
-                callPayload.Queries["categoryid"] = CSharpExpressionConverter.ConvertO(categoryid);
-            callPayload.Queries["sortby"] = Convert.ToString("p");
-            if (sortby != null)
-                callPayload.Queries["sortby"] = CSharpExpressionConverter.Convert(sortby);
-            callPayload.Queries["searchtype"] = Convert.ToString("e");
-            if (searchtype != null)
-                callPayload.Queries["searchtype"] = CSharpExpressionConverter.Convert(searchtype);
-            callPayload.Queries["format"] = Convert.ToString("json");
-            return new ApiConnectionAction<AbbrGetResponse>(callPayload);
+            SourceExpression.Validate(term, nameof(term), required: true);
+            SourceExpression.Validate(categoryid, nameof(categoryid), required: false);
+            SourceExpression.Validate(sortby, nameof(sortby), required: false);
+            SourceExpression.Validate(searchtype, nameof(searchtype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/abbr.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["term"] = SourceExpressionConverter.ConvertO(term);
+                if (categoryid != null)
+                    callPayload.Queries["categoryid"] = SourceExpressionConverter.ConvertO(categoryid);
+                callPayload.Queries["sortby"] = Convert.ToString("p");
+                if (sortby != null)
+                    callPayload.Queries["sortby"] = SourceExpressionConverter.Convert(sortby);
+                callPayload.Queries["searchtype"] = Convert.ToString("e");
+                if (searchtype != null)
+                    callPayload.Queries["searchtype"] = SourceExpressionConverter.Convert(searchtype);
+                callPayload.Queries["format"] = Convert.ToString("json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AbbrGetResponse>(BuildSourceInput);
         }
     }
 

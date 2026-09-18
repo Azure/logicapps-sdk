@@ -12,69 +12,102 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hithorizons
     public class HithorizonsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet(Expression<Func<string>> hitHorizonsId)
+        public IBodyWorkflowAction<CompanyDetailResultApiResponse> CompanyGet([WorkflowExpression] Func<string> hitHorizonsId)
         {
-            var apiCallPath = "/Company/Get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["HitHorizonsId"] = CSharpExpressionConverter.ConvertO(hitHorizonsId);
-            return new ApiConnectionAction<CompanyDetailResultApiResponse>(callPayload);
+            SourceExpression.Validate(hitHorizonsId, nameof(hitHorizonsId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Company/Get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["HitHorizonsId"] = SourceExpressionConverter.ConvertO(hitHorizonsId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyDetailResultApiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch(Expression<Func<string>> dUNSNumber = null, Expression<Func<string>> companyName = null, Expression<Func<string>> nationalId = null, Expression<Func<string>> addressUnstructured = null, Expression<Func<string>> addressStreet = null, Expression<Func<string>> city = null, Expression<Func<string>> stateProvince = null, Expression<Func<string>> country = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearch([WorkflowExpression] Func<string> dUNSNumber = null, [WorkflowExpression] Func<string> companyName = null, [WorkflowExpression] Func<string> nationalId = null, [WorkflowExpression] Func<string> addressUnstructured = null, [WorkflowExpression] Func<string> addressStreet = null, [WorkflowExpression] Func<string> city = null, [WorkflowExpression] Func<string> stateProvince = null, [WorkflowExpression] Func<string> country = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/Company/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dUNSNumber != null)
-                callPayload.Queries["DUNSNumber"] = CSharpExpressionConverter.ConvertO(dUNSNumber);
-            if (companyName != null)
-                callPayload.Queries["CompanyName"] = CSharpExpressionConverter.ConvertO(companyName);
-            if (nationalId != null)
-                callPayload.Queries["NationalId"] = CSharpExpressionConverter.ConvertO(nationalId);
-            if (addressUnstructured != null)
-                callPayload.Queries["AddressUnstructured"] = CSharpExpressionConverter.ConvertO(addressUnstructured);
-            if (addressStreet != null)
-                callPayload.Queries["AddressStreet"] = CSharpExpressionConverter.ConvertO(addressStreet);
-            if (city != null)
-                callPayload.Queries["City"] = CSharpExpressionConverter.ConvertO(city);
-            if (stateProvince != null)
-                callPayload.Queries["StateProvince"] = CSharpExpressionConverter.ConvertO(stateProvince);
-            if (country != null)
-                callPayload.Queries["Country"] = CSharpExpressionConverter.ConvertO(country);
-            callPayload.Queries["ShowBranches"] = Convert.ToString(false);
-            if (showBranches != null)
-                callPayload.Queries["ShowBranches"] = CSharpExpressionConverter.ConvertO(showBranches);
-            if (companyTypes != null)
-                callPayload.Queries["CompanyTypes"] = CSharpExpressionConverter.ConvertO(companyTypes);
-            callPayload.Queries["MaxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
+            SourceExpression.Validate(dUNSNumber, nameof(dUNSNumber), required: false);
+            SourceExpression.Validate(companyName, nameof(companyName), required: false);
+            SourceExpression.Validate(nationalId, nameof(nationalId), required: false);
+            SourceExpression.Validate(addressUnstructured, nameof(addressUnstructured), required: false);
+            SourceExpression.Validate(addressStreet, nameof(addressStreet), required: false);
+            SourceExpression.Validate(city, nameof(city), required: false);
+            SourceExpression.Validate(stateProvince, nameof(stateProvince), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(showBranches, nameof(showBranches), required: false);
+            SourceExpression.Validate(companyTypes, nameof(companyTypes), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Company/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (dUNSNumber != null)
+                    callPayload.Queries["DUNSNumber"] = SourceExpressionConverter.ConvertO(dUNSNumber);
+                if (companyName != null)
+                    callPayload.Queries["CompanyName"] = SourceExpressionConverter.ConvertO(companyName);
+                if (nationalId != null)
+                    callPayload.Queries["NationalId"] = SourceExpressionConverter.ConvertO(nationalId);
+                if (addressUnstructured != null)
+                    callPayload.Queries["AddressUnstructured"] = SourceExpressionConverter.ConvertO(addressUnstructured);
+                if (addressStreet != null)
+                    callPayload.Queries["AddressStreet"] = SourceExpressionConverter.ConvertO(addressStreet);
+                if (city != null)
+                    callPayload.Queries["City"] = SourceExpressionConverter.ConvertO(city);
+                if (stateProvince != null)
+                    callPayload.Queries["StateProvince"] = SourceExpressionConverter.ConvertO(stateProvince);
+                if (country != null)
+                    callPayload.Queries["Country"] = SourceExpressionConverter.ConvertO(country);
+                callPayload.Queries["ShowBranches"] = Convert.ToString(false);
+                if (showBranches != null)
+                    callPayload.Queries["ShowBranches"] = SourceExpressionConverter.ConvertO(showBranches);
+                if (companyTypes != null)
+                    callPayload.Queries["CompanyTypes"] = SourceExpressionConverter.ConvertO(companyTypes);
+                callPayload.Queries["MaxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["MaxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanySearchResponseApiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hithorizons")]
-        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured(Expression<Func<string>> ids = null, Expression<Func<string>> name = null, Expression<Func<string>> address = null, Expression<Func<bool>> showBranches = null, Expression<Func<string>> companyTypes = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<CompanySearchResponseApiResponse> CompanySearchUnstructured([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> address = null, [WorkflowExpression] Func<bool> showBranches = null, [WorkflowExpression] Func<string> companyTypes = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/Company/SearchUnstructured";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["Ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (name != null)
-                callPayload.Queries["Name"] = CSharpExpressionConverter.ConvertO(name);
-            if (address != null)
-                callPayload.Queries["Address"] = CSharpExpressionConverter.ConvertO(address);
-            callPayload.Queries["ShowBranches"] = Convert.ToString(false);
-            if (showBranches != null)
-                callPayload.Queries["ShowBranches"] = CSharpExpressionConverter.ConvertO(showBranches);
-            if (companyTypes != null)
-                callPayload.Queries["CompanyTypes"] = CSharpExpressionConverter.ConvertO(companyTypes);
-            callPayload.Queries["MaxResults"] = Convert.ToString(20);
-            if (maxResults != null)
-                callPayload.Queries["MaxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<CompanySearchResponseApiResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(address, nameof(address), required: false);
+            SourceExpression.Validate(showBranches, nameof(showBranches), required: false);
+            SourceExpression.Validate(companyTypes, nameof(companyTypes), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Company/SearchUnstructured";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["Ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (name != null)
+                    callPayload.Queries["Name"] = SourceExpressionConverter.ConvertO(name);
+                if (address != null)
+                    callPayload.Queries["Address"] = SourceExpressionConverter.ConvertO(address);
+                callPayload.Queries["ShowBranches"] = Convert.ToString(false);
+                if (showBranches != null)
+                    callPayload.Queries["ShowBranches"] = SourceExpressionConverter.ConvertO(showBranches);
+                if (companyTypes != null)
+                    callPayload.Queries["CompanyTypes"] = SourceExpressionConverter.ConvertO(companyTypes);
+                callPayload.Queries["MaxResults"] = Convert.ToString(20);
+                if (maxResults != null)
+                    callPayload.Queries["MaxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanySearchResponseApiResponse>(BuildSourceInput);
         }
     }
 

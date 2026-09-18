@@ -12,233 +12,395 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentdrafter
     public class DocumentdrafterActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace(Expression<Func<string>> siteUrl, Expression<Func<string>> workspaceNameRoute, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> masterWorkSpace = null, Expression<Func<bool>> copyStyling = null, Expression<Func<bool>> copyFolders = null)
+        public IBodyWorkflowAction<GetCreateWorkspaceResponse> GetCreateWorkspace([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workspaceNameRoute, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> masterWorkSpace = null, [WorkflowExpression] Func<bool> copyStyling = null, [WorkflowExpression] Func<bool> copyFolders = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceNameRoute, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
-            if (masterWorkSpace != null)
-                callPayload.Queries["MasterWorkSpace"] = CSharpExpressionConverter.ConvertO(masterWorkSpace);
-            if (copyStyling != null)
-                callPayload.Queries["CopyStyling"] = CSharpExpressionConverter.ConvertO(copyStyling);
-            if (copyFolders != null)
-                callPayload.Queries["CopyFolders"] = CSharpExpressionConverter.ConvertO(copyFolders);
-            return new ApiConnectionAction<GetCreateWorkspaceResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(workspaceNameRoute, nameof(workspaceNameRoute), required: true);
+            SourceExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            SourceExpression.Validate(masterWorkSpace, nameof(masterWorkSpace), required: false);
+            SourceExpression.Validate(copyStyling, nameof(copyStyling), required: false);
+            SourceExpression.Validate(copyFolders, nameof(copyFolders), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateWorkspace/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceNameRoute, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = SourceExpressionConverter.ConvertO(createIfNotFound);
+                if (masterWorkSpace != null)
+                    callPayload.Queries["MasterWorkSpace"] = SourceExpressionConverter.ConvertO(masterWorkSpace);
+                if (copyStyling != null)
+                    callPayload.Queries["CopyStyling"] = SourceExpressionConverter.ConvertO(copyStyling);
+                if (copyFolders != null)
+                    callPayload.Queries["CopyFolders"] = SourceExpressionConverter.ConvertO(copyFolders);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreateWorkspaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> folderName, Expression<Func<string>> parentId)
+        public IBodyWorkflowAction<GetCreateFolderResponse> GetCreateFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> folderName, [WorkflowExpression] Func<string> parentId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
-            callPayload.Queries["ParentId"] = CSharpExpressionConverter.ConvertO(parentId);
-            return new ApiConnectionAction<GetCreateFolderResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            SourceExpression.Validate(folderName, nameof(folderName), required: true);
+            SourceExpression.Validate(parentId, nameof(parentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = SourceExpressionConverter.ConvertO(createIfNotFound);
+                callPayload.Queries["ParentId"] = SourceExpressionConverter.ConvertO(parentId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreateFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> role = null)
+        public IBodyWorkflowAction<GetCreateGroupResponse> GetCreateGroup([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupNamePath, [WorkflowExpression] Func<string> role = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
-            if (role != null)
-                callPayload.Queries["Role"] = CSharpExpressionConverter.ConvertO(role);
-            return new ApiConnectionAction<GetCreateGroupResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            SourceExpression.Validate(groupNamePath, nameof(groupNamePath), required: true);
+            SourceExpression.Validate(role, nameof(role), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateGroup/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = SourceExpressionConverter.ConvertO(createIfNotFound);
+                if (role != null)
+                    callPayload.Queries["Role"] = SourceExpressionConverter.ConvertO(role);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreateGroupResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupNamePath, Expression<Func<string>> folderId)
+        public IBodyWorkflowAction<GetCreateAccessFolderResponse> GetCreateAccessFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupNamePath, [WorkflowExpression] Func<string> folderId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
-            callPayload.Queries["FolderId"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionAction<GetCreateAccessFolderResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            SourceExpression.Validate(groupNamePath, nameof(groupNamePath), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateAccessFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupNamePath, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = SourceExpressionConverter.ConvertO(createIfNotFound);
+                callPayload.Queries["FolderId"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreateAccessFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser(Expression<Func<string>> siteUrl, Expression<Func<bool>> createIfNotFound, Expression<Func<string>> groupName, Expression<Func<string>> email, Expression<Func<bool>> sendInvite)
+        public IBodyWorkflowAction<GetCreateUserResponse> GetCreateUser([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<bool> createIfNotFound, [WorkflowExpression] Func<string> groupName, [WorkflowExpression] Func<string> email, [WorkflowExpression] Func<bool> sendInvite)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["CreateIfNotFound"] = CSharpExpressionConverter.ConvertO(createIfNotFound);
-            callPayload.Queries["GroupName"] = CSharpExpressionConverter.ConvertO(groupName);
-            callPayload.Queries["sendInvite"] = CSharpExpressionConverter.ConvertO(sendInvite);
-            return new ApiConnectionAction<GetCreateUserResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(createIfNotFound, nameof(createIfNotFound), required: true);
+            SourceExpression.Validate(groupName, nameof(groupName), required: true);
+            SourceExpression.Validate(email, nameof(email), required: true);
+            SourceExpression.Validate(sendInvite, nameof(sendInvite), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetCreateUser/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(email, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["CreateIfNotFound"] = SourceExpressionConverter.ConvertO(createIfNotFound);
+                callPayload.Queries["GroupName"] = SourceExpressionConverter.ConvertO(groupName);
+                callPayload.Queries["sendInvite"] = SourceExpressionConverter.ConvertO(sendInvite);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCreateUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder(Expression<Func<string>> siteUrl, Expression<Func<string>> folderId, Expression<Func<string>> fileName, Expression<Func<string>> fileBase64)
+        public IBodyWorkflowAction<SaveStaticFileToFolderResponse> SaveStaticFileToFolder([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> fileName, [WorkflowExpression] Func<string> fileBase64)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            return new ApiConnectionAction<SaveStaticFileToFolderResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(fileName, nameof(fileName), required: true);
+            SourceExpression.Validate(fileBase64, nameof(fileBase64), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateSaveStaticFileToFolder/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SaveStaticFileToFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<string> GetExternalShareLink(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> scope, Expression<Func<int>> expireDays, Expression<Func<string>> createUser)
+        public IBodyWorkflowAction<string> GetExternalShareLink([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> scope, [WorkflowExpression] Func<int> expireDays, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = "/PowerAutomateCreateMagicLink";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["Scope"] = CSharpExpressionConverter.ConvertO(scope);
-            callPayload.Queries["ExpireDays"] = CSharpExpressionConverter.ConvertO(expireDays);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(scope, nameof(scope), required: true);
+            SourceExpression.Validate(expireDays, nameof(expireDays), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PowerAutomateCreateMagicLink";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["Scope"] = SourceExpressionConverter.ConvertO(scope);
+                callPayload.Queries["ExpireDays"] = SourceExpressionConverter.ConvertO(expireDays);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
+        public IBodyWorkflowAction<CreateQuestionnaireResponse> CreateQuestionnaire([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<CreateQuestionnaireResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(workSpace, nameof(workSpace), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateCreateQuestionnaire/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["WorkSpace"] = SourceExpressionConverter.ConvertO(workSpace);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateQuestionnaireResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> DeleteAllShareLinksOnDocument(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser)
+        public IBodyWorkflowAction<JToken> DeleteAllShareLinksOnDocument([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = "/DeleteAllShareLinksOnDocument";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/DeleteAllShareLinksOnDocument";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> FlowAddShare(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<string>> groupOrMail, Expression<Func<bool>> selectedQuestions = null)
+        public IBodyWorkflowAction<JToken> FlowAddShare([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> groupOrMail, [WorkflowExpression] Func<bool> selectedQuestions = null)
         {
-            var apiCallPath = "/AddShare";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            callPayload.Queries["GroupOrMail"] = CSharpExpressionConverter.ConvertO(groupOrMail);
-            callPayload.Queries["SelectedQuestions"] = Convert.ToString(false);
-            if (selectedQuestions != null)
-                callPayload.Queries["SelectedQuestions"] = CSharpExpressionConverter.ConvertO(selectedQuestions);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            SourceExpression.Validate(groupOrMail, nameof(groupOrMail), required: true);
+            SourceExpression.Validate(selectedQuestions, nameof(selectedQuestions), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/AddShare";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                callPayload.Queries["GroupOrMail"] = SourceExpressionConverter.ConvertO(groupOrMail);
+                callPayload.Queries["SelectedQuestions"] = Convert.ToString(false);
+                if (selectedQuestions != null)
+                    callPayload.Queries["SelectedQuestions"] = SourceExpressionConverter.ConvertO(selectedQuestions);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> FlowSetState(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> flowKey, Expression<Func<string>> state, Expression<Func<string>> createUser)
+        public IBodyWorkflowAction<JToken> FlowSetState([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = "/FlowSetState";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
-            callPayload.Queries["State"] = CSharpExpressionConverter.ConvertO(state);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(flowKey, nameof(flowKey), required: true);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FlowSetState";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["FlowKey"] = SourceExpressionConverter.ConvertO(flowKey);
+                callPayload.Queries["State"] = SourceExpressionConverter.ConvertO(state);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> GetVariablesForTemplate(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser)
+        public IBodyWorkflowAction<JToken> GetVariablesForTemplate([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(workSpace, nameof(workSpace), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateGetTagsForDocument/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["WorkSpace"] = SourceExpressionConverter.ConvertO(workSpace);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> GetTagsForQuestionnaire(Expression<Func<string>> siteUrl, Expression<Func<string>> createUser, Expression<Func<string>> documentId = null)
+        public IBodyWorkflowAction<GetTagsForQuestionnaireResponse> GetTagsForQuestionnaire([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> documentId = null)
         {
-            var apiCallPath = "/PowerAutomateQuestionsWithTags";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            if (documentId != null)
-                callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PowerAutomateQuestionsWithTags";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                if (documentId != null)
+                    callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTagsForQuestionnaireResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson(Expression<Func<string>> siteUrl, Expression<Func<string>> workSpace, Expression<Func<string>> templateId, Expression<Func<string>> createUser, Expression<Func<string>> jsonData)
+        public IBodyWorkflowAction<ProcessJsonResponse> ProcessJson([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> workSpace, [WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<string> jsonData)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["WorkSpace"] = CSharpExpressionConverter.ConvertO(workSpace);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            return new ApiConnectionAction<ProcessJsonResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(workSpace, nameof(workSpace), required: true);
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            SourceExpression.Validate(jsonData, nameof(jsonData), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/PowerAutomateDataModelCreateDoc/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["WorkSpace"] = SourceExpressionConverter.ConvertO(workSpace);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProcessJsonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<JToken> GetFlowInformation(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl)
+        public IBodyWorkflowAction<JToken> GetFlowInformation([WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> siteUrl)
         {
-            var apiCallPath = "/PowerAutomateGetFlowInformation";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(flowKey, nameof(flowKey), required: true);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PowerAutomateGetFlowInformation";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FlowKey"] = SourceExpressionConverter.ConvertO(flowKey);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentdrafter")]
-        public IBodyWorkflowAction<GetDocumentsResponse> GetDocuments(Expression<Func<string>> siteUrl, Expression<Func<string>> documentId, Expression<Func<string>> createUser, Expression<Func<outputFormatInput>> outputFormat)
+        public IBodyWorkflowAction<GetDocumentsResponse> GetDocuments([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> documentId, [WorkflowExpression] Func<string> createUser, [WorkflowExpression] Func<outputFormatInput> outputFormat)
         {
-            var apiCallPath = "/PowerAutomateGetDocument";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["DocumentId"] = CSharpExpressionConverter.ConvertO(documentId);
-            callPayload.Queries["CreateUser"] = CSharpExpressionConverter.ConvertO(createUser);
-            callPayload.Queries["OutputFormat"] = CSharpExpressionConverter.Convert(outputFormat);
-            return new ApiConnectionAction<GetDocumentsResponse>(callPayload);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            SourceExpression.Validate(createUser, nameof(createUser), required: true);
+            SourceExpression.Validate(outputFormat, nameof(outputFormat), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PowerAutomateGetDocument";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["DocumentId"] = SourceExpressionConverter.ConvertO(documentId);
+                callPayload.Queries["CreateUser"] = SourceExpressionConverter.ConvertO(createUser);
+                callPayload.Queries["OutputFormat"] = SourceExpressionConverter.Convert(outputFormat);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDocumentsResponse>(BuildSourceInput);
         }
     }
 
     public class DocumentdrafterTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling(Expression<Func<string>> siteUrl, Expression<Func<string>> scope, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<TriggerSubmitPollingResponse> TriggerSubmitPolling([WorkflowExpression] Func<string> siteUrl, [WorkflowExpression] Func<string> scope, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/FlowWaitForSubmitPolling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            callPayload.Queries["Scope"] = CSharpExpressionConverter.ConvertO(scope);
-            return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            SourceExpression.Validate(scope, nameof(scope), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FlowWaitForSubmitPolling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                callPayload.Queries["Scope"] = SourceExpressionConverter.ConvertO(scope);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<TriggerSubmitPollingResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling(Expression<Func<string>> flowKey, Expression<Func<string>> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FlowTriggerPollingResponse> FlowTriggerPolling([WorkflowExpression] Func<string> flowKey, [WorkflowExpression] Func<string> siteUrl, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/FlowTriggerPolling";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["FlowKey"] = CSharpExpressionConverter.ConvertO(flowKey);
-            callPayload.Queries["SiteUrl"] = CSharpExpressionConverter.ConvertO(siteUrl);
-            return new ApiConnectionTrigger<FlowTriggerPollingResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(flowKey, nameof(flowKey), required: true);
+            SourceExpression.Validate(siteUrl, nameof(siteUrl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/FlowTriggerPolling";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["FlowKey"] = SourceExpressionConverter.ConvertO(flowKey);
+                callPayload.Queries["SiteUrl"] = SourceExpressionConverter.ConvertO(siteUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<FlowTriggerPollingResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

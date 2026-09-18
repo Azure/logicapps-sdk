@@ -16,42 +16,60 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.Jdbc
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
         public IBodyWorkflowAction<string[]> GetTables()
         {
-            var serviceProviderInput = new ServiceProviderOperationInput
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
-            };
-            return new ServiceProviderAction<string[]>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<JToken[]> RawQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
-            if (queryParameters != null)
-            {
-                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getTables", connectionName: connectionId)
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            return new ServiceProviderAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
-        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema(Expression<Func<string>> tableName)
+        public IBodyWorkflowAction<JToken[]> RawQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["tableName"] = CSharpExpressionConverter.ConvertToken(tableName);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(query, nameof(query), required: true);
+            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetSchemaOutputItem[]>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["query"] = SourceExpressionConverter.ConvertToken(query);
+                if (queryParameters != null)
+                {
+                    serviceProviderParameters["queryParameters"] = SourceExpressionConverter.ConvertToken(queryParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "rawQuery", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "Jdbc")]
+        public IBodyWorkflowAction<GetSchemaOutputItem[]> GetSchema([WorkflowExpression] Func<string> tableName)
+        {
+            SourceExpression.Validate(tableName, nameof(tableName), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["tableName"] = SourceExpressionConverter.ConvertToken(tableName);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/Jdbc", operationId: "getSchema", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<GetSchemaOutputItem[]>(BuildSourceInput);
         }
     }
 

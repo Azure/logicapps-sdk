@@ -14,117 +14,166 @@ namespace Microsoft.Azure.Workflows.Sdk.ServiceProviders.DB2
     public class DB2Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<DeleteRowOutput> DeleteRow(Expression<Func<string>> table, Expression<Func<object>> searchCondition)
+        public IOutputWorkflowAction<DeleteRowOutput> DeleteRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> searchCondition)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
-            serviceProviderParameters["searchCondition"] = CSharpExpressionConverter.ConvertToken(searchCondition);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(searchCondition, nameof(searchCondition), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<DeleteRowOutput>(serviceProviderInput);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<ExecuteNonQueryOutput> ExecuteNonQuery(Expression<Func<string>> statement, Expression<Func<object>> sqlParameters = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["statement"] = CSharpExpressionConverter.ConvertToken(statement);
-            if (sqlParameters != null)
-            {
-                serviceProviderParameters["sqlParameters"] = CSharpExpressionConverter.ConvertToken(sqlParameters);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["table"] = SourceExpressionConverter.ConvertToken(table);
+                serviceProviderParameters["searchCondition"] = SourceExpressionConverter.ConvertToken(searchCondition);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "deleteRow", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeNonQuery", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(serviceProviderInput);
+            return new ServiceProviderOutputAction<DeleteRowOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<JToken[]> ExecuteQuery(Expression<Func<string>> query, Expression<Func<object>> queryParameters = null)
+        public IOutputWorkflowAction<ExecuteNonQueryOutput> ExecuteNonQuery([WorkflowExpression] Func<string> statement, [WorkflowExpression] Func<object> sqlParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["query"] = CSharpExpressionConverter.ConvertToken(query);
-            if (queryParameters != null)
+            SourceExpression.Validate(statement, nameof(statement), required: true);
+            SourceExpression.Validate(sqlParameters, nameof(sqlParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["queryParameters"] = CSharpExpressionConverter.ConvertToken(queryParameters);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["statement"] = SourceExpressionConverter.ConvertToken(statement);
+                if (sqlParameters != null)
+                {
+                    serviceProviderParameters["sqlParameters"] = SourceExpressionConverter.ConvertToken(sqlParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeNonQuery", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeQuery", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            return new ServiceProviderOutputAction<ExecuteNonQueryOutput>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables(Expression<Func<string>> schema = null)
+        public IBodyWorkflowAction<JToken[]> ExecuteQuery([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<object> queryParameters = null)
         {
-            var serviceProviderParameters = new JObject();
-            if (schema != null)
+            SourceExpression.Validate(query, nameof(query), required: true);
+            SourceExpression.Validate(queryParameters, nameof(queryParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                serviceProviderParameters["schema"] = CSharpExpressionConverter.ConvertToken(schema);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["query"] = SourceExpressionConverter.ConvertToken(query);
+                if (queryParameters != null)
+                {
+                    serviceProviderParameters["queryParameters"] = SourceExpressionConverter.ConvertToken(queryParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "executeQuery", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "getTables", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<GetTablesOutputItem[]>(serviceProviderInput);
+            return new ServiceProviderAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<InsertRowOutput> InsertRow(Expression<Func<string>> table, Expression<Func<object>> insertParameters)
+        public IBodyWorkflowAction<GetTablesOutputItem[]> GetTables([WorkflowExpression] Func<string> schema = null)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
-            serviceProviderParameters["insertParameters"] = CSharpExpressionConverter.ConvertToken(insertParameters);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(schema, nameof(schema), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<InsertRowOutput>(serviceProviderInput);
-        }
+                var serviceProviderParameters = new JObject();
+                if (schema != null)
+                {
+                    serviceProviderParameters["schema"] = SourceExpressionConverter.ConvertToken(schema);
+                }
 
-        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IBodyWorkflowAction<JToken[]> StoredProcedure(Expression<Func<string>> procedureName, Expression<Func<object>> procedureParameters = null)
-        {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["procedureName"] = CSharpExpressionConverter.ConvertToken(procedureName);
-            if (procedureParameters != null)
-            {
-                serviceProviderParameters["procedureParameters"] = CSharpExpressionConverter.ConvertToken(procedureParameters);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "getTables", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
             }
 
-            var serviceProviderInput = new ServiceProviderOperationInput
-            {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "storedProcedure", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderAction<JToken[]>(serviceProviderInput);
+            return new ServiceProviderAction<GetTablesOutputItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
-        public IOutputWorkflowAction<UpdateRowOutput> UpdateRow(Expression<Func<string>> table, Expression<Func<object>> updatedColumns, Expression<Func<object>> searchCondition)
+        public IOutputWorkflowAction<InsertRowOutput> InsertRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> insertParameters)
         {
-            var serviceProviderParameters = new JObject();
-            serviceProviderParameters["table"] = CSharpExpressionConverter.ConvertToken(table);
-            serviceProviderParameters["updatedColumns"] = CSharpExpressionConverter.ConvertToken(updatedColumns);
-            serviceProviderParameters["searchCondition"] = CSharpExpressionConverter.ConvertToken(searchCondition);
-            var serviceProviderInput = new ServiceProviderOperationInput
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(insertParameters, nameof(insertParameters), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
             {
-                ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),
-                Parameters = serviceProviderParameters
-            };
-            return new ServiceProviderOutputAction<UpdateRowOutput>(serviceProviderInput);
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["table"] = SourceExpressionConverter.ConvertToken(table);
+                serviceProviderParameters["insertParameters"] = SourceExpressionConverter.ConvertToken(insertParameters);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "insertRow", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<InsertRowOutput>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
+        public IBodyWorkflowAction<JToken[]> StoredProcedure([WorkflowExpression] Func<string> procedureName, [WorkflowExpression] Func<object> procedureParameters = null)
+        {
+            SourceExpression.Validate(procedureName, nameof(procedureName), required: true);
+            SourceExpression.Validate(procedureParameters, nameof(procedureParameters), required: false);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["procedureName"] = SourceExpressionConverter.ConvertToken(procedureName);
+                if (procedureParameters != null)
+                {
+                    serviceProviderParameters["procedureParameters"] = SourceExpressionConverter.ConvertToken(procedureParameters);
+                }
+
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "storedProcedure", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderAction<JToken[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ServiceProvider, ConnectorName = "DB2")]
+        public IOutputWorkflowAction<UpdateRowOutput> UpdateRow([WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> updatedColumns, [WorkflowExpression] Func<object> searchCondition)
+        {
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(updatedColumns, nameof(updatedColumns), required: true);
+            SourceExpression.Validate(searchCondition, nameof(searchCondition), required: true);
+            ServiceProviderOperationInput BuildSourceInput()
+            {
+                var serviceProviderParameters = new JObject();
+                serviceProviderParameters["table"] = SourceExpressionConverter.ConvertToken(table);
+                serviceProviderParameters["updatedColumns"] = SourceExpressionConverter.ConvertToken(updatedColumns);
+                serviceProviderParameters["searchCondition"] = SourceExpressionConverter.ConvertToken(searchCondition);
+                var serviceProviderInput = new ServiceProviderOperationInput
+                {
+                    ServiceProviderConfiguration = new ServiceProviderConfiguration(serviceProviderId: "/serviceProviders/DB2", operationId: "updateRow", connectionName: connectionId),
+                    Parameters = serviceProviderParameters
+                };
+                return serviceProviderInput;
+            }
+
+            return new ServiceProviderOutputAction<UpdateRowOutput>(BuildSourceInput);
         }
     }
 

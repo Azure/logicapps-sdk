@@ -12,350 +12,397 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clickupteammanagerip
     public class ClickupteammanageripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateAFolderResponse> CreateAFolder(Expression<Func<string>> spaceId, Expression<Func<string>> bodyid = null, Expression<Func<string>> bodyfolderName = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodyoverrideStatuses = null, Expression<Func<bool>> bodyhiddenFolder = null, Expression<Func<string>> bodytaskCount = null, Expression<Func<bool>> bodyarchived = null, Expression<Func<JToken[]>> bodystatuses = null, Expression<Func<string>> bodypermissionLevel = null)
+        public IBodyWorkflowAction<CreateAFolderResponse> CreateAFolder([WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> bodyid = null, [WorkflowExpression] Func<string> bodyfolderName = null, [WorkflowExpression] Func<int> bodyorderIndex = null, [WorkflowExpression] Func<bool> bodyoverrideStatuses = null, [WorkflowExpression] Func<bool> bodyhiddenFolder = null, [WorkflowExpression] Func<string> bodytaskCount = null, [WorkflowExpression] Func<bool> bodyarchived = null, [WorkflowExpression] Func<JToken[]> bodystatuses = null, [WorkflowExpression] Func<string> bodypermissionLevel = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyid != null)
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            SourceExpression.Validate(bodyfolderName, nameof(bodyfolderName), required: false);
+            SourceExpression.Validate(bodyorderIndex, nameof(bodyorderIndex), required: false);
+            SourceExpression.Validate(bodyoverrideStatuses, nameof(bodyoverrideStatuses), required: false);
+            SourceExpression.Validate(bodyhiddenFolder, nameof(bodyhiddenFolder), required: false);
+            SourceExpression.Validate(bodytaskCount, nameof(bodytaskCount), required: false);
+            SourceExpression.Validate(bodyarchived, nameof(bodyarchived), required: false);
+            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
+            SourceExpression.Validate(bodypermissionLevel, nameof(bodypermissionLevel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/space/{0}/folder", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodyfolderName != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyfolderName);
+                    bodypropCount++;
+                }
+
+                if (bodyorderIndex != null)
+                {
+                    body["orderindex"] = SourceExpressionConverter.ConvertToken(bodyorderIndex);
+                    bodypropCount++;
+                }
+
+                if (bodyoverrideStatuses != null)
+                {
+                    body["override_statuses"] = SourceExpressionConverter.ConvertToken(bodyoverrideStatuses);
+                    bodypropCount++;
+                }
+
+                if (bodyhiddenFolder != null)
+                {
+                    body["hidden"] = SourceExpressionConverter.ConvertToken(bodyhiddenFolder);
+                    bodypropCount++;
+                }
+
+                var spaceObject = new JObject();
+                var spaceObjectpropCount = 0;
+                if (spaceObjectpropCount > 0)
+                {
+                    body["space"] = spaceObject;
+                    bodypropCount++;
+                }
+
+                if (bodytaskCount != null)
+                {
+                    body["task_count"] = SourceExpressionConverter.ConvertToken(bodytaskCount);
+                    bodypropCount++;
+                }
+
+                if (bodyarchived != null)
+                {
+                    body["archived"] = SourceExpressionConverter.ConvertToken(bodyarchived);
+                    bodypropCount++;
+                }
+
+                if (bodystatuses != null)
+                {
+                    body["statuses"] = SourceExpressionConverter.ConvertToken(bodystatuses);
+                    bodypropCount++;
+                }
+
+                if (bodypermissionLevel != null)
+                {
+                    body["permission_level"] = SourceExpressionConverter.ConvertToken(bodypermissionLevel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfolderName != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyfolderName);
-                bodypropCount++;
-            }
-
-            if (bodyorderIndex != null)
-            {
-                body["orderindex"] = CSharpExpressionConverter.ConvertToken(bodyorderIndex);
-                bodypropCount++;
-            }
-
-            if (bodyoverrideStatuses != null)
-            {
-                body["override_statuses"] = CSharpExpressionConverter.ConvertToken(bodyoverrideStatuses);
-                bodypropCount++;
-            }
-
-            if (bodyhiddenFolder != null)
-            {
-                body["hidden"] = CSharpExpressionConverter.ConvertToken(bodyhiddenFolder);
-                bodypropCount++;
-            }
-
-            var spaceObject = new JObject();
-            var spaceObjectpropCount = 0;
-            if (spaceObjectpropCount > 0)
-            {
-                body["space"] = spaceObject;
-                bodypropCount++;
-            }
-
-            if (bodytaskCount != null)
-            {
-                body["task_count"] = CSharpExpressionConverter.ConvertToken(bodytaskCount);
-                bodypropCount++;
-            }
-
-            if (bodyarchived != null)
-            {
-                body["archived"] = CSharpExpressionConverter.ConvertToken(bodyarchived);
-                bodypropCount++;
-            }
-
-            if (bodystatuses != null)
-            {
-                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
-                bodypropCount++;
-            }
-
-            if (bodypermissionLevel != null)
-            {
-                body["permission_level"] = CSharpExpressionConverter.ConvertToken(bodypermissionLevel);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAFolderResponse>(callPayload);
+            return new ApiConnectionAction<CreateAFolderResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
         public IBodyWorkflowAction<GetTeamsResponse> GetTeams()
         {
-            var apiCallPath = "/api/v2/team";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTeamsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v2/team";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTeamsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace(Expression<Func<string>> teamId, Expression<Func<string>> bodyspaceName = null, Expression<Func<bool>> bodymultipleAssignees = null, Expression<Func<bool>> bodyfeaturesdueDatesdueDates = null, Expression<Func<bool>> bodyfeaturesdueDatesstartDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapDueDate = null, Expression<Func<bool>> bodyfeaturesdueDatesremapClosedDueDate = null, Expression<Func<bool>> bodyfeaturestimeTrackingtimeTracking = null, Expression<Func<bool>> bodyfeaturestagstags = null, Expression<Func<bool>> bodyfeaturestimeEstimatestimeEstimates = null, Expression<Func<bool>> bodyfeatureschecklistschecklist = null, Expression<Func<bool>> bodyfeaturescustomFieldscustomFields = null, Expression<Func<bool>> bodyfeaturesremapDependenciesremapDependencies = null, Expression<Func<bool>> bodyfeaturesdependencyWarningdependencyWarning = null, Expression<Func<bool>> bodyfeaturesportfoliosportfolios = null)
+        public IBodyWorkflowAction<CreateSpaceResponse> CreateSpace([WorkflowExpression] Func<string> teamId, [WorkflowExpression] Func<string> bodyspaceName = null, [WorkflowExpression] Func<bool> bodymultipleAssignees = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesdueDates = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesstartDate = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesremapDueDate = null, [WorkflowExpression] Func<bool> bodyfeaturesdueDatesremapClosedDueDate = null, [WorkflowExpression] Func<bool> bodyfeaturestimeTrackingtimeTracking = null, [WorkflowExpression] Func<bool> bodyfeaturestagstags = null, [WorkflowExpression] Func<bool> bodyfeaturestimeEstimatestimeEstimates = null, [WorkflowExpression] Func<bool> bodyfeatureschecklistschecklist = null, [WorkflowExpression] Func<bool> bodyfeaturescustomFieldscustomFields = null, [WorkflowExpression] Func<bool> bodyfeaturesremapDependenciesremapDependencies = null, [WorkflowExpression] Func<bool> bodyfeaturesdependencyWarningdependencyWarning = null, [WorkflowExpression] Func<bool> bodyfeaturesportfoliosportfolios = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyspaceName != null)
+            SourceExpression.Validate(teamId, nameof(teamId), required: true);
+            SourceExpression.Validate(bodyspaceName, nameof(bodyspaceName), required: false);
+            SourceExpression.Validate(bodymultipleAssignees, nameof(bodymultipleAssignees), required: false);
+            SourceExpression.Validate(bodyfeaturesdueDatesdueDates, nameof(bodyfeaturesdueDatesdueDates), required: false);
+            SourceExpression.Validate(bodyfeaturesdueDatesstartDate, nameof(bodyfeaturesdueDatesstartDate), required: false);
+            SourceExpression.Validate(bodyfeaturesdueDatesremapDueDate, nameof(bodyfeaturesdueDatesremapDueDate), required: false);
+            SourceExpression.Validate(bodyfeaturesdueDatesremapClosedDueDate, nameof(bodyfeaturesdueDatesremapClosedDueDate), required: false);
+            SourceExpression.Validate(bodyfeaturestimeTrackingtimeTracking, nameof(bodyfeaturestimeTrackingtimeTracking), required: false);
+            SourceExpression.Validate(bodyfeaturestagstags, nameof(bodyfeaturestagstags), required: false);
+            SourceExpression.Validate(bodyfeaturestimeEstimatestimeEstimates, nameof(bodyfeaturestimeEstimatestimeEstimates), required: false);
+            SourceExpression.Validate(bodyfeatureschecklistschecklist, nameof(bodyfeatureschecklistschecklist), required: false);
+            SourceExpression.Validate(bodyfeaturescustomFieldscustomFields, nameof(bodyfeaturescustomFieldscustomFields), required: false);
+            SourceExpression.Validate(bodyfeaturesremapDependenciesremapDependencies, nameof(bodyfeaturesremapDependenciesremapDependencies), required: false);
+            SourceExpression.Validate(bodyfeaturesdependencyWarningdependencyWarning, nameof(bodyfeaturesdependencyWarningdependencyWarning), required: false);
+            SourceExpression.Validate(bodyfeaturesportfoliosportfolios, nameof(bodyfeaturesportfoliosportfolios), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyspaceName);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/team/{0}/space", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyspaceName != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyspaceName);
+                    bodypropCount++;
+                }
+
+                if (bodymultipleAssignees != null)
+                {
+                    body["multiple_assignees"] = SourceExpressionConverter.ConvertToken(bodymultipleAssignees);
+                    bodypropCount++;
+                }
+
+                var featuresObject = new JObject();
+                var featuresObjectpropCount = 0;
+                var dueDatesObject = new JObject();
+                var dueDatesObjectpropCount = 0;
+                if (bodyfeaturesdueDatesdueDates != null)
+                {
+                    dueDatesObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturesdueDatesdueDates);
+                    dueDatesObjectpropCount++;
+                }
+
+                if (bodyfeaturesdueDatesstartDate != null)
+                {
+                    dueDatesObject["start_date"] = SourceExpressionConverter.ConvertToken(bodyfeaturesdueDatesstartDate);
+                    dueDatesObjectpropCount++;
+                }
+
+                if (bodyfeaturesdueDatesremapDueDate != null)
+                {
+                    dueDatesObject["remap_due_dates"] = SourceExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapDueDate);
+                    dueDatesObjectpropCount++;
+                }
+
+                if (bodyfeaturesdueDatesremapClosedDueDate != null)
+                {
+                    dueDatesObject["remap_closed_due_date"] = SourceExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapClosedDueDate);
+                    dueDatesObjectpropCount++;
+                }
+
+                if (dueDatesObjectpropCount > 0)
+                {
+                    featuresObject["due_dates"] = dueDatesObject;
+                    featuresObjectpropCount++;
+                }
+
+                var timeTrackingObject = new JObject();
+                var timeTrackingObjectpropCount = 0;
+                if (bodyfeaturestimeTrackingtimeTracking != null)
+                {
+                    timeTrackingObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturestimeTrackingtimeTracking);
+                    timeTrackingObjectpropCount++;
+                }
+
+                if (timeTrackingObjectpropCount > 0)
+                {
+                    featuresObject["time_tracking"] = timeTrackingObject;
+                    featuresObjectpropCount++;
+                }
+
+                var tagsObject = new JObject();
+                var tagsObjectpropCount = 0;
+                if (bodyfeaturestagstags != null)
+                {
+                    tagsObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturestagstags);
+                    tagsObjectpropCount++;
+                }
+
+                if (tagsObjectpropCount > 0)
+                {
+                    featuresObject["tags"] = tagsObject;
+                    featuresObjectpropCount++;
+                }
+
+                var timeEstimatesObject = new JObject();
+                var timeEstimatesObjectpropCount = 0;
+                if (bodyfeaturestimeEstimatestimeEstimates != null)
+                {
+                    timeEstimatesObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturestimeEstimatestimeEstimates);
+                    timeEstimatesObjectpropCount++;
+                }
+
+                if (timeEstimatesObjectpropCount > 0)
+                {
+                    featuresObject["time_estimates"] = timeEstimatesObject;
+                    featuresObjectpropCount++;
+                }
+
+                var checklistsObject = new JObject();
+                var checklistsObjectpropCount = 0;
+                if (bodyfeatureschecklistschecklist != null)
+                {
+                    checklistsObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeatureschecklistschecklist);
+                    checklistsObjectpropCount++;
+                }
+
+                if (checklistsObjectpropCount > 0)
+                {
+                    featuresObject["checklists"] = checklistsObject;
+                    featuresObjectpropCount++;
+                }
+
+                var customFieldsObject = new JObject();
+                var customFieldsObjectpropCount = 0;
+                if (bodyfeaturescustomFieldscustomFields != null)
+                {
+                    customFieldsObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturescustomFieldscustomFields);
+                    customFieldsObjectpropCount++;
+                }
+
+                if (customFieldsObjectpropCount > 0)
+                {
+                    featuresObject["custom_fields"] = customFieldsObject;
+                    featuresObjectpropCount++;
+                }
+
+                var remapDependenciesObject = new JObject();
+                var remapDependenciesObjectpropCount = 0;
+                if (bodyfeaturesremapDependenciesremapDependencies != null)
+                {
+                    remapDependenciesObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturesremapDependenciesremapDependencies);
+                    remapDependenciesObjectpropCount++;
+                }
+
+                if (remapDependenciesObjectpropCount > 0)
+                {
+                    featuresObject["remap_dependencies"] = remapDependenciesObject;
+                    featuresObjectpropCount++;
+                }
+
+                var dependencyWarningObject = new JObject();
+                var dependencyWarningObjectpropCount = 0;
+                if (bodyfeaturesdependencyWarningdependencyWarning != null)
+                {
+                    dependencyWarningObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturesdependencyWarningdependencyWarning);
+                    dependencyWarningObjectpropCount++;
+                }
+
+                if (dependencyWarningObjectpropCount > 0)
+                {
+                    featuresObject["dependency_warning"] = dependencyWarningObject;
+                    featuresObjectpropCount++;
+                }
+
+                var portfoliosObject = new JObject();
+                var portfoliosObjectpropCount = 0;
+                if (bodyfeaturesportfoliosportfolios != null)
+                {
+                    portfoliosObject["enabled"] = SourceExpressionConverter.ConvertToken(bodyfeaturesportfoliosportfolios);
+                    portfoliosObjectpropCount++;
+                }
+
+                if (portfoliosObjectpropCount > 0)
+                {
+                    featuresObject["portfolios"] = portfoliosObject;
+                    featuresObjectpropCount++;
+                }
+
+                if (featuresObjectpropCount > 0)
+                {
+                    body["features"] = featuresObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymultipleAssignees != null)
-            {
-                body["multiple_assignees"] = CSharpExpressionConverter.ConvertToken(bodymultipleAssignees);
-                bodypropCount++;
-            }
-
-            var featuresObject = new JObject();
-            var featuresObjectpropCount = 0;
-            var dueDatesObject = new JObject();
-            var dueDatesObjectpropCount = 0;
-            if (bodyfeaturesdueDatesdueDates != null)
-            {
-                dueDatesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesdueDates);
-                dueDatesObjectpropCount++;
-            }
-
-            if (bodyfeaturesdueDatesstartDate != null)
-            {
-                dueDatesObject["start_date"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesstartDate);
-                dueDatesObjectpropCount++;
-            }
-
-            if (bodyfeaturesdueDatesremapDueDate != null)
-            {
-                dueDatesObject["remap_due_dates"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapDueDate);
-                dueDatesObjectpropCount++;
-            }
-
-            if (bodyfeaturesdueDatesremapClosedDueDate != null)
-            {
-                dueDatesObject["remap_closed_due_date"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdueDatesremapClosedDueDate);
-                dueDatesObjectpropCount++;
-            }
-
-            if (dueDatesObjectpropCount > 0)
-            {
-                featuresObject["due_dates"] = dueDatesObject;
-                featuresObjectpropCount++;
-            }
-
-            var timeTrackingObject = new JObject();
-            var timeTrackingObjectpropCount = 0;
-            if (bodyfeaturestimeTrackingtimeTracking != null)
-            {
-                timeTrackingObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestimeTrackingtimeTracking);
-                timeTrackingObjectpropCount++;
-            }
-
-            if (timeTrackingObjectpropCount > 0)
-            {
-                featuresObject["time_tracking"] = timeTrackingObject;
-                featuresObjectpropCount++;
-            }
-
-            var tagsObject = new JObject();
-            var tagsObjectpropCount = 0;
-            if (bodyfeaturestagstags != null)
-            {
-                tagsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestagstags);
-                tagsObjectpropCount++;
-            }
-
-            if (tagsObjectpropCount > 0)
-            {
-                featuresObject["tags"] = tagsObject;
-                featuresObjectpropCount++;
-            }
-
-            var timeEstimatesObject = new JObject();
-            var timeEstimatesObjectpropCount = 0;
-            if (bodyfeaturestimeEstimatestimeEstimates != null)
-            {
-                timeEstimatesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturestimeEstimatestimeEstimates);
-                timeEstimatesObjectpropCount++;
-            }
-
-            if (timeEstimatesObjectpropCount > 0)
-            {
-                featuresObject["time_estimates"] = timeEstimatesObject;
-                featuresObjectpropCount++;
-            }
-
-            var checklistsObject = new JObject();
-            var checklistsObjectpropCount = 0;
-            if (bodyfeatureschecklistschecklist != null)
-            {
-                checklistsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeatureschecklistschecklist);
-                checklistsObjectpropCount++;
-            }
-
-            if (checklistsObjectpropCount > 0)
-            {
-                featuresObject["checklists"] = checklistsObject;
-                featuresObjectpropCount++;
-            }
-
-            var customFieldsObject = new JObject();
-            var customFieldsObjectpropCount = 0;
-            if (bodyfeaturescustomFieldscustomFields != null)
-            {
-                customFieldsObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturescustomFieldscustomFields);
-                customFieldsObjectpropCount++;
-            }
-
-            if (customFieldsObjectpropCount > 0)
-            {
-                featuresObject["custom_fields"] = customFieldsObject;
-                featuresObjectpropCount++;
-            }
-
-            var remapDependenciesObject = new JObject();
-            var remapDependenciesObjectpropCount = 0;
-            if (bodyfeaturesremapDependenciesremapDependencies != null)
-            {
-                remapDependenciesObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesremapDependenciesremapDependencies);
-                remapDependenciesObjectpropCount++;
-            }
-
-            if (remapDependenciesObjectpropCount > 0)
-            {
-                featuresObject["remap_dependencies"] = remapDependenciesObject;
-                featuresObjectpropCount++;
-            }
-
-            var dependencyWarningObject = new JObject();
-            var dependencyWarningObjectpropCount = 0;
-            if (bodyfeaturesdependencyWarningdependencyWarning != null)
-            {
-                dependencyWarningObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesdependencyWarningdependencyWarning);
-                dependencyWarningObjectpropCount++;
-            }
-
-            if (dependencyWarningObjectpropCount > 0)
-            {
-                featuresObject["dependency_warning"] = dependencyWarningObject;
-                featuresObjectpropCount++;
-            }
-
-            var portfoliosObject = new JObject();
-            var portfoliosObjectpropCount = 0;
-            if (bodyfeaturesportfoliosportfolios != null)
-            {
-                portfoliosObject["enabled"] = CSharpExpressionConverter.ConvertToken(bodyfeaturesportfoliosportfolios);
-                portfoliosObjectpropCount++;
-            }
-
-            if (portfoliosObjectpropCount > 0)
-            {
-                featuresObject["portfolios"] = portfoliosObject;
-                featuresObjectpropCount++;
-            }
-
-            if (featuresObjectpropCount > 0)
-            {
-                body["features"] = featuresObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSpaceResponse>(callPayload);
+            return new ApiConnectionAction<CreateSpaceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clickupteammanagerip")]
-        public IBodyWorkflowAction<CreateAListResponse> CreateAList(Expression<Func<string>> folderId, Expression<Func<string>> bodyname = null, Expression<Func<int>> bodyorderIndex = null, Expression<Func<bool>> bodydueDate2 = null, Expression<Func<bodystatusesInputItem[]>> bodystatuses = null)
+        public IBodyWorkflowAction<CreateAListResponse> CreateAList([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<int> bodyorderIndex = null, [WorkflowExpression] Func<bool> bodydueDate2 = null, [WorkflowExpression] Func<bodystatusesInputItem[]> bodystatuses = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyorderIndex, nameof(bodyorderIndex), required: false);
+            SourceExpression.Validate(bodydueDate2, nameof(bodydueDate2), required: false);
+            SourceExpression.Validate(bodystatuses, nameof(bodystatuses), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v2/folder/{0}/list", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(folderId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyorderIndex != null)
+                {
+                    body["orderindex"] = SourceExpressionConverter.ConvertToken(bodyorderIndex);
+                    bodypropCount++;
+                }
+
+                var statusObject = new JObject();
+                var statusObjectpropCount = 0;
+                if (statusObjectpropCount > 0)
+                {
+                    body["status"] = statusObject;
+                    bodypropCount++;
+                }
+
+                var priorityObject = new JObject();
+                var priorityObjectpropCount = 0;
+                if (priorityObjectpropCount > 0)
+                {
+                    body["priority"] = priorityObject;
+                    bodypropCount++;
+                }
+
+                var assigneeObject = new JObject();
+                var assigneeObjectpropCount = 0;
+                if (assigneeObjectpropCount > 0)
+                {
+                    body["assignee"] = assigneeObject;
+                    bodypropCount++;
+                }
+
+                if (bodydueDate2 != null)
+                {
+                    body["due_date_time"] = SourceExpressionConverter.ConvertToken(bodydueDate2);
+                    bodypropCount++;
+                }
+
+                var folderObject = new JObject();
+                var folderObjectpropCount = 0;
+                if (folderObjectpropCount > 0)
+                {
+                    body["folder"] = folderObject;
+                    bodypropCount++;
+                }
+
+                var spaceObject = new JObject();
+                var spaceObjectpropCount = 0;
+                if (spaceObjectpropCount > 0)
+                {
+                    body["space"] = spaceObject;
+                    bodypropCount++;
+                }
+
+                if (bodystatuses != null)
+                {
+                    body["statuses"] = SourceExpressionConverter.ConvertToken(bodystatuses);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyorderIndex != null)
-            {
-                body["orderindex"] = CSharpExpressionConverter.ConvertToken(bodyorderIndex);
-                bodypropCount++;
-            }
-
-            var statusObject = new JObject();
-            var statusObjectpropCount = 0;
-            if (statusObjectpropCount > 0)
-            {
-                body["status"] = statusObject;
-                bodypropCount++;
-            }
-
-            var priorityObject = new JObject();
-            var priorityObjectpropCount = 0;
-            if (priorityObjectpropCount > 0)
-            {
-                body["priority"] = priorityObject;
-                bodypropCount++;
-            }
-
-            var assigneeObject = new JObject();
-            var assigneeObjectpropCount = 0;
-            if (assigneeObjectpropCount > 0)
-            {
-                body["assignee"] = assigneeObject;
-                bodypropCount++;
-            }
-
-            if (bodydueDate2 != null)
-            {
-                body["due_date_time"] = CSharpExpressionConverter.ConvertToken(bodydueDate2);
-                bodypropCount++;
-            }
-
-            var folderObject = new JObject();
-            var folderObjectpropCount = 0;
-            if (folderObjectpropCount > 0)
-            {
-                body["folder"] = folderObject;
-                bodypropCount++;
-            }
-
-            var spaceObject = new JObject();
-            var spaceObjectpropCount = 0;
-            if (spaceObjectpropCount > 0)
-            {
-                body["space"] = spaceObject;
-                bodypropCount++;
-            }
-
-            if (bodystatuses != null)
-            {
-                body["statuses"] = CSharpExpressionConverter.ConvertToken(bodystatuses);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAListResponse>(callPayload);
+            return new ApiConnectionAction<CreateAListResponse>(BuildSourceInput);
         }
     }
 

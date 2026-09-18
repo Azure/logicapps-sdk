@@ -12,3084 +12,3593 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
     public class Soft1Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IWorkflowAction Microservice(Expression<Func<string>> bodybody, Expression<Func<string>> bodyendpoint)
+        public IWorkflowAction Microservice([WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyendpoint)
         {
-            var apiCallPath = "/custom";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("microservice");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-            bodypropCount++;
-            body["endpoint"] = CSharpExpressionConverter.ConvertToken(bodyendpoint);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
+            SourceExpression.Validate(bodyendpoint, nameof(bodyendpoint), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getCFNCUSDOC";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/custom";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("microservice");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CFNCUSDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetCFNCUSDOCResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getCfnsupdoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CFNSUPDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetCfnsupdocResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetChequeResponse> GetCheque(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getCheque";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CHEQUE";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetChequeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetContactResponse> GetContact(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getContact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PRSNOUT";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetContactResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetCustomerResponse> GetCustomer(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getCustomer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CUSTOMER";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetCustomerResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getDraftEntry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SODRAFT";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetDraftEntryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetExpenseResponse> GetExpense(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
-        {
-            var apiCallPath = "/getExpense";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "LINEITEM";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetExpenseResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodylOCATEINFO = null)
-        {
-            var apiCallPath = "/getExpensesDoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = "702";
-            bodypropCount++;
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            if (bodylOCATEINFO != null)
-            {
-                if (bodylOCATEINFO != null)
+                body["endpoint"] = SourceExpressionConverter.ConvertToken(bodyendpoint);
+                if (bodypropCount > 0)
                 {
-                    body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetCFNCUSDOCResponse> GetCFNCUSDOC([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getCFNCUSDOC";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
                     bodypropCount++;
                 }
 
                 bodypropCount++;
-            }
-            else
-            {
-                body["LOCATEINFO"] = "LINLINES:LINENUM,LINEVAL,MTRL,MTRL_LINEITEM_CODE,MTRL_LINEITEM_NAME,VAT,VATAMNT;LINSUPDOC:COMPANY,ACNMSK,APPRV,BRANCH,BUSUNITS,CASHDEVICE,CBANK,CBANKBRANCH,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,CRCONTROL,EXPN,FINSTATES,FPRMS,GSISFLG,GSISMD,GSISNET,GSISPACKAGES,GSISQTY,GSISVAT,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,INTDATE,INTEXPN,INTFDOCTYPE,INTRATE,INTSHIPMENT,INTVAL,INTVAT,ISCANCEL,ISPRINT,ISTRIG,KEPYOHANDMD,KEPYOMD,KEPYOQT,LEXPN,LKEPYOVAL,LNETAMNT,LRATE,LVATAMNT,NETAMNT,NOINTRASTAT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPKIND,SHIPMENT,SOCURRENCY,SOPAYCODE,SUMAMNT,SUMLAMNT,SUMTAMNT,TEXPN,TNETAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_CHKAFM,TRDR_SUPPLIER_CODE,TRDR_SUPPLIER_NAME,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TVATAMNT,VATAMNT,VATPROVISIONS,VATSTS;MTRDOC:RECEIPTCARD,TRUCKS,TRUCKSNO;SUPPLIER:BANK";
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
                 bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "CFNCUSDOC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "LINSUPDOC";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetExpensesDocResponse>(callPayload);
+            return new ApiConnectionAction<GetCFNCUSDOCResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetItedocResponse> GetItedoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetCfnsupdocResponse> GetCfnsupdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getItedoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getCfnsupdoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "CFNSUPDOC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "ITEDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetItedocResponse>(callPayload);
+            return new ApiConnectionAction<GetCfnsupdocResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetItemResponse> GetItem(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetChequeResponse> GetCheque([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getCheque";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "CHEQUE";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "ITEM";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetItemResponse>(callPayload);
+            return new ApiConnectionAction<GetChequeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetProjectResponse> GetProject(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetContactResponse> GetContact([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getContact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "PRSNOUT";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PRJC";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetProjectResponse>(callPayload);
+            return new ApiConnectionAction<GetContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetCustomerResponse> GetCustomer([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getPurdoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getCustomer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "CUSTOMER";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PURDOC";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetPurdocResponse>(callPayload);
+            return new ApiConnectionAction<GetCustomerResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetDraftEntryResponse> GetDraftEntry([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getSaldoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getDraftEntry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SODRAFT";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SALDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSaldocResponse>(callPayload);
+            return new ApiConnectionAction<GetDraftEntryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetServiceResponse> GetService(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetExpenseResponse> GetExpense([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getService";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getExpense";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "LINEITEM";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SERVICE";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetServiceResponse>(callPayload);
+            return new ApiConnectionAction<GetExpenseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetExpensesDocResponse> GetExpensesDoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodylOCATEINFO = null)
         {
-            var apiCallPath = "/getSoemail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getExpensesDoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = "702";
                 bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                if (bodylOCATEINFO != null)
+                {
+                    if (bodylOCATEINFO != null)
+                    {
+                        body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["LOCATEINFO"] = "LINLINES:LINENUM,LINEVAL,MTRL,MTRL_LINEITEM_CODE,MTRL_LINEITEM_NAME,VAT,VATAMNT;LINSUPDOC:COMPANY,ACNMSK,APPRV,BRANCH,BUSUNITS,CASHDEVICE,CBANK,CBANKBRANCH,CMPFINCODE,FINCODE,CMPSERIESNUM,COMMENTS,COMMENTS1,CRCONTROL,EXPN,FINSTATES,FPRMS,GSISFLG,GSISMD,GSISNET,GSISPACKAGES,GSISQTY,GSISVAT,INPAYVAT,INST,INST_INST_CODE,INST_INST_NAME,INTDATE,INTEXPN,INTFDOCTYPE,INTRATE,INTSHIPMENT,INTVAL,INTVAT,ISCANCEL,ISPRINT,ISTRIG,KEPYOHANDMD,KEPYOMD,KEPYOQT,LEXPN,LKEPYOVAL,LNETAMNT,LRATE,LVATAMNT,NETAMNT,NOINTRASTAT,PAYMENT,PRJC,PRJC_PRJC_CODE,PRJC_PRJC_NAME,REMARKS,RSRC,RSRC_RSRC_CODE,RSRC_RSRC_NAME,SALESMAN,SALESMAN_PRSNIN_CODE,SALESMAN_PRSNIN_NAME2,SERIES,SHIPKIND,SHIPMENT,SOCURRENCY,SOPAYCODE,SUMAMNT,SUMLAMNT,SUMTAMNT,TEXPN,TNETAMNT,TRDBRANCH,TRDBRANCH_TRDBRANCH_CODE,TRDBRANCH_TRDBRANCH_NAME,TRDBRANCHS,TRDBRANCHS_TRDBRANCH_CODE,TRDBRANCHS_TRDBRANCH_NAME,TRDR,TRDR_SUPPLIER_AFM,TRDR_SUPPLIER_CHKAFM,TRDR_SUPPLIER_CODE,TRDR_SUPPLIER_NAME,TRDRRATE,TRDRS,TRDRS_TRDR_CODE,TRDRS_TRDR_NAME,TRNDATE,TVATAMNT,VATAMNT,VATPROVISIONS,VATSTS;MTRDOC:RECEIPTCARD,TRUCKS,TRUCKSNO;SUPPLIER:BANK";
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "LINSUPDOC";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOEMAIL";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSOEMAILResponse>(callPayload);
+            return new ApiConnectionAction<GetExpensesDocResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetMeetingResponse> GetMeeting(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetItedocResponse> GetItedoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getSomeeting";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getItedoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "ITEDOC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOMEETING";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetMeetingResponse>(callPayload);
+            return new ApiConnectionAction<GetItedocResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetItemResponse> GetItem([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getSotask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "ITEM";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOTASK";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GetSOTASKResponse>(callPayload);
+            return new ApiConnectionAction<GetItemResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<GetSupplierResponse> GetSupplier(Expression<Func<string>> bodykEY, Expression<Func<string>> bodylOCATEINFO, Expression<Func<string>> bodyfORM = null)
+        public IBodyWorkflowAction<GetProjectResponse> GetProject([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
         {
-            var apiCallPath = "/getSupplier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/getProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "PRJC";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-            bodypropCount++;
-            body["LOCATEINFO"] = CSharpExpressionConverter.ConvertToken(bodylOCATEINFO);
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SUPPLIER";
-            bodypropCount++;
-            body["SERVICE"] = "getData";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<GetProjectResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetPurdocResponse> GetPurdoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/getPurdoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
+                bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "PURDOC";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetSupplierResponse>(callPayload);
+            return new ApiConnectionAction<GetPurdocResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetSaldocResponse> GetSaldoc([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getSaldoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SALDOC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSaldocResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetServiceResponse> GetService([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getService";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SERVICE";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetServiceResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetSOEMAILResponse> GetSOEMAIL([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getSoemail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SOEMAIL";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSOEMAILResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetMeetingResponse> GetMeeting([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getSomeeting";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SOMEETING";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetMeetingResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetSOTASKResponse> GetSOTASK([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getSotask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SOTASK";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSOTASKResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
+        public IBodyWorkflowAction<GetSupplierResponse> GetSupplier([WorkflowExpression] Func<string> bodykEY, [WorkflowExpression] Func<string> bodylOCATEINFO, [WorkflowExpression] Func<string> bodyfORM = null)
+        {
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: true);
+            SourceExpression.Validate(bodylOCATEINFO, nameof(bodylOCATEINFO), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/getSupplier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
+                bodypropCount++;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                bodypropCount++;
+                body["LOCATEINFO"] = SourceExpressionConverter.ConvertToken(bodylOCATEINFO);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "SUPPLIER";
+                bodypropCount++;
+                body["SERVICE"] = "getData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSupplierResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
         public IBodyWorkflowAction<GetSystemParamsResponse> GetSystemParams()
         {
-            var apiCallPath = "/getSystemParams";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["appId"] = "702";
-            bodypropCount++;
-            body["service"] = "getSystemParams";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/getSystemParams";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["appId"] = "702";
+                bodypropCount++;
+                body["service"] = "getSystemParams";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetSystemParamsResponse>(callPayload);
+            return new ApiConnectionAction<GetSystemParamsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC(Expression<Func<string>> bodyvaluecFNCUSDOCsERIES, Expression<Func<string>> bodyvaluecFNCUSDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOLLECTOR = null, Expression<Func<string>> bodyvaluecFNCUSDOCcOMMENTS = null, Expression<Func<string>> bodyvaluecFNCUSDOCproject = null, Expression<Func<string>> bodyvaluecFNCUSDOCsALESMAN = null, Expression<Func<string>> bodyvaluecFNCUSDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetCFNCUSDOC([WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOLLECTOR = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCproject = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCsALESMAN = null, [WorkflowExpression] Func<string> bodyvaluecFNCUSDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setCfncusdoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            if (bodyvaluecARDLINES != null)
+            SourceExpression.Validate(bodyvaluecFNCUSDOCsERIES, nameof(bodyvaluecFNCUSDOCsERIES), required: true);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCtRDR, nameof(bodyvaluecFNCUSDOCtRDR), required: true);
+            SourceExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
+            SourceExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCcOLLECTOR, nameof(bodyvaluecFNCUSDOCcOLLECTOR), required: false);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCcOMMENTS, nameof(bodyvaluecFNCUSDOCcOMMENTS), required: false);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCproject, nameof(bodyvaluecFNCUSDOCproject), required: false);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCsALESMAN, nameof(bodyvaluecFNCUSDOCsALESMAN), required: false);
+            SourceExpression.Validate(bodyvaluecFNCUSDOCtRNDATE, nameof(bodyvaluecFNCUSDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dATAObject["CARDLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecARDLINES);
-                dATAObjectpropCount++;
-            }
-
-            if (bodyvaluecASHLINES != null)
-            {
-                dATAObject["CASHLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecASHLINES);
-                dATAObjectpropCount++;
-            }
-
-            var cFNCUSDOCObject = new JObject();
-            var cFNCUSDOCObjectpropCount = 0;
-            if (bodyvaluecFNCUSDOCcOLLECTOR != null)
-            {
-                cFNCUSDOCObject["COLLECTOR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOLLECTOR);
-                cFNCUSDOCObjectpropCount++;
-            }
-
-            if (bodyvaluecFNCUSDOCcOMMENTS != null)
-            {
-                cFNCUSDOCObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOMMENTS);
-                cFNCUSDOCObjectpropCount++;
-            }
-
-            if (bodyvaluecFNCUSDOCproject != null)
-            {
-                cFNCUSDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCproject);
-                cFNCUSDOCObjectpropCount++;
-            }
-
-            if (bodyvaluecFNCUSDOCsALESMAN != null)
-            {
-                cFNCUSDOCObject["SALESMAN"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsALESMAN);
-                cFNCUSDOCObjectpropCount++;
-            }
-
-            cFNCUSDOCObjectpropCount++;
-            cFNCUSDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsERIES);
-            cFNCUSDOCObjectpropCount++;
-            cFNCUSDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRDR);
-            if (bodyvaluecFNCUSDOCtRNDATE != null)
-            {
-                cFNCUSDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRNDATE);
-                cFNCUSDOCObjectpropCount++;
-            }
-
-            if (cFNCUSDOCObjectpropCount > 0)
-            {
-                dATAObject["CFNCUSDOC"] = cFNCUSDOCObject;
-                dATAObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUELINES != null)
-            {
-                dATAObject["CHEQUELINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
-                dATAObjectpropCount++;
-            }
-
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                var apiCallPath = "/setCfncusdoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
-            }
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                if (bodyvaluecARDLINES != null)
+                {
+                    dATAObject["CARDLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecARDLINES);
+                    dATAObjectpropCount++;
+                }
 
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                if (bodyvaluecASHLINES != null)
+                {
+                    dATAObject["CASHLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecASHLINES);
+                    dATAObjectpropCount++;
+                }
+
+                var cFNCUSDOCObject = new JObject();
+                var cFNCUSDOCObjectpropCount = 0;
+                if (bodyvaluecFNCUSDOCcOLLECTOR != null)
+                {
+                    cFNCUSDOCObject["COLLECTOR"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOLLECTOR);
+                    cFNCUSDOCObjectpropCount++;
+                }
+
+                if (bodyvaluecFNCUSDOCcOMMENTS != null)
+                {
+                    cFNCUSDOCObject["COMMENTS"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCcOMMENTS);
+                    cFNCUSDOCObjectpropCount++;
+                }
+
+                if (bodyvaluecFNCUSDOCproject != null)
+                {
+                    cFNCUSDOCObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCproject);
+                    cFNCUSDOCObjectpropCount++;
+                }
+
+                if (bodyvaluecFNCUSDOCsALESMAN != null)
+                {
+                    cFNCUSDOCObject["SALESMAN"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsALESMAN);
+                    cFNCUSDOCObjectpropCount++;
+                }
+
+                cFNCUSDOCObjectpropCount++;
+                cFNCUSDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCsERIES);
+                cFNCUSDOCObjectpropCount++;
+                cFNCUSDOCObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRDR);
+                if (bodyvaluecFNCUSDOCtRNDATE != null)
+                {
+                    cFNCUSDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNCUSDOCtRNDATE);
+                    cFNCUSDOCObjectpropCount++;
+                }
+
+                if (cFNCUSDOCObjectpropCount > 0)
+                {
+                    dATAObject["CFNCUSDOC"] = cFNCUSDOCObject;
+                    dATAObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUELINES != null)
+                {
+                    dATAObject["CHEQUELINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
+                    dATAObjectpropCount++;
+                }
+
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
+
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "CFNCUSDOC";
                 bodypropCount++;
+                body["SERVICE"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CFNCUSDOC";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCfnsupdoc(Expression<Func<string>> bodyvaluecFNSUPDOCsERIES, Expression<Func<string>> bodyvaluecFNSUPDOCtRDR, Expression<Func<bodyvaluecARDLINESInputItem[]>> bodyvaluecARDLINES = null, Expression<Func<bodyvaluecASHLINESInputItem2[]>> bodyvaluecASHLINES = null, Expression<Func<string>> bodyvaluecFNSUPDOCpRJC = null, Expression<Func<string>> bodyvaluecFNSUPDOCrEMARKS = null, Expression<Func<string>> bodyvaluecFNSUPDOCtRNDATE = null, Expression<Func<bodyvaluecHEQUELINESInputItem[]>> bodyvaluecHEQUELINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetCfnsupdoc([WorkflowExpression] Func<string> bodyvaluecFNSUPDOCsERIES, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRDR, [WorkflowExpression] Func<bodyvaluecARDLINESInputItem[]> bodyvaluecARDLINES = null, [WorkflowExpression] Func<bodyvaluecASHLINESInputItem2[]> bodyvaluecASHLINES = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluecFNSUPDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluecHEQUELINESInputItem[]> bodyvaluecHEQUELINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setCfnsupdoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            if (bodyvaluecARDLINES != null)
+            SourceExpression.Validate(bodyvaluecFNSUPDOCsERIES, nameof(bodyvaluecFNSUPDOCsERIES), required: true);
+            SourceExpression.Validate(bodyvaluecFNSUPDOCtRDR, nameof(bodyvaluecFNSUPDOCtRDR), required: true);
+            SourceExpression.Validate(bodyvaluecARDLINES, nameof(bodyvaluecARDLINES), required: false);
+            SourceExpression.Validate(bodyvaluecASHLINES, nameof(bodyvaluecASHLINES), required: false);
+            SourceExpression.Validate(bodyvaluecFNSUPDOCpRJC, nameof(bodyvaluecFNSUPDOCpRJC), required: false);
+            SourceExpression.Validate(bodyvaluecFNSUPDOCrEMARKS, nameof(bodyvaluecFNSUPDOCrEMARKS), required: false);
+            SourceExpression.Validate(bodyvaluecFNSUPDOCtRNDATE, nameof(bodyvaluecFNSUPDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUELINES, nameof(bodyvaluecHEQUELINES), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dATAObject["CARDLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecARDLINES);
-                dATAObjectpropCount++;
-            }
+                var apiCallPath = "/setCfnsupdoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
+                bodypropCount++;
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                if (bodyvaluecARDLINES != null)
+                {
+                    dATAObject["CARDLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecARDLINES);
+                    dATAObjectpropCount++;
+                }
 
-            if (bodyvaluecASHLINES != null)
-            {
-                dATAObject["CASHLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecASHLINES);
-                dATAObjectpropCount++;
-            }
+                if (bodyvaluecASHLINES != null)
+                {
+                    dATAObject["CASHLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecASHLINES);
+                    dATAObjectpropCount++;
+                }
 
-            var cFNSUPDOCObject = new JObject();
-            var cFNSUPDOCObjectpropCount = 0;
-            if (bodyvaluecFNSUPDOCpRJC != null)
-            {
-                cFNSUPDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCpRJC);
+                var cFNSUPDOCObject = new JObject();
+                var cFNSUPDOCObjectpropCount = 0;
+                if (bodyvaluecFNSUPDOCpRJC != null)
+                {
+                    cFNSUPDOCObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCpRJC);
+                    cFNSUPDOCObjectpropCount++;
+                }
+
+                if (bodyvaluecFNSUPDOCrEMARKS != null)
+                {
+                    cFNSUPDOCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCrEMARKS);
+                    cFNSUPDOCObjectpropCount++;
+                }
+
                 cFNSUPDOCObjectpropCount++;
-            }
-
-            if (bodyvaluecFNSUPDOCrEMARKS != null)
-            {
-                cFNSUPDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCrEMARKS);
+                cFNSUPDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCsERIES);
                 cFNSUPDOCObjectpropCount++;
-            }
+                cFNSUPDOCObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRDR);
+                if (bodyvaluecFNSUPDOCtRNDATE != null)
+                {
+                    cFNSUPDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRNDATE);
+                    cFNSUPDOCObjectpropCount++;
+                }
 
-            cFNSUPDOCObjectpropCount++;
-            cFNSUPDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCsERIES);
-            cFNSUPDOCObjectpropCount++;
-            cFNSUPDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRDR);
-            if (bodyvaluecFNSUPDOCtRNDATE != null)
-            {
-                cFNSUPDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecFNSUPDOCtRNDATE);
-                cFNSUPDOCObjectpropCount++;
-            }
+                if (cFNSUPDOCObjectpropCount > 0)
+                {
+                    dATAObject["CFNSUPDOC"] = cFNSUPDOCObject;
+                    dATAObjectpropCount++;
+                }
 
-            if (cFNSUPDOCObjectpropCount > 0)
-            {
-                dATAObject["CFNSUPDOC"] = cFNSUPDOCObject;
-                dATAObjectpropCount++;
-            }
+                if (bodyvaluecHEQUELINES != null)
+                {
+                    dATAObject["CHEQUELINES"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
+                    dATAObjectpropCount++;
+                }
 
-            if (bodyvaluecHEQUELINES != null)
-            {
-                dATAObject["CHEQUELINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUELINES);
-                dATAObjectpropCount++;
-            }
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
 
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                body["OBJECT"] = "CFNSUPDOC";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["SERVICE"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CFNSUPDOC";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCheque(Expression<Func<string>> bodyvaluecHEQUEbalance, Expression<Func<string>> bodyvaluecHEQUEchequeNumber, Expression<Func<string>> bodyvaluecHEQUEstatus, Expression<Func<string>> bodyvaluecHEQUEvalue, Expression<Func<string>> bodyvaluecHEQUEissueDate, Expression<Func<string>> bodyvaluecHEQUEdueDate, Expression<Func<string>> bodyvaluecHEQUEseries, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecHEQUEbank = null, Expression<Func<string>> bodyvaluecHEQUEissuerAddress = null, Expression<Func<string>> bodyvaluecHEQUEissuerName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTelephone = null, Expression<Func<string>> bodyvaluecHEQUEreceiptDate = null, Expression<Func<string>> bodyvaluecHEQUEholderAddress = null, Expression<Func<string>> bodyvaluecHEQUEholderName = null, Expression<Func<string>> bodyvaluecHEQUEissuerTRNo = null, Expression<Func<string>> bodyvaluecHEQUEcomments = null)
+        public IBodyWorkflowAction<SetData200response> SetCheque([WorkflowExpression] Func<string> bodyvaluecHEQUEbalance, [WorkflowExpression] Func<string> bodyvaluecHEQUEchequeNumber, [WorkflowExpression] Func<string> bodyvaluecHEQUEstatus, [WorkflowExpression] Func<string> bodyvaluecHEQUEvalue, [WorkflowExpression] Func<string> bodyvaluecHEQUEissueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEdueDate, [WorkflowExpression] Func<string> bodyvaluecHEQUEseries, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEbank = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTelephone = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEreceiptDate = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderAddress = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEholderName = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEissuerTRNo = null, [WorkflowExpression] Func<string> bodyvaluecHEQUEcomments = null)
         {
-            var apiCallPath = "/setCheque";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluecHEQUEbalance, nameof(bodyvaluecHEQUEbalance), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEchequeNumber, nameof(bodyvaluecHEQUEchequeNumber), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEstatus, nameof(bodyvaluecHEQUEstatus), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEvalue, nameof(bodyvaluecHEQUEvalue), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEissueDate, nameof(bodyvaluecHEQUEissueDate), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEdueDate, nameof(bodyvaluecHEQUEdueDate), required: true);
+            SourceExpression.Validate(bodyvaluecHEQUEseries, nameof(bodyvaluecHEQUEseries), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEbank, nameof(bodyvaluecHEQUEbank), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEissuerAddress, nameof(bodyvaluecHEQUEissuerAddress), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEissuerName, nameof(bodyvaluecHEQUEissuerName), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEissuerTelephone, nameof(bodyvaluecHEQUEissuerTelephone), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEreceiptDate, nameof(bodyvaluecHEQUEreceiptDate), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEholderAddress, nameof(bodyvaluecHEQUEholderAddress), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEholderName, nameof(bodyvaluecHEQUEholderName), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEissuerTRNo, nameof(bodyvaluecHEQUEissuerTRNo), required: false);
+            SourceExpression.Validate(bodyvaluecHEQUEcomments, nameof(bodyvaluecHEQUEcomments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setCheque";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "CHEQUE";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CHEQUE";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var cHEQUEObject = new JObject();
-            var cHEQUEObjectpropCount = 0;
-            if (bodyvaluecHEQUEbank != null)
-            {
-                cHEQUEObject["BANK"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEbank);
-                cHEQUEObjectpropCount++;
-            }
-
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUEBAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEbalance);
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUENUMBER"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEchequeNumber);
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUESTATES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEstatus);
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["CHEQUEVAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEvalue);
-            if (bodyvaluecHEQUEissuerAddress != null)
-            {
-                cHEQUEObject["CREATORADDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerAddress);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEissuerName != null)
-            {
-                cHEQUEObject["CREATORNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerName);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEissuerTelephone != null)
-            {
-                cHEQUEObject["CREATORPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTelephone);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEreceiptDate != null)
-            {
-                cHEQUEObject["CRTDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEreceiptDate);
-                cHEQUEObjectpropCount++;
-            }
-
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["DATEOFS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissueDate);
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEdueDate);
-            if (bodyvaluecHEQUEholderAddress != null)
-            {
-                cHEQUEObject["HOLDERADDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEholderAddress);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEholderName != null)
-            {
-                cHEQUEObject["HOLDERNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEholderName);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEissuerTRNo != null)
-            {
-                cHEQUEObject["PUBLISHERAFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTRNo);
-                cHEQUEObjectpropCount++;
-            }
-
-            if (bodyvaluecHEQUEcomments != null)
-            {
-                cHEQUEObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEcomments);
-                cHEQUEObjectpropCount++;
-            }
-
-            cHEQUEObjectpropCount++;
-            cHEQUEObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluecHEQUEseries);
-            if (cHEQUEObjectpropCount > 0)
-            {
-                dataObject["CHEQUE"] = cHEQUEObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var cHEQUEObject = new JObject();
+                var cHEQUEObjectpropCount = 0;
+                if (bodyvaluecHEQUEbank != null)
+                {
+                    cHEQUEObject["BANK"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEbank);
+                    cHEQUEObjectpropCount++;
+                }
+
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["CHEQUEBAL"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEbalance);
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["CHEQUENUMBER"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEchequeNumber);
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["CHEQUESTATES"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEstatus);
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["CHEQUEVAL"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEvalue);
+                if (bodyvaluecHEQUEissuerAddress != null)
+                {
+                    cHEQUEObject["CREATORADDR"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerAddress);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEissuerName != null)
+                {
+                    cHEQUEObject["CREATORNAME"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerName);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEissuerTelephone != null)
+                {
+                    cHEQUEObject["CREATORPHONE"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTelephone);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEreceiptDate != null)
+                {
+                    cHEQUEObject["CRTDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEreceiptDate);
+                    cHEQUEObjectpropCount++;
+                }
+
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["DATEOFS"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEissueDate);
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["FINALDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEdueDate);
+                if (bodyvaluecHEQUEholderAddress != null)
+                {
+                    cHEQUEObject["HOLDERADDR"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEholderAddress);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEholderName != null)
+                {
+                    cHEQUEObject["HOLDERNAME"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEholderName);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEissuerTRNo != null)
+                {
+                    cHEQUEObject["PUBLISHERAFM"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEissuerTRNo);
+                    cHEQUEObjectpropCount++;
+                }
+
+                if (bodyvaluecHEQUEcomments != null)
+                {
+                    cHEQUEObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEcomments);
+                    cHEQUEObjectpropCount++;
+                }
+
+                cHEQUEObjectpropCount++;
+                cHEQUEObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluecHEQUEseries);
+                if (cHEQUEObjectpropCount > 0)
+                {
+                    dataObject["CHEQUE"] = cHEQUEObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetContact(Expression<Func<string>> bodyvaluepRSNOUTcode, Expression<Func<string>> bodyvaluepRSNOUTname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluepRSNOUTaddress = null, Expression<Func<string>> bodyvaluepRSNOUTtRNo = null, Expression<Func<string>> bodyvaluepRSNOUTgeographicalAreas = null, Expression<Func<string>> bodyvaluepRSNOUTbIRTHDATE = null, Expression<Func<string>> bodyvaluepRSNOUTcity = null, Expression<Func<string>> bodyvaluepRSNOUTcountry = null, Expression<Func<string>> bodyvaluepRSNOUTarea = null, Expression<Func<string>> bodyvaluepRSNOUTprefecture = null, Expression<Func<string>> bodyvaluepRSNOUTeducationLevel = null, Expression<Func<string>> bodyvaluepRSNOUTemail = null, Expression<Func<string>> bodyvaluepRSNOUTemail2 = null, Expression<Func<string>> bodyvaluepRSNOUTfax = null, Expression<Func<string>> bodyvaluepRSNOUTiDCardNo = null, Expression<Func<string>> bodyvaluepRSNOUTtaxOffice = null, Expression<Func<string>> bodyvaluepRSNOUTmobileTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTsurname = null, Expression<Func<string>> bodyvaluepRSNOUTfatherSName = null, Expression<Func<string>> bodyvaluepRSNOUTmotherSName = null, Expression<Func<string>> bodyvaluepRSNOUTnameOfSpouse = null, Expression<Func<string>> bodyvaluepRSNOUTnationality = null, Expression<Func<string>> bodyvaluepRSNOUTtel1 = null, Expression<Func<string>> bodyvaluepRSNOUTtel2 = null, Expression<Func<string>> bodyvaluepRSNOUTinternalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTpersonalTelephone = null, Expression<Func<string>> bodyvaluepRSNOUTcomments = null, Expression<Func<bodyvaluepRSNOUTgenderInput>> bodyvaluepRSNOUTgender = null, Expression<Func<string>> bodyvaluepRSNOUTwebPage = null, Expression<Func<string>> bodyvaluepRSNOUTzip = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response> SetContact([WorkflowExpression] Func<string> bodyvaluepRSNOUTcode, [WorkflowExpression] Func<string> bodyvaluepRSNOUTname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTaddress = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtRNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTbIRTHDATE = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcity = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcountry = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTarea = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTprefecture = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTeducationLevel = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTemail2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfax = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTiDCardNo = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTsurname = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTfatherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTmotherSName = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnameOfSpouse = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTnationality = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel1 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTtel2 = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTcomments = null, [WorkflowExpression] Func<bodyvaluepRSNOUTgenderInput> bodyvaluepRSNOUTgender = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTwebPage = null, [WorkflowExpression] Func<string> bodyvaluepRSNOUTzip = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
-            var apiCallPath = "/setContact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluepRSNOUTcode, nameof(bodyvaluepRSNOUTcode), required: true);
+            SourceExpression.Validate(bodyvaluepRSNOUTname, nameof(bodyvaluepRSNOUTname), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTaddress, nameof(bodyvaluepRSNOUTaddress), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTtRNo, nameof(bodyvaluepRSNOUTtRNo), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTgeographicalAreas, nameof(bodyvaluepRSNOUTgeographicalAreas), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTbIRTHDATE, nameof(bodyvaluepRSNOUTbIRTHDATE), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTcity, nameof(bodyvaluepRSNOUTcity), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTcountry, nameof(bodyvaluepRSNOUTcountry), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTarea, nameof(bodyvaluepRSNOUTarea), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTprefecture, nameof(bodyvaluepRSNOUTprefecture), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTeducationLevel, nameof(bodyvaluepRSNOUTeducationLevel), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTemail, nameof(bodyvaluepRSNOUTemail), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTemail2, nameof(bodyvaluepRSNOUTemail2), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTfax, nameof(bodyvaluepRSNOUTfax), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTiDCardNo, nameof(bodyvaluepRSNOUTiDCardNo), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTtaxOffice, nameof(bodyvaluepRSNOUTtaxOffice), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTmobileTelephone, nameof(bodyvaluepRSNOUTmobileTelephone), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTsurname, nameof(bodyvaluepRSNOUTsurname), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTfatherSName, nameof(bodyvaluepRSNOUTfatherSName), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTmotherSName, nameof(bodyvaluepRSNOUTmotherSName), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTnameOfSpouse, nameof(bodyvaluepRSNOUTnameOfSpouse), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTnationality, nameof(bodyvaluepRSNOUTnationality), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTtel1, nameof(bodyvaluepRSNOUTtel1), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTtel2, nameof(bodyvaluepRSNOUTtel2), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTinternalTelephone, nameof(bodyvaluepRSNOUTinternalTelephone), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTpersonalTelephone, nameof(bodyvaluepRSNOUTpersonalTelephone), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTcomments, nameof(bodyvaluepRSNOUTcomments), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTgender, nameof(bodyvaluepRSNOUTgender), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTwebPage, nameof(bodyvaluepRSNOUTwebPage), required: false);
+            SourceExpression.Validate(bodyvaluepRSNOUTzip, nameof(bodyvaluepRSNOUTzip), required: false);
+            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setContact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "PRSNOUT";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PRSNOUT";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var pRSNOUTObject = new JObject();
-            var pRSNOUTObjectpropCount = 0;
-            if (bodyvaluepRSNOUTaddress != null)
-            {
-                pRSNOUTObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTaddress);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTtRNo != null)
-            {
-                pRSNOUTObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtRNo);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTgeographicalAreas != null)
-            {
-                pRSNOUTObject["AREAS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTgeographicalAreas);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTbIRTHDATE != null)
-            {
-                pRSNOUTObject["BIRTHDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTbIRTHDATE);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTcity != null)
-            {
-                pRSNOUTObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcity);
-                pRSNOUTObjectpropCount++;
-            }
-
-            pRSNOUTObjectpropCount++;
-            pRSNOUTObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcode);
-            if (bodyvaluepRSNOUTcountry != null)
-            {
-                pRSNOUTObject["COUNTRY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcountry);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTarea != null)
-            {
-                pRSNOUTObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTarea);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTprefecture != null)
-            {
-                pRSNOUTObject["DISTRICT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTprefecture);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTeducationLevel != null)
-            {
-                pRSNOUTObject["EDUCAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTeducationLevel);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTemail != null)
-            {
-                pRSNOUTObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTemail2 != null)
-            {
-                pRSNOUTObject["EMAIL1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail2);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTfax != null)
-            {
-                pRSNOUTObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTfax);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTiDCardNo != null)
-            {
-                pRSNOUTObject["IDENTITYNUM"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTiDCardNo);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTtaxOffice != null)
-            {
-                pRSNOUTObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtaxOffice);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTmobileTelephone != null)
-            {
-                pRSNOUTObject["MOBILEPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTmobileTelephone);
-                pRSNOUTObjectpropCount++;
-            }
-
-            pRSNOUTObjectpropCount++;
-            pRSNOUTObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTname);
-            if (bodyvaluepRSNOUTsurname != null)
-            {
-                pRSNOUTObject["NAME2"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTsurname);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTfatherSName != null)
-            {
-                pRSNOUTObject["NAME3"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTfatherSName);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTmotherSName != null)
-            {
-                pRSNOUTObject["NAME4"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTmotherSName);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTnameOfSpouse != null)
-            {
-                pRSNOUTObject["NAME5"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTnameOfSpouse);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTnationality != null)
-            {
-                pRSNOUTObject["NATIONALITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTnationality);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTtel1 != null)
-            {
-                pRSNOUTObject["PHONE1"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel1);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTtel2 != null)
-            {
-                pRSNOUTObject["PHONE2"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel2);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTinternalTelephone != null)
-            {
-                pRSNOUTObject["PHONEEXT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTinternalTelephone);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTpersonalTelephone != null)
-            {
-                pRSNOUTObject["PHONELOCAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTpersonalTelephone);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTcomments != null)
-            {
-                pRSNOUTObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTcomments);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTgender != null)
-            {
-                pRSNOUTObject["SOSEX"] = CSharpExpressionConverter.Convert(bodyvaluepRSNOUTgender);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTwebPage != null)
-            {
-                pRSNOUTObject["WEBPAGE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTwebPage);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (bodyvaluepRSNOUTzip != null)
-            {
-                pRSNOUTObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRSNOUTzip);
-                pRSNOUTObjectpropCount++;
-            }
-
-            if (pRSNOUTObjectpropCount > 0)
-            {
-                dataObject["PRSNOUT"] = pRSNOUTObject;
-                dataObjectpropCount++;
-            }
-
-            if (bodyvaluexTRDOCDATA != null)
-            {
-                dataObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var pRSNOUTObject = new JObject();
+                var pRSNOUTObjectpropCount = 0;
+                if (bodyvaluepRSNOUTaddress != null)
+                {
+                    pRSNOUTObject["ADDRESS"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTaddress);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTtRNo != null)
+                {
+                    pRSNOUTObject["AFM"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTtRNo);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTgeographicalAreas != null)
+                {
+                    pRSNOUTObject["AREAS"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTgeographicalAreas);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTbIRTHDATE != null)
+                {
+                    pRSNOUTObject["BIRTHDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTbIRTHDATE);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTcity != null)
+                {
+                    pRSNOUTObject["CITY"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTcity);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                pRSNOUTObjectpropCount++;
+                pRSNOUTObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTcode);
+                if (bodyvaluepRSNOUTcountry != null)
+                {
+                    pRSNOUTObject["COUNTRY"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTcountry);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTarea != null)
+                {
+                    pRSNOUTObject["DISTRICT"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTarea);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTprefecture != null)
+                {
+                    pRSNOUTObject["DISTRICT1"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTprefecture);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTeducationLevel != null)
+                {
+                    pRSNOUTObject["EDUCAT"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTeducationLevel);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTemail != null)
+                {
+                    pRSNOUTObject["EMAIL"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTemail2 != null)
+                {
+                    pRSNOUTObject["EMAIL1"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTemail2);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTfax != null)
+                {
+                    pRSNOUTObject["FAX"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTfax);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTiDCardNo != null)
+                {
+                    pRSNOUTObject["IDENTITYNUM"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTiDCardNo);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTtaxOffice != null)
+                {
+                    pRSNOUTObject["IRSDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTtaxOffice);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTmobileTelephone != null)
+                {
+                    pRSNOUTObject["MOBILEPHONE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTmobileTelephone);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                pRSNOUTObjectpropCount++;
+                pRSNOUTObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTname);
+                if (bodyvaluepRSNOUTsurname != null)
+                {
+                    pRSNOUTObject["NAME2"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTsurname);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTfatherSName != null)
+                {
+                    pRSNOUTObject["NAME3"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTfatherSName);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTmotherSName != null)
+                {
+                    pRSNOUTObject["NAME4"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTmotherSName);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTnameOfSpouse != null)
+                {
+                    pRSNOUTObject["NAME5"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTnameOfSpouse);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTnationality != null)
+                {
+                    pRSNOUTObject["NATIONALITY"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTnationality);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTtel1 != null)
+                {
+                    pRSNOUTObject["PHONE1"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel1);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTtel2 != null)
+                {
+                    pRSNOUTObject["PHONE2"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTtel2);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTinternalTelephone != null)
+                {
+                    pRSNOUTObject["PHONEEXT"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTinternalTelephone);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTpersonalTelephone != null)
+                {
+                    pRSNOUTObject["PHONELOCAL"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTpersonalTelephone);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTcomments != null)
+                {
+                    pRSNOUTObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTcomments);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTgender != null)
+                {
+                    pRSNOUTObject["SOSEX"] = SourceExpressionConverter.Convert(bodyvaluepRSNOUTgender);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTwebPage != null)
+                {
+                    pRSNOUTObject["WEBPAGE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTwebPage);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (bodyvaluepRSNOUTzip != null)
+                {
+                    pRSNOUTObject["ZIP"] = SourceExpressionConverter.ConvertToken(bodyvaluepRSNOUTzip);
+                    pRSNOUTObjectpropCount++;
+                }
+
+                if (pRSNOUTObjectpropCount > 0)
+                {
+                    dataObject["PRSNOUT"] = pRSNOUTObject;
+                    dataObjectpropCount++;
+                }
+
+                if (bodyvaluexTRDOCDATA != null)
+                {
+                    dataObject["XTRDOCDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetCustomer(Expression<Func<string>> bodyvaluecUSTOMERcode, Expression<Func<string>> bodyvaluecUSTOMERname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryAddress = null, Expression<Func<string>> bodyvaluecUSTOMERtRNo = null, Expression<Func<string>> bodyvaluecUSTOMERgeographicalAreas = null, Expression<Func<string>> bodyvaluecUSTOMERcity = null, Expression<Func<int>> bodyvaluecUSTOMERdiscount = null, Expression<Func<string>> bodyvaluecUSTOMERlocationArea = null, Expression<Func<string>> bodyvaluecUSTOMEReMail = null, Expression<Func<string>> bodyvaluecUSTOMERfax = null, Expression<Func<string>> bodyvaluecUSTOMERtaxOffice = null, Expression<Func<string>> bodyvaluecUSTOMERprofession = null, Expression<Func<string>> bodyvaluecUSTOMERprimaryTelephone = null, Expression<Func<string>> bodyvaluecUSTOMERcomments = null, Expression<Func<bodyvaluecUSTOMERtaxCategoryInput>> bodyvaluecUSTOMERtaxCategory = null, Expression<Func<string>> bodyvaluecUSTOMERzip = null)
+        public IBodyWorkflowAction<SetData200response> SetCustomer([WorkflowExpression] Func<string> bodyvaluecUSTOMERcode, [WorkflowExpression] Func<string> bodyvaluecUSTOMERname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryAddress = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtRNo = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERgeographicalAreas = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcity = null, [WorkflowExpression] Func<int> bodyvaluecUSTOMERdiscount = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERlocationArea = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMEReMail = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERfax = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERtaxOffice = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprofession = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERprimaryTelephone = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERcomments = null, [WorkflowExpression] Func<bodyvaluecUSTOMERtaxCategoryInput> bodyvaluecUSTOMERtaxCategory = null, [WorkflowExpression] Func<string> bodyvaluecUSTOMERzip = null)
         {
-            var apiCallPath = "/setCustomer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluecUSTOMERcode, nameof(bodyvaluecUSTOMERcode), required: true);
+            SourceExpression.Validate(bodyvaluecUSTOMERname, nameof(bodyvaluecUSTOMERname), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERprimaryAddress, nameof(bodyvaluecUSTOMERprimaryAddress), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERtRNo, nameof(bodyvaluecUSTOMERtRNo), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERgeographicalAreas, nameof(bodyvaluecUSTOMERgeographicalAreas), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERcity, nameof(bodyvaluecUSTOMERcity), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERdiscount, nameof(bodyvaluecUSTOMERdiscount), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERlocationArea, nameof(bodyvaluecUSTOMERlocationArea), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMEReMail, nameof(bodyvaluecUSTOMEReMail), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERfax, nameof(bodyvaluecUSTOMERfax), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERtaxOffice, nameof(bodyvaluecUSTOMERtaxOffice), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERprofession, nameof(bodyvaluecUSTOMERprofession), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERprimaryTelephone, nameof(bodyvaluecUSTOMERprimaryTelephone), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERcomments, nameof(bodyvaluecUSTOMERcomments), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERtaxCategory, nameof(bodyvaluecUSTOMERtaxCategory), required: false);
+            SourceExpression.Validate(bodyvaluecUSTOMERzip, nameof(bodyvaluecUSTOMERzip), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setCustomer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "CUSTOMER";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "CUSTOMER";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var cUSTOMERObject = new JObject();
-            var cUSTOMERObjectpropCount = 0;
-            if (bodyvaluecUSTOMERprimaryAddress != null)
-            {
-                cUSTOMERObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryAddress);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERtRNo != null)
-            {
-                cUSTOMERObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERtRNo);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERgeographicalAreas != null)
-            {
-                cUSTOMERObject["AREAS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERgeographicalAreas);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERcity != null)
-            {
-                cUSTOMERObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcity);
-                cUSTOMERObjectpropCount++;
-            }
-
-            cUSTOMERObjectpropCount++;
-            cUSTOMERObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcode);
-            if (bodyvaluecUSTOMERdiscount != null)
-            {
-                cUSTOMERObject["DISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERdiscount);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERlocationArea != null)
-            {
-                cUSTOMERObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERlocationArea);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMEReMail != null)
-            {
-                cUSTOMERObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMEReMail);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERfax != null)
-            {
-                cUSTOMERObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERfax);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERtaxOffice != null)
-            {
-                cUSTOMERObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERtaxOffice);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERprofession != null)
-            {
-                cUSTOMERObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprofession);
-                cUSTOMERObjectpropCount++;
-            }
-
-            cUSTOMERObjectpropCount++;
-            cUSTOMERObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERname);
-            if (bodyvaluecUSTOMERprimaryTelephone != null)
-            {
-                cUSTOMERObject["PHONE01"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryTelephone);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERcomments != null)
-            {
-                cUSTOMERObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERcomments);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERtaxCategory != null)
-            {
-                cUSTOMERObject["VATSTS"] = CSharpExpressionConverter.Convert(bodyvaluecUSTOMERtaxCategory);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (bodyvaluecUSTOMERzip != null)
-            {
-                cUSTOMERObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluecUSTOMERzip);
-                cUSTOMERObjectpropCount++;
-            }
-
-            if (cUSTOMERObjectpropCount > 0)
-            {
-                dataObject["CUSTOMER"] = cUSTOMERObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var cUSTOMERObject = new JObject();
+                var cUSTOMERObjectpropCount = 0;
+                if (bodyvaluecUSTOMERprimaryAddress != null)
+                {
+                    cUSTOMERObject["ADDRESS"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryAddress);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERtRNo != null)
+                {
+                    cUSTOMERObject["AFM"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERtRNo);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERgeographicalAreas != null)
+                {
+                    cUSTOMERObject["AREAS"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERgeographicalAreas);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERcity != null)
+                {
+                    cUSTOMERObject["CITY"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERcity);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                cUSTOMERObjectpropCount++;
+                cUSTOMERObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERcode);
+                if (bodyvaluecUSTOMERdiscount != null)
+                {
+                    cUSTOMERObject["DISCOUNT"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERdiscount);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERlocationArea != null)
+                {
+                    cUSTOMERObject["DISTRICT"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERlocationArea);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMEReMail != null)
+                {
+                    cUSTOMERObject["EMAIL"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMEReMail);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERfax != null)
+                {
+                    cUSTOMERObject["FAX"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERfax);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERtaxOffice != null)
+                {
+                    cUSTOMERObject["IRSDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERtaxOffice);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERprofession != null)
+                {
+                    cUSTOMERObject["JOBTYPETRD"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERprofession);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                cUSTOMERObjectpropCount++;
+                cUSTOMERObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERname);
+                if (bodyvaluecUSTOMERprimaryTelephone != null)
+                {
+                    cUSTOMERObject["PHONE01"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERprimaryTelephone);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERcomments != null)
+                {
+                    cUSTOMERObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERcomments);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERtaxCategory != null)
+                {
+                    cUSTOMERObject["VATSTS"] = SourceExpressionConverter.Convert(bodyvaluecUSTOMERtaxCategory);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (bodyvaluecUSTOMERzip != null)
+                {
+                    cUSTOMERObject["ZIP"] = SourceExpressionConverter.ConvertToken(bodyvaluecUSTOMERzip);
+                    cUSTOMERObjectpropCount++;
+                }
+
+                if (cUSTOMERObjectpropCount > 0)
+                {
+                    dataObject["CUSTOMER"] = cUSTOMERObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetDraftEntry(Expression<Func<string>> bodyvaluesODRAFTcode, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesODRAFTaddress = null, Expression<Func<string>> bodyvaluesODRAFTtRNo = null, Expression<Func<string>> bodyvaluesODRAFTcity = null, Expression<Func<string>> bodyvaluesODRAFTcountry = null, Expression<Func<string>> bodyvaluesODRAFTarea = null, Expression<Func<string>> bodyvaluesODRAFTprefecture = null, Expression<Func<string>> bodyvaluesODRAFTcategory = null, Expression<Func<string>> bodyvaluesODRAFTcompanyEmail = null, Expression<Func<string>> bodyvaluesODRAFTbusinessEmail = null, Expression<Func<string>> bodyvaluesODRAFTpersonalEmail = null, Expression<Func<string>> bodyvaluesODRAFTiDCardNo = null, Expression<Func<string>> bodyvaluesODRAFTactivity = null, Expression<Func<string>> bodyvaluesODRAFTmobileTelephone = null, Expression<Func<string>> bodyvaluesODRAFTnameTitle = null, Expression<Func<string>> bodyvaluesODRAFTfirstName = null, Expression<Func<string>> bodyvaluesODRAFTsurname = null, Expression<Func<string>> bodyvaluesODRAFTzip = null, Expression<Func<string>> bodyvaluesODRAFTbusinessTelephone = null, Expression<Func<string>> bodyvaluesODRAFTinternalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTpersonalTelephone = null, Expression<Func<string>> bodyvaluesODRAFTcomments = null, Expression<Func<string>> bodyvaluesODRAFTtitle = null, Expression<Func<string>> bodyvaluesODRAFTwebPage = null, Expression<Func<string>> bodyvaluesODRAFTzip2 = null, Expression<Func<string>> bodyvaluesODRAFTLNKbranch = null, Expression<Func<string>> bodyvaluesODRAFTLNKbusinessUnit = null, Expression<Func<string>> bodyvaluesODRAFTLNKdepartment = null, Expression<Func<string>> bodyvaluesODRAFTLNKproject = null, Expression<Func<string>> bodyvaluesODRAFTLNKsource = null)
+        public IBodyWorkflowAction<SetData200response> SetDraftEntry([WorkflowExpression] Func<string> bodyvaluesODRAFTcode, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTaddress = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtRNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcountry = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTarea = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTprefecture = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcategory = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcompanyEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalEmail = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTiDCardNo = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTactivity = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTmobileTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTnameTitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTfirstName = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTsurname = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTbusinessTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTinternalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTpersonalTelephone = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTcomments = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTtitle = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTwebPage = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTzip2 = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbranch = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKbusinessUnit = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKdepartment = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKproject = null, [WorkflowExpression] Func<string> bodyvaluesODRAFTLNKsource = null)
         {
-            var apiCallPath = "/setDraftEntry";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluesODRAFTcode, nameof(bodyvaluesODRAFTcode), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTaddress, nameof(bodyvaluesODRAFTaddress), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTtRNo, nameof(bodyvaluesODRAFTtRNo), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTcity, nameof(bodyvaluesODRAFTcity), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTcountry, nameof(bodyvaluesODRAFTcountry), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTarea, nameof(bodyvaluesODRAFTarea), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTprefecture, nameof(bodyvaluesODRAFTprefecture), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTcategory, nameof(bodyvaluesODRAFTcategory), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTcompanyEmail, nameof(bodyvaluesODRAFTcompanyEmail), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTbusinessEmail, nameof(bodyvaluesODRAFTbusinessEmail), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTpersonalEmail, nameof(bodyvaluesODRAFTpersonalEmail), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTiDCardNo, nameof(bodyvaluesODRAFTiDCardNo), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTactivity, nameof(bodyvaluesODRAFTactivity), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTmobileTelephone, nameof(bodyvaluesODRAFTmobileTelephone), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTnameTitle, nameof(bodyvaluesODRAFTnameTitle), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTfirstName, nameof(bodyvaluesODRAFTfirstName), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTsurname, nameof(bodyvaluesODRAFTsurname), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTzip, nameof(bodyvaluesODRAFTzip), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTbusinessTelephone, nameof(bodyvaluesODRAFTbusinessTelephone), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTinternalTelephone, nameof(bodyvaluesODRAFTinternalTelephone), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTpersonalTelephone, nameof(bodyvaluesODRAFTpersonalTelephone), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTcomments, nameof(bodyvaluesODRAFTcomments), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTtitle, nameof(bodyvaluesODRAFTtitle), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTwebPage, nameof(bodyvaluesODRAFTwebPage), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTzip2, nameof(bodyvaluesODRAFTzip2), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTLNKbranch, nameof(bodyvaluesODRAFTLNKbranch), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTLNKbusinessUnit, nameof(bodyvaluesODRAFTLNKbusinessUnit), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTLNKdepartment, nameof(bodyvaluesODRAFTLNKdepartment), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTLNKproject, nameof(bodyvaluesODRAFTLNKproject), required: false);
+            SourceExpression.Validate(bodyvaluesODRAFTLNKsource, nameof(bodyvaluesODRAFTLNKsource), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setDraftEntry";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SODRAFT";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SODRAFT";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var sODRAFTObject = new JObject();
-            var sODRAFTObjectpropCount = 0;
-            if (bodyvaluesODRAFTaddress != null)
-            {
-                sODRAFTObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTaddress);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTtRNo != null)
-            {
-                sODRAFTObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTtRNo);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTcity != null)
-            {
-                sODRAFTObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcity);
-                sODRAFTObjectpropCount++;
-            }
-
-            sODRAFTObjectpropCount++;
-            sODRAFTObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcode);
-            if (bodyvaluesODRAFTcountry != null)
-            {
-                sODRAFTObject["COUNTRY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcountry);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTarea != null)
-            {
-                sODRAFTObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTarea);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTprefecture != null)
-            {
-                sODRAFTObject["DISTRICT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTprefecture);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTcategory != null)
-            {
-                sODRAFTObject["DRAFTTYPE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcategory);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTcompanyEmail != null)
-            {
-                sODRAFTObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcompanyEmail);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTbusinessEmail != null)
-            {
-                sODRAFTObject["EMAIL1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessEmail);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTpersonalEmail != null)
-            {
-                sODRAFTObject["EMAIL2"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalEmail);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTiDCardNo != null)
-            {
-                sODRAFTObject["IDENTITYNUM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTiDCardNo);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTactivity != null)
-            {
-                sODRAFTObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTactivity);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTmobileTelephone != null)
-            {
-                sODRAFTObject["MOBILEPHONE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTmobileTelephone);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTnameTitle != null)
-            {
-                sODRAFTObject["NAMEC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTnameTitle);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTfirstName != null)
-            {
-                sODRAFTObject["NAMEF"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTfirstName);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTsurname != null)
-            {
-                sODRAFTObject["NAMEL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTsurname);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTzip != null)
-            {
-                sODRAFTObject["NUMCG"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTzip);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTbusinessTelephone != null)
-            {
-                sODRAFTObject["PHONE1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessTelephone);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTinternalTelephone != null)
-            {
-                sODRAFTObject["PHONEEXT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTinternalTelephone);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTpersonalTelephone != null)
-            {
-                sODRAFTObject["PHONELOCAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalTelephone);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTcomments != null)
-            {
-                sODRAFTObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTcomments);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTtitle != null)
-            {
-                sODRAFTObject["SOTITLENAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTtitle);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTwebPage != null)
-            {
-                sODRAFTObject["WEBPAGE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTwebPage);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTzip2 != null)
-            {
-                sODRAFTObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTzip2);
-                sODRAFTObjectpropCount++;
-            }
-
-            if (sODRAFTObjectpropCount > 0)
-            {
-                dataObject["SODRAFT"] = sODRAFTObject;
-                dataObjectpropCount++;
-            }
-
-            var sODRAFTLNKObject = new JObject();
-            var sODRAFTLNKObjectpropCount = 0;
-            if (bodyvaluesODRAFTLNKbranch != null)
-            {
-                sODRAFTLNKObject["BRANCH"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbranch);
-                sODRAFTLNKObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTLNKbusinessUnit != null)
-            {
-                sODRAFTLNKObject["BUSUNITS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbusinessUnit);
-                sODRAFTLNKObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTLNKdepartment != null)
-            {
-                sODRAFTLNKObject["DEPART"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKdepartment);
-                sODRAFTLNKObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTLNKproject != null)
-            {
-                sODRAFTLNKObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKproject);
-                sODRAFTLNKObjectpropCount++;
-            }
-
-            if (bodyvaluesODRAFTLNKsource != null)
-            {
-                sODRAFTLNKObject["PRJCLEAD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKsource);
-                sODRAFTLNKObjectpropCount++;
-            }
-
-            if (sODRAFTLNKObjectpropCount > 0)
-            {
-                dataObject["SODRAFTLNK"] = sODRAFTLNKObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var sODRAFTObject = new JObject();
+                var sODRAFTObjectpropCount = 0;
+                if (bodyvaluesODRAFTaddress != null)
+                {
+                    sODRAFTObject["ADDRESS"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTaddress);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTtRNo != null)
+                {
+                    sODRAFTObject["AFM"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTtRNo);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTcity != null)
+                {
+                    sODRAFTObject["CITY"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcity);
+                    sODRAFTObjectpropCount++;
+                }
+
+                sODRAFTObjectpropCount++;
+                sODRAFTObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcode);
+                if (bodyvaluesODRAFTcountry != null)
+                {
+                    sODRAFTObject["COUNTRY"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcountry);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTarea != null)
+                {
+                    sODRAFTObject["DISTRICT"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTarea);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTprefecture != null)
+                {
+                    sODRAFTObject["DISTRICT1"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTprefecture);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTcategory != null)
+                {
+                    sODRAFTObject["DRAFTTYPE"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcategory);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTcompanyEmail != null)
+                {
+                    sODRAFTObject["EMAIL"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcompanyEmail);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTbusinessEmail != null)
+                {
+                    sODRAFTObject["EMAIL1"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessEmail);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTpersonalEmail != null)
+                {
+                    sODRAFTObject["EMAIL2"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalEmail);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTiDCardNo != null)
+                {
+                    sODRAFTObject["IDENTITYNUM"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTiDCardNo);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTactivity != null)
+                {
+                    sODRAFTObject["JOBTYPETRD"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTactivity);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTmobileTelephone != null)
+                {
+                    sODRAFTObject["MOBILEPHONE"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTmobileTelephone);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTnameTitle != null)
+                {
+                    sODRAFTObject["NAMEC"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTnameTitle);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTfirstName != null)
+                {
+                    sODRAFTObject["NAMEF"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTfirstName);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTsurname != null)
+                {
+                    sODRAFTObject["NAMEL"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTsurname);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTzip != null)
+                {
+                    sODRAFTObject["NUMCG"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTzip);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTbusinessTelephone != null)
+                {
+                    sODRAFTObject["PHONE1"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTbusinessTelephone);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTinternalTelephone != null)
+                {
+                    sODRAFTObject["PHONEEXT"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTinternalTelephone);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTpersonalTelephone != null)
+                {
+                    sODRAFTObject["PHONELOCAL"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTpersonalTelephone);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTcomments != null)
+                {
+                    sODRAFTObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTcomments);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTtitle != null)
+                {
+                    sODRAFTObject["SOTITLENAME"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTtitle);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTwebPage != null)
+                {
+                    sODRAFTObject["WEBPAGE"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTwebPage);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTzip2 != null)
+                {
+                    sODRAFTObject["ZIP"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTzip2);
+                    sODRAFTObjectpropCount++;
+                }
+
+                if (sODRAFTObjectpropCount > 0)
+                {
+                    dataObject["SODRAFT"] = sODRAFTObject;
+                    dataObjectpropCount++;
+                }
+
+                var sODRAFTLNKObject = new JObject();
+                var sODRAFTLNKObjectpropCount = 0;
+                if (bodyvaluesODRAFTLNKbranch != null)
+                {
+                    sODRAFTLNKObject["BRANCH"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbranch);
+                    sODRAFTLNKObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTLNKbusinessUnit != null)
+                {
+                    sODRAFTLNKObject["BUSUNITS"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKbusinessUnit);
+                    sODRAFTLNKObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTLNKdepartment != null)
+                {
+                    sODRAFTLNKObject["DEPART"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKdepartment);
+                    sODRAFTLNKObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTLNKproject != null)
+                {
+                    sODRAFTLNKObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKproject);
+                    sODRAFTLNKObjectpropCount++;
+                }
+
+                if (bodyvaluesODRAFTLNKsource != null)
+                {
+                    sODRAFTLNKObject["PRJCLEAD"] = SourceExpressionConverter.ConvertToken(bodyvaluesODRAFTLNKsource);
+                    sODRAFTLNKObjectpropCount++;
+                }
+
+                if (sODRAFTLNKObjectpropCount > 0)
+                {
+                    dataObject["SODRAFTLNK"] = sODRAFTLNKObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetExpense(Expression<Func<string>> bodyvaluelINEITEMcode, Expression<Func<bodyvaluelINEITEMinvoicingCategoryInput>> bodyvaluelINEITEMinvoicingCategory, Expression<Func<string>> bodyvaluelINEITEMname, Expression<Func<string>> bodyvaluelINEITEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluelINEITEMcommercialCategory = null, Expression<Func<bodyvaluelINEITEMtypeInput>> bodyvaluelINEITEMtype = null, Expression<Func<string>> bodyvaluelINEITEMcomments = null, Expression<Func<bodyvaluelINEITEMfeeValueInput>> bodyvaluelINEITEMfeeValue = null)
+        public IBodyWorkflowAction<SetData200response> SetExpense([WorkflowExpression] Func<string> bodyvaluelINEITEMcode, [WorkflowExpression] Func<bodyvaluelINEITEMinvoicingCategoryInput> bodyvaluelINEITEMinvoicingCategory, [WorkflowExpression] Func<string> bodyvaluelINEITEMname, [WorkflowExpression] Func<string> bodyvaluelINEITEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcommercialCategory = null, [WorkflowExpression] Func<bodyvaluelINEITEMtypeInput> bodyvaluelINEITEMtype = null, [WorkflowExpression] Func<string> bodyvaluelINEITEMcomments = null, [WorkflowExpression] Func<bodyvaluelINEITEMfeeValueInput> bodyvaluelINEITEMfeeValue = null)
         {
-            var apiCallPath = "/setExpense";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluelINEITEMcode, nameof(bodyvaluelINEITEMcode), required: true);
+            SourceExpression.Validate(bodyvaluelINEITEMinvoicingCategory, nameof(bodyvaluelINEITEMinvoicingCategory), required: true);
+            SourceExpression.Validate(bodyvaluelINEITEMname, nameof(bodyvaluelINEITEMname), required: true);
+            SourceExpression.Validate(bodyvaluelINEITEMvatGroup, nameof(bodyvaluelINEITEMvatGroup), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluelINEITEMcommercialCategory, nameof(bodyvaluelINEITEMcommercialCategory), required: false);
+            SourceExpression.Validate(bodyvaluelINEITEMtype, nameof(bodyvaluelINEITEMtype), required: false);
+            SourceExpression.Validate(bodyvaluelINEITEMcomments, nameof(bodyvaluelINEITEMcomments), required: false);
+            SourceExpression.Validate(bodyvaluelINEITEMfeeValue, nameof(bodyvaluelINEITEMfeeValue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
+                var apiCallPath = "/setExpense";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
 
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-                bodypropCount++;
-            }
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "LINEITEM";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var lINEITEMObject = new JObject();
-            var lINEITEMObjectpropCount = 0;
-            lINEITEMObjectpropCount++;
-            lINEITEMObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcode);
-            lINEITEMObjectpropCount++;
-            lINEITEMObject["LISOURCETYPE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMinvoicingCategory);
-            if (bodyvaluelINEITEMcommercialCategory != null)
-            {
-                lINEITEMObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcommercialCategory);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "LINEITEM";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var lINEITEMObject = new JObject();
+                var lINEITEMObjectpropCount = 0;
                 lINEITEMObjectpropCount++;
-            }
-
-            if (bodyvaluelINEITEMtype != null)
-            {
-                lINEITEMObject["MTRTYPE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMtype);
+                lINEITEMObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluelINEITEMcode);
                 lINEITEMObjectpropCount++;
-            }
+                lINEITEMObject["LISOURCETYPE"] = SourceExpressionConverter.Convert(bodyvaluelINEITEMinvoicingCategory);
+                if (bodyvaluelINEITEMcommercialCategory != null)
+                {
+                    lINEITEMObject["MTRCATEGORY"] = SourceExpressionConverter.ConvertToken(bodyvaluelINEITEMcommercialCategory);
+                    lINEITEMObjectpropCount++;
+                }
 
-            lINEITEMObjectpropCount++;
-            lINEITEMObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMname);
-            if (bodyvaluelINEITEMcomments != null)
-            {
-                lINEITEMObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMcomments);
+                if (bodyvaluelINEITEMtype != null)
+                {
+                    lINEITEMObject["MTRTYPE"] = SourceExpressionConverter.Convert(bodyvaluelINEITEMtype);
+                    lINEITEMObjectpropCount++;
+                }
+
                 lINEITEMObjectpropCount++;
-            }
+                lINEITEMObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluelINEITEMname);
+                if (bodyvaluelINEITEMcomments != null)
+                {
+                    lINEITEMObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluelINEITEMcomments);
+                    lINEITEMObjectpropCount++;
+                }
 
-            if (bodyvaluelINEITEMfeeValue != null)
-            {
-                lINEITEMObject["SOPAYVALUE"] = CSharpExpressionConverter.Convert(bodyvaluelINEITEMfeeValue);
+                if (bodyvaluelINEITEMfeeValue != null)
+                {
+                    lINEITEMObject["SOPAYVALUE"] = SourceExpressionConverter.Convert(bodyvaluelINEITEMfeeValue);
+                    lINEITEMObjectpropCount++;
+                }
+
                 lINEITEMObjectpropCount++;
-            }
+                lINEITEMObject["VAT"] = SourceExpressionConverter.ConvertToken(bodyvaluelINEITEMvatGroup);
+                if (lINEITEMObjectpropCount > 0)
+                {
+                    dataObject["LINEITEM"] = lINEITEMObject;
+                    dataObjectpropCount++;
+                }
 
-            lINEITEMObjectpropCount++;
-            lINEITEMObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINEITEMvatGroup);
-            if (lINEITEMObjectpropCount > 0)
-            {
-                dataObject["LINEITEM"] = lINEITEMObject;
-                dataObjectpropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["service"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetExpensesDoc(Expression<Func<string>> bodyvaluelINSUPDOCseries, Expression<Func<string>> bodyvaluelINSUPDOCsupplier, Expression<Func<bodyvalueunnamedInputItem[]>> bodyvalueunnamed = null, Expression<Func<string>> bodyvaluelINSUPDOCproject = null, Expression<Func<string>> bodyvaluelINSUPDOCcomments = null, Expression<Func<string>> bodyvaluelINSUPDOCtRNDATE = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetExpensesDoc([WorkflowExpression] Func<string> bodyvaluelINSUPDOCseries, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCsupplier, [WorkflowExpression] Func<bodyvalueunnamedInputItem[]> bodyvalueunnamed = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCproject = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluelINSUPDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setExpensesDoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = "702";
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            if (bodyvalueunnamed != null)
+            SourceExpression.Validate(bodyvaluelINSUPDOCseries, nameof(bodyvaluelINSUPDOCseries), required: true);
+            SourceExpression.Validate(bodyvaluelINSUPDOCsupplier, nameof(bodyvaluelINSUPDOCsupplier), required: true);
+            SourceExpression.Validate(bodyvalueunnamed, nameof(bodyvalueunnamed), required: false);
+            SourceExpression.Validate(bodyvaluelINSUPDOCproject, nameof(bodyvaluelINSUPDOCproject), required: false);
+            SourceExpression.Validate(bodyvaluelINSUPDOCcomments, nameof(bodyvaluelINSUPDOCcomments), required: false);
+            SourceExpression.Validate(bodyvaluelINSUPDOCtRNDATE, nameof(bodyvaluelINSUPDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dATAObject["LINLINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueunnamed);
-                dATAObjectpropCount++;
-            }
+                var apiCallPath = "/setExpensesDoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = "702";
+                bodypropCount++;
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                if (bodyvalueunnamed != null)
+                {
+                    dATAObject["LINLINES"] = SourceExpressionConverter.ConvertToken(bodyvalueunnamed);
+                    dATAObjectpropCount++;
+                }
 
-            var lINSUPDOCObject = new JObject();
-            var lINSUPDOCObjectpropCount = 0;
-            if (bodyvaluelINSUPDOCproject != null)
-            {
-                lINSUPDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCproject);
+                var lINSUPDOCObject = new JObject();
+                var lINSUPDOCObjectpropCount = 0;
+                if (bodyvaluelINSUPDOCproject != null)
+                {
+                    lINSUPDOCObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluelINSUPDOCproject);
+                    lINSUPDOCObjectpropCount++;
+                }
+
+                if (bodyvaluelINSUPDOCcomments != null)
+                {
+                    lINSUPDOCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluelINSUPDOCcomments);
+                    lINSUPDOCObjectpropCount++;
+                }
+
                 lINSUPDOCObjectpropCount++;
-            }
-
-            if (bodyvaluelINSUPDOCcomments != null)
-            {
-                lINSUPDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCcomments);
+                lINSUPDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluelINSUPDOCseries);
                 lINSUPDOCObjectpropCount++;
-            }
+                lINSUPDOCObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodyvaluelINSUPDOCsupplier);
+                if (bodyvaluelINSUPDOCtRNDATE != null)
+                {
+                    lINSUPDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluelINSUPDOCtRNDATE);
+                    lINSUPDOCObjectpropCount++;
+                }
 
-            lINSUPDOCObjectpropCount++;
-            lINSUPDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCseries);
-            lINSUPDOCObjectpropCount++;
-            lINSUPDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCsupplier);
-            if (bodyvaluelINSUPDOCtRNDATE != null)
-            {
-                lINSUPDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluelINSUPDOCtRNDATE);
-                lINSUPDOCObjectpropCount++;
-            }
+                if (lINSUPDOCObjectpropCount > 0)
+                {
+                    dATAObject["LINSUPDOC"] = lINSUPDOCObject;
+                    dATAObjectpropCount++;
+                }
 
-            if (lINSUPDOCObjectpropCount > 0)
-            {
-                dATAObject["LINSUPDOC"] = lINSUPDOCObject;
-                dATAObjectpropCount++;
-            }
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
 
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                body["OBJECT"] = "LINSUPDOC";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["SERVICE"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "LINSUPDOC";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetItedoc(Expression<Func<string>> bodyvalueiTEDOCseries, Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEDOCreason = null, Expression<Func<string>> bodyvalueiTEDOCrEMARKS = null, Expression<Func<string>> bodyvalueiTEDOCtRNDATE = null, Expression<Func<bodyvalueiTELINESInputItem[]>> bodyvalueiTELINES = null)
+        public IBodyWorkflowAction<SetData200response> SetItedoc([WorkflowExpression] Func<string> bodyvalueiTEDOCseries, [WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCreason = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvalueiTEDOCtRNDATE = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem[]> bodyvalueiTELINES = null)
         {
-            var apiCallPath = "/setItedoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvalueiTEDOCseries, nameof(bodyvalueiTEDOCseries), required: true);
+            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvalueiTEDOCreason, nameof(bodyvalueiTEDOCreason), required: false);
+            SourceExpression.Validate(bodyvalueiTEDOCrEMARKS, nameof(bodyvalueiTEDOCrEMARKS), required: false);
+            SourceExpression.Validate(bodyvalueiTEDOCtRNDATE, nameof(bodyvalueiTEDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
+                var apiCallPath = "/setItedoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
 
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-                bodypropCount++;
-            }
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "ITEDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var iTEDOCObject = new JObject();
-            var iTEDOCObjectpropCount = 0;
-            if (bodyvalueiTEDOCreason != null)
-            {
-                iTEDOCObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCreason);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "ITEDOC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var iTEDOCObject = new JObject();
+                var iTEDOCObjectpropCount = 0;
+                if (bodyvalueiTEDOCreason != null)
+                {
+                    iTEDOCObject["COMMENTS"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEDOCreason);
+                    iTEDOCObjectpropCount++;
+                }
+
+                if (bodyvalueiTEDOCrEMARKS != null)
+                {
+                    iTEDOCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEDOCrEMARKS);
+                    iTEDOCObjectpropCount++;
+                }
+
                 iTEDOCObjectpropCount++;
-            }
+                iTEDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEDOCseries);
+                if (bodyvalueiTEDOCtRNDATE != null)
+                {
+                    iTEDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEDOCtRNDATE);
+                    iTEDOCObjectpropCount++;
+                }
 
-            if (bodyvalueiTEDOCrEMARKS != null)
-            {
-                iTEDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCrEMARKS);
-                iTEDOCObjectpropCount++;
-            }
+                if (iTEDOCObjectpropCount > 0)
+                {
+                    dataObject["ITEDOC"] = iTEDOCObject;
+                    dataObjectpropCount++;
+                }
 
-            iTEDOCObjectpropCount++;
-            iTEDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCseries);
-            if (bodyvalueiTEDOCtRNDATE != null)
-            {
-                iTEDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEDOCtRNDATE);
-                iTEDOCObjectpropCount++;
-            }
+                if (bodyvalueiTELINES != null)
+                {
+                    dataObject["ITELINES"] = SourceExpressionConverter.ConvertToken(bodyvalueiTELINES);
+                    dataObjectpropCount++;
+                }
 
-            if (iTEDOCObjectpropCount > 0)
-            {
-                dataObject["ITEDOC"] = iTEDOCObject;
-                dataObjectpropCount++;
-            }
+                var mTRDOCObject = new JObject();
+                var mTRDOCObjectpropCount = 0;
+                mTRDOCObjectpropCount++;
+                mTRDOCObject["WHOUSE"] = SourceExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
+                if (mTRDOCObjectpropCount > 0)
+                {
+                    dataObject["MTRDOC"] = mTRDOCObject;
+                    dataObjectpropCount++;
+                }
 
-            if (bodyvalueiTELINES != null)
-            {
-                dataObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
-                dataObjectpropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            var mTRDOCObject = new JObject();
-            var mTRDOCObjectpropCount = 0;
-            mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
-            if (mTRDOCObjectpropCount > 0)
-            {
-                dataObject["MTRDOC"] = mTRDOCObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["service"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetItem(Expression<Func<string>> bodyvalueiTEMcode, Expression<Func<string>> bodyvalueiTEMbaseUnitOfMeasure, Expression<Func<string>> bodyvalueiTEMname, Expression<Func<string>> bodyvalueiTEMvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvalueiTEMcommercialCategory = null, Expression<Func<string>> bodyvalueiTEMitemGroup = null, Expression<Func<string>> bodyvalueiTEMretailPrice = null, Expression<Func<string>> bodyvalueiTEMwholesalePrice = null, Expression<Func<string>> bodyvalueiTEMcomments = null, Expression<Func<string>> bodyvalueiTEMdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response> SetItem([WorkflowExpression] Func<string> bodyvalueiTEMcode, [WorkflowExpression] Func<string> bodyvalueiTEMbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvalueiTEMname, [WorkflowExpression] Func<string> bodyvalueiTEMvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvalueiTEMcommercialCategory = null, [WorkflowExpression] Func<string> bodyvalueiTEMitemGroup = null, [WorkflowExpression] Func<string> bodyvalueiTEMretailPrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMwholesalePrice = null, [WorkflowExpression] Func<string> bodyvalueiTEMcomments = null, [WorkflowExpression] Func<string> bodyvalueiTEMdiscount1 = null)
         {
-            var apiCallPath = "/setItem";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvalueiTEMcode, nameof(bodyvalueiTEMcode), required: true);
+            SourceExpression.Validate(bodyvalueiTEMbaseUnitOfMeasure, nameof(bodyvalueiTEMbaseUnitOfMeasure), required: true);
+            SourceExpression.Validate(bodyvalueiTEMname, nameof(bodyvalueiTEMname), required: true);
+            SourceExpression.Validate(bodyvalueiTEMvatGroup, nameof(bodyvalueiTEMvatGroup), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvalueiTEMcommercialCategory, nameof(bodyvalueiTEMcommercialCategory), required: false);
+            SourceExpression.Validate(bodyvalueiTEMitemGroup, nameof(bodyvalueiTEMitemGroup), required: false);
+            SourceExpression.Validate(bodyvalueiTEMretailPrice, nameof(bodyvalueiTEMretailPrice), required: false);
+            SourceExpression.Validate(bodyvalueiTEMwholesalePrice, nameof(bodyvalueiTEMwholesalePrice), required: false);
+            SourceExpression.Validate(bodyvalueiTEMcomments, nameof(bodyvalueiTEMcomments), required: false);
+            SourceExpression.Validate(bodyvalueiTEMdiscount1, nameof(bodyvalueiTEMdiscount1), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setItem";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "ITEM";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "ITEM";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var iTEMObject = new JObject();
-            var iTEMObjectpropCount = 0;
-            iTEMObjectpropCount++;
-            iTEMObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcode);
-            if (bodyvalueiTEMcommercialCategory != null)
-            {
-                iTEMObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcommercialCategory);
-                iTEMObjectpropCount++;
-            }
-
-            if (bodyvalueiTEMitemGroup != null)
-            {
-                iTEMObject["MTRGROUP"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMitemGroup);
-                iTEMObjectpropCount++;
-            }
-
-            iTEMObjectpropCount++;
-            iTEMObject["MTRUNIT1"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMbaseUnitOfMeasure);
-            iTEMObjectpropCount++;
-            iTEMObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMname);
-            if (bodyvalueiTEMretailPrice != null)
-            {
-                iTEMObject["PRICER"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMretailPrice);
-                iTEMObjectpropCount++;
-            }
-
-            if (bodyvalueiTEMwholesalePrice != null)
-            {
-                iTEMObject["PRICEW"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMwholesalePrice);
-                iTEMObjectpropCount++;
-            }
-
-            if (bodyvalueiTEMcomments != null)
-            {
-                iTEMObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMcomments);
-                iTEMObjectpropCount++;
-            }
-
-            if (bodyvalueiTEMdiscount1 != null)
-            {
-                iTEMObject["SODISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMdiscount1);
-                iTEMObjectpropCount++;
-            }
-
-            iTEMObjectpropCount++;
-            iTEMObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTEMvatGroup);
-            if (iTEMObjectpropCount > 0)
-            {
-                dataObject["ITEM"] = iTEMObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var iTEMObject = new JObject();
+                var iTEMObjectpropCount = 0;
+                iTEMObjectpropCount++;
+                iTEMObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMcode);
+                if (bodyvalueiTEMcommercialCategory != null)
+                {
+                    iTEMObject["MTRCATEGORY"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMcommercialCategory);
+                    iTEMObjectpropCount++;
+                }
+
+                if (bodyvalueiTEMitemGroup != null)
+                {
+                    iTEMObject["MTRGROUP"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMitemGroup);
+                    iTEMObjectpropCount++;
+                }
+
+                iTEMObjectpropCount++;
+                iTEMObject["MTRUNIT1"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMbaseUnitOfMeasure);
+                iTEMObjectpropCount++;
+                iTEMObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMname);
+                if (bodyvalueiTEMretailPrice != null)
+                {
+                    iTEMObject["PRICER"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMretailPrice);
+                    iTEMObjectpropCount++;
+                }
+
+                if (bodyvalueiTEMwholesalePrice != null)
+                {
+                    iTEMObject["PRICEW"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMwholesalePrice);
+                    iTEMObjectpropCount++;
+                }
+
+                if (bodyvalueiTEMcomments != null)
+                {
+                    iTEMObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMcomments);
+                    iTEMObjectpropCount++;
+                }
+
+                if (bodyvalueiTEMdiscount1 != null)
+                {
+                    iTEMObject["SODISCOUNT"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMdiscount1);
+                    iTEMObjectpropCount++;
+                }
+
+                iTEMObjectpropCount++;
+                iTEMObject["VAT"] = SourceExpressionConverter.ConvertToken(bodyvalueiTEMvatGroup);
+                if (iTEMObjectpropCount > 0)
+                {
+                    dataObject["ITEM"] = iTEMObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetProject(Expression<Func<string>> bodyvaluepRJCcode, Expression<Func<string>> bodyvaluepRJCname, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvaluepRJCaCTSTATUSInput>> bodyvaluepRJCaCTSTATUS = null, Expression<Func<string>> bodyvaluepRJCfINALDATE = null, Expression<Func<string>> bodyvaluepRJCfROMDATE = null, Expression<Func<bodyvaluepRJCpRJCRMInput>> bodyvaluepRJCpRJCRM = null, Expression<Func<string>> bodyvaluepRJCcomments = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null)
+        public IBodyWorkflowAction<SetData200response> SetProject([WorkflowExpression] Func<string> bodyvaluepRJCcode, [WorkflowExpression] Func<string> bodyvaluepRJCname, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvaluepRJCaCTSTATUSInput> bodyvaluepRJCaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluepRJCfINALDATE = null, [WorkflowExpression] Func<string> bodyvaluepRJCfROMDATE = null, [WorkflowExpression] Func<bodyvaluepRJCpRJCRMInput> bodyvaluepRJCpRJCRM = null, [WorkflowExpression] Func<string> bodyvaluepRJCcomments = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null)
         {
-            var apiCallPath = "/setProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluepRJCcode, nameof(bodyvaluepRJCcode), required: true);
+            SourceExpression.Validate(bodyvaluepRJCname, nameof(bodyvaluepRJCname), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluepRJCaCTSTATUS, nameof(bodyvaluepRJCaCTSTATUS), required: false);
+            SourceExpression.Validate(bodyvaluepRJCfINALDATE, nameof(bodyvaluepRJCfINALDATE), required: false);
+            SourceExpression.Validate(bodyvaluepRJCfROMDATE, nameof(bodyvaluepRJCfROMDATE), required: false);
+            SourceExpression.Validate(bodyvaluepRJCpRJCRM, nameof(bodyvaluepRJCpRJCRM), required: false);
+            SourceExpression.Validate(bodyvaluepRJCcomments, nameof(bodyvaluepRJCcomments), required: false);
+            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
-                bodypropCount++;
-            }
+                var apiCallPath = "/setProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
 
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
-                bodypropCount++;
-            }
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PRJC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var pRJCObject = new JObject();
-            var pRJCObjectpropCount = 0;
-            if (bodyvaluepRJCaCTSTATUS != null)
-            {
-                pRJCObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodyvaluepRJCaCTSTATUS);
+                body["MODE"] = "1";
+                bodypropCount++;
+                body["OBJECT"] = "PRJC";
+                bodypropCount++;
+                body["appId"] = "702";
+                bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var pRJCObject = new JObject();
+                var pRJCObjectpropCount = 0;
+                if (bodyvaluepRJCaCTSTATUS != null)
+                {
+                    pRJCObject["ACTSTATUS"] = SourceExpressionConverter.Convert(bodyvaluepRJCaCTSTATUS);
+                    pRJCObjectpropCount++;
+                }
+
                 pRJCObjectpropCount++;
-            }
+                pRJCObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRJCcode);
+                if (bodyvaluepRJCfINALDATE != null)
+                {
+                    pRJCObject["FINALDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRJCfINALDATE);
+                    pRJCObjectpropCount++;
+                }
 
-            pRJCObjectpropCount++;
-            pRJCObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCcode);
-            if (bodyvaluepRJCfINALDATE != null)
-            {
-                pRJCObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCfINALDATE);
+                if (bodyvaluepRJCfROMDATE != null)
+                {
+                    pRJCObject["FROMDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluepRJCfROMDATE);
+                    pRJCObjectpropCount++;
+                }
+
                 pRJCObjectpropCount++;
-            }
+                pRJCObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluepRJCname);
+                if (bodyvaluepRJCpRJCRM != null)
+                {
+                    pRJCObject["PRJCRM"] = SourceExpressionConverter.Convert(bodyvaluepRJCpRJCRM);
+                    pRJCObjectpropCount++;
+                }
 
-            if (bodyvaluepRJCfROMDATE != null)
-            {
-                pRJCObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCfROMDATE);
-                pRJCObjectpropCount++;
-            }
+                if (bodyvaluepRJCcomments != null)
+                {
+                    pRJCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluepRJCcomments);
+                    pRJCObjectpropCount++;
+                }
 
-            pRJCObjectpropCount++;
-            pRJCObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCname);
-            if (bodyvaluepRJCpRJCRM != null)
-            {
-                pRJCObject["PRJCRM"] = CSharpExpressionConverter.Convert(bodyvaluepRJCpRJCRM);
-                pRJCObjectpropCount++;
-            }
+                if (pRJCObjectpropCount > 0)
+                {
+                    dataObject["PRJC"] = pRJCObject;
+                    dataObjectpropCount++;
+                }
 
-            if (bodyvaluepRJCcomments != null)
-            {
-                pRJCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepRJCcomments);
-                pRJCObjectpropCount++;
-            }
+                if (bodyvaluexTRDOCDATA != null)
+                {
+                    dataObject["XTRDOCDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
+                    dataObjectpropCount++;
+                }
 
-            if (pRJCObjectpropCount > 0)
-            {
-                dataObject["PRJC"] = pRJCObject;
-                dataObjectpropCount++;
-            }
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
 
-            if (bodyvaluexTRDOCDATA != null)
-            {
-                dataObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["service"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetPurdoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluepURDOCsERIES, Expression<Func<string>> bodyvaluepURDOCsOCURRENCY, Expression<Func<string>> bodyvaluepURDOCtRDR, Expression<Func<bodyvalueiTELINESInputItem2[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluepURDOCdISC1PRC = null, Expression<Func<string>> bodyvaluepURDOCpAYMENT = null, Expression<Func<string>> bodyvaluepURDOCpRJC = null, Expression<Func<string>> bodyvaluepURDOCrEMARKS = null, Expression<Func<string>> bodyvaluepURDOCsUMAMNT = null, Expression<Func<string>> bodyvaluepURDOCtRNDATE = null, Expression<Func<bodyvaluesRVLINESInputItem[]>> bodyvaluesRVLINES = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetPurdoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluepURDOCsERIES, [WorkflowExpression] Func<string> bodyvaluepURDOCsOCURRENCY, [WorkflowExpression] Func<string> bodyvaluepURDOCtRDR, [WorkflowExpression] Func<bodyvalueiTELINESInputItem2[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluepURDOCdISC1PRC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpAYMENT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCpRJC = null, [WorkflowExpression] Func<string> bodyvaluepURDOCrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluepURDOCsUMAMNT = null, [WorkflowExpression] Func<string> bodyvaluepURDOCtRNDATE = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem[]> bodyvaluesRVLINES = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setPurdoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            if (bodyvalueiTELINES != null)
+            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            SourceExpression.Validate(bodyvaluepURDOCsERIES, nameof(bodyvaluepURDOCsERIES), required: true);
+            SourceExpression.Validate(bodyvaluepURDOCsOCURRENCY, nameof(bodyvaluepURDOCsOCURRENCY), required: true);
+            SourceExpression.Validate(bodyvaluepURDOCtRDR, nameof(bodyvaluepURDOCtRDR), required: true);
+            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCdISC1PRC, nameof(bodyvaluepURDOCdISC1PRC), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCpAYMENT, nameof(bodyvaluepURDOCpAYMENT), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCpRJC, nameof(bodyvaluepURDOCpRJC), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCrEMARKS, nameof(bodyvaluepURDOCrEMARKS), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCsUMAMNT, nameof(bodyvaluepURDOCsUMAMNT), required: false);
+            SourceExpression.Validate(bodyvaluepURDOCtRNDATE, nameof(bodyvaluepURDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dATAObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
-                dATAObjectpropCount++;
-            }
+                var apiCallPath = "/setPurdoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
+                bodypropCount++;
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                if (bodyvalueiTELINES != null)
+                {
+                    dATAObject["ITELINES"] = SourceExpressionConverter.ConvertToken(bodyvalueiTELINES);
+                    dATAObjectpropCount++;
+                }
 
-            var mTRDOCObject = new JObject();
-            var mTRDOCObjectpropCount = 0;
-            mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
-            if (mTRDOCObjectpropCount > 0)
-            {
-                dATAObject["MTRDOC"] = mTRDOCObject;
-                dATAObjectpropCount++;
-            }
+                var mTRDOCObject = new JObject();
+                var mTRDOCObjectpropCount = 0;
+                mTRDOCObjectpropCount++;
+                mTRDOCObject["WHOUSE"] = SourceExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
+                if (mTRDOCObjectpropCount > 0)
+                {
+                    dATAObject["MTRDOC"] = mTRDOCObject;
+                    dATAObjectpropCount++;
+                }
 
-            var pURDOCObject = new JObject();
-            var pURDOCObjectpropCount = 0;
-            if (bodyvaluepURDOCdISC1PRC != null)
-            {
-                pURDOCObject["DISC1PRC"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCdISC1PRC);
+                var pURDOCObject = new JObject();
+                var pURDOCObjectpropCount = 0;
+                if (bodyvaluepURDOCdISC1PRC != null)
+                {
+                    pURDOCObject["DISC1PRC"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCdISC1PRC);
+                    pURDOCObjectpropCount++;
+                }
+
+                if (bodyvaluepURDOCpAYMENT != null)
+                {
+                    pURDOCObject["PAYMENT"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCpAYMENT);
+                    pURDOCObjectpropCount++;
+                }
+
+                if (bodyvaluepURDOCpRJC != null)
+                {
+                    pURDOCObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCpRJC);
+                    pURDOCObjectpropCount++;
+                }
+
+                if (bodyvaluepURDOCrEMARKS != null)
+                {
+                    pURDOCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCrEMARKS);
+                    pURDOCObjectpropCount++;
+                }
+
                 pURDOCObjectpropCount++;
-            }
-
-            if (bodyvaluepURDOCpAYMENT != null)
-            {
-                pURDOCObject["PAYMENT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCpAYMENT);
+                pURDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCsERIES);
                 pURDOCObjectpropCount++;
-            }
+                pURDOCObject["SOCURRENCY"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCsOCURRENCY);
+                if (bodyvaluepURDOCsUMAMNT != null)
+                {
+                    pURDOCObject["SUMAMNT"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCsUMAMNT);
+                    pURDOCObjectpropCount++;
+                }
 
-            if (bodyvaluepURDOCpRJC != null)
-            {
-                pURDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCpRJC);
                 pURDOCObjectpropCount++;
-            }
+                pURDOCObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCtRDR);
+                if (bodyvaluepURDOCtRNDATE != null)
+                {
+                    pURDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluepURDOCtRNDATE);
+                    pURDOCObjectpropCount++;
+                }
 
-            if (bodyvaluepURDOCrEMARKS != null)
-            {
-                pURDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCrEMARKS);
-                pURDOCObjectpropCount++;
-            }
+                if (pURDOCObjectpropCount > 0)
+                {
+                    dATAObject["PURDOC"] = pURDOCObject;
+                    dATAObjectpropCount++;
+                }
 
-            pURDOCObjectpropCount++;
-            pURDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsERIES);
-            pURDOCObjectpropCount++;
-            pURDOCObject["SOCURRENCY"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsOCURRENCY);
-            if (bodyvaluepURDOCsUMAMNT != null)
-            {
-                pURDOCObject["SUMAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCsUMAMNT);
-                pURDOCObjectpropCount++;
-            }
+                if (bodyvaluesRVLINES != null)
+                {
+                    dATAObject["SRVLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluesRVLINES);
+                    dATAObjectpropCount++;
+                }
 
-            pURDOCObjectpropCount++;
-            pURDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCtRDR);
-            if (bodyvaluepURDOCtRNDATE != null)
-            {
-                pURDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluepURDOCtRNDATE);
-                pURDOCObjectpropCount++;
-            }
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
 
-            if (pURDOCObjectpropCount > 0)
-            {
-                dATAObject["PURDOC"] = pURDOCObject;
-                dATAObjectpropCount++;
-            }
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
 
-            if (bodyvaluesRVLINES != null)
-            {
-                dATAObject["SRVLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesRVLINES);
-                dATAObjectpropCount++;
-            }
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
 
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                body["OBJECT"] = "PURDOC";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["SERVICE"] = "setData";
                 bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "PURDOC";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSaldoc(Expression<Func<string>> bodyvaluemTRDOCwarehouse, Expression<Func<string>> bodyvaluesALDOCpayment, Expression<Func<string>> bodyvaluesALDOCseries, Expression<Func<string>> bodyvaluesALDOCcurrency, Expression<Func<string>> bodyvaluesALDOCcustomer, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<bodyvalueiTELINESInputItem22[]>> bodyvalueiTELINES = null, Expression<Func<string>> bodyvaluesALDOCdiscount = null, Expression<Func<string>> bodyvaluesALDOCdiscountValue = null, Expression<Func<string>> bodyvaluesALDOCnetAmount = null, Expression<Func<string>> bodyvaluesALDOCproject = null, Expression<Func<string>> bodyvaluesALDOCcomments = null, Expression<Func<string>> bodyvaluesALDOCtotal = null, Expression<Func<string>> bodyvaluesALDOCtRNDATE = null, Expression<Func<string>> bodyvaluesALDOCvAT = null, Expression<Func<bodyvaluesRVLINESInputItem2[]>> bodyvaluesRVLINES = null)
+        public IBodyWorkflowAction<SetData200response> SetSaldoc([WorkflowExpression] Func<string> bodyvaluemTRDOCwarehouse, [WorkflowExpression] Func<string> bodyvaluesALDOCpayment, [WorkflowExpression] Func<string> bodyvaluesALDOCseries, [WorkflowExpression] Func<string> bodyvaluesALDOCcurrency, [WorkflowExpression] Func<string> bodyvaluesALDOCcustomer, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<bodyvalueiTELINESInputItem22[]> bodyvalueiTELINES = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCdiscountValue = null, [WorkflowExpression] Func<string> bodyvaluesALDOCnetAmount = null, [WorkflowExpression] Func<string> bodyvaluesALDOCproject = null, [WorkflowExpression] Func<string> bodyvaluesALDOCcomments = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtotal = null, [WorkflowExpression] Func<string> bodyvaluesALDOCtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesALDOCvAT = null, [WorkflowExpression] Func<bodyvaluesRVLINESInputItem2[]> bodyvaluesRVLINES = null)
         {
-            var apiCallPath = "/setSaldoc";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluemTRDOCwarehouse, nameof(bodyvaluemTRDOCwarehouse), required: true);
+            SourceExpression.Validate(bodyvaluesALDOCpayment, nameof(bodyvaluesALDOCpayment), required: true);
+            SourceExpression.Validate(bodyvaluesALDOCseries, nameof(bodyvaluesALDOCseries), required: true);
+            SourceExpression.Validate(bodyvaluesALDOCcurrency, nameof(bodyvaluesALDOCcurrency), required: true);
+            SourceExpression.Validate(bodyvaluesALDOCcustomer, nameof(bodyvaluesALDOCcustomer), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvalueiTELINES, nameof(bodyvalueiTELINES), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCdiscount, nameof(bodyvaluesALDOCdiscount), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCdiscountValue, nameof(bodyvaluesALDOCdiscountValue), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCnetAmount, nameof(bodyvaluesALDOCnetAmount), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCproject, nameof(bodyvaluesALDOCproject), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCcomments, nameof(bodyvaluesALDOCcomments), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCtotal, nameof(bodyvaluesALDOCtotal), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCtRNDATE, nameof(bodyvaluesALDOCtRNDATE), required: false);
+            SourceExpression.Validate(bodyvaluesALDOCvAT, nameof(bodyvaluesALDOCvAT), required: false);
+            SourceExpression.Validate(bodyvaluesRVLINES, nameof(bodyvaluesRVLINES), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setSaldoc";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SALDOC";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SALDOC";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (bodyvalueiTELINES != null)
-            {
-                dataObject["ITELINES"] = CSharpExpressionConverter.ConvertToken(bodyvalueiTELINES);
-                dataObjectpropCount++;
-            }
-
-            var mTRDOCObject = new JObject();
-            var mTRDOCObjectpropCount = 0;
-            mTRDOCObjectpropCount++;
-            mTRDOCObject["WHOUSE"] = CSharpExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
-            if (mTRDOCObjectpropCount > 0)
-            {
-                dataObject["MTRDOC"] = mTRDOCObject;
-                dataObjectpropCount++;
-            }
-
-            var sALDOCObject = new JObject();
-            var sALDOCObjectpropCount = 0;
-            if (bodyvaluesALDOCdiscount != null)
-            {
-                sALDOCObject["DISC1PRC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCdiscount);
-                sALDOCObjectpropCount++;
-            }
-
-            if (bodyvaluesALDOCdiscountValue != null)
-            {
-                sALDOCObject["DISC1VAL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCdiscountValue);
-                sALDOCObjectpropCount++;
-            }
-
-            if (bodyvaluesALDOCnetAmount != null)
-            {
-                sALDOCObject["NETAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCnetAmount);
-                sALDOCObjectpropCount++;
-            }
-
-            sALDOCObjectpropCount++;
-            sALDOCObject["PAYMENT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCpayment);
-            if (bodyvaluesALDOCproject != null)
-            {
-                sALDOCObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCproject);
-                sALDOCObjectpropCount++;
-            }
-
-            if (bodyvaluesALDOCcomments != null)
-            {
-                sALDOCObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcomments);
-                sALDOCObjectpropCount++;
-            }
-
-            sALDOCObjectpropCount++;
-            sALDOCObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCseries);
-            sALDOCObjectpropCount++;
-            sALDOCObject["SOCURRENCY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcurrency);
-            if (bodyvaluesALDOCtotal != null)
-            {
-                sALDOCObject["SUMAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCtotal);
-                sALDOCObjectpropCount++;
-            }
-
-            sALDOCObjectpropCount++;
-            sALDOCObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCcustomer);
-            if (bodyvaluesALDOCtRNDATE != null)
-            {
-                sALDOCObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCtRNDATE);
-                sALDOCObjectpropCount++;
-            }
-
-            if (bodyvaluesALDOCvAT != null)
-            {
-                sALDOCObject["VATAMNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesALDOCvAT);
-                sALDOCObjectpropCount++;
-            }
-
-            if (sALDOCObjectpropCount > 0)
-            {
-                dataObject["SALDOC"] = sALDOCObject;
-                dataObjectpropCount++;
-            }
-
-            if (bodyvaluesRVLINES != null)
-            {
-                dataObject["SRVLINES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesRVLINES);
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (bodyvalueiTELINES != null)
+                {
+                    dataObject["ITELINES"] = SourceExpressionConverter.ConvertToken(bodyvalueiTELINES);
+                    dataObjectpropCount++;
+                }
+
+                var mTRDOCObject = new JObject();
+                var mTRDOCObjectpropCount = 0;
+                mTRDOCObjectpropCount++;
+                mTRDOCObject["WHOUSE"] = SourceExpressionConverter.ConvertToken(bodyvaluemTRDOCwarehouse);
+                if (mTRDOCObjectpropCount > 0)
+                {
+                    dataObject["MTRDOC"] = mTRDOCObject;
+                    dataObjectpropCount++;
+                }
+
+                var sALDOCObject = new JObject();
+                var sALDOCObjectpropCount = 0;
+                if (bodyvaluesALDOCdiscount != null)
+                {
+                    sALDOCObject["DISC1PRC"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCdiscount);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (bodyvaluesALDOCdiscountValue != null)
+                {
+                    sALDOCObject["DISC1VAL"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCdiscountValue);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (bodyvaluesALDOCnetAmount != null)
+                {
+                    sALDOCObject["NETAMNT"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCnetAmount);
+                    sALDOCObjectpropCount++;
+                }
+
+                sALDOCObjectpropCount++;
+                sALDOCObject["PAYMENT"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCpayment);
+                if (bodyvaluesALDOCproject != null)
+                {
+                    sALDOCObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCproject);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (bodyvaluesALDOCcomments != null)
+                {
+                    sALDOCObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCcomments);
+                    sALDOCObjectpropCount++;
+                }
+
+                sALDOCObjectpropCount++;
+                sALDOCObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCseries);
+                sALDOCObjectpropCount++;
+                sALDOCObject["SOCURRENCY"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCcurrency);
+                if (bodyvaluesALDOCtotal != null)
+                {
+                    sALDOCObject["SUMAMNT"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCtotal);
+                    sALDOCObjectpropCount++;
+                }
+
+                sALDOCObjectpropCount++;
+                sALDOCObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCcustomer);
+                if (bodyvaluesALDOCtRNDATE != null)
+                {
+                    sALDOCObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCtRNDATE);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (bodyvaluesALDOCvAT != null)
+                {
+                    sALDOCObject["VATAMNT"] = SourceExpressionConverter.ConvertToken(bodyvaluesALDOCvAT);
+                    sALDOCObjectpropCount++;
+                }
+
+                if (sALDOCObjectpropCount > 0)
+                {
+                    dataObject["SALDOC"] = sALDOCObject;
+                    dataObjectpropCount++;
+                }
+
+                if (bodyvaluesRVLINES != null)
+                {
+                    dataObject["SRVLINES"] = SourceExpressionConverter.ConvertToken(bodyvaluesRVLINES);
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetService(Expression<Func<string>> bodyvaluesERVICEcode, Expression<Func<string>> bodyvaluesERVICEbaseUnitOfMeasure, Expression<Func<string>> bodyvaluesERVICEname, Expression<Func<string>> bodyvaluesERVICEvatGroup, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null, Expression<Func<string>> bodyvaluesERVICEcommercialCategory = null, Expression<Func<string>> bodyvaluesERVICEserviceGroup = null, Expression<Func<string>> bodyvaluesERVICEretailPrice = null, Expression<Func<string>> bodyvaluesERVICEwholesalePrice = null, Expression<Func<string>> bodyvaluesERVICEcomments = null, Expression<Func<string>> bodyvaluesERVICEdiscount1 = null)
+        public IBodyWorkflowAction<SetData200response> SetService([WorkflowExpression] Func<string> bodyvaluesERVICEcode, [WorkflowExpression] Func<string> bodyvaluesERVICEbaseUnitOfMeasure, [WorkflowExpression] Func<string> bodyvaluesERVICEname, [WorkflowExpression] Func<string> bodyvaluesERVICEvatGroup, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcommercialCategory = null, [WorkflowExpression] Func<string> bodyvaluesERVICEserviceGroup = null, [WorkflowExpression] Func<string> bodyvaluesERVICEretailPrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEwholesalePrice = null, [WorkflowExpression] Func<string> bodyvaluesERVICEcomments = null, [WorkflowExpression] Func<string> bodyvaluesERVICEdiscount1 = null)
         {
-            var apiCallPath = "/setService";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfORM != null)
+            SourceExpression.Validate(bodyvaluesERVICEcode, nameof(bodyvaluesERVICEcode), required: true);
+            SourceExpression.Validate(bodyvaluesERVICEbaseUnitOfMeasure, nameof(bodyvaluesERVICEbaseUnitOfMeasure), required: true);
+            SourceExpression.Validate(bodyvaluesERVICEname, nameof(bodyvaluesERVICEname), required: true);
+            SourceExpression.Validate(bodyvaluesERVICEvatGroup, nameof(bodyvaluesERVICEvatGroup), required: true);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEcommercialCategory, nameof(bodyvaluesERVICEcommercialCategory), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEserviceGroup, nameof(bodyvaluesERVICEserviceGroup), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEretailPrice, nameof(bodyvaluesERVICEretailPrice), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEwholesalePrice, nameof(bodyvaluesERVICEwholesalePrice), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEcomments, nameof(bodyvaluesERVICEcomments), required: false);
+            SourceExpression.Validate(bodyvaluesERVICEdiscount1, nameof(bodyvaluesERVICEdiscount1), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var apiCallPath = "/setService";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SERVICE";
                 bodypropCount++;
-            }
-
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SERVICE";
-            bodypropCount++;
-            body["appId"] = "702";
-            bodypropCount++;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            var sERVICEObject = new JObject();
-            var sERVICEObjectpropCount = 0;
-            sERVICEObjectpropCount++;
-            sERVICEObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcode);
-            if (bodyvaluesERVICEcommercialCategory != null)
-            {
-                sERVICEObject["MTRCATEGORY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcommercialCategory);
-                sERVICEObjectpropCount++;
-            }
-
-            if (bodyvaluesERVICEserviceGroup != null)
-            {
-                sERVICEObject["MTRGROUP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEserviceGroup);
-                sERVICEObjectpropCount++;
-            }
-
-            sERVICEObjectpropCount++;
-            sERVICEObject["MTRUNIT1"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEbaseUnitOfMeasure);
-            sERVICEObjectpropCount++;
-            sERVICEObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEname);
-            if (bodyvaluesERVICEretailPrice != null)
-            {
-                sERVICEObject["PRICER"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEretailPrice);
-                sERVICEObjectpropCount++;
-            }
-
-            if (bodyvaluesERVICEwholesalePrice != null)
-            {
-                sERVICEObject["PRICEW"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEwholesalePrice);
-                sERVICEObjectpropCount++;
-            }
-
-            if (bodyvaluesERVICEcomments != null)
-            {
-                sERVICEObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEcomments);
-                sERVICEObjectpropCount++;
-            }
-
-            if (bodyvaluesERVICEdiscount1 != null)
-            {
-                sERVICEObject["SODISCOUNT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEdiscount1);
-                sERVICEObjectpropCount++;
-            }
-
-            sERVICEObjectpropCount++;
-            sERVICEObject["VAT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesERVICEvatGroup);
-            if (sERVICEObjectpropCount > 0)
-            {
-                dataObject["SERVICE"] = sERVICEObject;
-                dataObjectpropCount++;
-            }
-
-            if (dataObjectpropCount > 0)
-            {
-                body["data"] = dataObject;
+                body["appId"] = "702";
                 bodypropCount++;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                var sERVICEObject = new JObject();
+                var sERVICEObjectpropCount = 0;
+                sERVICEObjectpropCount++;
+                sERVICEObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEcode);
+                if (bodyvaluesERVICEcommercialCategory != null)
+                {
+                    sERVICEObject["MTRCATEGORY"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEcommercialCategory);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (bodyvaluesERVICEserviceGroup != null)
+                {
+                    sERVICEObject["MTRGROUP"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEserviceGroup);
+                    sERVICEObjectpropCount++;
+                }
+
+                sERVICEObjectpropCount++;
+                sERVICEObject["MTRUNIT1"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEbaseUnitOfMeasure);
+                sERVICEObjectpropCount++;
+                sERVICEObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEname);
+                if (bodyvaluesERVICEretailPrice != null)
+                {
+                    sERVICEObject["PRICER"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEretailPrice);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (bodyvaluesERVICEwholesalePrice != null)
+                {
+                    sERVICEObject["PRICEW"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEwholesalePrice);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (bodyvaluesERVICEcomments != null)
+                {
+                    sERVICEObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEcomments);
+                    sERVICEObjectpropCount++;
+                }
+
+                if (bodyvaluesERVICEdiscount1 != null)
+                {
+                    sERVICEObject["SODISCOUNT"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEdiscount1);
+                    sERVICEObjectpropCount++;
+                }
+
+                sERVICEObjectpropCount++;
+                sERVICEObject["VAT"] = SourceExpressionConverter.ConvertToken(bodyvaluesERVICEvatGroup);
+                if (sERVICEObjectpropCount > 0)
+                {
+                    dataObject["SERVICE"] = sERVICEObject;
+                    dataObjectpropCount++;
+                }
+
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                body["service"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["service"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSOEMAIL(Expression<Func<string>> bodyvaluesOACTIONsERIES, Expression<Func<bodyvaluesOACTIONaCTSTATUSInput>> bodyvaluesOACTIONaCTSTATUS = null, Expression<Func<string>> bodyvaluesOACTIONcOMMENTS = null, Expression<Func<string>> bodyvaluesOACTIONtRNDATE = null, Expression<Func<string>> bodyvaluesOMAILfROMADDRESS = null, Expression<Func<string>> bodyvaluesOMAILfROMNAME = null, Expression<Func<string>> bodyvaluesOMAILsOBCC = null, Expression<Func<string>> bodyvaluesOMAILsOBODY = null, Expression<Func<string>> bodyvaluesOMAILsOCC = null, Expression<Func<string>> bodyvaluesOMAILsOTO = null, Expression<Func<bodyvaluexTRDOCDATAInputItem[]>> bodyvaluexTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSOEMAIL([WorkflowExpression] Func<string> bodyvaluesOACTIONsERIES, [WorkflowExpression] Func<bodyvaluesOACTIONaCTSTATUSInput> bodyvaluesOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodyvaluesOACTIONtRNDATE = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMADDRESS = null, [WorkflowExpression] Func<string> bodyvaluesOMAILfROMNAME = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOBODY = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOCC = null, [WorkflowExpression] Func<string> bodyvaluesOMAILsOTO = null, [WorkflowExpression] Func<bodyvaluexTRDOCDATAInputItem[]> bodyvaluexTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setSomail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            var sOACTIONObject = new JObject();
-            var sOACTIONObjectpropCount = 0;
-            if (bodyvaluesOACTIONaCTSTATUS != null)
+            SourceExpression.Validate(bodyvaluesOACTIONsERIES, nameof(bodyvaluesOACTIONsERIES), required: true);
+            SourceExpression.Validate(bodyvaluesOACTIONaCTSTATUS, nameof(bodyvaluesOACTIONaCTSTATUS), required: false);
+            SourceExpression.Validate(bodyvaluesOACTIONcOMMENTS, nameof(bodyvaluesOACTIONcOMMENTS), required: false);
+            SourceExpression.Validate(bodyvaluesOACTIONtRNDATE, nameof(bodyvaluesOACTIONtRNDATE), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILfROMADDRESS, nameof(bodyvaluesOMAILfROMADDRESS), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILfROMNAME, nameof(bodyvaluesOMAILfROMNAME), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILsOBCC, nameof(bodyvaluesOMAILsOBCC), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILsOBODY, nameof(bodyvaluesOMAILsOBODY), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILsOCC, nameof(bodyvaluesOMAILsOCC), required: false);
+            SourceExpression.Validate(bodyvaluesOMAILsOTO, nameof(bodyvaluesOMAILsOTO), required: false);
+            SourceExpression.Validate(bodyvaluexTRDOCDATA, nameof(bodyvaluexTRDOCDATA), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodyvaluesOACTIONaCTSTATUS);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodyvaluesOACTIONcOMMENTS != null)
-            {
-                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONcOMMENTS);
-                sOACTIONObjectpropCount++;
-            }
-
-            sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONsERIES);
-            if (bodyvaluesOACTIONtRNDATE != null)
-            {
-                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOACTIONtRNDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (sOACTIONObjectpropCount > 0)
-            {
-                dATAObject["SOACTION"] = sOACTIONObject;
-                dATAObjectpropCount++;
-            }
-
-            var sOMAILObject = new JObject();
-            var sOMAILObjectpropCount = 0;
-            if (bodyvaluesOMAILfROMADDRESS != null)
-            {
-                sOMAILObject["FROMADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILfROMADDRESS);
-                sOMAILObjectpropCount++;
-            }
-
-            if (bodyvaluesOMAILfROMNAME != null)
-            {
-                sOMAILObject["FROMNAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILfROMNAME);
-                sOMAILObjectpropCount++;
-            }
-
-            if (bodyvaluesOMAILsOBCC != null)
-            {
-                sOMAILObject["SOBCC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOBCC);
-                sOMAILObjectpropCount++;
-            }
-
-            if (bodyvaluesOMAILsOBODY != null)
-            {
-                sOMAILObject["SOBODY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOBODY);
-                sOMAILObjectpropCount++;
-            }
-
-            if (bodyvaluesOMAILsOCC != null)
-            {
-                sOMAILObject["SOCC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOCC);
-                sOMAILObjectpropCount++;
-            }
-
-            if (bodyvaluesOMAILsOTO != null)
-            {
-                sOMAILObject["SOTO"] = CSharpExpressionConverter.ConvertToken(bodyvaluesOMAILsOTO);
-                sOMAILObjectpropCount++;
-            }
-
-            if (sOMAILObjectpropCount > 0)
-            {
-                dATAObject["SOMAIL"] = sOMAILObject;
-                dATAObjectpropCount++;
-            }
-
-            if (bodyvaluexTRDOCDATA != null)
-            {
-                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
-                dATAObjectpropCount++;
-            }
-
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                var apiCallPath = "/setSomail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
-            }
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                var sOACTIONObject = new JObject();
+                var sOACTIONObjectpropCount = 0;
+                if (bodyvaluesOACTIONaCTSTATUS != null)
+                {
+                    sOACTIONObject["ACTSTATUS"] = SourceExpressionConverter.Convert(bodyvaluesOACTIONaCTSTATUS);
+                    sOACTIONObjectpropCount++;
+                }
 
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                if (bodyvaluesOACTIONcOMMENTS != null)
+                {
+                    sOACTIONObject["COMMENTS"] = SourceExpressionConverter.ConvertToken(bodyvaluesOACTIONcOMMENTS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                sOACTIONObjectpropCount++;
+                sOACTIONObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodyvaluesOACTIONsERIES);
+                if (bodyvaluesOACTIONtRNDATE != null)
+                {
+                    sOACTIONObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodyvaluesOACTIONtRNDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (sOACTIONObjectpropCount > 0)
+                {
+                    dATAObject["SOACTION"] = sOACTIONObject;
+                    dATAObjectpropCount++;
+                }
+
+                var sOMAILObject = new JObject();
+                var sOMAILObjectpropCount = 0;
+                if (bodyvaluesOMAILfROMADDRESS != null)
+                {
+                    sOMAILObject["FROMADDRESS"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILfROMADDRESS);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (bodyvaluesOMAILfROMNAME != null)
+                {
+                    sOMAILObject["FROMNAME"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILfROMNAME);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (bodyvaluesOMAILsOBCC != null)
+                {
+                    sOMAILObject["SOBCC"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILsOBCC);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (bodyvaluesOMAILsOBODY != null)
+                {
+                    sOMAILObject["SOBODY"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILsOBODY);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (bodyvaluesOMAILsOCC != null)
+                {
+                    sOMAILObject["SOCC"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILsOCC);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (bodyvaluesOMAILsOTO != null)
+                {
+                    sOMAILObject["SOTO"] = SourceExpressionConverter.ConvertToken(bodyvaluesOMAILsOTO);
+                    sOMAILObjectpropCount++;
+                }
+
+                if (sOMAILObjectpropCount > 0)
+                {
+                    dATAObject["SOMAIL"] = sOMAILObject;
+                    dATAObjectpropCount++;
+                }
+
+                if (bodyvaluexTRDOCDATA != null)
+                {
+                    dATAObject["XTRDOCDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluexTRDOCDATA);
+                    dATAObjectpropCount++;
+                }
+
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
+
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SOEMAIL";
                 bodypropCount++;
+                body["SERVICE"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOEMAIL";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetMeeting(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetMeeting([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONoperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setSomeeting";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            var sOACTIONObject = new JObject();
-            var sOACTIONObjectpropCount = 0;
-            if (bodydATAsOACTIONoperator != null)
+            SourceExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
+            SourceExpression.Validate(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
+            SourceExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                sOACTIONObject["ACTOR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONoperatorContact != null)
-            {
-                sOACTIONObject["ACTPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONaCTSTATUS != null)
-            {
-                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONcOMMENTS != null)
-            {
-                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONfINALDATE != null)
-            {
-                sOACTIONObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONfROMDATE != null)
-            {
-                sOACTIONObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONorderedBy != null)
-            {
-                sOACTIONObject["ORDEREDBY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONorderedByContact != null)
-            {
-                sOACTIONObject["ORDPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONpriority != null)
-            {
-                sOACTIONObject["PRIORITY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONproject != null)
-            {
-                sOACTIONObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONrEMARKS != null)
-            {
-                sOACTIONObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
-                sOACTIONObjectpropCount++;
-            }
-
-            sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
-            if (bodydATAsOACTIONtRDR != null)
-            {
-                sOACTIONObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONtRNDATE != null)
-            {
-                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (sOACTIONObjectpropCount > 0)
-            {
-                dATAObject["SOACTION"] = sOACTIONObject;
-                dATAObjectpropCount++;
-            }
-
-            if (bodydATAxTRDOCDATA != null)
-            {
-                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
-                dATAObjectpropCount++;
-            }
-
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                var apiCallPath = "/setSomeeting";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
-            }
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                var sOACTIONObject = new JObject();
+                var sOACTIONObjectpropCount = 0;
+                if (bodydATAsOACTIONoperator != null)
+                {
+                    sOACTIONObject["ACTOR"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
+                    sOACTIONObjectpropCount++;
+                }
 
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                if (bodydATAsOACTIONoperatorContact != null)
+                {
+                    sOACTIONObject["ACTPRSN"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONaCTSTATUS != null)
+                {
+                    sOACTIONObject["ACTSTATUS"] = SourceExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONcOMMENTS != null)
+                {
+                    sOACTIONObject["COMMENTS"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONfINALDATE != null)
+                {
+                    sOACTIONObject["FINALDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONfROMDATE != null)
+                {
+                    sOACTIONObject["FROMDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONorderedBy != null)
+                {
+                    sOACTIONObject["ORDEREDBY"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONorderedByContact != null)
+                {
+                    sOACTIONObject["ORDPRSN"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONpriority != null)
+                {
+                    sOACTIONObject["PRIORITY"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONproject != null)
+                {
+                    sOACTIONObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONrEMARKS != null)
+                {
+                    sOACTIONObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                sOACTIONObjectpropCount++;
+                sOACTIONObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
+                if (bodydATAsOACTIONtRDR != null)
+                {
+                    sOACTIONObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONtRNDATE != null)
+                {
+                    sOACTIONObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (sOACTIONObjectpropCount > 0)
+                {
+                    dATAObject["SOACTION"] = sOACTIONObject;
+                    dATAObjectpropCount++;
+                }
+
+                if (bodydATAxTRDOCDATA != null)
+                {
+                    dATAObject["XTRDOCDATA"] = SourceExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
+                    dATAObjectpropCount++;
+                }
+
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
+
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SOMEETING";
                 bodypropCount++;
+                body["SERVICE"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOMEETING";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSOTASK(Expression<Func<string>> bodydATAsOACTIONsERIES, Expression<Func<string>> bodydATAsOACTIONoperator = null, Expression<Func<string>> bodydATAsOACTIONoperatorContact = null, Expression<Func<bodydATAsOACTIONaCTSTATUSInput>> bodydATAsOACTIONaCTSTATUS = null, Expression<Func<string>> bodydATAsOACTIONcOMMENTS = null, Expression<Func<string>> bodydATAsOACTIONfINALDATE = null, Expression<Func<string>> bodydATAsOACTIONfROMDATE = null, Expression<Func<string>> bodydATAsOACTIONorderedBy = null, Expression<Func<string>> bodydATAsOACTIONorderedByContact = null, Expression<Func<string>> bodydATAsOACTIONpriority = null, Expression<Func<string>> bodydATAsOACTIONproject = null, Expression<Func<string>> bodydATAsOACTIONrEMARKS = null, Expression<Func<string>> bodydATAsOACTIONtRDR = null, Expression<Func<string>> bodydATAsOACTIONtRNDATE = null, Expression<Func<bodydATAxTRDOCDATAInputItem[]>> bodydATAxTRDOCDATA = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSOTASK([WorkflowExpression] Func<string> bodydATAsOACTIONsERIES, [WorkflowExpression] Func<string> bodydATAsOACTIONoperator = null, [WorkflowExpression] Func<string> bodydATAsOACTIONoperatorContact = null, [WorkflowExpression] Func<bodydATAsOACTIONaCTSTATUSInput> bodydATAsOACTIONaCTSTATUS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONcOMMENTS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfINALDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONfROMDATE = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedBy = null, [WorkflowExpression] Func<string> bodydATAsOACTIONorderedByContact = null, [WorkflowExpression] Func<string> bodydATAsOACTIONpriority = null, [WorkflowExpression] Func<string> bodydATAsOACTIONproject = null, [WorkflowExpression] Func<string> bodydATAsOACTIONrEMARKS = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRDR = null, [WorkflowExpression] Func<string> bodydATAsOACTIONtRNDATE = null, [WorkflowExpression] Func<bodydATAxTRDOCDATAInputItem[]> bodydATAxTRDOCDATA = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setSotask";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            var sOACTIONObject = new JObject();
-            var sOACTIONObjectpropCount = 0;
-            if (bodydATAsOACTIONoperator != null)
+            SourceExpression.Validate(bodydATAsOACTIONsERIES, nameof(bodydATAsOACTIONsERIES), required: true);
+            SourceExpression.Validate(bodydATAsOACTIONoperator, nameof(bodydATAsOACTIONoperator), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONoperatorContact, nameof(bodydATAsOACTIONoperatorContact), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONaCTSTATUS, nameof(bodydATAsOACTIONaCTSTATUS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONcOMMENTS, nameof(bodydATAsOACTIONcOMMENTS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONfINALDATE, nameof(bodydATAsOACTIONfINALDATE), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONfROMDATE, nameof(bodydATAsOACTIONfROMDATE), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONorderedBy, nameof(bodydATAsOACTIONorderedBy), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONorderedByContact, nameof(bodydATAsOACTIONorderedByContact), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONpriority, nameof(bodydATAsOACTIONpriority), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONproject, nameof(bodydATAsOACTIONproject), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONrEMARKS, nameof(bodydATAsOACTIONrEMARKS), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONtRDR, nameof(bodydATAsOACTIONtRDR), required: false);
+            SourceExpression.Validate(bodydATAsOACTIONtRNDATE, nameof(bodydATAsOACTIONtRNDATE), required: false);
+            SourceExpression.Validate(bodydATAxTRDOCDATA, nameof(bodydATAxTRDOCDATA), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                sOACTIONObject["ACTOR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONoperatorContact != null)
-            {
-                sOACTIONObject["ACTPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONaCTSTATUS != null)
-            {
-                sOACTIONObject["ACTSTATUS"] = CSharpExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONcOMMENTS != null)
-            {
-                sOACTIONObject["COMMENTS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONfINALDATE != null)
-            {
-                sOACTIONObject["FINALDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONfROMDATE != null)
-            {
-                sOACTIONObject["FROMDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONorderedBy != null)
-            {
-                sOACTIONObject["ORDEREDBY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONorderedByContact != null)
-            {
-                sOACTIONObject["ORDPRSN"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONpriority != null)
-            {
-                sOACTIONObject["PRIORITY"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONproject != null)
-            {
-                sOACTIONObject["PRJC"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONrEMARKS != null)
-            {
-                sOACTIONObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
-                sOACTIONObjectpropCount++;
-            }
-
-            sOACTIONObjectpropCount++;
-            sOACTIONObject["SERIES"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
-            if (bodydATAsOACTIONtRDR != null)
-            {
-                sOACTIONObject["TRDR"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (bodydATAsOACTIONtRNDATE != null)
-            {
-                sOACTIONObject["TRNDATE"] = CSharpExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
-                sOACTIONObjectpropCount++;
-            }
-
-            if (sOACTIONObjectpropCount > 0)
-            {
-                dATAObject["SOACTION"] = sOACTIONObject;
-                dATAObjectpropCount++;
-            }
-
-            if (bodydATAxTRDOCDATA != null)
-            {
-                dATAObject["XTRDOCDATA"] = CSharpExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
-                dATAObjectpropCount++;
-            }
-
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                var apiCallPath = "/setSotask";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
-            }
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                var sOACTIONObject = new JObject();
+                var sOACTIONObjectpropCount = 0;
+                if (bodydATAsOACTIONoperator != null)
+                {
+                    sOACTIONObject["ACTOR"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONoperator);
+                    sOACTIONObjectpropCount++;
+                }
 
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                if (bodydATAsOACTIONoperatorContact != null)
+                {
+                    sOACTIONObject["ACTPRSN"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONoperatorContact);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONaCTSTATUS != null)
+                {
+                    sOACTIONObject["ACTSTATUS"] = SourceExpressionConverter.Convert(bodydATAsOACTIONaCTSTATUS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONcOMMENTS != null)
+                {
+                    sOACTIONObject["COMMENTS"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONcOMMENTS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONfINALDATE != null)
+                {
+                    sOACTIONObject["FINALDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONfINALDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONfROMDATE != null)
+                {
+                    sOACTIONObject["FROMDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONfROMDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONorderedBy != null)
+                {
+                    sOACTIONObject["ORDEREDBY"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONorderedBy);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONorderedByContact != null)
+                {
+                    sOACTIONObject["ORDPRSN"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONorderedByContact);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONpriority != null)
+                {
+                    sOACTIONObject["PRIORITY"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONpriority);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONproject != null)
+                {
+                    sOACTIONObject["PRJC"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONproject);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONrEMARKS != null)
+                {
+                    sOACTIONObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONrEMARKS);
+                    sOACTIONObjectpropCount++;
+                }
+
+                sOACTIONObjectpropCount++;
+                sOACTIONObject["SERIES"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONsERIES);
+                if (bodydATAsOACTIONtRDR != null)
+                {
+                    sOACTIONObject["TRDR"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONtRDR);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (bodydATAsOACTIONtRNDATE != null)
+                {
+                    sOACTIONObject["TRNDATE"] = SourceExpressionConverter.ConvertToken(bodydATAsOACTIONtRNDATE);
+                    sOACTIONObjectpropCount++;
+                }
+
+                if (sOACTIONObjectpropCount > 0)
+                {
+                    dATAObject["SOACTION"] = sOACTIONObject;
+                    dATAObjectpropCount++;
+                }
+
+                if (bodydATAxTRDOCDATA != null)
+                {
+                    dATAObject["XTRDOCDATA"] = SourceExpressionConverter.ConvertToken(bodydATAxTRDOCDATA);
+                    dATAObjectpropCount++;
+                }
+
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
+
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SOTASK";
                 bodypropCount++;
+                body["SERVICE"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SOTASK";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "soft1")]
-        public IBodyWorkflowAction<SetData200response> SetSupplier(Expression<Func<string>> bodyvaluesUPPLIERcODE, Expression<Func<string>> bodyvaluesUPPLIERnAME, Expression<Func<bodyvaluesUPBANKACCInputItem[]>> bodyvaluesUPBANKACC = null, Expression<Func<string>> bodyvaluesUPPLIERaDDRESS = null, Expression<Func<string>> bodyvaluesUPPLIERaFM = null, Expression<Func<string>> bodyvaluesUPPLIERcITY = null, Expression<Func<string>> bodyvaluesUPPLIERdISTRICT = null, Expression<Func<string>> bodyvaluesUPPLIEReMAIL = null, Expression<Func<string>> bodyvaluesUPPLIERfAX = null, Expression<Func<string>> bodyvaluesUPPLIERiRSDATA = null, Expression<Func<string>> bodyvaluesUPPLIERjOBTYPETRD = null, Expression<Func<string>> bodyvaluesUPPLIERpHONE01 = null, Expression<Func<string>> bodyvaluesUPPLIERrEMARKS = null, Expression<Func<string>> bodyvaluesUPPLIERzIP = null, Expression<Func<string>> bodyfORM = null, Expression<Func<string>> bodykEY = null)
+        public IBodyWorkflowAction<SetData200response> SetSupplier([WorkflowExpression] Func<string> bodyvaluesUPPLIERcODE, [WorkflowExpression] Func<string> bodyvaluesUPPLIERnAME, [WorkflowExpression] Func<bodyvaluesUPBANKACCInputItem[]> bodyvaluesUPBANKACC = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaDDRESS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERaFM = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERcITY = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERdISTRICT = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIEReMAIL = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERfAX = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERiRSDATA = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERjOBTYPETRD = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERpHONE01 = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERrEMARKS = null, [WorkflowExpression] Func<string> bodyvaluesUPPLIERzIP = null, [WorkflowExpression] Func<string> bodyfORM = null, [WorkflowExpression] Func<string> bodykEY = null)
         {
-            var apiCallPath = "/setSupplier";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("s1service");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["APPID"] = 702;
-            bodypropCount++;
-            var dATAObject = new JObject();
-            var dATAObjectpropCount = 0;
-            if (bodyvaluesUPBANKACC != null)
+            SourceExpression.Validate(bodyvaluesUPPLIERcODE, nameof(bodyvaluesUPPLIERcODE), required: true);
+            SourceExpression.Validate(bodyvaluesUPPLIERnAME, nameof(bodyvaluesUPPLIERnAME), required: true);
+            SourceExpression.Validate(bodyvaluesUPBANKACC, nameof(bodyvaluesUPBANKACC), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERaDDRESS, nameof(bodyvaluesUPPLIERaDDRESS), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERaFM, nameof(bodyvaluesUPPLIERaFM), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERcITY, nameof(bodyvaluesUPPLIERcITY), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERdISTRICT, nameof(bodyvaluesUPPLIERdISTRICT), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIEReMAIL, nameof(bodyvaluesUPPLIEReMAIL), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERfAX, nameof(bodyvaluesUPPLIERfAX), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERiRSDATA, nameof(bodyvaluesUPPLIERiRSDATA), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERjOBTYPETRD, nameof(bodyvaluesUPPLIERjOBTYPETRD), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERpHONE01, nameof(bodyvaluesUPPLIERpHONE01), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERrEMARKS, nameof(bodyvaluesUPPLIERrEMARKS), required: false);
+            SourceExpression.Validate(bodyvaluesUPPLIERzIP, nameof(bodyvaluesUPPLIERzIP), required: false);
+            SourceExpression.Validate(bodyfORM, nameof(bodyfORM), required: false);
+            SourceExpression.Validate(bodykEY, nameof(bodykEY), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                dATAObject["SUPBANKACC"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPBANKACC);
-                dATAObjectpropCount++;
-            }
-
-            var sUPPLIERObject = new JObject();
-            var sUPPLIERObjectpropCount = 0;
-            if (bodyvaluesUPPLIERaDDRESS != null)
-            {
-                sUPPLIERObject["ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERaDDRESS);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERaFM != null)
-            {
-                sUPPLIERObject["AFM"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERaFM);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERcITY != null)
-            {
-                sUPPLIERObject["CITY"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERcITY);
-                sUPPLIERObjectpropCount++;
-            }
-
-            sUPPLIERObjectpropCount++;
-            sUPPLIERObject["CODE"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERcODE);
-            if (bodyvaluesUPPLIERdISTRICT != null)
-            {
-                sUPPLIERObject["DISTRICT"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERdISTRICT);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIEReMAIL != null)
-            {
-                sUPPLIERObject["EMAIL"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIEReMAIL);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERfAX != null)
-            {
-                sUPPLIERObject["FAX"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERfAX);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERiRSDATA != null)
-            {
-                sUPPLIERObject["IRSDATA"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERiRSDATA);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERjOBTYPETRD != null)
-            {
-                sUPPLIERObject["JOBTYPETRD"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERjOBTYPETRD);
-                sUPPLIERObjectpropCount++;
-            }
-
-            sUPPLIERObjectpropCount++;
-            sUPPLIERObject["NAME"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERnAME);
-            if (bodyvaluesUPPLIERpHONE01 != null)
-            {
-                sUPPLIERObject["PHONE01"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERpHONE01);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERrEMARKS != null)
-            {
-                sUPPLIERObject["REMARKS"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERrEMARKS);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (bodyvaluesUPPLIERzIP != null)
-            {
-                sUPPLIERObject["ZIP"] = CSharpExpressionConverter.ConvertToken(bodyvaluesUPPLIERzIP);
-                sUPPLIERObjectpropCount++;
-            }
-
-            if (sUPPLIERObjectpropCount > 0)
-            {
-                dATAObject["SUPPLIER"] = sUPPLIERObject;
-                dATAObjectpropCount++;
-            }
-
-            if (dATAObjectpropCount > 0)
-            {
-                body["DATA"] = dATAObject;
+                var apiCallPath = "/setSupplier";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("s1service");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["APPID"] = 702;
                 bodypropCount++;
-            }
+                var dATAObject = new JObject();
+                var dATAObjectpropCount = 0;
+                if (bodyvaluesUPBANKACC != null)
+                {
+                    dATAObject["SUPBANKACC"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPBANKACC);
+                    dATAObjectpropCount++;
+                }
 
-            if (bodyfORM != null)
-            {
-                body["FORM"] = CSharpExpressionConverter.ConvertToken(bodyfORM);
+                var sUPPLIERObject = new JObject();
+                var sUPPLIERObjectpropCount = 0;
+                if (bodyvaluesUPPLIERaDDRESS != null)
+                {
+                    sUPPLIERObject["ADDRESS"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERaDDRESS);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERaFM != null)
+                {
+                    sUPPLIERObject["AFM"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERaFM);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERcITY != null)
+                {
+                    sUPPLIERObject["CITY"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERcITY);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                sUPPLIERObjectpropCount++;
+                sUPPLIERObject["CODE"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERcODE);
+                if (bodyvaluesUPPLIERdISTRICT != null)
+                {
+                    sUPPLIERObject["DISTRICT"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERdISTRICT);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIEReMAIL != null)
+                {
+                    sUPPLIERObject["EMAIL"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIEReMAIL);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERfAX != null)
+                {
+                    sUPPLIERObject["FAX"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERfAX);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERiRSDATA != null)
+                {
+                    sUPPLIERObject["IRSDATA"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERiRSDATA);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERjOBTYPETRD != null)
+                {
+                    sUPPLIERObject["JOBTYPETRD"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERjOBTYPETRD);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                sUPPLIERObjectpropCount++;
+                sUPPLIERObject["NAME"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERnAME);
+                if (bodyvaluesUPPLIERpHONE01 != null)
+                {
+                    sUPPLIERObject["PHONE01"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERpHONE01);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERrEMARKS != null)
+                {
+                    sUPPLIERObject["REMARKS"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERrEMARKS);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (bodyvaluesUPPLIERzIP != null)
+                {
+                    sUPPLIERObject["ZIP"] = SourceExpressionConverter.ConvertToken(bodyvaluesUPPLIERzIP);
+                    sUPPLIERObjectpropCount++;
+                }
+
+                if (sUPPLIERObjectpropCount > 0)
+                {
+                    dATAObject["SUPPLIER"] = sUPPLIERObject;
+                    dATAObjectpropCount++;
+                }
+
+                if (dATAObjectpropCount > 0)
+                {
+                    body["DATA"] = dATAObject;
+                    bodypropCount++;
+                }
+
+                if (bodyfORM != null)
+                {
+                    body["FORM"] = SourceExpressionConverter.ConvertToken(bodyfORM);
+                    bodypropCount++;
+                }
+
+                if (bodykEY != null)
+                {
+                    body["KEY"] = SourceExpressionConverter.ConvertToken(bodykEY);
+                    bodypropCount++;
+                }
+
+                body["MODE"] = "1";
                 bodypropCount++;
-            }
-
-            if (bodykEY != null)
-            {
-                body["KEY"] = CSharpExpressionConverter.ConvertToken(bodykEY);
+                body["OBJECT"] = "SUPPLIER";
                 bodypropCount++;
+                body["SERVICE"] = "setData";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["MODE"] = "1";
-            bodypropCount++;
-            body["OBJECT"] = "SUPPLIER";
-            bodypropCount++;
-            body["SERVICE"] = "setData";
-            bodypropCount++;
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetData200response>(callPayload);
+            return new ApiConnectionAction<SetData200response>(BuildSourceInput);
         }
     }
 
     public class Soft1Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger Webhook(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger Webhook([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("create");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycondition != null)
+            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
+                var apiCallPath = "/webhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("create");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycondition != null)
+                {
+                    body["condition"] = SourceExpressionConverter.ConvertToken(bodycondition);
+                    bodypropCount++;
+                }
+
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                body["event"] = "ONPOST";
                 bodypropCount++;
-            }
-
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
-            {
-                body["config"] = configObject;
                 bodypropCount++;
+                body["object"] = SourceExpressionConverter.Convert(bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "ONPOST";
-            bodypropCount++;
-            bodypropCount++;
-            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookOnDelete(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnDelete([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/onDelete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("create");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycondition != null)
+            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
+                var apiCallPath = "/webhook/onDelete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("create");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycondition != null)
+                {
+                    body["condition"] = SourceExpressionConverter.ConvertToken(bodycondition);
+                    bodypropCount++;
+                }
+
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                body["event"] = "ONDELETE";
                 bodypropCount++;
-            }
-
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
-            {
-                body["config"] = configObject;
                 bodypropCount++;
+                body["object"] = SourceExpressionConverter.Convert(bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "ONDELETE";
-            bodypropCount++;
-            bodypropCount++;
-            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookOnInsert(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnInsert([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/onInsert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("create");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycondition != null)
+            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
+                var apiCallPath = "/webhook/onInsert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("create");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycondition != null)
+                {
+                    body["condition"] = SourceExpressionConverter.ConvertToken(bodycondition);
+                    bodypropCount++;
+                }
+
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                body["event"] = "ONINSERT";
                 bodypropCount++;
-            }
-
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
-            {
-                body["config"] = configObject;
                 bodypropCount++;
+                body["object"] = SourceExpressionConverter.Convert(bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "ONINSERT";
-            bodypropCount++;
-            bodypropCount++;
-            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger WebhookOnUpdate(Expression<Func<bodyObjectInput>> bodyObject, Expression<Func<string>> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger WebhookOnUpdate([WorkflowExpression] Func<bodyObjectInput> bodyObject, [WorkflowExpression] Func<string> bodycondition = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook/onUpdate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["op"] = Convert.ToString("create");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycondition != null)
+            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            SourceExpression.Validate(bodycondition, nameof(bodycondition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["condition"] = CSharpExpressionConverter.ConvertToken(bodycondition);
+                var apiCallPath = "/webhook/onUpdate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["op"] = Convert.ToString("create");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycondition != null)
+                {
+                    body["condition"] = SourceExpressionConverter.ConvertToken(bodycondition);
+                    bodypropCount++;
+                }
+
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    body["config"] = configObject;
+                    bodypropCount++;
+                }
+
+                body["event"] = "ONUPDATE";
                 bodypropCount++;
-            }
-
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
-            {
-                body["config"] = configObject;
                 bodypropCount++;
+                body["object"] = SourceExpressionConverter.Convert(bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["event"] = "ONUPDATE";
-            bodypropCount++;
-            bodypropCount++;
-            body["object"] = CSharpExpressionConverter.Convert(bodyObject);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

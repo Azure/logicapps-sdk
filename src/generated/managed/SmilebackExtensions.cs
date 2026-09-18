@@ -12,189 +12,242 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
     public class SmilebackActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
-        public IWorkflowAction DeletePower(Expression<Func<string>> id)
+        public IWorkflowAction DeletePower([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/power/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<CSATCompaniesResponseItem[]> CSATCompanies()
         {
-            var apiCallPath = "/api/v3/csat-companies/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CSATCompaniesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/csat-companies/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CSATCompaniesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<CSATContactsResponseItem[]> CSATContacts()
         {
-            var apiCallPath = "/api/v3/csat-contacts/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CSATContactsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/csat-contacts/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CSATContactsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<NPSCampaignsResponseItem[]> NPSCampaigns()
         {
-            var apiCallPath = "/api/v3/nps-campaigns/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NPSCampaignsResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/nps-campaigns/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NPSCampaignsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smileback")]
         public IBodyWorkflowAction<PRJSurveysResponseItem[]> PRJSurveys()
         {
-            var apiCallPath = "/api/v3/prj-surveys/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PRJSurveysResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/prj-surveys/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PRJSurveysResponseItem[]>(BuildSourceInput);
         }
     }
 
     public class SmilebackTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CSATReceived(Expression<Func<fieldcsatFilterRaitingInputItem[]>> fieldcsatFilterRaiting = null, Expression<Func<string[]>> fieldcsatFilterAgents = null, Expression<Func<string[]>> fieldcsatFilterSegments = null, Expression<Func<string[]>> fieldcsatFilterCompanies = null, Expression<Func<string[]>> fieldcsatFilterContacts = null, Expression<Func<fieldcsatFilterCommentsInput>> fieldcsatFilterComments = null, Expression<Func<fieldcsatFilterMpInput>> fieldcsatFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CSATReceived([WorkflowExpression] Func<fieldcsatFilterRaitingInputItem[]> fieldcsatFilterRaiting = null, [WorkflowExpression] Func<string[]> fieldcsatFilterAgents = null, [WorkflowExpression] Func<string[]> fieldcsatFilterSegments = null, [WorkflowExpression] Func<string[]> fieldcsatFilterCompanies = null, [WorkflowExpression] Func<string[]> fieldcsatFilterContacts = null, [WorkflowExpression] Func<fieldcsatFilterCommentsInput> fieldcsatFilterComments = null, [WorkflowExpression] Func<fieldcsatFilterMpInput> fieldcsatFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/v3/power/CSAT/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
-            var field = new JObject();
-            var fieldpropCount = 0;
-            if (fieldcsatFilterRaiting != null)
+            SourceExpression.Validate(fieldcsatFilterRaiting, nameof(fieldcsatFilterRaiting), required: false);
+            SourceExpression.Validate(fieldcsatFilterAgents, nameof(fieldcsatFilterAgents), required: false);
+            SourceExpression.Validate(fieldcsatFilterSegments, nameof(fieldcsatFilterSegments), required: false);
+            SourceExpression.Validate(fieldcsatFilterCompanies, nameof(fieldcsatFilterCompanies), required: false);
+            SourceExpression.Validate(fieldcsatFilterContacts, nameof(fieldcsatFilterContacts), required: false);
+            SourceExpression.Validate(fieldcsatFilterComments, nameof(fieldcsatFilterComments), required: false);
+            SourceExpression.Validate(fieldcsatFilterMp, nameof(fieldcsatFilterMp), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                field["csat_filter_raiting"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterRaiting);
-                fieldpropCount++;
+                var apiCallPath = "/api/v3/power/CSAT/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+                var field = new JObject();
+                var fieldpropCount = 0;
+                if (fieldcsatFilterRaiting != null)
+                {
+                    field["csat_filter_raiting"] = SourceExpressionConverter.ConvertToken(fieldcsatFilterRaiting);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterAgents != null)
+                {
+                    field["csat_filter_agents"] = SourceExpressionConverter.ConvertToken(fieldcsatFilterAgents);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterSegments != null)
+                {
+                    field["csat_filter_segments"] = SourceExpressionConverter.ConvertToken(fieldcsatFilterSegments);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterCompanies != null)
+                {
+                    field["csat_filter_companies"] = SourceExpressionConverter.ConvertToken(fieldcsatFilterCompanies);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterContacts != null)
+                {
+                    field["csat_filter_contacts"] = SourceExpressionConverter.ConvertToken(fieldcsatFilterContacts);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterComments != null)
+                {
+                    field["csat_filter_comments"] = SourceExpressionConverter.Convert(fieldcsatFilterComments);
+                    fieldpropCount++;
+                }
+
+                if (fieldcsatFilterMp != null)
+                {
+                    field["csat_filter_mp"] = SourceExpressionConverter.Convert(fieldcsatFilterMp);
+                    fieldpropCount++;
+                }
+
+                if (fieldpropCount > 0)
+                {
+                    callPayload.Body = field;
+                }
+                return callPayload;
             }
 
-            if (fieldcsatFilterAgents != null)
-            {
-                field["csat_filter_agents"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterAgents);
-                fieldpropCount++;
-            }
-
-            if (fieldcsatFilterSegments != null)
-            {
-                field["csat_filter_segments"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterSegments);
-                fieldpropCount++;
-            }
-
-            if (fieldcsatFilterCompanies != null)
-            {
-                field["csat_filter_companies"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterCompanies);
-                fieldpropCount++;
-            }
-
-            if (fieldcsatFilterContacts != null)
-            {
-                field["csat_filter_contacts"] = CSharpExpressionConverter.ConvertToken(fieldcsatFilterContacts);
-                fieldpropCount++;
-            }
-
-            if (fieldcsatFilterComments != null)
-            {
-                field["csat_filter_comments"] = CSharpExpressionConverter.Convert(fieldcsatFilterComments);
-                fieldpropCount++;
-            }
-
-            if (fieldcsatFilterMp != null)
-            {
-                field["csat_filter_mp"] = CSharpExpressionConverter.Convert(fieldcsatFilterMp);
-                fieldpropCount++;
-            }
-
-            if (fieldpropCount > 0)
-            {
-                callPayload.Body = field;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger NPSReceived(Expression<Func<fieldnpsFilterScoreInputItem[]>> fieldnpsFilterScore = null, Expression<Func<string[]>> fieldnpsFilterCampaigns = null, Expression<Func<fieldnpsFilterCommentsInput>> fieldnpsFilterComments = null, Expression<Func<fieldnpsFilterMpInput>> fieldnpsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NPSReceived([WorkflowExpression] Func<fieldnpsFilterScoreInputItem[]> fieldnpsFilterScore = null, [WorkflowExpression] Func<string[]> fieldnpsFilterCampaigns = null, [WorkflowExpression] Func<fieldnpsFilterCommentsInput> fieldnpsFilterComments = null, [WorkflowExpression] Func<fieldnpsFilterMpInput> fieldnpsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/v3/power/NPS/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
-            var field = new JObject();
-            var fieldpropCount = 0;
-            if (fieldnpsFilterScore != null)
+            SourceExpression.Validate(fieldnpsFilterScore, nameof(fieldnpsFilterScore), required: false);
+            SourceExpression.Validate(fieldnpsFilterCampaigns, nameof(fieldnpsFilterCampaigns), required: false);
+            SourceExpression.Validate(fieldnpsFilterComments, nameof(fieldnpsFilterComments), required: false);
+            SourceExpression.Validate(fieldnpsFilterMp, nameof(fieldnpsFilterMp), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                field["nps_filter_score"] = CSharpExpressionConverter.ConvertToken(fieldnpsFilterScore);
-                fieldpropCount++;
+                var apiCallPath = "/api/v3/power/NPS/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+                var field = new JObject();
+                var fieldpropCount = 0;
+                if (fieldnpsFilterScore != null)
+                {
+                    field["nps_filter_score"] = SourceExpressionConverter.ConvertToken(fieldnpsFilterScore);
+                    fieldpropCount++;
+                }
+
+                if (fieldnpsFilterCampaigns != null)
+                {
+                    field["nps_filter_campaigns"] = SourceExpressionConverter.ConvertToken(fieldnpsFilterCampaigns);
+                    fieldpropCount++;
+                }
+
+                if (fieldnpsFilterComments != null)
+                {
+                    field["nps_filter_comments"] = SourceExpressionConverter.Convert(fieldnpsFilterComments);
+                    fieldpropCount++;
+                }
+
+                if (fieldnpsFilterMp != null)
+                {
+                    field["nps_filter_mp"] = SourceExpressionConverter.Convert(fieldnpsFilterMp);
+                    fieldpropCount++;
+                }
+
+                if (fieldpropCount > 0)
+                {
+                    callPayload.Body = field;
+                }
+                return callPayload;
             }
 
-            if (fieldnpsFilterCampaigns != null)
-            {
-                field["nps_filter_campaigns"] = CSharpExpressionConverter.ConvertToken(fieldnpsFilterCampaigns);
-                fieldpropCount++;
-            }
-
-            if (fieldnpsFilterComments != null)
-            {
-                field["nps_filter_comments"] = CSharpExpressionConverter.Convert(fieldnpsFilterComments);
-                fieldpropCount++;
-            }
-
-            if (fieldnpsFilterMp != null)
-            {
-                field["nps_filter_mp"] = CSharpExpressionConverter.Convert(fieldnpsFilterMp);
-                fieldpropCount++;
-            }
-
-            if (fieldpropCount > 0)
-            {
-                callPayload.Body = field;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger PRJReceived(Expression<Func<fieldprojectsFilterScoreInputItem[]>> fieldprojectsFilterScore = null, Expression<Func<string[]>> fieldprojectsFilterSurveys = null, Expression<Func<fieldprojectsFilterCommentsInput>> fieldprojectsFilterComments = null, Expression<Func<fieldprojectsFilterMpInput>> fieldprojectsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger PRJReceived([WorkflowExpression] Func<fieldprojectsFilterScoreInputItem[]> fieldprojectsFilterScore = null, [WorkflowExpression] Func<string[]> fieldprojectsFilterSurveys = null, [WorkflowExpression] Func<fieldprojectsFilterCommentsInput> fieldprojectsFilterComments = null, [WorkflowExpression] Func<fieldprojectsFilterMpInput> fieldprojectsFilterMp = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/v3/power/PRJ/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
-            var field = new JObject();
-            var fieldpropCount = 0;
-            if (fieldprojectsFilterScore != null)
+            SourceExpression.Validate(fieldprojectsFilterScore, nameof(fieldprojectsFilterScore), required: false);
+            SourceExpression.Validate(fieldprojectsFilterSurveys, nameof(fieldprojectsFilterSurveys), required: false);
+            SourceExpression.Validate(fieldprojectsFilterComments, nameof(fieldprojectsFilterComments), required: false);
+            SourceExpression.Validate(fieldprojectsFilterMp, nameof(fieldprojectsFilterMp), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                field["projects_filter_score"] = CSharpExpressionConverter.ConvertToken(fieldprojectsFilterScore);
-                fieldpropCount++;
+                var apiCallPath = "/api/v3/power/PRJ/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+                var field = new JObject();
+                var fieldpropCount = 0;
+                if (fieldprojectsFilterScore != null)
+                {
+                    field["projects_filter_score"] = SourceExpressionConverter.ConvertToken(fieldprojectsFilterScore);
+                    fieldpropCount++;
+                }
+
+                if (fieldprojectsFilterSurveys != null)
+                {
+                    field["projects_filter_surveys"] = SourceExpressionConverter.ConvertToken(fieldprojectsFilterSurveys);
+                    fieldpropCount++;
+                }
+
+                if (fieldprojectsFilterComments != null)
+                {
+                    field["projects_filter_comments"] = SourceExpressionConverter.Convert(fieldprojectsFilterComments);
+                    fieldpropCount++;
+                }
+
+                if (fieldprojectsFilterMp != null)
+                {
+                    field["projects_filter_mp"] = SourceExpressionConverter.Convert(fieldprojectsFilterMp);
+                    fieldpropCount++;
+                }
+
+                if (fieldpropCount > 0)
+                {
+                    callPayload.Body = field;
+                }
+                return callPayload;
             }
 
-            if (fieldprojectsFilterSurveys != null)
-            {
-                field["projects_filter_surveys"] = CSharpExpressionConverter.ConvertToken(fieldprojectsFilterSurveys);
-                fieldpropCount++;
-            }
-
-            if (fieldprojectsFilterComments != null)
-            {
-                field["projects_filter_comments"] = CSharpExpressionConverter.Convert(fieldprojectsFilterComments);
-                fieldpropCount++;
-            }
-
-            if (fieldprojectsFilterMp != null)
-            {
-                field["projects_filter_mp"] = CSharpExpressionConverter.Convert(fieldprojectsFilterMp);
-                fieldpropCount++;
-            }
-
-            if (fieldpropCount > 0)
-            {
-                callPayload.Body = field;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

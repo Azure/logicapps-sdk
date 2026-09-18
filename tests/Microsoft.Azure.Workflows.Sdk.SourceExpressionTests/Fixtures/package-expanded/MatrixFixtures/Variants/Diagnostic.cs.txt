@@ -1,0 +1,11 @@
+using Microsoft.Azure.Workflows.Sdk;
+
+internal static class FixtureWorkflow
+{
+    public static object Run()
+    {
+        var source = WorkflowActions.BuiltIn.Compose<string>(() => "source").WithName("Source");
+        var action = WorkflowActions.BuiltIn.Compose(inputs: () => source.Output + missingName);
+        return new { input = FixtureAssert.Input(action) };
+    }
+}

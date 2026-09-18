@@ -12,37 +12,44 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wordliftgraphql
     public class WordliftgraphqlActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wordliftgraphql")]
-        public IWorkflowAction ExecuteGraphQL(Expression<Func<string>> contentType = null, Expression<Func<string>> accept = null, Expression<Func<string>> bodyquery = null)
+        public IWorkflowAction ExecuteGraphQL([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<string> accept = null, [WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            if (accept != null)
-                callPayload.Headers["Accept"] = CSharpExpressionConverter.ConvertO(accept);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquery != null)
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(accept, nameof(accept), required: false);
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-                bodypropCount++;
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                if (accept != null)
+                    callPayload.Headers["Accept"] = SourceExpressionConverter.ConvertO(accept);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquery != null)
+                {
+                    body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                    bodypropCount++;
+                }
+
+                var variablesObject = new JObject();
+                var variablesObjectpropCount = 0;
+                if (variablesObjectpropCount > 0)
+                {
+                    body["variables"] = variablesObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var variablesObject = new JObject();
-            var variablesObjectpropCount = 0;
-            if (variablesObjectpropCount > 0)
-            {
-                body["variables"] = variablesObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

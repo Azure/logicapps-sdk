@@ -12,59 +12,75 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Secplugscan
     public class SecplugscanActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<FilescanResponse> Filescan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
+        public IBodyWorkflowAction<FilescanResponse> Filescan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
         {
-            var apiCallPath = "/file/jsonupload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-api-key"] = Convert.ToString("");
-            if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
-            callPayload.Headers["x-client-id"] = Convert.ToString("");
-            if (xClientId != null)
-                callPayload.Headers["x-client-id"] = CSharpExpressionConverter.ConvertO(xClientId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
-            body["filetype"] = "text/plain";
-            bodypropCount++;
-            body["cte"] = "base64";
-            bodypropCount++;
-            bodypropCount++;
-            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
+            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: false);
+            SourceExpression.Validate(xClientId, nameof(xClientId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/file/jsonupload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["x-api-key"] = Convert.ToString("");
+                if (xApiKey != null)
+                    callPayload.Headers["x-api-key"] = SourceExpressionConverter.ConvertO(xApiKey);
+                callPayload.Headers["x-client-id"] = Convert.ToString("");
+                if (xClientId != null)
+                    callPayload.Headers["x-client-id"] = SourceExpressionConverter.ConvertO(xClientId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["filename"] = SourceExpressionConverter.ConvertToken(bodyfilename);
+                body["filetype"] = "text/plain";
+                bodypropCount++;
+                body["cte"] = "base64";
+                bodypropCount++;
+                bodypropCount++;
+                body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<FilescanResponse>(callPayload);
+            return new ApiConnectionAction<FilescanResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "secplugscan")]
-        public IBodyWorkflowAction<EmailScanResponse> EmailScan(Expression<Func<string>> bodyfilename, Expression<Func<string>> bodydata, Expression<Func<string>> xApiKey = null, Expression<Func<string>> xClientId = null)
+        public IBodyWorkflowAction<EmailScanResponse> EmailScan([WorkflowExpression] Func<string> bodyfilename, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<string> xApiKey = null, [WorkflowExpression] Func<string> xClientId = null)
         {
-            var apiCallPath = "/email/jsonupload";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (xApiKey != null)
-                callPayload.Headers["x-api-key"] = CSharpExpressionConverter.ConvertO(xApiKey);
-            if (xClientId != null)
-                callPayload.Headers["x-client-id"] = CSharpExpressionConverter.ConvertO(xClientId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
-            body["cte"] = "base64";
-            bodypropCount++;
-            bodypropCount++;
-            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
+            SourceExpression.Validate(xApiKey, nameof(xApiKey), required: false);
+            SourceExpression.Validate(xClientId, nameof(xClientId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/email/jsonupload";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (xApiKey != null)
+                    callPayload.Headers["x-api-key"] = SourceExpressionConverter.ConvertO(xApiKey);
+                if (xClientId != null)
+                    callPayload.Headers["x-client-id"] = SourceExpressionConverter.ConvertO(xClientId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["filename"] = SourceExpressionConverter.ConvertToken(bodyfilename);
+                body["cte"] = "base64";
+                bodypropCount++;
+                bodypropCount++;
+                body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EmailScanResponse>(callPayload);
+            return new ApiConnectionAction<EmailScanResponse>(BuildSourceInput);
         }
     }
 

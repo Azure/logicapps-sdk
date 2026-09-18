@@ -12,23 +12,40 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workdaysoap
     public class WorkdaysoapActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string> SOAPOperation(Expression<Func<serviceInput>> service, Expression<Func<string>> version, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string> SOAPOperation([WorkflowExpression] Func<serviceInput> service, [WorkflowExpression] Func<string> version, [WorkflowExpression] Func<string> requestBody = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(requestBody);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(service, nameof(service), required: true);
+            SourceExpression.Validate(version, nameof(version), required: true);
+            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/SOAPOperation/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(service, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(version, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(requestBody);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "workdaysoap")]
-        public IBodyWorkflowAction<string> RaaSOperation(Expression<Func<string>> accountName, Expression<Func<string>> reportName, Expression<Func<string>> reportInstanceName, Expression<Func<string>> requestBody = null)
+        public IBodyWorkflowAction<string> RaaSOperation([WorkflowExpression] Func<string> accountName, [WorkflowExpression] Func<string> reportName, [WorkflowExpression] Func<string> reportInstanceName, [WorkflowExpression] Func<string> requestBody = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportInstanceName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(requestBody);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(accountName, nameof(accountName), required: true);
+            SourceExpression.Validate(reportName, nameof(reportName), required: true);
+            SourceExpression.Validate(reportInstanceName, nameof(reportInstanceName), required: true);
+            SourceExpression.Validate(requestBody, nameof(requestBody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/RaaSOperation/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportInstanceName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(accountName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(requestBody);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

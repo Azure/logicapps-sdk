@@ -12,32 +12,47 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rencoregovernance
     public class RencoregovernanceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rencoregovernance")]
-        public IBodyWorkflowAction<GetViolationsResponse> GetViolations(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId)
+        public IBodyWorkflowAction<GetViolationsResponse> GetViolations([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetViolationsResponse>(callPayload);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(checkId, nameof(checkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/results", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetViolationsResponse>(BuildSourceInput);
         }
     }
 
     public class RencoregovernanceTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CheckNotificationTrigger(Expression<Func<string>> workspaceId, Expression<Func<string>> environmentId, Expression<Func<string>> checkId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CheckNotificationTrigger([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> environmentId, [WorkflowExpression] Func<string> checkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(environmentId, nameof(environmentId), required: true);
+            SourceExpression.Validate(checkId, nameof(checkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/environments/{1}/checks/{2}/hooks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(checkId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

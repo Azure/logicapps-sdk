@@ -12,175 +12,231 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nozbe
     public class NozbeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<GetTaskResponse> GetTask(Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskResponse> GetTask([WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resolve_ids"] = Convert.ToString(1);
-            return new ApiConnectionAction<GetTaskResponse>(callPayload);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["resolve_ids"] = Convert.ToString(1);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodyprojectId = null, Expression<Func<int>> bodydueAt = null, Expression<Func<bool>> bodyisAllDay = null, Expression<Func<bool>> bodyisFollowed = null, Expression<Func<string>> bodyresponsibleId = null)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodyprojectId = null, [WorkflowExpression] Func<int> bodydueAt = null, [WorkflowExpression] Func<bool> bodyisAllDay = null, [WorkflowExpression] Func<bool> bodyisFollowed = null, [WorkflowExpression] Func<string> bodyresponsibleId = null)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyprojectId, nameof(bodyprojectId), required: false);
+            SourceExpression.Validate(bodydueAt, nameof(bodydueAt), required: false);
+            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: false);
+            SourceExpression.Validate(bodyisFollowed, nameof(bodyisFollowed), required: false);
+            SourceExpression.Validate(bodyresponsibleId, nameof(bodyresponsibleId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectId != null)
+                {
+                    body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectId);
+                    bodypropCount++;
+                }
+
+                body["review_reason"] = "newly_added";
                 bodypropCount++;
-            }
+                if (bodydueAt != null)
+                {
+                    body["due_at"] = SourceExpressionConverter.ConvertToken(bodydueAt);
+                    bodypropCount++;
+                }
 
-            if (bodyprojectId != null)
-            {
-                body["project_id"] = CSharpExpressionConverter.ConvertToken(bodyprojectId);
+                if (bodyisAllDay != null)
+                {
+                    body["is_all_day"] = SourceExpressionConverter.ConvertToken(bodyisAllDay);
+                    bodypropCount++;
+                }
+
+                if (bodyisFollowed != null)
+                {
+                    body["is_followed"] = SourceExpressionConverter.ConvertToken(bodyisFollowed);
+                    bodypropCount++;
+                }
+
+                body["review_triggered_at"] = 1;
                 bodypropCount++;
+                if (bodyresponsibleId != null)
+                {
+                    body["responsible_id"] = SourceExpressionConverter.ConvertToken(bodyresponsibleId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            body["review_reason"] = "newly_added";
-            bodypropCount++;
-            if (bodydueAt != null)
-            {
-                body["due_at"] = CSharpExpressionConverter.ConvertToken(bodydueAt);
-                bodypropCount++;
-            }
-
-            if (bodyisAllDay != null)
-            {
-                body["is_all_day"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
-                bodypropCount++;
-            }
-
-            if (bodyisFollowed != null)
-            {
-                body["is_followed"] = CSharpExpressionConverter.ConvertToken(bodyisFollowed);
-                bodypropCount++;
-            }
-
-            body["review_triggered_at"] = 1;
-            bodypropCount++;
-            if (bodyresponsibleId != null)
-            {
-                body["responsible_id"] = CSharpExpressionConverter.ConvertToken(bodyresponsibleId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateCommentResponse> CreateComment(Expression<Func<string>> bodytaskId, Expression<Func<string>> bodybody = null, Expression<Func<bool>> bodyisPinned = null)
+        public IBodyWorkflowAction<CreateCommentResponse> CreateComment([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<bool> bodyisPinned = null)
         {
-            var apiCallPath = "/comments";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybody != null)
+            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            SourceExpression.Validate(bodyisPinned, nameof(bodyisPinned), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
+                var apiCallPath = "/comments";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodyisPinned != null)
+                {
+                    body["is_pinned"] = SourceExpressionConverter.ConvertToken(bodyisPinned);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["task_id"] = SourceExpressionConverter.ConvertToken(bodytaskId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyisPinned != null)
-            {
-                body["is_pinned"] = CSharpExpressionConverter.ConvertToken(bodyisPinned);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCommentResponse>(callPayload);
+            return new ApiConnectionAction<CreateCommentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
         public IBodyWorkflowAction<GetTeamMembersResponseItem[]> GetTeamMembers()
         {
-            var apiCallPath = "/team_members";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["status"] = Convert.ToString("active");
-            return new ApiConnectionAction<GetTeamMembersResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects(Expression<Func<string>> sortBy = null)
-        {
-            var apiCallPath = "/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ended_at"] = Convert.ToString("null");
-            callPayload.Queries["sortBy"] = Convert.ToString("-created_at");
-            if (sortBy != null)
-                callPayload.Queries["sortBy"] = CSharpExpressionConverter.ConvertO(sortBy);
-            return new ApiConnectionAction<GetProjectsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
-        public IBodyWorkflowAction<CreateReminderResponse> CreateReminder(Expression<Func<string>> bodytaskId, Expression<Func<int>> bodyremindAt, Expression<Func<bool>> bodyisRelative, Expression<Func<bool>> bodyisAllDay)
-        {
-            var apiCallPath = "/reminders";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["task_id"] = CSharpExpressionConverter.ConvertToken(bodytaskId);
-            bodypropCount++;
-            body["remind_at"] = CSharpExpressionConverter.ConvertToken(bodyremindAt);
-            bodypropCount++;
-            body["is_relative"] = CSharpExpressionConverter.ConvertToken(bodyisRelative);
-            bodypropCount++;
-            body["is_all_day"] = CSharpExpressionConverter.ConvertToken(bodyisAllDay);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/team_members";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["status"] = Convert.ToString("active");
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateReminderResponse>(callPayload);
+            return new ApiConnectionAction<GetTeamMembersResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
+        public IBodyWorkflowAction<GetProjectsResponseItem[]> GetProjects([WorkflowExpression] Func<string> sortBy = null)
+        {
+            SourceExpression.Validate(sortBy, nameof(sortBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ended_at"] = Convert.ToString("null");
+                callPayload.Queries["sortBy"] = Convert.ToString("-created_at");
+                if (sortBy != null)
+                    callPayload.Queries["sortBy"] = SourceExpressionConverter.ConvertO(sortBy);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProjectsResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nozbe")]
+        public IBodyWorkflowAction<CreateReminderResponse> CreateReminder([WorkflowExpression] Func<string> bodytaskId, [WorkflowExpression] Func<int> bodyremindAt, [WorkflowExpression] Func<bool> bodyisRelative, [WorkflowExpression] Func<bool> bodyisAllDay)
+        {
+            SourceExpression.Validate(bodytaskId, nameof(bodytaskId), required: true);
+            SourceExpression.Validate(bodyremindAt, nameof(bodyremindAt), required: true);
+            SourceExpression.Validate(bodyisRelative, nameof(bodyisRelative), required: true);
+            SourceExpression.Validate(bodyisAllDay, nameof(bodyisAllDay), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reminders";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["task_id"] = SourceExpressionConverter.ConvertToken(bodytaskId);
+                bodypropCount++;
+                body["remind_at"] = SourceExpressionConverter.ConvertToken(bodyremindAt);
+                bodypropCount++;
+                body["is_relative"] = SourceExpressionConverter.ConvertToken(bodyisRelative);
+                bodypropCount++;
+                body["is_all_day"] = SourceExpressionConverter.ConvertToken(bodyisAllDay);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateReminderResponse>(BuildSourceInput);
         }
     }
 
     public class NozbeTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollNewTasksResponseItem[]> PollNewTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/poll/tasks/new";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resolve_ids"] = Convert.ToString(1);
-            if (projectId != null)
-                callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
-            if (responsibleId != null)
-                callPayload.Queries["responsible_id"] = CSharpExpressionConverter.ConvertO(responsibleId);
-            return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(projectId, nameof(projectId), required: false);
+            SourceExpression.Validate(responsibleId, nameof(responsibleId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/poll/tasks/new";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["resolve_ids"] = Convert.ToString(1);
+                if (projectId != null)
+                    callPayload.Queries["project_id"] = SourceExpressionConverter.ConvertO(projectId);
+                if (responsibleId != null)
+                    callPayload.Queries["responsible_id"] = SourceExpressionConverter.ConvertO(responsibleId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PollNewTasksResponseItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks(Expression<Func<string>> projectId = null, Expression<Func<string>> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PollUpdatedTasksResponseItem[]> PollUpdatedTasks([WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> responsibleId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/poll/tasks/updated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["resolve_ids"] = Convert.ToString(1);
-            if (projectId != null)
-                callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
-            if (responsibleId != null)
-                callPayload.Queries["responsible_id"] = CSharpExpressionConverter.ConvertO(responsibleId);
-            return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(projectId, nameof(projectId), required: false);
+            SourceExpression.Validate(responsibleId, nameof(responsibleId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/poll/tasks/updated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["resolve_ids"] = Convert.ToString(1);
+                if (projectId != null)
+                    callPayload.Queries["project_id"] = SourceExpressionConverter.ConvertO(projectId);
+                if (responsibleId != null)
+                    callPayload.Queries["responsible_id"] = SourceExpressionConverter.ConvertO(responsibleId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PollUpdatedTasksResponseItem[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

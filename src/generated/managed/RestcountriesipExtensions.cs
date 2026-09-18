@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Restcountriesip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "restcountriesip")]
         public IBodyWorkflowAction<ALLResponseItem[]> ALL()
         {
-            var apiCallPath = "/all";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ALLResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/all";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ALLResponseItem[]>(BuildSourceInput);
         }
     }
 

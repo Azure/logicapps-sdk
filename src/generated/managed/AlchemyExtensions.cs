@@ -12,21 +12,26 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alchemy
     public class AlchemyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "alchemy")]
-        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights(Expression<Func<string>> bodytext)
+        public IBodyWorkflowAction<GetSelfHelpInsightsResponse> GetSelfHelpInsights([WorkflowExpression] Func<string> bodytext)
         {
-            var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/v1/insights/dcp/esshelp-dcp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetSelfHelpInsightsResponse>(callPayload);
+            return new ApiConnectionAction<GetSelfHelpInsightsResponse>(BuildSourceInput);
         }
     }
 

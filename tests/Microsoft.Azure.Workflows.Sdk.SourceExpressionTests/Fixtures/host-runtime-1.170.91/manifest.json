@@ -1,0 +1,84 @@
+{
+  "version": 1,
+  "evidenceKind": "actual-local-logicapps-runtime",
+  "scope": "Measured local Workflow bundle 1.170.91 only; no cloud/designer or native-expression certification.",
+  "cultures": [
+    "en-US",
+    "fr-FR"
+  ],
+  "artifacts": [
+    {
+      "file": "ConditionProbe.workflow.json",
+      "sha256": "FDB410FC19F4B5427B1FB24B2E43F0992AFEC09B5D5C1E8A941A19A803B63E9F"
+    },
+    {
+      "file": "CultureHook.csproj.txt",
+      "sha256": "AC6CC7394DE1D82D88C051E8E73B62FF4944601232EC9C916E009D4DAC1FE11A"
+    },
+    {
+      "file": "CultureHook.StartupHook.cs.txt",
+      "sha256": "F15ECFBC1C3441914110AD39A41847486532385D33FFED0EDA6074F3EE699E01"
+    },
+    {
+      "file": "en-US.json",
+      "sha256": "22774EE20E2C9E8801799BA384778914E1D1AE9D82546828A84011D0E316AB64"
+    },
+    {
+      "file": "fr-FR.json",
+      "sha256": "FDD5E24EE9A46BF270254E9ED73FB2A5EBB4B197175560FC9AC1892C3BBB8334"
+    },
+    {
+      "file": "LiteralProbe.workflow.json",
+      "sha256": "72ECE777EB9AC90DDEB6E40A5D7CDF26854EE500BD46A1732F5F296EC7BE33B0"
+    },
+    {
+      "file": "native-validation.log.txt",
+      "sha256": "B592CD4934ECBA0DB50DED4E49209A924BBAF9FE084DBFB6B54ACE3680B445E0"
+    },
+    {
+      "file": "NativeProbe.workflow.json",
+      "sha256": "CF96ECE5E05482FD9322ADE7AF2A0D113A0A3723C17411763EA166FB20A1AA55"
+    },
+    {
+      "file": "Probe.ps1.txt",
+      "sha256": "2DA37131FC937962E9C09A2C446B0D9CB25586825BF1059185226DD4DCBCBDB6"
+    },
+    {
+      "file": "Program.cs.txt",
+      "sha256": "9F7D4A636AF4F258AD9CD7685CACA6A6C69D92EF8CDE77A4833504D295D79973"
+    },
+    {
+      "file": "reproduction.txt",
+      "sha256": "F722DACE510CEB2C738E1837CDAD309DF6F9D383DC541E0DEAE6F7CDCC34DD1C"
+    },
+    {
+      "file": "SourceHostConsumer.csproj.txt",
+      "sha256": "84B944EEF8C281E6C0616C765088AB6BD3F2652ED94461182829A6CA54044049"
+    },
+    {
+      "file": "TemplateProbe.workflow.json",
+      "sha256": "5F6DAD905C95822774841B14E776E638BA849BE69413B75C01C8E3AE954BD328"
+    }
+  ],
+  "generationProvenance": {
+    "source": "Program.cs.txt",
+    "project": "SourceHostConsumer.csproj.txt",
+    "sdkSha256ObservedAtImport": "548E5B809EFC1126C02729CB224F6AA0499324171D2A2EDA756A5CBFC5073D4B",
+    "consumerSha256ObservedAtImport": "B94D2C7E86501AB60C15D7528CF4DC1AEC3F632944B45CA7FE28032AD7A89B73",
+    "note": "Assembly hashes observed at evidence import, not independently attested at definition generation; workflow hashes bind the actual host observations."
+  },
+  "cultureProvenance": {
+    "source": "CultureHook.StartupHook.cs.txt",
+    "project": "CultureHook.csproj.txt",
+    "verificationScript": "Probe.ps1.txt",
+    "note": "Preserved repository reproduction source writes process culture and PID; Probe.ps1 requires that PID to own the listening endpoint. The older hostlab culture-hook source differs and is not represented as this instrumentation."
+  },
+  "negativeEvidence": {
+    "file": "native-validation.log.txt",
+    "cases": [
+      "I04",
+      "X06"
+    ],
+    "note": "ConditionProbe and NativeProbe reject native syntax. X06 was not executed; this is a host capability blocker, never a positive X06 result."
+  }
+}

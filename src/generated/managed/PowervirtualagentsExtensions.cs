@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powervirtualagents
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powervirtualagents")]
         public IWorkflowAction PowerVirtualAgents()
         {
-            var apiCallPath = "/hybridtriggers/powerVirtualAgents";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/hybridtriggers/powerVirtualAgents";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

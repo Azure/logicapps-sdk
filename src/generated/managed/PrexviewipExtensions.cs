@@ -12,47 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Prexviewip
     public class PrexviewipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "prexviewip")]
-        public IBodyWorkflowAction<TransformPostResponse> Transform(Expression<Func<bodyoutputInput>> bodyoutput, Expression<Func<string>> bodytemplate, Expression<Func<string>> bodyxml = null, Expression<Func<string>> bodyjson = null, Expression<Func<string>> bodytemplateBackup = null, Expression<Func<string>> bodynote = null)
+        public IBodyWorkflowAction<TransformPostResponse> Transform([WorkflowExpression] Func<bodyoutputInput> bodyoutput, [WorkflowExpression] Func<string> bodytemplate, [WorkflowExpression] Func<string> bodyxml = null, [WorkflowExpression] Func<string> bodyjson = null, [WorkflowExpression] Func<string> bodytemplateBackup = null, [WorkflowExpression] Func<string> bodynote = null)
         {
-            var apiCallPath = "/transform";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyxml != null)
+            SourceExpression.Validate(bodyoutput, nameof(bodyoutput), required: true);
+            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: true);
+            SourceExpression.Validate(bodyxml, nameof(bodyxml), required: false);
+            SourceExpression.Validate(bodyjson, nameof(bodyjson), required: false);
+            SourceExpression.Validate(bodytemplateBackup, nameof(bodytemplateBackup), required: false);
+            SourceExpression.Validate(bodynote, nameof(bodynote), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["xml"] = CSharpExpressionConverter.ConvertToken(bodyxml);
+                var apiCallPath = "/transform";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyxml != null)
+                {
+                    body["xml"] = SourceExpressionConverter.ConvertToken(bodyxml);
+                    bodypropCount++;
+                }
+
+                if (bodyjson != null)
+                {
+                    body["json"] = SourceExpressionConverter.ConvertToken(bodyjson);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            if (bodyjson != null)
-            {
-                body["json"] = CSharpExpressionConverter.ConvertToken(bodyjson);
+                body["output"] = SourceExpressionConverter.Convert(bodyoutput);
                 bodypropCount++;
+                body["template"] = SourceExpressionConverter.ConvertToken(bodytemplate);
+                if (bodytemplateBackup != null)
+                {
+                    body["templateBackup"] = SourceExpressionConverter.ConvertToken(bodytemplateBackup);
+                    bodypropCount++;
+                }
+
+                if (bodynote != null)
+                {
+                    body["note"] = SourceExpressionConverter.ConvertToken(bodynote);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["output"] = CSharpExpressionConverter.Convert(bodyoutput);
-            bodypropCount++;
-            body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
-            if (bodytemplateBackup != null)
-            {
-                body["templateBackup"] = CSharpExpressionConverter.ConvertToken(bodytemplateBackup);
-                bodypropCount++;
-            }
-
-            if (bodynote != null)
-            {
-                body["note"] = CSharpExpressionConverter.ConvertToken(bodynote);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TransformPostResponse>(callPayload);
+            return new ApiConnectionAction<TransformPostResponse>(BuildSourceInput);
         }
     }
 

@@ -12,22 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jirasearch
     public class JirasearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "jirasearch")]
-        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch(Expression<Func<string>> jql, Expression<Func<string>> hostname, Expression<Func<string>> fields, Expression<Func<string>> expand = null, Expression<Func<int>> startAt = null, Expression<Func<int>> maxResults = null)
+        public IBodyWorkflowAction<SimpleSearchResponse> SimpleSearch([WorkflowExpression] Func<string> jql, [WorkflowExpression] Func<string> hostname, [WorkflowExpression] Func<string> fields, [WorkflowExpression] Func<string> expand = null, [WorkflowExpression] Func<int> startAt = null, [WorkflowExpression] Func<int> maxResults = null)
         {
-            var apiCallPath = "/rest/api/2/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["jql"] = CSharpExpressionConverter.ConvertO(jql);
-            if (expand != null)
-                callPayload.Queries["expand"] = CSharpExpressionConverter.ConvertO(expand);
-            callPayload.Queries["hostname"] = CSharpExpressionConverter.ConvertO(hostname);
-            callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (startAt != null)
-                callPayload.Queries["startAt"] = CSharpExpressionConverter.ConvertO(startAt);
-            callPayload.Queries["maxResults"] = Convert.ToString(50);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            return new ApiConnectionAction<SimpleSearchResponse>(callPayload);
+            SourceExpression.Validate(jql, nameof(jql), required: true);
+            SourceExpression.Validate(hostname, nameof(hostname), required: true);
+            SourceExpression.Validate(fields, nameof(fields), required: true);
+            SourceExpression.Validate(expand, nameof(expand), required: false);
+            SourceExpression.Validate(startAt, nameof(startAt), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/rest/api/2/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["jql"] = SourceExpressionConverter.ConvertO(jql);
+                if (expand != null)
+                    callPayload.Queries["expand"] = SourceExpressionConverter.ConvertO(expand);
+                callPayload.Queries["hostname"] = SourceExpressionConverter.ConvertO(hostname);
+                callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (startAt != null)
+                    callPayload.Queries["startAt"] = SourceExpressionConverter.ConvertO(startAt);
+                callPayload.Queries["maxResults"] = Convert.ToString(50);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SimpleSearchResponse>(BuildSourceInput);
         }
     }
 

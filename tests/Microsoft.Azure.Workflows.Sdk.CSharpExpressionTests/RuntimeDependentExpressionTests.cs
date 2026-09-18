@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void GeneratedEnumQuery_RetainsTemplateWorkflowDependency()
+        public void GeneratedEnumQuery_PreservesWorkflowDependencyAndWireValues()
         {
             var flag = WorkflowActions.BuiltIn.Compose<bool>(() => false).WithName("Flag");
             var action = new AbbreviationsipActions("connection").AbbrGet(
@@ -231,20 +231,24 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 sortby: () => flag.Output ? sortbyInput.Popularity : sortbyInput.Alphabetically);
             var json = JObject.Parse(action.GetActionDefinition("workflow").ToJson());
 
-            Assert.Equal("@if(outputs('Flag'), 'p', 'a')", json["inputs"]["queries"]["sortby"].Value<string>());
+            using var compiled = EmittedExpressionCompiler.Compile(json["inputs"]["queries"]["sortby"].Value<string>());
+            Assert.Equal("p", compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = true }));
+            Assert.Equal("a", compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = false }));
         }
 
         [Fact]
-        public void GeneratedEnumPath_RetainsTemplateWorkflowDependency()
+        public void GeneratedEnumPath_PreservesWorkflowDependencyAndEncoding()
         {
             var flag = WorkflowActions.BuiltIn.Compose<bool>(() => false).WithName("Flag");
             var action = new AbortionpolicyapiipActions("connection").GetGestationalLimitsbyState(
                 state: () => flag.Output ? stateInput.Alabama : stateInput.Alaska);
             var json = JObject.Parse(action.GetActionDefinition("workflow").ToJson());
 
-            Assert.Equal(
-                "/v1/gestational_limits/states/@{encodeURIComponent(if(outputs('Flag'), 'Alabama', 'Alaska'))}",
-                json["inputs"]["path"].Value<string>());
+            using var compiled = EmittedExpressionCompiler.Compile(json["inputs"]["path"].Value<string>());
+            Assert.Equal("/v1/gestational_limits/states/Alabama",
+                compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = true }));
+            Assert.Equal("/v1/gestational_limits/states/Alaska",
+                compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = false }));
         }
 
         [Fact]
@@ -259,9 +263,9 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 rawData: () => "payload");
             var json = JObject.Parse(action.GetActionDefinition("workflow").ToJson());
 
-            Assert.Equal(
-                "@if(outputs('Flag'), 'RSA-OAEP', 'RSA-OAEP-256')",
-                json["inputs"]["parameters"]["algorithm"].Value<string>());
+            using var compiled = EmittedExpressionCompiler.Compile(json["inputs"]["parameters"]["algorithm"].Value<string>());
+            Assert.Equal("RSA-OAEP", compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = true }));
+            Assert.Equal("RSA-OAEP-256", compiled.Evaluate(new Dictionary<string, JToken> { ["Flag"] = false }));
         }
 
         [Fact]

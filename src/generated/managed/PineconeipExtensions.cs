@@ -14,358 +14,462 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pineconeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<IndexStatsPostResponse> IndexStats()
         {
-            var apiCallPath = "/describe_index_stats";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndexStatsPostResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/describe_index_stats";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IndexStatsPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery(Expression<Func<bool>> bodyincludeValues = null, Expression<Func<bool>> bodyincludeMetadata = null, Expression<Func<int[]>> bodysparseVectorindices = null, Expression<Func<int[]>> bodysparseVectorvalues = null, Expression<Func<string>> bodyNamespace = null, Expression<Func<int>> bodytopK = null, Expression<Func<int[]>> bodyvector = null, Expression<Func<string>> bodyid = null)
+        public IBodyWorkflowAction<VectorQueryPostResponse> VectorQuery([WorkflowExpression] Func<bool> bodyincludeValues = null, [WorkflowExpression] Func<bool> bodyincludeMetadata = null, [WorkflowExpression] Func<int[]> bodysparseVectorindices = null, [WorkflowExpression] Func<int[]> bodysparseVectorvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null, [WorkflowExpression] Func<int> bodytopK = null, [WorkflowExpression] Func<int[]> bodyvector = null, [WorkflowExpression] Func<string> bodyid = null)
         {
-            var apiCallPath = "/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyincludeValues != null)
+            SourceExpression.Validate(bodyincludeValues, nameof(bodyincludeValues), required: false);
+            SourceExpression.Validate(bodyincludeMetadata, nameof(bodyincludeMetadata), required: false);
+            SourceExpression.Validate(bodysparseVectorindices, nameof(bodysparseVectorindices), required: false);
+            SourceExpression.Validate(bodysparseVectorvalues, nameof(bodysparseVectorvalues), required: false);
+            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            SourceExpression.Validate(bodytopK, nameof(bodytopK), required: false);
+            SourceExpression.Validate(bodyvector, nameof(bodyvector), required: false);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["includeValues"] = CSharpExpressionConverter.ConvertToken(bodyincludeValues);
-                bodypropCount++;
+                var apiCallPath = "/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyincludeValues != null)
+                {
+                    body["includeValues"] = SourceExpressionConverter.ConvertToken(bodyincludeValues);
+                    bodypropCount++;
+                }
+
+                if (bodyincludeMetadata != null)
+                {
+                    body["includeMetadata"] = SourceExpressionConverter.ConvertToken(bodyincludeMetadata);
+                    bodypropCount++;
+                }
+
+                var sparseVectorObject = new JObject();
+                var sparseVectorObjectpropCount = 0;
+                if (bodysparseVectorindices != null)
+                {
+                    sparseVectorObject["indices"] = SourceExpressionConverter.ConvertToken(bodysparseVectorindices);
+                    sparseVectorObjectpropCount++;
+                }
+
+                if (bodysparseVectorvalues != null)
+                {
+                    sparseVectorObject["values"] = SourceExpressionConverter.ConvertToken(bodysparseVectorvalues);
+                    sparseVectorObjectpropCount++;
+                }
+
+                if (sparseVectorObjectpropCount > 0)
+                {
+                    body["sparseVector"] = sparseVectorObject;
+                    bodypropCount++;
+                }
+
+                if (bodyNamespace != null)
+                {
+                    body["namespace"] = SourceExpressionConverter.ConvertToken(bodyNamespace);
+                    bodypropCount++;
+                }
+
+                if (bodytopK != null)
+                {
+                    body["topK"] = SourceExpressionConverter.ConvertToken(bodytopK);
+                    bodypropCount++;
+                }
+
+                if (bodyvector != null)
+                {
+                    body["vector"] = SourceExpressionConverter.ConvertToken(bodyvector);
+                    bodypropCount++;
+                }
+
+                if (bodyid != null)
+                {
+                    body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyincludeMetadata != null)
-            {
-                body["includeMetadata"] = CSharpExpressionConverter.ConvertToken(bodyincludeMetadata);
-                bodypropCount++;
-            }
-
-            var sparseVectorObject = new JObject();
-            var sparseVectorObjectpropCount = 0;
-            if (bodysparseVectorindices != null)
-            {
-                sparseVectorObject["indices"] = CSharpExpressionConverter.ConvertToken(bodysparseVectorindices);
-                sparseVectorObjectpropCount++;
-            }
-
-            if (bodysparseVectorvalues != null)
-            {
-                sparseVectorObject["values"] = CSharpExpressionConverter.ConvertToken(bodysparseVectorvalues);
-                sparseVectorObjectpropCount++;
-            }
-
-            if (sparseVectorObjectpropCount > 0)
-            {
-                body["sparseVector"] = sparseVectorObject;
-                bodypropCount++;
-            }
-
-            if (bodyNamespace != null)
-            {
-                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
-                bodypropCount++;
-            }
-
-            if (bodytopK != null)
-            {
-                body["topK"] = CSharpExpressionConverter.ConvertToken(bodytopK);
-                bodypropCount++;
-            }
-
-            if (bodyvector != null)
-            {
-                body["vector"] = CSharpExpressionConverter.ConvertToken(bodyvector);
-                bodypropCount++;
-            }
-
-            if (bodyid != null)
-            {
-                body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VectorQueryPostResponse>(callPayload);
+            return new ApiConnectionAction<VectorQueryPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorDelete(Expression<Func<bool>> bodydeleteAll = null, Expression<Func<string[]>> bodyids = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorDelete([WorkflowExpression] Func<bool> bodydeleteAll = null, [WorkflowExpression] Func<string[]> bodyids = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            var apiCallPath = "/vectors/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydeleteAll != null)
+            SourceExpression.Validate(bodydeleteAll, nameof(bodydeleteAll), required: false);
+            SourceExpression.Validate(bodyids, nameof(bodyids), required: false);
+            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["deleteAll"] = CSharpExpressionConverter.ConvertToken(bodydeleteAll);
-                bodypropCount++;
+                var apiCallPath = "/vectors/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydeleteAll != null)
+                {
+                    body["deleteAll"] = SourceExpressionConverter.ConvertToken(bodydeleteAll);
+                    bodypropCount++;
+                }
+
+                if (bodyids != null)
+                {
+                    body["ids"] = SourceExpressionConverter.ConvertToken(bodyids);
+                    bodypropCount++;
+                }
+
+                if (bodyNamespace != null)
+                {
+                    body["namespace"] = SourceExpressionConverter.ConvertToken(bodyNamespace);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyids != null)
-            {
-                body["ids"] = CSharpExpressionConverter.ConvertToken(bodyids);
-                bodypropCount++;
-            }
-
-            if (bodyNamespace != null)
-            {
-                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet(Expression<Func<string>> ids, Expression<Func<string>> @namespace = null)
+        public IBodyWorkflowAction<VectorsGetResponse> VectorsGet([WorkflowExpression] Func<string> ids, [WorkflowExpression] Func<string> @namespace = null)
         {
-            var apiCallPath = "/fetch";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (@namespace != null)
-                callPayload.Queries["namespace"] = CSharpExpressionConverter.ConvertO(@namespace);
-            return new ApiConnectionAction<VectorsGetResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            SourceExpression.Validate(@namespace, nameof(@namespace), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/fetch";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (@namespace != null)
+                    callPayload.Queries["namespace"] = SourceExpressionConverter.ConvertO(@namespace);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VectorsGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> VectorUpdate(Expression<Func<string>> bodyid, Expression<Func<double[]>> bodyvalues = null, Expression<Func<int[]>> bodysparseValuesindices = null, Expression<Func<double[]>> bodysparseValuesvalues = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<string> VectorUpdate([WorkflowExpression] Func<string> bodyid, [WorkflowExpression] Func<double[]> bodyvalues = null, [WorkflowExpression] Func<int[]> bodysparseValuesindices = null, [WorkflowExpression] Func<double[]> bodysparseValuesvalues = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            var apiCallPath = "/vectors/update";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-            if (bodyvalues != null)
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
+            SourceExpression.Validate(bodyvalues, nameof(bodyvalues), required: false);
+            SourceExpression.Validate(bodysparseValuesindices, nameof(bodysparseValuesindices), required: false);
+            SourceExpression.Validate(bodysparseValuesvalues, nameof(bodysparseValuesvalues), required: false);
+            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["values"] = CSharpExpressionConverter.ConvertToken(bodyvalues);
+                var apiCallPath = "/vectors/update";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodyvalues != null)
+                {
+                    body["values"] = SourceExpressionConverter.ConvertToken(bodyvalues);
+                    bodypropCount++;
+                }
+
+                var sparseValuesObject = new JObject();
+                var sparseValuesObjectpropCount = 0;
+                if (bodysparseValuesindices != null)
+                {
+                    sparseValuesObject["indices"] = SourceExpressionConverter.ConvertToken(bodysparseValuesindices);
+                    sparseValuesObjectpropCount++;
+                }
+
+                if (bodysparseValuesvalues != null)
+                {
+                    sparseValuesObject["values"] = SourceExpressionConverter.ConvertToken(bodysparseValuesvalues);
+                    sparseValuesObjectpropCount++;
+                }
+
+                if (sparseValuesObjectpropCount > 0)
+                {
+                    body["sparseValues"] = sparseValuesObject;
+                    bodypropCount++;
+                }
+
+                if (bodyNamespace != null)
+                {
+                    body["namespace"] = SourceExpressionConverter.ConvertToken(bodyNamespace);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var sparseValuesObject = new JObject();
-            var sparseValuesObjectpropCount = 0;
-            if (bodysparseValuesindices != null)
-            {
-                sparseValuesObject["indices"] = CSharpExpressionConverter.ConvertToken(bodysparseValuesindices);
-                sparseValuesObjectpropCount++;
-            }
-
-            if (bodysparseValuesvalues != null)
-            {
-                sparseValuesObject["values"] = CSharpExpressionConverter.ConvertToken(bodysparseValuesvalues);
-                sparseValuesObjectpropCount++;
-            }
-
-            if (sparseValuesObjectpropCount > 0)
-            {
-                body["sparseValues"] = sparseValuesObject;
-                bodypropCount++;
-            }
-
-            if (bodyNamespace != null)
-            {
-                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert(Expression<Func<bodyvectorsInputItem[]>> bodyvectors = null, Expression<Func<string>> bodyNamespace = null)
+        public IBodyWorkflowAction<VectorUpsertPostResponse> VectorUpsert([WorkflowExpression] Func<bodyvectorsInputItem[]> bodyvectors = null, [WorkflowExpression] Func<string> bodyNamespace = null)
         {
-            var apiCallPath = "/vectors/upsert";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyvectors != null)
+            SourceExpression.Validate(bodyvectors, nameof(bodyvectors), required: false);
+            SourceExpression.Validate(bodyNamespace, nameof(bodyNamespace), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["vectors"] = CSharpExpressionConverter.ConvertToken(bodyvectors);
-                bodypropCount++;
+                var apiCallPath = "/vectors/upsert";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyvectors != null)
+                {
+                    body["vectors"] = SourceExpressionConverter.ConvertToken(bodyvectors);
+                    bodypropCount++;
+                }
+
+                if (bodyNamespace != null)
+                {
+                    body["namespace"] = SourceExpressionConverter.ConvertToken(bodyNamespace);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyNamespace != null)
-            {
-                body["namespace"] = CSharpExpressionConverter.ConvertToken(bodyNamespace);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<VectorUpsertPostResponse>(callPayload);
+            return new ApiConnectionAction<VectorUpsertPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string[]> CollectionsGet()
         {
-            var apiCallPath = "/collections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionCreate(Expression<Func<string>> bodyname, Expression<Func<string>> bodysource)
-        {
-            var apiCallPath = "/collections";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/collections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<string> CollectionCreate([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodysource)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CollectionGetResponse>(callPayload);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/collections";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                bodypropCount++;
+                body["source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> CollectionDelete(Expression<Func<string>> collectionName)
+        public IBodyWorkflowAction<CollectionGetResponse> CollectionGet([WorkflowExpression] Func<string> collectionName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collections/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CollectionGetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
+        public IBodyWorkflowAction<string> CollectionDelete([WorkflowExpression] Func<string> collectionName)
+        {
+            SourceExpression.Validate(collectionName, nameof(collectionName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collections/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectionName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
         public IBodyWorkflowAction<string[]> IndexesGet()
         {
-            var apiCallPath = "/databases";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/databases";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> Index(Expression<Func<string>> bodyname, Expression<Func<int>> bodydimension, Expression<Func<string>> bodymetric = null, Expression<Func<int>> bodypods = null, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null, Expression<Func<string>> bodysourceCollection = null)
+        public IBodyWorkflowAction<string> Index([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodydimension, [WorkflowExpression] Func<string> bodymetric = null, [WorkflowExpression] Func<int> bodypods = null, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null, [WorkflowExpression] Func<string> bodysourceCollection = null)
         {
-            var apiCallPath = "/databases";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["dimension"] = CSharpExpressionConverter.ConvertToken(bodydimension);
-            if (bodymetric != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodydimension, nameof(bodydimension), required: true);
+            SourceExpression.Validate(bodymetric, nameof(bodymetric), required: false);
+            SourceExpression.Validate(bodypods, nameof(bodypods), required: false);
+            SourceExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
+            SourceExpression.Validate(bodypodType, nameof(bodypodType), required: false);
+            SourceExpression.Validate(bodysourceCollection, nameof(bodysourceCollection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["metric"] = CSharpExpressionConverter.ConvertToken(bodymetric);
+                var apiCallPath = "/databases";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypods != null)
-            {
-                body["pods"] = CSharpExpressionConverter.ConvertToken(bodypods);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["dimension"] = SourceExpressionConverter.ConvertToken(bodydimension);
+                if (bodymetric != null)
+                {
+                    body["metric"] = SourceExpressionConverter.ConvertToken(bodymetric);
+                    bodypropCount++;
+                }
+
+                if (bodypods != null)
+                {
+                    body["pods"] = SourceExpressionConverter.ConvertToken(bodypods);
+                    bodypropCount++;
+                }
+
+                if (bodyreplicas != null)
+                {
+                    body["replicas"] = SourceExpressionConverter.ConvertToken(bodyreplicas);
+                    bodypropCount++;
+                }
+
+                if (bodypodType != null)
+                {
+                    body["pod_type"] = SourceExpressionConverter.ConvertToken(bodypodType);
+                    bodypropCount++;
+                }
+
+                if (bodysourceCollection != null)
+                {
+                    body["source_collection"] = SourceExpressionConverter.ConvertToken(bodysourceCollection);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyreplicas != null)
-            {
-                body["replicas"] = CSharpExpressionConverter.ConvertToken(bodyreplicas);
-                bodypropCount++;
-            }
-
-            if (bodypodType != null)
-            {
-                body["pod_type"] = CSharpExpressionConverter.ConvertToken(bodypodType);
-                bodypropCount++;
-            }
-
-            if (bodysourceCollection != null)
-            {
-                body["source_collection"] = CSharpExpressionConverter.ConvertToken(bodysourceCollection);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<IndexGetResponse> IndexGet(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<IndexGetResponse> IndexGet([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndexGetResponse>(callPayload);
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IndexGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexDelete(Expression<Func<string>> indexName)
+        public IBodyWorkflowAction<string> IndexDelete([WorkflowExpression] Func<string> indexName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pineconeip")]
-        public IBodyWorkflowAction<string> IndexPatch(Expression<Func<string>> indexName, Expression<Func<int>> bodyreplicas = null, Expression<Func<string>> bodypodType = null)
+        public IBodyWorkflowAction<string> IndexPatch([WorkflowExpression] Func<string> indexName, [WorkflowExpression] Func<int> bodyreplicas = null, [WorkflowExpression] Func<string> bodypodType = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/databases/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyreplicas != null)
+            SourceExpression.Validate(indexName, nameof(indexName), required: true);
+            SourceExpression.Validate(bodyreplicas, nameof(bodyreplicas), required: false);
+            SourceExpression.Validate(bodypodType, nameof(bodypodType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["replicas"] = CSharpExpressionConverter.ConvertToken(bodyreplicas);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/databases/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(indexName, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyreplicas != null)
+                {
+                    body["replicas"] = SourceExpressionConverter.ConvertToken(bodyreplicas);
+                    bodypropCount++;
+                }
+
+                if (bodypodType != null)
+                {
+                    body["pod_type"] = SourceExpressionConverter.ConvertToken(bodypodType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypodType != null)
-            {
-                body["pod_type"] = CSharpExpressionConverter.ConvertToken(bodypodType);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

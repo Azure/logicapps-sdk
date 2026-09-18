@@ -14,19 +14,29 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Themealdbip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
         public IBodyWorkflowAction<GetARandomMealResponse> GetARandomMeal()
         {
-            var apiCallPath = "/random.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetARandomMealResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/random.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetARandomMealResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "themealdbip")]
         public IBodyWorkflowAction<ListAllMealsCategoriesResponse> ListAllMealsCategories()
         {
-            var apiCallPath = "/categories.php";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ListAllMealsCategoriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/categories.php";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListAllMealsCategoriesResponse>(BuildSourceInput);
         }
     }
 

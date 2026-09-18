@@ -12,147 +12,185 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Saplingai
     public class SaplingaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        public IBodyWorkflowAction<SpellcheckResponse> Spellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            var apiCallPath = "/v1/spellcheck";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
-            bodypropCount++;
-            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
-            if (bodymultipleEdits != null)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
+            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            SourceExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            SourceExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["multiple_edits"] = CSharpExpressionConverter.ConvertToken(bodymultipleEdits);
+                var apiCallPath = "/v1/spellcheck";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyneuralSpellcheck != null)
-            {
-                body["neural_spellcheck"] = CSharpExpressionConverter.ConvertToken(bodyneuralSpellcheck);
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
-            }
-
-            if (bodylang != null)
-            {
-                body["lang"] = CSharpExpressionConverter.ConvertToken(bodylang);
+                body["min_length"] = SourceExpressionConverter.ConvertToken(bodyminLength);
                 bodypropCount++;
+                body["session_id"] = SourceExpressionConverter.ConvertToken(bodysessionId);
+                if (bodymultipleEdits != null)
+                {
+                    body["multiple_edits"] = SourceExpressionConverter.ConvertToken(bodymultipleEdits);
+                    bodypropCount++;
+                }
+
+                if (bodyneuralSpellcheck != null)
+                {
+                    body["neural_spellcheck"] = SourceExpressionConverter.ConvertToken(bodyneuralSpellcheck);
+                    bodypropCount++;
+                }
+
+                if (bodylang != null)
+                {
+                    body["lang"] = SourceExpressionConverter.ConvertToken(bodylang);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SpellcheckResponse>(callPayload);
+            return new ApiConnectionAction<SpellcheckResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck(Expression<Func<string>> bodytext, Expression<Func<int>> bodyminLength, Expression<Func<string>> bodysessionId, Expression<Func<bool>> bodymultipleEdits = null, Expression<Func<bool>> bodyneuralSpellcheck = null, Expression<Func<string>> bodylang = null)
+        public IBodyWorkflowAction<MedicalSpellcheckResponse> MedicalSpellcheck([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<int> bodyminLength, [WorkflowExpression] Func<string> bodysessionId, [WorkflowExpression] Func<bool> bodymultipleEdits = null, [WorkflowExpression] Func<bool> bodyneuralSpellcheck = null, [WorkflowExpression] Func<string> bodylang = null)
         {
-            var apiCallPath = "/v1/medical-spellcheck";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["min_length"] = CSharpExpressionConverter.ConvertToken(bodyminLength);
-            bodypropCount++;
-            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
-            if (bodymultipleEdits != null)
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodyminLength, nameof(bodyminLength), required: true);
+            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            SourceExpression.Validate(bodymultipleEdits, nameof(bodymultipleEdits), required: false);
+            SourceExpression.Validate(bodyneuralSpellcheck, nameof(bodyneuralSpellcheck), required: false);
+            SourceExpression.Validate(bodylang, nameof(bodylang), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["multiple_edits"] = CSharpExpressionConverter.ConvertToken(bodymultipleEdits);
+                var apiCallPath = "/v1/medical-spellcheck";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyneuralSpellcheck != null)
-            {
-                body["neural_spellcheck"] = CSharpExpressionConverter.ConvertToken(bodyneuralSpellcheck);
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
                 bodypropCount++;
-            }
-
-            if (bodylang != null)
-            {
-                body["lang"] = CSharpExpressionConverter.ConvertToken(bodylang);
+                body["min_length"] = SourceExpressionConverter.ConvertToken(bodyminLength);
                 bodypropCount++;
+                body["session_id"] = SourceExpressionConverter.ConvertToken(bodysessionId);
+                if (bodymultipleEdits != null)
+                {
+                    body["multiple_edits"] = SourceExpressionConverter.ConvertToken(bodymultipleEdits);
+                    bodypropCount++;
+                }
+
+                if (bodyneuralSpellcheck != null)
+                {
+                    body["neural_spellcheck"] = SourceExpressionConverter.ConvertToken(bodyneuralSpellcheck);
+                    bodypropCount++;
+                }
+
+                if (bodylang != null)
+                {
+                    body["lang"] = SourceExpressionConverter.ConvertToken(bodylang);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MedicalSpellcheckResponse>(callPayload);
+            return new ApiConnectionAction<MedicalSpellcheckResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete(Expression<Func<string>> bodyquery, Expression<Func<string>> bodysessionId)
+        public IBodyWorkflowAction<AutocompleteResponse> Autocomplete([WorkflowExpression] Func<string> bodyquery, [WorkflowExpression] Func<string> bodysessionId)
         {
-            var apiCallPath = "/v1/complete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-            bodypropCount++;
-            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: true);
+            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AutocompleteResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<StatisticsResponse> Statistics(Expression<Func<string>> bodytext, Expression<Func<string>> bodysessionId)
-        {
-            var apiCallPath = "/v1/statistics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            bodypropCount++;
-            body["session_id"] = CSharpExpressionConverter.ConvertToken(bodysessionId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<StatisticsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
-        public IBodyWorkflowAction<DetectAiResponse> DetectAi(Expression<Func<string>> bodytext, Expression<Func<bool>> bodysentScores = null)
-        {
-            var apiCallPath = "/v1/aidetect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["text"] = CSharpExpressionConverter.ConvertToken(bodytext);
-            if (bodysentScores != null)
-            {
-                body["sent_scores"] = CSharpExpressionConverter.ConvertToken(bodysentScores);
+                var apiCallPath = "/v1/complete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                bodypropCount++;
+                body["session_id"] = SourceExpressionConverter.ConvertToken(bodysessionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<AutocompleteResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
+        public IBodyWorkflowAction<StatisticsResponse> Statistics([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<string> bodysessionId)
+        {
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodysessionId, nameof(bodysessionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/statistics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                bodypropCount++;
+                body["session_id"] = SourceExpressionConverter.ConvertToken(bodysessionId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<DetectAiResponse>(callPayload);
+            return new ApiConnectionAction<StatisticsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "saplingai")]
+        public IBodyWorkflowAction<DetectAiResponse> DetectAi([WorkflowExpression] Func<string> bodytext, [WorkflowExpression] Func<bool> bodysentScores = null)
+        {
+            SourceExpression.Validate(bodytext, nameof(bodytext), required: true);
+            SourceExpression.Validate(bodysentScores, nameof(bodysentScores), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/aidetect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["text"] = SourceExpressionConverter.ConvertToken(bodytext);
+                if (bodysentScores != null)
+                {
+                    body["sent_scores"] = SourceExpressionConverter.ConvertToken(bodysentScores);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DetectAiResponse>(BuildSourceInput);
         }
     }
 

@@ -12,32 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shop
     public class ShopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Search(Expression<Func<string>> query = null, Expression<Func<double>> priceMin = null, Expression<Func<double>> priceMax = null, Expression<Func<string>> similarToId = null, Expression<Func<string>> numResults = null)
+        public IBodyWorkflowAction<SearchResponse> Search([WorkflowExpression] Func<string> query = null, [WorkflowExpression] Func<double> priceMin = null, [WorkflowExpression] Func<double> priceMax = null, [WorkflowExpression] Func<string> similarToId = null, [WorkflowExpression] Func<string> numResults = null)
         {
-            var apiCallPath = "/openai/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (query != null)
-                callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
-            if (priceMin != null)
-                callPayload.Queries["price_min"] = CSharpExpressionConverter.ConvertO(priceMin);
-            if (priceMax != null)
-                callPayload.Queries["price_max"] = CSharpExpressionConverter.ConvertO(priceMax);
-            if (similarToId != null)
-                callPayload.Queries["similar_to_id"] = CSharpExpressionConverter.ConvertO(similarToId);
-            if (numResults != null)
-                callPayload.Queries["num_results"] = CSharpExpressionConverter.ConvertO(numResults);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            SourceExpression.Validate(priceMin, nameof(priceMin), required: false);
+            SourceExpression.Validate(priceMax, nameof(priceMax), required: false);
+            SourceExpression.Validate(similarToId, nameof(similarToId), required: false);
+            SourceExpression.Validate(numResults, nameof(numResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/openai/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (query != null)
+                    callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                if (priceMin != null)
+                    callPayload.Queries["price_min"] = SourceExpressionConverter.ConvertO(priceMin);
+                if (priceMax != null)
+                    callPayload.Queries["price_max"] = SourceExpressionConverter.ConvertO(priceMax);
+                if (similarToId != null)
+                    callPayload.Queries["similar_to_id"] = SourceExpressionConverter.ConvertO(similarToId);
+                if (numResults != null)
+                    callPayload.Queries["num_results"] = SourceExpressionConverter.ConvertO(numResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "shop")]
-        public IBodyWorkflowAction<SearchResponse> Details(Expression<Func<string>> ids)
+        public IBodyWorkflowAction<SearchResponse> Details([WorkflowExpression] Func<string> ids)
         {
-            var apiCallPath = "/openai/details";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            return new ApiConnectionAction<SearchResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/openai/details";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchResponse>(BuildSourceInput);
         }
     }
 

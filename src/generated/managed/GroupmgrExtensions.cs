@@ -12,292 +12,351 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Groupmgr
     public class GroupmgrActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval(Expression<Func<string>> bodylistItemId, Expression<Func<bodyapprovedInput>> bodyapproved)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrGroupApproval([WorkflowExpression] Func<string> bodylistItemId, [WorkflowExpression] Func<bodyapprovedInput> bodyapproved)
         {
-            var apiCallPath = "/api/ConfimationTrigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
-            bodypropCount++;
-            body["Approved"] = CSharpExpressionConverter.Convert(bodyapproved);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
+            SourceExpression.Validate(bodyapproved, nameof(bodyapproved), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/ConfimationTrigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ListItemId"] = SourceExpressionConverter.ConvertToken(bodylistItemId);
+                bodypropCount++;
+                body["Approved"] = SourceExpressionConverter.Convert(bodyapproved);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GroupExtended>(callPayload);
+            return new ApiConnectionAction<GroupExtended>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup(Expression<Func<string>> bodydisplayName, Expression<Func<string>> bodyemail, Expression<Func<string[]>> bodyowners, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycreatedBy = null)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrCreateGroup([WorkflowExpression] Func<string> bodydisplayName, [WorkflowExpression] Func<string> bodyemail, [WorkflowExpression] Func<string[]> bodyowners, [WorkflowExpression] Func<string[]> bodymembers = null, [WorkflowExpression] Func<string> bodygroupType = null, [WorkflowExpression] Func<bodyisPublicInput> bodyisPublic = null, [WorkflowExpression] Func<bool> bodycreateTeam = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycreatedBy = null)
         {
-            var apiCallPath = "/api/GroupBuilderTrigger";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["DisplayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
-            bodypropCount++;
-            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            bodypropCount++;
-            body["Owners"] = CSharpExpressionConverter.ConvertToken(bodyowners);
-            if (bodymembers != null)
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            SourceExpression.Validate(bodyowners, nameof(bodyowners), required: true);
+            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
+            SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: false);
+            SourceExpression.Validate(bodyisPublic, nameof(bodyisPublic), required: false);
+            SourceExpression.Validate(bodycreateTeam, nameof(bodycreateTeam), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodycreatedBy, nameof(bodycreatedBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
+                var apiCallPath = "/api/GroupBuilderTrigger";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodygroupType != null)
-            {
-                body["GroupType"] = CSharpExpressionConverter.ConvertToken(bodygroupType);
+                body["DisplayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
                 bodypropCount++;
-            }
+                body["Email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                bodypropCount++;
+                body["Owners"] = SourceExpressionConverter.ConvertToken(bodyowners);
+                if (bodymembers != null)
+                {
+                    body["Members"] = SourceExpressionConverter.ConvertToken(bodymembers);
+                    bodypropCount++;
+                }
 
-            if (bodyisPublic != null)
-            {
+                if (bodygroupType != null)
+                {
+                    body["GroupType"] = SourceExpressionConverter.ConvertToken(bodygroupType);
+                    bodypropCount++;
+                }
+
                 if (bodyisPublic != null)
                 {
-                    body["IsPublic"] = CSharpExpressionConverter.Convert(bodyisPublic);
+                    if (bodyisPublic != null)
+                    {
+                        body["IsPublic"] = SourceExpressionConverter.Convert(bodyisPublic);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["IsPublic"] = "true";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["IsPublic"] = "true";
-                bodypropCount++;
-            }
-
-            if (bodycreateTeam != null)
-            {
                 if (bodycreateTeam != null)
                 {
-                    body["CreateTeam"] = CSharpExpressionConverter.ConvertToken(bodycreateTeam);
+                    if (bodycreateTeam != null)
+                    {
+                        body["CreateTeam"] = SourceExpressionConverter.ConvertToken(bodycreateTeam);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["CreateTeam"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["CreateTeam"] = false;
-                bodypropCount++;
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodycreatedBy != null)
+                {
+                    body["CreatedBy"] = SourceExpressionConverter.ConvertToken(bodycreatedBy);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodycreatedBy != null)
-            {
-                body["CreatedBy"] = CSharpExpressionConverter.ConvertToken(bodycreatedBy);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GroupExtended>(callPayload);
+            return new ApiConnectionAction<GroupExtended>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup(Expression<Func<string>> bodygroupId, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodyowners = null, Expression<Func<string[]>> bodymembers = null, Expression<Func<string>> bodygroupType = null, Expression<Func<bodyisPublicInput>> bodyisPublic = null, Expression<Func<bool>> bodycreateTeam = null, Expression<Func<string>> bodydescription = null)
+        public IBodyWorkflowAction<GroupExtended> GroupMgrUpdateGroup([WorkflowExpression] Func<string> bodygroupId, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string[]> bodyowners = null, [WorkflowExpression] Func<string[]> bodymembers = null, [WorkflowExpression] Func<string> bodygroupType = null, [WorkflowExpression] Func<bodyisPublicInput> bodyisPublic = null, [WorkflowExpression] Func<bool> bodycreateTeam = null, [WorkflowExpression] Func<string> bodydescription = null)
         {
-            var apiCallPath = "/api/GroupBuilderTrigger";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["GroupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
-            if (bodydisplayName != null)
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodyowners, nameof(bodyowners), required: false);
+            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: false);
+            SourceExpression.Validate(bodygroupType, nameof(bodygroupType), required: false);
+            SourceExpression.Validate(bodyisPublic, nameof(bodyisPublic), required: false);
+            SourceExpression.Validate(bodycreateTeam, nameof(bodycreateTeam), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["DisplayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
+                var apiCallPath = "/api/GroupBuilderTrigger";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["GroupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                if (bodydisplayName != null)
+                {
+                    body["DisplayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyowners != null)
-            {
-                body["Owners"] = CSharpExpressionConverter.ConvertToken(bodyowners);
-                bodypropCount++;
-            }
+                if (bodyowners != null)
+                {
+                    body["Owners"] = SourceExpressionConverter.ConvertToken(bodyowners);
+                    bodypropCount++;
+                }
 
-            if (bodymembers != null)
-            {
-                body["Members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
-                bodypropCount++;
-            }
+                if (bodymembers != null)
+                {
+                    body["Members"] = SourceExpressionConverter.ConvertToken(bodymembers);
+                    bodypropCount++;
+                }
 
-            if (bodygroupType != null)
-            {
-                body["GroupType"] = CSharpExpressionConverter.ConvertToken(bodygroupType);
-                bodypropCount++;
-            }
+                if (bodygroupType != null)
+                {
+                    body["GroupType"] = SourceExpressionConverter.ConvertToken(bodygroupType);
+                    bodypropCount++;
+                }
 
-            if (bodyisPublic != null)
-            {
                 if (bodyisPublic != null)
                 {
-                    body["IsPublic"] = CSharpExpressionConverter.Convert(bodyisPublic);
+                    if (bodyisPublic != null)
+                    {
+                        body["IsPublic"] = SourceExpressionConverter.Convert(bodyisPublic);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["IsPublic"] = "";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["IsPublic"] = "";
-                bodypropCount++;
-            }
-
-            if (bodycreateTeam != null)
-            {
                 if (bodycreateTeam != null)
                 {
-                    body["CreateTeam"] = CSharpExpressionConverter.ConvertToken(bodycreateTeam);
+                    if (bodycreateTeam != null)
+                    {
+                        body["CreateTeam"] = SourceExpressionConverter.ConvertToken(bodycreateTeam);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["CreateTeam"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["CreateTeam"] = false;
-                bodypropCount++;
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GroupExtended>(callPayload);
+            return new ApiConnectionAction<GroupExtended>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrDeleteGroup(Expression<Func<string>> bodylistItemId)
+        public IWorkflowAction GroupMgrDeleteGroup([WorkflowExpression] Func<string> bodylistItemId)
         {
-            var apiCallPath = "/api/GroupBuilderTrigger";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/GroupBuilderTrigger";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ListItemId"] = SourceExpressionConverter.ConvertToken(bodylistItemId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "groupmgr")]
-        public IWorkflowAction GroupMgrArchiveGroup(Expression<Func<string>> bodylistItemId, Expression<Func<bodyarchiveInput>> bodyarchive)
+        public IWorkflowAction GroupMgrArchiveGroup([WorkflowExpression] Func<string> bodylistItemId, [WorkflowExpression] Func<bodyarchiveInput> bodyarchive)
         {
-            var apiCallPath = "/api/GroupBuilderTrigger";
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["ListItemId"] = CSharpExpressionConverter.ConvertToken(bodylistItemId);
-            bodypropCount++;
-            body["Archive"] = CSharpExpressionConverter.Convert(bodyarchive);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodylistItemId, nameof(bodylistItemId), required: true);
+            SourceExpression.Validate(bodyarchive, nameof(bodyarchive), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/GroupBuilderTrigger";
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["ListItemId"] = SourceExpressionConverter.ConvertToken(bodylistItemId);
+                bodypropCount++;
+                body["Archive"] = SourceExpressionConverter.Convert(bodyarchive);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 
     public class GroupmgrTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger GroupMgrGroupRequested(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger GroupMgrGroupRequested([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhookrequest/GroupRequested";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            body["webhook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhookrequest/GroupRequested";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                body["webhook"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger GroupMgrGroupCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhookrequest/GroupCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhookrequest/GroupCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhook"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger GroupMgrGroupUpdated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhookrequest/GroupUpdated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhookrequest/GroupUpdated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhook"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger GroupMgrGroupDeleted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/webhookrequest/GroupDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["webhook"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/webhookrequest/GroupDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["webhook"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

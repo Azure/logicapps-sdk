@@ -12,15 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractipgeolocatio
     public class AbstractipgeolocatioActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractipgeolocatio")]
-        public IBodyWorkflowAction<AnalyzeResponse> Analyze(Expression<Func<string>> ipAddress, Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<AnalyzeResponse> Analyze([WorkflowExpression] Func<string> ipAddress, [WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ip_address"] = CSharpExpressionConverter.ConvertO(ipAddress);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<AnalyzeResponse>(callPayload);
+            SourceExpression.Validate(ipAddress, nameof(ipAddress), required: true);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ip_address"] = SourceExpressionConverter.ConvertO(ipAddress);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AnalyzeResponse>(BuildSourceInput);
         }
     }
 

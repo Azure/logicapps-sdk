@@ -12,3751 +12,4789 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Easyvistaservicemana
     public class EasyvistaservicemanaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<FinishActionResponse> FinishAction(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyendActiondescription = null)
+        public IBodyWorkflowAction<FinishActionResponse> FinishAction([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyendActiondescription = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var endActionObject = new JObject();
-            var endActionObjectpropCount = 0;
-            if (bodyendActiondescription != null)
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodyendActiondescription, nameof(bodyendActiondescription), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                endActionObject["Description"] = CSharpExpressionConverter.ConvertToken(bodyendActiondescription);
-                endActionObjectpropCount++;
-            }
-
-            if (endActionObjectpropCount > 0)
-            {
-                body["end_action"] = endActionObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FinishActionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAssetsListResponse> ViewAssetsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewAssetsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateAssetResponse> CreateAsset(Expression<Func<string>> account, Expression<Func<bodyassetsInputItem[]>> bodyassets = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassets != null)
-            {
-                body["assets"] = CSharpExpressionConverter.ConvertToken(bodyassets);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAssetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAssetResponse> ViewAsset(Expression<Func<string>> account, Expression<Func<string>> assetId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAssetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> bodybEFORELOANDEPARTMENTID = null, Expression<Func<string>> bodybEFORELOANEMPLOYEEID = null, Expression<Func<string>> bodybEFORELOANLOCATIONID = null, Expression<Func<string>> bodybILLINGPERIODICITYINMONTH = null, Expression<Func<string>> bodybUYBACKVALUE = null, Expression<Func<string>> bodybUYBACKVALUECURID = null, Expression<Func<string>> bodycATALOGID = null, Expression<Func<string>> bodycHARGEBACK = null, Expression<Func<string>> bodycHARGEBACKCURID = null, Expression<Func<string>> bodycISTATUSID = null, Expression<Func<string>> bodycIVERSION = null, Expression<Func<string>> bodycMDEFAULTCHANGEID = null, Expression<Func<string>> bodycONFIGURATIONID = null, Expression<Func<string>> bodycRITICALLEVELID = null, Expression<Func<string>> bodydELIVERYDATE = null, Expression<Func<string>> bodydELIVERYNUMBER = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodydEPRECIATIONRULEID = null, Expression<Func<string>> bodydHARDWAREGUID = null, Expression<Func<string>> bodyeMPLOYEEID = null, Expression<Func<string>> bodyeNDOFWARANTY = null, Expression<Func<string>> bodyeNTRYDATE = null, Expression<Func<string>> bodyeSTIMATEDPERCENTAGEUSE = null, Expression<Func<string>> bodyeXPECTEDENDLENDDATE = null, Expression<Func<string>> bodyeXPECTEDRETURNDATE = null, Expression<Func<string>> bodyfALLENTERM = null, Expression<Func<string>> bodyfIXEDASSETNUMBER = null, Expression<Func<string>> bodyiNITIALSTART = null, Expression<Func<string>> bodyiNSTALLATIONDATE = null, Expression<Func<string>> bodyiNTERNALDELIVERYDATE = null, Expression<Func<string>> bodyiNVOICENUMBER = null, Expression<Func<string>> bodyiSDML = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTPHYSICALINVENTORY = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylICENSEVERSION = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodymAINTENANCECOST = null, Expression<Func<string>> bodymAINTENANCECOSTCURID = null, Expression<Func<string>> bodymAINUSAGEID = null, Expression<Func<string>> bodymAXINSTALLS = null, Expression<Func<string>> bodymONTHLYFIXEDCOST = null, Expression<Func<string>> bodymONTHLYFIXEDCOSTCURID = null, Expression<Func<string>> bodymONTHLYNETRENTAL = null, Expression<Func<string>> bodymONTHLYNETRENTALCURID = null, Expression<Func<string>> bodymONTHDURATION = null, Expression<Func<string>> bodynETWORKIDENTIFIER = null, Expression<Func<string>> bodynEXTDEPARTMENTID = null, Expression<Func<string>> bodynEXTMAINTENANCEDATE = null, Expression<Func<string>> bodynEXTSTATUSID = null, Expression<Func<string>> bodynEXTUSERAPPLICATIONDATE = null, Expression<Func<string>> bodynEXTUSERID = null, Expression<Func<string>> bodynOTICE = null, Expression<Func<string>> bodyoRDERDETAILSID = null, Expression<Func<string>> bodyoRDERNUMBER = null, Expression<Func<string>> bodypIPELINESTATUSID = null, Expression<Func<string>> bodypOWERCONSUMPTIONWH = null, Expression<Func<string>> bodypROCESSORCOUNT = null, Expression<Func<string>> bodypROCESSORSOCKETCOUNT = null, Expression<Func<string>> bodypURCHASEDATE = null, Expression<Func<string>> bodypURCHASEPRICE = null, Expression<Func<string>> bodypURCHASEPRICECURID = null, Expression<Func<string>> bodypURCHASERATEID = null, Expression<Func<string>> bodyrECYCLEDDATE = null, Expression<Func<string>> bodyrECYCLINGPROVIDERID = null, Expression<Func<string>> bodyrEFORMNUMBER = null, Expression<Func<string>> bodyrEMOVEDDATE = null, Expression<Func<string>> bodyrENEWALDECISIONID = null, Expression<Func<string>> bodyrENEWALVALUE = null, Expression<Func<string>> bodyrENEWALVALUECURID = null, Expression<Func<string>> bodyrEPAIREDBYID = null, Expression<Func<string>> bodyrESALESVALUE = null, Expression<Func<string>> bodysCHEDULEDEND = null, Expression<Func<string>> bodysDCATALOGID = null, Expression<Func<string>> bodysERIALNUMBER = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodysTATUSID = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodytERM = null, Expression<Func<string>> bodyuPDATECOVERAGETERM = null, Expression<Func<string>> bodywARANTYTYPEID = null, Expression<Func<string>> bodyassetLabel = null, Expression<Func<string>> bodyassetTag = null, Expression<Func<string>> bodyautomaticRenewal = null, Expression<Func<string>> bodyavailabilitySlaId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycommentAsset = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodybEFORELOANDEPARTMENTID != null)
-            {
-                body["BEFORE_LOAN_DEPARTMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodybEFORELOANDEPARTMENTID);
-                bodypropCount++;
-            }
-
-            if (bodybEFORELOANEMPLOYEEID != null)
-            {
-                body["BEFORE_LOAN_EMPLOYEE_ID"] = CSharpExpressionConverter.ConvertToken(bodybEFORELOANEMPLOYEEID);
-                bodypropCount++;
-            }
-
-            if (bodybEFORELOANLOCATIONID != null)
-            {
-                body["BEFORE_LOAN_LOCATION_ID"] = CSharpExpressionConverter.ConvertToken(bodybEFORELOANLOCATIONID);
-                bodypropCount++;
-            }
-
-            if (bodybILLINGPERIODICITYINMONTH != null)
-            {
-                body["BILLING_PERIODICITY_IN_MONTH"] = CSharpExpressionConverter.ConvertToken(bodybILLINGPERIODICITYINMONTH);
-                bodypropCount++;
-            }
-
-            if (bodybUYBACKVALUE != null)
-            {
-                body["BUY_BACK_VALUE"] = CSharpExpressionConverter.ConvertToken(bodybUYBACKVALUE);
-                bodypropCount++;
-            }
-
-            if (bodybUYBACKVALUECURID != null)
-            {
-                body["BUY_BACK_VALUE_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodybUYBACKVALUECURID);
-                bodypropCount++;
-            }
-
-            if (bodycATALOGID != null)
-            {
-                body["CATALOG_ID"] = CSharpExpressionConverter.ConvertToken(bodycATALOGID);
-                bodypropCount++;
-            }
-
-            if (bodycHARGEBACK != null)
-            {
-                body["CHARGE_BACK"] = CSharpExpressionConverter.ConvertToken(bodycHARGEBACK);
-                bodypropCount++;
-            }
-
-            if (bodycHARGEBACKCURID != null)
-            {
-                body["CHARGE_BACK_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodycHARGEBACKCURID);
-                bodypropCount++;
-            }
-
-            if (bodycISTATUSID != null)
-            {
-                body["CI_STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodycISTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodycIVERSION != null)
-            {
-                body["CI_VERSION"] = CSharpExpressionConverter.ConvertToken(bodycIVERSION);
-                bodypropCount++;
-            }
-
-            if (bodycMDEFAULTCHANGEID != null)
-            {
-                body["CM_DEFAULT_CHANGE_ID"] = CSharpExpressionConverter.ConvertToken(bodycMDEFAULTCHANGEID);
-                bodypropCount++;
-            }
-
-            if (bodycONFIGURATIONID != null)
-            {
-                body["CONFIGURATION_ID"] = CSharpExpressionConverter.ConvertToken(bodycONFIGURATIONID);
-                bodypropCount++;
-            }
-
-            if (bodycRITICALLEVELID != null)
-            {
-                body["CRITICAL_LEVEL_ID"] = CSharpExpressionConverter.ConvertToken(bodycRITICALLEVELID);
-                bodypropCount++;
-            }
-
-            if (bodydELIVERYDATE != null)
-            {
-                body["DELIVERY_DATE"] = CSharpExpressionConverter.ConvertToken(bodydELIVERYDATE);
-                bodypropCount++;
-            }
-
-            if (bodydELIVERYNUMBER != null)
-            {
-                body["DELIVERY_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodydELIVERYNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTID != null)
-            {
-                body["DEPARTMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTID);
-                bodypropCount++;
-            }
-
-            if (bodydEPRECIATIONRULEID != null)
-            {
-                body["DEPRECIATION_RULE_ID"] = CSharpExpressionConverter.ConvertToken(bodydEPRECIATIONRULEID);
-                bodypropCount++;
-            }
-
-            if (bodydHARDWAREGUID != null)
-            {
-                body["D_HARDWARE_GUID"] = CSharpExpressionConverter.ConvertToken(bodydHARDWAREGUID);
-                bodypropCount++;
-            }
-
-            if (bodyeMPLOYEEID != null)
-            {
-                body["EMPLOYEE_ID"] = CSharpExpressionConverter.ConvertToken(bodyeMPLOYEEID);
-                bodypropCount++;
-            }
-
-            if (bodyeNDOFWARANTY != null)
-            {
-                body["END_OF_WARANTY"] = CSharpExpressionConverter.ConvertToken(bodyeNDOFWARANTY);
-                bodypropCount++;
-            }
-
-            if (bodyeNTRYDATE != null)
-            {
-                body["ENTRY_DATE"] = CSharpExpressionConverter.ConvertToken(bodyeNTRYDATE);
-                bodypropCount++;
-            }
-
-            if (bodyeSTIMATEDPERCENTAGEUSE != null)
-            {
-                body["ESTIMATED_PERCENTAGE_USE"] = CSharpExpressionConverter.ConvertToken(bodyeSTIMATEDPERCENTAGEUSE);
-                bodypropCount++;
-            }
-
-            if (bodyeXPECTEDENDLENDDATE != null)
-            {
-                body["EXPECTED_END_LEND_DATE"] = CSharpExpressionConverter.ConvertToken(bodyeXPECTEDENDLENDDATE);
-                bodypropCount++;
-            }
-
-            if (bodyeXPECTEDRETURNDATE != null)
-            {
-                body["EXPECTED_RETURN_DATE"] = CSharpExpressionConverter.ConvertToken(bodyeXPECTEDRETURNDATE);
-                bodypropCount++;
-            }
-
-            if (bodyfALLENTERM != null)
-            {
-                body["FALLEN_TERM"] = CSharpExpressionConverter.ConvertToken(bodyfALLENTERM);
-                bodypropCount++;
-            }
-
-            if (bodyfIXEDASSETNUMBER != null)
-            {
-                body["FIXED_ASSET_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyfIXEDASSETNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyiNITIALSTART != null)
-            {
-                body["INITIAL_START"] = CSharpExpressionConverter.ConvertToken(bodyiNITIALSTART);
-                bodypropCount++;
-            }
-
-            if (bodyiNSTALLATIONDATE != null)
-            {
-                body["INSTALLATION_DATE"] = CSharpExpressionConverter.ConvertToken(bodyiNSTALLATIONDATE);
-                bodypropCount++;
-            }
-
-            if (bodyiNTERNALDELIVERYDATE != null)
-            {
-                body["INTERNAL_DELIVERY_DATE"] = CSharpExpressionConverter.ConvertToken(bodyiNTERNALDELIVERYDATE);
-                bodypropCount++;
-            }
-
-            if (bodyiNVOICENUMBER != null)
-            {
-                body["INVOICE_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyiNVOICENUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyiSDML != null)
-            {
-                body["IS_DML"] = CSharpExpressionConverter.ConvertToken(bodyiSDML);
-                bodypropCount++;
-            }
-
-            if (bodylASTINTEGRATION != null)
-            {
-                body["LAST_INTEGRATION"] = CSharpExpressionConverter.ConvertToken(bodylASTINTEGRATION);
-                bodypropCount++;
-            }
-
-            if (bodylASTPHYSICALINVENTORY != null)
-            {
-                body["LAST_PHYSICAL_INVENTORY"] = CSharpExpressionConverter.ConvertToken(bodylASTPHYSICALINVENTORY);
-                bodypropCount++;
-            }
-
-            if (bodylASTUPDATE != null)
-            {
-                body["LAST_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodylASTUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodylICENSEVERSION != null)
-            {
-                body["LICENSE_VERSION"] = CSharpExpressionConverter.ConvertToken(bodylICENSEVERSION);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONID != null)
-            {
-                body["LOCATION_ID"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONID);
-                bodypropCount++;
-            }
-
-            if (bodymAINTENANCECOST != null)
-            {
-                body["MAINTENANCE_COST"] = CSharpExpressionConverter.ConvertToken(bodymAINTENANCECOST);
-                bodypropCount++;
-            }
-
-            if (bodymAINTENANCECOSTCURID != null)
-            {
-                body["MAINTENANCE_COST_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodymAINTENANCECOSTCURID);
-                bodypropCount++;
-            }
-
-            if (bodymAINUSAGEID != null)
-            {
-                body["MAIN_USAGE_ID"] = CSharpExpressionConverter.ConvertToken(bodymAINUSAGEID);
-                bodypropCount++;
-            }
-
-            if (bodymAXINSTALLS != null)
-            {
-                body["MAX_INSTALLS"] = CSharpExpressionConverter.ConvertToken(bodymAXINSTALLS);
-                bodypropCount++;
-            }
-
-            if (bodymONTHLYFIXEDCOST != null)
-            {
-                body["MONTHLY_FIXED_COST"] = CSharpExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOST);
-                bodypropCount++;
-            }
-
-            if (bodymONTHLYFIXEDCOSTCURID != null)
-            {
-                body["MONTHLY_FIXED_COST_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOSTCURID);
-                bodypropCount++;
-            }
-
-            if (bodymONTHLYNETRENTAL != null)
-            {
-                body["MONTHLY_NET_RENTAL"] = CSharpExpressionConverter.ConvertToken(bodymONTHLYNETRENTAL);
-                bodypropCount++;
-            }
-
-            if (bodymONTHLYNETRENTALCURID != null)
-            {
-                body["MONTHLY_NET_RENTAL_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodymONTHLYNETRENTALCURID);
-                bodypropCount++;
-            }
-
-            if (bodymONTHDURATION != null)
-            {
-                body["MONTH_DURATION"] = CSharpExpressionConverter.ConvertToken(bodymONTHDURATION);
-                bodypropCount++;
-            }
-
-            if (bodynETWORKIDENTIFIER != null)
-            {
-                body["NETWORK_IDENTIFIER"] = CSharpExpressionConverter.ConvertToken(bodynETWORKIDENTIFIER);
-                bodypropCount++;
-            }
-
-            if (bodynEXTDEPARTMENTID != null)
-            {
-                body["NEXT_DEPARTMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodynEXTDEPARTMENTID);
-                bodypropCount++;
-            }
-
-            if (bodynEXTMAINTENANCEDATE != null)
-            {
-                body["NEXT_MAINTENANCE_DATE"] = CSharpExpressionConverter.ConvertToken(bodynEXTMAINTENANCEDATE);
-                bodypropCount++;
-            }
-
-            if (bodynEXTSTATUSID != null)
-            {
-                body["NEXT_STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodynEXTSTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodynEXTUSERAPPLICATIONDATE != null)
-            {
-                body["NEXT_USER_APPLICATION_DATE"] = CSharpExpressionConverter.ConvertToken(bodynEXTUSERAPPLICATIONDATE);
-                bodypropCount++;
-            }
-
-            if (bodynEXTUSERID != null)
-            {
-                body["NEXT_USER_ID"] = CSharpExpressionConverter.ConvertToken(bodynEXTUSERID);
-                bodypropCount++;
-            }
-
-            if (bodynOTICE != null)
-            {
-                body["NOTICE"] = CSharpExpressionConverter.ConvertToken(bodynOTICE);
-                bodypropCount++;
-            }
-
-            if (bodyoRDERDETAILSID != null)
-            {
-                body["ORDER_DETAILS_ID"] = CSharpExpressionConverter.ConvertToken(bodyoRDERDETAILSID);
-                bodypropCount++;
-            }
-
-            if (bodyoRDERNUMBER != null)
-            {
-                body["ORDER_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyoRDERNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodypIPELINESTATUSID != null)
-            {
-                body["PIPELINE_STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodypIPELINESTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodypOWERCONSUMPTIONWH != null)
-            {
-                body["POWER_CONSUMPTION_WH"] = CSharpExpressionConverter.ConvertToken(bodypOWERCONSUMPTIONWH);
-                bodypropCount++;
-            }
-
-            if (bodypROCESSORCOUNT != null)
-            {
-                body["PROCESSOR_COUNT"] = CSharpExpressionConverter.ConvertToken(bodypROCESSORCOUNT);
-                bodypropCount++;
-            }
-
-            if (bodypROCESSORSOCKETCOUNT != null)
-            {
-                body["PROCESSOR_SOCKET_COUNT"] = CSharpExpressionConverter.ConvertToken(bodypROCESSORSOCKETCOUNT);
-                bodypropCount++;
-            }
-
-            if (bodypURCHASEDATE != null)
-            {
-                body["PURCHASE_DATE"] = CSharpExpressionConverter.ConvertToken(bodypURCHASEDATE);
-                bodypropCount++;
-            }
-
-            if (bodypURCHASEPRICE != null)
-            {
-                body["PURCHASE_PRICE"] = CSharpExpressionConverter.ConvertToken(bodypURCHASEPRICE);
-                bodypropCount++;
-            }
-
-            if (bodypURCHASEPRICECURID != null)
-            {
-                body["PURCHASE_PRICE_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodypURCHASEPRICECURID);
-                bodypropCount++;
-            }
-
-            if (bodypURCHASERATEID != null)
-            {
-                body["PURCHASE_RATE_ID"] = CSharpExpressionConverter.ConvertToken(bodypURCHASERATEID);
-                bodypropCount++;
-            }
-
-            if (bodyrECYCLEDDATE != null)
-            {
-                body["RECYCLED_DATE"] = CSharpExpressionConverter.ConvertToken(bodyrECYCLEDDATE);
-                bodypropCount++;
-            }
-
-            if (bodyrECYCLINGPROVIDERID != null)
-            {
-                body["RECYCLING_PROVIDER_ID"] = CSharpExpressionConverter.ConvertToken(bodyrECYCLINGPROVIDERID);
-                bodypropCount++;
-            }
-
-            if (bodyrEFORMNUMBER != null)
-            {
-                body["REFORM_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyrEFORMNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyrEMOVEDDATE != null)
-            {
-                body["REMOVED_DATE"] = CSharpExpressionConverter.ConvertToken(bodyrEMOVEDDATE);
-                bodypropCount++;
-            }
-
-            if (bodyrENEWALDECISIONID != null)
-            {
-                body["RENEWAL_DECISION_ID"] = CSharpExpressionConverter.ConvertToken(bodyrENEWALDECISIONID);
-                bodypropCount++;
-            }
-
-            if (bodyrENEWALVALUE != null)
-            {
-                body["RENEWAL_VALUE"] = CSharpExpressionConverter.ConvertToken(bodyrENEWALVALUE);
-                bodypropCount++;
-            }
-
-            if (bodyrENEWALVALUECURID != null)
-            {
-                body["RENEWAL_VALUE_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodyrENEWALVALUECURID);
-                bodypropCount++;
-            }
-
-            if (bodyrEPAIREDBYID != null)
-            {
-                body["REPAIRED_BY_ID"] = CSharpExpressionConverter.ConvertToken(bodyrEPAIREDBYID);
-                bodypropCount++;
-            }
-
-            if (bodyrESALESVALUE != null)
-            {
-                body["RESALES_VALUE"] = CSharpExpressionConverter.ConvertToken(bodyrESALESVALUE);
-                bodypropCount++;
-            }
-
-            if (bodysCHEDULEDEND != null)
-            {
-                body["SCHEDULED_END"] = CSharpExpressionConverter.ConvertToken(bodysCHEDULEDEND);
-                bodypropCount++;
-            }
-
-            if (bodysDCATALOGID != null)
-            {
-                body["SD_CATALOG_ID"] = CSharpExpressionConverter.ConvertToken(bodysDCATALOGID);
-                bodypropCount++;
-            }
-
-            if (bodysERIALNUMBER != null)
-            {
-                body["SERIAL_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodysERIALNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodysLAID != null)
-            {
-                body["SLA_ID"] = CSharpExpressionConverter.ConvertToken(bodysLAID);
-                bodypropCount++;
-            }
-
-            if (bodysTATUSID != null)
-            {
-                body["STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodysTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodysUPPLIERID != null)
-            {
-                body["SUPPLIER_ID"] = CSharpExpressionConverter.ConvertToken(bodysUPPLIERID);
-                bodypropCount++;
-            }
-
-            if (bodytERM != null)
-            {
-                body["TERM"] = CSharpExpressionConverter.ConvertToken(bodytERM);
-                bodypropCount++;
-            }
-
-            if (bodyuPDATECOVERAGETERM != null)
-            {
-                body["UPDATE_COVERAGE_TERM"] = CSharpExpressionConverter.ConvertToken(bodyuPDATECOVERAGETERM);
-                bodypropCount++;
-            }
-
-            if (bodywARANTYTYPEID != null)
-            {
-                body["WARANTY_TYPE_ID"] = CSharpExpressionConverter.ConvertToken(bodywARANTYTYPEID);
-                bodypropCount++;
-            }
-
-            if (bodyassetLabel != null)
-            {
-                body["asset_label"] = CSharpExpressionConverter.ConvertToken(bodyassetLabel);
-                bodypropCount++;
-            }
-
-            if (bodyassetTag != null)
-            {
-                body["asset_tag"] = CSharpExpressionConverter.ConvertToken(bodyassetTag);
-                bodypropCount++;
-            }
-
-            if (bodyautomaticRenewal != null)
-            {
-                body["automatic_renewal"] = CSharpExpressionConverter.ConvertToken(bodyautomaticRenewal);
-                bodypropCount++;
-            }
-
-            if (bodyavailabilitySlaId != null)
-            {
-                body["availability_sla_id"] = CSharpExpressionConverter.ConvertToken(bodyavailabilitySlaId);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField1 != null)
-            {
-                body["available_field_1"] = CSharpExpressionConverter.ConvertToken(bodyavailableField1);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField2 != null)
-            {
-                body["available_field_2"] = CSharpExpressionConverter.ConvertToken(bodyavailableField2);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField3 != null)
-            {
-                body["available_field_3"] = CSharpExpressionConverter.ConvertToken(bodyavailableField3);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField4 != null)
-            {
-                body["available_field_4"] = CSharpExpressionConverter.ConvertToken(bodyavailableField4);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField5 != null)
-            {
-                body["available_field_5"] = CSharpExpressionConverter.ConvertToken(bodyavailableField5);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField6 != null)
-            {
-                body["available_field_6"] = CSharpExpressionConverter.ConvertToken(bodyavailableField6);
-                bodypropCount++;
-            }
-
-            if (bodycommentAsset != null)
-            {
-                body["comment_asset"] = CSharpExpressionConverter.ConvertToken(bodycommentAsset);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateAssetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAssetLinksResponse> ViewAssetLinks(Expression<Func<string>> account, Expression<Func<string>> assetId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAssetLinksResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<string> DeleteAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateAssetLinkResponse> CreateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<string>> bodycontractRow = null, Expression<Func<string>> bodymonthlyPayment = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontractRow != null)
-            {
-                body["Contract_Row"] = CSharpExpressionConverter.ConvertToken(bodycontractRow);
-                bodypropCount++;
-            }
-
-            if (bodymonthlyPayment != null)
-            {
-                body["Monthly_Payment"] = CSharpExpressionConverter.ConvertToken(bodymonthlyPayment);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAssetLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateAssetLinkResponse> UpdateAssetLink(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> parentAssetId, Expression<Func<string>> bodycontractRow = null, Expression<Func<string>> bodymonthlyPayment = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontractRow != null)
-            {
-                body["Contract_Row"] = CSharpExpressionConverter.ConvertToken(bodycontractRow);
-                bodypropCount++;
-            }
-
-            if (bodymonthlyPayment != null)
-            {
-                body["Monthly_Payment"] = CSharpExpressionConverter.ConvertToken(bodymonthlyPayment);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateAssetLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAssetLinkResponse> ViewAssetLink(Expression<Func<string>> account, Expression<Func<string>> parentAssetId, Expression<Func<string>> childAssetId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAssetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAssetLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogAssetsListResponse> ViewCatalogAssetsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewCatalogAssetsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogAssetResponse> ViewCatalogAsset(Expression<Func<string>> account, Expression<Func<string>> catalogId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewCatalogAssetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogRequestsListResponse> ViewCatalogRequestsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            return new ApiConnectionAction<ViewCatalogRequestsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogRequestsPathListResponse> ViewCatalogRequestsPathList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewCatalogRequestsPathListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogRequestPathResponse> ViewCatalogRequestPath(Expression<Func<string>> account, Expression<Func<string>> catalogId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewCatalogRequestPathResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewCatalogRequestResponse> ViewCatalogRequest(Expression<Func<string>> account, Expression<Func<string>> catalogId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewCatalogRequestResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewConfigurationItemsListResponse> ViewConfigurationItemsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewConfigurationItemsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewConfigurationItemResponse> ViewConfigurationItem(Expression<Func<string>> account, Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewConfigurationItemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewConfigurationItemLinksResponse> ViewConfigurationItemLinks(Expression<Func<string>> account, Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewConfigurationItemLinksResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewConfigurationItemLinkResponse> ViewConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewConfigurationItemLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<string> DeleteConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyrelationTypeID, Expression<Func<string>> bodyblocking = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyblocking != null)
-            {
-                body["Blocking"] = CSharpExpressionConverter.ConvertToken(bodyblocking);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["Relation_Type_ID"] = CSharpExpressionConverter.ConvertToken(bodyrelationTypeID);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateConfigurationItemLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink(Expression<Func<string>> account, Expression<Func<string>> parentCiId, Expression<Func<string>> childCiId, Expression<Func<string>> bodyblocking = null, Expression<Func<string>> bodyrelationTypeID = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyblocking != null)
-            {
-                body["Blocking"] = CSharpExpressionConverter.ConvertToken(bodyblocking);
-                bodypropCount++;
-            }
-
-            if (bodyrelationTypeID != null)
-            {
-                body["Relation_Type_ID"] = CSharpExpressionConverter.ConvertToken(bodyrelationTypeID);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateConfigurationItemLinkResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewEntitiesListResponse> ViewEntitiesList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewEntitiesListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewEntityResponse> ViewEntity(Expression<Func<string>> account, Expression<Func<string>> departmentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(departmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewEntityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateDepartmentResponse> UpdateDepartment(Expression<Func<string>> account, Expression<Func<string>> departmentId, Expression<Func<string>> bodypARENTDEPARTMENTID = null, Expression<Func<string>> bodydEPARTMENTEN = null, Expression<Func<string>> bodydEPARTMENTFR = null, Expression<Func<string>> bodydEPARTMENTSP = null, Expression<Func<string>> bodydEPARTMENTGE = null, Expression<Func<string>> bodydEPARTMENTIT = null, Expression<Func<string>> bodydEPARTMENTPO = null, Expression<Func<string>> bodydEPARTMENTLABEL = null, Expression<Func<string>> bodycOMMENTDEPARTMENT = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodydEFAULTCOSTCENTERID = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydEPARTMENTCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodycURRENCYID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodydEPARTMENTL1 = null, Expression<Func<string>> bodydEPARTMENTL2 = null, Expression<Func<string>> bodydEPARTMENTL3 = null, Expression<Func<string>> bodydEPARTMENTL4 = null, Expression<Func<string>> bodydEPARTMENTL5 = null, Expression<Func<string>> bodydEPARTMENTL6 = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(departmentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypARENTDEPARTMENTID != null)
-            {
-                body["PARENT_DEPARTMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodypARENTDEPARTMENTID);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTEN != null)
-            {
-                body["DEPARTMENT_EN"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTEN);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTFR != null)
-            {
-                body["DEPARTMENT_FR"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTFR);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTSP != null)
-            {
-                body["DEPARTMENT_SP"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTSP);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTGE != null)
-            {
-                body["DEPARTMENT_GE"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTGE);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTIT != null)
-            {
-                body["DEPARTMENT_IT"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTIT);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTPO != null)
-            {
-                body["DEPARTMENT_PO"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTPO);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTLABEL != null)
-            {
-                body["DEPARTMENT_LABEL"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTLABEL);
-                bodypropCount++;
-            }
-
-            if (bodycOMMENTDEPARTMENT != null)
-            {
-                body["COMMENT_DEPARTMENT"] = CSharpExpressionConverter.ConvertToken(bodycOMMENTDEPARTMENT);
-                bodypropCount++;
-            }
-
-            if (bodymANAGERID != null)
-            {
-                body["MANAGER_ID"] = CSharpExpressionConverter.ConvertToken(bodymANAGERID);
-                bodypropCount++;
-            }
-
-            if (bodydEFAULTCOSTCENTERID != null)
-            {
-                body["DEFAULT_COST_CENTER_ID"] = CSharpExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
-                bodypropCount++;
-            }
-
-            if (bodysTARTDATE != null)
-            {
-                body["START_DATE"] = CSharpExpressionConverter.ConvertToken(bodysTARTDATE);
-                bodypropCount++;
-            }
-
-            if (bodyeNDDATE != null)
-            {
-                body["END_DATE"] = CSharpExpressionConverter.ConvertToken(bodyeNDDATE);
-                bodypropCount++;
-            }
-
-            if (bodyuRLMAP != null)
-            {
-                body["URL_MAP"] = CSharpExpressionConverter.ConvertToken(bodyuRLMAP);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTCODE != null)
-            {
-                body["DEPARTMENT_CODE"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTCODE);
-                bodypropCount++;
-            }
-
-            if (bodylASTUPDATE != null)
-            {
-                body["LAST_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodylASTUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodylASTINTEGRATION != null)
-            {
-                body["LAST_INTEGRATION"] = CSharpExpressionConverter.ConvertToken(bodylASTINTEGRATION);
-                bodypropCount++;
-            }
-
-            if (bodycURRENCYID != null)
-            {
-                body["CURRENCY_ID"] = CSharpExpressionConverter.ConvertToken(bodycURRENCYID);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD1 != null)
-            {
-                body["AVAILABLE_FIELD_1"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD2 != null)
-            {
-                body["AVAILABLE_FIELD_2"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD3 != null)
-            {
-                body["AVAILABLE_FIELD_3"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD4 != null)
-            {
-                body["AVAILABLE_FIELD_4"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD5 != null)
-            {
-                body["AVAILABLE_FIELD_5"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD6 != null)
-            {
-                body["AVAILABLE_FIELD_6"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
-                bodypropCount++;
-            }
-
-            if (bodysLAID != null)
-            {
-                body["SLA_ID"] = CSharpExpressionConverter.ConvertToken(bodysLAID);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL1 != null)
-            {
-                body["DEPARTMENT_L1"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL1);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL2 != null)
-            {
-                body["DEPARTMENT_L2"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL2);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL3 != null)
-            {
-                body["DEPARTMENT_L3"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL3);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL4 != null)
-            {
-                body["DEPARTMENT_L4"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL4);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL5 != null)
-            {
-                body["DEPARTMENT_L5"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL5);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTL6 != null)
-            {
-                body["DEPARTMENT_L6"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTL6);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateDepartmentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewEmployeesListResponse> ViewEmployeesList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewEmployeesListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateEmployeeResponse> CreateEmployee(Expression<Func<string>> account, Expression<Func<bodyemployeesInputItem[]>> bodyemployees = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemployees != null)
-            {
-                body["employees"] = CSharpExpressionConverter.ConvertToken(bodyemployees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateEmployeeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewEmployeeResponse> ViewEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewEmployeeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee(Expression<Func<string>> account, Expression<Func<string>> employeeId, Expression<Func<string>> bodyaPPROVEDTOVALIDATE = null, Expression<Func<string>> bodyaVAILABILITYSTATUSID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodybEGINOFCONTRACT = null, Expression<Func<string>> bodycELLULARNUMBER = null, Expression<Func<string>> bodycHATLOGIN = null, Expression<Func<string>> bodycIVILSTATUSID = null, Expression<Func<string>> bodycOMMENTEMPLOYEE = null, Expression<Func<string>> bodycOSTPERHOUR = null, Expression<Func<string>> bodycOSTPERHOURCURID = null, Expression<Func<string>> bodydEFAULTCOSTCENTERID = null, Expression<Func<string>> bodydELEGATIONFROM = null, Expression<Func<string>> bodydELEGATIONID = null, Expression<Func<string>> bodydELEGATIONTO = null, Expression<Func<string>> bodydEPARTMENTID = null, Expression<Func<string>> bodyeNDOFCONTRACT = null, Expression<Func<string>> bodyeMAIL = null, Expression<Func<string>> bodyfAXNUMBER = null, Expression<Func<string>> bodyfUNCTIONID = null, Expression<Func<string>> bodyiCQNUMBER = null, Expression<Func<string>> bodyiDENTIFICATION = null, Expression<Func<string>> bodyiSAUTOMATICSTATUS = null, Expression<Func<string>> bodyiTCORRESPONDENT = null, Expression<Func<string>> bodylANGUAGEID = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodylASTNAME = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodylOGIN = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodymESSENGERSIGNNAME = null, Expression<Func<string>> bodynOTIFICATIONTYPEID = null, Expression<Func<string>> bodypASSWDLASTUPDATEUT = null, Expression<Func<string>> bodypHONENUMBER = null, Expression<Func<string>> bodypICTUREPATH = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodyvALIDATORID = null, Expression<Func<string>> bodyvIPLEVELID = null, Expression<Func<string>> bodywAVEADDRESS = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaPPROVEDTOVALIDATE != null)
-            {
-                body["APPROVED_TO_VALIDATE"] = CSharpExpressionConverter.ConvertToken(bodyaPPROVEDTOVALIDATE);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABILITYSTATUSID != null)
-            {
-                body["AVAILABILITY_STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABILITYSTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD1 != null)
-            {
-                body["AVAILABLE_FIELD_1"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD2 != null)
-            {
-                body["AVAILABLE_FIELD_2"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD3 != null)
-            {
-                body["AVAILABLE_FIELD_3"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD4 != null)
-            {
-                body["AVAILABLE_FIELD_4"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD5 != null)
-            {
-                body["AVAILABLE_FIELD_5"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD6 != null)
-            {
-                body["AVAILABLE_FIELD_6"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
-                bodypropCount++;
-            }
-
-            if (bodybEGINOFCONTRACT != null)
-            {
-                body["BEGIN_OF_CONTRACT"] = CSharpExpressionConverter.ConvertToken(bodybEGINOFCONTRACT);
-                bodypropCount++;
-            }
-
-            if (bodycELLULARNUMBER != null)
-            {
-                body["CELLULAR_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodycELLULARNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodycHATLOGIN != null)
-            {
-                body["CHAT_LOGIN"] = CSharpExpressionConverter.ConvertToken(bodycHATLOGIN);
-                bodypropCount++;
-            }
-
-            if (bodycIVILSTATUSID != null)
-            {
-                body["CIVIL_STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodycIVILSTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodycOMMENTEMPLOYEE != null)
-            {
-                body["COMMENT_EMPLOYEE"] = CSharpExpressionConverter.ConvertToken(bodycOMMENTEMPLOYEE);
-                bodypropCount++;
-            }
-
-            if (bodycOSTPERHOUR != null)
-            {
-                body["COST_PER_HOUR"] = CSharpExpressionConverter.ConvertToken(bodycOSTPERHOUR);
-                bodypropCount++;
-            }
-
-            if (bodycOSTPERHOURCURID != null)
-            {
-                body["COST_PER_HOUR_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodycOSTPERHOURCURID);
-                bodypropCount++;
-            }
-
-            if (bodydEFAULTCOSTCENTERID != null)
-            {
-                body["DEFAULT_COST_CENTER_ID"] = CSharpExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
-                bodypropCount++;
-            }
-
-            if (bodydELEGATIONFROM != null)
-            {
-                body["DELEGATION_FROM"] = CSharpExpressionConverter.ConvertToken(bodydELEGATIONFROM);
-                bodypropCount++;
-            }
-
-            if (bodydELEGATIONID != null)
-            {
-                body["DELEGATION_ID"] = CSharpExpressionConverter.ConvertToken(bodydELEGATIONID);
-                bodypropCount++;
-            }
-
-            if (bodydELEGATIONTO != null)
-            {
-                body["DELEGATION_TO"] = CSharpExpressionConverter.ConvertToken(bodydELEGATIONTO);
-                bodypropCount++;
-            }
-
-            if (bodydEPARTMENTID != null)
-            {
-                body["DEPARTMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodydEPARTMENTID);
-                bodypropCount++;
-            }
-
-            if (bodyeNDOFCONTRACT != null)
-            {
-                body["END_OF_CONTRACT"] = CSharpExpressionConverter.ConvertToken(bodyeNDOFCONTRACT);
-                bodypropCount++;
-            }
-
-            if (bodyeMAIL != null)
-            {
-                body["E_MAIL"] = CSharpExpressionConverter.ConvertToken(bodyeMAIL);
-                bodypropCount++;
-            }
-
-            if (bodyfAXNUMBER != null)
-            {
-                body["FAX_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyfAXNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyfUNCTIONID != null)
-            {
-                body["FUNCTION_ID"] = CSharpExpressionConverter.ConvertToken(bodyfUNCTIONID);
-                bodypropCount++;
-            }
-
-            if (bodyiCQNUMBER != null)
-            {
-                body["ICQ_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyiCQNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyiDENTIFICATION != null)
-            {
-                body["IDENTIFICATION"] = CSharpExpressionConverter.ConvertToken(bodyiDENTIFICATION);
-                bodypropCount++;
-            }
-
-            if (bodyiSAUTOMATICSTATUS != null)
-            {
-                body["IS_AUTOMATIC_STATUS"] = CSharpExpressionConverter.ConvertToken(bodyiSAUTOMATICSTATUS);
-                bodypropCount++;
-            }
-
-            if (bodyiTCORRESPONDENT != null)
-            {
-                body["IT_CORRESPONDENT"] = CSharpExpressionConverter.ConvertToken(bodyiTCORRESPONDENT);
-                bodypropCount++;
-            }
-
-            if (bodylANGUAGEID != null)
-            {
-                body["LANGUAGE_ID"] = CSharpExpressionConverter.ConvertToken(bodylANGUAGEID);
-                bodypropCount++;
-            }
-
-            if (bodylASTINTEGRATION != null)
-            {
-                body["LAST_INTEGRATION"] = CSharpExpressionConverter.ConvertToken(bodylASTINTEGRATION);
-                bodypropCount++;
-            }
-
-            if (bodylASTNAME != null)
-            {
-                body["LAST_NAME"] = CSharpExpressionConverter.ConvertToken(bodylASTNAME);
-                bodypropCount++;
-            }
-
-            if (bodylASTUPDATE != null)
-            {
-                body["LAST_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodylASTUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONID != null)
-            {
-                body["LOCATION_ID"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONID);
-                bodypropCount++;
-            }
-
-            if (bodylOGIN != null)
-            {
-                body["LOGIN"] = CSharpExpressionConverter.ConvertToken(bodylOGIN);
-                bodypropCount++;
-            }
-
-            if (bodymANAGERID != null)
-            {
-                body["MANAGER_ID"] = CSharpExpressionConverter.ConvertToken(bodymANAGERID);
-                bodypropCount++;
-            }
-
-            if (bodymESSENGERSIGNNAME != null)
-            {
-                body["MESSENGER_SIGN_NAME"] = CSharpExpressionConverter.ConvertToken(bodymESSENGERSIGNNAME);
-                bodypropCount++;
-            }
-
-            if (bodynOTIFICATIONTYPEID != null)
-            {
-                body["NOTIFICATION_TYPE_ID"] = CSharpExpressionConverter.ConvertToken(bodynOTIFICATIONTYPEID);
-                bodypropCount++;
-            }
-
-            if (bodypASSWDLASTUPDATEUT != null)
-            {
-                body["PASSWD_LAST_UPDATE_UT"] = CSharpExpressionConverter.ConvertToken(bodypASSWDLASTUPDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodypHONENUMBER != null)
-            {
-                body["PHONE_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodypHONENUMBER);
-                bodypropCount++;
-            }
-
-            if (bodypICTUREPATH != null)
-            {
-                body["PICTURE_PATH"] = CSharpExpressionConverter.ConvertToken(bodypICTUREPATH);
-                bodypropCount++;
-            }
-
-            if (bodysUPPLIERID != null)
-            {
-                body["SUPPLIER_ID"] = CSharpExpressionConverter.ConvertToken(bodysUPPLIERID);
-                bodypropCount++;
-            }
-
-            if (bodyvALIDATORID != null)
-            {
-                body["VALIDATOR_ID"] = CSharpExpressionConverter.ConvertToken(bodyvALIDATORID);
-                bodypropCount++;
-            }
-
-            if (bodyvIPLEVELID != null)
-            {
-                body["VIP_LEVEL_ID"] = CSharpExpressionConverter.ConvertToken(bodyvIPLEVELID);
-                bodypropCount++;
-            }
-
-            if (bodywAVEADDRESS != null)
-            {
-                body["WAVE_ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodywAVEADDRESS);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateEmployeeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewKnownErrorsListResponse> ViewKnownErrorsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewKnownErrorsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewKnownErrorsResponse> ViewKnownErrors(Expression<Func<string>> account, Expression<Func<string>> kpId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(kpId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewKnownErrorsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewLocationsListResponse> ViewLocationsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewLocationsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewLocationResponse> ViewLocation(Expression<Func<string>> account, Expression<Func<string>> locationId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewLocationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateLocationResponse> UpdateLocation(Expression<Func<string>> account, Expression<Func<string>> locationId, Expression<Func<string>> bodypARENTLOCATIONID = null, Expression<Func<string>> bodymANAGERID = null, Expression<Func<string>> bodylOCATIONEN = null, Expression<Func<string>> bodylOCATIONFR = null, Expression<Func<string>> bodylOCATIONGE = null, Expression<Func<string>> bodylOCATIONSP = null, Expression<Func<string>> bodylOCATIONIT = null, Expression<Func<string>> bodylOCATIONPO = null, Expression<Func<string>> bodysTREETADDRESS1 = null, Expression<Func<string>> bodysTREETADDRESS2 = null, Expression<Func<string>> bodycITY = null, Expression<Func<string>> bodypHONE = null, Expression<Func<string>> bodyzIPCODE = null, Expression<Func<string>> bodyfAX = null, Expression<Func<string>> bodycOMMENTLOCATION = null, Expression<Func<string>> bodyrEGIONZONEID = null, Expression<Func<string>> bodycOUNTRYID = null, Expression<Func<string>> bodysTATEID = null, Expression<Func<string>> bodysTARTDATE = null, Expression<Func<string>> bodyeNDDATE = null, Expression<Func<string>> bodyuRLMAP = null, Expression<Func<string>> bodydISCOVERYNAME = null, Expression<Func<string>> bodylOCATIONCODE = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodylASTINTEGRATION = null, Expression<Func<string>> bodyiSDELIVERYADDRESS = null, Expression<Func<string>> bodytIMEZONEID = null, Expression<Func<string>> bodysTATUSID = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodysLAID = null, Expression<Func<string>> bodygMAPLAT = null, Expression<Func<string>> bodygMAPLNG = null, Expression<Func<string>> bodylOCATIONL1 = null, Expression<Func<string>> bodylOCATIONL2 = null, Expression<Func<string>> bodylOCATIONL3 = null, Expression<Func<string>> bodylOCATIONL4 = null, Expression<Func<string>> bodylOCATIONL5 = null, Expression<Func<string>> bodylOCATIONL6 = null, Expression<Func<string>> bodyeISMEETINGROOM = null, Expression<Func<string>> bodyeCAPACITY = null, Expression<Func<string>> bodyeWIFILOGIN = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypARENTLOCATIONID != null)
-            {
-                body["PARENT_LOCATION_ID"] = CSharpExpressionConverter.ConvertToken(bodypARENTLOCATIONID);
-                bodypropCount++;
-            }
-
-            if (bodymANAGERID != null)
-            {
-                body["MANAGER_ID"] = CSharpExpressionConverter.ConvertToken(bodymANAGERID);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONEN != null)
-            {
-                body["LOCATION_EN"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONEN);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONFR != null)
-            {
-                body["LOCATION_FR"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONFR);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONGE != null)
-            {
-                body["LOCATION_GE"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONGE);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONSP != null)
-            {
-                body["LOCATION_SP"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONSP);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONIT != null)
-            {
-                body["LOCATION_IT"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONIT);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONPO != null)
-            {
-                body["LOCATION_PO"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONPO);
-                bodypropCount++;
-            }
-
-            if (bodysTREETADDRESS1 != null)
-            {
-                body["STREET_ADDRESS_1"] = CSharpExpressionConverter.ConvertToken(bodysTREETADDRESS1);
-                bodypropCount++;
-            }
-
-            if (bodysTREETADDRESS2 != null)
-            {
-                body["STREET_ADDRESS_2"] = CSharpExpressionConverter.ConvertToken(bodysTREETADDRESS2);
-                bodypropCount++;
-            }
-
-            if (bodycITY != null)
-            {
-                body["CITY"] = CSharpExpressionConverter.ConvertToken(bodycITY);
-                bodypropCount++;
-            }
-
-            if (bodypHONE != null)
-            {
-                body["PHONE"] = CSharpExpressionConverter.ConvertToken(bodypHONE);
-                bodypropCount++;
-            }
-
-            if (bodyzIPCODE != null)
-            {
-                body["ZIP_CODE"] = CSharpExpressionConverter.ConvertToken(bodyzIPCODE);
-                bodypropCount++;
-            }
-
-            if (bodyfAX != null)
-            {
-                body["FAX"] = CSharpExpressionConverter.ConvertToken(bodyfAX);
-                bodypropCount++;
-            }
-
-            if (bodycOMMENTLOCATION != null)
-            {
-                body["COMMENT_LOCATION"] = CSharpExpressionConverter.ConvertToken(bodycOMMENTLOCATION);
-                bodypropCount++;
-            }
-
-            if (bodyrEGIONZONEID != null)
-            {
-                body["REGION_ZONE_ID"] = CSharpExpressionConverter.ConvertToken(bodyrEGIONZONEID);
-                bodypropCount++;
-            }
-
-            if (bodycOUNTRYID != null)
-            {
-                body["COUNTRY_ID"] = CSharpExpressionConverter.ConvertToken(bodycOUNTRYID);
-                bodypropCount++;
-            }
-
-            if (bodysTATEID != null)
-            {
-                body["STATE_ID"] = CSharpExpressionConverter.ConvertToken(bodysTATEID);
-                bodypropCount++;
-            }
-
-            if (bodysTARTDATE != null)
-            {
-                body["START_DATE"] = CSharpExpressionConverter.ConvertToken(bodysTARTDATE);
-                bodypropCount++;
-            }
-
-            if (bodyeNDDATE != null)
-            {
-                body["END_DATE"] = CSharpExpressionConverter.ConvertToken(bodyeNDDATE);
-                bodypropCount++;
-            }
-
-            if (bodyuRLMAP != null)
-            {
-                body["URL_MAP"] = CSharpExpressionConverter.ConvertToken(bodyuRLMAP);
-                bodypropCount++;
-            }
-
-            if (bodydISCOVERYNAME != null)
-            {
-                body["DISCOVERY_NAME"] = CSharpExpressionConverter.ConvertToken(bodydISCOVERYNAME);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONCODE != null)
-            {
-                body["LOCATION_CODE"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONCODE);
-                bodypropCount++;
-            }
-
-            if (bodylASTUPDATE != null)
-            {
-                body["LAST_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodylASTUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodylASTINTEGRATION != null)
-            {
-                body["LAST_INTEGRATION"] = CSharpExpressionConverter.ConvertToken(bodylASTINTEGRATION);
-                bodypropCount++;
-            }
-
-            if (bodyiSDELIVERYADDRESS != null)
-            {
-                body["IS_DELIVERY_ADDRESS"] = CSharpExpressionConverter.ConvertToken(bodyiSDELIVERYADDRESS);
-                bodypropCount++;
-            }
-
-            if (bodytIMEZONEID != null)
-            {
-                body["TIME_ZONE_ID"] = CSharpExpressionConverter.ConvertToken(bodytIMEZONEID);
-                bodypropCount++;
-            }
-
-            if (bodysTATUSID != null)
-            {
-                body["STATUS_ID"] = CSharpExpressionConverter.ConvertToken(bodysTATUSID);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD1 != null)
-            {
-                body["AVAILABLE_FIELD_1"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD2 != null)
-            {
-                body["AVAILABLE_FIELD_2"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD3 != null)
-            {
-                body["AVAILABLE_FIELD_3"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD4 != null)
-            {
-                body["AVAILABLE_FIELD_4"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD5 != null)
-            {
-                body["AVAILABLE_FIELD_5"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD6 != null)
-            {
-                body["AVAILABLE_FIELD_6"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
-                bodypropCount++;
-            }
-
-            if (bodysLAID != null)
-            {
-                body["SLA_ID"] = CSharpExpressionConverter.ConvertToken(bodysLAID);
-                bodypropCount++;
-            }
-
-            if (bodygMAPLAT != null)
-            {
-                body["G_MAP_LAT"] = CSharpExpressionConverter.ConvertToken(bodygMAPLAT);
-                bodypropCount++;
-            }
-
-            if (bodygMAPLNG != null)
-            {
-                body["G_MAP_LNG"] = CSharpExpressionConverter.ConvertToken(bodygMAPLNG);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL1 != null)
-            {
-                body["LOCATION_L1"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL1);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL2 != null)
-            {
-                body["LOCATION_L2"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL2);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL3 != null)
-            {
-                body["LOCATION_L3"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL3);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL4 != null)
-            {
-                body["LOCATION_L4"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL4);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL5 != null)
-            {
-                body["LOCATION_L5"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL5);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONL6 != null)
-            {
-                body["LOCATION_L6"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONL6);
-                bodypropCount++;
-            }
-
-            if (bodyeISMEETINGROOM != null)
-            {
-                body["E_IS_MEETING_ROOM"] = CSharpExpressionConverter.ConvertToken(bodyeISMEETINGROOM);
-                bodypropCount++;
-            }
-
-            if (bodyeCAPACITY != null)
-            {
-                body["E_CAPACITY"] = CSharpExpressionConverter.ConvertToken(bodyeCAPACITY);
-                bodypropCount++;
-            }
-
-            if (bodyeWIFILOGIN != null)
-            {
-                body["E_WIFI_LOGIN"] = CSharpExpressionConverter.ConvertToken(bodyeWIFILOGIN);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateLocationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewManufacturerListResponse> ViewManufacturerList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewManufacturerListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewManufacturerResponse> ViewManufacturer(Expression<Func<string>> account, Expression<Func<string>> manufacturerId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(manufacturerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewManufacturerResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewRequestsIncidentsListResponse> ViewRequestsIncidentsList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewRequestsIncidentsListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateRequestIncidentResponse> CreateRequestIncident(Expression<Func<string>> account, Expression<Func<bodyrequestsInputItem[]>> bodyrequests = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrequests != null)
-            {
-                body["requests"] = CSharpExpressionConverter.ConvertToken(bodyrequests);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewRequestIncidentResponse> ViewRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CloseRequestIncidentResponse> CloseRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<bodyclosedInputItem[]>> bodyclosed = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyclosed != null)
-            {
-                body["closed"] = CSharpExpressionConverter.ConvertToken(bodyclosed);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CloseRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateRequestIncidentResponse> UpdateRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyanalyticalChargeId = null, Expression<Func<string>> bodyassetId = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodybudgetPlanned = null, Expression<Func<string>> bodycanBeDuplicated = null, Expression<Func<string>> bodyciId = null, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodycontinuityPlanId = null, Expression<Func<string>> bodycostCenterId = null, Expression<Func<string>> bodycreationDateUt = null, Expression<Func<string>> bodydelay = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydynamicDetails = null, Expression<Func<string>> bodyeffectiveChangeDateEnd = null, Expression<Func<string>> bodyeffectiveChangeDateStart = null, Expression<Func<string>> bodyendDateUt = null, Expression<Func<string>> bodyestimatedNetPrice = null, Expression<Func<string>> bodyexpectedDateUt = null, Expression<Func<string>> bodyexpectedDuration = null, Expression<Func<string>> bodyexpectedEndDateUt = null, Expression<Func<string>> bodyexpectedStartDateUt = null, Expression<Func<string>> bodyexternalReference = null, Expression<Func<string>> bodyfirstCallResolution = null, Expression<Func<string>> bodyhourPerDay = null, Expression<Func<string>> bodyimpactId = null, Expression<Func<string>> bodyimputationDate = null, Expression<Func<string>> bodyisMajorIncident = null, Expression<Func<string>> bodyisTemplate = null, Expression<Func<string>> bodyknownProblemsId = null, Expression<Func<string>> bodylastUpdate = null, Expression<Func<string>> bodymark1 = null, Expression<Func<string>> bodymark2 = null, Expression<Func<string>> bodymaxResolutionDateUt = null, Expression<Func<string>> bodymsProjectImportValidationWaiting = null, Expression<Func<string>> bodynetPrice = null, Expression<Func<string>> bodynetPriceCurId = null, Expression<Func<string>> bodyoriginToolId = null, Expression<Func<string>> bodyownerId = null, Expression<Func<string>> bodyowningGroupId = null, Expression<Func<string>> bodyplannedChangeDateEnd = null, Expression<Func<string>> bodyplannedChangeDateStart = null, Expression<Func<string>> bodypmStatusId = null, Expression<Func<string>> bodyprojectName = null, Expression<Func<string>> bodyprojectStartDateUt = null, Expression<Func<string>> bodyqty = null, Expression<Func<string>> bodyreleaseId = null, Expression<Func<string>> bodyrentalNetPrice = null, Expression<Func<string>> bodyrentalNetPriceCurId = null, Expression<Func<string>> bodyrequestOriginId = null, Expression<Func<string>> bodyrequestedChangeDateEnd = null, Expression<Func<string>> bodyrequestedChangeDateStart = null, Expression<Func<string>> bodyrequestorId = null, Expression<Func<string>> bodyrequestorIpAddress = null, Expression<Func<string>> bodyrequestorPhone = null, Expression<Func<string>> bodyriskAmount = null, Expression<Func<string>> bodyriskDescription = null, Expression<Func<string>> bodyriskLevelId = null, Expression<Func<string>> bodyrootCauseId = null, Expression<Func<string>> bodysubmitDateUt = null, Expression<Func<string>> bodytimeUsedToSolveRequest = null, Expression<Func<string>> bodytitle = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyanalyticalChargeId != null)
-            {
-                body["Analytical_Charge_Id"] = CSharpExpressionConverter.ConvertToken(bodyanalyticalChargeId);
-                bodypropCount++;
-            }
-
-            if (bodyassetId != null)
-            {
-                body["Asset_Id"] = CSharpExpressionConverter.ConvertToken(bodyassetId);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField1 != null)
-            {
-                body["Available_Field_1"] = CSharpExpressionConverter.ConvertToken(bodyavailableField1);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField2 != null)
-            {
-                body["Available_Field_2"] = CSharpExpressionConverter.ConvertToken(bodyavailableField2);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField3 != null)
-            {
-                body["Available_Field_3"] = CSharpExpressionConverter.ConvertToken(bodyavailableField3);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField4 != null)
-            {
-                body["Available_Field_4"] = CSharpExpressionConverter.ConvertToken(bodyavailableField4);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField5 != null)
-            {
-                body["Available_Field_5"] = CSharpExpressionConverter.ConvertToken(bodyavailableField5);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField6 != null)
-            {
-                body["Available_Field_6"] = CSharpExpressionConverter.ConvertToken(bodyavailableField6);
-                bodypropCount++;
-            }
-
-            if (bodybudgetPlanned != null)
-            {
-                body["Budget_Planned"] = CSharpExpressionConverter.ConvertToken(bodybudgetPlanned);
-                bodypropCount++;
-            }
-
-            if (bodycanBeDuplicated != null)
-            {
-                body["Can_Be_Duplicated"] = CSharpExpressionConverter.ConvertToken(bodycanBeDuplicated);
-                bodypropCount++;
-            }
-
-            if (bodyciId != null)
-            {
-                body["Ci_Id"] = CSharpExpressionConverter.ConvertToken(bodyciId);
-                bodypropCount++;
-            }
-
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodycontinuityPlanId != null)
-            {
-                body["Continuity_Plan_Id"] = CSharpExpressionConverter.ConvertToken(bodycontinuityPlanId);
-                bodypropCount++;
-            }
-
-            if (bodycostCenterId != null)
-            {
-                body["Cost_Center_Id"] = CSharpExpressionConverter.ConvertToken(bodycostCenterId);
-                bodypropCount++;
-            }
-
-            if (bodycreationDateUt != null)
-            {
-                body["Creation_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodycreationDateUt);
-                bodypropCount++;
-            }
-
-            if (bodydelay != null)
-            {
-                body["Delay"] = CSharpExpressionConverter.ConvertToken(bodydelay);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["Description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodydynamicDetails != null)
-            {
-                body["Dynamic_Details"] = CSharpExpressionConverter.ConvertToken(bodydynamicDetails);
-                bodypropCount++;
-            }
-
-            if (bodyeffectiveChangeDateEnd != null)
-            {
-                body["Effective_Change_Date_End"] = CSharpExpressionConverter.ConvertToken(bodyeffectiveChangeDateEnd);
-                bodypropCount++;
-            }
-
-            if (bodyeffectiveChangeDateStart != null)
-            {
-                body["Effective_Change_Date_Start"] = CSharpExpressionConverter.ConvertToken(bodyeffectiveChangeDateStart);
-                bodypropCount++;
-            }
-
-            if (bodyendDateUt != null)
-            {
-                body["End_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodyendDateUt);
-                bodypropCount++;
-            }
-
-            if (bodyestimatedNetPrice != null)
-            {
-                body["Estimated_Net_Price"] = CSharpExpressionConverter.ConvertToken(bodyestimatedNetPrice);
-                bodypropCount++;
-            }
-
-            if (bodyexpectedDateUt != null)
-            {
-                body["Expected_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodyexpectedDateUt);
-                bodypropCount++;
-            }
-
-            if (bodyexpectedDuration != null)
-            {
-                body["Expected_Duration"] = CSharpExpressionConverter.ConvertToken(bodyexpectedDuration);
-                bodypropCount++;
-            }
-
-            if (bodyexpectedEndDateUt != null)
-            {
-                body["Expected_End_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodyexpectedEndDateUt);
-                bodypropCount++;
-            }
-
-            if (bodyexpectedStartDateUt != null)
-            {
-                body["Expected_Start_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodyexpectedStartDateUt);
-                bodypropCount++;
-            }
-
-            if (bodyexternalReference != null)
-            {
-                body["External_Reference"] = CSharpExpressionConverter.ConvertToken(bodyexternalReference);
-                bodypropCount++;
-            }
-
-            if (bodyfirstCallResolution != null)
-            {
-                body["First_Call_Resolution"] = CSharpExpressionConverter.ConvertToken(bodyfirstCallResolution);
-                bodypropCount++;
-            }
-
-            if (bodyhourPerDay != null)
-            {
-                body["Hour_Per_Day"] = CSharpExpressionConverter.ConvertToken(bodyhourPerDay);
-                bodypropCount++;
-            }
-
-            if (bodyimpactId != null)
-            {
-                body["Impact_Id"] = CSharpExpressionConverter.ConvertToken(bodyimpactId);
-                bodypropCount++;
-            }
-
-            if (bodyimputationDate != null)
-            {
-                body["Imputation_Date"] = CSharpExpressionConverter.ConvertToken(bodyimputationDate);
-                bodypropCount++;
-            }
-
-            if (bodyisMajorIncident != null)
-            {
-                body["Is_Major_Incident"] = CSharpExpressionConverter.ConvertToken(bodyisMajorIncident);
-                bodypropCount++;
-            }
-
-            if (bodyisTemplate != null)
-            {
-                body["Is_Template"] = CSharpExpressionConverter.ConvertToken(bodyisTemplate);
-                bodypropCount++;
-            }
-
-            if (bodyknownProblemsId != null)
-            {
-                body["Known_Problems_Id"] = CSharpExpressionConverter.ConvertToken(bodyknownProblemsId);
-                bodypropCount++;
-            }
-
-            if (bodylastUpdate != null)
-            {
-                body["Last_Update"] = CSharpExpressionConverter.ConvertToken(bodylastUpdate);
-                bodypropCount++;
-            }
-
-            if (bodymark1 != null)
-            {
-                body["Mark_1"] = CSharpExpressionConverter.ConvertToken(bodymark1);
-                bodypropCount++;
-            }
-
-            if (bodymark2 != null)
-            {
-                body["Mark_2"] = CSharpExpressionConverter.ConvertToken(bodymark2);
-                bodypropCount++;
-            }
-
-            if (bodymaxResolutionDateUt != null)
-            {
-                body["Max_Resolution_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodymaxResolutionDateUt);
-                bodypropCount++;
-            }
-
-            if (bodymsProjectImportValidationWaiting != null)
-            {
-                body["Ms_Project_Import_Validation_Waiting"] = CSharpExpressionConverter.ConvertToken(bodymsProjectImportValidationWaiting);
-                bodypropCount++;
-            }
-
-            if (bodynetPrice != null)
-            {
-                body["Net_Price"] = CSharpExpressionConverter.ConvertToken(bodynetPrice);
-                bodypropCount++;
-            }
-
-            if (bodynetPriceCurId != null)
-            {
-                body["Net_Price_Cur_Id"] = CSharpExpressionConverter.ConvertToken(bodynetPriceCurId);
-                bodypropCount++;
-            }
-
-            if (bodyoriginToolId != null)
-            {
-                body["Origin_Tool_Id"] = CSharpExpressionConverter.ConvertToken(bodyoriginToolId);
-                bodypropCount++;
-            }
-
-            if (bodyownerId != null)
-            {
-                body["Owner_Id"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
-                bodypropCount++;
-            }
-
-            if (bodyowningGroupId != null)
-            {
-                body["Owning_Group_Id"] = CSharpExpressionConverter.ConvertToken(bodyowningGroupId);
-                bodypropCount++;
-            }
-
-            if (bodyplannedChangeDateEnd != null)
-            {
-                body["Planned_Change_Date_End"] = CSharpExpressionConverter.ConvertToken(bodyplannedChangeDateEnd);
-                bodypropCount++;
-            }
-
-            if (bodyplannedChangeDateStart != null)
-            {
-                body["Planned_Change_Date_Start"] = CSharpExpressionConverter.ConvertToken(bodyplannedChangeDateStart);
-                bodypropCount++;
-            }
-
-            if (bodypmStatusId != null)
-            {
-                body["Pm_Status_Id"] = CSharpExpressionConverter.ConvertToken(bodypmStatusId);
-                bodypropCount++;
-            }
-
-            if (bodyprojectName != null)
-            {
-                body["Project_Name"] = CSharpExpressionConverter.ConvertToken(bodyprojectName);
-                bodypropCount++;
-            }
-
-            if (bodyprojectStartDateUt != null)
-            {
-                body["Project_Start_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodyprojectStartDateUt);
-                bodypropCount++;
-            }
-
-            if (bodyqty != null)
-            {
-                body["Qty"] = CSharpExpressionConverter.ConvertToken(bodyqty);
-                bodypropCount++;
-            }
-
-            if (bodyreleaseId != null)
-            {
-                body["Release_Id"] = CSharpExpressionConverter.ConvertToken(bodyreleaseId);
-                bodypropCount++;
-            }
-
-            if (bodyrentalNetPrice != null)
-            {
-                body["Rental_Net_Price"] = CSharpExpressionConverter.ConvertToken(bodyrentalNetPrice);
-                bodypropCount++;
-            }
-
-            if (bodyrentalNetPriceCurId != null)
-            {
-                body["Rental_Net_Price_Cur_Id"] = CSharpExpressionConverter.ConvertToken(bodyrentalNetPriceCurId);
-                bodypropCount++;
-            }
-
-            if (bodyrequestOriginId != null)
-            {
-                body["Request_Origin_Id"] = CSharpExpressionConverter.ConvertToken(bodyrequestOriginId);
-                bodypropCount++;
-            }
-
-            if (bodyrequestedChangeDateEnd != null)
-            {
-                body["Requested_Change_Date_End"] = CSharpExpressionConverter.ConvertToken(bodyrequestedChangeDateEnd);
-                bodypropCount++;
-            }
-
-            if (bodyrequestedChangeDateStart != null)
-            {
-                body["Requested_Change_Date_Start"] = CSharpExpressionConverter.ConvertToken(bodyrequestedChangeDateStart);
-                bodypropCount++;
-            }
-
-            if (bodyrequestorId != null)
-            {
-                body["Requestor_Id"] = CSharpExpressionConverter.ConvertToken(bodyrequestorId);
-                bodypropCount++;
-            }
-
-            if (bodyrequestorIpAddress != null)
-            {
-                body["Requestor_Ip_Address"] = CSharpExpressionConverter.ConvertToken(bodyrequestorIpAddress);
-                bodypropCount++;
-            }
-
-            if (bodyrequestorPhone != null)
-            {
-                body["Requestor_Phone"] = CSharpExpressionConverter.ConvertToken(bodyrequestorPhone);
-                bodypropCount++;
-            }
-
-            if (bodyriskAmount != null)
-            {
-                body["Risk_Amount"] = CSharpExpressionConverter.ConvertToken(bodyriskAmount);
-                bodypropCount++;
-            }
-
-            if (bodyriskDescription != null)
-            {
-                body["Risk_Description"] = CSharpExpressionConverter.ConvertToken(bodyriskDescription);
-                bodypropCount++;
-            }
-
-            if (bodyriskLevelId != null)
-            {
-                body["Risk_Level_Id"] = CSharpExpressionConverter.ConvertToken(bodyriskLevelId);
-                bodypropCount++;
-            }
-
-            if (bodyrootCauseId != null)
-            {
-                body["Root_Cause_Id"] = CSharpExpressionConverter.ConvertToken(bodyrootCauseId);
-                bodypropCount++;
-            }
-
-            if (bodysubmitDateUt != null)
-            {
-                body["Submit_Date_Ut"] = CSharpExpressionConverter.ConvertToken(bodysubmitDateUt);
-                bodypropCount++;
-            }
-
-            if (bodytimeUsedToSolveRequest != null)
-            {
-                body["Time_Used_To_Solve_Request"] = CSharpExpressionConverter.ConvertToken(bodytimeUsedToSolveRequest);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["Title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewRequestIncidentCommentResponse> ViewRequestIncidentComment(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/comment", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewRequestIncidentCommentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<GetRequestIncidentDocumentListResponse> GetRequestIncidentDocumentList(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRequestIncidentDocumentListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse> UploadAndAttachADocumentToARequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<bodydocumentsInputItem[]>> bodydocuments)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["documents"] = CSharpExpressionConverter.ConvertToken(bodydocuments);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UploadAndAttachADocumentToARequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<RestartRequestIncidentResponse> RestartRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodycomment = null, Expression<Func<int>> bodydoneById = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/restart", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodydoneById != null)
-            {
-                body["done_by_id"] = CSharpExpressionConverter.ConvertToken(bodydoneById);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RestartRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<SuspendRequestIncidentResponse> SuspendRequestIncident(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodycomment = null, Expression<Func<string>> bodydoneById = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/suspend", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycomment != null)
-            {
-                body["Comment"] = CSharpExpressionConverter.ConvertToken(bodycomment);
-                bodypropCount++;
-            }
-
-            if (bodydoneById != null)
-            {
-                body["done_by_id"] = CSharpExpressionConverter.ConvertToken(bodydoneById);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SuspendRequestIncidentResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyactionTypeId, Expression<Func<string>> bodyelapsedTime = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodyavailableField2 = null, Expression<Func<string>> bodyavailableField3 = null, Expression<Func<string>> bodyavailableField4 = null, Expression<Func<string>> bodyavailableField5 = null, Expression<Func<string>> bodyavailableField6 = null, Expression<Func<string>> bodycontractualCost = null, Expression<Func<string>> bodycreationDateUt = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendDateUt = null, Expression<Func<string>> bodygroupMail = null, Expression<Func<string>> bodygroupName = null, Expression<Func<string>> bodystartDateUt = null, Expression<Func<string>> bodytimeCost = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/tasks", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyelapsedTime != null)
-            {
-                body["Elapsed_Time"] = CSharpExpressionConverter.ConvertToken(bodyelapsedTime);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["action_type_id"] = CSharpExpressionConverter.ConvertToken(bodyactionTypeId);
-            if (bodyavailableField1 != null)
-            {
-                body["available_field_1"] = CSharpExpressionConverter.ConvertToken(bodyavailableField1);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField2 != null)
-            {
-                body["available_field_2"] = CSharpExpressionConverter.ConvertToken(bodyavailableField2);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField3 != null)
-            {
-                body["available_field_3"] = CSharpExpressionConverter.ConvertToken(bodyavailableField3);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField4 != null)
-            {
-                body["available_field_4"] = CSharpExpressionConverter.ConvertToken(bodyavailableField4);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField5 != null)
-            {
-                body["available_field_5"] = CSharpExpressionConverter.ConvertToken(bodyavailableField5);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField6 != null)
-            {
-                body["available_field_6"] = CSharpExpressionConverter.ConvertToken(bodyavailableField6);
-                bodypropCount++;
-            }
-
-            if (bodycontractualCost != null)
-            {
-                body["contractual_cost"] = CSharpExpressionConverter.ConvertToken(bodycontractualCost);
-                bodypropCount++;
-            }
-
-            if (bodycreationDateUt != null)
-            {
-                body["creation_date_ut"] = CSharpExpressionConverter.ConvertToken(bodycreationDateUt);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyendDateUt != null)
-            {
-                body["end_date_ut"] = CSharpExpressionConverter.ConvertToken(bodyendDateUt);
-                bodypropCount++;
-            }
-
-            if (bodygroupMail != null)
-            {
-                body["group_mail"] = CSharpExpressionConverter.ConvertToken(bodygroupMail);
-                bodypropCount++;
-            }
-
-            if (bodygroupName != null)
-            {
-                body["group_name"] = CSharpExpressionConverter.ConvertToken(bodygroupName);
-                bodypropCount++;
-            }
-
-            if (bodystartDateUt != null)
-            {
-                body["start_date_ut"] = CSharpExpressionConverter.ConvertToken(bodystartDateUt);
-                bodypropCount++;
-            }
-
-            if (bodytimeCost != null)
-            {
-                body["time_cost"] = CSharpExpressionConverter.ConvertToken(bodytimeCost);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewSlasListResponse> ViewSlasList(Expression<Func<string>> account, Expression<Func<string>> search = null, Expression<Func<string>> fields = null, Expression<Func<string>> sort = null, Expression<Func<string>> maxRows = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.ConvertO(sort);
-            if (maxRows != null)
-                callPayload.Queries["max_rows"] = CSharpExpressionConverter.ConvertO(maxRows);
-            return new ApiConnectionAction<ViewSlasListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewSlaResponse> ViewSla(Expression<Func<string>> account, Expression<Func<string>> slaId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(slaId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewSlaResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAllAtributesAssetsResponse> ViewAllAtributesAssets(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAllAtributesAssetsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IWorkflowAction CreateLinkBetweenAttributandAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> characteristicId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(characteristicId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateanAttributeofanAssetResponse> UpdateanAttributeofanAsset(Expression<Func<string>> account, Expression<Func<string>> assetId, Expression<Func<string>> characteristicId, Expression<Func<string>> bodydATA1 = null, Expression<Func<string>> bodydATA2 = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(characteristicId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydATA1 != null)
-            {
-                body["DATA_1"] = CSharpExpressionConverter.ConvertToken(bodydATA1);
-                bodypropCount++;
-            }
-
-            if (bodydATA2 != null)
-            {
-                body["DATA_2"] = CSharpExpressionConverter.ConvertToken(bodydATA2);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateanAttributeofanAssetResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateCIResponse> CreateCI(Expression<Func<bodyassetsInputItem2[]>> bodyassets = null)
-        {
-            var apiCallPath = "/api/v1/50006/assets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassets != null)
-            {
-                body["assets"] = CSharpExpressionConverter.ConvertToken(bodyassets);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateCIResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateCIunavailabilityResponse> CreateCIunavailability(Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateCIunavailabilityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<EndCIunavailabilityResponse> EndCIunavailability(Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EndCIunavailabilityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewlinksimpactonCIResponse> ViewlinksimpactonCI(Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacting", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewlinksimpactonCIResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewlinksimpactbyCIResponse> ViewlinksimpactbyCI(Expression<Func<string>> ciId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacted", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewlinksimpactbyCIResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewTicketStatusListResponse> ViewTicketStatusList(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/status", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewTicketStatusListResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListProblemsAttachedTicketsResponse> ViewListProblemsAttachedTickets(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problem-links", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListProblemsAttachedTicketsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListProblemsAttachedATicketsResponse> ViewListProblemsAttachedATickets(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/problems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListProblemsAttachedATicketsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListTicketsAttachedtoaProblemResponse> ViewListTicketsAttachedtoaProblem(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}/requests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListTicketsAttachedtoaProblemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListQuestionsResponse> ViewListQuestions(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListQuestionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListQuestionsWithResponseResponse> ViewListQuestionsWithResponse(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListQuestionsWithResponseResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewaQuestionResponse> ViewaQuestion(Expression<Func<string>> account, Expression<Func<string>> questionId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewaQuestionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAllResponsesListQuestionsofaTicketResponse> ViewAllResponsesListQuestionsofaTicket(Expression<Func<string>> account, Expression<Func<string>> requestId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAllResponsesListQuestionsofaTicketResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewResponseQuestionTicketResponse> ViewResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewResponseQuestionTicketResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse> CreateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTID = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREID = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrESULT != null)
-            {
-                body["RESULT"] = CSharpExpressionConverter.ConvertToken(bodyrESULT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGEN != null)
-            {
-                body["RESULT_STRING_EN"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGEN);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGFR != null)
-            {
-                body["RESULT_STRING_FR"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGFR);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGSP != null)
-            {
-                body["RESULT_STRING_SP"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGSP);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGGE != null)
-            {
-                body["RESULT_STRING_GE"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGGE);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGIT != null)
-            {
-                body["RESULT_STRING_IT"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGIT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGPO != null)
-            {
-                body["RESULT_STRING_PO"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGPO);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTDATE != null)
-            {
-                body["RESULT_DATE"] = CSharpExpressionConverter.ConvertToken(bodyrESULTDATE);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTNUMBER != null)
-            {
-                body["RESULT_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyrESULTNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTBIT != null)
-            {
-                body["RESULT_BIT"] = CSharpExpressionConverter.ConvertToken(bodyrESULTBIT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTORDER != null)
-            {
-                body["RESULT_ORDER"] = CSharpExpressionConverter.ConvertToken(bodyrESULTORDER);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL1 != null)
-            {
-                body["RESULT_STRING_L1"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL1);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL2 != null)
-            {
-                body["RESULT_STRING_L2"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL2);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL3 != null)
-            {
-                body["RESULT_STRING_L3"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL3);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL4 != null)
-            {
-                body["RESULT_STRING_L4"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL4);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL5 != null)
-            {
-                body["RESULT_STRING_L5"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL5);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL6 != null)
-            {
-                body["RESULT_STRING_L6"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL6);
-                bodypropCount++;
-            }
-
-            if (bodyqUESTIONDISPLAYED != null)
-            {
-                body["QUESTION_DISPLAYED"] = CSharpExpressionConverter.ConvertToken(bodyqUESTIONDISPLAYED);
-                bodypropCount++;
-            }
-
-            if (bodydOCUMENTID != null)
-            {
-                body["DOCUMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodydOCUMENTID);
-                bodypropCount++;
-            }
-
-            if (bodyqUESTIONREQUIRED != null)
-            {
-                body["QUESTION_REQUIRED"] = CSharpExpressionConverter.ConvertToken(bodyqUESTIONREQUIRED);
-                bodypropCount++;
-            }
-
-            if (bodyiSCONDITIONNAL != null)
-            {
-                body["IS_CONDITIONNAL"] = CSharpExpressionConverter.ConvertToken(bodyiSCONDITIONNAL);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTDURATION != null)
-            {
-                body["RESULT_DURATION"] = CSharpExpressionConverter.ConvertToken(bodyrESULTDURATION);
-                bodypropCount++;
-            }
-
-            if (bodysYSQUESTIONNAIREID != null)
-            {
-                body["SYS_QUESTIONNAIRE_ID"] = CSharpExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
-                bodypropCount++;
-            }
-
-            if (bodyoRIGINTOOLID != null)
-            {
-                body["ORIGIN_TOOL_ID"] = CSharpExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
-                bodypropCount++;
-            }
-
-            if (bodylASTQUESTIONNAIRE != null)
-            {
-                body["LAST_QUESTIONNAIRE"] = CSharpExpressionConverter.ConvertToken(bodylASTQUESTIONNAIRE);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateResponseQuestionTicketResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse> UpdateResponseQuestionTicket(Expression<Func<string>> account, Expression<Func<string>> requestId, Expression<Func<string>> questionId, Expression<Func<string>> bodyrESULT = null, Expression<Func<string>> bodyrESULTSTRINGEN = null, Expression<Func<string>> bodyrESULTSTRINGFR = null, Expression<Func<string>> bodyrESULTSTRINGSP = null, Expression<Func<string>> bodyrESULTSTRINGGE = null, Expression<Func<string>> bodyrESULTSTRINGIT = null, Expression<Func<string>> bodyrESULTSTRINGPO = null, Expression<Func<string>> bodyrESULTDATE = null, Expression<Func<string>> bodyrESULTNUMBER = null, Expression<Func<string>> bodyrESULTBIT = null, Expression<Func<string>> bodyrESULTORDER = null, Expression<Func<string>> bodyrESULTSTRINGL1 = null, Expression<Func<string>> bodyrESULTSTRINGL2 = null, Expression<Func<string>> bodyrESULTSTRINGL3 = null, Expression<Func<string>> bodyrESULTSTRINGL4 = null, Expression<Func<string>> bodyrESULTSTRINGL5 = null, Expression<Func<string>> bodyrESULTSTRINGL6 = null, Expression<Func<string>> bodyqUESTIONDISPLAYED = null, Expression<Func<string>> bodydOCUMENTID = null, Expression<Func<string>> bodyqUESTIONREQUIRED = null, Expression<Func<string>> bodyiSCONDITIONNAL = null, Expression<Func<string>> bodyrESULTDURATION = null, Expression<Func<string>> bodysYSQUESTIONNAIREID = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTQUESTIONNAIRE = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyrESULT != null)
-            {
-                body["RESULT"] = CSharpExpressionConverter.ConvertToken(bodyrESULT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGEN != null)
-            {
-                body["RESULT_STRING_EN"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGEN);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGFR != null)
-            {
-                body["RESULT_STRING_FR"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGFR);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGSP != null)
-            {
-                body["RESULT_STRING_SP"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGSP);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGGE != null)
-            {
-                body["RESULT_STRING_GE"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGGE);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGIT != null)
-            {
-                body["RESULT_STRING_IT"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGIT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGPO != null)
-            {
-                body["RESULT_STRING_PO"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGPO);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTDATE != null)
-            {
-                body["RESULT_DATE"] = CSharpExpressionConverter.ConvertToken(bodyrESULTDATE);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTNUMBER != null)
-            {
-                body["RESULT_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyrESULTNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTBIT != null)
-            {
-                body["RESULT_BIT"] = CSharpExpressionConverter.ConvertToken(bodyrESULTBIT);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTORDER != null)
-            {
-                body["RESULT_ORDER"] = CSharpExpressionConverter.ConvertToken(bodyrESULTORDER);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL1 != null)
-            {
-                body["RESULT_STRING_L1"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL1);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL2 != null)
-            {
-                body["RESULT_STRING_L2"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL2);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL3 != null)
-            {
-                body["RESULT_STRING_L3"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL3);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL4 != null)
-            {
-                body["RESULT_STRING_L4"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL4);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL5 != null)
-            {
-                body["RESULT_STRING_L5"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL5);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTSTRINGL6 != null)
-            {
-                body["RESULT_STRING_L6"] = CSharpExpressionConverter.ConvertToken(bodyrESULTSTRINGL6);
-                bodypropCount++;
-            }
-
-            if (bodyqUESTIONDISPLAYED != null)
-            {
-                body["QUESTION_DISPLAYED"] = CSharpExpressionConverter.ConvertToken(bodyqUESTIONDISPLAYED);
-                bodypropCount++;
-            }
-
-            if (bodydOCUMENTID != null)
-            {
-                body["DOCUMENT_ID"] = CSharpExpressionConverter.ConvertToken(bodydOCUMENTID);
-                bodypropCount++;
-            }
-
-            if (bodyqUESTIONREQUIRED != null)
-            {
-                body["QUESTION_REQUIRED"] = CSharpExpressionConverter.ConvertToken(bodyqUESTIONREQUIRED);
-                bodypropCount++;
-            }
-
-            if (bodyiSCONDITIONNAL != null)
-            {
-                body["IS_CONDITIONNAL"] = CSharpExpressionConverter.ConvertToken(bodyiSCONDITIONNAL);
-                bodypropCount++;
-            }
-
-            if (bodyrESULTDURATION != null)
-            {
-                body["RESULT_DURATION"] = CSharpExpressionConverter.ConvertToken(bodyrESULTDURATION);
-                bodypropCount++;
-            }
-
-            if (bodysYSQUESTIONNAIREID != null)
-            {
-                body["SYS_QUESTIONNAIRE_ID"] = CSharpExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
-                bodypropCount++;
-            }
-
-            if (bodyoRIGINTOOLID != null)
-            {
-                body["ORIGIN_TOOL_ID"] = CSharpExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
-                bodypropCount++;
-            }
-
-            if (bodylASTQUESTIONNAIRE != null)
-            {
-                body["LAST_QUESTIONNAIRE"] = CSharpExpressionConverter.ConvertToken(bodylASTQUESTIONNAIRE);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateResponseQuestionTicketResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListQuestionnairesResponse> ViewListQuestionnaires(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListQuestionnairesResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewQuestionnaireResponse> ViewQuestionnaire(Expression<Func<string>> account, Expression<Func<string>> questionnaireId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionnaireId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewQuestionnaireResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListProblemsResponse> ViewListProblems(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListProblemsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewProblemResponse> ViewProblem(Expression<Func<string>> account, Expression<Func<string>> rfcNumber)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewProblemResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListNewsResponse> ViewListNews(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListNewsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateNewsResponse> CreateNews(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CreateNewsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewNewsResponse> ViewNews(Expression<Func<string>> account, Expression<Func<string>> documentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewNewsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateNewsResponse> UpdateNews(Expression<Func<string>> account, Expression<Func<string>> documentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UpdateNewsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewListActionsResponse> ViewListActions(Expression<Func<string>> account)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewListActionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<CreateActionTicketResponse> CreateActionTicket(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> bodyaCTIONNUMBER = null, Expression<Func<string>> bodyaSSETID = null, Expression<Func<string>> bodypARENTACTIONID = null, Expression<Func<string>> bodysUPPLIERID = null, Expression<Func<string>> bodydONEBYID = null, Expression<Func<string>> bodyvALIDATORID = null, Expression<Func<string>> bodyaCTIONLABELEN = null, Expression<Func<string>> bodytABLENAME = null, Expression<Func<string>> bodyfIELDNAME = null, Expression<Func<string>> bodyoLDVALUE = null, Expression<Func<string>> bodynEWVALUE = null, Expression<Func<string>> bodydELETEACTION = null, Expression<Func<string>> bodyaUTOMATICACTION = null, Expression<Func<string>> bodypROCESSSTEPID = null, Expression<Func<string>> bodyrEQUESTID = null, Expression<Func<string>> bodydESCRIPTION = null, Expression<Func<string>> bodynETCHARGE = null, Expression<Func<string>> bodynETCHARGECURID = null, Expression<Func<string>> bodyrESOLUTION = null, Expression<Func<string>> bodylOCATIONID = null, Expression<Func<string>> bodysUPPORTSTAFFID = null, Expression<Func<string>> bodycONTACTID = null, Expression<Func<string>> bodyeXPECTEDENDDATEUT = null, Expression<Func<string>> bodycOMMENT = null, Expression<Func<string>> bodysTARTDATEUT = null, Expression<Func<string>> bodyeNDDATEUT = null, Expression<Func<string>> bodyrENEWALDATEUT = null, Expression<Func<string>> bodyeXPECTEDSTARTDATEUT = null, Expression<Func<string>> bodycREATIONDATEUT = null, Expression<Func<string>> bodyaPPLICATIONDATEUT = null, Expression<Func<string>> bodywIZARDGUID = null, Expression<Func<string>> bodygROUPID = null, Expression<Func<string>> bodyaCTIONLABELFR = null, Expression<Func<string>> bodyaCTIONLABELSP = null, Expression<Func<string>> bodyaCTIONLABELGE = null, Expression<Func<string>> bodyaCTIONLABELIT = null, Expression<Func<string>> bodyaCTIONLABELPO = null, Expression<Func<string>> bodykNOWNPROBLEMID = null, Expression<Func<string>> bodymAXINTERVENTIONDATEUT = null, Expression<Func<string>> bodyeLAPSEDTIME = null, Expression<Func<string>> bodypRIORITYID = null, Expression<Func<string>> bodytAXID = null, Expression<Func<string>> bodysTATUSIDONCREATE = null, Expression<Func<string>> bodysTATUSIDONTERMINATE = null, Expression<Func<string>> bodyaCTIONTYPEID = null, Expression<Func<string>> bodydELAY = null, Expression<Func<string>> bodyaVAILABLEFIELD1 = null, Expression<Func<string>> bodyaVAILABLEFIELD2 = null, Expression<Func<string>> bodyaVAILABLEFIELD3 = null, Expression<Func<string>> bodyaVAILABLEFIELD4 = null, Expression<Func<string>> bodyaVAILABLEFIELD5 = null, Expression<Func<string>> bodyaVAILABLEFIELD6 = null, Expression<Func<string>> bodytIMEUSEDTOCOMPLETEACTION = null, Expression<Func<string>> bodycONTRACTUALCOST = null, Expression<Func<string>> bodycONTRACTUALCOSTCURID = null, Expression<Func<string>> bodytIMECOST = null, Expression<Func<string>> bodytIMECOSTCURID = null, Expression<Func<string>> bodyoRIGINACTIONID = null, Expression<Func<string>> bodywORKFLOWVALUE = null, Expression<Func<string>> bodycONTINUITYPLANID = null, Expression<Func<string>> bodycATEGORYTESTID = null, Expression<Func<string>> bodywORKFLOWID = null, Expression<Func<string>> bodyeXITVALUE = null, Expression<Func<string>> bodymAXRESOLUTIONDATEUT = null, Expression<Func<string>> bodypERCENTCOMPLETE = null, Expression<Func<string>> bodyeXPECTEDDURATION = null, Expression<Func<string>> bodywBSTASK = null, Expression<Func<string>> bodytASKPERSONCOSTPERHOUR = null, Expression<Func<string>> bodytASKPLANNEDBUDGET = null, Expression<Func<string>> bodyeSTIMATEDNETCHARGE = null, Expression<Func<string>> bodypREVIOUSSIBLINGID = null, Expression<Func<string>> bodyaCTIONLABELL1 = null, Expression<Func<string>> bodyaCTIONLABELL2 = null, Expression<Func<string>> bodyaCTIONLABELL3 = null, Expression<Func<string>> bodyaCTIONLABELL4 = null, Expression<Func<string>> bodyaCTIONLABELL5 = null, Expression<Func<string>> bodyaCTIONLABELL6 = null, Expression<Func<string>> bodyhISTORYID = null, Expression<Func<string>> bodytOTRUNC = null, Expression<Func<string>> bodysTAGEID = null, Expression<Func<string>> bodyiSLOCKEDPROGRESSPOINT = null, Expression<Func<string>> bodyoRIGINTOOLID = null, Expression<Func<string>> bodylASTUPDATE = null, Expression<Func<string>> bodyeLASTDATESUPDATE = null, Expression<Func<string>> bodybILLEDTIME = null, Expression<Func<string>> bodyiSBILLINGREVIEWED = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/actions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaCTIONNUMBER != null)
-            {
-                body["ACTION_NUMBER"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONNUMBER);
-                bodypropCount++;
-            }
-
-            if (bodyaSSETID != null)
-            {
-                body["ASSET_ID"] = CSharpExpressionConverter.ConvertToken(bodyaSSETID);
-                bodypropCount++;
-            }
-
-            if (bodypARENTACTIONID != null)
-            {
-                body["PARENT_ACTION_ID"] = CSharpExpressionConverter.ConvertToken(bodypARENTACTIONID);
-                bodypropCount++;
-            }
-
-            if (bodysUPPLIERID != null)
-            {
-                body["SUPPLIER_ID"] = CSharpExpressionConverter.ConvertToken(bodysUPPLIERID);
-                bodypropCount++;
-            }
-
-            if (bodydONEBYID != null)
-            {
-                body["DONE_BY_ID"] = CSharpExpressionConverter.ConvertToken(bodydONEBYID);
-                bodypropCount++;
-            }
-
-            if (bodyvALIDATORID != null)
-            {
-                body["VALIDATOR_ID"] = CSharpExpressionConverter.ConvertToken(bodyvALIDATORID);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELEN != null)
-            {
-                body["ACTION_LABEL_EN"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELEN);
-                bodypropCount++;
-            }
-
-            if (bodytABLENAME != null)
-            {
-                body["TABLE_NAME"] = CSharpExpressionConverter.ConvertToken(bodytABLENAME);
-                bodypropCount++;
-            }
-
-            if (bodyfIELDNAME != null)
-            {
-                body["FIELD_NAME"] = CSharpExpressionConverter.ConvertToken(bodyfIELDNAME);
-                bodypropCount++;
-            }
-
-            if (bodyoLDVALUE != null)
-            {
-                body["OLD_VALUE"] = CSharpExpressionConverter.ConvertToken(bodyoLDVALUE);
-                bodypropCount++;
-            }
-
-            if (bodynEWVALUE != null)
-            {
-                body["NEW_VALUE"] = CSharpExpressionConverter.ConvertToken(bodynEWVALUE);
-                bodypropCount++;
-            }
-
-            if (bodydELETEACTION != null)
-            {
-                body["DELETE_ACTION"] = CSharpExpressionConverter.ConvertToken(bodydELETEACTION);
-                bodypropCount++;
-            }
-
-            if (bodyaUTOMATICACTION != null)
-            {
-                body["AUTOMATIC_ACTION"] = CSharpExpressionConverter.ConvertToken(bodyaUTOMATICACTION);
-                bodypropCount++;
-            }
-
-            if (bodypROCESSSTEPID != null)
-            {
-                body["PROCESS_STEP_ID"] = CSharpExpressionConverter.ConvertToken(bodypROCESSSTEPID);
-                bodypropCount++;
-            }
-
-            if (bodyrEQUESTID != null)
-            {
-                body["REQUEST_ID"] = CSharpExpressionConverter.ConvertToken(bodyrEQUESTID);
-                bodypropCount++;
-            }
-
-            if (bodydESCRIPTION != null)
-            {
-                body["DESCRIPTION"] = CSharpExpressionConverter.ConvertToken(bodydESCRIPTION);
-                bodypropCount++;
-            }
-
-            if (bodynETCHARGE != null)
-            {
-                body["NET_CHARGE"] = CSharpExpressionConverter.ConvertToken(bodynETCHARGE);
-                bodypropCount++;
-            }
-
-            if (bodynETCHARGECURID != null)
-            {
-                body["NET_CHARGE_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodynETCHARGECURID);
-                bodypropCount++;
-            }
-
-            if (bodyrESOLUTION != null)
-            {
-                body["RESOLUTION"] = CSharpExpressionConverter.ConvertToken(bodyrESOLUTION);
-                bodypropCount++;
-            }
-
-            if (bodylOCATIONID != null)
-            {
-                body["LOCATION_ID"] = CSharpExpressionConverter.ConvertToken(bodylOCATIONID);
-                bodypropCount++;
-            }
-
-            if (bodysUPPORTSTAFFID != null)
-            {
-                body["SUPPORT_STAFF_ID"] = CSharpExpressionConverter.ConvertToken(bodysUPPORTSTAFFID);
-                bodypropCount++;
-            }
-
-            if (bodycONTACTID != null)
-            {
-                body["CONTACT_ID"] = CSharpExpressionConverter.ConvertToken(bodycONTACTID);
-                bodypropCount++;
-            }
-
-            if (bodyeXPECTEDENDDATEUT != null)
-            {
-                body["EXPECTED_END_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodyeXPECTEDENDDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodycOMMENT != null)
-            {
-                body["COMMENT"] = CSharpExpressionConverter.ConvertToken(bodycOMMENT);
-                bodypropCount++;
-            }
-
-            if (bodysTARTDATEUT != null)
-            {
-                body["START_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodysTARTDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodyeNDDATEUT != null)
-            {
-                body["END_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodyeNDDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodyrENEWALDATEUT != null)
-            {
-                body["RENEWAL_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodyrENEWALDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodyeXPECTEDSTARTDATEUT != null)
-            {
-                body["EXPECTED_START_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodyeXPECTEDSTARTDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodycREATIONDATEUT != null)
-            {
-                body["CREATION_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodycREATIONDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodyaPPLICATIONDATEUT != null)
-            {
-                body["APPLICATION_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodyaPPLICATIONDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodywIZARDGUID != null)
-            {
-                body["WIZARD_GUID"] = CSharpExpressionConverter.ConvertToken(bodywIZARDGUID);
-                bodypropCount++;
-            }
-
-            if (bodygROUPID != null)
-            {
-                body["GROUP_ID"] = CSharpExpressionConverter.ConvertToken(bodygROUPID);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELFR != null)
-            {
-                body["ACTION_LABEL_FR"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELFR);
-                bodypropCount++;
-            }
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var endActionObject = new JObject();
+                var endActionObjectpropCount = 0;
+                if (bodyendActiondescription != null)
+                {
+                    endActionObject["Description"] = SourceExpressionConverter.ConvertToken(bodyendActiondescription);
+                    endActionObjectpropCount++;
+                }
 
-            if (bodyaCTIONLABELSP != null)
-            {
-                body["ACTION_LABEL_SP"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELSP);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELGE != null)
-            {
-                body["ACTION_LABEL_GE"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELGE);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELIT != null)
-            {
-                body["ACTION_LABEL_IT"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELIT);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELPO != null)
-            {
-                body["ACTION_LABEL_PO"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELPO);
-                bodypropCount++;
-            }
-
-            if (bodykNOWNPROBLEMID != null)
-            {
-                body["KNOWN_PROBLEM_ID"] = CSharpExpressionConverter.ConvertToken(bodykNOWNPROBLEMID);
-                bodypropCount++;
-            }
-
-            if (bodymAXINTERVENTIONDATEUT != null)
-            {
-                body["MAX_INTERVENTION_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodymAXINTERVENTIONDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodyeLAPSEDTIME != null)
-            {
-                body["ELAPSED_TIME"] = CSharpExpressionConverter.ConvertToken(bodyeLAPSEDTIME);
-                bodypropCount++;
-            }
-
-            if (bodypRIORITYID != null)
-            {
-                body["PRIORITY_ID"] = CSharpExpressionConverter.ConvertToken(bodypRIORITYID);
-                bodypropCount++;
-            }
-
-            if (bodytAXID != null)
-            {
-                body["TAX_ID"] = CSharpExpressionConverter.ConvertToken(bodytAXID);
-                bodypropCount++;
-            }
-
-            if (bodysTATUSIDONCREATE != null)
-            {
-                body["STATUS_ID_ON_CREATE"] = CSharpExpressionConverter.ConvertToken(bodysTATUSIDONCREATE);
-                bodypropCount++;
-            }
-
-            if (bodysTATUSIDONTERMINATE != null)
-            {
-                body["STATUS_ID_ON_TERMINATE"] = CSharpExpressionConverter.ConvertToken(bodysTATUSIDONTERMINATE);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONTYPEID != null)
-            {
-                body["ACTION_TYPE_ID"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONTYPEID);
-                bodypropCount++;
-            }
-
-            if (bodydELAY != null)
-            {
-                body["DELAY"] = CSharpExpressionConverter.ConvertToken(bodydELAY);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD1 != null)
-            {
-                body["AVAILABLE_FIELD_1"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD2 != null)
-            {
-                body["AVAILABLE_FIELD_2"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD3 != null)
-            {
-                body["AVAILABLE_FIELD_3"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD4 != null)
-            {
-                body["AVAILABLE_FIELD_4"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD5 != null)
-            {
-                body["AVAILABLE_FIELD_5"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
-                bodypropCount++;
-            }
-
-            if (bodyaVAILABLEFIELD6 != null)
-            {
-                body["AVAILABLE_FIELD_6"] = CSharpExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
-                bodypropCount++;
-            }
-
-            if (bodytIMEUSEDTOCOMPLETEACTION != null)
-            {
-                body["TIME_USED_TO_COMPLETE_ACTION"] = CSharpExpressionConverter.ConvertToken(bodytIMEUSEDTOCOMPLETEACTION);
-                bodypropCount++;
-            }
-
-            if (bodycONTRACTUALCOST != null)
-            {
-                body["CONTRACTUAL_COST"] = CSharpExpressionConverter.ConvertToken(bodycONTRACTUALCOST);
-                bodypropCount++;
-            }
-
-            if (bodycONTRACTUALCOSTCURID != null)
-            {
-                body["CONTRACTUAL_COST_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodycONTRACTUALCOSTCURID);
-                bodypropCount++;
-            }
-
-            if (bodytIMECOST != null)
-            {
-                body["TIME_COST"] = CSharpExpressionConverter.ConvertToken(bodytIMECOST);
-                bodypropCount++;
-            }
-
-            if (bodytIMECOSTCURID != null)
-            {
-                body["TIME_COST_CUR_ID"] = CSharpExpressionConverter.ConvertToken(bodytIMECOSTCURID);
-                bodypropCount++;
-            }
-
-            if (bodyoRIGINACTIONID != null)
-            {
-                body["ORIGIN_ACTION_ID"] = CSharpExpressionConverter.ConvertToken(bodyoRIGINACTIONID);
-                bodypropCount++;
-            }
-
-            if (bodywORKFLOWVALUE != null)
-            {
-                body["WORKFLOW_VALUE"] = CSharpExpressionConverter.ConvertToken(bodywORKFLOWVALUE);
-                bodypropCount++;
-            }
-
-            if (bodycONTINUITYPLANID != null)
-            {
-                body["CONTINUITY_PLAN_ID"] = CSharpExpressionConverter.ConvertToken(bodycONTINUITYPLANID);
-                bodypropCount++;
-            }
-
-            if (bodycATEGORYTESTID != null)
-            {
-                body["CATEGORY_TEST_ID"] = CSharpExpressionConverter.ConvertToken(bodycATEGORYTESTID);
-                bodypropCount++;
-            }
-
-            if (bodywORKFLOWID != null)
-            {
-                body["WORKFLOW_ID"] = CSharpExpressionConverter.ConvertToken(bodywORKFLOWID);
-                bodypropCount++;
-            }
-
-            if (bodyeXITVALUE != null)
-            {
-                body["EXIT_VALUE"] = CSharpExpressionConverter.ConvertToken(bodyeXITVALUE);
-                bodypropCount++;
-            }
-
-            if (bodymAXRESOLUTIONDATEUT != null)
-            {
-                body["MAX_RESOLUTION_DATE_UT"] = CSharpExpressionConverter.ConvertToken(bodymAXRESOLUTIONDATEUT);
-                bodypropCount++;
-            }
-
-            if (bodypERCENTCOMPLETE != null)
-            {
-                body["PERCENT_COMPLETE"] = CSharpExpressionConverter.ConvertToken(bodypERCENTCOMPLETE);
-                bodypropCount++;
-            }
-
-            if (bodyeXPECTEDDURATION != null)
-            {
-                body["EXPECTED_DURATION"] = CSharpExpressionConverter.ConvertToken(bodyeXPECTEDDURATION);
-                bodypropCount++;
-            }
-
-            if (bodywBSTASK != null)
-            {
-                body["WBS_TASK"] = CSharpExpressionConverter.ConvertToken(bodywBSTASK);
-                bodypropCount++;
-            }
-
-            if (bodytASKPERSONCOSTPERHOUR != null)
-            {
-                body["TASK_PERSON_COST_PER_HOUR"] = CSharpExpressionConverter.ConvertToken(bodytASKPERSONCOSTPERHOUR);
-                bodypropCount++;
-            }
-
-            if (bodytASKPLANNEDBUDGET != null)
-            {
-                body["TASK_PLANNED_BUDGET"] = CSharpExpressionConverter.ConvertToken(bodytASKPLANNEDBUDGET);
-                bodypropCount++;
-            }
-
-            if (bodyeSTIMATEDNETCHARGE != null)
-            {
-                body["ESTIMATED_NET_CHARGE"] = CSharpExpressionConverter.ConvertToken(bodyeSTIMATEDNETCHARGE);
-                bodypropCount++;
-            }
-
-            if (bodypREVIOUSSIBLINGID != null)
-            {
-                body["PREVIOUS_SIBLING_ID"] = CSharpExpressionConverter.ConvertToken(bodypREVIOUSSIBLINGID);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL1 != null)
-            {
-                body["ACTION_LABEL_L1"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL1);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL2 != null)
-            {
-                body["ACTION_LABEL_L2"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL2);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL3 != null)
-            {
-                body["ACTION_LABEL_L3"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL3);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL4 != null)
-            {
-                body["ACTION_LABEL_L4"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL4);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL5 != null)
-            {
-                body["ACTION_LABEL_L5"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL5);
-                bodypropCount++;
-            }
-
-            if (bodyaCTIONLABELL6 != null)
-            {
-                body["ACTION_LABEL_L6"] = CSharpExpressionConverter.ConvertToken(bodyaCTIONLABELL6);
-                bodypropCount++;
-            }
-
-            if (bodyhISTORYID != null)
-            {
-                body["HISTORY_ID"] = CSharpExpressionConverter.ConvertToken(bodyhISTORYID);
-                bodypropCount++;
-            }
-
-            if (bodytOTRUNC != null)
-            {
-                body["TO_TRUNC"] = CSharpExpressionConverter.ConvertToken(bodytOTRUNC);
-                bodypropCount++;
-            }
-
-            if (bodysTAGEID != null)
-            {
-                body["STAGE_ID"] = CSharpExpressionConverter.ConvertToken(bodysTAGEID);
-                bodypropCount++;
-            }
-
-            if (bodyiSLOCKEDPROGRESSPOINT != null)
-            {
-                body["IS_LOCKED_PROGRESS_POINT"] = CSharpExpressionConverter.ConvertToken(bodyiSLOCKEDPROGRESSPOINT);
-                bodypropCount++;
-            }
-
-            if (bodyoRIGINTOOLID != null)
-            {
-                body["ORIGIN_TOOL_ID"] = CSharpExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
-                bodypropCount++;
-            }
-
-            if (bodylASTUPDATE != null)
-            {
-                body["LAST_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodylASTUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodyeLASTDATESUPDATE != null)
-            {
-                body["E_LAST_DATES_UPDATE"] = CSharpExpressionConverter.ConvertToken(bodyeLASTDATESUPDATE);
-                bodypropCount++;
-            }
-
-            if (bodybILLEDTIME != null)
-            {
-                body["BILLED_TIME"] = CSharpExpressionConverter.ConvertToken(bodybILLEDTIME);
-                bodypropCount++;
-            }
-
-            if (bodyiSBILLINGREVIEWED != null)
-            {
-                body["IS_BILLING_REVIEWED"] = CSharpExpressionConverter.ConvertToken(bodyiSBILLINGREVIEWED);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateActionTicketResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<ViewAllAtributesofanAssetsResponse> ViewAllAtributesofanAssets(Expression<Func<string>> account, Expression<Func<string>> assetId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ViewAllAtributesofanAssetsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IWorkflowAction DeleteDocument(Expression<Func<string>> account, Expression<Func<string>> rfcNumber, Expression<Func<string>> documentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
-        public IBodyWorkflowAction<UpdateCIResponse> UpdateCI(Expression<Func<string>> account, Expression<Func<string>> ciId, Expression<Func<string>> bodyassetLabel = null, Expression<Func<string>> bodypurchasePrice = null, Expression<Func<string>> bodyautomaticRenewal = null, Expression<Func<string>> bodyestimatedPercentageUse = null, Expression<Func<string>> bodyinstallationDate = null, Expression<Func<string>> bodyavailableField1 = null, Expression<Func<string>> bodycommentAsset = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyassetLabel != null)
-            {
-                body["asset_label"] = CSharpExpressionConverter.ConvertToken(bodyassetLabel);
-                bodypropCount++;
-            }
-
-            if (bodypurchasePrice != null)
-            {
-                body["purchase_price"] = CSharpExpressionConverter.ConvertToken(bodypurchasePrice);
-                bodypropCount++;
-            }
-
-            if (bodyautomaticRenewal != null)
-            {
-                body["automatic_renewal"] = CSharpExpressionConverter.ConvertToken(bodyautomaticRenewal);
-                bodypropCount++;
-            }
-
-            if (bodyestimatedPercentageUse != null)
-            {
-                body["estimated_percentage_use"] = CSharpExpressionConverter.ConvertToken(bodyestimatedPercentageUse);
-                bodypropCount++;
-            }
-
-            if (bodyinstallationDate != null)
-            {
-                body["installation_date"] = CSharpExpressionConverter.ConvertToken(bodyinstallationDate);
-                bodypropCount++;
-            }
-
-            if (bodyavailableField1 != null)
-            {
-                body["available_field_1"] = CSharpExpressionConverter.ConvertToken(bodyavailableField1);
-                bodypropCount++;
-            }
-
-            if (bodycommentAsset != null)
-            {
-                body["comment_asset"] = CSharpExpressionConverter.ConvertToken(bodycommentAsset);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
+                if (endActionObjectpropCount > 0)
+                {
+                    body["end_action"] = endActionObject;
+                    bodypropCount++;
+                }
 
-            return new ApiConnectionAction<UpdateCIResponse>(callPayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FinishActionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAssetsListResponse> ViewAssetsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAssetsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateAssetResponse> CreateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyassetsInputItem[]> bodyassets = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(bodyassets, nameof(bodyassets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassets != null)
+                {
+                    body["assets"] = SourceExpressionConverter.ConvertToken(bodyassets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateAssetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAssetResponse> ViewAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAssetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateAssetResponse> UpdateAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> bodybEFORELOANDEPARTMENTID = null, [WorkflowExpression] Func<string> bodybEFORELOANEMPLOYEEID = null, [WorkflowExpression] Func<string> bodybEFORELOANLOCATIONID = null, [WorkflowExpression] Func<string> bodybILLINGPERIODICITYINMONTH = null, [WorkflowExpression] Func<string> bodybUYBACKVALUE = null, [WorkflowExpression] Func<string> bodybUYBACKVALUECURID = null, [WorkflowExpression] Func<string> bodycATALOGID = null, [WorkflowExpression] Func<string> bodycHARGEBACK = null, [WorkflowExpression] Func<string> bodycHARGEBACKCURID = null, [WorkflowExpression] Func<string> bodycISTATUSID = null, [WorkflowExpression] Func<string> bodycIVERSION = null, [WorkflowExpression] Func<string> bodycMDEFAULTCHANGEID = null, [WorkflowExpression] Func<string> bodycONFIGURATIONID = null, [WorkflowExpression] Func<string> bodycRITICALLEVELID = null, [WorkflowExpression] Func<string> bodydELIVERYDATE = null, [WorkflowExpression] Func<string> bodydELIVERYNUMBER = null, [WorkflowExpression] Func<string> bodydEPARTMENTID = null, [WorkflowExpression] Func<string> bodydEPRECIATIONRULEID = null, [WorkflowExpression] Func<string> bodydHARDWAREGUID = null, [WorkflowExpression] Func<string> bodyeMPLOYEEID = null, [WorkflowExpression] Func<string> bodyeNDOFWARANTY = null, [WorkflowExpression] Func<string> bodyeNTRYDATE = null, [WorkflowExpression] Func<string> bodyeSTIMATEDPERCENTAGEUSE = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDLENDDATE = null, [WorkflowExpression] Func<string> bodyeXPECTEDRETURNDATE = null, [WorkflowExpression] Func<string> bodyfALLENTERM = null, [WorkflowExpression] Func<string> bodyfIXEDASSETNUMBER = null, [WorkflowExpression] Func<string> bodyiNITIALSTART = null, [WorkflowExpression] Func<string> bodyiNSTALLATIONDATE = null, [WorkflowExpression] Func<string> bodyiNTERNALDELIVERYDATE = null, [WorkflowExpression] Func<string> bodyiNVOICENUMBER = null, [WorkflowExpression] Func<string> bodyiSDML = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTPHYSICALINVENTORY = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylICENSEVERSION = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodymAINTENANCECOST = null, [WorkflowExpression] Func<string> bodymAINTENANCECOSTCURID = null, [WorkflowExpression] Func<string> bodymAINUSAGEID = null, [WorkflowExpression] Func<string> bodymAXINSTALLS = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOST = null, [WorkflowExpression] Func<string> bodymONTHLYFIXEDCOSTCURID = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTAL = null, [WorkflowExpression] Func<string> bodymONTHLYNETRENTALCURID = null, [WorkflowExpression] Func<string> bodymONTHDURATION = null, [WorkflowExpression] Func<string> bodynETWORKIDENTIFIER = null, [WorkflowExpression] Func<string> bodynEXTDEPARTMENTID = null, [WorkflowExpression] Func<string> bodynEXTMAINTENANCEDATE = null, [WorkflowExpression] Func<string> bodynEXTSTATUSID = null, [WorkflowExpression] Func<string> bodynEXTUSERAPPLICATIONDATE = null, [WorkflowExpression] Func<string> bodynEXTUSERID = null, [WorkflowExpression] Func<string> bodynOTICE = null, [WorkflowExpression] Func<string> bodyoRDERDETAILSID = null, [WorkflowExpression] Func<string> bodyoRDERNUMBER = null, [WorkflowExpression] Func<string> bodypIPELINESTATUSID = null, [WorkflowExpression] Func<string> bodypOWERCONSUMPTIONWH = null, [WorkflowExpression] Func<string> bodypROCESSORCOUNT = null, [WorkflowExpression] Func<string> bodypROCESSORSOCKETCOUNT = null, [WorkflowExpression] Func<string> bodypURCHASEDATE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICE = null, [WorkflowExpression] Func<string> bodypURCHASEPRICECURID = null, [WorkflowExpression] Func<string> bodypURCHASERATEID = null, [WorkflowExpression] Func<string> bodyrECYCLEDDATE = null, [WorkflowExpression] Func<string> bodyrECYCLINGPROVIDERID = null, [WorkflowExpression] Func<string> bodyrEFORMNUMBER = null, [WorkflowExpression] Func<string> bodyrEMOVEDDATE = null, [WorkflowExpression] Func<string> bodyrENEWALDECISIONID = null, [WorkflowExpression] Func<string> bodyrENEWALVALUE = null, [WorkflowExpression] Func<string> bodyrENEWALVALUECURID = null, [WorkflowExpression] Func<string> bodyrEPAIREDBYID = null, [WorkflowExpression] Func<string> bodyrESALESVALUE = null, [WorkflowExpression] Func<string> bodysCHEDULEDEND = null, [WorkflowExpression] Func<string> bodysDCATALOGID = null, [WorkflowExpression] Func<string> bodysERIALNUMBER = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodysTATUSID = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodytERM = null, [WorkflowExpression] Func<string> bodyuPDATECOVERAGETERM = null, [WorkflowExpression] Func<string> bodywARANTYTYPEID = null, [WorkflowExpression] Func<string> bodyassetLabel = null, [WorkflowExpression] Func<string> bodyassetTag = null, [WorkflowExpression] Func<string> bodyautomaticRenewal = null, [WorkflowExpression] Func<string> bodyavailabilitySlaId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycommentAsset = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(bodybEFORELOANDEPARTMENTID, nameof(bodybEFORELOANDEPARTMENTID), required: false);
+            SourceExpression.Validate(bodybEFORELOANEMPLOYEEID, nameof(bodybEFORELOANEMPLOYEEID), required: false);
+            SourceExpression.Validate(bodybEFORELOANLOCATIONID, nameof(bodybEFORELOANLOCATIONID), required: false);
+            SourceExpression.Validate(bodybILLINGPERIODICITYINMONTH, nameof(bodybILLINGPERIODICITYINMONTH), required: false);
+            SourceExpression.Validate(bodybUYBACKVALUE, nameof(bodybUYBACKVALUE), required: false);
+            SourceExpression.Validate(bodybUYBACKVALUECURID, nameof(bodybUYBACKVALUECURID), required: false);
+            SourceExpression.Validate(bodycATALOGID, nameof(bodycATALOGID), required: false);
+            SourceExpression.Validate(bodycHARGEBACK, nameof(bodycHARGEBACK), required: false);
+            SourceExpression.Validate(bodycHARGEBACKCURID, nameof(bodycHARGEBACKCURID), required: false);
+            SourceExpression.Validate(bodycISTATUSID, nameof(bodycISTATUSID), required: false);
+            SourceExpression.Validate(bodycIVERSION, nameof(bodycIVERSION), required: false);
+            SourceExpression.Validate(bodycMDEFAULTCHANGEID, nameof(bodycMDEFAULTCHANGEID), required: false);
+            SourceExpression.Validate(bodycONFIGURATIONID, nameof(bodycONFIGURATIONID), required: false);
+            SourceExpression.Validate(bodycRITICALLEVELID, nameof(bodycRITICALLEVELID), required: false);
+            SourceExpression.Validate(bodydELIVERYDATE, nameof(bodydELIVERYDATE), required: false);
+            SourceExpression.Validate(bodydELIVERYNUMBER, nameof(bodydELIVERYNUMBER), required: false);
+            SourceExpression.Validate(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            SourceExpression.Validate(bodydEPRECIATIONRULEID, nameof(bodydEPRECIATIONRULEID), required: false);
+            SourceExpression.Validate(bodydHARDWAREGUID, nameof(bodydHARDWAREGUID), required: false);
+            SourceExpression.Validate(bodyeMPLOYEEID, nameof(bodyeMPLOYEEID), required: false);
+            SourceExpression.Validate(bodyeNDOFWARANTY, nameof(bodyeNDOFWARANTY), required: false);
+            SourceExpression.Validate(bodyeNTRYDATE, nameof(bodyeNTRYDATE), required: false);
+            SourceExpression.Validate(bodyeSTIMATEDPERCENTAGEUSE, nameof(bodyeSTIMATEDPERCENTAGEUSE), required: false);
+            SourceExpression.Validate(bodyeXPECTEDENDLENDDATE, nameof(bodyeXPECTEDENDLENDDATE), required: false);
+            SourceExpression.Validate(bodyeXPECTEDRETURNDATE, nameof(bodyeXPECTEDRETURNDATE), required: false);
+            SourceExpression.Validate(bodyfALLENTERM, nameof(bodyfALLENTERM), required: false);
+            SourceExpression.Validate(bodyfIXEDASSETNUMBER, nameof(bodyfIXEDASSETNUMBER), required: false);
+            SourceExpression.Validate(bodyiNITIALSTART, nameof(bodyiNITIALSTART), required: false);
+            SourceExpression.Validate(bodyiNSTALLATIONDATE, nameof(bodyiNSTALLATIONDATE), required: false);
+            SourceExpression.Validate(bodyiNTERNALDELIVERYDATE, nameof(bodyiNTERNALDELIVERYDATE), required: false);
+            SourceExpression.Validate(bodyiNVOICENUMBER, nameof(bodyiNVOICENUMBER), required: false);
+            SourceExpression.Validate(bodyiSDML, nameof(bodyiSDML), required: false);
+            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            SourceExpression.Validate(bodylASTPHYSICALINVENTORY, nameof(bodylASTPHYSICALINVENTORY), required: false);
+            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            SourceExpression.Validate(bodylICENSEVERSION, nameof(bodylICENSEVERSION), required: false);
+            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            SourceExpression.Validate(bodymAINTENANCECOST, nameof(bodymAINTENANCECOST), required: false);
+            SourceExpression.Validate(bodymAINTENANCECOSTCURID, nameof(bodymAINTENANCECOSTCURID), required: false);
+            SourceExpression.Validate(bodymAINUSAGEID, nameof(bodymAINUSAGEID), required: false);
+            SourceExpression.Validate(bodymAXINSTALLS, nameof(bodymAXINSTALLS), required: false);
+            SourceExpression.Validate(bodymONTHLYFIXEDCOST, nameof(bodymONTHLYFIXEDCOST), required: false);
+            SourceExpression.Validate(bodymONTHLYFIXEDCOSTCURID, nameof(bodymONTHLYFIXEDCOSTCURID), required: false);
+            SourceExpression.Validate(bodymONTHLYNETRENTAL, nameof(bodymONTHLYNETRENTAL), required: false);
+            SourceExpression.Validate(bodymONTHLYNETRENTALCURID, nameof(bodymONTHLYNETRENTALCURID), required: false);
+            SourceExpression.Validate(bodymONTHDURATION, nameof(bodymONTHDURATION), required: false);
+            SourceExpression.Validate(bodynETWORKIDENTIFIER, nameof(bodynETWORKIDENTIFIER), required: false);
+            SourceExpression.Validate(bodynEXTDEPARTMENTID, nameof(bodynEXTDEPARTMENTID), required: false);
+            SourceExpression.Validate(bodynEXTMAINTENANCEDATE, nameof(bodynEXTMAINTENANCEDATE), required: false);
+            SourceExpression.Validate(bodynEXTSTATUSID, nameof(bodynEXTSTATUSID), required: false);
+            SourceExpression.Validate(bodynEXTUSERAPPLICATIONDATE, nameof(bodynEXTUSERAPPLICATIONDATE), required: false);
+            SourceExpression.Validate(bodynEXTUSERID, nameof(bodynEXTUSERID), required: false);
+            SourceExpression.Validate(bodynOTICE, nameof(bodynOTICE), required: false);
+            SourceExpression.Validate(bodyoRDERDETAILSID, nameof(bodyoRDERDETAILSID), required: false);
+            SourceExpression.Validate(bodyoRDERNUMBER, nameof(bodyoRDERNUMBER), required: false);
+            SourceExpression.Validate(bodypIPELINESTATUSID, nameof(bodypIPELINESTATUSID), required: false);
+            SourceExpression.Validate(bodypOWERCONSUMPTIONWH, nameof(bodypOWERCONSUMPTIONWH), required: false);
+            SourceExpression.Validate(bodypROCESSORCOUNT, nameof(bodypROCESSORCOUNT), required: false);
+            SourceExpression.Validate(bodypROCESSORSOCKETCOUNT, nameof(bodypROCESSORSOCKETCOUNT), required: false);
+            SourceExpression.Validate(bodypURCHASEDATE, nameof(bodypURCHASEDATE), required: false);
+            SourceExpression.Validate(bodypURCHASEPRICE, nameof(bodypURCHASEPRICE), required: false);
+            SourceExpression.Validate(bodypURCHASEPRICECURID, nameof(bodypURCHASEPRICECURID), required: false);
+            SourceExpression.Validate(bodypURCHASERATEID, nameof(bodypURCHASERATEID), required: false);
+            SourceExpression.Validate(bodyrECYCLEDDATE, nameof(bodyrECYCLEDDATE), required: false);
+            SourceExpression.Validate(bodyrECYCLINGPROVIDERID, nameof(bodyrECYCLINGPROVIDERID), required: false);
+            SourceExpression.Validate(bodyrEFORMNUMBER, nameof(bodyrEFORMNUMBER), required: false);
+            SourceExpression.Validate(bodyrEMOVEDDATE, nameof(bodyrEMOVEDDATE), required: false);
+            SourceExpression.Validate(bodyrENEWALDECISIONID, nameof(bodyrENEWALDECISIONID), required: false);
+            SourceExpression.Validate(bodyrENEWALVALUE, nameof(bodyrENEWALVALUE), required: false);
+            SourceExpression.Validate(bodyrENEWALVALUECURID, nameof(bodyrENEWALVALUECURID), required: false);
+            SourceExpression.Validate(bodyrEPAIREDBYID, nameof(bodyrEPAIREDBYID), required: false);
+            SourceExpression.Validate(bodyrESALESVALUE, nameof(bodyrESALESVALUE), required: false);
+            SourceExpression.Validate(bodysCHEDULEDEND, nameof(bodysCHEDULEDEND), required: false);
+            SourceExpression.Validate(bodysDCATALOGID, nameof(bodysDCATALOGID), required: false);
+            SourceExpression.Validate(bodysERIALNUMBER, nameof(bodysERIALNUMBER), required: false);
+            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
+            SourceExpression.Validate(bodysTATUSID, nameof(bodysTATUSID), required: false);
+            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            SourceExpression.Validate(bodytERM, nameof(bodytERM), required: false);
+            SourceExpression.Validate(bodyuPDATECOVERAGETERM, nameof(bodyuPDATECOVERAGETERM), required: false);
+            SourceExpression.Validate(bodywARANTYTYPEID, nameof(bodywARANTYTYPEID), required: false);
+            SourceExpression.Validate(bodyassetLabel, nameof(bodyassetLabel), required: false);
+            SourceExpression.Validate(bodyassetTag, nameof(bodyassetTag), required: false);
+            SourceExpression.Validate(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
+            SourceExpression.Validate(bodyavailabilitySlaId, nameof(bodyavailabilitySlaId), required: false);
+            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            SourceExpression.Validate(bodycommentAsset, nameof(bodycommentAsset), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodybEFORELOANDEPARTMENTID != null)
+                {
+                    body["BEFORE_LOAN_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANDEPARTMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodybEFORELOANEMPLOYEEID != null)
+                {
+                    body["BEFORE_LOAN_EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANEMPLOYEEID);
+                    bodypropCount++;
+                }
+
+                if (bodybEFORELOANLOCATIONID != null)
+                {
+                    body["BEFORE_LOAN_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodybEFORELOANLOCATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodybILLINGPERIODICITYINMONTH != null)
+                {
+                    body["BILLING_PERIODICITY_IN_MONTH"] = SourceExpressionConverter.ConvertToken(bodybILLINGPERIODICITYINMONTH);
+                    bodypropCount++;
+                }
+
+                if (bodybUYBACKVALUE != null)
+                {
+                    body["BUY_BACK_VALUE"] = SourceExpressionConverter.ConvertToken(bodybUYBACKVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodybUYBACKVALUECURID != null)
+                {
+                    body["BUY_BACK_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodybUYBACKVALUECURID);
+                    bodypropCount++;
+                }
+
+                if (bodycATALOGID != null)
+                {
+                    body["CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodycATALOGID);
+                    bodypropCount++;
+                }
+
+                if (bodycHARGEBACK != null)
+                {
+                    body["CHARGE_BACK"] = SourceExpressionConverter.ConvertToken(bodycHARGEBACK);
+                    bodypropCount++;
+                }
+
+                if (bodycHARGEBACKCURID != null)
+                {
+                    body["CHARGE_BACK_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycHARGEBACKCURID);
+                    bodypropCount++;
+                }
+
+                if (bodycISTATUSID != null)
+                {
+                    body["CI_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycISTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodycIVERSION != null)
+                {
+                    body["CI_VERSION"] = SourceExpressionConverter.ConvertToken(bodycIVERSION);
+                    bodypropCount++;
+                }
+
+                if (bodycMDEFAULTCHANGEID != null)
+                {
+                    body["CM_DEFAULT_CHANGE_ID"] = SourceExpressionConverter.ConvertToken(bodycMDEFAULTCHANGEID);
+                    bodypropCount++;
+                }
+
+                if (bodycONFIGURATIONID != null)
+                {
+                    body["CONFIGURATION_ID"] = SourceExpressionConverter.ConvertToken(bodycONFIGURATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodycRITICALLEVELID != null)
+                {
+                    body["CRITICAL_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodycRITICALLEVELID);
+                    bodypropCount++;
+                }
+
+                if (bodydELIVERYDATE != null)
+                {
+                    body["DELIVERY_DATE"] = SourceExpressionConverter.ConvertToken(bodydELIVERYDATE);
+                    bodypropCount++;
+                }
+
+                if (bodydELIVERYNUMBER != null)
+                {
+                    body["DELIVERY_NUMBER"] = SourceExpressionConverter.ConvertToken(bodydELIVERYNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTID != null)
+                {
+                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodydEPRECIATIONRULEID != null)
+                {
+                    body["DEPRECIATION_RULE_ID"] = SourceExpressionConverter.ConvertToken(bodydEPRECIATIONRULEID);
+                    bodypropCount++;
+                }
+
+                if (bodydHARDWAREGUID != null)
+                {
+                    body["D_HARDWARE_GUID"] = SourceExpressionConverter.ConvertToken(bodydHARDWAREGUID);
+                    bodypropCount++;
+                }
+
+                if (bodyeMPLOYEEID != null)
+                {
+                    body["EMPLOYEE_ID"] = SourceExpressionConverter.ConvertToken(bodyeMPLOYEEID);
+                    bodypropCount++;
+                }
+
+                if (bodyeNDOFWARANTY != null)
+                {
+                    body["END_OF_WARANTY"] = SourceExpressionConverter.ConvertToken(bodyeNDOFWARANTY);
+                    bodypropCount++;
+                }
+
+                if (bodyeNTRYDATE != null)
+                {
+                    body["ENTRY_DATE"] = SourceExpressionConverter.ConvertToken(bodyeNTRYDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyeSTIMATEDPERCENTAGEUSE != null)
+                {
+                    body["ESTIMATED_PERCENTAGE_USE"] = SourceExpressionConverter.ConvertToken(bodyeSTIMATEDPERCENTAGEUSE);
+                    bodypropCount++;
+                }
+
+                if (bodyeXPECTEDENDLENDDATE != null)
+                {
+                    body["EXPECTED_END_LEND_DATE"] = SourceExpressionConverter.ConvertToken(bodyeXPECTEDENDLENDDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyeXPECTEDRETURNDATE != null)
+                {
+                    body["EXPECTED_RETURN_DATE"] = SourceExpressionConverter.ConvertToken(bodyeXPECTEDRETURNDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyfALLENTERM != null)
+                {
+                    body["FALLEN_TERM"] = SourceExpressionConverter.ConvertToken(bodyfALLENTERM);
+                    bodypropCount++;
+                }
+
+                if (bodyfIXEDASSETNUMBER != null)
+                {
+                    body["FIXED_ASSET_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyfIXEDASSETNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyiNITIALSTART != null)
+                {
+                    body["INITIAL_START"] = SourceExpressionConverter.ConvertToken(bodyiNITIALSTART);
+                    bodypropCount++;
+                }
+
+                if (bodyiNSTALLATIONDATE != null)
+                {
+                    body["INSTALLATION_DATE"] = SourceExpressionConverter.ConvertToken(bodyiNSTALLATIONDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyiNTERNALDELIVERYDATE != null)
+                {
+                    body["INTERNAL_DELIVERY_DATE"] = SourceExpressionConverter.ConvertToken(bodyiNTERNALDELIVERYDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyiNVOICENUMBER != null)
+                {
+                    body["INVOICE_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyiNVOICENUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyiSDML != null)
+                {
+                    body["IS_DML"] = SourceExpressionConverter.ConvertToken(bodyiSDML);
+                    bodypropCount++;
+                }
+
+                if (bodylASTINTEGRATION != null)
+                {
+                    body["LAST_INTEGRATION"] = SourceExpressionConverter.ConvertToken(bodylASTINTEGRATION);
+                    bodypropCount++;
+                }
+
+                if (bodylASTPHYSICALINVENTORY != null)
+                {
+                    body["LAST_PHYSICAL_INVENTORY"] = SourceExpressionConverter.ConvertToken(bodylASTPHYSICALINVENTORY);
+                    bodypropCount++;
+                }
+
+                if (bodylASTUPDATE != null)
+                {
+                    body["LAST_UPDATE"] = SourceExpressionConverter.ConvertToken(bodylASTUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodylICENSEVERSION != null)
+                {
+                    body["LICENSE_VERSION"] = SourceExpressionConverter.ConvertToken(bodylICENSEVERSION);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONID != null)
+                {
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodymAINTENANCECOST != null)
+                {
+                    body["MAINTENANCE_COST"] = SourceExpressionConverter.ConvertToken(bodymAINTENANCECOST);
+                    bodypropCount++;
+                }
+
+                if (bodymAINTENANCECOSTCURID != null)
+                {
+                    body["MAINTENANCE_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymAINTENANCECOSTCURID);
+                    bodypropCount++;
+                }
+
+                if (bodymAINUSAGEID != null)
+                {
+                    body["MAIN_USAGE_ID"] = SourceExpressionConverter.ConvertToken(bodymAINUSAGEID);
+                    bodypropCount++;
+                }
+
+                if (bodymAXINSTALLS != null)
+                {
+                    body["MAX_INSTALLS"] = SourceExpressionConverter.ConvertToken(bodymAXINSTALLS);
+                    bodypropCount++;
+                }
+
+                if (bodymONTHLYFIXEDCOST != null)
+                {
+                    body["MONTHLY_FIXED_COST"] = SourceExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOST);
+                    bodypropCount++;
+                }
+
+                if (bodymONTHLYFIXEDCOSTCURID != null)
+                {
+                    body["MONTHLY_FIXED_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYFIXEDCOSTCURID);
+                    bodypropCount++;
+                }
+
+                if (bodymONTHLYNETRENTAL != null)
+                {
+                    body["MONTHLY_NET_RENTAL"] = SourceExpressionConverter.ConvertToken(bodymONTHLYNETRENTAL);
+                    bodypropCount++;
+                }
+
+                if (bodymONTHLYNETRENTALCURID != null)
+                {
+                    body["MONTHLY_NET_RENTAL_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodymONTHLYNETRENTALCURID);
+                    bodypropCount++;
+                }
+
+                if (bodymONTHDURATION != null)
+                {
+                    body["MONTH_DURATION"] = SourceExpressionConverter.ConvertToken(bodymONTHDURATION);
+                    bodypropCount++;
+                }
+
+                if (bodynETWORKIDENTIFIER != null)
+                {
+                    body["NETWORK_IDENTIFIER"] = SourceExpressionConverter.ConvertToken(bodynETWORKIDENTIFIER);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTDEPARTMENTID != null)
+                {
+                    body["NEXT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTDEPARTMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTMAINTENANCEDATE != null)
+                {
+                    body["NEXT_MAINTENANCE_DATE"] = SourceExpressionConverter.ConvertToken(bodynEXTMAINTENANCEDATE);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTSTATUSID != null)
+                {
+                    body["NEXT_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTSTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTUSERAPPLICATIONDATE != null)
+                {
+                    body["NEXT_USER_APPLICATION_DATE"] = SourceExpressionConverter.ConvertToken(bodynEXTUSERAPPLICATIONDATE);
+                    bodypropCount++;
+                }
+
+                if (bodynEXTUSERID != null)
+                {
+                    body["NEXT_USER_ID"] = SourceExpressionConverter.ConvertToken(bodynEXTUSERID);
+                    bodypropCount++;
+                }
+
+                if (bodynOTICE != null)
+                {
+                    body["NOTICE"] = SourceExpressionConverter.ConvertToken(bodynOTICE);
+                    bodypropCount++;
+                }
+
+                if (bodyoRDERDETAILSID != null)
+                {
+                    body["ORDER_DETAILS_ID"] = SourceExpressionConverter.ConvertToken(bodyoRDERDETAILSID);
+                    bodypropCount++;
+                }
+
+                if (bodyoRDERNUMBER != null)
+                {
+                    body["ORDER_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyoRDERNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodypIPELINESTATUSID != null)
+                {
+                    body["PIPELINE_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodypIPELINESTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodypOWERCONSUMPTIONWH != null)
+                {
+                    body["POWER_CONSUMPTION_WH"] = SourceExpressionConverter.ConvertToken(bodypOWERCONSUMPTIONWH);
+                    bodypropCount++;
+                }
+
+                if (bodypROCESSORCOUNT != null)
+                {
+                    body["PROCESSOR_COUNT"] = SourceExpressionConverter.ConvertToken(bodypROCESSORCOUNT);
+                    bodypropCount++;
+                }
+
+                if (bodypROCESSORSOCKETCOUNT != null)
+                {
+                    body["PROCESSOR_SOCKET_COUNT"] = SourceExpressionConverter.ConvertToken(bodypROCESSORSOCKETCOUNT);
+                    bodypropCount++;
+                }
+
+                if (bodypURCHASEDATE != null)
+                {
+                    body["PURCHASE_DATE"] = SourceExpressionConverter.ConvertToken(bodypURCHASEDATE);
+                    bodypropCount++;
+                }
+
+                if (bodypURCHASEPRICE != null)
+                {
+                    body["PURCHASE_PRICE"] = SourceExpressionConverter.ConvertToken(bodypURCHASEPRICE);
+                    bodypropCount++;
+                }
+
+                if (bodypURCHASEPRICECURID != null)
+                {
+                    body["PURCHASE_PRICE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASEPRICECURID);
+                    bodypropCount++;
+                }
+
+                if (bodypURCHASERATEID != null)
+                {
+                    body["PURCHASE_RATE_ID"] = SourceExpressionConverter.ConvertToken(bodypURCHASERATEID);
+                    bodypropCount++;
+                }
+
+                if (bodyrECYCLEDDATE != null)
+                {
+                    body["RECYCLED_DATE"] = SourceExpressionConverter.ConvertToken(bodyrECYCLEDDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyrECYCLINGPROVIDERID != null)
+                {
+                    body["RECYCLING_PROVIDER_ID"] = SourceExpressionConverter.ConvertToken(bodyrECYCLINGPROVIDERID);
+                    bodypropCount++;
+                }
+
+                if (bodyrEFORMNUMBER != null)
+                {
+                    body["REFORM_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyrEFORMNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyrEMOVEDDATE != null)
+                {
+                    body["REMOVED_DATE"] = SourceExpressionConverter.ConvertToken(bodyrEMOVEDDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyrENEWALDECISIONID != null)
+                {
+                    body["RENEWAL_DECISION_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALDECISIONID);
+                    bodypropCount++;
+                }
+
+                if (bodyrENEWALVALUE != null)
+                {
+                    body["RENEWAL_VALUE"] = SourceExpressionConverter.ConvertToken(bodyrENEWALVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodyrENEWALVALUECURID != null)
+                {
+                    body["RENEWAL_VALUE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodyrENEWALVALUECURID);
+                    bodypropCount++;
+                }
+
+                if (bodyrEPAIREDBYID != null)
+                {
+                    body["REPAIRED_BY_ID"] = SourceExpressionConverter.ConvertToken(bodyrEPAIREDBYID);
+                    bodypropCount++;
+                }
+
+                if (bodyrESALESVALUE != null)
+                {
+                    body["RESALES_VALUE"] = SourceExpressionConverter.ConvertToken(bodyrESALESVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodysCHEDULEDEND != null)
+                {
+                    body["SCHEDULED_END"] = SourceExpressionConverter.ConvertToken(bodysCHEDULEDEND);
+                    bodypropCount++;
+                }
+
+                if (bodysDCATALOGID != null)
+                {
+                    body["SD_CATALOG_ID"] = SourceExpressionConverter.ConvertToken(bodysDCATALOGID);
+                    bodypropCount++;
+                }
+
+                if (bodysERIALNUMBER != null)
+                {
+                    body["SERIAL_NUMBER"] = SourceExpressionConverter.ConvertToken(bodysERIALNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodysLAID != null)
+                {
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    bodypropCount++;
+                }
+
+                if (bodysTATUSID != null)
+                {
+                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodysUPPLIERID != null)
+                {
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    bodypropCount++;
+                }
+
+                if (bodytERM != null)
+                {
+                    body["TERM"] = SourceExpressionConverter.ConvertToken(bodytERM);
+                    bodypropCount++;
+                }
+
+                if (bodyuPDATECOVERAGETERM != null)
+                {
+                    body["UPDATE_COVERAGE_TERM"] = SourceExpressionConverter.ConvertToken(bodyuPDATECOVERAGETERM);
+                    bodypropCount++;
+                }
+
+                if (bodywARANTYTYPEID != null)
+                {
+                    body["WARANTY_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodywARANTYTYPEID);
+                    bodypropCount++;
+                }
+
+                if (bodyassetLabel != null)
+                {
+                    body["asset_label"] = SourceExpressionConverter.ConvertToken(bodyassetLabel);
+                    bodypropCount++;
+                }
+
+                if (bodyassetTag != null)
+                {
+                    body["asset_tag"] = SourceExpressionConverter.ConvertToken(bodyassetTag);
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticRenewal != null)
+                {
+                    body["automatic_renewal"] = SourceExpressionConverter.ConvertToken(bodyautomaticRenewal);
+                    bodypropCount++;
+                }
+
+                if (bodyavailabilitySlaId != null)
+                {
+                    body["availability_sla_id"] = SourceExpressionConverter.ConvertToken(bodyavailabilitySlaId);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField1 != null)
+                {
+                    body["available_field_1"] = SourceExpressionConverter.ConvertToken(bodyavailableField1);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField2 != null)
+                {
+                    body["available_field_2"] = SourceExpressionConverter.ConvertToken(bodyavailableField2);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField3 != null)
+                {
+                    body["available_field_3"] = SourceExpressionConverter.ConvertToken(bodyavailableField3);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField4 != null)
+                {
+                    body["available_field_4"] = SourceExpressionConverter.ConvertToken(bodyavailableField4);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField5 != null)
+                {
+                    body["available_field_5"] = SourceExpressionConverter.ConvertToken(bodyavailableField5);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField6 != null)
+                {
+                    body["available_field_6"] = SourceExpressionConverter.ConvertToken(bodyavailableField6);
+                    bodypropCount++;
+                }
+
+                if (bodycommentAsset != null)
+                {
+                    body["comment_asset"] = SourceExpressionConverter.ConvertToken(bodycommentAsset);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateAssetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAssetLinksResponse> ViewAssetLinks([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAssetLinksResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<string> DeleteAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateAssetLinkResponse> CreateAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> bodycontractRow = null, [WorkflowExpression] Func<string> bodymonthlyPayment = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
+            SourceExpression.Validate(bodycontractRow, nameof(bodycontractRow), required: false);
+            SourceExpression.Validate(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontractRow != null)
+                {
+                    body["Contract_Row"] = SourceExpressionConverter.ConvertToken(bodycontractRow);
+                    bodypropCount++;
+                }
+
+                if (bodymonthlyPayment != null)
+                {
+                    body["Monthly_Payment"] = SourceExpressionConverter.ConvertToken(bodymonthlyPayment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateAssetLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateAssetLinkResponse> UpdateAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> bodycontractRow = null, [WorkflowExpression] Func<string> bodymonthlyPayment = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
+            SourceExpression.Validate(bodycontractRow, nameof(bodycontractRow), required: false);
+            SourceExpression.Validate(bodymonthlyPayment, nameof(bodymonthlyPayment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontractRow != null)
+                {
+                    body["Contract_Row"] = SourceExpressionConverter.ConvertToken(bodycontractRow);
+                    bodypropCount++;
+                }
+
+                if (bodymonthlyPayment != null)
+                {
+                    body["Monthly_Payment"] = SourceExpressionConverter.ConvertToken(bodymonthlyPayment);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateAssetLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAssetLinkResponse> ViewAssetLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentAssetId, [WorkflowExpression] Func<string> childAssetId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(parentAssetId, nameof(parentAssetId), required: true);
+            SourceExpression.Validate(childAssetId, nameof(childAssetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/asset-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentAssetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childAssetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAssetLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogAssetsListResponse> ViewCatalogAssetsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogAssetsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogAssetResponse> ViewCatalogAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-assets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogAssetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogRequestsListResponse> ViewCatalogRequestsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogRequestsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogRequestsPathListResponse> ViewCatalogRequestsPathList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogRequestsPathListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogRequestPathResponse> ViewCatalogRequestPath([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests-paths/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogRequestPathResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewCatalogRequestResponse> ViewCatalogRequest([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> catalogId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(catalogId, nameof(catalogId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/catalog-requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(catalogId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewCatalogRequestResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewConfigurationItemsListResponse> ViewConfigurationItemsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewConfigurationItemsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewConfigurationItemResponse> ViewConfigurationItem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewConfigurationItemResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewConfigurationItemLinksResponse> ViewConfigurationItemLinks([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewConfigurationItemLinksResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewConfigurationItemLinkResponse> ViewConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
+            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewConfigurationItemLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<string> DeleteConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
+            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateConfigurationItemLinkResponse> CreateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyrelationTypeID, [WorkflowExpression] Func<string> bodyblocking = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
+            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
+            SourceExpression.Validate(bodyrelationTypeID, nameof(bodyrelationTypeID), required: true);
+            SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyblocking != null)
+                {
+                    body["Blocking"] = SourceExpressionConverter.ConvertToken(bodyblocking);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateConfigurationItemLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateConfigurationItemLinkResponse> UpdateConfigurationItemLink([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> parentCiId, [WorkflowExpression] Func<string> childCiId, [WorkflowExpression] Func<string> bodyblocking = null, [WorkflowExpression] Func<string> bodyrelationTypeID = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(parentCiId, nameof(parentCiId), required: true);
+            SourceExpression.Validate(childCiId, nameof(childCiId), required: true);
+            SourceExpression.Validate(bodyblocking, nameof(bodyblocking), required: false);
+            SourceExpression.Validate(bodyrelationTypeID, nameof(bodyrelationTypeID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/configuration-items/{1}/item-links/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(parentCiId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(childCiId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyblocking != null)
+                {
+                    body["Blocking"] = SourceExpressionConverter.ConvertToken(bodyblocking);
+                    bodypropCount++;
+                }
+
+                if (bodyrelationTypeID != null)
+                {
+                    body["Relation_Type_ID"] = SourceExpressionConverter.ConvertToken(bodyrelationTypeID);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateConfigurationItemLinkResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewEntitiesListResponse> ViewEntitiesList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewEntitiesListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewEntityResponse> ViewEntity([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> departmentId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(departmentId, nameof(departmentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(departmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewEntityResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateDepartmentResponse> UpdateDepartment([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> departmentId, [WorkflowExpression] Func<string> bodypARENTDEPARTMENTID = null, [WorkflowExpression] Func<string> bodydEPARTMENTEN = null, [WorkflowExpression] Func<string> bodydEPARTMENTFR = null, [WorkflowExpression] Func<string> bodydEPARTMENTSP = null, [WorkflowExpression] Func<string> bodydEPARTMENTGE = null, [WorkflowExpression] Func<string> bodydEPARTMENTIT = null, [WorkflowExpression] Func<string> bodydEPARTMENTPO = null, [WorkflowExpression] Func<string> bodydEPARTMENTLABEL = null, [WorkflowExpression] Func<string> bodycOMMENTDEPARTMENT = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERID = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydEPARTMENTCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodycURRENCYID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodydEPARTMENTL1 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL2 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL3 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL4 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL5 = null, [WorkflowExpression] Func<string> bodydEPARTMENTL6 = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(departmentId, nameof(departmentId), required: true);
+            SourceExpression.Validate(bodypARENTDEPARTMENTID, nameof(bodypARENTDEPARTMENTID), required: false);
+            SourceExpression.Validate(bodydEPARTMENTEN, nameof(bodydEPARTMENTEN), required: false);
+            SourceExpression.Validate(bodydEPARTMENTFR, nameof(bodydEPARTMENTFR), required: false);
+            SourceExpression.Validate(bodydEPARTMENTSP, nameof(bodydEPARTMENTSP), required: false);
+            SourceExpression.Validate(bodydEPARTMENTGE, nameof(bodydEPARTMENTGE), required: false);
+            SourceExpression.Validate(bodydEPARTMENTIT, nameof(bodydEPARTMENTIT), required: false);
+            SourceExpression.Validate(bodydEPARTMENTPO, nameof(bodydEPARTMENTPO), required: false);
+            SourceExpression.Validate(bodydEPARTMENTLABEL, nameof(bodydEPARTMENTLABEL), required: false);
+            SourceExpression.Validate(bodycOMMENTDEPARTMENT, nameof(bodycOMMENTDEPARTMENT), required: false);
+            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            SourceExpression.Validate(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            SourceExpression.Validate(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
+            SourceExpression.Validate(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
+            SourceExpression.Validate(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
+            SourceExpression.Validate(bodydEPARTMENTCODE, nameof(bodydEPARTMENTCODE), required: false);
+            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            SourceExpression.Validate(bodycURRENCYID, nameof(bodycURRENCYID), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
+            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL1, nameof(bodydEPARTMENTL1), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL2, nameof(bodydEPARTMENTL2), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL3, nameof(bodydEPARTMENTL3), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL4, nameof(bodydEPARTMENTL4), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL5, nameof(bodydEPARTMENTL5), required: false);
+            SourceExpression.Validate(bodydEPARTMENTL6, nameof(bodydEPARTMENTL6), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/departments/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(departmentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypARENTDEPARTMENTID != null)
+                {
+                    body["PARENT_DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTDEPARTMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTEN != null)
+                {
+                    body["DEPARTMENT_EN"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTEN);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTFR != null)
+                {
+                    body["DEPARTMENT_FR"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTFR);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTSP != null)
+                {
+                    body["DEPARTMENT_SP"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTSP);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTGE != null)
+                {
+                    body["DEPARTMENT_GE"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTGE);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTIT != null)
+                {
+                    body["DEPARTMENT_IT"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTIT);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTPO != null)
+                {
+                    body["DEPARTMENT_PO"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTPO);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTLABEL != null)
+                {
+                    body["DEPARTMENT_LABEL"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTLABEL);
+                    bodypropCount++;
+                }
+
+                if (bodycOMMENTDEPARTMENT != null)
+                {
+                    body["COMMENT_DEPARTMENT"] = SourceExpressionConverter.ConvertToken(bodycOMMENTDEPARTMENT);
+                    bodypropCount++;
+                }
+
+                if (bodymANAGERID != null)
+                {
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    bodypropCount++;
+                }
+
+                if (bodydEFAULTCOSTCENTERID != null)
+                {
+                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
+                    bodypropCount++;
+                }
+
+                if (bodysTARTDATE != null)
+                {
+                    body["START_DATE"] = SourceExpressionConverter.ConvertToken(bodysTARTDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyeNDDATE != null)
+                {
+                    body["END_DATE"] = SourceExpressionConverter.ConvertToken(bodyeNDDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyuRLMAP != null)
+                {
+                    body["URL_MAP"] = SourceExpressionConverter.ConvertToken(bodyuRLMAP);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTCODE != null)
+                {
+                    body["DEPARTMENT_CODE"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTCODE);
+                    bodypropCount++;
+                }
+
+                if (bodylASTUPDATE != null)
+                {
+                    body["LAST_UPDATE"] = SourceExpressionConverter.ConvertToken(bodylASTUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodylASTINTEGRATION != null)
+                {
+                    body["LAST_INTEGRATION"] = SourceExpressionConverter.ConvertToken(bodylASTINTEGRATION);
+                    bodypropCount++;
+                }
+
+                if (bodycURRENCYID != null)
+                {
+                    body["CURRENCY_ID"] = SourceExpressionConverter.ConvertToken(bodycURRENCYID);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD1 != null)
+                {
+                    body["AVAILABLE_FIELD_1"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD2 != null)
+                {
+                    body["AVAILABLE_FIELD_2"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD3 != null)
+                {
+                    body["AVAILABLE_FIELD_3"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD4 != null)
+                {
+                    body["AVAILABLE_FIELD_4"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD5 != null)
+                {
+                    body["AVAILABLE_FIELD_5"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD6 != null)
+                {
+                    body["AVAILABLE_FIELD_6"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
+                    bodypropCount++;
+                }
+
+                if (bodysLAID != null)
+                {
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL1 != null)
+                {
+                    body["DEPARTMENT_L1"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL1);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL2 != null)
+                {
+                    body["DEPARTMENT_L2"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL2);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL3 != null)
+                {
+                    body["DEPARTMENT_L3"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL3);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL4 != null)
+                {
+                    body["DEPARTMENT_L4"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL4);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL5 != null)
+                {
+                    body["DEPARTMENT_L5"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL5);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTL6 != null)
+                {
+                    body["DEPARTMENT_L6"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTL6);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateDepartmentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewEmployeesListResponse> ViewEmployeesList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewEmployeesListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateEmployeeResponse> CreateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyemployeesInputItem[]> bodyemployees = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(bodyemployees, nameof(bodyemployees), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemployees != null)
+                {
+                    body["employees"] = SourceExpressionConverter.ConvertToken(bodyemployees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateEmployeeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewEmployeeResponse> ViewEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewEmployeeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateEmployeeResponse> UpdateEmployee([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> employeeId, [WorkflowExpression] Func<string> bodyaPPROVEDTOVALIDATE = null, [WorkflowExpression] Func<string> bodyaVAILABILITYSTATUSID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodybEGINOFCONTRACT = null, [WorkflowExpression] Func<string> bodycELLULARNUMBER = null, [WorkflowExpression] Func<string> bodycHATLOGIN = null, [WorkflowExpression] Func<string> bodycIVILSTATUSID = null, [WorkflowExpression] Func<string> bodycOMMENTEMPLOYEE = null, [WorkflowExpression] Func<string> bodycOSTPERHOUR = null, [WorkflowExpression] Func<string> bodycOSTPERHOURCURID = null, [WorkflowExpression] Func<string> bodydEFAULTCOSTCENTERID = null, [WorkflowExpression] Func<string> bodydELEGATIONFROM = null, [WorkflowExpression] Func<string> bodydELEGATIONID = null, [WorkflowExpression] Func<string> bodydELEGATIONTO = null, [WorkflowExpression] Func<string> bodydEPARTMENTID = null, [WorkflowExpression] Func<string> bodyeNDOFCONTRACT = null, [WorkflowExpression] Func<string> bodyeMAIL = null, [WorkflowExpression] Func<string> bodyfAXNUMBER = null, [WorkflowExpression] Func<string> bodyfUNCTIONID = null, [WorkflowExpression] Func<string> bodyiCQNUMBER = null, [WorkflowExpression] Func<string> bodyiDENTIFICATION = null, [WorkflowExpression] Func<string> bodyiSAUTOMATICSTATUS = null, [WorkflowExpression] Func<string> bodyiTCORRESPONDENT = null, [WorkflowExpression] Func<string> bodylANGUAGEID = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodylASTNAME = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodylOGIN = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodymESSENGERSIGNNAME = null, [WorkflowExpression] Func<string> bodynOTIFICATIONTYPEID = null, [WorkflowExpression] Func<string> bodypASSWDLASTUPDATEUT = null, [WorkflowExpression] Func<string> bodypHONENUMBER = null, [WorkflowExpression] Func<string> bodypICTUREPATH = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodyvALIDATORID = null, [WorkflowExpression] Func<string> bodyvIPLEVELID = null, [WorkflowExpression] Func<string> bodywAVEADDRESS = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(employeeId, nameof(employeeId), required: true);
+            SourceExpression.Validate(bodyaPPROVEDTOVALIDATE, nameof(bodyaPPROVEDTOVALIDATE), required: false);
+            SourceExpression.Validate(bodyaVAILABILITYSTATUSID, nameof(bodyaVAILABILITYSTATUSID), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
+            SourceExpression.Validate(bodybEGINOFCONTRACT, nameof(bodybEGINOFCONTRACT), required: false);
+            SourceExpression.Validate(bodycELLULARNUMBER, nameof(bodycELLULARNUMBER), required: false);
+            SourceExpression.Validate(bodycHATLOGIN, nameof(bodycHATLOGIN), required: false);
+            SourceExpression.Validate(bodycIVILSTATUSID, nameof(bodycIVILSTATUSID), required: false);
+            SourceExpression.Validate(bodycOMMENTEMPLOYEE, nameof(bodycOMMENTEMPLOYEE), required: false);
+            SourceExpression.Validate(bodycOSTPERHOUR, nameof(bodycOSTPERHOUR), required: false);
+            SourceExpression.Validate(bodycOSTPERHOURCURID, nameof(bodycOSTPERHOURCURID), required: false);
+            SourceExpression.Validate(bodydEFAULTCOSTCENTERID, nameof(bodydEFAULTCOSTCENTERID), required: false);
+            SourceExpression.Validate(bodydELEGATIONFROM, nameof(bodydELEGATIONFROM), required: false);
+            SourceExpression.Validate(bodydELEGATIONID, nameof(bodydELEGATIONID), required: false);
+            SourceExpression.Validate(bodydELEGATIONTO, nameof(bodydELEGATIONTO), required: false);
+            SourceExpression.Validate(bodydEPARTMENTID, nameof(bodydEPARTMENTID), required: false);
+            SourceExpression.Validate(bodyeNDOFCONTRACT, nameof(bodyeNDOFCONTRACT), required: false);
+            SourceExpression.Validate(bodyeMAIL, nameof(bodyeMAIL), required: false);
+            SourceExpression.Validate(bodyfAXNUMBER, nameof(bodyfAXNUMBER), required: false);
+            SourceExpression.Validate(bodyfUNCTIONID, nameof(bodyfUNCTIONID), required: false);
+            SourceExpression.Validate(bodyiCQNUMBER, nameof(bodyiCQNUMBER), required: false);
+            SourceExpression.Validate(bodyiDENTIFICATION, nameof(bodyiDENTIFICATION), required: false);
+            SourceExpression.Validate(bodyiSAUTOMATICSTATUS, nameof(bodyiSAUTOMATICSTATUS), required: false);
+            SourceExpression.Validate(bodyiTCORRESPONDENT, nameof(bodyiTCORRESPONDENT), required: false);
+            SourceExpression.Validate(bodylANGUAGEID, nameof(bodylANGUAGEID), required: false);
+            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            SourceExpression.Validate(bodylASTNAME, nameof(bodylASTNAME), required: false);
+            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            SourceExpression.Validate(bodylOGIN, nameof(bodylOGIN), required: false);
+            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            SourceExpression.Validate(bodymESSENGERSIGNNAME, nameof(bodymESSENGERSIGNNAME), required: false);
+            SourceExpression.Validate(bodynOTIFICATIONTYPEID, nameof(bodynOTIFICATIONTYPEID), required: false);
+            SourceExpression.Validate(bodypASSWDLASTUPDATEUT, nameof(bodypASSWDLASTUPDATEUT), required: false);
+            SourceExpression.Validate(bodypHONENUMBER, nameof(bodypHONENUMBER), required: false);
+            SourceExpression.Validate(bodypICTUREPATH, nameof(bodypICTUREPATH), required: false);
+            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            SourceExpression.Validate(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
+            SourceExpression.Validate(bodyvIPLEVELID, nameof(bodyvIPLEVELID), required: false);
+            SourceExpression.Validate(bodywAVEADDRESS, nameof(bodywAVEADDRESS), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/employees/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(employeeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaPPROVEDTOVALIDATE != null)
+                {
+                    body["APPROVED_TO_VALIDATE"] = SourceExpressionConverter.ConvertToken(bodyaPPROVEDTOVALIDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABILITYSTATUSID != null)
+                {
+                    body["AVAILABILITY_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodyaVAILABILITYSTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD1 != null)
+                {
+                    body["AVAILABLE_FIELD_1"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD2 != null)
+                {
+                    body["AVAILABLE_FIELD_2"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD3 != null)
+                {
+                    body["AVAILABLE_FIELD_3"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD4 != null)
+                {
+                    body["AVAILABLE_FIELD_4"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD5 != null)
+                {
+                    body["AVAILABLE_FIELD_5"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD6 != null)
+                {
+                    body["AVAILABLE_FIELD_6"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
+                    bodypropCount++;
+                }
+
+                if (bodybEGINOFCONTRACT != null)
+                {
+                    body["BEGIN_OF_CONTRACT"] = SourceExpressionConverter.ConvertToken(bodybEGINOFCONTRACT);
+                    bodypropCount++;
+                }
+
+                if (bodycELLULARNUMBER != null)
+                {
+                    body["CELLULAR_NUMBER"] = SourceExpressionConverter.ConvertToken(bodycELLULARNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodycHATLOGIN != null)
+                {
+                    body["CHAT_LOGIN"] = SourceExpressionConverter.ConvertToken(bodycHATLOGIN);
+                    bodypropCount++;
+                }
+
+                if (bodycIVILSTATUSID != null)
+                {
+                    body["CIVIL_STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodycIVILSTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodycOMMENTEMPLOYEE != null)
+                {
+                    body["COMMENT_EMPLOYEE"] = SourceExpressionConverter.ConvertToken(bodycOMMENTEMPLOYEE);
+                    bodypropCount++;
+                }
+
+                if (bodycOSTPERHOUR != null)
+                {
+                    body["COST_PER_HOUR"] = SourceExpressionConverter.ConvertToken(bodycOSTPERHOUR);
+                    bodypropCount++;
+                }
+
+                if (bodycOSTPERHOURCURID != null)
+                {
+                    body["COST_PER_HOUR_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycOSTPERHOURCURID);
+                    bodypropCount++;
+                }
+
+                if (bodydEFAULTCOSTCENTERID != null)
+                {
+                    body["DEFAULT_COST_CENTER_ID"] = SourceExpressionConverter.ConvertToken(bodydEFAULTCOSTCENTERID);
+                    bodypropCount++;
+                }
+
+                if (bodydELEGATIONFROM != null)
+                {
+                    body["DELEGATION_FROM"] = SourceExpressionConverter.ConvertToken(bodydELEGATIONFROM);
+                    bodypropCount++;
+                }
+
+                if (bodydELEGATIONID != null)
+                {
+                    body["DELEGATION_ID"] = SourceExpressionConverter.ConvertToken(bodydELEGATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodydELEGATIONTO != null)
+                {
+                    body["DELEGATION_TO"] = SourceExpressionConverter.ConvertToken(bodydELEGATIONTO);
+                    bodypropCount++;
+                }
+
+                if (bodydEPARTMENTID != null)
+                {
+                    body["DEPARTMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydEPARTMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodyeNDOFCONTRACT != null)
+                {
+                    body["END_OF_CONTRACT"] = SourceExpressionConverter.ConvertToken(bodyeNDOFCONTRACT);
+                    bodypropCount++;
+                }
+
+                if (bodyeMAIL != null)
+                {
+                    body["E_MAIL"] = SourceExpressionConverter.ConvertToken(bodyeMAIL);
+                    bodypropCount++;
+                }
+
+                if (bodyfAXNUMBER != null)
+                {
+                    body["FAX_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyfAXNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyfUNCTIONID != null)
+                {
+                    body["FUNCTION_ID"] = SourceExpressionConverter.ConvertToken(bodyfUNCTIONID);
+                    bodypropCount++;
+                }
+
+                if (bodyiCQNUMBER != null)
+                {
+                    body["ICQ_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyiCQNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyiDENTIFICATION != null)
+                {
+                    body["IDENTIFICATION"] = SourceExpressionConverter.ConvertToken(bodyiDENTIFICATION);
+                    bodypropCount++;
+                }
+
+                if (bodyiSAUTOMATICSTATUS != null)
+                {
+                    body["IS_AUTOMATIC_STATUS"] = SourceExpressionConverter.ConvertToken(bodyiSAUTOMATICSTATUS);
+                    bodypropCount++;
+                }
+
+                if (bodyiTCORRESPONDENT != null)
+                {
+                    body["IT_CORRESPONDENT"] = SourceExpressionConverter.ConvertToken(bodyiTCORRESPONDENT);
+                    bodypropCount++;
+                }
+
+                if (bodylANGUAGEID != null)
+                {
+                    body["LANGUAGE_ID"] = SourceExpressionConverter.ConvertToken(bodylANGUAGEID);
+                    bodypropCount++;
+                }
+
+                if (bodylASTINTEGRATION != null)
+                {
+                    body["LAST_INTEGRATION"] = SourceExpressionConverter.ConvertToken(bodylASTINTEGRATION);
+                    bodypropCount++;
+                }
+
+                if (bodylASTNAME != null)
+                {
+                    body["LAST_NAME"] = SourceExpressionConverter.ConvertToken(bodylASTNAME);
+                    bodypropCount++;
+                }
+
+                if (bodylASTUPDATE != null)
+                {
+                    body["LAST_UPDATE"] = SourceExpressionConverter.ConvertToken(bodylASTUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONID != null)
+                {
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodylOGIN != null)
+                {
+                    body["LOGIN"] = SourceExpressionConverter.ConvertToken(bodylOGIN);
+                    bodypropCount++;
+                }
+
+                if (bodymANAGERID != null)
+                {
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    bodypropCount++;
+                }
+
+                if (bodymESSENGERSIGNNAME != null)
+                {
+                    body["MESSENGER_SIGN_NAME"] = SourceExpressionConverter.ConvertToken(bodymESSENGERSIGNNAME);
+                    bodypropCount++;
+                }
+
+                if (bodynOTIFICATIONTYPEID != null)
+                {
+                    body["NOTIFICATION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodynOTIFICATIONTYPEID);
+                    bodypropCount++;
+                }
+
+                if (bodypASSWDLASTUPDATEUT != null)
+                {
+                    body["PASSWD_LAST_UPDATE_UT"] = SourceExpressionConverter.ConvertToken(bodypASSWDLASTUPDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodypHONENUMBER != null)
+                {
+                    body["PHONE_NUMBER"] = SourceExpressionConverter.ConvertToken(bodypHONENUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodypICTUREPATH != null)
+                {
+                    body["PICTURE_PATH"] = SourceExpressionConverter.ConvertToken(bodypICTUREPATH);
+                    bodypropCount++;
+                }
+
+                if (bodysUPPLIERID != null)
+                {
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    bodypropCount++;
+                }
+
+                if (bodyvALIDATORID != null)
+                {
+                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIDATORID);
+                    bodypropCount++;
+                }
+
+                if (bodyvIPLEVELID != null)
+                {
+                    body["VIP_LEVEL_ID"] = SourceExpressionConverter.ConvertToken(bodyvIPLEVELID);
+                    bodypropCount++;
+                }
+
+                if (bodywAVEADDRESS != null)
+                {
+                    body["WAVE_ADDRESS"] = SourceExpressionConverter.ConvertToken(bodywAVEADDRESS);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateEmployeeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewKnownErrorsListResponse> ViewKnownErrorsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewKnownErrorsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewKnownErrorsResponse> ViewKnownErrors([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> kpId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(kpId, nameof(kpId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/knownerrors/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(kpId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewKnownErrorsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewLocationsListResponse> ViewLocationsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewLocationsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewLocationResponse> ViewLocation([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> locationId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(locationId, nameof(locationId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewLocationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateLocationResponse> UpdateLocation([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> locationId, [WorkflowExpression] Func<string> bodypARENTLOCATIONID = null, [WorkflowExpression] Func<string> bodymANAGERID = null, [WorkflowExpression] Func<string> bodylOCATIONEN = null, [WorkflowExpression] Func<string> bodylOCATIONFR = null, [WorkflowExpression] Func<string> bodylOCATIONGE = null, [WorkflowExpression] Func<string> bodylOCATIONSP = null, [WorkflowExpression] Func<string> bodylOCATIONIT = null, [WorkflowExpression] Func<string> bodylOCATIONPO = null, [WorkflowExpression] Func<string> bodysTREETADDRESS1 = null, [WorkflowExpression] Func<string> bodysTREETADDRESS2 = null, [WorkflowExpression] Func<string> bodycITY = null, [WorkflowExpression] Func<string> bodypHONE = null, [WorkflowExpression] Func<string> bodyzIPCODE = null, [WorkflowExpression] Func<string> bodyfAX = null, [WorkflowExpression] Func<string> bodycOMMENTLOCATION = null, [WorkflowExpression] Func<string> bodyrEGIONZONEID = null, [WorkflowExpression] Func<string> bodycOUNTRYID = null, [WorkflowExpression] Func<string> bodysTATEID = null, [WorkflowExpression] Func<string> bodysTARTDATE = null, [WorkflowExpression] Func<string> bodyeNDDATE = null, [WorkflowExpression] Func<string> bodyuRLMAP = null, [WorkflowExpression] Func<string> bodydISCOVERYNAME = null, [WorkflowExpression] Func<string> bodylOCATIONCODE = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodylASTINTEGRATION = null, [WorkflowExpression] Func<string> bodyiSDELIVERYADDRESS = null, [WorkflowExpression] Func<string> bodytIMEZONEID = null, [WorkflowExpression] Func<string> bodysTATUSID = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodysLAID = null, [WorkflowExpression] Func<string> bodygMAPLAT = null, [WorkflowExpression] Func<string> bodygMAPLNG = null, [WorkflowExpression] Func<string> bodylOCATIONL1 = null, [WorkflowExpression] Func<string> bodylOCATIONL2 = null, [WorkflowExpression] Func<string> bodylOCATIONL3 = null, [WorkflowExpression] Func<string> bodylOCATIONL4 = null, [WorkflowExpression] Func<string> bodylOCATIONL5 = null, [WorkflowExpression] Func<string> bodylOCATIONL6 = null, [WorkflowExpression] Func<string> bodyeISMEETINGROOM = null, [WorkflowExpression] Func<string> bodyeCAPACITY = null, [WorkflowExpression] Func<string> bodyeWIFILOGIN = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(locationId, nameof(locationId), required: true);
+            SourceExpression.Validate(bodypARENTLOCATIONID, nameof(bodypARENTLOCATIONID), required: false);
+            SourceExpression.Validate(bodymANAGERID, nameof(bodymANAGERID), required: false);
+            SourceExpression.Validate(bodylOCATIONEN, nameof(bodylOCATIONEN), required: false);
+            SourceExpression.Validate(bodylOCATIONFR, nameof(bodylOCATIONFR), required: false);
+            SourceExpression.Validate(bodylOCATIONGE, nameof(bodylOCATIONGE), required: false);
+            SourceExpression.Validate(bodylOCATIONSP, nameof(bodylOCATIONSP), required: false);
+            SourceExpression.Validate(bodylOCATIONIT, nameof(bodylOCATIONIT), required: false);
+            SourceExpression.Validate(bodylOCATIONPO, nameof(bodylOCATIONPO), required: false);
+            SourceExpression.Validate(bodysTREETADDRESS1, nameof(bodysTREETADDRESS1), required: false);
+            SourceExpression.Validate(bodysTREETADDRESS2, nameof(bodysTREETADDRESS2), required: false);
+            SourceExpression.Validate(bodycITY, nameof(bodycITY), required: false);
+            SourceExpression.Validate(bodypHONE, nameof(bodypHONE), required: false);
+            SourceExpression.Validate(bodyzIPCODE, nameof(bodyzIPCODE), required: false);
+            SourceExpression.Validate(bodyfAX, nameof(bodyfAX), required: false);
+            SourceExpression.Validate(bodycOMMENTLOCATION, nameof(bodycOMMENTLOCATION), required: false);
+            SourceExpression.Validate(bodyrEGIONZONEID, nameof(bodyrEGIONZONEID), required: false);
+            SourceExpression.Validate(bodycOUNTRYID, nameof(bodycOUNTRYID), required: false);
+            SourceExpression.Validate(bodysTATEID, nameof(bodysTATEID), required: false);
+            SourceExpression.Validate(bodysTARTDATE, nameof(bodysTARTDATE), required: false);
+            SourceExpression.Validate(bodyeNDDATE, nameof(bodyeNDDATE), required: false);
+            SourceExpression.Validate(bodyuRLMAP, nameof(bodyuRLMAP), required: false);
+            SourceExpression.Validate(bodydISCOVERYNAME, nameof(bodydISCOVERYNAME), required: false);
+            SourceExpression.Validate(bodylOCATIONCODE, nameof(bodylOCATIONCODE), required: false);
+            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            SourceExpression.Validate(bodylASTINTEGRATION, nameof(bodylASTINTEGRATION), required: false);
+            SourceExpression.Validate(bodyiSDELIVERYADDRESS, nameof(bodyiSDELIVERYADDRESS), required: false);
+            SourceExpression.Validate(bodytIMEZONEID, nameof(bodytIMEZONEID), required: false);
+            SourceExpression.Validate(bodysTATUSID, nameof(bodysTATUSID), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
+            SourceExpression.Validate(bodysLAID, nameof(bodysLAID), required: false);
+            SourceExpression.Validate(bodygMAPLAT, nameof(bodygMAPLAT), required: false);
+            SourceExpression.Validate(bodygMAPLNG, nameof(bodygMAPLNG), required: false);
+            SourceExpression.Validate(bodylOCATIONL1, nameof(bodylOCATIONL1), required: false);
+            SourceExpression.Validate(bodylOCATIONL2, nameof(bodylOCATIONL2), required: false);
+            SourceExpression.Validate(bodylOCATIONL3, nameof(bodylOCATIONL3), required: false);
+            SourceExpression.Validate(bodylOCATIONL4, nameof(bodylOCATIONL4), required: false);
+            SourceExpression.Validate(bodylOCATIONL5, nameof(bodylOCATIONL5), required: false);
+            SourceExpression.Validate(bodylOCATIONL6, nameof(bodylOCATIONL6), required: false);
+            SourceExpression.Validate(bodyeISMEETINGROOM, nameof(bodyeISMEETINGROOM), required: false);
+            SourceExpression.Validate(bodyeCAPACITY, nameof(bodyeCAPACITY), required: false);
+            SourceExpression.Validate(bodyeWIFILOGIN, nameof(bodyeWIFILOGIN), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/locations/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(locationId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypARENTLOCATIONID != null)
+                {
+                    body["PARENT_LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTLOCATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodymANAGERID != null)
+                {
+                    body["MANAGER_ID"] = SourceExpressionConverter.ConvertToken(bodymANAGERID);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONEN != null)
+                {
+                    body["LOCATION_EN"] = SourceExpressionConverter.ConvertToken(bodylOCATIONEN);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONFR != null)
+                {
+                    body["LOCATION_FR"] = SourceExpressionConverter.ConvertToken(bodylOCATIONFR);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONGE != null)
+                {
+                    body["LOCATION_GE"] = SourceExpressionConverter.ConvertToken(bodylOCATIONGE);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONSP != null)
+                {
+                    body["LOCATION_SP"] = SourceExpressionConverter.ConvertToken(bodylOCATIONSP);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONIT != null)
+                {
+                    body["LOCATION_IT"] = SourceExpressionConverter.ConvertToken(bodylOCATIONIT);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONPO != null)
+                {
+                    body["LOCATION_PO"] = SourceExpressionConverter.ConvertToken(bodylOCATIONPO);
+                    bodypropCount++;
+                }
+
+                if (bodysTREETADDRESS1 != null)
+                {
+                    body["STREET_ADDRESS_1"] = SourceExpressionConverter.ConvertToken(bodysTREETADDRESS1);
+                    bodypropCount++;
+                }
+
+                if (bodysTREETADDRESS2 != null)
+                {
+                    body["STREET_ADDRESS_2"] = SourceExpressionConverter.ConvertToken(bodysTREETADDRESS2);
+                    bodypropCount++;
+                }
+
+                if (bodycITY != null)
+                {
+                    body["CITY"] = SourceExpressionConverter.ConvertToken(bodycITY);
+                    bodypropCount++;
+                }
+
+                if (bodypHONE != null)
+                {
+                    body["PHONE"] = SourceExpressionConverter.ConvertToken(bodypHONE);
+                    bodypropCount++;
+                }
+
+                if (bodyzIPCODE != null)
+                {
+                    body["ZIP_CODE"] = SourceExpressionConverter.ConvertToken(bodyzIPCODE);
+                    bodypropCount++;
+                }
+
+                if (bodyfAX != null)
+                {
+                    body["FAX"] = SourceExpressionConverter.ConvertToken(bodyfAX);
+                    bodypropCount++;
+                }
+
+                if (bodycOMMENTLOCATION != null)
+                {
+                    body["COMMENT_LOCATION"] = SourceExpressionConverter.ConvertToken(bodycOMMENTLOCATION);
+                    bodypropCount++;
+                }
+
+                if (bodyrEGIONZONEID != null)
+                {
+                    body["REGION_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodyrEGIONZONEID);
+                    bodypropCount++;
+                }
+
+                if (bodycOUNTRYID != null)
+                {
+                    body["COUNTRY_ID"] = SourceExpressionConverter.ConvertToken(bodycOUNTRYID);
+                    bodypropCount++;
+                }
+
+                if (bodysTATEID != null)
+                {
+                    body["STATE_ID"] = SourceExpressionConverter.ConvertToken(bodysTATEID);
+                    bodypropCount++;
+                }
+
+                if (bodysTARTDATE != null)
+                {
+                    body["START_DATE"] = SourceExpressionConverter.ConvertToken(bodysTARTDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyeNDDATE != null)
+                {
+                    body["END_DATE"] = SourceExpressionConverter.ConvertToken(bodyeNDDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyuRLMAP != null)
+                {
+                    body["URL_MAP"] = SourceExpressionConverter.ConvertToken(bodyuRLMAP);
+                    bodypropCount++;
+                }
+
+                if (bodydISCOVERYNAME != null)
+                {
+                    body["DISCOVERY_NAME"] = SourceExpressionConverter.ConvertToken(bodydISCOVERYNAME);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONCODE != null)
+                {
+                    body["LOCATION_CODE"] = SourceExpressionConverter.ConvertToken(bodylOCATIONCODE);
+                    bodypropCount++;
+                }
+
+                if (bodylASTUPDATE != null)
+                {
+                    body["LAST_UPDATE"] = SourceExpressionConverter.ConvertToken(bodylASTUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodylASTINTEGRATION != null)
+                {
+                    body["LAST_INTEGRATION"] = SourceExpressionConverter.ConvertToken(bodylASTINTEGRATION);
+                    bodypropCount++;
+                }
+
+                if (bodyiSDELIVERYADDRESS != null)
+                {
+                    body["IS_DELIVERY_ADDRESS"] = SourceExpressionConverter.ConvertToken(bodyiSDELIVERYADDRESS);
+                    bodypropCount++;
+                }
+
+                if (bodytIMEZONEID != null)
+                {
+                    body["TIME_ZONE_ID"] = SourceExpressionConverter.ConvertToken(bodytIMEZONEID);
+                    bodypropCount++;
+                }
+
+                if (bodysTATUSID != null)
+                {
+                    body["STATUS_ID"] = SourceExpressionConverter.ConvertToken(bodysTATUSID);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD1 != null)
+                {
+                    body["AVAILABLE_FIELD_1"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD2 != null)
+                {
+                    body["AVAILABLE_FIELD_2"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD3 != null)
+                {
+                    body["AVAILABLE_FIELD_3"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD4 != null)
+                {
+                    body["AVAILABLE_FIELD_4"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD5 != null)
+                {
+                    body["AVAILABLE_FIELD_5"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD6 != null)
+                {
+                    body["AVAILABLE_FIELD_6"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
+                    bodypropCount++;
+                }
+
+                if (bodysLAID != null)
+                {
+                    body["SLA_ID"] = SourceExpressionConverter.ConvertToken(bodysLAID);
+                    bodypropCount++;
+                }
+
+                if (bodygMAPLAT != null)
+                {
+                    body["G_MAP_LAT"] = SourceExpressionConverter.ConvertToken(bodygMAPLAT);
+                    bodypropCount++;
+                }
+
+                if (bodygMAPLNG != null)
+                {
+                    body["G_MAP_LNG"] = SourceExpressionConverter.ConvertToken(bodygMAPLNG);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL1 != null)
+                {
+                    body["LOCATION_L1"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL1);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL2 != null)
+                {
+                    body["LOCATION_L2"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL2);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL3 != null)
+                {
+                    body["LOCATION_L3"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL3);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL4 != null)
+                {
+                    body["LOCATION_L4"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL4);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL5 != null)
+                {
+                    body["LOCATION_L5"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL5);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONL6 != null)
+                {
+                    body["LOCATION_L6"] = SourceExpressionConverter.ConvertToken(bodylOCATIONL6);
+                    bodypropCount++;
+                }
+
+                if (bodyeISMEETINGROOM != null)
+                {
+                    body["E_IS_MEETING_ROOM"] = SourceExpressionConverter.ConvertToken(bodyeISMEETINGROOM);
+                    bodypropCount++;
+                }
+
+                if (bodyeCAPACITY != null)
+                {
+                    body["E_CAPACITY"] = SourceExpressionConverter.ConvertToken(bodyeCAPACITY);
+                    bodypropCount++;
+                }
+
+                if (bodyeWIFILOGIN != null)
+                {
+                    body["E_WIFI_LOGIN"] = SourceExpressionConverter.ConvertToken(bodyeWIFILOGIN);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateLocationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewManufacturerListResponse> ViewManufacturerList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewManufacturerListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewManufacturerResponse> ViewManufacturer([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> manufacturerId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(manufacturerId, nameof(manufacturerId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/manufacturers/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(manufacturerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewManufacturerResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewRequestsIncidentsListResponse> ViewRequestsIncidentsList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewRequestsIncidentsListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateRequestIncidentResponse> CreateRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(bodyrequests, nameof(bodyrequests), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyrequests != null)
+                {
+                    body["requests"] = SourceExpressionConverter.ConvertToken(bodyrequests);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewRequestIncidentResponse> ViewRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CloseRequestIncidentResponse> CloseRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<bodyclosedInputItem[]> bodyclosed = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodyclosed, nameof(bodyclosed), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyclosed != null)
+                {
+                    body["closed"] = SourceExpressionConverter.ConvertToken(bodyclosed);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CloseRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateRequestIncidentResponse> UpdateRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyanalyticalChargeId = null, [WorkflowExpression] Func<string> bodyassetId = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodybudgetPlanned = null, [WorkflowExpression] Func<string> bodycanBeDuplicated = null, [WorkflowExpression] Func<string> bodyciId = null, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodycontinuityPlanId = null, [WorkflowExpression] Func<string> bodycostCenterId = null, [WorkflowExpression] Func<string> bodycreationDateUt = null, [WorkflowExpression] Func<string> bodydelay = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydynamicDetails = null, [WorkflowExpression] Func<string> bodyeffectiveChangeDateEnd = null, [WorkflowExpression] Func<string> bodyeffectiveChangeDateStart = null, [WorkflowExpression] Func<string> bodyendDateUt = null, [WorkflowExpression] Func<string> bodyestimatedNetPrice = null, [WorkflowExpression] Func<string> bodyexpectedDateUt = null, [WorkflowExpression] Func<string> bodyexpectedDuration = null, [WorkflowExpression] Func<string> bodyexpectedEndDateUt = null, [WorkflowExpression] Func<string> bodyexpectedStartDateUt = null, [WorkflowExpression] Func<string> bodyexternalReference = null, [WorkflowExpression] Func<string> bodyfirstCallResolution = null, [WorkflowExpression] Func<string> bodyhourPerDay = null, [WorkflowExpression] Func<string> bodyimpactId = null, [WorkflowExpression] Func<string> bodyimputationDate = null, [WorkflowExpression] Func<string> bodyisMajorIncident = null, [WorkflowExpression] Func<string> bodyisTemplate = null, [WorkflowExpression] Func<string> bodyknownProblemsId = null, [WorkflowExpression] Func<string> bodylastUpdate = null, [WorkflowExpression] Func<string> bodymark1 = null, [WorkflowExpression] Func<string> bodymark2 = null, [WorkflowExpression] Func<string> bodymaxResolutionDateUt = null, [WorkflowExpression] Func<string> bodymsProjectImportValidationWaiting = null, [WorkflowExpression] Func<string> bodynetPrice = null, [WorkflowExpression] Func<string> bodynetPriceCurId = null, [WorkflowExpression] Func<string> bodyoriginToolId = null, [WorkflowExpression] Func<string> bodyownerId = null, [WorkflowExpression] Func<string> bodyowningGroupId = null, [WorkflowExpression] Func<string> bodyplannedChangeDateEnd = null, [WorkflowExpression] Func<string> bodyplannedChangeDateStart = null, [WorkflowExpression] Func<string> bodypmStatusId = null, [WorkflowExpression] Func<string> bodyprojectName = null, [WorkflowExpression] Func<string> bodyprojectStartDateUt = null, [WorkflowExpression] Func<string> bodyqty = null, [WorkflowExpression] Func<string> bodyreleaseId = null, [WorkflowExpression] Func<string> bodyrentalNetPrice = null, [WorkflowExpression] Func<string> bodyrentalNetPriceCurId = null, [WorkflowExpression] Func<string> bodyrequestOriginId = null, [WorkflowExpression] Func<string> bodyrequestedChangeDateEnd = null, [WorkflowExpression] Func<string> bodyrequestedChangeDateStart = null, [WorkflowExpression] Func<string> bodyrequestorId = null, [WorkflowExpression] Func<string> bodyrequestorIpAddress = null, [WorkflowExpression] Func<string> bodyrequestorPhone = null, [WorkflowExpression] Func<string> bodyriskAmount = null, [WorkflowExpression] Func<string> bodyriskDescription = null, [WorkflowExpression] Func<string> bodyriskLevelId = null, [WorkflowExpression] Func<string> bodyrootCauseId = null, [WorkflowExpression] Func<string> bodysubmitDateUt = null, [WorkflowExpression] Func<string> bodytimeUsedToSolveRequest = null, [WorkflowExpression] Func<string> bodytitle = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodyanalyticalChargeId, nameof(bodyanalyticalChargeId), required: false);
+            SourceExpression.Validate(bodyassetId, nameof(bodyassetId), required: false);
+            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            SourceExpression.Validate(bodybudgetPlanned, nameof(bodybudgetPlanned), required: false);
+            SourceExpression.Validate(bodycanBeDuplicated, nameof(bodycanBeDuplicated), required: false);
+            SourceExpression.Validate(bodyciId, nameof(bodyciId), required: false);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodycontinuityPlanId, nameof(bodycontinuityPlanId), required: false);
+            SourceExpression.Validate(bodycostCenterId, nameof(bodycostCenterId), required: false);
+            SourceExpression.Validate(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
+            SourceExpression.Validate(bodydelay, nameof(bodydelay), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodydynamicDetails, nameof(bodydynamicDetails), required: false);
+            SourceExpression.Validate(bodyeffectiveChangeDateEnd, nameof(bodyeffectiveChangeDateEnd), required: false);
+            SourceExpression.Validate(bodyeffectiveChangeDateStart, nameof(bodyeffectiveChangeDateStart), required: false);
+            SourceExpression.Validate(bodyendDateUt, nameof(bodyendDateUt), required: false);
+            SourceExpression.Validate(bodyestimatedNetPrice, nameof(bodyestimatedNetPrice), required: false);
+            SourceExpression.Validate(bodyexpectedDateUt, nameof(bodyexpectedDateUt), required: false);
+            SourceExpression.Validate(bodyexpectedDuration, nameof(bodyexpectedDuration), required: false);
+            SourceExpression.Validate(bodyexpectedEndDateUt, nameof(bodyexpectedEndDateUt), required: false);
+            SourceExpression.Validate(bodyexpectedStartDateUt, nameof(bodyexpectedStartDateUt), required: false);
+            SourceExpression.Validate(bodyexternalReference, nameof(bodyexternalReference), required: false);
+            SourceExpression.Validate(bodyfirstCallResolution, nameof(bodyfirstCallResolution), required: false);
+            SourceExpression.Validate(bodyhourPerDay, nameof(bodyhourPerDay), required: false);
+            SourceExpression.Validate(bodyimpactId, nameof(bodyimpactId), required: false);
+            SourceExpression.Validate(bodyimputationDate, nameof(bodyimputationDate), required: false);
+            SourceExpression.Validate(bodyisMajorIncident, nameof(bodyisMajorIncident), required: false);
+            SourceExpression.Validate(bodyisTemplate, nameof(bodyisTemplate), required: false);
+            SourceExpression.Validate(bodyknownProblemsId, nameof(bodyknownProblemsId), required: false);
+            SourceExpression.Validate(bodylastUpdate, nameof(bodylastUpdate), required: false);
+            SourceExpression.Validate(bodymark1, nameof(bodymark1), required: false);
+            SourceExpression.Validate(bodymark2, nameof(bodymark2), required: false);
+            SourceExpression.Validate(bodymaxResolutionDateUt, nameof(bodymaxResolutionDateUt), required: false);
+            SourceExpression.Validate(bodymsProjectImportValidationWaiting, nameof(bodymsProjectImportValidationWaiting), required: false);
+            SourceExpression.Validate(bodynetPrice, nameof(bodynetPrice), required: false);
+            SourceExpression.Validate(bodynetPriceCurId, nameof(bodynetPriceCurId), required: false);
+            SourceExpression.Validate(bodyoriginToolId, nameof(bodyoriginToolId), required: false);
+            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
+            SourceExpression.Validate(bodyowningGroupId, nameof(bodyowningGroupId), required: false);
+            SourceExpression.Validate(bodyplannedChangeDateEnd, nameof(bodyplannedChangeDateEnd), required: false);
+            SourceExpression.Validate(bodyplannedChangeDateStart, nameof(bodyplannedChangeDateStart), required: false);
+            SourceExpression.Validate(bodypmStatusId, nameof(bodypmStatusId), required: false);
+            SourceExpression.Validate(bodyprojectName, nameof(bodyprojectName), required: false);
+            SourceExpression.Validate(bodyprojectStartDateUt, nameof(bodyprojectStartDateUt), required: false);
+            SourceExpression.Validate(bodyqty, nameof(bodyqty), required: false);
+            SourceExpression.Validate(bodyreleaseId, nameof(bodyreleaseId), required: false);
+            SourceExpression.Validate(bodyrentalNetPrice, nameof(bodyrentalNetPrice), required: false);
+            SourceExpression.Validate(bodyrentalNetPriceCurId, nameof(bodyrentalNetPriceCurId), required: false);
+            SourceExpression.Validate(bodyrequestOriginId, nameof(bodyrequestOriginId), required: false);
+            SourceExpression.Validate(bodyrequestedChangeDateEnd, nameof(bodyrequestedChangeDateEnd), required: false);
+            SourceExpression.Validate(bodyrequestedChangeDateStart, nameof(bodyrequestedChangeDateStart), required: false);
+            SourceExpression.Validate(bodyrequestorId, nameof(bodyrequestorId), required: false);
+            SourceExpression.Validate(bodyrequestorIpAddress, nameof(bodyrequestorIpAddress), required: false);
+            SourceExpression.Validate(bodyrequestorPhone, nameof(bodyrequestorPhone), required: false);
+            SourceExpression.Validate(bodyriskAmount, nameof(bodyriskAmount), required: false);
+            SourceExpression.Validate(bodyriskDescription, nameof(bodyriskDescription), required: false);
+            SourceExpression.Validate(bodyriskLevelId, nameof(bodyriskLevelId), required: false);
+            SourceExpression.Validate(bodyrootCauseId, nameof(bodyrootCauseId), required: false);
+            SourceExpression.Validate(bodysubmitDateUt, nameof(bodysubmitDateUt), required: false);
+            SourceExpression.Validate(bodytimeUsedToSolveRequest, nameof(bodytimeUsedToSolveRequest), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyanalyticalChargeId != null)
+                {
+                    body["Analytical_Charge_Id"] = SourceExpressionConverter.ConvertToken(bodyanalyticalChargeId);
+                    bodypropCount++;
+                }
+
+                if (bodyassetId != null)
+                {
+                    body["Asset_Id"] = SourceExpressionConverter.ConvertToken(bodyassetId);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField1 != null)
+                {
+                    body["Available_Field_1"] = SourceExpressionConverter.ConvertToken(bodyavailableField1);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField2 != null)
+                {
+                    body["Available_Field_2"] = SourceExpressionConverter.ConvertToken(bodyavailableField2);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField3 != null)
+                {
+                    body["Available_Field_3"] = SourceExpressionConverter.ConvertToken(bodyavailableField3);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField4 != null)
+                {
+                    body["Available_Field_4"] = SourceExpressionConverter.ConvertToken(bodyavailableField4);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField5 != null)
+                {
+                    body["Available_Field_5"] = SourceExpressionConverter.ConvertToken(bodyavailableField5);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField6 != null)
+                {
+                    body["Available_Field_6"] = SourceExpressionConverter.ConvertToken(bodyavailableField6);
+                    bodypropCount++;
+                }
+
+                if (bodybudgetPlanned != null)
+                {
+                    body["Budget_Planned"] = SourceExpressionConverter.ConvertToken(bodybudgetPlanned);
+                    bodypropCount++;
+                }
+
+                if (bodycanBeDuplicated != null)
+                {
+                    body["Can_Be_Duplicated"] = SourceExpressionConverter.ConvertToken(bodycanBeDuplicated);
+                    bodypropCount++;
+                }
+
+                if (bodyciId != null)
+                {
+                    body["Ci_Id"] = SourceExpressionConverter.ConvertToken(bodyciId);
+                    bodypropCount++;
+                }
+
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodycontinuityPlanId != null)
+                {
+                    body["Continuity_Plan_Id"] = SourceExpressionConverter.ConvertToken(bodycontinuityPlanId);
+                    bodypropCount++;
+                }
+
+                if (bodycostCenterId != null)
+                {
+                    body["Cost_Center_Id"] = SourceExpressionConverter.ConvertToken(bodycostCenterId);
+                    bodypropCount++;
+                }
+
+                if (bodycreationDateUt != null)
+                {
+                    body["Creation_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodycreationDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodydelay != null)
+                {
+                    body["Delay"] = SourceExpressionConverter.ConvertToken(bodydelay);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["Description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodydynamicDetails != null)
+                {
+                    body["Dynamic_Details"] = SourceExpressionConverter.ConvertToken(bodydynamicDetails);
+                    bodypropCount++;
+                }
+
+                if (bodyeffectiveChangeDateEnd != null)
+                {
+                    body["Effective_Change_Date_End"] = SourceExpressionConverter.ConvertToken(bodyeffectiveChangeDateEnd);
+                    bodypropCount++;
+                }
+
+                if (bodyeffectiveChangeDateStart != null)
+                {
+                    body["Effective_Change_Date_Start"] = SourceExpressionConverter.ConvertToken(bodyeffectiveChangeDateStart);
+                    bodypropCount++;
+                }
+
+                if (bodyendDateUt != null)
+                {
+                    body["End_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodyendDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodyestimatedNetPrice != null)
+                {
+                    body["Estimated_Net_Price"] = SourceExpressionConverter.ConvertToken(bodyestimatedNetPrice);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectedDateUt != null)
+                {
+                    body["Expected_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodyexpectedDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectedDuration != null)
+                {
+                    body["Expected_Duration"] = SourceExpressionConverter.ConvertToken(bodyexpectedDuration);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectedEndDateUt != null)
+                {
+                    body["Expected_End_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodyexpectedEndDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodyexpectedStartDateUt != null)
+                {
+                    body["Expected_Start_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodyexpectedStartDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodyexternalReference != null)
+                {
+                    body["External_Reference"] = SourceExpressionConverter.ConvertToken(bodyexternalReference);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstCallResolution != null)
+                {
+                    body["First_Call_Resolution"] = SourceExpressionConverter.ConvertToken(bodyfirstCallResolution);
+                    bodypropCount++;
+                }
+
+                if (bodyhourPerDay != null)
+                {
+                    body["Hour_Per_Day"] = SourceExpressionConverter.ConvertToken(bodyhourPerDay);
+                    bodypropCount++;
+                }
+
+                if (bodyimpactId != null)
+                {
+                    body["Impact_Id"] = SourceExpressionConverter.ConvertToken(bodyimpactId);
+                    bodypropCount++;
+                }
+
+                if (bodyimputationDate != null)
+                {
+                    body["Imputation_Date"] = SourceExpressionConverter.ConvertToken(bodyimputationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyisMajorIncident != null)
+                {
+                    body["Is_Major_Incident"] = SourceExpressionConverter.ConvertToken(bodyisMajorIncident);
+                    bodypropCount++;
+                }
+
+                if (bodyisTemplate != null)
+                {
+                    body["Is_Template"] = SourceExpressionConverter.ConvertToken(bodyisTemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyknownProblemsId != null)
+                {
+                    body["Known_Problems_Id"] = SourceExpressionConverter.ConvertToken(bodyknownProblemsId);
+                    bodypropCount++;
+                }
+
+                if (bodylastUpdate != null)
+                {
+                    body["Last_Update"] = SourceExpressionConverter.ConvertToken(bodylastUpdate);
+                    bodypropCount++;
+                }
+
+                if (bodymark1 != null)
+                {
+                    body["Mark_1"] = SourceExpressionConverter.ConvertToken(bodymark1);
+                    bodypropCount++;
+                }
+
+                if (bodymark2 != null)
+                {
+                    body["Mark_2"] = SourceExpressionConverter.ConvertToken(bodymark2);
+                    bodypropCount++;
+                }
+
+                if (bodymaxResolutionDateUt != null)
+                {
+                    body["Max_Resolution_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodymaxResolutionDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodymsProjectImportValidationWaiting != null)
+                {
+                    body["Ms_Project_Import_Validation_Waiting"] = SourceExpressionConverter.ConvertToken(bodymsProjectImportValidationWaiting);
+                    bodypropCount++;
+                }
+
+                if (bodynetPrice != null)
+                {
+                    body["Net_Price"] = SourceExpressionConverter.ConvertToken(bodynetPrice);
+                    bodypropCount++;
+                }
+
+                if (bodynetPriceCurId != null)
+                {
+                    body["Net_Price_Cur_Id"] = SourceExpressionConverter.ConvertToken(bodynetPriceCurId);
+                    bodypropCount++;
+                }
+
+                if (bodyoriginToolId != null)
+                {
+                    body["Origin_Tool_Id"] = SourceExpressionConverter.ConvertToken(bodyoriginToolId);
+                    bodypropCount++;
+                }
+
+                if (bodyownerId != null)
+                {
+                    body["Owner_Id"] = SourceExpressionConverter.ConvertToken(bodyownerId);
+                    bodypropCount++;
+                }
+
+                if (bodyowningGroupId != null)
+                {
+                    body["Owning_Group_Id"] = SourceExpressionConverter.ConvertToken(bodyowningGroupId);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedChangeDateEnd != null)
+                {
+                    body["Planned_Change_Date_End"] = SourceExpressionConverter.ConvertToken(bodyplannedChangeDateEnd);
+                    bodypropCount++;
+                }
+
+                if (bodyplannedChangeDateStart != null)
+                {
+                    body["Planned_Change_Date_Start"] = SourceExpressionConverter.ConvertToken(bodyplannedChangeDateStart);
+                    bodypropCount++;
+                }
+
+                if (bodypmStatusId != null)
+                {
+                    body["Pm_Status_Id"] = SourceExpressionConverter.ConvertToken(bodypmStatusId);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectName != null)
+                {
+                    body["Project_Name"] = SourceExpressionConverter.ConvertToken(bodyprojectName);
+                    bodypropCount++;
+                }
+
+                if (bodyprojectStartDateUt != null)
+                {
+                    body["Project_Start_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodyprojectStartDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodyqty != null)
+                {
+                    body["Qty"] = SourceExpressionConverter.ConvertToken(bodyqty);
+                    bodypropCount++;
+                }
+
+                if (bodyreleaseId != null)
+                {
+                    body["Release_Id"] = SourceExpressionConverter.ConvertToken(bodyreleaseId);
+                    bodypropCount++;
+                }
+
+                if (bodyrentalNetPrice != null)
+                {
+                    body["Rental_Net_Price"] = SourceExpressionConverter.ConvertToken(bodyrentalNetPrice);
+                    bodypropCount++;
+                }
+
+                if (bodyrentalNetPriceCurId != null)
+                {
+                    body["Rental_Net_Price_Cur_Id"] = SourceExpressionConverter.ConvertToken(bodyrentalNetPriceCurId);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestOriginId != null)
+                {
+                    body["Request_Origin_Id"] = SourceExpressionConverter.ConvertToken(bodyrequestOriginId);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestedChangeDateEnd != null)
+                {
+                    body["Requested_Change_Date_End"] = SourceExpressionConverter.ConvertToken(bodyrequestedChangeDateEnd);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestedChangeDateStart != null)
+                {
+                    body["Requested_Change_Date_Start"] = SourceExpressionConverter.ConvertToken(bodyrequestedChangeDateStart);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestorId != null)
+                {
+                    body["Requestor_Id"] = SourceExpressionConverter.ConvertToken(bodyrequestorId);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestorIpAddress != null)
+                {
+                    body["Requestor_Ip_Address"] = SourceExpressionConverter.ConvertToken(bodyrequestorIpAddress);
+                    bodypropCount++;
+                }
+
+                if (bodyrequestorPhone != null)
+                {
+                    body["Requestor_Phone"] = SourceExpressionConverter.ConvertToken(bodyrequestorPhone);
+                    bodypropCount++;
+                }
+
+                if (bodyriskAmount != null)
+                {
+                    body["Risk_Amount"] = SourceExpressionConverter.ConvertToken(bodyriskAmount);
+                    bodypropCount++;
+                }
+
+                if (bodyriskDescription != null)
+                {
+                    body["Risk_Description"] = SourceExpressionConverter.ConvertToken(bodyriskDescription);
+                    bodypropCount++;
+                }
+
+                if (bodyriskLevelId != null)
+                {
+                    body["Risk_Level_Id"] = SourceExpressionConverter.ConvertToken(bodyriskLevelId);
+                    bodypropCount++;
+                }
+
+                if (bodyrootCauseId != null)
+                {
+                    body["Root_Cause_Id"] = SourceExpressionConverter.ConvertToken(bodyrootCauseId);
+                    bodypropCount++;
+                }
+
+                if (bodysubmitDateUt != null)
+                {
+                    body["Submit_Date_Ut"] = SourceExpressionConverter.ConvertToken(bodysubmitDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodytimeUsedToSolveRequest != null)
+                {
+                    body["Time_Used_To_Solve_Request"] = SourceExpressionConverter.ConvertToken(bodytimeUsedToSolveRequest);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["Title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewRequestIncidentCommentResponse> ViewRequestIncidentComment([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/comment", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewRequestIncidentCommentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<GetRequestIncidentDocumentListResponse> GetRequestIncidentDocumentList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRequestIncidentDocumentListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UploadAndAttachADocumentToARequestIncidentResponse> UploadAndAttachADocumentToARequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<bodydocumentsInputItem[]> bodydocuments)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodydocuments, nameof(bodydocuments), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["documents"] = SourceExpressionConverter.ConvertToken(bodydocuments);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UploadAndAttachADocumentToARequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<RestartRequestIncidentResponse> RestartRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<int> bodydoneById = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodydoneById, nameof(bodydoneById), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/restart", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodydoneById != null)
+                {
+                    body["done_by_id"] = SourceExpressionConverter.ConvertToken(bodydoneById);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RestartRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<SuspendRequestIncidentResponse> SuspendRequestIncident([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodycomment = null, [WorkflowExpression] Func<string> bodydoneById = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodycomment, nameof(bodycomment), required: false);
+            SourceExpression.Validate(bodydoneById, nameof(bodydoneById), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/suspend", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycomment != null)
+                {
+                    body["Comment"] = SourceExpressionConverter.ConvertToken(bodycomment);
+                    bodypropCount++;
+                }
+
+                if (bodydoneById != null)
+                {
+                    body["done_by_id"] = SourceExpressionConverter.ConvertToken(bodydoneById);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuspendRequestIncidentResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyactionTypeId, [WorkflowExpression] Func<string> bodyelapsedTime = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodyavailableField2 = null, [WorkflowExpression] Func<string> bodyavailableField3 = null, [WorkflowExpression] Func<string> bodyavailableField4 = null, [WorkflowExpression] Func<string> bodyavailableField5 = null, [WorkflowExpression] Func<string> bodyavailableField6 = null, [WorkflowExpression] Func<string> bodycontractualCost = null, [WorkflowExpression] Func<string> bodycreationDateUt = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendDateUt = null, [WorkflowExpression] Func<string> bodygroupMail = null, [WorkflowExpression] Func<string> bodygroupName = null, [WorkflowExpression] Func<string> bodystartDateUt = null, [WorkflowExpression] Func<string> bodytimeCost = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodyactionTypeId, nameof(bodyactionTypeId), required: true);
+            SourceExpression.Validate(bodyelapsedTime, nameof(bodyelapsedTime), required: false);
+            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            SourceExpression.Validate(bodyavailableField2, nameof(bodyavailableField2), required: false);
+            SourceExpression.Validate(bodyavailableField3, nameof(bodyavailableField3), required: false);
+            SourceExpression.Validate(bodyavailableField4, nameof(bodyavailableField4), required: false);
+            SourceExpression.Validate(bodyavailableField5, nameof(bodyavailableField5), required: false);
+            SourceExpression.Validate(bodyavailableField6, nameof(bodyavailableField6), required: false);
+            SourceExpression.Validate(bodycontractualCost, nameof(bodycontractualCost), required: false);
+            SourceExpression.Validate(bodycreationDateUt, nameof(bodycreationDateUt), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyendDateUt, nameof(bodyendDateUt), required: false);
+            SourceExpression.Validate(bodygroupMail, nameof(bodygroupMail), required: false);
+            SourceExpression.Validate(bodygroupName, nameof(bodygroupName), required: false);
+            SourceExpression.Validate(bodystartDateUt, nameof(bodystartDateUt), required: false);
+            SourceExpression.Validate(bodytimeCost, nameof(bodytimeCost), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/tasks", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyelapsedTime != null)
+                {
+                    body["Elapsed_Time"] = SourceExpressionConverter.ConvertToken(bodyelapsedTime);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["action_type_id"] = SourceExpressionConverter.ConvertToken(bodyactionTypeId);
+                if (bodyavailableField1 != null)
+                {
+                    body["available_field_1"] = SourceExpressionConverter.ConvertToken(bodyavailableField1);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField2 != null)
+                {
+                    body["available_field_2"] = SourceExpressionConverter.ConvertToken(bodyavailableField2);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField3 != null)
+                {
+                    body["available_field_3"] = SourceExpressionConverter.ConvertToken(bodyavailableField3);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField4 != null)
+                {
+                    body["available_field_4"] = SourceExpressionConverter.ConvertToken(bodyavailableField4);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField5 != null)
+                {
+                    body["available_field_5"] = SourceExpressionConverter.ConvertToken(bodyavailableField5);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField6 != null)
+                {
+                    body["available_field_6"] = SourceExpressionConverter.ConvertToken(bodyavailableField6);
+                    bodypropCount++;
+                }
+
+                if (bodycontractualCost != null)
+                {
+                    body["contractual_cost"] = SourceExpressionConverter.ConvertToken(bodycontractualCost);
+                    bodypropCount++;
+                }
+
+                if (bodycreationDateUt != null)
+                {
+                    body["creation_date_ut"] = SourceExpressionConverter.ConvertToken(bodycreationDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyendDateUt != null)
+                {
+                    body["end_date_ut"] = SourceExpressionConverter.ConvertToken(bodyendDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodygroupMail != null)
+                {
+                    body["group_mail"] = SourceExpressionConverter.ConvertToken(bodygroupMail);
+                    bodypropCount++;
+                }
+
+                if (bodygroupName != null)
+                {
+                    body["group_name"] = SourceExpressionConverter.ConvertToken(bodygroupName);
+                    bodypropCount++;
+                }
+
+                if (bodystartDateUt != null)
+                {
+                    body["start_date_ut"] = SourceExpressionConverter.ConvertToken(bodystartDateUt);
+                    bodypropCount++;
+                }
+
+                if (bodytimeCost != null)
+                {
+                    body["time_cost"] = SourceExpressionConverter.ConvertToken(bodytimeCost);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewSlasListResponse> ViewSlasList([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<string> sort = null, [WorkflowExpression] Func<string> maxRows = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(maxRows, nameof(maxRows), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.ConvertO(sort);
+                if (maxRows != null)
+                    callPayload.Queries["max_rows"] = SourceExpressionConverter.ConvertO(maxRows);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewSlasListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewSlaResponse> ViewSla([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> slaId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(slaId, nameof(slaId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/slas/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(slaId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewSlaResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAllAtributesAssetsResponse> ViewAllAtributesAssets([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAllAtributesAssetsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IWorkflowAction CreateLinkBetweenAttributandAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> characteristicId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(characteristicId, nameof(characteristicId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(characteristicId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateanAttributeofanAssetResponse> UpdateanAttributeofanAsset([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId, [WorkflowExpression] Func<string> characteristicId, [WorkflowExpression] Func<string> bodydATA1 = null, [WorkflowExpression] Func<string> bodydATA2 = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            SourceExpression.Validate(characteristicId, nameof(characteristicId), required: true);
+            SourceExpression.Validate(bodydATA1, nameof(bodydATA1), required: false);
+            SourceExpression.Validate(bodydATA2, nameof(bodydATA2), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/characteristics/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(characteristicId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydATA1 != null)
+                {
+                    body["DATA_1"] = SourceExpressionConverter.ConvertToken(bodydATA1);
+                    bodypropCount++;
+                }
+
+                if (bodydATA2 != null)
+                {
+                    body["DATA_2"] = SourceExpressionConverter.ConvertToken(bodydATA2);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateanAttributeofanAssetResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateCIResponse> CreateCI([WorkflowExpression] Func<bodyassetsInputItem2[]> bodyassets = null)
+        {
+            SourceExpression.Validate(bodyassets, nameof(bodyassets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/50006/assets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassets != null)
+                {
+                    body["assets"] = SourceExpressionConverter.ConvertToken(bodyassets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateCIResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateCIunavailabilityResponse> CreateCIunavailability([WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateCIunavailabilityResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<EndCIunavailabilityResponse> EndCIunavailability([WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EndCIunavailabilityResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewlinksimpactonCIResponse> ViewlinksimpactonCI([WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacting", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewlinksimpactonCIResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewlinksimpactbyCIResponse> ViewlinksimpactbyCI([WorkflowExpression] Func<string> ciId)
+        {
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/50006/configuration-items/{0}/item-links/impacted", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewlinksimpactbyCIResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewTicketStatusListResponse> ViewTicketStatusList([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/status", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewTicketStatusListResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListProblemsAttachedTicketsResponse> ViewListProblemsAttachedTickets([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problem-links", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListProblemsAttachedTicketsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListProblemsAttachedATicketsResponse> ViewListProblemsAttachedATickets([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/problems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListProblemsAttachedATicketsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListTicketsAttachedtoaProblemResponse> ViewListTicketsAttachedtoaProblem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}/requests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListTicketsAttachedtoaProblemResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListQuestionsResponse> ViewListQuestions([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListQuestionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListQuestionsWithResponseResponse> ViewListQuestionsWithResponse([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListQuestionsWithResponseResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewaQuestionResponse> ViewaQuestion([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> questionId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(questionId, nameof(questionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewaQuestionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAllResponsesListQuestionsofaTicketResponse> ViewAllResponsesListQuestionsofaTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(requestId, nameof(requestId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAllResponsesListQuestionsofaTicketResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewResponseQuestionTicketResponse> ViewResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(requestId, nameof(requestId), required: true);
+            SourceExpression.Validate(questionId, nameof(questionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewResponseQuestionTicketResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateResponseQuestionTicketResponse> CreateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTID = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREID = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(requestId, nameof(requestId), required: true);
+            SourceExpression.Validate(questionId, nameof(questionId), required: true);
+            SourceExpression.Validate(bodyrESULT, nameof(bodyrESULT), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGEN, nameof(bodyrESULTSTRINGEN), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGFR, nameof(bodyrESULTSTRINGFR), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGSP, nameof(bodyrESULTSTRINGSP), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGGE, nameof(bodyrESULTSTRINGGE), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGIT, nameof(bodyrESULTSTRINGIT), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGPO, nameof(bodyrESULTSTRINGPO), required: false);
+            SourceExpression.Validate(bodyrESULTDATE, nameof(bodyrESULTDATE), required: false);
+            SourceExpression.Validate(bodyrESULTNUMBER, nameof(bodyrESULTNUMBER), required: false);
+            SourceExpression.Validate(bodyrESULTBIT, nameof(bodyrESULTBIT), required: false);
+            SourceExpression.Validate(bodyrESULTORDER, nameof(bodyrESULTORDER), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL1, nameof(bodyrESULTSTRINGL1), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL2, nameof(bodyrESULTSTRINGL2), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL3, nameof(bodyrESULTSTRINGL3), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL4, nameof(bodyrESULTSTRINGL4), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
+            SourceExpression.Validate(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
+            SourceExpression.Validate(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            SourceExpression.Validate(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
+            SourceExpression.Validate(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
+            SourceExpression.Validate(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
+            SourceExpression.Validate(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyrESULT != null)
+                {
+                    body["RESULT"] = SourceExpressionConverter.ConvertToken(bodyrESULT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGEN != null)
+                {
+                    body["RESULT_STRING_EN"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGEN);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGFR != null)
+                {
+                    body["RESULT_STRING_FR"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGFR);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGSP != null)
+                {
+                    body["RESULT_STRING_SP"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGSP);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGGE != null)
+                {
+                    body["RESULT_STRING_GE"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGGE);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGIT != null)
+                {
+                    body["RESULT_STRING_IT"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGIT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGPO != null)
+                {
+                    body["RESULT_STRING_PO"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGPO);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTDATE != null)
+                {
+                    body["RESULT_DATE"] = SourceExpressionConverter.ConvertToken(bodyrESULTDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTNUMBER != null)
+                {
+                    body["RESULT_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyrESULTNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTBIT != null)
+                {
+                    body["RESULT_BIT"] = SourceExpressionConverter.ConvertToken(bodyrESULTBIT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTORDER != null)
+                {
+                    body["RESULT_ORDER"] = SourceExpressionConverter.ConvertToken(bodyrESULTORDER);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL1 != null)
+                {
+                    body["RESULT_STRING_L1"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL1);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL2 != null)
+                {
+                    body["RESULT_STRING_L2"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL2);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL3 != null)
+                {
+                    body["RESULT_STRING_L3"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL3);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL4 != null)
+                {
+                    body["RESULT_STRING_L4"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL4);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL5 != null)
+                {
+                    body["RESULT_STRING_L5"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL5);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL6 != null)
+                {
+                    body["RESULT_STRING_L6"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL6);
+                    bodypropCount++;
+                }
+
+                if (bodyqUESTIONDISPLAYED != null)
+                {
+                    body["QUESTION_DISPLAYED"] = SourceExpressionConverter.ConvertToken(bodyqUESTIONDISPLAYED);
+                    bodypropCount++;
+                }
+
+                if (bodydOCUMENTID != null)
+                {
+                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodyqUESTIONREQUIRED != null)
+                {
+                    body["QUESTION_REQUIRED"] = SourceExpressionConverter.ConvertToken(bodyqUESTIONREQUIRED);
+                    bodypropCount++;
+                }
+
+                if (bodyiSCONDITIONNAL != null)
+                {
+                    body["IS_CONDITIONNAL"] = SourceExpressionConverter.ConvertToken(bodyiSCONDITIONNAL);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTDURATION != null)
+                {
+                    body["RESULT_DURATION"] = SourceExpressionConverter.ConvertToken(bodyrESULTDURATION);
+                    bodypropCount++;
+                }
+
+                if (bodysYSQUESTIONNAIREID != null)
+                {
+                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
+                    bodypropCount++;
+                }
+
+                if (bodyoRIGINTOOLID != null)
+                {
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    bodypropCount++;
+                }
+
+                if (bodylASTQUESTIONNAIRE != null)
+                {
+                    body["LAST_QUESTIONNAIRE"] = SourceExpressionConverter.ConvertToken(bodylASTQUESTIONNAIRE);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateResponseQuestionTicketResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateResponseQuestionTicketResponse> UpdateResponseQuestionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> requestId, [WorkflowExpression] Func<string> questionId, [WorkflowExpression] Func<string> bodyrESULT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGEN = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGFR = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGSP = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGGE = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGIT = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGPO = null, [WorkflowExpression] Func<string> bodyrESULTDATE = null, [WorkflowExpression] Func<string> bodyrESULTNUMBER = null, [WorkflowExpression] Func<string> bodyrESULTBIT = null, [WorkflowExpression] Func<string> bodyrESULTORDER = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL1 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL2 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL3 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL4 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL5 = null, [WorkflowExpression] Func<string> bodyrESULTSTRINGL6 = null, [WorkflowExpression] Func<string> bodyqUESTIONDISPLAYED = null, [WorkflowExpression] Func<string> bodydOCUMENTID = null, [WorkflowExpression] Func<string> bodyqUESTIONREQUIRED = null, [WorkflowExpression] Func<string> bodyiSCONDITIONNAL = null, [WorkflowExpression] Func<string> bodyrESULTDURATION = null, [WorkflowExpression] Func<string> bodysYSQUESTIONNAIREID = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTQUESTIONNAIRE = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(requestId, nameof(requestId), required: true);
+            SourceExpression.Validate(questionId, nameof(questionId), required: true);
+            SourceExpression.Validate(bodyrESULT, nameof(bodyrESULT), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGEN, nameof(bodyrESULTSTRINGEN), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGFR, nameof(bodyrESULTSTRINGFR), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGSP, nameof(bodyrESULTSTRINGSP), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGGE, nameof(bodyrESULTSTRINGGE), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGIT, nameof(bodyrESULTSTRINGIT), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGPO, nameof(bodyrESULTSTRINGPO), required: false);
+            SourceExpression.Validate(bodyrESULTDATE, nameof(bodyrESULTDATE), required: false);
+            SourceExpression.Validate(bodyrESULTNUMBER, nameof(bodyrESULTNUMBER), required: false);
+            SourceExpression.Validate(bodyrESULTBIT, nameof(bodyrESULTBIT), required: false);
+            SourceExpression.Validate(bodyrESULTORDER, nameof(bodyrESULTORDER), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL1, nameof(bodyrESULTSTRINGL1), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL2, nameof(bodyrESULTSTRINGL2), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL3, nameof(bodyrESULTSTRINGL3), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL4, nameof(bodyrESULTSTRINGL4), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL5, nameof(bodyrESULTSTRINGL5), required: false);
+            SourceExpression.Validate(bodyrESULTSTRINGL6, nameof(bodyrESULTSTRINGL6), required: false);
+            SourceExpression.Validate(bodyqUESTIONDISPLAYED, nameof(bodyqUESTIONDISPLAYED), required: false);
+            SourceExpression.Validate(bodydOCUMENTID, nameof(bodydOCUMENTID), required: false);
+            SourceExpression.Validate(bodyqUESTIONREQUIRED, nameof(bodyqUESTIONREQUIRED), required: false);
+            SourceExpression.Validate(bodyiSCONDITIONNAL, nameof(bodyiSCONDITIONNAL), required: false);
+            SourceExpression.Validate(bodyrESULTDURATION, nameof(bodyrESULTDURATION), required: false);
+            SourceExpression.Validate(bodysYSQUESTIONNAIREID, nameof(bodysYSQUESTIONNAIREID), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodylASTQUESTIONNAIRE, nameof(bodylASTQUESTIONNAIRE), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questions-result/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(requestId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyrESULT != null)
+                {
+                    body["RESULT"] = SourceExpressionConverter.ConvertToken(bodyrESULT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGEN != null)
+                {
+                    body["RESULT_STRING_EN"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGEN);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGFR != null)
+                {
+                    body["RESULT_STRING_FR"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGFR);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGSP != null)
+                {
+                    body["RESULT_STRING_SP"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGSP);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGGE != null)
+                {
+                    body["RESULT_STRING_GE"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGGE);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGIT != null)
+                {
+                    body["RESULT_STRING_IT"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGIT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGPO != null)
+                {
+                    body["RESULT_STRING_PO"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGPO);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTDATE != null)
+                {
+                    body["RESULT_DATE"] = SourceExpressionConverter.ConvertToken(bodyrESULTDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTNUMBER != null)
+                {
+                    body["RESULT_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyrESULTNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTBIT != null)
+                {
+                    body["RESULT_BIT"] = SourceExpressionConverter.ConvertToken(bodyrESULTBIT);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTORDER != null)
+                {
+                    body["RESULT_ORDER"] = SourceExpressionConverter.ConvertToken(bodyrESULTORDER);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL1 != null)
+                {
+                    body["RESULT_STRING_L1"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL1);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL2 != null)
+                {
+                    body["RESULT_STRING_L2"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL2);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL3 != null)
+                {
+                    body["RESULT_STRING_L3"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL3);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL4 != null)
+                {
+                    body["RESULT_STRING_L4"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL4);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL5 != null)
+                {
+                    body["RESULT_STRING_L5"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL5);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTSTRINGL6 != null)
+                {
+                    body["RESULT_STRING_L6"] = SourceExpressionConverter.ConvertToken(bodyrESULTSTRINGL6);
+                    bodypropCount++;
+                }
+
+                if (bodyqUESTIONDISPLAYED != null)
+                {
+                    body["QUESTION_DISPLAYED"] = SourceExpressionConverter.ConvertToken(bodyqUESTIONDISPLAYED);
+                    bodypropCount++;
+                }
+
+                if (bodydOCUMENTID != null)
+                {
+                    body["DOCUMENT_ID"] = SourceExpressionConverter.ConvertToken(bodydOCUMENTID);
+                    bodypropCount++;
+                }
+
+                if (bodyqUESTIONREQUIRED != null)
+                {
+                    body["QUESTION_REQUIRED"] = SourceExpressionConverter.ConvertToken(bodyqUESTIONREQUIRED);
+                    bodypropCount++;
+                }
+
+                if (bodyiSCONDITIONNAL != null)
+                {
+                    body["IS_CONDITIONNAL"] = SourceExpressionConverter.ConvertToken(bodyiSCONDITIONNAL);
+                    bodypropCount++;
+                }
+
+                if (bodyrESULTDURATION != null)
+                {
+                    body["RESULT_DURATION"] = SourceExpressionConverter.ConvertToken(bodyrESULTDURATION);
+                    bodypropCount++;
+                }
+
+                if (bodysYSQUESTIONNAIREID != null)
+                {
+                    body["SYS_QUESTIONNAIRE_ID"] = SourceExpressionConverter.ConvertToken(bodysYSQUESTIONNAIREID);
+                    bodypropCount++;
+                }
+
+                if (bodyoRIGINTOOLID != null)
+                {
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    bodypropCount++;
+                }
+
+                if (bodylASTQUESTIONNAIRE != null)
+                {
+                    body["LAST_QUESTIONNAIRE"] = SourceExpressionConverter.ConvertToken(bodylASTQUESTIONNAIRE);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateResponseQuestionTicketResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListQuestionnairesResponse> ViewListQuestionnaires([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListQuestionnairesResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewQuestionnaireResponse> ViewQuestionnaire([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> questionnaireId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(questionnaireId, nameof(questionnaireId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/questionnaires/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(questionnaireId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewQuestionnaireResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListProblemsResponse> ViewListProblems([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListProblemsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewProblemResponse> ViewProblem([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/problems/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewProblemResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListNewsResponse> ViewListNews([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListNewsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateNewsResponse> CreateNews([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateNewsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewNewsResponse> ViewNews([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> documentId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewNewsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateNewsResponse> UpdateNews([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> documentId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/news/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateNewsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewListActionsResponse> ViewListActions([WorkflowExpression] Func<string> account)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewListActionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<CreateActionTicketResponse> CreateActionTicket([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> bodyaCTIONNUMBER = null, [WorkflowExpression] Func<string> bodyaSSETID = null, [WorkflowExpression] Func<string> bodypARENTACTIONID = null, [WorkflowExpression] Func<string> bodysUPPLIERID = null, [WorkflowExpression] Func<string> bodydONEBYID = null, [WorkflowExpression] Func<string> bodyvALIDATORID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELEN = null, [WorkflowExpression] Func<string> bodytABLENAME = null, [WorkflowExpression] Func<string> bodyfIELDNAME = null, [WorkflowExpression] Func<string> bodyoLDVALUE = null, [WorkflowExpression] Func<string> bodynEWVALUE = null, [WorkflowExpression] Func<string> bodydELETEACTION = null, [WorkflowExpression] Func<string> bodyaUTOMATICACTION = null, [WorkflowExpression] Func<string> bodypROCESSSTEPID = null, [WorkflowExpression] Func<string> bodyrEQUESTID = null, [WorkflowExpression] Func<string> bodydESCRIPTION = null, [WorkflowExpression] Func<string> bodynETCHARGE = null, [WorkflowExpression] Func<string> bodynETCHARGECURID = null, [WorkflowExpression] Func<string> bodyrESOLUTION = null, [WorkflowExpression] Func<string> bodylOCATIONID = null, [WorkflowExpression] Func<string> bodysUPPORTSTAFFID = null, [WorkflowExpression] Func<string> bodycONTACTID = null, [WorkflowExpression] Func<string> bodyeXPECTEDENDDATEUT = null, [WorkflowExpression] Func<string> bodycOMMENT = null, [WorkflowExpression] Func<string> bodysTARTDATEUT = null, [WorkflowExpression] Func<string> bodyeNDDATEUT = null, [WorkflowExpression] Func<string> bodyrENEWALDATEUT = null, [WorkflowExpression] Func<string> bodyeXPECTEDSTARTDATEUT = null, [WorkflowExpression] Func<string> bodycREATIONDATEUT = null, [WorkflowExpression] Func<string> bodyaPPLICATIONDATEUT = null, [WorkflowExpression] Func<string> bodywIZARDGUID = null, [WorkflowExpression] Func<string> bodygROUPID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELFR = null, [WorkflowExpression] Func<string> bodyaCTIONLABELSP = null, [WorkflowExpression] Func<string> bodyaCTIONLABELGE = null, [WorkflowExpression] Func<string> bodyaCTIONLABELIT = null, [WorkflowExpression] Func<string> bodyaCTIONLABELPO = null, [WorkflowExpression] Func<string> bodykNOWNPROBLEMID = null, [WorkflowExpression] Func<string> bodymAXINTERVENTIONDATEUT = null, [WorkflowExpression] Func<string> bodyeLAPSEDTIME = null, [WorkflowExpression] Func<string> bodypRIORITYID = null, [WorkflowExpression] Func<string> bodytAXID = null, [WorkflowExpression] Func<string> bodysTATUSIDONCREATE = null, [WorkflowExpression] Func<string> bodysTATUSIDONTERMINATE = null, [WorkflowExpression] Func<string> bodyaCTIONTYPEID = null, [WorkflowExpression] Func<string> bodydELAY = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD1 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD2 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD3 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD4 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD5 = null, [WorkflowExpression] Func<string> bodyaVAILABLEFIELD6 = null, [WorkflowExpression] Func<string> bodytIMEUSEDTOCOMPLETEACTION = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOST = null, [WorkflowExpression] Func<string> bodycONTRACTUALCOSTCURID = null, [WorkflowExpression] Func<string> bodytIMECOST = null, [WorkflowExpression] Func<string> bodytIMECOSTCURID = null, [WorkflowExpression] Func<string> bodyoRIGINACTIONID = null, [WorkflowExpression] Func<string> bodywORKFLOWVALUE = null, [WorkflowExpression] Func<string> bodycONTINUITYPLANID = null, [WorkflowExpression] Func<string> bodycATEGORYTESTID = null, [WorkflowExpression] Func<string> bodywORKFLOWID = null, [WorkflowExpression] Func<string> bodyeXITVALUE = null, [WorkflowExpression] Func<string> bodymAXRESOLUTIONDATEUT = null, [WorkflowExpression] Func<string> bodypERCENTCOMPLETE = null, [WorkflowExpression] Func<string> bodyeXPECTEDDURATION = null, [WorkflowExpression] Func<string> bodywBSTASK = null, [WorkflowExpression] Func<string> bodytASKPERSONCOSTPERHOUR = null, [WorkflowExpression] Func<string> bodytASKPLANNEDBUDGET = null, [WorkflowExpression] Func<string> bodyeSTIMATEDNETCHARGE = null, [WorkflowExpression] Func<string> bodypREVIOUSSIBLINGID = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL1 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL2 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL3 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL4 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL5 = null, [WorkflowExpression] Func<string> bodyaCTIONLABELL6 = null, [WorkflowExpression] Func<string> bodyhISTORYID = null, [WorkflowExpression] Func<string> bodytOTRUNC = null, [WorkflowExpression] Func<string> bodysTAGEID = null, [WorkflowExpression] Func<string> bodyiSLOCKEDPROGRESSPOINT = null, [WorkflowExpression] Func<string> bodyoRIGINTOOLID = null, [WorkflowExpression] Func<string> bodylASTUPDATE = null, [WorkflowExpression] Func<string> bodyeLASTDATESUPDATE = null, [WorkflowExpression] Func<string> bodybILLEDTIME = null, [WorkflowExpression] Func<string> bodyiSBILLINGREVIEWED = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(bodyaCTIONNUMBER, nameof(bodyaCTIONNUMBER), required: false);
+            SourceExpression.Validate(bodyaSSETID, nameof(bodyaSSETID), required: false);
+            SourceExpression.Validate(bodypARENTACTIONID, nameof(bodypARENTACTIONID), required: false);
+            SourceExpression.Validate(bodysUPPLIERID, nameof(bodysUPPLIERID), required: false);
+            SourceExpression.Validate(bodydONEBYID, nameof(bodydONEBYID), required: false);
+            SourceExpression.Validate(bodyvALIDATORID, nameof(bodyvALIDATORID), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELEN, nameof(bodyaCTIONLABELEN), required: false);
+            SourceExpression.Validate(bodytABLENAME, nameof(bodytABLENAME), required: false);
+            SourceExpression.Validate(bodyfIELDNAME, nameof(bodyfIELDNAME), required: false);
+            SourceExpression.Validate(bodyoLDVALUE, nameof(bodyoLDVALUE), required: false);
+            SourceExpression.Validate(bodynEWVALUE, nameof(bodynEWVALUE), required: false);
+            SourceExpression.Validate(bodydELETEACTION, nameof(bodydELETEACTION), required: false);
+            SourceExpression.Validate(bodyaUTOMATICACTION, nameof(bodyaUTOMATICACTION), required: false);
+            SourceExpression.Validate(bodypROCESSSTEPID, nameof(bodypROCESSSTEPID), required: false);
+            SourceExpression.Validate(bodyrEQUESTID, nameof(bodyrEQUESTID), required: false);
+            SourceExpression.Validate(bodydESCRIPTION, nameof(bodydESCRIPTION), required: false);
+            SourceExpression.Validate(bodynETCHARGE, nameof(bodynETCHARGE), required: false);
+            SourceExpression.Validate(bodynETCHARGECURID, nameof(bodynETCHARGECURID), required: false);
+            SourceExpression.Validate(bodyrESOLUTION, nameof(bodyrESOLUTION), required: false);
+            SourceExpression.Validate(bodylOCATIONID, nameof(bodylOCATIONID), required: false);
+            SourceExpression.Validate(bodysUPPORTSTAFFID, nameof(bodysUPPORTSTAFFID), required: false);
+            SourceExpression.Validate(bodycONTACTID, nameof(bodycONTACTID), required: false);
+            SourceExpression.Validate(bodyeXPECTEDENDDATEUT, nameof(bodyeXPECTEDENDDATEUT), required: false);
+            SourceExpression.Validate(bodycOMMENT, nameof(bodycOMMENT), required: false);
+            SourceExpression.Validate(bodysTARTDATEUT, nameof(bodysTARTDATEUT), required: false);
+            SourceExpression.Validate(bodyeNDDATEUT, nameof(bodyeNDDATEUT), required: false);
+            SourceExpression.Validate(bodyrENEWALDATEUT, nameof(bodyrENEWALDATEUT), required: false);
+            SourceExpression.Validate(bodyeXPECTEDSTARTDATEUT, nameof(bodyeXPECTEDSTARTDATEUT), required: false);
+            SourceExpression.Validate(bodycREATIONDATEUT, nameof(bodycREATIONDATEUT), required: false);
+            SourceExpression.Validate(bodyaPPLICATIONDATEUT, nameof(bodyaPPLICATIONDATEUT), required: false);
+            SourceExpression.Validate(bodywIZARDGUID, nameof(bodywIZARDGUID), required: false);
+            SourceExpression.Validate(bodygROUPID, nameof(bodygROUPID), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELFR, nameof(bodyaCTIONLABELFR), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELSP, nameof(bodyaCTIONLABELSP), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELGE, nameof(bodyaCTIONLABELGE), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELIT, nameof(bodyaCTIONLABELIT), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELPO, nameof(bodyaCTIONLABELPO), required: false);
+            SourceExpression.Validate(bodykNOWNPROBLEMID, nameof(bodykNOWNPROBLEMID), required: false);
+            SourceExpression.Validate(bodymAXINTERVENTIONDATEUT, nameof(bodymAXINTERVENTIONDATEUT), required: false);
+            SourceExpression.Validate(bodyeLAPSEDTIME, nameof(bodyeLAPSEDTIME), required: false);
+            SourceExpression.Validate(bodypRIORITYID, nameof(bodypRIORITYID), required: false);
+            SourceExpression.Validate(bodytAXID, nameof(bodytAXID), required: false);
+            SourceExpression.Validate(bodysTATUSIDONCREATE, nameof(bodysTATUSIDONCREATE), required: false);
+            SourceExpression.Validate(bodysTATUSIDONTERMINATE, nameof(bodysTATUSIDONTERMINATE), required: false);
+            SourceExpression.Validate(bodyaCTIONTYPEID, nameof(bodyaCTIONTYPEID), required: false);
+            SourceExpression.Validate(bodydELAY, nameof(bodydELAY), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD1, nameof(bodyaVAILABLEFIELD1), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD2, nameof(bodyaVAILABLEFIELD2), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD3, nameof(bodyaVAILABLEFIELD3), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD4, nameof(bodyaVAILABLEFIELD4), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD5, nameof(bodyaVAILABLEFIELD5), required: false);
+            SourceExpression.Validate(bodyaVAILABLEFIELD6, nameof(bodyaVAILABLEFIELD6), required: false);
+            SourceExpression.Validate(bodytIMEUSEDTOCOMPLETEACTION, nameof(bodytIMEUSEDTOCOMPLETEACTION), required: false);
+            SourceExpression.Validate(bodycONTRACTUALCOST, nameof(bodycONTRACTUALCOST), required: false);
+            SourceExpression.Validate(bodycONTRACTUALCOSTCURID, nameof(bodycONTRACTUALCOSTCURID), required: false);
+            SourceExpression.Validate(bodytIMECOST, nameof(bodytIMECOST), required: false);
+            SourceExpression.Validate(bodytIMECOSTCURID, nameof(bodytIMECOSTCURID), required: false);
+            SourceExpression.Validate(bodyoRIGINACTIONID, nameof(bodyoRIGINACTIONID), required: false);
+            SourceExpression.Validate(bodywORKFLOWVALUE, nameof(bodywORKFLOWVALUE), required: false);
+            SourceExpression.Validate(bodycONTINUITYPLANID, nameof(bodycONTINUITYPLANID), required: false);
+            SourceExpression.Validate(bodycATEGORYTESTID, nameof(bodycATEGORYTESTID), required: false);
+            SourceExpression.Validate(bodywORKFLOWID, nameof(bodywORKFLOWID), required: false);
+            SourceExpression.Validate(bodyeXITVALUE, nameof(bodyeXITVALUE), required: false);
+            SourceExpression.Validate(bodymAXRESOLUTIONDATEUT, nameof(bodymAXRESOLUTIONDATEUT), required: false);
+            SourceExpression.Validate(bodypERCENTCOMPLETE, nameof(bodypERCENTCOMPLETE), required: false);
+            SourceExpression.Validate(bodyeXPECTEDDURATION, nameof(bodyeXPECTEDDURATION), required: false);
+            SourceExpression.Validate(bodywBSTASK, nameof(bodywBSTASK), required: false);
+            SourceExpression.Validate(bodytASKPERSONCOSTPERHOUR, nameof(bodytASKPERSONCOSTPERHOUR), required: false);
+            SourceExpression.Validate(bodytASKPLANNEDBUDGET, nameof(bodytASKPLANNEDBUDGET), required: false);
+            SourceExpression.Validate(bodyeSTIMATEDNETCHARGE, nameof(bodyeSTIMATEDNETCHARGE), required: false);
+            SourceExpression.Validate(bodypREVIOUSSIBLINGID, nameof(bodypREVIOUSSIBLINGID), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL1, nameof(bodyaCTIONLABELL1), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL2, nameof(bodyaCTIONLABELL2), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL3, nameof(bodyaCTIONLABELL3), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL4, nameof(bodyaCTIONLABELL4), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL5, nameof(bodyaCTIONLABELL5), required: false);
+            SourceExpression.Validate(bodyaCTIONLABELL6, nameof(bodyaCTIONLABELL6), required: false);
+            SourceExpression.Validate(bodyhISTORYID, nameof(bodyhISTORYID), required: false);
+            SourceExpression.Validate(bodytOTRUNC, nameof(bodytOTRUNC), required: false);
+            SourceExpression.Validate(bodysTAGEID, nameof(bodysTAGEID), required: false);
+            SourceExpression.Validate(bodyiSLOCKEDPROGRESSPOINT, nameof(bodyiSLOCKEDPROGRESSPOINT), required: false);
+            SourceExpression.Validate(bodyoRIGINTOOLID, nameof(bodyoRIGINTOOLID), required: false);
+            SourceExpression.Validate(bodylASTUPDATE, nameof(bodylASTUPDATE), required: false);
+            SourceExpression.Validate(bodyeLASTDATESUPDATE, nameof(bodyeLASTDATESUPDATE), required: false);
+            SourceExpression.Validate(bodybILLEDTIME, nameof(bodybILLEDTIME), required: false);
+            SourceExpression.Validate(bodyiSBILLINGREVIEWED, nameof(bodyiSBILLINGREVIEWED), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/actions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaCTIONNUMBER != null)
+                {
+                    body["ACTION_NUMBER"] = SourceExpressionConverter.ConvertToken(bodyaCTIONNUMBER);
+                    bodypropCount++;
+                }
+
+                if (bodyaSSETID != null)
+                {
+                    body["ASSET_ID"] = SourceExpressionConverter.ConvertToken(bodyaSSETID);
+                    bodypropCount++;
+                }
+
+                if (bodypARENTACTIONID != null)
+                {
+                    body["PARENT_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodypARENTACTIONID);
+                    bodypropCount++;
+                }
+
+                if (bodysUPPLIERID != null)
+                {
+                    body["SUPPLIER_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPLIERID);
+                    bodypropCount++;
+                }
+
+                if (bodydONEBYID != null)
+                {
+                    body["DONE_BY_ID"] = SourceExpressionConverter.ConvertToken(bodydONEBYID);
+                    bodypropCount++;
+                }
+
+                if (bodyvALIDATORID != null)
+                {
+                    body["VALIDATOR_ID"] = SourceExpressionConverter.ConvertToken(bodyvALIDATORID);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELEN != null)
+                {
+                    body["ACTION_LABEL_EN"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELEN);
+                    bodypropCount++;
+                }
+
+                if (bodytABLENAME != null)
+                {
+                    body["TABLE_NAME"] = SourceExpressionConverter.ConvertToken(bodytABLENAME);
+                    bodypropCount++;
+                }
+
+                if (bodyfIELDNAME != null)
+                {
+                    body["FIELD_NAME"] = SourceExpressionConverter.ConvertToken(bodyfIELDNAME);
+                    bodypropCount++;
+                }
+
+                if (bodyoLDVALUE != null)
+                {
+                    body["OLD_VALUE"] = SourceExpressionConverter.ConvertToken(bodyoLDVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodynEWVALUE != null)
+                {
+                    body["NEW_VALUE"] = SourceExpressionConverter.ConvertToken(bodynEWVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodydELETEACTION != null)
+                {
+                    body["DELETE_ACTION"] = SourceExpressionConverter.ConvertToken(bodydELETEACTION);
+                    bodypropCount++;
+                }
+
+                if (bodyaUTOMATICACTION != null)
+                {
+                    body["AUTOMATIC_ACTION"] = SourceExpressionConverter.ConvertToken(bodyaUTOMATICACTION);
+                    bodypropCount++;
+                }
+
+                if (bodypROCESSSTEPID != null)
+                {
+                    body["PROCESS_STEP_ID"] = SourceExpressionConverter.ConvertToken(bodypROCESSSTEPID);
+                    bodypropCount++;
+                }
+
+                if (bodyrEQUESTID != null)
+                {
+                    body["REQUEST_ID"] = SourceExpressionConverter.ConvertToken(bodyrEQUESTID);
+                    bodypropCount++;
+                }
+
+                if (bodydESCRIPTION != null)
+                {
+                    body["DESCRIPTION"] = SourceExpressionConverter.ConvertToken(bodydESCRIPTION);
+                    bodypropCount++;
+                }
+
+                if (bodynETCHARGE != null)
+                {
+                    body["NET_CHARGE"] = SourceExpressionConverter.ConvertToken(bodynETCHARGE);
+                    bodypropCount++;
+                }
+
+                if (bodynETCHARGECURID != null)
+                {
+                    body["NET_CHARGE_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodynETCHARGECURID);
+                    bodypropCount++;
+                }
+
+                if (bodyrESOLUTION != null)
+                {
+                    body["RESOLUTION"] = SourceExpressionConverter.ConvertToken(bodyrESOLUTION);
+                    bodypropCount++;
+                }
+
+                if (bodylOCATIONID != null)
+                {
+                    body["LOCATION_ID"] = SourceExpressionConverter.ConvertToken(bodylOCATIONID);
+                    bodypropCount++;
+                }
+
+                if (bodysUPPORTSTAFFID != null)
+                {
+                    body["SUPPORT_STAFF_ID"] = SourceExpressionConverter.ConvertToken(bodysUPPORTSTAFFID);
+                    bodypropCount++;
+                }
+
+                if (bodycONTACTID != null)
+                {
+                    body["CONTACT_ID"] = SourceExpressionConverter.ConvertToken(bodycONTACTID);
+                    bodypropCount++;
+                }
+
+                if (bodyeXPECTEDENDDATEUT != null)
+                {
+                    body["EXPECTED_END_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodyeXPECTEDENDDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodycOMMENT != null)
+                {
+                    body["COMMENT"] = SourceExpressionConverter.ConvertToken(bodycOMMENT);
+                    bodypropCount++;
+                }
+
+                if (bodysTARTDATEUT != null)
+                {
+                    body["START_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodysTARTDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodyeNDDATEUT != null)
+                {
+                    body["END_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodyeNDDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodyrENEWALDATEUT != null)
+                {
+                    body["RENEWAL_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodyrENEWALDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodyeXPECTEDSTARTDATEUT != null)
+                {
+                    body["EXPECTED_START_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodyeXPECTEDSTARTDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodycREATIONDATEUT != null)
+                {
+                    body["CREATION_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodycREATIONDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodyaPPLICATIONDATEUT != null)
+                {
+                    body["APPLICATION_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodyaPPLICATIONDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodywIZARDGUID != null)
+                {
+                    body["WIZARD_GUID"] = SourceExpressionConverter.ConvertToken(bodywIZARDGUID);
+                    bodypropCount++;
+                }
+
+                if (bodygROUPID != null)
+                {
+                    body["GROUP_ID"] = SourceExpressionConverter.ConvertToken(bodygROUPID);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELFR != null)
+                {
+                    body["ACTION_LABEL_FR"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELFR);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELSP != null)
+                {
+                    body["ACTION_LABEL_SP"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELSP);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELGE != null)
+                {
+                    body["ACTION_LABEL_GE"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELGE);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELIT != null)
+                {
+                    body["ACTION_LABEL_IT"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELIT);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELPO != null)
+                {
+                    body["ACTION_LABEL_PO"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELPO);
+                    bodypropCount++;
+                }
+
+                if (bodykNOWNPROBLEMID != null)
+                {
+                    body["KNOWN_PROBLEM_ID"] = SourceExpressionConverter.ConvertToken(bodykNOWNPROBLEMID);
+                    bodypropCount++;
+                }
+
+                if (bodymAXINTERVENTIONDATEUT != null)
+                {
+                    body["MAX_INTERVENTION_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodymAXINTERVENTIONDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodyeLAPSEDTIME != null)
+                {
+                    body["ELAPSED_TIME"] = SourceExpressionConverter.ConvertToken(bodyeLAPSEDTIME);
+                    bodypropCount++;
+                }
+
+                if (bodypRIORITYID != null)
+                {
+                    body["PRIORITY_ID"] = SourceExpressionConverter.ConvertToken(bodypRIORITYID);
+                    bodypropCount++;
+                }
+
+                if (bodytAXID != null)
+                {
+                    body["TAX_ID"] = SourceExpressionConverter.ConvertToken(bodytAXID);
+                    bodypropCount++;
+                }
+
+                if (bodysTATUSIDONCREATE != null)
+                {
+                    body["STATUS_ID_ON_CREATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIDONCREATE);
+                    bodypropCount++;
+                }
+
+                if (bodysTATUSIDONTERMINATE != null)
+                {
+                    body["STATUS_ID_ON_TERMINATE"] = SourceExpressionConverter.ConvertToken(bodysTATUSIDONTERMINATE);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONTYPEID != null)
+                {
+                    body["ACTION_TYPE_ID"] = SourceExpressionConverter.ConvertToken(bodyaCTIONTYPEID);
+                    bodypropCount++;
+                }
+
+                if (bodydELAY != null)
+                {
+                    body["DELAY"] = SourceExpressionConverter.ConvertToken(bodydELAY);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD1 != null)
+                {
+                    body["AVAILABLE_FIELD_1"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD1);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD2 != null)
+                {
+                    body["AVAILABLE_FIELD_2"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD2);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD3 != null)
+                {
+                    body["AVAILABLE_FIELD_3"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD3);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD4 != null)
+                {
+                    body["AVAILABLE_FIELD_4"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD4);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD5 != null)
+                {
+                    body["AVAILABLE_FIELD_5"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD5);
+                    bodypropCount++;
+                }
+
+                if (bodyaVAILABLEFIELD6 != null)
+                {
+                    body["AVAILABLE_FIELD_6"] = SourceExpressionConverter.ConvertToken(bodyaVAILABLEFIELD6);
+                    bodypropCount++;
+                }
+
+                if (bodytIMEUSEDTOCOMPLETEACTION != null)
+                {
+                    body["TIME_USED_TO_COMPLETE_ACTION"] = SourceExpressionConverter.ConvertToken(bodytIMEUSEDTOCOMPLETEACTION);
+                    bodypropCount++;
+                }
+
+                if (bodycONTRACTUALCOST != null)
+                {
+                    body["CONTRACTUAL_COST"] = SourceExpressionConverter.ConvertToken(bodycONTRACTUALCOST);
+                    bodypropCount++;
+                }
+
+                if (bodycONTRACTUALCOSTCURID != null)
+                {
+                    body["CONTRACTUAL_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodycONTRACTUALCOSTCURID);
+                    bodypropCount++;
+                }
+
+                if (bodytIMECOST != null)
+                {
+                    body["TIME_COST"] = SourceExpressionConverter.ConvertToken(bodytIMECOST);
+                    bodypropCount++;
+                }
+
+                if (bodytIMECOSTCURID != null)
+                {
+                    body["TIME_COST_CUR_ID"] = SourceExpressionConverter.ConvertToken(bodytIMECOSTCURID);
+                    bodypropCount++;
+                }
+
+                if (bodyoRIGINACTIONID != null)
+                {
+                    body["ORIGIN_ACTION_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINACTIONID);
+                    bodypropCount++;
+                }
+
+                if (bodywORKFLOWVALUE != null)
+                {
+                    body["WORKFLOW_VALUE"] = SourceExpressionConverter.ConvertToken(bodywORKFLOWVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodycONTINUITYPLANID != null)
+                {
+                    body["CONTINUITY_PLAN_ID"] = SourceExpressionConverter.ConvertToken(bodycONTINUITYPLANID);
+                    bodypropCount++;
+                }
+
+                if (bodycATEGORYTESTID != null)
+                {
+                    body["CATEGORY_TEST_ID"] = SourceExpressionConverter.ConvertToken(bodycATEGORYTESTID);
+                    bodypropCount++;
+                }
+
+                if (bodywORKFLOWID != null)
+                {
+                    body["WORKFLOW_ID"] = SourceExpressionConverter.ConvertToken(bodywORKFLOWID);
+                    bodypropCount++;
+                }
+
+                if (bodyeXITVALUE != null)
+                {
+                    body["EXIT_VALUE"] = SourceExpressionConverter.ConvertToken(bodyeXITVALUE);
+                    bodypropCount++;
+                }
+
+                if (bodymAXRESOLUTIONDATEUT != null)
+                {
+                    body["MAX_RESOLUTION_DATE_UT"] = SourceExpressionConverter.ConvertToken(bodymAXRESOLUTIONDATEUT);
+                    bodypropCount++;
+                }
+
+                if (bodypERCENTCOMPLETE != null)
+                {
+                    body["PERCENT_COMPLETE"] = SourceExpressionConverter.ConvertToken(bodypERCENTCOMPLETE);
+                    bodypropCount++;
+                }
+
+                if (bodyeXPECTEDDURATION != null)
+                {
+                    body["EXPECTED_DURATION"] = SourceExpressionConverter.ConvertToken(bodyeXPECTEDDURATION);
+                    bodypropCount++;
+                }
+
+                if (bodywBSTASK != null)
+                {
+                    body["WBS_TASK"] = SourceExpressionConverter.ConvertToken(bodywBSTASK);
+                    bodypropCount++;
+                }
+
+                if (bodytASKPERSONCOSTPERHOUR != null)
+                {
+                    body["TASK_PERSON_COST_PER_HOUR"] = SourceExpressionConverter.ConvertToken(bodytASKPERSONCOSTPERHOUR);
+                    bodypropCount++;
+                }
+
+                if (bodytASKPLANNEDBUDGET != null)
+                {
+                    body["TASK_PLANNED_BUDGET"] = SourceExpressionConverter.ConvertToken(bodytASKPLANNEDBUDGET);
+                    bodypropCount++;
+                }
+
+                if (bodyeSTIMATEDNETCHARGE != null)
+                {
+                    body["ESTIMATED_NET_CHARGE"] = SourceExpressionConverter.ConvertToken(bodyeSTIMATEDNETCHARGE);
+                    bodypropCount++;
+                }
+
+                if (bodypREVIOUSSIBLINGID != null)
+                {
+                    body["PREVIOUS_SIBLING_ID"] = SourceExpressionConverter.ConvertToken(bodypREVIOUSSIBLINGID);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL1 != null)
+                {
+                    body["ACTION_LABEL_L1"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL1);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL2 != null)
+                {
+                    body["ACTION_LABEL_L2"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL2);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL3 != null)
+                {
+                    body["ACTION_LABEL_L3"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL3);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL4 != null)
+                {
+                    body["ACTION_LABEL_L4"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL4);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL5 != null)
+                {
+                    body["ACTION_LABEL_L5"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL5);
+                    bodypropCount++;
+                }
+
+                if (bodyaCTIONLABELL6 != null)
+                {
+                    body["ACTION_LABEL_L6"] = SourceExpressionConverter.ConvertToken(bodyaCTIONLABELL6);
+                    bodypropCount++;
+                }
+
+                if (bodyhISTORYID != null)
+                {
+                    body["HISTORY_ID"] = SourceExpressionConverter.ConvertToken(bodyhISTORYID);
+                    bodypropCount++;
+                }
+
+                if (bodytOTRUNC != null)
+                {
+                    body["TO_TRUNC"] = SourceExpressionConverter.ConvertToken(bodytOTRUNC);
+                    bodypropCount++;
+                }
+
+                if (bodysTAGEID != null)
+                {
+                    body["STAGE_ID"] = SourceExpressionConverter.ConvertToken(bodysTAGEID);
+                    bodypropCount++;
+                }
+
+                if (bodyiSLOCKEDPROGRESSPOINT != null)
+                {
+                    body["IS_LOCKED_PROGRESS_POINT"] = SourceExpressionConverter.ConvertToken(bodyiSLOCKEDPROGRESSPOINT);
+                    bodypropCount++;
+                }
+
+                if (bodyoRIGINTOOLID != null)
+                {
+                    body["ORIGIN_TOOL_ID"] = SourceExpressionConverter.ConvertToken(bodyoRIGINTOOLID);
+                    bodypropCount++;
+                }
+
+                if (bodylASTUPDATE != null)
+                {
+                    body["LAST_UPDATE"] = SourceExpressionConverter.ConvertToken(bodylASTUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodyeLASTDATESUPDATE != null)
+                {
+                    body["E_LAST_DATES_UPDATE"] = SourceExpressionConverter.ConvertToken(bodyeLASTDATESUPDATE);
+                    bodypropCount++;
+                }
+
+                if (bodybILLEDTIME != null)
+                {
+                    body["BILLED_TIME"] = SourceExpressionConverter.ConvertToken(bodybILLEDTIME);
+                    bodypropCount++;
+                }
+
+                if (bodyiSBILLINGREVIEWED != null)
+                {
+                    body["IS_BILLING_REVIEWED"] = SourceExpressionConverter.ConvertToken(bodyiSBILLINGREVIEWED);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateActionTicketResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<ViewAllAtributesofanAssetsResponse> ViewAllAtributesofanAssets([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> assetId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(assetId, nameof(assetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/asset-characteristics/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(assetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ViewAllAtributesofanAssetsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IWorkflowAction DeleteDocument([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> rfcNumber, [WorkflowExpression] Func<string> documentId)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(rfcNumber, nameof(rfcNumber), required: true);
+            SourceExpression.Validate(documentId, nameof(documentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/requests/{1}/documents/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rfcNumber, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(documentId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "easyvistaservicemana")]
+        public IBodyWorkflowAction<UpdateCIResponse> UpdateCI([WorkflowExpression] Func<string> account, [WorkflowExpression] Func<string> ciId, [WorkflowExpression] Func<string> bodyassetLabel = null, [WorkflowExpression] Func<string> bodypurchasePrice = null, [WorkflowExpression] Func<string> bodyautomaticRenewal = null, [WorkflowExpression] Func<string> bodyestimatedPercentageUse = null, [WorkflowExpression] Func<string> bodyinstallationDate = null, [WorkflowExpression] Func<string> bodyavailableField1 = null, [WorkflowExpression] Func<string> bodycommentAsset = null)
+        {
+            SourceExpression.Validate(account, nameof(account), required: true);
+            SourceExpression.Validate(ciId, nameof(ciId), required: true);
+            SourceExpression.Validate(bodyassetLabel, nameof(bodyassetLabel), required: false);
+            SourceExpression.Validate(bodypurchasePrice, nameof(bodypurchasePrice), required: false);
+            SourceExpression.Validate(bodyautomaticRenewal, nameof(bodyautomaticRenewal), required: false);
+            SourceExpression.Validate(bodyestimatedPercentageUse, nameof(bodyestimatedPercentageUse), required: false);
+            SourceExpression.Validate(bodyinstallationDate, nameof(bodyinstallationDate), required: false);
+            SourceExpression.Validate(bodyavailableField1, nameof(bodyavailableField1), required: false);
+            SourceExpression.Validate(bodycommentAsset, nameof(bodycommentAsset), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/{0}/assets/{1}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(account, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ciId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyassetLabel != null)
+                {
+                    body["asset_label"] = SourceExpressionConverter.ConvertToken(bodyassetLabel);
+                    bodypropCount++;
+                }
+
+                if (bodypurchasePrice != null)
+                {
+                    body["purchase_price"] = SourceExpressionConverter.ConvertToken(bodypurchasePrice);
+                    bodypropCount++;
+                }
+
+                if (bodyautomaticRenewal != null)
+                {
+                    body["automatic_renewal"] = SourceExpressionConverter.ConvertToken(bodyautomaticRenewal);
+                    bodypropCount++;
+                }
+
+                if (bodyestimatedPercentageUse != null)
+                {
+                    body["estimated_percentage_use"] = SourceExpressionConverter.ConvertToken(bodyestimatedPercentageUse);
+                    bodypropCount++;
+                }
+
+                if (bodyinstallationDate != null)
+                {
+                    body["installation_date"] = SourceExpressionConverter.ConvertToken(bodyinstallationDate);
+                    bodypropCount++;
+                }
+
+                if (bodyavailableField1 != null)
+                {
+                    body["available_field_1"] = SourceExpressionConverter.ConvertToken(bodyavailableField1);
+                    bodypropCount++;
+                }
+
+                if (bodycommentAsset != null)
+                {
+                    body["comment_asset"] = SourceExpressionConverter.ConvertToken(bodycommentAsset);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateCIResponse>(BuildSourceInput);
         }
     }
 

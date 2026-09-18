@@ -12,199 +12,233 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Apyhubgenerateical
     public class ApyhubgenerateicalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<string> File(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
+        public IBodyWorkflowAction<string> File([WorkflowExpression] Func<string> output = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyorganizerEmail = null, [WorkflowExpression] Func<string[]> bodyattendeesEmails = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodymeetingDate = null, [WorkflowExpression] Func<bool> bodyrecurring = null, [WorkflowExpression] Func<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, [WorkflowExpression] Func<int> bodyrecurrencecount = null)
         {
-            var apiCallPath = "/file";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (output != null)
-                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysummary != null)
+            SourceExpression.Validate(output, nameof(output), required: false);
+            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
+            SourceExpression.Validate(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
+            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
+            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            SourceExpression.Validate(bodymeetingDate, nameof(bodymeetingDate), required: false);
+            SourceExpression.Validate(bodyrecurring, nameof(bodyrecurring), required: false);
+            SourceExpression.Validate(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
+            SourceExpression.Validate(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
-                bodypropCount++;
+                var apiCallPath = "/file";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysummary != null)
+                {
+                    body["summary"] = SourceExpressionConverter.ConvertToken(bodysummary);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyorganizerEmail != null)
+                {
+                    body["organizer_email"] = SourceExpressionConverter.ConvertToken(bodyorganizerEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyattendeesEmails != null)
+                {
+                    body["attendees_emails"] = SourceExpressionConverter.ConvertToken(bodyattendeesEmails);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = SourceExpressionConverter.ConvertToken(bodylocation);
+                    bodypropCount++;
+                }
+
+                if (bodytimeZone != null)
+                {
+                    body["time_zone"] = SourceExpressionConverter.ConvertToken(bodytimeZone);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["start_time"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["end_time"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodymeetingDate != null)
+                {
+                    body["meeting_date"] = SourceExpressionConverter.ConvertToken(bodymeetingDate);
+                    bodypropCount++;
+                }
+
+                if (bodyrecurring != null)
+                {
+                    body["recurring"] = SourceExpressionConverter.ConvertToken(bodyrecurring);
+                    bodypropCount++;
+                }
+
+                var recurrenceObject = new JObject();
+                var recurrenceObjectpropCount = 0;
+                if (bodyrecurrencefrequency != null)
+                {
+                    recurrenceObject["frequency"] = SourceExpressionConverter.Convert(bodyrecurrencefrequency);
+                    recurrenceObjectpropCount++;
+                }
+
+                if (bodyrecurrencecount != null)
+                {
+                    recurrenceObject["count"] = SourceExpressionConverter.ConvertToken(bodyrecurrencecount);
+                    recurrenceObjectpropCount++;
+                }
+
+                if (recurrenceObjectpropCount > 0)
+                {
+                    body["recurrence"] = recurrenceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyorganizerEmail != null)
-            {
-                body["organizer_email"] = CSharpExpressionConverter.ConvertToken(bodyorganizerEmail);
-                bodypropCount++;
-            }
-
-            if (bodyattendeesEmails != null)
-            {
-                body["attendees_emails"] = CSharpExpressionConverter.ConvertToken(bodyattendeesEmails);
-                bodypropCount++;
-            }
-
-            if (bodylocation != null)
-            {
-                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
-                bodypropCount++;
-            }
-
-            if (bodytimeZone != null)
-            {
-                body["time_zone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodymeetingDate != null)
-            {
-                body["meeting_date"] = CSharpExpressionConverter.ConvertToken(bodymeetingDate);
-                bodypropCount++;
-            }
-
-            if (bodyrecurring != null)
-            {
-                body["recurring"] = CSharpExpressionConverter.ConvertToken(bodyrecurring);
-                bodypropCount++;
-            }
-
-            var recurrenceObject = new JObject();
-            var recurrenceObjectpropCount = 0;
-            if (bodyrecurrencefrequency != null)
-            {
-                recurrenceObject["frequency"] = CSharpExpressionConverter.Convert(bodyrecurrencefrequency);
-                recurrenceObjectpropCount++;
-            }
-
-            if (bodyrecurrencecount != null)
-            {
-                recurrenceObject["count"] = CSharpExpressionConverter.ConvertToken(bodyrecurrencecount);
-                recurrenceObjectpropCount++;
-            }
-
-            if (recurrenceObjectpropCount > 0)
-            {
-                body["recurrence"] = recurrenceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "apyhubgenerateical")]
-        public IBodyWorkflowAction<URLPostResponse> URL(Expression<Func<string>> output = null, Expression<Func<string>> bodysummary = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyorganizerEmail = null, Expression<Func<string[]>> bodyattendeesEmails = null, Expression<Func<string>> bodylocation = null, Expression<Func<string>> bodytimeZone = null, Expression<Func<string>> bodystartTime = null, Expression<Func<string>> bodyendTime = null, Expression<Func<string>> bodymeetingDate = null, Expression<Func<bool>> bodyrecurring = null, Expression<Func<bodyrecurrencefrequencyInput>> bodyrecurrencefrequency = null, Expression<Func<int>> bodyrecurrencecount = null)
+        public IBodyWorkflowAction<URLPostResponse> URL([WorkflowExpression] Func<string> output = null, [WorkflowExpression] Func<string> bodysummary = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyorganizerEmail = null, [WorkflowExpression] Func<string[]> bodyattendeesEmails = null, [WorkflowExpression] Func<string> bodylocation = null, [WorkflowExpression] Func<string> bodytimeZone = null, [WorkflowExpression] Func<string> bodystartTime = null, [WorkflowExpression] Func<string> bodyendTime = null, [WorkflowExpression] Func<string> bodymeetingDate = null, [WorkflowExpression] Func<bool> bodyrecurring = null, [WorkflowExpression] Func<bodyrecurrencefrequencyInput> bodyrecurrencefrequency = null, [WorkflowExpression] Func<int> bodyrecurrencecount = null)
         {
-            var apiCallPath = "/url";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (output != null)
-                callPayload.Queries["output"] = CSharpExpressionConverter.ConvertO(output);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysummary != null)
+            SourceExpression.Validate(output, nameof(output), required: false);
+            SourceExpression.Validate(bodysummary, nameof(bodysummary), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyorganizerEmail, nameof(bodyorganizerEmail), required: false);
+            SourceExpression.Validate(bodyattendeesEmails, nameof(bodyattendeesEmails), required: false);
+            SourceExpression.Validate(bodylocation, nameof(bodylocation), required: false);
+            SourceExpression.Validate(bodytimeZone, nameof(bodytimeZone), required: false);
+            SourceExpression.Validate(bodystartTime, nameof(bodystartTime), required: false);
+            SourceExpression.Validate(bodyendTime, nameof(bodyendTime), required: false);
+            SourceExpression.Validate(bodymeetingDate, nameof(bodymeetingDate), required: false);
+            SourceExpression.Validate(bodyrecurring, nameof(bodyrecurring), required: false);
+            SourceExpression.Validate(bodyrecurrencefrequency, nameof(bodyrecurrencefrequency), required: false);
+            SourceExpression.Validate(bodyrecurrencecount, nameof(bodyrecurrencecount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["summary"] = CSharpExpressionConverter.ConvertToken(bodysummary);
-                bodypropCount++;
+                var apiCallPath = "/url";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (output != null)
+                    callPayload.Queries["output"] = SourceExpressionConverter.ConvertO(output);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysummary != null)
+                {
+                    body["summary"] = SourceExpressionConverter.ConvertToken(bodysummary);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyorganizerEmail != null)
+                {
+                    body["organizer_email"] = SourceExpressionConverter.ConvertToken(bodyorganizerEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyattendeesEmails != null)
+                {
+                    body["attendees_emails"] = SourceExpressionConverter.ConvertToken(bodyattendeesEmails);
+                    bodypropCount++;
+                }
+
+                if (bodylocation != null)
+                {
+                    body["location"] = SourceExpressionConverter.ConvertToken(bodylocation);
+                    bodypropCount++;
+                }
+
+                if (bodytimeZone != null)
+                {
+                    body["time_zone"] = SourceExpressionConverter.ConvertToken(bodytimeZone);
+                    bodypropCount++;
+                }
+
+                if (bodystartTime != null)
+                {
+                    body["start_time"] = SourceExpressionConverter.ConvertToken(bodystartTime);
+                    bodypropCount++;
+                }
+
+                if (bodyendTime != null)
+                {
+                    body["end_time"] = SourceExpressionConverter.ConvertToken(bodyendTime);
+                    bodypropCount++;
+                }
+
+                if (bodymeetingDate != null)
+                {
+                    body["meeting_date"] = SourceExpressionConverter.ConvertToken(bodymeetingDate);
+                    bodypropCount++;
+                }
+
+                if (bodyrecurring != null)
+                {
+                    body["recurring"] = SourceExpressionConverter.ConvertToken(bodyrecurring);
+                    bodypropCount++;
+                }
+
+                var recurrenceObject = new JObject();
+                var recurrenceObjectpropCount = 0;
+                if (bodyrecurrencefrequency != null)
+                {
+                    recurrenceObject["frequency"] = SourceExpressionConverter.Convert(bodyrecurrencefrequency);
+                    recurrenceObjectpropCount++;
+                }
+
+                if (bodyrecurrencecount != null)
+                {
+                    recurrenceObject["count"] = SourceExpressionConverter.ConvertToken(bodyrecurrencecount);
+                    recurrenceObjectpropCount++;
+                }
+
+                if (recurrenceObjectpropCount > 0)
+                {
+                    body["recurrence"] = recurrenceObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyorganizerEmail != null)
-            {
-                body["organizer_email"] = CSharpExpressionConverter.ConvertToken(bodyorganizerEmail);
-                bodypropCount++;
-            }
-
-            if (bodyattendeesEmails != null)
-            {
-                body["attendees_emails"] = CSharpExpressionConverter.ConvertToken(bodyattendeesEmails);
-                bodypropCount++;
-            }
-
-            if (bodylocation != null)
-            {
-                body["location"] = CSharpExpressionConverter.ConvertToken(bodylocation);
-                bodypropCount++;
-            }
-
-            if (bodytimeZone != null)
-            {
-                body["time_zone"] = CSharpExpressionConverter.ConvertToken(bodytimeZone);
-                bodypropCount++;
-            }
-
-            if (bodystartTime != null)
-            {
-                body["start_time"] = CSharpExpressionConverter.ConvertToken(bodystartTime);
-                bodypropCount++;
-            }
-
-            if (bodyendTime != null)
-            {
-                body["end_time"] = CSharpExpressionConverter.ConvertToken(bodyendTime);
-                bodypropCount++;
-            }
-
-            if (bodymeetingDate != null)
-            {
-                body["meeting_date"] = CSharpExpressionConverter.ConvertToken(bodymeetingDate);
-                bodypropCount++;
-            }
-
-            if (bodyrecurring != null)
-            {
-                body["recurring"] = CSharpExpressionConverter.ConvertToken(bodyrecurring);
-                bodypropCount++;
-            }
-
-            var recurrenceObject = new JObject();
-            var recurrenceObjectpropCount = 0;
-            if (bodyrecurrencefrequency != null)
-            {
-                recurrenceObject["frequency"] = CSharpExpressionConverter.Convert(bodyrecurrencefrequency);
-                recurrenceObjectpropCount++;
-            }
-
-            if (bodyrecurrencecount != null)
-            {
-                recurrenceObject["count"] = CSharpExpressionConverter.ConvertToken(bodyrecurrencecount);
-                recurrenceObjectpropCount++;
-            }
-
-            if (recurrenceObjectpropCount > 0)
-            {
-                body["recurrence"] = recurrenceObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<URLPostResponse>(callPayload);
+            return new ApiConnectionAction<URLPostResponse>(BuildSourceInput);
         }
     }
 

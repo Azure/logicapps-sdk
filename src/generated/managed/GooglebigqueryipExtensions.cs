@@ -12,12 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlebigqueryip
     public class GooglebigqueryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlebigqueryip")]
-        public IBodyWorkflowAction<GetDatasetResponse> GetDataset(Expression<Func<string>> projectId, Expression<Func<string>> datasetId)
+        public IBodyWorkflowAction<GetDatasetResponse> GetDataset([WorkflowExpression] Func<string> projectId, [WorkflowExpression] Func<string> datasetId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDatasetResponse>(callPayload);
+            SourceExpression.Validate(projectId, nameof(projectId), required: true);
+            SourceExpression.Validate(datasetId, nameof(datasetId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bigquery/v2/projects/{0}/datasets/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(projectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(datasetId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDatasetResponse>(BuildSourceInput);
         }
     }
 

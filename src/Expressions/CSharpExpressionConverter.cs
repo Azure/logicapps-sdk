@@ -47,26 +47,6 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         // -------------------- Helpers --------------------
 
-        private static object GetMemberValue(MemberInfo member, object instance)
-        {
-            return member switch
-            {
-                PropertyInfo prop => prop.GetValue(instance),
-                FieldInfo field => field.GetValue(instance),
-                _ => throw new ArgumentException($"Member type {member.GetType()} not supported", nameof(member))
-            };
-        }
-
-        private static Type GetMemberType(MemberInfo member)
-        {
-            return member switch
-            {
-                PropertyInfo prop => prop.PropertyType,
-                FieldInfo field => field.FieldType,
-                _ => throw new ArgumentException($"Member type {member.GetType()} not supported", nameof(member))
-            };
-        }
-
         private static bool IsClosureType(Type type)
         {
             if (type == null) return false;
@@ -299,32 +279,17 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
                 }
             }
 
+            if (CapturedValueResolver.TryResolve(e, out var capturedValue, out var capturedType))
+            {
+                return RenderCapturedValue(capturedValue, capturedType);
+            }
+
             var targetResult = VisitTagged(e.Expression, p);
             var target = targetResult.Text;
 
             // Workflow data members need to be recognized before closure inlining.
             if (TryHandleWorkflowMember(e, targetResult, out var result))
                 return result;
-
-            // If target resolved to a closure literal, evaluate the member
-            if (e.Expression is ConstantExpression ce && IsClosureType(ce.Type))
-            {
-                var value = GetMemberValue(e.Member, ce.Value);
-                return RenderCapturedValue(value, GetMemberType(e.Member));
-            }
-
-            // If target is a MemberExpression on a closure (nested closure capture)
-            if (e.Expression is MemberExpression innerMember &&
-                innerMember.Expression is ConstantExpression innerCe &&
-                IsClosureType(innerCe.Type))
-            {
-                var innerValue = GetMemberValue(innerMember.Member, innerCe.Value);
-                if (innerValue != null && IsClosureType(innerValue.GetType()))
-                {
-                    var value = GetMemberValue(e.Member, innerValue);
-                    return RenderCapturedValue(value, GetMemberType(e.Member));
-                }
-            }
 
             // General member access
             return new VisitResult($"{target}.{e.Member.Name}", false, false);
@@ -455,18 +420,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Expressions
 
         private static object TryExtractClosureValue(Expression expr)
         {
-            // Direct closure: constant.member
-            if (expr is MemberExpression me && me.Expression is ConstantExpression ce && IsClosureType(ce.Type))
+            if (CapturedValueResolver.TryResolve(expr, out var capturedValue, out _))
             {
-                return GetMemberValue(me.Member, ce.Value);
-            }
-
-            // Nested closure
-            if (expr is MemberExpression me2 && me2.Expression is MemberExpression inner &&
-                inner.Expression is ConstantExpression innerCe && IsClosureType(innerCe.Type))
-            {
-                var innerVal = GetMemberValue(inner.Member, innerCe.Value);
-                return GetMemberValue(me2.Member, innerVal);
+                return capturedValue;
             }
 
             // Direct constant (for static values)

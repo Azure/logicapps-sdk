@@ -14,19 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Memeip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
         public IBodyWorkflowAction<MemeRandomResponse> MemeRandom()
         {
-            var apiCallPath = "/gimme";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemeRandomResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/gimme";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MemeRandomResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "memeip")]
-        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit(Expression<Func<string>> subreddit)
+        public IBodyWorkflowAction<MemeSubredditResponse> MemeSubreddit([WorkflowExpression] Func<string> subreddit)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gimme/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subreddit, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemeSubredditResponse>(callPayload);
+            SourceExpression.Validate(subreddit, nameof(subreddit), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gimme/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subreddit, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MemeSubredditResponse>(BuildSourceInput);
         }
     }
 

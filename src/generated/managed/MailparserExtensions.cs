@@ -14,38 +14,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mailparser")]
         public IBodyWorkflowAction<InboxListResponse> InboxList()
         {
-            var apiCallPath = "/inboxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<InboxListResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/inboxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<InboxListResponse>(BuildSourceInput);
         }
     }
 
     public class MailparserTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate(Expression<Func<string>> inboxId, Expression<Func<string>> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> WebhookCreate([WorkflowExpression] Func<string> inboxId, [WorkflowExpression] Func<string> requestBodyOfWebhooklabel = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboxId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["target_url"] = "@listCallbackUrl()";
-            requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["provider"] = "flow";
-            requestBodyOfWebhookpropCount++;
-            if (requestBodyOfWebhooklabel != null)
+            SourceExpression.Validate(inboxId, nameof(inboxId), required: true);
+            SourceExpression.Validate(requestBodyOfWebhooklabel, nameof(requestBodyOfWebhooklabel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBodyOfWebhook["label"] = CSharpExpressionConverter.ConvertToken(requestBodyOfWebhooklabel);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/inboxes/{0}/dispatcher", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(inboxId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                requestBodyOfWebhook["target_url"] = "@listCallbackUrl()";
                 requestBodyOfWebhookpropCount++;
+                requestBodyOfWebhook["provider"] = "flow";
+                requestBodyOfWebhookpropCount++;
+                if (requestBodyOfWebhooklabel != null)
+                {
+                    requestBodyOfWebhook["label"] = SourceExpressionConverter.ConvertToken(requestBodyOfWebhooklabel);
+                    requestBodyOfWebhookpropCount++;
+                }
+
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+                return callPayload;
             }
 
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
-
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

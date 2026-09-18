@@ -184,7 +184,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             Assert.Equal("@csharp{\"Ada\".ToUpper()}", body["invitedUserDisplayName"]?.Value<string>());
             Assert.Equal("fr-FR", body["invitedUserMessageInfo"]?["messageLanguage"]?.Value<string>());
-            Assert.Equal("@not(false)", body["resetRedemption"]?.Value<string>());
+            Assert.Equal("@csharp{!false}", body["resetRedemption"]?.Value<string>());
         }
 
         [Fact]
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var body = Assert.IsType<JObject>(input.Body);
 
             Assert.Equal(
-                "@csharp{base64(JToken.FromObject(\"hello\"))}",
+                "@csharp{base64(global::Newtonsoft.Json.Linq.JToken.FromObject(\"hello\"))}",
                 body["ContentData"]?.Value<string>());
         }
 
@@ -312,10 +312,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             Assert.Equal("@csharp{\"Inbox\".ToLower()}", input.Fetch.Queries["folderPath"]);
             Assert.Equal("High", input.Fetch.Queries["importance"]);
-            Assert.Equal("@not(false)", input.Fetch.Queries["fetchOnlyWithAttachment"]);
+            Assert.Equal("@csharp{!false}", input.Fetch.Queries["fetchOnlyWithAttachment"]);
             Assert.Equal("@csharp{\"Inbox\".ToLower()}", input.Subscribe.Queries["folderPath"]);
             Assert.Equal("High", input.Subscribe.Queries["importance"]);
-            Assert.Equal("@not(false)", input.Subscribe.Queries["fetchOnlyWithAttachment"]);
+            Assert.Equal("@csharp{!false}", input.Subscribe.Queries["fetchOnlyWithAttachment"]);
         }
 
         [Fact]

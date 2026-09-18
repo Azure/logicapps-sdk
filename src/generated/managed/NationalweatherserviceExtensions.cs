@@ -12,59 +12,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nationalweatherservice
     public class NationalweatherserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Tafs(Expression<Func<string>> stationId)
+        public IBodyWorkflowAction<ProblemDetail> Tafs([WorkflowExpression] Func<string> stationId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            SourceExpression.Validate(stationId, nameof(stationId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetail>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> Taf(Expression<Func<string>> stationId, Expression<Func<string>> date, Expression<Func<string>> time)
+        public IBodyWorkflowAction<ProblemDetail> Taf([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<string> time)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(time, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            SourceExpression.Validate(stationId, nameof(stationId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            SourceExpression.Validate(time, nameof(time), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/stations/{0}/tafs/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(time, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetail>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarQueue(Expression<Func<string>> host, Expression<Func<int>> limit = null, Expression<Func<string>> arrived = null, Expression<Func<string>> created = null, Expression<Func<string>> published = null, Expression<Func<string>> station = null, Expression<Func<string>> type = null, Expression<Func<string>> feed = null, Expression<Func<int>> resolution = null)
+        public IBodyWorkflowAction<ProblemDetail> RadarQueue([WorkflowExpression] Func<string> host, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> arrived = null, [WorkflowExpression] Func<string> created = null, [WorkflowExpression] Func<string> published = null, [WorkflowExpression] Func<string> station = null, [WorkflowExpression] Func<string> type = null, [WorkflowExpression] Func<string> feed = null, [WorkflowExpression] Func<int> resolution = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (arrived != null)
-                callPayload.Queries["arrived"] = CSharpExpressionConverter.ConvertO(arrived);
-            if (created != null)
-                callPayload.Queries["created"] = CSharpExpressionConverter.ConvertO(created);
-            if (published != null)
-                callPayload.Queries["published"] = CSharpExpressionConverter.ConvertO(published);
-            if (station != null)
-                callPayload.Queries["station"] = CSharpExpressionConverter.ConvertO(station);
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
-            if (feed != null)
-                callPayload.Queries["feed"] = CSharpExpressionConverter.ConvertO(feed);
-            if (resolution != null)
-                callPayload.Queries["resolution"] = CSharpExpressionConverter.ConvertO(resolution);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            SourceExpression.Validate(host, nameof(host), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(arrived, nameof(arrived), required: false);
+            SourceExpression.Validate(created, nameof(created), required: false);
+            SourceExpression.Validate(published, nameof(published), required: false);
+            SourceExpression.Validate(station, nameof(station), required: false);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            SourceExpression.Validate(feed, nameof(feed), required: false);
+            SourceExpression.Validate(resolution, nameof(resolution), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/radar/queues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(host, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (arrived != null)
+                    callPayload.Queries["arrived"] = SourceExpressionConverter.ConvertO(arrived);
+                if (created != null)
+                    callPayload.Queries["created"] = SourceExpressionConverter.ConvertO(created);
+                if (published != null)
+                    callPayload.Queries["published"] = SourceExpressionConverter.ConvertO(published);
+                if (station != null)
+                    callPayload.Queries["station"] = SourceExpressionConverter.ConvertO(station);
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                if (feed != null)
+                    callPayload.Queries["feed"] = SourceExpressionConverter.ConvertO(feed);
+                if (resolution != null)
+                    callPayload.Queries["resolution"] = SourceExpressionConverter.ConvertO(resolution);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetail>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nationalweatherservice")]
-        public IBodyWorkflowAction<ProblemDetail> RadarProfiler(Expression<Func<string>> stationId, Expression<Func<string>> time = null, Expression<Func<string>> interval = null)
+        public IBodyWorkflowAction<ProblemDetail> RadarProfiler([WorkflowExpression] Func<string> stationId, [WorkflowExpression] Func<string> time = null, [WorkflowExpression] Func<string> interval = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (time != null)
-                callPayload.Queries["time"] = CSharpExpressionConverter.ConvertO(time);
-            if (interval != null)
-                callPayload.Queries["interval"] = CSharpExpressionConverter.ConvertO(interval);
-            return new ApiConnectionAction<ProblemDetail>(callPayload);
+            SourceExpression.Validate(stationId, nameof(stationId), required: true);
+            SourceExpression.Validate(time, nameof(time), required: false);
+            SourceExpression.Validate(interval, nameof(interval), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/radar/profilers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(stationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (time != null)
+                    callPayload.Queries["time"] = SourceExpressionConverter.ConvertO(time);
+                if (interval != null)
+                    callPayload.Queries["interval"] = SourceExpressionConverter.ConvertO(interval);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProblemDetail>(BuildSourceInput);
         }
     }
 

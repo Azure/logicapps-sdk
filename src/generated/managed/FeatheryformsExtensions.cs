@@ -15,31 +15,49 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Featheryforms
 
     public class FeatheryformsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<FormCompletionResponse> FormCompletion([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/form_completion/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
-            return new ApiConnectionTrigger<FormCompletionResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(formKey, nameof(formKey), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/power-automate/poll/form_completion/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = SourceExpressionConverter.ConvertO(formKey);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<FormCompletionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<DataReceivedResponse> DataReceived([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/data_received/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
-            return new ApiConnectionTrigger<DataReceivedResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(formKey, nameof(formKey), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/power-automate/poll/data_received/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = SourceExpressionConverter.ConvertO(formKey);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<DataReceivedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewFileResponse> NewFile(Expression<Func<string>> formKey, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewFileResponse> NewFile([WorkflowExpression] Func<string> formKey, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/power-automate/poll/file/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["form_key"] = CSharpExpressionConverter.ConvertO(formKey);
-            return new ApiConnectionTrigger<NewFileResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(formKey, nameof(formKey), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/power-automate/poll/file/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["form_key"] = SourceExpressionConverter.ConvertO(formKey);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<NewFileResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

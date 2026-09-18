@@ -12,86 +12,115 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Experlogixcpq
     public class ExperlogixcpqActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml(Expression<Func<string>> type, Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> GetConfigurationXml([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = "/api/ConfigurationXml";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["type"] = CSharpExpressionConverter.ConvertO(type);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
+            SourceExpression.Validate(type, nameof(type), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/ConfigurationXml";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["type"] = SourceExpressionConverter.ConvertO(type);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetConfigurationXmlResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy(Expression<Func<string>> reqtargetId, Expression<Func<string>> reqsourceId, Expression<Func<string>> reqtype, Expression<Func<int[]>> reqlineItemIds = null)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfigurationFromCopy([WorkflowExpression] Func<string> reqtargetId, [WorkflowExpression] Func<string> reqsourceId, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<int[]> reqlineItemIds = null)
         {
-            var apiCallPath = "/api/CreateConfigurationFromCopy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["targetId"] = CSharpExpressionConverter.ConvertToken(reqtargetId);
-            reqpropCount++;
-            req["sourceId"] = CSharpExpressionConverter.ConvertToken(reqsourceId);
-            reqpropCount++;
-            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
-            if (reqlineItemIds != null)
+            SourceExpression.Validate(reqtargetId, nameof(reqtargetId), required: true);
+            SourceExpression.Validate(reqsourceId, nameof(reqsourceId), required: true);
+            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
+            SourceExpression.Validate(reqlineItemIds, nameof(reqlineItemIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                req["lineItemIds"] = CSharpExpressionConverter.ConvertToken(reqlineItemIds);
+                var apiCallPath = "/api/CreateConfigurationFromCopy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
                 reqpropCount++;
+                req["targetId"] = SourceExpressionConverter.ConvertToken(reqtargetId);
+                reqpropCount++;
+                req["sourceId"] = SourceExpressionConverter.ConvertToken(reqsourceId);
+                reqpropCount++;
+                req["type"] = SourceExpressionConverter.ConvertToken(reqtype);
+                if (reqlineItemIds != null)
+                {
+                    req["lineItemIds"] = SourceExpressionConverter.ConvertToken(reqlineItemIds);
+                    reqpropCount++;
+                }
+
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+                return callPayload;
             }
 
-            if (reqpropCount > 0)
-            {
-                callPayload.Body = req;
-            }
-
-            return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
+            return new ApiConnectionAction<GetConfigurationXmlResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> UpdateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
         {
-            var apiCallPath = "/api/UpdateConfiguration";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["id"] = CSharpExpressionConverter.ConvertToken(reqid);
-            reqpropCount++;
-            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
-            reqpropCount++;
-            req["configurationXml"] = CSharpExpressionConverter.ConvertToken(reqconfigurationXml);
-            if (reqpropCount > 0)
+            SourceExpression.Validate(reqid, nameof(reqid), required: true);
+            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
+            SourceExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = req;
+                var apiCallPath = "/api/UpdateConfiguration";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["id"] = SourceExpressionConverter.ConvertToken(reqid);
+                reqpropCount++;
+                req["type"] = SourceExpressionConverter.ConvertToken(reqtype);
+                reqpropCount++;
+                req["configurationXml"] = SourceExpressionConverter.ConvertToken(reqconfigurationXml);
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
+            return new ApiConnectionAction<GetConfigurationXmlResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "experlogixcpq")]
-        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration(Expression<Func<string>> reqid, Expression<Func<string>> reqtype, Expression<Func<string>> reqconfigurationXml)
+        public IBodyWorkflowAction<GetConfigurationXmlResponse> CreateConfiguration([WorkflowExpression] Func<string> reqid, [WorkflowExpression] Func<string> reqtype, [WorkflowExpression] Func<string> reqconfigurationXml)
         {
-            var apiCallPath = "/api/CreateConfiguration";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var req = new JObject();
-            var reqpropCount = 0;
-            reqpropCount++;
-            req["id"] = CSharpExpressionConverter.ConvertToken(reqid);
-            reqpropCount++;
-            req["type"] = CSharpExpressionConverter.ConvertToken(reqtype);
-            reqpropCount++;
-            req["configurationXml"] = CSharpExpressionConverter.ConvertToken(reqconfigurationXml);
-            if (reqpropCount > 0)
+            SourceExpression.Validate(reqid, nameof(reqid), required: true);
+            SourceExpression.Validate(reqtype, nameof(reqtype), required: true);
+            SourceExpression.Validate(reqconfigurationXml, nameof(reqconfigurationXml), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = req;
+                var apiCallPath = "/api/CreateConfiguration";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var req = new JObject();
+                var reqpropCount = 0;
+                reqpropCount++;
+                req["id"] = SourceExpressionConverter.ConvertToken(reqid);
+                reqpropCount++;
+                req["type"] = SourceExpressionConverter.ConvertToken(reqtype);
+                reqpropCount++;
+                req["configurationXml"] = SourceExpressionConverter.ConvertToken(reqconfigurationXml);
+                if (reqpropCount > 0)
+                {
+                    callPayload.Body = req;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetConfigurationXmlResponse>(callPayload);
+            return new ApiConnectionAction<GetConfigurationXmlResponse>(BuildSourceInput);
         }
     }
 

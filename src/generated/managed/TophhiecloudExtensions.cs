@@ -12,25 +12,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tophhiecloud
     public class TophhiecloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo(Expression<Func<string>> tenantID = null, Expression<Func<string>> domainName = null)
+        public IBodyWorkflowAction<TophhieCloudTenantInfoResponse> TophhieCloudTenantInfo([WorkflowExpression] Func<string> tenantID = null, [WorkflowExpression] Func<string> domainName = null)
         {
-            var apiCallPath = "/tenantinfo";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (tenantID != null)
-                callPayload.Queries["tenantID"] = CSharpExpressionConverter.ConvertO(tenantID);
-            if (domainName != null)
-                callPayload.Queries["domainName"] = CSharpExpressionConverter.ConvertO(domainName);
-            return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(callPayload);
+            SourceExpression.Validate(tenantID, nameof(tenantID), required: false);
+            SourceExpression.Validate(domainName, nameof(domainName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tenantinfo";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (tenantID != null)
+                    callPayload.Queries["tenantID"] = SourceExpressionConverter.ConvertO(tenantID);
+                if (domainName != null)
+                    callPayload.Queries["domainName"] = SourceExpressionConverter.ConvertO(domainName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TophhieCloudTenantInfoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tophhiecloud")]
-        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter(Expression<Func<string>> identifier)
+        public IBodyWorkflowAction<TophhieCloudEntraIDIDConverterResponse> TophhieCloudEntraIDIDConverter([WorkflowExpression] Func<string> identifier)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(callPayload);
+            SourceExpression.Validate(identifier, nameof(identifier), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/entra/convertid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(identifier, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TophhieCloudEntraIDIDConverterResponse>(BuildSourceInput);
         }
     }
 

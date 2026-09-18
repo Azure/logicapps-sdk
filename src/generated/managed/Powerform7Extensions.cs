@@ -12,45 +12,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
     public class Powerform7Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IWorkflowAction SubmitForm(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, Expression<Func<object>> query = null)
+        public IWorkflowAction SubmitForm([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<object> query = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(query);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(query, nameof(query), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proxy/contact-form-7/v1/contact-forms/{0}/feedback", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "powerform7")]
-        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms(Expression<Func<string>> wPSITEURL)
+        public IBodyWorkflowAction<GetCF7FormsResponseItem[]> GetCF7Forms([WorkflowExpression] Func<string> wPSITEURL)
         {
-            var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
-            return new ApiConnectionAction<GetCF7FormsResponseItem[]>(callPayload);
+            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/proxy/contact-form-7/v1/contact-forms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetCF7FormsResponseItem[]>(BuildSourceInput);
         }
     }
 
     public class Powerform7Triggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> wPSITEURL, Expression<Func<string>> formId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> wPSITEURL, [WorkflowExpression] Func<string> formId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["WP_SITEURL"] = CSharpExpressionConverter.ConvertO(wPSITEURL);
-            var callbackUrl = new JObject();
-            var callbackUrlpropCount = 0;
-            callbackUrl["callback_url"] = "@listCallbackUrl()";
-            callbackUrlpropCount++;
-            if (callbackUrlpropCount > 0)
+            SourceExpression.Validate(wPSITEURL, nameof(wPSITEURL), required: true);
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = callbackUrl;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/proxy/power-form-7/v1/webhooks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["WP_SITEURL"] = SourceExpressionConverter.ConvertO(wPSITEURL);
+                var callbackUrl = new JObject();
+                var callbackUrlpropCount = 0;
+                callbackUrl["callback_url"] = "@listCallbackUrl()";
+                callbackUrlpropCount++;
+                if (callbackUrlpropCount > 0)
+                {
+                    callPayload.Body = callbackUrl;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

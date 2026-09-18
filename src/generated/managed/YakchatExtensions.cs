@@ -12,85 +12,107 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
     public class YakchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yakchat")]
-        public IBodyWorkflowAction<SendMessageResponse> SendMessage(Expression<Func<string>> bodyinboxEmail, Expression<Func<string>> bodymessageText, Expression<Func<string>> bodymessageTo)
+        public IBodyWorkflowAction<SendMessageResponse> SendMessage([WorkflowExpression] Func<string> bodyinboxEmail, [WorkflowExpression] Func<string> bodymessageText, [WorkflowExpression] Func<string> bodymessageTo)
         {
-            var apiCallPath = "/Automation/SendMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
-            bodypropCount++;
-            body["MessageText"] = CSharpExpressionConverter.ConvertToken(bodymessageText);
-            bodypropCount++;
-            body["MessageTo"] = CSharpExpressionConverter.ConvertToken(bodymessageTo);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            SourceExpression.Validate(bodymessageText, nameof(bodymessageText), required: true);
+            SourceExpression.Validate(bodymessageTo, nameof(bodymessageTo), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/Automation/SendMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = SourceExpressionConverter.ConvertToken(bodyinboxEmail);
+                bodypropCount++;
+                body["MessageText"] = SourceExpressionConverter.ConvertToken(bodymessageText);
+                bodypropCount++;
+                body["MessageTo"] = SourceExpressionConverter.ConvertToken(bodymessageTo);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SendMessageResponse>(callPayload);
+            return new ApiConnectionAction<SendMessageResponse>(BuildSourceInput);
         }
     }
 
     public class YakchatTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger InboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger InboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Automation/InboundMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/Automation/InboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = SourceExpressionConverter.ConvertToken(bodyinboxEmail);
+                body["TargetUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger OutboundMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OutboundMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/Automation/OutboundMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/Automation/OutboundMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = SourceExpressionConverter.ConvertToken(bodyinboxEmail);
+                body["TargetUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger BidirectionalMessage(Expression<Func<string>> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger BidirectionalMessage([WorkflowExpression] Func<string> bodyinboxEmail, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["InboxEmail"] = CSharpExpressionConverter.ConvertToken(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyinboxEmail, nameof(bodyinboxEmail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v2/Automation/BidirectionalMessageNotification";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["InboxEmail"] = SourceExpressionConverter.ConvertToken(bodyinboxEmail);
+                body["TargetUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

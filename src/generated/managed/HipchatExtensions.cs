@@ -12,75 +12,117 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hipchat
     public class HipchatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserList> ListUsers(Expression<Func<string>> roomId)
+        public IBodyWorkflowAction<UserList> ListUsers([WorkflowExpression] Func<string> roomId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<UserResponse> GetUserByID(Expression<Func<string>> userid)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<NewMessage> PostMessage(Expression<Func<string>> roomId, Expression<Func<string>> bodymessage)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/message", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/participant", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<NewMessage>(callPayload);
+            return new ApiConnectionAction<UserList>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
-        public IBodyWorkflowAction<string> AddUserToRoom(Expression<Func<string>> roomId, Expression<Func<string>> memberid)
+        public IBodyWorkflowAction<UserResponse> GetUserByID([WorkflowExpression] Func<string> userid)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberid, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(userid, nameof(userid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
+        public IBodyWorkflowAction<NewMessage> PostMessage([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> bodymessage)
+        {
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/message", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NewMessage>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hipchat")]
+        public IBodyWorkflowAction<string> AddUserToRoom([WorkflowExpression] Func<string> roomId, [WorkflowExpression] Func<string> memberid)
+        {
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            SourceExpression.Validate(memberid, nameof(memberid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/room/{0}/member/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberid, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class HipchatTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewMessage([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/message_trigger/room/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<HistoryResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile(Expression<Func<string>> roomId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HistoryResponse> OnNewFile([WorkflowExpression] Func<string> roomId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<HistoryResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(roomId, nameof(roomId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/file_trigger/room/{0}/history", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(roomId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<HistoryResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<RoomList> OnNewRoom(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/room_trigger/room";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<RoomList>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/room_trigger/room";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<RoomList>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

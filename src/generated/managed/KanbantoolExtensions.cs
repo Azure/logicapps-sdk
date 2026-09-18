@@ -14,289 +14,410 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kanbantool
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
         public IBodyWorkflowAction<GetBoardResponse[]> GetBoards()
         {
-            var apiCallPath = "/api/v1/boards.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBoardResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetBoardResponse> GetBoard(Expression<Func<string>> boardId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBoardResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse[]> GetTasks(Expression<Func<string>> boardId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskname, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            taskpropCount++;
-            task["name"] = CSharpExpressionConverter.ConvertToken(taskname);
-            if (taskdescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                task["description"] = CSharpExpressionConverter.ConvertToken(taskdescription);
+                var apiCallPath = "/api/v1/boards.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBoardResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<GetBoardResponse> GetBoard([WorkflowExpression] Func<string> boardId)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBoardResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<GetTaskResponse[]> GetTasks([WorkflowExpression] Func<string> boardId)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskname, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskname, nameof(taskname), required: true);
+            SourceExpression.Validate(taskdescription, nameof(taskdescription), required: false);
+            SourceExpression.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            SourceExpression.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            SourceExpression.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            SourceExpression.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
                 taskpropCount++;
+                task["name"] = SourceExpressionConverter.ConvertToken(taskname);
+                if (taskdescription != null)
+                {
+                    task["description"] = SourceExpressionConverter.ConvertToken(taskdescription);
+                    taskpropCount++;
+                }
+
+                if (taskswimlaneId != null)
+                {
+                    task["swimlane_id"] = SourceExpressionConverter.ConvertToken(taskswimlaneId);
+                    taskpropCount++;
+                }
+
+                if (taskworkflowStageId != null)
+                {
+                    task["workflow_stage_id"] = SourceExpressionConverter.ConvertToken(taskworkflowStageId);
+                    taskpropCount++;
+                }
+
+                if (taskcardTypeId != null)
+                {
+                    task["card_type_id"] = SourceExpressionConverter.ConvertToken(taskcardTypeId);
+                    taskpropCount++;
+                }
+
+                if (taskassignedUserId != null)
+                {
+                    task["assigned_user_id"] = SourceExpressionConverter.ConvertToken(taskassignedUserId);
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+                return callPayload;
             }
 
-            if (taskswimlaneId != null)
-            {
-                task["swimlane_id"] = CSharpExpressionConverter.ConvertToken(taskswimlaneId);
-                taskpropCount++;
-            }
-
-            if (taskworkflowStageId != null)
-            {
-                task["workflow_stage_id"] = CSharpExpressionConverter.ConvertToken(taskworkflowStageId);
-                taskpropCount++;
-            }
-
-            if (taskcardTypeId != null)
-            {
-                task["card_type_id"] = CSharpExpressionConverter.ConvertToken(taskcardTypeId);
-                taskpropCount++;
-            }
-
-            if (taskassignedUserId != null)
-            {
-                task["assigned_user_id"] = CSharpExpressionConverter.ConvertToken(taskassignedUserId);
-                taskpropCount++;
-            }
-
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetTaskResponse2> GetTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetTaskResponse2> GetTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetTaskResponse2>(callPayload);
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTaskResponse2>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> taskname = null, Expression<Func<string>> taskdescription = null, Expression<Func<string>> taskcardTypeId = null, Expression<Func<string>> taskassignedUserId = null)
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> taskname = null, [WorkflowExpression] Func<string> taskdescription = null, [WorkflowExpression] Func<string> taskcardTypeId = null, [WorkflowExpression] Func<string> taskassignedUserId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (taskname != null)
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(taskname, nameof(taskname), required: false);
+            SourceExpression.Validate(taskdescription, nameof(taskdescription), required: false);
+            SourceExpression.Validate(taskcardTypeId, nameof(taskcardTypeId), required: false);
+            SourceExpression.Validate(taskassignedUserId, nameof(taskassignedUserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                task["name"] = CSharpExpressionConverter.ConvertToken(taskname);
-                taskpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (taskname != null)
+                {
+                    task["name"] = SourceExpressionConverter.ConvertToken(taskname);
+                    taskpropCount++;
+                }
+
+                if (taskdescription != null)
+                {
+                    task["description"] = SourceExpressionConverter.ConvertToken(taskdescription);
+                    taskpropCount++;
+                }
+
+                if (taskcardTypeId != null)
+                {
+                    task["card_type_id"] = SourceExpressionConverter.ConvertToken(taskcardTypeId);
+                    taskpropCount++;
+                }
+
+                if (taskassignedUserId != null)
+                {
+                    task["assigned_user_id"] = SourceExpressionConverter.ConvertToken(taskassignedUserId);
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+                return callPayload;
             }
 
-            if (taskdescription != null)
-            {
-                task["description"] = CSharpExpressionConverter.ConvertToken(taskdescription);
-                taskpropCount++;
-            }
-
-            if (taskcardTypeId != null)
-            {
-                task["card_type_id"] = CSharpExpressionConverter.ConvertToken(taskcardTypeId);
-                taskpropCount++;
-            }
-
-            if (taskassignedUserId != null)
-            {
-                task["assigned_user_id"] = CSharpExpressionConverter.ConvertToken(taskassignedUserId);
-                taskpropCount++;
-            }
-
-            if (taskpropCount > 0)
-            {
-                callPayload.Body = task;
-            }
-
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            return new ApiConnectionAction<UpdateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<MoveTaskResponse> MoveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<taskdirectionInput>> taskdirection = null, Expression<Func<string>> taskswimlaneId = null, Expression<Func<string>> taskworkflowStageId = null)
+        public IBodyWorkflowAction<MoveTaskResponse> MoveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<taskdirectionInput> taskdirection = null, [WorkflowExpression] Func<string> taskswimlaneId = null, [WorkflowExpression] Func<string> taskworkflowStageId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var task = new JObject();
-            var taskpropCount = 0;
-            if (taskdirection != null)
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(taskdirection, nameof(taskdirection), required: false);
+            SourceExpression.Validate(taskswimlaneId, nameof(taskswimlaneId), required: false);
+            SourceExpression.Validate(taskworkflowStageId, nameof(taskworkflowStageId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                task["direction"] = CSharpExpressionConverter.Convert(taskdirection);
-                taskpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/move.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var task = new JObject();
+                var taskpropCount = 0;
+                if (taskdirection != null)
+                {
+                    task["direction"] = SourceExpressionConverter.Convert(taskdirection);
+                    taskpropCount++;
+                }
+
+                if (taskswimlaneId != null)
+                {
+                    task["swimlane_id"] = SourceExpressionConverter.ConvertToken(taskswimlaneId);
+                    taskpropCount++;
+                }
+
+                if (taskworkflowStageId != null)
+                {
+                    task["workflow_stage_id"] = SourceExpressionConverter.ConvertToken(taskworkflowStageId);
+                    taskpropCount++;
+                }
+
+                if (taskpropCount > 0)
+                {
+                    callPayload.Body = task;
+                }
+                return callPayload;
             }
 
-            if (taskswimlaneId != null)
+            return new ApiConnectionAction<MoveTaskResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                task["swimlane_id"] = CSharpExpressionConverter.ConvertToken(taskswimlaneId);
-                taskpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (taskworkflowStageId != null)
+            return new ApiConnectionAction<ArchiveTaskResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities([WorkflowExpression] Func<string> boardId)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                task["workflow_stage_id"] = CSharpExpressionConverter.ConvertToken(taskworkflowStageId);
-                taskpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (taskpropCount > 0)
+            return new ApiConnectionAction<GetActivitiesResponseItem[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<GetCommentResponse[]> GetComments([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = task;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<MoveTaskResponse>(callPayload);
+            return new ApiConnectionAction<GetCommentResponse[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<ArchiveTaskResponse> ArchiveTask(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetCommentResponse> CreateComment([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> commentcontent)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/archive.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ArchiveTaskResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetActivitiesResponseItem[]> BoardActivities(Expression<Func<string>> boardId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/changelog.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetActivitiesResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetCommentResponse[]> GetComments(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetCommentResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetCommentResponse> CreateComment(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> commentcontent)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            commentpropCount++;
-            comment["content"] = CSharpExpressionConverter.ConvertToken(commentcontent);
-            if (commentpropCount > 0)
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(commentcontent, nameof(commentcontent), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = comment;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/comments.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                commentpropCount++;
+                comment["content"] = SourceExpressionConverter.ConvertToken(commentcontent);
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<GetCommentResponse>(callPayload);
+            return new ApiConnectionAction<GetCommentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks(Expression<Func<string>> boardId, Expression<Func<string>> taskId)
+        public IBodyWorkflowAction<GetSubtaskResponse[]> GetSubtasks([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubtaskResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskname, Expression<Func<string>> subtaskassignedUserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subtask = new JObject();
-            var subtaskpropCount = 0;
-            subtaskpropCount++;
-            subtask["name"] = CSharpExpressionConverter.ConvertToken(subtaskname);
-            if (subtaskassignedUserId != null)
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subtask["assigned_user_id"] = CSharpExpressionConverter.ConvertToken(subtaskassignedUserId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSubtaskResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
+        public IBodyWorkflowAction<GetSubtaskResponse> CreateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskname, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(subtaskname, nameof(subtaskname), required: true);
+            SourceExpression.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subtask = new JObject();
+                var subtaskpropCount = 0;
                 subtaskpropCount++;
+                subtask["name"] = SourceExpressionConverter.ConvertToken(subtaskname);
+                if (subtaskassignedUserId != null)
+                {
+                    subtask["assigned_user_id"] = SourceExpressionConverter.ConvertToken(subtaskassignedUserId);
+                    subtaskpropCount++;
+                }
+
+                if (subtaskpropCount > 0)
+                {
+                    callPayload.Body = subtask;
+                }
+                return callPayload;
             }
 
-            if (subtaskpropCount > 0)
-            {
-                callPayload.Body = subtask;
-            }
-
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            return new ApiConnectionAction<GetSubtaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId)
+        public IBodyWorkflowAction<GetSubtaskResponse> DeleteSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(subtaskId, nameof(subtaskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSubtaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "kanbantool")]
-        public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask(Expression<Func<string>> boardId, Expression<Func<string>> taskId, Expression<Func<string>> subtaskId, Expression<Func<string>> subtaskname = null, Expression<Func<bool>> subtaskisCompleted = null, Expression<Func<string>> subtaskassignedUserId = null)
+        public IBodyWorkflowAction<GetSubtaskResponse> UpdateSubtask([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> taskId, [WorkflowExpression] Func<string> subtaskId, [WorkflowExpression] Func<string> subtaskname = null, [WorkflowExpression] Func<bool> subtaskisCompleted = null, [WorkflowExpression] Func<string> subtaskassignedUserId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subtask = new JObject();
-            var subtaskpropCount = 0;
-            if (subtaskname != null)
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            SourceExpression.Validate(subtaskId, nameof(subtaskId), required: true);
+            SourceExpression.Validate(subtaskname, nameof(subtaskname), required: false);
+            SourceExpression.Validate(subtaskisCompleted, nameof(subtaskisCompleted), required: false);
+            SourceExpression.Validate(subtaskassignedUserId, nameof(subtaskassignedUserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subtask["name"] = CSharpExpressionConverter.ConvertToken(subtaskname);
-                subtaskpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/boards/{0}/tasks/{1}/subtasks/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subtaskId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subtask = new JObject();
+                var subtaskpropCount = 0;
+                if (subtaskname != null)
+                {
+                    subtask["name"] = SourceExpressionConverter.ConvertToken(subtaskname);
+                    subtaskpropCount++;
+                }
+
+                if (subtaskisCompleted != null)
+                {
+                    subtask["is_completed"] = SourceExpressionConverter.ConvertToken(subtaskisCompleted);
+                    subtaskpropCount++;
+                }
+
+                if (subtaskassignedUserId != null)
+                {
+                    subtask["assigned_user_id"] = SourceExpressionConverter.ConvertToken(subtaskassignedUserId);
+                    subtaskpropCount++;
+                }
+
+                if (subtaskpropCount > 0)
+                {
+                    callPayload.Body = subtask;
+                }
+                return callPayload;
             }
 
-            if (subtaskisCompleted != null)
-            {
-                subtask["is_completed"] = CSharpExpressionConverter.ConvertToken(subtaskisCompleted);
-                subtaskpropCount++;
-            }
-
-            if (subtaskassignedUserId != null)
-            {
-                subtask["assigned_user_id"] = CSharpExpressionConverter.ConvertToken(subtaskassignedUserId);
-                subtaskpropCount++;
-            }
-
-            if (subtaskpropCount > 0)
-            {
-                callPayload.Body = subtask;
-            }
-
-            return new ApiConnectionAction<GetSubtaskResponse>(callPayload);
+            return new ApiConnectionAction<GetSubtaskResponse>(BuildSourceInput);
         }
     }
 

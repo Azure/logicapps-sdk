@@ -12,71 +12,95 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Projectum
     public class ProjectumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> GeneratePowerpointDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
+        public IBodyWorkflowAction<string> GeneratePowerpointDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfofile = null)
         {
-            var apiCallPath = "/api/Powerpoint";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generationInfo = new JObject();
-            var generationInfopropCount = 0;
-            generationInfopropCount++;
-            generationInfo["dataMap"] = CSharpExpressionConverter.ConvertToken(generationInfodataMap);
-            if (generationInfofile != null)
+            SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            SourceExpression.Validate(generationInfofile, nameof(generationInfofile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                generationInfo["file"] = CSharpExpressionConverter.ConvertToken(generationInfofile);
+                var apiCallPath = "/api/Powerpoint";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generationInfo = new JObject();
+                var generationInfopropCount = 0;
                 generationInfopropCount++;
+                generationInfo["dataMap"] = SourceExpressionConverter.ConvertToken(generationInfodataMap);
+                if (generationInfofile != null)
+                {
+                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfofile);
+                    generationInfopropCount++;
+                }
+
+                if (generationInfopropCount > 0)
+                {
+                    callPayload.Body = generationInfo;
+                }
+                return callPayload;
             }
 
-            if (generationInfopropCount > 0)
-            {
-                callPayload.Body = generationInfo;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> GenerateWordDoc(Expression<Func<string>> generationInfodataMap, Expression<Func<string>> generationInfofile = null)
+        public IBodyWorkflowAction<string> GenerateWordDoc([WorkflowExpression] Func<string> generationInfodataMap, [WorkflowExpression] Func<string> generationInfofile = null)
         {
-            var apiCallPath = "/api/Word";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var generationInfo = new JObject();
-            var generationInfopropCount = 0;
-            generationInfopropCount++;
-            generationInfo["dataMap"] = CSharpExpressionConverter.ConvertToken(generationInfodataMap);
-            if (generationInfofile != null)
+            SourceExpression.Validate(generationInfodataMap, nameof(generationInfodataMap), required: true);
+            SourceExpression.Validate(generationInfofile, nameof(generationInfofile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                generationInfo["file"] = CSharpExpressionConverter.ConvertToken(generationInfofile);
+                var apiCallPath = "/api/Word";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var generationInfo = new JObject();
+                var generationInfopropCount = 0;
                 generationInfopropCount++;
+                generationInfo["dataMap"] = SourceExpressionConverter.ConvertToken(generationInfodataMap);
+                if (generationInfofile != null)
+                {
+                    generationInfo["file"] = SourceExpressionConverter.ConvertToken(generationInfofile);
+                    generationInfopropCount++;
+                }
+
+                if (generationInfopropCount > 0)
+                {
+                    callPayload.Body = generationInfo;
+                }
+                return callPayload;
             }
 
-            if (generationInfopropCount > 0)
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
+        public IBodyWorkflowAction<string> MergePowerpointDocuments([WorkflowExpression] Func<string[]> documents = null)
+        {
+            SourceExpression.Validate(documents, nameof(documents), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = generationInfo;
+                var apiCallPath = "/api/Powerpoint/Merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(documents);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> MergePowerpointDocuments(Expression<Func<string[]>> documents = null)
+        public IBodyWorkflowAction<string> MergeWordDocuments([WorkflowExpression] Func<string[]> documents = null)
         {
-            var apiCallPath = "/api/Powerpoint/Merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(documents);
-            return new ApiConnectionAction<string>(callPayload);
-        }
+            SourceExpression.Validate(documents, nameof(documents), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Word/Merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(documents);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "projectum")]
-        public IBodyWorkflowAction<string> MergeWordDocuments(Expression<Func<string[]>> documents = null)
-        {
-            var apiCallPath = "/api/Word/Merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(documents);
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

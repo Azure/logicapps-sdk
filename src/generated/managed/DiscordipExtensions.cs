@@ -14,65 +14,90 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Discordip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<User> GetCurrentUser()
         {
-            var apiCallPath = "/v9/users/@me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<User>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v9/users/@me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<User>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Connection[]> GetUserConnections()
         {
-            var apiCallPath = "/v9/users/@me/connections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Connection[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v9/users/@me/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Connection[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
         public IBodyWorkflowAction<Guild[]> GetCurrentUserGuilds()
         {
-            var apiCallPath = "/v9/users/@me/guilds";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Guild[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v9/users/@me/guilds";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Guild[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "discordip")]
-        public IBodyWorkflowAction<Webhook> ExecuteWebhook(Expression<Func<string>> webhookId, Expression<Func<string>> webhookToken, Expression<Func<contentTypeInput>> contentType = null, Expression<Func<string>> bodycontent = null, Expression<Func<string>> bodyusername = null, Expression<Func<string>> bodyavatarURL = null)
+        public IBodyWorkflowAction<Webhook> ExecuteWebhook([WorkflowExpression] Func<string> webhookId, [WorkflowExpression] Func<string> webhookToken, [WorkflowExpression] Func<contentTypeInput> contentType = null, [WorkflowExpression] Func<string> bodycontent = null, [WorkflowExpression] Func<string> bodyusername = null, [WorkflowExpression] Func<string> bodyavatarURL = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookToken, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["content-type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["content-type"] = CSharpExpressionConverter.Convert(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontent != null)
+            SourceExpression.Validate(webhookId, nameof(webhookId), required: true);
+            SourceExpression.Validate(webhookToken, nameof(webhookToken), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(bodycontent, nameof(bodycontent), required: false);
+            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: false);
+            SourceExpression.Validate(bodyavatarURL, nameof(bodyavatarURL), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["content"] = CSharpExpressionConverter.ConvertToken(bodycontent);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v9/webhooks/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(webhookToken, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["content-type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["content-type"] = SourceExpressionConverter.Convert(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontent != null)
+                {
+                    body["content"] = SourceExpressionConverter.ConvertToken(bodycontent);
+                    bodypropCount++;
+                }
+
+                if (bodyusername != null)
+                {
+                    body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
+                    bodypropCount++;
+                }
+
+                if (bodyavatarURL != null)
+                {
+                    body["avatar-url"] = SourceExpressionConverter.ConvertToken(bodyavatarURL);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyusername != null)
-            {
-                body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
-                bodypropCount++;
-            }
-
-            if (bodyavatarURL != null)
-            {
-                body["avatar-url"] = CSharpExpressionConverter.ConvertToken(bodyavatarURL);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Webhook>(callPayload);
+            return new ApiConnectionAction<Webhook>(BuildSourceInput);
         }
     }
 

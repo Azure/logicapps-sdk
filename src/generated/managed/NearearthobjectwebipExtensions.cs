@@ -12,84 +12,130 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nearearthobjectwebip
     public class NearearthobjectwebipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedResponse> Feed(Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedResponse> Feed([WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/feed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = CSharpExpressionConverter.ConvertO(detailed);
-            return new ApiConnectionAction<FeedResponse>(callPayload);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(detailed, nameof(detailed), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/feed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<FeedTodayResponse> FeedToday(Expression<Func<bool>> detailed = null)
+        public IBodyWorkflowAction<FeedTodayResponse> FeedToday([WorkflowExpression] Func<bool> detailed = null)
         {
-            var apiCallPath = "/feed/today";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (detailed != null)
-                callPayload.Queries["detailed"] = CSharpExpressionConverter.ConvertO(detailed);
-            return new ApiConnectionAction<FeedTodayResponse>(callPayload);
+            SourceExpression.Validate(detailed, nameof(detailed), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/feed/today";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (detailed != null)
+                    callPayload.Queries["detailed"] = SourceExpressionConverter.ConvertO(detailed);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedTodayResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoResponse> Neo(Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<NeoResponse> Neo([WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/neo/browse";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            return new ApiConnectionAction<NeoResponse>(callPayload);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/neo/browse";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NeoResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<NeoIDResponse> NeoID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<NeoIDResponse> NeoID([WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/neo/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<NeoIDResponse>(callPayload);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NeoIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryResponse> Sentry(Expression<Func<bool>> isActive = null, Expression<Func<int>> page = null, Expression<Func<int>> size = null)
+        public IBodyWorkflowAction<SentryResponse> Sentry([WorkflowExpression] Func<bool> isActive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> size = null)
         {
-            var apiCallPath = "/neo/sentry";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (isActive != null)
-                callPayload.Queries["is_active"] = CSharpExpressionConverter.ConvertO(isActive);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            return new ApiConnectionAction<SentryResponse>(callPayload);
+            SourceExpression.Validate(isActive, nameof(isActive), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/neo/sentry";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (isActive != null)
+                    callPayload.Queries["is_active"] = SourceExpressionConverter.ConvertO(isActive);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
-        public IBodyWorkflowAction<SentryIDResponse> SentryID(Expression<Func<string>> iD)
+        public IBodyWorkflowAction<SentryIDResponse> SentryID([WorkflowExpression] Func<string> iD)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SentryIDResponse>(callPayload);
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/neo/sentry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iD, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SentryIDResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nearearthobjectwebip")]
         public IBodyWorkflowAction<StatsResponse> Stats()
         {
-            var apiCallPath = "/stats";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<StatsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stats";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<StatsResponse>(BuildSourceInput);
         }
     }
 

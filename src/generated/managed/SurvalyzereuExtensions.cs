@@ -12,2174 +12,2623 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Survalyzereu
     public class SurvalyzereuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateAndInviteMembersResponse> CreateAndInviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<Member[]>> bodymembers, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<CreateAndInviteMembersResponse> CreateAndInviteMembers([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<bool> bodyasyncProcess = null, [WorkflowExpression] Func<string> bodyinterviewExpiryDate = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/CreateAndInviteMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysamplingProjectId != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: true);
+            SourceExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
+            SourceExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
+            SourceExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            SourceExpression.Validate(bodyasyncProcess, nameof(bodyasyncProcess), required: false);
+            SourceExpression.Validate(bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
+            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            SourceExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
+                var apiCallPath = "/publicapi/Distribute/v3/CreateAndInviteMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysamplingProjectId != null)
+                {
+                    body["samplingProjectId"] = SourceExpressionConverter.ConvertToken(bodysamplingProjectId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            if (bodychannel != null)
-            {
-                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
-            }
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                if (bodychannel != null)
+                {
+                    body["channel"] = SourceExpressionConverter.Convert(bodychannel);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
-            if (bodytextBlocks != null)
-            {
-                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
                 bodypropCount++;
-            }
+                body["messageTemplateId"] = SourceExpressionConverter.ConvertToken(bodymessageTemplateId);
+                if (bodytextBlocks != null)
+                {
+                    body["textBlocks"] = SourceExpressionConverter.ConvertToken(bodytextBlocks);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
-            if (bodyscheduleDateTime != null)
-            {
-                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
                 bodypropCount++;
+                body["members"] = SourceExpressionConverter.ConvertToken(bodymembers);
+                if (bodyscheduleDateTime != null)
+                {
+                    body["scheduleDateTime"] = SourceExpressionConverter.ConvertToken(bodyscheduleDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyasyncProcess != null)
+                {
+                    body["asyncProcess"] = SourceExpressionConverter.ConvertToken(bodyasyncProcess);
+                    bodypropCount++;
+                }
+
+                if (bodyinterviewExpiryDate != null)
+                {
+                    body["interviewExpiryDate"] = SourceExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
+                    bodypropCount++;
+                }
+
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyfromName != null)
+                {
+                    body["fromName"] = SourceExpressionConverter.ConvertToken(bodyfromName);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyTo != null)
+                {
+                    body["replyTo"] = SourceExpressionConverter.ConvertToken(bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyToName != null)
+                {
+                    body["replyToName"] = SourceExpressionConverter.ConvertToken(bodyreplyToName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyasyncProcess != null)
-            {
-                body["asyncProcess"] = CSharpExpressionConverter.ConvertToken(bodyasyncProcess);
-                bodypropCount++;
-            }
-
-            if (bodyinterviewExpiryDate != null)
-            {
-                body["interviewExpiryDate"] = CSharpExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
-                bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyfromName != null)
-            {
-                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
-                bodypropCount++;
-            }
-
-            if (bodyreplyTo != null)
-            {
-                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
-                bodypropCount++;
-            }
-
-            if (bodyreplyToName != null)
-            {
-                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateAndInviteMembersResponse>(callPayload);
+            return new ApiConnectionAction<CreateAndInviteMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateArtifactResponse> CreateArtifact(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<string>> bodypath = null)
+        public IBodyWorkflowAction<CreateArtifactResponse> CreateArtifact([WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<string> bodypath = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/CreateArtifact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyworkspaceId != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Common/v3/CreateArtifact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
+
+                if (bodypath != null)
+                {
+                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypath != null)
-            {
-                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateArtifactResponse>(callPayload);
+            return new ApiConnectionAction<CreateArtifactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateMembersResponse> CreateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<CreateMembersResponse> CreateMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<string> bodytenant = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/CreateMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
+                var apiCallPath = "/publicapi/Panel/v3/CreateMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                bodypropCount++;
+                body["members"] = SourceExpressionConverter.ConvertToken(bodymembers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            bodypropCount++;
-            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateMembersResponse>(callPayload);
+            return new ApiConnectionAction<CreateMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreatePanelResponse> CreatePanel(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bodypanelTypeInput>> bodypanelType = null)
+        public IBodyWorkflowAction<CreatePanelResponse> CreatePanel([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bodypanelTypeInput> bodypanelType = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/CreatePanel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypanelType != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodypanelType, nameof(bodypanelType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["panelType"] = CSharpExpressionConverter.Convert(bodypanelType);
+                var apiCallPath = "/publicapi/Panel/v3/CreatePanel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypanelType != null)
+                {
+                    body["panelType"] = SourceExpressionConverter.Convert(bodypanelType);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreatePanelResponse>(callPayload);
+            return new ApiConnectionAction<CreatePanelResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateSurveyResponse> CreateSurvey(Expression<Func<int>> bodyworkspaceId, Expression<Func<string>> bodyname, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<CreateSurveyResponse> CreateSurvey([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowMultipleParticipation, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowNavigateBack, [WorkflowExpression] Func<bool> bodysurveyDefinitionrandomizeSections, [WorkflowExpression] Func<string> bodysurveyDefinitiondefaultLanguage, [WorkflowExpression] Func<string[]> bodysurveyDefinitionlanguages, [WorkflowExpression] Func<Section[]> bodysurveyDefinitionsections, [WorkflowExpression] Func<CustomVariable[]> bodysurveyDefinitioncustomVariables, [WorkflowExpression] Func<TranslationElement[]> bodysurveyDefinitionsurveyEndText, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowSaveProgress = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableAutoScroll = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableCodeAccess = null, [WorkflowExpression] Func<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, [WorkflowExpression] Func<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, [WorkflowExpression] Func<int[]> bodysurveyDefinitionassociatedPanels = null, [WorkflowExpression] Func<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenablePanelSync = null, [WorkflowExpression] Func<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, [WorkflowExpression] Func<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, [WorkflowExpression] Func<string> bodysurveyDefinitionendDate = null, [WorkflowExpression] Func<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, [WorkflowExpression] Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, [WorkflowExpression] Func<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, [WorkflowExpression] Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/CreateSurvey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            var surveyDefinitionObject = new JObject();
-            var surveyDefinitionObjectpropCount = 0;
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowMultipleParticipation"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowNavigateBack"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
-            if (bodysurveyDefinitionallowSaveProgress != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
+            SourceExpression.Validate(bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
+            SourceExpression.Validate(bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
+            SourceExpression.Validate(bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
+            SourceExpression.Validate(bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
+            SourceExpression.Validate(bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                surveyDefinitionObject["allowSaveProgress"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["randomizeSections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
-            if (bodysurveyDefinitionenableAutoScroll != null)
-            {
-                surveyDefinitionObject["enableAutoScroll"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionenableCodeAccess != null)
-            {
-                surveyDefinitionObject["enableCodeAccess"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            var dataAccessControlObject = new JObject();
-            var dataAccessControlObjectpropCount = 0;
-            if (bodysurveyDefinitiondataAccessControlaccessType != null)
-            {
-                dataAccessControlObject["accessType"] = CSharpExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
-                dataAccessControlObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitiondataAccessControlconditions != null)
-            {
-                dataAccessControlObject["conditions"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
-                dataAccessControlObjectpropCount++;
-            }
-
-            if (dataAccessControlObjectpropCount > 0)
-            {
-                surveyDefinitionObject["dataAccessControl"] = dataAccessControlObject;
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionassociatedPanels != null)
-            {
-                surveyDefinitionObject["associatedPanels"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitioncodeAccessMode != null)
-            {
-                surveyDefinitionObject["codeAccessMode"] = CSharpExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionenablePanelSync != null)
-            {
-                surveyDefinitionObject["enablePanelSync"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionpanelSyncBehaviour != null)
-            {
-                surveyDefinitionObject["panelSyncBehaviour"] = CSharpExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionpanelSyncs != null)
-            {
-                surveyDefinitionObject["panelSyncs"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["defaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
-            if (bodysurveyDefinitionendDate != null)
-            {
-                surveyDefinitionObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
-                surveyDefinitionObjectpropCount++;
-            }
-
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["languages"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["sections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["customVariables"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["surveyEndText"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
-            var defaultTextOverridesObject = new JObject();
-            var defaultTextOverridesObjectpropCount = 0;
-            if (defaultTextOverridesObjectpropCount > 0)
-            {
-                surveyDefinitionObject["defaultTextOverrides"] = defaultTextOverridesObject;
-                surveyDefinitionObjectpropCount++;
-            }
-
-            if (surveyDefinitionObjectpropCount > 0)
-            {
-                body["surveyDefinition"] = surveyDefinitionObject;
+                var apiCallPath = "/publicapi/Survey/v3/CreateSurvey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                var surveyDefinitionObject = new JObject();
+                var surveyDefinitionObjectpropCount = 0;
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["allowMultipleParticipation"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["allowNavigateBack"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
+                if (bodysurveyDefinitionallowSaveProgress != null)
+                {
+                    surveyDefinitionObject["allowSaveProgress"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            var surveyConfigurationObject = new JObject();
-            var surveyConfigurationObjectpropCount = 0;
-            var designConfigurationObject = new JObject();
-            var designConfigurationObjectpropCount = 0;
-            if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
-            {
-                designConfigurationObject["surveyDesignLayout"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
-                designConfigurationObjectpropCount++;
-            }
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["randomizeSections"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
+                if (bodysurveyDefinitionenableAutoScroll != null)
+                {
+                    surveyDefinitionObject["enableAutoScroll"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
-            {
-                designConfigurationObject["matrixSubQuestionSize"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
-                designConfigurationObjectpropCount++;
-            }
+                if (bodysurveyDefinitionenableCodeAccess != null)
+                {
+                    surveyDefinitionObject["enableCodeAccess"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
-            {
-                designConfigurationObject["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
-                designConfigurationObjectpropCount++;
-            }
+                var dataAccessControlObject = new JObject();
+                var dataAccessControlObjectpropCount = 0;
+                if (bodysurveyDefinitiondataAccessControlaccessType != null)
+                {
+                    dataAccessControlObject["accessType"] = SourceExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
+                    dataAccessControlObjectpropCount++;
+                }
 
-            if (designConfigurationObjectpropCount > 0)
-            {
-                surveyConfigurationObject["designConfiguration"] = designConfigurationObject;
-                surveyConfigurationObjectpropCount++;
-            }
+                if (bodysurveyDefinitiondataAccessControlconditions != null)
+                {
+                    dataAccessControlObject["conditions"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
+                    dataAccessControlObjectpropCount++;
+                }
 
-            var anonymizingConfigurationObject = new JObject();
-            var anonymizingConfigurationObjectpropCount = 0;
-            if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
-            {
-                anonymizingConfigurationObject["anonymizingMode"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                if (dataAccessControlObjectpropCount > 0)
+                {
+                    surveyDefinitionObject["dataAccessControl"] = dataAccessControlObject;
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionassociatedPanels != null)
+                {
+                    surveyDefinitionObject["associatedPanels"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitioncodeAccessMode != null)
+                {
+                    surveyDefinitionObject["codeAccessMode"] = SourceExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionenablePanelSync != null)
+                {
+                    surveyDefinitionObject["enablePanelSync"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionpanelSyncBehaviour != null)
+                {
+                    surveyDefinitionObject["panelSyncBehaviour"] = SourceExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionpanelSyncs != null)
+                {
+                    surveyDefinitionObject["panelSyncs"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["defaultLanguage"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
+                if (bodysurveyDefinitionendDate != null)
+                {
+                    surveyDefinitionObject["endDate"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["languages"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["sections"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["customVariables"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
+                surveyDefinitionObjectpropCount++;
+                surveyDefinitionObject["surveyEndText"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
+                var defaultTextOverridesObject = new JObject();
+                var defaultTextOverridesObjectpropCount = 0;
+                if (defaultTextOverridesObjectpropCount > 0)
+                {
+                    surveyDefinitionObject["defaultTextOverrides"] = defaultTextOverridesObject;
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (surveyDefinitionObjectpropCount > 0)
+                {
+                    body["surveyDefinition"] = surveyDefinitionObject;
+                    bodypropCount++;
+                }
+
+                var surveyConfigurationObject = new JObject();
+                var surveyConfigurationObjectpropCount = 0;
+                var designConfigurationObject = new JObject();
+                var designConfigurationObjectpropCount = 0;
+                if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
+                {
+                    designConfigurationObject["surveyDesignLayout"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                    designConfigurationObjectpropCount++;
+                }
+
+                if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
+                {
+                    designConfigurationObject["matrixSubQuestionSize"] = SourceExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                    designConfigurationObjectpropCount++;
+                }
+
+                if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
+                {
+                    designConfigurationObject["textBlocks"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                    designConfigurationObjectpropCount++;
+                }
+
+                if (designConfigurationObjectpropCount > 0)
+                {
+                    surveyConfigurationObject["designConfiguration"] = designConfigurationObject;
+                    surveyConfigurationObjectpropCount++;
+                }
+
+                var anonymizingConfigurationObject = new JObject();
+                var anonymizingConfigurationObjectpropCount = 0;
+                if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
+                {
+                    anonymizingConfigurationObject["anonymizingMode"] = SourceExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                    anonymizingConfigurationObjectpropCount++;
+                }
+
                 anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logIp"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
+                anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logUserAgent"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+                anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logReferer"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+                if (anonymizingConfigurationObjectpropCount > 0)
+                {
+                    surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
+                    surveyConfigurationObjectpropCount++;
+                }
+
+                if (surveyConfigurationObjectpropCount > 0)
+                {
+                    body["surveyConfiguration"] = surveyConfigurationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logIp"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logUserAgent"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logReferer"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
-            if (anonymizingConfigurationObjectpropCount > 0)
-            {
-                surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
-                surveyConfigurationObjectpropCount++;
-            }
-
-            if (surveyConfigurationObjectpropCount > 0)
-            {
-                body["surveyConfiguration"] = surveyConfigurationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateSurveyResponse>(callPayload);
+            return new ApiConnectionAction<CreateSurveyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<CreateWebHookResponse> CreateWebHook(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
+        public IBodyWorkflowAction<CreateWebHookResponse> CreateWebHook([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null, [WorkflowExpression] Func<string> bodysecurityToken = null, [WorkflowExpression] Func<string> bodywebHookUrl = null)
         {
-            var apiCallPath = "/publicapi/WebHook/v3/CreateWebHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventType != null)
+            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
+            SourceExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            SourceExpression.Validate(bodysecurityToken, nameof(bodysecurityToken), required: false);
+            SourceExpression.Validate(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/WebHook/v3/CreateWebHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyeventType != null)
+                {
+                    body["eventType"] = SourceExpressionConverter.Convert(bodyeventType);
+                    bodypropCount++;
+                }
+
+                if (bodyentityIdentifier != null)
+                {
+                    body["entityIdentifier"] = SourceExpressionConverter.ConvertToken(bodyentityIdentifier);
+                    bodypropCount++;
+                }
+
+                if (bodysecurityToken != null)
+                {
+                    body["securityToken"] = SourceExpressionConverter.ConvertToken(bodysecurityToken);
+                    bodypropCount++;
+                }
+
+                if (bodywebHookUrl != null)
+                {
+                    body["webHookUrl"] = SourceExpressionConverter.ConvertToken(bodywebHookUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityIdentifier != null)
-            {
-                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
-                bodypropCount++;
-            }
-
-            if (bodysecurityToken != null)
-            {
-                body["securityToken"] = CSharpExpressionConverter.ConvertToken(bodysecurityToken);
-                bodypropCount++;
-            }
-
-            if (bodywebHookUrl != null)
-            {
-                body["webHookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebHookUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateWebHookResponse>(callPayload);
+            return new ApiConnectionAction<CreateWebHookResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteArtifactResponse> DeleteArtifact(Expression<Func<string>> bodypath = null, Expression<Func<string>> bodyfilename = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<DeleteArtifactResponse> DeleteArtifact([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodyfilename = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/DeleteArtifact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypath != null)
+            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
+            SourceExpression.Validate(bodyfilename, nameof(bodyfilename), required: false);
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Common/v3/DeleteArtifact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypath != null)
+                {
+                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodyfilename != null)
+                {
+                    body["filename"] = SourceExpressionConverter.ConvertToken(bodyfilename);
+                    bodypropCount++;
+                }
+
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfilename != null)
-            {
-                body["filename"] = CSharpExpressionConverter.ConvertToken(bodyfilename);
-                bodypropCount++;
-            }
-
-            if (bodyworkspaceId != null)
-            {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteArtifactResponse>(callPayload);
+            return new ApiConnectionAction<DeleteArtifactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteDistributorResponse> DeleteDistributor(Expression<Func<int>> bodydistributorId, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteDistributorResponse> DeleteDistributor([WorkflowExpression] Func<int> bodydistributorId, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/DeleteDistributor";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
-            if (bodykeepInterviews != null)
+            SourceExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: true);
+            SourceExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
+                var apiCallPath = "/publicapi/Distribute/v3/DeleteDistributor";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["distributorId"] = SourceExpressionConverter.ConvertToken(bodydistributorId);
+                if (bodykeepInterviews != null)
+                {
+                    body["keepInterviews"] = SourceExpressionConverter.ConvertToken(bodykeepInterviews);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteDistributorResponse>(callPayload);
+            return new ApiConnectionAction<DeleteDistributorResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteInterviewResponse> DeleteInterview(Expression<Func<string>> bodyinterviewId = null, Expression<Func<int>> bodysurveyId = null)
+        public IBodyWorkflowAction<DeleteInterviewResponse> DeleteInterview([WorkflowExpression] Func<string> bodyinterviewId = null, [WorkflowExpression] Func<int> bodysurveyId = null)
         {
-            var apiCallPath = "/publicapi/Interview/v3/DeleteInterview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinterviewId != null)
+            SourceExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: false);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Interview/v3/DeleteInterview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinterviewId != null)
+                {
+                    body["interviewId"] = SourceExpressionConverter.ConvertToken(bodyinterviewId);
+                    bodypropCount++;
+                }
+
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysurveyId != null)
-            {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteInterviewResponse>(callPayload);
+            return new ApiConnectionAction<DeleteInterviewResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteMembersResponse> DeleteMembers(Expression<Func<int>> bodypanelId, Expression<Func<int[]>> bodypanelMembersIds, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteMembersResponse> DeleteMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int[]> bodypanelMembersIds, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/DeleteMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            bodypropCount++;
-            body["panelMembersIds"] = CSharpExpressionConverter.ConvertToken(bodypanelMembersIds);
-            if (bodykeepInterviews != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodypanelMembersIds, nameof(bodypanelMembersIds), required: true);
+            SourceExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
+                var apiCallPath = "/publicapi/Panel/v3/DeleteMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                bodypropCount++;
+                body["panelMembersIds"] = SourceExpressionConverter.ConvertToken(bodypanelMembersIds);
+                if (bodykeepInterviews != null)
+                {
+                    body["keepInterviews"] = SourceExpressionConverter.ConvertToken(bodykeepInterviews);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteMembersResponse>(callPayload);
+            return new ApiConnectionAction<DeleteMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeletePanelResponse> DeletePanel(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeletePanelResponse> DeletePanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/DeletePanel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            if (bodykeepInterviews != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
+                var apiCallPath = "/publicapi/Panel/v3/DeletePanel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                if (bodykeepInterviews != null)
+                {
+                    body["keepInterviews"] = SourceExpressionConverter.ConvertToken(bodykeepInterviews);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeletePanelResponse>(callPayload);
+            return new ApiConnectionAction<DeletePanelResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteSamplingProjectResponse> DeleteSamplingProject(Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<bool>> bodykeepInterviews = null)
+        public IBodyWorkflowAction<DeleteSamplingProjectResponse> DeleteSamplingProject([WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<bool> bodykeepInterviews = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/DeleteSamplingProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysamplingProjectId != null)
+            SourceExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            SourceExpression.Validate(bodykeepInterviews, nameof(bodykeepInterviews), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Distribute/v3/DeleteSamplingProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysamplingProjectId != null)
+                {
+                    body["samplingProjectId"] = SourceExpressionConverter.ConvertToken(bodysamplingProjectId);
+                    bodypropCount++;
+                }
+
+                if (bodykeepInterviews != null)
+                {
+                    body["keepInterviews"] = SourceExpressionConverter.ConvertToken(bodykeepInterviews);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodykeepInterviews != null)
-            {
-                body["keepInterviews"] = CSharpExpressionConverter.ConvertToken(bodykeepInterviews);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteSamplingProjectResponse>(callPayload);
+            return new ApiConnectionAction<DeleteSamplingProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteSurveyResponse> DeleteSurvey(Expression<Func<int>> bodysurveyId)
+        public IBodyWorkflowAction<DeleteSurveyResponse> DeleteSurvey([WorkflowExpression] Func<int> bodysurveyId)
         {
-            var apiCallPath = "/publicapi/Survey/v3/DeleteSurvey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/publicapi/Survey/v3/DeleteSurvey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<DeleteSurveyResponse>(callPayload);
+            return new ApiConnectionAction<DeleteSurveyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DeleteWebHookResponse> DeleteWebHook(Expression<Func<string>> bodywebHookId = null)
+        public IBodyWorkflowAction<DeleteWebHookResponse> DeleteWebHook([WorkflowExpression] Func<string> bodywebHookId = null)
         {
-            var apiCallPath = "/publicapi/WebHook/v3/DeleteWebHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodywebHookId != null)
+            SourceExpression.Validate(bodywebHookId, nameof(bodywebHookId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["webHookId"] = CSharpExpressionConverter.ConvertToken(bodywebHookId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/WebHook/v3/DeleteWebHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodywebHookId != null)
+                {
+                    body["webHookId"] = SourceExpressionConverter.ConvertToken(bodywebHookId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DeleteWebHookResponse>(callPayload);
+            return new ApiConnectionAction<DeleteWebHookResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<DownloadAnswersResponse> DownloadInterviewPdf(Expression<Func<string>> tenant, Expression<Func<int>> surveyId, Expression<Func<string>> interviewId, Expression<Func<bool>> showPartialCompleted = null, Expression<Func<string>> locale = null, Expression<Func<string>> timeZone = null, Expression<Func<bool>> bodyisCancellationRequested = null, Expression<Func<bool>> bodycanBeCanceled = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisInvalid = null, Expression<Func<bool>> bodywaitHandlesafeWaitHandleisClosed = null)
+        public IBodyWorkflowAction<DownloadAnswersResponse> DownloadInterviewPdf([WorkflowExpression] Func<string> tenant, [WorkflowExpression] Func<int> surveyId, [WorkflowExpression] Func<string> interviewId, [WorkflowExpression] Func<bool> showPartialCompleted = null, [WorkflowExpression] Func<string> locale = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<bool> bodyisCancellationRequested = null, [WorkflowExpression] Func<bool> bodycanBeCanceled = null, [WorkflowExpression] Func<bool> bodywaitHandlesafeWaitHandleisInvalid = null, [WorkflowExpression] Func<bool> bodywaitHandlesafeWaitHandleisClosed = null)
         {
-            var apiCallPath = "/publicapi/Interview/v3/DownloadAnswers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["tenant"] = CSharpExpressionConverter.ConvertO(tenant);
-            callPayload.Queries["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
-            callPayload.Queries["interviewId"] = CSharpExpressionConverter.ConvertO(interviewId);
-            if (showPartialCompleted != null)
-                callPayload.Queries["showPartialCompleted"] = CSharpExpressionConverter.ConvertO(showPartialCompleted);
-            if (locale != null)
-                callPayload.Queries["locale"] = CSharpExpressionConverter.ConvertO(locale);
-            if (timeZone != null)
-                callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyisCancellationRequested != null)
+            SourceExpression.Validate(tenant, nameof(tenant), required: true);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(interviewId, nameof(interviewId), required: true);
+            SourceExpression.Validate(showPartialCompleted, nameof(showPartialCompleted), required: false);
+            SourceExpression.Validate(locale, nameof(locale), required: false);
+            SourceExpression.Validate(timeZone, nameof(timeZone), required: false);
+            SourceExpression.Validate(bodyisCancellationRequested, nameof(bodyisCancellationRequested), required: false);
+            SourceExpression.Validate(bodycanBeCanceled, nameof(bodycanBeCanceled), required: false);
+            SourceExpression.Validate(bodywaitHandlesafeWaitHandleisInvalid, nameof(bodywaitHandlesafeWaitHandleisInvalid), required: false);
+            SourceExpression.Validate(bodywaitHandlesafeWaitHandleisClosed, nameof(bodywaitHandlesafeWaitHandleisClosed), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["isCancellationRequested"] = CSharpExpressionConverter.ConvertToken(bodyisCancellationRequested);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Interview/v3/DownloadAnswers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["tenant"] = SourceExpressionConverter.ConvertO(tenant);
+                callPayload.Queries["surveyId"] = SourceExpressionConverter.ConvertO(surveyId);
+                callPayload.Queries["interviewId"] = SourceExpressionConverter.ConvertO(interviewId);
+                if (showPartialCompleted != null)
+                    callPayload.Queries["showPartialCompleted"] = SourceExpressionConverter.ConvertO(showPartialCompleted);
+                if (locale != null)
+                    callPayload.Queries["locale"] = SourceExpressionConverter.ConvertO(locale);
+                if (timeZone != null)
+                    callPayload.Queries["timeZone"] = SourceExpressionConverter.ConvertO(timeZone);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyisCancellationRequested != null)
+                {
+                    body["isCancellationRequested"] = SourceExpressionConverter.ConvertToken(bodyisCancellationRequested);
+                    bodypropCount++;
+                }
+
+                if (bodycanBeCanceled != null)
+                {
+                    body["canBeCanceled"] = SourceExpressionConverter.ConvertToken(bodycanBeCanceled);
+                    bodypropCount++;
+                }
+
+                var waitHandleObject = new JObject();
+                var waitHandleObjectpropCount = 0;
+                var safeWaitHandleObject = new JObject();
+                var safeWaitHandleObjectpropCount = 0;
+                if (bodywaitHandlesafeWaitHandleisInvalid != null)
+                {
+                    safeWaitHandleObject["isInvalid"] = SourceExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisInvalid);
+                    safeWaitHandleObjectpropCount++;
+                }
+
+                if (bodywaitHandlesafeWaitHandleisClosed != null)
+                {
+                    safeWaitHandleObject["isClosed"] = SourceExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisClosed);
+                    safeWaitHandleObjectpropCount++;
+                }
+
+                if (safeWaitHandleObjectpropCount > 0)
+                {
+                    waitHandleObject["safeWaitHandle"] = safeWaitHandleObject;
+                    waitHandleObjectpropCount++;
+                }
+
+                if (waitHandleObjectpropCount > 0)
+                {
+                    body["waitHandle"] = waitHandleObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycanBeCanceled != null)
-            {
-                body["canBeCanceled"] = CSharpExpressionConverter.ConvertToken(bodycanBeCanceled);
-                bodypropCount++;
-            }
-
-            var waitHandleObject = new JObject();
-            var waitHandleObjectpropCount = 0;
-            var safeWaitHandleObject = new JObject();
-            var safeWaitHandleObjectpropCount = 0;
-            if (bodywaitHandlesafeWaitHandleisInvalid != null)
-            {
-                safeWaitHandleObject["isInvalid"] = CSharpExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisInvalid);
-                safeWaitHandleObjectpropCount++;
-            }
-
-            if (bodywaitHandlesafeWaitHandleisClosed != null)
-            {
-                safeWaitHandleObject["isClosed"] = CSharpExpressionConverter.ConvertToken(bodywaitHandlesafeWaitHandleisClosed);
-                safeWaitHandleObjectpropCount++;
-            }
-
-            if (safeWaitHandleObjectpropCount > 0)
-            {
-                waitHandleObject["safeWaitHandle"] = safeWaitHandleObject;
-                waitHandleObjectpropCount++;
-            }
-
-            if (waitHandleObjectpropCount > 0)
-            {
-                body["waitHandle"] = waitHandleObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DownloadAnswersResponse>(callPayload);
+            return new ApiConnectionAction<DownloadAnswersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ExecuteSendMailResponse> ExecuteSendMail(Expression<Func<string>> bodylanguage, Expression<Func<string>> bodyfrom, Expression<Func<string>> bodyto, Expression<Func<int>> bodymessageTemplateId = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodybody = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodytoName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<ExecuteSendMailResponse> ExecuteSendMail([WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<string> bodyfrom, [WorkflowExpression] Func<string> bodyto, [WorkflowExpression] Func<int> bodymessageTemplateId = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodybody = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodytoName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/ExecuteSendMail";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodymessageTemplateId != null)
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: true);
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: true);
+            SourceExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: false);
+            SourceExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
+            SourceExpression.Validate(bodytoName, nameof(bodytoName), required: false);
+            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            SourceExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
+                var apiCallPath = "/publicapi/Common/v3/ExecuteSendMail";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodymessageTemplateId != null)
+                {
+                    body["messageTemplateId"] = SourceExpressionConverter.ConvertToken(bodymessageTemplateId);
+                    bodypropCount++;
+                }
+
+                if (bodytextBlocks != null)
+                {
+                    body["textBlocks"] = SourceExpressionConverter.ConvertToken(bodytextBlocks);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
 
-            if (bodytextBlocks != null)
-            {
-                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
-            }
+                body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                if (bodyfromName != null)
+                {
+                    body["fromName"] = SourceExpressionConverter.ConvertToken(bodyfromName);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
                 bodypropCount++;
+                body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                if (bodytoName != null)
+                {
+                    body["toName"] = SourceExpressionConverter.ConvertToken(bodytoName);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyTo != null)
+                {
+                    body["replyTo"] = SourceExpressionConverter.ConvertToken(bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyToName != null)
+                {
+                    body["replyToName"] = SourceExpressionConverter.ConvertToken(bodyreplyToName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybody != null)
-            {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-            if (bodyfromName != null)
-            {
-                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
-            if (bodytoName != null)
-            {
-                body["toName"] = CSharpExpressionConverter.ConvertToken(bodytoName);
-                bodypropCount++;
-            }
-
-            if (bodyreplyTo != null)
-            {
-                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
-                bodypropCount++;
-            }
-
-            if (bodyreplyToName != null)
-            {
-                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExecuteSendMailResponse>(callPayload);
+            return new ApiConnectionAction<ExecuteSendMailResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> ExecuteWorkflowTransition(Expression<Func<string>> bodytargetState, Expression<Func<bodyworkflowInput>> bodyworkflow = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<int>> bodyreminderId = null)
+        public IBodyWorkflowAction<ExecuteWorkflowTransitionResponse> ExecuteWorkflowTransition([WorkflowExpression] Func<string> bodytargetState, [WorkflowExpression] Func<bodyworkflowInput> bodyworkflow = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<int> bodydistributorId = null, [WorkflowExpression] Func<int> bodyreminderId = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/ExecuteWorkflowTransition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyworkflow != null)
+            SourceExpression.Validate(bodytargetState, nameof(bodytargetState), required: true);
+            SourceExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            SourceExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            SourceExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: false);
+            SourceExpression.Validate(bodyreminderId, nameof(bodyreminderId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = CSharpExpressionConverter.Convert(bodyworkflow);
+                var apiCallPath = "/publicapi/Common/v3/ExecuteWorkflowTransition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyworkflow != null)
+                {
+                    body["workflow"] = SourceExpressionConverter.Convert(bodyworkflow);
+                    bodypropCount++;
+                }
+
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
+
+                if (bodysamplingProjectId != null)
+                {
+                    body["samplingProjectId"] = SourceExpressionConverter.ConvertToken(bodysamplingProjectId);
+                    bodypropCount++;
+                }
+
+                if (bodydistributorId != null)
+                {
+                    body["distributorId"] = SourceExpressionConverter.ConvertToken(bodydistributorId);
+                    bodypropCount++;
+                }
+
+                if (bodyreminderId != null)
+                {
+                    body["reminderId"] = SourceExpressionConverter.ConvertToken(bodyreminderId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["targetState"] = SourceExpressionConverter.ConvertToken(bodytargetState);
+                var dynamicParametersObject = new JObject();
+                var dynamicParametersObjectpropCount = 0;
+                if (dynamicParametersObjectpropCount > 0)
+                {
+                    body["dynamicParameters"] = dynamicParametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysurveyId != null)
-            {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
-            }
-
-            if (bodysamplingProjectId != null)
-            {
-                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
-                bodypropCount++;
-            }
-
-            if (bodydistributorId != null)
-            {
-                body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
-                bodypropCount++;
-            }
-
-            if (bodyreminderId != null)
-            {
-                body["reminderId"] = CSharpExpressionConverter.ConvertToken(bodyreminderId);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["targetState"] = CSharpExpressionConverter.ConvertToken(bodytargetState);
-            var dynamicParametersObject = new JObject();
-            var dynamicParametersObjectpropCount = 0;
-            if (dynamicParametersObjectpropCount > 0)
-            {
-                body["dynamicParameters"] = dynamicParametersObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExecuteWorkflowTransitionResponse>(callPayload);
+            return new ApiConnectionAction<ExecuteWorkflowTransitionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<InviteMembersResponse> InviteMembers(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypanelId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<int>> bodysamplingProjectId = null, Expression<Func<int[]>> bodymemberIds = null, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<bool>> bodyasyncProcess = null, Expression<Func<string>> bodyinterviewExpiryDate = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<InviteMembersResponse> InviteMembers([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<int> bodysamplingProjectId = null, [WorkflowExpression] Func<int[]> bodymemberIds = null, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<bool> bodyasyncProcess = null, [WorkflowExpression] Func<string> bodyinterviewExpiryDate = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/InviteMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            if (bodysamplingProjectId != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            SourceExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            SourceExpression.Validate(bodymemberIds, nameof(bodymemberIds), required: false);
+            SourceExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
+            SourceExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
+            SourceExpression.Validate(bodyasyncProcess, nameof(bodyasyncProcess), required: false);
+            SourceExpression.Validate(bodyinterviewExpiryDate, nameof(bodyinterviewExpiryDate), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
+            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            SourceExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
+                var apiCallPath = "/publicapi/Distribute/v3/InviteMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodymemberIds != null)
-            {
-                body["memberIds"] = CSharpExpressionConverter.ConvertToken(bodymemberIds);
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
                 bodypropCount++;
-            }
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                if (bodysamplingProjectId != null)
+                {
+                    body["samplingProjectId"] = SourceExpressionConverter.ConvertToken(bodysamplingProjectId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
-            if (bodytextBlocks != null)
-            {
-                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
+                if (bodymemberIds != null)
+                {
+                    body["memberIds"] = SourceExpressionConverter.ConvertToken(bodymemberIds);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["messageTemplateId"] = SourceExpressionConverter.ConvertToken(bodymessageTemplateId);
+                if (bodytextBlocks != null)
+                {
+                    body["textBlocks"] = SourceExpressionConverter.ConvertToken(bodytextBlocks);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduleDateTime != null)
+                {
+                    body["scheduleDateTime"] = SourceExpressionConverter.ConvertToken(bodyscheduleDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
+
+                if (bodychannel != null)
+                {
+                    body["channel"] = SourceExpressionConverter.Convert(bodychannel);
+                    bodypropCount++;
+                }
+
+                if (bodyasyncProcess != null)
+                {
+                    body["asyncProcess"] = SourceExpressionConverter.ConvertToken(bodyasyncProcess);
+                    bodypropCount++;
+                }
+
+                if (bodyinterviewExpiryDate != null)
+                {
+                    body["interviewExpiryDate"] = SourceExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
+                    bodypropCount++;
+                }
+
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyfromName != null)
+                {
+                    body["fromName"] = SourceExpressionConverter.ConvertToken(bodyfromName);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyTo != null)
+                {
+                    body["replyTo"] = SourceExpressionConverter.ConvertToken(bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyToName != null)
+                {
+                    body["replyToName"] = SourceExpressionConverter.ConvertToken(bodyreplyToName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyscheduleDateTime != null)
-            {
-                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
-                bodypropCount++;
-            }
-
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodychannel != null)
-            {
-                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
-                bodypropCount++;
-            }
-
-            if (bodyasyncProcess != null)
-            {
-                body["asyncProcess"] = CSharpExpressionConverter.ConvertToken(bodyasyncProcess);
-                bodypropCount++;
-            }
-
-            if (bodyinterviewExpiryDate != null)
-            {
-                body["interviewExpiryDate"] = CSharpExpressionConverter.ConvertToken(bodyinterviewExpiryDate);
-                bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyfromName != null)
-            {
-                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
-                bodypropCount++;
-            }
-
-            if (bodyreplyTo != null)
-            {
-                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
-                bodypropCount++;
-            }
-
-            if (bodyreplyToName != null)
-            {
-                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<InviteMembersResponse>(callPayload);
+            return new ApiConnectionAction<InviteMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadArtifactListRequest> ReadArtifactList(Expression<Func<string>> bodypath = null, Expression<Func<int>> bodyworkspaceId = null)
+        public IBodyWorkflowAction<ReadArtifactListRequest> ReadArtifactList([WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<int> bodyworkspaceId = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/ReadArtifactList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypath != null)
+            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Common/v3/ReadArtifactList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypath != null)
+                {
+                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyworkspaceId != null)
-            {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadArtifactListRequest>(callPayload);
+            return new ApiConnectionAction<ReadArtifactListRequest>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadBounceListResponseV3> ReadBounceList(Expression<Func<int>> bodysurveyId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int[]>> bodydistributors = null, Expression<Func<bodyinvitationTypeInput>> bodyinvitationType = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadBounceListResponseV3> ReadBounceList([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int[]> bodydistributors = null, [WorkflowExpression] Func<bodyinvitationTypeInput> bodyinvitationType = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/ReadBounceList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            if (bodypanelId != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
+            SourceExpression.Validate(bodydistributors, nameof(bodydistributors), required: false);
+            SourceExpression.Validate(bodyinvitationType, nameof(bodyinvitationType), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
+                var apiCallPath = "/publicapi/Distribute/v3/ReadBounceList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                if (bodypanelId != null)
+                {
+                    body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                    bodypropCount++;
+                }
 
-            if (bodydistributors != null)
-            {
-                body["distributors"] = CSharpExpressionConverter.ConvertToken(bodydistributors);
-                bodypropCount++;
-            }
+                if (bodydistributors != null)
+                {
+                    body["distributors"] = SourceExpressionConverter.ConvertToken(bodydistributors);
+                    bodypropCount++;
+                }
 
-            if (bodyinvitationType != null)
-            {
-                body["invitationType"] = CSharpExpressionConverter.Convert(bodyinvitationType);
-                bodypropCount++;
-            }
+                if (bodyinvitationType != null)
+                {
+                    body["invitationType"] = SourceExpressionConverter.Convert(bodyinvitationType);
+                    bodypropCount++;
+                }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadBounceListResponseV3>(callPayload);
+            return new ApiConnectionAction<ReadBounceListResponseV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
         public IBodyWorkflowAction<ReadCreditBalanceResponse> ReadCreditBalance()
         {
-            var apiCallPath = "/publicapi/Incentive/v3/ReadCreditBalance";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/publicapi/Incentive/v3/ReadCreditBalance";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ReadCreditBalanceResponse>(callPayload);
+            return new ApiConnectionAction<ReadCreditBalanceResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadDistributorListResponse> ReadDistributorList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodysurveyId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadDistributorListResponse> ReadDistributorList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/ReadDistributorList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysurveyId != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Distribute/v3/ReadDistributorList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
 
-            if (bodypanelId != null)
-            {
-                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-                bodypropCount++;
-            }
+                if (bodypanelId != null)
+                {
+                    body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                    bodypropCount++;
+                }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadDistributorListResponse>(callPayload);
+            return new ApiConnectionAction<ReadDistributorListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadIncentiveListResponse> ReadIncentiveList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveListResponse> ReadIncentiveList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyconditions != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadIncentiveListResponse>(callPayload);
+            return new ApiConnectionAction<ReadIncentiveListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> ReadIncentiveTransactionList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadIncentiveTransactionListResponse> ReadIncentiveTransactionList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveTransactionList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyconditions != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Incentive/v3/ReadIncentiveTransactionList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadIncentiveTransactionListResponse>(callPayload);
+            return new ApiConnectionAction<ReadIncentiveTransactionListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadInterviewDataResponse> ReadInterview(Expression<Func<string>> bodytenant, Expression<Func<string>> bodyinterviewId, Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodyloadSurveyDefinition = null)
+        public IBodyWorkflowAction<ReadInterviewDataResponse> ReadInterview([WorkflowExpression] Func<string> bodytenant, [WorkflowExpression] Func<string> bodyinterviewId, [WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<bool> bodyloadSurveyDefinition = null)
         {
-            var apiCallPath = "/publicapi/Interview/v3/ReadInterview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
-            bodypropCount++;
-            body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            if (bodyloadSurveyDefinition != null)
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: true);
+            SourceExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: true);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodyloadSurveyDefinition, nameof(bodyloadSurveyDefinition), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["loadSurveyDefinition"] = CSharpExpressionConverter.ConvertToken(bodyloadSurveyDefinition);
+                var apiCallPath = "/publicapi/Interview/v3/ReadInterview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                bodypropCount++;
+                body["interviewId"] = SourceExpressionConverter.ConvertToken(bodyinterviewId);
+                bodypropCount++;
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                if (bodyloadSurveyDefinition != null)
+                {
+                    body["loadSurveyDefinition"] = SourceExpressionConverter.ConvertToken(bodyloadSurveyDefinition);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadInterviewDataResponse>(callPayload);
+            return new ApiConnectionAction<ReadInterviewDataResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> ReadInterviewListCompact(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListCompactResponseV3> ReadInterviewListCompact([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<bool> bodyloadCodePlan = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Interview/v3/ReadInterviewListCompact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            SourceExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            SourceExpression.Validate(bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Interview/v3/ReadInterviewListCompact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
 
-            if (bodysurveyId != null)
-            {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
-            }
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
 
-            if (bodyfieldsToDownload != null)
-            {
-                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
-                bodypropCount++;
-            }
+                if (bodyfieldsToDownload != null)
+                {
+                    body["fieldsToDownload"] = SourceExpressionConverter.ConvertToken(bodyfieldsToDownload);
+                    bodypropCount++;
+                }
 
-            if (bodyloadCodePlan != null)
-            {
-                body["loadCodePlan"] = CSharpExpressionConverter.ConvertToken(bodyloadCodePlan);
-                bodypropCount++;
-            }
+                if (bodyloadCodePlan != null)
+                {
+                    body["loadCodePlan"] = SourceExpressionConverter.ConvertToken(bodyloadCodePlan);
+                    bodypropCount++;
+                }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadInterviewListCompactResponseV3>(callPayload);
+            return new ApiConnectionAction<ReadInterviewListCompactResponseV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadInterviewListResponseV3> ReadInterviewList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<int>> bodysurveyId = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<bool>> bodyloadCodePlan = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadInterviewListResponseV3> ReadInterviewList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<bool> bodyloadCodePlan = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Interview/v3/ReadInterviewList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            SourceExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            SourceExpression.Validate(bodyloadCodePlan, nameof(bodyloadCodePlan), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Interview/v3/ReadInterviewList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
 
-            if (bodysurveyId != null)
-            {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
-            }
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
 
-            if (bodyfieldsToDownload != null)
-            {
-                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
-                bodypropCount++;
-            }
+                if (bodyfieldsToDownload != null)
+                {
+                    body["fieldsToDownload"] = SourceExpressionConverter.ConvertToken(bodyfieldsToDownload);
+                    bodypropCount++;
+                }
 
-            if (bodyloadCodePlan != null)
-            {
-                body["loadCodePlan"] = CSharpExpressionConverter.ConvertToken(bodyloadCodePlan);
-                bodypropCount++;
-            }
+                if (bodyloadCodePlan != null)
+                {
+                    body["loadCodePlan"] = SourceExpressionConverter.ConvertToken(bodyloadCodePlan);
+                    bodypropCount++;
+                }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadInterviewListResponseV3>(callPayload);
+            return new ApiConnectionAction<ReadInterviewListResponseV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadMemberListResponse> ReadMemberList(Expression<Func<int>> bodypanelId, Expression<Func<bool>> bodyinterviewsRequired, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<string>> bodytenant = null, Expression<Func<string[]>> bodyfieldsToDownload = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMemberListResponse> ReadMemberList([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<bool> bodyinterviewsRequired, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<string[]> bodyfieldsToDownload = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/ReadMemberList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodyinterviewsRequired, nameof(bodyinterviewsRequired), required: true);
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            SourceExpression.Validate(bodyfieldsToDownload, nameof(bodyfieldsToDownload), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Panel/v3/ReadMemberList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            bodypropCount++;
-            body["interviewsRequired"] = CSharpExpressionConverter.ConvertToken(bodyinterviewsRequired);
-            if (bodyfieldsToDownload != null)
-            {
-                body["fieldsToDownload"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToDownload);
                 bodypropCount++;
-            }
-
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
                 bodypropCount++;
-            }
+                body["interviewsRequired"] = SourceExpressionConverter.ConvertToken(bodyinterviewsRequired);
+                if (bodyfieldsToDownload != null)
+                {
+                    body["fieldsToDownload"] = SourceExpressionConverter.ConvertToken(bodyfieldsToDownload);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
+
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadMemberListResponse>(callPayload);
+            return new ApiConnectionAction<ReadMemberListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadMessageTemplateListResponse> ReadMessageTemplateList(Expression<Func<string>> bodylanguage, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadMessageTemplateListResponse> ReadMessageTemplateList([WorkflowExpression] Func<string> bodylanguage, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/ReadMessageTemplateList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyworkspaceId != null)
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: true);
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Distribute/v3/ReadMessageTemplateList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
                 bodypropCount++;
-            }
+                body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadMessageTemplateListResponse>(callPayload);
+            return new ApiConnectionAction<ReadMessageTemplateListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadOptOutListResponseV3> ReadOptOutList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodyworkspaceId = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadOptOutListResponseV3> ReadOptOutList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/ReadOptOutList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypanelId != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Distribute/v3/ReadOptOutList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypanelId != null)
+                {
+                    body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                    bodypropCount++;
+                }
 
-            if (bodyworkspaceId != null)
-            {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
-            }
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadOptOutListResponseV3>(callPayload);
+            return new ApiConnectionAction<ReadOptOutListResponseV3>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadPanelDefinitionResponse> ReadPanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<ReadPanelDefinitionResponse> ReadPanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<string> bodytenant = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/ReadPanel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
+                var apiCallPath = "/publicapi/Panel/v3/ReadPanel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadPanelDefinitionResponse>(callPayload);
+            return new ApiConnectionAction<ReadPanelDefinitionResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSamplingProjectResponse> ReadSamplingProject(Expression<Func<int>> bodysamplingProjectId = null)
+        public IBodyWorkflowAction<ReadSamplingProjectResponse> ReadSamplingProject([WorkflowExpression] Func<int> bodysamplingProjectId = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/ReadSamplingProject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysamplingProjectId != null)
+            SourceExpression.Validate(bodysamplingProjectId, nameof(bodysamplingProjectId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["samplingProjectId"] = CSharpExpressionConverter.ConvertToken(bodysamplingProjectId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Distribute/v3/ReadSamplingProject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysamplingProjectId != null)
+                {
+                    body["samplingProjectId"] = SourceExpressionConverter.ConvertToken(bodysamplingProjectId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadSamplingProjectResponse>(callPayload);
+            return new ApiConnectionAction<ReadSamplingProjectResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSurveyLinksResponse> ReadSurveyLinks(Expression<Func<int>> bodysurveyId = null)
+        public IBodyWorkflowAction<ReadSurveyLinksResponse> ReadSurveyLinks([WorkflowExpression] Func<int> bodysurveyId = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/ReadSurveyLinks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysurveyId != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Survey/v3/ReadSurveyLinks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadSurveyLinksResponse>(callPayload);
+            return new ApiConnectionAction<ReadSurveyLinksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSurveyListResponse> ReadSurveyList(Expression<Func<int>> bodyworkspaceId, Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadSurveyListResponse> ReadSurveyList([WorkflowExpression] Func<int> bodyworkspaceId, [WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/ReadSurveyList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-            if (bodyconditions != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: true);
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
+                var apiCallPath = "/publicapi/Survey/v3/ReadSurveyList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadSurveyListResponse>(callPayload);
+            return new ApiConnectionAction<ReadSurveyListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadSurveyResponse> ReadSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<ReadSurveyResponse> ReadSurvey([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<string> bodytenant = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/ReadSurvey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
+                var apiCallPath = "/publicapi/Survey/v3/ReadSurvey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadSurveyResponse>(callPayload);
+            return new ApiConnectionAction<ReadSurveyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadWebHookListResponse> ReadWebHookList(Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null)
+        public IBodyWorkflowAction<ReadWebHookListResponse> ReadWebHookList([WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null)
         {
-            var apiCallPath = "/publicapi/WebHook/v3/ReadWebHookList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventType != null)
+            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
+            SourceExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/WebHook/v3/ReadWebHookList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyeventType != null)
+                {
+                    body["eventType"] = SourceExpressionConverter.Convert(bodyeventType);
+                    bodypropCount++;
+                }
+
+                if (bodyentityIdentifier != null)
+                {
+                    body["entityIdentifier"] = SourceExpressionConverter.ConvertToken(bodyentityIdentifier);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyentityIdentifier != null)
-            {
-                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadWebHookListResponse>(callPayload);
+            return new ApiConnectionAction<ReadWebHookListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> ReadWorkflowTransitions(Expression<Func<string>> bodycurrentState, Expression<Func<bodyworkflowInput>> bodyworkflow = null)
+        public IBodyWorkflowAction<ReadWorkflowTransitionsResponse> ReadWorkflowTransitions([WorkflowExpression] Func<string> bodycurrentState, [WorkflowExpression] Func<bodyworkflowInput> bodyworkflow = null)
         {
-            var apiCallPath = "/publicapi/Common/v3/ReadWorkflowTransitions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyworkflow != null)
+            SourceExpression.Validate(bodycurrentState, nameof(bodycurrentState), required: true);
+            SourceExpression.Validate(bodyworkflow, nameof(bodyworkflow), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workflow"] = CSharpExpressionConverter.Convert(bodyworkflow);
+                var apiCallPath = "/publicapi/Common/v3/ReadWorkflowTransitions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyworkflow != null)
+                {
+                    body["workflow"] = SourceExpressionConverter.Convert(bodyworkflow);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["currentState"] = SourceExpressionConverter.ConvertToken(bodycurrentState);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["currentState"] = CSharpExpressionConverter.ConvertToken(bodycurrentState);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadWorkflowTransitionsResponse>(callPayload);
+            return new ApiConnectionAction<ReadWorkflowTransitionsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ReadWorkspaceListResponse> ReadWorkspaceList(Expression<Func<int>> bodypagingpageSize, Expression<Func<int>> bodypagingpage, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<string>> bodypagingorderField = null, Expression<Func<bodypagingorderDirectionInput>> bodypagingorderDirection = null)
+        public IBodyWorkflowAction<ReadWorkspaceListResponse> ReadWorkspaceList([WorkflowExpression] Func<int> bodypagingpageSize, [WorkflowExpression] Func<int> bodypagingpage, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<string> bodypagingorderField = null, [WorkflowExpression] Func<bodypagingorderDirectionInput> bodypagingorderDirection = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/ReadWorkspaceList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyconditions != null)
+            SourceExpression.Validate(bodypagingpageSize, nameof(bodypagingpageSize), required: true);
+            SourceExpression.Validate(bodypagingpage, nameof(bodypagingpage), required: true);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodypagingorderField, nameof(bodypagingorderField), required: false);
+            SourceExpression.Validate(bodypagingorderDirection, nameof(bodypagingorderDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
+                var apiCallPath = "/publicapi/Survey/v3/ReadWorkspaceList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
 
-            var pagingObject = new JObject();
-            var pagingObjectpropCount = 0;
-            pagingObjectpropCount++;
-            pagingObject["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypagingpageSize);
-            pagingObjectpropCount++;
-            pagingObject["page"] = CSharpExpressionConverter.ConvertToken(bodypagingpage);
-            if (bodypagingorderField != null)
-            {
-                pagingObject["orderField"] = CSharpExpressionConverter.ConvertToken(bodypagingorderField);
+                var pagingObject = new JObject();
+                var pagingObjectpropCount = 0;
                 pagingObjectpropCount++;
-            }
-
-            if (bodypagingorderDirection != null)
-            {
-                pagingObject["orderDirection"] = CSharpExpressionConverter.Convert(bodypagingorderDirection);
+                pagingObject["pageSize"] = SourceExpressionConverter.ConvertToken(bodypagingpageSize);
                 pagingObjectpropCount++;
+                pagingObject["page"] = SourceExpressionConverter.ConvertToken(bodypagingpage);
+                if (bodypagingorderField != null)
+                {
+                    pagingObject["orderField"] = SourceExpressionConverter.ConvertToken(bodypagingorderField);
+                    pagingObjectpropCount++;
+                }
+
+                if (bodypagingorderDirection != null)
+                {
+                    pagingObject["orderDirection"] = SourceExpressionConverter.Convert(bodypagingorderDirection);
+                    pagingObjectpropCount++;
+                }
+
+                if (pagingObjectpropCount > 0)
+                {
+                    body["paging"] = pagingObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (pagingObjectpropCount > 0)
-            {
-                body["paging"] = pagingObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ReadWorkspaceListResponse>(callPayload);
+            return new ApiConnectionAction<ReadWorkspaceListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> RedeemIncentiveCode(Expression<Func<int>> bodyincentiveId)
+        public IBodyWorkflowAction<RedeemIncentiveCodeResponse> RedeemIncentiveCode([WorkflowExpression] Func<int> bodyincentiveId)
         {
-            var apiCallPath = "/publicapi/Incentive/v3/RedeemIncentiveCode";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["incentiveId"] = CSharpExpressionConverter.ConvertToken(bodyincentiveId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyincentiveId, nameof(bodyincentiveId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/publicapi/Incentive/v3/RedeemIncentiveCode";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["incentiveId"] = SourceExpressionConverter.ConvertToken(bodyincentiveId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<RedeemIncentiveCodeResponse>(callPayload);
+            return new ApiConnectionAction<RedeemIncentiveCodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<RemindMembersResponse> RemindMembers(Expression<Func<int>> bodydistributorId, Expression<Func<int>> bodymessageTemplateId, Expression<Func<TextBlock[]>> bodytextBlocks = null, Expression<Func<string>> bodyscheduleDateTime = null, Expression<Func<Condition[]>> bodyconditions = null, Expression<Func<bodychannelInput>> bodychannel = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodyfromName = null, Expression<Func<string>> bodyreplyTo = null, Expression<Func<string>> bodyreplyToName = null)
+        public IBodyWorkflowAction<RemindMembersResponse> RemindMembers([WorkflowExpression] Func<int> bodydistributorId, [WorkflowExpression] Func<int> bodymessageTemplateId, [WorkflowExpression] Func<TextBlock[]> bodytextBlocks = null, [WorkflowExpression] Func<string> bodyscheduleDateTime = null, [WorkflowExpression] Func<Condition[]> bodyconditions = null, [WorkflowExpression] Func<bodychannelInput> bodychannel = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodyfromName = null, [WorkflowExpression] Func<string> bodyreplyTo = null, [WorkflowExpression] Func<string> bodyreplyToName = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/RemindMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
-            bodypropCount++;
-            body["messageTemplateId"] = CSharpExpressionConverter.ConvertToken(bodymessageTemplateId);
-            if (bodytextBlocks != null)
+            SourceExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: true);
+            SourceExpression.Validate(bodymessageTemplateId, nameof(bodymessageTemplateId), required: true);
+            SourceExpression.Validate(bodytextBlocks, nameof(bodytextBlocks), required: false);
+            SourceExpression.Validate(bodyscheduleDateTime, nameof(bodyscheduleDateTime), required: false);
+            SourceExpression.Validate(bodyconditions, nameof(bodyconditions), required: false);
+            SourceExpression.Validate(bodychannel, nameof(bodychannel), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodyfromName, nameof(bodyfromName), required: false);
+            SourceExpression.Validate(bodyreplyTo, nameof(bodyreplyTo), required: false);
+            SourceExpression.Validate(bodyreplyToName, nameof(bodyreplyToName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodytextBlocks);
+                var apiCallPath = "/publicapi/Distribute/v3/RemindMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyscheduleDateTime != null)
-            {
-                body["scheduleDateTime"] = CSharpExpressionConverter.ConvertToken(bodyscheduleDateTime);
+                body["distributorId"] = SourceExpressionConverter.ConvertToken(bodydistributorId);
                 bodypropCount++;
+                body["messageTemplateId"] = SourceExpressionConverter.ConvertToken(bodymessageTemplateId);
+                if (bodytextBlocks != null)
+                {
+                    body["textBlocks"] = SourceExpressionConverter.ConvertToken(bodytextBlocks);
+                    bodypropCount++;
+                }
+
+                if (bodyscheduleDateTime != null)
+                {
+                    body["scheduleDateTime"] = SourceExpressionConverter.ConvertToken(bodyscheduleDateTime);
+                    bodypropCount++;
+                }
+
+                if (bodyconditions != null)
+                {
+                    body["conditions"] = SourceExpressionConverter.ConvertToken(bodyconditions);
+                    bodypropCount++;
+                }
+
+                if (bodychannel != null)
+                {
+                    body["channel"] = SourceExpressionConverter.Convert(bodychannel);
+                    bodypropCount++;
+                }
+
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodyfromName != null)
+                {
+                    body["fromName"] = SourceExpressionConverter.ConvertToken(bodyfromName);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyTo != null)
+                {
+                    body["replyTo"] = SourceExpressionConverter.ConvertToken(bodyreplyTo);
+                    bodypropCount++;
+                }
+
+                if (bodyreplyToName != null)
+                {
+                    body["replyToName"] = SourceExpressionConverter.ConvertToken(bodyreplyToName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyconditions != null)
-            {
-                body["conditions"] = CSharpExpressionConverter.ConvertToken(bodyconditions);
-                bodypropCount++;
-            }
-
-            if (bodychannel != null)
-            {
-                body["channel"] = CSharpExpressionConverter.Convert(bodychannel);
-                bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodyfromName != null)
-            {
-                body["fromName"] = CSharpExpressionConverter.ConvertToken(bodyfromName);
-                bodypropCount++;
-            }
-
-            if (bodyreplyTo != null)
-            {
-                body["replyTo"] = CSharpExpressionConverter.ConvertToken(bodyreplyTo);
-                bodypropCount++;
-            }
-
-            if (bodyreplyToName != null)
-            {
-                body["replyToName"] = CSharpExpressionConverter.ConvertToken(bodyreplyToName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RemindMembersResponse>(callPayload);
+            return new ApiConnectionAction<RemindMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<ResetInterviewResponse> ResetInterview(Expression<Func<int>> bodysurveyId = null, Expression<Func<string>> bodyinterviewId = null)
+        public IBodyWorkflowAction<ResetInterviewResponse> ResetInterview([WorkflowExpression] Func<int> bodysurveyId = null, [WorkflowExpression] Func<string> bodyinterviewId = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/ResetInterview";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodysurveyId != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: false);
+            SourceExpression.Validate(bodyinterviewId, nameof(bodyinterviewId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Panel/v3/ResetInterview";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodysurveyId != null)
+                {
+                    body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                    bodypropCount++;
+                }
+
+                if (bodyinterviewId != null)
+                {
+                    body["interviewId"] = SourceExpressionConverter.ConvertToken(bodyinterviewId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinterviewId != null)
-            {
-                body["interviewId"] = CSharpExpressionConverter.ConvertToken(bodyinterviewId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ResetInterviewResponse>(callPayload);
+            return new ApiConnectionAction<ResetInterviewResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<UpdateMembersResponse> UpdateMembers(Expression<Func<int>> bodypanelId, Expression<Func<Member[]>> bodymembers, Expression<Func<string>> bodytenant = null)
+        public IBodyWorkflowAction<UpdateMembersResponse> UpdateMembers([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<Member[]> bodymembers, [WorkflowExpression] Func<string> bodytenant = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/UpdateMembers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodymembers, nameof(bodymembers), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
+                var apiCallPath = "/publicapi/Panel/v3/UpdateMembers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                bodypropCount++;
+                body["members"] = SourceExpressionConverter.ConvertToken(bodymembers);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            bodypropCount++;
-            body["members"] = CSharpExpressionConverter.ConvertToken(bodymembers);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateMembersResponse>(callPayload);
+            return new ApiConnectionAction<UpdateMembersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<WritePanelResponse> UpdatePanel(Expression<Func<int>> bodypanelId, Expression<Func<string>> bodytenant = null, Expression<Func<PanelMemberField[]>> bodyaddedFields = null, Expression<Func<int[]>> bodyremovedFields = null, Expression<Func<PanelMemberField[]>> bodyrenamedFields = null)
+        public IBodyWorkflowAction<WritePanelResponse> UpdatePanel([WorkflowExpression] Func<int> bodypanelId, [WorkflowExpression] Func<string> bodytenant = null, [WorkflowExpression] Func<PanelMemberField[]> bodyaddedFields = null, [WorkflowExpression] Func<int[]> bodyremovedFields = null, [WorkflowExpression] Func<PanelMemberField[]> bodyrenamedFields = null)
         {
-            var apiCallPath = "/publicapi/Panel/v3/UpdatePanel";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytenant != null)
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: true);
+            SourceExpression.Validate(bodytenant, nameof(bodytenant), required: false);
+            SourceExpression.Validate(bodyaddedFields, nameof(bodyaddedFields), required: false);
+            SourceExpression.Validate(bodyremovedFields, nameof(bodyremovedFields), required: false);
+            SourceExpression.Validate(bodyrenamedFields, nameof(bodyrenamedFields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["tenant"] = CSharpExpressionConverter.ConvertToken(bodytenant);
+                var apiCallPath = "/publicapi/Panel/v3/UpdatePanel";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytenant != null)
+                {
+                    body["tenant"] = SourceExpressionConverter.ConvertToken(bodytenant);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                if (bodyaddedFields != null)
+                {
+                    body["addedFields"] = SourceExpressionConverter.ConvertToken(bodyaddedFields);
+                    bodypropCount++;
+                }
+
+                if (bodyremovedFields != null)
+                {
+                    body["removedFields"] = SourceExpressionConverter.ConvertToken(bodyremovedFields);
+                    bodypropCount++;
+                }
+
+                if (bodyrenamedFields != null)
+                {
+                    body["renamedFields"] = SourceExpressionConverter.ConvertToken(bodyrenamedFields);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-            if (bodyaddedFields != null)
-            {
-                body["addedFields"] = CSharpExpressionConverter.ConvertToken(bodyaddedFields);
-                bodypropCount++;
-            }
-
-            if (bodyremovedFields != null)
-            {
-                body["removedFields"] = CSharpExpressionConverter.ConvertToken(bodyremovedFields);
-                bodypropCount++;
-            }
-
-            if (bodyrenamedFields != null)
-            {
-                body["renamedFields"] = CSharpExpressionConverter.ConvertToken(bodyrenamedFields);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WritePanelResponse>(callPayload);
+            return new ApiConnectionAction<WritePanelResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<UpdateSurveyResponse> UpdateSurvey(Expression<Func<int>> bodysurveyId, Expression<Func<bool>> bodysurveyDefinitionallowMultipleParticipation, Expression<Func<bool>> bodysurveyDefinitionallowNavigateBack, Expression<Func<bool>> bodysurveyDefinitionrandomizeSections, Expression<Func<string>> bodysurveyDefinitiondefaultLanguage, Expression<Func<string[]>> bodysurveyDefinitionlanguages, Expression<Func<Section[]>> bodysurveyDefinitionsections, Expression<Func<CustomVariable[]>> bodysurveyDefinitioncustomVariables, Expression<Func<TranslationElement[]>> bodysurveyDefinitionsurveyEndText, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogIp, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, Expression<Func<bool>> bodysurveyConfigurationanonymizingConfigurationlogReferer, Expression<Func<string>> bodysurveyName = null, Expression<Func<bool>> bodysurveyDefinitionallowSaveProgress = null, Expression<Func<bool>> bodysurveyDefinitionenableAutoScroll = null, Expression<Func<bool>> bodysurveyDefinitionenableCodeAccess = null, Expression<Func<bodysurveyDefinitiondataAccessControlaccessTypeInput>> bodysurveyDefinitiondataAccessControlaccessType = null, Expression<Func<Condition[]>> bodysurveyDefinitiondataAccessControlconditions = null, Expression<Func<int[]>> bodysurveyDefinitionassociatedPanels = null, Expression<Func<bodysurveyDefinitioncodeAccessModeInput>> bodysurveyDefinitioncodeAccessMode = null, Expression<Func<bool>> bodysurveyDefinitionenablePanelSync = null, Expression<Func<bodysurveyDefinitionpanelSyncBehaviourInput>> bodysurveyDefinitionpanelSyncBehaviour = null, Expression<Func<PanelSyncElement[]>> bodysurveyDefinitionpanelSyncs = null, Expression<Func<string>> bodysurveyDefinitionendDate = null, Expression<Func<int>> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, Expression<Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput>> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, Expression<Func<TextBlock[]>> bodysurveyConfigurationdesignConfigurationtextBlocks = null, Expression<Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput>> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
+        public IBodyWorkflowAction<UpdateSurveyResponse> UpdateSurvey([WorkflowExpression] Func<int> bodysurveyId, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowMultipleParticipation, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowNavigateBack, [WorkflowExpression] Func<bool> bodysurveyDefinitionrandomizeSections, [WorkflowExpression] Func<string> bodysurveyDefinitiondefaultLanguage, [WorkflowExpression] Func<string[]> bodysurveyDefinitionlanguages, [WorkflowExpression] Func<Section[]> bodysurveyDefinitionsections, [WorkflowExpression] Func<CustomVariable[]> bodysurveyDefinitioncustomVariables, [WorkflowExpression] Func<TranslationElement[]> bodysurveyDefinitionsurveyEndText, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogIp, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogUserAgent, [WorkflowExpression] Func<bool> bodysurveyConfigurationanonymizingConfigurationlogReferer, [WorkflowExpression] Func<string> bodysurveyName = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionallowSaveProgress = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableAutoScroll = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenableCodeAccess = null, [WorkflowExpression] Func<bodysurveyDefinitiondataAccessControlaccessTypeInput> bodysurveyDefinitiondataAccessControlaccessType = null, [WorkflowExpression] Func<Condition[]> bodysurveyDefinitiondataAccessControlconditions = null, [WorkflowExpression] Func<int[]> bodysurveyDefinitionassociatedPanels = null, [WorkflowExpression] Func<bodysurveyDefinitioncodeAccessModeInput> bodysurveyDefinitioncodeAccessMode = null, [WorkflowExpression] Func<bool> bodysurveyDefinitionenablePanelSync = null, [WorkflowExpression] Func<bodysurveyDefinitionpanelSyncBehaviourInput> bodysurveyDefinitionpanelSyncBehaviour = null, [WorkflowExpression] Func<PanelSyncElement[]> bodysurveyDefinitionpanelSyncs = null, [WorkflowExpression] Func<string> bodysurveyDefinitionendDate = null, [WorkflowExpression] Func<int> bodysurveyConfigurationdesignConfigurationsurveyDesignLayout = null, [WorkflowExpression] Func<bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSizeInput> bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize = null, [WorkflowExpression] Func<TextBlock[]> bodysurveyConfigurationdesignConfigurationtextBlocks = null, [WorkflowExpression] Func<bodysurveyConfigurationanonymizingConfigurationanonymizingModeInput> bodysurveyConfigurationanonymizingConfigurationanonymizingMode = null)
         {
-            var apiCallPath = "/publicapi/Survey/v3/UpdateSurvey";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["surveyId"] = CSharpExpressionConverter.ConvertToken(bodysurveyId);
-            if (bodysurveyName != null)
+            SourceExpression.Validate(bodysurveyId, nameof(bodysurveyId), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionallowMultipleParticipation, nameof(bodysurveyDefinitionallowMultipleParticipation), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionallowNavigateBack, nameof(bodysurveyDefinitionallowNavigateBack), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionrandomizeSections, nameof(bodysurveyDefinitionrandomizeSections), required: true);
+            SourceExpression.Validate(bodysurveyDefinitiondefaultLanguage, nameof(bodysurveyDefinitiondefaultLanguage), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionlanguages, nameof(bodysurveyDefinitionlanguages), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionsections, nameof(bodysurveyDefinitionsections), required: true);
+            SourceExpression.Validate(bodysurveyDefinitioncustomVariables, nameof(bodysurveyDefinitioncustomVariables), required: true);
+            SourceExpression.Validate(bodysurveyDefinitionsurveyEndText, nameof(bodysurveyDefinitionsurveyEndText), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogIp, nameof(bodysurveyConfigurationanonymizingConfigurationlogIp), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogUserAgent, nameof(bodysurveyConfigurationanonymizingConfigurationlogUserAgent), required: true);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationlogReferer, nameof(bodysurveyConfigurationanonymizingConfigurationlogReferer), required: true);
+            SourceExpression.Validate(bodysurveyName, nameof(bodysurveyName), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionallowSaveProgress, nameof(bodysurveyDefinitionallowSaveProgress), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenableAutoScroll, nameof(bodysurveyDefinitionenableAutoScroll), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenableCodeAccess, nameof(bodysurveyDefinitionenableCodeAccess), required: false);
+            SourceExpression.Validate(bodysurveyDefinitiondataAccessControlaccessType, nameof(bodysurveyDefinitiondataAccessControlaccessType), required: false);
+            SourceExpression.Validate(bodysurveyDefinitiondataAccessControlconditions, nameof(bodysurveyDefinitiondataAccessControlconditions), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionassociatedPanels, nameof(bodysurveyDefinitionassociatedPanels), required: false);
+            SourceExpression.Validate(bodysurveyDefinitioncodeAccessMode, nameof(bodysurveyDefinitioncodeAccessMode), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionenablePanelSync, nameof(bodysurveyDefinitionenablePanelSync), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionpanelSyncBehaviour, nameof(bodysurveyDefinitionpanelSyncBehaviour), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionpanelSyncs, nameof(bodysurveyDefinitionpanelSyncs), required: false);
+            SourceExpression.Validate(bodysurveyDefinitionendDate, nameof(bodysurveyDefinitionendDate), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout, nameof(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize, nameof(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationdesignConfigurationtextBlocks, nameof(bodysurveyConfigurationdesignConfigurationtextBlocks), required: false);
+            SourceExpression.Validate(bodysurveyConfigurationanonymizingConfigurationanonymizingMode, nameof(bodysurveyConfigurationanonymizingConfigurationanonymizingMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["surveyName"] = CSharpExpressionConverter.ConvertToken(bodysurveyName);
+                var apiCallPath = "/publicapi/Survey/v3/UpdateSurvey";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["surveyId"] = SourceExpressionConverter.ConvertToken(bodysurveyId);
+                if (bodysurveyName != null)
+                {
+                    body["surveyName"] = SourceExpressionConverter.ConvertToken(bodysurveyName);
+                    bodypropCount++;
+                }
 
-            var surveyDefinitionObject = new JObject();
-            var surveyDefinitionObjectpropCount = 0;
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowMultipleParticipation"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["allowNavigateBack"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
-            if (bodysurveyDefinitionallowSaveProgress != null)
-            {
-                surveyDefinitionObject["allowSaveProgress"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
+                var surveyDefinitionObject = new JObject();
+                var surveyDefinitionObjectpropCount = 0;
                 surveyDefinitionObjectpropCount++;
-            }
-
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["randomizeSections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
-            if (bodysurveyDefinitionenableAutoScroll != null)
-            {
-                surveyDefinitionObject["enableAutoScroll"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
+                surveyDefinitionObject["allowMultipleParticipation"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowMultipleParticipation);
                 surveyDefinitionObjectpropCount++;
-            }
+                surveyDefinitionObject["allowNavigateBack"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowNavigateBack);
+                if (bodysurveyDefinitionallowSaveProgress != null)
+                {
+                    surveyDefinitionObject["allowSaveProgress"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionallowSaveProgress);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyDefinitionenableCodeAccess != null)
-            {
-                surveyDefinitionObject["enableCodeAccess"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
                 surveyDefinitionObjectpropCount++;
-            }
+                surveyDefinitionObject["randomizeSections"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionrandomizeSections);
+                if (bodysurveyDefinitionenableAutoScroll != null)
+                {
+                    surveyDefinitionObject["enableAutoScroll"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenableAutoScroll);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            var dataAccessControlObject = new JObject();
-            var dataAccessControlObjectpropCount = 0;
-            if (bodysurveyDefinitiondataAccessControlaccessType != null)
-            {
-                dataAccessControlObject["accessType"] = CSharpExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
-                dataAccessControlObjectpropCount++;
-            }
+                if (bodysurveyDefinitionenableCodeAccess != null)
+                {
+                    surveyDefinitionObject["enableCodeAccess"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenableCodeAccess);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyDefinitiondataAccessControlconditions != null)
-            {
-                dataAccessControlObject["conditions"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
-                dataAccessControlObjectpropCount++;
-            }
+                var dataAccessControlObject = new JObject();
+                var dataAccessControlObjectpropCount = 0;
+                if (bodysurveyDefinitiondataAccessControlaccessType != null)
+                {
+                    dataAccessControlObject["accessType"] = SourceExpressionConverter.Convert(bodysurveyDefinitiondataAccessControlaccessType);
+                    dataAccessControlObjectpropCount++;
+                }
 
-            if (dataAccessControlObjectpropCount > 0)
-            {
-                surveyDefinitionObject["dataAccessControl"] = dataAccessControlObject;
+                if (bodysurveyDefinitiondataAccessControlconditions != null)
+                {
+                    dataAccessControlObject["conditions"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitiondataAccessControlconditions);
+                    dataAccessControlObjectpropCount++;
+                }
+
+                if (dataAccessControlObjectpropCount > 0)
+                {
+                    surveyDefinitionObject["dataAccessControl"] = dataAccessControlObject;
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionassociatedPanels != null)
+                {
+                    surveyDefinitionObject["associatedPanels"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitioncodeAccessMode != null)
+                {
+                    surveyDefinitionObject["codeAccessMode"] = SourceExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionenablePanelSync != null)
+                {
+                    surveyDefinitionObject["enablePanelSync"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionpanelSyncBehaviour != null)
+                {
+                    surveyDefinitionObject["panelSyncBehaviour"] = SourceExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
+                    surveyDefinitionObjectpropCount++;
+                }
+
+                if (bodysurveyDefinitionpanelSyncs != null)
+                {
+                    surveyDefinitionObject["panelSyncs"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
+                    surveyDefinitionObjectpropCount++;
+                }
+
                 surveyDefinitionObjectpropCount++;
-            }
+                surveyDefinitionObject["defaultLanguage"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
+                if (bodysurveyDefinitionendDate != null)
+                {
+                    surveyDefinitionObject["endDate"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyDefinitionassociatedPanels != null)
-            {
-                surveyDefinitionObject["associatedPanels"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionassociatedPanels);
                 surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitioncodeAccessMode != null)
-            {
-                surveyDefinitionObject["codeAccessMode"] = CSharpExpressionConverter.Convert(bodysurveyDefinitioncodeAccessMode);
+                surveyDefinitionObject["languages"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
                 surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionenablePanelSync != null)
-            {
-                surveyDefinitionObject["enablePanelSync"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionenablePanelSync);
+                surveyDefinitionObject["sections"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
                 surveyDefinitionObjectpropCount++;
-            }
-
-            if (bodysurveyDefinitionpanelSyncBehaviour != null)
-            {
-                surveyDefinitionObject["panelSyncBehaviour"] = CSharpExpressionConverter.Convert(bodysurveyDefinitionpanelSyncBehaviour);
+                surveyDefinitionObject["customVariables"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
                 surveyDefinitionObjectpropCount++;
-            }
+                surveyDefinitionObject["surveyEndText"] = SourceExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
+                var defaultTextOverridesObject = new JObject();
+                var defaultTextOverridesObjectpropCount = 0;
+                if (defaultTextOverridesObjectpropCount > 0)
+                {
+                    surveyDefinitionObject["defaultTextOverrides"] = defaultTextOverridesObject;
+                    surveyDefinitionObjectpropCount++;
+                }
 
-            if (bodysurveyDefinitionpanelSyncs != null)
-            {
-                surveyDefinitionObject["panelSyncs"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionpanelSyncs);
-                surveyDefinitionObjectpropCount++;
-            }
+                if (surveyDefinitionObjectpropCount > 0)
+                {
+                    body["surveyDefinition"] = surveyDefinitionObject;
+                    bodypropCount++;
+                }
 
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["defaultLanguage"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitiondefaultLanguage);
-            if (bodysurveyDefinitionendDate != null)
-            {
-                surveyDefinitionObject["endDate"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionendDate);
-                surveyDefinitionObjectpropCount++;
-            }
+                var surveyConfigurationObject = new JObject();
+                var surveyConfigurationObjectpropCount = 0;
+                var designConfigurationObject = new JObject();
+                var designConfigurationObjectpropCount = 0;
+                if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
+                {
+                    designConfigurationObject["surveyDesignLayout"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
+                    designConfigurationObjectpropCount++;
+                }
 
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["languages"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionlanguages);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["sections"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsections);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["customVariables"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitioncustomVariables);
-            surveyDefinitionObjectpropCount++;
-            surveyDefinitionObject["surveyEndText"] = CSharpExpressionConverter.ConvertToken(bodysurveyDefinitionsurveyEndText);
-            var defaultTextOverridesObject = new JObject();
-            var defaultTextOverridesObjectpropCount = 0;
-            if (defaultTextOverridesObjectpropCount > 0)
-            {
-                surveyDefinitionObject["defaultTextOverrides"] = defaultTextOverridesObject;
-                surveyDefinitionObjectpropCount++;
-            }
+                if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
+                {
+                    designConfigurationObject["matrixSubQuestionSize"] = SourceExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
+                    designConfigurationObjectpropCount++;
+                }
 
-            if (surveyDefinitionObjectpropCount > 0)
-            {
-                body["surveyDefinition"] = surveyDefinitionObject;
-                bodypropCount++;
-            }
+                if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
+                {
+                    designConfigurationObject["textBlocks"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
+                    designConfigurationObjectpropCount++;
+                }
 
-            var surveyConfigurationObject = new JObject();
-            var surveyConfigurationObjectpropCount = 0;
-            var designConfigurationObject = new JObject();
-            var designConfigurationObjectpropCount = 0;
-            if (bodysurveyConfigurationdesignConfigurationsurveyDesignLayout != null)
-            {
-                designConfigurationObject["surveyDesignLayout"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationsurveyDesignLayout);
-                designConfigurationObjectpropCount++;
-            }
+                if (designConfigurationObjectpropCount > 0)
+                {
+                    surveyConfigurationObject["designConfiguration"] = designConfigurationObject;
+                    surveyConfigurationObjectpropCount++;
+                }
 
-            if (bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize != null)
-            {
-                designConfigurationObject["matrixSubQuestionSize"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationdesignConfigurationmatrixSubQuestionSize);
-                designConfigurationObjectpropCount++;
-            }
+                var anonymizingConfigurationObject = new JObject();
+                var anonymizingConfigurationObjectpropCount = 0;
+                if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
+                {
+                    anonymizingConfigurationObject["anonymizingMode"] = SourceExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
+                    anonymizingConfigurationObjectpropCount++;
+                }
 
-            if (bodysurveyConfigurationdesignConfigurationtextBlocks != null)
-            {
-                designConfigurationObject["textBlocks"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationdesignConfigurationtextBlocks);
-                designConfigurationObjectpropCount++;
-            }
-
-            if (designConfigurationObjectpropCount > 0)
-            {
-                surveyConfigurationObject["designConfiguration"] = designConfigurationObject;
-                surveyConfigurationObjectpropCount++;
-            }
-
-            var anonymizingConfigurationObject = new JObject();
-            var anonymizingConfigurationObjectpropCount = 0;
-            if (bodysurveyConfigurationanonymizingConfigurationanonymizingMode != null)
-            {
-                anonymizingConfigurationObject["anonymizingMode"] = CSharpExpressionConverter.Convert(bodysurveyConfigurationanonymizingConfigurationanonymizingMode);
                 anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logIp"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
+                anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logUserAgent"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
+                anonymizingConfigurationObjectpropCount++;
+                anonymizingConfigurationObject["logReferer"] = SourceExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
+                if (anonymizingConfigurationObjectpropCount > 0)
+                {
+                    surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
+                    surveyConfigurationObjectpropCount++;
+                }
+
+                if (surveyConfigurationObjectpropCount > 0)
+                {
+                    body["surveyConfiguration"] = surveyConfigurationObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logIp"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogIp);
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logUserAgent"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogUserAgent);
-            anonymizingConfigurationObjectpropCount++;
-            anonymizingConfigurationObject["logReferer"] = CSharpExpressionConverter.ConvertToken(bodysurveyConfigurationanonymizingConfigurationlogReferer);
-            if (anonymizingConfigurationObjectpropCount > 0)
-            {
-                surveyConfigurationObject["anonymizingConfiguration"] = anonymizingConfigurationObject;
-                surveyConfigurationObjectpropCount++;
-            }
-
-            if (surveyConfigurationObjectpropCount > 0)
-            {
-                body["surveyConfiguration"] = surveyConfigurationObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateSurveyResponse>(callPayload);
+            return new ApiConnectionAction<UpdateSurveyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<UpdateWebHookResponse> UpdateWebHook(Expression<Func<string>> bodywebHookId = null, Expression<Func<bodyeventTypeInput>> bodyeventType = null, Expression<Func<string>> bodyentityIdentifier = null, Expression<Func<string>> bodysecurityToken = null, Expression<Func<string>> bodywebHookUrl = null)
+        public IBodyWorkflowAction<UpdateWebHookResponse> UpdateWebHook([WorkflowExpression] Func<string> bodywebHookId = null, [WorkflowExpression] Func<bodyeventTypeInput> bodyeventType = null, [WorkflowExpression] Func<string> bodyentityIdentifier = null, [WorkflowExpression] Func<string> bodysecurityToken = null, [WorkflowExpression] Func<string> bodywebHookUrl = null)
         {
-            var apiCallPath = "/publicapi/WebHook/v3/UpdateWebHook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodywebHookId != null)
+            SourceExpression.Validate(bodywebHookId, nameof(bodywebHookId), required: false);
+            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
+            SourceExpression.Validate(bodyentityIdentifier, nameof(bodyentityIdentifier), required: false);
+            SourceExpression.Validate(bodysecurityToken, nameof(bodysecurityToken), required: false);
+            SourceExpression.Validate(bodywebHookUrl, nameof(bodywebHookUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["webHookId"] = CSharpExpressionConverter.ConvertToken(bodywebHookId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/WebHook/v3/UpdateWebHook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodywebHookId != null)
+                {
+                    body["webHookId"] = SourceExpressionConverter.ConvertToken(bodywebHookId);
+                    bodypropCount++;
+                }
+
+                if (bodyeventType != null)
+                {
+                    body["eventType"] = SourceExpressionConverter.Convert(bodyeventType);
+                    bodypropCount++;
+                }
+
+                if (bodyentityIdentifier != null)
+                {
+                    body["entityIdentifier"] = SourceExpressionConverter.ConvertToken(bodyentityIdentifier);
+                    bodypropCount++;
+                }
+
+                if (bodysecurityToken != null)
+                {
+                    body["securityToken"] = SourceExpressionConverter.ConvertToken(bodysecurityToken);
+                    bodypropCount++;
+                }
+
+                if (bodywebHookUrl != null)
+                {
+                    body["webHookUrl"] = SourceExpressionConverter.ConvertToken(bodywebHookUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyeventType != null)
-            {
-                body["eventType"] = CSharpExpressionConverter.Convert(bodyeventType);
-                bodypropCount++;
-            }
-
-            if (bodyentityIdentifier != null)
-            {
-                body["entityIdentifier"] = CSharpExpressionConverter.ConvertToken(bodyentityIdentifier);
-                bodypropCount++;
-            }
-
-            if (bodysecurityToken != null)
-            {
-                body["securityToken"] = CSharpExpressionConverter.ConvertToken(bodysecurityToken);
-                bodypropCount++;
-            }
-
-            if (bodywebHookUrl != null)
-            {
-                body["webHookUrl"] = CSharpExpressionConverter.ConvertToken(bodywebHookUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateWebHookResponse>(callPayload);
+            return new ApiConnectionAction<UpdateWebHookResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "survalyzereu")]
-        public IBodyWorkflowAction<WriteOptOutListResponse> WriteOptOutList(Expression<Func<int>> bodyworkspaceId = null, Expression<Func<int>> bodypanelId = null, Expression<Func<int>> bodydistributorId = null, Expression<Func<EmailItem[]>> bodyemails = null, Expression<Func<CellPhoneItem[]>> bodycellPhones = null)
+        public IBodyWorkflowAction<WriteOptOutListResponse> WriteOptOutList([WorkflowExpression] Func<int> bodyworkspaceId = null, [WorkflowExpression] Func<int> bodypanelId = null, [WorkflowExpression] Func<int> bodydistributorId = null, [WorkflowExpression] Func<EmailItem[]> bodyemails = null, [WorkflowExpression] Func<CellPhoneItem[]> bodycellPhones = null)
         {
-            var apiCallPath = "/publicapi/Distribute/v3/WriteOptOutList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyworkspaceId != null)
+            SourceExpression.Validate(bodyworkspaceId, nameof(bodyworkspaceId), required: false);
+            SourceExpression.Validate(bodypanelId, nameof(bodypanelId), required: false);
+            SourceExpression.Validate(bodydistributorId, nameof(bodydistributorId), required: false);
+            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            SourceExpression.Validate(bodycellPhones, nameof(bodycellPhones), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["workspaceId"] = CSharpExpressionConverter.ConvertToken(bodyworkspaceId);
-                bodypropCount++;
+                var apiCallPath = "/publicapi/Distribute/v3/WriteOptOutList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyworkspaceId != null)
+                {
+                    body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
+                    bodypropCount++;
+                }
+
+                if (bodypanelId != null)
+                {
+                    body["panelId"] = SourceExpressionConverter.ConvertToken(bodypanelId);
+                    bodypropCount++;
+                }
+
+                if (bodydistributorId != null)
+                {
+                    body["distributorId"] = SourceExpressionConverter.ConvertToken(bodydistributorId);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = SourceExpressionConverter.ConvertToken(bodyemails);
+                    bodypropCount++;
+                }
+
+                if (bodycellPhones != null)
+                {
+                    body["cellPhones"] = SourceExpressionConverter.ConvertToken(bodycellPhones);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypanelId != null)
-            {
-                body["panelId"] = CSharpExpressionConverter.ConvertToken(bodypanelId);
-                bodypropCount++;
-            }
-
-            if (bodydistributorId != null)
-            {
-                body["distributorId"] = CSharpExpressionConverter.ConvertToken(bodydistributorId);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
-                bodypropCount++;
-            }
-
-            if (bodycellPhones != null)
-            {
-                body["cellPhones"] = CSharpExpressionConverter.ConvertToken(bodycellPhones);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<WriteOptOutListResponse>(callPayload);
+            return new ApiConnectionAction<WriteOptOutListResponse>(BuildSourceInput);
         }
     }
 

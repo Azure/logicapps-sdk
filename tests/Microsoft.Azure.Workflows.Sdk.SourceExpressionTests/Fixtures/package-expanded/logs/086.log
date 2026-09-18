@@ -1,0 +1,2 @@
+D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\deployments\codeless\Probe\workflow.json: error WFDEP009: The selected execution host has no verified @csharp expression capability; deployment is blocked.
+D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\deployments\codeless\ReferenceHelper.dll: error WFDEP003: Deployed assembly 'ReferenceHelper' does not match its approved SHA256.

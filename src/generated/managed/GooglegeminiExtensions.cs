@@ -12,315 +12,393 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlegemini
     public class GooglegeminiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateTextContentResponse> GenerateTextContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<int> bodygenerationConfigcandidateCount = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
+            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            SourceExpression.Validate(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:generateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontents != null)
+                {
+                    body["contents"] = SourceExpressionConverter.ConvertToken(bodycontents);
+                    bodypropCount++;
+                }
+
+                if (bodysafetySettings != null)
+                {
+                    body["safetySettings"] = SourceExpressionConverter.ConvertToken(bodysafetySettings);
+                    bodypropCount++;
+                }
+
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigcandidateCount != null)
+                {
+                    generationConfigObject["candidateCount"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
-                bodypropCount++;
-            }
-
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigcandidateCount != null)
-            {
-                generationConfigObject["candidateCount"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
-
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateTextContentResponse>(callPayload);
+            return new ApiConnectionAction<GenerateTextContentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<int>> bodygenerationConfigcandidateCount = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateStreamContentResponseItem[]> GenerateStreamContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<int> bodygenerationConfigcandidateCount = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
+            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            SourceExpression.Validate(bodygenerationConfigcandidateCount, nameof(bodygenerationConfigcandidateCount), required: false);
+            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:streamGenerateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontents != null)
+                {
+                    body["contents"] = SourceExpressionConverter.ConvertToken(bodycontents);
+                    bodypropCount++;
+                }
+
+                if (bodysafetySettings != null)
+                {
+                    body["safetySettings"] = SourceExpressionConverter.ConvertToken(bodysafetySettings);
+                    bodypropCount++;
+                }
+
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigcandidateCount != null)
+                {
+                    generationConfigObject["candidateCount"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
-                bodypropCount++;
-            }
-
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigcandidateCount != null)
-            {
-                generationConfigObject["candidateCount"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigcandidateCount);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
-
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateStreamContentResponseItem[]>(callPayload);
+            return new ApiConnectionAction<GenerateStreamContentResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem2[]>> bodycontents = null, Expression<Func<bodysafetySettingsInputItem[]>> bodysafetySettings = null, Expression<Func<int>> bodygenerationConfigmaxOutputTokens = null, Expression<Func<double>> bodygenerationConfigtemperature = null, Expression<Func<double>> bodygenerationConfigtopP = null, Expression<Func<int>> bodygenerationConfigtopK = null, Expression<Func<string[]>> bodygenerationConfigstopSequences = null)
+        public IBodyWorkflowAction<GenerateMultiModalContentResponse> GenerateMultiModalContent([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem2[]> bodycontents = null, [WorkflowExpression] Func<bodysafetySettingsInputItem[]> bodysafetySettings = null, [WorkflowExpression] Func<int> bodygenerationConfigmaxOutputTokens = null, [WorkflowExpression] Func<double> bodygenerationConfigtemperature = null, [WorkflowExpression] Func<double> bodygenerationConfigtopP = null, [WorkflowExpression] Func<int> bodygenerationConfigtopK = null, [WorkflowExpression] Func<string[]> bodygenerationConfigstopSequences = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
+            SourceExpression.Validate(bodysafetySettings, nameof(bodysafetySettings), required: false);
+            SourceExpression.Validate(bodygenerationConfigmaxOutputTokens, nameof(bodygenerationConfigmaxOutputTokens), required: false);
+            SourceExpression.Validate(bodygenerationConfigtemperature, nameof(bodygenerationConfigtemperature), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopP, nameof(bodygenerationConfigtopP), required: false);
+            SourceExpression.Validate(bodygenerationConfigtopK, nameof(bodygenerationConfigtopK), required: false);
+            SourceExpression.Validate(bodygenerationConfigstopSequences, nameof(bodygenerationConfigstopSequences), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}-vision:generateContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontents != null)
+                {
+                    body["contents"] = SourceExpressionConverter.ConvertToken(bodycontents);
+                    bodypropCount++;
+                }
+
+                if (bodysafetySettings != null)
+                {
+                    body["safetySettings"] = SourceExpressionConverter.ConvertToken(bodysafetySettings);
+                    bodypropCount++;
+                }
+
+                var generationConfigObject = new JObject();
+                var generationConfigObjectpropCount = 0;
+                if (bodygenerationConfigmaxOutputTokens != null)
+                {
+                    generationConfigObject["maxOutputTokens"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtemperature != null)
+                {
+                    generationConfigObject["temperature"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopP != null)
+                {
+                    generationConfigObject["topP"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopP);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigtopK != null)
+                {
+                    generationConfigObject["topK"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigtopK);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (bodygenerationConfigstopSequences != null)
+                {
+                    generationConfigObject["stopSequences"] = SourceExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
+                    generationConfigObjectpropCount++;
+                }
+
+                if (generationConfigObjectpropCount > 0)
+                {
+                    body["generationConfig"] = generationConfigObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodysafetySettings != null)
-            {
-                body["safetySettings"] = CSharpExpressionConverter.ConvertToken(bodysafetySettings);
-                bodypropCount++;
-            }
-
-            var generationConfigObject = new JObject();
-            var generationConfigObjectpropCount = 0;
-            if (bodygenerationConfigmaxOutputTokens != null)
-            {
-                generationConfigObject["maxOutputTokens"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigmaxOutputTokens);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtemperature != null)
-            {
-                generationConfigObject["temperature"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtemperature);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopP != null)
-            {
-                generationConfigObject["topP"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopP);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigtopK != null)
-            {
-                generationConfigObject["topK"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigtopK);
-                generationConfigObjectpropCount++;
-            }
-
-            if (bodygenerationConfigstopSequences != null)
-            {
-                generationConfigObject["stopSequences"] = CSharpExpressionConverter.ConvertToken(bodygenerationConfigstopSequences);
-                generationConfigObjectpropCount++;
-            }
-
-            if (generationConfigObjectpropCount > 0)
-            {
-                body["generationConfig"] = generationConfigObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateMultiModalContentResponse>(callPayload);
+            return new ApiConnectionAction<GenerateMultiModalContentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<CountTokensResponse> CountTokens(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodycontentsInputItem22[]>> bodycontents = null)
+        public IBodyWorkflowAction<CountTokensResponse> CountTokens([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodycontentsInputItem22[]> bodycontents = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontents != null)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodycontents, nameof(bodycontents), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contents"] = CSharpExpressionConverter.ConvertToken(bodycontents);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:countTokens", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontents != null)
+                {
+                    body["contents"] = SourceExpressionConverter.ConvertToken(bodycontents);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CountTokensResponse>(callPayload);
+            return new ApiConnectionAction<CountTokensResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels(Expression<Func<string>> apiVersion)
+        public IBodyWorkflowAction<GetAllModelsResponse> GetAllModels([WorkflowExpression] Func<string> apiVersion)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllModelsResponse>(callPayload);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllModelsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName)
+        public IBodyWorkflowAction<GetModelDetailsResponse> GetModelDetails([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetModelDetailsResponse>(callPayload);
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetModelDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<string>> bodymodelResourceName, Expression<Func<bodycontentpartsInputItem[]>> bodycontentparts = null, Expression<Func<bodytaskTypeInput>> bodytaskType = null, Expression<Func<string>> bodytitle = null)
+        public IBodyWorkflowAction<GenerateEmbeddingResponse> GenerateEmbedding([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<string> bodymodelResourceName, [WorkflowExpression] Func<bodycontentpartsInputItem[]> bodycontentparts = null, [WorkflowExpression] Func<bodytaskTypeInput> bodytaskType = null, [WorkflowExpression] Func<string> bodytitle = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["model"] = CSharpExpressionConverter.ConvertToken(bodymodelResourceName);
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            if (bodycontentparts != null)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodymodelResourceName, nameof(bodymodelResourceName), required: true);
+            SourceExpression.Validate(bodycontentparts, nameof(bodycontentparts), required: false);
+            SourceExpression.Validate(bodytaskType, nameof(bodytaskType), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                contentObject["parts"] = CSharpExpressionConverter.ConvertToken(bodycontentparts);
-                contentObjectpropCount++;
-            }
-
-            if (contentObjectpropCount > 0)
-            {
-                body["content"] = contentObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:embedContent", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["model"] = SourceExpressionConverter.ConvertToken(bodymodelResourceName);
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                if (bodycontentparts != null)
+                {
+                    contentObject["parts"] = SourceExpressionConverter.ConvertToken(bodycontentparts);
+                    contentObjectpropCount++;
+                }
+
+                if (contentObjectpropCount > 0)
+                {
+                    body["content"] = contentObject;
+                    bodypropCount++;
+                }
+
+                if (bodytaskType != null)
+                {
+                    body["taskType"] = SourceExpressionConverter.Convert(bodytaskType);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytaskType != null)
-            {
-                body["taskType"] = CSharpExpressionConverter.Convert(bodytaskType);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<GenerateEmbeddingResponse>(callPayload);
+            return new ApiConnectionAction<GenerateEmbeddingResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlegemini")]
-        public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents(Expression<Func<string>> apiVersion, Expression<Func<string>> modelName, Expression<Func<bodyrequestsInputItem[]>> bodyrequests)
+        public IBodyWorkflowAction<BatchEmbedContentsResponse> BatchEmbedContents([WorkflowExpression] Func<string> apiVersion, [WorkflowExpression] Func<string> modelName, [WorkflowExpression] Func<bodyrequestsInputItem[]> bodyrequests)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requests"] = CSharpExpressionConverter.ConvertToken(bodyrequests);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(apiVersion, nameof(apiVersion), required: true);
+            SourceExpression.Validate(modelName, nameof(modelName), required: true);
+            SourceExpression.Validate(bodyrequests, nameof(bodyrequests), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/models/{1}:batchEmbedContents", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(apiVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(modelName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["requests"] = SourceExpressionConverter.ConvertToken(bodyrequests);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<BatchEmbedContentsResponse>(callPayload);
+            return new ApiConnectionAction<BatchEmbedContentsResponse>(BuildSourceInput);
         }
     }
 

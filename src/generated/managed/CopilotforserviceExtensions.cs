@@ -12,55 +12,65 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Copilotforservice
     public class CopilotforserviceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch(Expression<Func<string>> bodyprompt = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> NaturalQueryTextSearch([WorkflowExpression] Func<string> bodyprompt = null)
         {
-            var apiCallPath = "/api/orchestrator/connector";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyprompt != null)
+            SourceExpression.Validate(bodyprompt, nameof(bodyprompt), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["prompt"] = CSharpExpressionConverter.ConvertToken(bodyprompt);
-                bodypropCount++;
+                var apiCallPath = "/api/orchestrator/connector";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyprompt != null)
+                {
+                    body["prompt"] = SourceExpressionConverter.ConvertToken(bodyprompt);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+            return new ApiConnectionAction<OrchestratorConnectorResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "copilotforservice")]
-        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill(Expression<Func<string>> bodyskillId = null)
+        public IBodyWorkflowAction<OrchestratorConnectorResponse> ExecuteSkill([WorkflowExpression] Func<string> bodyskillId = null)
         {
-            var apiCallPath = "/api/orchestrator/executeSkill";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyskillId != null)
+            SourceExpression.Validate(bodyskillId, nameof(bodyskillId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["SkillId"] = CSharpExpressionConverter.ConvertToken(bodyskillId);
-                bodypropCount++;
+                var apiCallPath = "/api/orchestrator/executeSkill";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyskillId != null)
+                {
+                    body["SkillId"] = SourceExpressionConverter.ConvertToken(bodyskillId);
+                    bodypropCount++;
+                }
+
+                var inputParametersObject = new JObject();
+                var inputParametersObjectpropCount = 0;
+                if (inputParametersObjectpropCount > 0)
+                {
+                    body["InputParameters"] = inputParametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var inputParametersObject = new JObject();
-            var inputParametersObjectpropCount = 0;
-            if (inputParametersObjectpropCount > 0)
-            {
-                body["InputParameters"] = inputParametersObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<OrchestratorConnectorResponse>(callPayload);
+            return new ApiConnectionAction<OrchestratorConnectorResponse>(BuildSourceInput);
         }
     }
 

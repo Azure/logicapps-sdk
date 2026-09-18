@@ -12,364 +12,453 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Hubspotcms
     public class HubspotcmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction PagesList(Expression<Func<int>> limit = null, Expression<Func<bool>> archived = null, Expression<Func<string>> id = null, Expression<Func<string>> name = null)
+        public IWorkflowAction PagesList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<bool> archived = null, [WorkflowExpression] Func<string> id = null, [WorkflowExpression] Func<string> name = null)
         {
-            var apiCallPath = "/content/api/v2/pages";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(20);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Queries["archived"] = Convert.ToString(false);
-            if (archived != null)
-                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
-            if (id != null)
-                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(archived, nameof(archived), required: false);
+            SourceExpression.Validate(id, nameof(id), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/content/api/v2/pages";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Queries["archived"] = Convert.ToString(false);
+                if (archived != null)
+                    callPayload.Queries["archived"] = SourceExpressionConverter.ConvertO(archived);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction PagesCreate(Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
+        public IWorkflowAction PagesCreate([WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodyfooterHtml = null, [WorkflowExpression] Func<string> bodyheadHtml = null, [WorkflowExpression] Func<string> bodyisDraft = null, [WorkflowExpression] Func<string> bodymetaDescription = null, [WorkflowExpression] Func<string> bodymetaKeywords = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypublishDate = null, [WorkflowExpression] Func<string> bodypublishImmediately = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<string> bodywidgetContainers = null, [WorkflowExpression] Func<string> bodywidgets = null)
         {
-            var apiCallPath = "/content/api/v2/pages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycampaign != null)
+            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
+            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
+            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: false);
+            SourceExpression.Validate(bodyisDraft, nameof(bodyisDraft), required: false);
+            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: false);
+            SourceExpression.Validate(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: false);
+            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
+            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
+            SourceExpression.Validate(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            SourceExpression.Validate(bodywidgets, nameof(bodywidgets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["campaign"] = CSharpExpressionConverter.ConvertToken(bodycampaign);
-                bodypropCount++;
-            }
-
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
-                bodypropCount++;
-            }
-
-            if (bodyfooterHtml != null)
-            {
-                body["footer_html"] = CSharpExpressionConverter.ConvertToken(bodyfooterHtml);
-                bodypropCount++;
-            }
-
-            if (bodyheadHtml != null)
-            {
-                body["head_html"] = CSharpExpressionConverter.ConvertToken(bodyheadHtml);
-                bodypropCount++;
-            }
-
-            if (bodyisDraft != null)
-            {
-                body["is_draft"] = CSharpExpressionConverter.ConvertToken(bodyisDraft);
-                bodypropCount++;
-            }
-
-            if (bodymetaDescription != null)
-            {
-                body["meta_description"] = CSharpExpressionConverter.ConvertToken(bodymetaDescription);
-                bodypropCount++;
-            }
-
-            if (bodymetaKeywords != null)
-            {
-                body["meta_keywords"] = CSharpExpressionConverter.ConvertToken(bodymetaKeywords);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodypublishDate != null)
-            {
-                body["publish_date"] = CSharpExpressionConverter.ConvertToken(bodypublishDate);
-                bodypropCount++;
-            }
-
-            if (bodypublishImmediately != null)
-            {
-                body["publish_immediately"] = CSharpExpressionConverter.ConvertToken(bodypublishImmediately);
-                bodypropCount++;
-            }
-
-            if (bodyslug != null)
-            {
-                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
-                bodypropCount++;
-            }
-
-            if (bodysubcategory != null)
-            {
-                body["subcategory"] = CSharpExpressionConverter.ConvertToken(bodysubcategory);
-                bodypropCount++;
-            }
-
-            if (bodywidgetContainers != null)
-            {
-                body["widget_containers"] = CSharpExpressionConverter.ConvertToken(bodywidgetContainers);
-                bodypropCount++;
-            }
-
-            if (bodywidgets != null)
-            {
-                body["widgets"] = CSharpExpressionConverter.ConvertToken(bodywidgets);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction PagesArchive(Expression<Func<string>> pageId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction PagesUpdate(Expression<Func<string>> pageId, Expression<Func<string>> bodycampaign = null, Expression<Func<string>> bodycampaignName = null, Expression<Func<string>> bodyfooterHtml = null, Expression<Func<string>> bodyheadHtml = null, Expression<Func<string>> bodyisDraft = null, Expression<Func<string>> bodymetaDescription = null, Expression<Func<string>> bodymetaKeywords = null, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodypassword = null, Expression<Func<string>> bodypublishDate = null, Expression<Func<string>> bodypublishImmediately = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodysubcategory = null, Expression<Func<string>> bodywidgetContainers = null, Expression<Func<string>> bodywidgets = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycampaign != null)
-            {
-                body["campaign"] = CSharpExpressionConverter.ConvertToken(bodycampaign);
-                bodypropCount++;
-            }
-
-            if (bodycampaignName != null)
-            {
-                body["campaign_name"] = CSharpExpressionConverter.ConvertToken(bodycampaignName);
-                bodypropCount++;
-            }
-
-            if (bodyfooterHtml != null)
-            {
-                body["footer_html"] = CSharpExpressionConverter.ConvertToken(bodyfooterHtml);
-                bodypropCount++;
-            }
-
-            if (bodyheadHtml != null)
-            {
-                body["head_html"] = CSharpExpressionConverter.ConvertToken(bodyheadHtml);
-                bodypropCount++;
-            }
-
-            if (bodyisDraft != null)
-            {
-                body["is_draft"] = CSharpExpressionConverter.ConvertToken(bodyisDraft);
-                bodypropCount++;
-            }
-
-            if (bodymetaDescription != null)
-            {
-                body["meta_description"] = CSharpExpressionConverter.ConvertToken(bodymetaDescription);
-                bodypropCount++;
-            }
-
-            if (bodymetaKeywords != null)
-            {
-                body["meta_keywords"] = CSharpExpressionConverter.ConvertToken(bodymetaKeywords);
-                bodypropCount++;
-            }
-
-            if (bodyname != null)
-            {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
-            }
-
-            if (bodypassword != null)
-            {
-                body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-                bodypropCount++;
-            }
-
-            if (bodypublishDate != null)
-            {
-                body["publish_date"] = CSharpExpressionConverter.ConvertToken(bodypublishDate);
-                bodypropCount++;
-            }
-
-            if (bodypublishImmediately != null)
-            {
-                body["publish_immediately"] = CSharpExpressionConverter.ConvertToken(bodypublishImmediately);
-                bodypropCount++;
-            }
-
-            if (bodyslug != null)
-            {
-                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
-                bodypropCount++;
-            }
-
-            if (bodysubcategory != null)
-            {
-                body["subcategory"] = CSharpExpressionConverter.ConvertToken(bodysubcategory);
-                bodypropCount++;
-            }
-
-            if (bodywidgetContainers != null)
-            {
-                body["widget_containers"] = CSharpExpressionConverter.ConvertToken(bodywidgetContainers);
-                bodypropCount++;
-            }
-
-            if (bodywidgets != null)
-            {
-                body["widgets"] = CSharpExpressionConverter.ConvertToken(bodywidgets);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction PagesPublish(Expression<Func<string>> pageId, Expression<Func<bodyactionInput>> bodyaction)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}/publish-action", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["action"] = CSharpExpressionConverter.Convert(bodyaction);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction TemplatesList(Expression<Func<int>> limit = null, Expression<Func<string>> id = null)
-        {
-            var apiCallPath = "/content/api/v2/templates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = Convert.ToString(20);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (id != null)
-                callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction TemplatesCreate(Expression<Func<bodycategoryIdInput>> bodycategoryId = null, Expression<Func<string>> bodyfolder = null, Expression<Func<bool>> bodyisAvailableForNewContent = null, Expression<Func<bodytemplateTypeInput>> bodytemplateType = null, Expression<Func<string>> bodypath = null, Expression<Func<string>> bodysource = null)
-        {
-            var apiCallPath = "/content/api/v2/templates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycategoryId != null)
-            {
-                body["category_id"] = CSharpExpressionConverter.Convert(bodycategoryId);
-                bodypropCount++;
-            }
-
-            if (bodyfolder != null)
-            {
-                body["folder"] = CSharpExpressionConverter.ConvertToken(bodyfolder);
-                bodypropCount++;
-            }
-
-            if (bodyisAvailableForNewContent != null)
-            {
-                if (bodyisAvailableForNewContent != null)
+                var apiCallPath = "/content/api/v2/pages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycampaign != null)
                 {
-                    body["is_available_for_new_content"] = CSharpExpressionConverter.ConvertToken(bodyisAvailableForNewContent);
+                    body["campaign"] = SourceExpressionConverter.ConvertToken(bodycampaign);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["is_available_for_new_content"] = false;
-                bodypropCount++;
+                if (bodycampaignName != null)
+                {
+                    body["campaign_name"] = SourceExpressionConverter.ConvertToken(bodycampaignName);
+                    bodypropCount++;
+                }
+
+                if (bodyfooterHtml != null)
+                {
+                    body["footer_html"] = SourceExpressionConverter.ConvertToken(bodyfooterHtml);
+                    bodypropCount++;
+                }
+
+                if (bodyheadHtml != null)
+                {
+                    body["head_html"] = SourceExpressionConverter.ConvertToken(bodyheadHtml);
+                    bodypropCount++;
+                }
+
+                if (bodyisDraft != null)
+                {
+                    body["is_draft"] = SourceExpressionConverter.ConvertToken(bodyisDraft);
+                    bodypropCount++;
+                }
+
+                if (bodymetaDescription != null)
+                {
+                    body["meta_description"] = SourceExpressionConverter.ConvertToken(bodymetaDescription);
+                    bodypropCount++;
+                }
+
+                if (bodymetaKeywords != null)
+                {
+                    body["meta_keywords"] = SourceExpressionConverter.ConvertToken(bodymetaKeywords);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodypublishDate != null)
+                {
+                    body["publish_date"] = SourceExpressionConverter.ConvertToken(bodypublishDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublishImmediately != null)
+                {
+                    body["publish_immediately"] = SourceExpressionConverter.ConvertToken(bodypublishImmediately);
+                    bodypropCount++;
+                }
+
+                if (bodyslug != null)
+                {
+                    body["slug"] = SourceExpressionConverter.ConvertToken(bodyslug);
+                    bodypropCount++;
+                }
+
+                if (bodysubcategory != null)
+                {
+                    body["subcategory"] = SourceExpressionConverter.ConvertToken(bodysubcategory);
+                    bodypropCount++;
+                }
+
+                if (bodywidgetContainers != null)
+                {
+                    body["widget_containers"] = SourceExpressionConverter.ConvertToken(bodywidgetContainers);
+                    bodypropCount++;
+                }
+
+                if (bodywidgets != null)
+                {
+                    body["widgets"] = SourceExpressionConverter.ConvertToken(bodywidgets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytemplateType != null)
-            {
-                body["template_type"] = CSharpExpressionConverter.Convert(bodytemplateType);
-                bodypropCount++;
-            }
-
-            if (bodypath != null)
-            {
-                body["path"] = CSharpExpressionConverter.ConvertToken(bodypath);
-                bodypropCount++;
-            }
-
-            if (bodysource != null)
-            {
-                body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction TemplatesArchive(Expression<Func<string>> templateId)
+        public IWorkflowAction PagesArchive([WorkflowExpression] Func<string> pageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(pageId, nameof(pageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
-        public IWorkflowAction TemplatesUpdate(Expression<Func<string>> templateId, Expression<Func<string>> bodysource)
+        public IWorkflowAction PagesUpdate([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<string> bodycampaign = null, [WorkflowExpression] Func<string> bodycampaignName = null, [WorkflowExpression] Func<string> bodyfooterHtml = null, [WorkflowExpression] Func<string> bodyheadHtml = null, [WorkflowExpression] Func<string> bodyisDraft = null, [WorkflowExpression] Func<string> bodymetaDescription = null, [WorkflowExpression] Func<string> bodymetaKeywords = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodypassword = null, [WorkflowExpression] Func<string> bodypublishDate = null, [WorkflowExpression] Func<string> bodypublishImmediately = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodysubcategory = null, [WorkflowExpression] Func<string> bodywidgetContainers = null, [WorkflowExpression] Func<string> bodywidgets = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["source"] = CSharpExpressionConverter.ConvertToken(bodysource);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(pageId, nameof(pageId), required: true);
+            SourceExpression.Validate(bodycampaign, nameof(bodycampaign), required: false);
+            SourceExpression.Validate(bodycampaignName, nameof(bodycampaignName), required: false);
+            SourceExpression.Validate(bodyfooterHtml, nameof(bodyfooterHtml), required: false);
+            SourceExpression.Validate(bodyheadHtml, nameof(bodyheadHtml), required: false);
+            SourceExpression.Validate(bodyisDraft, nameof(bodyisDraft), required: false);
+            SourceExpression.Validate(bodymetaDescription, nameof(bodymetaDescription), required: false);
+            SourceExpression.Validate(bodymetaKeywords, nameof(bodymetaKeywords), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: false);
+            SourceExpression.Validate(bodypublishDate, nameof(bodypublishDate), required: false);
+            SourceExpression.Validate(bodypublishImmediately, nameof(bodypublishImmediately), required: false);
+            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
+            SourceExpression.Validate(bodysubcategory, nameof(bodysubcategory), required: false);
+            SourceExpression.Validate(bodywidgetContainers, nameof(bodywidgetContainers), required: false);
+            SourceExpression.Validate(bodywidgets, nameof(bodywidgets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycampaign != null)
+                {
+                    body["campaign"] = SourceExpressionConverter.ConvertToken(bodycampaign);
+                    bodypropCount++;
+                }
+
+                if (bodycampaignName != null)
+                {
+                    body["campaign_name"] = SourceExpressionConverter.ConvertToken(bodycampaignName);
+                    bodypropCount++;
+                }
+
+                if (bodyfooterHtml != null)
+                {
+                    body["footer_html"] = SourceExpressionConverter.ConvertToken(bodyfooterHtml);
+                    bodypropCount++;
+                }
+
+                if (bodyheadHtml != null)
+                {
+                    body["head_html"] = SourceExpressionConverter.ConvertToken(bodyheadHtml);
+                    bodypropCount++;
+                }
+
+                if (bodyisDraft != null)
+                {
+                    body["is_draft"] = SourceExpressionConverter.ConvertToken(bodyisDraft);
+                    bodypropCount++;
+                }
+
+                if (bodymetaDescription != null)
+                {
+                    body["meta_description"] = SourceExpressionConverter.ConvertToken(bodymetaDescription);
+                    bodypropCount++;
+                }
+
+                if (bodymetaKeywords != null)
+                {
+                    body["meta_keywords"] = SourceExpressionConverter.ConvertToken(bodymetaKeywords);
+                    bodypropCount++;
+                }
+
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodypassword != null)
+                {
+                    body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                    bodypropCount++;
+                }
+
+                if (bodypublishDate != null)
+                {
+                    body["publish_date"] = SourceExpressionConverter.ConvertToken(bodypublishDate);
+                    bodypropCount++;
+                }
+
+                if (bodypublishImmediately != null)
+                {
+                    body["publish_immediately"] = SourceExpressionConverter.ConvertToken(bodypublishImmediately);
+                    bodypropCount++;
+                }
+
+                if (bodyslug != null)
+                {
+                    body["slug"] = SourceExpressionConverter.ConvertToken(bodyslug);
+                    bodypropCount++;
+                }
+
+                if (bodysubcategory != null)
+                {
+                    body["subcategory"] = SourceExpressionConverter.ConvertToken(bodysubcategory);
+                    bodypropCount++;
+                }
+
+                if (bodywidgetContainers != null)
+                {
+                    body["widget_containers"] = SourceExpressionConverter.ConvertToken(bodywidgetContainers);
+                    bodypropCount++;
+                }
+
+                if (bodywidgets != null)
+                {
+                    body["widgets"] = SourceExpressionConverter.ConvertToken(bodywidgets);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
+        public IWorkflowAction PagesPublish([WorkflowExpression] Func<string> pageId, [WorkflowExpression] Func<bodyactionInput> bodyaction)
+        {
+            SourceExpression.Validate(pageId, nameof(pageId), required: true);
+            SourceExpression.Validate(bodyaction, nameof(bodyaction), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/content/api/v2/pages/{0}/publish-action", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["action"] = SourceExpressionConverter.Convert(bodyaction);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
+        public IWorkflowAction TemplatesList([WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<string> id = null)
+        {
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(id, nameof(id), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/content/api/v2/templates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = Convert.ToString(20);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (id != null)
+                    callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
+        public IWorkflowAction TemplatesCreate([WorkflowExpression] Func<bodycategoryIdInput> bodycategoryId = null, [WorkflowExpression] Func<string> bodyfolder = null, [WorkflowExpression] Func<bool> bodyisAvailableForNewContent = null, [WorkflowExpression] Func<bodytemplateTypeInput> bodytemplateType = null, [WorkflowExpression] Func<string> bodypath = null, [WorkflowExpression] Func<string> bodysource = null)
+        {
+            SourceExpression.Validate(bodycategoryId, nameof(bodycategoryId), required: false);
+            SourceExpression.Validate(bodyfolder, nameof(bodyfolder), required: false);
+            SourceExpression.Validate(bodyisAvailableForNewContent, nameof(bodyisAvailableForNewContent), required: false);
+            SourceExpression.Validate(bodytemplateType, nameof(bodytemplateType), required: false);
+            SourceExpression.Validate(bodypath, nameof(bodypath), required: false);
+            SourceExpression.Validate(bodysource, nameof(bodysource), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/content/api/v2/templates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycategoryId != null)
+                {
+                    body["category_id"] = SourceExpressionConverter.Convert(bodycategoryId);
+                    bodypropCount++;
+                }
+
+                if (bodyfolder != null)
+                {
+                    body["folder"] = SourceExpressionConverter.ConvertToken(bodyfolder);
+                    bodypropCount++;
+                }
+
+                if (bodyisAvailableForNewContent != null)
+                {
+                    if (bodyisAvailableForNewContent != null)
+                    {
+                        body["is_available_for_new_content"] = SourceExpressionConverter.ConvertToken(bodyisAvailableForNewContent);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["is_available_for_new_content"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodytemplateType != null)
+                {
+                    body["template_type"] = SourceExpressionConverter.Convert(bodytemplateType);
+                    bodypropCount++;
+                }
+
+                if (bodypath != null)
+                {
+                    body["path"] = SourceExpressionConverter.ConvertToken(bodypath);
+                    bodypropCount++;
+                }
+
+                if (bodysource != null)
+                {
+                    body["source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
+        public IWorkflowAction TemplatesArchive([WorkflowExpression] Func<string> templateId)
+        {
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "hubspotcms")]
+        public IWorkflowAction TemplatesUpdate([WorkflowExpression] Func<string> templateId, [WorkflowExpression] Func<string> bodysource)
+        {
+            SourceExpression.Validate(templateId, nameof(templateId), required: true);
+            SourceExpression.Validate(bodysource, nameof(bodysource), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/content/api/v2/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["source"] = SourceExpressionConverter.ConvertToken(bodysource);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

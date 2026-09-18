@@ -12,79 +12,123 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airtable
     public class AirtableActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<ListRecordsResponse> ListRecords(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> filterByFormula = null, Expression<Func<int>> maxRecords = null, Expression<Func<int>> pageSize = null, Expression<Func<string>> view = null, Expression<Func<string>> cellFormat = null, Expression<Func<string>> timeZone = null, Expression<Func<string>> userLocale = null)
+        public IBodyWorkflowAction<ListRecordsResponse> ListRecords([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filterByFormula = null, [WorkflowExpression] Func<int> maxRecords = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<string> view = null, [WorkflowExpression] Func<string> cellFormat = null, [WorkflowExpression] Func<string> timeZone = null, [WorkflowExpression] Func<string> userLocale = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filterByFormula != null)
-                callPayload.Queries["filterByFormula"] = CSharpExpressionConverter.ConvertO(filterByFormula);
-            if (maxRecords != null)
-                callPayload.Queries["maxRecords"] = CSharpExpressionConverter.ConvertO(maxRecords);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            if (view != null)
-                callPayload.Queries["view"] = CSharpExpressionConverter.ConvertO(view);
-            if (cellFormat != null)
-                callPayload.Queries["cellFormat"] = CSharpExpressionConverter.ConvertO(cellFormat);
-            if (timeZone != null)
-                callPayload.Queries["timeZone"] = CSharpExpressionConverter.ConvertO(timeZone);
-            if (userLocale != null)
-                callPayload.Queries["userLocale"] = CSharpExpressionConverter.ConvertO(userLocale);
-            return new ApiConnectionAction<ListRecordsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(baseID, nameof(baseID), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(filterByFormula, nameof(filterByFormula), required: false);
+            SourceExpression.Validate(maxRecords, nameof(maxRecords), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(view, nameof(view), required: false);
+            SourceExpression.Validate(cellFormat, nameof(cellFormat), required: false);
+            SourceExpression.Validate(timeZone, nameof(timeZone), required: false);
+            SourceExpression.Validate(userLocale, nameof(userLocale), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filterByFormula != null)
+                    callPayload.Queries["filterByFormula"] = SourceExpressionConverter.ConvertO(filterByFormula);
+                if (maxRecords != null)
+                    callPayload.Queries["maxRecords"] = SourceExpressionConverter.ConvertO(maxRecords);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (view != null)
+                    callPayload.Queries["view"] = SourceExpressionConverter.ConvertO(view);
+                if (cellFormat != null)
+                    callPayload.Queries["cellFormat"] = SourceExpressionConverter.ConvertO(cellFormat);
+                if (timeZone != null)
+                    callPayload.Queries["timeZone"] = SourceExpressionConverter.ConvertO(timeZone);
+                if (userLocale != null)
+                    callPayload.Queries["userLocale"] = SourceExpressionConverter.ConvertO(userLocale);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateaRecordResponse>(callPayload);
+            return new ApiConnectionAction<ListRecordsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
+        public IBodyWorkflowAction<CreateaRecordResponse> CreateaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RetrieveaRecordResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DeleteaRecordResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
-        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord(Expression<Func<string>> baseID, Expression<Func<string>> table, Expression<Func<string>> recordID, Expression<Func<string>> contentType = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(baseID, nameof(baseID), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UpdateaRecordResponse>(callPayload);
+            return new ApiConnectionAction<CreateaRecordResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
+        public IBodyWorkflowAction<RetrieveaRecordResponse> RetrieveaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID)
+        {
+            SourceExpression.Validate(baseID, nameof(baseID), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(recordID, nameof(recordID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RetrieveaRecordResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
+        public IBodyWorkflowAction<DeleteaRecordResponse> DeleteaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID)
+        {
+            SourceExpression.Validate(baseID, nameof(baseID), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(recordID, nameof(recordID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteaRecordResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "airtable")]
+        public IBodyWorkflowAction<UpdateaRecordResponse> UpdateaRecord([WorkflowExpression] Func<string> baseID, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> recordID, [WorkflowExpression] Func<string> contentType = null)
+        {
+            SourceExpression.Validate(baseID, nameof(baseID), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(recordID, nameof(recordID), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baseID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordID, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateaRecordResponse>(BuildSourceInput);
         }
     }
 

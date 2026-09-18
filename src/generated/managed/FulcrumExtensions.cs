@@ -12,715 +12,959 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
     public class FulcrumActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<AttachmentsResponse> GetAllAttachments(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<string>> ownerType = null, Expression<Func<sortInput>> sort = null, Expression<Func<sortDirectionInput>> sortDirection = null)
+        public IBodyWorkflowAction<AttachmentsResponse> GetAllAttachments([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<string> ownerType = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
         {
-            var apiCallPath = "/v2/attachments";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            callPayload.Queries["owner_type"] = Convert.ToString("form");
-            if (ownerType != null)
-                callPayload.Queries["owner_type"] = CSharpExpressionConverter.ConvertO(ownerType);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
-            callPayload.Queries["sort_direction"] = Convert.ToString("asc");
-            if (sortDirection != null)
-                callPayload.Queries["sort_direction"] = CSharpExpressionConverter.Convert(sortDirection);
-            return new ApiConnectionAction<AttachmentsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<Attachment> GetSingleAttachment(Expression<Func<string>> attachmentId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/attachments/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Attachment>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<AudiosResponse> AudioGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
-        {
-            var apiCallPath = "/v2/audio.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (processed != null)
-                callPayload.Queries["processed"] = CSharpExpressionConverter.ConvertO(processed);
-            if (stored != null)
-                callPayload.Queries["stored"] = CSharpExpressionConverter.ConvertO(stored);
-            if (uploaded != null)
-                callPayload.Queries["uploaded"] = CSharpExpressionConverter.ConvertO(uploaded);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<AudiosResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> AudioGetOriginalFile(Expression<Func<string>> audioId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/audio/{0}.mp4", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(audioId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<PhotosResponse> PhotosGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
-        {
-            var apiCallPath = "/v2/photos.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (processed != null)
-                callPayload.Queries["processed"] = CSharpExpressionConverter.ConvertO(processed);
-            if (stored != null)
-                callPayload.Queries["stored"] = CSharpExpressionConverter.ConvertO(stored);
-            if (uploaded != null)
-                callPayload.Queries["uploaded"] = CSharpExpressionConverter.ConvertO(uploaded);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<PhotosResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> PhotosGetSingleFile(Expression<Func<string>> photoId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.jpg", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SinglePhotoResponse> PhotosGetSingleMetadata(Expression<Func<string>> photoId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SinglePhotoResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction Query(Expression<Func<string>> bodyq, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null, Expression<Func<bodyformatInput>> bodyformat = null, Expression<Func<string>> bodytableName = null)
-        {
-            var apiCallPath = "/v2/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyformat != null)
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(ownerType, nameof(ownerType), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["format"] = CSharpExpressionConverter.Convert(bodyformat);
+                var apiCallPath = "/v2/attachments";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                callPayload.Queries["owner_type"] = Convert.ToString("form");
+                if (ownerType != null)
+                    callPayload.Queries["owner_type"] = SourceExpressionConverter.ConvertO(ownerType);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                callPayload.Queries["sort_direction"] = Convert.ToString("asc");
+                if (sortDirection != null)
+                    callPayload.Queries["sort_direction"] = SourceExpressionConverter.Convert(sortDirection);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AttachmentsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<Attachment> GetSingleAttachment([WorkflowExpression] Func<string> attachmentId)
+        {
+            SourceExpression.Validate(attachmentId, nameof(attachmentId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/attachments/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(attachmentId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Attachment>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<AudiosResponse> AudioGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        {
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(processed, nameof(processed), required: false);
+            SourceExpression.Validate(stored, nameof(stored), required: false);
+            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/audio.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (processed != null)
+                    callPayload.Queries["processed"] = SourceExpressionConverter.ConvertO(processed);
+                if (stored != null)
+                    callPayload.Queries["stored"] = SourceExpressionConverter.ConvertO(stored);
+                if (uploaded != null)
+                    callPayload.Queries["uploaded"] = SourceExpressionConverter.ConvertO(uploaded);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AudiosResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<string> AudioGetOriginalFile([WorkflowExpression] Func<string> audioId)
+        {
+            SourceExpression.Validate(audioId, nameof(audioId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/audio/{0}.mp4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(audioId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<PhotosResponse> PhotosGetAllMetadata([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        {
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(processed, nameof(processed), required: false);
+            SourceExpression.Validate(stored, nameof(stored), required: false);
+            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/photos.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (processed != null)
+                    callPayload.Queries["processed"] = SourceExpressionConverter.ConvertO(processed);
+                if (stored != null)
+                    callPayload.Queries["stored"] = SourceExpressionConverter.ConvertO(stored);
+                if (uploaded != null)
+                    callPayload.Queries["uploaded"] = SourceExpressionConverter.ConvertO(uploaded);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PhotosResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<string> PhotosGetSingleFile([WorkflowExpression] Func<string> photoId)
+        {
+            SourceExpression.Validate(photoId, nameof(photoId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<SinglePhotoResponse> PhotosGetSingleMetadata([WorkflowExpression] Func<string> photoId)
+        {
+            SourceExpression.Validate(photoId, nameof(photoId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/photos/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(photoId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SinglePhotoResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IWorkflowAction Query([WorkflowExpression] Func<string> bodyq, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<bodyformatInput> bodyformat = null, [WorkflowExpression] Func<string> bodytableName = null)
+        {
+            SourceExpression.Validate(bodyq, nameof(bodyq), required: true);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            SourceExpression.Validate(bodyformat, nameof(bodyformat), required: false);
+            SourceExpression.Validate(bodytableName, nameof(bodytableName), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyformat != null)
+                {
+                    body["format"] = SourceExpressionConverter.Convert(bodyformat);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["q"] = SourceExpressionConverter.ConvertToken(bodyq);
+                if (bodytableName != null)
+                {
+                    body["table_name"] = SourceExpressionConverter.ConvertToken(bodytableName);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["q"] = CSharpExpressionConverter.ConvertToken(bodyq);
-            if (bodytableName != null)
-            {
-                body["table_name"] = CSharpExpressionConverter.ConvertToken(bodytableName);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<RecordsResponse> RecordsGetAll(Expression<Func<bool>> newestFirst = null, Expression<Func<string>> boundingBox = null, Expression<Func<string>> changesetId = null, Expression<Func<string>> formId = null, Expression<Func<string>> projectId = null, Expression<Func<string>> clientCreatedBefore = null, Expression<Func<string>> clientCreatedSince = null, Expression<Func<string>> clientUpdatedBefore = null, Expression<Func<string>> clientUpdatedSince = null, Expression<Func<string>> createdBefore = null, Expression<Func<string>> createdSince = null, Expression<Func<string>> updatedBefore = null, Expression<Func<string>> updatedSince = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<RecordsResponse> RecordsGetAll([WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<string> boundingBox = null, [WorkflowExpression] Func<string> changesetId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<string> projectId = null, [WorkflowExpression] Func<string> clientCreatedBefore = null, [WorkflowExpression] Func<string> clientCreatedSince = null, [WorkflowExpression] Func<string> clientUpdatedBefore = null, [WorkflowExpression] Func<string> clientUpdatedSince = null, [WorkflowExpression] Func<string> createdBefore = null, [WorkflowExpression] Func<string> createdSince = null, [WorkflowExpression] Func<string> updatedBefore = null, [WorkflowExpression] Func<string> updatedSince = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = "/v2/records.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (boundingBox != null)
-                callPayload.Queries["bounding_box"] = CSharpExpressionConverter.ConvertO(boundingBox);
-            if (changesetId != null)
-                callPayload.Queries["changeset_id"] = CSharpExpressionConverter.ConvertO(changesetId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (projectId != null)
-                callPayload.Queries["project_id"] = CSharpExpressionConverter.ConvertO(projectId);
-            if (clientCreatedBefore != null)
-                callPayload.Queries["client_created_before"] = CSharpExpressionConverter.ConvertO(clientCreatedBefore);
-            if (clientCreatedSince != null)
-                callPayload.Queries["client_created_since"] = CSharpExpressionConverter.ConvertO(clientCreatedSince);
-            if (clientUpdatedBefore != null)
-                callPayload.Queries["client_updated_before"] = CSharpExpressionConverter.ConvertO(clientUpdatedBefore);
-            if (clientUpdatedSince != null)
-                callPayload.Queries["client_updated_since"] = CSharpExpressionConverter.ConvertO(clientUpdatedSince);
-            if (createdBefore != null)
-                callPayload.Queries["created_before"] = CSharpExpressionConverter.ConvertO(createdBefore);
-            if (createdSince != null)
-                callPayload.Queries["created_since"] = CSharpExpressionConverter.ConvertO(createdSince);
-            if (updatedBefore != null)
-                callPayload.Queries["updated_before"] = CSharpExpressionConverter.ConvertO(updatedBefore);
-            if (updatedSince != null)
-                callPayload.Queries["updated_since"] = CSharpExpressionConverter.ConvertO(updatedSince);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<RecordsResponse>(callPayload);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(boundingBox, nameof(boundingBox), required: false);
+            SourceExpression.Validate(changesetId, nameof(changesetId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(projectId, nameof(projectId), required: false);
+            SourceExpression.Validate(clientCreatedBefore, nameof(clientCreatedBefore), required: false);
+            SourceExpression.Validate(clientCreatedSince, nameof(clientCreatedSince), required: false);
+            SourceExpression.Validate(clientUpdatedBefore, nameof(clientUpdatedBefore), required: false);
+            SourceExpression.Validate(clientUpdatedSince, nameof(clientUpdatedSince), required: false);
+            SourceExpression.Validate(createdBefore, nameof(createdBefore), required: false);
+            SourceExpression.Validate(createdSince, nameof(createdSince), required: false);
+            SourceExpression.Validate(updatedBefore, nameof(updatedBefore), required: false);
+            SourceExpression.Validate(updatedSince, nameof(updatedSince), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/records.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (boundingBox != null)
+                    callPayload.Queries["bounding_box"] = SourceExpressionConverter.ConvertO(boundingBox);
+                if (changesetId != null)
+                    callPayload.Queries["changeset_id"] = SourceExpressionConverter.ConvertO(changesetId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (projectId != null)
+                    callPayload.Queries["project_id"] = SourceExpressionConverter.ConvertO(projectId);
+                if (clientCreatedBefore != null)
+                    callPayload.Queries["client_created_before"] = SourceExpressionConverter.ConvertO(clientCreatedBefore);
+                if (clientCreatedSince != null)
+                    callPayload.Queries["client_created_since"] = SourceExpressionConverter.ConvertO(clientCreatedSince);
+                if (clientUpdatedBefore != null)
+                    callPayload.Queries["client_updated_before"] = SourceExpressionConverter.ConvertO(clientUpdatedBefore);
+                if (clientUpdatedSince != null)
+                    callPayload.Queries["client_updated_since"] = SourceExpressionConverter.ConvertO(clientUpdatedSince);
+                if (createdBefore != null)
+                    callPayload.Queries["created_before"] = SourceExpressionConverter.ConvertO(createdBefore);
+                if (createdSince != null)
+                    callPayload.Queries["created_since"] = SourceExpressionConverter.ConvertO(createdSince);
+                if (updatedBefore != null)
+                    callPayload.Queries["updated_before"] = SourceExpressionConverter.ConvertO(updatedBefore);
+                if (updatedSince != null)
+                    callPayload.Queries["updated_since"] = SourceExpressionConverter.ConvertO(updatedSince);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecordsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsCreate(Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse> RecordsCreate([WorkflowExpression] Func<object> bodyrecordgeometrycoordinates, [WorkflowExpression] Func<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyrecordassignedToId = null, [WorkflowExpression] Func<string> bodyrecordformId = null, [WorkflowExpression] Func<double> bodyrecordlatitude = null, [WorkflowExpression] Func<double> bodyrecordlongitude = null, [WorkflowExpression] Func<string> bodyrecordprojectId = null, [WorkflowExpression] Func<string> bodyrecordstatus = null)
         {
-            var apiCallPath = "/v2/records.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
-            if (xSkipWorkflows != null)
-                callPayload.Headers["X-SkipWorkflows"] = CSharpExpressionConverter.ConvertO(xSkipWorkflows);
-            callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
-            if (xSkipWebhooks != null)
-                callPayload.Headers["X-SkipWebhooks"] = CSharpExpressionConverter.ConvertO(xSkipWebhooks);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var recordObject = new JObject();
-            var recordObjectpropCount = 0;
-            if (bodyrecordassignedToId != null)
+            SourceExpression.Validate(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            SourceExpression.Validate(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            SourceExpression.Validate(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            SourceExpression.Validate(bodyrecordformId, nameof(bodyrecordformId), required: false);
+            SourceExpression.Validate(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            SourceExpression.Validate(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            SourceExpression.Validate(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            SourceExpression.Validate(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                recordObject["assigned_to_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordassignedToId);
-                recordObjectpropCount++;
+                var apiCallPath = "/v2/records.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
+                if (xSkipWorkflows != null)
+                    callPayload.Headers["X-SkipWorkflows"] = SourceExpressionConverter.ConvertO(xSkipWorkflows);
+                callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
+                if (xSkipWebhooks != null)
+                    callPayload.Headers["X-SkipWebhooks"] = SourceExpressionConverter.ConvertO(xSkipWebhooks);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var recordObject = new JObject();
+                var recordObjectpropCount = 0;
+                if (bodyrecordassignedToId != null)
+                {
+                    recordObject["assigned_to_id"] = SourceExpressionConverter.ConvertToken(bodyrecordassignedToId);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordformId != null)
+                {
+                    recordObject["form_id"] = SourceExpressionConverter.ConvertToken(bodyrecordformId);
+                    recordObjectpropCount++;
+                }
+
+                var formValuesObject = new JObject();
+                var formValuesObjectpropCount = 0;
+                if (formValuesObjectpropCount > 0)
+                {
+                    recordObject["form_values"] = formValuesObject;
+                    recordObjectpropCount++;
+                }
+
+                var geometryObject = new JObject();
+                var geometryObjectpropCount = 0;
+                geometryObjectpropCount++;
+                geometryObject["coordinates"] = SourceExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
+                geometryObjectpropCount++;
+                geometryObject["type"] = SourceExpressionConverter.Convert(bodyrecordgeometrytype);
+                if (geometryObjectpropCount > 0)
+                {
+                    recordObject["geometry"] = geometryObject;
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlatitude != null)
+                {
+                    recordObject["latitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlatitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlongitude != null)
+                {
+                    recordObject["longitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlongitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordprojectId != null)
+                {
+                    recordObject["project_id"] = SourceExpressionConverter.ConvertToken(bodyrecordprojectId);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordstatus != null)
+                {
+                    recordObject["status"] = SourceExpressionConverter.ConvertToken(bodyrecordstatus);
+                    recordObjectpropCount++;
+                }
+
+                if (recordObjectpropCount > 0)
+                {
+                    body["record"] = recordObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrecordformId != null)
-            {
-                recordObject["form_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordformId);
-                recordObjectpropCount++;
-            }
-
-            var formValuesObject = new JObject();
-            var formValuesObjectpropCount = 0;
-            if (formValuesObjectpropCount > 0)
-            {
-                recordObject["form_values"] = formValuesObject;
-                recordObjectpropCount++;
-            }
-
-            var geometryObject = new JObject();
-            var geometryObjectpropCount = 0;
-            geometryObjectpropCount++;
-            geometryObject["coordinates"] = CSharpExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
-            geometryObjectpropCount++;
-            geometryObject["type"] = CSharpExpressionConverter.Convert(bodyrecordgeometrytype);
-            if (geometryObjectpropCount > 0)
-            {
-                recordObject["geometry"] = geometryObject;
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlatitude != null)
-            {
-                recordObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlatitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlongitude != null)
-            {
-                recordObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlongitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordprojectId != null)
-            {
-                recordObject["project_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordprojectId);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordstatus != null)
-            {
-                recordObject["status"] = CSharpExpressionConverter.ConvertToken(bodyrecordstatus);
-                recordObjectpropCount++;
-            }
-
-            if (recordObjectpropCount > 0)
-            {
-                body["record"] = recordObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsDelete(Expression<Func<string>> recordId, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null)
+        public IBodyWorkflowAction<SingleRecordResponse> RecordsDelete([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
-            if (xSkipWorkflows != null)
-                callPayload.Headers["X-SkipWorkflows"] = CSharpExpressionConverter.ConvertO(xSkipWorkflows);
-            callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
-            if (xSkipWebhooks != null)
-                callPayload.Headers["X-SkipWebhooks"] = CSharpExpressionConverter.ConvertO(xSkipWebhooks);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            SourceExpression.Validate(recordId, nameof(recordId), required: true);
+            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
+                if (xSkipWorkflows != null)
+                    callPayload.Headers["X-SkipWorkflows"] = SourceExpressionConverter.ConvertO(xSkipWorkflows);
+                callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
+                if (xSkipWebhooks != null)
+                    callPayload.Headers["X-SkipWebhooks"] = SourceExpressionConverter.ConvertO(xSkipWebhooks);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsGetSingle(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<SingleRecordResponse> RecordsGetSingle([WorkflowExpression] Func<string> recordId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            SourceExpression.Validate(recordId, nameof(recordId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleRecordResponse> RecordsPartialUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IBodyWorkflowAction<SingleRecordResponse> RecordsPartialUpdate([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> bodyrecordgeometrycoordinates, [WorkflowExpression] Func<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyrecordassignedToId = null, [WorkflowExpression] Func<double> bodyrecordlatitude = null, [WorkflowExpression] Func<double> bodyrecordlongitude = null, [WorkflowExpression] Func<string> bodyrecordprojectId = null, [WorkflowExpression] Func<string> bodyrecordstatus = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
-            if (xSkipWorkflows != null)
-                callPayload.Headers["X-SkipWorkflows"] = CSharpExpressionConverter.ConvertO(xSkipWorkflows);
-            callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
-            if (xSkipWebhooks != null)
-                callPayload.Headers["X-SkipWebhooks"] = CSharpExpressionConverter.ConvertO(xSkipWebhooks);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var recordObject = new JObject();
-            var recordObjectpropCount = 0;
-            if (bodyrecordassignedToId != null)
+            SourceExpression.Validate(recordId, nameof(recordId), required: true);
+            SourceExpression.Validate(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            SourceExpression.Validate(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            SourceExpression.Validate(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            SourceExpression.Validate(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            SourceExpression.Validate(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            SourceExpression.Validate(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            SourceExpression.Validate(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                recordObject["assigned_to_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordassignedToId);
-                recordObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
+                if (xSkipWorkflows != null)
+                    callPayload.Headers["X-SkipWorkflows"] = SourceExpressionConverter.ConvertO(xSkipWorkflows);
+                callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
+                if (xSkipWebhooks != null)
+                    callPayload.Headers["X-SkipWebhooks"] = SourceExpressionConverter.ConvertO(xSkipWebhooks);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var recordObject = new JObject();
+                var recordObjectpropCount = 0;
+                if (bodyrecordassignedToId != null)
+                {
+                    recordObject["assigned_to_id"] = SourceExpressionConverter.ConvertToken(bodyrecordassignedToId);
+                    recordObjectpropCount++;
+                }
+
+                var formValuesObject = new JObject();
+                var formValuesObjectpropCount = 0;
+                if (formValuesObjectpropCount > 0)
+                {
+                    recordObject["form_values"] = formValuesObject;
+                    recordObjectpropCount++;
+                }
+
+                var geometryObject = new JObject();
+                var geometryObjectpropCount = 0;
+                geometryObjectpropCount++;
+                geometryObject["coordinates"] = SourceExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
+                geometryObjectpropCount++;
+                geometryObject["type"] = SourceExpressionConverter.Convert(bodyrecordgeometrytype);
+                if (geometryObjectpropCount > 0)
+                {
+                    recordObject["geometry"] = geometryObject;
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlatitude != null)
+                {
+                    recordObject["latitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlatitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlongitude != null)
+                {
+                    recordObject["longitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlongitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordprojectId != null)
+                {
+                    recordObject["project_id"] = SourceExpressionConverter.ConvertToken(bodyrecordprojectId);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordstatus != null)
+                {
+                    recordObject["status"] = SourceExpressionConverter.ConvertToken(bodyrecordstatus);
+                    recordObjectpropCount++;
+                }
+
+                if (recordObjectpropCount > 0)
+                {
+                    body["record"] = recordObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var formValuesObject = new JObject();
-            var formValuesObjectpropCount = 0;
-            if (formValuesObjectpropCount > 0)
-            {
-                recordObject["form_values"] = formValuesObject;
-                recordObjectpropCount++;
-            }
-
-            var geometryObject = new JObject();
-            var geometryObjectpropCount = 0;
-            geometryObjectpropCount++;
-            geometryObject["coordinates"] = CSharpExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
-            geometryObjectpropCount++;
-            geometryObject["type"] = CSharpExpressionConverter.Convert(bodyrecordgeometrytype);
-            if (geometryObjectpropCount > 0)
-            {
-                recordObject["geometry"] = geometryObject;
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlatitude != null)
-            {
-                recordObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlatitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlongitude != null)
-            {
-                recordObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlongitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordprojectId != null)
-            {
-                recordObject["project_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordprojectId);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordstatus != null)
-            {
-                recordObject["status"] = CSharpExpressionConverter.ConvertToken(bodyrecordstatus);
-                recordObjectpropCount++;
-            }
-
-            if (recordObjectpropCount > 0)
-            {
-                body["record"] = recordObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SingleRecordResponse>(callPayload);
+            return new ApiConnectionAction<SingleRecordResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IWorkflowAction RecordsUpdate(Expression<Func<string>> recordId, Expression<Func<object>> bodyrecordgeometrycoordinates, Expression<Func<bodyrecordgeometrytypeInput>> bodyrecordgeometrytype, Expression<Func<string>> contentType = null, Expression<Func<bool>> xSkipWorkflows = null, Expression<Func<bool>> xSkipWebhooks = null, Expression<Func<string>> bodyrecordassignedToId = null, Expression<Func<string>> bodyrecordformId = null, Expression<Func<double>> bodyrecordlatitude = null, Expression<Func<double>> bodyrecordlongitude = null, Expression<Func<string>> bodyrecordprojectId = null, Expression<Func<string>> bodyrecordstatus = null)
+        public IWorkflowAction RecordsUpdate([WorkflowExpression] Func<string> recordId, [WorkflowExpression] Func<object> bodyrecordgeometrycoordinates, [WorkflowExpression] Func<bodyrecordgeometrytypeInput> bodyrecordgeometrytype, [WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> xSkipWorkflows = null, [WorkflowExpression] Func<bool> xSkipWebhooks = null, [WorkflowExpression] Func<string> bodyrecordassignedToId = null, [WorkflowExpression] Func<string> bodyrecordformId = null, [WorkflowExpression] Func<double> bodyrecordlatitude = null, [WorkflowExpression] Func<double> bodyrecordlongitude = null, [WorkflowExpression] Func<string> bodyrecordprojectId = null, [WorkflowExpression] Func<string> bodyrecordstatus = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
-            if (xSkipWorkflows != null)
-                callPayload.Headers["X-SkipWorkflows"] = CSharpExpressionConverter.ConvertO(xSkipWorkflows);
-            callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
-            if (xSkipWebhooks != null)
-                callPayload.Headers["X-SkipWebhooks"] = CSharpExpressionConverter.ConvertO(xSkipWebhooks);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var recordObject = new JObject();
-            var recordObjectpropCount = 0;
-            if (bodyrecordassignedToId != null)
+            SourceExpression.Validate(recordId, nameof(recordId), required: true);
+            SourceExpression.Validate(bodyrecordgeometrycoordinates, nameof(bodyrecordgeometrycoordinates), required: true);
+            SourceExpression.Validate(bodyrecordgeometrytype, nameof(bodyrecordgeometrytype), required: true);
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(xSkipWorkflows, nameof(xSkipWorkflows), required: false);
+            SourceExpression.Validate(xSkipWebhooks, nameof(xSkipWebhooks), required: false);
+            SourceExpression.Validate(bodyrecordassignedToId, nameof(bodyrecordassignedToId), required: false);
+            SourceExpression.Validate(bodyrecordformId, nameof(bodyrecordformId), required: false);
+            SourceExpression.Validate(bodyrecordlatitude, nameof(bodyrecordlatitude), required: false);
+            SourceExpression.Validate(bodyrecordlongitude, nameof(bodyrecordlongitude), required: false);
+            SourceExpression.Validate(bodyrecordprojectId, nameof(bodyrecordprojectId), required: false);
+            SourceExpression.Validate(bodyrecordstatus, nameof(bodyrecordstatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                recordObject["assigned_to_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordassignedToId);
-                recordObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                callPayload.Headers["X-SkipWorkflows"] = Convert.ToString(false);
+                if (xSkipWorkflows != null)
+                    callPayload.Headers["X-SkipWorkflows"] = SourceExpressionConverter.ConvertO(xSkipWorkflows);
+                callPayload.Headers["X-SkipWebhooks"] = Convert.ToString(false);
+                if (xSkipWebhooks != null)
+                    callPayload.Headers["X-SkipWebhooks"] = SourceExpressionConverter.ConvertO(xSkipWebhooks);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var recordObject = new JObject();
+                var recordObjectpropCount = 0;
+                if (bodyrecordassignedToId != null)
+                {
+                    recordObject["assigned_to_id"] = SourceExpressionConverter.ConvertToken(bodyrecordassignedToId);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordformId != null)
+                {
+                    recordObject["form_id"] = SourceExpressionConverter.ConvertToken(bodyrecordformId);
+                    recordObjectpropCount++;
+                }
+
+                var formValuesObject = new JObject();
+                var formValuesObjectpropCount = 0;
+                if (formValuesObjectpropCount > 0)
+                {
+                    recordObject["form_values"] = formValuesObject;
+                    recordObjectpropCount++;
+                }
+
+                var geometryObject = new JObject();
+                var geometryObjectpropCount = 0;
+                geometryObjectpropCount++;
+                geometryObject["coordinates"] = SourceExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
+                geometryObjectpropCount++;
+                geometryObject["type"] = SourceExpressionConverter.Convert(bodyrecordgeometrytype);
+                if (geometryObjectpropCount > 0)
+                {
+                    recordObject["geometry"] = geometryObject;
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlatitude != null)
+                {
+                    recordObject["latitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlatitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordlongitude != null)
+                {
+                    recordObject["longitude"] = SourceExpressionConverter.ConvertToken(bodyrecordlongitude);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordprojectId != null)
+                {
+                    recordObject["project_id"] = SourceExpressionConverter.ConvertToken(bodyrecordprojectId);
+                    recordObjectpropCount++;
+                }
+
+                if (bodyrecordstatus != null)
+                {
+                    recordObject["status"] = SourceExpressionConverter.ConvertToken(bodyrecordstatus);
+                    recordObjectpropCount++;
+                }
+
+                if (recordObjectpropCount > 0)
+                {
+                    body["record"] = recordObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrecordformId != null)
-            {
-                recordObject["form_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordformId);
-                recordObjectpropCount++;
-            }
-
-            var formValuesObject = new JObject();
-            var formValuesObjectpropCount = 0;
-            if (formValuesObjectpropCount > 0)
-            {
-                recordObject["form_values"] = formValuesObject;
-                recordObjectpropCount++;
-            }
-
-            var geometryObject = new JObject();
-            var geometryObjectpropCount = 0;
-            geometryObjectpropCount++;
-            geometryObject["coordinates"] = CSharpExpressionConverter.ConvertToken(bodyrecordgeometrycoordinates);
-            geometryObjectpropCount++;
-            geometryObject["type"] = CSharpExpressionConverter.Convert(bodyrecordgeometrytype);
-            if (geometryObjectpropCount > 0)
-            {
-                recordObject["geometry"] = geometryObject;
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlatitude != null)
-            {
-                recordObject["latitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlatitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordlongitude != null)
-            {
-                recordObject["longitude"] = CSharpExpressionConverter.ConvertToken(bodyrecordlongitude);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordprojectId != null)
-            {
-                recordObject["project_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordprojectId);
-                recordObjectpropCount++;
-            }
-
-            if (bodyrecordstatus != null)
-            {
-                recordObject["status"] = CSharpExpressionConverter.ConvertToken(bodyrecordstatus);
-                recordObjectpropCount++;
-            }
-
-            if (recordObjectpropCount > 0)
-            {
-                body["record"] = recordObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<RecordHistoryResponse> RecordsGetHistory(Expression<Func<string>> recordId)
+        public IBodyWorkflowAction<RecordHistoryResponse> RecordsGetHistory([WorkflowExpression] Func<string> recordId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/records/{0}/history.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RecordHistoryResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<ReportResponse> ReportsCreate(Expression<Func<string>> bodyreportrecordId = null, Expression<Func<string>> bodyreporttemplateId = null)
-        {
-            var apiCallPath = "/v2/reports.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var reportObject = new JObject();
-            var reportObjectpropCount = 0;
-            if (bodyreportrecordId != null)
+            SourceExpression.Validate(recordId, nameof(recordId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reportObject["record_id"] = CSharpExpressionConverter.ConvertToken(bodyreportrecordId);
-                reportObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/records/{0}/history.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recordId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodyreporttemplateId != null)
+            return new ApiConnectionAction<RecordHistoryResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<ReportResponse> ReportsCreate([WorkflowExpression] Func<string> bodyreportrecordId = null, [WorkflowExpression] Func<string> bodyreporttemplateId = null)
+        {
+            SourceExpression.Validate(bodyreportrecordId, nameof(bodyreportrecordId), required: false);
+            SourceExpression.Validate(bodyreporttemplateId, nameof(bodyreporttemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                reportObject["template_id"] = CSharpExpressionConverter.ConvertToken(bodyreporttemplateId);
-                reportObjectpropCount++;
+                var apiCallPath = "/v2/reports.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var reportObject = new JObject();
+                var reportObjectpropCount = 0;
+                if (bodyreportrecordId != null)
+                {
+                    reportObject["record_id"] = SourceExpressionConverter.ConvertToken(bodyreportrecordId);
+                    reportObjectpropCount++;
+                }
+
+                if (bodyreporttemplateId != null)
+                {
+                    reportObject["template_id"] = SourceExpressionConverter.ConvertToken(bodyreporttemplateId);
+                    reportObjectpropCount++;
+                }
+
+                if (reportObjectpropCount > 0)
+                {
+                    body["report"] = reportObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (reportObjectpropCount > 0)
+            return new ApiConnectionAction<ReportResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<string> ReportsFile([WorkflowExpression] Func<string> reportId)
+        {
+            SourceExpression.Validate(reportId, nameof(reportId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["report"] = reportObject;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/reports/{0}.pdf", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
+        public IBodyWorkflowAction<SignaturesResponse> SignaturesGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
+        {
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(processed, nameof(processed), required: false);
+            SourceExpression.Validate(stored, nameof(stored), required: false);
+            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v2/signatures.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (processed != null)
+                    callPayload.Queries["processed"] = SourceExpressionConverter.ConvertO(processed);
+                if (stored != null)
+                    callPayload.Queries["stored"] = SourceExpressionConverter.ConvertO(stored);
+                if (uploaded != null)
+                    callPayload.Queries["uploaded"] = SourceExpressionConverter.ConvertO(uploaded);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ReportResponse>(callPayload);
+            return new ApiConnectionAction<SignaturesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> ReportsFile(Expression<Func<string>> reportId)
+        public IBodyWorkflowAction<SingleSignatureResponse> SignaturesGetSingleMetadata([WorkflowExpression] Func<string> signatureId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/reports/{0}.pdf", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(reportId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(signatureId, nameof(signatureId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleSignatureResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SignaturesResponse> SignaturesGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<string> SignaturesGetSingleFile([WorkflowExpression] Func<string> signatureId)
         {
-            var apiCallPath = "/v2/signatures.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (processed != null)
-                callPayload.Queries["processed"] = CSharpExpressionConverter.ConvertO(processed);
-            if (stored != null)
-                callPayload.Queries["stored"] = CSharpExpressionConverter.ConvertO(stored);
-            if (uploaded != null)
-                callPayload.Queries["uploaded"] = CSharpExpressionConverter.ConvertO(uploaded);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<SignaturesResponse>(callPayload);
+            SourceExpression.Validate(signatureId, nameof(signatureId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.png", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleSignatureResponse> SignaturesGetSingleMetadata(Expression<Func<string>> signatureId)
+        public IBodyWorkflowAction<SketchesResponse> SketchesGetAllMetadata([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SingleSignatureResponse>(callPayload);
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(processed, nameof(processed), required: false);
+            SourceExpression.Validate(stored, nameof(stored), required: false);
+            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/sketches.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (processed != null)
+                    callPayload.Queries["processed"] = SourceExpressionConverter.ConvertO(processed);
+                if (stored != null)
+                    callPayload.Queries["stored"] = SourceExpressionConverter.ConvertO(stored);
+                if (uploaded != null)
+                    callPayload.Queries["uploaded"] = SourceExpressionConverter.ConvertO(uploaded);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SketchesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> SignaturesGetSingleFile(Expression<Func<string>> signatureId)
+        public IBodyWorkflowAction<string> SketchesGetSingleFile([WorkflowExpression] Func<string> sketchId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/signatures/{0}.png", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(signatureId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(sketchId, nameof(sketchId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.jpg", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SketchesResponse> SketchesGetAllMetadata(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
+        public IBodyWorkflowAction<SingleSketchResponse> SketchesGetSingleMetadata([WorkflowExpression] Func<string> sketchId)
         {
-            var apiCallPath = "/v2/sketches.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (processed != null)
-                callPayload.Queries["processed"] = CSharpExpressionConverter.ConvertO(processed);
-            if (stored != null)
-                callPayload.Queries["stored"] = CSharpExpressionConverter.ConvertO(stored);
-            if (uploaded != null)
-                callPayload.Queries["uploaded"] = CSharpExpressionConverter.ConvertO(uploaded);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<SketchesResponse>(callPayload);
+            SourceExpression.Validate(sketchId, nameof(sketchId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SingleSketchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> SketchesGetSingleFile(Expression<Func<string>> sketchId)
+        public IBodyWorkflowAction<VideosResponse> VideosGetAll([WorkflowExpression] Func<string> recordId = null, [WorkflowExpression] Func<string> formId = null, [WorkflowExpression] Func<bool> newestFirst = null, [WorkflowExpression] Func<bool> processed = null, [WorkflowExpression] Func<bool> stored = null, [WorkflowExpression] Func<bool> uploaded = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> perPage = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.jpg", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(recordId, nameof(recordId), required: false);
+            SourceExpression.Validate(formId, nameof(formId), required: false);
+            SourceExpression.Validate(newestFirst, nameof(newestFirst), required: false);
+            SourceExpression.Validate(processed, nameof(processed), required: false);
+            SourceExpression.Validate(stored, nameof(stored), required: false);
+            SourceExpression.Validate(uploaded, nameof(uploaded), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2/videos.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recordId != null)
+                    callPayload.Queries["record_id"] = SourceExpressionConverter.ConvertO(recordId);
+                if (formId != null)
+                    callPayload.Queries["form_id"] = SourceExpressionConverter.ConvertO(formId);
+                if (newestFirst != null)
+                    callPayload.Queries["newest_first"] = SourceExpressionConverter.ConvertO(newestFirst);
+                if (processed != null)
+                    callPayload.Queries["processed"] = SourceExpressionConverter.ConvertO(processed);
+                if (stored != null)
+                    callPayload.Queries["stored"] = SourceExpressionConverter.ConvertO(stored);
+                if (uploaded != null)
+                    callPayload.Queries["uploaded"] = SourceExpressionConverter.ConvertO(uploaded);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["per_page"] = Convert.ToString(20000);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VideosResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<SingleSketchResponse> SketchesGetSingleMetadata(Expression<Func<string>> sketchId)
+        public IBodyWorkflowAction<string> VideosGetOriginalFile([WorkflowExpression] Func<string> videoId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/sketches/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(sketchId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SingleSketchResponse>(callPayload);
-        }
+            SourceExpression.Validate(videoId, nameof(videoId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/videos/{0}.mp4", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<VideosResponse> VideosGetAll(Expression<Func<string>> recordId = null, Expression<Func<string>> formId = null, Expression<Func<bool>> newestFirst = null, Expression<Func<bool>> processed = null, Expression<Func<bool>> stored = null, Expression<Func<bool>> uploaded = null, Expression<Func<int>> page = null, Expression<Func<int>> perPage = null)
-        {
-            var apiCallPath = "/v2/videos.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recordId != null)
-                callPayload.Queries["record_id"] = CSharpExpressionConverter.ConvertO(recordId);
-            if (formId != null)
-                callPayload.Queries["form_id"] = CSharpExpressionConverter.ConvertO(formId);
-            if (newestFirst != null)
-                callPayload.Queries["newest_first"] = CSharpExpressionConverter.ConvertO(newestFirst);
-            if (processed != null)
-                callPayload.Queries["processed"] = CSharpExpressionConverter.ConvertO(processed);
-            if (stored != null)
-                callPayload.Queries["stored"] = CSharpExpressionConverter.ConvertO(stored);
-            if (uploaded != null)
-                callPayload.Queries["uploaded"] = CSharpExpressionConverter.ConvertO(uploaded);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["per_page"] = Convert.ToString(20000);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            return new ApiConnectionAction<VideosResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fulcrum")]
-        public IBodyWorkflowAction<string> VideosGetOriginalFile(Expression<Func<string>> videoId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/videos/{0}.mp4", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(videoId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class FulcrumTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent(Expression<Func<string>> contentType = null, Expression<Func<bool>> bodywebhookactive = null, Expression<Func<string>> bodywebhookwebhookName = null, Expression<Func<bool>> bodywebhookrunForBulkActions = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<OnFulcrumEventResponse> OnFulcrumEvent([WorkflowExpression] Func<string> contentType = null, [WorkflowExpression] Func<bool> bodywebhookactive = null, [WorkflowExpression] Func<string> bodywebhookwebhookName = null, [WorkflowExpression] Func<bool> bodywebhookrunForBulkActions = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/webhooks.json";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            if (contentType != null)
-                callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var webhookObject = new JObject();
-            var webhookObjectpropCount = 0;
-            if (bodywebhookactive != null)
+            SourceExpression.Validate(contentType, nameof(contentType), required: false);
+            SourceExpression.Validate(bodywebhookactive, nameof(bodywebhookactive), required: false);
+            SourceExpression.Validate(bodywebhookwebhookName, nameof(bodywebhookwebhookName), required: false);
+            SourceExpression.Validate(bodywebhookrunForBulkActions, nameof(bodywebhookrunForBulkActions), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webhookObject["active"] = CSharpExpressionConverter.ConvertToken(bodywebhookactive);
-                webhookObjectpropCount++;
-            }
-
-            if (bodywebhookwebhookName != null)
-            {
-                if (bodywebhookwebhookName != null)
+                var apiCallPath = "/v2/webhooks.json";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                if (contentType != null)
+                    callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var webhookObject = new JObject();
+                var webhookObjectpropCount = 0;
+                if (bodywebhookactive != null)
                 {
-                    webhookObject["name"] = CSharpExpressionConverter.ConvertToken(bodywebhookwebhookName);
+                    webhookObject["active"] = SourceExpressionConverter.ConvertToken(bodywebhookactive);
                     webhookObjectpropCount++;
                 }
 
+                if (bodywebhookwebhookName != null)
+                {
+                    if (bodywebhookwebhookName != null)
+                    {
+                        webhookObject["name"] = SourceExpressionConverter.ConvertToken(bodywebhookwebhookName);
+                        webhookObjectpropCount++;
+                    }
+
+                    webhookObjectpropCount++;
+                }
+                else
+                {
+                    webhookObject["name"] = "Power Platform Trigger";
+                    webhookObjectpropCount++;
+                }
+
+                if (bodywebhookrunForBulkActions != null)
+                {
+                    webhookObject["run_for_bulk_actions"] = SourceExpressionConverter.ConvertToken(bodywebhookrunForBulkActions);
+                    webhookObjectpropCount++;
+                }
+
+                webhookObject["url"] = "@listCallbackUrl()";
                 webhookObjectpropCount++;
-            }
-            else
-            {
-                webhookObject["name"] = "Power Platform Trigger";
-                webhookObjectpropCount++;
+                if (webhookObjectpropCount > 0)
+                {
+                    body["webhook"] = webhookObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodywebhookrunForBulkActions != null)
-            {
-                webhookObject["run_for_bulk_actions"] = CSharpExpressionConverter.ConvertToken(bodywebhookrunForBulkActions);
-                webhookObjectpropCount++;
-            }
-
-            webhookObject["url"] = "@listCallbackUrl()";
-            webhookObjectpropCount++;
-            if (webhookObjectpropCount > 0)
-            {
-                body["webhook"] = webhookObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<OnFulcrumEventResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<OnFulcrumEventResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

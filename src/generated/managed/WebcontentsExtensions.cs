@@ -12,47 +12,60 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webcontents
     public class WebcontentsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<string> GetFileContent(Expression<Func<string>> path)
+        public IBodyWorkflowAction<string> GetFileContent([WorkflowExpression] Func<string> path)
         {
-            var apiCallPath = "/GetFileContent";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["path"] = CSharpExpressionConverter.ConvertO(path);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(path, nameof(path), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/GetFileContent";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["path"] = SourceExpressionConverter.ConvertO(path);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "webcontents")]
-        public IBodyWorkflowAction<JToken> InvokeHttp(Expression<Func<requestmethodInput>> requestmethod, Expression<Func<string>> requesturlOfTheRequest, Expression<Func<string>> requestbodyOfTheRequest = null)
+        public IBodyWorkflowAction<JToken> InvokeHttp([WorkflowExpression] Func<requestmethodInput> requestmethod, [WorkflowExpression] Func<string> requesturlOfTheRequest, [WorkflowExpression] Func<string> requestbodyOfTheRequest = null)
         {
-            var apiCallPath = "/codeless/InvokeHttp";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["method"] = CSharpExpressionConverter.Convert(requestmethod);
-            requestpropCount++;
-            request["url"] = CSharpExpressionConverter.ConvertToken(requesturlOfTheRequest);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            SourceExpression.Validate(requestmethod, nameof(requestmethod), required: true);
+            SourceExpression.Validate(requesturlOfTheRequest, nameof(requesturlOfTheRequest), required: true);
+            SourceExpression.Validate(requestbodyOfTheRequest, nameof(requestbodyOfTheRequest), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["headers"] = headersObject;
+                var apiCallPath = "/codeless/InvokeHttp";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
-            }
-
-            if (requestbodyOfTheRequest != null)
-            {
-                request["body"] = CSharpExpressionConverter.ConvertToken(requestbodyOfTheRequest);
+                request["method"] = SourceExpressionConverter.Convert(requestmethod);
                 requestpropCount++;
+                request["url"] = SourceExpressionConverter.ConvertToken(requesturlOfTheRequest);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    request["headers"] = headersObject;
+                    requestpropCount++;
+                }
+
+                if (requestbodyOfTheRequest != null)
+                {
+                    request["body"] = SourceExpressionConverter.ConvertToken(requestbodyOfTheRequest);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

@@ -1,0 +1,51 @@
+{
+  "version": 1,
+  "namespace": "PackageSchema",
+  "className": "GeneratedActions",
+  "models": [
+    {
+      "name": "Payload",
+      "schema": {
+        "version": 1,
+        "destination": "Payload",
+        "kind": "object",
+        "nullable": false,
+        "optional": false,
+        "transforms": [],
+        "properties": {
+          "label": {
+            "version": 1,
+            "destination": "Payload.Label",
+            "kind": "text",
+            "nullable": false,
+            "optional": false,
+            "transforms": [],
+            "clrName": "Label",
+            "clrType": "string",
+            "default": "first"
+          }
+        }
+      }
+    }
+  ],
+  "operations": [
+    {
+      "name": "Emit",
+      "mode": "value",
+      "parameters": [
+        {
+          "name": "value",
+          "type": "string",
+          "schema": {
+            "version": 1,
+            "destination": "Emit.Value",
+            "kind": "text",
+            "nullable": false,
+            "optional": false,
+            "transforms": []
+          }
+        }
+      ]
+    }
+  ]
+}

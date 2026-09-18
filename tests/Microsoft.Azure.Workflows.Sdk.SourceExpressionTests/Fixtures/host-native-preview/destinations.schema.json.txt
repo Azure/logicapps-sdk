@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "namespace": "NativeHost.Generated",
+  "className": "NativeHostDestinations",
+  "models": [],
+  "operations": [
+    {
+      "name": "EncodeJson",
+      "mode": "value",
+      "parameters": [
+        {
+          "name": "content",
+          "type": "object",
+          "schema": {
+            "version": 1,
+            "destination": "content",
+            "kind": "json",
+            "nullable": false,
+            "optional": false,
+            "transforms": ["base64"],
+            "inputEncoding": "raw",
+            "allowAlreadyEncoded": false,
+            "serializerProfile": "compact-json-v1"
+          }
+        }
+      ]
+    }
+  ]
+}

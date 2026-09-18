@@ -14,204 +14,248 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yeelight
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
         public IBodyWorkflowAction<DiscoverResponseItem[]> Discover()
         {
-            var apiCallPath = "/api/ms-flow/discover";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DiscoverResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/ms-flow/discover";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DiscoverResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<SwitchResponseItem[]> Switch(Expression<Func<string>> bodydid = null, Expression<Func<bool>> bodyon = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<SwitchResponseItem[]> Switch([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<bool> bodyon = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/switch";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
+            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
+            SourceExpression.Validate(bodyon, nameof(bodyon), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
-                bodypropCount++;
+                var apiCallPath = "/api/ms-flow/switch";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = SourceExpressionConverter.ConvertToken(bodydid);
+                    bodypropCount++;
+                }
+
+                if (bodyon != null)
+                {
+                    body["on"] = SourceExpressionConverter.ConvertToken(bodyon);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyon != null)
-            {
-                body["on"] = CSharpExpressionConverter.ConvertToken(bodyon);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SwitchResponseItem[]>(callPayload);
+            return new ApiConnectionAction<SwitchResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<ColorResponseItem[]> Color(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodyspectrumRGB = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<ColorResponseItem[]> Color([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodyspectrumRGB = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/color";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
+            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
+            SourceExpression.Validate(bodyspectrumRGB, nameof(bodyspectrumRGB), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
-                bodypropCount++;
+                var apiCallPath = "/api/ms-flow/color";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = SourceExpressionConverter.ConvertToken(bodydid);
+                    bodypropCount++;
+                }
+
+                if (bodyspectrumRGB != null)
+                {
+                    body["spectrumRGB"] = SourceExpressionConverter.ConvertToken(bodyspectrumRGB);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyspectrumRGB != null)
-            {
-                body["spectrumRGB"] = CSharpExpressionConverter.ConvertToken(bodyspectrumRGB);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ColorResponseItem[]>(callPayload);
+            return new ApiConnectionAction<ColorResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodybrightness = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<BrightnessResponseItem[]> Brightness([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodybrightness = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/brightness";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
+            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
+            SourceExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
-                bodypropCount++;
+                var apiCallPath = "/api/ms-flow/brightness";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = SourceExpressionConverter.ConvertToken(bodydid);
+                    bodypropCount++;
+                }
+
+                if (bodybrightness != null)
+                {
+                    body["brightness"] = SourceExpressionConverter.ConvertToken(bodybrightness);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybrightness != null)
-            {
-                body["brightness"] = CSharpExpressionConverter.ConvertToken(bodybrightness);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<BrightnessResponseItem[]>(callPayload);
+            return new ApiConnectionAction<BrightnessResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature(Expression<Func<string>> bodydid = null, Expression<Func<int>> bodytemperature = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<TemperatureResponseItem[]> Temperature([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<int> bodytemperature = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/temperature";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
+            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
+            SourceExpression.Validate(bodytemperature, nameof(bodytemperature), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
-                bodypropCount++;
+                var apiCallPath = "/api/ms-flow/temperature";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = SourceExpressionConverter.ConvertToken(bodydid);
+                    bodypropCount++;
+                }
+
+                if (bodytemperature != null)
+                {
+                    body["temperature"] = SourceExpressionConverter.ConvertToken(bodytemperature);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytemperature != null)
-            {
-                body["temperature"] = CSharpExpressionConverter.ConvertToken(bodytemperature);
-                bodypropCount++;
-            }
-
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<TemperatureResponseItem[]>(callPayload);
+            return new ApiConnectionAction<TemperatureResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "yeelight")]
-        public IBodyWorkflowAction<QueryResponse> Query(Expression<Func<string>> bodydid = null, Expression<Func<string>> bodyregion = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<QueryResponse> Query([WorkflowExpression] Func<string> bodydid = null, [WorkflowExpression] Func<string> bodyregion = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/api/ms-flow/query";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydid != null)
+            SourceExpression.Validate(bodydid, nameof(bodydid), required: false);
+            SourceExpression.Validate(bodyregion, nameof(bodyregion), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["did"] = CSharpExpressionConverter.ConvertToken(bodydid);
-                bodypropCount++;
+                var apiCallPath = "/api/ms-flow/query";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydid != null)
+                {
+                    body["did"] = SourceExpressionConverter.ConvertToken(bodydid);
+                    bodypropCount++;
+                }
+
+                if (bodyregion != null)
+                {
+                    body["region"] = SourceExpressionConverter.ConvertToken(bodyregion);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyregion != null)
-            {
-                body["region"] = CSharpExpressionConverter.ConvertToken(bodyregion);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<QueryResponse>(callPayload);
+            return new ApiConnectionAction<QueryResponse>(BuildSourceInput);
         }
     }
 

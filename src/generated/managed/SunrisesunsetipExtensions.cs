@@ -12,19 +12,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sunrisesunsetip
     public class SunrisesunsetipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sunrisesunsetip")]
-        public IBodyWorkflowAction<GetDataResponse> GetData(Expression<Func<double>> lat, Expression<Func<double>> lng, Expression<Func<string>> date = null, Expression<Func<formattedInput>> formatted = null)
+        public IBodyWorkflowAction<GetDataResponse> GetData([WorkflowExpression] Func<double> lat, [WorkflowExpression] Func<double> lng, [WorkflowExpression] Func<string> date = null, [WorkflowExpression] Func<formattedInput> formatted = null)
         {
-            var apiCallPath = "/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["lat"] = CSharpExpressionConverter.ConvertO(lat);
-            callPayload.Queries["lng"] = CSharpExpressionConverter.ConvertO(lng);
-            callPayload.Queries["date"] = Convert.ToString("");
-            if (date != null)
-                callPayload.Queries["date"] = CSharpExpressionConverter.ConvertO(date);
-            if (formatted != null)
-                callPayload.Queries["formatted"] = CSharpExpressionConverter.Convert(formatted);
-            return new ApiConnectionAction<GetDataResponse>(callPayload);
+            SourceExpression.Validate(lat, nameof(lat), required: true);
+            SourceExpression.Validate(lng, nameof(lng), required: true);
+            SourceExpression.Validate(date, nameof(date), required: false);
+            SourceExpression.Validate(formatted, nameof(formatted), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["lat"] = SourceExpressionConverter.ConvertO(lat);
+                callPayload.Queries["lng"] = SourceExpressionConverter.ConvertO(lng);
+                callPayload.Queries["date"] = Convert.ToString("");
+                if (date != null)
+                    callPayload.Queries["date"] = SourceExpressionConverter.ConvertO(date);
+                if (formatted != null)
+                    callPayload.Queries["formatted"] = SourceExpressionConverter.Convert(formatted);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDataResponse>(BuildSourceInput);
         }
     }
 

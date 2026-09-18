@@ -12,66 +12,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
     public class SpringglobalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        public IBodyWorkflowAction<JToken> GetExecutionById(Expression<Func<string>> executionId, Expression<Func<string>> surveyId, Expression<Func<string>> publicationId, Expression<Func<bool>> advancedInfo = null)
+        public IBodyWorkflowAction<JToken> GetExecutionById([WorkflowExpression] Func<string> executionId, [WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> publicationId, [WorkflowExpression] Func<bool> advancedInfo = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(executionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["advancedInfo"] = Convert.ToString(false);
-            if (advancedInfo != null)
-                callPayload.Headers["advancedInfo"] = CSharpExpressionConverter.ConvertO(advancedInfo);
-            callPayload.Headers["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
-            callPayload.Headers["publicationId"] = CSharpExpressionConverter.ConvertO(publicationId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(executionId, nameof(executionId), required: true);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(publicationId, nameof(publicationId), required: true);
+            SourceExpression.Validate(advancedInfo, nameof(advancedInfo), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/survey-service/execution/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(executionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["advancedInfo"] = Convert.ToString(false);
+                if (advancedInfo != null)
+                    callPayload.Headers["advancedInfo"] = SourceExpressionConverter.ConvertO(advancedInfo);
+                callPayload.Headers["surveyId"] = SourceExpressionConverter.ConvertO(surveyId);
+                callPayload.Headers["publicationId"] = SourceExpressionConverter.ConvertO(publicationId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "springglobal")]
-        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetUserByIdResponse> GetUserById([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserByIdResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/identity-service/user/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserByIdResponse>(BuildSourceInput);
         }
     }
 
     public class SpringglobalTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger OnSurveyExecution(Expression<Func<string>> bodyparameterssurveyId = null, Expression<Func<string>> bodyparameterspublicationId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger OnSurveyExecution([WorkflowExpression] Func<string> bodyparameterssurveyId = null, [WorkflowExpression] Func<string> bodyparameterspublicationId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhook-service/subscribe/surveyexecution";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callback"] = "@listCallbackUrl()";
-            bodypropCount++;
-            var parametersObject = new JObject();
-            var parametersObjectpropCount = 0;
-            if (bodyparameterssurveyId != null)
+            SourceExpression.Validate(bodyparameterssurveyId, nameof(bodyparameterssurveyId), required: false);
+            SourceExpression.Validate(bodyparameterspublicationId, nameof(bodyparameterspublicationId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parametersObject["surveyId"] = CSharpExpressionConverter.ConvertToken(bodyparameterssurveyId);
-                parametersObjectpropCount++;
-            }
-
-            if (bodyparameterspublicationId != null)
-            {
-                parametersObject["publicationId"] = CSharpExpressionConverter.ConvertToken(bodyparameterspublicationId);
-                parametersObjectpropCount++;
-            }
-
-            if (parametersObjectpropCount > 0)
-            {
-                body["parameters"] = parametersObject;
+                var apiCallPath = "/webhook-service/subscribe/surveyexecution";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callback"] = "@listCallbackUrl()";
                 bodypropCount++;
+                var parametersObject = new JObject();
+                var parametersObjectpropCount = 0;
+                if (bodyparameterssurveyId != null)
+                {
+                    parametersObject["surveyId"] = SourceExpressionConverter.ConvertToken(bodyparameterssurveyId);
+                    parametersObjectpropCount++;
+                }
+
+                if (bodyparameterspublicationId != null)
+                {
+                    parametersObject["publicationId"] = SourceExpressionConverter.ConvertToken(bodyparameterspublicationId);
+                    parametersObjectpropCount++;
+                }
+
+                if (parametersObjectpropCount > 0)
+                {
+                    body["parameters"] = parametersObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,48 +12,82 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pantryip
     public class PantryipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetDetailsResponse> GetDetails(Expression<Func<string>> pantryID)
+        public IBodyWorkflowAction<GetDetailsResponse> GetDetails([WorkflowExpression] Func<string> pantryID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pantry/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDetailsResponse>(callPayload);
+            SourceExpression.Validate(pantryID, nameof(pantryID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<GetContentsResponse> GetContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<GetContentsResponse> GetContents([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetContentsResponse>(callPayload);
+            SourceExpression.Validate(pantryID, nameof(pantryID), required: true);
+            SourceExpression.Validate(basketName, nameof(basketName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetContentsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> Delete(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<string> Delete([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(pantryID, nameof(pantryID), required: true);
+            SourceExpression.Validate(basketName, nameof(basketName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<string> CreateAndOrReplace(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<string> CreateAndOrReplace([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(pantryID, nameof(pantryID), required: true);
+            SourceExpression.Validate(basketName, nameof(basketName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pantryip")]
-        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents(Expression<Func<string>> pantryID, Expression<Func<string>> basketName)
+        public IBodyWorkflowAction<UpdateContentsResponse> UpdateContents([WorkflowExpression] Func<string> pantryID, [WorkflowExpression] Func<string> basketName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UpdateContentsResponse>(callPayload);
+            SourceExpression.Validate(pantryID, nameof(pantryID), required: true);
+            SourceExpression.Validate(basketName, nameof(basketName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pantry/{0}/basket/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pantryID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(basketName, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UpdateContentsResponse>(BuildSourceInput);
         }
     }
 

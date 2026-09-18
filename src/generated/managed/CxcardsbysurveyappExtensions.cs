@@ -12,105 +12,124 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cxcardsbysurveyapp
     public class CxcardsbysurveyappActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cxcardsbysurveyapp")]
-        public IBodyWorkflowAction<SendSurveyResponse> SendSurvey(Expression<Func<string>> bodyapiKey, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodymobile = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodysalutation = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodylanguage = null, Expression<Func<string>> bodylocale = null, Expression<Func<string>> bodyRef = null, Expression<Func<string>> bodysubject = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyrecordType = null, Expression<Func<string>> bodyrecordId = null, Expression<Func<string>> bodyversionNumber = null)
+        public IBodyWorkflowAction<SendSurveyResponse> SendSurvey([WorkflowExpression] Func<string> bodyapiKey, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodymobile = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodysalutation = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodylanguage = null, [WorkflowExpression] Func<string> bodylocale = null, [WorkflowExpression] Func<string> bodyRef = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyrecordType = null, [WorkflowExpression] Func<string> bodyrecordId = null, [WorkflowExpression] Func<string> bodyversionNumber = null)
         {
-            var apiCallPath = "/v1/email-surveys/send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["api_key"] = CSharpExpressionConverter.ConvertToken(bodyapiKey);
-            if (bodyemail != null)
+            SourceExpression.Validate(bodyapiKey, nameof(bodyapiKey), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodymobile, nameof(bodymobile), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodysalutation, nameof(bodysalutation), required: false);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodylanguage, nameof(bodylanguage), required: false);
+            SourceExpression.Validate(bodylocale, nameof(bodylocale), required: false);
+            SourceExpression.Validate(bodyRef, nameof(bodyRef), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyrecordType, nameof(bodyrecordType), required: false);
+            SourceExpression.Validate(bodyrecordId, nameof(bodyrecordId), required: false);
+            SourceExpression.Validate(bodyversionNumber, nameof(bodyversionNumber), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
+                var apiCallPath = "/v1/email-surveys/send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["api_key"] = SourceExpressionConverter.ConvertToken(bodyapiKey);
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodymobile != null)
+                {
+                    body["mobile"] = SourceExpressionConverter.ConvertToken(bodymobile);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodysalutation != null)
+                {
+                    body["salutation"] = SourceExpressionConverter.ConvertToken(bodysalutation);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodylanguage != null)
+                {
+                    body["language"] = SourceExpressionConverter.ConvertToken(bodylanguage);
+                    bodypropCount++;
+                }
+
+                if (bodylocale != null)
+                {
+                    body["locale"] = SourceExpressionConverter.ConvertToken(bodylocale);
+                    bodypropCount++;
+                }
+
+                if (bodyRef != null)
+                {
+                    body["ref"] = SourceExpressionConverter.ConvertToken(bodyRef);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordType != null)
+                {
+                    body["record_type"] = SourceExpressionConverter.ConvertToken(bodyrecordType);
+                    bodypropCount++;
+                }
+
+                if (bodyrecordId != null)
+                {
+                    body["record_id"] = SourceExpressionConverter.ConvertToken(bodyrecordId);
+                    bodypropCount++;
+                }
+
+                if (bodyversionNumber != null)
+                {
+                    body["version_number"] = SourceExpressionConverter.ConvertToken(bodyversionNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymobile != null)
-            {
-                body["mobile"] = CSharpExpressionConverter.ConvertToken(bodymobile);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodysalutation != null)
-            {
-                body["salutation"] = CSharpExpressionConverter.ConvertToken(bodysalutation);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodylanguage != null)
-            {
-                body["language"] = CSharpExpressionConverter.ConvertToken(bodylanguage);
-                bodypropCount++;
-            }
-
-            if (bodylocale != null)
-            {
-                body["locale"] = CSharpExpressionConverter.ConvertToken(bodylocale);
-                bodypropCount++;
-            }
-
-            if (bodyRef != null)
-            {
-                body["ref"] = CSharpExpressionConverter.ConvertToken(bodyRef);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyrecordType != null)
-            {
-                body["record_type"] = CSharpExpressionConverter.ConvertToken(bodyrecordType);
-                bodypropCount++;
-            }
-
-            if (bodyrecordId != null)
-            {
-                body["record_id"] = CSharpExpressionConverter.ConvertToken(bodyrecordId);
-                bodypropCount++;
-            }
-
-            if (bodyversionNumber != null)
-            {
-                body["version_number"] = CSharpExpressionConverter.ConvertToken(bodyversionNumber);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSurveyResponse>(callPayload);
+            return new ApiConnectionAction<SendSurveyResponse>(BuildSourceInput);
         }
     }
 

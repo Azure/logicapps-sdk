@@ -1,0 +1,111 @@
+{
+  "evidenceKind": "actual-ide-package-validation",
+  "packageStatus": "Explicitly pinned package; no claim about any other production integration candidate.",
+  "packageSha256": "7F1BC5DE34316BF878DD4280C2B4E03459FD3D6755A7A041E05AEEBB539C1DFA",
+  "runtimeSha256": "D55475362C464A21E2DA2A8BE12A96D893208C07AC2DFD14512A2C8559773067",
+  "compilerSha256": "42F0284B176BBE875BCA2890DE5FC7B5259AECF7B05B40026C4E5FF486C4897C",
+  "codePath": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\actual-ide-validation\\editor-1.137.0\\Code.exe",
+  "codeVersion": "1.137.0",
+  "codeSha256": "C933B1301979ABB102DED0B5C28C5C417FCB09411B15F5FF2484C8BB896CF9EF",
+  "validatorSha256": "3428FF19C02841E63D6F8BDAAF72F70D48DB72017202D090D602EE264C830285",
+  "restore": {
+    "argv": [
+      "restore",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\LanguageServiceFixture.csproj",
+      "--source",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\package",
+      "--packages",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\package-validation\\packages",
+      "--verbosity",
+      "minimal"
+    ],
+    "exitCode": 0,
+    "executable": "C:\\Program Files\\dotnet\\dotnet.exe"
+  },
+  "launch": {
+    "argv": [
+      "--new-window",
+      "--user-data-dir",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\user-data",
+      "--extensions-dir",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\extensions",
+      "--extensionDevelopmentPath",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\VsCodeProbe",
+      "--extensionTestsPath",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\VsCodeProbe\\tests.cjs",
+      "--skip-welcome",
+      "--skip-release-notes",
+      "--disable-workspace-trust",
+      "--disable-gpu",
+      "--sync",
+      "off",
+      "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture"
+    ],
+    "exitCode": 0,
+    "executable": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\actual-ide-validation\\editor-1.137.0\\Code.exe"
+  },
+  "status": "passed",
+  "completedUtc": "2026-09-18T13:20:19.7754893Z",
+  "artifacts": [
+    {
+      "sha256": "80D217A6B14D33E3468227BB54DCBA96AF10666796E4B6A08BDD45347B1200CF",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\actual-ide-evidence.json"
+    },
+    {
+      "sha256": "15FD60C6F5C6804626177D178F3DBA849A41F4A1878B2E7E7E3ED38A194DC82B",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\authoring-executed.txt"
+    },
+    {
+      "sha256": "774EB597D5D6B29C9CE264AE20B794CED2B2F2827C33CD2DEB7D4FBA23913195",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\code-stderr.log"
+    },
+    {
+      "sha256": "C682EABCBAB80B0A253455477C1A5B0567569342F28F06BB93DB625C642F6192",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\code-stdout.log"
+    },
+    {
+      "sha256": "CCA5CB3C33C3F71EE425D19D4F338BB10FBBE1456F25AC0851FB57E728577BD9",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\ide-build.log"
+    },
+    {
+      "sha256": "F1882BF12CAD0E9748B6AABEE390473CD85DE97F9C8902ABD3DC59F9CEA412FC",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\restore.log"
+    },
+    {
+      "sha256": "3428FF19C02841E63D6F8BDAAF72F70D48DB72017202D090D602EE264C830285",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\validator.ps1.txt"
+    },
+    {
+      "sha256": "5C10E0DCA89D53FA828E2B8AD817F7DDECCB7775BEF36C1E75DBA0D87A103EE6",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\Directory.Build.props"
+    },
+    {
+      "sha256": "5C10E0DCA89D53FA828E2B8AD817F7DDECCB7775BEF36C1E75DBA0D87A103EE6",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\Directory.Build.targets"
+    },
+    {
+      "sha256": "425E958401722495420D95117288D5F2F623C79266FA8CC30913DF41DAD7D638",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\global.json"
+    },
+    {
+      "sha256": "DE6CC4CCC87F6591301EB617E123F32D8E1F50B7F848A3F26FA748F9314AD257",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\LanguageServiceFixture.csproj"
+    },
+    {
+      "sha256": "10F15CA46352EA1245DA5F9C3BAABF0B7E01DDA2C5EB4C556FB69DEB01FEDAD0",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\LanguageServiceFixture\\Program.cs"
+    },
+    {
+      "sha256": "43E04FC1D48CA84B866EF62DC2ED95EC72D2890C1501CFCF5FE0556F5E6B6AE7",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\VsCodeProbe\\extension.cjs"
+    },
+    {
+      "sha256": "3E93DB763B23D81D2DD3A35E1F6D4E1FF313481BDCA1B91A38F75BB03CF210F7",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\VsCodeProbe\\package.json"
+    },
+    {
+      "sha256": "4E66E2061482D335F3907F78206CA7BCB571C38717A91FB3E3A465BC20F257A5",
+      "path": "D:\\dev\\logicapps-sdk\\tests\\SourcePackageConsumer\\obj\\host-json-fix-validation\\actual-ide\\VsCodeProbe\\tests.cjs"
+    }
+  ]
+}

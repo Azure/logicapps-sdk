@@ -12,39 +12,66 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Confluence
     public class ConfluenceActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetSpacesResponse> GetSpaces([WorkflowExpression] Func<string> cloudId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSpacesResponse>(callPayload);
+            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSpacesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPages(Expression<Func<string>> cloudId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPages([WorkflowExpression] Func<string> cloudId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPagesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPagesBySpace([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/spaces/{1}/pages", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPagesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "confluence")]
-        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata(Expression<Func<string>> cloudId, Expression<Func<string>> spaceId, Expression<Func<string>> pageId)
+        public IBodyWorkflowAction<GetPagesResponse> GetPageMetadata([WorkflowExpression] Func<string> cloudId, [WorkflowExpression] Func<string> spaceId, [WorkflowExpression] Func<string> pageId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetPagesResponse>(callPayload);
+            SourceExpression.Validate(cloudId, nameof(cloudId), required: true);
+            SourceExpression.Validate(spaceId, nameof(spaceId), required: true);
+            SourceExpression.Validate(pageId, nameof(pageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ex/confluence/{0}/wiki/api/v2/pages/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(cloudId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pageId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(spaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetPagesResponse>(BuildSourceInput);
         }
     }
 

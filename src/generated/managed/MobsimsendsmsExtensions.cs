@@ -12,39 +12,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mobsimsendsms
     public class MobsimsendsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mobsimsendsms")]
-        public IBodyWorkflowAction<string> SMS(Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodygroupMsg = null, Expression<Func<bodymessagesInputItem[]>> bodymessages = null)
+        public IBodyWorkflowAction<string> SMS([WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodygroupMsg = null, [WorkflowExpression] Func<bodymessagesInputItem[]> bodymessages = null)
         {
-            var apiCallPath = "/sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
+            SourceExpression.Validate(bodygroupMsg, nameof(bodygroupMsg), required: false);
+            SourceExpression.Validate(bodymessages, nameof(bodymessages), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["groupId"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
-                bodypropCount++;
+                var apiCallPath = "/sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodygroupId != null)
+                {
+                    body["groupId"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodygroupMsg != null)
+                {
+                    body["groupMsg"] = SourceExpressionConverter.ConvertToken(bodygroupMsg);
+                    bodypropCount++;
+                }
+
+                if (bodymessages != null)
+                {
+                    body["messages"] = SourceExpressionConverter.ConvertToken(bodymessages);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygroupMsg != null)
-            {
-                body["groupMsg"] = CSharpExpressionConverter.ConvertToken(bodygroupMsg);
-                bodypropCount++;
-            }
-
-            if (bodymessages != null)
-            {
-                body["messages"] = CSharpExpressionConverter.ConvertToken(bodymessages);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

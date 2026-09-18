@@ -14,20 +14,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mergeshuttleservice
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
         public IBodyWorkflowAction<GetFixedRouteResponseItem[]> GetFixedRoute()
         {
-            var apiCallPath = "/api/shuttle/fixedroute";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFixedRouteResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shuttle/fixedroute";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFixedRouteResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mergeshuttleservice")]
-        public IWorkflowAction PostFixedRoute(Expression<Func<bodyInputItem[]>> body = null)
+        public IWorkflowAction PostFixedRoute([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/api/shuttle/fixedrouteschedule";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/shuttle/fixedrouteschedule";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -12,36 +12,50 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
     public class RescocloudActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "rescocloud")]
-        public IBodyWorkflowAction<OdataError> RecordDelete(Expression<Func<string>> id, Expression<Func<string>> entity, Expression<Func<string>> ifMatch = null)
+        public IBodyWorkflowAction<OdataError> RecordDelete([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> ifMatch = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ifMatch != null)
-                callPayload.Headers["If-Match"] = CSharpExpressionConverter.ConvertO(ifMatch);
-            return new ApiConnectionAction<OdataError>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(entity, nameof(entity), required: true);
+            SourceExpression.Validate(ifMatch, nameof(ifMatch), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}('{1}')", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(entity, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ifMatch != null)
+                    callPayload.Headers["If-Match"] = SourceExpressionConverter.ConvertO(ifMatch);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<OdataError>(BuildSourceInput);
         }
     }
 
     public class RescocloudTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger TriggerCreate(Expression<Func<string>> entity, Expression<Func<actionInput>> action, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger TriggerCreate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<actionInput> action, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/$hook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$entity"] = CSharpExpressionConverter.ConvertO(entity);
-            callPayload.Queries["$action"] = CSharpExpressionConverter.Convert(action);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(entity, nameof(entity), required: true);
+            SourceExpression.Validate(action, nameof(action), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/$hook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Queries["$action"] = SourceExpressionConverter.Convert(action);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

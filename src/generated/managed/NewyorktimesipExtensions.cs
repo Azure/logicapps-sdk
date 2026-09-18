@@ -12,35 +12,55 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Newyorktimesip
     public class NewyorktimesipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch(Expression<Func<string>> q, Expression<Func<string>> beginDate = null, Expression<Func<string>> endDate = null)
+        public IBodyWorkflowAction<ArticleSearchResponse> ArticleSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<string> beginDate = null, [WorkflowExpression] Func<string> endDate = null)
         {
-            var apiCallPath = "/search/v2/articlesearch.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (beginDate != null)
-                callPayload.Queries["begin_date"] = CSharpExpressionConverter.ConvertO(beginDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            return new ApiConnectionAction<ArticleSearchResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(beginDate, nameof(beginDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search/v2/articlesearch.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (beginDate != null)
+                    callPayload.Queries["begin_date"] = SourceExpressionConverter.ConvertO(beginDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ArticleSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<TopStoriesResponse> TopStories(Expression<Func<sectionInput>> section)
+        public IBodyWorkflowAction<TopStoriesResponse> TopStories([WorkflowExpression] Func<sectionInput> section)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(section, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TopStoriesResponse>(callPayload);
+            SourceExpression.Validate(section, nameof(section), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/topstories/v2/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(section, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TopStoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "newyorktimesip")]
-        public IBodyWorkflowAction<MostViewedResponse> MostViewed(Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<MostViewedResponse> MostViewed([WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MostViewedResponse>(callPayload);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/mostpopular/v2/viewed/{0}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MostViewedResponse>(BuildSourceInput);
         }
     }
 

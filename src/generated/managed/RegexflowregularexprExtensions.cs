@@ -12,14 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Regexflowregularexpr
     public class RegexflowregularexprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "regexflowregularexpr")]
-        public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup(Expression<Func<string>> pattern, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<RegexMultiGroupResponse> RegexMultiGroup([WorkflowExpression] Func<string> pattern, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/RegexMultiGroup";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["pattern"] = CSharpExpressionConverter.ConvertO(pattern);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<RegexMultiGroupResponse>(callPayload);
+            SourceExpression.Validate(pattern, nameof(pattern), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/RegexMultiGroup";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["pattern"] = SourceExpressionConverter.ConvertO(pattern);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RegexMultiGroupResponse>(BuildSourceInput);
         }
     }
 

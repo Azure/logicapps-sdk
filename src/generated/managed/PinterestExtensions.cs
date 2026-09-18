@@ -12,134 +12,213 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pinterest
     public class PinterestActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard(Expression<Func<string>> board)
+        public IBodyWorkflowAction<PinResponse> ListPinsFromBoard([WorkflowExpression] Func<string> board)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PinResponse>(callPayload);
+            SourceExpression.Validate(board, nameof(board), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PinResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<BoardResponseData> CreateBoard(Expression<Func<string>> name, Expression<Func<string>> description = null)
+        public IBodyWorkflowAction<BoardResponseData> CreateBoard([WorkflowExpression] Func<string> name, [WorkflowExpression] Func<string> description = null)
         {
-            var apiCallPath = "/boards";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (description != null)
-                callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
-            return new ApiConnectionAction<BoardResponseData>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            SourceExpression.Validate(description, nameof(description), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/boards";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (description != null)
+                    callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoardResponseData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponseData> CreatePin(Expression<Func<string>> boardId, Expression<Func<string>> description, Expression<Func<string>> imageUrl, Expression<Func<string>> sourceUrl = null)
+        public IBodyWorkflowAction<PinResponseData> CreatePin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> imageUrl, [WorkflowExpression] Func<string> sourceUrl = null)
         {
-            var apiCallPath = "/pins";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = CSharpExpressionConverter.ConvertO(boardId);
-            callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
-            callPayload.Queries["image_url"] = CSharpExpressionConverter.ConvertO(imageUrl);
-            if (sourceUrl != null)
-                callPayload.Queries["source_url"] = CSharpExpressionConverter.ConvertO(sourceUrl);
-            return new ApiConnectionAction<PinResponseData>(callPayload);
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(description, nameof(description), required: true);
+            SourceExpression.Validate(imageUrl, nameof(imageUrl), required: true);
+            SourceExpression.Validate(sourceUrl, nameof(sourceUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/pins";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = SourceExpressionConverter.ConvertO(boardId);
+                callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                callPayload.Queries["image_url"] = SourceExpressionConverter.ConvertO(imageUrl);
+                if (sourceUrl != null)
+                    callPayload.Queries["source_url"] = SourceExpressionConverter.ConvertO(sourceUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PinResponseData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
-        public IBodyWorkflowAction<PinResponseData> EditPin(Expression<Func<string>> boardId, Expression<Func<string>> pin, Expression<Func<string>> description, Expression<Func<string>> link = null, Expression<Func<string>> secondBoard = null)
+        public IBodyWorkflowAction<PinResponseData> EditPin([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<string> pin, [WorkflowExpression] Func<string> description, [WorkflowExpression] Func<string> link = null, [WorkflowExpression] Func<string> secondBoard = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pin, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["board_id"] = CSharpExpressionConverter.ConvertO(boardId);
-            callPayload.Queries["description"] = CSharpExpressionConverter.ConvertO(description);
-            if (link != null)
-                callPayload.Queries["link"] = CSharpExpressionConverter.ConvertO(link);
-            if (secondBoard != null)
-                callPayload.Queries["secondBoard"] = CSharpExpressionConverter.ConvertO(secondBoard);
-            return new ApiConnectionAction<PinResponseData>(callPayload);
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(pin, nameof(pin), required: true);
+            SourceExpression.Validate(description, nameof(description), required: true);
+            SourceExpression.Validate(link, nameof(link), required: false);
+            SourceExpression.Validate(secondBoard, nameof(secondBoard), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/pins/{0}/save", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pin, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["board_id"] = SourceExpressionConverter.ConvertO(boardId);
+                callPayload.Queries["description"] = SourceExpressionConverter.ConvertO(description);
+                if (link != null)
+                    callPayload.Queries["link"] = SourceExpressionConverter.ConvertO(link);
+                if (secondBoard != null)
+                    callPayload.Queries["secondBoard"] = SourceExpressionConverter.ConvertO(secondBoard);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PinResponseData>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<CurrentUserResponse> GetCurrentUser()
         {
-            var apiCallPath = "/users/me";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CurrentUserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CurrentUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<PinResponse> ListAllPins()
         {
-            var apiCallPath = "/users/me/pins";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PinResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/pins";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PinResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponse> ListFollowBoards()
         {
-            var apiCallPath = "/users/me/boards/following";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BoardResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/boards/following";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<BoardResponse> ListMyBoards()
         {
-            var apiCallPath = "/users/me/boards/feed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BoardResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/boards/feed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BoardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<UserResponse> ListMyFollowers()
         {
-            var apiCallPath = "/users/me/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "pinterest")]
         public IBodyWorkflowAction<UserResponse> ListMyFollowings()
         {
-            var apiCallPath = "/users/me/following";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UserResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users/me/following";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserResponse>(BuildSourceInput);
         }
     }
 
     public class PinterestTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToFollowedBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(board, nameof(board), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger1/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PinResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard(Expression<Func<string>> board, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<PinResponse> OnPinAddedToMyBoard([WorkflowExpression] Func<string> board, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PinResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(board, nameof(board), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/boards/{0}/pins", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(board, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PinResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<UserResponse> OnSomeoneFollowsMe(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger4/users/me/followers";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<UserResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger4/users/me/followers";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<UserResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

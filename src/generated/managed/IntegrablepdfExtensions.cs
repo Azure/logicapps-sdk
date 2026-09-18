@@ -12,355 +12,433 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Integrablepdf
     public class IntegrablepdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> LockPdf(Expression<Func<string>> lockPdfInputfileContent, Expression<Func<string>> lockPdfInputpermissionsPassword, Expression<Func<bool>> lockPdfInputallowAccessibility = null, Expression<Func<bool>> lockPdfInputallowCopy = null, Expression<Func<bool>> lockPdfInputallowDocumentAssembly = null, Expression<Func<bool>> lockPdfInputallowEdit = null, Expression<Func<bool>> lockPdfInputallowFormFilling = null, Expression<Func<bool>> lockPdfInputallowPrint = null, Expression<Func<bool>> lockPdfInputallowUpdateAnnotationsAndFields = null, Expression<Func<string>> lockPdfInputdocumentOpenPassword = null)
+        public IBodyWorkflowAction<string> LockPdf([WorkflowExpression] Func<string> lockPdfInputfileContent, [WorkflowExpression] Func<string> lockPdfInputpermissionsPassword, [WorkflowExpression] Func<bool> lockPdfInputallowAccessibility = null, [WorkflowExpression] Func<bool> lockPdfInputallowCopy = null, [WorkflowExpression] Func<bool> lockPdfInputallowDocumentAssembly = null, [WorkflowExpression] Func<bool> lockPdfInputallowEdit = null, [WorkflowExpression] Func<bool> lockPdfInputallowFormFilling = null, [WorkflowExpression] Func<bool> lockPdfInputallowPrint = null, [WorkflowExpression] Func<bool> lockPdfInputallowUpdateAnnotationsAndFields = null, [WorkflowExpression] Func<string> lockPdfInputdocumentOpenPassword = null)
         {
-            var apiCallPath = "/pdf/lock";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var lockPdfInput = new JObject();
-            var lockPdfInputpropCount = 0;
-            if (lockPdfInputallowAccessibility != null)
+            SourceExpression.Validate(lockPdfInputfileContent, nameof(lockPdfInputfileContent), required: true);
+            SourceExpression.Validate(lockPdfInputpermissionsPassword, nameof(lockPdfInputpermissionsPassword), required: true);
+            SourceExpression.Validate(lockPdfInputallowAccessibility, nameof(lockPdfInputallowAccessibility), required: false);
+            SourceExpression.Validate(lockPdfInputallowCopy, nameof(lockPdfInputallowCopy), required: false);
+            SourceExpression.Validate(lockPdfInputallowDocumentAssembly, nameof(lockPdfInputallowDocumentAssembly), required: false);
+            SourceExpression.Validate(lockPdfInputallowEdit, nameof(lockPdfInputallowEdit), required: false);
+            SourceExpression.Validate(lockPdfInputallowFormFilling, nameof(lockPdfInputallowFormFilling), required: false);
+            SourceExpression.Validate(lockPdfInputallowPrint, nameof(lockPdfInputallowPrint), required: false);
+            SourceExpression.Validate(lockPdfInputallowUpdateAnnotationsAndFields, nameof(lockPdfInputallowUpdateAnnotationsAndFields), required: false);
+            SourceExpression.Validate(lockPdfInputdocumentOpenPassword, nameof(lockPdfInputdocumentOpenPassword), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                lockPdfInput["allowAccessibility"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowAccessibility);
+                var apiCallPath = "/pdf/lock";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var lockPdfInput = new JObject();
+                var lockPdfInputpropCount = 0;
+                if (lockPdfInputallowAccessibility != null)
+                {
+                    lockPdfInput["allowAccessibility"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowAccessibility);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowCopy != null)
+                {
+                    lockPdfInput["allowCopy"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowCopy);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowDocumentAssembly != null)
+                {
+                    lockPdfInput["allowDocumentAssembly"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowDocumentAssembly);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowEdit != null)
+                {
+                    lockPdfInput["allowEdit"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowEdit);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowFormFilling != null)
+                {
+                    lockPdfInput["allowFormFilling"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowFormFilling);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowPrint != null)
+                {
+                    lockPdfInput["allowPrint"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowPrint);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputallowUpdateAnnotationsAndFields != null)
+                {
+                    lockPdfInput["allowUpdateAnnotationsAndFields"] = SourceExpressionConverter.ConvertToken(lockPdfInputallowUpdateAnnotationsAndFields);
+                    lockPdfInputpropCount++;
+                }
+
+                if (lockPdfInputdocumentOpenPassword != null)
+                {
+                    lockPdfInput["documentOpenPassword"] = SourceExpressionConverter.ConvertToken(lockPdfInputdocumentOpenPassword);
+                    lockPdfInputpropCount++;
+                }
+
                 lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputallowCopy != null)
-            {
-                lockPdfInput["allowCopy"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowCopy);
+                lockPdfInput["fileContent"] = SourceExpressionConverter.ConvertToken(lockPdfInputfileContent);
                 lockPdfInputpropCount++;
+                lockPdfInput["permissionsPassword"] = SourceExpressionConverter.ConvertToken(lockPdfInputpermissionsPassword);
+                if (lockPdfInputpropCount > 0)
+                {
+                    callPayload.Body = lockPdfInput;
+                }
+                return callPayload;
             }
 
-            if (lockPdfInputallowDocumentAssembly != null)
-            {
-                lockPdfInput["allowDocumentAssembly"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowDocumentAssembly);
-                lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputallowEdit != null)
-            {
-                lockPdfInput["allowEdit"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowEdit);
-                lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputallowFormFilling != null)
-            {
-                lockPdfInput["allowFormFilling"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowFormFilling);
-                lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputallowPrint != null)
-            {
-                lockPdfInput["allowPrint"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowPrint);
-                lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputallowUpdateAnnotationsAndFields != null)
-            {
-                lockPdfInput["allowUpdateAnnotationsAndFields"] = CSharpExpressionConverter.ConvertToken(lockPdfInputallowUpdateAnnotationsAndFields);
-                lockPdfInputpropCount++;
-            }
-
-            if (lockPdfInputdocumentOpenPassword != null)
-            {
-                lockPdfInput["documentOpenPassword"] = CSharpExpressionConverter.ConvertToken(lockPdfInputdocumentOpenPassword);
-                lockPdfInputpropCount++;
-            }
-
-            lockPdfInputpropCount++;
-            lockPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(lockPdfInputfileContent);
-            lockPdfInputpropCount++;
-            lockPdfInput["permissionsPassword"] = CSharpExpressionConverter.ConvertToken(lockPdfInputpermissionsPassword);
-            if (lockPdfInputpropCount > 0)
-            {
-                callPayload.Body = lockPdfInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> MergePdf(Expression<Func<string>> mergePdfInput1stFileContent, Expression<Func<string>> mergePdfInput2ndFileContent, Expression<Func<string>> mergePdfInput3rdFileContent = null, Expression<Func<string>> mergePdfInput4thFileContent = null)
+        public IBodyWorkflowAction<string> MergePdf([WorkflowExpression] Func<string> mergePdfInput1stFileContent, [WorkflowExpression] Func<string> mergePdfInput2ndFileContent, [WorkflowExpression] Func<string> mergePdfInput3rdFileContent = null, [WorkflowExpression] Func<string> mergePdfInput4thFileContent = null)
         {
-            var apiCallPath = "/pdf/merge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var mergePdfInput = new JObject();
-            var mergePdfInputpropCount = 0;
-            mergePdfInputpropCount++;
-            mergePdfInput["fileContent1"] = CSharpExpressionConverter.ConvertToken(mergePdfInput1stFileContent);
-            mergePdfInputpropCount++;
-            mergePdfInput["fileContent2"] = CSharpExpressionConverter.ConvertToken(mergePdfInput2ndFileContent);
-            if (mergePdfInput3rdFileContent != null)
+            SourceExpression.Validate(mergePdfInput1stFileContent, nameof(mergePdfInput1stFileContent), required: true);
+            SourceExpression.Validate(mergePdfInput2ndFileContent, nameof(mergePdfInput2ndFileContent), required: true);
+            SourceExpression.Validate(mergePdfInput3rdFileContent, nameof(mergePdfInput3rdFileContent), required: false);
+            SourceExpression.Validate(mergePdfInput4thFileContent, nameof(mergePdfInput4thFileContent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                mergePdfInput["fileContent3"] = CSharpExpressionConverter.ConvertToken(mergePdfInput3rdFileContent);
+                var apiCallPath = "/pdf/merge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var mergePdfInput = new JObject();
+                var mergePdfInputpropCount = 0;
                 mergePdfInputpropCount++;
-            }
-
-            if (mergePdfInput4thFileContent != null)
-            {
-                mergePdfInput["fileContent4"] = CSharpExpressionConverter.ConvertToken(mergePdfInput4thFileContent);
+                mergePdfInput["fileContent1"] = SourceExpressionConverter.ConvertToken(mergePdfInput1stFileContent);
                 mergePdfInputpropCount++;
+                mergePdfInput["fileContent2"] = SourceExpressionConverter.ConvertToken(mergePdfInput2ndFileContent);
+                if (mergePdfInput3rdFileContent != null)
+                {
+                    mergePdfInput["fileContent3"] = SourceExpressionConverter.ConvertToken(mergePdfInput3rdFileContent);
+                    mergePdfInputpropCount++;
+                }
+
+                if (mergePdfInput4thFileContent != null)
+                {
+                    mergePdfInput["fileContent4"] = SourceExpressionConverter.ConvertToken(mergePdfInput4thFileContent);
+                    mergePdfInputpropCount++;
+                }
+
+                if (mergePdfInputpropCount > 0)
+                {
+                    callPayload.Body = mergePdfInput;
+                }
+                return callPayload;
             }
 
-            if (mergePdfInputpropCount > 0)
-            {
-                callPayload.Body = mergePdfInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> PasswordProtectPdf(Expression<Func<string>> passwordProtectPdfInputfileContent, Expression<Func<string>> passwordProtectPdfInputpassword)
+        public IBodyWorkflowAction<string> PasswordProtectPdf([WorkflowExpression] Func<string> passwordProtectPdfInputfileContent, [WorkflowExpression] Func<string> passwordProtectPdfInputpassword)
         {
-            var apiCallPath = "/pdf/password_protect";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var passwordProtectPdfInput = new JObject();
-            var passwordProtectPdfInputpropCount = 0;
-            passwordProtectPdfInputpropCount++;
-            passwordProtectPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(passwordProtectPdfInputfileContent);
-            passwordProtectPdfInputpropCount++;
-            passwordProtectPdfInput["password"] = CSharpExpressionConverter.ConvertToken(passwordProtectPdfInputpassword);
-            if (passwordProtectPdfInputpropCount > 0)
+            SourceExpression.Validate(passwordProtectPdfInputfileContent, nameof(passwordProtectPdfInputfileContent), required: true);
+            SourceExpression.Validate(passwordProtectPdfInputpassword, nameof(passwordProtectPdfInputpassword), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = passwordProtectPdfInput;
+                var apiCallPath = "/pdf/password_protect";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var passwordProtectPdfInput = new JObject();
+                var passwordProtectPdfInputpropCount = 0;
+                passwordProtectPdfInputpropCount++;
+                passwordProtectPdfInput["fileContent"] = SourceExpressionConverter.ConvertToken(passwordProtectPdfInputfileContent);
+                passwordProtectPdfInputpropCount++;
+                passwordProtectPdfInput["password"] = SourceExpressionConverter.ConvertToken(passwordProtectPdfInputpassword);
+                if (passwordProtectPdfInputpropCount > 0)
+                {
+                    callPayload.Body = passwordProtectPdfInput;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> SplitPdf(Expression<Func<string>> splitPdfInputfileContent, Expression<Func<int>> splitPdfInputfirstPage = null, Expression<Func<int>> splitPdfInputlastPage = null)
+        public IBodyWorkflowAction<string> SplitPdf([WorkflowExpression] Func<string> splitPdfInputfileContent, [WorkflowExpression] Func<int> splitPdfInputfirstPage = null, [WorkflowExpression] Func<int> splitPdfInputlastPage = null)
         {
-            var apiCallPath = "/pdf/split";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var splitPdfInput = new JObject();
-            var splitPdfInputpropCount = 0;
-            splitPdfInputpropCount++;
-            splitPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(splitPdfInputfileContent);
-            if (splitPdfInputfirstPage != null)
+            SourceExpression.Validate(splitPdfInputfileContent, nameof(splitPdfInputfileContent), required: true);
+            SourceExpression.Validate(splitPdfInputfirstPage, nameof(splitPdfInputfirstPage), required: false);
+            SourceExpression.Validate(splitPdfInputlastPage, nameof(splitPdfInputlastPage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                splitPdfInput["firstPage"] = CSharpExpressionConverter.ConvertToken(splitPdfInputfirstPage);
+                var apiCallPath = "/pdf/split";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var splitPdfInput = new JObject();
+                var splitPdfInputpropCount = 0;
                 splitPdfInputpropCount++;
+                splitPdfInput["fileContent"] = SourceExpressionConverter.ConvertToken(splitPdfInputfileContent);
+                if (splitPdfInputfirstPage != null)
+                {
+                    splitPdfInput["firstPage"] = SourceExpressionConverter.ConvertToken(splitPdfInputfirstPage);
+                    splitPdfInputpropCount++;
+                }
+
+                if (splitPdfInputlastPage != null)
+                {
+                    splitPdfInput["lastPage"] = SourceExpressionConverter.ConvertToken(splitPdfInputlastPage);
+                    splitPdfInputpropCount++;
+                }
+
+                if (splitPdfInputpropCount > 0)
+                {
+                    callPayload.Body = splitPdfInput;
+                }
+                return callPayload;
             }
 
-            if (splitPdfInputlastPage != null)
-            {
-                splitPdfInput["lastPage"] = CSharpExpressionConverter.ConvertToken(splitPdfInputlastPage);
-                splitPdfInputpropCount++;
-            }
-
-            if (splitPdfInputpropCount > 0)
-            {
-                callPayload.Body = splitPdfInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> UnlockPdf(Expression<Func<string>> unlockPdfInputfileContent, Expression<Func<string>> unlockPdfInputpassword)
+        public IBodyWorkflowAction<string> UnlockPdf([WorkflowExpression] Func<string> unlockPdfInputfileContent, [WorkflowExpression] Func<string> unlockPdfInputpassword)
         {
-            var apiCallPath = "/pdf/unlock";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var unlockPdfInput = new JObject();
-            var unlockPdfInputpropCount = 0;
-            unlockPdfInputpropCount++;
-            unlockPdfInput["fileContent"] = CSharpExpressionConverter.ConvertToken(unlockPdfInputfileContent);
-            unlockPdfInputpropCount++;
-            unlockPdfInput["password"] = CSharpExpressionConverter.ConvertToken(unlockPdfInputpassword);
-            if (unlockPdfInputpropCount > 0)
+            SourceExpression.Validate(unlockPdfInputfileContent, nameof(unlockPdfInputfileContent), required: true);
+            SourceExpression.Validate(unlockPdfInputpassword, nameof(unlockPdfInputpassword), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = unlockPdfInput;
+                var apiCallPath = "/pdf/unlock";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var unlockPdfInput = new JObject();
+                var unlockPdfInputpropCount = 0;
+                unlockPdfInputpropCount++;
+                unlockPdfInput["fileContent"] = SourceExpressionConverter.ConvertToken(unlockPdfInputfileContent);
+                unlockPdfInputpropCount++;
+                unlockPdfInput["password"] = SourceExpressionConverter.ConvertToken(unlockPdfInputpassword);
+                if (unlockPdfInputpropCount > 0)
+                {
+                    callPayload.Body = unlockPdfInput;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> WatermarkPdfBackground(Expression<Func<string>> watermarkPdfBackgroundInputfileContent, Expression<Func<string>> watermarkPdfBackgroundInput1stLine, Expression<Func<watermarkPdfBackgroundInputcolorInput>> watermarkPdfBackgroundInputcolor = null, Expression<Func<string>> watermarkPdfBackgroundInput2ndLine = null, Expression<Func<string>> watermarkPdfBackgroundInput3rdLine = null, Expression<Func<double>> watermarkPdfBackgroundInputmargin = null, Expression<Func<watermarkPdfBackgroundInputorientationInput>> watermarkPdfBackgroundInputorientation = null, Expression<Func<watermarkPdfBackgroundInputstyleInput>> watermarkPdfBackgroundInputstyle = null, Expression<Func<double>> watermarkPdfBackgroundInputtransparency = null)
+        public IBodyWorkflowAction<string> WatermarkPdfBackground([WorkflowExpression] Func<string> watermarkPdfBackgroundInputfileContent, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput1stLine, [WorkflowExpression] Func<watermarkPdfBackgroundInputcolorInput> watermarkPdfBackgroundInputcolor = null, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfBackgroundInput3rdLine = null, [WorkflowExpression] Func<double> watermarkPdfBackgroundInputmargin = null, [WorkflowExpression] Func<watermarkPdfBackgroundInputorientationInput> watermarkPdfBackgroundInputorientation = null, [WorkflowExpression] Func<watermarkPdfBackgroundInputstyleInput> watermarkPdfBackgroundInputstyle = null, [WorkflowExpression] Func<double> watermarkPdfBackgroundInputtransparency = null)
         {
-            var apiCallPath = "/pdf/watermark/background";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var watermarkPdfBackgroundInput = new JObject();
-            var watermarkPdfBackgroundInputpropCount = 0;
-            if (watermarkPdfBackgroundInputcolor != null)
+            SourceExpression.Validate(watermarkPdfBackgroundInputfileContent, nameof(watermarkPdfBackgroundInputfileContent), required: true);
+            SourceExpression.Validate(watermarkPdfBackgroundInput1stLine, nameof(watermarkPdfBackgroundInput1stLine), required: true);
+            SourceExpression.Validate(watermarkPdfBackgroundInputcolor, nameof(watermarkPdfBackgroundInputcolor), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInput2ndLine, nameof(watermarkPdfBackgroundInput2ndLine), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInput3rdLine, nameof(watermarkPdfBackgroundInput3rdLine), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInputmargin, nameof(watermarkPdfBackgroundInputmargin), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInputorientation, nameof(watermarkPdfBackgroundInputorientation), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInputstyle, nameof(watermarkPdfBackgroundInputstyle), required: false);
+            SourceExpression.Validate(watermarkPdfBackgroundInputtransparency, nameof(watermarkPdfBackgroundInputtransparency), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                watermarkPdfBackgroundInput["color"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputcolor);
+                var apiCallPath = "/pdf/watermark/background";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var watermarkPdfBackgroundInput = new JObject();
+                var watermarkPdfBackgroundInputpropCount = 0;
+                if (watermarkPdfBackgroundInputcolor != null)
+                {
+                    watermarkPdfBackgroundInput["color"] = SourceExpressionConverter.Convert(watermarkPdfBackgroundInputcolor);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
                 watermarkPdfBackgroundInputpropCount++;
-            }
-
-            watermarkPdfBackgroundInputpropCount++;
-            watermarkPdfBackgroundInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputfileContent);
-            watermarkPdfBackgroundInputpropCount++;
-            watermarkPdfBackgroundInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput1stLine);
-            if (watermarkPdfBackgroundInput2ndLine != null)
-            {
-                watermarkPdfBackgroundInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput2ndLine);
+                watermarkPdfBackgroundInput["fileContent"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInputfileContent);
                 watermarkPdfBackgroundInputpropCount++;
+                watermarkPdfBackgroundInput["line1"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInput1stLine);
+                if (watermarkPdfBackgroundInput2ndLine != null)
+                {
+                    watermarkPdfBackgroundInput["line2"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInput2ndLine);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInput3rdLine != null)
+                {
+                    watermarkPdfBackgroundInput["line3"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInput3rdLine);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInputmargin != null)
+                {
+                    watermarkPdfBackgroundInput["margin"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInputmargin);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInputorientation != null)
+                {
+                    watermarkPdfBackgroundInput["orientation"] = SourceExpressionConverter.Convert(watermarkPdfBackgroundInputorientation);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInputstyle != null)
+                {
+                    watermarkPdfBackgroundInput["style"] = SourceExpressionConverter.Convert(watermarkPdfBackgroundInputstyle);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInputtransparency != null)
+                {
+                    watermarkPdfBackgroundInput["transparency"] = SourceExpressionConverter.ConvertToken(watermarkPdfBackgroundInputtransparency);
+                    watermarkPdfBackgroundInputpropCount++;
+                }
+
+                if (watermarkPdfBackgroundInputpropCount > 0)
+                {
+                    callPayload.Body = watermarkPdfBackgroundInput;
+                }
+                return callPayload;
             }
 
-            if (watermarkPdfBackgroundInput3rdLine != null)
-            {
-                watermarkPdfBackgroundInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInput3rdLine);
-                watermarkPdfBackgroundInputpropCount++;
-            }
-
-            if (watermarkPdfBackgroundInputmargin != null)
-            {
-                watermarkPdfBackgroundInput["margin"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputmargin);
-                watermarkPdfBackgroundInputpropCount++;
-            }
-
-            if (watermarkPdfBackgroundInputorientation != null)
-            {
-                watermarkPdfBackgroundInput["orientation"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputorientation);
-                watermarkPdfBackgroundInputpropCount++;
-            }
-
-            if (watermarkPdfBackgroundInputstyle != null)
-            {
-                watermarkPdfBackgroundInput["style"] = CSharpExpressionConverter.Convert(watermarkPdfBackgroundInputstyle);
-                watermarkPdfBackgroundInputpropCount++;
-            }
-
-            if (watermarkPdfBackgroundInputtransparency != null)
-            {
-                watermarkPdfBackgroundInput["transparency"] = CSharpExpressionConverter.ConvertToken(watermarkPdfBackgroundInputtransparency);
-                watermarkPdfBackgroundInputpropCount++;
-            }
-
-            if (watermarkPdfBackgroundInputpropCount > 0)
-            {
-                callPayload.Body = watermarkPdfBackgroundInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> WatermarkPdfCustom(Expression<Func<string>> watermarkPdfCustomInputfileContent, Expression<Func<string>> watermarkPdfCustomInputtemplateId, Expression<Func<string>> watermarkPdfCustomInput1stLine = null, Expression<Func<string>> watermarkPdfCustomInput2ndLine = null, Expression<Func<string>> watermarkPdfCustomInput3rdLine = null, Expression<Func<string>> watermarkPdfCustomInput4thLine = null, Expression<Func<string>> watermarkPdfCustomInput5thLine = null)
+        public IBodyWorkflowAction<string> WatermarkPdfCustom([WorkflowExpression] Func<string> watermarkPdfCustomInputfileContent, [WorkflowExpression] Func<string> watermarkPdfCustomInputtemplateId, [WorkflowExpression] Func<string> watermarkPdfCustomInput1stLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput3rdLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput4thLine = null, [WorkflowExpression] Func<string> watermarkPdfCustomInput5thLine = null)
         {
-            var apiCallPath = "/pdf/watermark/custom";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var watermarkPdfCustomInput = new JObject();
-            var watermarkPdfCustomInputpropCount = 0;
-            watermarkPdfCustomInputpropCount++;
-            watermarkPdfCustomInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInputfileContent);
-            if (watermarkPdfCustomInput1stLine != null)
+            SourceExpression.Validate(watermarkPdfCustomInputfileContent, nameof(watermarkPdfCustomInputfileContent), required: true);
+            SourceExpression.Validate(watermarkPdfCustomInputtemplateId, nameof(watermarkPdfCustomInputtemplateId), required: true);
+            SourceExpression.Validate(watermarkPdfCustomInput1stLine, nameof(watermarkPdfCustomInput1stLine), required: false);
+            SourceExpression.Validate(watermarkPdfCustomInput2ndLine, nameof(watermarkPdfCustomInput2ndLine), required: false);
+            SourceExpression.Validate(watermarkPdfCustomInput3rdLine, nameof(watermarkPdfCustomInput3rdLine), required: false);
+            SourceExpression.Validate(watermarkPdfCustomInput4thLine, nameof(watermarkPdfCustomInput4thLine), required: false);
+            SourceExpression.Validate(watermarkPdfCustomInput5thLine, nameof(watermarkPdfCustomInput5thLine), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                watermarkPdfCustomInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput1stLine);
+                var apiCallPath = "/pdf/watermark/custom";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var watermarkPdfCustomInput = new JObject();
+                var watermarkPdfCustomInputpropCount = 0;
                 watermarkPdfCustomInputpropCount++;
-            }
+                watermarkPdfCustomInput["fileContent"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInputfileContent);
+                if (watermarkPdfCustomInput1stLine != null)
+                {
+                    watermarkPdfCustomInput["line1"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInput1stLine);
+                    watermarkPdfCustomInputpropCount++;
+                }
 
-            if (watermarkPdfCustomInput2ndLine != null)
-            {
-                watermarkPdfCustomInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput2ndLine);
+                if (watermarkPdfCustomInput2ndLine != null)
+                {
+                    watermarkPdfCustomInput["line2"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInput2ndLine);
+                    watermarkPdfCustomInputpropCount++;
+                }
+
+                if (watermarkPdfCustomInput3rdLine != null)
+                {
+                    watermarkPdfCustomInput["line3"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInput3rdLine);
+                    watermarkPdfCustomInputpropCount++;
+                }
+
+                if (watermarkPdfCustomInput4thLine != null)
+                {
+                    watermarkPdfCustomInput["line4"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInput4thLine);
+                    watermarkPdfCustomInputpropCount++;
+                }
+
+                if (watermarkPdfCustomInput5thLine != null)
+                {
+                    watermarkPdfCustomInput["line5"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInput5thLine);
+                    watermarkPdfCustomInputpropCount++;
+                }
+
                 watermarkPdfCustomInputpropCount++;
+                watermarkPdfCustomInput["templateId"] = SourceExpressionConverter.ConvertToken(watermarkPdfCustomInputtemplateId);
+                if (watermarkPdfCustomInputpropCount > 0)
+                {
+                    callPayload.Body = watermarkPdfCustomInput;
+                }
+                return callPayload;
             }
 
-            if (watermarkPdfCustomInput3rdLine != null)
-            {
-                watermarkPdfCustomInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput3rdLine);
-                watermarkPdfCustomInputpropCount++;
-            }
-
-            if (watermarkPdfCustomInput4thLine != null)
-            {
-                watermarkPdfCustomInput["line4"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput4thLine);
-                watermarkPdfCustomInputpropCount++;
-            }
-
-            if (watermarkPdfCustomInput5thLine != null)
-            {
-                watermarkPdfCustomInput["line5"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInput5thLine);
-                watermarkPdfCustomInputpropCount++;
-            }
-
-            watermarkPdfCustomInputpropCount++;
-            watermarkPdfCustomInput["templateId"] = CSharpExpressionConverter.ConvertToken(watermarkPdfCustomInputtemplateId);
-            if (watermarkPdfCustomInputpropCount > 0)
-            {
-                callPayload.Body = watermarkPdfCustomInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "integrablepdf")]
-        public IBodyWorkflowAction<string> WatermarkPdfOverlay(Expression<Func<string>> watermarkPdfOverlayInputfileContent, Expression<Func<string>> watermarkPdfOverlayInput1stLine, Expression<Func<watermarkPdfOverlayInputcolorInput>> watermarkPdfOverlayInputcolor = null, Expression<Func<string>> watermarkPdfOverlayInput2ndLine = null, Expression<Func<string>> watermarkPdfOverlayInput3rdLine = null, Expression<Func<double>> watermarkPdfOverlayInputmargin = null, Expression<Func<watermarkPdfOverlayInputorientationInput>> watermarkPdfOverlayInputorientation = null, Expression<Func<watermarkPdfOverlayInputstyleInput>> watermarkPdfOverlayInputstyle = null, Expression<Func<double>> watermarkPdfOverlayInputtransparency = null)
+        public IBodyWorkflowAction<string> WatermarkPdfOverlay([WorkflowExpression] Func<string> watermarkPdfOverlayInputfileContent, [WorkflowExpression] Func<string> watermarkPdfOverlayInput1stLine, [WorkflowExpression] Func<watermarkPdfOverlayInputcolorInput> watermarkPdfOverlayInputcolor = null, [WorkflowExpression] Func<string> watermarkPdfOverlayInput2ndLine = null, [WorkflowExpression] Func<string> watermarkPdfOverlayInput3rdLine = null, [WorkflowExpression] Func<double> watermarkPdfOverlayInputmargin = null, [WorkflowExpression] Func<watermarkPdfOverlayInputorientationInput> watermarkPdfOverlayInputorientation = null, [WorkflowExpression] Func<watermarkPdfOverlayInputstyleInput> watermarkPdfOverlayInputstyle = null, [WorkflowExpression] Func<double> watermarkPdfOverlayInputtransparency = null)
         {
-            var apiCallPath = "/pdf/watermark/overlay";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
-            var watermarkPdfOverlayInput = new JObject();
-            var watermarkPdfOverlayInputpropCount = 0;
-            if (watermarkPdfOverlayInputcolor != null)
+            SourceExpression.Validate(watermarkPdfOverlayInputfileContent, nameof(watermarkPdfOverlayInputfileContent), required: true);
+            SourceExpression.Validate(watermarkPdfOverlayInput1stLine, nameof(watermarkPdfOverlayInput1stLine), required: true);
+            SourceExpression.Validate(watermarkPdfOverlayInputcolor, nameof(watermarkPdfOverlayInputcolor), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInput2ndLine, nameof(watermarkPdfOverlayInput2ndLine), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInput3rdLine, nameof(watermarkPdfOverlayInput3rdLine), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInputmargin, nameof(watermarkPdfOverlayInputmargin), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInputorientation, nameof(watermarkPdfOverlayInputorientation), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInputstyle, nameof(watermarkPdfOverlayInputstyle), required: false);
+            SourceExpression.Validate(watermarkPdfOverlayInputtransparency, nameof(watermarkPdfOverlayInputtransparency), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                watermarkPdfOverlayInput["color"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputcolor);
+                var apiCallPath = "/pdf/watermark/overlay";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/octet-stream");
+                var watermarkPdfOverlayInput = new JObject();
+                var watermarkPdfOverlayInputpropCount = 0;
+                if (watermarkPdfOverlayInputcolor != null)
+                {
+                    watermarkPdfOverlayInput["color"] = SourceExpressionConverter.Convert(watermarkPdfOverlayInputcolor);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
                 watermarkPdfOverlayInputpropCount++;
-            }
-
-            watermarkPdfOverlayInputpropCount++;
-            watermarkPdfOverlayInput["fileContent"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputfileContent);
-            watermarkPdfOverlayInputpropCount++;
-            watermarkPdfOverlayInput["line1"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput1stLine);
-            if (watermarkPdfOverlayInput2ndLine != null)
-            {
-                watermarkPdfOverlayInput["line2"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput2ndLine);
+                watermarkPdfOverlayInput["fileContent"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInputfileContent);
                 watermarkPdfOverlayInputpropCount++;
+                watermarkPdfOverlayInput["line1"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInput1stLine);
+                if (watermarkPdfOverlayInput2ndLine != null)
+                {
+                    watermarkPdfOverlayInput["line2"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInput2ndLine);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInput3rdLine != null)
+                {
+                    watermarkPdfOverlayInput["line3"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInput3rdLine);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInputmargin != null)
+                {
+                    watermarkPdfOverlayInput["margin"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInputmargin);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInputorientation != null)
+                {
+                    watermarkPdfOverlayInput["orientation"] = SourceExpressionConverter.Convert(watermarkPdfOverlayInputorientation);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInputstyle != null)
+                {
+                    watermarkPdfOverlayInput["style"] = SourceExpressionConverter.Convert(watermarkPdfOverlayInputstyle);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInputtransparency != null)
+                {
+                    watermarkPdfOverlayInput["transparency"] = SourceExpressionConverter.ConvertToken(watermarkPdfOverlayInputtransparency);
+                    watermarkPdfOverlayInputpropCount++;
+                }
+
+                if (watermarkPdfOverlayInputpropCount > 0)
+                {
+                    callPayload.Body = watermarkPdfOverlayInput;
+                }
+                return callPayload;
             }
 
-            if (watermarkPdfOverlayInput3rdLine != null)
-            {
-                watermarkPdfOverlayInput["line3"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInput3rdLine);
-                watermarkPdfOverlayInputpropCount++;
-            }
-
-            if (watermarkPdfOverlayInputmargin != null)
-            {
-                watermarkPdfOverlayInput["margin"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputmargin);
-                watermarkPdfOverlayInputpropCount++;
-            }
-
-            if (watermarkPdfOverlayInputorientation != null)
-            {
-                watermarkPdfOverlayInput["orientation"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputorientation);
-                watermarkPdfOverlayInputpropCount++;
-            }
-
-            if (watermarkPdfOverlayInputstyle != null)
-            {
-                watermarkPdfOverlayInput["style"] = CSharpExpressionConverter.Convert(watermarkPdfOverlayInputstyle);
-                watermarkPdfOverlayInputpropCount++;
-            }
-
-            if (watermarkPdfOverlayInputtransparency != null)
-            {
-                watermarkPdfOverlayInput["transparency"] = CSharpExpressionConverter.ConvertToken(watermarkPdfOverlayInputtransparency);
-                watermarkPdfOverlayInputpropCount++;
-            }
-
-            if (watermarkPdfOverlayInputpropCount > 0)
-            {
-                callPayload.Body = watermarkPdfOverlayInput;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

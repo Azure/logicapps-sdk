@@ -14,19 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Litipsumip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
         public IBodyWorkflowAction<TextRandomResponse> TextRandom()
         {
-            var apiCallPath = "/json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextRandomResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TextRandomResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "litipsumip")]
-        public IBodyWorkflowAction<TextTitleResponse> TextTitle(Expression<Func<titleInput>> title)
+        public IBodyWorkflowAction<TextTitleResponse> TextTitle([WorkflowExpression] Func<titleInput> title)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TextTitleResponse>(callPayload);
+            SourceExpression.Validate(title, nameof(title), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(title, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TextTitleResponse>(BuildSourceInput);
         }
     }
 

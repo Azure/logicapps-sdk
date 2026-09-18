@@ -12,137 +12,203 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
     public class EmigoActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<TablesList> GetTables(Expression<Func<string>> type)
+        public IBodyWorkflowAction<TablesList> GetTables([WorkflowExpression] Func<string> type)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TablesList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetFeeds(Expression<Func<string>> endpoint)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FeedList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<ItemsList> GetItems(Expression<Func<string>> type, Expression<Func<string>> table)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ItemsList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<FeedList> GetODataItems(Expression<Func<string>> endpoint, Expression<Func<string>> feed)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FeedList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProductList> GetProductList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/Product/GetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idList != null)
-                callPayload.Queries["IdList"] = CSharpExpressionConverter.ConvertO(idList);
-            if (select != null)
-                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
-            return new ApiConnectionAction<GetProductList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetProduct> GetProductItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/Product/GetItem";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
-            if (select != null)
-                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
-            return new ApiConnectionAction<GetProduct>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList(Expression<Func<string>> idList = null, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/OperationalUnit/GetList";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (idList != null)
-                callPayload.Queries["IdList"] = CSharpExpressionConverter.ConvertO(idList);
-            if (select != null)
-                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
-            return new ApiConnectionAction<GetOperationalUnitList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem(Expression<Func<string>> id, Expression<Func<string>> select = null)
-        {
-            var apiCallPath = "/OperationalUnit/GetItem";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Id"] = CSharpExpressionConverter.ConvertO(id);
-            if (select != null)
-                callPayload.Queries["Select"] = CSharpExpressionConverter.ConvertO(select);
-            return new ApiConnectionAction<GetOperationalUnit>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
-        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit(Expression<Func<int>> sendMessageidOperationalUnit, Expression<Func<string>> sendMessagemessage)
-        {
-            var apiCallPath = "/OperationalUnit/SendMessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var sendMessage = new JObject();
-            var sendMessagepropCount = 0;
-            sendMessagepropCount++;
-            sendMessage["IdOperationalUnit"] = CSharpExpressionConverter.ConvertToken(sendMessageidOperationalUnit);
-            sendMessagepropCount++;
-            sendMessage["Message"] = CSharpExpressionConverter.ConvertToken(sendMessagemessage);
-            if (sendMessagepropCount > 0)
+            SourceExpression.Validate(type, nameof(type), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = sendMessage;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<TablesList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<FeedList> GetFeeds([WorkflowExpression] Func<string> endpoint)
+        {
+            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<ItemsList> GetItems([WorkflowExpression] Func<string> type, [WorkflowExpression] Func<string> table)
+        {
+            SourceExpression.Validate(type, nameof(type), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/tables/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(type, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ItemsList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<FeedList> GetODataItems([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed)
+        {
+            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
+            SourceExpression.Validate(feed, nameof(feed), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/datasets/{0}/feeds/{1}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FeedList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<GetProductList> GetProductList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
+        {
+            SourceExpression.Validate(idList, nameof(idList), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Product/GetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idList != null)
+                    callPayload.Queries["IdList"] = SourceExpressionConverter.ConvertO(idList);
+                if (select != null)
+                    callPayload.Queries["Select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProductList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<GetProduct> GetProductItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Product/GetItem";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (select != null)
+                    callPayload.Queries["Select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProduct>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<GetOperationalUnitList> GetOperationalUnitList([WorkflowExpression] Func<string> idList = null, [WorkflowExpression] Func<string> select = null)
+        {
+            SourceExpression.Validate(idList, nameof(idList), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OperationalUnit/GetList";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (idList != null)
+                    callPayload.Queries["IdList"] = SourceExpressionConverter.ConvertO(idList);
+                if (select != null)
+                    callPayload.Queries["Select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOperationalUnitList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<GetOperationalUnit> GetOperationalUnitItem([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> select = null)
+        {
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OperationalUnit/GetItem";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Id"] = SourceExpressionConverter.ConvertO(id);
+                if (select != null)
+                    callPayload.Queries["Select"] = SourceExpressionConverter.ConvertO(select);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOperationalUnit>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emigo")]
+        public IBodyWorkflowAction<JToken> SendMessageOperationalUnit([WorkflowExpression] Func<int> sendMessageidOperationalUnit, [WorkflowExpression] Func<string> sendMessagemessage)
+        {
+            SourceExpression.Validate(sendMessageidOperationalUnit, nameof(sendMessageidOperationalUnit), required: true);
+            SourceExpression.Validate(sendMessagemessage, nameof(sendMessagemessage), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/OperationalUnit/SendMessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var sendMessage = new JObject();
+                var sendMessagepropCount = 0;
+                sendMessagepropCount++;
+                sendMessage["IdOperationalUnit"] = SourceExpressionConverter.ConvertToken(sendMessageidOperationalUnit);
+                sendMessagepropCount++;
+                sendMessage["Message"] = SourceExpressionConverter.ConvertToken(sendMessagemessage);
+                if (sendMessagepropCount > 0)
+                {
+                    callPayload.Body = sendMessage;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class EmigoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem(Expression<Func<string>> endpoint, Expression<Func<string>> feed, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewODataItem([WorkflowExpression] Func<string> endpoint, [WorkflowExpression] Func<string> feed, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var requestBodyOfWebhook = new JObject();
-            var requestBodyOfWebhookpropCount = 0;
-            var configObject = new JObject();
-            var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
-            configObjectpropCount++;
-            if (configObjectpropCount > 0)
+            SourceExpression.Validate(endpoint, nameof(endpoint), required: true);
+            SourceExpression.Validate(feed, nameof(feed), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                requestBodyOfWebhook["config"] = configObject;
-                requestBodyOfWebhookpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger/{0}/feeds/{1}/newItem", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endpoint, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(feed, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var requestBodyOfWebhook = new JObject();
+                var requestBodyOfWebhookpropCount = 0;
+                var configObject = new JObject();
+                var configObjectpropCount = 0;
+                configObject["url"] = "@listCallbackUrl()";
+                configObjectpropCount++;
+                if (configObjectpropCount > 0)
+                {
+                    requestBodyOfWebhook["config"] = configObject;
+                    requestBodyOfWebhookpropCount++;
+                }
+
+                if (requestBodyOfWebhookpropCount > 0)
+                {
+                    callPayload.Body = requestBodyOfWebhook;
+                }
+                return callPayload;
             }
 
-            if (requestBodyOfWebhookpropCount > 0)
-            {
-                callPayload.Body = requestBodyOfWebhook;
-            }
-
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,29 +12,43 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finnishbisip
     public class FinnishbisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode(Expression<Func<string>> businessId)
+        public IBodyWorkflowAction<CompanyByBISCodeResponse> CompanyByBISCode([WorkflowExpression] Func<string> businessId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyByBISCodeResponse>(callPayload);
+            SourceExpression.Validate(businessId, nameof(businessId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/bis/v1/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyByBISCodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finnishbisip")]
-        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch(Expression<Func<string>> name = null, Expression<Func<int>> maxResults = null, Expression<Func<bool>> totalResults = null)
+        public IBodyWorkflowAction<CompanySearchResponse> CompanySearch([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<int> maxResults = null, [WorkflowExpression] Func<bool> totalResults = null)
         {
-            var apiCallPath = "/bis/v1";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Queries["maxResults"] = Convert.ToString(10);
-            if (maxResults != null)
-                callPayload.Queries["maxResults"] = CSharpExpressionConverter.ConvertO(maxResults);
-            callPayload.Queries["totalResults"] = Convert.ToString(true);
-            if (totalResults != null)
-                callPayload.Queries["totalResults"] = CSharpExpressionConverter.ConvertO(totalResults);
-            return new ApiConnectionAction<CompanySearchResponse>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(maxResults, nameof(maxResults), required: false);
+            SourceExpression.Validate(totalResults, nameof(totalResults), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bis/v1";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["maxResults"] = Convert.ToString(10);
+                if (maxResults != null)
+                    callPayload.Queries["maxResults"] = SourceExpressionConverter.ConvertO(maxResults);
+                callPayload.Queries["totalResults"] = Convert.ToString(true);
+                if (totalResults != null)
+                    callPayload.Queries["totalResults"] = SourceExpressionConverter.ConvertO(totalResults);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanySearchResponse>(BuildSourceInput);
         }
     }
 

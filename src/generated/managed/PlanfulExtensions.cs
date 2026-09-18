@@ -14,35 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Planful
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
         public IBodyWorkflowAction<GetRulesResponseItem[]> GetRules()
         {
-            var apiCallPath = "/financemodel/data/rules";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRulesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/financemodel/data/rules";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRulesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<FileLoadResponse> FileLoad(Expression<Func<string>> columnDelimiter, Expression<Func<string>> dataLoadRuleName = null, Expression<Func<object>> file = null)
+        public IBodyWorkflowAction<FileLoadResponse> FileLoad([WorkflowExpression] Func<string> columnDelimiter, [WorkflowExpression] Func<string> dataLoadRuleName = null, [WorkflowExpression] Func<object> file = null)
         {
-            var apiCallPath = "/financemodel/data/transferfile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (dataLoadRuleName != null)
-                callPayload.Queries["DataLoadRuleName"] = CSharpExpressionConverter.ConvertO(dataLoadRuleName);
-            callPayload.Queries["ColumnDelimiter"] = CSharpExpressionConverter.ConvertO(columnDelimiter);
-            return new ApiConnectionAction<FileLoadResponse>(callPayload);
+            SourceExpression.Validate(columnDelimiter, nameof(columnDelimiter), required: true);
+            SourceExpression.Validate(dataLoadRuleName, nameof(dataLoadRuleName), required: false);
+            SourceExpression.Validate(file, nameof(file), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/financemodel/data/transferfile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (dataLoadRuleName != null)
+                    callPayload.Queries["DataLoadRuleName"] = SourceExpressionConverter.ConvertO(dataLoadRuleName);
+                callPayload.Queries["ColumnDelimiter"] = SourceExpressionConverter.ConvertO(columnDelimiter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FileLoadResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "planful")]
-        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata(Expression<Func<string>> scenario, Expression<Func<int>> fiscalYear, Expression<Func<string>> filter = null)
+        public IBodyWorkflowAction<GetGLdataResponseItem[]> GetGLdata([WorkflowExpression] Func<string> scenario, [WorkflowExpression] Func<int> fiscalYear, [WorkflowExpression] Func<string> filter = null)
         {
-            var apiCallPath = "/financemodel/data/extract/gldata";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Scenario"] = CSharpExpressionConverter.ConvertO(scenario);
-            callPayload.Queries["FiscalYear"] = CSharpExpressionConverter.ConvertO(fiscalYear);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            return new ApiConnectionAction<GetGLdataResponseItem[]>(callPayload);
+            SourceExpression.Validate(scenario, nameof(scenario), required: true);
+            SourceExpression.Validate(fiscalYear, nameof(fiscalYear), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/financemodel/data/extract/gldata";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Scenario"] = SourceExpressionConverter.ConvertO(scenario);
+                callPayload.Queries["FiscalYear"] = SourceExpressionConverter.ConvertO(fiscalYear);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGLdataResponseItem[]>(BuildSourceInput);
         }
     }
 

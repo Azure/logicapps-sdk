@@ -12,38 +12,46 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cmi
     public class CmiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cmi")]
-        public IWorkflowAction HttpRequest(Expression<Func<string>> xCMITENANTNAME, Expression<Func<parametersmethodInput>> parametersmethod, Expression<Func<string>> parameterspath, Expression<Func<string>> parametersbody = null)
+        public IWorkflowAction HttpRequest([WorkflowExpression] Func<string> xCMITENANTNAME, [WorkflowExpression] Func<parametersmethodInput> parametersmethod, [WorkflowExpression] Func<string> parameterspath, [WorkflowExpression] Func<string> parametersbody = null)
         {
-            var apiCallPath = "/virtual/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-CMI-TENANT-NAME"] = CSharpExpressionConverter.ConvertO(xCMITENANTNAME);
-            var parameters = new JObject();
-            var parameterspropCount = 0;
-            parameterspropCount++;
-            parameters["method"] = CSharpExpressionConverter.Convert(parametersmethod);
-            parameterspropCount++;
-            parameters["path"] = CSharpExpressionConverter.ConvertToken(parameterspath);
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
+            SourceExpression.Validate(xCMITENANTNAME, nameof(xCMITENANTNAME), required: true);
+            SourceExpression.Validate(parametersmethod, nameof(parametersmethod), required: true);
+            SourceExpression.Validate(parameterspath, nameof(parameterspath), required: true);
+            SourceExpression.Validate(parametersbody, nameof(parametersbody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                parameters["headers"] = headersObject;
+                var apiCallPath = "/virtual/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-CMI-TENANT-NAME"] = SourceExpressionConverter.ConvertO(xCMITENANTNAME);
+                var parameters = new JObject();
+                var parameterspropCount = 0;
                 parameterspropCount++;
-            }
-
-            if (parametersbody != null)
-            {
-                parameters["body"] = CSharpExpressionConverter.ConvertToken(parametersbody);
+                parameters["method"] = SourceExpressionConverter.Convert(parametersmethod);
                 parameterspropCount++;
+                parameters["path"] = SourceExpressionConverter.ConvertToken(parameterspath);
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    parameters["headers"] = headersObject;
+                    parameterspropCount++;
+                }
+
+                if (parametersbody != null)
+                {
+                    parameters["body"] = SourceExpressionConverter.ConvertToken(parametersbody);
+                    parameterspropCount++;
+                }
+
+                if (parameterspropCount > 0)
+                {
+                    callPayload.Body = parameters;
+                }
+                return callPayload;
             }
 
-            if (parameterspropCount > 0)
-            {
-                callPayload.Body = parameters;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

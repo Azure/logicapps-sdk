@@ -12,19 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xooablockchain
     public class XooablockchainActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "xooablockchain")]
-        public IWorkflowAction Create(Expression<Func<bool>> async = null, Expression<Func<int>> timeout = null, Expression<Func<string[]>> body = null)
+        public IWorkflowAction Create([WorkflowExpression] Func<bool> async = null, [WorkflowExpression] Func<int> timeout = null, [WorkflowExpression] Func<string[]> body = null)
         {
-            var apiCallPath = "/xldb/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["async"] = Convert.ToString(false);
-            if (async != null)
-                callPayload.Queries["async"] = CSharpExpressionConverter.ConvertO(async);
-            callPayload.Queries["timeout"] = Convert.ToString(5000);
-            if (timeout != null)
-                callPayload.Queries["timeout"] = CSharpExpressionConverter.ConvertO(timeout);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(async, nameof(async), required: false);
+            SourceExpression.Validate(timeout, nameof(timeout), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/xldb/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["async"] = Convert.ToString(false);
+                if (async != null)
+                    callPayload.Queries["async"] = SourceExpressionConverter.ConvertO(async);
+                callPayload.Queries["timeout"] = Convert.ToString(5000);
+                if (timeout != null)
+                    callPayload.Queries["timeout"] = SourceExpressionConverter.ConvertO(timeout);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

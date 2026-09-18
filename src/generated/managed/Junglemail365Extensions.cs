@@ -12,375 +12,468 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
     public class Junglemail365Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsEmailsResponse> EmailsGet(Expression<Func<string>> requestJobId, Expression<Func<requestEmailTypeInput>> requestEmailType)
+        public IBodyWorkflowAction<JsEmailsResponse> EmailsGet([WorkflowExpression] Func<string> requestJobId, [WorkflowExpression] Func<requestEmailTypeInput> requestEmailType)
         {
-            var apiCallPath = "/1.0/emails";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
-            callPayload.Queries["request.emailType"] = CSharpExpressionConverter.Convert(requestEmailType);
-            return new ApiConnectionAction<JsEmailsResponse>(callPayload);
+            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
+            SourceExpression.Validate(requestEmailType, nameof(requestEmailType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1.0/emails";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["request.jobId"] = SourceExpressionConverter.ConvertO(requestJobId);
+                callPayload.Queries["request.emailType"] = SourceExpressionConverter.Convert(requestEmailType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JsEmailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken> JobApprove(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
+        public IBodyWorkflowAction<JToken> JobApprove([WorkflowExpression] Func<string> requestsecret, [WorkflowExpression] Func<string> requestcomments = null)
         {
-            var apiCallPath = "/1.0/job/approve";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestcomments != null)
+            SourceExpression.Validate(requestsecret, nameof(requestsecret), required: true);
+            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["comments"] = CSharpExpressionConverter.ConvertToken(requestcomments);
+                var apiCallPath = "/1.0/job/approve";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestcomments != null)
+                {
+                    request["comments"] = SourceExpressionConverter.ConvertToken(requestcomments);
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
+                request["secret"] = SourceExpressionConverter.ConvertToken(requestsecret);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            requestpropCount++;
-            request["secret"] = CSharpExpressionConverter.ConvertToken(requestsecret);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsCreateJobResponse> JobCreate(Expression<Func<requestrecipientSourceInput>> requestrecipientSource, Expression<Func<string>> requestsendingAccount, Expression<Func<string>> requestnewsletterTitle, Expression<Func<string>> requestoffice365Groups = null, Expression<Func<string>> requestattachmentContent = null, Expression<Func<string>> requestattachmentName = null, Expression<Func<string>> requestemailAddresses = null, Expression<Func<string>> requestemailContent = null, Expression<Func<requestemailContentTypeInput>> requestemailContentType = null, Expression<Func<string>> requestemailSubject = null, Expression<Func<string>> requestexchangeGroups = null, Expression<Func<requestwhenToSendTypeInput>> requestwhenToSendType = null, Expression<Func<string>> requestwhenToSend = null, Expression<Func<string>> requestrecipientEmailField = null, Expression<Func<string>> requestrecipientListURL = null, Expression<Func<string>> requestrecipientFilterView = null, Expression<Func<bool>> requestremoveDuplicates = null, Expression<Func<bool>> requestsendReport = null, Expression<Func<string>> requesttimeZone = null, Expression<Func<string>> requesttemplate = null, Expression<Func<bool>> requesttrackClicks = null, Expression<Func<bool>> requesttrackOpens = null)
+        public IBodyWorkflowAction<JsCreateJobResponse> JobCreate([WorkflowExpression] Func<requestrecipientSourceInput> requestrecipientSource, [WorkflowExpression] Func<string> requestsendingAccount, [WorkflowExpression] Func<string> requestnewsletterTitle, [WorkflowExpression] Func<string> requestoffice365Groups = null, [WorkflowExpression] Func<string> requestattachmentContent = null, [WorkflowExpression] Func<string> requestattachmentName = null, [WorkflowExpression] Func<string> requestemailAddresses = null, [WorkflowExpression] Func<string> requestemailContent = null, [WorkflowExpression] Func<requestemailContentTypeInput> requestemailContentType = null, [WorkflowExpression] Func<string> requestemailSubject = null, [WorkflowExpression] Func<string> requestexchangeGroups = null, [WorkflowExpression] Func<requestwhenToSendTypeInput> requestwhenToSendType = null, [WorkflowExpression] Func<string> requestwhenToSend = null, [WorkflowExpression] Func<string> requestrecipientEmailField = null, [WorkflowExpression] Func<string> requestrecipientListURL = null, [WorkflowExpression] Func<string> requestrecipientFilterView = null, [WorkflowExpression] Func<bool> requestremoveDuplicates = null, [WorkflowExpression] Func<bool> requestsendReport = null, [WorkflowExpression] Func<string> requesttimeZone = null, [WorkflowExpression] Func<string> requesttemplate = null, [WorkflowExpression] Func<bool> requesttrackClicks = null, [WorkflowExpression] Func<bool> requesttrackOpens = null)
         {
-            var apiCallPath = "/1.0/job/create";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestoffice365Groups != null)
+            SourceExpression.Validate(requestrecipientSource, nameof(requestrecipientSource), required: true);
+            SourceExpression.Validate(requestsendingAccount, nameof(requestsendingAccount), required: true);
+            SourceExpression.Validate(requestnewsletterTitle, nameof(requestnewsletterTitle), required: true);
+            SourceExpression.Validate(requestoffice365Groups, nameof(requestoffice365Groups), required: false);
+            SourceExpression.Validate(requestattachmentContent, nameof(requestattachmentContent), required: false);
+            SourceExpression.Validate(requestattachmentName, nameof(requestattachmentName), required: false);
+            SourceExpression.Validate(requestemailAddresses, nameof(requestemailAddresses), required: false);
+            SourceExpression.Validate(requestemailContent, nameof(requestemailContent), required: false);
+            SourceExpression.Validate(requestemailContentType, nameof(requestemailContentType), required: false);
+            SourceExpression.Validate(requestemailSubject, nameof(requestemailSubject), required: false);
+            SourceExpression.Validate(requestexchangeGroups, nameof(requestexchangeGroups), required: false);
+            SourceExpression.Validate(requestwhenToSendType, nameof(requestwhenToSendType), required: false);
+            SourceExpression.Validate(requestwhenToSend, nameof(requestwhenToSend), required: false);
+            SourceExpression.Validate(requestrecipientEmailField, nameof(requestrecipientEmailField), required: false);
+            SourceExpression.Validate(requestrecipientListURL, nameof(requestrecipientListURL), required: false);
+            SourceExpression.Validate(requestrecipientFilterView, nameof(requestrecipientFilterView), required: false);
+            SourceExpression.Validate(requestremoveDuplicates, nameof(requestremoveDuplicates), required: false);
+            SourceExpression.Validate(requestsendReport, nameof(requestsendReport), required: false);
+            SourceExpression.Validate(requesttimeZone, nameof(requesttimeZone), required: false);
+            SourceExpression.Validate(requesttemplate, nameof(requesttemplate), required: false);
+            SourceExpression.Validate(requesttrackClicks, nameof(requesttrackClicks), required: false);
+            SourceExpression.Validate(requesttrackOpens, nameof(requesttrackOpens), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["adGroups"] = CSharpExpressionConverter.ConvertToken(requestoffice365Groups);
-                requestpropCount++;
-            }
+                var apiCallPath = "/1.0/job/create";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestoffice365Groups != null)
+                {
+                    request["adGroups"] = SourceExpressionConverter.ConvertToken(requestoffice365Groups);
+                    requestpropCount++;
+                }
 
-            if (requestattachmentContent != null)
-            {
-                request["attachmentContent"] = CSharpExpressionConverter.ConvertToken(requestattachmentContent);
-                requestpropCount++;
-            }
+                if (requestattachmentContent != null)
+                {
+                    request["attachmentContent"] = SourceExpressionConverter.ConvertToken(requestattachmentContent);
+                    requestpropCount++;
+                }
 
-            if (requestattachmentName != null)
-            {
-                request["attachmentName"] = CSharpExpressionConverter.ConvertToken(requestattachmentName);
-                requestpropCount++;
-            }
+                if (requestattachmentName != null)
+                {
+                    request["attachmentName"] = SourceExpressionConverter.ConvertToken(requestattachmentName);
+                    requestpropCount++;
+                }
 
-            if (requestemailAddresses != null)
-            {
-                request["emailAddresses"] = CSharpExpressionConverter.ConvertToken(requestemailAddresses);
-                requestpropCount++;
-            }
+                if (requestemailAddresses != null)
+                {
+                    request["emailAddresses"] = SourceExpressionConverter.ConvertToken(requestemailAddresses);
+                    requestpropCount++;
+                }
 
-            if (requestemailContent != null)
-            {
-                request["emailBody"] = CSharpExpressionConverter.ConvertToken(requestemailContent);
-                requestpropCount++;
-            }
+                if (requestemailContent != null)
+                {
+                    request["emailBody"] = SourceExpressionConverter.ConvertToken(requestemailContent);
+                    requestpropCount++;
+                }
 
-            if (requestemailContentType != null)
-            {
                 if (requestemailContentType != null)
                 {
-                    request["emailContentType"] = CSharpExpressionConverter.Convert(requestemailContentType);
+                    if (requestemailContentType != null)
+                    {
+                        request["emailContentType"] = SourceExpressionConverter.Convert(requestemailContentType);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["emailContentType"] = "Template";
                     requestpropCount++;
                 }
 
-                requestpropCount++;
-            }
-            else
-            {
-                request["emailContentType"] = "Template";
-                requestpropCount++;
-            }
+                if (requestemailSubject != null)
+                {
+                    request["emailSubject"] = SourceExpressionConverter.ConvertToken(requestemailSubject);
+                    requestpropCount++;
+                }
 
-            if (requestemailSubject != null)
-            {
-                request["emailSubject"] = CSharpExpressionConverter.ConvertToken(requestemailSubject);
-                requestpropCount++;
-            }
+                if (requestexchangeGroups != null)
+                {
+                    request["exchangeGroups"] = SourceExpressionConverter.ConvertToken(requestexchangeGroups);
+                    requestpropCount++;
+                }
 
-            if (requestexchangeGroups != null)
-            {
-                request["exchangeGroups"] = CSharpExpressionConverter.ConvertToken(requestexchangeGroups);
-                requestpropCount++;
-            }
-
-            if (requestwhenToSendType != null)
-            {
                 if (requestwhenToSendType != null)
                 {
-                    request["jobExecutionType"] = CSharpExpressionConverter.Convert(requestwhenToSendType);
+                    if (requestwhenToSendType != null)
+                    {
+                        request["jobExecutionType"] = SourceExpressionConverter.Convert(requestwhenToSendType);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["jobExecutionType"] = "Now";
+                    requestpropCount++;
+                }
+
+                if (requestwhenToSend != null)
+                {
+                    request["jobScheduleTime"] = SourceExpressionConverter.ConvertToken(requestwhenToSend);
+                    requestpropCount++;
+                }
+
+                if (requestrecipientEmailField != null)
+                {
+                    request["recipientListField"] = SourceExpressionConverter.ConvertToken(requestrecipientEmailField);
+                    requestpropCount++;
+                }
+
+                if (requestrecipientListURL != null)
+                {
+                    request["recipientListUrl"] = SourceExpressionConverter.ConvertToken(requestrecipientListURL);
+                    requestpropCount++;
+                }
+
+                if (requestrecipientFilterView != null)
+                {
+                    request["recipientListView"] = SourceExpressionConverter.ConvertToken(requestrecipientFilterView);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-            }
-            else
-            {
-                request["jobExecutionType"] = "Now";
-                requestpropCount++;
-            }
-
-            if (requestwhenToSend != null)
-            {
-                request["jobScheduleTime"] = CSharpExpressionConverter.ConvertToken(requestwhenToSend);
-                requestpropCount++;
-            }
-
-            if (requestrecipientEmailField != null)
-            {
-                request["recipientListField"] = CSharpExpressionConverter.ConvertToken(requestrecipientEmailField);
-                requestpropCount++;
-            }
-
-            if (requestrecipientListURL != null)
-            {
-                request["recipientListUrl"] = CSharpExpressionConverter.ConvertToken(requestrecipientListURL);
-                requestpropCount++;
-            }
-
-            if (requestrecipientFilterView != null)
-            {
-                request["recipientListView"] = CSharpExpressionConverter.ConvertToken(requestrecipientFilterView);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["recipientType"] = CSharpExpressionConverter.Convert(requestrecipientSource);
-            if (requestremoveDuplicates != null)
-            {
+                request["recipientType"] = SourceExpressionConverter.Convert(requestrecipientSource);
                 if (requestremoveDuplicates != null)
                 {
-                    request["removeDuplicates"] = CSharpExpressionConverter.ConvertToken(requestremoveDuplicates);
+                    if (requestremoveDuplicates != null)
+                    {
+                        request["removeDuplicates"] = SourceExpressionConverter.ConvertToken(requestremoveDuplicates);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["removeDuplicates"] = true;
                     requestpropCount++;
                 }
 
-                requestpropCount++;
-            }
-            else
-            {
-                request["removeDuplicates"] = true;
-                requestpropCount++;
-            }
-
-            if (requestsendReport != null)
-            {
                 if (requestsendReport != null)
                 {
-                    request["reportAuthor"] = CSharpExpressionConverter.ConvertToken(requestsendReport);
+                    if (requestsendReport != null)
+                    {
+                        request["reportAuthor"] = SourceExpressionConverter.ConvertToken(requestsendReport);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["reportAuthor"] = true;
+                    requestpropCount++;
+                }
+
+                if (requesttimeZone != null)
+                {
+                    request["scheduledTimeZoneId"] = SourceExpressionConverter.ConvertToken(requesttimeZone);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
-            }
-            else
-            {
-                request["reportAuthor"] = true;
-                requestpropCount++;
-            }
+                request["sendingAddressId"] = SourceExpressionConverter.ConvertToken(requestsendingAccount);
+                if (requesttemplate != null)
+                {
+                    request["template"] = SourceExpressionConverter.ConvertToken(requesttemplate);
+                    requestpropCount++;
+                }
 
-            if (requesttimeZone != null)
-            {
-                request["scheduledTimeZoneId"] = CSharpExpressionConverter.ConvertToken(requesttimeZone);
                 requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["sendingAddressId"] = CSharpExpressionConverter.ConvertToken(requestsendingAccount);
-            if (requesttemplate != null)
-            {
-                request["template"] = CSharpExpressionConverter.ConvertToken(requesttemplate);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["title"] = CSharpExpressionConverter.ConvertToken(requestnewsletterTitle);
-            if (requesttrackClicks != null)
-            {
+                request["title"] = SourceExpressionConverter.ConvertToken(requestnewsletterTitle);
                 if (requesttrackClicks != null)
                 {
-                    request["trackClicks"] = CSharpExpressionConverter.ConvertToken(requesttrackClicks);
+                    if (requesttrackClicks != null)
+                    {
+                        request["trackClicks"] = SourceExpressionConverter.ConvertToken(requesttrackClicks);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["trackClicks"] = true;
                     requestpropCount++;
                 }
 
-                requestpropCount++;
-            }
-            else
-            {
-                request["trackClicks"] = true;
-                requestpropCount++;
-            }
-
-            if (requesttrackOpens != null)
-            {
                 if (requesttrackOpens != null)
                 {
-                    request["trackOpens"] = CSharpExpressionConverter.ConvertToken(requesttrackOpens);
+                    if (requesttrackOpens != null)
+                    {
+                        request["trackOpens"] = SourceExpressionConverter.ConvertToken(requesttrackOpens);
+                        requestpropCount++;
+                    }
+
+                    requestpropCount++;
+                }
+                else
+                {
+                    request["trackOpens"] = true;
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JsCreateJobResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JsJob> JobGet([WorkflowExpression] Func<string> requestJobId)
+        {
+            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1.0/job/get";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["request.jobId"] = SourceExpressionConverter.ConvertO(requestJobId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JsJob>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JsJobsResponse> JobGetAll([WorkflowExpression] Func<string> requestDateFrom = null, [WorkflowExpression] Func<string> requestDateTo = null, [WorkflowExpression] Func<int> requestLimit = null)
+        {
+            SourceExpression.Validate(requestDateFrom, nameof(requestDateFrom), required: false);
+            SourceExpression.Validate(requestDateTo, nameof(requestDateTo), required: false);
+            SourceExpression.Validate(requestLimit, nameof(requestLimit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1.0/job/getlist";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (requestDateFrom != null)
+                    callPayload.Queries["request.dateFrom"] = SourceExpressionConverter.ConvertO(requestDateFrom);
+                if (requestDateTo != null)
+                    callPayload.Queries["request.dateTo"] = SourceExpressionConverter.ConvertO(requestDateTo);
+                if (requestLimit != null)
+                    callPayload.Queries["request.limit"] = SourceExpressionConverter.ConvertO(requestLimit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JsJobsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JsJobReport> JobGetReport([WorkflowExpression] Func<string> requestJobId)
+        {
+            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1.0/job/getreport";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["request.jobId"] = SourceExpressionConverter.ConvertO(requestJobId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JsJobReport>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JToken> JobReject([WorkflowExpression] Func<string> requestsecret, [WorkflowExpression] Func<string> requestcomments = null)
+        {
+            SourceExpression.Validate(requestsecret, nameof(requestsecret), required: true);
+            SourceExpression.Validate(requestcomments, nameof(requestcomments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1.0/job/reject";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                if (requestcomments != null)
+                {
+                    request["comments"] = SourceExpressionConverter.ConvertToken(requestcomments);
                     requestpropCount++;
                 }
 
                 requestpropCount++;
+                request["secret"] = SourceExpressionConverter.ConvertToken(requestsecret);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
-            else
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JsTrackerLogResponse> TrackerLogGet([WorkflowExpression] Func<string> requestJobId, [WorkflowExpression] Func<requestDataTypeInput> requestDataType)
+        {
+            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: true);
+            SourceExpression.Validate(requestDataType, nameof(requestDataType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["trackOpens"] = true;
-                requestpropCount++;
+                var apiCallPath = "/1.0/trackerlog";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["request.jobId"] = SourceExpressionConverter.ConvertO(requestJobId);
+                callPayload.Queries["request.dataType"] = SourceExpressionConverter.Convert(requestDataType);
+                return callPayload;
             }
 
-            if (requestpropCount > 0)
+            return new ApiConnectionAction<JsTrackerLogResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
+        public IBodyWorkflowAction<JsUnsubscribesResponse> UnsubscribesGet([WorkflowExpression] Func<string> requestJobId = null)
+        {
+            SourceExpression.Validate(requestJobId, nameof(requestJobId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/1.0/unsubscribes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (requestJobId != null)
+                    callPayload.Queries["request.jobId"] = SourceExpressionConverter.ConvertO(requestJobId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JsCreateJobResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJob> JobGet(Expression<Func<string>> requestJobId)
-        {
-            var apiCallPath = "/1.0/job/get";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
-            return new ApiConnectionAction<JsJob>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJobsResponse> JobGetAll(Expression<Func<string>> requestDateFrom = null, Expression<Func<string>> requestDateTo = null, Expression<Func<int>> requestLimit = null)
-        {
-            var apiCallPath = "/1.0/job/getlist";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (requestDateFrom != null)
-                callPayload.Queries["request.dateFrom"] = CSharpExpressionConverter.ConvertO(requestDateFrom);
-            if (requestDateTo != null)
-                callPayload.Queries["request.dateTo"] = CSharpExpressionConverter.ConvertO(requestDateTo);
-            if (requestLimit != null)
-                callPayload.Queries["request.limit"] = CSharpExpressionConverter.ConvertO(requestLimit);
-            return new ApiConnectionAction<JsJobsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsJobReport> JobGetReport(Expression<Func<string>> requestJobId)
-        {
-            var apiCallPath = "/1.0/job/getreport";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
-            return new ApiConnectionAction<JsJobReport>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JToken> JobReject(Expression<Func<string>> requestsecret, Expression<Func<string>> requestcomments = null)
-        {
-            var apiCallPath = "/1.0/job/reject";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            if (requestcomments != null)
-            {
-                request["comments"] = CSharpExpressionConverter.ConvertToken(requestcomments);
-                requestpropCount++;
-            }
-
-            requestpropCount++;
-            request["secret"] = CSharpExpressionConverter.ConvertToken(requestsecret);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsTrackerLogResponse> TrackerLogGet(Expression<Func<string>> requestJobId, Expression<Func<requestDataTypeInput>> requestDataType)
-        {
-            var apiCallPath = "/1.0/trackerlog";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
-            callPayload.Queries["request.dataType"] = CSharpExpressionConverter.Convert(requestDataType);
-            return new ApiConnectionAction<JsTrackerLogResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "junglemail365")]
-        public IBodyWorkflowAction<JsUnsubscribesResponse> UnsubscribesGet(Expression<Func<string>> requestJobId = null)
-        {
-            var apiCallPath = "/1.0/unsubscribes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (requestJobId != null)
-                callPayload.Queries["request.jobId"] = CSharpExpressionConverter.ConvertO(requestJobId);
-            return new ApiConnectionAction<JsUnsubscribesResponse>(callPayload);
+            return new ApiConnectionAction<JsUnsubscribesResponse>(BuildSourceInput);
         }
     }
 
     public class Junglemail365Triggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted(Expression<Func<string>> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobCompleted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/1.0/registerwebhookjobcompleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/1.0/registerwebhookjobcompleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                request["triggerUrl"] = "@listCallbackUrl()";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted(Expression<Func<string>> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobStarted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/1.0/registerwebhookjobstarted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/1.0/registerwebhookjobstarted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                request["triggerUrl"] = "@listCallbackUrl()";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted(Expression<Func<string>> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<JsWebhookCreatedResponse> WebhookJobSumitted([WorkflowExpression] Func<string> requesttitle, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/1.0/registerwebhookjobsubmitted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["title"] = CSharpExpressionConverter.ConvertToken(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
-            requestpropCount++;
-            if (requestpropCount > 0)
+            SourceExpression.Validate(requesttitle, nameof(requesttitle), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = request;
+                var apiCallPath = "/1.0/registerwebhookjobsubmitted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                requestpropCount++;
+                request["title"] = SourceExpressionConverter.ConvertToken(requesttitle);
+                request["triggerUrl"] = "@listCallbackUrl()";
+                requestpropCount++;
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<JsWebhookCreatedResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

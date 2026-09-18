@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void TemplateCompatibleCondition_RemainsTemplateExpression()
+        public void WorkflowReferenceComparison_PreservesNativeEquality()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "foo").WithName("ComposeInput");
@@ -52,17 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var definition = condition.GetActionDefinition("workflow");
 
-            var expected = new JObject
-            {
-                ["and"] = new JArray
-                {
-                    new JObject
-                    {
-                        ["equals"] = new JArray("@triggerBody()", "@outputs('ComposeInput')"),
-                    },
-                },
-            };
-            Assert.True(JToken.DeepEquals(expected, definition.Expression), definition.Expression.ToString());
+            Assert.Equal("@csharp{triggerBody() == outputs(\"ComposeInput\")}", definition.Expression.Value<string>());
         }
 
         [Fact]

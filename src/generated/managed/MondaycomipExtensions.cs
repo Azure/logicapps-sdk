@@ -12,26 +12,31 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mondaycomip
     public class MondaycomipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "mondaycomip")]
-        public IBodyWorkflowAction<JToken> CallGraphQL(Expression<Func<string>> bodyquery = null)
+        public IBodyWorkflowAction<JToken> CallGraphQL([WorkflowExpression] Func<string> bodyquery = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquery != null)
+            SourceExpression.Validate(bodyquery, nameof(bodyquery), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["query"] = CSharpExpressionConverter.ConvertToken(bodyquery);
-                bodypropCount++;
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquery != null)
+                {
+                    body["query"] = SourceExpressionConverter.ConvertToken(bodyquery);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

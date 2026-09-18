@@ -12,503 +12,582 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lifx
     public class LifxActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MoveEffect(Expression<Func<string>> lights, Expression<Func<bodydirectionInput>> bodydirection = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypowerOn = null)
+        public IWorkflowAction MoveEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodydirectionInput> bodydirection = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydirection != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodydirection, nameof(bodydirection), required: false);
+            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
+            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/move", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodydirection != null)
                 {
-                    body["direction"] = CSharpExpressionConverter.Convert(bodydirection);
+                    if (bodydirection != null)
+                    {
+                        body["direction"] = SourceExpressionConverter.Convert(bodydirection);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["direction"] = "forward";
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["direction"] = "forward";
-                bodypropCount++;
-            }
-
-            if (bodyperiod != null)
-            {
                 if (bodyperiod != null)
                 {
-                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = SourceExpressionConverter.ConvertToken(bodyperiod);
+                        bodypropCount++;
+                    }
+
                     bodypropCount++;
                 }
-
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
-                body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
-                body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction PulseEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
-            if (bodyfromColor != null)
-            {
-                body["from_color"] = CSharpExpressionConverter.Convert(bodyfromColor);
-                bodypropCount++;
-            }
-
-            if (bodyperiod != null)
-            {
-                if (bodyperiod != null)
+                else
                 {
-                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
+                    body["period"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
                 if (bodycycles != null)
                 {
-                    body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
+                    body["cycles"] = SourceExpressionConverter.ConvertToken(bodycycles);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cycles"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodypersist != null)
-            {
-                body["persist"] = CSharpExpressionConverter.ConvertToken(bodypersist);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
                 if (bodypowerOn != null)
                 {
-                    body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
+                    body["power_on"] = SourceExpressionConverter.ConvertToken(bodypowerOn);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["power_on"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction ActivateScene(Expression<Func<string>> scene, Expression<Func<int>> bodyduration = null)
+        public IWorkflowAction PulseEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(scene, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyduration != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            SourceExpression.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
+            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
+            SourceExpression.Validate(bodypersist, nameof(bodypersist), required: false);
+            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/pulse", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                if (bodyfromColor != null)
+                {
+                    body["from_color"] = SourceExpressionConverter.Convert(bodyfromColor);
+                    bodypropCount++;
+                }
+
+                if (bodyperiod != null)
+                {
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = SourceExpressionConverter.ConvertToken(bodyperiod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["period"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodycycles != null)
+                {
+                    if (bodycycles != null)
+                    {
+                        body["cycles"] = SourceExpressionConverter.ConvertToken(bodycycles);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cycles"] = 1;
+                    bodypropCount++;
+                }
+
+                if (bodypersist != null)
+                {
+                    body["persist"] = SourceExpressionConverter.ConvertToken(bodypersist);
+                    bodypropCount++;
+                }
+
+                if (bodypowerOn != null)
+                {
+                    if (bodypowerOn != null)
+                    {
+                        body["power_on"] = SourceExpressionConverter.ConvertToken(bodypowerOn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["power_on"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
+        public IWorkflowAction ActivateScene([WorkflowExpression] Func<string> scene, [WorkflowExpression] Func<int> bodyduration = null)
+        {
+            SourceExpression.Validate(scene, nameof(scene), required: true);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/scenes/{0}/activate", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(scene, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodyduration != null)
                 {
-                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 0;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IBodyWorkflowAction<SetStateResponse> SetState(Expression<Func<string>> lights, Expression<Func<bodypowerInput>> bodypower = null, Expression<Func<bodycolorInput>> bodycolor = null, Expression<Func<double>> bodybrightness = null, Expression<Func<double>> bodyduration = null, Expression<Func<double>> bodyinfrared = null)
+        public IBodyWorkflowAction<SetStateResponse> SetState([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodypowerInput> bodypower = null, [WorkflowExpression] Func<bodycolorInput> bodycolor = null, [WorkflowExpression] Func<double> bodybrightness = null, [WorkflowExpression] Func<double> bodyduration = null, [WorkflowExpression] Func<double> bodyinfrared = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypower != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodypower, nameof(bodypower), required: false);
+            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: false);
+            SourceExpression.Validate(bodybrightness, nameof(bodybrightness), required: false);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            SourceExpression.Validate(bodyinfrared, nameof(bodyinfrared), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["power"] = CSharpExpressionConverter.Convert(bodypower);
-                bodypropCount++;
-            }
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/state", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypower != null)
+                {
+                    body["power"] = SourceExpressionConverter.Convert(bodypower);
+                    bodypropCount++;
+                }
 
-            if (bodycolor != null)
-            {
-                body["color"] = CSharpExpressionConverter.Convert(bodycolor);
-                bodypropCount++;
-            }
+                if (bodycolor != null)
+                {
+                    body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                    bodypropCount++;
+                }
 
-            if (bodybrightness != null)
-            {
                 if (bodybrightness != null)
                 {
-                    body["brightness"] = CSharpExpressionConverter.ConvertToken(bodybrightness);
+                    if (bodybrightness != null)
+                    {
+                        body["brightness"] = SourceExpressionConverter.ConvertToken(bodybrightness);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["brightness"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["brightness"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodyduration != null)
-            {
                 if (bodyduration != null)
                 {
-                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 0;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 0;
-                bodypropCount++;
+                if (bodyinfrared != null)
+                {
+                    body["infrared"] = SourceExpressionConverter.ConvertToken(bodyinfrared);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyinfrared != null)
-            {
-                body["infrared"] = CSharpExpressionConverter.ConvertToken(bodyinfrared);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SetStateResponse>(callPayload);
+            return new ApiConnectionAction<SetStateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction EffectsOff(Expression<Func<string>> lights, Expression<Func<bool>> bodypowerOff = null)
+        public IWorkflowAction EffectsOff([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bool> bodypowerOff = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypowerOff != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodypowerOff, nameof(bodypowerOff), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["power_off"] = CSharpExpressionConverter.ConvertToken(bodypowerOff);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/off", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypowerOff != null)
+                {
+                    body["power_off"] = SourceExpressionConverter.ConvertToken(bodypowerOff);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction SetStates(Expression<Func<bodystatesInputItem[]>> bodystates, Expression<Func<bodydefaultspowerInput>> bodydefaultspower = null, Expression<Func<bodydefaultscolorInput>> bodydefaultscolor = null, Expression<Func<double>> bodydefaultsbrightness = null, Expression<Func<double>> bodydefaultsduration = null, Expression<Func<double>> bodydefaultsinfrared = null)
+        public IWorkflowAction SetStates([WorkflowExpression] Func<bodystatesInputItem[]> bodystates, [WorkflowExpression] Func<bodydefaultspowerInput> bodydefaultspower = null, [WorkflowExpression] Func<bodydefaultscolorInput> bodydefaultscolor = null, [WorkflowExpression] Func<double> bodydefaultsbrightness = null, [WorkflowExpression] Func<double> bodydefaultsduration = null, [WorkflowExpression] Func<double> bodydefaultsinfrared = null)
         {
-            var apiCallPath = "/v1/lights/states";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["states"] = CSharpExpressionConverter.ConvertToken(bodystates);
-            var defaultsObject = new JObject();
-            var defaultsObjectpropCount = 0;
-            if (bodydefaultspower != null)
+            SourceExpression.Validate(bodystates, nameof(bodystates), required: true);
+            SourceExpression.Validate(bodydefaultspower, nameof(bodydefaultspower), required: false);
+            SourceExpression.Validate(bodydefaultscolor, nameof(bodydefaultscolor), required: false);
+            SourceExpression.Validate(bodydefaultsbrightness, nameof(bodydefaultsbrightness), required: false);
+            SourceExpression.Validate(bodydefaultsduration, nameof(bodydefaultsduration), required: false);
+            SourceExpression.Validate(bodydefaultsinfrared, nameof(bodydefaultsinfrared), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                defaultsObject["power"] = CSharpExpressionConverter.Convert(bodydefaultspower);
-                defaultsObjectpropCount++;
-            }
+                var apiCallPath = "/v1/lights/states";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["states"] = SourceExpressionConverter.ConvertToken(bodystates);
+                var defaultsObject = new JObject();
+                var defaultsObjectpropCount = 0;
+                if (bodydefaultspower != null)
+                {
+                    defaultsObject["power"] = SourceExpressionConverter.Convert(bodydefaultspower);
+                    defaultsObjectpropCount++;
+                }
 
-            if (bodydefaultscolor != null)
-            {
-                defaultsObject["color"] = CSharpExpressionConverter.Convert(bodydefaultscolor);
-                defaultsObjectpropCount++;
-            }
+                if (bodydefaultscolor != null)
+                {
+                    defaultsObject["color"] = SourceExpressionConverter.Convert(bodydefaultscolor);
+                    defaultsObjectpropCount++;
+                }
 
-            if (bodydefaultsbrightness != null)
-            {
                 if (bodydefaultsbrightness != null)
                 {
-                    defaultsObject["brightness"] = CSharpExpressionConverter.ConvertToken(bodydefaultsbrightness);
+                    if (bodydefaultsbrightness != null)
+                    {
+                        defaultsObject["brightness"] = SourceExpressionConverter.ConvertToken(bodydefaultsbrightness);
+                        defaultsObjectpropCount++;
+                    }
+
+                    defaultsObjectpropCount++;
+                }
+                else
+                {
+                    defaultsObject["brightness"] = 1;
                     defaultsObjectpropCount++;
                 }
 
-                defaultsObjectpropCount++;
-            }
-            else
-            {
-                defaultsObject["brightness"] = 1;
-                defaultsObjectpropCount++;
-            }
-
-            if (bodydefaultsduration != null)
-            {
                 if (bodydefaultsduration != null)
                 {
-                    defaultsObject["duration"] = CSharpExpressionConverter.ConvertToken(bodydefaultsduration);
+                    if (bodydefaultsduration != null)
+                    {
+                        defaultsObject["duration"] = SourceExpressionConverter.ConvertToken(bodydefaultsduration);
+                        defaultsObjectpropCount++;
+                    }
+
+                    defaultsObjectpropCount++;
+                }
+                else
+                {
+                    defaultsObject["duration"] = 0;
                     defaultsObjectpropCount++;
                 }
 
-                defaultsObjectpropCount++;
-            }
-            else
-            {
-                defaultsObject["duration"] = 0;
-                defaultsObjectpropCount++;
+                if (bodydefaultsinfrared != null)
+                {
+                    defaultsObject["infrared"] = SourceExpressionConverter.ConvertToken(bodydefaultsinfrared);
+                    defaultsObjectpropCount++;
+                }
+
+                if (defaultsObjectpropCount > 0)
+                {
+                    body["defaults"] = defaultsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydefaultsinfrared != null)
-            {
-                defaultsObject["infrared"] = CSharpExpressionConverter.ConvertToken(bodydefaultsinfrared);
-                defaultsObjectpropCount++;
-            }
-
-            if (defaultsObjectpropCount > 0)
-            {
-                body["defaults"] = defaultsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction TogglePower(Expression<Func<string>> lights, Expression<Func<double>> bodyduration = null)
+        public IWorkflowAction TogglePower([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<double> bodyduration = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyduration != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/toggle", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 if (bodyduration != null)
                 {
-                    body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
+                    if (bodyduration != null)
+                    {
+                        body["duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["duration"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["duration"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction BreatheEffect(Expression<Func<string>> lights, Expression<Func<bodycolorInput>> bodycolor, Expression<Func<bodyfromColorInput>> bodyfromColor = null, Expression<Func<double>> bodyperiod = null, Expression<Func<double>> bodycycles = null, Expression<Func<bool>> bodypersist = null, Expression<Func<bool>> bodypowerOn = null, Expression<Func<double>> bodypeak = null)
+        public IWorkflowAction BreatheEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<bodycolorInput> bodycolor, [WorkflowExpression] Func<bodyfromColorInput> bodyfromColor = null, [WorkflowExpression] Func<double> bodyperiod = null, [WorkflowExpression] Func<double> bodycycles = null, [WorkflowExpression] Func<bool> bodypersist = null, [WorkflowExpression] Func<bool> bodypowerOn = null, [WorkflowExpression] Func<double> bodypeak = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
-            if (bodyfromColor != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            SourceExpression.Validate(bodyfromColor, nameof(bodyfromColor), required: false);
+            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            SourceExpression.Validate(bodycycles, nameof(bodycycles), required: false);
+            SourceExpression.Validate(bodypersist, nameof(bodypersist), required: false);
+            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            SourceExpression.Validate(bodypeak, nameof(bodypeak), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["from_color"] = CSharpExpressionConverter.Convert(bodyfromColor);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/breathe", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                if (bodyfromColor != null)
+                {
+                    body["from_color"] = SourceExpressionConverter.Convert(bodyfromColor);
+                    bodypropCount++;
+                }
 
-            if (bodyperiod != null)
-            {
                 if (bodyperiod != null)
                 {
-                    body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
+                    if (bodyperiod != null)
+                    {
+                        body["period"] = SourceExpressionConverter.ConvertToken(bodyperiod);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["period"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["period"] = 1;
-                bodypropCount++;
-            }
-
-            if (bodycycles != null)
-            {
                 if (bodycycles != null)
                 {
-                    body["cycles"] = CSharpExpressionConverter.ConvertToken(bodycycles);
+                    if (bodycycles != null)
+                    {
+                        body["cycles"] = SourceExpressionConverter.ConvertToken(bodycycles);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["cycles"] = 1;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["cycles"] = 1;
-                bodypropCount++;
-            }
+                if (bodypersist != null)
+                {
+                    body["persist"] = SourceExpressionConverter.ConvertToken(bodypersist);
+                    bodypropCount++;
+                }
 
-            if (bodypersist != null)
-            {
-                body["persist"] = CSharpExpressionConverter.ConvertToken(bodypersist);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
                 if (bodypowerOn != null)
                 {
-                    body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
+                    if (bodypowerOn != null)
+                    {
+                        body["power_on"] = SourceExpressionConverter.ConvertToken(bodypowerOn);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["power_on"] = true;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["power_on"] = true;
-                bodypropCount++;
-            }
-
-            if (bodypeak != null)
-            {
                 if (bodypeak != null)
                 {
-                    body["peak"] = CSharpExpressionConverter.ConvertToken(bodypeak);
+                    if (bodypeak != null)
+                    {
+                        body["peak"] = SourceExpressionConverter.ConvertToken(bodypeak);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["peak"] = 0.5;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["peak"] = 0.5;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lifx")]
-        public IWorkflowAction MorphEffect(Expression<Func<string>> lights, Expression<Func<int>> bodyperiod = null, Expression<Func<int>> bodyduration = null, Expression<Func<string[]>> bodypalette = null, Expression<Func<bool>> bodypowerOn = null)
+        public IWorkflowAction MorphEffect([WorkflowExpression] Func<string> lights, [WorkflowExpression] Func<int> bodyperiod = null, [WorkflowExpression] Func<int> bodyduration = null, [WorkflowExpression] Func<string[]> bodypalette = null, [WorkflowExpression] Func<bool> bodypowerOn = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyperiod != null)
+            SourceExpression.Validate(lights, nameof(lights), required: true);
+            SourceExpression.Validate(bodyperiod, nameof(bodyperiod), required: false);
+            SourceExpression.Validate(bodyduration, nameof(bodyduration), required: false);
+            SourceExpression.Validate(bodypalette, nameof(bodypalette), required: false);
+            SourceExpression.Validate(bodypowerOn, nameof(bodypowerOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["period"] = CSharpExpressionConverter.ConvertToken(bodyperiod);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/lights/{0}/effects/morph", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(lights, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyperiod != null)
+                {
+                    body["period"] = SourceExpressionConverter.ConvertToken(bodyperiod);
+                    bodypropCount++;
+                }
+
+                if (bodyduration != null)
+                {
+                    body["duration"] = SourceExpressionConverter.ConvertToken(bodyduration);
+                    bodypropCount++;
+                }
+
+                if (bodypalette != null)
+                {
+                    body["palette"] = SourceExpressionConverter.ConvertToken(bodypalette);
+                    bodypropCount++;
+                }
+
+                if (bodypowerOn != null)
+                {
+                    body["power_on"] = SourceExpressionConverter.ConvertToken(bodypowerOn);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyduration != null)
-            {
-                body["duration"] = CSharpExpressionConverter.ConvertToken(bodyduration);
-                bodypropCount++;
-            }
-
-            if (bodypalette != null)
-            {
-                body["palette"] = CSharpExpressionConverter.ConvertToken(bodypalette);
-                bodypropCount++;
-            }
-
-            if (bodypowerOn != null)
-            {
-                body["power_on"] = CSharpExpressionConverter.ConvertToken(bodypowerOn);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

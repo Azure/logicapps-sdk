@@ -12,24 +12,36 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Chucknorrisioip
     public class ChucknorrisioipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact(Expression<Func<string>> category = null)
+        public IBodyWorkflowAction<GetRandomChuckNorrisFactResponse> GetRandomChuckNorrisFact([WorkflowExpression] Func<string> category = null)
         {
-            var apiCallPath = "/random";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(callPayload);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/random";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRandomChuckNorrisFactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "chucknorrisioip")]
-        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts(Expression<Func<string>> query)
+        public IBodyWorkflowAction<SearchChuckNorrisFactsResponse> SearchChuckNorrisFacts([WorkflowExpression] Func<string> query)
         {
-            var apiCallPath = "/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
-            return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(callPayload);
+            SourceExpression.Validate(query, nameof(query), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SearchChuckNorrisFactsResponse>(BuildSourceInput);
         }
     }
 

@@ -12,18 +12,27 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dox42
     public class Dox42Actions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dox42")]
-        public IWorkflowAction Dox42Call(Expression<Func<string>> domainname, Expression<Func<string>> querystring, Expression<Func<string>> token, Expression<Func<string>> accept = null)
+        public IWorkflowAction Dox42Call([WorkflowExpression] Func<string> domainname, [WorkflowExpression] Func<string> querystring, [WorkflowExpression] Func<string> token, [WorkflowExpression] Func<string> accept = null)
         {
-            var apiCallPath = "/dox42RestService.ashx";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["querystring"] = CSharpExpressionConverter.ConvertO(querystring);
-            callPayload.Headers["domainname"] = CSharpExpressionConverter.ConvertO(domainname);
-            callPayload.Headers["token"] = CSharpExpressionConverter.ConvertO(token);
-            callPayload.Headers["accept"] = Convert.ToString("application/json");
-            if (accept != null)
-                callPayload.Headers["accept"] = CSharpExpressionConverter.ConvertO(accept);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(domainname, nameof(domainname), required: true);
+            SourceExpression.Validate(querystring, nameof(querystring), required: true);
+            SourceExpression.Validate(token, nameof(token), required: true);
+            SourceExpression.Validate(accept, nameof(accept), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/dox42RestService.ashx";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["querystring"] = SourceExpressionConverter.ConvertO(querystring);
+                callPayload.Headers["domainname"] = SourceExpressionConverter.ConvertO(domainname);
+                callPayload.Headers["token"] = SourceExpressionConverter.ConvertO(token);
+                callPayload.Headers["accept"] = Convert.ToString("application/json");
+                if (accept != null)
+                    callPayload.Headers["accept"] = SourceExpressionConverter.ConvertO(accept);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

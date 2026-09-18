@@ -12,15 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1ptip
     public class _1ptipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1ptip")]
-        public IBodyWorkflowAction<URLGetResponse> URLGet(Expression<Func<string>> @long, Expression<Func<string>> @short = null)
+        public IBodyWorkflowAction<URLGetResponse> URLGet([WorkflowExpression] Func<string> @long, [WorkflowExpression] Func<string> @short = null)
         {
-            var apiCallPath = "/addURL";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["long"] = CSharpExpressionConverter.ConvertO(@long);
-            if (@short != null)
-                callPayload.Queries["short"] = CSharpExpressionConverter.ConvertO(@short);
-            return new ApiConnectionAction<URLGetResponse>(callPayload);
+            SourceExpression.Validate(@long, nameof(@long), required: true);
+            SourceExpression.Validate(@short, nameof(@short), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/addURL";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["long"] = SourceExpressionConverter.ConvertO(@long);
+                if (@short != null)
+                    callPayload.Queries["short"] = SourceExpressionConverter.ConvertO(@short);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<URLGetResponse>(BuildSourceInput);
         }
     }
 

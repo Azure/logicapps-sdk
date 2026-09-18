@@ -1,0 +1,27 @@
+using Microsoft.Azure.Workflows.Sdk;
+
+internal static class FixtureWorkflow
+{
+    private static readonly List<string> Calls = new();
+
+    public static object Run()
+    {
+        Calls.Clear();
+        IOutputWorkflowAction<string> action = Observe<string>(
+            last: Mark("last"),
+            action: WorkflowActions.BuiltIn.Compose<string>(() => "typed").WithName(Mark("name")),
+            first: Mark("first"));
+        FixtureAssert.Equal("last,name,first", string.Join(",", Calls));
+        FixtureAssert.Equal("typed", FixtureAssert.Input(action));
+        return new { input = FixtureAssert.Input(action), order = Calls.ToArray(), resultType = typeof(string).FullName };
+    }
+
+    private static string Mark(string value) { Calls.Add(value); return value; }
+
+    private static IOutputWorkflowAction<T> Observe<T>(string first, IOutputWorkflowAction<T> action, string last)
+    {
+        FixtureAssert.Equal("first", first);
+        FixtureAssert.Equal("last", last);
+        return action;
+    }
+}

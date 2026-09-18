@@ -12,13 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Abstractemailvalidat
     public class AbstractemailvalidatActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "abstractemailvalidat")]
-        public IBodyWorkflowAction<ValidationResponse> Validation(Expression<Func<string>> email)
+        public IBodyWorkflowAction<ValidationResponse> Validation([WorkflowExpression] Func<string> email)
         {
-            var apiCallPath = "/v1/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["email"] = CSharpExpressionConverter.ConvertO(email);
-            return new ApiConnectionAction<ValidationResponse>(callPayload);
+            SourceExpression.Validate(email, nameof(email), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["email"] = SourceExpressionConverter.ConvertO(email);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValidationResponse>(BuildSourceInput);
         }
     }
 

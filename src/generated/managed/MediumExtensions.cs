@@ -17,10 +17,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Medium
     {
         public IBodyWorkflowTrigger<Publications> TriggerPublicationAdded(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/publications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<Publications>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/publications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<Publications>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

@@ -12,107 +12,163 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iceandfiregotip
     public class IceandfiregotipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<BookGetResponseItem[]> BookGet(Expression<Func<string>> name = null, Expression<Func<string>> fromReleaseDate = null, Expression<Func<string>> toReleaseDate = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<BookGetResponseItem[]> BookGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> fromReleaseDate = null, [WorkflowExpression] Func<string> toReleaseDate = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = "/api/books";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (fromReleaseDate != null)
-                callPayload.Queries["fromReleaseDate"] = CSharpExpressionConverter.ConvertO(fromReleaseDate);
-            if (toReleaseDate != null)
-                callPayload.Queries["toReleaseDate"] = CSharpExpressionConverter.ConvertO(toReleaseDate);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            return new ApiConnectionAction<BookGetResponseItem[]>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(fromReleaseDate, nameof(fromReleaseDate), required: false);
+            SourceExpression.Validate(toReleaseDate, nameof(toReleaseDate), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/books";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (fromReleaseDate != null)
+                    callPayload.Queries["fromReleaseDate"] = SourceExpressionConverter.ConvertO(fromReleaseDate);
+                if (toReleaseDate != null)
+                    callPayload.Queries["toReleaseDate"] = SourceExpressionConverter.ConvertO(toReleaseDate);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<BookGetAResponse> BookGetA(Expression<Func<string>> number)
+        public IBodyWorkflowAction<BookGetAResponse> BookGetA([WorkflowExpression] Func<string> number)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/books/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<BookGetAResponse>(callPayload);
+            SourceExpression.Validate(number, nameof(number), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/books/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(number, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<CharacterGetResponseItem[]> CharacterGet(Expression<Func<string>> name = null, Expression<Func<string>> gender = null, Expression<Func<string>> culture = null, Expression<Func<string>> born = null, Expression<Func<string>> died = null, Expression<Func<bool>> isAlive = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<CharacterGetResponseItem[]> CharacterGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> gender = null, [WorkflowExpression] Func<string> culture = null, [WorkflowExpression] Func<string> born = null, [WorkflowExpression] Func<string> died = null, [WorkflowExpression] Func<bool> isAlive = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = "/api/characters";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (gender != null)
-                callPayload.Queries["gender"] = CSharpExpressionConverter.ConvertO(gender);
-            if (culture != null)
-                callPayload.Queries["culture"] = CSharpExpressionConverter.ConvertO(culture);
-            if (born != null)
-                callPayload.Queries["born"] = CSharpExpressionConverter.ConvertO(born);
-            if (died != null)
-                callPayload.Queries["died"] = CSharpExpressionConverter.ConvertO(died);
-            callPayload.Queries["isAlive"] = Convert.ToString(true);
-            if (isAlive != null)
-                callPayload.Queries["isAlive"] = CSharpExpressionConverter.ConvertO(isAlive);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            return new ApiConnectionAction<CharacterGetResponseItem[]>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(gender, nameof(gender), required: false);
+            SourceExpression.Validate(culture, nameof(culture), required: false);
+            SourceExpression.Validate(born, nameof(born), required: false);
+            SourceExpression.Validate(died, nameof(died), required: false);
+            SourceExpression.Validate(isAlive, nameof(isAlive), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/characters";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (gender != null)
+                    callPayload.Queries["gender"] = SourceExpressionConverter.ConvertO(gender);
+                if (culture != null)
+                    callPayload.Queries["culture"] = SourceExpressionConverter.ConvertO(culture);
+                if (born != null)
+                    callPayload.Queries["born"] = SourceExpressionConverter.ConvertO(born);
+                if (died != null)
+                    callPayload.Queries["died"] = SourceExpressionConverter.ConvertO(died);
+                callPayload.Queries["isAlive"] = Convert.ToString(true);
+                if (isAlive != null)
+                    callPayload.Queries["isAlive"] = SourceExpressionConverter.ConvertO(isAlive);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CharacterGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CharacterGetAResponse> CharacterGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/characters/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CharacterGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/characters/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CharacterGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<HouseGetResponseItem[]> HouseGet(Expression<Func<string>> name = null, Expression<Func<string>> region = null, Expression<Func<string>> words = null, Expression<Func<bool>> hasWords = null, Expression<Func<bool>> hasTitles = null, Expression<Func<bool>> hasSeats = null, Expression<Func<bool>> hasDiedOut = null, Expression<Func<bool>> hasAncestralWeapons = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<HouseGetResponseItem[]> HouseGet([WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<string> region = null, [WorkflowExpression] Func<string> words = null, [WorkflowExpression] Func<bool> hasWords = null, [WorkflowExpression] Func<bool> hasTitles = null, [WorkflowExpression] Func<bool> hasSeats = null, [WorkflowExpression] Func<bool> hasDiedOut = null, [WorkflowExpression] Func<bool> hasAncestralWeapons = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = "/api/houses";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            if (region != null)
-                callPayload.Queries["region"] = CSharpExpressionConverter.ConvertO(region);
-            if (words != null)
-                callPayload.Queries["words"] = CSharpExpressionConverter.ConvertO(words);
-            if (hasWords != null)
-                callPayload.Queries["hasWords"] = CSharpExpressionConverter.ConvertO(hasWords);
-            if (hasTitles != null)
-                callPayload.Queries["hasTitles"] = CSharpExpressionConverter.ConvertO(hasTitles);
-            if (hasSeats != null)
-                callPayload.Queries["hasSeats"] = CSharpExpressionConverter.ConvertO(hasSeats);
-            if (hasDiedOut != null)
-                callPayload.Queries["hasDiedOut"] = CSharpExpressionConverter.ConvertO(hasDiedOut);
-            if (hasAncestralWeapons != null)
-                callPayload.Queries["hasAncestralWeapons"] = CSharpExpressionConverter.ConvertO(hasAncestralWeapons);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["pageSize"] = Convert.ToString(10);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            return new ApiConnectionAction<HouseGetResponseItem[]>(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(region, nameof(region), required: false);
+            SourceExpression.Validate(words, nameof(words), required: false);
+            SourceExpression.Validate(hasWords, nameof(hasWords), required: false);
+            SourceExpression.Validate(hasTitles, nameof(hasTitles), required: false);
+            SourceExpression.Validate(hasSeats, nameof(hasSeats), required: false);
+            SourceExpression.Validate(hasDiedOut, nameof(hasDiedOut), required: false);
+            SourceExpression.Validate(hasAncestralWeapons, nameof(hasAncestralWeapons), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/houses";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                if (region != null)
+                    callPayload.Queries["region"] = SourceExpressionConverter.ConvertO(region);
+                if (words != null)
+                    callPayload.Queries["words"] = SourceExpressionConverter.ConvertO(words);
+                if (hasWords != null)
+                    callPayload.Queries["hasWords"] = SourceExpressionConverter.ConvertO(hasWords);
+                if (hasTitles != null)
+                    callPayload.Queries["hasTitles"] = SourceExpressionConverter.ConvertO(hasTitles);
+                if (hasSeats != null)
+                    callPayload.Queries["hasSeats"] = SourceExpressionConverter.ConvertO(hasSeats);
+                if (hasDiedOut != null)
+                    callPayload.Queries["hasDiedOut"] = SourceExpressionConverter.ConvertO(hasDiedOut);
+                if (hasAncestralWeapons != null)
+                    callPayload.Queries["hasAncestralWeapons"] = SourceExpressionConverter.ConvertO(hasAncestralWeapons);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["pageSize"] = Convert.ToString(10);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HouseGetResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iceandfiregotip")]
-        public IBodyWorkflowAction<HouseGetAResponse> HouseGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<HouseGetAResponse> HouseGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/houses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HouseGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/houses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HouseGetAResponse>(BuildSourceInput);
         }
     }
 

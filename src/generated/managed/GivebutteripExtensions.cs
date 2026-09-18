@@ -12,550 +12,753 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Givebutterip
     public class GivebutteripActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet(Expression<Func<string>> scope = null)
+        public IBodyWorkflowAction<CampaignGetResponse> CampaignGet([WorkflowExpression] Func<string> scope = null)
         {
-            var apiCallPath = "/campaigns";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (scope != null)
-                callPayload.Queries["scope"] = CSharpExpressionConverter.ConvertO(scope);
-            return new ApiConnectionAction<CampaignGetResponse>(callPayload);
+            SourceExpression.Validate(scope, nameof(scope), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/campaigns";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (scope != null)
+                    callPayload.Queries["scope"] = SourceExpressionConverter.ConvertO(scope);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CampaignGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPostResponse> Campaign(Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<int>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<CampaignPostResponse> Campaign([WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<int> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = "/campaigns";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
+            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
+            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
+            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
+                var apiCallPath = "/campaigns";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyendAt != null)
+                {
+                    body["end_at"] = SourceExpressionConverter.ConvertToken(bodyendAt);
+                    bodypropCount++;
+                }
+
+                if (bodygoal != null)
+                {
+                    body["goal"] = SourceExpressionConverter.ConvertToken(bodygoal);
+                    bodypropCount++;
+                }
+
+                if (bodysubtitle != null)
+                {
+                    body["subtitle"] = SourceExpressionConverter.ConvertToken(bodysubtitle);
+                    bodypropCount++;
+                }
+
+                if (bodyslug != null)
+                {
+                    body["slug"] = SourceExpressionConverter.ConvertToken(bodyslug);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyendAt != null)
-            {
-                body["end_at"] = CSharpExpressionConverter.ConvertToken(bodyendAt);
-                bodypropCount++;
-            }
-
-            if (bodygoal != null)
-            {
-                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
-                bodypropCount++;
-            }
-
-            if (bodysubtitle != null)
-            {
-                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
-                bodypropCount++;
-            }
-
-            if (bodyslug != null)
-            {
-                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CampaignPostResponse>(callPayload);
+            return new ApiConnectionAction<CampaignPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<CampaignGetAResponse> CampaignGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CampaignGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CampaignGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<string> CampaignDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> CampaignDelete([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch(Expression<Func<string>> id, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyendAt = null, Expression<Func<string>> bodygoal = null, Expression<Func<string>> bodysubtitle = null, Expression<Func<string>> bodyslug = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytype = null)
+        public IBodyWorkflowAction<CampaignPatchResponse> CampaignPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyendAt = null, [WorkflowExpression] Func<string> bodygoal = null, [WorkflowExpression] Func<string> bodysubtitle = null, [WorkflowExpression] Func<string> bodyslug = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytype = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyendAt, nameof(bodyendAt), required: false);
+            SourceExpression.Validate(bodygoal, nameof(bodygoal), required: false);
+            SourceExpression.Validate(bodysubtitle, nameof(bodysubtitle), required: false);
+            SourceExpression.Validate(bodyslug, nameof(bodyslug), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyendAt != null)
+                {
+                    body["end_at"] = SourceExpressionConverter.ConvertToken(bodyendAt);
+                    bodypropCount++;
+                }
+
+                if (bodygoal != null)
+                {
+                    body["goal"] = SourceExpressionConverter.ConvertToken(bodygoal);
+                    bodypropCount++;
+                }
+
+                if (bodysubtitle != null)
+                {
+                    body["subtitle"] = SourceExpressionConverter.ConvertToken(bodysubtitle);
+                    bodypropCount++;
+                }
+
+                if (bodyslug != null)
+                {
+                    body["slug"] = SourceExpressionConverter.ConvertToken(bodyslug);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyendAt != null)
-            {
-                body["end_at"] = CSharpExpressionConverter.ConvertToken(bodyendAt);
-                bodypropCount++;
-            }
-
-            if (bodygoal != null)
-            {
-                body["goal"] = CSharpExpressionConverter.ConvertToken(bodygoal);
-                bodypropCount++;
-            }
-
-            if (bodysubtitle != null)
-            {
-                body["subtitle"] = CSharpExpressionConverter.ConvertToken(bodysubtitle);
-                bodypropCount++;
-            }
-
-            if (bodyslug != null)
-            {
-                body["slug"] = CSharpExpressionConverter.ConvertToken(bodyslug);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytype != null)
-            {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CampaignPatchResponse>(callPayload);
+            return new ApiConnectionAction<CampaignPatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<MemberGetResponse> MemberGet(Expression<Func<string>> campaignId)
+        public IBodyWorkflowAction<MemberGetResponse> MemberGet([WorkflowExpression] Func<string> campaignId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemberGetResponse>(callPayload);
+            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MemberGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<MemberGetAResponse> MemberGetA(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
+        public IBodyWorkflowAction<MemberGetAResponse> MemberGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<MemberGetAResponse>(callPayload);
+            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
+            SourceExpression.Validate(memberId, nameof(memberId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<MemberGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<string> MemberDelete(Expression<Func<string>> campaignId, Expression<Func<string>> memberId)
+        public IBodyWorkflowAction<string> MemberDelete([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> memberId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
+            SourceExpression.Validate(memberId, nameof(memberId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/members/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(memberId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<TeamGetResponse> TeamGet(Expression<Func<string>> campaignId)
+        public IBodyWorkflowAction<TeamGetResponse> TeamGet([WorkflowExpression] Func<string> campaignId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TeamGetResponse>(callPayload);
+            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TeamGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<TeamGetAResponse> TeamGetA(Expression<Func<string>> campaignId, Expression<Func<string>> teamId)
+        public IBodyWorkflowAction<TeamGetAResponse> TeamGetA([WorkflowExpression] Func<string> campaignId, [WorkflowExpression] Func<string> teamId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TeamGetAResponse>(callPayload);
+            SourceExpression.Validate(campaignId, nameof(campaignId), required: true);
+            SourceExpression.Validate(teamId, nameof(teamId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/campaigns/{0}/teams/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(campaignId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(teamId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TeamGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactGetResponse> ContactGet(Expression<Func<string>> scope = null)
+        public IBodyWorkflowAction<ContactGetResponse> ContactGet([WorkflowExpression] Func<string> scope = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (scope != null)
-                callPayload.Queries["scope"] = CSharpExpressionConverter.ConvertO(scope);
-            return new ApiConnectionAction<ContactGetResponse>(callPayload);
+            SourceExpression.Validate(scope, nameof(scope), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (scope != null)
+                    callPayload.Queries["scope"] = SourceExpressionConverter.ConvertO(scope);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPostResponse> Contact(Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<bodyemailsInputItem[]>> bodyemails = null, Expression<Func<bodyphonesInputItem[]>> bodyphones = null, Expression<Func<bodyaddressesInputItem[]>> bodyaddresses = null, Expression<Func<string[]>> bodytags = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPostResponse> Contact([WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<bodyemailsInputItem[]> bodyemails = null, [WorkflowExpression] Func<bodyphonesInputItem[]> bodyphones = null, [WorkflowExpression] Func<bodyaddressesInputItem[]> bodyaddresses = null, [WorkflowExpression] Func<string[]> bodytags = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
         {
-            var apiCallPath = "/contacts";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfirstName != null)
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodyemails, nameof(bodyemails), required: false);
+            SourceExpression.Validate(bodyphones, nameof(bodyphones), required: false);
+            SourceExpression.Validate(bodyaddresses, nameof(bodyaddresses), required: false);
+            SourceExpression.Validate(bodytags, nameof(bodytags), required: false);
+            SourceExpression.Validate(bodydob, nameof(bodydob), required: false);
+            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
+            SourceExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
+            SourceExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
+                var apiCallPath = "/contacts";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middle_name"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodyemails != null)
+                {
+                    body["emails"] = SourceExpressionConverter.ConvertToken(bodyemails);
+                    bodypropCount++;
+                }
+
+                if (bodyphones != null)
+                {
+                    body["phones"] = SourceExpressionConverter.ConvertToken(bodyphones);
+                    bodypropCount++;
+                }
+
+                if (bodyaddresses != null)
+                {
+                    body["addresses"] = SourceExpressionConverter.ConvertToken(bodyaddresses);
+                    bodypropCount++;
+                }
+
+                if (bodytags != null)
+                {
+                    body["tags"] = SourceExpressionConverter.ConvertToken(bodytags);
+                    bodypropCount++;
+                }
+
+                if (bodydob != null)
+                {
+                    body["dob"] = SourceExpressionConverter.ConvertToken(bodydob);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = SourceExpressionConverter.ConvertToken(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytwitterUrl != null)
+                {
+                    body["twitter_url"] = SourceExpressionConverter.ConvertToken(bodytwitterUrl);
+                    bodypropCount++;
+                }
+
+                if (bodylinkedinUrl != null)
+                {
+                    body["linkedin_url"] = SourceExpressionConverter.ConvertToken(bodylinkedinUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyfacebookUrl != null)
+                {
+                    body["facebook_url"] = SourceExpressionConverter.ConvertToken(bodyfacebookUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymiddleName != null)
-            {
-                body["middle_name"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodyemails != null)
-            {
-                body["emails"] = CSharpExpressionConverter.ConvertToken(bodyemails);
-                bodypropCount++;
-            }
-
-            if (bodyphones != null)
-            {
-                body["phones"] = CSharpExpressionConverter.ConvertToken(bodyphones);
-                bodypropCount++;
-            }
-
-            if (bodyaddresses != null)
-            {
-                body["addresses"] = CSharpExpressionConverter.ConvertToken(bodyaddresses);
-                bodypropCount++;
-            }
-
-            if (bodytags != null)
-            {
-                body["tags"] = CSharpExpressionConverter.ConvertToken(bodytags);
-                bodypropCount++;
-            }
-
-            if (bodydob != null)
-            {
-                body["dob"] = CSharpExpressionConverter.ConvertToken(bodydob);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytwitterUrl != null)
-            {
-                body["twitter_url"] = CSharpExpressionConverter.ConvertToken(bodytwitterUrl);
-                bodypropCount++;
-            }
-
-            if (bodylinkedinUrl != null)
-            {
-                body["linkedin_url"] = CSharpExpressionConverter.ConvertToken(bodylinkedinUrl);
-                bodypropCount++;
-            }
-
-            if (bodyfacebookUrl != null)
-            {
-                body["facebook_url"] = CSharpExpressionConverter.ConvertToken(bodyfacebookUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ContactPostResponse>(callPayload);
+            return new ApiConnectionAction<ContactPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactGetAResponse> ContactGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactGetAResponse> ContactGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactPatchResponse> ContactPatch(Expression<Func<string>> id, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodymiddleName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydob = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodytitle = null, Expression<Func<string>> bodytwitterUrl = null, Expression<Func<string>> bodylinkedinUrl = null, Expression<Func<string>> bodyfacebookUrl = null)
+        public IBodyWorkflowAction<ContactPatchResponse> ContactPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodymiddleName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydob = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodytitle = null, [WorkflowExpression] Func<string> bodytwitterUrl = null, [WorkflowExpression] Func<string> bodylinkedinUrl = null, [WorkflowExpression] Func<string> bodyfacebookUrl = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfirstName != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodymiddleName, nameof(bodymiddleName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodydob, nameof(bodydob), required: false);
+            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            SourceExpression.Validate(bodytwitterUrl, nameof(bodytwitterUrl), required: false);
+            SourceExpression.Validate(bodylinkedinUrl, nameof(bodylinkedinUrl), required: false);
+            SourceExpression.Validate(bodyfacebookUrl, nameof(bodyfacebookUrl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodymiddleName != null)
+                {
+                    body["middle_name"] = SourceExpressionConverter.ConvertToken(bodymiddleName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydob != null)
+                {
+                    body["dob"] = SourceExpressionConverter.ConvertToken(bodydob);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = SourceExpressionConverter.ConvertToken(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodytwitterUrl != null)
+                {
+                    body["twitter_url"] = SourceExpressionConverter.ConvertToken(bodytwitterUrl);
+                    bodypropCount++;
+                }
+
+                if (bodylinkedinUrl != null)
+                {
+                    body["linkedin_url"] = SourceExpressionConverter.ConvertToken(bodylinkedinUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyfacebookUrl != null)
+                {
+                    body["facebook_url"] = SourceExpressionConverter.ConvertToken(bodyfacebookUrl);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodymiddleName != null)
-            {
-                body["middle_name"] = CSharpExpressionConverter.ConvertToken(bodymiddleName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydob != null)
-            {
-                body["dob"] = CSharpExpressionConverter.ConvertToken(bodydob);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodytwitterUrl != null)
-            {
-                body["twitter_url"] = CSharpExpressionConverter.ConvertToken(bodytwitterUrl);
-                bodypropCount++;
-            }
-
-            if (bodylinkedinUrl != null)
-            {
-                body["linkedin_url"] = CSharpExpressionConverter.ConvertToken(bodylinkedinUrl);
-                bodypropCount++;
-            }
-
-            if (bodyfacebookUrl != null)
-            {
-                body["facebook_url"] = CSharpExpressionConverter.ConvertToken(bodyfacebookUrl);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ContactPatchResponse>(callPayload);
+            return new ApiConnectionAction<ContactPatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<string> ContactDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> ContactDelete([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore(Expression<Func<string>> id)
+        public IBodyWorkflowAction<ContactRestoreResponse> ContactRestore([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ContactRestoreResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/contacts/{0}/restore", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ContactRestoreResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TicketGetResponse> TicketGet()
         {
-            var apiCallPath = "/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TicketGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TicketGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<TicketGetAResponse> TicketGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TicketGetAResponse> TicketGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tickets/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TicketGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tickets/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TicketGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<TransactionGetResponse> TransactionGet()
         {
-            var apiCallPath = "/transactions";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TransactionGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/transactions";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TransactionGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<TransactionGetAResponse> TransactionGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/transactions/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TransactionGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/transactions/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TransactionGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PayoutGetResponse> PayoutGet()
         {
-            var apiCallPath = "/payouts";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PayoutGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/payouts";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PayoutGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PayoutGetAResponse> PayoutGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/payouts/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PayoutGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/payouts/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PayoutGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<PlanGetResponse> PlanGet()
         {
-            var apiCallPath = "/plans";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PlanGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/plans";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PlanGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<PlanGetAResponse> PlanGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<PlanGetAResponse> PlanGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/plans/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PlanGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/plans/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PlanGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
         public IBodyWorkflowAction<FundGetResponse> FundGet()
         {
-            var apiCallPath = "/funds";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FundGetResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/funds";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FundGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPostResponse> Fund(Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<FundPostResponse> Fund([WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            var apiCallPath = "/funds";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/funds";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycode != null)
-            {
-                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FundPostResponse>(callPayload);
+            return new ApiConnectionAction<FundPostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundGetAResponse> FundGetA(Expression<Func<string>> id)
+        public IBodyWorkflowAction<FundGetAResponse> FundGetA([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FundGetAResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FundGetAResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<FundPatchResponse> FundPatch(Expression<Func<string>> id, Expression<Func<string>> bodyname = null, Expression<Func<string>> bodycode = null)
+        public IBodyWorkflowAction<FundPatchResponse> FundPatch([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<string> bodycode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodycode, nameof(bodycode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodycode != null)
+                {
+                    body["code"] = SourceExpressionConverter.ConvertToken(bodycode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycode != null)
-            {
-                body["code"] = CSharpExpressionConverter.ConvertToken(bodycode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<FundPatchResponse>(callPayload);
+            return new ApiConnectionAction<FundPatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "givebutterip")]
-        public IBodyWorkflowAction<string> FundDelete(Expression<Func<string>> id)
+        public IBodyWorkflowAction<string> FundDelete([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/funds/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/funds/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

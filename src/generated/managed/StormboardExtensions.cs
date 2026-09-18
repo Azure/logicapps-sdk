@@ -12,71 +12,87 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
     public class StormboardActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea(Expression<Func<int>> bodystormid, Expression<Func<bodytypeInput>> bodytype, Expression<Func<string>> bodydata, Expression<Func<bodycolorInput>> bodycolor)
+        public IBodyWorkflowAction<CreateIdeaResponse> CreateIdea([WorkflowExpression] Func<int> bodystormid, [WorkflowExpression] Func<bodytypeInput> bodytype, [WorkflowExpression] Func<string> bodydata, [WorkflowExpression] Func<bodycolorInput> bodycolor)
         {
-            var apiCallPath = "/ideas";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["stormid"] = CSharpExpressionConverter.ConvertToken(bodystormid);
-            bodypropCount++;
-            body["type"] = CSharpExpressionConverter.Convert(bodytype);
-            bodypropCount++;
-            body["data"] = CSharpExpressionConverter.ConvertToken(bodydata);
-            bodypropCount++;
-            body["color"] = CSharpExpressionConverter.Convert(bodycolor);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodystormid, nameof(bodystormid), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodydata, nameof(bodydata), required: true);
+            SourceExpression.Validate(bodycolor, nameof(bodycolor), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/ideas";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["stormid"] = SourceExpressionConverter.ConvertToken(bodystormid);
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.Convert(bodytype);
+                bodypropCount++;
+                body["data"] = SourceExpressionConverter.ConvertToken(bodydata);
+                bodypropCount++;
+                body["color"] = SourceExpressionConverter.Convert(bodycolor);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<CreateIdeaResponse>(callPayload);
+            return new ApiConnectionAction<CreateIdeaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "stormboard")]
-        public IBodyWorkflowAction<CreateStormResponse> CreateStorm(Expression<Func<string>> bodytitle, Expression<Func<string>> bodyplan, Expression<Func<string>> bodygoals = null, Expression<Func<bool>> bodyideacreator = null)
+        public IBodyWorkflowAction<CreateStormResponse> CreateStorm([WorkflowExpression] Func<string> bodytitle, [WorkflowExpression] Func<string> bodyplan, [WorkflowExpression] Func<string> bodygoals = null, [WorkflowExpression] Func<bool> bodyideacreator = null)
         {
-            var apiCallPath = "/storms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-            bodypropCount++;
-            body["plan"] = CSharpExpressionConverter.ConvertToken(bodyplan);
-            if (bodygoals != null)
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: true);
+            SourceExpression.Validate(bodyplan, nameof(bodyplan), required: true);
+            SourceExpression.Validate(bodygoals, nameof(bodygoals), required: false);
+            SourceExpression.Validate(bodyideacreator, nameof(bodyideacreator), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["goals"] = CSharpExpressionConverter.ConvertToken(bodygoals);
+                var apiCallPath = "/storms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodyideacreator != null)
-            {
-                if (bodyideacreator != null)
+                body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                bodypropCount++;
+                body["plan"] = SourceExpressionConverter.ConvertToken(bodyplan);
+                if (bodygoals != null)
                 {
-                    body["ideacreator"] = CSharpExpressionConverter.ConvertToken(bodyideacreator);
+                    body["goals"] = SourceExpressionConverter.ConvertToken(bodygoals);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ideacreator"] = true;
-                bodypropCount++;
+                if (bodyideacreator != null)
+                {
+                    if (bodyideacreator != null)
+                    {
+                        body["ideacreator"] = SourceExpressionConverter.ConvertToken(bodyideacreator);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ideacreator"] = true;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateStormResponse>(callPayload);
+            return new ApiConnectionAction<CreateStormResponse>(BuildSourceInput);
         }
     }
 
@@ -84,112 +100,132 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
     {
         public IWorkflowTrigger LegendChange(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["service"] = "MicrosoftFlow";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["events"] = "idea.color";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/hooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["service"] = "MicrosoftFlow";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["events"] = "idea.color";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger IdeaSection(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/ideaSection";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["service"] = "MicrosoftFlow";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["events"] = "idea.section";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/hooks/ideaSection";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["service"] = "MicrosoftFlow";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["events"] = "idea.section";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger IdeaCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/ideaCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["service"] = "MicrosoftFlow";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["events"] = "idea.create";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/hooks/ideaCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["service"] = "MicrosoftFlow";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["events"] = "idea.create";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger IdeaDeleted(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/ideaDeleted";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["service"] = "MicrosoftFlow";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["events"] = "idea.delete";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/hooks/ideaDeleted";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["service"] = "MicrosoftFlow";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["events"] = "idea.delete";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger CommentCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/hooks/commentCreated";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["service"] = "MicrosoftFlow";
-            bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["events"] = "comment.create";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/hooks/commentCreated";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["service"] = "MicrosoftFlow";
+                bodypropCount++;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["events"] = "comment.create";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

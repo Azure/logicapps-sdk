@@ -12,873 +12,1158 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
     public class DynamicssmbsaasActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> InvokeMCP(Expression<Func<string>> bcenvironment, Expression<Func<string>> configurationName, Expression<Func<string>> company, Expression<Func<string>> mcpSessionId = null, Expression<Func<string>> queryRequestjsonrpc = null, Expression<Func<string>> queryRequestid = null, Expression<Func<string>> queryRequestmethod = null)
+        public IBodyWorkflowAction<JToken> InvokeMCP([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> configurationName, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> mcpSessionId = null, [WorkflowExpression] Func<string> queryRequestjsonrpc = null, [WorkflowExpression] Func<string> queryRequestid = null, [WorkflowExpression] Func<string> queryRequestmethod = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationName, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (mcpSessionId != null)
-                callPayload.Headers["Mcp-Session-Id"] = CSharpExpressionConverter.ConvertO(mcpSessionId);
-            var queryRequest = new JObject();
-            var queryRequestpropCount = 0;
-            if (queryRequestjsonrpc != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(configurationName, nameof(configurationName), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(mcpSessionId, nameof(mcpSessionId), required: false);
+            SourceExpression.Validate(queryRequestjsonrpc, nameof(queryRequestjsonrpc), required: false);
+            SourceExpression.Validate(queryRequestid, nameof(queryRequestid), required: false);
+            SourceExpression.Validate(queryRequestmethod, nameof(queryRequestmethod), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                queryRequest["jsonrpc"] = CSharpExpressionConverter.ConvertToken(queryRequestjsonrpc);
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestid != null)
-            {
-                queryRequest["id"] = CSharpExpressionConverter.ConvertToken(queryRequestid);
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestmethod != null)
-            {
-                queryRequest["method"] = CSharpExpressionConverter.ConvertToken(queryRequestmethod);
-                queryRequestpropCount++;
-            }
-
-            var @paramsObject = new JObject();
-            var @paramsObjectpropCount = 0;
-            if (@paramsObjectpropCount > 0)
-            {
-                queryRequest["params"] = @paramsObject;
-                queryRequestpropCount++;
-            }
-
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (resultObjectpropCount > 0)
-            {
-                queryRequest["result"] = resultObject;
-                queryRequestpropCount++;
-            }
-
-            var errorObject = new JObject();
-            var errorObjectpropCount = 0;
-            if (errorObjectpropCount > 0)
-            {
-                queryRequest["error"] = errorObject;
-                queryRequestpropCount++;
-            }
-
-            if (queryRequestpropCount > 0)
-            {
-                callPayload.Body = queryRequest;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IWorkflowAction DeleteItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> ExecuteProcedure(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> procedure, Expression<Func<object>> parameters = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(parameters);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<GetAdaptiveCardV3Response> GetAdaptiveCard(Expression<Func<string>> targeturl, Expression<Func<targetappInput>> targetapp)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/adaptivecard/forurl/{0}/forapp/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(targeturl, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetapp, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAdaptiveCardV3Response>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<string> GetBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(pathParameters);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<CompanyList> GetCompanies(Expression<Func<string>> bcenvironment)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CompanyList>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> GetFirstItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<bodytypeOfOrderInput>> bodytypeOfOrder = null, Expression<Func<string>> bodyorderResultsBy = null, Expression<Func<bool>> bodycontinueWithEmptyResultWhenNoRecordWasFound = null, Expression<Func<FilterGroup[]>> bodyfilter = null, Expression<Func<bool>> readOnlyConnection = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/first", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (readOnlyConnection != null)
-                callPayload.Queries["readOnlyConnection"] = CSharpExpressionConverter.ConvertO(readOnlyConnection);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytypeOfOrder != null)
-            {
-                body["Order"] = CSharpExpressionConverter.Convert(bodytypeOfOrder);
-                bodypropCount++;
-            }
-
-            if (bodyorderResultsBy != null)
-            {
-                body["OrderField"] = CSharpExpressionConverter.ConvertToken(bodyorderResultsBy);
-                bodypropCount++;
-            }
-
-            if (bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
-            {
-                if (bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/configuration/{2}/mcp", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(configurationName, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (mcpSessionId != null)
+                    callPayload.Headers["Mcp-Session-Id"] = SourceExpressionConverter.ConvertO(mcpSessionId);
+                var queryRequest = new JObject();
+                var queryRequestpropCount = 0;
+                if (queryRequestjsonrpc != null)
                 {
-                    body["NoThrowError"] = CSharpExpressionConverter.ConvertToken(bodycontinueWithEmptyResultWhenNoRecordWasFound);
+                    queryRequest["jsonrpc"] = SourceExpressionConverter.ConvertToken(queryRequestjsonrpc);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestid != null)
+                {
+                    queryRequest["id"] = SourceExpressionConverter.ConvertToken(queryRequestid);
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestmethod != null)
+                {
+                    queryRequest["method"] = SourceExpressionConverter.ConvertToken(queryRequestmethod);
+                    queryRequestpropCount++;
+                }
+
+                var @paramsObject = new JObject();
+                var @paramsObjectpropCount = 0;
+                if (@paramsObjectpropCount > 0)
+                {
+                    queryRequest["params"] = @paramsObject;
+                    queryRequestpropCount++;
+                }
+
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (resultObjectpropCount > 0)
+                {
+                    queryRequest["result"] = resultObject;
+                    queryRequestpropCount++;
+                }
+
+                var errorObject = new JObject();
+                var errorObjectpropCount = 0;
+                if (errorObjectpropCount > 0)
+                {
+                    queryRequest["error"] = errorObject;
+                    queryRequestpropCount++;
+                }
+
+                if (queryRequestpropCount > 0)
+                {
+                    callPayload.Body = queryRequest;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IWorkflowAction DeleteItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<JToken> ExecuteProcedure([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> procedure, [WorkflowExpression] Func<object> parameters = null)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(procedure, nameof(procedure), required: true);
+            SourceExpression.Validate(parameters, nameof(parameters), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/procedures/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(procedure, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(parameters);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<GetAdaptiveCardV3Response> GetAdaptiveCard([WorkflowExpression] Func<string> targeturl, [WorkflowExpression] Func<targetappInput> targetapp)
+        {
+            SourceExpression.Validate(targeturl, nameof(targeturl), required: true);
+            SourceExpression.Validate(targetapp, nameof(targetapp), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/adaptivecard/forurl/{0}/forapp/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targeturl, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(targetapp, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAdaptiveCardV3Response>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<string> GetBlobFromNavigation([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> blobnavigationpath, [WorkflowExpression] Func<object> pathParameters = null)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(blobnavigationpath, nameof(blobnavigationpath), required: true);
+            SourceExpression.Validate(pathParameters, nameof(pathParameters), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokeget", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(pathParameters);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<CompanyList> GetCompanies([WorkflowExpression] Func<string> bcenvironment)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CompanyList>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<JToken> GetFirstItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<bodytypeOfOrderInput> bodytypeOfOrder = null, [WorkflowExpression] Func<string> bodyorderResultsBy = null, [WorkflowExpression] Func<bool> bodycontinueWithEmptyResultWhenNoRecordWasFound = null, [WorkflowExpression] Func<FilterGroup[]> bodyfilter = null, [WorkflowExpression] Func<bool> readOnlyConnection = null)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(bodytypeOfOrder, nameof(bodytypeOfOrder), required: false);
+            SourceExpression.Validate(bodyorderResultsBy, nameof(bodyorderResultsBy), required: false);
+            SourceExpression.Validate(bodycontinueWithEmptyResultWhenNoRecordWasFound, nameof(bodycontinueWithEmptyResultWhenNoRecordWasFound), required: false);
+            SourceExpression.Validate(bodyfilter, nameof(bodyfilter), required: false);
+            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/first", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (readOnlyConnection != null)
+                    callPayload.Queries["readOnlyConnection"] = SourceExpressionConverter.ConvertO(readOnlyConnection);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytypeOfOrder != null)
+                {
+                    body["Order"] = SourceExpressionConverter.Convert(bodytypeOfOrder);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
+                if (bodyorderResultsBy != null)
+                {
+                    body["OrderField"] = SourceExpressionConverter.ConvertToken(bodyorderResultsBy);
+                    bodypropCount++;
+                }
+
+                if (bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
+                {
+                    if (bodycontinueWithEmptyResultWhenNoRecordWasFound != null)
+                    {
+                        body["NoThrowError"] = SourceExpressionConverter.ConvertToken(bodycontinueWithEmptyResultWhenNoRecordWasFound);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["NoThrowError"] = false;
+                    bodypropCount++;
+                }
+
+                if (bodyfilter != null)
+                {
+                    body["Filter"] = SourceExpressionConverter.ConvertToken(bodyfilter);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
-            else
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<JToken> GetItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<bool> readOnlyConnection = null)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["NoThrowError"] = false;
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (readOnlyConnection != null)
+                    callPayload.Queries["readOnlyConnection"] = SourceExpressionConverter.ConvertO(readOnlyConnection);
+                return callPayload;
             }
 
-            if (bodyfilter != null)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<ItemsListV3> GetItems([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> orderby = null, [WorkflowExpression] Func<int> top = null, [WorkflowExpression] Func<int> skip = null, [WorkflowExpression] Func<bool> readOnlyConnection = null)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            SourceExpression.Validate(top, nameof(top), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(readOnlyConnection, nameof(readOnlyConnection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["Filter"] = CSharpExpressionConverter.ConvertToken(bodyfilter);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                if (top != null)
+                    callPayload.Queries["$top"] = SourceExpressionConverter.ConvertO(top);
+                if (skip != null)
+                    callPayload.Queries["$skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (readOnlyConnection != null)
+                    callPayload.Queries["readOnlyConnection"] = SourceExpressionConverter.ConvertO(readOnlyConnection);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<ItemsListV3>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
+        public IBodyWorkflowAction<GetUrlV3Response> GetUrl([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> page, [WorkflowExpression] Func<string> id)
+        {
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(page, nameof(page), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/pages/{2}/items/{3}/url", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<GetUrlV3Response>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> GetItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<bool>> readOnlyConnection = null)
+        public IWorkflowAction PatchBlobFromNavigation([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> blobnavigationpath, [WorkflowExpression] Func<object> pathParameters = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (readOnlyConnection != null)
-                callPayload.Queries["readOnlyConnection"] = CSharpExpressionConverter.ConvertO(readOnlyConnection);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(blobnavigationpath, nameof(blobnavigationpath), required: true);
+            SourceExpression.Validate(pathParameters, nameof(pathParameters), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(pathParameters);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<ItemsListV3> GetItems(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> filter = null, Expression<Func<string>> orderby = null, Expression<Func<int>> top = null, Expression<Func<int>> skip = null, Expression<Func<bool>> readOnlyConnection = null)
+        public IBodyWorkflowAction<JToken> PatchItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> item = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            if (top != null)
-                callPayload.Queries["$top"] = CSharpExpressionConverter.ConvertO(top);
-            if (skip != null)
-                callPayload.Queries["$skip"] = CSharpExpressionConverter.ConvertO(skip);
-            if (readOnlyConnection != null)
-                callPayload.Queries["readOnlyConnection"] = CSharpExpressionConverter.ConvertO(readOnlyConnection);
-            return new ApiConnectionAction<ItemsListV3>(callPayload);
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<GetUrlV3Response> GetUrl(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> page, Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken> PostItem([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, [WorkflowExpression] Func<object> item = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/pages/{2}/items/{3}/url", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(page, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUrlV3Response>(callPayload);
-        }
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            SourceExpression.Validate(item, nameof(item), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(item);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IWorkflowAction PatchBlobFromNavigation(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> blobnavigationpath, Expression<Func<object>> pathParameters = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/blobnavigationpaths/{3}/invokepatch", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(blobnavigationpath, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(pathParameters);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> PatchItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<string>> id, Expression<Func<object>> item = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items/{4}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 2));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "dynamicssmbsaas")]
-        public IBodyWorkflowAction<JToken> PostItem(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, Expression<Func<object>> item = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/items", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(item);
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class DynamicssmbsaasTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> businessevent, Expression<Func<string>> company = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateBusinessEventSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> businessevent, [WorkflowExpression] Func<string> company = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessevent, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["company"] = Convert.ToString("");
-            if (company != null)
-                callPayload.Queries["company"] = CSharpExpressionConverter.ConvertO(company);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(businessevent, nameof(businessevent), required: true);
+            SourceExpression.Validate(company, nameof(company), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/businessevents/{1}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(businessevent, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["company"] = Convert.ToString("");
+                if (company != null)
+                    callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ClientSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateCustomerApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionfirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
+            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
+            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
+            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
+            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["FirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/customerapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionfirstCondition != null)
+                {
+                    subscription["FirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfirstConditionIs != null)
+                {
+                    subscription["FirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondCondition != null)
+                {
+                    subscription["SecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionsecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondConditionIs != null)
+                {
+                    subscription["SecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdCondition != null)
+                {
+                    subscription["ThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionthirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdConditionIs != null)
+                {
+                    subscription["ThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthCondition != null)
+                {
+                    subscription["FourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthConditionIs != null)
+                {
+                    subscription["FourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionfirstConditionIs != null)
-            {
-                subscription["FirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondCondition != null)
-            {
-                subscription["SecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondConditionIs != null)
-            {
-                subscription["SecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdCondition != null)
-            {
-                subscription["ThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdConditionIs != null)
-            {
-                subscription["ThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthCondition != null)
-            {
-                subscription["FourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthConditionIs != null)
-            {
-                subscription["FourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalBatchApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionfirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
+            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
+            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
+            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
+            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["FirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournalbatchapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionfirstCondition != null)
+                {
+                    subscription["FirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfirstConditionIs != null)
+                {
+                    subscription["FirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondCondition != null)
+                {
+                    subscription["SecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionsecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondConditionIs != null)
+                {
+                    subscription["SecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdCondition != null)
+                {
+                    subscription["ThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionthirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdConditionIs != null)
+                {
+                    subscription["ThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthCondition != null)
+                {
+                    subscription["FourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthConditionIs != null)
+                {
+                    subscription["FourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionfirstConditionIs != null)
-            {
-                subscription["FirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondCondition != null)
-            {
-                subscription["SecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondConditionIs != null)
-            {
-                subscription["SecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdCondition != null)
-            {
-                subscription["ThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdConditionIs != null)
-            {
-                subscription["ThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthCondition != null)
-            {
-                subscription["FourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthConditionIs != null)
-            {
-                subscription["FourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateGeneralJournalLineApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionfirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
+            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
+            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
+            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
+            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["FirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/generaljournallineapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionfirstCondition != null)
+                {
+                    subscription["FirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfirstConditionIs != null)
+                {
+                    subscription["FirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondCondition != null)
+                {
+                    subscription["SecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionsecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondConditionIs != null)
+                {
+                    subscription["SecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdCondition != null)
+                {
+                    subscription["ThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionthirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdConditionIs != null)
+                {
+                    subscription["ThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthCondition != null)
+                {
+                    subscription["FourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthConditionIs != null)
+                {
+                    subscription["FourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionfirstConditionIs != null)
-            {
-                subscription["FirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondCondition != null)
-            {
-                subscription["SecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondConditionIs != null)
-            {
-                subscription["SecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdCondition != null)
-            {
-                subscription["ThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdConditionIs != null)
-            {
-                subscription["ThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthCondition != null)
-            {
-                subscription["FourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthConditionIs != null)
-            {
-                subscription["FourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateItemApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionfirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
+            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
+            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
+            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
+            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["FirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/itemapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionfirstCondition != null)
+                {
+                    subscription["FirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfirstConditionIs != null)
+                {
+                    subscription["FirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondCondition != null)
+                {
+                    subscription["SecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionsecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondConditionIs != null)
+                {
+                    subscription["SecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdCondition != null)
+                {
+                    subscription["ThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionthirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdConditionIs != null)
+                {
+                    subscription["ThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthCondition != null)
+                {
+                    subscription["FourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthConditionIs != null)
+                {
+                    subscription["FourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionfirstConditionIs != null)
-            {
-                subscription["FirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondCondition != null)
-            {
-                subscription["SecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondConditionIs != null)
-            {
-                subscription["SecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdCondition != null)
-            {
-                subscription["ThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdConditionIs != null)
-            {
-                subscription["ThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthCondition != null)
-            {
-                subscription["FourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthConditionIs != null)
-            {
-                subscription["FourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnChangedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onchangeditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ClientSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnDeletedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/ondeleteditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ClientSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnNewItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onnewitems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ClientSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscription(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> dataset, Expression<Func<string>> table, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ClientSubscriptionResponse> CreateOnUpdatedItemsSubscription([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> dataset, [WorkflowExpression] Func<string> table, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(dataset, nameof(dataset), required: true);
+            SourceExpression.Validate(table, nameof(table), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = subscription;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/datasets/{2}/tables/{3}/onupdateditems/$subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(dataset, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(table, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ClientSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ClientSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreatePurchaseDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionheaderFirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
+            SourceExpression.Validate(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
+            SourceExpression.Validate(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
+            SourceExpression.Validate(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
+            SourceExpression.Validate(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["HeaderFirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/purchasedocumentapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionheaderFirstCondition != null)
+                {
+                    subscription["HeaderFirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFirstConditionIs != null)
+                {
+                    subscription["HeaderFirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderSecondCondition != null)
+                {
+                    subscription["HeaderSecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderSecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderSecondConditionIs != null)
+                {
+                    subscription["HeaderSecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderSecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderThirdCondition != null)
+                {
+                    subscription["HeaderThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderThirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderThirdConditionIs != null)
+                {
+                    subscription["HeaderThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderThirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFourthCondition != null)
+                {
+                    subscription["HeaderFourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFourthConditionIs != null)
+                {
+                    subscription["HeaderFourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFirstCondition != null)
+                {
+                    subscription["LineFirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineFirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFirstConditionIs != null)
+                {
+                    subscription["LineFirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineFirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineSecondCondition != null)
+                {
+                    subscription["LineSecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineSecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineSecondConditionIs != null)
+                {
+                    subscription["LineSecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineSecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineThirdCondition != null)
+                {
+                    subscription["LineThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineThirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineThirdConditionIs != null)
+                {
+                    subscription["LineThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineThirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFourthCondition != null)
+                {
+                    subscription["LineFourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineFourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFourthConditionIs != null)
+                {
+                    subscription["LineFourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineFourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionheaderFirstConditionIs != null)
-            {
-                subscription["HeaderFirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderSecondCondition != null)
-            {
-                subscription["HeaderSecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderSecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderSecondConditionIs != null)
-            {
-                subscription["HeaderSecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderSecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderThirdCondition != null)
-            {
-                subscription["HeaderThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderThirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderThirdConditionIs != null)
-            {
-                subscription["HeaderThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderThirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderFourthCondition != null)
-            {
-                subscription["HeaderFourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderFourthConditionIs != null)
-            {
-                subscription["HeaderFourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFirstCondition != null)
-            {
-                subscription["LineFirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFirstCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFirstConditionIs != null)
-            {
-                subscription["LineFirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineSecondCondition != null)
-            {
-                subscription["LineSecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineSecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineSecondConditionIs != null)
-            {
-                subscription["LineSecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineSecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineThirdCondition != null)
-            {
-                subscription["LineThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineThirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineThirdConditionIs != null)
-            {
-                subscription["LineThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineThirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFourthCondition != null)
-            {
-                subscription["LineFourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFourthConditionIs != null)
-            {
-                subscription["LineFourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionheaderFirstCondition = null, Expression<Func<string>> subscriptionheaderFirstConditionIs = null, Expression<Func<string>> subscriptionheaderSecondCondition = null, Expression<Func<string>> subscriptionheaderSecondConditionIs = null, Expression<Func<string>> subscriptionheaderThirdCondition = null, Expression<Func<string>> subscriptionheaderThirdConditionIs = null, Expression<Func<string>> subscriptionheaderFourthCondition = null, Expression<Func<string>> subscriptionheaderFourthConditionIs = null, Expression<Func<string>> subscriptionlineFirstCondition = null, Expression<Func<string>> subscriptionlineFirstConditionIs = null, Expression<Func<string>> subscriptionlineSecondCondition = null, Expression<Func<string>> subscriptionlineSecondConditionIs = null, Expression<Func<string>> subscriptionlineThirdCondition = null, Expression<Func<string>> subscriptionlineThirdConditionIs = null, Expression<Func<string>> subscriptionlineFourthCondition = null, Expression<Func<string>> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateSalesDocumentApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionheaderFirstCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderSecondCondition = null, [WorkflowExpression] Func<string> subscriptionheaderSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderThirdCondition = null, [WorkflowExpression] Func<string> subscriptionheaderThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionheaderFourthCondition = null, [WorkflowExpression] Func<string> subscriptionheaderFourthConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFirstCondition = null, [WorkflowExpression] Func<string> subscriptionlineFirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineSecondCondition = null, [WorkflowExpression] Func<string> subscriptionlineSecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineThirdCondition = null, [WorkflowExpression] Func<string> subscriptionlineThirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionlineFourthCondition = null, [WorkflowExpression] Func<string> subscriptionlineFourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionheaderFirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionheaderFirstCondition, nameof(subscriptionheaderFirstCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderFirstConditionIs, nameof(subscriptionheaderFirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderSecondCondition, nameof(subscriptionheaderSecondCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderSecondConditionIs, nameof(subscriptionheaderSecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderThirdCondition, nameof(subscriptionheaderThirdCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderThirdConditionIs, nameof(subscriptionheaderThirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionheaderFourthCondition, nameof(subscriptionheaderFourthCondition), required: false);
+            SourceExpression.Validate(subscriptionheaderFourthConditionIs, nameof(subscriptionheaderFourthConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineFirstCondition, nameof(subscriptionlineFirstCondition), required: false);
+            SourceExpression.Validate(subscriptionlineFirstConditionIs, nameof(subscriptionlineFirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineSecondCondition, nameof(subscriptionlineSecondCondition), required: false);
+            SourceExpression.Validate(subscriptionlineSecondConditionIs, nameof(subscriptionlineSecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineThirdCondition, nameof(subscriptionlineThirdCondition), required: false);
+            SourceExpression.Validate(subscriptionlineThirdConditionIs, nameof(subscriptionlineThirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionlineFourthCondition, nameof(subscriptionlineFourthCondition), required: false);
+            SourceExpression.Validate(subscriptionlineFourthConditionIs, nameof(subscriptionlineFourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["HeaderFirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/salesdocumentapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionheaderFirstCondition != null)
+                {
+                    subscription["HeaderFirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFirstConditionIs != null)
+                {
+                    subscription["HeaderFirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderSecondCondition != null)
+                {
+                    subscription["HeaderSecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderSecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderSecondConditionIs != null)
+                {
+                    subscription["HeaderSecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderSecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderThirdCondition != null)
+                {
+                    subscription["HeaderThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderThirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderThirdConditionIs != null)
+                {
+                    subscription["HeaderThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderThirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFourthCondition != null)
+                {
+                    subscription["HeaderFourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionheaderFourthConditionIs != null)
+                {
+                    subscription["HeaderFourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionheaderFourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFirstCondition != null)
+                {
+                    subscription["LineFirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineFirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFirstConditionIs != null)
+                {
+                    subscription["LineFirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineFirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineSecondCondition != null)
+                {
+                    subscription["LineSecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineSecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineSecondConditionIs != null)
+                {
+                    subscription["LineSecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineSecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineThirdCondition != null)
+                {
+                    subscription["LineThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineThirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineThirdConditionIs != null)
+                {
+                    subscription["LineThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineThirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFourthCondition != null)
+                {
+                    subscription["LineFourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionlineFourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionlineFourthConditionIs != null)
+                {
+                    subscription["LineFourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionlineFourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionheaderFirstConditionIs != null)
-            {
-                subscription["HeaderFirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderSecondCondition != null)
-            {
-                subscription["HeaderSecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderSecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderSecondConditionIs != null)
-            {
-                subscription["HeaderSecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderSecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderThirdCondition != null)
-            {
-                subscription["HeaderThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderThirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderThirdConditionIs != null)
-            {
-                subscription["HeaderThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderThirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderFourthCondition != null)
-            {
-                subscription["HeaderFourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionheaderFourthConditionIs != null)
-            {
-                subscription["HeaderFourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionheaderFourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFirstCondition != null)
-            {
-                subscription["LineFirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFirstCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFirstConditionIs != null)
-            {
-                subscription["LineFirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineSecondCondition != null)
-            {
-                subscription["LineSecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineSecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineSecondConditionIs != null)
-            {
-                subscription["LineSecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineSecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineThirdCondition != null)
-            {
-                subscription["LineThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineThirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineThirdConditionIs != null)
-            {
-                subscription["LineThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineThirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFourthCondition != null)
-            {
-                subscription["LineFourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionlineFourthConditionIs != null)
-            {
-                subscription["LineFourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionlineFourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHook(Expression<Func<string>> bcenvironment, Expression<Func<string>> company, Expression<Func<string>> subscriptionfirstCondition = null, Expression<Func<string>> subscriptionfirstConditionIs = null, Expression<Func<string>> subscriptionsecondCondition = null, Expression<Func<string>> subscriptionsecondConditionIs = null, Expression<Func<string>> subscriptionthirdCondition = null, Expression<Func<string>> subscriptionthirdConditionIs = null, Expression<Func<string>> subscriptionfourthCondition = null, Expression<Func<string>> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHookSubscriptionResponse> CreateVendorApprovalWebHook([WorkflowExpression] Func<string> bcenvironment, [WorkflowExpression] Func<string> company, [WorkflowExpression] Func<string> subscriptionfirstCondition = null, [WorkflowExpression] Func<string> subscriptionfirstConditionIs = null, [WorkflowExpression] Func<string> subscriptionsecondCondition = null, [WorkflowExpression] Func<string> subscriptionsecondConditionIs = null, [WorkflowExpression] Func<string> subscriptionthirdCondition = null, [WorkflowExpression] Func<string> subscriptionthirdConditionIs = null, [WorkflowExpression] Func<string> subscriptionfourthCondition = null, [WorkflowExpression] Func<string> subscriptionfourthConditionIs = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var subscription = new JObject();
-            var subscriptionpropCount = 0;
-            if (subscriptionfirstCondition != null)
+            SourceExpression.Validate(bcenvironment, nameof(bcenvironment), required: true);
+            SourceExpression.Validate(company, nameof(company), required: true);
+            SourceExpression.Validate(subscriptionfirstCondition, nameof(subscriptionfirstCondition), required: false);
+            SourceExpression.Validate(subscriptionfirstConditionIs, nameof(subscriptionfirstConditionIs), required: false);
+            SourceExpression.Validate(subscriptionsecondCondition, nameof(subscriptionsecondCondition), required: false);
+            SourceExpression.Validate(subscriptionsecondConditionIs, nameof(subscriptionsecondConditionIs), required: false);
+            SourceExpression.Validate(subscriptionthirdCondition, nameof(subscriptionthirdCondition), required: false);
+            SourceExpression.Validate(subscriptionthirdConditionIs, nameof(subscriptionthirdConditionIs), required: false);
+            SourceExpression.Validate(subscriptionfourthCondition, nameof(subscriptionfourthCondition), required: false);
+            SourceExpression.Validate(subscriptionfourthConditionIs, nameof(subscriptionfourthConditionIs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                subscription["FirstConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v3/bcenvironments/{0}/companies/{1}/webhook/v1/vendorapproval", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bcenvironment, 2), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(company, 2));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var subscription = new JObject();
+                var subscriptionpropCount = 0;
+                if (subscriptionfirstCondition != null)
+                {
+                    subscription["FirstConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfirstCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfirstConditionIs != null)
+                {
+                    subscription["FirstConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondCondition != null)
+                {
+                    subscription["SecondConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionsecondCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionsecondConditionIs != null)
+                {
+                    subscription["SecondConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdCondition != null)
+                {
+                    subscription["ThirdConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionthirdCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionthirdConditionIs != null)
+                {
+                    subscription["ThirdConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthCondition != null)
+                {
+                    subscription["FourthConditionField"] = SourceExpressionConverter.ConvertToken(subscriptionfourthCondition);
+                    subscriptionpropCount++;
+                }
+
+                if (subscriptionfourthConditionIs != null)
+                {
+                    subscription["FourthConditionFieldValue"] = SourceExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
+                    subscriptionpropCount++;
+                }
+
+                subscription["NotificationUrl"] = "@listCallbackUrl()";
                 subscriptionpropCount++;
+                if (subscriptionpropCount > 0)
+                {
+                    callPayload.Body = subscription;
+                }
+                return callPayload;
             }
 
-            if (subscriptionfirstConditionIs != null)
-            {
-                subscription["FirstConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfirstConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondCondition != null)
-            {
-                subscription["SecondConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionsecondConditionIs != null)
-            {
-                subscription["SecondConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionsecondConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdCondition != null)
-            {
-                subscription["ThirdConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionthirdConditionIs != null)
-            {
-                subscription["ThirdConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionthirdConditionIs);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthCondition != null)
-            {
-                subscription["FourthConditionField"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthCondition);
-                subscriptionpropCount++;
-            }
-
-            if (subscriptionfourthConditionIs != null)
-            {
-                subscription["FourthConditionFieldValue"] = CSharpExpressionConverter.ConvertToken(subscriptionfourthConditionIs);
-                subscriptionpropCount++;
-            }
-
-            subscription["NotificationUrl"] = "@listCallbackUrl()";
-            subscriptionpropCount++;
-            if (subscriptionpropCount > 0)
-            {
-                callPayload.Body = subscription;
-            }
-
-            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHookSubscriptionResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

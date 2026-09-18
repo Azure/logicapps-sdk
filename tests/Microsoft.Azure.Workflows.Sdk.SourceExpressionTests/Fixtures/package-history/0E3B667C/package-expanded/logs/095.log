@@ -1,0 +1,2 @@
+  TransitiveLibrary -> D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\deployments\library\
+  WFSDK1008: No workflow.json artifacts were published. Workflow deployment validation was not performed; library/non-workflow publication is not host certification.

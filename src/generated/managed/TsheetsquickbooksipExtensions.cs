@@ -12,163 +12,241 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tsheetsquickbooksip
     public class TsheetsquickbooksipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes(Expression<Func<string>> ids = null, Expression<Func<string>> parentIds = null, Expression<Func<string>> name = null, Expression<Func<typeInput>> type = null, Expression<Func<bool>> customfields = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null, Expression<Func<activeInput>> active = null)
+        public IBodyWorkflowAction<GetJobcodesResponse> GetJobcodes([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> parentIds = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<typeInput> type = null, [WorkflowExpression] Func<bool> customfields = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<activeInput> active = null)
         {
-            var apiCallPath = "/jobcodes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (parentIds != null)
-                callPayload.Queries["parent_ids"] = CSharpExpressionConverter.ConvertO(parentIds);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Queries["type"] = Convert.ToString("regular");
-            if (type != null)
-                callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
-            if (customfields != null)
-                callPayload.Queries["customfields"] = CSharpExpressionConverter.ConvertO(customfields);
-            if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
-            if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
-            callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-            if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["active"] = Convert.ToString("yes");
-            if (active != null)
-                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
-            return new ApiConnectionAction<GetJobcodesResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(parentIds, nameof(parentIds), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(type, nameof(type), required: false);
+            SourceExpression.Validate(customfields, nameof(customfields), required: false);
+            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
+            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
+            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(active, nameof(active), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/jobcodes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (parentIds != null)
+                    callPayload.Queries["parent_ids"] = SourceExpressionConverter.ConvertO(parentIds);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["type"] = Convert.ToString("regular");
+                if (type != null)
+                    callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                if (customfields != null)
+                    callPayload.Queries["customfields"] = SourceExpressionConverter.ConvertO(customfields);
+                if (modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = SourceExpressionConverter.ConvertO(modifiedBefore);
+                if (modifiedSince != null)
+                    callPayload.Queries["modified_since"] = SourceExpressionConverter.ConvertO(modifiedSince);
+                callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
+                if (supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = SourceExpressionConverter.Convert(supplementalData);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["active"] = Convert.ToString("yes");
+                if (active != null)
+                    callPayload.Queries["active"] = SourceExpressionConverter.Convert(active);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetJobcodesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetProjectsResponse> GetProjects(Expression<Func<string>> ids = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<int>> parentJobcodeId = null, Expression<Func<string>> name = null, Expression<Func<activeInput>> active = null, Expression<Func<bool>> byJobcodeAssignment = null)
+        public IBodyWorkflowAction<GetProjectsResponse> GetProjects([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<int> parentJobcodeId = null, [WorkflowExpression] Func<string> name = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<bool> byJobcodeAssignment = null)
         {
-            var apiCallPath = "/projects";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (jobcodeIds != null)
-                callPayload.Queries["jobcode_ids"] = CSharpExpressionConverter.ConvertO(jobcodeIds);
-            if (parentJobcodeId != null)
-                callPayload.Queries["parent_jobcode_id"] = CSharpExpressionConverter.ConvertO(parentJobcodeId);
-            if (name != null)
-                callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            callPayload.Queries["active"] = Convert.ToString("yes");
-            if (active != null)
-                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
-            if (byJobcodeAssignment != null)
-                callPayload.Queries["by_jobcode_assignment"] = CSharpExpressionConverter.ConvertO(byJobcodeAssignment);
-            return new ApiConnectionAction<GetProjectsResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
+            SourceExpression.Validate(parentJobcodeId, nameof(parentJobcodeId), required: false);
+            SourceExpression.Validate(name, nameof(name), required: false);
+            SourceExpression.Validate(active, nameof(active), required: false);
+            SourceExpression.Validate(byJobcodeAssignment, nameof(byJobcodeAssignment), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/projects";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (jobcodeIds != null)
+                    callPayload.Queries["jobcode_ids"] = SourceExpressionConverter.ConvertO(jobcodeIds);
+                if (parentJobcodeId != null)
+                    callPayload.Queries["parent_jobcode_id"] = SourceExpressionConverter.ConvertO(parentJobcodeId);
+                if (name != null)
+                    callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                callPayload.Queries["active"] = Convert.ToString("yes");
+                if (active != null)
+                    callPayload.Queries["active"] = SourceExpressionConverter.Convert(active);
+                if (byJobcodeAssignment != null)
+                    callPayload.Queries["by_jobcode_assignment"] = SourceExpressionConverter.ConvertO(byJobcodeAssignment);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProjectsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> ids = null, Expression<Func<string>> notIds = null, Expression<Func<string>> employeeNumbers = null, Expression<Func<string>> usernames = null, Expression<Func<string>> groupIds = null, Expression<Func<string>> notGroupIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<activeInput>> active = null, Expression<Func<string>> firstName = null, Expression<Func<string>> lastName = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> notIds = null, [WorkflowExpression] Func<string> employeeNumbers = null, [WorkflowExpression] Func<string> usernames = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<string> notGroupIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<activeInput> active = null, [WorkflowExpression] Func<string> firstName = null, [WorkflowExpression] Func<string> lastName = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (notIds != null)
-                callPayload.Queries["not_ids"] = CSharpExpressionConverter.ConvertO(notIds);
-            if (employeeNumbers != null)
-                callPayload.Queries["employee_numbers"] = CSharpExpressionConverter.ConvertO(employeeNumbers);
-            if (usernames != null)
-                callPayload.Queries["usernames"] = CSharpExpressionConverter.ConvertO(usernames);
-            if (groupIds != null)
-                callPayload.Queries["group_ids"] = CSharpExpressionConverter.ConvertO(groupIds);
-            if (notGroupIds != null)
-                callPayload.Queries["not_group_ids"] = CSharpExpressionConverter.ConvertO(notGroupIds);
-            if (payrollIds != null)
-                callPayload.Queries["payroll_ids"] = CSharpExpressionConverter.ConvertO(payrollIds);
-            callPayload.Queries["active"] = Convert.ToString("yes");
-            if (active != null)
-                callPayload.Queries["active"] = CSharpExpressionConverter.Convert(active);
-            if (firstName != null)
-                callPayload.Queries["first_name"] = CSharpExpressionConverter.ConvertO(firstName);
-            if (lastName != null)
-                callPayload.Queries["last_name"] = CSharpExpressionConverter.ConvertO(lastName);
-            if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
-            if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
-            callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-            if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<GetUsersResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(notIds, nameof(notIds), required: false);
+            SourceExpression.Validate(employeeNumbers, nameof(employeeNumbers), required: false);
+            SourceExpression.Validate(usernames, nameof(usernames), required: false);
+            SourceExpression.Validate(groupIds, nameof(groupIds), required: false);
+            SourceExpression.Validate(notGroupIds, nameof(notGroupIds), required: false);
+            SourceExpression.Validate(payrollIds, nameof(payrollIds), required: false);
+            SourceExpression.Validate(active, nameof(active), required: false);
+            SourceExpression.Validate(firstName, nameof(firstName), required: false);
+            SourceExpression.Validate(lastName, nameof(lastName), required: false);
+            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
+            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
+            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (notIds != null)
+                    callPayload.Queries["not_ids"] = SourceExpressionConverter.ConvertO(notIds);
+                if (employeeNumbers != null)
+                    callPayload.Queries["employee_numbers"] = SourceExpressionConverter.ConvertO(employeeNumbers);
+                if (usernames != null)
+                    callPayload.Queries["usernames"] = SourceExpressionConverter.ConvertO(usernames);
+                if (groupIds != null)
+                    callPayload.Queries["group_ids"] = SourceExpressionConverter.ConvertO(groupIds);
+                if (notGroupIds != null)
+                    callPayload.Queries["not_group_ids"] = SourceExpressionConverter.ConvertO(notGroupIds);
+                if (payrollIds != null)
+                    callPayload.Queries["payroll_ids"] = SourceExpressionConverter.ConvertO(payrollIds);
+                callPayload.Queries["active"] = Convert.ToString("yes");
+                if (active != null)
+                    callPayload.Queries["active"] = SourceExpressionConverter.Convert(active);
+                if (firstName != null)
+                    callPayload.Queries["first_name"] = SourceExpressionConverter.ConvertO(firstName);
+                if (lastName != null)
+                    callPayload.Queries["last_name"] = SourceExpressionConverter.ConvertO(lastName);
+                if (modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = SourceExpressionConverter.ConvertO(modifiedBefore);
+                if (modifiedSince != null)
+                    callPayload.Queries["modified_since"] = SourceExpressionConverter.ConvertO(modifiedSince);
+                callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
+                if (supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = SourceExpressionConverter.Convert(supplementalData);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUsersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets(Expression<Func<string>> ids = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null, Expression<Func<string>> jobcodeIds = null, Expression<Func<string>> payrollIds = null, Expression<Func<string>> userIds = null, Expression<Func<string>> groupIds = null, Expression<Func<onTheClockInput>> onTheClock = null, Expression<Func<jobcodeTypeInput>> jobcodeType = null, Expression<Func<string>> modifiedBefore = null, Expression<Func<string>> modifiedSince = null, Expression<Func<supplementalDataInput>> supplementalData = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetTimesheetsResponse> GetTimesheets([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null, [WorkflowExpression] Func<string> jobcodeIds = null, [WorkflowExpression] Func<string> payrollIds = null, [WorkflowExpression] Func<string> userIds = null, [WorkflowExpression] Func<string> groupIds = null, [WorkflowExpression] Func<onTheClockInput> onTheClock = null, [WorkflowExpression] Func<jobcodeTypeInput> jobcodeType = null, [WorkflowExpression] Func<string> modifiedBefore = null, [WorkflowExpression] Func<string> modifiedSince = null, [WorkflowExpression] Func<supplementalDataInput> supplementalData = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/timesheets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (startDate != null)
-                callPayload.Queries["start_date"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["end_date"] = CSharpExpressionConverter.ConvertO(endDate);
-            if (jobcodeIds != null)
-                callPayload.Queries["jobcode_ids"] = CSharpExpressionConverter.ConvertO(jobcodeIds);
-            if (payrollIds != null)
-                callPayload.Queries["payroll_ids"] = CSharpExpressionConverter.ConvertO(payrollIds);
-            if (userIds != null)
-                callPayload.Queries["user_ids"] = CSharpExpressionConverter.ConvertO(userIds);
-            if (groupIds != null)
-                callPayload.Queries["group_ids"] = CSharpExpressionConverter.ConvertO(groupIds);
-            callPayload.Queries["on_the_clock"] = Convert.ToString("no");
-            if (onTheClock != null)
-                callPayload.Queries["on_the_clock"] = CSharpExpressionConverter.Convert(onTheClock);
-            callPayload.Queries["jobcode_type"] = Convert.ToString("all");
-            if (jobcodeType != null)
-                callPayload.Queries["jobcode_type"] = CSharpExpressionConverter.Convert(jobcodeType);
-            if (modifiedBefore != null)
-                callPayload.Queries["modified_before"] = CSharpExpressionConverter.ConvertO(modifiedBefore);
-            if (modifiedSince != null)
-                callPayload.Queries["modified_since"] = CSharpExpressionConverter.ConvertO(modifiedSince);
-            callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
-            if (supplementalData != null)
-                callPayload.Queries["supplemental_data"] = CSharpExpressionConverter.Convert(supplementalData);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<GetTimesheetsResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            SourceExpression.Validate(jobcodeIds, nameof(jobcodeIds), required: false);
+            SourceExpression.Validate(payrollIds, nameof(payrollIds), required: false);
+            SourceExpression.Validate(userIds, nameof(userIds), required: false);
+            SourceExpression.Validate(groupIds, nameof(groupIds), required: false);
+            SourceExpression.Validate(onTheClock, nameof(onTheClock), required: false);
+            SourceExpression.Validate(jobcodeType, nameof(jobcodeType), required: false);
+            SourceExpression.Validate(modifiedBefore, nameof(modifiedBefore), required: false);
+            SourceExpression.Validate(modifiedSince, nameof(modifiedSince), required: false);
+            SourceExpression.Validate(supplementalData, nameof(supplementalData), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/timesheets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (startDate != null)
+                    callPayload.Queries["start_date"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["end_date"] = SourceExpressionConverter.ConvertO(endDate);
+                if (jobcodeIds != null)
+                    callPayload.Queries["jobcode_ids"] = SourceExpressionConverter.ConvertO(jobcodeIds);
+                if (payrollIds != null)
+                    callPayload.Queries["payroll_ids"] = SourceExpressionConverter.ConvertO(payrollIds);
+                if (userIds != null)
+                    callPayload.Queries["user_ids"] = SourceExpressionConverter.ConvertO(userIds);
+                if (groupIds != null)
+                    callPayload.Queries["group_ids"] = SourceExpressionConverter.ConvertO(groupIds);
+                callPayload.Queries["on_the_clock"] = Convert.ToString("no");
+                if (onTheClock != null)
+                    callPayload.Queries["on_the_clock"] = SourceExpressionConverter.Convert(onTheClock);
+                callPayload.Queries["jobcode_type"] = Convert.ToString("all");
+                if (jobcodeType != null)
+                    callPayload.Queries["jobcode_type"] = SourceExpressionConverter.Convert(jobcodeType);
+                if (modifiedBefore != null)
+                    callPayload.Queries["modified_before"] = SourceExpressionConverter.ConvertO(modifiedBefore);
+                if (modifiedSince != null)
+                    callPayload.Queries["modified_since"] = SourceExpressionConverter.ConvertO(modifiedSince);
+                callPayload.Queries["supplemental_data"] = Convert.ToString("yes");
+                if (supplementalData != null)
+                    callPayload.Queries["supplemental_data"] = SourceExpressionConverter.Convert(supplementalData);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTimesheetsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "tsheetsquickbooksip")]
-        public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications(Expression<Func<string>> ids = null, Expression<Func<string>> deliveryBefore = null, Expression<Func<string>> deliveryAfter = null, Expression<Func<int>> userId = null, Expression<Func<string>> msgTrackingId = null, Expression<Func<int>> perPage = null, Expression<Func<int>> page = null)
+        public IBodyWorkflowAction<GetNotificationsResponse> GetNotifications([WorkflowExpression] Func<string> ids = null, [WorkflowExpression] Func<string> deliveryBefore = null, [WorkflowExpression] Func<string> deliveryAfter = null, [WorkflowExpression] Func<int> userId = null, [WorkflowExpression] Func<string> msgTrackingId = null, [WorkflowExpression] Func<int> perPage = null, [WorkflowExpression] Func<int> page = null)
         {
-            var apiCallPath = "/notifications";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ids != null)
-                callPayload.Queries["ids"] = CSharpExpressionConverter.ConvertO(ids);
-            if (deliveryBefore != null)
-                callPayload.Queries["delivery_before"] = CSharpExpressionConverter.ConvertO(deliveryBefore);
-            if (deliveryAfter != null)
-                callPayload.Queries["delivery_after"] = CSharpExpressionConverter.ConvertO(deliveryAfter);
-            if (userId != null)
-                callPayload.Queries["user_id"] = CSharpExpressionConverter.ConvertO(userId);
-            if (msgTrackingId != null)
-                callPayload.Queries["msg_tracking_id"] = CSharpExpressionConverter.ConvertO(msgTrackingId);
-            if (perPage != null)
-                callPayload.Queries["per_page"] = CSharpExpressionConverter.ConvertO(perPage);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            return new ApiConnectionAction<GetNotificationsResponse>(callPayload);
+            SourceExpression.Validate(ids, nameof(ids), required: false);
+            SourceExpression.Validate(deliveryBefore, nameof(deliveryBefore), required: false);
+            SourceExpression.Validate(deliveryAfter, nameof(deliveryAfter), required: false);
+            SourceExpression.Validate(userId, nameof(userId), required: false);
+            SourceExpression.Validate(msgTrackingId, nameof(msgTrackingId), required: false);
+            SourceExpression.Validate(perPage, nameof(perPage), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/notifications";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ids != null)
+                    callPayload.Queries["ids"] = SourceExpressionConverter.ConvertO(ids);
+                if (deliveryBefore != null)
+                    callPayload.Queries["delivery_before"] = SourceExpressionConverter.ConvertO(deliveryBefore);
+                if (deliveryAfter != null)
+                    callPayload.Queries["delivery_after"] = SourceExpressionConverter.ConvertO(deliveryAfter);
+                if (userId != null)
+                    callPayload.Queries["user_id"] = SourceExpressionConverter.ConvertO(userId);
+                if (msgTrackingId != null)
+                    callPayload.Queries["msg_tracking_id"] = SourceExpressionConverter.ConvertO(msgTrackingId);
+                if (perPage != null)
+                    callPayload.Queries["per_page"] = SourceExpressionConverter.ConvertO(perPage);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetNotificationsResponse>(BuildSourceInput);
         }
     }
 

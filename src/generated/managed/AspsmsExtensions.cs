@@ -12,32 +12,48 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aspsms
     public class AspsmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
-        public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS(Expression<Func<string>> mSISDN, Expression<Func<string>> messageData, Expression<Func<string>> originator = null, Expression<Func<int>> lifeTime = null, Expression<Func<string>> deferredDeliveryTime = null, Expression<Func<string>> transactionReferenceNumber = null)
+        public IBodyWorkflowAction<SendSimpleSMSResponse> SendSimpleSMS([WorkflowExpression] Func<string> mSISDN, [WorkflowExpression] Func<string> messageData, [WorkflowExpression] Func<string> originator = null, [WorkflowExpression] Func<int> lifeTime = null, [WorkflowExpression] Func<string> deferredDeliveryTime = null, [WorkflowExpression] Func<string> transactionReferenceNumber = null)
         {
-            var apiCallPath = "/SendSimpleSMS";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["MSISDN"] = CSharpExpressionConverter.ConvertO(mSISDN);
-            callPayload.Queries["Operation"] = Convert.ToString("SendTextSMS");
-            callPayload.Queries["MessageData"] = CSharpExpressionConverter.ConvertO(messageData);
-            if (originator != null)
-                callPayload.Queries["Originator"] = CSharpExpressionConverter.ConvertO(originator);
-            if (lifeTime != null)
-                callPayload.Queries["LifeTime"] = CSharpExpressionConverter.ConvertO(lifeTime);
-            if (deferredDeliveryTime != null)
-                callPayload.Queries["DeferredDeliveryTime"] = CSharpExpressionConverter.ConvertO(deferredDeliveryTime);
-            if (transactionReferenceNumber != null)
-                callPayload.Queries["TransactionReferenceNumber"] = CSharpExpressionConverter.ConvertO(transactionReferenceNumber);
-            return new ApiConnectionAction<SendSimpleSMSResponse>(callPayload);
+            SourceExpression.Validate(mSISDN, nameof(mSISDN), required: true);
+            SourceExpression.Validate(messageData, nameof(messageData), required: true);
+            SourceExpression.Validate(originator, nameof(originator), required: false);
+            SourceExpression.Validate(lifeTime, nameof(lifeTime), required: false);
+            SourceExpression.Validate(deferredDeliveryTime, nameof(deferredDeliveryTime), required: false);
+            SourceExpression.Validate(transactionReferenceNumber, nameof(transactionReferenceNumber), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/SendSimpleSMS";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["MSISDN"] = SourceExpressionConverter.ConvertO(mSISDN);
+                callPayload.Queries["Operation"] = Convert.ToString("SendTextSMS");
+                callPayload.Queries["MessageData"] = SourceExpressionConverter.ConvertO(messageData);
+                if (originator != null)
+                    callPayload.Queries["Originator"] = SourceExpressionConverter.ConvertO(originator);
+                if (lifeTime != null)
+                    callPayload.Queries["LifeTime"] = SourceExpressionConverter.ConvertO(lifeTime);
+                if (deferredDeliveryTime != null)
+                    callPayload.Queries["DeferredDeliveryTime"] = SourceExpressionConverter.ConvertO(deferredDeliveryTime);
+                if (transactionReferenceNumber != null)
+                    callPayload.Queries["TransactionReferenceNumber"] = SourceExpressionConverter.ConvertO(transactionReferenceNumber);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SendSimpleSMSResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aspsms")]
         public IBodyWorkflowAction<JToken> ASPSMSCredits()
         {
-            var apiCallPath = "/ASPSMSCredits";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/ASPSMSCredits";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

@@ -14,19 +14,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fishwatchip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
         public IBodyWorkflowAction<SpeciesResponseItem[]> ListSpecies()
         {
-            var apiCallPath = "/species";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/species";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpeciesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fishwatchip")]
-        public IBodyWorkflowAction<SpeciesResponseItem[]> GetSpecies(Expression<Func<string>> species)
+        public IBodyWorkflowAction<SpeciesResponseItem[]> GetSpecies([WorkflowExpression] Func<string> species)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/species/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(species, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SpeciesResponseItem[]>(callPayload);
+            SourceExpression.Validate(species, nameof(species), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/species/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(species, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpeciesResponseItem[]>(BuildSourceInput);
         }
     }
 

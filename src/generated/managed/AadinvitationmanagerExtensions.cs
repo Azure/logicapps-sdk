@@ -12,76 +12,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aadinvitationmanager
     public class AadinvitationmanagerActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aadinvitationmanager")]
-        public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation(Expression<Func<string>> bodyinvitedUserDisplayName = null, Expression<Func<string>> bodyinvitedUserEmailAddress = null, Expression<Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]>> bodyinvitedUserMessageInfoccRecipients = null, Expression<Func<string>> bodyinvitedUserMessageInfocustomizedMessageBody = null, Expression<Func<string>> bodyinvitedUserMessageInfomessageLanguage = null, Expression<Func<string>> bodyinvitedUserType = null, Expression<Func<string>> bodyinviteRedirectUrl = null, Expression<Func<bool>> bodyresetRedemption = null, Expression<Func<bool>> bodysendInvitationMessage = null)
+        public IBodyWorkflowAction<CreateInvitationResponse> CreateInvitation([WorkflowExpression] Func<string> bodyinvitedUserDisplayName = null, [WorkflowExpression] Func<string> bodyinvitedUserEmailAddress = null, [WorkflowExpression] Func<bodyinvitedUserMessageInfoccRecipientsInputItem[]> bodyinvitedUserMessageInfoccRecipients = null, [WorkflowExpression] Func<string> bodyinvitedUserMessageInfocustomizedMessageBody = null, [WorkflowExpression] Func<string> bodyinvitedUserMessageInfomessageLanguage = null, [WorkflowExpression] Func<string> bodyinvitedUserType = null, [WorkflowExpression] Func<string> bodyinviteRedirectUrl = null, [WorkflowExpression] Func<bool> bodyresetRedemption = null, [WorkflowExpression] Func<bool> bodysendInvitationMessage = null)
         {
-            var apiCallPath = "/v1.0/invitations";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinvitedUserDisplayName != null)
+            SourceExpression.Validate(bodyinvitedUserDisplayName, nameof(bodyinvitedUserDisplayName), required: false);
+            SourceExpression.Validate(bodyinvitedUserEmailAddress, nameof(bodyinvitedUserEmailAddress), required: false);
+            SourceExpression.Validate(bodyinvitedUserMessageInfoccRecipients, nameof(bodyinvitedUserMessageInfoccRecipients), required: false);
+            SourceExpression.Validate(bodyinvitedUserMessageInfocustomizedMessageBody, nameof(bodyinvitedUserMessageInfocustomizedMessageBody), required: false);
+            SourceExpression.Validate(bodyinvitedUserMessageInfomessageLanguage, nameof(bodyinvitedUserMessageInfomessageLanguage), required: false);
+            SourceExpression.Validate(bodyinvitedUserType, nameof(bodyinvitedUserType), required: false);
+            SourceExpression.Validate(bodyinviteRedirectUrl, nameof(bodyinviteRedirectUrl), required: false);
+            SourceExpression.Validate(bodyresetRedemption, nameof(bodyresetRedemption), required: false);
+            SourceExpression.Validate(bodysendInvitationMessage, nameof(bodysendInvitationMessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["invitedUserDisplayName"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserDisplayName);
-                bodypropCount++;
-            }
+                var apiCallPath = "/v1.0/invitations";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinvitedUserDisplayName != null)
+                {
+                    body["invitedUserDisplayName"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserDisplayName);
+                    bodypropCount++;
+                }
 
-            if (bodyinvitedUserEmailAddress != null)
-            {
-                body["invitedUserEmailAddress"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserEmailAddress);
-                bodypropCount++;
-            }
+                if (bodyinvitedUserEmailAddress != null)
+                {
+                    body["invitedUserEmailAddress"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserEmailAddress);
+                    bodypropCount++;
+                }
 
-            var invitedUserMessageInfoObject = new JObject();
-            var invitedUserMessageInfoObjectpropCount = 0;
-            if (bodyinvitedUserMessageInfoccRecipients != null)
-            {
-                invitedUserMessageInfoObject["ccRecipients"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserMessageInfoccRecipients);
+                var invitedUserMessageInfoObject = new JObject();
+                var invitedUserMessageInfoObjectpropCount = 0;
+                if (bodyinvitedUserMessageInfoccRecipients != null)
+                {
+                    invitedUserMessageInfoObject["ccRecipients"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserMessageInfoccRecipients);
+                    invitedUserMessageInfoObjectpropCount++;
+                }
+
+                if (bodyinvitedUserMessageInfocustomizedMessageBody != null)
+                {
+                    invitedUserMessageInfoObject["customizedMessageBody"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserMessageInfocustomizedMessageBody);
+                    invitedUserMessageInfoObjectpropCount++;
+                }
+
+                invitedUserMessageInfoObject["messageLanguage"] = "en-US";
                 invitedUserMessageInfoObjectpropCount++;
-            }
+                if (bodyinvitedUserMessageInfomessageLanguage != null)
+                {
+                    invitedUserMessageInfoObject["messageLanguage"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserMessageInfomessageLanguage);
+                }
 
-            if (bodyinvitedUserMessageInfocustomizedMessageBody != null)
-            {
-                invitedUserMessageInfoObject["customizedMessageBody"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserMessageInfocustomizedMessageBody);
-                invitedUserMessageInfoObjectpropCount++;
-            }
-
-            invitedUserMessageInfoObject["messageLanguage"] = "en-US";
-            invitedUserMessageInfoObjectpropCount++;
-            if (bodyinvitedUserMessageInfomessageLanguage != null)
-            {
-                invitedUserMessageInfoObject["messageLanguage"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserMessageInfomessageLanguage);
-            }
-
-            body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
-            bodypropCount++;
-
-            if (bodyinvitedUserType != null)
-            {
-                body["invitedUserType"] = CSharpExpressionConverter.ConvertToken(bodyinvitedUserType);
+                body["invitedUserMessageInfo"] = invitedUserMessageInfoObject;
                 bodypropCount++;
+
+                if (bodyinvitedUserType != null)
+                {
+                    body["invitedUserType"] = SourceExpressionConverter.ConvertToken(bodyinvitedUserType);
+                    bodypropCount++;
+                }
+
+                if (bodyinviteRedirectUrl != null)
+                {
+                    body["inviteRedirectUrl"] = SourceExpressionConverter.ConvertToken(bodyinviteRedirectUrl);
+                    bodypropCount++;
+                }
+
+                if (bodyresetRedemption != null)
+                {
+                    body["resetRedemption"] = SourceExpressionConverter.ConvertToken(bodyresetRedemption);
+                    bodypropCount++;
+                }
+
+                if (bodysendInvitationMessage != null)
+                {
+                    body["sendInvitationMessage"] = SourceExpressionConverter.ConvertToken(bodysendInvitationMessage);
+                    bodypropCount++;
+                }
+
+                callPayload.Body = body;
+                return callPayload;
             }
 
-            if (bodyinviteRedirectUrl != null)
-            {
-                body["inviteRedirectUrl"] = CSharpExpressionConverter.ConvertToken(bodyinviteRedirectUrl);
-                bodypropCount++;
-            }
-
-            if (bodyresetRedemption != null)
-            {
-                body["resetRedemption"] = CSharpExpressionConverter.ConvertToken(bodyresetRedemption);
-                bodypropCount++;
-            }
-
-            if (bodysendInvitationMessage != null)
-            {
-                body["sendInvitationMessage"] = CSharpExpressionConverter.ConvertToken(bodysendInvitationMessage);
-                bodypropCount++;
-            }
-
-            callPayload.Body = body;
-
-            return new ApiConnectionAction<CreateInvitationResponse>(callPayload);
+            return new ApiConnectionAction<CreateInvitationResponse>(BuildSourceInput);
         }
     }
 

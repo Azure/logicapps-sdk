@@ -12,44 +12,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Biztalk
     public class BiztalkActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        public IBodyWorkflowAction<string> EncodeJson(Expression<Func<string>> documentSpec = null)
+        public IBodyWorkflowAction<string> EncodeJson([WorkflowExpression] Func<string> documentSpec = null)
         {
-            var apiCallPath = "/EncodeJson";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = CSharpExpressionConverter.ConvertO(documentSpec);
-            var requestContent = new JObject();
-            var requestContentpropCount = 0;
-            if (requestContentpropCount > 0)
+            SourceExpression.Validate(documentSpec, nameof(documentSpec), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = requestContent;
+                var apiCallPath = "/EncodeJson";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (documentSpec != null)
+                    callPayload.Queries["documentSpec"] = SourceExpressionConverter.ConvertO(documentSpec);
+                var requestContent = new JObject();
+                var requestContentpropCount = 0;
+                if (requestContentpropCount > 0)
+                {
+                    callPayload.Body = requestContent;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        public IBodyWorkflowAction<string> EncodeXml(Expression<Func<string>> documentSpec = null, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string> EncodeXml([WorkflowExpression] Func<string> documentSpec = null, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/EncodeXml";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (documentSpec != null)
-                callPayload.Queries["documentSpec"] = CSharpExpressionConverter.ConvertO(documentSpec);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(documentSpec, nameof(documentSpec), required: false);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/EncodeXml";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (documentSpec != null)
+                    callPayload.Queries["documentSpec"] = SourceExpressionConverter.ConvertO(documentSpec);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "biztalk")]
-        public IBodyWorkflowAction<string> Send(Expression<Func<string>> receiveLocationAddress, Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<string> Send([WorkflowExpression] Func<string> receiveLocationAddress, [WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/Send";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["receiveLocationAddress"] = CSharpExpressionConverter.ConvertO(receiveLocationAddress);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(receiveLocationAddress, nameof(receiveLocationAddress), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/Send";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["receiveLocationAddress"] = SourceExpressionConverter.ConvertO(receiveLocationAddress);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

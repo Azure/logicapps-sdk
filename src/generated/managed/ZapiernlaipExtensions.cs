@@ -14,44 +14,56 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zapiernlaip
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
         public IBodyWorkflowAction<ExposedActionResponseSchema> ExposedGet()
         {
-            var apiCallPath = "/api/v1/exposed/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ExposedActionResponseSchema>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v1/exposed/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExposedActionResponseSchema>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zapiernlaip")]
-        public IBodyWorkflowAction<ActionPostResponse> Action(Expression<Func<string>> actionId, Expression<Func<string>> bodyinstructions, Expression<Func<bool>> bodypreviewOnly = null)
+        public IBodyWorkflowAction<ActionPostResponse> Action([WorkflowExpression] Func<string> actionId, [WorkflowExpression] Func<string> bodyinstructions, [WorkflowExpression] Func<bool> bodypreviewOnly = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["instructions"] = CSharpExpressionConverter.ConvertToken(bodyinstructions);
-            if (bodypreviewOnly != null)
+            SourceExpression.Validate(actionId, nameof(actionId), required: true);
+            SourceExpression.Validate(bodyinstructions, nameof(bodyinstructions), required: true);
+            SourceExpression.Validate(bodypreviewOnly, nameof(bodypreviewOnly), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v1/dynamic/exposed/{0}/execute/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(actionId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["instructions"] = SourceExpressionConverter.ConvertToken(bodyinstructions);
                 if (bodypreviewOnly != null)
                 {
-                    body["preview_only"] = CSharpExpressionConverter.ConvertToken(bodypreviewOnly);
+                    if (bodypreviewOnly != null)
+                    {
+                        body["preview_only"] = SourceExpressionConverter.ConvertToken(bodypreviewOnly);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["preview_only"] = false;
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["preview_only"] = false;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ActionPostResponse>(callPayload);
+            return new ApiConnectionAction<ActionPostResponse>(BuildSourceInput);
         }
     }
 

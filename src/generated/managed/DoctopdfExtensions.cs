@@ -12,37 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Doctopdf
     public class DoctopdfActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "doctopdf")]
-        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF(Expression<Func<string>> bodyfileName = null, Expression<Func<object>> bodyfileContent = null, Expression<Func<string>> publickey = null, Expression<Func<string>> apikey = null)
+        public IBodyWorkflowAction<DocToPDFResponse> DocToPDF([WorkflowExpression] Func<string> bodyfileName = null, [WorkflowExpression] Func<object> bodyfileContent = null, [WorkflowExpression] Func<string> publickey = null, [WorkflowExpression] Func<string> apikey = null)
         {
-            var apiCallPath = "/api/doctopdf";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["publickey"] = Convert.ToString("");
-            if (publickey != null)
-                callPayload.Headers["publickey"] = CSharpExpressionConverter.ConvertO(publickey);
-            callPayload.Headers["apikey"] = Convert.ToString("");
-            if (apikey != null)
-                callPayload.Headers["apikey"] = CSharpExpressionConverter.ConvertO(apikey);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyfileName != null)
+            SourceExpression.Validate(bodyfileName, nameof(bodyfileName), required: false);
+            SourceExpression.Validate(bodyfileContent, nameof(bodyfileContent), required: false);
+            SourceExpression.Validate(publickey, nameof(publickey), required: false);
+            SourceExpression.Validate(apikey, nameof(apikey), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["File Name"] = CSharpExpressionConverter.ConvertToken(bodyfileName);
-                bodypropCount++;
+                var apiCallPath = "/api/doctopdf";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["publickey"] = Convert.ToString("");
+                if (publickey != null)
+                    callPayload.Headers["publickey"] = SourceExpressionConverter.ConvertO(publickey);
+                callPayload.Headers["apikey"] = Convert.ToString("");
+                if (apikey != null)
+                    callPayload.Headers["apikey"] = SourceExpressionConverter.ConvertO(apikey);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyfileName != null)
+                {
+                    body["File Name"] = SourceExpressionConverter.ConvertToken(bodyfileName);
+                    bodypropCount++;
+                }
+
+                if (bodyfileContent != null)
+                {
+                    body["File Content"] = SourceExpressionConverter.ConvertToken(bodyfileContent);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfileContent != null)
-            {
-                body["File Content"] = CSharpExpressionConverter.ConvertToken(bodyfileContent);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocToPDFResponse>(callPayload);
+            return new ApiConnectionAction<DocToPDFResponse>(BuildSourceInput);
         }
     }
 

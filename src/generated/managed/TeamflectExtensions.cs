@@ -12,329 +12,458 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamflect
     public class TeamflectActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback> SendFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyfeedbackProvider, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate)
+        public IBodyWorkflowAction<Feedback> SendFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyfeedbackProvider, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate)
         {
-            var apiCallPath = "/feedback/sendFeedbackRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["feedbackAboutUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackSubject);
-            bodypropCount++;
-            body["feedbackRequestReceiverUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackProvider);
-            bodypropCount++;
-            body["feedbackNote"] = CSharpExpressionConverter.ConvertToken(bodyrequestNote);
-            bodypropCount++;
-            body["templateTitle"] = CSharpExpressionConverter.ConvertToken(bodytemplateTitle);
-            bodypropCount++;
-            body["dueDateInDays"] = CSharpExpressionConverter.ConvertToken(bodydueDays);
-            bodypropCount++;
-            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
+            SourceExpression.Validate(bodyfeedbackProvider, nameof(bodyfeedbackProvider), required: true);
+            SourceExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
+            SourceExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
+            SourceExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
+            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Feedback>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest(Expression<Func<string>> bodyfeedbackSubject, Expression<Func<string>> bodyexternalEmail, Expression<Func<string>> bodyproviderName, Expression<Func<string>> bodyrequestNote, Expression<Func<string>> bodytemplateTitle, Expression<Func<double>> bodydueDays, Expression<Func<bool>> bodyisPrivate, Expression<Func<bool>> bodyisAnonymous)
-        {
-            var apiCallPath = "/feedback/sendExternalFeedbackRequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["feedbackAboutUPNorId"] = CSharpExpressionConverter.ConvertToken(bodyfeedbackSubject);
-            bodypropCount++;
-            body["externalEmail"] = CSharpExpressionConverter.ConvertToken(bodyexternalEmail);
-            bodypropCount++;
-            body["onBehalfName"] = CSharpExpressionConverter.ConvertToken(bodyproviderName);
-            bodypropCount++;
-            body["feedbackNote"] = CSharpExpressionConverter.ConvertToken(bodyrequestNote);
-            bodypropCount++;
-            body["templateTitle"] = CSharpExpressionConverter.ConvertToken(bodytemplateTitle);
-            bodypropCount++;
-            body["dueDateInDays"] = CSharpExpressionConverter.ConvertToken(bodydueDays);
-            bodypropCount++;
-            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
-            bodypropCount++;
-            body["isAnonymous"] = CSharpExpressionConverter.ConvertToken(bodyisAnonymous);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Feedback>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> GetGoal(Expression<Func<string>> goalId)
-        {
-            var apiCallPath = "/goal/getGoal";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["goalId"] = CSharpExpressionConverter.ConvertO(goalId);
-            return new ApiConnectionAction<Goal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal[]> GetGoals(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<string>> selectedLabels = null, Expression<Func<string>> limit = null, Expression<Func<string>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
-        {
-            var apiCallPath = "/goal/getGoals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userOID != null)
-                callPayload.Queries["userOID"] = CSharpExpressionConverter.ConvertO(userOID);
-            if (userUPN != null)
-                callPayload.Queries["userUPN"] = CSharpExpressionConverter.ConvertO(userUPN);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (selectedLabels != null)
-                callPayload.Queries["selectedLabels"] = CSharpExpressionConverter.ConvertO(selectedLabels);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (skip != null)
-                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
-            return new ApiConnectionAction<Goal[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> UpdateGoal(Expression<Func<string>> bodygoalID, Expression<Func<string>> bodynewProgressValue, Expression<Func<bodyupdaterTypeInput>> bodyupdaterType, Expression<Func<string>> bodysystemName, Expression<Func<string>> bodyupdateComment = null, Expression<Func<string>> bodynewStatus = null)
-        {
-            var apiCallPath = "/goal/updateProgress";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["goalId"] = CSharpExpressionConverter.ConvertToken(bodygoalID);
-            bodypropCount++;
-            body["newValue"] = CSharpExpressionConverter.ConvertToken(bodynewProgressValue);
-            if (bodyupdateComment != null)
-            {
-                body["comment"] = CSharpExpressionConverter.ConvertToken(bodyupdateComment);
+                var apiCallPath = "/feedback/sendFeedbackRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodynewStatus != null)
-            {
-                body["status"] = CSharpExpressionConverter.ConvertToken(bodynewStatus);
+                body["feedbackAboutUPNorId"] = SourceExpressionConverter.ConvertToken(bodyfeedbackSubject);
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["goalUpdater"] = CSharpExpressionConverter.Convert(bodyupdaterType);
-            bodypropCount++;
-            body["goalUpdaterSystemName"] = CSharpExpressionConverter.ConvertToken(bodysystemName);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Goal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> CreateGoal(Expression<Func<string>> bodygoalTitle, Expression<Func<string>> bodydescription, Expression<Func<string>> bodystartDate, Expression<Func<string>> bodydueDate, Expression<Func<string>> bodygoalType, Expression<Func<object>> bodygoalOwner, Expression<Func<string>> bodygoalCreator, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyprogressFormat, Expression<Func<string>> bodycurrencyCode, Expression<Func<double>> bodyinitialValue, Expression<Func<double>> bodytargetValue, Expression<Func<string>> bodyparentGoalID, Expression<Func<bool>> bodynotifyOwner)
-        {
-            var apiCallPath = "/goal/createNewGoal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodygoalTitle);
-            bodypropCount++;
-            body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-            bodypropCount++;
-            body["startDate"] = CSharpExpressionConverter.ConvertToken(bodystartDate);
-            bodypropCount++;
-            body["dueDate"] = CSharpExpressionConverter.ConvertToken(bodydueDate);
-            bodypropCount++;
-            body["goalType"] = CSharpExpressionConverter.ConvertToken(bodygoalType);
-            bodypropCount++;
-            body["goalOwnerUPNorId"] = CSharpExpressionConverter.ConvertToken(bodygoalOwner);
-            bodypropCount++;
-            body["goalCreatorUPNorId"] = CSharpExpressionConverter.ConvertToken(bodygoalCreator);
-            bodypropCount++;
-            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
-            bodypropCount++;
-            body["progressFormatType"] = CSharpExpressionConverter.ConvertToken(bodyprogressFormat);
-            bodypropCount++;
-            body["currencyCode"] = CSharpExpressionConverter.ConvertToken(bodycurrencyCode);
-            bodypropCount++;
-            body["initialValue"] = CSharpExpressionConverter.ConvertToken(bodyinitialValue);
-            bodypropCount++;
-            body["targetValue"] = CSharpExpressionConverter.ConvertToken(bodytargetValue);
-            bodypropCount++;
-            body["parentGoalId"] = CSharpExpressionConverter.ConvertToken(bodyparentGoalID);
-            bodypropCount++;
-            body["sendNotificationToOwner"] = CSharpExpressionConverter.ConvertToken(bodynotifyOwner);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<Goal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<Goal> AddCommentGoal(Expression<Func<string>> commentidOfTheGoal, Expression<Func<string>> commentobjectIdOrUserPrincipalNameOfTheCommenter, Expression<Func<string>> commentcommentItself)
-        {
-            var apiCallPath = "/goal/commentGoal";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var comment = new JObject();
-            var commentpropCount = 0;
-            commentpropCount++;
-            comment["goalId"] = CSharpExpressionConverter.ConvertToken(commentidOfTheGoal);
-            commentpropCount++;
-            comment["commenterIdOrUPN"] = CSharpExpressionConverter.ConvertToken(commentobjectIdOrUserPrincipalNameOfTheCommenter);
-            commentpropCount++;
-            comment["commentText"] = CSharpExpressionConverter.ConvertToken(commentcommentItself);
-            if (commentpropCount > 0)
-            {
-                callPayload.Body = comment;
-            }
-
-            return new ApiConnectionAction<Goal>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse> GetRecognition(Expression<Func<string>> recognitionId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/recognition/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recognitionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<RecognitionResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions(Expression<Func<string[]>> bodyrecipientsToSearch, Expression<Func<string>> bodyrecognitionTitle, Expression<Func<string>> bodyupdateDate, Expression<Func<string>> bodycreationDate)
-        {
-            var apiCallPath = "/recognition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["recipientsIdsOrUPNS"] = CSharpExpressionConverter.ConvertToken(bodyrecipientsToSearch);
-            bodypropCount++;
-            body["title"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionTitle);
-            bodypropCount++;
-            body["updated"] = CSharpExpressionConverter.ConvertToken(bodyupdateDate);
-            bodypropCount++;
-            body["created"] = CSharpExpressionConverter.ConvertToken(bodycreationDate);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RecognitionResponse[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition(Expression<Func<string>> bodyrecognitionSender, Expression<Func<string[]>> bodyrecognitionRecipients, Expression<Func<string>> bodybadgeTitle, Expression<Func<bool>> bodyisPrivate, Expression<Func<string>> bodyrecognitionMessage)
-        {
-            var apiCallPath = "/recognition/createNewRecognitions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["senderIdOrUPN"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionSender);
-            bodypropCount++;
-            body["recipientsIdsOrUPNS"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionRecipients);
-            bodypropCount++;
-            body["badgeTitle"] = CSharpExpressionConverter.ConvertToken(bodybadgeTitle);
-            bodypropCount++;
-            body["isPrivate"] = CSharpExpressionConverter.ConvertToken(bodyisPrivate);
-            bodypropCount++;
-            body["description"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMessage);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<RecognitionCreateResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject> GetTask(Expression<Func<string>> taskId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/task/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TaskObject>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<TaskObject[]> GetTasks(Expression<Func<string>> userOID = null, Expression<Func<string>> userUPN = null, Expression<Func<string>> search = null, Expression<Func<double>> limit = null, Expression<Func<double>> skip = null, Expression<Func<string>> startDate = null, Expression<Func<string>> endDate = null)
-        {
-            var apiCallPath = "/task";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (userOID != null)
-                callPayload.Queries["userOID"] = CSharpExpressionConverter.ConvertO(userOID);
-            if (userUPN != null)
-                callPayload.Queries["userUPN"] = CSharpExpressionConverter.ConvertO(userUPN);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (skip != null)
-                callPayload.Queries["skip"] = CSharpExpressionConverter.ConvertO(skip);
-            if (startDate != null)
-                callPayload.Queries["startDate"] = CSharpExpressionConverter.ConvertO(startDate);
-            if (endDate != null)
-                callPayload.Queries["endDate"] = CSharpExpressionConverter.ConvertO(endDate);
-            return new ApiConnectionAction<TaskObject[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IBodyWorkflowAction<User> GetUser(Expression<Func<string>> userMail)
-        {
-            var apiCallPath = "/user/getUser";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["userMail"] = CSharpExpressionConverter.ConvertO(userMail);
-            return new ApiConnectionAction<User>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
-        public IWorkflowAction UpdateUser(Expression<Func<string>> bodyuserEmail = null, Expression<Func<bodyuserAttributesInputItem[]>> bodyuserAttributes = null)
-        {
-            var apiCallPath = "/user/updateUser";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserEmail != null)
-            {
-                body["userMail"] = CSharpExpressionConverter.ConvertToken(bodyuserEmail);
+                body["feedbackRequestReceiverUPNorId"] = SourceExpressionConverter.ConvertToken(bodyfeedbackProvider);
                 bodypropCount++;
-            }
-
-            if (bodyuserAttributes != null)
-            {
-                body["userAttributes"] = CSharpExpressionConverter.ConvertToken(bodyuserAttributes);
+                body["feedbackNote"] = SourceExpressionConverter.ConvertToken(bodyrequestNote);
                 bodypropCount++;
+                body["templateTitle"] = SourceExpressionConverter.ConvertToken(bodytemplateTitle);
+                bodypropCount++;
+                body["dueDateInDays"] = SourceExpressionConverter.ConvertToken(bodydueDays);
+                bodypropCount++;
+                body["isPrivate"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<Feedback>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Feedback> SendExternalFeedbackRequest([WorkflowExpression] Func<string> bodyfeedbackSubject, [WorkflowExpression] Func<string> bodyexternalEmail, [WorkflowExpression] Func<string> bodyproviderName, [WorkflowExpression] Func<string> bodyrequestNote, [WorkflowExpression] Func<string> bodytemplateTitle, [WorkflowExpression] Func<double> bodydueDays, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<bool> bodyisAnonymous)
+        {
+            SourceExpression.Validate(bodyfeedbackSubject, nameof(bodyfeedbackSubject), required: true);
+            SourceExpression.Validate(bodyexternalEmail, nameof(bodyexternalEmail), required: true);
+            SourceExpression.Validate(bodyproviderName, nameof(bodyproviderName), required: true);
+            SourceExpression.Validate(bodyrequestNote, nameof(bodyrequestNote), required: true);
+            SourceExpression.Validate(bodytemplateTitle, nameof(bodytemplateTitle), required: true);
+            SourceExpression.Validate(bodydueDays, nameof(bodydueDays), required: true);
+            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            SourceExpression.Validate(bodyisAnonymous, nameof(bodyisAnonymous), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/feedback/sendExternalFeedbackRequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["feedbackAboutUPNorId"] = SourceExpressionConverter.ConvertToken(bodyfeedbackSubject);
+                bodypropCount++;
+                body["externalEmail"] = SourceExpressionConverter.ConvertToken(bodyexternalEmail);
+                bodypropCount++;
+                body["onBehalfName"] = SourceExpressionConverter.ConvertToken(bodyproviderName);
+                bodypropCount++;
+                body["feedbackNote"] = SourceExpressionConverter.ConvertToken(bodyrequestNote);
+                bodypropCount++;
+                body["templateTitle"] = SourceExpressionConverter.ConvertToken(bodytemplateTitle);
+                bodypropCount++;
+                body["dueDateInDays"] = SourceExpressionConverter.ConvertToken(bodydueDays);
+                bodypropCount++;
+                body["isPrivate"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                bodypropCount++;
+                body["isAnonymous"] = SourceExpressionConverter.ConvertToken(bodyisAnonymous);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<Feedback>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Goal> GetGoal([WorkflowExpression] Func<string> goalId)
+        {
+            SourceExpression.Validate(goalId, nameof(goalId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goal/getGoal";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["goalId"] = SourceExpressionConverter.ConvertO(goalId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Goal>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Goal[]> GetGoals([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<string> selectedLabels = null, [WorkflowExpression] Func<string> limit = null, [WorkflowExpression] Func<string> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        {
+            SourceExpression.Validate(userOID, nameof(userOID), required: false);
+            SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(selectedLabels, nameof(selectedLabels), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goal/getGoals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userOID != null)
+                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOID);
+                if (userUPN != null)
+                    callPayload.Queries["userUPN"] = SourceExpressionConverter.ConvertO(userUPN);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (selectedLabels != null)
+                    callPayload.Queries["selectedLabels"] = SourceExpressionConverter.ConvertO(selectedLabels);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Goal[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Goal> UpdateGoal([WorkflowExpression] Func<string> bodygoalID, [WorkflowExpression] Func<string> bodynewProgressValue, [WorkflowExpression] Func<bodyupdaterTypeInput> bodyupdaterType, [WorkflowExpression] Func<string> bodysystemName, [WorkflowExpression] Func<string> bodyupdateComment = null, [WorkflowExpression] Func<string> bodynewStatus = null)
+        {
+            SourceExpression.Validate(bodygoalID, nameof(bodygoalID), required: true);
+            SourceExpression.Validate(bodynewProgressValue, nameof(bodynewProgressValue), required: true);
+            SourceExpression.Validate(bodyupdaterType, nameof(bodyupdaterType), required: true);
+            SourceExpression.Validate(bodysystemName, nameof(bodysystemName), required: true);
+            SourceExpression.Validate(bodyupdateComment, nameof(bodyupdateComment), required: false);
+            SourceExpression.Validate(bodynewStatus, nameof(bodynewStatus), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goal/updateProgress";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["goalId"] = SourceExpressionConverter.ConvertToken(bodygoalID);
+                bodypropCount++;
+                body["newValue"] = SourceExpressionConverter.ConvertToken(bodynewProgressValue);
+                if (bodyupdateComment != null)
+                {
+                    body["comment"] = SourceExpressionConverter.ConvertToken(bodyupdateComment);
+                    bodypropCount++;
+                }
+
+                if (bodynewStatus != null)
+                {
+                    body["status"] = SourceExpressionConverter.ConvertToken(bodynewStatus);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["goalUpdater"] = SourceExpressionConverter.Convert(bodyupdaterType);
+                bodypropCount++;
+                body["goalUpdaterSystemName"] = SourceExpressionConverter.ConvertToken(bodysystemName);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Goal>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Goal> CreateGoal([WorkflowExpression] Func<string> bodygoalTitle, [WorkflowExpression] Func<string> bodydescription, [WorkflowExpression] Func<string> bodystartDate, [WorkflowExpression] Func<string> bodydueDate, [WorkflowExpression] Func<string> bodygoalType, [WorkflowExpression] Func<object> bodygoalOwner, [WorkflowExpression] Func<string> bodygoalCreator, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyprogressFormat, [WorkflowExpression] Func<string> bodycurrencyCode, [WorkflowExpression] Func<double> bodyinitialValue, [WorkflowExpression] Func<double> bodytargetValue, [WorkflowExpression] Func<string> bodyparentGoalID, [WorkflowExpression] Func<bool> bodynotifyOwner)
+        {
+            SourceExpression.Validate(bodygoalTitle, nameof(bodygoalTitle), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: true);
+            SourceExpression.Validate(bodystartDate, nameof(bodystartDate), required: true);
+            SourceExpression.Validate(bodydueDate, nameof(bodydueDate), required: true);
+            SourceExpression.Validate(bodygoalType, nameof(bodygoalType), required: true);
+            SourceExpression.Validate(bodygoalOwner, nameof(bodygoalOwner), required: true);
+            SourceExpression.Validate(bodygoalCreator, nameof(bodygoalCreator), required: true);
+            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            SourceExpression.Validate(bodyprogressFormat, nameof(bodyprogressFormat), required: true);
+            SourceExpression.Validate(bodycurrencyCode, nameof(bodycurrencyCode), required: true);
+            SourceExpression.Validate(bodyinitialValue, nameof(bodyinitialValue), required: true);
+            SourceExpression.Validate(bodytargetValue, nameof(bodytargetValue), required: true);
+            SourceExpression.Validate(bodyparentGoalID, nameof(bodyparentGoalID), required: true);
+            SourceExpression.Validate(bodynotifyOwner, nameof(bodynotifyOwner), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goal/createNewGoal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodygoalTitle);
+                bodypropCount++;
+                body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                bodypropCount++;
+                body["startDate"] = SourceExpressionConverter.ConvertToken(bodystartDate);
+                bodypropCount++;
+                body["dueDate"] = SourceExpressionConverter.ConvertToken(bodydueDate);
+                bodypropCount++;
+                body["goalType"] = SourceExpressionConverter.ConvertToken(bodygoalType);
+                bodypropCount++;
+                body["goalOwnerUPNorId"] = SourceExpressionConverter.ConvertToken(bodygoalOwner);
+                bodypropCount++;
+                body["goalCreatorUPNorId"] = SourceExpressionConverter.ConvertToken(bodygoalCreator);
+                bodypropCount++;
+                body["isPrivate"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                bodypropCount++;
+                body["progressFormatType"] = SourceExpressionConverter.ConvertToken(bodyprogressFormat);
+                bodypropCount++;
+                body["currencyCode"] = SourceExpressionConverter.ConvertToken(bodycurrencyCode);
+                bodypropCount++;
+                body["initialValue"] = SourceExpressionConverter.ConvertToken(bodyinitialValue);
+                bodypropCount++;
+                body["targetValue"] = SourceExpressionConverter.ConvertToken(bodytargetValue);
+                bodypropCount++;
+                body["parentGoalId"] = SourceExpressionConverter.ConvertToken(bodyparentGoalID);
+                bodypropCount++;
+                body["sendNotificationToOwner"] = SourceExpressionConverter.ConvertToken(bodynotifyOwner);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Goal>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<Goal> AddCommentGoal([WorkflowExpression] Func<string> commentidOfTheGoal, [WorkflowExpression] Func<string> commentobjectIdOrUserPrincipalNameOfTheCommenter, [WorkflowExpression] Func<string> commentcommentItself)
+        {
+            SourceExpression.Validate(commentidOfTheGoal, nameof(commentidOfTheGoal), required: true);
+            SourceExpression.Validate(commentobjectIdOrUserPrincipalNameOfTheCommenter, nameof(commentobjectIdOrUserPrincipalNameOfTheCommenter), required: true);
+            SourceExpression.Validate(commentcommentItself, nameof(commentcommentItself), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goal/commentGoal";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var comment = new JObject();
+                var commentpropCount = 0;
+                commentpropCount++;
+                comment["goalId"] = SourceExpressionConverter.ConvertToken(commentidOfTheGoal);
+                commentpropCount++;
+                comment["commenterIdOrUPN"] = SourceExpressionConverter.ConvertToken(commentobjectIdOrUserPrincipalNameOfTheCommenter);
+                commentpropCount++;
+                comment["commentText"] = SourceExpressionConverter.ConvertToken(commentcommentItself);
+                if (commentpropCount > 0)
+                {
+                    callPayload.Body = comment;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Goal>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<RecognitionResponse> GetRecognition([WorkflowExpression] Func<string> recognitionId)
+        {
+            SourceExpression.Validate(recognitionId, nameof(recognitionId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/recognition/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recognitionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecognitionResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<RecognitionResponse[]> GetRecognitions([WorkflowExpression] Func<string[]> bodyrecipientsToSearch, [WorkflowExpression] Func<string> bodyrecognitionTitle, [WorkflowExpression] Func<string> bodyupdateDate, [WorkflowExpression] Func<string> bodycreationDate)
+        {
+            SourceExpression.Validate(bodyrecipientsToSearch, nameof(bodyrecipientsToSearch), required: true);
+            SourceExpression.Validate(bodyrecognitionTitle, nameof(bodyrecognitionTitle), required: true);
+            SourceExpression.Validate(bodyupdateDate, nameof(bodyupdateDate), required: true);
+            SourceExpression.Validate(bodycreationDate, nameof(bodycreationDate), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/recognition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["recipientsIdsOrUPNS"] = SourceExpressionConverter.ConvertToken(bodyrecipientsToSearch);
+                bodypropCount++;
+                body["title"] = SourceExpressionConverter.ConvertToken(bodyrecognitionTitle);
+                bodypropCount++;
+                body["updated"] = SourceExpressionConverter.ConvertToken(bodyupdateDate);
+                bodypropCount++;
+                body["created"] = SourceExpressionConverter.ConvertToken(bodycreationDate);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecognitionResponse[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<RecognitionCreateResponse> CreateRecognition([WorkflowExpression] Func<string> bodyrecognitionSender, [WorkflowExpression] Func<string[]> bodyrecognitionRecipients, [WorkflowExpression] Func<string> bodybadgeTitle, [WorkflowExpression] Func<bool> bodyisPrivate, [WorkflowExpression] Func<string> bodyrecognitionMessage)
+        {
+            SourceExpression.Validate(bodyrecognitionSender, nameof(bodyrecognitionSender), required: true);
+            SourceExpression.Validate(bodyrecognitionRecipients, nameof(bodyrecognitionRecipients), required: true);
+            SourceExpression.Validate(bodybadgeTitle, nameof(bodybadgeTitle), required: true);
+            SourceExpression.Validate(bodyisPrivate, nameof(bodyisPrivate), required: true);
+            SourceExpression.Validate(bodyrecognitionMessage, nameof(bodyrecognitionMessage), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/recognition/createNewRecognitions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["senderIdOrUPN"] = SourceExpressionConverter.ConvertToken(bodyrecognitionSender);
+                bodypropCount++;
+                body["recipientsIdsOrUPNS"] = SourceExpressionConverter.ConvertToken(bodyrecognitionRecipients);
+                bodypropCount++;
+                body["badgeTitle"] = SourceExpressionConverter.ConvertToken(bodybadgeTitle);
+                bodypropCount++;
+                body["isPrivate"] = SourceExpressionConverter.ConvertToken(bodyisPrivate);
+                bodypropCount++;
+                body["description"] = SourceExpressionConverter.ConvertToken(bodyrecognitionMessage);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RecognitionCreateResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<TaskObject> GetTask([WorkflowExpression] Func<string> taskId)
+        {
+            SourceExpression.Validate(taskId, nameof(taskId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/task/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(taskId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TaskObject>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<TaskObject[]> GetTasks([WorkflowExpression] Func<string> userOID = null, [WorkflowExpression] Func<string> userUPN = null, [WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<double> limit = null, [WorkflowExpression] Func<double> skip = null, [WorkflowExpression] Func<string> startDate = null, [WorkflowExpression] Func<string> endDate = null)
+        {
+            SourceExpression.Validate(userOID, nameof(userOID), required: false);
+            SourceExpression.Validate(userUPN, nameof(userUPN), required: false);
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(skip, nameof(skip), required: false);
+            SourceExpression.Validate(startDate, nameof(startDate), required: false);
+            SourceExpression.Validate(endDate, nameof(endDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/task";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (userOID != null)
+                    callPayload.Queries["userOID"] = SourceExpressionConverter.ConvertO(userOID);
+                if (userUPN != null)
+                    callPayload.Queries["userUPN"] = SourceExpressionConverter.ConvertO(userUPN);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (skip != null)
+                    callPayload.Queries["skip"] = SourceExpressionConverter.ConvertO(skip);
+                if (startDate != null)
+                    callPayload.Queries["startDate"] = SourceExpressionConverter.ConvertO(startDate);
+                if (endDate != null)
+                    callPayload.Queries["endDate"] = SourceExpressionConverter.ConvertO(endDate);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TaskObject[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IBodyWorkflowAction<User> GetUser([WorkflowExpression] Func<string> userMail)
+        {
+            SourceExpression.Validate(userMail, nameof(userMail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user/getUser";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["userMail"] = SourceExpressionConverter.ConvertO(userMail);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<User>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamflect")]
+        public IWorkflowAction UpdateUser([WorkflowExpression] Func<string> bodyuserEmail = null, [WorkflowExpression] Func<bodyuserAttributesInputItem[]> bodyuserAttributes = null)
+        {
+            SourceExpression.Validate(bodyuserEmail, nameof(bodyuserEmail), required: false);
+            SourceExpression.Validate(bodyuserAttributes, nameof(bodyuserAttributes), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/user/updateUser";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserEmail != null)
+                {
+                    body["userMail"] = SourceExpressionConverter.ConvertToken(bodyuserEmail);
+                    bodypropCount++;
+                }
+
+                if (bodyuserAttributes != null)
+                {
+                    body["userAttributes"] = SourceExpressionConverter.ConvertToken(bodyuserAttributes);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

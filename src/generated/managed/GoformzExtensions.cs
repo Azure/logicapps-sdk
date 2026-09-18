@@ -12,145 +12,176 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
     public class GoformzActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IBodyWorkflowAction<string> ExportForm(Expression<Func<string>> formId, Expression<Func<string>> bodytype = null, Expression<Func<string>> bodypages = null)
+        public IBodyWorkflowAction<string> ExportForm([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> bodytype = null, [WorkflowExpression] Func<string> bodypages = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytype != null)
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: false);
+            SourceExpression.Validate(bodypages, nameof(bodypages), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}/exports", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytype != null)
+                {
+                    body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                    bodypropCount++;
+                }
+
+                if (bodypages != null)
+                {
+                    body["pages"] = SourceExpressionConverter.ConvertToken(bodypages);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypages != null)
-            {
-                body["pages"] = CSharpExpressionConverter.ConvertToken(bodypages);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IWorkflowAction CreateForm(Expression<Func<bool>> runCalculations = null, Expression<Func<string>> bodyname = null, Expression<Func<bool>> bodyoverrideDefaultFormName = null, Expression<Func<string>> bodytemplateId = null, Expression<Func<string>> bodyassignmentid = null, Expression<Func<string>> bodyassignmenttype = null, Expression<Func<string>> bodyassignmenturl = null)
+        public IWorkflowAction CreateForm([WorkflowExpression] Func<bool> runCalculations = null, [WorkflowExpression] Func<string> bodyname = null, [WorkflowExpression] Func<bool> bodyoverrideDefaultFormName = null, [WorkflowExpression] Func<string> bodytemplateId = null, [WorkflowExpression] Func<string> bodyassignmentid = null, [WorkflowExpression] Func<string> bodyassignmenttype = null, [WorkflowExpression] Func<string> bodyassignmenturl = null)
         {
-            var apiCallPath = "/v2/formz";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["runCalculations"] = Convert.ToString(false);
-            if (runCalculations != null)
-                callPayload.Queries["runCalculations"] = CSharpExpressionConverter.ConvertO(runCalculations);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyname != null)
+            SourceExpression.Validate(runCalculations, nameof(runCalculations), required: false);
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: false);
+            SourceExpression.Validate(bodyoverrideDefaultFormName, nameof(bodyoverrideDefaultFormName), required: false);
+            SourceExpression.Validate(bodytemplateId, nameof(bodytemplateId), required: false);
+            SourceExpression.Validate(bodyassignmentid, nameof(bodyassignmentid), required: false);
+            SourceExpression.Validate(bodyassignmenttype, nameof(bodyassignmenttype), required: false);
+            SourceExpression.Validate(bodyassignmenturl, nameof(bodyassignmenturl), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-                bodypropCount++;
+                var apiCallPath = "/v2/formz";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["runCalculations"] = Convert.ToString(false);
+                if (runCalculations != null)
+                    callPayload.Queries["runCalculations"] = SourceExpressionConverter.ConvertO(runCalculations);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyname != null)
+                {
+                    body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                    bodypropCount++;
+                }
+
+                if (bodyoverrideDefaultFormName != null)
+                {
+                    body["overrideDefaultFormName"] = SourceExpressionConverter.ConvertToken(bodyoverrideDefaultFormName);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateId != null)
+                {
+                    body["templateId"] = SourceExpressionConverter.ConvertToken(bodytemplateId);
+                    bodypropCount++;
+                }
+
+                var assignmentObject = new JObject();
+                var assignmentObjectpropCount = 0;
+                if (bodyassignmentid != null)
+                {
+                    assignmentObject["id"] = SourceExpressionConverter.ConvertToken(bodyassignmentid);
+                    assignmentObjectpropCount++;
+                }
+
+                if (bodyassignmenttype != null)
+                {
+                    assignmentObject["type"] = SourceExpressionConverter.ConvertToken(bodyassignmenttype);
+                    assignmentObjectpropCount++;
+                }
+
+                if (bodyassignmenturl != null)
+                {
+                    assignmentObject["url"] = SourceExpressionConverter.ConvertToken(bodyassignmenturl);
+                    assignmentObjectpropCount++;
+                }
+
+                if (assignmentObjectpropCount > 0)
+                {
+                    body["assignment"] = assignmentObject;
+                    bodypropCount++;
+                }
+
+                var fieldsObject = new JObject();
+                var fieldsObjectpropCount = 0;
+                if (fieldsObjectpropCount > 0)
+                {
+                    body["fields"] = fieldsObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyoverrideDefaultFormName != null)
-            {
-                body["overrideDefaultFormName"] = CSharpExpressionConverter.ConvertToken(bodyoverrideDefaultFormName);
-                bodypropCount++;
-            }
-
-            if (bodytemplateId != null)
-            {
-                body["templateId"] = CSharpExpressionConverter.ConvertToken(bodytemplateId);
-                bodypropCount++;
-            }
-
-            var assignmentObject = new JObject();
-            var assignmentObjectpropCount = 0;
-            if (bodyassignmentid != null)
-            {
-                assignmentObject["id"] = CSharpExpressionConverter.ConvertToken(bodyassignmentid);
-                assignmentObjectpropCount++;
-            }
-
-            if (bodyassignmenttype != null)
-            {
-                assignmentObject["type"] = CSharpExpressionConverter.ConvertToken(bodyassignmenttype);
-                assignmentObjectpropCount++;
-            }
-
-            if (bodyassignmenturl != null)
-            {
-                assignmentObject["url"] = CSharpExpressionConverter.ConvertToken(bodyassignmenturl);
-                assignmentObjectpropCount++;
-            }
-
-            if (assignmentObjectpropCount > 0)
-            {
-                body["assignment"] = assignmentObject;
-                bodypropCount++;
-            }
-
-            var fieldsObject = new JObject();
-            var fieldsObjectpropCount = 0;
-            if (fieldsObjectpropCount > 0)
-            {
-                body["fields"] = fieldsObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "goformz")]
-        public IBodyWorkflowAction<FormDto> GetForm(Expression<Func<string>> id)
+        public IBodyWorkflowAction<FormDto> GetForm([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FormDto>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v2/formz/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FormDto>(BuildSourceInput);
         }
     }
 
     public class GoformzTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger FormCompleted(Expression<Func<string>> bodyentityId, Expression<Func<string>> bodyeventType = null, Expression<Func<bool>> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger FormCompleted([WorkflowExpression] Func<string> bodyentityId, [WorkflowExpression] Func<string> bodyeventType = null, [WorkflowExpression] Func<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v2/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyeventType != null)
+            SourceExpression.Validate(bodyentityId, nameof(bodyentityId), required: true);
+            SourceExpression.Validate(bodyeventType, nameof(bodyeventType), required: false);
+            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["eventType"] = CSharpExpressionConverter.ConvertToken(bodyeventType);
+                var apiCallPath = "/v2/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyeventType != null)
+                {
+                    body["eventType"] = SourceExpressionConverter.ConvertToken(bodyeventType);
+                    bodypropCount++;
+                }
+
+                body["targetUrl"] = "@listCallbackUrl()";
                 bodypropCount++;
-            }
-
-            body["targetUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["entityId"] = CSharpExpressionConverter.ConvertToken(bodyentityId);
-            if (bodyenabled != null)
-            {
-                body["enabled"] = CSharpExpressionConverter.ConvertToken(bodyenabled);
                 bodypropCount++;
+                body["entityId"] = SourceExpressionConverter.ConvertToken(bodyentityId);
+                if (bodyenabled != null)
+                {
+                    body["enabled"] = SourceExpressionConverter.ConvertToken(bodyenabled);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

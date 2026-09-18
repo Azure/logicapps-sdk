@@ -12,48 +12,80 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Worldtimeip
     public class WorldtimeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp(Expression<Func<string>> ipv4)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetCurrentTimeBasedOnIp([WorkflowExpression] Func<string> ipv4)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/ip/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ipv4, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            SourceExpression.Validate(ipv4, nameof(ipv4), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/ip/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ipv4, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateTimeJsonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
         public IBodyWorkflowAction<string[]> GetTimezones()
         {
-            var apiCallPath = "/timezone";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/timezone";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<string[]> GetAreaTimezones(Expression<Func<string>> area)
+        public IBodyWorkflowAction<string[]> GetAreaTimezones([WorkflowExpression] Func<string> area)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/timezone/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string[]>(callPayload);
+            SourceExpression.Validate(area, nameof(area), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/timezone/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone(Expression<Func<string>> area, Expression<Func<string>> location)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetLocationTimezone([WorkflowExpression] Func<string> area, [WorkflowExpression] Func<string> location)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            SourceExpression.Validate(area, nameof(area), required: true);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateTimeJsonResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "worldtimeip")]
-        public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone(Expression<Func<string>> area, Expression<Func<string>> location, Expression<Func<string>> region)
+        public IBodyWorkflowAction<DateTimeJsonResponse> GetRegionTimezone([WorkflowExpression] Func<string> area, [WorkflowExpression] Func<string> location, [WorkflowExpression] Func<string> region)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DateTimeJsonResponse>(callPayload);
+            SourceExpression.Validate(area, nameof(area), required: true);
+            SourceExpression.Validate(location, nameof(location), required: true);
+            SourceExpression.Validate(region, nameof(region), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/timezone/{0}/{1}/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(area, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(location, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(region, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DateTimeJsonResponse>(BuildSourceInput);
         }
     }
 

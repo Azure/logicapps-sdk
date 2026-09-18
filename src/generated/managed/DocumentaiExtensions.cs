@@ -12,374 +12,503 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Documentai
     public class DocumentaiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentPolicyResult> ApplyRules(Expression<Func<string>> bodyinputFile = null, Expression<Func<PolicyRule[]>> bodyrules = null, Expression<Func<string>> bodyrecognitionMode = null)
+        public IBodyWorkflowAction<DocumentPolicyResult> ApplyRules([WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<PolicyRule[]> bodyrules = null, [WorkflowExpression] Func<string> bodyrecognitionMode = null)
         {
-            var apiCallPath = "/document-ai/document/analyze/enforce-policy";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputFile != null)
+            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
+            SourceExpression.Validate(bodyrules, nameof(bodyrules), required: false);
+            SourceExpression.Validate(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
-                bodypropCount++;
+                var apiCallPath = "/document-ai/document/analyze/enforce-policy";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputFile != null)
+                {
+                    body["InputFile"] = SourceExpressionConverter.ConvertToken(bodyinputFile);
+                    bodypropCount++;
+                }
+
+                if (bodyrules != null)
+                {
+                    body["Rules"] = SourceExpressionConverter.ConvertToken(bodyrules);
+                    bodypropCount++;
+                }
+
+                if (bodyrecognitionMode != null)
+                {
+                    body["RecognitionMode"] = SourceExpressionConverter.ConvertToken(bodyrecognitionMode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyrules != null)
-            {
-                body["Rules"] = CSharpExpressionConverter.ConvertToken(bodyrules);
-                bodypropCount++;
-            }
-
-            if (bodyrecognitionMode != null)
-            {
-                body["RecognitionMode"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentPolicyResult>(callPayload);
+            return new ApiConnectionAction<DocumentPolicyResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentQuestionAnswersResult> AnswerQuestions(Expression<Func<string>> bodyinputFile = null, Expression<Func<DocumentQuestionBoolean[]>> bodyquestionsYesNo = null, Expression<Func<DocumentQuestionMultipleChoice[]>> bodyquestionsMultipleChoice = null, Expression<Func<DocumentQuestionFreeResponse[]>> bodyquestionsFreeResponse = null, Expression<Func<string>> bodyrecognitionMode = null)
+        public IBodyWorkflowAction<DocumentQuestionAnswersResult> AnswerQuestions([WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<DocumentQuestionBoolean[]> bodyquestionsYesNo = null, [WorkflowExpression] Func<DocumentQuestionMultipleChoice[]> bodyquestionsMultipleChoice = null, [WorkflowExpression] Func<DocumentQuestionFreeResponse[]> bodyquestionsFreeResponse = null, [WorkflowExpression] Func<string> bodyrecognitionMode = null)
         {
-            var apiCallPath = "/document-ai/document/analyze/answer-questions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputFile != null)
+            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
+            SourceExpression.Validate(bodyquestionsYesNo, nameof(bodyquestionsYesNo), required: false);
+            SourceExpression.Validate(bodyquestionsMultipleChoice, nameof(bodyquestionsMultipleChoice), required: false);
+            SourceExpression.Validate(bodyquestionsFreeResponse, nameof(bodyquestionsFreeResponse), required: false);
+            SourceExpression.Validate(bodyrecognitionMode, nameof(bodyrecognitionMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
-                bodypropCount++;
+                var apiCallPath = "/document-ai/document/analyze/answer-questions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputFile != null)
+                {
+                    body["InputFile"] = SourceExpressionConverter.ConvertToken(bodyinputFile);
+                    bodypropCount++;
+                }
+
+                if (bodyquestionsYesNo != null)
+                {
+                    body["QuestionsYesNo"] = SourceExpressionConverter.ConvertToken(bodyquestionsYesNo);
+                    bodypropCount++;
+                }
+
+                if (bodyquestionsMultipleChoice != null)
+                {
+                    body["QuestionsMultipleChoice"] = SourceExpressionConverter.ConvertToken(bodyquestionsMultipleChoice);
+                    bodypropCount++;
+                }
+
+                if (bodyquestionsFreeResponse != null)
+                {
+                    body["QuestionsFreeResponse"] = SourceExpressionConverter.ConvertToken(bodyquestionsFreeResponse);
+                    bodypropCount++;
+                }
+
+                if (bodyrecognitionMode != null)
+                {
+                    body["RecognitionMode"] = SourceExpressionConverter.ConvertToken(bodyrecognitionMode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyquestionsYesNo != null)
-            {
-                body["QuestionsYesNo"] = CSharpExpressionConverter.ConvertToken(bodyquestionsYesNo);
-                bodypropCount++;
-            }
-
-            if (bodyquestionsMultipleChoice != null)
-            {
-                body["QuestionsMultipleChoice"] = CSharpExpressionConverter.ConvertToken(bodyquestionsMultipleChoice);
-                bodypropCount++;
-            }
-
-            if (bodyquestionsFreeResponse != null)
-            {
-                body["QuestionsFreeResponse"] = CSharpExpressionConverter.ConvertToken(bodyquestionsFreeResponse);
-                bodypropCount++;
-            }
-
-            if (bodyrecognitionMode != null)
-            {
-                body["RecognitionMode"] = CSharpExpressionConverter.ConvertToken(bodyrecognitionMode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentQuestionAnswersResult>(callPayload);
+            return new ApiConnectionAction<DocumentQuestionAnswersResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractTextResponse> ExtractText(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractTextResponse> ExtractText([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractTextResponse>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractTextResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsResponse> ExtractFields(Expression<Func<string>> fieldNames = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractFieldsResponse> ExtractFields([WorkflowExpression] Func<string> fieldNames = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/fields";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (fieldNames != null)
-                callPayload.Headers["FieldNames"] = CSharpExpressionConverter.ConvertO(fieldNames);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractFieldsResponse>(callPayload);
+            SourceExpression.Validate(fieldNames, nameof(fieldNames), required: false);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/fields";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (fieldNames != null)
+                    callPayload.Headers["FieldNames"] = SourceExpressionConverter.ConvertO(fieldNames);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractFieldsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> ExtractFieldsAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<ExtractFieldsAdvancedResponse> ExtractFieldsAdvanced([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            var apiCallPath = "/document-ai/document/extract/fields/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputFile != null)
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
+            SourceExpression.Validate(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
+            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
-                bodypropCount++;
+                var apiCallPath = "/document-ai/document/extract/fields/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputFile != null)
+                {
+                    body["InputFile"] = SourceExpressionConverter.ConvertToken(bodyinputFile);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldsToExtract != null)
+                {
+                    body["FieldsToExtract"] = SourceExpressionConverter.ConvertToken(bodyfieldsToExtract);
+                    bodypropCount++;
+                }
+
+                if (bodymaximumPagesProcessed != null)
+                {
+                    body["MaximumPagesProcessed"] = SourceExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
+                    bodypropCount++;
+                }
+
+                if (bodypreprocessing != null)
+                {
+                    body["Preprocessing"] = SourceExpressionConverter.ConvertToken(bodypreprocessing);
+                    bodypropCount++;
+                }
+
+                if (bodyresultCrossCheck != null)
+                {
+                    body["ResultCrossCheck"] = SourceExpressionConverter.ConvertToken(bodyresultCrossCheck);
+                    bodypropCount++;
+                }
+
+                if (bodyrotateImageDegrees != null)
+                {
+                    body["RotateImageDegrees"] = SourceExpressionConverter.ConvertToken(bodyrotateImageDegrees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldsToExtract != null)
-            {
-                body["FieldsToExtract"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToExtract);
-                bodypropCount++;
-            }
-
-            if (bodymaximumPagesProcessed != null)
-            {
-                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
-                bodypropCount++;
-            }
-
-            if (bodypreprocessing != null)
-            {
-                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
-                bodypropCount++;
-            }
-
-            if (bodyresultCrossCheck != null)
-            {
-                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
-                bodypropCount++;
-            }
-
-            if (bodyrotateImageDegrees != null)
-            {
-                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExtractFieldsAdvancedResponse>(callPayload);
+            return new ApiConnectionAction<ExtractFieldsAdvancedResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractTablesResponse> ExtractTables(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractTablesResponse> ExtractTables([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/tables";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractTablesResponse>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/tables";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractTablesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractBarcodesAiResponse> ExtractBarcodes(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractBarcodesAiResponse> ExtractBarcodes([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/barcodes";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractBarcodesAiResponse>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/barcodes";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractBarcodesAiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractFieldsAndTablesResponse> ExtractAllFieldsAndTables(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> preprocessing = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractFieldsAndTablesResponse> ExtractAllFieldsAndTables([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> preprocessing = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            if (preprocessing != null)
-                callPayload.Headers["preprocessing"] = CSharpExpressionConverter.ConvertO(preprocessing);
-            return new ApiConnectionAction<ExtractFieldsAndTablesResponse>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(preprocessing, nameof(preprocessing), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                if (preprocessing != null)
+                    callPayload.Headers["preprocessing"] = SourceExpressionConverter.ConvertO(preprocessing);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractFieldsAndTablesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentClassificationResult> ExtractClassification(Expression<Func<string>> categories = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<DocumentClassificationResult> ExtractClassification([WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/classify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (categories != null)
-                callPayload.Headers["Categories"] = CSharpExpressionConverter.ConvertO(categories);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<DocumentClassificationResult>(callPayload);
+            SourceExpression.Validate(categories, nameof(categories), required: false);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/classify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (categories != null)
+                    callPayload.Headers["Categories"] = SourceExpressionConverter.ConvertO(categories);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DocumentClassificationResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<DocumentAdvancedClassificationResult> ExtractClassificationAdvanced(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<DocumentCategories[]>> bodycategories = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<DocumentAdvancedClassificationResult> ExtractClassificationAdvanced([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<DocumentCategories[]> bodycategories = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            var apiCallPath = "/document-ai/document/extract/classify/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputFile != null)
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
+            SourceExpression.Validate(bodycategories, nameof(bodycategories), required: false);
+            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
-                bodypropCount++;
+                var apiCallPath = "/document-ai/document/extract/classify/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputFile != null)
+                {
+                    body["InputFile"] = SourceExpressionConverter.ConvertToken(bodyinputFile);
+                    bodypropCount++;
+                }
+
+                if (bodycategories != null)
+                {
+                    body["Categories"] = SourceExpressionConverter.ConvertToken(bodycategories);
+                    bodypropCount++;
+                }
+
+                if (bodypreprocessing != null)
+                {
+                    body["Preprocessing"] = SourceExpressionConverter.ConvertToken(bodypreprocessing);
+                    bodypropCount++;
+                }
+
+                if (bodyresultCrossCheck != null)
+                {
+                    body["ResultCrossCheck"] = SourceExpressionConverter.ConvertToken(bodyresultCrossCheck);
+                    bodypropCount++;
+                }
+
+                if (bodymaximumPagesProcessed != null)
+                {
+                    body["MaximumPagesProcessed"] = SourceExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
+                    bodypropCount++;
+                }
+
+                if (bodyrotateImageDegrees != null)
+                {
+                    body["RotateImageDegrees"] = SourceExpressionConverter.ConvertToken(bodyrotateImageDegrees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycategories != null)
-            {
-                body["Categories"] = CSharpExpressionConverter.ConvertToken(bodycategories);
-                bodypropCount++;
-            }
-
-            if (bodypreprocessing != null)
-            {
-                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
-                bodypropCount++;
-            }
-
-            if (bodyresultCrossCheck != null)
-            {
-                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
-                bodypropCount++;
-            }
-
-            if (bodymaximumPagesProcessed != null)
-            {
-                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
-                bodypropCount++;
-            }
-
-            if (bodyrotateImageDegrees != null)
-            {
-                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<DocumentAdvancedClassificationResult>(callPayload);
+            return new ApiConnectionAction<DocumentAdvancedClassificationResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<SummarizeDocumentResponse> ExtractSummary(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<SummarizeDocumentResponse> ExtractSummary([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/extract/summary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<SummarizeDocumentResponse>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/extract/summary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SummarizeDocumentResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractTextFromDocumentBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractTextFromDocumentBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/batch-job/extract/text";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/batch-job/extract/text";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractFieldsFromDocumentAdvancedBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<string>> bodyinputFile = null, Expression<Func<FieldToExtract[]>> bodyfieldsToExtract = null, Expression<Func<int>> bodymaximumPagesProcessed = null, Expression<Func<string>> bodypreprocessing = null, Expression<Func<string>> bodyresultCrossCheck = null, Expression<Func<double>> bodyrotateImageDegrees = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractFieldsFromDocumentAdvancedBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<string> bodyinputFile = null, [WorkflowExpression] Func<FieldToExtract[]> bodyfieldsToExtract = null, [WorkflowExpression] Func<int> bodymaximumPagesProcessed = null, [WorkflowExpression] Func<string> bodypreprocessing = null, [WorkflowExpression] Func<string> bodyresultCrossCheck = null, [WorkflowExpression] Func<double> bodyrotateImageDegrees = null)
         {
-            var apiCallPath = "/document-ai/document/batch-job/extract/fields/advanced";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyinputFile != null)
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(bodyinputFile, nameof(bodyinputFile), required: false);
+            SourceExpression.Validate(bodyfieldsToExtract, nameof(bodyfieldsToExtract), required: false);
+            SourceExpression.Validate(bodymaximumPagesProcessed, nameof(bodymaximumPagesProcessed), required: false);
+            SourceExpression.Validate(bodypreprocessing, nameof(bodypreprocessing), required: false);
+            SourceExpression.Validate(bodyresultCrossCheck, nameof(bodyresultCrossCheck), required: false);
+            SourceExpression.Validate(bodyrotateImageDegrees, nameof(bodyrotateImageDegrees), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["InputFile"] = CSharpExpressionConverter.ConvertToken(bodyinputFile);
-                bodypropCount++;
+                var apiCallPath = "/document-ai/document/batch-job/extract/fields/advanced";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyinputFile != null)
+                {
+                    body["InputFile"] = SourceExpressionConverter.ConvertToken(bodyinputFile);
+                    bodypropCount++;
+                }
+
+                if (bodyfieldsToExtract != null)
+                {
+                    body["FieldsToExtract"] = SourceExpressionConverter.ConvertToken(bodyfieldsToExtract);
+                    bodypropCount++;
+                }
+
+                if (bodymaximumPagesProcessed != null)
+                {
+                    body["MaximumPagesProcessed"] = SourceExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
+                    bodypropCount++;
+                }
+
+                if (bodypreprocessing != null)
+                {
+                    body["Preprocessing"] = SourceExpressionConverter.ConvertToken(bodypreprocessing);
+                    bodypropCount++;
+                }
+
+                if (bodyresultCrossCheck != null)
+                {
+                    body["ResultCrossCheck"] = SourceExpressionConverter.ConvertToken(bodyresultCrossCheck);
+                    bodypropCount++;
+                }
+
+                if (bodyrotateImageDegrees != null)
+                {
+                    body["RotateImageDegrees"] = SourceExpressionConverter.ConvertToken(bodyrotateImageDegrees);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyfieldsToExtract != null)
-            {
-                body["FieldsToExtract"] = CSharpExpressionConverter.ConvertToken(bodyfieldsToExtract);
-                bodypropCount++;
-            }
-
-            if (bodymaximumPagesProcessed != null)
-            {
-                body["MaximumPagesProcessed"] = CSharpExpressionConverter.ConvertToken(bodymaximumPagesProcessed);
-                bodypropCount++;
-            }
-
-            if (bodypreprocessing != null)
-            {
-                body["Preprocessing"] = CSharpExpressionConverter.ConvertToken(bodypreprocessing);
-                bodypropCount++;
-            }
-
-            if (bodyresultCrossCheck != null)
-            {
-                body["ResultCrossCheck"] = CSharpExpressionConverter.ConvertToken(bodyresultCrossCheck);
-                bodypropCount++;
-            }
-
-            if (bodyrotateImageDegrees != null)
-            {
-                body["RotateImageDegrees"] = CSharpExpressionConverter.ConvertToken(bodyrotateImageDegrees);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
+            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractAllFieldsAndTablesFromDocumentBatchJob(Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractAllFieldsAndTablesFromDocumentBatchJob([WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/batch-job/extract/all";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/batch-job/extract/all";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractClassificationFromDocumentBatchJob(Expression<Func<string>> categories = null, Expression<Func<string>> recognitionMode = null, Expression<Func<object>> inputFile = null)
+        public IBodyWorkflowAction<ExtractDocumentBatchJobResult> ExtractClassificationFromDocumentBatchJob([WorkflowExpression] Func<string> categories = null, [WorkflowExpression] Func<string> recognitionMode = null, [WorkflowExpression] Func<object> inputFile = null)
         {
-            var apiCallPath = "/document-ai/document/batch-job/extract/classify";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (categories != null)
-                callPayload.Headers["Categories"] = CSharpExpressionConverter.ConvertO(categories);
-            if (recognitionMode != null)
-                callPayload.Headers["recognitionMode"] = CSharpExpressionConverter.ConvertO(recognitionMode);
-            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(callPayload);
+            SourceExpression.Validate(categories, nameof(categories), required: false);
+            SourceExpression.Validate(recognitionMode, nameof(recognitionMode), required: false);
+            SourceExpression.Validate(inputFile, nameof(inputFile), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/batch-job/extract/classify";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (categories != null)
+                    callPayload.Headers["Categories"] = SourceExpressionConverter.ConvertO(categories);
+                if (recognitionMode != null)
+                    callPayload.Headers["recognitionMode"] = SourceExpressionConverter.ConvertO(recognitionMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractDocumentBatchJobResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "documentai")]
-        public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus(Expression<Func<string>> asyncJobID = null)
+        public IBodyWorkflowAction<ExtractDocumentJobStatusResult> GetAsyncJobStatus([WorkflowExpression] Func<string> asyncJobID = null)
         {
-            var apiCallPath = "/document-ai/document/batch-job/batch-job/status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (asyncJobID != null)
-                callPayload.Queries["AsyncJobID"] = CSharpExpressionConverter.ConvertO(asyncJobID);
-            return new ApiConnectionAction<ExtractDocumentJobStatusResult>(callPayload);
+            SourceExpression.Validate(asyncJobID, nameof(asyncJobID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/document-ai/document/batch-job/batch-job/status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (asyncJobID != null)
+                    callPayload.Queries["AsyncJobID"] = SourceExpressionConverter.ConvertO(asyncJobID);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ExtractDocumentJobStatusResult>(BuildSourceInput);
         }
     }
 

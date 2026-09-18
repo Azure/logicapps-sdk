@@ -12,87 +12,120 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Securemessagedelivery
     public class SecuremessagedeliveryActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync(Expression<Func<string>> requestfrom, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret, Expression<Func<string[]>> requestto = null, Expression<Func<string[]>> requestcc = null, Expression<Func<string[]>> requestbcc = null, Expression<Func<string>> requestsubject = null, Expression<Func<Attachment[]>> requestattachments = null, Expression<Func<string>> requesthtmlBody = null, Expression<Func<string>> requesttextBody = null)
+        public IBodyWorkflowAction<SendSecureMessageResponse> SendSecureMessageAsync([WorkflowExpression] Func<string> requestfrom, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret, [WorkflowExpression] Func<string[]> requestto = null, [WorkflowExpression] Func<string[]> requestcc = null, [WorkflowExpression] Func<string[]> requestbcc = null, [WorkflowExpression] Func<string> requestsubject = null, [WorkflowExpression] Func<Attachment[]> requestattachments = null, [WorkflowExpression] Func<string> requesthtmlBody = null, [WorkflowExpression] Func<string> requesttextBody = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v{0}/Email", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = CSharpExpressionConverter.ConvertO(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = CSharpExpressionConverter.ConvertO(xAPISecret);
-            var request = new JObject();
-            var requestpropCount = 0;
-            requestpropCount++;
-            request["From"] = CSharpExpressionConverter.ConvertToken(requestfrom);
-            if (requestto != null)
+            SourceExpression.Validate(requestfrom, nameof(requestfrom), required: true);
+            SourceExpression.Validate(v, nameof(v), required: true);
+            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
+            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
+            SourceExpression.Validate(requestto, nameof(requestto), required: false);
+            SourceExpression.Validate(requestcc, nameof(requestcc), required: false);
+            SourceExpression.Validate(requestbcc, nameof(requestbcc), required: false);
+            SourceExpression.Validate(requestsubject, nameof(requestsubject), required: false);
+            SourceExpression.Validate(requestattachments, nameof(requestattachments), required: false);
+            SourceExpression.Validate(requesthtmlBody, nameof(requesthtmlBody), required: false);
+            SourceExpression.Validate(requesttextBody, nameof(requesttextBody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["To"] = CSharpExpressionConverter.ConvertToken(requestto);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/Email", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = SourceExpressionConverter.ConvertO(xAPIKey);
+                callPayload.Headers["X-API-Secret"] = SourceExpressionConverter.ConvertO(xAPISecret);
+                var request = new JObject();
+                var requestpropCount = 0;
                 requestpropCount++;
+                request["From"] = SourceExpressionConverter.ConvertToken(requestfrom);
+                if (requestto != null)
+                {
+                    request["To"] = SourceExpressionConverter.ConvertToken(requestto);
+                    requestpropCount++;
+                }
+
+                if (requestcc != null)
+                {
+                    request["Cc"] = SourceExpressionConverter.ConvertToken(requestcc);
+                    requestpropCount++;
+                }
+
+                if (requestbcc != null)
+                {
+                    request["Bcc"] = SourceExpressionConverter.ConvertToken(requestbcc);
+                    requestpropCount++;
+                }
+
+                if (requestsubject != null)
+                {
+                    request["Subject"] = SourceExpressionConverter.ConvertToken(requestsubject);
+                    requestpropCount++;
+                }
+
+                if (requestattachments != null)
+                {
+                    request["Attachments"] = SourceExpressionConverter.ConvertToken(requestattachments);
+                    requestpropCount++;
+                }
+
+                if (requesthtmlBody != null)
+                {
+                    request["HtmlBody"] = SourceExpressionConverter.ConvertToken(requesthtmlBody);
+                    requestpropCount++;
+                }
+
+                if (requesttextBody != null)
+                {
+                    request["TextBody"] = SourceExpressionConverter.ConvertToken(requesttextBody);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            if (requestcc != null)
-            {
-                request["Cc"] = CSharpExpressionConverter.ConvertToken(requestcc);
-                requestpropCount++;
-            }
-
-            if (requestbcc != null)
-            {
-                request["Bcc"] = CSharpExpressionConverter.ConvertToken(requestbcc);
-                requestpropCount++;
-            }
-
-            if (requestsubject != null)
-            {
-                request["Subject"] = CSharpExpressionConverter.ConvertToken(requestsubject);
-                requestpropCount++;
-            }
-
-            if (requestattachments != null)
-            {
-                request["Attachments"] = CSharpExpressionConverter.ConvertToken(requestattachments);
-                requestpropCount++;
-            }
-
-            if (requesthtmlBody != null)
-            {
-                request["HtmlBody"] = CSharpExpressionConverter.ConvertToken(requesthtmlBody);
-                requestpropCount++;
-            }
-
-            if (requesttextBody != null)
-            {
-                request["TextBody"] = CSharpExpressionConverter.ConvertToken(requesttextBody);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<SendSecureMessageResponse>(callPayload);
+            return new ApiConnectionAction<SendSecureMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IBodyWorkflowAction<TrackMessageResponse> TrackMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
+        public IBodyWorkflowAction<TrackMessageResponse> TrackMessageAsync([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = CSharpExpressionConverter.ConvertO(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = CSharpExpressionConverter.ConvertO(xAPISecret);
-            return new ApiConnectionAction<TrackMessageResponse>(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            SourceExpression.Validate(v, nameof(v), required: true);
+            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
+            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Track", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = SourceExpressionConverter.ConvertO(xAPIKey);
+                callPayload.Headers["X-API-Secret"] = SourceExpressionConverter.ConvertO(xAPISecret);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TrackMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "securemessagedelivery")]
-        public IWorkflowAction RetractMessageAsync(Expression<Func<string>> transactionId, Expression<Func<string>> v, Expression<Func<string>> xAPIKey, Expression<Func<string>> xAPISecret)
+        public IWorkflowAction RetractMessageAsync([WorkflowExpression] Func<string> transactionId, [WorkflowExpression] Func<string> v, [WorkflowExpression] Func<string> xAPIKey, [WorkflowExpression] Func<string> xAPISecret)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["X-API-Key"] = CSharpExpressionConverter.ConvertO(xAPIKey);
-            callPayload.Headers["X-API-Secret"] = CSharpExpressionConverter.ConvertO(xAPISecret);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(transactionId, nameof(transactionId), required: true);
+            SourceExpression.Validate(v, nameof(v), required: true);
+            SourceExpression.Validate(xAPIKey, nameof(xAPIKey), required: true);
+            SourceExpression.Validate(xAPISecret, nameof(xAPISecret), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v{0}/{1}/Retract", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(v, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(transactionId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["X-API-Key"] = SourceExpressionConverter.ConvertO(xAPIKey);
+                callPayload.Headers["X-API-Secret"] = SourceExpressionConverter.ConvertO(xAPISecret);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

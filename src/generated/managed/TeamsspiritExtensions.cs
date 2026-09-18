@@ -14,252 +14,342 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamsspirit
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
         public IBodyWorkflowAction<GetApprovalsResponseItem[]> GetApprovals()
         {
-            var apiCallPath = "/approvals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetApprovalsResponseItem[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction Approve(Expression<Func<string>> approvalID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/approvals/{0}/approve", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction Reject(Expression<Func<string>> approvalID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/approvals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ArchiveTeam(Expression<Func<string>> groupID, Expression<Func<bool>> bodysharePointReadOnly)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/archive", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["sharePointReadOnly"] = CSharpExpressionConverter.ConvertToken(bodysharePointReadOnly);
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/approvals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<GetApprovalsResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction DeleteTeam(Expression<Func<string>> groupID)
+        public IWorkflowAction Approve([WorkflowExpression] Func<string> approvalID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeTagValue(Expression<Func<string>> groupID, Expression<Func<string>> contentid = null, Expression<Func<string>> contentvalue = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-tag-value", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            if (contentid != null)
+            SourceExpression.Validate(approvalID, nameof(approvalID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                content["id"] = CSharpExpressionConverter.ConvertToken(contentid);
-                contentpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvals/{0}/approve", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (contentvalue != null)
-            {
-                content["value"] = CSharpExpressionConverter.ConvertToken(contentvalue);
-                contentpropCount++;
-            }
-
-            if (contentpropCount > 0)
-            {
-                callPayload.Body = content;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveAllUsersExeptOwners(Expression<Func<string>> groupID)
+        public IWorkflowAction Reject([WorkflowExpression] Func<string> approvalID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-not-owner", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(approvalID, nameof(approvalID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/approvals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(approvalID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveAllUsersExceptOneOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyownerId = null)
+        public IWorkflowAction ArchiveTeam([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<bool> bodysharePointReadOnly)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyownerId != null)
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodysharePointReadOnly, nameof(bodysharePointReadOnly), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["ownerId"] = CSharpExpressionConverter.ConvertToken(bodyownerId);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/archive", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveGuests(Expression<Func<string>> groupID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-guests", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction RemoveUser(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-user", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
-            {
-                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeRoleToMember(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-member", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
-            {
-                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ChangeRoleToOwner(Expression<Func<string>> groupID, Expression<Func<string>> bodyuserId = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-owner", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyuserId != null)
-            {
-                body["userId"] = CSharpExpressionConverter.ConvertToken(bodyuserId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IWorkflowAction ExtendExpirationDate(Expression<Func<string>> groupID, Expression<Func<string>> bodyweeks = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/extend-expiration", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyweeks != null)
-            {
-                if (bodyweeks != null)
+                body["sharePointReadOnly"] = SourceExpressionConverter.ConvertToken(bodysharePointReadOnly);
+                if (bodypropCount > 0)
                 {
-                    body["weeks"] = CSharpExpressionConverter.ConvertToken(bodyweeks);
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction DeleteTeam([WorkflowExpression] Func<string> groupID)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction ChangeTagValue([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> contentid = null, [WorkflowExpression] Func<string> contentvalue = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(contentid, nameof(contentid), required: false);
+            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-tag-value", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                if (contentid != null)
+                {
+                    content["id"] = SourceExpressionConverter.ConvertToken(contentid);
+                    contentpropCount++;
+                }
+
+                if (contentvalue != null)
+                {
+                    content["value"] = SourceExpressionConverter.ConvertToken(contentvalue);
+                    contentpropCount++;
+                }
+
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction RemoveAllUsersExeptOwners([WorkflowExpression] Func<string> groupID)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-not-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction RemoveAllUsersExceptOneOwner([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyownerId = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodyownerId, nameof(bodyownerId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-users-except-selected-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyownerId != null)
+                {
+                    body["ownerId"] = SourceExpressionConverter.ConvertToken(bodyownerId);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["weeks"] = "4'";
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
-        public IBodyWorkflowAction<string> GetTagValue(Expression<Func<string>> groupID, Expression<Func<string>> tagID)
+        public IWorkflowAction RemoveGuests([WorkflowExpression] Func<string> groupID)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/groups/{0}/attribute/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-all-guests", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction RemoveUser([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/remove-user", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction ChangeRoleToMember([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-member", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction ChangeRoleToOwner([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyuserId = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodyuserId, nameof(bodyuserId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/change-role-to-owner", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyuserId != null)
+                {
+                    body["userId"] = SourceExpressionConverter.ConvertToken(bodyuserId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IWorkflowAction ExtendExpirationDate([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> bodyweeks = null)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(bodyweeks, nameof(bodyweeks), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/extend-expiration", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyweeks != null)
+                {
+                    if (bodyweeks != null)
+                    {
+                        body["weeks"] = SourceExpressionConverter.ConvertToken(bodyweeks);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["weeks"] = "4'";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "teamsspirit")]
+        public IBodyWorkflowAction<string> GetTagValue([WorkflowExpression] Func<string> groupID, [WorkflowExpression] Func<string> tagID)
+        {
+            SourceExpression.Validate(groupID, nameof(groupID), required: true);
+            SourceExpression.Validate(tagID, nameof(tagID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/groups/{0}/attribute/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tagID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 
     public class TeamsspiritTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger(Expression<Func<string>> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<ActionTriggerResponse> ActionTrigger([WorkflowExpression] Func<string> bodyname, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<ActionTriggerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<ActionTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

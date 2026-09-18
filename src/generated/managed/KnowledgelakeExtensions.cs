@@ -12,27 +12,35 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Knowledgelake
     public class KnowledgelakeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "knowledgelake")]
-        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs(Expression<Func<string>> batchimportData, Expression<Func<string>> batchnameForImport, Expression<Func<string>> batchsecurityToken, Expression<Func<batchrPAEnvironmentInput>> batchrPAEnvironment)
+        public IBodyWorkflowAction<ImportJobsPostResponse> ImportJobs([WorkflowExpression] Func<string> batchimportData, [WorkflowExpression] Func<string> batchnameForImport, [WorkflowExpression] Func<string> batchsecurityToken, [WorkflowExpression] Func<batchrPAEnvironmentInput> batchrPAEnvironment)
         {
-            var apiCallPath = "/ImportJobs";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var batch = new JObject();
-            var batchpropCount = 0;
-            batchpropCount++;
-            batch["Data"] = CSharpExpressionConverter.ConvertToken(batchimportData);
-            batchpropCount++;
-            batch["FileName"] = CSharpExpressionConverter.ConvertToken(batchnameForImport);
-            batchpropCount++;
-            batch["SecurityKey"] = CSharpExpressionConverter.ConvertToken(batchsecurityToken);
-            batchpropCount++;
-            batch["Version"] = CSharpExpressionConverter.Convert(batchrPAEnvironment);
-            if (batchpropCount > 0)
+            SourceExpression.Validate(batchimportData, nameof(batchimportData), required: true);
+            SourceExpression.Validate(batchnameForImport, nameof(batchnameForImport), required: true);
+            SourceExpression.Validate(batchsecurityToken, nameof(batchsecurityToken), required: true);
+            SourceExpression.Validate(batchrPAEnvironment, nameof(batchrPAEnvironment), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = batch;
+                var apiCallPath = "/ImportJobs";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var batch = new JObject();
+                var batchpropCount = 0;
+                batchpropCount++;
+                batch["Data"] = SourceExpressionConverter.ConvertToken(batchimportData);
+                batchpropCount++;
+                batch["FileName"] = SourceExpressionConverter.ConvertToken(batchnameForImport);
+                batchpropCount++;
+                batch["SecurityKey"] = SourceExpressionConverter.ConvertToken(batchsecurityToken);
+                batchpropCount++;
+                batch["Version"] = SourceExpressionConverter.Convert(batchrPAEnvironment);
+                if (batchpropCount > 0)
+                {
+                    callPayload.Body = batch;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ImportJobsPostResponse>(callPayload);
+            return new ApiConnectionAction<ImportJobsPostResponse>(BuildSourceInput);
         }
     }
 

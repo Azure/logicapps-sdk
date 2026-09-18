@@ -14,10 +14,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "googlecontacts")]
         public IBodyWorkflowAction<PeopleApiListContactsV4Response> PeopleApiListContacts()
         {
-            var apiCallPath = "/v4/people/v1/me/connections";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<PeopleApiListContactsV4Response>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v4/people/v1/me/connections";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PeopleApiListContactsV4Response>(BuildSourceInput);
         }
     }
 
@@ -25,10 +30,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Googlecontacts
     {
         public IBodyWorkflowTrigger<PeopleApiOnContactUpdatedV3Response> PeopleApiOnContactUpdated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/v3/people/trigger/onContactUpdated";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<PeopleApiOnContactUpdatedV3Response>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v3/people/trigger/onContactUpdated";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<PeopleApiOnContactUpdatedV3Response>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

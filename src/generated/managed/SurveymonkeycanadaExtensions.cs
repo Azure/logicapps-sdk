@@ -12,59 +12,89 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     public class SurveymonkeycanadaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<Survey> GetSurvey(Expression<Func<string>> surveyId)
+        public IBodyWorkflowAction<Survey> GetSurvey([WorkflowExpression] Func<string> surveyId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/surveys/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Survey>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, Expression<Func<string>> messageId, Expression<Func<string>> bodyscheduledDate = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyscheduledDate != null)
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["scheduled_date"] = CSharpExpressionConverter.ConvertToken(bodyscheduledDate);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/surveys/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<Survey>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
+        public IBodyWorkflowAction<SurveyMessageResponse> SendMessage([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, [WorkflowExpression] Func<string> messageId, [WorkflowExpression] Func<string> bodyscheduledDate = null)
+        {
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(collectorId, nameof(collectorId), required: true);
+            SourceExpression.Validate(messageId, nameof(messageId), required: true);
+            SourceExpression.Validate(bodyscheduledDate, nameof(bodyscheduledDate), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/collectors/{0}/messages/{1}/send", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(messageId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["surveyId"] = SourceExpressionConverter.ConvertO(surveyId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyscheduledDate != null)
+                {
+                    body["scheduled_date"] = SourceExpressionConverter.ConvertToken(bodyscheduledDate);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<SurveyMessageResponse>(callPayload);
+            return new ApiConnectionAction<SurveyMessageResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
+        public IBodyWorkflowAction<GetResponseDetailsResponse> GetResponseDetails([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["simple"] = Convert.ToString(true);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = CSharpExpressionConverter.ConvertO(questionIds);
-            return new ApiConnectionAction<GetResponseDetailsResponse>(callPayload);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(responseId, nameof(responseId), required: true);
+            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions1/surveys/{0}/responses/{1}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["simple"] = Convert.ToString(true);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = SourceExpressionConverter.ConvertO(questionIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetResponseDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "surveymonkeycanada")]
-        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages(Expression<Func<string>> surveyId, Expression<Func<string>> responseId, Expression<Func<string>> questionIds = null)
+        public IBodyWorkflowAction<GetResponseDetailsNoPagesResponse> GetResponseDetailsNoPages([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> responseId, [WorkflowExpression] Func<string> questionIds = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["simple"] = Convert.ToString(true);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = CSharpExpressionConverter.ConvertO(questionIds);
-            return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(callPayload);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(responseId, nameof(responseId), required: true);
+            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/actions2/surveys/{0}/responses/{1}/details", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(responseId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["simple"] = Convert.ToString(true);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = SourceExpressionConverter.ConvertO(questionIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetResponseDetailsNoPagesResponse>(BuildSourceInput);
         }
     }
 
@@ -72,47 +102,79 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Surveymonkeycanada
     {
         public IBodyWorkflowTrigger<NewSurveysItem[]> OnSurveyCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger1/surveys";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewSurveysItem[]>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger1/surveys";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<NewSurveysItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated(Expression<Func<string>> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewCollectorsItem[]> OnSurveyCollectorCreated([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<NewCollectorsItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger2/surveys/{0}/collectors", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<NewCollectorsItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector(Expression<Func<string>> surveyId, Expression<Func<string>> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedCollector([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> collectorId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["surveyId"] = CSharpExpressionConverter.ConvertO(surveyId);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(collectorId, nameof(collectorId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger3/collectors/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(collectorId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["surveyId"] = SourceExpressionConverter.ConvertO(surveyId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<SurveyResponsesItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey(Expression<Func<string>> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseAddedSurvey([WorkflowExpression] Func<string> surveyId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger4/surveys/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<SurveyResponsesItem[]>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded(Expression<Func<string>> surveyId, Expression<Func<string>> pageIds = null, Expression<Func<string>> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<SurveyResponsesItem[]> OnNewResponseToQuestionAdded([WorkflowExpression] Func<string> surveyId, [WorkflowExpression] Func<string> pageIds = null, [WorkflowExpression] Func<string> questionIds = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pageIds != null)
-                callPayload.Queries["page_ids"] = CSharpExpressionConverter.ConvertO(pageIds);
-            if (questionIds != null)
-                callPayload.Queries["question_ids"] = CSharpExpressionConverter.ConvertO(questionIds);
-            return new ApiConnectionTrigger<SurveyResponsesItem[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(surveyId, nameof(surveyId), required: true);
+            SourceExpression.Validate(pageIds, nameof(pageIds), required: false);
+            SourceExpression.Validate(questionIds, nameof(questionIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/trigger5/surveys/{0}/responses/bulk", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(surveyId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pageIds != null)
+                    callPayload.Queries["page_ids"] = SourceExpressionConverter.ConvertO(pageIds);
+                if (questionIds != null)
+                    callPayload.Queries["question_ids"] = SourceExpressionConverter.ConvertO(questionIds);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<SurveyResponsesItem[]>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

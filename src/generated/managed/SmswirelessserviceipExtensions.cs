@@ -12,52 +12,63 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smswirelessserviceip
     public class SmswirelessserviceipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "smswirelessserviceip")]
-        public IBodyWorkflowAction<SendSMSResponse> SendSMS(Expression<Func<string>> bodyusername, Expression<Func<string>> bodypassword, Expression<Func<string>> bodybody, Expression<Func<string>> bodyrecipients = null, Expression<Func<string>> bodyconcatenation = null, Expression<Func<string>> bodyoriginator = null, Expression<Func<string>> bodytest = null)
+        public IBodyWorkflowAction<SendSMSResponse> SendSMS([WorkflowExpression] Func<string> bodyusername, [WorkflowExpression] Func<string> bodypassword, [WorkflowExpression] Func<string> bodybody, [WorkflowExpression] Func<string> bodyrecipients = null, [WorkflowExpression] Func<string> bodyconcatenation = null, [WorkflowExpression] Func<string> bodyoriginator = null, [WorkflowExpression] Func<string> bodytest = null)
         {
-            var apiCallPath = "/message.php";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["username"] = CSharpExpressionConverter.ConvertToken(bodyusername);
-            bodypropCount++;
-            body["password"] = CSharpExpressionConverter.ConvertToken(bodypassword);
-            if (bodyrecipients != null)
+            SourceExpression.Validate(bodyusername, nameof(bodyusername), required: true);
+            SourceExpression.Validate(bodypassword, nameof(bodypassword), required: true);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: true);
+            SourceExpression.Validate(bodyrecipients, nameof(bodyrecipients), required: false);
+            SourceExpression.Validate(bodyconcatenation, nameof(bodyconcatenation), required: false);
+            SourceExpression.Validate(bodyoriginator, nameof(bodyoriginator), required: false);
+            SourceExpression.Validate(bodytest, nameof(bodytest), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["recipients"] = CSharpExpressionConverter.ConvertToken(bodyrecipients);
+                var apiCallPath = "/message.php";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-            if (bodyconcatenation != null)
-            {
-                body["concatenation"] = CSharpExpressionConverter.ConvertToken(bodyconcatenation);
+                body["username"] = SourceExpressionConverter.ConvertToken(bodyusername);
                 bodypropCount++;
-            }
+                body["password"] = SourceExpressionConverter.ConvertToken(bodypassword);
+                if (bodyrecipients != null)
+                {
+                    body["recipients"] = SourceExpressionConverter.ConvertToken(bodyrecipients);
+                    bodypropCount++;
+                }
 
-            body["info"] = "\"1\"";
-            bodypropCount++;
-            if (bodyoriginator != null)
-            {
-                body["originator"] = CSharpExpressionConverter.ConvertToken(bodyoriginator);
                 bodypropCount++;
-            }
+                body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                if (bodyconcatenation != null)
+                {
+                    body["concatenation"] = SourceExpressionConverter.ConvertToken(bodyconcatenation);
+                    bodypropCount++;
+                }
 
-            if (bodytest != null)
-            {
-                body["test"] = CSharpExpressionConverter.ConvertToken(bodytest);
+                body["info"] = "\"1\"";
                 bodypropCount++;
+                if (bodyoriginator != null)
+                {
+                    body["originator"] = SourceExpressionConverter.ConvertToken(bodyoriginator);
+                    bodypropCount++;
+                }
+
+                if (bodytest != null)
+                {
+                    body["test"] = SourceExpressionConverter.ConvertToken(bodytest);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSMSResponse>(callPayload);
+            return new ApiConnectionAction<SendSMSResponse>(BuildSourceInput);
         }
     }
 

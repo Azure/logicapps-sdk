@@ -12,164 +12,220 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lsegfinancialanalyti
     public class LsegfinancialanalytiActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<CreateJobResponse> CreateJob(Expression<Func<string>> bodyname, Expression<Func<int>> bodypriority = null)
+        public IBodyWorkflowAction<CreateJobResponse> CreateJob([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<int> bodypriority = null)
         {
-            var apiCallPath = "/power-platform/v1/create-job";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypriority != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodypriority, nameof(bodypriority), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["priority"] = CSharpExpressionConverter.ConvertToken(bodypriority);
+                var apiCallPath = "/power-platform/v1/create-job";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypriority != null)
+                {
+                    body["priority"] = SourceExpressionConverter.ConvertToken(bodypriority);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateJobResponse>(callPayload);
+            return new ApiConnectionAction<CreateJobResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<JobStatusResponse> JobStatus(Expression<Func<string>> jobName)
+        public IBodyWorkflowAction<JobStatusResponse> JobStatus([WorkflowExpression] Func<string> jobName)
         {
-            var apiCallPath = "/power-platform/v1/job-status";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            return new ApiConnectionAction<JobStatusResponse>(callPayload);
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-platform/v1/job-status";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JobStatusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkPyAnalytics(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId, Expression<Func<bodycurveTypeInput>> bodycurveType, Expression<Func<string>> bodypricingDate, Expression<Func<string>> bodysettlementType, Expression<Func<bodyprepayTypeInput>> bodyprepayType, Expression<Func<bool>> bodycalculatePartialDurations4pt, Expression<Func<bool>> bodycalculatePartialDurations7pt, Expression<Func<bool>> bodyretrieveModelProjections, Expression<Func<bodycurrencyInput>> bodycurrency = null, Expression<Func<int>> bodyprepayRate = null, Expression<Func<bool>> bodyretrieveOas = null, Expression<Func<bodyoptionModelInput>> bodyoptionModel = null)
+        public IWorkflowAction BulkPyAnalytics([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId, [WorkflowExpression] Func<bodycurveTypeInput> bodycurveType, [WorkflowExpression] Func<string> bodypricingDate, [WorkflowExpression] Func<string> bodysettlementType, [WorkflowExpression] Func<bodyprepayTypeInput> bodyprepayType, [WorkflowExpression] Func<bool> bodycalculatePartialDurations4pt, [WorkflowExpression] Func<bool> bodycalculatePartialDurations7pt, [WorkflowExpression] Func<bool> bodyretrieveModelProjections, [WorkflowExpression] Func<bodycurrencyInput> bodycurrency = null, [WorkflowExpression] Func<int> bodyprepayRate = null, [WorkflowExpression] Func<bool> bodyretrieveOas = null, [WorkflowExpression] Func<bodyoptionModelInput> bodyoptionModel = null)
         {
-            var apiCallPath = "/power-platform/v1/bulk-py-analytics";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            callPayload.Queries["Batch Size"] = CSharpExpressionConverter.ConvertO(batchSize);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requestId"] = CSharpExpressionConverter.ConvertToken(bodyrequestId);
-            bodypropCount++;
-            body["curveType"] = CSharpExpressionConverter.Convert(bodycurveType);
-            if (bodycurrency != null)
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            SourceExpression.Validate(batchSize, nameof(batchSize), required: true);
+            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
+            SourceExpression.Validate(bodycurveType, nameof(bodycurveType), required: true);
+            SourceExpression.Validate(bodypricingDate, nameof(bodypricingDate), required: true);
+            SourceExpression.Validate(bodysettlementType, nameof(bodysettlementType), required: true);
+            SourceExpression.Validate(bodyprepayType, nameof(bodyprepayType), required: true);
+            SourceExpression.Validate(bodycalculatePartialDurations4pt, nameof(bodycalculatePartialDurations4pt), required: true);
+            SourceExpression.Validate(bodycalculatePartialDurations7pt, nameof(bodycalculatePartialDurations7pt), required: true);
+            SourceExpression.Validate(bodyretrieveModelProjections, nameof(bodyretrieveModelProjections), required: true);
+            SourceExpression.Validate(bodycurrency, nameof(bodycurrency), required: false);
+            SourceExpression.Validate(bodyprepayRate, nameof(bodyprepayRate), required: false);
+            SourceExpression.Validate(bodyretrieveOas, nameof(bodyretrieveOas), required: false);
+            SourceExpression.Validate(bodyoptionModel, nameof(bodyoptionModel), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["currency"] = CSharpExpressionConverter.Convert(bodycurrency);
+                var apiCallPath = "/power-platform/v1/bulk-py-analytics";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                callPayload.Queries["Batch Size"] = SourceExpressionConverter.ConvertO(batchSize);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["pricingDate"] = CSharpExpressionConverter.ConvertToken(bodypricingDate);
-            bodypropCount++;
-            body["settlementType"] = CSharpExpressionConverter.ConvertToken(bodysettlementType);
-            bodypropCount++;
-            body["prepayType"] = CSharpExpressionConverter.Convert(bodyprepayType);
-            if (bodyprepayRate != null)
-            {
-                body["prepayRate"] = CSharpExpressionConverter.ConvertToken(bodyprepayRate);
+                body["requestId"] = SourceExpressionConverter.ConvertToken(bodyrequestId);
                 bodypropCount++;
-            }
+                body["curveType"] = SourceExpressionConverter.Convert(bodycurveType);
+                if (bodycurrency != null)
+                {
+                    body["currency"] = SourceExpressionConverter.Convert(bodycurrency);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["calculatePartialDurations4pt"] = CSharpExpressionConverter.ConvertToken(bodycalculatePartialDurations4pt);
-            bodypropCount++;
-            body["calculatePartialDurations7pt"] = CSharpExpressionConverter.ConvertToken(bodycalculatePartialDurations7pt);
-            bodypropCount++;
-            body["retrieveModelProjections"] = CSharpExpressionConverter.ConvertToken(bodyretrieveModelProjections);
-            if (bodyretrieveOas != null)
-            {
-                body["retrieveOas"] = CSharpExpressionConverter.ConvertToken(bodyretrieveOas);
                 bodypropCount++;
-            }
-
-            if (bodyoptionModel != null)
-            {
-                body["optionModel"] = CSharpExpressionConverter.Convert(bodyoptionModel);
+                body["pricingDate"] = SourceExpressionConverter.ConvertToken(bodypricingDate);
                 bodypropCount++;
+                body["settlementType"] = SourceExpressionConverter.ConvertToken(bodysettlementType);
+                bodypropCount++;
+                body["prepayType"] = SourceExpressionConverter.Convert(bodyprepayType);
+                if (bodyprepayRate != null)
+                {
+                    body["prepayRate"] = SourceExpressionConverter.ConvertToken(bodyprepayRate);
+                    bodypropCount++;
+                }
+
+                bodypropCount++;
+                body["calculatePartialDurations4pt"] = SourceExpressionConverter.ConvertToken(bodycalculatePartialDurations4pt);
+                bodypropCount++;
+                body["calculatePartialDurations7pt"] = SourceExpressionConverter.ConvertToken(bodycalculatePartialDurations7pt);
+                bodypropCount++;
+                body["retrieveModelProjections"] = SourceExpressionConverter.ConvertToken(bodyretrieveModelProjections);
+                if (bodyretrieveOas != null)
+                {
+                    body["retrieveOas"] = SourceExpressionConverter.ConvertToken(bodyretrieveOas);
+                    bodypropCount++;
+                }
+
+                if (bodyoptionModel != null)
+                {
+                    body["optionModel"] = SourceExpressionConverter.Convert(bodyoptionModel);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction BulkIndicData(Expression<Func<string>> jobName, Expression<Func<int>> batchSize, Expression<Func<string>> bodyrequestId)
+        public IWorkflowAction BulkIndicData([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<int> batchSize, [WorkflowExpression] Func<string> bodyrequestId)
         {
-            var apiCallPath = "/power-platform/v1/bulk-indic-data";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            callPayload.Queries["Batch Size"] = CSharpExpressionConverter.ConvertO(batchSize);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["requestId"] = CSharpExpressionConverter.ConvertToken(bodyrequestId);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            SourceExpression.Validate(batchSize, nameof(batchSize), required: true);
+            SourceExpression.Validate(bodyrequestId, nameof(bodyrequestId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/power-platform/v1/bulk-indic-data";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                callPayload.Queries["Batch Size"] = SourceExpressionConverter.ConvertO(batchSize);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["requestId"] = SourceExpressionConverter.ConvertToken(bodyrequestId);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList(Expression<Func<string>> jobName, Expression<Func<string>> bodysecuritiesList)
+        public IBodyWorkflowAction<UploadSecuritiesListDefaultResponse> UploadSecuritiesList([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<string> bodysecuritiesList)
         {
-            var apiCallPath = "/power-platform/v1/upload-securities-list";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["securitiesList"] = CSharpExpressionConverter.ConvertToken(bodysecuritiesList);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            SourceExpression.Validate(bodysecuritiesList, nameof(bodysecuritiesList), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/power-platform/v1/upload-securities-list";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["securitiesList"] = SourceExpressionConverter.ConvertToken(bodysecuritiesList);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(callPayload);
+            return new ApiConnectionAction<UploadSecuritiesListDefaultResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IWorkflowAction CloseJob(Expression<Func<string>> jobName)
+        public IWorkflowAction CloseJob([WorkflowExpression] Func<string> jobName)
         {
-            var apiCallPath = "/power-platform/v1/close-job";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/power-platform/v1/close-job";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "lsegfinancialanalyti")]
-        public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults(Expression<Func<string>> jobName, Expression<Func<outputFormatInput>> outputFormat, Expression<Func<string>> bodypayload)
+        public IBodyWorkflowAction<RetrieveBulkResultsResponse> RetrieveBulkResults([WorkflowExpression] Func<string> jobName, [WorkflowExpression] Func<outputFormatInput> outputFormat, [WorkflowExpression] Func<string> bodypayload)
         {
-            var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["Job name"] = CSharpExpressionConverter.ConvertO(jobName);
-            callPayload.Queries["Output Format"] = CSharpExpressionConverter.Convert(outputFormat);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["payload"] = CSharpExpressionConverter.ConvertToken(bodypayload);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(jobName, nameof(jobName), required: true);
+            SourceExpression.Validate(outputFormat, nameof(outputFormat), required: true);
+            SourceExpression.Validate(bodypayload, nameof(bodypayload), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/power-platform/v1/retrieve-results-bulk";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["Job name"] = SourceExpressionConverter.ConvertO(jobName);
+                callPayload.Queries["Output Format"] = SourceExpressionConverter.Convert(outputFormat);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["payload"] = SourceExpressionConverter.ConvertToken(bodypayload);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<RetrieveBulkResultsResponse>(callPayload);
+            return new ApiConnectionAction<RetrieveBulkResultsResponse>(BuildSourceInput);
         }
     }
 

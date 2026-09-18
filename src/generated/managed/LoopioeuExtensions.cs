@@ -12,15 +12,21 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Loopioeu
     public class LoopioeuActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "loopioeu")]
-        public IBodyWorkflowAction<ListStacksResponse> ListStacks(Expression<Func<string>> fields = null)
+        public IBodyWorkflowAction<ListStacksResponse> ListStacks([WorkflowExpression] Func<string> fields = null)
         {
-            var apiCallPath = "/stacks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["fields"] = Convert.ToString("@wide");
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            return new ApiConnectionAction<ListStacksResponse>(callPayload);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/stacks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["fields"] = Convert.ToString("@wide");
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListStacksResponse>(BuildSourceInput);
         }
     }
 

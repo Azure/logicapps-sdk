@@ -12,186 +12,270 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bravesearch
     public class BravesearchActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet(Expression<Func<string>> q, Expression<Func<cacheControlInput>> cacheControl = null, Expression<Func<string>> userAgent = null, Expression<Func<string>> xLocLat = null, Expression<Func<string>> xLocLong = null, Expression<Func<string>> xLocTimezone = null, Expression<Func<string>> xLocCity = null, Expression<Func<string>> xLocState = null, Expression<Func<string>> xLocStateName = null, Expression<Func<string>> xLocCountry = null, Expression<Func<string>> xLocPostalCode = null, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<uiLangInput>> uiLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<string>> freshness = null, Expression<Func<bool>> textDecorations = null, Expression<Func<bool>> spellcheck = null, Expression<Func<string>> resultFilter = null, Expression<Func<string>> gogglesId = null, Expression<Func<string>> units = null, Expression<Func<bool>> extraSnippets = null, Expression<Func<bool>> summary = null)
+        public IBodyWorkflowAction<WebSearchGetResponse> WebSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<cacheControlInput> cacheControl = null, [WorkflowExpression] Func<string> userAgent = null, [WorkflowExpression] Func<string> xLocLat = null, [WorkflowExpression] Func<string> xLocLong = null, [WorkflowExpression] Func<string> xLocTimezone = null, [WorkflowExpression] Func<string> xLocCity = null, [WorkflowExpression] Func<string> xLocState = null, [WorkflowExpression] Func<string> xLocStateName = null, [WorkflowExpression] Func<string> xLocCountry = null, [WorkflowExpression] Func<string> xLocPostalCode = null, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<uiLangInput> uiLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<string> freshness = null, [WorkflowExpression] Func<bool> textDecorations = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<string> resultFilter = null, [WorkflowExpression] Func<string> gogglesId = null, [WorkflowExpression] Func<string> units = null, [WorkflowExpression] Func<bool> extraSnippets = null, [WorkflowExpression] Func<bool> summary = null)
         {
-            var apiCallPath = "/res/v1/web/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["search_lang"] = Convert.ToString("en");
-            if (searchLang != null)
-                callPayload.Queries["search_lang"] = CSharpExpressionConverter.Convert(searchLang);
-            callPayload.Queries["ui_lang"] = Convert.ToString("en");
-            if (uiLang != null)
-                callPayload.Queries["ui_lang"] = CSharpExpressionConverter.Convert(uiLang);
-            if (count != null)
-                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            callPayload.Queries["safesearch"] = Convert.ToString("strict");
-            if (safesearch != null)
-                callPayload.Queries["safesearch"] = CSharpExpressionConverter.Convert(safesearch);
-            if (freshness != null)
-                callPayload.Queries["freshness"] = CSharpExpressionConverter.ConvertO(freshness);
-            if (textDecorations != null)
-                callPayload.Queries["text_decorations"] = CSharpExpressionConverter.ConvertO(textDecorations);
-            callPayload.Queries["spellcheck"] = Convert.ToString(true);
-            if (spellcheck != null)
-                callPayload.Queries["spellcheck"] = CSharpExpressionConverter.ConvertO(spellcheck);
-            if (resultFilter != null)
-                callPayload.Queries["result_filter"] = CSharpExpressionConverter.ConvertO(resultFilter);
-            if (gogglesId != null)
-                callPayload.Queries["goggles_id"] = CSharpExpressionConverter.ConvertO(gogglesId);
-            if (units != null)
-                callPayload.Queries["units"] = CSharpExpressionConverter.ConvertO(units);
-            if (extraSnippets != null)
-                callPayload.Queries["extra_snippets"] = CSharpExpressionConverter.ConvertO(extraSnippets);
-            if (summary != null)
-                callPayload.Queries["summary"] = CSharpExpressionConverter.ConvertO(summary);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            if (cacheControl != null)
-                callPayload.Headers["Cache-Control"] = CSharpExpressionConverter.Convert(cacheControl);
-            if (userAgent != null)
-                callPayload.Headers["User-Agent"] = CSharpExpressionConverter.ConvertO(userAgent);
-            if (xLocLat != null)
-                callPayload.Headers["X-Loc-Lat"] = CSharpExpressionConverter.ConvertO(xLocLat);
-            if (xLocLong != null)
-                callPayload.Headers["X-Loc-Long"] = CSharpExpressionConverter.ConvertO(xLocLong);
-            if (xLocTimezone != null)
-                callPayload.Headers["X-Loc-Timezone"] = CSharpExpressionConverter.ConvertO(xLocTimezone);
-            if (xLocCity != null)
-                callPayload.Headers["X-Loc-City"] = CSharpExpressionConverter.ConvertO(xLocCity);
-            if (xLocState != null)
-                callPayload.Headers["X-Loc-State"] = CSharpExpressionConverter.ConvertO(xLocState);
-            if (xLocStateName != null)
-                callPayload.Headers["X-Loc-State-Name"] = CSharpExpressionConverter.ConvertO(xLocStateName);
-            if (xLocCountry != null)
-                callPayload.Headers["X-Loc-Country"] = CSharpExpressionConverter.ConvertO(xLocCountry);
-            if (xLocPostalCode != null)
-                callPayload.Headers["X-Loc-Postal-Code"] = CSharpExpressionConverter.ConvertO(xLocPostalCode);
-            return new ApiConnectionAction<WebSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(cacheControl, nameof(cacheControl), required: false);
+            SourceExpression.Validate(userAgent, nameof(userAgent), required: false);
+            SourceExpression.Validate(xLocLat, nameof(xLocLat), required: false);
+            SourceExpression.Validate(xLocLong, nameof(xLocLong), required: false);
+            SourceExpression.Validate(xLocTimezone, nameof(xLocTimezone), required: false);
+            SourceExpression.Validate(xLocCity, nameof(xLocCity), required: false);
+            SourceExpression.Validate(xLocState, nameof(xLocState), required: false);
+            SourceExpression.Validate(xLocStateName, nameof(xLocStateName), required: false);
+            SourceExpression.Validate(xLocCountry, nameof(xLocCountry), required: false);
+            SourceExpression.Validate(xLocPostalCode, nameof(xLocPostalCode), required: false);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
+            SourceExpression.Validate(uiLang, nameof(uiLang), required: false);
+            SourceExpression.Validate(count, nameof(count), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
+            SourceExpression.Validate(freshness, nameof(freshness), required: false);
+            SourceExpression.Validate(textDecorations, nameof(textDecorations), required: false);
+            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            SourceExpression.Validate(resultFilter, nameof(resultFilter), required: false);
+            SourceExpression.Validate(gogglesId, nameof(gogglesId), required: false);
+            SourceExpression.Validate(units, nameof(units), required: false);
+            SourceExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
+            SourceExpression.Validate(summary, nameof(summary), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/web/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["search_lang"] = Convert.ToString("en");
+                if (searchLang != null)
+                    callPayload.Queries["search_lang"] = SourceExpressionConverter.Convert(searchLang);
+                callPayload.Queries["ui_lang"] = Convert.ToString("en");
+                if (uiLang != null)
+                    callPayload.Queries["ui_lang"] = SourceExpressionConverter.Convert(uiLang);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                callPayload.Queries["safesearch"] = Convert.ToString("strict");
+                if (safesearch != null)
+                    callPayload.Queries["safesearch"] = SourceExpressionConverter.Convert(safesearch);
+                if (freshness != null)
+                    callPayload.Queries["freshness"] = SourceExpressionConverter.ConvertO(freshness);
+                if (textDecorations != null)
+                    callPayload.Queries["text_decorations"] = SourceExpressionConverter.ConvertO(textDecorations);
+                callPayload.Queries["spellcheck"] = Convert.ToString(true);
+                if (spellcheck != null)
+                    callPayload.Queries["spellcheck"] = SourceExpressionConverter.ConvertO(spellcheck);
+                if (resultFilter != null)
+                    callPayload.Queries["result_filter"] = SourceExpressionConverter.ConvertO(resultFilter);
+                if (gogglesId != null)
+                    callPayload.Queries["goggles_id"] = SourceExpressionConverter.ConvertO(gogglesId);
+                if (units != null)
+                    callPayload.Queries["units"] = SourceExpressionConverter.ConvertO(units);
+                if (extraSnippets != null)
+                    callPayload.Queries["extra_snippets"] = SourceExpressionConverter.ConvertO(extraSnippets);
+                if (summary != null)
+                    callPayload.Queries["summary"] = SourceExpressionConverter.ConvertO(summary);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                if (cacheControl != null)
+                    callPayload.Headers["Cache-Control"] = SourceExpressionConverter.Convert(cacheControl);
+                if (userAgent != null)
+                    callPayload.Headers["User-Agent"] = SourceExpressionConverter.ConvertO(userAgent);
+                if (xLocLat != null)
+                    callPayload.Headers["X-Loc-Lat"] = SourceExpressionConverter.ConvertO(xLocLat);
+                if (xLocLong != null)
+                    callPayload.Headers["X-Loc-Long"] = SourceExpressionConverter.ConvertO(xLocLong);
+                if (xLocTimezone != null)
+                    callPayload.Headers["X-Loc-Timezone"] = SourceExpressionConverter.ConvertO(xLocTimezone);
+                if (xLocCity != null)
+                    callPayload.Headers["X-Loc-City"] = SourceExpressionConverter.ConvertO(xLocCity);
+                if (xLocState != null)
+                    callPayload.Headers["X-Loc-State"] = SourceExpressionConverter.ConvertO(xLocState);
+                if (xLocStateName != null)
+                    callPayload.Headers["X-Loc-State-Name"] = SourceExpressionConverter.ConvertO(xLocStateName);
+                if (xLocCountry != null)
+                    callPayload.Headers["X-Loc-Country"] = SourceExpressionConverter.ConvertO(xLocCountry);
+                if (xLocPostalCode != null)
+                    callPayload.Headers["X-Loc-Postal-Code"] = SourceExpressionConverter.ConvertO(xLocPostalCode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebSearchGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<ImageSearchGetResponse> ImageSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
         {
-            var apiCallPath = "/res/v1/images/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["search_lang"] = Convert.ToString("en");
-            if (searchLang != null)
-                callPayload.Queries["search_lang"] = CSharpExpressionConverter.Convert(searchLang);
-            if (count != null)
-                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
-            callPayload.Queries["safesearch"] = Convert.ToString("strict");
-            if (safesearch != null)
-                callPayload.Queries["safesearch"] = CSharpExpressionConverter.Convert(safesearch);
-            callPayload.Queries["spellcheck"] = Convert.ToString(true);
-            if (spellcheck != null)
-                callPayload.Queries["spellcheck"] = CSharpExpressionConverter.ConvertO(spellcheck);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<ImageSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
+            SourceExpression.Validate(count, nameof(count), required: false);
+            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
+            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/images/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["search_lang"] = Convert.ToString("en");
+                if (searchLang != null)
+                    callPayload.Queries["search_lang"] = SourceExpressionConverter.Convert(searchLang);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                callPayload.Queries["safesearch"] = Convert.ToString("strict");
+                if (safesearch != null)
+                    callPayload.Queries["safesearch"] = SourceExpressionConverter.Convert(safesearch);
+                callPayload.Queries["spellcheck"] = Convert.ToString(true);
+                if (spellcheck != null)
+                    callPayload.Queries["spellcheck"] = SourceExpressionConverter.ConvertO(spellcheck);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageSearchGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null)
+        public IBodyWorkflowAction<VideoSearchGetResponse> VideoSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null)
         {
-            var apiCallPath = "/res/v1/videos/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["search_lang"] = Convert.ToString("en");
-            if (searchLang != null)
-                callPayload.Queries["search_lang"] = CSharpExpressionConverter.Convert(searchLang);
-            if (count != null)
-                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
-            callPayload.Queries["safesearch"] = Convert.ToString("strict");
-            if (safesearch != null)
-                callPayload.Queries["safesearch"] = CSharpExpressionConverter.Convert(safesearch);
-            callPayload.Queries["spellcheck"] = Convert.ToString(true);
-            if (spellcheck != null)
-                callPayload.Queries["spellcheck"] = CSharpExpressionConverter.ConvertO(spellcheck);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<VideoSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
+            SourceExpression.Validate(count, nameof(count), required: false);
+            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
+            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/videos/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["search_lang"] = Convert.ToString("en");
+                if (searchLang != null)
+                    callPayload.Queries["search_lang"] = SourceExpressionConverter.Convert(searchLang);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                callPayload.Queries["safesearch"] = Convert.ToString("strict");
+                if (safesearch != null)
+                    callPayload.Queries["safesearch"] = SourceExpressionConverter.Convert(safesearch);
+                callPayload.Queries["spellcheck"] = Convert.ToString(true);
+                if (spellcheck != null)
+                    callPayload.Queries["spellcheck"] = SourceExpressionConverter.ConvertO(spellcheck);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<VideoSearchGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<searchLangInput>> searchLang = null, Expression<Func<int>> count = null, Expression<Func<int>> offset = null, Expression<Func<safesearchInput>> safesearch = null, Expression<Func<bool>> spellcheck = null, Expression<Func<freshnessInput>> freshness = null, Expression<Func<bool>> extraSnippets = null)
+        public IBodyWorkflowAction<NewsSearchGetResponse> NewsSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<searchLangInput> searchLang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<safesearchInput> safesearch = null, [WorkflowExpression] Func<bool> spellcheck = null, [WorkflowExpression] Func<freshnessInput> freshness = null, [WorkflowExpression] Func<bool> extraSnippets = null)
         {
-            var apiCallPath = "/res/v1/news/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["search_lang"] = Convert.ToString("en");
-            if (searchLang != null)
-                callPayload.Queries["search_lang"] = CSharpExpressionConverter.Convert(searchLang);
-            if (count != null)
-                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            callPayload.Queries["safesearch"] = Convert.ToString("strict");
-            if (safesearch != null)
-                callPayload.Queries["safesearch"] = CSharpExpressionConverter.Convert(safesearch);
-            callPayload.Queries["spellcheck"] = Convert.ToString(true);
-            if (spellcheck != null)
-                callPayload.Queries["spellcheck"] = CSharpExpressionConverter.ConvertO(spellcheck);
-            if (freshness != null)
-                callPayload.Queries["freshness"] = CSharpExpressionConverter.Convert(freshness);
-            if (extraSnippets != null)
-                callPayload.Queries["extra_snippets"] = CSharpExpressionConverter.ConvertO(extraSnippets);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<NewsSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(searchLang, nameof(searchLang), required: false);
+            SourceExpression.Validate(count, nameof(count), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(safesearch, nameof(safesearch), required: false);
+            SourceExpression.Validate(spellcheck, nameof(spellcheck), required: false);
+            SourceExpression.Validate(freshness, nameof(freshness), required: false);
+            SourceExpression.Validate(extraSnippets, nameof(extraSnippets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/news/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["search_lang"] = Convert.ToString("en");
+                if (searchLang != null)
+                    callPayload.Queries["search_lang"] = SourceExpressionConverter.Convert(searchLang);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                callPayload.Queries["safesearch"] = Convert.ToString("strict");
+                if (safesearch != null)
+                    callPayload.Queries["safesearch"] = SourceExpressionConverter.Convert(safesearch);
+                callPayload.Queries["spellcheck"] = Convert.ToString(true);
+                if (spellcheck != null)
+                    callPayload.Queries["spellcheck"] = SourceExpressionConverter.ConvertO(spellcheck);
+                if (freshness != null)
+                    callPayload.Queries["freshness"] = SourceExpressionConverter.Convert(freshness);
+                if (extraSnippets != null)
+                    callPayload.Queries["extra_snippets"] = SourceExpressionConverter.ConvertO(extraSnippets);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NewsSearchGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null, Expression<Func<int>> count = null, Expression<Func<bool>> rich = null)
+        public IBodyWorkflowAction<SuggestionSearchGetResponse> SuggestionSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null, [WorkflowExpression] Func<int> count = null, [WorkflowExpression] Func<bool> rich = null)
         {
-            var apiCallPath = "/res/v1/suggest/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.Convert(lang);
-            if (count != null)
-                callPayload.Queries["count"] = CSharpExpressionConverter.ConvertO(count);
-            if (rich != null)
-                callPayload.Queries["rich"] = CSharpExpressionConverter.ConvertO(rich);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SuggestionSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            SourceExpression.Validate(count, nameof(count), required: false);
+            SourceExpression.Validate(rich, nameof(rich), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/suggest/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.Convert(lang);
+                if (count != null)
+                    callPayload.Queries["count"] = SourceExpressionConverter.ConvertO(count);
+                if (rich != null)
+                    callPayload.Queries["rich"] = SourceExpressionConverter.ConvertO(rich);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SuggestionSearchGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bravesearch")]
-        public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet(Expression<Func<string>> q, Expression<Func<countryInput>> country = null, Expression<Func<langInput>> lang = null)
+        public IBodyWorkflowAction<SpellcheckSearchGetResponse> SpellcheckSearchGet([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<countryInput> country = null, [WorkflowExpression] Func<langInput> lang = null)
         {
-            var apiCallPath = "/res/v1/spellcheck/search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["country"] = Convert.ToString("US");
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            callPayload.Queries["lang"] = Convert.ToString("en");
-            if (lang != null)
-                callPayload.Queries["lang"] = CSharpExpressionConverter.Convert(lang);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            return new ApiConnectionAction<SpellcheckSearchGetResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            SourceExpression.Validate(lang, nameof(lang), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/res/v1/spellcheck/search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["country"] = Convert.ToString("US");
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                callPayload.Queries["lang"] = Convert.ToString("en");
+                if (lang != null)
+                    callPayload.Queries["lang"] = SourceExpressionConverter.Convert(lang);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpellcheckSearchGetResponse>(BuildSourceInput);
         }
     }
 

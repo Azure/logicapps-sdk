@@ -12,14 +12,20 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Databoxip
     public class DataboxipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "databoxip")]
-        public IBodyWorkflowAction<DataPostResponse> Data(Expression<Func<bodyInputItem[]>> body = null)
+        public IBodyWorkflowAction<DataPostResponse> Data([WorkflowExpression] Func<bodyInputItem[]> body = null)
         {
-            var apiCallPath = "/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<DataPostResponse>(callPayload);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/vnd.databox.v2+json");
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DataPostResponse>(BuildSourceInput);
         }
     }
 

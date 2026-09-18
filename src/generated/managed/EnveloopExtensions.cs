@@ -12,58 +12,73 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Enveloop
     public class EnveloopActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
-        public IBodyWorkflowAction<MessagePostResponse> Message(Expression<Func<string>> bodytemplate = null, Expression<Func<string>> bodyto = null, Expression<Func<string>> bodyfrom = null, Expression<Func<string>> bodysubject = null, Expression<Func<bodytemplateVariablesInputItem[]>> bodytemplateVariables = null)
+        public IBodyWorkflowAction<MessagePostResponse> Message([WorkflowExpression] Func<string> bodytemplate = null, [WorkflowExpression] Func<string> bodyto = null, [WorkflowExpression] Func<string> bodyfrom = null, [WorkflowExpression] Func<string> bodysubject = null, [WorkflowExpression] Func<bodytemplateVariablesInputItem[]> bodytemplateVariables = null)
         {
-            var apiCallPath = "/messages";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodytemplate != null)
+            SourceExpression.Validate(bodytemplate, nameof(bodytemplate), required: false);
+            SourceExpression.Validate(bodyto, nameof(bodyto), required: false);
+            SourceExpression.Validate(bodyfrom, nameof(bodyfrom), required: false);
+            SourceExpression.Validate(bodysubject, nameof(bodysubject), required: false);
+            SourceExpression.Validate(bodytemplateVariables, nameof(bodytemplateVariables), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["template"] = CSharpExpressionConverter.ConvertToken(bodytemplate);
-                bodypropCount++;
+                var apiCallPath = "/messages";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodytemplate != null)
+                {
+                    body["template"] = SourceExpressionConverter.ConvertToken(bodytemplate);
+                    bodypropCount++;
+                }
+
+                if (bodyto != null)
+                {
+                    body["to"] = SourceExpressionConverter.ConvertToken(bodyto);
+                    bodypropCount++;
+                }
+
+                if (bodyfrom != null)
+                {
+                    body["from"] = SourceExpressionConverter.ConvertToken(bodyfrom);
+                    bodypropCount++;
+                }
+
+                if (bodysubject != null)
+                {
+                    body["subject"] = SourceExpressionConverter.ConvertToken(bodysubject);
+                    bodypropCount++;
+                }
+
+                if (bodytemplateVariables != null)
+                {
+                    body["templateVariables"] = SourceExpressionConverter.ConvertToken(bodytemplateVariables);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyto != null)
-            {
-                body["to"] = CSharpExpressionConverter.ConvertToken(bodyto);
-                bodypropCount++;
-            }
-
-            if (bodyfrom != null)
-            {
-                body["from"] = CSharpExpressionConverter.ConvertToken(bodyfrom);
-                bodypropCount++;
-            }
-
-            if (bodysubject != null)
-            {
-                body["subject"] = CSharpExpressionConverter.ConvertToken(bodysubject);
-                bodypropCount++;
-            }
-
-            if (bodytemplateVariables != null)
-            {
-                body["templateVariables"] = CSharpExpressionConverter.ConvertToken(bodytemplateVariables);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<MessagePostResponse>(callPayload);
+            return new ApiConnectionAction<MessagePostResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "enveloop")]
-        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet(Expression<Func<string>> templateName)
+        public IBodyWorkflowAction<TemplateGetResponse> TemplateGet([WorkflowExpression] Func<string> templateName)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/templates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<TemplateGetResponse>(callPayload);
+            SourceExpression.Validate(templateName, nameof(templateName), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/templates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(templateName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<TemplateGetResponse>(BuildSourceInput);
         }
     }
 

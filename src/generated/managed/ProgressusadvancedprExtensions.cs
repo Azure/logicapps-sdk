@@ -12,18 +12,33 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Progressusadvancedpr
     public class ProgressusadvancedprActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "progressusadvancedpr")]
-        public IWorkflowAction Get(Expression<Func<string>> aPIVersion, Expression<Func<string>> tenantID, Expression<Func<string>> environmentName, Expression<Func<aPINameInput>> aPIName, Expression<Func<string>> aPIVersion2, Expression<Func<string>> companyID, Expression<Func<pluralAPINameInput>> pluralAPIName, Expression<Func<string>> filter = null, Expression<Func<string>> select = null, Expression<Func<string>> orderby = null)
+        public IWorkflowAction Get([WorkflowExpression] Func<string> aPIVersion, [WorkflowExpression] Func<string> tenantID, [WorkflowExpression] Func<string> environmentName, [WorkflowExpression] Func<aPINameInput> aPIName, [WorkflowExpression] Func<string> aPIVersion2, [WorkflowExpression] Func<string> companyID, [WorkflowExpression] Func<pluralAPINameInput> pluralAPIName, [WorkflowExpression] Func<string> filter = null, [WorkflowExpression] Func<string> select = null, [WorkflowExpression] Func<string> orderby = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIName, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion2, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyID, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pluralAPIName, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (filter != null)
-                callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            if (select != null)
-                callPayload.Queries["$select"] = CSharpExpressionConverter.ConvertO(select);
-            if (orderby != null)
-                callPayload.Queries["$orderby"] = CSharpExpressionConverter.ConvertO(orderby);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(aPIVersion, nameof(aPIVersion), required: true);
+            SourceExpression.Validate(tenantID, nameof(tenantID), required: true);
+            SourceExpression.Validate(environmentName, nameof(environmentName), required: true);
+            SourceExpression.Validate(aPIName, nameof(aPIName), required: true);
+            SourceExpression.Validate(aPIVersion2, nameof(aPIVersion2), required: true);
+            SourceExpression.Validate(companyID, nameof(companyID), required: true);
+            SourceExpression.Validate(pluralAPIName, nameof(pluralAPIName), required: true);
+            SourceExpression.Validate(filter, nameof(filter), required: false);
+            SourceExpression.Validate(select, nameof(select), required: false);
+            SourceExpression.Validate(orderby, nameof(orderby), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/{0}/{1}/{2}/api/progressus/{3}/{4}/companies({5})/{6}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(environmentName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIName, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(aPIVersion2, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(companyID, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pluralAPIName, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (filter != null)
+                    callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                if (select != null)
+                    callPayload.Queries["$select"] = SourceExpressionConverter.ConvertO(select);
+                if (orderby != null)
+                    callPayload.Queries["$orderby"] = SourceExpressionConverter.ConvertO(orderby);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

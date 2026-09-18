@@ -12,1213 +12,1407 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
     public class BizzyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReply(Expression<Func<string>> contentreplyText, Expression<Func<string>> contentreplyActivity, Expression<Func<bool>> contentshowInChat = null, Expression<Func<string>> contentcustomChannelData = null, Expression<Func<string>> contentsignalResponseJSON = null, Expression<Func<string>> contentmessageID = null)
+        public IBodyWorkflowAction<BotReplyResponse> SendReply([WorkflowExpression] Func<string> contentreplyText, [WorkflowExpression] Func<string> contentreplyActivity, [WorkflowExpression] Func<bool> contentshowInChat = null, [WorkflowExpression] Func<string> contentcustomChannelData = null, [WorkflowExpression] Func<string> contentsignalResponseJSON = null, [WorkflowExpression] Func<string> contentmessageID = null)
         {
-            var apiCallPath = "/api/triggers/bot/reply";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["message"] = CSharpExpressionConverter.ConvertToken(contentreplyText);
-            contentpropCount++;
-            content["activityJson"] = CSharpExpressionConverter.ConvertToken(contentreplyActivity);
-            if (contentshowInChat != null)
+            SourceExpression.Validate(contentreplyText, nameof(contentreplyText), required: true);
+            SourceExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
+            SourceExpression.Validate(contentshowInChat, nameof(contentshowInChat), required: false);
+            SourceExpression.Validate(contentcustomChannelData, nameof(contentcustomChannelData), required: false);
+            SourceExpression.Validate(contentsignalResponseJSON, nameof(contentsignalResponseJSON), required: false);
+            SourceExpression.Validate(contentmessageID, nameof(contentmessageID), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/api/triggers/bot/reply";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["message"] = SourceExpressionConverter.ConvertToken(contentreplyText);
+                contentpropCount++;
+                content["activityJson"] = SourceExpressionConverter.ConvertToken(contentreplyActivity);
                 if (contentshowInChat != null)
                 {
-                    content["showInChat"] = CSharpExpressionConverter.ConvertToken(contentshowInChat);
+                    if (contentshowInChat != null)
+                    {
+                        content["showInChat"] = SourceExpressionConverter.ConvertToken(contentshowInChat);
+                        contentpropCount++;
+                    }
+
+                    contentpropCount++;
+                }
+                else
+                {
+                    content["showInChat"] = true;
                     contentpropCount++;
                 }
 
-                contentpropCount++;
-            }
-            else
-            {
-                content["showInChat"] = true;
-                contentpropCount++;
-            }
-
-            if (contentcustomChannelData != null)
-            {
-                content["customChannelDataJson"] = CSharpExpressionConverter.ConvertToken(contentcustomChannelData);
-                contentpropCount++;
-            }
-
-            if (contentsignalResponseJSON != null)
-            {
-                content["signalResponse"] = CSharpExpressionConverter.ConvertToken(contentsignalResponseJSON);
-                contentpropCount++;
-            }
-
-            if (contentmessageID != null)
-            {
-                content["messageId"] = CSharpExpressionConverter.ConvertToken(contentmessageID);
-                contentpropCount++;
-            }
-
-            if (contentpropCount > 0)
-            {
-                callPayload.Body = content;
-            }
-
-            return new ApiConnectionAction<BotReplyResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(content);
-            return new ApiConnectionAction<BotReplyResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<JToken> GenerateAdaptiveCard(Expression<Func<string>> selectedCard, Expression<Func<object>> content = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(content);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet(Expression<Func<cardSetdisplayStyleInput>> cardSetdisplayStyle, Expression<Func<string>> cardSetreplyActivity, Expression<Func<bool>> cardSetshowInTab = null, Expression<Func<string>> cardSettabButtonLabel = null, Expression<Func<string>> cardSettabButtonMessage = null)
-        {
-            var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardSet = new JObject();
-            var cardSetpropCount = 0;
-            var cardsObject = new JObject();
-            var cardsObjectpropCount = 0;
-            if (cardsObjectpropCount > 0)
-            {
-                cardSet["cards"] = cardsObject;
-                cardSetpropCount++;
-            }
-
-            cardSetpropCount++;
-            cardSet["displayStyle"] = CSharpExpressionConverter.Convert(cardSetdisplayStyle);
-            cardSetpropCount++;
-            cardSet["activityJson"] = CSharpExpressionConverter.ConvertToken(cardSetreplyActivity);
-            if (cardSetshowInTab != null)
-            {
-                if (cardSetshowInTab != null)
+                if (contentcustomChannelData != null)
                 {
-                    cardSet["showInTab"] = CSharpExpressionConverter.ConvertToken(cardSetshowInTab);
+                    content["customChannelDataJson"] = SourceExpressionConverter.ConvertToken(contentcustomChannelData);
+                    contentpropCount++;
+                }
+
+                if (contentsignalResponseJSON != null)
+                {
+                    content["signalResponse"] = SourceExpressionConverter.ConvertToken(contentsignalResponseJSON);
+                    contentpropCount++;
+                }
+
+                if (contentmessageID != null)
+                {
+                    content["messageId"] = SourceExpressionConverter.ConvertToken(contentmessageID);
+                    contentpropCount++;
+                }
+
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BotReplyResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
+        {
+            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
+            SourceExpression.Validate(content, nameof(content), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/replyWithAdaptiveCard", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(content);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BotReplyResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<JToken> GenerateAdaptiveCard([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> content = null)
+        {
+            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
+            SourceExpression.Validate(content, nameof(content), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/triggers/bot/adaptiveCards/{0}/generateAdaptiveCard", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(selectedCard, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(content);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<BotReplyResponse> SendReplyWithAdaptiveCardSet([WorkflowExpression] Func<cardSetdisplayStyleInput> cardSetdisplayStyle, [WorkflowExpression] Func<string> cardSetreplyActivity, [WorkflowExpression] Func<bool> cardSetshowInTab = null, [WorkflowExpression] Func<string> cardSettabButtonLabel = null, [WorkflowExpression] Func<string> cardSettabButtonMessage = null)
+        {
+            SourceExpression.Validate(cardSetdisplayStyle, nameof(cardSetdisplayStyle), required: true);
+            SourceExpression.Validate(cardSetreplyActivity, nameof(cardSetreplyActivity), required: true);
+            SourceExpression.Validate(cardSetshowInTab, nameof(cardSetshowInTab), required: false);
+            SourceExpression.Validate(cardSettabButtonLabel, nameof(cardSettabButtonLabel), required: false);
+            SourceExpression.Validate(cardSettabButtonMessage, nameof(cardSettabButtonMessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/bot/adaptiveCards/sendCardSet";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardSet = new JObject();
+                var cardSetpropCount = 0;
+                var cardsObject = new JObject();
+                var cardsObjectpropCount = 0;
+                if (cardsObjectpropCount > 0)
+                {
+                    cardSet["cards"] = cardsObject;
                     cardSetpropCount++;
                 }
 
                 cardSetpropCount++;
-            }
-            else
-            {
-                cardSet["showInTab"] = false;
+                cardSet["displayStyle"] = SourceExpressionConverter.Convert(cardSetdisplayStyle);
                 cardSetpropCount++;
+                cardSet["activityJson"] = SourceExpressionConverter.ConvertToken(cardSetreplyActivity);
+                if (cardSetshowInTab != null)
+                {
+                    if (cardSetshowInTab != null)
+                    {
+                        cardSet["showInTab"] = SourceExpressionConverter.ConvertToken(cardSetshowInTab);
+                        cardSetpropCount++;
+                    }
+
+                    cardSetpropCount++;
+                }
+                else
+                {
+                    cardSet["showInTab"] = false;
+                    cardSetpropCount++;
+                }
+
+                if (cardSettabButtonLabel != null)
+                {
+                    cardSet["deepLinkButtonLabel"] = SourceExpressionConverter.ConvertToken(cardSettabButtonLabel);
+                    cardSetpropCount++;
+                }
+
+                if (cardSettabButtonMessage != null)
+                {
+                    cardSet["deepLinkMessage"] = SourceExpressionConverter.ConvertToken(cardSettabButtonMessage);
+                    cardSetpropCount++;
+                }
+
+                if (cardSetpropCount > 0)
+                {
+                    callPayload.Body = cardSet;
+                }
+                return callPayload;
             }
 
-            if (cardSettabButtonLabel != null)
-            {
-                cardSet["deepLinkButtonLabel"] = CSharpExpressionConverter.ConvertToken(cardSettabButtonLabel);
-                cardSetpropCount++;
-            }
-
-            if (cardSettabButtonMessage != null)
-            {
-                cardSet["deepLinkMessage"] = CSharpExpressionConverter.ConvertToken(cardSettabButtonMessage);
-                cardSetpropCount++;
-            }
-
-            if (cardSetpropCount > 0)
-            {
-                callPayload.Body = cardSet;
-            }
-
-            return new ApiConnectionAction<BotReplyResponse>(callPayload);
+            return new ApiConnectionAction<BotReplyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard(Expression<Func<string>> cardInforeplyActivity)
+        public IBodyWorkflowAction<BotReplyResponse> UpdateAdaptiveCard([WorkflowExpression] Func<string> cardInforeplyActivity)
         {
-            var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardInfo = new JObject();
-            var cardInfopropCount = 0;
-            var cardObject = new JObject();
-            var cardObjectpropCount = 0;
-            if (cardObjectpropCount > 0)
+            SourceExpression.Validate(cardInforeplyActivity, nameof(cardInforeplyActivity), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                cardInfo["card"] = cardObject;
+                var apiCallPath = "/api/triggers/bot/adaptiveCards/updateCard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardInfo = new JObject();
+                var cardInfopropCount = 0;
+                var cardObject = new JObject();
+                var cardObjectpropCount = 0;
+                if (cardObjectpropCount > 0)
+                {
+                    cardInfo["card"] = cardObject;
+                    cardInfopropCount++;
+                }
+
                 cardInfopropCount++;
+                cardInfo["activityJson"] = SourceExpressionConverter.ConvertToken(cardInforeplyActivity);
+                if (cardInfopropCount > 0)
+                {
+                    callPayload.Body = cardInfo;
+                }
+                return callPayload;
             }
 
-            cardInfopropCount++;
-            cardInfo["activityJson"] = CSharpExpressionConverter.ConvertToken(cardInforeplyActivity);
-            if (cardInfopropCount > 0)
-            {
-                callPayload.Body = cardInfo;
-            }
-
-            return new ApiConnectionAction<BotReplyResponse>(callPayload);
+            return new ApiConnectionAction<BotReplyResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotConversationStartResponse> StartConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentconversationText, Expression<Func<string>> contentuser)
+        public IBodyWorkflowAction<BotConversationStartResponse> StartConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentconversationText, [WorkflowExpression] Func<string> contentuser)
         {
-            var apiCallPath = "/api/triggers/bot/startConversation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["EnterpriseBot"] = CSharpExpressionConverter.ConvertToken(contenttargetBot);
-            contentpropCount++;
-            content["message"] = CSharpExpressionConverter.ConvertToken(contentconversationText);
-            contentpropCount++;
-            content["user"] = CSharpExpressionConverter.ConvertToken(contentuser);
-            if (contentpropCount > 0)
+            SourceExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
+            SourceExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
+            SourceExpression.Validate(contentuser, nameof(contentuser), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = content;
-            }
-
-            return new ApiConnectionAction<BotConversationStartResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation(Expression<Func<string>> contenttargetBot, Expression<Func<string>> contentchannelName, Expression<Func<string>> contentconversationText)
-        {
-            var apiCallPath = "/api/triggers/bot/startGroupConversation";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["EnterpriseBot"] = CSharpExpressionConverter.ConvertToken(contenttargetBot);
-            var teamIDStrObject = new JObject();
-            var teamIDStrObjectpropCount = 0;
-            if (teamIDStrObjectpropCount > 0)
-            {
-                content["teamIDStr"] = teamIDStrObject;
+                var apiCallPath = "/api/triggers/bot/startConversation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
                 contentpropCount++;
-            }
-
-            contentpropCount++;
-            content["channelId"] = CSharpExpressionConverter.ConvertToken(contentchannelName);
-            contentpropCount++;
-            content["message"] = CSharpExpressionConverter.ConvertToken(contentconversationText);
-            if (contentpropCount > 0)
-            {
-                callPayload.Body = content;
-            }
-
-            return new ApiConnectionAction<BotGroupConversationStartResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IWorkflowAction SendBridgeEvent(Expression<Func<string>> contentreplyActivity)
-        {
-            var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["activityJson"] = CSharpExpressionConverter.ConvertToken(contentreplyActivity);
-            var eventObjectObject = new JObject();
-            var eventObjectObjectpropCount = 0;
-            if (eventObjectObjectpropCount > 0)
-            {
-                content["eventObject"] = eventObjectObject;
+                content["EnterpriseBot"] = SourceExpressionConverter.ConvertToken(contenttargetBot);
                 contentpropCount++;
+                content["message"] = SourceExpressionConverter.ConvertToken(contentconversationText);
+                contentpropCount++;
+                content["user"] = SourceExpressionConverter.ConvertToken(contentuser);
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
             }
 
-            if (contentpropCount > 0)
-            {
-                callPayload.Body = content;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<BotConversationStartResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<BotGroupConversationStartResponse> StartGroupConversation([WorkflowExpression] Func<string> contenttargetBot, [WorkflowExpression] Func<string> contentchannelName, [WorkflowExpression] Func<string> contentconversationText)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(contenttargetBot, nameof(contenttargetBot), required: true);
+            SourceExpression.Validate(contentchannelName, nameof(contentchannelName), required: true);
+            SourceExpression.Validate(contentconversationText, nameof(contentconversationText), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
-                webHookpropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
-                if (webHookacceptResponseFrom != null)
+                var apiCallPath = "/api/triggers/bot/startGroupConversation";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["EnterpriseBot"] = SourceExpressionConverter.ConvertToken(contenttargetBot);
+                var teamIDStrObject = new JObject();
+                var teamIDStrObjectpropCount = 0;
+                if (teamIDStrObjectpropCount > 0)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    content["teamIDStr"] = teamIDStrObject;
+                    contentpropCount++;
+                }
+
+                contentpropCount++;
+                content["channelId"] = SourceExpressionConverter.ConvertToken(contentchannelName);
+                contentpropCount++;
+                content["message"] = SourceExpressionConverter.ConvertToken(contentconversationText);
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BotGroupConversationStartResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IWorkflowAction SendBridgeEvent([WorkflowExpression] Func<string> contentreplyActivity)
+        {
+            SourceExpression.Validate(contentreplyActivity, nameof(contentreplyActivity), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/bot/sendBridgeEvent";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["activityJson"] = SourceExpressionConverter.ConvertToken(contentreplyActivity);
+                var eventObjectObject = new JObject();
+                var eventObjectObjectpropCount = 0;
+                if (eventObjectObjectpropCount > 0)
+                {
+                    content["eventObject"] = eventObjectObject;
+                    contentpropCount++;
+                }
+
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponse([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        {
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/webhooks/registerResponse";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHookpropCount++;
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
                 webHookpropCount++;
-            }
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
+                if (webHookacceptResponseFrom != null)
+                {
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
 
-            if (webHookshowInChat != null)
-            {
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
+                    webHookpropCount++;
+                }
+
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE(Expression<Func<webHookdateScopeInput>> webHookdateScope, Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseDATE([WorkflowExpression] Func<webHookdateScopeInput> webHookdateScope, [WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHookdateScope, nameof(webHookdateScope), required: true);
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_Date";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["dateScope"] = CSharpExpressionConverter.Convert(webHookdateScope);
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
-                if (webHookacceptResponseFrom != null)
+                if (webHookfilters != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
+                webHook["dateScope"] = SourceExpressionConverter.Convert(webHookdateScope);
                 webHookpropCount++;
-            }
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
+                webHookpropCount++;
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
+                if (webHookacceptResponseFrom != null)
+                {
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
 
-            if (webHookallowBranching != null)
-            {
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
+                    webHookpropCount++;
+                }
+
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookchoiceValues, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookchoiceValues, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookchoiceValues, nameof(webHookchoiceValues), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_Choice";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
+                    webHookpropCount++;
+                }
+
                 webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
                 webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["choices"] = CSharpExpressionConverter.ConvertToken(webHookchoiceValues);
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
+                webHook["choices"] = SourceExpressionConverter.ConvertToken(webHookchoiceValues);
+                webHookpropCount++;
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHooklistenForVoiceResponse != null)
-            {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                    if (webHooklistenForVoiceResponse != null)
+                    {
+                        webHook["listenForInput"] = SourceExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["listenForInput"] = false;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["listenForInput"] = false;
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseCHOICELIST([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_ChoiceList";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
+                    webHookpropCount++;
+                }
+
+                if (webHookiconURL != null)
+                {
+                    webHook["icon"] = SourceExpressionConverter.ConvertToken(webHookiconURL);
+                    webHookpropCount++;
+                }
+
                 webHookpropCount++;
-            }
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
+                var choicesObject = new JObject();
+                var choicesObjectpropCount = 0;
+                if (choicesObjectpropCount > 0)
+                {
+                    webHook["choices"] = choicesObject;
+                    webHookpropCount++;
+                }
 
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
                 webHookpropCount++;
-            }
-
-            if (webHookiconURL != null)
-            {
-                webHook["icon"] = CSharpExpressionConverter.ConvertToken(webHookiconURL);
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            var choicesObject = new JObject();
-            var choicesObjectpropCount = 0;
-            if (choicesObjectpropCount > 0)
-            {
-                webHook["choices"] = choicesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHooklistenForVoiceResponse != null)
-            {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                    if (webHooklistenForVoiceResponse != null)
+                    {
+                        webHook["listenForInput"] = SourceExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["listenForInput"] = false;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["listenForInput"] = false;
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE(Expression<Func<string>> webHookmessage, Expression<Func<webHookmodeInput>> webHookmode, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooksearchString = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null, Expression<Func<bool>> webHooklistenForVoiceResponse = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponsePEOPLE([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<webHookmodeInput> webHookmode, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooksearchString = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null, [WorkflowExpression] Func<bool> webHooklistenForVoiceResponse = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookmode, nameof(webHookmode), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHooksearchString, nameof(webHooksearchString), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            SourceExpression.Validate(webHooklistenForVoiceResponse, nameof(webHooklistenForVoiceResponse), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_People";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
+                    webHookpropCount++;
+                }
+
                 webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
                 webHookpropCount++;
-            }
+                webHook["mode"] = SourceExpressionConverter.Convert(webHookmode);
+                if (webHooksearchString != null)
+                {
+                    webHook["searchstr"] = SourceExpressionConverter.ConvertToken(webHooksearchString);
+                    webHookpropCount++;
+                }
 
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["mode"] = CSharpExpressionConverter.Convert(webHookmode);
-            if (webHooksearchString != null)
-            {
-                webHook["searchstr"] = CSharpExpressionConverter.ConvertToken(webHooksearchString);
                 webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHooklistenForVoiceResponse != null)
-            {
                 if (webHooklistenForVoiceResponse != null)
                 {
-                    webHook["listenForInput"] = CSharpExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                    if (webHooklistenForVoiceResponse != null)
+                    {
+                        webHook["listenForInput"] = SourceExpressionConverter.ConvertToken(webHooklistenForVoiceResponse);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["listenForInput"] = false;
+                    webHookpropCount++;
+                }
+
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHooklUISIntentVector, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
+        {
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHookpropCount++;
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-            }
-            else
-            {
-                webHook["listenForInput"] = false;
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
                 webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
-            }
-
-            return new ApiConnectionAction<WebHook>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseINTENTVECTOR(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHooklUISIntentVector, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
-        {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_IntentVector";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
-            {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                webHook["intentVector"] = SourceExpressionConverter.ConvertToken(webHooklUISIntentVector);
                 webHookpropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["intentVector"] = CSharpExpressionConverter.ConvertToken(webHooklUISIntentVector);
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookacceptResponseFrom != null)
-            {
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY(Expression<Func<string>> webHookmessage, Expression<Func<string>> webHookmemoryType, Expression<Func<string>> webHookreplyActivity, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookiconURL = null, Expression<Func<webHookacceptResponseFromInput>> webHookacceptResponseFrom = null, Expression<Func<string>> webHooktargetUser = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, Expression<Func<bool>> webHookshowInChat = null)
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseMEMORY([WorkflowExpression] Func<string> webHookmessage, [WorkflowExpression] Func<string> webHookmemoryType, [WorkflowExpression] Func<string> webHookreplyActivity, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookiconURL = null, [WorkflowExpression] Func<webHookacceptResponseFromInput> webHookacceptResponseFrom = null, [WorkflowExpression] Func<string> webHooktargetUser = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, [WorkflowExpression] Func<bool> webHookshowInChat = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHookmessage, nameof(webHookmessage), required: true);
+            SourceExpression.Validate(webHookmemoryType, nameof(webHookmemoryType), required: true);
+            SourceExpression.Validate(webHookreplyActivity, nameof(webHookreplyActivity), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookiconURL, nameof(webHookiconURL), required: false);
+            SourceExpression.Validate(webHookacceptResponseFrom, nameof(webHookacceptResponseFrom), required: false);
+            SourceExpression.Validate(webHooktargetUser, nameof(webHooktargetUser), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            SourceExpression.Validate(webHookshowInChat, nameof(webHookshowInChat), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_Memory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
+                    webHookpropCount++;
+                }
+
                 webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
+                webHook["message"] = SourceExpressionConverter.ConvertToken(webHookmessage);
                 webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["message"] = CSharpExpressionConverter.ConvertToken(webHookmessage);
-            webHookpropCount++;
-            webHook["type"] = CSharpExpressionConverter.ConvertToken(webHookmemoryType);
-            webHookpropCount++;
-            webHook["activityJson"] = CSharpExpressionConverter.ConvertToken(webHookreplyActivity);
-            if (webHookiconURL != null)
-            {
-                webHook["icon"] = CSharpExpressionConverter.ConvertToken(webHookiconURL);
+                webHook["type"] = SourceExpressionConverter.ConvertToken(webHookmemoryType);
                 webHookpropCount++;
-            }
+                webHook["activityJson"] = SourceExpressionConverter.ConvertToken(webHookreplyActivity);
+                if (webHookiconURL != null)
+                {
+                    webHook["icon"] = SourceExpressionConverter.ConvertToken(webHookiconURL);
+                    webHookpropCount++;
+                }
 
-            if (webHookacceptResponseFrom != null)
-            {
                 if (webHookacceptResponseFrom != null)
                 {
-                    webHook["acceptResponseFrom"] = CSharpExpressionConverter.Convert(webHookacceptResponseFrom);
+                    if (webHookacceptResponseFrom != null)
+                    {
+                        webHook["acceptResponseFrom"] = SourceExpressionConverter.Convert(webHookacceptResponseFrom);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["acceptResponseFrom"] = "Original User";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["acceptResponseFrom"] = "Original User";
-                webHookpropCount++;
-            }
+                if (webHooktargetUser != null)
+                {
+                    webHook["targetUserMemory"] = SourceExpressionConverter.ConvertToken(webHooktargetUser);
+                    webHookpropCount++;
+                }
 
-            if (webHooktargetUser != null)
-            {
-                webHook["targetUserMemory"] = CSharpExpressionConverter.ConvertToken(webHooktargetUser);
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
                 if (webHookallowBranching != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
                     webHookpropCount++;
                 }
 
-                webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
-                webHookpropCount++;
-            }
-
-            if (webHookshowInChat != null)
-            {
                 if (webHookshowInChat != null)
                 {
-                    webHook["showInChat"] = CSharpExpressionConverter.ConvertToken(webHookshowInChat);
+                    if (webHookshowInChat != null)
+                    {
+                        webHook["showInChat"] = SourceExpressionConverter.ConvertToken(webHookshowInChat);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["showInChat"] = true;
+                    webHookpropCount++;
+                }
+
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD([WorkflowExpression] Func<string> selectedCard, [WorkflowExpression] Func<object> webHook = null)
+        {
+            SourceExpression.Validate(selectedCard, nameof(selectedCard), required: true);
+            SourceExpression.Validate(webHook, nameof(webHook), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["selectedCard"] = SourceExpressionConverter.ConvertO(selectedCard);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(webHook);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
+        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge([WorkflowExpression] Func<webHookparticipantsInputItem[]> webHookparticipants, [WorkflowExpression] Func<string> webHookendChatCommand, [WorkflowExpression] Func<int> webHookidleTimeout, [WorkflowExpression] Func<string[]> webHookfilters = null)
+        {
+            SourceExpression.Validate(webHookparticipants, nameof(webHookparticipants), required: true);
+            SourceExpression.Validate(webHookendChatCommand, nameof(webHookendChatCommand), required: true);
+            SourceExpression.Validate(webHookidleTimeout, nameof(webHookidleTimeout), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/triggers/webhooks/registerBridge";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHookpropCount++;
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-            }
-            else
-            {
-                webHook["showInChat"] = true;
+                webHook["participants"] = SourceExpressionConverter.ConvertToken(webHookparticipants);
                 webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
-            }
-
-            return new ApiConnectionAction<WebHook>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInputResponseADAPTIVECARD(Expression<Func<string>> selectedCard, Expression<Func<object>> webHook = null)
-        {
-            var apiCallPath = "/api/triggers/webhooks/registerResponse_AdaptiveCard";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["selectedCard"] = CSharpExpressionConverter.ConvertO(selectedCard);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(webHook);
-            return new ApiConnectionAction<WebHook>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<WebHook> WebHookRegistrationsInitiateBridge(Expression<Func<webHookparticipantsInputItem[]>> webHookparticipants, Expression<Func<string>> webHookendChatCommand, Expression<Func<int>> webHookidleTimeout, Expression<Func<string[]>> webHookfilters = null)
-        {
-            var apiCallPath = "/api/triggers/webhooks/registerBridge";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
-            {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                webHook["endBridgeCommand"] = SourceExpressionConverter.ConvertToken(webHookendChatCommand);
                 webHookpropCount++;
+                webHook["idleTimeoutDuration"] = SourceExpressionConverter.ConvertToken(webHookidleTimeout);
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["participants"] = CSharpExpressionConverter.ConvertToken(webHookparticipants);
-            webHookpropCount++;
-            webHook["endBridgeCommand"] = CSharpExpressionConverter.ConvertToken(webHookendChatCommand);
-            webHookpropCount++;
-            webHook["idleTimeoutDuration"] = CSharpExpressionConverter.ConvertToken(webHookidleTimeout);
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
-            }
-
-            return new ApiConnectionAction<WebHook>(callPayload);
+            return new ApiConnectionAction<WebHook>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contenttitle, Expression<Func<string>> contentvalue)
+        public IBodyWorkflowAction<ResponseSaveBotMemory> SaveBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contenttitle, [WorkflowExpression] Func<string> contentvalue)
         {
-            var apiCallPath = "/api/triggers/bot/saveBotMemory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["user"] = CSharpExpressionConverter.ConvertToken(contentuserPrincipalName);
-            contentpropCount++;
-            content["type"] = CSharpExpressionConverter.ConvertToken(contentmemoryType);
-            contentpropCount++;
-            content["title"] = CSharpExpressionConverter.ConvertToken(contenttitle);
-            contentpropCount++;
-            content["value"] = CSharpExpressionConverter.ConvertToken(contentvalue);
-            if (contentpropCount > 0)
+            SourceExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
+            SourceExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
+            SourceExpression.Validate(contenttitle, nameof(contenttitle), required: true);
+            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = content;
+                var apiCallPath = "/api/triggers/bot/saveBotMemory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["user"] = SourceExpressionConverter.ConvertToken(contentuserPrincipalName);
+                contentpropCount++;
+                content["type"] = SourceExpressionConverter.ConvertToken(contentmemoryType);
+                contentpropCount++;
+                content["title"] = SourceExpressionConverter.ConvertToken(contenttitle);
+                contentpropCount++;
+                content["value"] = SourceExpressionConverter.ConvertToken(contentvalue);
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResponseSaveBotMemory>(callPayload);
+            return new ApiConnectionAction<ResponseSaveBotMemory>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory(Expression<Func<string>> contentuserPrincipalName, Expression<Func<string>> contentmemoryType, Expression<Func<string>> contentvalue)
+        public IBodyWorkflowAction<ResponseDeleteBotMemory> DeleteBotMemory([WorkflowExpression] Func<string> contentuserPrincipalName, [WorkflowExpression] Func<string> contentmemoryType, [WorkflowExpression] Func<string> contentvalue)
         {
-            var apiCallPath = "/api/triggers/bot/deleteBotMemory";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var content = new JObject();
-            var contentpropCount = 0;
-            contentpropCount++;
-            content["user"] = CSharpExpressionConverter.ConvertToken(contentuserPrincipalName);
-            contentpropCount++;
-            content["type"] = CSharpExpressionConverter.ConvertToken(contentmemoryType);
-            contentpropCount++;
-            content["value"] = CSharpExpressionConverter.ConvertToken(contentvalue);
-            if (contentpropCount > 0)
+            SourceExpression.Validate(contentuserPrincipalName, nameof(contentuserPrincipalName), required: true);
+            SourceExpression.Validate(contentmemoryType, nameof(contentmemoryType), required: true);
+            SourceExpression.Validate(contentvalue, nameof(contentvalue), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = content;
+                var apiCallPath = "/api/triggers/bot/deleteBotMemory";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var content = new JObject();
+                var contentpropCount = 0;
+                contentpropCount++;
+                content["user"] = SourceExpressionConverter.ConvertToken(contentuserPrincipalName);
+                contentpropCount++;
+                content["type"] = SourceExpressionConverter.ConvertToken(contentmemoryType);
+                contentpropCount++;
+                content["value"] = SourceExpressionConverter.ConvertToken(contentvalue);
+                if (contentpropCount > 0)
+                {
+                    callPayload.Body = content;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ResponseDeleteBotMemory>(callPayload);
+            return new ApiConnectionAction<ResponseDeleteBotMemory>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "bizzy")]
-        public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType(Expression<Func<string>> checkMemoryInfouserPrincipalName, Expression<Func<string>> checkMemoryInfomemoryType)
+        public IBodyWorkflowAction<MemoryItem[]> GetMemoryItemsByType([WorkflowExpression] Func<string> checkMemoryInfouserPrincipalName, [WorkflowExpression] Func<string> checkMemoryInfomemoryType)
         {
-            var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var checkMemoryInfo = new JObject();
-            var checkMemoryInfopropCount = 0;
-            checkMemoryInfopropCount++;
-            checkMemoryInfo["user"] = CSharpExpressionConverter.ConvertToken(checkMemoryInfouserPrincipalName);
-            checkMemoryInfopropCount++;
-            checkMemoryInfo["type"] = CSharpExpressionConverter.ConvertToken(checkMemoryInfomemoryType);
-            if (checkMemoryInfopropCount > 0)
+            SourceExpression.Validate(checkMemoryInfouserPrincipalName, nameof(checkMemoryInfouserPrincipalName), required: true);
+            SourceExpression.Validate(checkMemoryInfomemoryType, nameof(checkMemoryInfomemoryType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = checkMemoryInfo;
+                var apiCallPath = "/api/triggers/bot/CheckMemoryByType";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var checkMemoryInfo = new JObject();
+                var checkMemoryInfopropCount = 0;
+                checkMemoryInfopropCount++;
+                checkMemoryInfo["user"] = SourceExpressionConverter.ConvertToken(checkMemoryInfouserPrincipalName);
+                checkMemoryInfopropCount++;
+                checkMemoryInfo["type"] = SourceExpressionConverter.ConvertToken(checkMemoryInfomemoryType);
+                if (checkMemoryInfopropCount > 0)
+                {
+                    callPayload.Body = checkMemoryInfo;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<MemoryItem[]>(callPayload);
+            return new ApiConnectionAction<MemoryItem[]>(BuildSourceInput);
         }
     }
 
     public class BizzyTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHookkeywords = null, Expression<Func<string>> webHookDeprecatedLUISAPIKey = null, Expression<Func<string>> webHookDeprecatedLUISApp = null, Expression<Func<string>> webHookDeprecatedLUISIntent = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHookkeywords = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISAPIKey = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISApp = null, [WorkflowExpression] Func<string> webHookDeprecatedLUISIntent = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/triggers/webhooks/register";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
+            SourceExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
+            SourceExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHookkeywords, nameof(webHookkeywords), required: false);
+            SourceExpression.Validate(webHookDeprecatedLUISAPIKey, nameof(webHookDeprecatedLUISAPIKey), required: false);
+            SourceExpression.Validate(webHookDeprecatedLUISApp, nameof(webHookDeprecatedLUISApp), required: false);
+            SourceExpression.Validate(webHookDeprecatedLUISIntent, nameof(webHookDeprecatedLUISIntent), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
+                var apiCallPath = "/api/triggers/webhooks/register";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
                 webHookpropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["triggerDescription"] = CSharpExpressionConverter.ConvertToken(webHooktriggerDescription);
-            webHookpropCount++;
-            webHook["triggerType"] = CSharpExpressionConverter.Convert(webHookbotTriggerType);
-            if (webHookkeywords != null)
-            {
-                webHook["keywords"] = CSharpExpressionConverter.ConvertToken(webHookkeywords);
-                webHookpropCount++;
-            }
-
-            if (webHookDeprecatedLUISAPIKey != null)
-            {
-                webHook["luisApiKey"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISAPIKey);
-                webHookpropCount++;
-            }
-
-            if (webHookDeprecatedLUISApp != null)
-            {
-                webHook["luisAppId"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISApp);
-                webHookpropCount++;
-            }
-
-            if (webHookDeprecatedLUISIntent != null)
-            {
-                webHook["luisIntent"] = CSharpExpressionConverter.ConvertToken(webHookDeprecatedLUISIntent);
-                webHookpropCount++;
-            }
-
-            if (webHookpropCount > 0)
-            {
-                callPayload.Body = webHook;
-            }
-
-            return new ApiConnectionTrigger<WebHook>(callPayload, triggerName, recurrence);
-        }
-
-        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost(Expression<Func<string>> webHooktriggerDescription, Expression<Func<webHookbotTriggerTypeInput>> webHookbotTriggerType, Expression<Func<string[]>> webHookfilters = null, Expression<Func<string>> webHooklUISIntentVector = null, Expression<Func<webHookallowBranchingInput>> webHookallowBranching = null, string triggerName = null, FlowRecurrence recurrence = null)
-        {
-            var apiCallPath = "/api/triggers/webhooks/registerVector";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webHook = new JObject();
-            var webHookpropCount = 0;
-            webHook["webHookUri"] = "@listCallbackUrl()";
-            webHookpropCount++;
-            if (webHookfilters != null)
-            {
-                webHook["filters"] = CSharpExpressionConverter.ConvertToken(webHookfilters);
-                webHookpropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                webHook["headers"] = headersObject;
-                webHookpropCount++;
-            }
-
-            var propertiesObject = new JObject();
-            var propertiesObjectpropCount = 0;
-            if (propertiesObjectpropCount > 0)
-            {
-                webHook["properties"] = propertiesObject;
-                webHookpropCount++;
-            }
-
-            webHookpropCount++;
-            webHook["triggerDescription"] = CSharpExpressionConverter.ConvertToken(webHooktriggerDescription);
-            webHookpropCount++;
-            webHook["triggerType"] = CSharpExpressionConverter.Convert(webHookbotTriggerType);
-            if (webHooklUISIntentVector != null)
-            {
-                webHook["intentVector"] = CSharpExpressionConverter.ConvertToken(webHooklUISIntentVector);
-                webHookpropCount++;
-            }
-
-            if (webHookallowBranching != null)
-            {
-                if (webHookallowBranching != null)
+                if (webHookfilters != null)
                 {
-                    webHook["allowBranching"] = CSharpExpressionConverter.Convert(webHookallowBranching);
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
                     webHookpropCount++;
                 }
 
                 webHookpropCount++;
-            }
-            else
-            {
-                webHook["allowBranching"] = "No";
+                webHook["triggerDescription"] = SourceExpressionConverter.ConvertToken(webHooktriggerDescription);
                 webHookpropCount++;
+                webHook["triggerType"] = SourceExpressionConverter.Convert(webHookbotTriggerType);
+                if (webHookkeywords != null)
+                {
+                    webHook["keywords"] = SourceExpressionConverter.ConvertToken(webHookkeywords);
+                    webHookpropCount++;
+                }
+
+                if (webHookDeprecatedLUISAPIKey != null)
+                {
+                    webHook["luisApiKey"] = SourceExpressionConverter.ConvertToken(webHookDeprecatedLUISAPIKey);
+                    webHookpropCount++;
+                }
+
+                if (webHookDeprecatedLUISApp != null)
+                {
+                    webHook["luisAppId"] = SourceExpressionConverter.ConvertToken(webHookDeprecatedLUISApp);
+                    webHookpropCount++;
+                }
+
+                if (webHookDeprecatedLUISIntent != null)
+                {
+                    webHook["luisIntent"] = SourceExpressionConverter.ConvertToken(webHookDeprecatedLUISIntent);
+                    webHookpropCount++;
+                }
+
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            if (webHookpropCount > 0)
+            return new ApiConnectionTrigger<WebHook>(BuildSourceInput, triggerName, recurrence);
+        }
+
+        public IBodyWorkflowTrigger<WebHook> WebHookRegistrationsVectorPost([WorkflowExpression] Func<string> webHooktriggerDescription, [WorkflowExpression] Func<webHookbotTriggerTypeInput> webHookbotTriggerType, [WorkflowExpression] Func<string[]> webHookfilters = null, [WorkflowExpression] Func<string> webHooklUISIntentVector = null, [WorkflowExpression] Func<webHookallowBranchingInput> webHookallowBranching = null, string triggerName = null, FlowRecurrence recurrence = null)
+        {
+            SourceExpression.Validate(webHooktriggerDescription, nameof(webHooktriggerDescription), required: true);
+            SourceExpression.Validate(webHookbotTriggerType, nameof(webHookbotTriggerType), required: true);
+            SourceExpression.Validate(webHookfilters, nameof(webHookfilters), required: false);
+            SourceExpression.Validate(webHooklUISIntentVector, nameof(webHooklUISIntentVector), required: false);
+            SourceExpression.Validate(webHookallowBranching, nameof(webHookallowBranching), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = webHook;
+                var apiCallPath = "/api/triggers/webhooks/registerVector";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webHook = new JObject();
+                var webHookpropCount = 0;
+                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHookpropCount++;
+                if (webHookfilters != null)
+                {
+                    webHook["filters"] = SourceExpressionConverter.ConvertToken(webHookfilters);
+                    webHookpropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    webHook["headers"] = headersObject;
+                    webHookpropCount++;
+                }
+
+                var propertiesObject = new JObject();
+                var propertiesObjectpropCount = 0;
+                if (propertiesObjectpropCount > 0)
+                {
+                    webHook["properties"] = propertiesObject;
+                    webHookpropCount++;
+                }
+
+                webHookpropCount++;
+                webHook["triggerDescription"] = SourceExpressionConverter.ConvertToken(webHooktriggerDescription);
+                webHookpropCount++;
+                webHook["triggerType"] = SourceExpressionConverter.Convert(webHookbotTriggerType);
+                if (webHooklUISIntentVector != null)
+                {
+                    webHook["intentVector"] = SourceExpressionConverter.ConvertToken(webHooklUISIntentVector);
+                    webHookpropCount++;
+                }
+
+                if (webHookallowBranching != null)
+                {
+                    if (webHookallowBranching != null)
+                    {
+                        webHook["allowBranching"] = SourceExpressionConverter.Convert(webHookallowBranching);
+                        webHookpropCount++;
+                    }
+
+                    webHookpropCount++;
+                }
+                else
+                {
+                    webHook["allowBranching"] = "No";
+                    webHookpropCount++;
+                }
+
+                if (webHookpropCount > 0)
+                {
+                    callPayload.Body = webHook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<WebHook>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebHook>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

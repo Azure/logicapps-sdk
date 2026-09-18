@@ -12,108 +12,141 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emtatlasaims
     public class EmtatlasaimsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline(Expression<Func<string>> baseUrl, Expression<Func<string>> status = null)
+        public IBodyWorkflowAction<ListBaseline[]> ListAssetsConfigurationBaseline([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> status = null)
         {
-            var apiCallPath = "/aimsapi/assets/configuration/base_line/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.ConvertO(status);
-            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
-            return new ApiConnectionAction<ListBaseline[]>(callPayload);
+            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/aimsapi/assets/configuration/base_line/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.ConvertO(status);
+                callPayload.Queries["baseUrl"] = SourceExpressionConverter.ConvertO(baseUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListBaseline[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline(Expression<Func<string>> baselineId, Expression<Func<string>> baseUrl)
+        public IBodyWorkflowAction<ListBaseline> GetAssetsConfigurationBaseline([WorkflowExpression] Func<string> baselineId, [WorkflowExpression] Func<string> baseUrl)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(baselineId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
-            return new ApiConnectionAction<ListBaseline>(callPayload);
+            SourceExpression.Validate(baselineId, nameof(baselineId), required: true);
+            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/aimsapi/assets/configuration/base_line/{0}/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(baselineId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = SourceExpressionConverter.ConvertO(baseUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListBaseline>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<AssetSearchResult> AssetsSearch(Expression<Func<string>> baseUrl, Expression<Func<string>> bodycontractId = null, Expression<Func<int>> bodypageNumber = null, Expression<Func<int>> bodypageSize = null, Expression<Func<string>> bodymodifiedDategreaterThan = null, Expression<Func<string>> bodymodifiedDatelessThan = null, Expression<Func<string>> bodysortKey = null, Expression<Func<string>> bodysortOrder = null, Expression<Func<string[]>> bodyfilteredAssetClassCode = null)
+        public IBodyWorkflowAction<AssetSearchResult> AssetsSearch([WorkflowExpression] Func<string> baseUrl, [WorkflowExpression] Func<string> bodycontractId = null, [WorkflowExpression] Func<int> bodypageNumber = null, [WorkflowExpression] Func<int> bodypageSize = null, [WorkflowExpression] Func<string> bodymodifiedDategreaterThan = null, [WorkflowExpression] Func<string> bodymodifiedDatelessThan = null, [WorkflowExpression] Func<string> bodysortKey = null, [WorkflowExpression] Func<string> bodysortOrder = null, [WorkflowExpression] Func<string[]> bodyfilteredAssetClassCode = null)
         {
-            var apiCallPath = "/aimsapi/assets/search/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodycontractId != null)
+            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            SourceExpression.Validate(bodycontractId, nameof(bodycontractId), required: false);
+            SourceExpression.Validate(bodypageNumber, nameof(bodypageNumber), required: false);
+            SourceExpression.Validate(bodypageSize, nameof(bodypageSize), required: false);
+            SourceExpression.Validate(bodymodifiedDategreaterThan, nameof(bodymodifiedDategreaterThan), required: false);
+            SourceExpression.Validate(bodymodifiedDatelessThan, nameof(bodymodifiedDatelessThan), required: false);
+            SourceExpression.Validate(bodysortKey, nameof(bodysortKey), required: false);
+            SourceExpression.Validate(bodysortOrder, nameof(bodysortOrder), required: false);
+            SourceExpression.Validate(bodyfilteredAssetClassCode, nameof(bodyfilteredAssetClassCode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["contract"] = CSharpExpressionConverter.ConvertToken(bodycontractId);
-                bodypropCount++;
+                var apiCallPath = "/aimsapi/assets/search/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = SourceExpressionConverter.ConvertO(baseUrl);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodycontractId != null)
+                {
+                    body["contract"] = SourceExpressionConverter.ConvertToken(bodycontractId);
+                    bodypropCount++;
+                }
+
+                if (bodypageNumber != null)
+                {
+                    body["page"] = SourceExpressionConverter.ConvertToken(bodypageNumber);
+                    bodypropCount++;
+                }
+
+                if (bodypageSize != null)
+                {
+                    body["pageSize"] = SourceExpressionConverter.ConvertToken(bodypageSize);
+                    bodypropCount++;
+                }
+
+                var modifiedDateObject = new JObject();
+                var modifiedDateObjectpropCount = 0;
+                if (bodymodifiedDategreaterThan != null)
+                {
+                    modifiedDateObject["gt"] = SourceExpressionConverter.ConvertToken(bodymodifiedDategreaterThan);
+                    modifiedDateObjectpropCount++;
+                }
+
+                if (bodymodifiedDatelessThan != null)
+                {
+                    modifiedDateObject["lt"] = SourceExpressionConverter.ConvertToken(bodymodifiedDatelessThan);
+                    modifiedDateObjectpropCount++;
+                }
+
+                if (modifiedDateObjectpropCount > 0)
+                {
+                    body["modified_date"] = modifiedDateObject;
+                    bodypropCount++;
+                }
+
+                if (bodysortKey != null)
+                {
+                    body["sortKey"] = SourceExpressionConverter.ConvertToken(bodysortKey);
+                    bodypropCount++;
+                }
+
+                if (bodysortOrder != null)
+                {
+                    body["sortOrder"] = SourceExpressionConverter.ConvertToken(bodysortOrder);
+                    bodypropCount++;
+                }
+
+                if (bodyfilteredAssetClassCode != null)
+                {
+                    body["filteredAssetClassCode"] = SourceExpressionConverter.ConvertToken(bodyfilteredAssetClassCode);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypageNumber != null)
-            {
-                body["page"] = CSharpExpressionConverter.ConvertToken(bodypageNumber);
-                bodypropCount++;
-            }
-
-            if (bodypageSize != null)
-            {
-                body["pageSize"] = CSharpExpressionConverter.ConvertToken(bodypageSize);
-                bodypropCount++;
-            }
-
-            var modifiedDateObject = new JObject();
-            var modifiedDateObjectpropCount = 0;
-            if (bodymodifiedDategreaterThan != null)
-            {
-                modifiedDateObject["gt"] = CSharpExpressionConverter.ConvertToken(bodymodifiedDategreaterThan);
-                modifiedDateObjectpropCount++;
-            }
-
-            if (bodymodifiedDatelessThan != null)
-            {
-                modifiedDateObject["lt"] = CSharpExpressionConverter.ConvertToken(bodymodifiedDatelessThan);
-                modifiedDateObjectpropCount++;
-            }
-
-            if (modifiedDateObjectpropCount > 0)
-            {
-                body["modified_date"] = modifiedDateObject;
-                bodypropCount++;
-            }
-
-            if (bodysortKey != null)
-            {
-                body["sortKey"] = CSharpExpressionConverter.ConvertToken(bodysortKey);
-                bodypropCount++;
-            }
-
-            if (bodysortOrder != null)
-            {
-                body["sortOrder"] = CSharpExpressionConverter.ConvertToken(bodysortOrder);
-                bodypropCount++;
-            }
-
-            if (bodyfilteredAssetClassCode != null)
-            {
-                body["filteredAssetClassCode"] = CSharpExpressionConverter.ConvertToken(bodyfilteredAssetClassCode);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AssetSearchResult>(callPayload);
+            return new ApiConnectionAction<AssetSearchResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "emtatlasaims")]
-        public IBodyWorkflowAction<UserDataResponseDoc> GetUserData(Expression<Func<string>> baseUrl)
+        public IBodyWorkflowAction<UserDataResponseDoc> GetUserData([WorkflowExpression] Func<string> baseUrl)
         {
-            var apiCallPath = "/aimsapi/user/user_data/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["baseUrl"] = CSharpExpressionConverter.ConvertO(baseUrl);
-            return new ApiConnectionAction<UserDataResponseDoc>(callPayload);
+            SourceExpression.Validate(baseUrl, nameof(baseUrl), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/aimsapi/user/user_data/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["baseUrl"] = SourceExpressionConverter.ConvertO(baseUrl);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserDataResponseDoc>(BuildSourceInput);
         }
     }
 

@@ -12,66 +12,108 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Virustotal
     public class VirustotalActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport(Expression<Func<string>> id)
+        public IBodyWorkflowAction<UrlResult> VirusTotalGetUrlReport([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UrlResult>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/urls/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UrlResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile(Expression<Func<object>> file)
+        public IBodyWorkflowAction<FilesReport> VirusTotalAnalyesFile([WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = "/api/v3/files";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FilesReport>(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/files";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FilesReport>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<DomainResult> VirusTotalGetDomainReport([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<DomainResult>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/domains/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domain, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DomainResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl(Expression<Func<string>> url)
+        public IBodyWorkflowAction<UrlReport> VirusTotalAnalysisurl([WorkflowExpression] Func<string> url)
         {
-            var apiCallPath = "/api/v3/urls";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<UrlReport>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/v3/urls";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UrlReport>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3(Expression<Func<string>> ip)
+        public IBodyWorkflowAction<Ip> VirusTotalGetIpScanV3([WorkflowExpression] Func<string> ip)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Ip>(callPayload);
+            SourceExpression.Validate(ip, nameof(ip), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/ip_addresses/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(ip, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Ip>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo(Expression<Func<string>> id)
+        public IBodyWorkflowAction<Analyses> VirusTotalRetrieveInfo([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<Analyses>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/analyses/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<Analyses>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "virustotal")]
-        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile(Expression<Func<string>> id)
+        public IBodyWorkflowAction<File> VirusTotalRetrieveInfoaboutFile([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<File>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/v3/files/connectorV2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<File>(BuildSourceInput);
         }
     }
 

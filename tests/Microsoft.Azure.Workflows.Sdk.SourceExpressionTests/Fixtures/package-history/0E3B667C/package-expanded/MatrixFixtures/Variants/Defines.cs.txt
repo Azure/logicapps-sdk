@@ -1,0 +1,16 @@
+using Microsoft.Azure.Workflows.Sdk;
+
+internal static class FixtureWorkflow
+{
+    public static object Run()
+    {
+#if LABEL_A
+        var action = WorkflowActions.BuiltIn.Compose(() => "A");
+#elif LABEL_B
+        var action = WorkflowActions.BuiltIn.Compose(() => "B");
+#else
+#error The fixture requires exactly one label configuration.
+#endif
+        return new { input = FixtureAssert.Input(action) };
+    }
+}

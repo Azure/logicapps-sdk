@@ -15,27 +15,34 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
 
     public class TypeformTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook(Expression<Func<string>> formId, Expression<Func<string>> tag, Expression<Func<bool>> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<WebhookCreationResponse> NewResponseWebhook([WorkflowExpression] Func<string> formId, [WorkflowExpression] Func<string> tag, [WorkflowExpression] Func<bool> bodyenabled = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tag, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodyenabled != null)
+            SourceExpression.Validate(formId, nameof(formId), required: true);
+            SourceExpression.Validate(tag, nameof(tag), required: true);
+            SourceExpression.Validate(bodyenabled, nameof(bodyenabled), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["enabled"] = CSharpExpressionConverter.ConvertToken(bodyenabled);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/forms/{0}/webhooks/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(formId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tag, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
                 bodypropCount++;
+                if (bodyenabled != null)
+                {
+                    body["enabled"] = SourceExpressionConverter.ConvertToken(bodyenabled);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionTrigger<WebhookCreationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<WebhookCreationResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

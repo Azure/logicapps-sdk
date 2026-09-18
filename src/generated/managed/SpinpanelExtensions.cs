@@ -14,368 +14,528 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Spinpanel
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetLocalesResponse> GetLocales()
         {
-            var apiCallPath = "/directory/v1/locales";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
-            return new ApiConnectionAction<GetLocalesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/directory/v1/locales";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.platform");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLocalesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetUsersResponse> GetUsers(Expression<Func<string>> filter)
+        public IBodyWorkflowAction<GetUsersResponse> GetUsers([WorkflowExpression] Func<string> filter)
         {
-            var apiCallPath = "/directory/v1/users";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$filter"] = CSharpExpressionConverter.ConvertO(filter);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
-            return new ApiConnectionAction<GetUsersResponse>(callPayload);
+            SourceExpression.Validate(filter, nameof(filter), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/directory/v1/users";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$filter"] = SourceExpressionConverter.ConvertO(filter);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUsersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        public IBodyWorkflowAction<GetGraphUserResponse> GetGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGraphUserResponse>(callPayload);
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGraphUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction DeleteGraphUser(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        public IWorkflowAction DeleteGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction PatchGraphUserPassword(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        public IWorkflowAction PatchGraphUserPassword([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var passwordProfileObject = new JObject();
-            var passwordProfileObjectpropCount = 0;
-            if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            SourceExpression.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            SourceExpression.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfileforceChangePasswordNextSignIn);
-                passwordProfileObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var passwordProfileObject = new JObject();
+                var passwordProfileObjectpropCount = 0;
+                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                {
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = SourceExpressionConverter.ConvertToken(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObjectpropCount++;
+                }
+
+                if (bodypasswordProfilepassword != null)
+                {
+                    passwordProfileObject["password"] = SourceExpressionConverter.ConvertToken(bodypasswordProfilepassword);
+                    passwordProfileObjectpropCount++;
+                }
+
+                if (passwordProfileObjectpropCount > 0)
+                {
+                    body["passwordProfile"] = passwordProfileObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypasswordProfilepassword != null)
-            {
-                passwordProfileObject["password"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfilepassword);
-                passwordProfileObjectpropCount++;
-            }
-
-            if (passwordProfileObjectpropCount > 0)
-            {
-                body["passwordProfile"] = passwordProfileObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetOrganizationsResponse> GetOrganizations()
         {
-            var apiCallPath = "/directory/v1/organizations";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
-            return new ApiConnectionAction<GetOrganizationsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/directory/v1/organizations";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.users");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetOrganizationsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostGraphUserResponse> PostGraphUser(Expression<Func<string>> organizationId, Expression<Func<bool>> bodyaccountEnabled = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<string>> bodyuserPrincipalName = null, Expression<Func<bool>> bodypasswordProfileforceChangePasswordNextSignIn = null, Expression<Func<string>> bodypasswordProfilepassword = null)
+        public IBodyWorkflowAction<PostGraphUserResponse> PostGraphUser([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<bool> bodyaccountEnabled = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<string> bodyuserPrincipalName = null, [WorkflowExpression] Func<bool> bodypasswordProfileforceChangePasswordNextSignIn = null, [WorkflowExpression] Func<string> bodypasswordProfilepassword = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaccountEnabled != null)
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(bodyaccountEnabled, nameof(bodyaccountEnabled), required: false);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
+            SourceExpression.Validate(bodyuserPrincipalName, nameof(bodyuserPrincipalName), required: false);
+            SourceExpression.Validate(bodypasswordProfileforceChangePasswordNextSignIn, nameof(bodypasswordProfileforceChangePasswordNextSignIn), required: false);
+            SourceExpression.Validate(bodypasswordProfilepassword, nameof(bodypasswordProfilepassword), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["accountEnabled"] = CSharpExpressionConverter.ConvertToken(bodyaccountEnabled);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaccountEnabled != null)
+                {
+                    body["accountEnabled"] = SourceExpressionConverter.ConvertToken(bodyaccountEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodymailNickname != null)
+                {
+                    body["mailNickname"] = SourceExpressionConverter.ConvertToken(bodymailNickname);
+                    bodypropCount++;
+                }
+
+                if (bodyuserPrincipalName != null)
+                {
+                    body["userPrincipalName"] = SourceExpressionConverter.ConvertToken(bodyuserPrincipalName);
+                    bodypropCount++;
+                }
+
+                var passwordProfileObject = new JObject();
+                var passwordProfileObjectpropCount = 0;
+                if (bodypasswordProfileforceChangePasswordNextSignIn != null)
+                {
+                    passwordProfileObject["forceChangePasswordNextSignIn"] = SourceExpressionConverter.ConvertToken(bodypasswordProfileforceChangePasswordNextSignIn);
+                    passwordProfileObjectpropCount++;
+                }
+
+                if (bodypasswordProfilepassword != null)
+                {
+                    passwordProfileObject["password"] = SourceExpressionConverter.ConvertToken(bodypasswordProfilepassword);
+                    passwordProfileObjectpropCount++;
+                }
+
+                if (passwordProfileObjectpropCount > 0)
+                {
+                    body["passwordProfile"] = passwordProfileObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydisplayName != null)
-            {
-                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
-                bodypropCount++;
-            }
-
-            if (bodymailNickname != null)
-            {
-                body["mailNickname"] = CSharpExpressionConverter.ConvertToken(bodymailNickname);
-                bodypropCount++;
-            }
-
-            if (bodyuserPrincipalName != null)
-            {
-                body["userPrincipalName"] = CSharpExpressionConverter.ConvertToken(bodyuserPrincipalName);
-                bodypropCount++;
-            }
-
-            var passwordProfileObject = new JObject();
-            var passwordProfileObjectpropCount = 0;
-            if (bodypasswordProfileforceChangePasswordNextSignIn != null)
-            {
-                passwordProfileObject["forceChangePasswordNextSignIn"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfileforceChangePasswordNextSignIn);
-                passwordProfileObjectpropCount++;
-            }
-
-            if (bodypasswordProfilepassword != null)
-            {
-                passwordProfileObject["password"] = CSharpExpressionConverter.ConvertToken(bodypasswordProfilepassword);
-                passwordProfileObjectpropCount++;
-            }
-
-            if (passwordProfileObjectpropCount > 0)
-            {
-                body["passwordProfile"] = passwordProfileObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostGraphUserResponse>(callPayload);
+            return new ApiConnectionAction<PostGraphUserResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId)
+        public IBodyWorkflowAction<GetUserLicenseDetailsResponse> GetUserLicenseDetails([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetUserLicenseDetailsResponse>(callPayload);
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/licenseDetails", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetUserLicenseDetailsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus(Expression<Func<string>> organizationId)
+        public IBodyWorkflowAction<GetsubscribedSkusResponse> GetsubscribedSkus([WorkflowExpression] Func<string> organizationId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetsubscribedSkusResponse>(callPayload);
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/subscribedSkus", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetsubscribedSkusResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<bodyaddLicensesInputItem[]>> bodyaddLicenses = null, Expression<Func<JToken[]>> bodyremoveLicenses = null)
+        public IBodyWorkflowAction<PostUserLicenseResponse> PostUserLicense([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<bodyaddLicensesInputItem[]> bodyaddLicenses = null, [WorkflowExpression] Func<JToken[]> bodyremoveLicenses = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddLicenses != null)
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            SourceExpression.Validate(bodyaddLicenses, nameof(bodyaddLicenses), required: false);
+            SourceExpression.Validate(bodyremoveLicenses, nameof(bodyremoveLicenses), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["addLicenses"] = CSharpExpressionConverter.ConvertToken(bodyaddLicenses);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/users/{1}/assignlicense", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddLicenses != null)
+                {
+                    body["addLicenses"] = SourceExpressionConverter.ConvertToken(bodyaddLicenses);
+                    bodypropCount++;
+                }
+
+                if (bodyremoveLicenses != null)
+                {
+                    body["removeLicenses"] = SourceExpressionConverter.ConvertToken(bodyremoveLicenses);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyremoveLicenses != null)
-            {
-                body["removeLicenses"] = CSharpExpressionConverter.ConvertToken(bodyremoveLicenses);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostUserLicenseResponse>(callPayload);
+            return new ApiConnectionAction<PostUserLicenseResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
         public IBodyWorkflowAction<GetGroupsResponse> GetGroups()
         {
-            var apiCallPath = "/directory/v1/usergroups";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
-            return new ApiConnectionAction<GetGroupsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
-            return new ApiConnectionAction<UserGroupMembersResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups(Expression<Func<string>> organizationId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["$select"] = Convert.ToString("createdDateTime,displayName,groupTypes,id,securityEnabled");
-            return new ApiConnectionAction<GetADSecurityGroupsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup(Expression<Func<string>> organizationId, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodydisplayName = null, Expression<Func<string[]>> bodygroupTypes = null, Expression<Func<bool>> bodymailEnabled = null, Expression<Func<string>> bodymailNickname = null, Expression<Func<bool>> bodysecurityEnabled = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodydescription != null)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
+                var apiCallPath = "/directory/v1/usergroups";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGroupsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IBodyWorkflowAction<UserGroupMembersResponse> UserGroupMembers([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("spinpanel.groups");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UserGroupMembersResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IBodyWorkflowAction<GetADSecurityGroupsResponse> GetADSecurityGroups([WorkflowExpression] Func<string> organizationId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["$select"] = Convert.ToString("createdDateTime,displayName,groupTypes,id,securityEnabled");
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetADSecurityGroupsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IBodyWorkflowAction<PostGraphGroupResponse> PostGraphGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodydisplayName = null, [WorkflowExpression] Func<string[]> bodygroupTypes = null, [WorkflowExpression] Func<bool> bodymailEnabled = null, [WorkflowExpression] Func<string> bodymailNickname = null, [WorkflowExpression] Func<bool> bodysecurityEnabled = null)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodydisplayName, nameof(bodydisplayName), required: false);
+            SourceExpression.Validate(bodygroupTypes, nameof(bodygroupTypes), required: false);
+            SourceExpression.Validate(bodymailEnabled, nameof(bodymailEnabled), required: false);
+            SourceExpression.Validate(bodymailNickname, nameof(bodymailNickname), required: false);
+            SourceExpression.Validate(bodysecurityEnabled, nameof(bodysecurityEnabled), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodydisplayName != null)
+                {
+                    body["displayName"] = SourceExpressionConverter.ConvertToken(bodydisplayName);
+                    bodypropCount++;
+                }
+
+                if (bodygroupTypes != null)
+                {
+                    body["groupTypes"] = SourceExpressionConverter.ConvertToken(bodygroupTypes);
+                    bodypropCount++;
+                }
+
+                if (bodymailEnabled != null)
+                {
+                    body["mailEnabled"] = SourceExpressionConverter.ConvertToken(bodymailEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodymailNickname != null)
+                {
+                    body["mailNickname"] = SourceExpressionConverter.ConvertToken(bodymailNickname);
+                    bodypropCount++;
+                }
+
+                if (bodysecurityEnabled != null)
+                {
+                    body["securityEnabled"] = SourceExpressionConverter.ConvertToken(bodysecurityEnabled);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostGraphGroupResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains([WorkflowExpression] Func<string> organizationId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetGraphDomainsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IWorkflowAction DeleteUserGroup([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IWorkflowAction DeleteUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IWorkflowAction PostUserGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> userGroupId, [WorkflowExpression] Func<string> userId)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(userGroupId, nameof(userGroupId), required: true);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IWorkflowAction AddGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> microsoftObjectId, [WorkflowExpression] Func<string> bodyid)
+        {
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(microsoftObjectId, nameof(microsoftObjectId), required: true);
+            SourceExpression.Validate(bodyid, nameof(bodyid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["@odata.id"] = SourceExpressionConverter.ConvertToken(bodyid);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydisplayName != null)
-            {
-                body["displayName"] = CSharpExpressionConverter.ConvertToken(bodydisplayName);
-                bodypropCount++;
-            }
-
-            if (bodygroupTypes != null)
-            {
-                body["groupTypes"] = CSharpExpressionConverter.ConvertToken(bodygroupTypes);
-                bodypropCount++;
-            }
-
-            if (bodymailEnabled != null)
-            {
-                body["mailEnabled"] = CSharpExpressionConverter.ConvertToken(bodymailEnabled);
-                bodypropCount++;
-            }
-
-            if (bodymailNickname != null)
-            {
-                body["mailNickname"] = CSharpExpressionConverter.ConvertToken(bodymailNickname);
-                bodypropCount++;
-            }
-
-            if (bodysecurityEnabled != null)
-            {
-                body["securityEnabled"] = CSharpExpressionConverter.ConvertToken(bodysecurityEnabled);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<PostGraphGroupResponse>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetGraphDomainsResponse> GetGraphDomains(Expression<Func<string>> organizationId)
+        public IWorkflowAction RemoveGraphGroupMember([WorkflowExpression] Func<string> organizationId, [WorkflowExpression] Func<string> groupMicrosoftObjectId, [WorkflowExpression] Func<string> userMicrosoftObjectId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/domains", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetGraphDomainsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction DeleteUserGroup(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction DeleteUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction PostUserGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> userGroupId, Expression<Func<string>> userId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/directory/v1/organizations/{0}/usergroups/{1}/members/{2}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userGroupId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction AddGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> microsoftObjectId, Expression<Func<string>> bodyid)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(microsoftObjectId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["@odata.id"] = CSharpExpressionConverter.ConvertToken(bodyid);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(organizationId, nameof(organizationId), required: true);
+            SourceExpression.Validate(groupMicrosoftObjectId, nameof(groupMicrosoftObjectId), required: true);
+            SourceExpression.Validate(userMicrosoftObjectId, nameof(userMicrosoftObjectId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupMicrosoftObjectId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userMicrosoftObjectId, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction RemoveGraphGroupMember(Expression<Func<string>> organizationId, Expression<Func<string>> groupMicrosoftObjectId, Expression<Func<string>> userMicrosoftObjectId)
+        public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/graph/v1/organizations/{0}/v1.0/groups/{1}/members/{2}/$ref", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(organizationId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(groupMicrosoftObjectId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userMicrosoftObjectId, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IBodyWorkflowAction<GetSubscriptionsResponse> GetSubscriptions(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSubscriptionsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
-        public IWorkflowAction PatchSubscriptionQuantity(Expression<Func<string>> partnerId, Expression<Func<string>> customerId, Expression<Func<string>> tenantId, Expression<Func<string>> subscriptionId, Expression<Func<int>> bodyquantity = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyquantity != null)
+            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
+            SourceExpression.Validate(customerId, nameof(customerId), required: true);
+            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["quantity"] = CSharpExpressionConverter.ConvertToken(bodyquantity);
-                bodypropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
+            return new ApiConnectionAction<GetSubscriptionsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "spinpanel")]
+        public IWorkflowAction PatchSubscriptionQuantity([WorkflowExpression] Func<string> partnerId, [WorkflowExpression] Func<string> customerId, [WorkflowExpression] Func<string> tenantId, [WorkflowExpression] Func<string> subscriptionId, [WorkflowExpression] Func<int> bodyquantity = null)
+        {
+            SourceExpression.Validate(partnerId, nameof(partnerId), required: true);
+            SourceExpression.Validate(customerId, nameof(customerId), required: true);
+            SourceExpression.Validate(tenantId, nameof(tenantId), required: true);
+            SourceExpression.Validate(subscriptionId, nameof(subscriptionId), required: true);
+            SourceExpression.Validate(bodyquantity, nameof(bodyquantity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/partnercenter/v1/partners/{0}/organizations/{1}/v1.0/customers/{2}/subscriptions/{3}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(partnerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(customerId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(tenantId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(subscriptionId, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyquantity != null)
+                {
+                    body["quantity"] = SourceExpressionConverter.ConvertToken(bodyquantity);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

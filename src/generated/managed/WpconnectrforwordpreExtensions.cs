@@ -12,95 +12,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
     public class WpconnectrforwordpreActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> GetResourceById(Expression<Func<string>> resource, Expression<Func<string>> id)
+        public IBodyWorkflowAction<JToken> GetResourceById([WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> DeleteResource(Expression<Func<string>> resource, Expression<Func<string>> id, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> DeleteResource([WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> UpdateResource(Expression<Func<string>> id, Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> UpdateResource([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "patch";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}/{1}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "patch";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken[]> GetItemsByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken[]> GetItemsByResource([WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/query", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken[]>(callPayload);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}/query", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> UploadMedia(Expression<Func<object>> file)
+        public IBodyWorkflowAction<JToken> UploadMedia([WorkflowExpression] Func<object> file)
         {
-            var apiCallPath = "/resources/media";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/resources/media";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> CreateResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> CreateResource([WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "wpconnectrforwordpre")]
-        public IBodyWorkflowAction<JToken> GetItemByResource(Expression<Func<string>> resource, Expression<Func<object>> body = null)
+        public IBodyWorkflowAction<JToken> GetItemByResource([WorkflowExpression] Func<string> resource, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/resources/{0}/fetch", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/resources/{0}/fetch", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
     public class WpconnectrforwordpreTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateTrigger(Expression<Func<string>> bodyresourceType, Expression<Func<string>> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateTrigger([WorkflowExpression] Func<string> bodyresourceType, [WorkflowExpression] Func<string> bodytriggerEvent, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/triggers";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["trigger_resource_schema"] = CSharpExpressionConverter.ConvertToken(bodyresourceType);
-            bodypropCount++;
-            body["topic"] = CSharpExpressionConverter.ConvertToken(bodytriggerEvent);
-            body["delivery_url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyresourceType, nameof(bodyresourceType), required: true);
+            SourceExpression.Validate(bodytriggerEvent, nameof(bodytriggerEvent), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/triggers";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["trigger_resource_schema"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
+                bodypropCount++;
+                body["topic"] = SourceExpressionConverter.ConvertToken(bodytriggerEvent);
+                body["delivery_url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

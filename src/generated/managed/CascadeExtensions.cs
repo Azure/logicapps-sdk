@@ -12,845 +12,1052 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cascade
     public class CascadeActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllGoalsResponse> GetAllGoals([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/goals";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetAllGoalsResponse>(callPayload);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/goals";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllGoalsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal(Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<bodygoalisPrivateInput>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<CreateGoalResponse> CreateGoal([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<bodygoalisPrivateInput> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            var apiCallPath = "/goals";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var goalObject = new JObject();
-            var goalObjectpropCount = 0;
-            if (bodygoalroleId != null)
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            SourceExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            SourceExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            SourceExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            SourceExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            SourceExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
+            SourceExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            SourceExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            SourceExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            SourceExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            SourceExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            SourceExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            SourceExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            SourceExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            SourceExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            SourceExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            SourceExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            SourceExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            SourceExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                goalObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodygoalroleId);
-                goalObjectpropCount++;
+                var apiCallPath = "/goals";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var goalObject = new JObject();
+                var goalObjectpropCount = 0;
+                if (bodygoalroleId != null)
+                {
+                    goalObject["role_id"] = SourceExpressionConverter.ConvertToken(bodygoalroleId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalcreatorId != null)
+                {
+                    goalObject["creator_id"] = SourceExpressionConverter.ConvertToken(bodygoalcreatorId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalstatus != null)
+                {
+                    goalObject["status"] = SourceExpressionConverter.Convert(bodygoalstatus);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalcompletionCriteria != null)
+                {
+                    goalObject["completion_criteria"] = SourceExpressionConverter.Convert(bodygoalcompletionCriteria);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltargetFlow != null)
+                {
+                    goalObject["target_flow"] = SourceExpressionConverter.Convert(bodygoaltargetFlow);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalaction != null)
+                {
+                    goalObject["action"] = SourceExpressionConverter.ConvertToken(bodygoalaction);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaldetails != null)
+                {
+                    goalObject["details"] = SourceExpressionConverter.ConvertToken(bodygoaldetails);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalinitial != null)
+                {
+                    goalObject["initial"] = SourceExpressionConverter.ConvertToken(bodygoalinitial);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalprogress != null)
+                {
+                    goalObject["progress"] = SourceExpressionConverter.ConvertToken(bodygoalprogress);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltarget != null)
+                {
+                    goalObject["target"] = SourceExpressionConverter.ConvertToken(bodygoaltarget);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalstartTime != null)
+                {
+                    goalObject["start_time"] = SourceExpressionConverter.ConvertToken(bodygoalstartTime);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalendTime != null)
+                {
+                    goalObject["end_time"] = SourceExpressionConverter.ConvertToken(bodygoalendTime);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalweightId != null)
+                {
+                    goalObject["weight_id"] = SourceExpressionConverter.Convert(bodygoalweightId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalisPrivate != null)
+                {
+                    goalObject["is_private"] = SourceExpressionConverter.Convert(bodygoalisPrivate);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltrackingType != null)
+                {
+                    goalObject["tracking_type"] = SourceExpressionConverter.Convert(bodygoaltrackingType);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalentityTemplateId != null)
+                {
+                    goalObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodygoalentityTemplateId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaldirectFocusAreaIds != null)
+                {
+                    goalObject["direct_focus_area_ids"] = SourceExpressionConverter.ConvertToken(bodygoaldirectFocusAreaIds);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalalignedFromIds != null)
+                {
+                    goalObject["aligned_from_ids"] = SourceExpressionConverter.ConvertToken(bodygoalalignedFromIds);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalalignedToIds != null)
+                {
+                    goalObject["aligned_to_ids"] = SourceExpressionConverter.ConvertToken(bodygoalalignedToIds);
+                    goalObjectpropCount++;
+                }
+
+                if (goalObjectpropCount > 0)
+                {
+                    body["goal"] = goalObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygoalcreatorId != null)
-            {
-                goalObject["creator_id"] = CSharpExpressionConverter.ConvertToken(bodygoalcreatorId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalstatus != null)
-            {
-                goalObject["status"] = CSharpExpressionConverter.Convert(bodygoalstatus);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalcompletionCriteria != null)
-            {
-                goalObject["completion_criteria"] = CSharpExpressionConverter.Convert(bodygoalcompletionCriteria);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltargetFlow != null)
-            {
-                goalObject["target_flow"] = CSharpExpressionConverter.Convert(bodygoaltargetFlow);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalaction != null)
-            {
-                goalObject["action"] = CSharpExpressionConverter.ConvertToken(bodygoalaction);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaldetails != null)
-            {
-                goalObject["details"] = CSharpExpressionConverter.ConvertToken(bodygoaldetails);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalinitial != null)
-            {
-                goalObject["initial"] = CSharpExpressionConverter.ConvertToken(bodygoalinitial);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalprogress != null)
-            {
-                goalObject["progress"] = CSharpExpressionConverter.ConvertToken(bodygoalprogress);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltarget != null)
-            {
-                goalObject["target"] = CSharpExpressionConverter.ConvertToken(bodygoaltarget);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalstartTime != null)
-            {
-                goalObject["start_time"] = CSharpExpressionConverter.ConvertToken(bodygoalstartTime);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalendTime != null)
-            {
-                goalObject["end_time"] = CSharpExpressionConverter.ConvertToken(bodygoalendTime);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalweightId != null)
-            {
-                goalObject["weight_id"] = CSharpExpressionConverter.Convert(bodygoalweightId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalisPrivate != null)
-            {
-                goalObject["is_private"] = CSharpExpressionConverter.Convert(bodygoalisPrivate);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltrackingType != null)
-            {
-                goalObject["tracking_type"] = CSharpExpressionConverter.Convert(bodygoaltrackingType);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalentityTemplateId != null)
-            {
-                goalObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodygoalentityTemplateId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaldirectFocusAreaIds != null)
-            {
-                goalObject["direct_focus_area_ids"] = CSharpExpressionConverter.ConvertToken(bodygoaldirectFocusAreaIds);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalalignedFromIds != null)
-            {
-                goalObject["aligned_from_ids"] = CSharpExpressionConverter.ConvertToken(bodygoalalignedFromIds);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalalignedToIds != null)
-            {
-                goalObject["aligned_to_ids"] = CSharpExpressionConverter.ConvertToken(bodygoalalignedToIds);
-                goalObjectpropCount++;
-            }
-
-            if (goalObjectpropCount > 0)
-            {
-                body["goal"] = goalObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateGoalResponse>(callPayload);
+            return new ApiConnectionAction<CreateGoalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleGoalResponse> GetSingleGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/goals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetSingleGoalResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSingleGoalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteGoalResponse> DeleteGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/goals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<DeleteGoalResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteGoalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<int>> bodygoalroleId = null, Expression<Func<int>> bodygoalcreatorId = null, Expression<Func<bodygoalstatusInput>> bodygoalstatus = null, Expression<Func<bodygoalcompletionCriteriaInput>> bodygoalcompletionCriteria = null, Expression<Func<bodygoaltargetFlowInput>> bodygoaltargetFlow = null, Expression<Func<string>> bodygoalaction = null, Expression<Func<string>> bodygoaldetails = null, Expression<Func<double>> bodygoalinitial = null, Expression<Func<double>> bodygoalprogress = null, Expression<Func<double>> bodygoaltarget = null, Expression<Func<string>> bodygoalstartTime = null, Expression<Func<string>> bodygoalendTime = null, Expression<Func<bodygoalweightIdInput>> bodygoalweightId = null, Expression<Func<int>> bodygoalisPrivate = null, Expression<Func<bodygoaltrackingTypeInput>> bodygoaltrackingType = null, Expression<Func<int>> bodygoalentityTemplateId = null, Expression<Func<int[]>> bodygoaldirectFocusAreaIds = null, Expression<Func<int[]>> bodygoalinheritedFocusAreaIds = null, Expression<Func<int[]>> bodygoalalignedFromIds = null, Expression<Func<int[]>> bodygoalalignedToIds = null)
+        public IBodyWorkflowAction<UpdateGoalResponse> UpdateGoal([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<int> bodygoalroleId = null, [WorkflowExpression] Func<int> bodygoalcreatorId = null, [WorkflowExpression] Func<bodygoalstatusInput> bodygoalstatus = null, [WorkflowExpression] Func<bodygoalcompletionCriteriaInput> bodygoalcompletionCriteria = null, [WorkflowExpression] Func<bodygoaltargetFlowInput> bodygoaltargetFlow = null, [WorkflowExpression] Func<string> bodygoalaction = null, [WorkflowExpression] Func<string> bodygoaldetails = null, [WorkflowExpression] Func<double> bodygoalinitial = null, [WorkflowExpression] Func<double> bodygoalprogress = null, [WorkflowExpression] Func<double> bodygoaltarget = null, [WorkflowExpression] Func<string> bodygoalstartTime = null, [WorkflowExpression] Func<string> bodygoalendTime = null, [WorkflowExpression] Func<bodygoalweightIdInput> bodygoalweightId = null, [WorkflowExpression] Func<int> bodygoalisPrivate = null, [WorkflowExpression] Func<bodygoaltrackingTypeInput> bodygoaltrackingType = null, [WorkflowExpression] Func<int> bodygoalentityTemplateId = null, [WorkflowExpression] Func<int[]> bodygoaldirectFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalinheritedFocusAreaIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedFromIds = null, [WorkflowExpression] Func<int[]> bodygoalalignedToIds = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/goals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var goalObject = new JObject();
-            var goalObjectpropCount = 0;
-            if (bodygoalroleId != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodygoalroleId, nameof(bodygoalroleId), required: false);
+            SourceExpression.Validate(bodygoalcreatorId, nameof(bodygoalcreatorId), required: false);
+            SourceExpression.Validate(bodygoalstatus, nameof(bodygoalstatus), required: false);
+            SourceExpression.Validate(bodygoalcompletionCriteria, nameof(bodygoalcompletionCriteria), required: false);
+            SourceExpression.Validate(bodygoaltargetFlow, nameof(bodygoaltargetFlow), required: false);
+            SourceExpression.Validate(bodygoalaction, nameof(bodygoalaction), required: false);
+            SourceExpression.Validate(bodygoaldetails, nameof(bodygoaldetails), required: false);
+            SourceExpression.Validate(bodygoalinitial, nameof(bodygoalinitial), required: false);
+            SourceExpression.Validate(bodygoalprogress, nameof(bodygoalprogress), required: false);
+            SourceExpression.Validate(bodygoaltarget, nameof(bodygoaltarget), required: false);
+            SourceExpression.Validate(bodygoalstartTime, nameof(bodygoalstartTime), required: false);
+            SourceExpression.Validate(bodygoalendTime, nameof(bodygoalendTime), required: false);
+            SourceExpression.Validate(bodygoalweightId, nameof(bodygoalweightId), required: false);
+            SourceExpression.Validate(bodygoalisPrivate, nameof(bodygoalisPrivate), required: false);
+            SourceExpression.Validate(bodygoaltrackingType, nameof(bodygoaltrackingType), required: false);
+            SourceExpression.Validate(bodygoalentityTemplateId, nameof(bodygoalentityTemplateId), required: false);
+            SourceExpression.Validate(bodygoaldirectFocusAreaIds, nameof(bodygoaldirectFocusAreaIds), required: false);
+            SourceExpression.Validate(bodygoalinheritedFocusAreaIds, nameof(bodygoalinheritedFocusAreaIds), required: false);
+            SourceExpression.Validate(bodygoalalignedFromIds, nameof(bodygoalalignedFromIds), required: false);
+            SourceExpression.Validate(bodygoalalignedToIds, nameof(bodygoalalignedToIds), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                goalObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodygoalroleId);
-                goalObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/goals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var goalObject = new JObject();
+                var goalObjectpropCount = 0;
+                if (bodygoalroleId != null)
+                {
+                    goalObject["role_id"] = SourceExpressionConverter.ConvertToken(bodygoalroleId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalcreatorId != null)
+                {
+                    goalObject["creator_id"] = SourceExpressionConverter.ConvertToken(bodygoalcreatorId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalstatus != null)
+                {
+                    goalObject["status"] = SourceExpressionConverter.Convert(bodygoalstatus);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalcompletionCriteria != null)
+                {
+                    goalObject["completion_criteria"] = SourceExpressionConverter.Convert(bodygoalcompletionCriteria);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltargetFlow != null)
+                {
+                    goalObject["target_flow"] = SourceExpressionConverter.Convert(bodygoaltargetFlow);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalaction != null)
+                {
+                    goalObject["action"] = SourceExpressionConverter.ConvertToken(bodygoalaction);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaldetails != null)
+                {
+                    goalObject["details"] = SourceExpressionConverter.ConvertToken(bodygoaldetails);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalinitial != null)
+                {
+                    goalObject["initial"] = SourceExpressionConverter.ConvertToken(bodygoalinitial);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalprogress != null)
+                {
+                    goalObject["progress"] = SourceExpressionConverter.ConvertToken(bodygoalprogress);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltarget != null)
+                {
+                    goalObject["target"] = SourceExpressionConverter.ConvertToken(bodygoaltarget);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalstartTime != null)
+                {
+                    goalObject["start_time"] = SourceExpressionConverter.ConvertToken(bodygoalstartTime);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalendTime != null)
+                {
+                    goalObject["end_time"] = SourceExpressionConverter.ConvertToken(bodygoalendTime);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalweightId != null)
+                {
+                    goalObject["weight_id"] = SourceExpressionConverter.Convert(bodygoalweightId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalisPrivate != null)
+                {
+                    goalObject["is_private"] = SourceExpressionConverter.ConvertToken(bodygoalisPrivate);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaltrackingType != null)
+                {
+                    goalObject["tracking_type"] = SourceExpressionConverter.Convert(bodygoaltrackingType);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalentityTemplateId != null)
+                {
+                    goalObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodygoalentityTemplateId);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoaldirectFocusAreaIds != null)
+                {
+                    goalObject["direct_focus_area_ids"] = SourceExpressionConverter.ConvertToken(bodygoaldirectFocusAreaIds);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalinheritedFocusAreaIds != null)
+                {
+                    goalObject["inherited_focus_area_ids"] = SourceExpressionConverter.ConvertToken(bodygoalinheritedFocusAreaIds);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalalignedFromIds != null)
+                {
+                    goalObject["aligned_from_ids"] = SourceExpressionConverter.ConvertToken(bodygoalalignedFromIds);
+                    goalObjectpropCount++;
+                }
+
+                if (bodygoalalignedToIds != null)
+                {
+                    goalObject["aligned_to_ids"] = SourceExpressionConverter.ConvertToken(bodygoalalignedToIds);
+                    goalObjectpropCount++;
+                }
+
+                if (goalObjectpropCount > 0)
+                {
+                    body["goal"] = goalObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodygoalcreatorId != null)
-            {
-                goalObject["creator_id"] = CSharpExpressionConverter.ConvertToken(bodygoalcreatorId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalstatus != null)
-            {
-                goalObject["status"] = CSharpExpressionConverter.Convert(bodygoalstatus);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalcompletionCriteria != null)
-            {
-                goalObject["completion_criteria"] = CSharpExpressionConverter.Convert(bodygoalcompletionCriteria);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltargetFlow != null)
-            {
-                goalObject["target_flow"] = CSharpExpressionConverter.Convert(bodygoaltargetFlow);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalaction != null)
-            {
-                goalObject["action"] = CSharpExpressionConverter.ConvertToken(bodygoalaction);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaldetails != null)
-            {
-                goalObject["details"] = CSharpExpressionConverter.ConvertToken(bodygoaldetails);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalinitial != null)
-            {
-                goalObject["initial"] = CSharpExpressionConverter.ConvertToken(bodygoalinitial);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalprogress != null)
-            {
-                goalObject["progress"] = CSharpExpressionConverter.ConvertToken(bodygoalprogress);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltarget != null)
-            {
-                goalObject["target"] = CSharpExpressionConverter.ConvertToken(bodygoaltarget);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalstartTime != null)
-            {
-                goalObject["start_time"] = CSharpExpressionConverter.ConvertToken(bodygoalstartTime);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalendTime != null)
-            {
-                goalObject["end_time"] = CSharpExpressionConverter.ConvertToken(bodygoalendTime);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalweightId != null)
-            {
-                goalObject["weight_id"] = CSharpExpressionConverter.Convert(bodygoalweightId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalisPrivate != null)
-            {
-                goalObject["is_private"] = CSharpExpressionConverter.ConvertToken(bodygoalisPrivate);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaltrackingType != null)
-            {
-                goalObject["tracking_type"] = CSharpExpressionConverter.Convert(bodygoaltrackingType);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalentityTemplateId != null)
-            {
-                goalObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodygoalentityTemplateId);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoaldirectFocusAreaIds != null)
-            {
-                goalObject["direct_focus_area_ids"] = CSharpExpressionConverter.ConvertToken(bodygoaldirectFocusAreaIds);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalinheritedFocusAreaIds != null)
-            {
-                goalObject["inherited_focus_area_ids"] = CSharpExpressionConverter.ConvertToken(bodygoalinheritedFocusAreaIds);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalalignedFromIds != null)
-            {
-                goalObject["aligned_from_ids"] = CSharpExpressionConverter.ConvertToken(bodygoalalignedFromIds);
-                goalObjectpropCount++;
-            }
-
-            if (bodygoalalignedToIds != null)
-            {
-                goalObject["aligned_to_ids"] = CSharpExpressionConverter.ConvertToken(bodygoalalignedToIds);
-                goalObjectpropCount++;
-            }
-
-            if (goalObjectpropCount > 0)
-            {
-                body["goal"] = goalObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateGoalResponse>(callPayload);
+            return new ApiConnectionAction<UpdateGoalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllRisksResponse> GetAllRisks([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetAllRisksResponse>(callPayload);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllRisksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateRiskResponse> CreateRisk(Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<int>> bodyissuegoalId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<CreateRiskResponse> CreateRisk([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<int> bodyissuegoalId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var apiCallPath = "/issues";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (bodyissueissue != null)
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
+            SourceExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            SourceExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            SourceExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            SourceExpression.Validate(bodyissuegoalId, nameof(bodyissuegoalId), required: false);
+            SourceExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            SourceExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            SourceExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            SourceExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                issueObject["issue"] = CSharpExpressionConverter.ConvertToken(bodyissueissue);
-                issueObjectpropCount++;
+                var apiCallPath = "/issues";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (bodyissueissue != null)
+                {
+                    issueObject["issue"] = SourceExpressionConverter.ConvertToken(bodyissueissue);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueisCritical != null)
+                {
+                    issueObject["is_critical"] = SourceExpressionConverter.Convert(bodyissueisCritical);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueisResolved != null)
+                {
+                    issueObject["is_resolved"] = SourceExpressionConverter.Convert(bodyissueisResolved);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueroleId != null)
+                {
+                    issueObject["role_id"] = SourceExpressionConverter.ConvertToken(bodyissueroleId);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissuegoalId != null)
+                {
+                    issueObject["goal_id"] = SourceExpressionConverter.ConvertToken(bodyissuegoalId);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissuedueDate != null)
+                {
+                    issueObject["due_date"] = SourceExpressionConverter.ConvertToken(bodyissuedueDate);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueentityTemplateId != null)
+                {
+                    issueObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodyissueentityTemplateId);
+                    issueObjectpropCount++;
+                }
+
+                var customAttributesObject = new JObject();
+                var customAttributesObjectpropCount = 0;
+                if (bodyissuecustomAttributescA1573011281053 != null)
+                {
+                    customAttributesObject["CA1573011281053"] = SourceExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011281053);
+                    customAttributesObjectpropCount++;
+                }
+
+                if (bodyissuecustomAttributescA1573011296755 != null)
+                {
+                    customAttributesObject["CA1573011296755"] = SourceExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011296755);
+                    customAttributesObjectpropCount++;
+                }
+
+                if (customAttributesObjectpropCount > 0)
+                {
+                    issueObject["custom_attributes"] = customAttributesObject;
+                    issueObjectpropCount++;
+                }
+
+                if (issueObjectpropCount > 0)
+                {
+                    body["issue"] = issueObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyissueisCritical != null)
-            {
-                issueObject["is_critical"] = CSharpExpressionConverter.Convert(bodyissueisCritical);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueisResolved != null)
-            {
-                issueObject["is_resolved"] = CSharpExpressionConverter.Convert(bodyissueisResolved);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueroleId != null)
-            {
-                issueObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodyissueroleId);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissuegoalId != null)
-            {
-                issueObject["goal_id"] = CSharpExpressionConverter.ConvertToken(bodyissuegoalId);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissuedueDate != null)
-            {
-                issueObject["due_date"] = CSharpExpressionConverter.ConvertToken(bodyissuedueDate);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueentityTemplateId != null)
-            {
-                issueObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodyissueentityTemplateId);
-                issueObjectpropCount++;
-            }
-
-            var customAttributesObject = new JObject();
-            var customAttributesObjectpropCount = 0;
-            if (bodyissuecustomAttributescA1573011281053 != null)
-            {
-                customAttributesObject["CA1573011281053"] = CSharpExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011281053);
-                customAttributesObjectpropCount++;
-            }
-
-            if (bodyissuecustomAttributescA1573011296755 != null)
-            {
-                customAttributesObject["CA1573011296755"] = CSharpExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011296755);
-                customAttributesObjectpropCount++;
-            }
-
-            if (customAttributesObjectpropCount > 0)
-            {
-                issueObject["custom_attributes"] = customAttributesObject;
-                issueObjectpropCount++;
-            }
-
-            if (issueObjectpropCount > 0)
-            {
-                body["issue"] = issueObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateRiskResponse>(callPayload);
+            return new ApiConnectionAction<CreateRiskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleRiskResponse> GetSingleRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issues/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetSingleRiskResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSingleRiskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteRiskResponse> DeleteRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issues/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<DeleteRiskResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteRiskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyissueissue = null, Expression<Func<bodyissueisCriticalInput>> bodyissueisCritical = null, Expression<Func<bodyissueisResolvedInput>> bodyissueisResolved = null, Expression<Func<int>> bodyissueroleId = null, Expression<Func<string>> bodyissuedueDate = null, Expression<Func<int>> bodyissueentityTemplateId = null, Expression<Func<int>> bodyissuecustomAttributescA1573011281053 = null, Expression<Func<int>> bodyissuecustomAttributescA1573011296755 = null)
+        public IBodyWorkflowAction<UpdateRiskResponse> UpdateRisk([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyissueissue = null, [WorkflowExpression] Func<bodyissueisCriticalInput> bodyissueisCritical = null, [WorkflowExpression] Func<bodyissueisResolvedInput> bodyissueisResolved = null, [WorkflowExpression] Func<int> bodyissueroleId = null, [WorkflowExpression] Func<string> bodyissuedueDate = null, [WorkflowExpression] Func<int> bodyissueentityTemplateId = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011281053 = null, [WorkflowExpression] Func<int> bodyissuecustomAttributescA1573011296755 = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/issues/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var issueObject = new JObject();
-            var issueObjectpropCount = 0;
-            if (bodyissueissue != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodyissueissue, nameof(bodyissueissue), required: false);
+            SourceExpression.Validate(bodyissueisCritical, nameof(bodyissueisCritical), required: false);
+            SourceExpression.Validate(bodyissueisResolved, nameof(bodyissueisResolved), required: false);
+            SourceExpression.Validate(bodyissueroleId, nameof(bodyissueroleId), required: false);
+            SourceExpression.Validate(bodyissuedueDate, nameof(bodyissuedueDate), required: false);
+            SourceExpression.Validate(bodyissueentityTemplateId, nameof(bodyissueentityTemplateId), required: false);
+            SourceExpression.Validate(bodyissuecustomAttributescA1573011281053, nameof(bodyissuecustomAttributescA1573011281053), required: false);
+            SourceExpression.Validate(bodyissuecustomAttributescA1573011296755, nameof(bodyissuecustomAttributescA1573011296755), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                issueObject["issue"] = CSharpExpressionConverter.ConvertToken(bodyissueissue);
-                issueObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/issues/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var issueObject = new JObject();
+                var issueObjectpropCount = 0;
+                if (bodyissueissue != null)
+                {
+                    issueObject["issue"] = SourceExpressionConverter.ConvertToken(bodyissueissue);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueisCritical != null)
+                {
+                    issueObject["is_critical"] = SourceExpressionConverter.Convert(bodyissueisCritical);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueisResolved != null)
+                {
+                    issueObject["is_resolved"] = SourceExpressionConverter.Convert(bodyissueisResolved);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueroleId != null)
+                {
+                    issueObject["role_id"] = SourceExpressionConverter.ConvertToken(bodyissueroleId);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissuedueDate != null)
+                {
+                    issueObject["due_date"] = SourceExpressionConverter.ConvertToken(bodyissuedueDate);
+                    issueObjectpropCount++;
+                }
+
+                if (bodyissueentityTemplateId != null)
+                {
+                    issueObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodyissueentityTemplateId);
+                    issueObjectpropCount++;
+                }
+
+                var customAttributesObject = new JObject();
+                var customAttributesObjectpropCount = 0;
+                if (bodyissuecustomAttributescA1573011281053 != null)
+                {
+                    customAttributesObject["CA1573011281053"] = SourceExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011281053);
+                    customAttributesObjectpropCount++;
+                }
+
+                if (bodyissuecustomAttributescA1573011296755 != null)
+                {
+                    customAttributesObject["CA1573011296755"] = SourceExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011296755);
+                    customAttributesObjectpropCount++;
+                }
+
+                if (customAttributesObjectpropCount > 0)
+                {
+                    issueObject["custom_attributes"] = customAttributesObject;
+                    issueObjectpropCount++;
+                }
+
+                if (issueObjectpropCount > 0)
+                {
+                    body["issue"] = issueObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyissueisCritical != null)
-            {
-                issueObject["is_critical"] = CSharpExpressionConverter.Convert(bodyissueisCritical);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueisResolved != null)
-            {
-                issueObject["is_resolved"] = CSharpExpressionConverter.Convert(bodyissueisResolved);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueroleId != null)
-            {
-                issueObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodyissueroleId);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissuedueDate != null)
-            {
-                issueObject["due_date"] = CSharpExpressionConverter.ConvertToken(bodyissuedueDate);
-                issueObjectpropCount++;
-            }
-
-            if (bodyissueentityTemplateId != null)
-            {
-                issueObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodyissueentityTemplateId);
-                issueObjectpropCount++;
-            }
-
-            var customAttributesObject = new JObject();
-            var customAttributesObjectpropCount = 0;
-            if (bodyissuecustomAttributescA1573011281053 != null)
-            {
-                customAttributesObject["CA1573011281053"] = CSharpExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011281053);
-                customAttributesObjectpropCount++;
-            }
-
-            if (bodyissuecustomAttributescA1573011296755 != null)
-            {
-                customAttributesObject["CA1573011296755"] = CSharpExpressionConverter.ConvertToken(bodyissuecustomAttributescA1573011296755);
-                customAttributesObjectpropCount++;
-            }
-
-            if (customAttributesObjectpropCount > 0)
-            {
-                issueObject["custom_attributes"] = customAttributesObject;
-                issueObjectpropCount++;
-            }
-
-            if (issueObjectpropCount > 0)
-            {
-                body["issue"] = issueObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateRiskResponse>(callPayload);
+            return new ApiConnectionAction<UpdateRiskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllTasksResponse> GetAllTasks([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetAllTasksResponse>(callPayload);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllTasksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateTaskResponse> CreateTask(Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<CreateTaskResponse> CreateTask([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            var apiCallPath = "/tasks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodytasktask != null)
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
+            SourceExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            SourceExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            SourceExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            SourceExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            SourceExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            SourceExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            SourceExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            SourceExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                taskObject["task"] = CSharpExpressionConverter.ConvertToken(bodytasktask);
-                taskObjectpropCount++;
+                var apiCallPath = "/tasks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodytasktask != null)
+                {
+                    taskObject["task"] = SourceExpressionConverter.ConvertToken(bodytasktask);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskcomment != null)
+                {
+                    taskObject["comment"] = SourceExpressionConverter.ConvertToken(bodytaskcomment);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskisComplete != null)
+                {
+                    taskObject["is_complete"] = SourceExpressionConverter.Convert(bodytaskisComplete);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskroleId != null)
+                {
+                    taskObject["role_id"] = SourceExpressionConverter.ConvertToken(bodytaskroleId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskgoalId != null)
+                {
+                    taskObject["goal_id"] = SourceExpressionConverter.ConvertToken(bodytaskgoalId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskstartDate != null)
+                {
+                    taskObject["start_date"] = SourceExpressionConverter.ConvertToken(bodytaskstartDate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskdueDate != null)
+                {
+                    taskObject["due_date"] = SourceExpressionConverter.ConvertToken(bodytaskdueDate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskweightId != null)
+                {
+                    taskObject["weight_id"] = SourceExpressionConverter.Convert(bodytaskweightId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskentityTemplateId != null)
+                {
+                    taskObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodytaskentityTemplateId);
+                    taskObjectpropCount++;
+                }
+
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytaskcomment != null)
-            {
-                taskObject["comment"] = CSharpExpressionConverter.ConvertToken(bodytaskcomment);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskisComplete != null)
-            {
-                taskObject["is_complete"] = CSharpExpressionConverter.Convert(bodytaskisComplete);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskroleId != null)
-            {
-                taskObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodytaskroleId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskgoalId != null)
-            {
-                taskObject["goal_id"] = CSharpExpressionConverter.ConvertToken(bodytaskgoalId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskstartDate != null)
-            {
-                taskObject["start_date"] = CSharpExpressionConverter.ConvertToken(bodytaskstartDate);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskdueDate != null)
-            {
-                taskObject["due_date"] = CSharpExpressionConverter.ConvertToken(bodytaskdueDate);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskweightId != null)
-            {
-                taskObject["weight_id"] = CSharpExpressionConverter.Convert(bodytaskweightId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskentityTemplateId != null)
-            {
-                taskObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodytaskentityTemplateId);
-                taskObjectpropCount++;
-            }
-
-            if (taskObjectpropCount > 0)
-            {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateTaskResponse>(callPayload);
+            return new ApiConnectionAction<CreateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleTaskResponse> GetSingleTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetSingleTaskResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSingleTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteTaskResponse> DeleteTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<DeleteTaskResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodytasktask = null, Expression<Func<string>> bodytaskcomment = null, Expression<Func<bodytaskisCompleteInput>> bodytaskisComplete = null, Expression<Func<int>> bodytaskroleId = null, Expression<Func<int>> bodytaskgoalId = null, Expression<Func<string>> bodytaskstartDate = null, Expression<Func<string>> bodytaskdueDate = null, Expression<Func<bodytaskweightIdInput>> bodytaskweightId = null, Expression<Func<int>> bodytaskentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateTaskResponse> UpdateTask([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodytasktask = null, [WorkflowExpression] Func<string> bodytaskcomment = null, [WorkflowExpression] Func<bodytaskisCompleteInput> bodytaskisComplete = null, [WorkflowExpression] Func<int> bodytaskroleId = null, [WorkflowExpression] Func<int> bodytaskgoalId = null, [WorkflowExpression] Func<string> bodytaskstartDate = null, [WorkflowExpression] Func<string> bodytaskdueDate = null, [WorkflowExpression] Func<bodytaskweightIdInput> bodytaskweightId = null, [WorkflowExpression] Func<int> bodytaskentityTemplateId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/tasks/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var taskObject = new JObject();
-            var taskObjectpropCount = 0;
-            if (bodytasktask != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodytasktask, nameof(bodytasktask), required: false);
+            SourceExpression.Validate(bodytaskcomment, nameof(bodytaskcomment), required: false);
+            SourceExpression.Validate(bodytaskisComplete, nameof(bodytaskisComplete), required: false);
+            SourceExpression.Validate(bodytaskroleId, nameof(bodytaskroleId), required: false);
+            SourceExpression.Validate(bodytaskgoalId, nameof(bodytaskgoalId), required: false);
+            SourceExpression.Validate(bodytaskstartDate, nameof(bodytaskstartDate), required: false);
+            SourceExpression.Validate(bodytaskdueDate, nameof(bodytaskdueDate), required: false);
+            SourceExpression.Validate(bodytaskweightId, nameof(bodytaskweightId), required: false);
+            SourceExpression.Validate(bodytaskentityTemplateId, nameof(bodytaskentityTemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                taskObject["task"] = CSharpExpressionConverter.ConvertToken(bodytasktask);
-                taskObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/tasks/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var taskObject = new JObject();
+                var taskObjectpropCount = 0;
+                if (bodytasktask != null)
+                {
+                    taskObject["task"] = SourceExpressionConverter.ConvertToken(bodytasktask);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskcomment != null)
+                {
+                    taskObject["comment"] = SourceExpressionConverter.ConvertToken(bodytaskcomment);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskisComplete != null)
+                {
+                    taskObject["is_complete"] = SourceExpressionConverter.Convert(bodytaskisComplete);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskroleId != null)
+                {
+                    taskObject["role_id"] = SourceExpressionConverter.ConvertToken(bodytaskroleId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskgoalId != null)
+                {
+                    taskObject["goal_id"] = SourceExpressionConverter.ConvertToken(bodytaskgoalId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskstartDate != null)
+                {
+                    taskObject["start_date"] = SourceExpressionConverter.ConvertToken(bodytaskstartDate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskdueDate != null)
+                {
+                    taskObject["due_date"] = SourceExpressionConverter.ConvertToken(bodytaskdueDate);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskweightId != null)
+                {
+                    taskObject["weight_id"] = SourceExpressionConverter.Convert(bodytaskweightId);
+                    taskObjectpropCount++;
+                }
+
+                if (bodytaskentityTemplateId != null)
+                {
+                    taskObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodytaskentityTemplateId);
+                    taskObjectpropCount++;
+                }
+
+                if (taskObjectpropCount > 0)
+                {
+                    body["task"] = taskObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodytaskcomment != null)
-            {
-                taskObject["comment"] = CSharpExpressionConverter.ConvertToken(bodytaskcomment);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskisComplete != null)
-            {
-                taskObject["is_complete"] = CSharpExpressionConverter.Convert(bodytaskisComplete);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskroleId != null)
-            {
-                taskObject["role_id"] = CSharpExpressionConverter.ConvertToken(bodytaskroleId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskgoalId != null)
-            {
-                taskObject["goal_id"] = CSharpExpressionConverter.ConvertToken(bodytaskgoalId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskstartDate != null)
-            {
-                taskObject["start_date"] = CSharpExpressionConverter.ConvertToken(bodytaskstartDate);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskdueDate != null)
-            {
-                taskObject["due_date"] = CSharpExpressionConverter.ConvertToken(bodytaskdueDate);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskweightId != null)
-            {
-                taskObject["weight_id"] = CSharpExpressionConverter.Convert(bodytaskweightId);
-                taskObjectpropCount++;
-            }
-
-            if (bodytaskentityTemplateId != null)
-            {
-                taskObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodytaskentityTemplateId);
-                taskObjectpropCount++;
-            }
-
-            if (taskObjectpropCount > 0)
-            {
-                body["task"] = taskObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateTaskResponse>(callPayload);
+            return new ApiConnectionAction<UpdateTaskResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates(Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetAllUpdatesResponse> GetAllUpdates([WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = "/updates";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetAllUpdatesResponse>(callPayload);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/updates";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllUpdatesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate(Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<CreateUpdateResponse> CreateUpdate([WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            var apiCallPath = "/updates";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (bodyupdatecomment != null)
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            SourceExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            SourceExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                updateObject["comment"] = CSharpExpressionConverter.ConvertToken(bodyupdatecomment);
-                updateObjectpropCount++;
+                var apiCallPath = "/updates";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (bodyupdatecomment != null)
+                {
+                    updateObject["comment"] = SourceExpressionConverter.ConvertToken(bodyupdatecomment);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdategoalId != null)
+                {
+                    updateObject["goal_id"] = SourceExpressionConverter.ConvertToken(bodyupdategoalId);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdateentityTemplateId != null)
+                {
+                    updateObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodyupdateentityTemplateId);
+                    updateObjectpropCount++;
+                }
+
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyupdategoalId != null)
-            {
-                updateObject["goal_id"] = CSharpExpressionConverter.ConvertToken(bodyupdategoalId);
-                updateObjectpropCount++;
-            }
-
-            if (bodyupdateentityTemplateId != null)
-            {
-                updateObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodyupdateentityTemplateId);
-                updateObjectpropCount++;
-            }
-
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateUpdateResponse>(callPayload);
+            return new ApiConnectionAction<CreateUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<GetSingleUpdateResponse> GetSingleUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<GetSingleUpdateResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSingleUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate(Expression<Func<string>> id, Expression<Func<string>> instance)
+        public IBodyWorkflowAction<DeleteUpdateResponse> DeleteUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            return new ApiConnectionAction<DeleteUpdateResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<DeleteUpdateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cascade")]
-        public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate(Expression<Func<string>> id, Expression<Func<string>> instance, Expression<Func<string>> bodyupdatecomment = null, Expression<Func<string>> bodyupdatecreatedAt = null, Expression<Func<string>> bodyupdateupdatedAt = null, Expression<Func<int>> bodyupdategoalId = null, Expression<Func<int>> bodyupdatedeleted = null, Expression<Func<int>> bodyupdateentityTemplateId = null)
+        public IBodyWorkflowAction<UpdateUpdateResponse> UpdateUpdate([WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> instance, [WorkflowExpression] Func<string> bodyupdatecomment = null, [WorkflowExpression] Func<string> bodyupdatecreatedAt = null, [WorkflowExpression] Func<string> bodyupdateupdatedAt = null, [WorkflowExpression] Func<int> bodyupdategoalId = null, [WorkflowExpression] Func<int> bodyupdatedeleted = null, [WorkflowExpression] Func<int> bodyupdateentityTemplateId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/updates/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Instance"] = CSharpExpressionConverter.ConvertO(instance);
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            var updateObject = new JObject();
-            var updateObjectpropCount = 0;
-            if (bodyupdatecomment != null)
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(instance, nameof(instance), required: true);
+            SourceExpression.Validate(bodyupdatecomment, nameof(bodyupdatecomment), required: false);
+            SourceExpression.Validate(bodyupdatecreatedAt, nameof(bodyupdatecreatedAt), required: false);
+            SourceExpression.Validate(bodyupdateupdatedAt, nameof(bodyupdateupdatedAt), required: false);
+            SourceExpression.Validate(bodyupdategoalId, nameof(bodyupdategoalId), required: false);
+            SourceExpression.Validate(bodyupdatedeleted, nameof(bodyupdatedeleted), required: false);
+            SourceExpression.Validate(bodyupdateentityTemplateId, nameof(bodyupdateentityTemplateId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                updateObject["comment"] = CSharpExpressionConverter.ConvertToken(bodyupdatecomment);
-                updateObjectpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/updates/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Instance"] = SourceExpressionConverter.ConvertO(instance);
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                var updateObject = new JObject();
+                var updateObjectpropCount = 0;
+                if (bodyupdatecomment != null)
+                {
+                    updateObject["comment"] = SourceExpressionConverter.ConvertToken(bodyupdatecomment);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdatecreatedAt != null)
+                {
+                    updateObject["created_at"] = SourceExpressionConverter.ConvertToken(bodyupdatecreatedAt);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdateupdatedAt != null)
+                {
+                    updateObject["updated_at"] = SourceExpressionConverter.ConvertToken(bodyupdateupdatedAt);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdategoalId != null)
+                {
+                    updateObject["goal_id"] = SourceExpressionConverter.ConvertToken(bodyupdategoalId);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdatedeleted != null)
+                {
+                    updateObject["deleted"] = SourceExpressionConverter.ConvertToken(bodyupdatedeleted);
+                    updateObjectpropCount++;
+                }
+
+                if (bodyupdateentityTemplateId != null)
+                {
+                    updateObject["entity_template_id"] = SourceExpressionConverter.ConvertToken(bodyupdateentityTemplateId);
+                    updateObjectpropCount++;
+                }
+
+                if (updateObjectpropCount > 0)
+                {
+                    body["update"] = updateObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyupdatecreatedAt != null)
-            {
-                updateObject["created_at"] = CSharpExpressionConverter.ConvertToken(bodyupdatecreatedAt);
-                updateObjectpropCount++;
-            }
-
-            if (bodyupdateupdatedAt != null)
-            {
-                updateObject["updated_at"] = CSharpExpressionConverter.ConvertToken(bodyupdateupdatedAt);
-                updateObjectpropCount++;
-            }
-
-            if (bodyupdategoalId != null)
-            {
-                updateObject["goal_id"] = CSharpExpressionConverter.ConvertToken(bodyupdategoalId);
-                updateObjectpropCount++;
-            }
-
-            if (bodyupdatedeleted != null)
-            {
-                updateObject["deleted"] = CSharpExpressionConverter.ConvertToken(bodyupdatedeleted);
-                updateObjectpropCount++;
-            }
-
-            if (bodyupdateentityTemplateId != null)
-            {
-                updateObject["entity_template_id"] = CSharpExpressionConverter.ConvertToken(bodyupdateentityTemplateId);
-                updateObjectpropCount++;
-            }
-
-            if (updateObjectpropCount > 0)
-            {
-                body["update"] = updateObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<UpdateUpdateResponse>(callPayload);
+            return new ApiConnectionAction<UpdateUpdateResponse>(BuildSourceInput);
         }
     }
 

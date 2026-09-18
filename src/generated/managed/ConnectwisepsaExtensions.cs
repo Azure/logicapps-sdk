@@ -12,40 +12,61 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Connectwisepsa
     public class ConnectwisepsaActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
-        public IWorkflowAction GetServiceTickets(Expression<Func<string>> clientId, Expression<Func<string>> conditions = null, Expression<Func<string>> childConditions = null, Expression<Func<string>> customFieldConditions = null, Expression<Func<string>> orderBy = null, Expression<Func<string>> fields = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null, Expression<Func<int>> pageId = null)
+        public IWorkflowAction GetServiceTickets([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<string> conditions = null, [WorkflowExpression] Func<string> childConditions = null, [WorkflowExpression] Func<string> customFieldConditions = null, [WorkflowExpression] Func<string> orderBy = null, [WorkflowExpression] Func<string> fields = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null, [WorkflowExpression] Func<int> pageId = null)
         {
-            var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (conditions != null)
-                callPayload.Queries["conditions"] = CSharpExpressionConverter.ConvertO(conditions);
-            if (childConditions != null)
-                callPayload.Queries["childConditions"] = CSharpExpressionConverter.ConvertO(childConditions);
-            if (customFieldConditions != null)
-                callPayload.Queries["customFieldConditions"] = CSharpExpressionConverter.ConvertO(customFieldConditions);
-            if (orderBy != null)
-                callPayload.Queries["orderBy"] = CSharpExpressionConverter.ConvertO(orderBy);
-            if (fields != null)
-                callPayload.Queries["fields"] = CSharpExpressionConverter.ConvertO(fields);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (pageSize != null)
-                callPayload.Queries["pageSize"] = CSharpExpressionConverter.ConvertO(pageSize);
-            if (pageId != null)
-                callPayload.Queries["pageId"] = CSharpExpressionConverter.ConvertO(pageId);
-            callPayload.Headers["clientId"] = CSharpExpressionConverter.ConvertO(clientId);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(clientId, nameof(clientId), required: true);
+            SourceExpression.Validate(conditions, nameof(conditions), required: false);
+            SourceExpression.Validate(childConditions, nameof(childConditions), required: false);
+            SourceExpression.Validate(customFieldConditions, nameof(customFieldConditions), required: false);
+            SourceExpression.Validate(orderBy, nameof(orderBy), required: false);
+            SourceExpression.Validate(fields, nameof(fields), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            SourceExpression.Validate(pageId, nameof(pageId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (conditions != null)
+                    callPayload.Queries["conditions"] = SourceExpressionConverter.ConvertO(conditions);
+                if (childConditions != null)
+                    callPayload.Queries["childConditions"] = SourceExpressionConverter.ConvertO(childConditions);
+                if (customFieldConditions != null)
+                    callPayload.Queries["customFieldConditions"] = SourceExpressionConverter.ConvertO(customFieldConditions);
+                if (orderBy != null)
+                    callPayload.Queries["orderBy"] = SourceExpressionConverter.ConvertO(orderBy);
+                if (fields != null)
+                    callPayload.Queries["fields"] = SourceExpressionConverter.ConvertO(fields);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["pageSize"] = SourceExpressionConverter.ConvertO(pageSize);
+                if (pageId != null)
+                    callPayload.Queries["pageId"] = SourceExpressionConverter.ConvertO(pageId);
+                callPayload.Headers["clientId"] = SourceExpressionConverter.ConvertO(clientId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "connectwisepsa")]
-        public IWorkflowAction PostServiceTickets(Expression<Func<string>> clientId, Expression<Func<object>> body = null)
+        public IWorkflowAction PostServiceTickets([WorkflowExpression] Func<string> clientId, [WorkflowExpression] Func<object> body = null)
         {
-            var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["clientId"] = CSharpExpressionConverter.ConvertO(clientId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(clientId, nameof(clientId), required: true);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v4_6_release/apis/3.0/service/tickets";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["clientId"] = SourceExpressionConverter.ConvertO(clientId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

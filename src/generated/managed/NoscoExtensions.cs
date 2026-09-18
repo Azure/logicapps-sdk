@@ -14,98 +14,151 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nosco
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
         public IBodyWorkflowAction<IdeaboxesResponse> Ideaboxes()
         {
-            var apiCallPath = "/integration/v1/ideaboxes";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IdeaboxesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/integration/v1/ideaboxes";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IdeaboxesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<GetIdeaResponse> GetIdea(Expression<Func<string>> id)
+        public IBodyWorkflowAction<GetIdeaResponse> GetIdea([WorkflowExpression] Func<string> id)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/integration/v1/ideas/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetIdeaResponse>(callPayload);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/integration/v1/ideas/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(id, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetIdeaResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nosco")]
-        public IBodyWorkflowAction<IdeasResponse> Ideas(Expression<Func<string>> publishedAfter = null, Expression<Func<string>> lastStageChangeAfter = null, Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<sortFieldInput>> sortField = null, Expression<Func<sortOrderInput>> sortOrder = null, Expression<Func<string>> afterCursor = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<IdeasResponse> Ideas([WorkflowExpression] Func<string> publishedAfter = null, [WorkflowExpression] Func<string> lastStageChangeAfter = null, [WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<sortFieldInput> sortField = null, [WorkflowExpression] Func<sortOrderInput> sortOrder = null, [WorkflowExpression] Func<string> afterCursor = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = "/integration/v1/ideas";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (publishedAfter != null)
-                callPayload.Queries["publishedAfter"] = CSharpExpressionConverter.ConvertO(publishedAfter);
-            if (lastStageChangeAfter != null)
-                callPayload.Queries["lastStageChangeAfter"] = CSharpExpressionConverter.ConvertO(lastStageChangeAfter);
-            if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            callPayload.Queries["sortField"] = Convert.ToString("PUBLISHED_AT");
-            if (sortField != null)
-                callPayload.Queries["sortField"] = CSharpExpressionConverter.Convert(sortField);
-            callPayload.Queries["sortOrder"] = Convert.ToString("DESC");
-            if (sortOrder != null)
-                callPayload.Queries["sortOrder"] = CSharpExpressionConverter.Convert(sortOrder);
-            if (afterCursor != null)
-                callPayload.Queries["afterCursor"] = CSharpExpressionConverter.ConvertO(afterCursor);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<IdeasResponse>(callPayload);
+            SourceExpression.Validate(publishedAfter, nameof(publishedAfter), required: false);
+            SourceExpression.Validate(lastStageChangeAfter, nameof(lastStageChangeAfter), required: false);
+            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
+            SourceExpression.Validate(stageId, nameof(stageId), required: false);
+            SourceExpression.Validate(sortField, nameof(sortField), required: false);
+            SourceExpression.Validate(sortOrder, nameof(sortOrder), required: false);
+            SourceExpression.Validate(afterCursor, nameof(afterCursor), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/integration/v1/ideas";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (publishedAfter != null)
+                    callPayload.Queries["publishedAfter"] = SourceExpressionConverter.ConvertO(publishedAfter);
+                if (lastStageChangeAfter != null)
+                    callPayload.Queries["lastStageChangeAfter"] = SourceExpressionConverter.ConvertO(lastStageChangeAfter);
+                if (ideaboxId != null)
+                    callPayload.Queries["ideaboxId"] = SourceExpressionConverter.ConvertO(ideaboxId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                callPayload.Queries["sortField"] = Convert.ToString("PUBLISHED_AT");
+                if (sortField != null)
+                    callPayload.Queries["sortField"] = SourceExpressionConverter.Convert(sortField);
+                callPayload.Queries["sortOrder"] = Convert.ToString("DESC");
+                if (sortOrder != null)
+                    callPayload.Queries["sortOrder"] = SourceExpressionConverter.Convert(sortOrder);
+                if (afterCursor != null)
+                    callPayload.Queries["afterCursor"] = SourceExpressionConverter.ConvertO(afterCursor);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IdeasResponse>(BuildSourceInput);
         }
     }
 
     public class NoscoTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger(Expression<Func<string>> ideaboxId, Expression<Func<string>> stageId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaReachedStageTriggerResponse> IdeaReachedStageTrigger([WorkflowExpression] Func<string> ideaboxId, [WorkflowExpression] Func<string> stageId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
-            callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: true);
+            SourceExpression.Validate(stageId, nameof(stageId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-reached-stage";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ideaboxId"] = SourceExpressionConverter.ConvertO(ideaboxId);
+                callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<IdeaReachedStageTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, Expression<Func<string>> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaStatusChangedTriggerResponse> IdeaStatusChangedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, [WorkflowExpression] Func<string> statusId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            if (statusId != null)
-                callPayload.Queries["statusId"] = CSharpExpressionConverter.ConvertO(statusId);
-            return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
+            SourceExpression.Validate(stageId, nameof(stageId), required: false);
+            SourceExpression.Validate(statusId, nameof(statusId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-status-changed";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ideaboxId != null)
+                    callPayload.Queries["ideaboxId"] = SourceExpressionConverter.ConvertO(ideaboxId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                if (statusId != null)
+                    callPayload.Queries["statusId"] = SourceExpressionConverter.ConvertO(statusId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<IdeaStatusChangedTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaPublishedTriggerResponse> IdeaPublishedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
+            SourceExpression.Validate(stageId, nameof(stageId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-published";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ideaboxId != null)
+                    callPayload.Queries["ideaboxId"] = SourceExpressionConverter.ConvertO(ideaboxId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<IdeaPublishedTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger(Expression<Func<string>> ideaboxId = null, Expression<Func<string>> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<IdeaEditedTriggerResponse> IdeaEditedTrigger([WorkflowExpression] Func<string> ideaboxId = null, [WorkflowExpression] Func<string> stageId = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (ideaboxId != null)
-                callPayload.Queries["ideaboxId"] = CSharpExpressionConverter.ConvertO(ideaboxId);
-            if (stageId != null)
-                callPayload.Queries["stageId"] = CSharpExpressionConverter.ConvertO(stageId);
-            return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(ideaboxId, nameof(ideaboxId), required: false);
+            SourceExpression.Validate(stageId, nameof(stageId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/integration/v1/power-automate/triggers/idea-edited";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (ideaboxId != null)
+                    callPayload.Queries["ideaboxId"] = SourceExpressionConverter.ConvertO(ideaboxId);
+                if (stageId != null)
+                    callPayload.Queries["stageId"] = SourceExpressionConverter.ConvertO(stageId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<IdeaEditedTriggerResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

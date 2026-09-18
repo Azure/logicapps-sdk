@@ -12,286 +12,492 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fitbit
     public class FitbitActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetSleepGoalResponse> GetSleepGoal([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSleepGoalResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/goal.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSleepGoalResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetSleepLogbyDateResponse> GetSleepLogbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSleepLogbyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSleepLogbyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange(Expression<Func<string>> userId, Expression<Func<string>> startDate, Expression<Func<string>> endDate)
+        public IBodyWorkflowAction<GetSleepLogbyDateRangeResponse> GetSleepLogbyDateRange([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> startDate, [WorkflowExpression] Func<string> endDate)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(startDate, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(endDate, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetSleepLogbyDateRangeResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(startDate, nameof(startDate), required: true);
+            SourceExpression.Validate(endDate, nameof(endDate), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(startDate, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(endDate, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSleepLogbyDateRangeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetSleepLogListResponse> GetSleepLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (afterDate != null)
-                callPayload.Queries["afterDate"] = CSharpExpressionConverter.ConvertO(afterDate);
-            if (beforeDate != null)
-                callPayload.Queries["beforeDate"] = CSharpExpressionConverter.ConvertO(beforeDate);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<GetSleepLogListResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(afterDate, nameof(afterDate), required: false);
+            SourceExpression.Validate(beforeDate, nameof(beforeDate), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.2/user/{0}/sleep/list.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (afterDate != null)
+                    callPayload.Queries["afterDate"] = SourceExpressionConverter.ConvertO(afterDate);
+                if (beforeDate != null)
+                    callPayload.Queries["beforeDate"] = SourceExpressionConverter.ConvertO(beforeDate);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetSleepLogListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals(Expression<Func<string>> userId, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetActivityGoalsResponse> GetActivityGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetActivityGoalsResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/goals/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetActivityGoalsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList(Expression<Func<string>> userId, Expression<Func<string>> afterDate = null, Expression<Func<string>> beforeDate = null, Expression<Func<sortInput>> sort = null, Expression<Func<int>> limit = null)
+        public IBodyWorkflowAction<GetActivityLogListResponse> GetActivityLogList([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> afterDate = null, [WorkflowExpression] Func<string> beforeDate = null, [WorkflowExpression] Func<sortInput> sort = null, [WorkflowExpression] Func<int> limit = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (afterDate != null)
-                callPayload.Queries["afterDate"] = CSharpExpressionConverter.ConvertO(afterDate);
-            if (beforeDate != null)
-                callPayload.Queries["beforeDate"] = CSharpExpressionConverter.ConvertO(beforeDate);
-            if (sort != null)
-                callPayload.Queries["sort"] = CSharpExpressionConverter.Convert(sort);
-            callPayload.Queries["offset"] = Convert.ToString(0);
-            callPayload.Queries["limit"] = Convert.ToString(100);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            return new ApiConnectionAction<GetActivityLogListResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(afterDate, nameof(afterDate), required: false);
+            SourceExpression.Validate(beforeDate, nameof(beforeDate), required: false);
+            SourceExpression.Validate(sort, nameof(sort), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/list.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (afterDate != null)
+                    callPayload.Queries["afterDate"] = SourceExpressionConverter.ConvertO(afterDate);
+                if (beforeDate != null)
+                    callPayload.Queries["beforeDate"] = SourceExpressionConverter.ConvertO(beforeDate);
+                if (sort != null)
+                    callPayload.Queries["sort"] = SourceExpressionConverter.Convert(sort);
+                callPayload.Queries["offset"] = Convert.ToString(0);
+                callPayload.Queries["limit"] = Convert.ToString(100);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetActivityLogListResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IWorkflowAction GetActivityTCX(Expression<Func<string>> userId, Expression<Func<string>> logId, Expression<Func<bool>> includePartialTCX = null)
+        public IWorkflowAction GetActivityTCX([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> logId, [WorkflowExpression] Func<bool> includePartialTCX = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(logId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (includePartialTCX != null)
-                callPayload.Queries["includePartialTCX"] = CSharpExpressionConverter.ConvertO(includePartialTCX);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(logId, nameof(logId), required: true);
+            SourceExpression.Validate(includePartialTCX, nameof(includePartialTCX), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.tcx", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(logId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (includePartialTCX != null)
+                    callPayload.Queries["includePartialTCX"] = SourceExpressionConverter.ConvertO(includePartialTCX);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType(Expression<Func<string>> userId, Expression<Func<string>> activityId)
+        public IBodyWorkflowAction<GetAcitivityTypeResponse> GetAcitivityType([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> activityId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAcitivityTypeResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(activityId, nameof(activityId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(activityId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAcitivityTypeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
         public IBodyWorkflowAction<GetAllActivityTypesResponse> GetAllActivityTypes()
         {
-            var apiCallPath = "/1/activities.json";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAllActivityTypesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/activities.json";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAllActivityTypesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetDailyActivitySummaryResponse> GetDailyActivitySummary([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDailyActivitySummaryResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDailyActivitySummaryResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetFavoriteActivitiesResponseItem[]> GetFavoriteActivities([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFavoriteActivitiesResponseItem[]>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/favorite.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFavoriteActivitiesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetFrequentActivitiesResponseItem[]> GetFrequentActivities([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFrequentActivitiesResponseItem[]>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}activities/frequent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFrequentActivitiesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetLifetimeStatsResponse> GetLifetimeStats([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetLifetimeStatsResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetLifetimeStatsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetRecentActivityTypesResponseItem[]> GetRecentActivityTypes([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetRecentActivityTypesResponseItem[]>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/recent.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetRecentActivityTypesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetActivityTimeSeriesbyDateResponse> GetActivityTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetActivityTimeSeriesbyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/activities/{1}/date/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetActivityTimeSeriesbyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals(Expression<Func<string>> userId, Expression<Func<goalTypeInput>> goalType)
+        public IBodyWorkflowAction<GetBodyGoalsResponse> GetBodyGoals([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<goalTypeInput> goalType)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalType, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBodyGoalsResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(goalType, nameof(goalType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/{1}/goal.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(goalType, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBodyGoalsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetBodyFattLogResponse> GetBodyFattLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBodyFattLogResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBodyFattLogResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetWeightLogResponse> GetWeightLog([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWeightLogResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWeightLogResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<resourceInput>> resource, Expression<Func<string>> date, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetBodyTimeSeriesbyDateResponse> GetBodyTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<resourceInput> resource, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBodyTimeSeriesbyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(resource, nameof(resource), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/{1}/date/{2}/{3}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(resource, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBodyTimeSeriesbyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetBodyFatTimerSeriesbyDateResponse> GetBodyFatTimerSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBodyFatTimerSeriesbyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/fat/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBodyFatTimerSeriesbyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate(Expression<Func<string>> userId, Expression<Func<string>> date, Expression<Func<periodInput>> period)
+        public IBodyWorkflowAction<GetWeightTimeSeriesbyDateResponse> GetWeightTimeSeriesbyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date, [WorkflowExpression] Func<periodInput> period)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWeightTimeSeriesbyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            SourceExpression.Validate(period, nameof(period), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/body/log/weight/date/{1}/{2}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(period, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWeightTimeSeriesbyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetBreathingRateSummarybyDateResponse> GetBreathingRateSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBreathingRateSummarybyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/br/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBreathingRateSummarybyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetVO2MaxSummarybyDateResponse> GetVO2MaxSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetVO2MaxSummarybyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/cardioscore/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetVO2MaxSummarybyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetDevicesResponseItem[]> GetDevices([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetDevicesResponseItem[]>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetDevicesResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms(Expression<Func<string>> userId, Expression<Func<string>> trackerId)
+        public IBodyWorkflowAction<GetAlarmsResponse> GetAlarms([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> trackerId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackerId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetAlarmsResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(trackerId, nameof(trackerId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/devices/tracker/{1}/alarms.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(trackerId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetAlarmsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetFriendsLeaderboardResponse> GetFriendsLeaderboard([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetFriendsLeaderboardResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/user/{0}/leaderboard/friends.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetFriendsLeaderboardResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate(Expression<Func<string>> userId, Expression<Func<string>> date)
+        public IBodyWorkflowAction<GetHRVSummarybyDateResponse> GetHRVSummarybyDate([WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> date)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetHRVSummarybyDateResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(date, nameof(date), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/hrv/date/{1}.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(date, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetHRVSummarybyDateResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetBadgesResponse> GetBadges(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetBadgesResponse> GetBadges([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetBadgesResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/badges.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetBadgesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "fitbit")]
-        public IBodyWorkflowAction<GetProfileResponse> GetProfile(Expression<Func<string>> userId)
+        public IBodyWorkflowAction<GetProfileResponse> GetProfile([WorkflowExpression] Func<string> userId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetProfileResponse>(callPayload);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1/user/{0}/profile.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetProfileResponse>(BuildSourceInput);
         }
     }
 

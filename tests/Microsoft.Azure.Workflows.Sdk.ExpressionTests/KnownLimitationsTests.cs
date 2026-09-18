@@ -53,12 +53,10 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
         }
 
         [Fact]
-        public void Convert_CapturedNullValue_ThrowsNullReferenceException()
+        public void Convert_CapturedNullValue_RendersNullLiteral()
         {
-            // BUG: VisitMember calls value.GetType() on the inlined value; a captured null
-            // value throws NRE instead of producing a null literal.
             string sNull = null;
-            Assert.Throws<NullReferenceException>(() => ExpressionConverter.Convert(() => sNull == "x"));
+            Assert.Equal("@equals(null, 'x')", ExpressionConverter.Convert(() => sNull == "x"));
         }
 
         [Fact]

@@ -1,0 +1,1 @@
+{"result":{"input":"@csharp{global::ReferencedHelper.Convert(outputs(\"Source\").ToObject<string>().Length)}"},"framework":".NETCoreApp,Version=v9.0","signed":false,"assemblyName":"Matrix"}

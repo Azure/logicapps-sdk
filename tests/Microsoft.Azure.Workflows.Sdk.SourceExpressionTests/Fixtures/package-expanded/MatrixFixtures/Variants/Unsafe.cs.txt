@@ -1,0 +1,13 @@
+using Microsoft.Azure.Workflows.Sdk;
+
+internal static class FixtureWorkflow
+{
+    public static unsafe object Run()
+    {
+        int number = 7;
+        int* pointer = &number;
+        var value = *pointer;
+        var action = WorkflowActions.BuiltIn.Compose<int>(() => value);
+        return new { input = FixtureAssert.Input(action) };
+    }
+}

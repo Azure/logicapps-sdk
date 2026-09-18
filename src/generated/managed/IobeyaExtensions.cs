@@ -14,176 +14,248 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Iobeya
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
         public IBodyWorkflowAction<ListRoomsResponse> ListRooms()
         {
-            var apiCallPath = "/rooms";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            return new ApiConnectionAction<ListRoomsResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/rooms";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListRoomsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms(Expression<Func<string>> bodyname, Expression<Func<string>> bodydomainName, Expression<Func<int>> bodymaximumBoards = null, Expression<Func<int>> bodymaximumUsers = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodycategory = null, Expression<Func<string>> bodyadministrator = null)
+        public IBodyWorkflowAction<CreateRoomsResponse> CreateRooms([WorkflowExpression] Func<string> bodyname, [WorkflowExpression] Func<string> bodydomainName, [WorkflowExpression] Func<int> bodymaximumBoards = null, [WorkflowExpression] Func<int> bodymaximumUsers = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodycategory = null, [WorkflowExpression] Func<string> bodyadministrator = null)
         {
-            var apiCallPath = "/rooms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["name"] = CSharpExpressionConverter.ConvertToken(bodyname);
-            bodypropCount++;
-            body["domainName"] = CSharpExpressionConverter.ConvertToken(bodydomainName);
-            if (bodymaximumBoards != null)
+            SourceExpression.Validate(bodyname, nameof(bodyname), required: true);
+            SourceExpression.Validate(bodydomainName, nameof(bodydomainName), required: true);
+            SourceExpression.Validate(bodymaximumBoards, nameof(bodymaximumBoards), required: false);
+            SourceExpression.Validate(bodymaximumUsers, nameof(bodymaximumUsers), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodycategory, nameof(bodycategory), required: false);
+            SourceExpression.Validate(bodyadministrator, nameof(bodyadministrator), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["maximumBoards"] = CSharpExpressionConverter.ConvertToken(bodymaximumBoards);
+                var apiCallPath = "/rooms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodymaximumUsers != null)
-            {
-                body["maximumUsers"] = CSharpExpressionConverter.ConvertToken(bodymaximumUsers);
+                body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
                 bodypropCount++;
+                body["domainName"] = SourceExpressionConverter.ConvertToken(bodydomainName);
+                if (bodymaximumBoards != null)
+                {
+                    body["maximumBoards"] = SourceExpressionConverter.ConvertToken(bodymaximumBoards);
+                    bodypropCount++;
+                }
+
+                if (bodymaximumUsers != null)
+                {
+                    body["maximumUsers"] = SourceExpressionConverter.ConvertToken(bodymaximumUsers);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodycategory != null)
+                {
+                    body["category"] = SourceExpressionConverter.ConvertToken(bodycategory);
+                    bodypropCount++;
+                }
+
+                if (bodyadministrator != null)
+                {
+                    body["administrator"] = SourceExpressionConverter.ConvertToken(bodyadministrator);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodydescription != null)
+            return new ApiConnectionAction<CreateRoomsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<ListBoardsResponse> ListBoards([WorkflowExpression] Func<string> search = null, [WorkflowExpression] Func<sortDirectionInput> sortDirection = null)
+        {
+            SourceExpression.Validate(search, nameof(search), required: false);
+            SourceExpression.Validate(sortDirection, nameof(sortDirection), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
+                var apiCallPath = "/boards";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (search != null)
+                    callPayload.Queries["search"] = SourceExpressionConverter.ConvertO(search);
+                callPayload.Queries["sortDirection"] = Convert.ToString("asc");
+                if (sortDirection != null)
+                    callPayload.Queries["sortDirection"] = SourceExpressionConverter.Convert(sortDirection);
+                callPayload.Queries["page"] = Convert.ToString(1);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListBoardsResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<CreateCardResponse> CreateCard([WorkflowExpression] Func<typeCardInput> typeCard, [WorkflowExpression] Func<object> dynamicSchema = null)
+        {
+            SourceExpression.Validate(typeCard, nameof(typeCard), required: true);
+            SourceExpression.Validate(dynamicSchema, nameof(dynamicSchema), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/cards";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Type Card"] = SourceExpressionConverter.Convert(typeCard);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(dynamicSchema);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CreateCardResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue([WorkflowExpression] Func<string> bodyboardId, [WorkflowExpression] Func<JToken[]> bodyletters)
+        {
+            SourceExpression.Validate(bodyboardId, nameof(bodyboardId), required: true);
+            SourceExpression.Validate(bodyletters, nameof(bodyletters), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/qcd/indicators-values";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            if (bodycategory != null)
-            {
-                body["category"] = CSharpExpressionConverter.ConvertToken(bodycategory);
+                body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
+                body["letters"] = SourceExpressionConverter.ConvertToken(bodyletters);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodyadministrator != null)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<JToken> ComputeQCDIndicator([WorkflowExpression] Func<string> letterName, [WorkflowExpression] Func<string> indicatorName, [WorkflowExpression] Func<double> wedgeValue, [WorkflowExpression] Func<int> wedgeNumber, [WorkflowExpression] Func<wedgeRingInput> wedgeRing, [WorkflowExpression] Func<string> period = null)
+        {
+            SourceExpression.Validate(letterName, nameof(letterName), required: true);
+            SourceExpression.Validate(indicatorName, nameof(indicatorName), required: true);
+            SourceExpression.Validate(wedgeValue, nameof(wedgeValue), required: true);
+            SourceExpression.Validate(wedgeNumber, nameof(wedgeNumber), required: true);
+            SourceExpression.Validate(wedgeRing, nameof(wedgeRing), required: true);
+            SourceExpression.Validate(period, nameof(period), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["administrator"] = CSharpExpressionConverter.ConvertToken(bodyadministrator);
+                var apiCallPath = "/qcd/compute-indicator";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["letterName"] = SourceExpressionConverter.ConvertO(letterName);
+                callPayload.Queries["indicatorName"] = SourceExpressionConverter.ConvertO(indicatorName);
+                callPayload.Queries["wedgeValue"] = SourceExpressionConverter.ConvertO(wedgeValue);
+                callPayload.Queries["wedgeNumber"] = SourceExpressionConverter.ConvertO(wedgeNumber);
+                callPayload.Queries["wedgeRing"] = SourceExpressionConverter.Convert(wedgeRing);
+                if (period != null)
+                    callPayload.Queries["period"] = SourceExpressionConverter.ConvertO(period);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity([WorkflowExpression] Func<string> boardId, [WorkflowExpression] Func<int> page, [WorkflowExpression] Func<string> from = null, [WorkflowExpression] Func<string> to = null, [WorkflowExpression] Func<int> size = null)
+        {
+            SourceExpression.Validate(boardId, nameof(boardId), required: true);
+            SourceExpression.Validate(page, nameof(page), required: true);
+            SourceExpression.Validate(from, nameof(from), required: false);
+            SourceExpression.Validate(to, nameof(to), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/cards/activity";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["boardId"] = SourceExpressionConverter.ConvertO(boardId);
+                if (from != null)
+                    callPayload.Queries["from"] = SourceExpressionConverter.ConvertO(from);
+                if (to != null)
+                    callPayload.Queries["to"] = SourceExpressionConverter.ConvertO(to);
+                callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                callPayload.Queries["size"] = Convert.ToString(200);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.ConvertO(size);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ListCardsActivityResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage([WorkflowExpression] Func<string> boardImageId, [WorkflowExpression] Func<object> file, [WorkflowExpression] Func<fileContentTypeInput> fileContentType)
+        {
+            SourceExpression.Validate(boardImageId, nameof(boardImageId), required: true);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(fileContentType, nameof(fileContentType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/board-images/{0}/asset", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardImageId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
+        public IBodyWorkflowAction<JToken> UpdateGauge([WorkflowExpression] Func<string> gaugeId, [WorkflowExpression] Func<double> bodyvalue, [WorkflowExpression] Func<string> bodytitle = null)
+        {
+            SourceExpression.Validate(gaugeId, nameof(gaugeId), required: true);
+            SourceExpression.Validate(bodyvalue, nameof(bodyvalue), required: true);
+            SourceExpression.Validate(bodytitle, nameof(bodytitle), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/gauges/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(gaugeId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
+                body["value"] = SourceExpressionConverter.ConvertToken(bodyvalue);
+                if (bodytitle != null)
+                {
+                    body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<CreateRoomsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListBoardsResponse> ListBoards(Expression<Func<string>> search = null, Expression<Func<sortDirectionInput>> sortDirection = null)
-        {
-            var apiCallPath = "/boards";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (search != null)
-                callPayload.Queries["search"] = CSharpExpressionConverter.ConvertO(search);
-            callPayload.Queries["sortDirection"] = Convert.ToString("asc");
-            if (sortDirection != null)
-                callPayload.Queries["sortDirection"] = CSharpExpressionConverter.Convert(sortDirection);
-            callPayload.Queries["page"] = Convert.ToString(1);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            return new ApiConnectionAction<ListBoardsResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<CreateCardResponse> CreateCard(Expression<Func<typeCardInput>> typeCard, Expression<Func<object>> dynamicSchema = null)
-        {
-            var apiCallPath = "/cards";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Type Card"] = CSharpExpressionConverter.Convert(typeCard);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(dynamicSchema);
-            return new ApiConnectionAction<CreateCardResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateQCDIndicatorsValue(Expression<Func<string>> bodyboardId, Expression<Func<JToken[]>> bodyletters)
-        {
-            var apiCallPath = "/qcd/indicators-values";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["boardId"] = CSharpExpressionConverter.ConvertToken(bodyboardId);
-            bodypropCount++;
-            body["letters"] = CSharpExpressionConverter.ConvertToken(bodyletters);
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> ComputeQCDIndicator(Expression<Func<string>> letterName, Expression<Func<string>> indicatorName, Expression<Func<double>> wedgeValue, Expression<Func<int>> wedgeNumber, Expression<Func<wedgeRingInput>> wedgeRing, Expression<Func<string>> period = null)
-        {
-            var apiCallPath = "/qcd/compute-indicator";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["letterName"] = CSharpExpressionConverter.ConvertO(letterName);
-            callPayload.Queries["indicatorName"] = CSharpExpressionConverter.ConvertO(indicatorName);
-            callPayload.Queries["wedgeValue"] = CSharpExpressionConverter.ConvertO(wedgeValue);
-            callPayload.Queries["wedgeNumber"] = CSharpExpressionConverter.ConvertO(wedgeNumber);
-            callPayload.Queries["wedgeRing"] = CSharpExpressionConverter.Convert(wedgeRing);
-            if (period != null)
-                callPayload.Queries["period"] = CSharpExpressionConverter.ConvertO(period);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<ListCardsActivityResponse> ListCardsActivity(Expression<Func<string>> boardId, Expression<Func<int>> page, Expression<Func<string>> from = null, Expression<Func<string>> to = null, Expression<Func<int>> size = null)
-        {
-            var apiCallPath = "/cards/activity";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["boardId"] = CSharpExpressionConverter.ConvertO(boardId);
-            if (from != null)
-                callPayload.Queries["from"] = CSharpExpressionConverter.ConvertO(from);
-            if (to != null)
-                callPayload.Queries["to"] = CSharpExpressionConverter.ConvertO(to);
-            callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            callPayload.Queries["size"] = Convert.ToString(200);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.ConvertO(size);
-            return new ApiConnectionAction<ListCardsActivityResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateAssetBoardImage(Expression<Func<string>> boardImageId, Expression<Func<object>> file, Expression<Func<fileContentTypeInput>> fileContentType)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/board-images/{0}/asset", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(boardImageId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "iobeya")]
-        public IBodyWorkflowAction<JToken> UpdateGauge(Expression<Func<string>> gaugeId, Expression<Func<double>> bodyvalue, Expression<Func<string>> bodytitle = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/gauges/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(gaugeId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["value"] = CSharpExpressionConverter.ConvertToken(bodyvalue);
-            if (bodytitle != null)
-            {
-                body["title"] = CSharpExpressionConverter.ConvertToken(bodytitle);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 

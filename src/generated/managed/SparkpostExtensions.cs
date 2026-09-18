@@ -12,175 +12,209 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     public class SparkpostActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> CreateRecipientList(Expression<Func<string>> recipientListidOfTheRecipientList = null, Expression<Func<string>> recipientListnameOfTheRecipientList = null, Expression<Func<string>> recipientListdescription = null, Expression<Func<string>> recipientListemailAddressOfFirstRecipient = null)
+        public IBodyWorkflowAction<JToken> CreateRecipientList([WorkflowExpression] Func<string> recipientListidOfTheRecipientList = null, [WorkflowExpression] Func<string> recipientListnameOfTheRecipientList = null, [WorkflowExpression] Func<string> recipientListdescription = null, [WorkflowExpression] Func<string> recipientListemailAddressOfFirstRecipient = null)
         {
-            var apiCallPath = "/recipient-lists";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var recipientList = new JObject();
-            var recipientListpropCount = 0;
-            if (recipientListidOfTheRecipientList != null)
+            SourceExpression.Validate(recipientListidOfTheRecipientList, nameof(recipientListidOfTheRecipientList), required: false);
+            SourceExpression.Validate(recipientListnameOfTheRecipientList, nameof(recipientListnameOfTheRecipientList), required: false);
+            SourceExpression.Validate(recipientListdescription, nameof(recipientListdescription), required: false);
+            SourceExpression.Validate(recipientListemailAddressOfFirstRecipient, nameof(recipientListemailAddressOfFirstRecipient), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                recipientList["id"] = CSharpExpressionConverter.ConvertToken(recipientListidOfTheRecipientList);
-                recipientListpropCount++;
+                var apiCallPath = "/recipient-lists";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var recipientList = new JObject();
+                var recipientListpropCount = 0;
+                if (recipientListidOfTheRecipientList != null)
+                {
+                    recipientList["id"] = SourceExpressionConverter.ConvertToken(recipientListidOfTheRecipientList);
+                    recipientListpropCount++;
+                }
+
+                if (recipientListnameOfTheRecipientList != null)
+                {
+                    recipientList["name"] = SourceExpressionConverter.ConvertToken(recipientListnameOfTheRecipientList);
+                    recipientListpropCount++;
+                }
+
+                if (recipientListdescription != null)
+                {
+                    recipientList["description"] = SourceExpressionConverter.ConvertToken(recipientListdescription);
+                    recipientListpropCount++;
+                }
+
+                if (recipientListemailAddressOfFirstRecipient != null)
+                {
+                    recipientList["email"] = SourceExpressionConverter.ConvertToken(recipientListemailAddressOfFirstRecipient);
+                    recipientListpropCount++;
+                }
+
+                if (recipientListpropCount > 0)
+                {
+                    callPayload.Body = recipientList;
+                }
+                return callPayload;
             }
 
-            if (recipientListnameOfTheRecipientList != null)
-            {
-                recipientList["name"] = CSharpExpressionConverter.ConvertToken(recipientListnameOfTheRecipientList);
-                recipientListpropCount++;
-            }
-
-            if (recipientListdescription != null)
-            {
-                recipientList["description"] = CSharpExpressionConverter.ConvertToken(recipientListdescription);
-                recipientListpropCount++;
-            }
-
-            if (recipientListemailAddressOfFirstRecipient != null)
-            {
-                recipientList["email"] = CSharpExpressionConverter.ConvertToken(recipientListemailAddressOfFirstRecipient);
-                recipientListpropCount++;
-            }
-
-            if (recipientListpropCount > 0)
-            {
-                callPayload.Body = recipientList;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> AddUserToRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressemailAddress, Expression<Func<string>> addUserToRecipientListRequestrecipientaddressname = null)
+        public IBodyWorkflowAction<JToken> AddUserToRecipientList([WorkflowExpression] Func<string> recipientListId, [WorkflowExpression] Func<string> addUserToRecipientListRequestrecipientaddressemailAddress, [WorkflowExpression] Func<string> addUserToRecipientListRequestrecipientaddressname = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/add-user/recipient-lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var addUserToRecipientListRequest = new JObject();
-            var addUserToRecipientListRequestpropCount = 0;
-            var recipientObject = new JObject();
-            var recipientObjectpropCount = 0;
-            var addressObject = new JObject();
-            var addressObjectpropCount = 0;
-            addressObjectpropCount++;
-            addressObject["email"] = CSharpExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressemailAddress);
-            if (addUserToRecipientListRequestrecipientaddressname != null)
+            SourceExpression.Validate(recipientListId, nameof(recipientListId), required: true);
+            SourceExpression.Validate(addUserToRecipientListRequestrecipientaddressemailAddress, nameof(addUserToRecipientListRequestrecipientaddressemailAddress), required: true);
+            SourceExpression.Validate(addUserToRecipientListRequestrecipientaddressname, nameof(addUserToRecipientListRequestrecipientaddressname), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                addressObject["name"] = CSharpExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressname);
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/add-user/recipient-lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var addUserToRecipientListRequest = new JObject();
+                var addUserToRecipientListRequestpropCount = 0;
+                var recipientObject = new JObject();
+                var recipientObjectpropCount = 0;
+                var addressObject = new JObject();
+                var addressObjectpropCount = 0;
                 addressObjectpropCount++;
+                addressObject["email"] = SourceExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressemailAddress);
+                if (addUserToRecipientListRequestrecipientaddressname != null)
+                {
+                    addressObject["name"] = SourceExpressionConverter.ConvertToken(addUserToRecipientListRequestrecipientaddressname);
+                    addressObjectpropCount++;
+                }
+
+                if (addressObjectpropCount > 0)
+                {
+                    recipientObject["address"] = addressObject;
+                    recipientObjectpropCount++;
+                }
+
+                if (recipientObjectpropCount > 0)
+                {
+                    addUserToRecipientListRequest["recipient"] = recipientObject;
+                    addUserToRecipientListRequestpropCount++;
+                }
+
+                if (addUserToRecipientListRequestpropCount > 0)
+                {
+                    callPayload.Body = addUserToRecipientListRequest;
+                }
+                return callPayload;
             }
 
-            if (addressObjectpropCount > 0)
-            {
-                recipientObject["address"] = addressObject;
-                recipientObjectpropCount++;
-            }
-
-            if (recipientObjectpropCount > 0)
-            {
-                addUserToRecipientListRequest["recipient"] = recipientObject;
-                addUserToRecipientListRequestpropCount++;
-            }
-
-            if (addUserToRecipientListRequestpropCount > 0)
-            {
-                callPayload.Body = addUserToRecipientListRequest;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> DeleteUserFromRecipientList(Expression<Func<string>> recipientListId, Expression<Func<string>> deleteUserRequestemailAddress = null)
+        public IBodyWorkflowAction<JToken> DeleteUserFromRecipientList([WorkflowExpression] Func<string> recipientListId, [WorkflowExpression] Func<string> deleteUserRequestemailAddress = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/delete-user/recipient-lists/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var deleteUserRequest = new JObject();
-            var deleteUserRequestpropCount = 0;
-            if (deleteUserRequestemailAddress != null)
+            SourceExpression.Validate(recipientListId, nameof(recipientListId), required: true);
+            SourceExpression.Validate(deleteUserRequestemailAddress, nameof(deleteUserRequestemailAddress), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                deleteUserRequest["email_address"] = CSharpExpressionConverter.ConvertToken(deleteUserRequestemailAddress);
-                deleteUserRequestpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/delete-user/recipient-lists/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(recipientListId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var deleteUserRequest = new JObject();
+                var deleteUserRequestpropCount = 0;
+                if (deleteUserRequestemailAddress != null)
+                {
+                    deleteUserRequest["email_address"] = SourceExpressionConverter.ConvertToken(deleteUserRequestemailAddress);
+                    deleteUserRequestpropCount++;
+                }
+
+                if (deleteUserRequestpropCount > 0)
+                {
+                    callPayload.Body = deleteUserRequest;
+                }
+                return callPayload;
             }
 
-            if (deleteUserRequestpropCount > 0)
-            {
-                callPayload.Body = deleteUserRequest;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> SendEmailToRecipientList(Expression<Func<string>> requestrecipientsrecipient, Expression<Func<string>> requestcontenttemplate, Expression<Func<string>> requestcampaignId = null)
+        public IBodyWorkflowAction<JToken> SendEmailToRecipientList([WorkflowExpression] Func<string> requestrecipientsrecipient, [WorkflowExpression] Func<string> requestcontenttemplate, [WorkflowExpression] Func<string> requestcampaignId = null)
         {
-            var apiCallPath = "/transmissions";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var recipientsObject = new JObject();
-            var recipientsObjectpropCount = 0;
-            recipientsObjectpropCount++;
-            recipientsObject["list_id"] = CSharpExpressionConverter.ConvertToken(requestrecipientsrecipient);
-            if (recipientsObjectpropCount > 0)
+            SourceExpression.Validate(requestrecipientsrecipient, nameof(requestrecipientsrecipient), required: true);
+            SourceExpression.Validate(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
+            SourceExpression.Validate(requestcampaignId, nameof(requestcampaignId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["recipients"] = recipientsObject;
-                requestpropCount++;
+                var apiCallPath = "/transmissions";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var recipientsObject = new JObject();
+                var recipientsObjectpropCount = 0;
+                recipientsObjectpropCount++;
+                recipientsObject["list_id"] = SourceExpressionConverter.ConvertToken(requestrecipientsrecipient);
+                if (recipientsObjectpropCount > 0)
+                {
+                    request["recipients"] = recipientsObject;
+                    requestpropCount++;
+                }
+
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObjectpropCount++;
+                contentObject["template_id"] = SourceExpressionConverter.ConvertToken(requestcontenttemplate);
+                if (contentObjectpropCount > 0)
+                {
+                    request["content"] = contentObject;
+                    requestpropCount++;
+                }
+
+                if (requestcampaignId != null)
+                {
+                    request["campaign_id"] = SourceExpressionConverter.ConvertToken(requestcampaignId);
+                    requestpropCount++;
+                }
+
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObjectpropCount++;
-            contentObject["template_id"] = CSharpExpressionConverter.ConvertToken(requestcontenttemplate);
-            if (contentObjectpropCount > 0)
-            {
-                request["content"] = contentObject;
-                requestpropCount++;
-            }
-
-            if (requestcampaignId != null)
-            {
-                request["campaign_id"] = CSharpExpressionConverter.ConvertToken(requestcampaignId);
-                requestpropCount++;
-            }
-
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "sparkpost")]
-        public IBodyWorkflowAction<JToken> SendEmailToRecipient(Expression<Func<string>> requestcontenttemplate, Expression<Func<EmailRecipient[]>> requestrecipients)
+        public IBodyWorkflowAction<JToken> SendEmailToRecipient([WorkflowExpression] Func<string> requestcontenttemplate, [WorkflowExpression] Func<EmailRecipient[]> requestrecipients)
         {
-            var apiCallPath = "/transmissions/singleRecipient";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var request = new JObject();
-            var requestpropCount = 0;
-            var contentObject = new JObject();
-            var contentObjectpropCount = 0;
-            contentObjectpropCount++;
-            contentObject["template_id"] = CSharpExpressionConverter.ConvertToken(requestcontenttemplate);
-            if (contentObjectpropCount > 0)
+            SourceExpression.Validate(requestcontenttemplate, nameof(requestcontenttemplate), required: true);
+            SourceExpression.Validate(requestrecipients, nameof(requestrecipients), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                request["content"] = contentObject;
+                var apiCallPath = "/transmissions/singleRecipient";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var request = new JObject();
+                var requestpropCount = 0;
+                var contentObject = new JObject();
+                var contentObjectpropCount = 0;
+                contentObjectpropCount++;
+                contentObject["template_id"] = SourceExpressionConverter.ConvertToken(requestcontenttemplate);
+                if (contentObjectpropCount > 0)
+                {
+                    request["content"] = contentObject;
+                    requestpropCount++;
+                }
+
                 requestpropCount++;
+                request["recipients"] = SourceExpressionConverter.ConvertToken(requestrecipients);
+                if (requestpropCount > 0)
+                {
+                    callPayload.Body = request;
+                }
+                return callPayload;
             }
 
-            requestpropCount++;
-            request["recipients"] = CSharpExpressionConverter.ConvertToken(requestrecipients);
-            if (requestpropCount > 0)
-            {
-                callPayload.Body = request;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
     }
 
@@ -188,10 +222,15 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sparkpost
     {
         public IBodyWorkflowTrigger<ListRecipientListsResponse> OnNewRecipientList(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/recipient-lists";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<ListRecipientListsResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/trigger/recipient-lists";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<ListRecipientListsResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

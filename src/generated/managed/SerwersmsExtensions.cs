@@ -12,155 +12,188 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Serwersms
     public class SerwersmsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist(Expression<Func<string>> bodyphone)
+        public IBodyWorkflowAction<AddBlacklistResponse> AddBlacklist([WorkflowExpression] Func<string> bodyphone)
         {
-            var apiCallPath = "/action/add_blacklist";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/action/add_blacklist";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<AddBlacklistResponse>(callPayload);
+            return new ApiConnectionAction<AddBlacklistResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<AddContactResponse> AddContact(Expression<Func<string>> bodyphone, Expression<Func<string>> bodyaddress = null, Expression<Func<string>> bodycity = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodydescription = null, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodytaxId = null)
+        public IBodyWorkflowAction<AddContactResponse> AddContact([WorkflowExpression] Func<string> bodyphone, [WorkflowExpression] Func<string> bodyaddress = null, [WorkflowExpression] Func<string> bodycity = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodydescription = null, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodytaxId = null)
         {
-            var apiCallPath = "/action/add_contact";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyaddress != null)
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: true);
+            SourceExpression.Validate(bodyaddress, nameof(bodyaddress), required: false);
+            SourceExpression.Validate(bodycity, nameof(bodycity), required: false);
+            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            SourceExpression.Validate(bodydescription, nameof(bodydescription), required: false);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodytaxId, nameof(bodytaxId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["address"] = CSharpExpressionConverter.ConvertToken(bodyaddress);
+                var apiCallPath = "/action/add_contact";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyaddress != null)
+                {
+                    body["address"] = SourceExpressionConverter.ConvertToken(bodyaddress);
+                    bodypropCount++;
+                }
+
+                if (bodycity != null)
+                {
+                    body["city"] = SourceExpressionConverter.ConvertToken(bodycity);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = SourceExpressionConverter.ConvertToken(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodydescription != null)
+                {
+                    body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
+                    bodypropCount++;
+                }
+
+                if (bodyemail != null)
+                {
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                    bodypropCount++;
+                }
+
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodygroupId != null)
+                {
+                    body["group_id"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                if (bodytaxId != null)
+                {
+                    body["tax_id"] = SourceExpressionConverter.ConvertToken(bodytaxId);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodycity != null)
-            {
-                body["city"] = CSharpExpressionConverter.ConvertToken(bodycity);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodydescription != null)
-            {
-                body["description"] = CSharpExpressionConverter.ConvertToken(bodydescription);
-                bodypropCount++;
-            }
-
-            if (bodyemail != null)
-            {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodygroupId != null)
-            {
-                body["group_id"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            bodypropCount++;
-            body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-            if (bodytaxId != null)
-            {
-                body["tax_id"] = CSharpExpressionConverter.ConvertToken(bodytaxId);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<AddContactResponse>(callPayload);
+            return new ApiConnectionAction<AddContactResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "serwersms")]
-        public IBodyWorkflowAction<SendSmsResponse> SendSms(Expression<Func<string>> bodymessage, Expression<Func<string>> bodygroupId = null, Expression<Func<string>> bodyphone = null, Expression<Func<string>> bodysender = null, Expression<Func<bool>> bodyutf = null)
+        public IBodyWorkflowAction<SendSmsResponse> SendSms([WorkflowExpression] Func<string> bodymessage, [WorkflowExpression] Func<string> bodygroupId = null, [WorkflowExpression] Func<string> bodyphone = null, [WorkflowExpression] Func<string> bodysender = null, [WorkflowExpression] Func<bool> bodyutf = null)
         {
-            var apiCallPath = "/action/send_sms";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodygroupId != null)
+            SourceExpression.Validate(bodymessage, nameof(bodymessage), required: true);
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: false);
+            SourceExpression.Validate(bodyphone, nameof(bodyphone), required: false);
+            SourceExpression.Validate(bodysender, nameof(bodysender), required: false);
+            SourceExpression.Validate(bodyutf, nameof(bodyutf), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["group_id"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
+                var apiCallPath = "/action/send_sms";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodygroupId != null)
+                {
+                    body["group_id"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                    bodypropCount++;
+                }
+
                 bodypropCount++;
+                body["message"] = SourceExpressionConverter.ConvertToken(bodymessage);
+                if (bodyphone != null)
+                {
+                    body["phone"] = SourceExpressionConverter.ConvertToken(bodyphone);
+                    bodypropCount++;
+                }
+
+                if (bodysender != null)
+                {
+                    body["sender"] = SourceExpressionConverter.ConvertToken(bodysender);
+                    bodypropCount++;
+                }
+
+                if (bodyutf != null)
+                {
+                    body["utf"] = SourceExpressionConverter.ConvertToken(bodyutf);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            bodypropCount++;
-            body["message"] = CSharpExpressionConverter.ConvertToken(bodymessage);
-            if (bodyphone != null)
-            {
-                body["phone"] = CSharpExpressionConverter.ConvertToken(bodyphone);
-                bodypropCount++;
-            }
-
-            if (bodysender != null)
-            {
-                body["sender"] = CSharpExpressionConverter.ConvertToken(bodysender);
-                bodypropCount++;
-            }
-
-            if (bodyutf != null)
-            {
-                body["utf"] = CSharpExpressionConverter.ConvertToken(bodyutf);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<SendSmsResponse>(callPayload);
+            return new ApiConnectionAction<SendSmsResponse>(BuildSourceInput);
         }
     }
 
     public class SerwersmsTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer(Expression<Func<bodytypeInput>> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<NewAnswerResponse> NewAnswer([WorkflowExpression] Func<bodytypeInput> bodytype, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/trigger/get_answer";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["type"] = CSharpExpressionConverter.Convert(bodytype);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/trigger/get_answer";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.Convert(bodytype);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger<NewAnswerResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<NewAnswerResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

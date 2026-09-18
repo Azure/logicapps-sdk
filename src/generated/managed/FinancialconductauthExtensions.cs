@@ -12,176 +12,293 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Financialconductauth
     public class FinancialconductauthActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch(Expression<Func<string>> q, Expression<Func<typeInput>> type)
+        public IBodyWorkflowAction<CommonSearchResponse> CommonSearch([WorkflowExpression] Func<string> q, [WorkflowExpression] Func<typeInput> type)
         {
-            var apiCallPath = "/services/V0.1/Search";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            callPayload.Queries["type"] = CSharpExpressionConverter.Convert(type);
-            return new ApiConnectionAction<CommonSearchResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: true);
+            SourceExpression.Validate(type, nameof(type), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/services/V0.1/Search";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                callPayload.Queries["type"] = SourceExpressionConverter.Convert(type);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CommonSearchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualsDetailsByIRNResponse> IndividualsDetailsByIRN([WorkflowExpression] Func<string> iRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(callPayload);
+            SourceExpression.Validate(iRN, nameof(iRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IndividualsDetailsByIRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDetailsByFRNResponse> FirmDetailsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmDetailsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmDetailsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductDetailsByPRNResponse> ProductDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProductDetailsByPRNResponse>(callPayload);
+            SourceExpression.Validate(pRN, nameof(pRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProductDetailsByPRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<SubfundDetailsByPRNResponse> SubfundDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Subfund", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SubfundDetailsByPRNResponse>(callPayload);
+            SourceExpression.Validate(pRN, nameof(pRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Subfund", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SubfundDetailsByPRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN(Expression<Func<string>> pRN)
+        public IBodyWorkflowAction<ProductOtherNameDetailsByPRNResponse> ProductOtherNameDetailsByPRN([WorkflowExpression] Func<string> pRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Names", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(callPayload);
+            SourceExpression.Validate(pRN, nameof(pRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/CIS/{0}/Names", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ProductOtherNameDetailsByPRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN(Expression<Func<string>> iRN)
+        public IBodyWorkflowAction<IndividualDisciplinaryHistoryByIRNResponse> IndividualDisciplinaryHistoryByIRN([WorkflowExpression] Func<string> iRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(callPayload);
+            SourceExpression.Validate(iRN, nameof(iRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Individuals/{0}/DisciplinaryHistory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(iRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IndividualDisciplinaryHistoryByIRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmOtherNamesByFRNResponse> FirmOtherNamesByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Names", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Names", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmOtherNamesByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmAddressByFRNResponse> FirmAddressByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Address", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmAddressByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Address", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmAddressByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmIndividualsByFRNResponse> FirmIndividualsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Individuals", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmIndividualsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Individuals", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmIndividualsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmActivitiesAndPermissionsByFRNResponse> FirmActivitiesAndPermissionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Permissions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Permissions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmActivitiesAndPermissionsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF(Expression<Func<string>> fRN, Expression<Func<string>> rEQREF)
+        public IBodyWorkflowAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse> FirmRequirementsInvestmentTypesByFRNandREQREF([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> rEQREF)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(rEQREF, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            SourceExpression.Validate(rEQREF, nameof(rEQREF), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements/{1}/InvestmentTypes", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(rEQREF, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmRequirementsInvestmentTypesByFRNandREQREFResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRegulatorsByFRNResponse> FirmRegulatorsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Regulators/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Regulators/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmRegulatorsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmPassportByFRNResponse> FirmPassportByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmPassportByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmPassportByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmExclusionsByFRNResponse> FirmExclusionsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Exclusions", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmExclusionsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Exclusions", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmExclusionsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmDisciplinaryHistoryByFRNResponse> FirmDisciplinaryHistoryByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/DisciplinaryHistory", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmDisciplinaryHistoryByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmRequirementsByFRNResponse> FirmRequirementsByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmRequirementsByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Requirements", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmRequirementsByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN(Expression<Func<string>> fRN)
+        public IBodyWorkflowAction<FirmWaiverByFRNResponse> FirmWaiverByFRN([WorkflowExpression] Func<string> fRN)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Waivers", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmWaiverByFRNResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Waivers", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmWaiverByFRNResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "financialconductauth")]
-        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry(Expression<Func<string>> fRN, Expression<Func<string>> country)
+        public IBodyWorkflowAction<FirmPassportPermissionByFRNandCountryResponse> FirmPassportPermissionByFRNandCountry([WorkflowExpression] Func<string> fRN, [WorkflowExpression] Func<string> country)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(callPayload);
+            SourceExpression.Validate(fRN, nameof(fRN), required: true);
+            SourceExpression.Validate(country, nameof(country), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/services/V0.1/Firm/{0}/Passports/{1}/Permission/", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(fRN, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(country, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FirmPassportPermissionByFRNandCountryResponse>(BuildSourceInput);
         }
     }
 

@@ -12,36 +12,57 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finra
     public class FinraActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityWeeklySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string> EquityWeeklySummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/data/group/otcMarket/name/weeklySummary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityMonthlySummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string> EquityMonthlySummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/data/group/otcMarket/name/monthlySummary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "finra")]
-        public IBodyWorkflowAction<string> EquityOTCBlockSummary(Expression<Func<string>> contentType, Expression<Func<int>> limit)
+        public IBodyWorkflowAction<string> EquityOTCBlockSummary([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<int> limit)
         {
-            var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(limit, nameof(limit), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/data/group/otcMarket/name/otcBlocksSummary";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
     }
 

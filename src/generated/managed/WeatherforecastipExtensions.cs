@@ -12,16 +12,23 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Weatherforecastip
     public class WeatherforecastipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "weatherforecastip")]
-        public IBodyWorkflowAction<CityResponse> City(Expression<Func<string>> q = null, Expression<Func<string>> appid = null)
+        public IBodyWorkflowAction<CityResponse> City([WorkflowExpression] Func<string> q = null, [WorkflowExpression] Func<string> appid = null)
         {
-            var apiCallPath = "/data/2.5/weather";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (q != null)
-                callPayload.Queries["q"] = CSharpExpressionConverter.ConvertO(q);
-            if (appid != null)
-                callPayload.Queries["appid"] = CSharpExpressionConverter.ConvertO(appid);
-            return new ApiConnectionAction<CityResponse>(callPayload);
+            SourceExpression.Validate(q, nameof(q), required: false);
+            SourceExpression.Validate(appid, nameof(appid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/data/2.5/weather";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (q != null)
+                    callPayload.Queries["q"] = SourceExpressionConverter.ConvertO(q);
+                if (appid != null)
+                    callPayload.Queries["appid"] = SourceExpressionConverter.ConvertO(appid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CityResponse>(BuildSourceInput);
         }
     }
 

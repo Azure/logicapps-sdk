@@ -12,192 +12,288 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ordnancesurveyplaces
     public class OrdnancesurveyplacesActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<FindResponse> Find(Expression<Func<string>> query, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<double>> minmatch = null, Expression<Func<int>> matchprecision = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
+        public IBodyWorkflowAction<FindResponse> Find([WorkflowExpression] Func<string> query, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<double> minmatch = null, [WorkflowExpression] Func<int> matchprecision = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
         {
-            var apiCallPath = "/places/v1/addresses/find";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["query"] = CSharpExpressionConverter.ConvertO(query);
-            callPayload.Queries["format"] = Convert.ToString("JSON");
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (maxresults != null)
-                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (minmatch != null)
-                callPayload.Queries["minmatch"] = CSharpExpressionConverter.ConvertO(minmatch);
-            if (matchprecision != null)
-                callPayload.Queries["matchprecision"] = CSharpExpressionConverter.ConvertO(matchprecision);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            return new ApiConnectionAction<FindResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<PostcodeResponse> Postcode(Expression<Func<string>> postcode, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/postcode";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["postcode"] = CSharpExpressionConverter.ConvertO(postcode);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (maxresults != null)
-                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            return new ApiConnectionAction<PostcodeResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<UPRNResponse> UPRN(Expression<Func<int>> uprn, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/uprn";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["uprn"] = CSharpExpressionConverter.ConvertO(uprn);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            return new ApiConnectionAction<UPRNResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<NearestResponse> Nearest(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/nearest";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["point"] = CSharpExpressionConverter.ConvertO(point);
-            if (radius != null)
-                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            if (srs != null)
-                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
-            return new ApiConnectionAction<NearestResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<BBoxResponse> BBox(Expression<Func<string>> bbox, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/bbox";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bbox"] = CSharpExpressionConverter.ConvertO(bbox);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (maxresults != null)
-                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            if (srs != null)
-                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
-            return new ApiConnectionAction<BBoxResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<RadiusResponse> Radius(Expression<Func<string>> point, Expression<Func<int>> radius = null, Expression<Func<string>> format = null, Expression<Func<int>> maxresults = null, Expression<Func<int>> offset = null, Expression<Func<string>> dataset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/radius";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["point"] = CSharpExpressionConverter.ConvertO(point);
-            callPayload.Queries["radius"] = Convert.ToString(100);
-            if (radius != null)
-                callPayload.Queries["radius"] = CSharpExpressionConverter.ConvertO(radius);
-            if (format != null)
-                callPayload.Queries["format"] = CSharpExpressionConverter.ConvertO(format);
-            if (maxresults != null)
-                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            if (srs != null)
-                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
-            return new ApiConnectionAction<RadiusResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
-        public IBodyWorkflowAction<PolygonResponse> Polygon(Expression<Func<string>> contentType, Expression<Func<string>> bodytype, Expression<Func<string>> bodygeometry, Expression<Func<int>> referencepoint = null, Expression<Func<int>> maxresults = null, Expression<Func<string>> dataset = null, Expression<Func<int>> offset = null, Expression<Func<string>> lr = null, Expression<Func<string>> fq = null, Expression<Func<string>> outputSrs = null, Expression<Func<string>> srs = null)
-        {
-            var apiCallPath = "/places/v1/addresses/polygon";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (referencepoint != null)
-                callPayload.Queries["referencepoint"] = CSharpExpressionConverter.ConvertO(referencepoint);
-            if (maxresults != null)
-                callPayload.Queries["maxresults"] = CSharpExpressionConverter.ConvertO(maxresults);
-            if (dataset != null)
-                callPayload.Queries["dataset"] = CSharpExpressionConverter.ConvertO(dataset);
-            if (offset != null)
-                callPayload.Queries["offset"] = CSharpExpressionConverter.ConvertO(offset);
-            if (lr != null)
-                callPayload.Queries["lr"] = CSharpExpressionConverter.ConvertO(lr);
-            if (fq != null)
-                callPayload.Queries["fq"] = CSharpExpressionConverter.ConvertO(fq);
-            if (outputSrs != null)
-                callPayload.Queries["output_srs"] = CSharpExpressionConverter.ConvertO(outputSrs);
-            if (srs != null)
-                callPayload.Queries["srs"] = CSharpExpressionConverter.ConvertO(srs);
-            callPayload.Headers["Content-type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["type"] = CSharpExpressionConverter.ConvertToken(bodytype);
-            bodypropCount++;
-            body["geometry"] = CSharpExpressionConverter.ConvertToken(bodygeometry);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(query, nameof(query), required: true);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(minmatch, nameof(minmatch), required: false);
+            SourceExpression.Validate(matchprecision, nameof(matchprecision), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/places/v1/addresses/find";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["query"] = SourceExpressionConverter.ConvertO(query);
+                callPayload.Queries["format"] = Convert.ToString("JSON");
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (maxresults != null)
+                    callPayload.Queries["maxresults"] = SourceExpressionConverter.ConvertO(maxresults);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (minmatch != null)
+                    callPayload.Queries["minmatch"] = SourceExpressionConverter.ConvertO(minmatch);
+                if (matchprecision != null)
+                    callPayload.Queries["matchprecision"] = SourceExpressionConverter.ConvertO(matchprecision);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PolygonResponse>(callPayload);
+            return new ApiConnectionAction<FindResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<PostcodeResponse> Postcode([WorkflowExpression] Func<string> postcode, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
+        {
+            SourceExpression.Validate(postcode, nameof(postcode), required: true);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/postcode";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["postcode"] = SourceExpressionConverter.ConvertO(postcode);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (maxresults != null)
+                    callPayload.Queries["maxresults"] = SourceExpressionConverter.ConvertO(maxresults);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PostcodeResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<UPRNResponse> UPRN([WorkflowExpression] Func<int> uprn, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null)
+        {
+            SourceExpression.Validate(uprn, nameof(uprn), required: true);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/uprn";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["uprn"] = SourceExpressionConverter.ConvertO(uprn);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<UPRNResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<NearestResponse> Nearest([WorkflowExpression] Func<string> point, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
+        {
+            SourceExpression.Validate(point, nameof(point), required: true);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            SourceExpression.Validate(srs, nameof(srs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/nearest";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["point"] = SourceExpressionConverter.ConvertO(point);
+                if (radius != null)
+                    callPayload.Queries["radius"] = SourceExpressionConverter.ConvertO(radius);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<NearestResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<BBoxResponse> BBox([WorkflowExpression] Func<string> bbox, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
+        {
+            SourceExpression.Validate(bbox, nameof(bbox), required: true);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            SourceExpression.Validate(srs, nameof(srs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/bbox";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bbox"] = SourceExpressionConverter.ConvertO(bbox);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (maxresults != null)
+                    callPayload.Queries["maxresults"] = SourceExpressionConverter.ConvertO(maxresults);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BBoxResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<RadiusResponse> Radius([WorkflowExpression] Func<string> point, [WorkflowExpression] Func<int> radius = null, [WorkflowExpression] Func<string> format = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
+        {
+            SourceExpression.Validate(point, nameof(point), required: true);
+            SourceExpression.Validate(radius, nameof(radius), required: false);
+            SourceExpression.Validate(format, nameof(format), required: false);
+            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            SourceExpression.Validate(srs, nameof(srs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/radius";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["point"] = SourceExpressionConverter.ConvertO(point);
+                callPayload.Queries["radius"] = Convert.ToString(100);
+                if (radius != null)
+                    callPayload.Queries["radius"] = SourceExpressionConverter.ConvertO(radius);
+                if (format != null)
+                    callPayload.Queries["format"] = SourceExpressionConverter.ConvertO(format);
+                if (maxresults != null)
+                    callPayload.Queries["maxresults"] = SourceExpressionConverter.ConvertO(maxresults);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<RadiusResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ordnancesurveyplaces")]
+        public IBodyWorkflowAction<PolygonResponse> Polygon([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodytype, [WorkflowExpression] Func<string> bodygeometry, [WorkflowExpression] Func<int> referencepoint = null, [WorkflowExpression] Func<int> maxresults = null, [WorkflowExpression] Func<string> dataset = null, [WorkflowExpression] Func<int> offset = null, [WorkflowExpression] Func<string> lr = null, [WorkflowExpression] Func<string> fq = null, [WorkflowExpression] Func<string> outputSrs = null, [WorkflowExpression] Func<string> srs = null)
+        {
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodytype, nameof(bodytype), required: true);
+            SourceExpression.Validate(bodygeometry, nameof(bodygeometry), required: true);
+            SourceExpression.Validate(referencepoint, nameof(referencepoint), required: false);
+            SourceExpression.Validate(maxresults, nameof(maxresults), required: false);
+            SourceExpression.Validate(dataset, nameof(dataset), required: false);
+            SourceExpression.Validate(offset, nameof(offset), required: false);
+            SourceExpression.Validate(lr, nameof(lr), required: false);
+            SourceExpression.Validate(fq, nameof(fq), required: false);
+            SourceExpression.Validate(outputSrs, nameof(outputSrs), required: false);
+            SourceExpression.Validate(srs, nameof(srs), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/places/v1/addresses/polygon";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (referencepoint != null)
+                    callPayload.Queries["referencepoint"] = SourceExpressionConverter.ConvertO(referencepoint);
+                if (maxresults != null)
+                    callPayload.Queries["maxresults"] = SourceExpressionConverter.ConvertO(maxresults);
+                if (dataset != null)
+                    callPayload.Queries["dataset"] = SourceExpressionConverter.ConvertO(dataset);
+                if (offset != null)
+                    callPayload.Queries["offset"] = SourceExpressionConverter.ConvertO(offset);
+                if (lr != null)
+                    callPayload.Queries["lr"] = SourceExpressionConverter.ConvertO(lr);
+                if (fq != null)
+                    callPayload.Queries["fq"] = SourceExpressionConverter.ConvertO(fq);
+                if (outputSrs != null)
+                    callPayload.Queries["output_srs"] = SourceExpressionConverter.ConvertO(outputSrs);
+                if (srs != null)
+                    callPayload.Queries["srs"] = SourceExpressionConverter.ConvertO(srs);
+                callPayload.Headers["Content-type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["type"] = SourceExpressionConverter.ConvertToken(bodytype);
+                bodypropCount++;
+                body["geometry"] = SourceExpressionConverter.ConvertToken(bodygeometry);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PolygonResponse>(BuildSourceInput);
         }
     }
 

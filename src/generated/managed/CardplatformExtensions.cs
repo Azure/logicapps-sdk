@@ -12,52 +12,70 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cardplatform
     public class CardplatformActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IBodyWorkflowAction<string> SendMessage(Expression<Func<string[]>> cardbodyrecipients, Expression<Func<string>> cardbodyheading, Expression<Func<string>> cardbodyadaptiveCard)
+        public IBodyWorkflowAction<string> SendMessage([WorkflowExpression] Func<string[]> cardbodyrecipients, [WorkflowExpression] Func<string> cardbodyheading, [WorkflowExpression] Func<string> cardbodyadaptiveCard)
         {
-            var apiCallPath = "/sendmessage";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var cardbody = new JObject();
-            var cardbodypropCount = 0;
-            cardbodypropCount++;
-            cardbody["recipients"] = CSharpExpressionConverter.ConvertToken(cardbodyrecipients);
-            cardbodypropCount++;
-            cardbody["heading"] = CSharpExpressionConverter.ConvertToken(cardbodyheading);
-            cardbodypropCount++;
-            cardbody["card"] = CSharpExpressionConverter.ConvertToken(cardbodyadaptiveCard);
-            if (cardbodypropCount > 0)
+            SourceExpression.Validate(cardbodyrecipients, nameof(cardbodyrecipients), required: true);
+            SourceExpression.Validate(cardbodyheading, nameof(cardbodyheading), required: true);
+            SourceExpression.Validate(cardbodyadaptiveCard, nameof(cardbodyadaptiveCard), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = cardbody;
+                var apiCallPath = "/sendmessage";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var cardbody = new JObject();
+                var cardbodypropCount = 0;
+                cardbodypropCount++;
+                cardbody["recipients"] = SourceExpressionConverter.ConvertToken(cardbodyrecipients);
+                cardbodypropCount++;
+                cardbody["heading"] = SourceExpressionConverter.ConvertToken(cardbodyheading);
+                cardbodypropCount++;
+                cardbody["card"] = SourceExpressionConverter.ConvertToken(cardbodyadaptiveCard);
+                if (cardbodypropCount > 0)
+                {
+                    callPayload.Body = cardbody;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IWorkflowAction PrivateTemplatesDelete(Expression<Func<string>> name)
+        public IWorkflowAction PrivateTemplatesDelete([WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = "/PrivateTemplates";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            return new ApiConnectionAction(callPayload);
+            SourceExpression.Validate(name, nameof(name), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/PrivateTemplates";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cardplatform")]
-        public IWorkflowAction PrivateTemplatesUpdate(Expression<Func<string>> name)
+        public IWorkflowAction PrivateTemplatesUpdate([WorkflowExpression] Func<string> name)
         {
-            var apiCallPath = "/PrivateTemplates";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["name"] = CSharpExpressionConverter.ConvertO(name);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(name, nameof(name), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/PrivateTemplates";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["name"] = SourceExpressionConverter.ConvertO(name);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

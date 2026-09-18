@@ -12,13 +12,19 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ip2whoisip
     public class Ip2whoisipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "ip2whoisip")]
-        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain(Expression<Func<string>> domain)
+        public IBodyWorkflowAction<CheckDomainResponse> CheckDomain([WorkflowExpression] Func<string> domain)
         {
-            var apiCallPath = "/v2";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["domain"] = CSharpExpressionConverter.ConvertO(domain);
-            return new ApiConnectionAction<CheckDomainResponse>(callPayload);
+            SourceExpression.Validate(domain, nameof(domain), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v2";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["domain"] = SourceExpressionConverter.ConvertO(domain);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CheckDomainResponse>(BuildSourceInput);
         }
     }
 

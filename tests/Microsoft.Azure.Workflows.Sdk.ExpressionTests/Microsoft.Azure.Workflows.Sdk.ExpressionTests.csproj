@@ -22,4 +22,6 @@
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
   </ItemGroup>
 
+  <Import Project="..\LegacyExpressionSources.props" />
+
 </Project>

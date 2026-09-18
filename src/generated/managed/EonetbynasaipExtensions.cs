@@ -12,115 +12,175 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Eonetbynasaip
     public class EonetbynasaipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsResponse> Events(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsResponse> Events([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
-            var apiCallPath = "/events";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (source != null)
-                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            callPayload.Queries["status"] = Convert.ToString("open");
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (days != null)
-                callPayload.Queries["days"] = CSharpExpressionConverter.ConvertO(days);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            if (magID != null)
-                callPayload.Queries["magID"] = CSharpExpressionConverter.ConvertO(magID);
-            if (magMin != null)
-                callPayload.Queries["magMin"] = CSharpExpressionConverter.ConvertO(magMin);
-            if (magMax != null)
-                callPayload.Queries["magMax"] = CSharpExpressionConverter.ConvertO(magMax);
-            if (bbox != null)
-                callPayload.Queries["bbox"] = CSharpExpressionConverter.ConvertO(bbox);
-            return new ApiConnectionAction<EventsResponse>(callPayload);
+            SourceExpression.Validate(source, nameof(source), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(days, nameof(days), required: false);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            SourceExpression.Validate(magID, nameof(magID), required: false);
+            SourceExpression.Validate(magMin, nameof(magMin), required: false);
+            SourceExpression.Validate(magMax, nameof(magMax), required: false);
+            SourceExpression.Validate(bbox, nameof(bbox), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/events";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (source != null)
+                    callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                callPayload.Queries["status"] = Convert.ToString("open");
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (days != null)
+                    callPayload.Queries["days"] = SourceExpressionConverter.ConvertO(days);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                if (magID != null)
+                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magID);
+                if (magMin != null)
+                    callPayload.Queries["magMin"] = SourceExpressionConverter.ConvertO(magMin);
+                if (magMax != null)
+                    callPayload.Queries["magMax"] = SourceExpressionConverter.ConvertO(magMax);
+                if (bbox != null)
+                    callPayload.Queries["bbox"] = SourceExpressionConverter.ConvertO(bbox);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EventsResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON(Expression<Func<string>> source = null, Expression<Func<string>> category = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> magID = null, Expression<Func<string>> magMin = null, Expression<Func<string>> magMax = null, Expression<Func<string>> bbox = null)
+        public IBodyWorkflowAction<EventsGeoJSONResponse> EventsGeoJSON([WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<string> category = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> magID = null, [WorkflowExpression] Func<string> magMin = null, [WorkflowExpression] Func<string> magMax = null, [WorkflowExpression] Func<string> bbox = null)
         {
-            var apiCallPath = "/events/geojson";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (source != null)
-                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
-            if (category != null)
-                callPayload.Queries["category"] = CSharpExpressionConverter.ConvertO(category);
-            callPayload.Queries["status"] = Convert.ToString("open");
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (days != null)
-                callPayload.Queries["days"] = CSharpExpressionConverter.ConvertO(days);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            if (magID != null)
-                callPayload.Queries["magID"] = CSharpExpressionConverter.ConvertO(magID);
-            if (magMin != null)
-                callPayload.Queries["magMin"] = CSharpExpressionConverter.ConvertO(magMin);
-            if (magMax != null)
-                callPayload.Queries["magMax"] = CSharpExpressionConverter.ConvertO(magMax);
-            if (bbox != null)
-                callPayload.Queries["bbox"] = CSharpExpressionConverter.ConvertO(bbox);
-            return new ApiConnectionAction<EventsGeoJSONResponse>(callPayload);
+            SourceExpression.Validate(source, nameof(source), required: false);
+            SourceExpression.Validate(category, nameof(category), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(days, nameof(days), required: false);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            SourceExpression.Validate(magID, nameof(magID), required: false);
+            SourceExpression.Validate(magMin, nameof(magMin), required: false);
+            SourceExpression.Validate(magMax, nameof(magMax), required: false);
+            SourceExpression.Validate(bbox, nameof(bbox), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/events/geojson";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (source != null)
+                    callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                if (category != null)
+                    callPayload.Queries["category"] = SourceExpressionConverter.ConvertO(category);
+                callPayload.Queries["status"] = Convert.ToString("open");
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (days != null)
+                    callPayload.Queries["days"] = SourceExpressionConverter.ConvertO(days);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                if (magID != null)
+                    callPayload.Queries["magID"] = SourceExpressionConverter.ConvertO(magID);
+                if (magMin != null)
+                    callPayload.Queries["magMin"] = SourceExpressionConverter.ConvertO(magMin);
+                if (magMax != null)
+                    callPayload.Queries["magMax"] = SourceExpressionConverter.ConvertO(magMax);
+                if (bbox != null)
+                    callPayload.Queries["bbox"] = SourceExpressionConverter.ConvertO(bbox);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EventsGeoJSONResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<EventCategoriesResponse> EventCategories(Expression<Func<string>> category, Expression<Func<string>> source = null, Expression<Func<statusInput>> status = null, Expression<Func<int>> limit = null, Expression<Func<int>> days = null, Expression<Func<string>> start = null, Expression<Func<string>> end = null)
+        public IBodyWorkflowAction<EventCategoriesResponse> EventCategories([WorkflowExpression] Func<string> category, [WorkflowExpression] Func<string> source = null, [WorkflowExpression] Func<statusInput> status = null, [WorkflowExpression] Func<int> limit = null, [WorkflowExpression] Func<int> days = null, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/categories/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (source != null)
-                callPayload.Queries["source"] = CSharpExpressionConverter.ConvertO(source);
-            if (status != null)
-                callPayload.Queries["status"] = CSharpExpressionConverter.Convert(status);
-            if (limit != null)
-                callPayload.Queries["limit"] = CSharpExpressionConverter.ConvertO(limit);
-            if (days != null)
-                callPayload.Queries["days"] = CSharpExpressionConverter.ConvertO(days);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            return new ApiConnectionAction<EventCategoriesResponse>(callPayload);
+            SourceExpression.Validate(category, nameof(category), required: true);
+            SourceExpression.Validate(source, nameof(source), required: false);
+            SourceExpression.Validate(status, nameof(status), required: false);
+            SourceExpression.Validate(limit, nameof(limit), required: false);
+            SourceExpression.Validate(days, nameof(days), required: false);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/categories/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (source != null)
+                    callPayload.Queries["source"] = SourceExpressionConverter.ConvertO(source);
+                if (status != null)
+                    callPayload.Queries["status"] = SourceExpressionConverter.Convert(status);
+                if (limit != null)
+                    callPayload.Queries["limit"] = SourceExpressionConverter.ConvertO(limit);
+                if (days != null)
+                    callPayload.Queries["days"] = SourceExpressionConverter.ConvertO(days);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EventCategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<CategoriesResponse> Categories()
         {
-            var apiCallPath = "/categories";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<CategoriesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/categories";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CategoriesResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
-        public IBodyWorkflowAction<LayersResponse> Layers(Expression<Func<string>> category)
+        public IBodyWorkflowAction<LayersResponse> Layers([WorkflowExpression] Func<string> category)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/layers/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<LayersResponse>(callPayload);
+            SourceExpression.Validate(category, nameof(category), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/layers/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(category, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<LayersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "eonetbynasaip")]
         public IBodyWorkflowAction<SourcesResponse> Sources()
         {
-            var apiCallPath = "/sources";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<SourcesResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/sources";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SourcesResponse>(BuildSourceInput);
         }
     }
 

@@ -12,2559 +12,3426 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
     public class EntersoftActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsInfo([WorkflowExpression] Func<string> routeid)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/Info/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/Info/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid(Expression<Func<string>> routeid)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo[]> ES00DocumentsInfoByEntityGid([WorkflowExpression] Func<string> routeid)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/InfoByEntityGid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsBlobDataByGid([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/BlobDataByGid/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID(Expression<Func<string>> routeid, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsDownloadBlobDataByGID([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = CSharpExpressionConverter.ConvertO(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/DownloadBlobDataByGID/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                if (partialMode != null)
+                    callPayload.Queries["PartialMode"] = SourceExpressionConverter.ConvertO(partialMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00Blob/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (extType != null)
-                callPayload.Queries["extType"] = CSharpExpressionConverter.ConvertO(extType);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = CSharpExpressionConverter.ConvertO(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            SourceExpression.Validate(extType, nameof(extType), required: false);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00Blob/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (extType != null)
+                    callPayload.Queries["extType"] = SourceExpressionConverter.ConvertO(extType);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                if (partialMode != null)
+                    callPayload.Queries["PartialMode"] = SourceExpressionConverter.ConvertO(partialMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject(Expression<Func<string>> routeid, Expression<Func<string>> keyid, Expression<Func<int>> typeid, Expression<Func<string>> extType = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsGetES00BlobFromObject([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid, [WorkflowExpression] Func<int> typeid, [WorkflowExpression] Func<string> extType = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["keyid"] = CSharpExpressionConverter.ConvertO(keyid);
-            callPayload.Queries["typeid"] = CSharpExpressionConverter.ConvertO(typeid);
-            if (extType != null)
-                callPayload.Queries["extType"] = CSharpExpressionConverter.ConvertO(extType);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = CSharpExpressionConverter.ConvertO(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            SourceExpression.Validate(keyid, nameof(keyid), required: true);
+            SourceExpression.Validate(typeid, nameof(typeid), required: true);
+            SourceExpression.Validate(extType, nameof(extType), required: false);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetES00BlobFromObject/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["keyid"] = SourceExpressionConverter.ConvertO(keyid);
+                callPayload.Queries["typeid"] = SourceExpressionConverter.ConvertO(typeid);
+                if (extType != null)
+                    callPayload.Queries["extType"] = SourceExpressionConverter.ConvertO(extType);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                if (partialMode != null)
+                    callPayload.Queries["PartialMode"] = SourceExpressionConverter.ConvertO(partialMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob(Expression<Func<string>> blobInfogID = null, Expression<Func<string>> blobInfoobjectID = null, Expression<Func<string>> blobInfokeyID = null, Expression<Func<int>> blobInfotypeID = null, Expression<Func<string>> blobInfoext = null, Expression<Func<string>> blobInfotextBody = null, Expression<Func<bool>> blobInfoisNew = null)
+        public IBodyWorkflowAction<string> ES00DocumentsPostBodyToES00Blob([WorkflowExpression] Func<string> blobInfogID = null, [WorkflowExpression] Func<string> blobInfoobjectID = null, [WorkflowExpression] Func<string> blobInfokeyID = null, [WorkflowExpression] Func<int> blobInfotypeID = null, [WorkflowExpression] Func<string> blobInfoext = null, [WorkflowExpression] Func<string> blobInfotextBody = null, [WorkflowExpression] Func<bool> blobInfoisNew = null)
         {
-            var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var blobInfo = new JObject();
-            var blobInfopropCount = 0;
-            if (blobInfogID != null)
+            SourceExpression.Validate(blobInfogID, nameof(blobInfogID), required: false);
+            SourceExpression.Validate(blobInfoobjectID, nameof(blobInfoobjectID), required: false);
+            SourceExpression.Validate(blobInfokeyID, nameof(blobInfokeyID), required: false);
+            SourceExpression.Validate(blobInfotypeID, nameof(blobInfotypeID), required: false);
+            SourceExpression.Validate(blobInfoext, nameof(blobInfoext), required: false);
+            SourceExpression.Validate(blobInfotextBody, nameof(blobInfotextBody), required: false);
+            SourceExpression.Validate(blobInfoisNew, nameof(blobInfoisNew), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                blobInfo["GID"] = CSharpExpressionConverter.ConvertToken(blobInfogID);
-                blobInfopropCount++;
+                var apiCallPath = "/api/ES00Documents/PostBodyToES00Blob/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var blobInfo = new JObject();
+                var blobInfopropCount = 0;
+                if (blobInfogID != null)
+                {
+                    blobInfo["GID"] = SourceExpressionConverter.ConvertToken(blobInfogID);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfoobjectID != null)
+                {
+                    blobInfo["ObjectID"] = SourceExpressionConverter.ConvertToken(blobInfoobjectID);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfokeyID != null)
+                {
+                    blobInfo["KeyID"] = SourceExpressionConverter.ConvertToken(blobInfokeyID);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfotypeID != null)
+                {
+                    blobInfo["TypeID"] = SourceExpressionConverter.ConvertToken(blobInfotypeID);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfoext != null)
+                {
+                    blobInfo["Ext"] = SourceExpressionConverter.ConvertToken(blobInfoext);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfotextBody != null)
+                {
+                    blobInfo["TextBody"] = SourceExpressionConverter.ConvertToken(blobInfotextBody);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfoisNew != null)
+                {
+                    blobInfo["IsNew"] = SourceExpressionConverter.ConvertToken(blobInfoisNew);
+                    blobInfopropCount++;
+                }
+
+                if (blobInfopropCount > 0)
+                {
+                    callPayload.Body = blobInfo;
+                }
+                return callPayload;
             }
 
-            if (blobInfoobjectID != null)
-            {
-                blobInfo["ObjectID"] = CSharpExpressionConverter.ConvertToken(blobInfoobjectID);
-                blobInfopropCount++;
-            }
-
-            if (blobInfokeyID != null)
-            {
-                blobInfo["KeyID"] = CSharpExpressionConverter.ConvertToken(blobInfokeyID);
-                blobInfopropCount++;
-            }
-
-            if (blobInfotypeID != null)
-            {
-                blobInfo["TypeID"] = CSharpExpressionConverter.ConvertToken(blobInfotypeID);
-                blobInfopropCount++;
-            }
-
-            if (blobInfoext != null)
-            {
-                blobInfo["Ext"] = CSharpExpressionConverter.ConvertToken(blobInfoext);
-                blobInfopropCount++;
-            }
-
-            if (blobInfotextBody != null)
-            {
-                blobInfo["TextBody"] = CSharpExpressionConverter.ConvertToken(blobInfotextBody);
-                blobInfopropCount++;
-            }
-
-            if (blobInfoisNew != null)
-            {
-                blobInfo["IsNew"] = CSharpExpressionConverter.ConvertToken(blobInfoisNew);
-                blobInfopropCount++;
-            }
-
-            if (blobInfopropCount > 0)
-            {
-                callPayload.Body = blobInfo;
-            }
-
-            return new ApiConnectionAction<string>(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob(Expression<Func<string>> routeid, Expression<Func<string>> keyid = null, Expression<Func<int>> typeid = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00BlobInfo> ES00DocumentsGetBodyFromES00Blob([WorkflowExpression] Func<string> routeid, [WorkflowExpression] Func<string> keyid = null, [WorkflowExpression] Func<int> typeid = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (keyid != null)
-                callPayload.Queries["keyid"] = CSharpExpressionConverter.ConvertO(keyid);
-            if (typeid != null)
-                callPayload.Queries["typeid"] = CSharpExpressionConverter.ConvertO(typeid);
-            return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(callPayload);
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            SourceExpression.Validate(keyid, nameof(keyid), required: false);
+            SourceExpression.Validate(typeid, nameof(typeid), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ES00Documents/GetBodyFromES00Blob/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (keyid != null)
+                    callPayload.Queries["keyid"] = SourceExpressionConverter.ConvertO(keyid);
+                if (typeid != null)
+                    callPayload.Queries["typeid"] = SourceExpressionConverter.ConvertO(typeid);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsES00BlobInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document(Expression<Func<string>> paramsgID = null, Expression<Func<string>> paramscode = null, Expression<Func<string>> paramstitle = null, Expression<Func<string>> paramsdescription = null, Expression<Func<string>> paramscaption = null, Expression<Func<string>> paramseDate = null, Expression<Func<string>> paramsfType = null, Expression<Func<string>> paramstableID = null, Expression<Func<string>> paramstableName = null, Expression<Func<string>> paramsfGID = null, Expression<Func<string>> paramsfDetailLineGID = null, Expression<Func<string>> paramsuNCPath = null, Expression<Func<string>> paramsoriginalPath = null, Expression<Func<string>> paramsoriginalFN = null, Expression<Func<string>> paramsfDocCategoryCode = null, Expression<Func<string>> paramsfDocGroupCode = null, Expression<Func<string>> paramsfCompanyCode = null, Expression<Func<string>> paramsfDocumentCategoryCode = null, Expression<Func<string>> paramsfDocumentLocationCode = null, Expression<Func<string>> paramseSDModified = null, Expression<Func<string>> paramseSUModified = null, Expression<Func<string>> paramseSDCreated = null, Expression<Func<string>> paramseSUCreated = null, Expression<Func<bool>> paramsisBLOB = null, Expression<Func<bool>> paramsingoing = null, Expression<Func<string>> paramsfRLSNodeGID = null, Expression<Func<int>> paramsbLOBDATALength = null, Expression<Func<string>> paramsbLOBDATA = null)
+        public IBodyWorkflowAction<JToken> ES00DocumentsDeleteES00Document([WorkflowExpression] Func<string> paramsgID = null, [WorkflowExpression] Func<string> paramscode = null, [WorkflowExpression] Func<string> paramstitle = null, [WorkflowExpression] Func<string> paramsdescription = null, [WorkflowExpression] Func<string> paramscaption = null, [WorkflowExpression] Func<string> paramseDate = null, [WorkflowExpression] Func<string> paramsfType = null, [WorkflowExpression] Func<string> paramstableID = null, [WorkflowExpression] Func<string> paramstableName = null, [WorkflowExpression] Func<string> paramsfGID = null, [WorkflowExpression] Func<string> paramsfDetailLineGID = null, [WorkflowExpression] Func<string> paramsuNCPath = null, [WorkflowExpression] Func<string> paramsoriginalPath = null, [WorkflowExpression] Func<string> paramsoriginalFN = null, [WorkflowExpression] Func<string> paramsfDocCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocGroupCode = null, [WorkflowExpression] Func<string> paramsfCompanyCode = null, [WorkflowExpression] Func<string> paramsfDocumentCategoryCode = null, [WorkflowExpression] Func<string> paramsfDocumentLocationCode = null, [WorkflowExpression] Func<string> paramseSDModified = null, [WorkflowExpression] Func<string> paramseSUModified = null, [WorkflowExpression] Func<string> paramseSDCreated = null, [WorkflowExpression] Func<string> paramseSUCreated = null, [WorkflowExpression] Func<bool> paramsisBLOB = null, [WorkflowExpression] Func<bool> paramsingoing = null, [WorkflowExpression] Func<string> paramsfRLSNodeGID = null, [WorkflowExpression] Func<int> paramsbLOBDATALength = null, [WorkflowExpression] Func<string> paramsbLOBDATA = null)
         {
-            var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var @params = new JObject();
-            var @paramspropCount = 0;
-            if (paramsgID != null)
+            SourceExpression.Validate(paramsgID, nameof(paramsgID), required: false);
+            SourceExpression.Validate(paramscode, nameof(paramscode), required: false);
+            SourceExpression.Validate(paramstitle, nameof(paramstitle), required: false);
+            SourceExpression.Validate(paramsdescription, nameof(paramsdescription), required: false);
+            SourceExpression.Validate(paramscaption, nameof(paramscaption), required: false);
+            SourceExpression.Validate(paramseDate, nameof(paramseDate), required: false);
+            SourceExpression.Validate(paramsfType, nameof(paramsfType), required: false);
+            SourceExpression.Validate(paramstableID, nameof(paramstableID), required: false);
+            SourceExpression.Validate(paramstableName, nameof(paramstableName), required: false);
+            SourceExpression.Validate(paramsfGID, nameof(paramsfGID), required: false);
+            SourceExpression.Validate(paramsfDetailLineGID, nameof(paramsfDetailLineGID), required: false);
+            SourceExpression.Validate(paramsuNCPath, nameof(paramsuNCPath), required: false);
+            SourceExpression.Validate(paramsoriginalPath, nameof(paramsoriginalPath), required: false);
+            SourceExpression.Validate(paramsoriginalFN, nameof(paramsoriginalFN), required: false);
+            SourceExpression.Validate(paramsfDocCategoryCode, nameof(paramsfDocCategoryCode), required: false);
+            SourceExpression.Validate(paramsfDocGroupCode, nameof(paramsfDocGroupCode), required: false);
+            SourceExpression.Validate(paramsfCompanyCode, nameof(paramsfCompanyCode), required: false);
+            SourceExpression.Validate(paramsfDocumentCategoryCode, nameof(paramsfDocumentCategoryCode), required: false);
+            SourceExpression.Validate(paramsfDocumentLocationCode, nameof(paramsfDocumentLocationCode), required: false);
+            SourceExpression.Validate(paramseSDModified, nameof(paramseSDModified), required: false);
+            SourceExpression.Validate(paramseSUModified, nameof(paramseSUModified), required: false);
+            SourceExpression.Validate(paramseSDCreated, nameof(paramseSDCreated), required: false);
+            SourceExpression.Validate(paramseSUCreated, nameof(paramseSUCreated), required: false);
+            SourceExpression.Validate(paramsisBLOB, nameof(paramsisBLOB), required: false);
+            SourceExpression.Validate(paramsingoing, nameof(paramsingoing), required: false);
+            SourceExpression.Validate(paramsfRLSNodeGID, nameof(paramsfRLSNodeGID), required: false);
+            SourceExpression.Validate(paramsbLOBDATALength, nameof(paramsbLOBDATALength), required: false);
+            SourceExpression.Validate(paramsbLOBDATA, nameof(paramsbLOBDATA), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                @params["GID"] = CSharpExpressionConverter.ConvertToken(paramsgID);
-                @paramspropCount++;
+                var apiCallPath = "/api/ES00Documents/DeleteES00Document/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var @params = new JObject();
+                var @paramspropCount = 0;
+                if (paramsgID != null)
+                {
+                    @params["GID"] = SourceExpressionConverter.ConvertToken(paramsgID);
+                    @paramspropCount++;
+                }
+
+                if (paramscode != null)
+                {
+                    @params["Code"] = SourceExpressionConverter.ConvertToken(paramscode);
+                    @paramspropCount++;
+                }
+
+                if (paramstitle != null)
+                {
+                    @params["Title"] = SourceExpressionConverter.ConvertToken(paramstitle);
+                    @paramspropCount++;
+                }
+
+                if (paramsdescription != null)
+                {
+                    @params["Description"] = SourceExpressionConverter.ConvertToken(paramsdescription);
+                    @paramspropCount++;
+                }
+
+                if (paramscaption != null)
+                {
+                    @params["Caption"] = SourceExpressionConverter.ConvertToken(paramscaption);
+                    @paramspropCount++;
+                }
+
+                if (paramseDate != null)
+                {
+                    @params["EDate"] = SourceExpressionConverter.ConvertToken(paramseDate);
+                    @paramspropCount++;
+                }
+
+                if (paramsfType != null)
+                {
+                    @params["FType"] = SourceExpressionConverter.ConvertToken(paramsfType);
+                    @paramspropCount++;
+                }
+
+                if (paramstableID != null)
+                {
+                    @params["TableID"] = SourceExpressionConverter.ConvertToken(paramstableID);
+                    @paramspropCount++;
+                }
+
+                if (paramstableName != null)
+                {
+                    @params["TableName"] = SourceExpressionConverter.ConvertToken(paramstableName);
+                    @paramspropCount++;
+                }
+
+                if (paramsfGID != null)
+                {
+                    @params["fGID"] = SourceExpressionConverter.ConvertToken(paramsfGID);
+                    @paramspropCount++;
+                }
+
+                if (paramsfDetailLineGID != null)
+                {
+                    @params["fDetailLineGID"] = SourceExpressionConverter.ConvertToken(paramsfDetailLineGID);
+                    @paramspropCount++;
+                }
+
+                if (paramsuNCPath != null)
+                {
+                    @params["UNCPath"] = SourceExpressionConverter.ConvertToken(paramsuNCPath);
+                    @paramspropCount++;
+                }
+
+                if (paramsoriginalPath != null)
+                {
+                    @params["OriginalPath"] = SourceExpressionConverter.ConvertToken(paramsoriginalPath);
+                    @paramspropCount++;
+                }
+
+                if (paramsoriginalFN != null)
+                {
+                    @params["OriginalFN"] = SourceExpressionConverter.ConvertToken(paramsoriginalFN);
+                    @paramspropCount++;
+                }
+
+                if (paramsfDocCategoryCode != null)
+                {
+                    @params["fDocCategoryCode"] = SourceExpressionConverter.ConvertToken(paramsfDocCategoryCode);
+                    @paramspropCount++;
+                }
+
+                if (paramsfDocGroupCode != null)
+                {
+                    @params["fDocGroupCode"] = SourceExpressionConverter.ConvertToken(paramsfDocGroupCode);
+                    @paramspropCount++;
+                }
+
+                if (paramsfCompanyCode != null)
+                {
+                    @params["fCompanyCode"] = SourceExpressionConverter.ConvertToken(paramsfCompanyCode);
+                    @paramspropCount++;
+                }
+
+                if (paramsfDocumentCategoryCode != null)
+                {
+                    @params["fDocumentCategoryCode"] = SourceExpressionConverter.ConvertToken(paramsfDocumentCategoryCode);
+                    @paramspropCount++;
+                }
+
+                if (paramsfDocumentLocationCode != null)
+                {
+                    @params["fDocumentLocationCode"] = SourceExpressionConverter.ConvertToken(paramsfDocumentLocationCode);
+                    @paramspropCount++;
+                }
+
+                if (paramseSDModified != null)
+                {
+                    @params["ESDModified"] = SourceExpressionConverter.ConvertToken(paramseSDModified);
+                    @paramspropCount++;
+                }
+
+                if (paramseSUModified != null)
+                {
+                    @params["ESUModified"] = SourceExpressionConverter.ConvertToken(paramseSUModified);
+                    @paramspropCount++;
+                }
+
+                if (paramseSDCreated != null)
+                {
+                    @params["ESDCreated"] = SourceExpressionConverter.ConvertToken(paramseSDCreated);
+                    @paramspropCount++;
+                }
+
+                if (paramseSUCreated != null)
+                {
+                    @params["ESUCreated"] = SourceExpressionConverter.ConvertToken(paramseSUCreated);
+                    @paramspropCount++;
+                }
+
+                if (paramsisBLOB != null)
+                {
+                    @params["IsBLOB"] = SourceExpressionConverter.ConvertToken(paramsisBLOB);
+                    @paramspropCount++;
+                }
+
+                if (paramsingoing != null)
+                {
+                    @params["Ingoing"] = SourceExpressionConverter.ConvertToken(paramsingoing);
+                    @paramspropCount++;
+                }
+
+                if (paramsfRLSNodeGID != null)
+                {
+                    @params["fRLSNodeGID"] = SourceExpressionConverter.ConvertToken(paramsfRLSNodeGID);
+                    @paramspropCount++;
+                }
+
+                if (paramsbLOBDATALength != null)
+                {
+                    @params["BLOBDATALength"] = SourceExpressionConverter.ConvertToken(paramsbLOBDATALength);
+                    @paramspropCount++;
+                }
+
+                if (paramsbLOBDATA != null)
+                {
+                    @params["BLOBDATA"] = SourceExpressionConverter.ConvertToken(paramsbLOBDATA);
+                    @paramspropCount++;
+                }
+
+                if (@paramspropCount > 0)
+                {
+                    callPayload.Body = @params;
+                }
+                return callPayload;
             }
 
-            if (paramscode != null)
-            {
-                @params["Code"] = CSharpExpressionConverter.ConvertToken(paramscode);
-                @paramspropCount++;
-            }
-
-            if (paramstitle != null)
-            {
-                @params["Title"] = CSharpExpressionConverter.ConvertToken(paramstitle);
-                @paramspropCount++;
-            }
-
-            if (paramsdescription != null)
-            {
-                @params["Description"] = CSharpExpressionConverter.ConvertToken(paramsdescription);
-                @paramspropCount++;
-            }
-
-            if (paramscaption != null)
-            {
-                @params["Caption"] = CSharpExpressionConverter.ConvertToken(paramscaption);
-                @paramspropCount++;
-            }
-
-            if (paramseDate != null)
-            {
-                @params["EDate"] = CSharpExpressionConverter.ConvertToken(paramseDate);
-                @paramspropCount++;
-            }
-
-            if (paramsfType != null)
-            {
-                @params["FType"] = CSharpExpressionConverter.ConvertToken(paramsfType);
-                @paramspropCount++;
-            }
-
-            if (paramstableID != null)
-            {
-                @params["TableID"] = CSharpExpressionConverter.ConvertToken(paramstableID);
-                @paramspropCount++;
-            }
-
-            if (paramstableName != null)
-            {
-                @params["TableName"] = CSharpExpressionConverter.ConvertToken(paramstableName);
-                @paramspropCount++;
-            }
-
-            if (paramsfGID != null)
-            {
-                @params["fGID"] = CSharpExpressionConverter.ConvertToken(paramsfGID);
-                @paramspropCount++;
-            }
-
-            if (paramsfDetailLineGID != null)
-            {
-                @params["fDetailLineGID"] = CSharpExpressionConverter.ConvertToken(paramsfDetailLineGID);
-                @paramspropCount++;
-            }
-
-            if (paramsuNCPath != null)
-            {
-                @params["UNCPath"] = CSharpExpressionConverter.ConvertToken(paramsuNCPath);
-                @paramspropCount++;
-            }
-
-            if (paramsoriginalPath != null)
-            {
-                @params["OriginalPath"] = CSharpExpressionConverter.ConvertToken(paramsoriginalPath);
-                @paramspropCount++;
-            }
-
-            if (paramsoriginalFN != null)
-            {
-                @params["OriginalFN"] = CSharpExpressionConverter.ConvertToken(paramsoriginalFN);
-                @paramspropCount++;
-            }
-
-            if (paramsfDocCategoryCode != null)
-            {
-                @params["fDocCategoryCode"] = CSharpExpressionConverter.ConvertToken(paramsfDocCategoryCode);
-                @paramspropCount++;
-            }
-
-            if (paramsfDocGroupCode != null)
-            {
-                @params["fDocGroupCode"] = CSharpExpressionConverter.ConvertToken(paramsfDocGroupCode);
-                @paramspropCount++;
-            }
-
-            if (paramsfCompanyCode != null)
-            {
-                @params["fCompanyCode"] = CSharpExpressionConverter.ConvertToken(paramsfCompanyCode);
-                @paramspropCount++;
-            }
-
-            if (paramsfDocumentCategoryCode != null)
-            {
-                @params["fDocumentCategoryCode"] = CSharpExpressionConverter.ConvertToken(paramsfDocumentCategoryCode);
-                @paramspropCount++;
-            }
-
-            if (paramsfDocumentLocationCode != null)
-            {
-                @params["fDocumentLocationCode"] = CSharpExpressionConverter.ConvertToken(paramsfDocumentLocationCode);
-                @paramspropCount++;
-            }
-
-            if (paramseSDModified != null)
-            {
-                @params["ESDModified"] = CSharpExpressionConverter.ConvertToken(paramseSDModified);
-                @paramspropCount++;
-            }
-
-            if (paramseSUModified != null)
-            {
-                @params["ESUModified"] = CSharpExpressionConverter.ConvertToken(paramseSUModified);
-                @paramspropCount++;
-            }
-
-            if (paramseSDCreated != null)
-            {
-                @params["ESDCreated"] = CSharpExpressionConverter.ConvertToken(paramseSDCreated);
-                @paramspropCount++;
-            }
-
-            if (paramseSUCreated != null)
-            {
-                @params["ESUCreated"] = CSharpExpressionConverter.ConvertToken(paramseSUCreated);
-                @paramspropCount++;
-            }
-
-            if (paramsisBLOB != null)
-            {
-                @params["IsBLOB"] = CSharpExpressionConverter.ConvertToken(paramsisBLOB);
-                @paramspropCount++;
-            }
-
-            if (paramsingoing != null)
-            {
-                @params["Ingoing"] = CSharpExpressionConverter.ConvertToken(paramsingoing);
-                @paramspropCount++;
-            }
-
-            if (paramsfRLSNodeGID != null)
-            {
-                @params["fRLSNodeGID"] = CSharpExpressionConverter.ConvertToken(paramsfRLSNodeGID);
-                @paramspropCount++;
-            }
-
-            if (paramsbLOBDATALength != null)
-            {
-                @params["BLOBDATALength"] = CSharpExpressionConverter.ConvertToken(paramsbLOBDATALength);
-                @paramspropCount++;
-            }
-
-            if (paramsbLOBDATA != null)
-            {
-                @params["BLOBDATA"] = CSharpExpressionConverter.ConvertToken(paramsbLOBDATA);
-                @paramspropCount++;
-            }
-
-            if (@paramspropCount > 0)
-            {
-                callPayload.Body = @params;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument(Expression<Func<string>> inDocgID = null, Expression<Func<string>> inDoccode = null, Expression<Func<string>> inDoctitle = null, Expression<Func<string>> inDocdescription = null, Expression<Func<string>> inDoccaption = null, Expression<Func<string>> inDoceDate = null, Expression<Func<string>> inDocfType = null, Expression<Func<string>> inDoctableID = null, Expression<Func<string>> inDoctableName = null, Expression<Func<string>> inDocfGID = null, Expression<Func<string>> inDocfDetailLineGID = null, Expression<Func<string>> inDocuNCPath = null, Expression<Func<string>> inDocoriginalPath = null, Expression<Func<string>> inDocoriginalFN = null, Expression<Func<string>> inDocfDocCategoryCode = null, Expression<Func<string>> inDocfDocGroupCode = null, Expression<Func<string>> inDocfCompanyCode = null, Expression<Func<string>> inDocfDocumentCategoryCode = null, Expression<Func<string>> inDocfDocumentLocationCode = null, Expression<Func<string>> inDoceSDModified = null, Expression<Func<string>> inDoceSUModified = null, Expression<Func<string>> inDoceSDCreated = null, Expression<Func<string>> inDoceSUCreated = null, Expression<Func<bool>> inDocisBLOB = null, Expression<Func<bool>> inDocingoing = null, Expression<Func<string>> inDocfRLSNodeGID = null, Expression<Func<int>> inDocbLOBDATALength = null, Expression<Func<string>> inDocbLOBDATA = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsES00DocumentInfo> ES00DocumentsAddOrUpdateAttachedDocument([WorkflowExpression] Func<string> inDocgID = null, [WorkflowExpression] Func<string> inDoccode = null, [WorkflowExpression] Func<string> inDoctitle = null, [WorkflowExpression] Func<string> inDocdescription = null, [WorkflowExpression] Func<string> inDoccaption = null, [WorkflowExpression] Func<string> inDoceDate = null, [WorkflowExpression] Func<string> inDocfType = null, [WorkflowExpression] Func<string> inDoctableID = null, [WorkflowExpression] Func<string> inDoctableName = null, [WorkflowExpression] Func<string> inDocfGID = null, [WorkflowExpression] Func<string> inDocfDetailLineGID = null, [WorkflowExpression] Func<string> inDocuNCPath = null, [WorkflowExpression] Func<string> inDocoriginalPath = null, [WorkflowExpression] Func<string> inDocoriginalFN = null, [WorkflowExpression] Func<string> inDocfDocCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocGroupCode = null, [WorkflowExpression] Func<string> inDocfCompanyCode = null, [WorkflowExpression] Func<string> inDocfDocumentCategoryCode = null, [WorkflowExpression] Func<string> inDocfDocumentLocationCode = null, [WorkflowExpression] Func<string> inDoceSDModified = null, [WorkflowExpression] Func<string> inDoceSUModified = null, [WorkflowExpression] Func<string> inDoceSDCreated = null, [WorkflowExpression] Func<string> inDoceSUCreated = null, [WorkflowExpression] Func<bool> inDocisBLOB = null, [WorkflowExpression] Func<bool> inDocingoing = null, [WorkflowExpression] Func<string> inDocfRLSNodeGID = null, [WorkflowExpression] Func<int> inDocbLOBDATALength = null, [WorkflowExpression] Func<string> inDocbLOBDATA = null)
         {
-            var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var inDoc = new JObject();
-            var inDocpropCount = 0;
-            if (inDocgID != null)
+            SourceExpression.Validate(inDocgID, nameof(inDocgID), required: false);
+            SourceExpression.Validate(inDoccode, nameof(inDoccode), required: false);
+            SourceExpression.Validate(inDoctitle, nameof(inDoctitle), required: false);
+            SourceExpression.Validate(inDocdescription, nameof(inDocdescription), required: false);
+            SourceExpression.Validate(inDoccaption, nameof(inDoccaption), required: false);
+            SourceExpression.Validate(inDoceDate, nameof(inDoceDate), required: false);
+            SourceExpression.Validate(inDocfType, nameof(inDocfType), required: false);
+            SourceExpression.Validate(inDoctableID, nameof(inDoctableID), required: false);
+            SourceExpression.Validate(inDoctableName, nameof(inDoctableName), required: false);
+            SourceExpression.Validate(inDocfGID, nameof(inDocfGID), required: false);
+            SourceExpression.Validate(inDocfDetailLineGID, nameof(inDocfDetailLineGID), required: false);
+            SourceExpression.Validate(inDocuNCPath, nameof(inDocuNCPath), required: false);
+            SourceExpression.Validate(inDocoriginalPath, nameof(inDocoriginalPath), required: false);
+            SourceExpression.Validate(inDocoriginalFN, nameof(inDocoriginalFN), required: false);
+            SourceExpression.Validate(inDocfDocCategoryCode, nameof(inDocfDocCategoryCode), required: false);
+            SourceExpression.Validate(inDocfDocGroupCode, nameof(inDocfDocGroupCode), required: false);
+            SourceExpression.Validate(inDocfCompanyCode, nameof(inDocfCompanyCode), required: false);
+            SourceExpression.Validate(inDocfDocumentCategoryCode, nameof(inDocfDocumentCategoryCode), required: false);
+            SourceExpression.Validate(inDocfDocumentLocationCode, nameof(inDocfDocumentLocationCode), required: false);
+            SourceExpression.Validate(inDoceSDModified, nameof(inDoceSDModified), required: false);
+            SourceExpression.Validate(inDoceSUModified, nameof(inDoceSUModified), required: false);
+            SourceExpression.Validate(inDoceSDCreated, nameof(inDoceSDCreated), required: false);
+            SourceExpression.Validate(inDoceSUCreated, nameof(inDoceSUCreated), required: false);
+            SourceExpression.Validate(inDocisBLOB, nameof(inDocisBLOB), required: false);
+            SourceExpression.Validate(inDocingoing, nameof(inDocingoing), required: false);
+            SourceExpression.Validate(inDocfRLSNodeGID, nameof(inDocfRLSNodeGID), required: false);
+            SourceExpression.Validate(inDocbLOBDATALength, nameof(inDocbLOBDATALength), required: false);
+            SourceExpression.Validate(inDocbLOBDATA, nameof(inDocbLOBDATA), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                inDoc["GID"] = CSharpExpressionConverter.ConvertToken(inDocgID);
-                inDocpropCount++;
+                var apiCallPath = "/api/ES00Documents/AddOrUpdateAttachedDocument/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var inDoc = new JObject();
+                var inDocpropCount = 0;
+                if (inDocgID != null)
+                {
+                    inDoc["GID"] = SourceExpressionConverter.ConvertToken(inDocgID);
+                    inDocpropCount++;
+                }
+
+                if (inDoccode != null)
+                {
+                    inDoc["Code"] = SourceExpressionConverter.ConvertToken(inDoccode);
+                    inDocpropCount++;
+                }
+
+                if (inDoctitle != null)
+                {
+                    inDoc["Title"] = SourceExpressionConverter.ConvertToken(inDoctitle);
+                    inDocpropCount++;
+                }
+
+                if (inDocdescription != null)
+                {
+                    inDoc["Description"] = SourceExpressionConverter.ConvertToken(inDocdescription);
+                    inDocpropCount++;
+                }
+
+                if (inDoccaption != null)
+                {
+                    inDoc["Caption"] = SourceExpressionConverter.ConvertToken(inDoccaption);
+                    inDocpropCount++;
+                }
+
+                if (inDoceDate != null)
+                {
+                    inDoc["EDate"] = SourceExpressionConverter.ConvertToken(inDoceDate);
+                    inDocpropCount++;
+                }
+
+                if (inDocfType != null)
+                {
+                    inDoc["FType"] = SourceExpressionConverter.ConvertToken(inDocfType);
+                    inDocpropCount++;
+                }
+
+                if (inDoctableID != null)
+                {
+                    inDoc["TableID"] = SourceExpressionConverter.ConvertToken(inDoctableID);
+                    inDocpropCount++;
+                }
+
+                if (inDoctableName != null)
+                {
+                    inDoc["TableName"] = SourceExpressionConverter.ConvertToken(inDoctableName);
+                    inDocpropCount++;
+                }
+
+                if (inDocfGID != null)
+                {
+                    inDoc["fGID"] = SourceExpressionConverter.ConvertToken(inDocfGID);
+                    inDocpropCount++;
+                }
+
+                if (inDocfDetailLineGID != null)
+                {
+                    inDoc["fDetailLineGID"] = SourceExpressionConverter.ConvertToken(inDocfDetailLineGID);
+                    inDocpropCount++;
+                }
+
+                if (inDocuNCPath != null)
+                {
+                    inDoc["UNCPath"] = SourceExpressionConverter.ConvertToken(inDocuNCPath);
+                    inDocpropCount++;
+                }
+
+                if (inDocoriginalPath != null)
+                {
+                    inDoc["OriginalPath"] = SourceExpressionConverter.ConvertToken(inDocoriginalPath);
+                    inDocpropCount++;
+                }
+
+                if (inDocoriginalFN != null)
+                {
+                    inDoc["OriginalFN"] = SourceExpressionConverter.ConvertToken(inDocoriginalFN);
+                    inDocpropCount++;
+                }
+
+                if (inDocfDocCategoryCode != null)
+                {
+                    inDoc["fDocCategoryCode"] = SourceExpressionConverter.ConvertToken(inDocfDocCategoryCode);
+                    inDocpropCount++;
+                }
+
+                if (inDocfDocGroupCode != null)
+                {
+                    inDoc["fDocGroupCode"] = SourceExpressionConverter.ConvertToken(inDocfDocGroupCode);
+                    inDocpropCount++;
+                }
+
+                if (inDocfCompanyCode != null)
+                {
+                    inDoc["fCompanyCode"] = SourceExpressionConverter.ConvertToken(inDocfCompanyCode);
+                    inDocpropCount++;
+                }
+
+                if (inDocfDocumentCategoryCode != null)
+                {
+                    inDoc["fDocumentCategoryCode"] = SourceExpressionConverter.ConvertToken(inDocfDocumentCategoryCode);
+                    inDocpropCount++;
+                }
+
+                if (inDocfDocumentLocationCode != null)
+                {
+                    inDoc["fDocumentLocationCode"] = SourceExpressionConverter.ConvertToken(inDocfDocumentLocationCode);
+                    inDocpropCount++;
+                }
+
+                if (inDoceSDModified != null)
+                {
+                    inDoc["ESDModified"] = SourceExpressionConverter.ConvertToken(inDoceSDModified);
+                    inDocpropCount++;
+                }
+
+                if (inDoceSUModified != null)
+                {
+                    inDoc["ESUModified"] = SourceExpressionConverter.ConvertToken(inDoceSUModified);
+                    inDocpropCount++;
+                }
+
+                if (inDoceSDCreated != null)
+                {
+                    inDoc["ESDCreated"] = SourceExpressionConverter.ConvertToken(inDoceSDCreated);
+                    inDocpropCount++;
+                }
+
+                if (inDoceSUCreated != null)
+                {
+                    inDoc["ESUCreated"] = SourceExpressionConverter.ConvertToken(inDoceSUCreated);
+                    inDocpropCount++;
+                }
+
+                if (inDocisBLOB != null)
+                {
+                    inDoc["IsBLOB"] = SourceExpressionConverter.ConvertToken(inDocisBLOB);
+                    inDocpropCount++;
+                }
+
+                if (inDocingoing != null)
+                {
+                    inDoc["Ingoing"] = SourceExpressionConverter.ConvertToken(inDocingoing);
+                    inDocpropCount++;
+                }
+
+                if (inDocfRLSNodeGID != null)
+                {
+                    inDoc["fRLSNodeGID"] = SourceExpressionConverter.ConvertToken(inDocfRLSNodeGID);
+                    inDocpropCount++;
+                }
+
+                if (inDocbLOBDATALength != null)
+                {
+                    inDoc["BLOBDATALength"] = SourceExpressionConverter.ConvertToken(inDocbLOBDATALength);
+                    inDocpropCount++;
+                }
+
+                if (inDocbLOBDATA != null)
+                {
+                    inDoc["BLOBDATA"] = SourceExpressionConverter.ConvertToken(inDocbLOBDATA);
+                    inDocpropCount++;
+                }
+
+                if (inDocpropCount > 0)
+                {
+                    callPayload.Body = inDoc;
+                }
+                return callPayload;
             }
 
-            if (inDoccode != null)
-            {
-                inDoc["Code"] = CSharpExpressionConverter.ConvertToken(inDoccode);
-                inDocpropCount++;
-            }
-
-            if (inDoctitle != null)
-            {
-                inDoc["Title"] = CSharpExpressionConverter.ConvertToken(inDoctitle);
-                inDocpropCount++;
-            }
-
-            if (inDocdescription != null)
-            {
-                inDoc["Description"] = CSharpExpressionConverter.ConvertToken(inDocdescription);
-                inDocpropCount++;
-            }
-
-            if (inDoccaption != null)
-            {
-                inDoc["Caption"] = CSharpExpressionConverter.ConvertToken(inDoccaption);
-                inDocpropCount++;
-            }
-
-            if (inDoceDate != null)
-            {
-                inDoc["EDate"] = CSharpExpressionConverter.ConvertToken(inDoceDate);
-                inDocpropCount++;
-            }
-
-            if (inDocfType != null)
-            {
-                inDoc["FType"] = CSharpExpressionConverter.ConvertToken(inDocfType);
-                inDocpropCount++;
-            }
-
-            if (inDoctableID != null)
-            {
-                inDoc["TableID"] = CSharpExpressionConverter.ConvertToken(inDoctableID);
-                inDocpropCount++;
-            }
-
-            if (inDoctableName != null)
-            {
-                inDoc["TableName"] = CSharpExpressionConverter.ConvertToken(inDoctableName);
-                inDocpropCount++;
-            }
-
-            if (inDocfGID != null)
-            {
-                inDoc["fGID"] = CSharpExpressionConverter.ConvertToken(inDocfGID);
-                inDocpropCount++;
-            }
-
-            if (inDocfDetailLineGID != null)
-            {
-                inDoc["fDetailLineGID"] = CSharpExpressionConverter.ConvertToken(inDocfDetailLineGID);
-                inDocpropCount++;
-            }
-
-            if (inDocuNCPath != null)
-            {
-                inDoc["UNCPath"] = CSharpExpressionConverter.ConvertToken(inDocuNCPath);
-                inDocpropCount++;
-            }
-
-            if (inDocoriginalPath != null)
-            {
-                inDoc["OriginalPath"] = CSharpExpressionConverter.ConvertToken(inDocoriginalPath);
-                inDocpropCount++;
-            }
-
-            if (inDocoriginalFN != null)
-            {
-                inDoc["OriginalFN"] = CSharpExpressionConverter.ConvertToken(inDocoriginalFN);
-                inDocpropCount++;
-            }
-
-            if (inDocfDocCategoryCode != null)
-            {
-                inDoc["fDocCategoryCode"] = CSharpExpressionConverter.ConvertToken(inDocfDocCategoryCode);
-                inDocpropCount++;
-            }
-
-            if (inDocfDocGroupCode != null)
-            {
-                inDoc["fDocGroupCode"] = CSharpExpressionConverter.ConvertToken(inDocfDocGroupCode);
-                inDocpropCount++;
-            }
-
-            if (inDocfCompanyCode != null)
-            {
-                inDoc["fCompanyCode"] = CSharpExpressionConverter.ConvertToken(inDocfCompanyCode);
-                inDocpropCount++;
-            }
-
-            if (inDocfDocumentCategoryCode != null)
-            {
-                inDoc["fDocumentCategoryCode"] = CSharpExpressionConverter.ConvertToken(inDocfDocumentCategoryCode);
-                inDocpropCount++;
-            }
-
-            if (inDocfDocumentLocationCode != null)
-            {
-                inDoc["fDocumentLocationCode"] = CSharpExpressionConverter.ConvertToken(inDocfDocumentLocationCode);
-                inDocpropCount++;
-            }
-
-            if (inDoceSDModified != null)
-            {
-                inDoc["ESDModified"] = CSharpExpressionConverter.ConvertToken(inDoceSDModified);
-                inDocpropCount++;
-            }
-
-            if (inDoceSUModified != null)
-            {
-                inDoc["ESUModified"] = CSharpExpressionConverter.ConvertToken(inDoceSUModified);
-                inDocpropCount++;
-            }
-
-            if (inDoceSDCreated != null)
-            {
-                inDoc["ESDCreated"] = CSharpExpressionConverter.ConvertToken(inDoceSDCreated);
-                inDocpropCount++;
-            }
-
-            if (inDoceSUCreated != null)
-            {
-                inDoc["ESUCreated"] = CSharpExpressionConverter.ConvertToken(inDoceSUCreated);
-                inDocpropCount++;
-            }
-
-            if (inDocisBLOB != null)
-            {
-                inDoc["IsBLOB"] = CSharpExpressionConverter.ConvertToken(inDocisBLOB);
-                inDocpropCount++;
-            }
-
-            if (inDocingoing != null)
-            {
-                inDoc["Ingoing"] = CSharpExpressionConverter.ConvertToken(inDocingoing);
-                inDocpropCount++;
-            }
-
-            if (inDocfRLSNodeGID != null)
-            {
-                inDoc["fRLSNodeGID"] = CSharpExpressionConverter.ConvertToken(inDocfRLSNodeGID);
-                inDocpropCount++;
-            }
-
-            if (inDocbLOBDATALength != null)
-            {
-                inDoc["BLOBDATALength"] = CSharpExpressionConverter.ConvertToken(inDocbLOBDATALength);
-                inDocpropCount++;
-            }
-
-            if (inDocbLOBDATA != null)
-            {
-                inDoc["BLOBDATA"] = CSharpExpressionConverter.ConvertToken(inDocbLOBDATA);
-                inDocpropCount++;
-            }
-
-            if (inDocpropCount > 0)
-            {
-                callPayload.Body = inDoc;
-            }
-
-            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiModelsES00DocumentInfo>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset(Expression<Func<string>> routeId, Expression<Func<bool>> base64 = null, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken> ESAsset2FetchWebAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<bool> base64 = null, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/asset2/fetchWebAsset/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (base64 != null)
-                callPayload.Queries["base64"] = CSharpExpressionConverter.ConvertO(base64);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = CSharpExpressionConverter.ConvertO(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            SourceExpression.Validate(base64, nameof(base64), required: false);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/asset2/fetchWebAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (base64 != null)
+                    callPayload.Queries["base64"] = SourceExpressionConverter.ConvertO(base64);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                if (partialMode != null)
+                    callPayload.Queries["PartialMode"] = SourceExpressionConverter.ConvertO(partialMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset(Expression<Func<string>> routeId, Expression<Func<string>> webapitoken = null, Expression<Func<bool>> partialMode = null)
+        public IBodyWorkflowAction<JToken> ESAsset2DownloadAsset([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<string> webapitoken = null, [WorkflowExpression] Func<bool> partialMode = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/asset2/downloadAsset/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (webapitoken != null)
-                callPayload.Queries["webapitoken"] = CSharpExpressionConverter.ConvertO(webapitoken);
-            if (partialMode != null)
-                callPayload.Queries["PartialMode"] = CSharpExpressionConverter.ConvertO(partialMode);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            SourceExpression.Validate(webapitoken, nameof(webapitoken), required: false);
+            SourceExpression.Validate(partialMode, nameof(partialMode), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/asset2/downloadAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (webapitoken != null)
+                    callPayload.Queries["webapitoken"] = SourceExpressionConverter.ConvertO(webapitoken);
+                if (partialMode != null)
+                    callPayload.Queries["PartialMode"] = SourceExpressionConverter.ConvertO(partialMode);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj> ESBudgetESBGBudgetSheet([WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(callPayload);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESBudget/ESBGBudgetSheet/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBGBudgetSheetObj>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgmessage = null)
+        public IBodyWorkflowAction<JToken> ESCollaborationBroadcastMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgmessage = null)
         {
-            var apiCallPath = "/api/collaboration/BroadcastMessage/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgrecipients != null)
+            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
+            SourceExpression.Validate(msgmessage, nameof(msgmessage), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                msg["Recipients"] = CSharpExpressionConverter.ConvertToken(msgrecipients);
-                msgpropCount++;
+                var apiCallPath = "/api/collaboration/BroadcastMessage/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (msgrecipients != null)
+                {
+                    msg["Recipients"] = SourceExpressionConverter.ConvertToken(msgrecipients);
+                    msgpropCount++;
+                }
+
+                if (msgmessage != null)
+                {
+                    msg["Message"] = SourceExpressionConverter.ConvertToken(msgmessage);
+                    msgpropCount++;
+                }
+
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
+                return callPayload;
             }
 
-            if (msgmessage != null)
-            {
-                msg["Message"] = CSharpExpressionConverter.ConvertToken(msgmessage);
-                msgpropCount++;
-            }
-
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
-
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationSendEmail(Expression<Func<string>> msgfromEmailAddr = null, Expression<Func<string>> msgtoEmailAddr = null, Expression<Func<string>> msgsubject = null, Expression<Func<string>> msgbody = null)
+        public IWorkflowAction ESCollaborationSendEmail([WorkflowExpression] Func<string> msgfromEmailAddr = null, [WorkflowExpression] Func<string> msgtoEmailAddr = null, [WorkflowExpression] Func<string> msgsubject = null, [WorkflowExpression] Func<string> msgbody = null)
         {
-            var apiCallPath = "/api/collaboration/SendEmail/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgfromEmailAddr != null)
+            SourceExpression.Validate(msgfromEmailAddr, nameof(msgfromEmailAddr), required: false);
+            SourceExpression.Validate(msgtoEmailAddr, nameof(msgtoEmailAddr), required: false);
+            SourceExpression.Validate(msgsubject, nameof(msgsubject), required: false);
+            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                msg["FromEmailAddr"] = CSharpExpressionConverter.ConvertToken(msgfromEmailAddr);
-                msgpropCount++;
+                var apiCallPath = "/api/collaboration/SendEmail/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (msgfromEmailAddr != null)
+                {
+                    msg["FromEmailAddr"] = SourceExpressionConverter.ConvertToken(msgfromEmailAddr);
+                    msgpropCount++;
+                }
+
+                if (msgtoEmailAddr != null)
+                {
+                    msg["ToEmailAddr"] = SourceExpressionConverter.ConvertToken(msgtoEmailAddr);
+                    msgpropCount++;
+                }
+
+                if (msgsubject != null)
+                {
+                    msg["Subject"] = SourceExpressionConverter.ConvertToken(msgsubject);
+                    msgpropCount++;
+                }
+
+                if (msgbody != null)
+                {
+                    msg["Body"] = SourceExpressionConverter.ConvertToken(msgbody);
+                    msgpropCount++;
+                }
+
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
+                return callPayload;
             }
 
-            if (msgtoEmailAddr != null)
-            {
-                msg["ToEmailAddr"] = CSharpExpressionConverter.ConvertToken(msgtoEmailAddr);
-                msgpropCount++;
-            }
-
-            if (msgsubject != null)
-            {
-                msg["Subject"] = CSharpExpressionConverter.ConvertToken(msgsubject);
-                msgpropCount++;
-            }
-
-            if (msgbody != null)
-            {
-                msg["Body"] = CSharpExpressionConverter.ConvertToken(msgbody);
-                msgpropCount++;
-            }
-
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS(Expression<Func<string>> msgbody = null, Expression<Func<string[]>> msgrecipients = null, Expression<Func<string[]>> msgusers = null)
+        public IBodyWorkflowAction<string[]> ESCollaborationSendSMS([WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string[]> msgusers = null)
         {
-            var apiCallPath = "/api/collaboration/SendSMS/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgbody != null)
+            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
+            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
+            SourceExpression.Validate(msgusers, nameof(msgusers), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                msg["Body"] = CSharpExpressionConverter.ConvertToken(msgbody);
-                msgpropCount++;
+                var apiCallPath = "/api/collaboration/SendSMS/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (msgbody != null)
+                {
+                    msg["Body"] = SourceExpressionConverter.ConvertToken(msgbody);
+                    msgpropCount++;
+                }
+
+                if (msgrecipients != null)
+                {
+                    msg["Recipients"] = SourceExpressionConverter.ConvertToken(msgrecipients);
+                    msgpropCount++;
+                }
+
+                if (msgusers != null)
+                {
+                    msg["Users"] = SourceExpressionConverter.ConvertToken(msgusers);
+                    msgpropCount++;
+                }
+
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
+                return callPayload;
             }
 
-            if (msgrecipients != null)
-            {
-                msg["Recipients"] = CSharpExpressionConverter.ConvertToken(msgrecipients);
-                msgpropCount++;
-            }
-
-            if (msgusers != null)
-            {
-                msg["Users"] = CSharpExpressionConverter.ConvertToken(msgusers);
-                msgpropCount++;
-            }
-
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
-
-            return new ApiConnectionAction<string[]>(callPayload);
+            return new ApiConnectionAction<string[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage(Expression<Func<string[]>> msgrecipients = null, Expression<Func<string>> msgdateToSend = null, Expression<Func<int>> msgexpiresInSecs = null, Expression<Func<string>> msgexpiryText = null, Expression<Func<string>> msgfReferenceID = null, Expression<Func<bool>> msgcallback = null, Expression<Func<string>> msgbody = null, Expression<Func<string>> msgimage = null, Expression<Func<string>> msgbuttonAction = null, Expression<Func<string>> msgbuttonCaption = null, Expression<Func<string>> msgsMSFallbacksMSText = null)
+        public IBodyWorkflowAction<EntersoftWebApiControllersESViberResponse> ESCollaborationSendViberMessage([WorkflowExpression] Func<string[]> msgrecipients = null, [WorkflowExpression] Func<string> msgdateToSend = null, [WorkflowExpression] Func<int> msgexpiresInSecs = null, [WorkflowExpression] Func<string> msgexpiryText = null, [WorkflowExpression] Func<string> msgfReferenceID = null, [WorkflowExpression] Func<bool> msgcallback = null, [WorkflowExpression] Func<string> msgbody = null, [WorkflowExpression] Func<string> msgimage = null, [WorkflowExpression] Func<string> msgbuttonAction = null, [WorkflowExpression] Func<string> msgbuttonCaption = null, [WorkflowExpression] Func<string> msgsMSFallbacksMSText = null)
         {
-            var apiCallPath = "/api/collaboration/SendViberMessage/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var msg = new JObject();
-            var msgpropCount = 0;
-            if (msgrecipients != null)
+            SourceExpression.Validate(msgrecipients, nameof(msgrecipients), required: false);
+            SourceExpression.Validate(msgdateToSend, nameof(msgdateToSend), required: false);
+            SourceExpression.Validate(msgexpiresInSecs, nameof(msgexpiresInSecs), required: false);
+            SourceExpression.Validate(msgexpiryText, nameof(msgexpiryText), required: false);
+            SourceExpression.Validate(msgfReferenceID, nameof(msgfReferenceID), required: false);
+            SourceExpression.Validate(msgcallback, nameof(msgcallback), required: false);
+            SourceExpression.Validate(msgbody, nameof(msgbody), required: false);
+            SourceExpression.Validate(msgimage, nameof(msgimage), required: false);
+            SourceExpression.Validate(msgbuttonAction, nameof(msgbuttonAction), required: false);
+            SourceExpression.Validate(msgbuttonCaption, nameof(msgbuttonCaption), required: false);
+            SourceExpression.Validate(msgsMSFallbacksMSText, nameof(msgsMSFallbacksMSText), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                msg["Recipients"] = CSharpExpressionConverter.ConvertToken(msgrecipients);
-                msgpropCount++;
+                var apiCallPath = "/api/collaboration/SendViberMessage/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var msg = new JObject();
+                var msgpropCount = 0;
+                if (msgrecipients != null)
+                {
+                    msg["Recipients"] = SourceExpressionConverter.ConvertToken(msgrecipients);
+                    msgpropCount++;
+                }
+
+                if (msgdateToSend != null)
+                {
+                    msg["DateToSend"] = SourceExpressionConverter.ConvertToken(msgdateToSend);
+                    msgpropCount++;
+                }
+
+                if (msgexpiresInSecs != null)
+                {
+                    msg["ExpiresInSecs"] = SourceExpressionConverter.ConvertToken(msgexpiresInSecs);
+                    msgpropCount++;
+                }
+
+                if (msgexpiryText != null)
+                {
+                    msg["ExpiryText"] = SourceExpressionConverter.ConvertToken(msgexpiryText);
+                    msgpropCount++;
+                }
+
+                if (msgfReferenceID != null)
+                {
+                    msg["fReferenceID"] = SourceExpressionConverter.ConvertToken(msgfReferenceID);
+                    msgpropCount++;
+                }
+
+                if (msgcallback != null)
+                {
+                    msg["Callback"] = SourceExpressionConverter.ConvertToken(msgcallback);
+                    msgpropCount++;
+                }
+
+                if (msgbody != null)
+                {
+                    msg["Body"] = SourceExpressionConverter.ConvertToken(msgbody);
+                    msgpropCount++;
+                }
+
+                if (msgimage != null)
+                {
+                    msg["Image"] = SourceExpressionConverter.ConvertToken(msgimage);
+                    msgpropCount++;
+                }
+
+                if (msgbuttonAction != null)
+                {
+                    msg["ButtonAction"] = SourceExpressionConverter.ConvertToken(msgbuttonAction);
+                    msgpropCount++;
+                }
+
+                if (msgbuttonCaption != null)
+                {
+                    msg["ButtonCaption"] = SourceExpressionConverter.ConvertToken(msgbuttonCaption);
+                    msgpropCount++;
+                }
+
+                var extraPropertiesObject = new JObject();
+                var extraPropertiesObjectpropCount = 0;
+                if (extraPropertiesObjectpropCount > 0)
+                {
+                    msg["ExtraProperties"] = extraPropertiesObject;
+                    msgpropCount++;
+                }
+
+                var sMSFallbackObject = new JObject();
+                var sMSFallbackObjectpropCount = 0;
+                if (msgsMSFallbacksMSText != null)
+                {
+                    sMSFallbackObject["SMSText"] = SourceExpressionConverter.ConvertToken(msgsMSFallbacksMSText);
+                    sMSFallbackObjectpropCount++;
+                }
+
+                if (sMSFallbackObjectpropCount > 0)
+                {
+                    msg["SMSFallback"] = sMSFallbackObject;
+                    msgpropCount++;
+                }
+
+                if (msgpropCount > 0)
+                {
+                    callPayload.Body = msg;
+                }
+                return callPayload;
             }
 
-            if (msgdateToSend != null)
-            {
-                msg["DateToSend"] = CSharpExpressionConverter.ConvertToken(msgdateToSend);
-                msgpropCount++;
-            }
-
-            if (msgexpiresInSecs != null)
-            {
-                msg["ExpiresInSecs"] = CSharpExpressionConverter.ConvertToken(msgexpiresInSecs);
-                msgpropCount++;
-            }
-
-            if (msgexpiryText != null)
-            {
-                msg["ExpiryText"] = CSharpExpressionConverter.ConvertToken(msgexpiryText);
-                msgpropCount++;
-            }
-
-            if (msgfReferenceID != null)
-            {
-                msg["fReferenceID"] = CSharpExpressionConverter.ConvertToken(msgfReferenceID);
-                msgpropCount++;
-            }
-
-            if (msgcallback != null)
-            {
-                msg["Callback"] = CSharpExpressionConverter.ConvertToken(msgcallback);
-                msgpropCount++;
-            }
-
-            if (msgbody != null)
-            {
-                msg["Body"] = CSharpExpressionConverter.ConvertToken(msgbody);
-                msgpropCount++;
-            }
-
-            if (msgimage != null)
-            {
-                msg["Image"] = CSharpExpressionConverter.ConvertToken(msgimage);
-                msgpropCount++;
-            }
-
-            if (msgbuttonAction != null)
-            {
-                msg["ButtonAction"] = CSharpExpressionConverter.ConvertToken(msgbuttonAction);
-                msgpropCount++;
-            }
-
-            if (msgbuttonCaption != null)
-            {
-                msg["ButtonCaption"] = CSharpExpressionConverter.ConvertToken(msgbuttonCaption);
-                msgpropCount++;
-            }
-
-            var extraPropertiesObject = new JObject();
-            var extraPropertiesObjectpropCount = 0;
-            if (extraPropertiesObjectpropCount > 0)
-            {
-                msg["ExtraProperties"] = extraPropertiesObject;
-                msgpropCount++;
-            }
-
-            var sMSFallbackObject = new JObject();
-            var sMSFallbackObjectpropCount = 0;
-            if (msgsMSFallbacksMSText != null)
-            {
-                sMSFallbackObject["SMSText"] = CSharpExpressionConverter.ConvertToken(msgsMSFallbacksMSText);
-                sMSFallbackObjectpropCount++;
-            }
-
-            if (sMSFallbackObjectpropCount > 0)
-            {
-                msg["SMSFallback"] = sMSFallbackObject;
-                msgpropCount++;
-            }
-
-            if (msgpropCount > 0)
-            {
-                callPayload.Body = msg;
-            }
-
-            return new ApiConnectionAction<EntersoftWebApiControllersESViberResponse>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiControllersESViberResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationCreateRFARequest(Expression<Func<string>> rFARequestid, Expression<Func<string>> rFARequestcode, Expression<Func<string>> rFARequestrequestedBy, Expression<Func<bool>> rFARequestisExternal, Expression<Func<rFARequestpriorityInput>> rFARequestpriority = null, Expression<Func<string>> rFARequestrequestClass = null, Expression<Func<string>> rFARequestrequestCategory = null, Expression<Func<double>> rFARequestnumericValue = null, Expression<Func<string>> rFARequesttitle = null, Expression<Func<string[]>> rFARequestrecipientUsers = null, Expression<Func<string[]>> rFARequestrecipientGroups = null, Expression<Func<string>> rFARequestrecipienteMail = null, Expression<Func<string>> rFARequestrecipientPhone = null, Expression<Func<string>> rFARequestrequestedOnUTC = null, Expression<Func<string>> rFARequestexpiresOnUTC = null, Expression<Func<string>> rFARequesttriggeredOn = null)
+        public IWorkflowAction ESCollaborationCreateRFARequest([WorkflowExpression] Func<string> rFARequestid, [WorkflowExpression] Func<string> rFARequestcode, [WorkflowExpression] Func<string> rFARequestrequestedBy, [WorkflowExpression] Func<bool> rFARequestisExternal, [WorkflowExpression] Func<rFARequestpriorityInput> rFARequestpriority = null, [WorkflowExpression] Func<string> rFARequestrequestClass = null, [WorkflowExpression] Func<string> rFARequestrequestCategory = null, [WorkflowExpression] Func<double> rFARequestnumericValue = null, [WorkflowExpression] Func<string> rFARequesttitle = null, [WorkflowExpression] Func<string[]> rFARequestrecipientUsers = null, [WorkflowExpression] Func<string[]> rFARequestrecipientGroups = null, [WorkflowExpression] Func<string> rFARequestrecipienteMail = null, [WorkflowExpression] Func<string> rFARequestrecipientPhone = null, [WorkflowExpression] Func<string> rFARequestrequestedOnUTC = null, [WorkflowExpression] Func<string> rFARequestexpiresOnUTC = null, [WorkflowExpression] Func<string> rFARequesttriggeredOn = null)
         {
-            var apiCallPath = "/api/collaboration/CreateRFARequest/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var rFARequest = new JObject();
-            var rFARequestpropCount = 0;
-            rFARequestpropCount++;
-            rFARequest["id"] = CSharpExpressionConverter.ConvertToken(rFARequestid);
-            rFARequestpropCount++;
-            rFARequest["Code"] = CSharpExpressionConverter.ConvertToken(rFARequestcode);
-            rFARequestpropCount++;
-            rFARequest["RequestedBy"] = CSharpExpressionConverter.ConvertToken(rFARequestrequestedBy);
-            if (rFARequestpriority != null)
+            SourceExpression.Validate(rFARequestid, nameof(rFARequestid), required: true);
+            SourceExpression.Validate(rFARequestcode, nameof(rFARequestcode), required: true);
+            SourceExpression.Validate(rFARequestrequestedBy, nameof(rFARequestrequestedBy), required: true);
+            SourceExpression.Validate(rFARequestisExternal, nameof(rFARequestisExternal), required: true);
+            SourceExpression.Validate(rFARequestpriority, nameof(rFARequestpriority), required: false);
+            SourceExpression.Validate(rFARequestrequestClass, nameof(rFARequestrequestClass), required: false);
+            SourceExpression.Validate(rFARequestrequestCategory, nameof(rFARequestrequestCategory), required: false);
+            SourceExpression.Validate(rFARequestnumericValue, nameof(rFARequestnumericValue), required: false);
+            SourceExpression.Validate(rFARequesttitle, nameof(rFARequesttitle), required: false);
+            SourceExpression.Validate(rFARequestrecipientUsers, nameof(rFARequestrecipientUsers), required: false);
+            SourceExpression.Validate(rFARequestrecipientGroups, nameof(rFARequestrecipientGroups), required: false);
+            SourceExpression.Validate(rFARequestrecipienteMail, nameof(rFARequestrecipienteMail), required: false);
+            SourceExpression.Validate(rFARequestrecipientPhone, nameof(rFARequestrecipientPhone), required: false);
+            SourceExpression.Validate(rFARequestrequestedOnUTC, nameof(rFARequestrequestedOnUTC), required: false);
+            SourceExpression.Validate(rFARequestexpiresOnUTC, nameof(rFARequestexpiresOnUTC), required: false);
+            SourceExpression.Validate(rFARequesttriggeredOn, nameof(rFARequesttriggeredOn), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/api/collaboration/CreateRFARequest/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var rFARequest = new JObject();
+                var rFARequestpropCount = 0;
+                rFARequestpropCount++;
+                rFARequest["id"] = SourceExpressionConverter.ConvertToken(rFARequestid);
+                rFARequestpropCount++;
+                rFARequest["Code"] = SourceExpressionConverter.ConvertToken(rFARequestcode);
+                rFARequestpropCount++;
+                rFARequest["RequestedBy"] = SourceExpressionConverter.ConvertToken(rFARequestrequestedBy);
                 if (rFARequestpriority != null)
                 {
-                    rFARequest["Priority"] = CSharpExpressionConverter.Convert(rFARequestpriority);
+                    if (rFARequestpriority != null)
+                    {
+                        rFARequest["Priority"] = SourceExpressionConverter.Convert(rFARequestpriority);
+                        rFARequestpropCount++;
+                    }
+
+                    rFARequestpropCount++;
+                }
+                else
+                {
+                    rFARequest["Priority"] = "Normal";
                     rFARequestpropCount++;
                 }
 
                 rFARequestpropCount++;
-            }
-            else
-            {
-                rFARequest["Priority"] = "Normal";
-                rFARequestpropCount++;
-            }
+                rFARequest["IsExternal"] = SourceExpressionConverter.ConvertToken(rFARequestisExternal);
+                if (rFARequestrequestClass != null)
+                {
+                    rFARequest["RequestClass"] = SourceExpressionConverter.ConvertToken(rFARequestrequestClass);
+                    rFARequestpropCount++;
+                }
 
-            rFARequestpropCount++;
-            rFARequest["IsExternal"] = CSharpExpressionConverter.ConvertToken(rFARequestisExternal);
-            if (rFARequestrequestClass != null)
-            {
-                rFARequest["RequestClass"] = CSharpExpressionConverter.ConvertToken(rFARequestrequestClass);
-                rFARequestpropCount++;
-            }
+                if (rFARequestrequestCategory != null)
+                {
+                    rFARequest["RequestCategory"] = SourceExpressionConverter.ConvertToken(rFARequestrequestCategory);
+                    rFARequestpropCount++;
+                }
 
-            if (rFARequestrequestCategory != null)
-            {
-                rFARequest["RequestCategory"] = CSharpExpressionConverter.ConvertToken(rFARequestrequestCategory);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestnumericValue != null)
-            {
                 if (rFARequestnumericValue != null)
                 {
-                    rFARequest["NumericValue"] = CSharpExpressionConverter.ConvertToken(rFARequestnumericValue);
+                    if (rFARequestnumericValue != null)
+                    {
+                        rFARequest["NumericValue"] = SourceExpressionConverter.ConvertToken(rFARequestnumericValue);
+                        rFARequestpropCount++;
+                    }
+
+                    rFARequestpropCount++;
+                }
+                else
+                {
+                    rFARequest["NumericValue"] = 0;
                     rFARequestpropCount++;
                 }
 
-                rFARequestpropCount++;
-            }
-            else
-            {
-                rFARequest["NumericValue"] = 0;
-                rFARequestpropCount++;
+                if (rFARequesttitle != null)
+                {
+                    rFARequest["Title"] = SourceExpressionConverter.ConvertToken(rFARequesttitle);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestrecipientUsers != null)
+                {
+                    rFARequest["RecipientUsers"] = SourceExpressionConverter.ConvertToken(rFARequestrecipientUsers);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestrecipientGroups != null)
+                {
+                    rFARequest["RecipientGroups"] = SourceExpressionConverter.ConvertToken(rFARequestrecipientGroups);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestrecipienteMail != null)
+                {
+                    rFARequest["RecipienteMail"] = SourceExpressionConverter.ConvertToken(rFARequestrecipienteMail);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestrecipientPhone != null)
+                {
+                    rFARequest["RecipientPhone"] = SourceExpressionConverter.ConvertToken(rFARequestrecipientPhone);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestrequestedOnUTC != null)
+                {
+                    rFARequest["RequestedOnUTC"] = SourceExpressionConverter.ConvertToken(rFARequestrequestedOnUTC);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestexpiresOnUTC != null)
+                {
+                    rFARequest["ExpiresOnUTC"] = SourceExpressionConverter.ConvertToken(rFARequestexpiresOnUTC);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequesttriggeredOn != null)
+                {
+                    rFARequest["TriggeredOn"] = SourceExpressionConverter.ConvertToken(rFARequesttriggeredOn);
+                    rFARequestpropCount++;
+                }
+
+                if (rFARequestpropCount > 0)
+                {
+                    callPayload.Body = rFARequest;
+                }
+                return callPayload;
             }
 
-            if (rFARequesttitle != null)
-            {
-                rFARequest["Title"] = CSharpExpressionConverter.ConvertToken(rFARequesttitle);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrecipientUsers != null)
-            {
-                rFARequest["RecipientUsers"] = CSharpExpressionConverter.ConvertToken(rFARequestrecipientUsers);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrecipientGroups != null)
-            {
-                rFARequest["RecipientGroups"] = CSharpExpressionConverter.ConvertToken(rFARequestrecipientGroups);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrecipienteMail != null)
-            {
-                rFARequest["RecipienteMail"] = CSharpExpressionConverter.ConvertToken(rFARequestrecipienteMail);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrecipientPhone != null)
-            {
-                rFARequest["RecipientPhone"] = CSharpExpressionConverter.ConvertToken(rFARequestrecipientPhone);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestrequestedOnUTC != null)
-            {
-                rFARequest["RequestedOnUTC"] = CSharpExpressionConverter.ConvertToken(rFARequestrequestedOnUTC);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestexpiresOnUTC != null)
-            {
-                rFARequest["ExpiresOnUTC"] = CSharpExpressionConverter.ConvertToken(rFARequestexpiresOnUTC);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequesttriggeredOn != null)
-            {
-                rFARequest["TriggeredOn"] = CSharpExpressionConverter.ConvertToken(rFARequesttriggeredOn);
-                rFARequestpropCount++;
-            }
-
-            if (rFARequestpropCount > 0)
-            {
-                callPayload.Body = rFARequest;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESCollaborationRespondToRFARequest(Expression<Func<string>> rFAResponseid, Expression<Func<string>> rFAResponsecode, Expression<Func<string>> rFAResponseresponseBy, Expression<Func<string>> rFAResponseresponseOrigin, Expression<Func<string>> rFAResponseresponseOnUTC, Expression<Func<string>> rFAResponseresponseComments = null)
+        public IWorkflowAction ESCollaborationRespondToRFARequest([WorkflowExpression] Func<string> rFAResponseid, [WorkflowExpression] Func<string> rFAResponsecode, [WorkflowExpression] Func<string> rFAResponseresponseBy, [WorkflowExpression] Func<string> rFAResponseresponseOrigin, [WorkflowExpression] Func<string> rFAResponseresponseOnUTC, [WorkflowExpression] Func<string> rFAResponseresponseComments = null)
         {
-            var apiCallPath = "/api/collaboration/RespondToRFARequest/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var rFAResponse = new JObject();
-            var rFAResponsepropCount = 0;
-            rFAResponsepropCount++;
-            rFAResponse["id"] = CSharpExpressionConverter.ConvertToken(rFAResponseid);
-            rFAResponsepropCount++;
-            rFAResponse["Code"] = CSharpExpressionConverter.ConvertToken(rFAResponsecode);
-            if (rFAResponseresponseComments != null)
+            SourceExpression.Validate(rFAResponseid, nameof(rFAResponseid), required: true);
+            SourceExpression.Validate(rFAResponsecode, nameof(rFAResponsecode), required: true);
+            SourceExpression.Validate(rFAResponseresponseBy, nameof(rFAResponseresponseBy), required: true);
+            SourceExpression.Validate(rFAResponseresponseOrigin, nameof(rFAResponseresponseOrigin), required: true);
+            SourceExpression.Validate(rFAResponseresponseOnUTC, nameof(rFAResponseresponseOnUTC), required: true);
+            SourceExpression.Validate(rFAResponseresponseComments, nameof(rFAResponseresponseComments), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                rFAResponse["ResponseComments"] = CSharpExpressionConverter.ConvertToken(rFAResponseresponseComments);
+                var apiCallPath = "/api/collaboration/RespondToRFARequest/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var rFAResponse = new JObject();
+                var rFAResponsepropCount = 0;
                 rFAResponsepropCount++;
+                rFAResponse["id"] = SourceExpressionConverter.ConvertToken(rFAResponseid);
+                rFAResponsepropCount++;
+                rFAResponse["Code"] = SourceExpressionConverter.ConvertToken(rFAResponsecode);
+                if (rFAResponseresponseComments != null)
+                {
+                    rFAResponse["ResponseComments"] = SourceExpressionConverter.ConvertToken(rFAResponseresponseComments);
+                    rFAResponsepropCount++;
+                }
+
+                rFAResponsepropCount++;
+                rFAResponse["ResponseBy"] = SourceExpressionConverter.ConvertToken(rFAResponseresponseBy);
+                rFAResponsepropCount++;
+                rFAResponse["ResponseOrigin"] = SourceExpressionConverter.ConvertToken(rFAResponseresponseOrigin);
+                rFAResponsepropCount++;
+                rFAResponse["ResponseOnUTC"] = SourceExpressionConverter.ConvertToken(rFAResponseresponseOnUTC);
+                if (rFAResponsepropCount > 0)
+                {
+                    callPayload.Body = rFAResponse;
+                }
+                return callPayload;
             }
 
-            rFAResponsepropCount++;
-            rFAResponse["ResponseBy"] = CSharpExpressionConverter.ConvertToken(rFAResponseresponseBy);
-            rFAResponsepropCount++;
-            rFAResponse["ResponseOrigin"] = CSharpExpressionConverter.ConvertToken(rFAResponseresponseOrigin);
-            rFAResponsepropCount++;
-            rFAResponse["ResponseOnUTC"] = CSharpExpressionConverter.ConvertToken(rFAResponseresponseOnUTC);
-            if (rFAResponsepropCount > 0)
+            return new ApiConnectionAction(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest([WorkflowExpression] Func<string> requestID)
+        {
+            SourceExpression.Validate(requestID, nameof(requestID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = rFAResponse;
+                var apiCallPath = "/api/collaboration/FetchRequest/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["RequestID"] = SourceExpressionConverter.ConvertO(requestID);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFARequest> ESCollaborationFetchRequest(Expression<Func<string>> requestID)
+        public IBodyWorkflowAction<string> ESRPCPingServer([WorkflowExpression] Func<string> routeid)
         {
-            var apiCallPath = "/api/collaboration/FetchRequest/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["RequestID"] = CSharpExpressionConverter.ConvertO(requestID);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFARequest>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ESRPCPingServer(Expression<Func<string>> routeid)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/PingServer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest(Expression<Func<string>> routeid)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/esapi/estest/EBSConnectionTest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityDeleteEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
-        {
-            var apiCallPath = "/api/esentity/DeleteEntityByID/";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = CSharpExpressionConverter.ConvertO(entityID);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityDeleteEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
-        {
-            var apiCallPath = "/api/esentity/DeleteEntityByType/";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            return new ApiConnectionAction(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityUpdateEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
-        {
-            var apiCallPath = "/api/esentity/UpdateEntityByID/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = CSharpExpressionConverter.ConvertO(entityID);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = updProperties;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/PingServer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IWorkflowAction ESEntityUpdateEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IBodyWorkflowAction<JToken> ESTestEBSConnectionTest([WorkflowExpression] Func<string> routeid)
         {
-            var apiCallPath = "/api/esentity/UpdateEntityByType/";
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            SourceExpression.Validate(routeid, nameof(routeid), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = updProperties;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/esapi/estest/EBSConnectionTest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeid, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID(Expression<Func<string>> entityID)
+        public IWorkflowAction ESEntityDeleteEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = "/api/esentity/CreateEntityByID/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = CSharpExpressionConverter.ConvertO(entityID);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            SourceExpression.Validate(entityID, nameof(entityID), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = updProperties;
+                var apiCallPath = "/api/esentity/DeleteEntityByID/";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = SourceExpressionConverter.ConvertO(entityID);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType(Expression<Func<entityTypeInput>> entityType)
+        public IWorkflowAction ESEntityDeleteEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = "/api/esentity/CreateEntityByType/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
-            var updProperties = new JObject();
-            var updPropertiespropCount = 0;
-            if (updPropertiespropCount > 0)
+            SourceExpression.Validate(entityType, nameof(entityType), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = updProperties;
+                var apiCallPath = "/api/esentity/DeleteEntityByType/";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID(Expression<Func<string>> entityID, Expression<Func<string>> pK)
+        public IWorkflowAction ESEntityUpdateEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = "/api/esentity/EntityByID/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = CSharpExpressionConverter.ConvertO(entityID);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            SourceExpression.Validate(entityID, nameof(entityID), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/esentity/UpdateEntityByID/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = SourceExpressionConverter.ConvertO(entityID);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string>> pK)
+        public IWorkflowAction ESEntityUpdateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = "/api/esentity/EntityByType/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
-            callPayload.Queries["PK"] = CSharpExpressionConverter.ConvertO(pK);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(callPayload);
+            SourceExpression.Validate(entityType, nameof(entityType), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/esentity/UpdateEntityByType/";
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID(Expression<Func<string>> entityID, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByID([WorkflowExpression] Func<string> entityID)
         {
-            var apiCallPath = "/api/esentity/EntitiesByID/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityID"] = CSharpExpressionConverter.ConvertO(entityID);
-            var fetchOptions = new JObject();
-            var fetchOptionspropCount = 0;
-            if (fetchOptionsselectFields != null)
+            SourceExpression.Validate(entityID, nameof(entityID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fetchOptions["SelectFields"] = CSharpExpressionConverter.ConvertToken(fetchOptionsselectFields);
-                fetchOptionspropCount++;
+                var apiCallPath = "/api/esentity/CreateEntityByID/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = SourceExpressionConverter.ConvertO(entityID);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
+                return callPayload;
             }
 
-            if (fetchOptionsorderByFields != null)
+            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiApiControllersESCreatedEntityInfo> ESEntityCreateEntityByType([WorkflowExpression] Func<entityTypeInput> entityType)
+        {
+            SourceExpression.Validate(entityType, nameof(entityType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fetchOptions["OrderByFields"] = CSharpExpressionConverter.ConvertToken(fetchOptionsorderByFields);
-                fetchOptionspropCount++;
+                var apiCallPath = "/api/esentity/CreateEntityByType/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                var updProperties = new JObject();
+                var updPropertiespropCount = 0;
+                if (updPropertiespropCount > 0)
+                {
+                    callPayload.Body = updProperties;
+                }
+                return callPayload;
             }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApiApiControllersESCreatedEntityInfo>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(entityID, nameof(entityID), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fetchOptions["Params"] = paramsObject;
-                fetchOptionspropCount++;
+                var apiCallPath = "/api/esentity/EntityByID/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = SourceExpressionConverter.ConvertO(entityID);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                return callPayload;
             }
 
-            if (fetchOptionspage != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESBaseEntity> ESEntityEntityByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(entityType, nameof(entityType), required: true);
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/api/esentity/EntityByType/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                callPayload.Queries["PK"] = SourceExpressionConverter.ConvertO(pK);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESBaseEntity>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByID([WorkflowExpression] Func<string> entityID, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
+        {
+            SourceExpression.Validate(entityID, nameof(entityID), required: true);
+            SourceExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            SourceExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            SourceExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
+            SourceExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/esentity/EntitiesByID/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityID"] = SourceExpressionConverter.ConvertO(entityID);
+                var fetchOptions = new JObject();
+                var fetchOptionspropCount = 0;
+                if (fetchOptionsselectFields != null)
+                {
+                    fetchOptions["SelectFields"] = SourceExpressionConverter.ConvertToken(fetchOptionsselectFields);
+                    fetchOptionspropCount++;
+                }
+
+                if (fetchOptionsorderByFields != null)
+                {
+                    fetchOptions["OrderByFields"] = SourceExpressionConverter.ConvertToken(fetchOptionsorderByFields);
+                    fetchOptionspropCount++;
+                }
+
+                var paramsObject = new JObject();
+                var paramsObjectpropCount = 0;
+                if (paramsObjectpropCount > 0)
+                {
+                    fetchOptions["Params"] = paramsObject;
+                    fetchOptionspropCount++;
+                }
+
                 if (fetchOptionspage != null)
                 {
-                    fetchOptions["Page"] = CSharpExpressionConverter.ConvertToken(fetchOptionspage);
+                    if (fetchOptionspage != null)
+                    {
+                        fetchOptions["Page"] = SourceExpressionConverter.ConvertToken(fetchOptionspage);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["Page"] = 1;
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["Page"] = 1;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspageSize != null)
-            {
                 if (fetchOptionspageSize != null)
                 {
-                    fetchOptions["PageSize"] = CSharpExpressionConverter.ConvertToken(fetchOptionspageSize);
+                    if (fetchOptionspageSize != null)
+                    {
+                        fetchOptions["PageSize"] = SourceExpressionConverter.ConvertToken(fetchOptionspageSize);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["PageSize"] = 500;
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["PageSize"] = 500;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspropCount > 0)
-            {
-                callPayload.Body = fetchOptions;
+                if (fetchOptionspropCount > 0)
+                {
+                    callPayload.Body = fetchOptions;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType(Expression<Func<entityTypeInput>> entityType, Expression<Func<string[]>> fetchOptionsselectFields = null, Expression<Func<string[]>> fetchOptionsorderByFields = null, Expression<Func<int>> fetchOptionspage = null, Expression<Func<int>> fetchOptionspageSize = null)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESEntityEntitiesByType([WorkflowExpression] Func<entityTypeInput> entityType, [WorkflowExpression] Func<string[]> fetchOptionsselectFields = null, [WorkflowExpression] Func<string[]> fetchOptionsorderByFields = null, [WorkflowExpression] Func<int> fetchOptionspage = null, [WorkflowExpression] Func<int> fetchOptionspageSize = null)
         {
-            var apiCallPath = "/api/esentity/EntitiesByType/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["EntityType"] = CSharpExpressionConverter.Convert(entityType);
-            var fetchOptions = new JObject();
-            var fetchOptionspropCount = 0;
-            if (fetchOptionsselectFields != null)
+            SourceExpression.Validate(entityType, nameof(entityType), required: true);
+            SourceExpression.Validate(fetchOptionsselectFields, nameof(fetchOptionsselectFields), required: false);
+            SourceExpression.Validate(fetchOptionsorderByFields, nameof(fetchOptionsorderByFields), required: false);
+            SourceExpression.Validate(fetchOptionspage, nameof(fetchOptionspage), required: false);
+            SourceExpression.Validate(fetchOptionspageSize, nameof(fetchOptionspageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                fetchOptions["SelectFields"] = CSharpExpressionConverter.ConvertToken(fetchOptionsselectFields);
-                fetchOptionspropCount++;
-            }
+                var apiCallPath = "/api/esentity/EntitiesByType/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["EntityType"] = SourceExpressionConverter.Convert(entityType);
+                var fetchOptions = new JObject();
+                var fetchOptionspropCount = 0;
+                if (fetchOptionsselectFields != null)
+                {
+                    fetchOptions["SelectFields"] = SourceExpressionConverter.ConvertToken(fetchOptionsselectFields);
+                    fetchOptionspropCount++;
+                }
 
-            if (fetchOptionsorderByFields != null)
-            {
-                fetchOptions["OrderByFields"] = CSharpExpressionConverter.ConvertToken(fetchOptionsorderByFields);
-                fetchOptionspropCount++;
-            }
+                if (fetchOptionsorderByFields != null)
+                {
+                    fetchOptions["OrderByFields"] = SourceExpressionConverter.ConvertToken(fetchOptionsorderByFields);
+                    fetchOptionspropCount++;
+                }
 
-            var paramsObject = new JObject();
-            var paramsObjectpropCount = 0;
-            if (paramsObjectpropCount > 0)
-            {
-                fetchOptions["Params"] = paramsObject;
-                fetchOptionspropCount++;
-            }
+                var paramsObject = new JObject();
+                var paramsObjectpropCount = 0;
+                if (paramsObjectpropCount > 0)
+                {
+                    fetchOptions["Params"] = paramsObject;
+                    fetchOptionspropCount++;
+                }
 
-            if (fetchOptionspage != null)
-            {
                 if (fetchOptionspage != null)
                 {
-                    fetchOptions["Page"] = CSharpExpressionConverter.ConvertToken(fetchOptionspage);
+                    if (fetchOptionspage != null)
+                    {
+                        fetchOptions["Page"] = SourceExpressionConverter.ConvertToken(fetchOptionspage);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["Page"] = 1;
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["Page"] = 1;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspageSize != null)
-            {
                 if (fetchOptionspageSize != null)
                 {
-                    fetchOptions["PageSize"] = CSharpExpressionConverter.ConvertToken(fetchOptionspageSize);
+                    if (fetchOptionspageSize != null)
+                    {
+                        fetchOptions["PageSize"] = SourceExpressionConverter.ConvertToken(fetchOptionspageSize);
+                        fetchOptionspropCount++;
+                    }
+
+                    fetchOptionspropCount++;
+                }
+                else
+                {
+                    fetchOptions["PageSize"] = 500;
                     fetchOptionspropCount++;
                 }
 
-                fetchOptionspropCount++;
-            }
-            else
-            {
-                fetchOptions["PageSize"] = 500;
-                fetchOptionspropCount++;
-            }
-
-            if (fetchOptionspropCount > 0)
-            {
-                callPayload.Body = fetchOptions;
+                if (fetchOptionspropCount > 0)
+                {
+                    callPayload.Body = fetchOptions;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew(Expression<Func<string>> entity, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationNew([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationNew/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
-            callPayload.Queries["operation"] = CSharpExpressionConverter.ConvertO(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            SourceExpression.Validate(entity, nameof(entity), required: true);
+            SourceExpression.Validate(operation, nameof(operation), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = commandParams;
+                var apiCallPath = "/api/esentity/EntityAutomationNew/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Queries["operation"] = SourceExpressionConverter.ConvertO(operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate(Expression<Func<string>> entity, Expression<Func<string>> field, Expression<Func<string>> id, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdate([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> field, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
-            callPayload.Queries["field"] = CSharpExpressionConverter.ConvertO(field);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            callPayload.Queries["operation"] = CSharpExpressionConverter.ConvertO(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            SourceExpression.Validate(entity, nameof(entity), required: true);
+            SourceExpression.Validate(field, nameof(field), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(operation, nameof(operation), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = commandParams;
+                var apiCallPath = "/api/esentity/EntityAutomationUpdate/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Queries["field"] = SourceExpressionConverter.ConvertO(field);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["operation"] = SourceExpressionConverter.ConvertO(operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode(Expression<Func<string>> entity, Expression<Func<string>> id, Expression<Func<string>> operation)
+        public IBodyWorkflowAction<JToken> ESEntityEntityAutomationUpdateByCode([WorkflowExpression] Func<string> entity, [WorkflowExpression] Func<string> id, [WorkflowExpression] Func<string> operation)
         {
-            var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["entity"] = CSharpExpressionConverter.ConvertO(entity);
-            callPayload.Queries["id"] = CSharpExpressionConverter.ConvertO(id);
-            callPayload.Queries["operation"] = CSharpExpressionConverter.ConvertO(operation);
-            var commandParams = new JObject();
-            var commandParamspropCount = 0;
-            if (commandParamspropCount > 0)
+            SourceExpression.Validate(entity, nameof(entity), required: true);
+            SourceExpression.Validate(id, nameof(id), required: true);
+            SourceExpression.Validate(operation, nameof(operation), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = commandParams;
+                var apiCallPath = "/api/esentity/EntityAutomationUpdateByCode/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["entity"] = SourceExpressionConverter.ConvertO(entity);
+                callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
+                callPayload.Queries["operation"] = SourceExpressionConverter.ConvertO(operation);
+                var commandParams = new JObject();
+                var commandParamspropCount = 0;
+                if (commandParamspropCount > 0)
+                {
+                    callPayload.Body = commandParams;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<JToken>(callPayload);
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade(Expression<Func<string>> pK)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj> ESFinancialsESFIDocumentTrade([WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICreditor/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISupplier/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItem/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFINote/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICustomer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemService/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet(Expression<Func<string>> hookID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/businesshook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet(Expression<Func<string>> hookID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/podhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet(Expression<Func<string>> hookID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rfahook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet(Expression<Func<string>> hookID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/hook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet(Expression<Func<string>> hookID)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/systemhook/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo(Expression<Func<string>> deviceCode)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/device/fetchDeviceInfo/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceCode, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchPropertySet/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchESScale/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESScale>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/PublicQueryLayout/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pqOptionsPage != null)
-                callPayload.Queries["pqOptions.page"] = CSharpExpressionConverter.ConvertO(pqOptionsPage);
-            if (pqOptionsPageSize != null)
-                callPayload.Queries["pqOptions.pageSize"] = CSharpExpressionConverter.ConvertO(pqOptionsPageSize);
-            if (pqOptionsWithCount != null)
-                callPayload.Queries["pqOptions.withCount"] = CSharpExpressionConverter.ConvertO(pqOptionsWithCount);
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<string> ESRPCFIImportDocument(Expression<Func<string>> inputXMLAsString = null)
-        {
-            var apiCallPath = "/api/rpc/FIImportDocument/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(inputXMLAsString);
-            return new ApiConnectionAction<string>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2(Expression<Func<string>> routeId, Expression<Func<int>> pqOptionsPage = null, Expression<Func<int>> pqOptionsPageSize = null, Expression<Func<bool>> pqOptionsWithCount = null)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (pqOptionsPage != null)
-                callPayload.Queries["pqOptions.page"] = CSharpExpressionConverter.ConvertO(pqOptionsPage);
-            if (pqOptionsPageSize != null)
-                callPayload.Queries["pqOptions.pageSize"] = CSharpExpressionConverter.ConvertO(pqOptionsPageSize);
-            if (pqOptionsWithCount != null)
-                callPayload.Queries["pqOptions.withCount"] = CSharpExpressionConverter.ConvertO(pqOptionsWithCount);
-            var @params = new JObject();
-            var @paramspropCount = 0;
-            if (@paramspropCount > 0)
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = @params;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentTrade/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentTradeObj>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<bool> ESRPCLog(Expression<Func<string>> iD, Expression<Func<string>> description = null, Expression<Func<severityInput>> severity = null)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj> ESFinancialsESFIItemExpenses([WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = "/api/rpc/Log/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["ID"] = CSharpExpressionConverter.ConvertO(iD);
-            if (description != null)
-                callPayload.Queries["Description"] = CSharpExpressionConverter.ConvertO(description);
-            if (severity != null)
-                callPayload.Queries["Severity"] = CSharpExpressionConverter.Convert(severity);
-            return new ApiConnectionAction<bool>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParam/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> ESRPCParameterValue(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/ParameterValue/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParams/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand(Expression<Func<string>> eSScrollerCommandscrollerID, Expression<Func<string>> eSScrollerCommandcommandID, Expression<Func<string>> eSScrollerCommandscrollerDatasetJson = null, Expression<Func<bool>> eSScrollerCommandrequiresTransaction = null, Expression<Func<bool>> eSScrollerCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnTargetDatasets = null, Expression<Func<bool>> eSScrollerCommandreturnScrollerDataset = null, Expression<Func<bool>> eSScrollerCommandreturnEntersoftDatasets = null)
-        {
-            var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eSScrollerCommand = new JObject();
-            var eSScrollerCommandpropCount = 0;
-            var scrollerParamsObject = new JObject();
-            var scrollerParamsObjectpropCount = 0;
-            if (scrollerParamsObjectpropCount > 0)
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                eSScrollerCommand["ScrollerParams"] = scrollerParamsObject;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpenses/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpensesObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICreditorObj> ESFinancialsESFICreditor([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICreditor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICreditorObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj> ESFinancialsESFIDocumentCash([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentCash/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentCashObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj> ESFinancialsESMMStockOrderPlan([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESMMStockOrderPlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockOrderPlanObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISupplierObj> ESFinancialsESFISupplier([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISupplier/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISupplierObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj> ESFinancialsESFIItemExpense([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemExpense/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemExpenseObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISalesPersonObj> ESFinancialsESFISalesPerson([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISalesPerson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISalesPersonObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj> ESFinancialsESFIPaymentMethod([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPaymentMethod/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPaymentMethodObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemObj> ESFinancialsESFIItem([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj> ESFinancialsESFISpecialAccount([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFISpecialAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFISpecialAccountObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj> ESFinancialsESFIDocumentStock([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentStock/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentStockObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFINoteObj> ESFinancialsESFINote([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFINote/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFINoteObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj> ESFinancialsESFITradeAccountContract([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccountContract/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountContractObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIVoucherObj> ESFinancialsESFIVoucher([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIVoucher/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIVoucherObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICustomerObj> ESFinancialsESFICustomer([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICustomer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICustomerObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDebtorObj> ESFinancialsESFIDebtor([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDebtor/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDebtorObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIPricelistObj> ESFinancialsESFIPricelist([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIPricelist/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIPricelistObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIItemServiceObj> ESFinancialsESFIItemService([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIItemService/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIItemServiceObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFICashAccountObj> ESFinancialsESFICashAccount([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFICashAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFICashAccountObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj> ESFinancialsESFIDocumentAdjustment([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFIDocumentAdjustment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFIDocumentAdjustmentObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFITradeAccountObj> ESFinancialsESFITradeAccount([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFinancials/ESFITradeAccount/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFITradeAccountObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj> ESFixedAssetESFAFixedAsset([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESFixedAsset/ESFAFixedAsset/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESFAFixedAssetObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOPersonObj> ESGlobalObjectsESGOPerson([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOPerson/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOPersonObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsES00DeviceObj> ESGlobalObjectsES00Device([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ES00Device/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsES00DeviceObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOWebUserObj> ESGlobalObjectsESGOWebUser([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOWebUser/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOWebUserObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESGOUserObj> ESGlobalObjectsESGOUser([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESGlobalObjects/ESGOUser/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESGOUserObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookGet([WorkflowExpression] Func<string> hookID)
+        {
+            SourceExpression.Validate(hookID, nameof(hookID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/businesshook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookGet([WorkflowExpression] Func<string> hookID)
+        {
+            SourceExpression.Validate(hookID, nameof(hookID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/podhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookGet([WorkflowExpression] Func<string> hookID)
+        {
+            SourceExpression.Validate(hookID, nameof(hookID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rfahook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookGet([WorkflowExpression] Func<string> hookID)
+        {
+            SourceExpression.Validate(hookID, nameof(hookID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/hook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookGet([WorkflowExpression] Func<string> hookID)
+        {
+            SourceExpression.Validate(hookID, nameof(hookID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/systemhook/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(hookID, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMLModelObj> ESMachineLearningESMLModel([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMachineLearning/ESMLModel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMLModelObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj> ESMaterialManagementESMMSerialNumber([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSerialNumber/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSerialNumberObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj> ESMaterialManagementESMMCatalogueItem([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCatalogueItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCatalogueItemObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj> ESMaterialManagementESMMStorageLocation([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStorageLocation/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStorageLocationObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMStockItemObj> ESMaterialManagementESMMStockItem([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMStockItem/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMStockItemObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj> ESMaterialManagementESMMCommercialProfile([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMCommercialProfile/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMCommercialProfileObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMSortimentObj> ESMaterialManagementESMMSortiment([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMSortiment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMSortimentObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMLotObj> ESMaterialManagementESMMLot([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMLot/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMLotObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj> ESMaterialManagementESMMProductionPlan([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESMaterialManagement/ESMMProductionPlan/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESMMProductionPlanObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<JToken> ESDeviceFetchDeviceInfo([WorkflowExpression] Func<string> deviceCode)
+        {
+            SourceExpression.Validate(deviceCode, nameof(deviceCode), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/device/fetchDeviceInfo/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(deviceCode, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPropertySet> ESRPCFetchPropertySet([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchPropertySet/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsESPropertySet>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScale> ESRPCFetchESScale([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/fetchESScale/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsESScale>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQLayout> ESRPCPublicQueryLayout([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/PublicQueryLayout/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsESPQLayout>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            SourceExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
+            SourceExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            SourceExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = SourceExpressionConverter.ConvertO(pqOptionsPage);
+                if (pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = SourceExpressionConverter.ConvertO(pqOptionsPageSize);
+                if (pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = SourceExpressionConverter.ConvertO(pqOptionsWithCount);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<string> ESRPCFIImportDocument([WorkflowExpression] Func<string> inputXMLAsString = null)
+        {
+            SourceExpression.Validate(inputXMLAsString, nameof(inputXMLAsString), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/rpc/FIImportDocument/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Body = SourceExpressionConverter.ConvertToken(inputXMLAsString);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESPQResult> ESRPCGetPQData2([WorkflowExpression] Func<string> routeId, [WorkflowExpression] Func<int> pqOptionsPage = null, [WorkflowExpression] Func<int> pqOptionsPageSize = null, [WorkflowExpression] Func<bool> pqOptionsWithCount = null)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            SourceExpression.Validate(pqOptionsPage, nameof(pqOptionsPage), required: false);
+            SourceExpression.Validate(pqOptionsPageSize, nameof(pqOptionsPageSize), required: false);
+            SourceExpression.Validate(pqOptionsWithCount, nameof(pqOptionsWithCount), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/GetPQData2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (pqOptionsPage != null)
+                    callPayload.Queries["pqOptions.page"] = SourceExpressionConverter.ConvertO(pqOptionsPage);
+                if (pqOptionsPageSize != null)
+                    callPayload.Queries["pqOptions.pageSize"] = SourceExpressionConverter.ConvertO(pqOptionsPageSize);
+                if (pqOptionsWithCount != null)
+                    callPayload.Queries["pqOptions.withCount"] = SourceExpressionConverter.ConvertO(pqOptionsWithCount);
+                var @params = new JObject();
+                var @paramspropCount = 0;
+                if (@paramspropCount > 0)
+                {
+                    callPayload.Body = @params;
+                }
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsESPQResult>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<bool> ESRPCLog([WorkflowExpression] Func<string> iD, [WorkflowExpression] Func<string> description = null, [WorkflowExpression] Func<severityInput> severity = null)
+        {
+            SourceExpression.Validate(iD, nameof(iD), required: true);
+            SourceExpression.Validate(description, nameof(description), required: false);
+            SourceExpression.Validate(severity, nameof(severity), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/rpc/Log/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["ID"] = SourceExpressionConverter.ConvertO(iD);
+                if (description != null)
+                    callPayload.Queries["Description"] = SourceExpressionConverter.ConvertO(description);
+                if (severity != null)
+                    callPayload.Queries["Severity"] = SourceExpressionConverter.Convert(severity);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<bool>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx> ESRPCFetchCompanyParam([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParam/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<JToken> ESRPCParameterValue([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/ParameterValue/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsCompanyParamEx[]> ESRPCFetchCompanyParams([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/FetchCompanyParams/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<EntersoftWebApiModelsCompanyParamEx[]>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteScrollerCommand([WorkflowExpression] Func<string> eSScrollerCommandscrollerID, [WorkflowExpression] Func<string> eSScrollerCommandcommandID, [WorkflowExpression] Func<string> eSScrollerCommandscrollerDatasetJson = null, [WorkflowExpression] Func<bool> eSScrollerCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> eSScrollerCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnScrollerDataset = null, [WorkflowExpression] Func<bool> eSScrollerCommandreturnEntersoftDatasets = null)
+        {
+            SourceExpression.Validate(eSScrollerCommandscrollerID, nameof(eSScrollerCommandscrollerID), required: true);
+            SourceExpression.Validate(eSScrollerCommandcommandID, nameof(eSScrollerCommandcommandID), required: true);
+            SourceExpression.Validate(eSScrollerCommandscrollerDatasetJson, nameof(eSScrollerCommandscrollerDatasetJson), required: false);
+            SourceExpression.Validate(eSScrollerCommandrequiresTransaction, nameof(eSScrollerCommandrequiresTransaction), required: false);
+            SourceExpression.Validate(eSScrollerCommandonlyPrepareTargetDatasets, nameof(eSScrollerCommandonlyPrepareTargetDatasets), required: false);
+            SourceExpression.Validate(eSScrollerCommandreturnTargetDatasets, nameof(eSScrollerCommandreturnTargetDatasets), required: false);
+            SourceExpression.Validate(eSScrollerCommandreturnScrollerDataset, nameof(eSScrollerCommandreturnScrollerDataset), required: false);
+            SourceExpression.Validate(eSScrollerCommandreturnEntersoftDatasets, nameof(eSScrollerCommandreturnEntersoftDatasets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/rpc/ExecuteScrollerCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eSScrollerCommand = new JObject();
+                var eSScrollerCommandpropCount = 0;
+                var scrollerParamsObject = new JObject();
+                var scrollerParamsObjectpropCount = 0;
+                if (scrollerParamsObjectpropCount > 0)
+                {
+                    eSScrollerCommand["ScrollerParams"] = scrollerParamsObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                var scrollerDatasetObject = new JObject();
+                var scrollerDatasetObjectpropCount = 0;
+                if (scrollerDatasetObjectpropCount > 0)
+                {
+                    eSScrollerCommand["ScrollerDataset"] = scrollerDatasetObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandscrollerDatasetJson != null)
+                {
+                    eSScrollerCommand["ScrollerDatasetJson"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandscrollerDatasetJson);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandrequiresTransaction != null)
+                {
+                    eSScrollerCommand["RequiresTransaction"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandrequiresTransaction);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandonlyPrepareTargetDatasets != null)
+                {
+                    eSScrollerCommand["OnlyPrepareTargetDatasets"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandonlyPrepareTargetDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandreturnTargetDatasets != null)
+                {
+                    eSScrollerCommand["ReturnTargetDatasets"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandreturnTargetDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandreturnScrollerDataset != null)
+                {
+                    eSScrollerCommand["ReturnScrollerDataset"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandreturnScrollerDataset);
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandreturnEntersoftDatasets != null)
+                {
+                    eSScrollerCommand["ReturnEntersoftDatasets"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandreturnEntersoftDatasets);
+                    eSScrollerCommandpropCount++;
+                }
+
                 eSScrollerCommandpropCount++;
-            }
-
-            var scrollerDatasetObject = new JObject();
-            var scrollerDatasetObjectpropCount = 0;
-            if (scrollerDatasetObjectpropCount > 0)
-            {
-                eSScrollerCommand["ScrollerDataset"] = scrollerDatasetObject;
+                eSScrollerCommand["ScrollerID"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandscrollerID);
                 eSScrollerCommandpropCount++;
+                eSScrollerCommand["CommandID"] = SourceExpressionConverter.ConvertToken(eSScrollerCommandcommandID);
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    eSScrollerCommand["CommandParams"] = commandParamsObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    eSScrollerCommand["UnboundVariables"] = unboundVariablesObject;
+                    eSScrollerCommandpropCount++;
+                }
+
+                if (eSScrollerCommandpropCount > 0)
+                {
+                    callPayload.Body = eSScrollerCommand;
+                }
+                return callPayload;
             }
 
-            if (eSScrollerCommandscrollerDatasetJson != null)
-            {
-                eSScrollerCommand["ScrollerDatasetJson"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandscrollerDatasetJson);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandrequiresTransaction != null)
-            {
-                eSScrollerCommand["RequiresTransaction"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandrequiresTransaction);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandonlyPrepareTargetDatasets != null)
-            {
-                eSScrollerCommand["OnlyPrepareTargetDatasets"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandonlyPrepareTargetDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnTargetDatasets != null)
-            {
-                eSScrollerCommand["ReturnTargetDatasets"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandreturnTargetDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnScrollerDataset != null)
-            {
-                eSScrollerCommand["ReturnScrollerDataset"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandreturnScrollerDataset);
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandreturnEntersoftDatasets != null)
-            {
-                eSScrollerCommand["ReturnEntersoftDatasets"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandreturnEntersoftDatasets);
-                eSScrollerCommandpropCount++;
-            }
-
-            eSScrollerCommandpropCount++;
-            eSScrollerCommand["ScrollerID"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandscrollerID);
-            eSScrollerCommandpropCount++;
-            eSScrollerCommand["CommandID"] = CSharpExpressionConverter.ConvertToken(eSScrollerCommandcommandID);
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
-            {
-                eSScrollerCommand["CommandParams"] = commandParamsObject;
-                eSScrollerCommandpropCount++;
-            }
-
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
-            {
-                eSScrollerCommand["UnboundVariables"] = unboundVariablesObject;
-                eSScrollerCommandpropCount++;
-            }
-
-            if (eSScrollerCommandpropCount > 0)
-            {
-                callPayload.Body = eSScrollerCommand;
-            }
-
-            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand(Expression<Func<string>> eSCommandInscrollerID, Expression<Func<string>> eSCommandIncommandID)
+        public IBodyWorkflowAction<EntersoftWebApiModelsESScrollerCommandOut> ESRPCExecuteCommand([WorkflowExpression] Func<string> eSCommandInscrollerID, [WorkflowExpression] Func<string> eSCommandIncommandID)
         {
-            var apiCallPath = "/api/rpc/ExecuteCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var eSCommandIn = new JObject();
-            var eSCommandInpropCount = 0;
-            eSCommandInpropCount++;
-            eSCommandIn["ScrollerID"] = CSharpExpressionConverter.ConvertToken(eSCommandInscrollerID);
-            eSCommandInpropCount++;
-            eSCommandIn["CommandID"] = CSharpExpressionConverter.ConvertToken(eSCommandIncommandID);
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
+            SourceExpression.Validate(eSCommandInscrollerID, nameof(eSCommandInscrollerID), required: true);
+            SourceExpression.Validate(eSCommandIncommandID, nameof(eSCommandIncommandID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                eSCommandIn["CommandParams"] = commandParamsObject;
+                var apiCallPath = "/api/rpc/ExecuteCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var eSCommandIn = new JObject();
+                var eSCommandInpropCount = 0;
                 eSCommandInpropCount++;
-            }
-
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
-            {
-                eSCommandIn["UnboundVariables"] = unboundVariablesObject;
+                eSCommandIn["ScrollerID"] = SourceExpressionConverter.ConvertToken(eSCommandInscrollerID);
                 eSCommandInpropCount++;
+                eSCommandIn["CommandID"] = SourceExpressionConverter.ConvertToken(eSCommandIncommandID);
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    eSCommandIn["CommandParams"] = commandParamsObject;
+                    eSCommandInpropCount++;
+                }
+
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    eSCommandIn["UnboundVariables"] = unboundVariablesObject;
+                    eSCommandInpropCount++;
+                }
+
+                if (eSCommandInpropCount > 0)
+                {
+                    callPayload.Body = eSCommandIn;
+                }
+                return callPayload;
             }
 
-            if (eSCommandInpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand([WorkflowExpression] Func<string> formCommandentityID = null, [WorkflowExpression] Func<string> formCommandcommandID = null, [WorkflowExpression] Func<string> formCommandentityDatasetJson = null, [WorkflowExpression] Func<string> formCommandentityGID = null, [WorkflowExpression] Func<string[]> formCommandentityGIDs = null, [WorkflowExpression] Func<string> formCommandentityCode = null, [WorkflowExpression] Func<string[]> formCommandentityCodes = null, [WorkflowExpression] Func<string> formCommandentityScrollerID = null, [WorkflowExpression] Func<bool> formCommandrequiresTransaction = null, [WorkflowExpression] Func<bool> formCommandcreateNewEmptySourceEntity = null, [WorkflowExpression] Func<bool> formCommandonlyPrepareTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnSourceDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnTargetDatasets = null, [WorkflowExpression] Func<bool> formCommandreturnMap = null, [WorkflowExpression] Func<bool> formCommandreturnEntersoftDatasets = null)
+        {
+            SourceExpression.Validate(formCommandentityID, nameof(formCommandentityID), required: false);
+            SourceExpression.Validate(formCommandcommandID, nameof(formCommandcommandID), required: false);
+            SourceExpression.Validate(formCommandentityDatasetJson, nameof(formCommandentityDatasetJson), required: false);
+            SourceExpression.Validate(formCommandentityGID, nameof(formCommandentityGID), required: false);
+            SourceExpression.Validate(formCommandentityGIDs, nameof(formCommandentityGIDs), required: false);
+            SourceExpression.Validate(formCommandentityCode, nameof(formCommandentityCode), required: false);
+            SourceExpression.Validate(formCommandentityCodes, nameof(formCommandentityCodes), required: false);
+            SourceExpression.Validate(formCommandentityScrollerID, nameof(formCommandentityScrollerID), required: false);
+            SourceExpression.Validate(formCommandrequiresTransaction, nameof(formCommandrequiresTransaction), required: false);
+            SourceExpression.Validate(formCommandcreateNewEmptySourceEntity, nameof(formCommandcreateNewEmptySourceEntity), required: false);
+            SourceExpression.Validate(formCommandonlyPrepareTargetDatasets, nameof(formCommandonlyPrepareTargetDatasets), required: false);
+            SourceExpression.Validate(formCommandreturnSourceDatasets, nameof(formCommandreturnSourceDatasets), required: false);
+            SourceExpression.Validate(formCommandreturnTargetDatasets, nameof(formCommandreturnTargetDatasets), required: false);
+            SourceExpression.Validate(formCommandreturnMap, nameof(formCommandreturnMap), required: false);
+            SourceExpression.Validate(formCommandreturnEntersoftDatasets, nameof(formCommandreturnEntersoftDatasets), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = eSCommandIn;
+                var apiCallPath = "/api/rpc/ExecuteFormCommand/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var formCommand = new JObject();
+                var formCommandpropCount = 0;
+                if (formCommandentityID != null)
+                {
+                    formCommand["EntityID"] = SourceExpressionConverter.ConvertToken(formCommandentityID);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandcommandID != null)
+                {
+                    formCommand["CommandID"] = SourceExpressionConverter.ConvertToken(formCommandcommandID);
+                    formCommandpropCount++;
+                }
+
+                var entityDatasetObject = new JObject();
+                var entityDatasetObjectpropCount = 0;
+                if (entityDatasetObjectpropCount > 0)
+                {
+                    formCommand["EntityDataset"] = entityDatasetObject;
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityDatasetJson != null)
+                {
+                    formCommand["EntityDatasetJson"] = SourceExpressionConverter.ConvertToken(formCommandentityDatasetJson);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityGID != null)
+                {
+                    formCommand["EntityGID"] = SourceExpressionConverter.ConvertToken(formCommandentityGID);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityGIDs != null)
+                {
+                    formCommand["EntityGIDs"] = SourceExpressionConverter.ConvertToken(formCommandentityGIDs);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityCode != null)
+                {
+                    formCommand["EntityCode"] = SourceExpressionConverter.ConvertToken(formCommandentityCode);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityCodes != null)
+                {
+                    formCommand["EntityCodes"] = SourceExpressionConverter.ConvertToken(formCommandentityCodes);
+                    formCommandpropCount++;
+                }
+
+                var entityParamsObject = new JObject();
+                var entityParamsObjectpropCount = 0;
+                if (entityParamsObjectpropCount > 0)
+                {
+                    formCommand["EntityParams"] = entityParamsObject;
+                    formCommandpropCount++;
+                }
+
+                if (formCommandentityScrollerID != null)
+                {
+                    formCommand["EntityScrollerID"] = SourceExpressionConverter.ConvertToken(formCommandentityScrollerID);
+                    formCommandpropCount++;
+                }
+
+                var entityScrollerParamsObject = new JObject();
+                var entityScrollerParamsObjectpropCount = 0;
+                if (entityScrollerParamsObjectpropCount > 0)
+                {
+                    formCommand["EntityScrollerParams"] = entityScrollerParamsObject;
+                    formCommandpropCount++;
+                }
+
+                if (formCommandrequiresTransaction != null)
+                {
+                    formCommand["RequiresTransaction"] = SourceExpressionConverter.ConvertToken(formCommandrequiresTransaction);
+                    formCommandpropCount++;
+                }
+
+                var commandParamsObject = new JObject();
+                var commandParamsObjectpropCount = 0;
+                if (commandParamsObjectpropCount > 0)
+                {
+                    formCommand["CommandParams"] = commandParamsObject;
+                    formCommandpropCount++;
+                }
+
+                var unboundVariablesObject = new JObject();
+                var unboundVariablesObjectpropCount = 0;
+                if (unboundVariablesObjectpropCount > 0)
+                {
+                    formCommand["UnboundVariables"] = unboundVariablesObject;
+                    formCommandpropCount++;
+                }
+
+                if (formCommandcreateNewEmptySourceEntity != null)
+                {
+                    formCommand["CreateNewEmptySourceEntity"] = SourceExpressionConverter.ConvertToken(formCommandcreateNewEmptySourceEntity);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandonlyPrepareTargetDatasets != null)
+                {
+                    formCommand["OnlyPrepareTargetDatasets"] = SourceExpressionConverter.ConvertToken(formCommandonlyPrepareTargetDatasets);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandreturnSourceDatasets != null)
+                {
+                    formCommand["ReturnSourceDatasets"] = SourceExpressionConverter.ConvertToken(formCommandreturnSourceDatasets);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandreturnTargetDatasets != null)
+                {
+                    formCommand["ReturnTargetDatasets"] = SourceExpressionConverter.ConvertToken(formCommandreturnTargetDatasets);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandreturnMap != null)
+                {
+                    formCommand["ReturnMap"] = SourceExpressionConverter.ConvertToken(formCommandreturnMap);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandreturnEntersoftDatasets != null)
+                {
+                    formCommand["ReturnEntersoftDatasets"] = SourceExpressionConverter.ConvertToken(formCommandreturnEntersoftDatasets);
+                    formCommandpropCount++;
+                }
+
+                if (formCommandpropCount > 0)
+                {
+                    callPayload.Body = formCommand;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESScrollerCommandOut>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApiModelsESFormCommandOut>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApiModelsESFormCommandOut> ESRPCExecuteFormCommand(Expression<Func<string>> formCommandentityID = null, Expression<Func<string>> formCommandcommandID = null, Expression<Func<string>> formCommandentityDatasetJson = null, Expression<Func<string>> formCommandentityGID = null, Expression<Func<string[]>> formCommandentityGIDs = null, Expression<Func<string>> formCommandentityCode = null, Expression<Func<string[]>> formCommandentityCodes = null, Expression<Func<string>> formCommandentityScrollerID = null, Expression<Func<bool>> formCommandrequiresTransaction = null, Expression<Func<bool>> formCommandcreateNewEmptySourceEntity = null, Expression<Func<bool>> formCommandonlyPrepareTargetDatasets = null, Expression<Func<bool>> formCommandreturnSourceDatasets = null, Expression<Func<bool>> formCommandreturnTargetDatasets = null, Expression<Func<bool>> formCommandreturnMap = null, Expression<Func<bool>> formCommandreturnEntersoftDatasets = null)
+        public IBodyWorkflowAction<JToken> GETESRPCEbsService2([WorkflowExpression] Func<string> routeId)
         {
-            var apiCallPath = "/api/rpc/ExecuteFormCommand/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var formCommand = new JObject();
-            var formCommandpropCount = 0;
-            if (formCommandentityID != null)
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityID"] = CSharpExpressionConverter.ConvertToken(formCommandentityID);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandcommandID != null)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<JToken> POSTESRPCEbsService2([WorkflowExpression] Func<string> routeId)
+        {
+            SourceExpression.Validate(routeId, nameof(routeId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["CommandID"] = CSharpExpressionConverter.ConvertToken(formCommandcommandID);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var entityDatasetObject = new JObject();
-            var entityDatasetObjectpropCount = 0;
-            if (entityDatasetObjectpropCount > 0)
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityDataset"] = entityDatasetObject;
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityDatasetJson != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityDatasetJson"] = CSharpExpressionConverter.ConvertToken(formCommandentityDatasetJson);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityGID != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityGID"] = CSharpExpressionConverter.ConvertToken(formCommandentityGID);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityGIDs != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityGIDs"] = CSharpExpressionConverter.ConvertToken(formCommandentityGIDs);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityCode != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityCode"] = CSharpExpressionConverter.ConvertToken(formCommandentityCode);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityCodes != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityCodes"] = CSharpExpressionConverter.ConvertToken(formCommandentityCodes);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var entityParamsObject = new JObject();
-            var entityParamsObjectpropCount = 0;
-            if (entityParamsObjectpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityParams"] = entityParamsObject;
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandentityScrollerID != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityScrollerID"] = CSharpExpressionConverter.ConvertToken(formCommandentityScrollerID);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var entityScrollerParamsObject = new JObject();
-            var entityScrollerParamsObjectpropCount = 0;
-            if (entityScrollerParamsObjectpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["EntityScrollerParams"] = entityScrollerParamsObject;
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandrequiresTransaction != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["RequiresTransaction"] = CSharpExpressionConverter.ConvertToken(formCommandrequiresTransaction);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var commandParamsObject = new JObject();
-            var commandParamsObjectpropCount = 0;
-            if (commandParamsObjectpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["CommandParams"] = commandParamsObject;
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            var unboundVariablesObject = new JObject();
-            var unboundVariablesObjectpropCount = 0;
-            if (unboundVariablesObjectpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["UnboundVariables"] = unboundVariablesObject;
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandcreateNewEmptySourceEntity != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["CreateNewEmptySourceEntity"] = CSharpExpressionConverter.ConvertToken(formCommandcreateNewEmptySourceEntity);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandonlyPrepareTargetDatasets != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["OnlyPrepareTargetDatasets"] = CSharpExpressionConverter.ConvertToken(formCommandonlyPrepareTargetDatasets);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandreturnSourceDatasets != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["ReturnSourceDatasets"] = CSharpExpressionConverter.ConvertToken(formCommandreturnSourceDatasets);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandreturnTargetDatasets != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["ReturnTargetDatasets"] = CSharpExpressionConverter.ConvertToken(formCommandreturnTargetDatasets);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandreturnMap != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["ReturnMap"] = CSharpExpressionConverter.ConvertToken(formCommandreturnMap);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandreturnEntersoftDatasets != null)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                formCommand["ReturnEntersoftDatasets"] = CSharpExpressionConverter.ConvertToken(formCommandreturnEntersoftDatasets);
-                formCommandpropCount++;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            if (formCommandpropCount > 0)
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(BuildSourceInput);
+        }
+
+        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage([WorkflowExpression] Func<string> pK)
+        {
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = formCommand;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
             }
 
-            return new ApiConnectionAction<EntersoftWebApiModelsESFormCommandOut>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> GETESRPCEbsService2(Expression<Func<string>> routeId)
+        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask([WorkflowExpression] Func<string> pK)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
+            SourceExpression.Validate(pK, nameof(pK), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
 
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<JToken> POSTESRPCEbsService2(Expression<Func<string>> routeId)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/rpc/EbsService2/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(routeId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<JToken>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj> ESTaskManagementESTMMobileTaskType(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMMobileTaskType/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMMobileTaskTypeObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj> ESTaskManagementESTMServiceRequest(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMServiceRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMServiceRequestObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMRFMModelObj> ESTaskManagementESTMRFMModel(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMRFMModel/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMRFMModelObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj> ESTaskManagementESTMNewsletterRecipient(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMNewsletterRecipient/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMNewsletterRecipientObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMInteractionObj> ESTaskManagementESTMInteraction(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMInteraction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMInteractionObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj> ESTaskManagementESTMObjectRating(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMObjectRating/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMObjectRatingObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMTaskObj> ESTaskManagementESTMTask(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMTask/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMTaskObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMResourceObj> ESTaskManagementESTMResource(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMResource/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMResourceObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMCampaignObj> ESTaskManagementESTMCampaign(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMCampaign/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMCampaignObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMSMActivityObj> ESTaskManagementESTMSMActivity(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMSMActivity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMSMActivityObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESTMOpportunityObj> ESTaskManagementESTMOpportunity(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESTaskManagement/ESTMOpportunity/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESTMOpportunityObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMTransportActionObj> ESWarehouseManagementESWMTransportAction(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMTransportAction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMTransportActionObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMActionObj> ESWarehouseManagementESWMAction(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMAction/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMActionObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMShipmentObj> ESWarehouseManagementESWMShipment(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMShipment/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMShipmentObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj> ESWarehouseManagementESWMWorkPackage(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMWorkPackage/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMWorkPackageObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMRequestObj> ESWarehouseManagementESWMRequest(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMRequestObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWMContainerObj> ESWarehouseManagementESWMContainer(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWarehouseManagement/ESWMContainer/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWMContainerObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj> ESWorkInProgressESWPTaskRequest(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPTaskRequest/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPTaskRequestObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj> ESWorkInProgressESWPWorkPackage(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPWorkPackage/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPWorkPackageObj>(callPayload);
-        }
-
-        [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "entersoft")]
-        public IBodyWorkflowAction<EntersoftWebApi2ODSModelsESWPActualTaskObj> ESWorkInProgressESWPActualTask(Expression<Func<string>> pK)
-        {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/api/ESWorkInProgress/ESWPActualTask/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(pK, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(callPayload);
+            return new ApiConnectionAction<EntersoftWebApi2ODSModelsESWPActualTaskObj>(BuildSourceInput);
         }
     }
 
     public class EntersoftTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost(Expression<Func<registrationbusinessEventTypeInput>> registrationbusinessEventType, Expression<Func<string>> registrationcontext = null, Expression<Func<double>> registrationvalue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse> ESBusinessHookPost([WorkflowExpression] Func<registrationbusinessEventTypeInput> registrationbusinessEventType, [WorkflowExpression] Func<string> registrationcontext = null, [WorkflowExpression] Func<double> registrationvalue = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/businesshook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["BusinessEventType"] = CSharpExpressionConverter.Convert(registrationbusinessEventType);
-            if (registrationcontext != null)
+            SourceExpression.Validate(registrationbusinessEventType, nameof(registrationbusinessEventType), required: true);
+            SourceExpression.Validate(registrationcontext, nameof(registrationcontext), required: false);
+            SourceExpression.Validate(registrationvalue, nameof(registrationvalue), required: false);
+            SourceExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
+            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
+            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                registration["Context"] = CSharpExpressionConverter.ConvertToken(registrationcontext);
+                var apiCallPath = "/api/businesshook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
+                registration["BusinessEventType"] = SourceExpressionConverter.Convert(registrationbusinessEventType);
+                if (registrationcontext != null)
+                {
+                    registration["Context"] = SourceExpressionConverter.ConvertToken(registrationcontext);
+                    registrationpropCount++;
+                }
 
-            if (registrationvalue != null)
-            {
                 if (registrationvalue != null)
                 {
-                    registration["Value"] = CSharpExpressionConverter.ConvertToken(registrationvalue);
+                    if (registrationvalue != null)
+                    {
+                        registration["Value"] = SourceExpressionConverter.ConvertToken(registrationvalue);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["Value"] = 0;
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["Value"] = 0;
-                registrationpropCount++;
-            }
+                if (registrationexternalID != null)
+                {
+                    registration["ExternalID"] = SourceExpressionConverter.ConvertToken(registrationexternalID);
+                    registrationpropCount++;
+                }
 
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = CSharpExpressionConverter.ConvertToken(registrationexternalID);
-                registrationpropCount++;
-            }
+                if (registrationdescription != null)
+                {
+                    registration["Description"] = SourceExpressionConverter.ConvertToken(registrationdescription);
+                    registrationpropCount++;
+                }
 
-            if (registrationdescription != null)
-            {
-                registration["Description"] = CSharpExpressionConverter.ConvertToken(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
                 if (registrationisActive != null)
                 {
-                    registration["IsActive"] = CSharpExpressionConverter.ConvertToken(registrationisActive);
+                    if (registrationisActive != null)
+                    {
+                        registration["IsActive"] = SourceExpressionConverter.ConvertToken(registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
                     registrationpropCount++;
                 }
 
+                registration["CallbackURL"] = "@listCallbackUrl()";
                 registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+                return callPayload;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
-
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESBusinessHookRegistrationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost(Expression<Func<registrationstateInput>> registrationstate = null, Expression<Func<registrationpackageTypeInput>> registrationpackageType = null, Expression<Func<string>> registrationconveyanceLicencePlate = null, Expression<Func<string>> registrationbranchID = null, Expression<Func<string>> registrationtradeAccountName = null, Expression<Func<string>> registrationdriverCode = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse> ESPodHookPost([WorkflowExpression] Func<registrationstateInput> registrationstate = null, [WorkflowExpression] Func<registrationpackageTypeInput> registrationpackageType = null, [WorkflowExpression] Func<string> registrationconveyanceLicencePlate = null, [WorkflowExpression] Func<string> registrationbranchID = null, [WorkflowExpression] Func<string> registrationtradeAccountName = null, [WorkflowExpression] Func<string> registrationdriverCode = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/podhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            if (registrationstate != null)
+            SourceExpression.Validate(registrationstate, nameof(registrationstate), required: false);
+            SourceExpression.Validate(registrationpackageType, nameof(registrationpackageType), required: false);
+            SourceExpression.Validate(registrationconveyanceLicencePlate, nameof(registrationconveyanceLicencePlate), required: false);
+            SourceExpression.Validate(registrationbranchID, nameof(registrationbranchID), required: false);
+            SourceExpression.Validate(registrationtradeAccountName, nameof(registrationtradeAccountName), required: false);
+            SourceExpression.Validate(registrationdriverCode, nameof(registrationdriverCode), required: false);
+            SourceExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
+            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
+            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
+                var apiCallPath = "/api/podhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 if (registrationstate != null)
                 {
-                    registration["State"] = CSharpExpressionConverter.Convert(registrationstate);
+                    if (registrationstate != null)
+                    {
+                        registration["State"] = SourceExpressionConverter.Convert(registrationstate);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["State"] = "All";
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["State"] = "All";
-                registrationpropCount++;
-            }
-
-            if (registrationpackageType != null)
-            {
                 if (registrationpackageType != null)
                 {
-                    registration["PackageType"] = CSharpExpressionConverter.Convert(registrationpackageType);
+                    if (registrationpackageType != null)
+                    {
+                        registration["PackageType"] = SourceExpressionConverter.Convert(registrationpackageType);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["PackageType"] = "All";
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["PackageType"] = "All";
-                registrationpropCount++;
-            }
+                if (registrationconveyanceLicencePlate != null)
+                {
+                    registration["ConveyanceLicencePlate"] = SourceExpressionConverter.ConvertToken(registrationconveyanceLicencePlate);
+                    registrationpropCount++;
+                }
 
-            if (registrationconveyanceLicencePlate != null)
-            {
-                registration["ConveyanceLicencePlate"] = CSharpExpressionConverter.ConvertToken(registrationconveyanceLicencePlate);
-                registrationpropCount++;
-            }
+                if (registrationbranchID != null)
+                {
+                    registration["BranchID"] = SourceExpressionConverter.ConvertToken(registrationbranchID);
+                    registrationpropCount++;
+                }
 
-            if (registrationbranchID != null)
-            {
-                registration["BranchID"] = CSharpExpressionConverter.ConvertToken(registrationbranchID);
-                registrationpropCount++;
-            }
+                if (registrationtradeAccountName != null)
+                {
+                    registration["TradeAccountName"] = SourceExpressionConverter.ConvertToken(registrationtradeAccountName);
+                    registrationpropCount++;
+                }
 
-            if (registrationtradeAccountName != null)
-            {
-                registration["TradeAccountName"] = CSharpExpressionConverter.ConvertToken(registrationtradeAccountName);
-                registrationpropCount++;
-            }
+                if (registrationdriverCode != null)
+                {
+                    registration["DriverCode"] = SourceExpressionConverter.ConvertToken(registrationdriverCode);
+                    registrationpropCount++;
+                }
 
-            if (registrationdriverCode != null)
-            {
-                registration["DriverCode"] = CSharpExpressionConverter.ConvertToken(registrationdriverCode);
-                registrationpropCount++;
-            }
+                if (registrationexternalID != null)
+                {
+                    registration["ExternalID"] = SourceExpressionConverter.ConvertToken(registrationexternalID);
+                    registrationpropCount++;
+                }
 
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = CSharpExpressionConverter.ConvertToken(registrationexternalID);
-                registrationpropCount++;
-            }
+                if (registrationdescription != null)
+                {
+                    registration["Description"] = SourceExpressionConverter.ConvertToken(registrationdescription);
+                    registrationpropCount++;
+                }
 
-            if (registrationdescription != null)
-            {
-                registration["Description"] = CSharpExpressionConverter.ConvertToken(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
                 if (registrationisActive != null)
                 {
-                    registration["IsActive"] = CSharpExpressionConverter.ConvertToken(registrationisActive);
+                    if (registrationisActive != null)
+                    {
+                        registration["IsActive"] = SourceExpressionConverter.ConvertToken(registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
                     registrationpropCount++;
                 }
 
+                registration["CallbackURL"] = "@listCallbackUrl()";
                 registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+                return callPayload;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
-
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESPodHookRegistrationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost(Expression<Func<string>> registrationrequestedBy = null, Expression<Func<registrationpriorityInput>> registrationpriority = null, Expression<Func<string>> registrationrequestClass = null, Expression<Func<string>> registrationrequestCategory = null, Expression<Func<double>> registrationnumericValue = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse> ESRFAHookPost([WorkflowExpression] Func<string> registrationrequestedBy = null, [WorkflowExpression] Func<registrationpriorityInput> registrationpriority = null, [WorkflowExpression] Func<string> registrationrequestClass = null, [WorkflowExpression] Func<string> registrationrequestCategory = null, [WorkflowExpression] Func<double> registrationnumericValue = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/rfahook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            if (registrationrequestedBy != null)
+            SourceExpression.Validate(registrationrequestedBy, nameof(registrationrequestedBy), required: false);
+            SourceExpression.Validate(registrationpriority, nameof(registrationpriority), required: false);
+            SourceExpression.Validate(registrationrequestClass, nameof(registrationrequestClass), required: false);
+            SourceExpression.Validate(registrationrequestCategory, nameof(registrationrequestCategory), required: false);
+            SourceExpression.Validate(registrationnumericValue, nameof(registrationnumericValue), required: false);
+            SourceExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
+            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
+            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                registration["RequestedBy"] = CSharpExpressionConverter.ConvertToken(registrationrequestedBy);
-                registrationpropCount++;
-            }
+                var apiCallPath = "/api/rfahook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
+                if (registrationrequestedBy != null)
+                {
+                    registration["RequestedBy"] = SourceExpressionConverter.ConvertToken(registrationrequestedBy);
+                    registrationpropCount++;
+                }
 
-            if (registrationpriority != null)
-            {
-                registration["Priority"] = CSharpExpressionConverter.Convert(registrationpriority);
-                registrationpropCount++;
-            }
+                if (registrationpriority != null)
+                {
+                    registration["Priority"] = SourceExpressionConverter.Convert(registrationpriority);
+                    registrationpropCount++;
+                }
 
-            if (registrationrequestClass != null)
-            {
-                registration["RequestClass"] = CSharpExpressionConverter.ConvertToken(registrationrequestClass);
-                registrationpropCount++;
-            }
+                if (registrationrequestClass != null)
+                {
+                    registration["RequestClass"] = SourceExpressionConverter.ConvertToken(registrationrequestClass);
+                    registrationpropCount++;
+                }
 
-            if (registrationrequestCategory != null)
-            {
-                registration["RequestCategory"] = CSharpExpressionConverter.ConvertToken(registrationrequestCategory);
-                registrationpropCount++;
-            }
+                if (registrationrequestCategory != null)
+                {
+                    registration["RequestCategory"] = SourceExpressionConverter.ConvertToken(registrationrequestCategory);
+                    registrationpropCount++;
+                }
 
-            if (registrationnumericValue != null)
-            {
                 if (registrationnumericValue != null)
                 {
-                    registration["NumericValue"] = CSharpExpressionConverter.ConvertToken(registrationnumericValue);
+                    if (registrationnumericValue != null)
+                    {
+                        registration["NumericValue"] = SourceExpressionConverter.ConvertToken(registrationnumericValue);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["NumericValue"] = 0;
                     registrationpropCount++;
                 }
 
-                registrationpropCount++;
-            }
-            else
-            {
-                registration["NumericValue"] = 0;
-                registrationpropCount++;
-            }
+                if (registrationexternalID != null)
+                {
+                    registration["ExternalID"] = SourceExpressionConverter.ConvertToken(registrationexternalID);
+                    registrationpropCount++;
+                }
 
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = CSharpExpressionConverter.ConvertToken(registrationexternalID);
-                registrationpropCount++;
-            }
+                if (registrationdescription != null)
+                {
+                    registration["Description"] = SourceExpressionConverter.ConvertToken(registrationdescription);
+                    registrationpropCount++;
+                }
 
-            if (registrationdescription != null)
-            {
-                registration["Description"] = CSharpExpressionConverter.ConvertToken(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
                 if (registrationisActive != null)
                 {
-                    registration["IsActive"] = CSharpExpressionConverter.ConvertToken(registrationisActive);
+                    if (registrationisActive != null)
+                    {
+                        registration["IsActive"] = SourceExpressionConverter.ConvertToken(registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
                     registrationpropCount++;
                 }
 
+                registration["CallbackURL"] = "@listCallbackUrl()";
                 registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+                return callPayload;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
-
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESRFAHookRegistrationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost(Expression<Func<registrationentityTypeInput>> registrationentityType, Expression<Func<registrationeventTypeInput>> registrationeventType, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse> ESHookPost([WorkflowExpression] Func<registrationentityTypeInput> registrationentityType, [WorkflowExpression] Func<registrationeventTypeInput> registrationeventType, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/hook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["EntityType"] = CSharpExpressionConverter.Convert(registrationentityType);
-            registrationpropCount++;
-            registration["EventType"] = CSharpExpressionConverter.Convert(registrationeventType);
-            if (registrationexternalID != null)
+            SourceExpression.Validate(registrationentityType, nameof(registrationentityType), required: true);
+            SourceExpression.Validate(registrationeventType, nameof(registrationeventType), required: true);
+            SourceExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
+            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
+            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                registration["ExternalID"] = CSharpExpressionConverter.ConvertToken(registrationexternalID);
+                var apiCallPath = "/api/hook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = CSharpExpressionConverter.ConvertToken(registrationdescription);
+                registration["EntityType"] = SourceExpressionConverter.Convert(registrationentityType);
                 registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                registration["EventType"] = SourceExpressionConverter.Convert(registrationeventType);
+                if (registrationexternalID != null)
                 {
-                    registration["IsActive"] = CSharpExpressionConverter.ConvertToken(registrationisActive);
+                    registration["ExternalID"] = SourceExpressionConverter.ConvertToken(registrationexternalID);
                     registrationpropCount++;
                 }
 
+                if (registrationdescription != null)
+                {
+                    registration["Description"] = SourceExpressionConverter.ConvertToken(registrationdescription);
+                    registrationpropCount++;
+                }
+
+                if (registrationisActive != null)
+                {
+                    if (registrationisActive != null)
+                    {
+                        registration["IsActive"] = SourceExpressionConverter.ConvertToken(registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "@listCallbackUrl()";
                 registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+                return callPayload;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
-
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESEntityHookRegistrationResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost(Expression<Func<registrationsystemEventTypeInputItem[]>> registrationsystemEventType, Expression<Func<string>> registrationotherEvent = null, Expression<Func<string>> registrationexternalID = null, Expression<Func<string>> registrationdescription = null, Expression<Func<bool>> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse> ESSystemHookPost([WorkflowExpression] Func<registrationsystemEventTypeInputItem[]> registrationsystemEventType, [WorkflowExpression] Func<string> registrationotherEvent = null, [WorkflowExpression] Func<string> registrationexternalID = null, [WorkflowExpression] Func<string> registrationdescription = null, [WorkflowExpression] Func<bool> registrationisActive = null, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/api/systemhook";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var registration = new JObject();
-            var registrationpropCount = 0;
-            registrationpropCount++;
-            registration["SystemEventType"] = CSharpExpressionConverter.ConvertToken(registrationsystemEventType);
-            if (registrationotherEvent != null)
+            SourceExpression.Validate(registrationsystemEventType, nameof(registrationsystemEventType), required: true);
+            SourceExpression.Validate(registrationotherEvent, nameof(registrationotherEvent), required: false);
+            SourceExpression.Validate(registrationexternalID, nameof(registrationexternalID), required: false);
+            SourceExpression.Validate(registrationdescription, nameof(registrationdescription), required: false);
+            SourceExpression.Validate(registrationisActive, nameof(registrationisActive), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                registration["OtherEvent"] = CSharpExpressionConverter.ConvertToken(registrationotherEvent);
+                var apiCallPath = "/api/systemhook";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var registration = new JObject();
+                var registrationpropCount = 0;
                 registrationpropCount++;
-            }
-
-            if (registrationexternalID != null)
-            {
-                registration["ExternalID"] = CSharpExpressionConverter.ConvertToken(registrationexternalID);
-                registrationpropCount++;
-            }
-
-            if (registrationdescription != null)
-            {
-                registration["Description"] = CSharpExpressionConverter.ConvertToken(registrationdescription);
-                registrationpropCount++;
-            }
-
-            if (registrationisActive != null)
-            {
-                if (registrationisActive != null)
+                registration["SystemEventType"] = SourceExpressionConverter.ConvertToken(registrationsystemEventType);
+                if (registrationotherEvent != null)
                 {
-                    registration["IsActive"] = CSharpExpressionConverter.ConvertToken(registrationisActive);
+                    registration["OtherEvent"] = SourceExpressionConverter.ConvertToken(registrationotherEvent);
                     registrationpropCount++;
                 }
 
+                if (registrationexternalID != null)
+                {
+                    registration["ExternalID"] = SourceExpressionConverter.ConvertToken(registrationexternalID);
+                    registrationpropCount++;
+                }
+
+                if (registrationdescription != null)
+                {
+                    registration["Description"] = SourceExpressionConverter.ConvertToken(registrationdescription);
+                    registrationpropCount++;
+                }
+
+                if (registrationisActive != null)
+                {
+                    if (registrationisActive != null)
+                    {
+                        registration["IsActive"] = SourceExpressionConverter.ConvertToken(registrationisActive);
+                        registrationpropCount++;
+                    }
+
+                    registrationpropCount++;
+                }
+                else
+                {
+                    registration["IsActive"] = true;
+                    registrationpropCount++;
+                }
+
+                registration["CallbackURL"] = "@listCallbackUrl()";
                 registrationpropCount++;
-            }
-            else
-            {
-                registration["IsActive"] = true;
-                registrationpropCount++;
+                if (registrationpropCount > 0)
+                {
+                    callPayload.Body = registration;
+                }
+                return callPayload;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
-            registrationpropCount++;
-            if (registrationpropCount > 0)
-            {
-                callPayload.Body = registration;
-            }
-
-            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger<EntersoftWebApiInfrastructureESSystemHookRegistrationResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

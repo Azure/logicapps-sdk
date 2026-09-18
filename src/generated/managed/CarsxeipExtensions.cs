@@ -12,95 +12,148 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Carsxeip
     public class CarsxeipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<SpecGetResponse> SpecGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<SpecGetResponse> SpecGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/specs";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
-            return new ApiConnectionAction<SpecGetResponse>(callPayload);
+            SourceExpression.Validate(vin, nameof(vin), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/specs";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = SourceExpressionConverter.ConvertO(vin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<SpecGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ValueGetResponse> ValueGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<ValueGetResponse> ValueGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/marketvalue";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
-            return new ApiConnectionAction<ValueGetResponse>(callPayload);
+            SourceExpression.Validate(vin, nameof(vin), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/marketvalue";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = SourceExpressionConverter.ConvertO(vin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ValueGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<HistoryGetResponse> HistoryGet(Expression<Func<string>> vin)
+        public IBodyWorkflowAction<HistoryGetResponse> HistoryGet([WorkflowExpression] Func<string> vin)
         {
-            var apiCallPath = "/history";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["vin"] = CSharpExpressionConverter.ConvertO(vin);
-            return new ApiConnectionAction<HistoryGetResponse>(callPayload);
+            SourceExpression.Validate(vin, nameof(vin), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/history";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["vin"] = SourceExpressionConverter.ConvertO(vin);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HistoryGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode(Expression<Func<string>> plate, Expression<Func<string>> state, Expression<Func<countryInput>> country = null)
+        public IBodyWorkflowAction<PlateDecodeResponse> PlateDecode([WorkflowExpression] Func<string> plate, [WorkflowExpression] Func<string> state, [WorkflowExpression] Func<countryInput> country = null)
         {
-            var apiCallPath = "/platedecoder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["plate"] = CSharpExpressionConverter.ConvertO(plate);
-            callPayload.Queries["state"] = CSharpExpressionConverter.ConvertO(state);
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.Convert(country);
-            return new ApiConnectionAction<PlateDecodeResponse>(callPayload);
+            SourceExpression.Validate(plate, nameof(plate), required: true);
+            SourceExpression.Validate(state, nameof(state), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/platedecoder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["plate"] = SourceExpressionConverter.ConvertO(plate);
+                callPayload.Queries["state"] = SourceExpressionConverter.ConvertO(state);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.Convert(country);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PlateDecodeResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<ImageGetResponse> ImageGet(Expression<Func<string>> make, Expression<Func<string>> model, Expression<Func<int>> year = null, Expression<Func<string>> trim = null, Expression<Func<string>> color = null, Expression<Func<bool>> transparent = null, Expression<Func<angleInput>> angle = null, Expression<Func<photoTypeInput>> photoType = null, Expression<Func<sizeInput>> size = null, Expression<Func<licenseInput>> license = null)
+        public IBodyWorkflowAction<ImageGetResponse> ImageGet([WorkflowExpression] Func<string> make, [WorkflowExpression] Func<string> model, [WorkflowExpression] Func<int> year = null, [WorkflowExpression] Func<string> trim = null, [WorkflowExpression] Func<string> color = null, [WorkflowExpression] Func<bool> transparent = null, [WorkflowExpression] Func<angleInput> angle = null, [WorkflowExpression] Func<photoTypeInput> photoType = null, [WorkflowExpression] Func<sizeInput> size = null, [WorkflowExpression] Func<licenseInput> license = null)
         {
-            var apiCallPath = "/images";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["make"] = CSharpExpressionConverter.ConvertO(make);
-            callPayload.Queries["model"] = CSharpExpressionConverter.ConvertO(model);
-            if (year != null)
-                callPayload.Queries["year"] = CSharpExpressionConverter.ConvertO(year);
-            if (trim != null)
-                callPayload.Queries["trim"] = CSharpExpressionConverter.ConvertO(trim);
-            if (color != null)
-                callPayload.Queries["color"] = CSharpExpressionConverter.ConvertO(color);
-            callPayload.Queries["transparent"] = Convert.ToString(true);
-            if (transparent != null)
-                callPayload.Queries["transparent"] = CSharpExpressionConverter.ConvertO(transparent);
-            if (angle != null)
-                callPayload.Queries["angle"] = CSharpExpressionConverter.Convert(angle);
-            if (photoType != null)
-                callPayload.Queries["photoType"] = CSharpExpressionConverter.Convert(photoType);
-            if (size != null)
-                callPayload.Queries["size"] = CSharpExpressionConverter.Convert(size);
-            if (license != null)
-                callPayload.Queries["license"] = CSharpExpressionConverter.Convert(license);
-            return new ApiConnectionAction<ImageGetResponse>(callPayload);
+            SourceExpression.Validate(make, nameof(make), required: true);
+            SourceExpression.Validate(model, nameof(model), required: true);
+            SourceExpression.Validate(year, nameof(year), required: false);
+            SourceExpression.Validate(trim, nameof(trim), required: false);
+            SourceExpression.Validate(color, nameof(color), required: false);
+            SourceExpression.Validate(transparent, nameof(transparent), required: false);
+            SourceExpression.Validate(angle, nameof(angle), required: false);
+            SourceExpression.Validate(photoType, nameof(photoType), required: false);
+            SourceExpression.Validate(size, nameof(size), required: false);
+            SourceExpression.Validate(license, nameof(license), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/images";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["make"] = SourceExpressionConverter.ConvertO(make);
+                callPayload.Queries["model"] = SourceExpressionConverter.ConvertO(model);
+                if (year != null)
+                    callPayload.Queries["year"] = SourceExpressionConverter.ConvertO(year);
+                if (trim != null)
+                    callPayload.Queries["trim"] = SourceExpressionConverter.ConvertO(trim);
+                if (color != null)
+                    callPayload.Queries["color"] = SourceExpressionConverter.ConvertO(color);
+                callPayload.Queries["transparent"] = Convert.ToString(true);
+                if (transparent != null)
+                    callPayload.Queries["transparent"] = SourceExpressionConverter.ConvertO(transparent);
+                if (angle != null)
+                    callPayload.Queries["angle"] = SourceExpressionConverter.Convert(angle);
+                if (photoType != null)
+                    callPayload.Queries["photoType"] = SourceExpressionConverter.Convert(photoType);
+                if (size != null)
+                    callPayload.Queries["size"] = SourceExpressionConverter.Convert(size);
+                if (license != null)
+                    callPayload.Queries["license"] = SourceExpressionConverter.Convert(license);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ImageGetResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<PlateRecogResponse> PlateRecog(Expression<Func<string>> body = null)
+        public IBodyWorkflowAction<PlateRecogResponse> PlateRecog([WorkflowExpression] Func<string> body = null)
         {
-            var apiCallPath = "/platerecognition";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
-            callPayload.Body = CSharpExpressionConverter.ConvertToken(body);
-            return new ApiConnectionAction<PlateRecogResponse>(callPayload);
+            SourceExpression.Validate(body, nameof(body), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/platerecognition";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("text/plain");
+                callPayload.Body = SourceExpressionConverter.ConvertToken(body);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<PlateRecogResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "carsxeip")]
-        public IBodyWorkflowAction<CodeGetResponse> CodeGet(Expression<Func<string>> code)
+        public IBodyWorkflowAction<CodeGetResponse> CodeGet([WorkflowExpression] Func<string> code)
         {
-            var apiCallPath = "/obdcodesdecoder";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["code"] = CSharpExpressionConverter.ConvertO(code);
-            return new ApiConnectionAction<CodeGetResponse>(callPayload);
+            SourceExpression.Validate(code, nameof(code), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/obdcodesdecoder";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["code"] = SourceExpressionConverter.ConvertO(code);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<CodeGetResponse>(BuildSourceInput);
         }
     }
 

@@ -12,44 +12,69 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Clockifyip
     public class ClockifyipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients(Expression<Func<string>> workspaceId, Expression<Func<bool>> archived = null)
+        public IBodyWorkflowAction<GetClientsV1ResponseItem[]> GetClients([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<bool> archived = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (archived != null)
-                callPayload.Queries["archived"] = CSharpExpressionConverter.ConvertO(archived);
-            return new ApiConnectionAction<GetClientsV1ResponseItem[]>(callPayload);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(archived, nameof(archived), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/clients", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (archived != null)
+                    callPayload.Queries["archived"] = SourceExpressionConverter.ConvertO(archived);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetClientsV1ResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
-        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser(Expression<Func<string>> workspaceId, Expression<Func<string>> userId, Expression<Func<string>> start = null, Expression<Func<string>> end = null, Expression<Func<string>> project = null, Expression<Func<string>> task = null, Expression<Func<int>> page = null, Expression<Func<int>> pageSize = null)
+        public IBodyWorkflowAction<GetTimeEntriesForUserV1ResponseItem[]> GetTimeEntriesForUser([WorkflowExpression] Func<string> workspaceId, [WorkflowExpression] Func<string> userId, [WorkflowExpression] Func<string> start = null, [WorkflowExpression] Func<string> end = null, [WorkflowExpression] Func<string> project = null, [WorkflowExpression] Func<string> task = null, [WorkflowExpression] Func<int> page = null, [WorkflowExpression] Func<int> pageSize = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            if (start != null)
-                callPayload.Queries["start"] = CSharpExpressionConverter.ConvertO(start);
-            if (end != null)
-                callPayload.Queries["end"] = CSharpExpressionConverter.ConvertO(end);
-            if (project != null)
-                callPayload.Queries["project"] = CSharpExpressionConverter.ConvertO(project);
-            if (task != null)
-                callPayload.Queries["task"] = CSharpExpressionConverter.ConvertO(task);
-            if (page != null)
-                callPayload.Queries["page"] = CSharpExpressionConverter.ConvertO(page);
-            if (pageSize != null)
-                callPayload.Queries["page-size"] = CSharpExpressionConverter.ConvertO(pageSize);
-            return new ApiConnectionAction<GetTimeEntriesForUserV1ResponseItem[]>(callPayload);
+            SourceExpression.Validate(workspaceId, nameof(workspaceId), required: true);
+            SourceExpression.Validate(userId, nameof(userId), required: true);
+            SourceExpression.Validate(start, nameof(start), required: false);
+            SourceExpression.Validate(end, nameof(end), required: false);
+            SourceExpression.Validate(project, nameof(project), required: false);
+            SourceExpression.Validate(task, nameof(task), required: false);
+            SourceExpression.Validate(page, nameof(page), required: false);
+            SourceExpression.Validate(pageSize, nameof(pageSize), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/v1/workspaces/{0}/user/{1}/time-entries", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(workspaceId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(userId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                if (start != null)
+                    callPayload.Queries["start"] = SourceExpressionConverter.ConvertO(start);
+                if (end != null)
+                    callPayload.Queries["end"] = SourceExpressionConverter.ConvertO(end);
+                if (project != null)
+                    callPayload.Queries["project"] = SourceExpressionConverter.ConvertO(project);
+                if (task != null)
+                    callPayload.Queries["task"] = SourceExpressionConverter.ConvertO(task);
+                if (page != null)
+                    callPayload.Queries["page"] = SourceExpressionConverter.ConvertO(page);
+                if (pageSize != null)
+                    callPayload.Queries["page-size"] = SourceExpressionConverter.ConvertO(pageSize);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetTimeEntriesForUserV1ResponseItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "clockifyip")]
         public IBodyWorkflowAction<GetWorkspacesV1ResponseItem[]> GetWorkspaces()
         {
-            var apiCallPath = "/v1/workspaces";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<GetWorkspacesV1ResponseItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/workspaces";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<GetWorkspacesV1ResponseItem[]>(BuildSourceInput);
         }
     }
 

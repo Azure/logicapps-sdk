@@ -12,247 +12,378 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Instapaper
     public class InstapaperActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked(Expression<Func<string>> readFilterreadFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksLiked([WorkflowExpression] Func<string> readFilterreadFilter = null)
         {
-            var apiCallPath = "/1/bookmarks/list/starred";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var readFilter = new JObject();
-            var readFilterpropCount = 0;
-            if (readFilterreadFilter != null)
+            SourceExpression.Validate(readFilterreadFilter, nameof(readFilterreadFilter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                readFilter["readFilter"] = CSharpExpressionConverter.ConvertToken(readFilterreadFilter);
-                readFilterpropCount++;
+                var apiCallPath = "/1/bookmarks/list/starred";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var readFilter = new JObject();
+                var readFilterpropCount = 0;
+                if (readFilterreadFilter != null)
+                {
+                    readFilter["readFilter"] = SourceExpressionConverter.ConvertToken(readFilterreadFilter);
+                    readFilterpropCount++;
+                }
+
+                if (readFilterpropCount > 0)
+                {
+                    callPayload.Body = readFilter;
+                }
+                return callPayload;
             }
 
-            if (readFilterpropCount > 0)
-            {
-                callPayload.Body = readFilter;
-            }
-
-            return new ApiConnectionAction<BookmarksResponse>(callPayload);
+            return new ApiConnectionAction<BookmarksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived(Expression<Func<filterslikedFilterDefaultAllInput>> filterslikedFilterDefaultAll = null, Expression<Func<filtersreadFilterDefaultAllInput>> filtersreadFilterDefaultAll = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksArchived([WorkflowExpression] Func<filterslikedFilterDefaultAllInput> filterslikedFilterDefaultAll = null, [WorkflowExpression] Func<filtersreadFilterDefaultAllInput> filtersreadFilterDefaultAll = null)
         {
-            var apiCallPath = "/1/bookmarks/list/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var filters = new JObject();
-            var filterspropCount = 0;
-            if (filterslikedFilterDefaultAll != null)
+            SourceExpression.Validate(filterslikedFilterDefaultAll, nameof(filterslikedFilterDefaultAll), required: false);
+            SourceExpression.Validate(filtersreadFilterDefaultAll, nameof(filtersreadFilterDefaultAll), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                filters["likedFilter"] = CSharpExpressionConverter.Convert(filterslikedFilterDefaultAll);
-                filterspropCount++;
+                var apiCallPath = "/1/bookmarks/list/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var filters = new JObject();
+                var filterspropCount = 0;
+                if (filterslikedFilterDefaultAll != null)
+                {
+                    filters["likedFilter"] = SourceExpressionConverter.Convert(filterslikedFilterDefaultAll);
+                    filterspropCount++;
+                }
+
+                if (filtersreadFilterDefaultAll != null)
+                {
+                    filters["readFilter"] = SourceExpressionConverter.Convert(filtersreadFilterDefaultAll);
+                    filterspropCount++;
+                }
+
+                if (filterspropCount > 0)
+                {
+                    callPayload.Body = filters;
+                }
+                return callPayload;
             }
 
-            if (filtersreadFilterDefaultAll != null)
-            {
-                filters["readFilter"] = CSharpExpressionConverter.Convert(filtersreadFilterDefaultAll);
-                filterspropCount++;
-            }
-
-            if (filterspropCount > 0)
-            {
-                callPayload.Body = filters;
-            }
-
-            return new ApiConnectionAction<BookmarksResponse>(callPayload);
+            return new ApiConnectionAction<BookmarksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder(Expression<Func<string>> folderId, Expression<Func<likedFilterInput>> likedFilter = null, Expression<Func<readFilterInput>> readFilter = null)
+        public IBodyWorkflowAction<BookmarksResponse> ListBookmarksInFolder([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<likedFilterInput> likedFilter = null, [WorkflowExpression] Func<readFilterInput> readFilter = null)
         {
-            var apiCallPath = "/1/bookmarks/list/folder_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            if (likedFilter != null)
-                callPayload.Queries["likedFilter"] = CSharpExpressionConverter.Convert(likedFilter);
-            if (readFilter != null)
-                callPayload.Queries["readFilter"] = CSharpExpressionConverter.Convert(readFilter);
-            return new ApiConnectionAction<BookmarksResponse>(callPayload);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(likedFilter, nameof(likedFilter), required: false);
+            SourceExpression.Validate(readFilter, nameof(readFilter), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/list/folder_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                if (likedFilter != null)
+                    callPayload.Queries["likedFilter"] = SourceExpressionConverter.Convert(likedFilter);
+                if (readFilter != null)
+                    callPayload.Queries["readFilter"] = SourceExpressionConverter.Convert(readFilter);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookmarksResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
         public IBodyWorkflowAction<FoldersResponse> ListFolders()
         {
-            var apiCallPath = "/1/folders/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<FoldersResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/folders/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FoldersResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<HighlighstResponse> ListHighlights(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<HighlighstResponse> ListHighlights([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<HighlighstResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HighlighstResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> UnlikeBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/unstar";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<BookmarkResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/unstar";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookmarkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarkResponse> LikeBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> LikeBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/star";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<BookmarkResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/star";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookmarkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> ArchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/archive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<BookmarkResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/archive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookmarkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<BookmarkResponse> UnarchiveBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/unarchive";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<BookmarkResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/unarchive";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<BookmarkResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<JToken> DeleteBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<JToken> DeleteBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/delete";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/delete";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<JToken> MarkReadBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<JToken> MarkReadBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/update_read_progress/read";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/update_read_progress/read";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<JToken> MarkUnreadBookmark(Expression<Func<string>> bookmarkId)
+        public IBodyWorkflowAction<JToken> MarkUnreadBookmark([WorkflowExpression] Func<string> bookmarkId)
         {
-            var apiCallPath = "/1/bookmarks/update_read_progress/unread";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["bookmark_id"] = CSharpExpressionConverter.ConvertO(bookmarkId);
-            return new ApiConnectionAction<JToken>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/bookmarks/update_read_progress/unread";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["bookmark_id"] = SourceExpressionConverter.ConvertO(bookmarkId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<JToken>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<HighlightResponse> AddHighlight(Expression<Func<string>> bookmarkId, Expression<Func<string>> text)
+        public IBodyWorkflowAction<HighlightResponse> AddHighlight([WorkflowExpression] Func<string> bookmarkId, [WorkflowExpression] Func<string> text)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["text"] = CSharpExpressionConverter.ConvertO(text);
-            return new ApiConnectionAction<HighlightResponse>(callPayload);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            SourceExpression.Validate(text, nameof(text), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/1.1/bookmarks/{0}/highlight", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["text"] = SourceExpressionConverter.ConvertO(text);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<HighlightResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "instapaper")]
-        public IBodyWorkflowAction<FolderResponse> CreateFolder(Expression<Func<string>> title)
+        public IBodyWorkflowAction<FolderResponse> CreateFolder([WorkflowExpression] Func<string> title)
         {
-            var apiCallPath = "/1/folders/add";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["title"] = CSharpExpressionConverter.ConvertO(title);
-            return new ApiConnectionAction<FolderResponse>(callPayload);
+            SourceExpression.Validate(title, nameof(title), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/1/folders/add";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["title"] = SourceExpressionConverter.ConvertO(title);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<FolderResponse>(BuildSourceInput);
         }
     }
 
     public class InstapaperTriggers([ConnectionName] string connectionId)
     {
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkAdded([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_folder_trigger/1/bookmarks/list/folder_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BookmarksResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<int[]> OnBookmarkRemoved([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionTrigger<int[]>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_removed_folder_trigger/1/bookmarks/list/folder_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<int[]>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkArchived(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_archive_trigger/1/bookmarks/list/archive";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BookmarksResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkLiked(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_starred_trigger/1/bookmarks/list/starred";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BookmarksResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
         public IBodyWorkflowTrigger<FoldersResponse> OnFolderCreated(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/folder_trigger/1/folders/list";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionTrigger<FoldersResponse>(callPayload, triggerName, recurrence);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/folder_trigger/1/folders/list";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<FoldersResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressUpdated([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_progress_trigger/1/bookmarks/list/folder_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BookmarksResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead(Expression<Func<string>> folderId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<BookmarksResponse> OnBookmarkProgressRead([WorkflowExpression] Func<string> folderId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionTrigger<BookmarksResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/bookmark_progressread_trigger/1/bookmarks/list/folder_id";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<BookmarksResponse>(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded(Expression<Func<string>> folderId, Expression<Func<string>> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IBodyWorkflowTrigger<HighlighstResponse> OnHighlightAdded([WorkflowExpression] Func<string> folderId, [WorkflowExpression] Func<string> bookmarkId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["folder_id"] = CSharpExpressionConverter.ConvertO(folderId);
-            return new ApiConnectionTrigger<HighlighstResponse>(callPayload, triggerName, recurrence);
+            SourceExpression.Validate(folderId, nameof(folderId), required: true);
+            SourceExpression.Validate(bookmarkId, nameof(bookmarkId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/highlight_added_trigger/1.1/bookmarks/{0}/highlights", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(bookmarkId, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["folder_id"] = SourceExpressionConverter.ConvertO(folderId);
+                return callPayload;
+            }
+
+            return new ApiConnectionTrigger<HighlighstResponse>(BuildSourceInput, triggerName, recurrence);
         }
     }
 

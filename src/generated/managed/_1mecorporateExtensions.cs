@@ -14,72 +14,97 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._1mecorporate
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<ReturnCardTempleteItem[]> RetrieveCardTemplates()
         {
-            var apiCallPath = "/api/CardTempletes/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<ReturnCardTempleteItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/CardTempletes/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReturnCardTempleteItem[]>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> SendInvitation(Expression<Func<string>> bodycardTemplateId, Expression<Func<string>> bodyjobtitle, Expression<Func<string>> bodyworkEmail, Expression<Func<string>> bodynameOnCard = null, Expression<Func<string>> bodyextension = null)
+        public IBodyWorkflowAction<ApiResponse> SendInvitation([WorkflowExpression] Func<string> bodycardTemplateId, [WorkflowExpression] Func<string> bodyjobtitle, [WorkflowExpression] Func<string> bodyworkEmail, [WorkflowExpression] Func<string> bodynameOnCard = null, [WorkflowExpression] Func<string> bodyextension = null)
         {
-            var apiCallPath = "/api/Invitation/";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["CardTemplateId"] = CSharpExpressionConverter.ConvertToken(bodycardTemplateId);
-            if (bodynameOnCard != null)
+            SourceExpression.Validate(bodycardTemplateId, nameof(bodycardTemplateId), required: true);
+            SourceExpression.Validate(bodyjobtitle, nameof(bodyjobtitle), required: true);
+            SourceExpression.Validate(bodyworkEmail, nameof(bodyworkEmail), required: true);
+            SourceExpression.Validate(bodynameOnCard, nameof(bodynameOnCard), required: false);
+            SourceExpression.Validate(bodyextension, nameof(bodyextension), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["NameOnCard"] = CSharpExpressionConverter.ConvertToken(bodynameOnCard);
+                var apiCallPath = "/api/Invitation/";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
+                body["CardTemplateId"] = SourceExpressionConverter.ConvertToken(bodycardTemplateId);
+                if (bodynameOnCard != null)
+                {
+                    body["NameOnCard"] = SourceExpressionConverter.ConvertToken(bodynameOnCard);
+                    bodypropCount++;
+                }
 
-            bodypropCount++;
-            body["Jobtitle"] = CSharpExpressionConverter.ConvertToken(bodyjobtitle);
-            bodypropCount++;
-            body["WorkEmail"] = CSharpExpressionConverter.ConvertToken(bodyworkEmail);
-            if (bodyextension != null)
-            {
-                body["Extension"] = CSharpExpressionConverter.ConvertToken(bodyextension);
                 bodypropCount++;
+                body["Jobtitle"] = SourceExpressionConverter.ConvertToken(bodyjobtitle);
+                bodypropCount++;
+                body["WorkEmail"] = SourceExpressionConverter.ConvertToken(bodyworkEmail);
+                if (bodyextension != null)
+                {
+                    body["Extension"] = SourceExpressionConverter.ConvertToken(bodyextension);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApiResponse>(callPayload);
+            return new ApiConnectionAction<ApiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
-        public IBodyWorkflowAction<ApiResponse> DisassociateMember(Expression<Func<string>> contentType, Expression<Func<string>> bodyemail)
+        public IBodyWorkflowAction<ApiResponse> DisassociateMember([WorkflowExpression] Func<string> contentType, [WorkflowExpression] Func<string> bodyemail)
         {
-            var apiCallPath = "/api/Invitation/Disassociate";
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = CSharpExpressionConverter.ConvertO(contentType);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["Email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(contentType, nameof(contentType), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/api/Invitation/Disassociate";
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = SourceExpressionConverter.ConvertO(contentType);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["Email"] = SourceExpressionConverter.ConvertToken(bodyemail);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ApiResponse>(callPayload);
+            return new ApiConnectionAction<ApiResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "1mecorporate")]
         public IBodyWorkflowAction<AccountInvitationsItem[]> RetrieveAllInvitations()
         {
-            var apiCallPath = "/api/Invitation/GetAccountInvitations/";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<AccountInvitationsItem[]>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Invitation/GetAccountInvitations/";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<AccountInvitationsItem[]>(BuildSourceInput);
         }
     }
 

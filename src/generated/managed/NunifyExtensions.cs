@@ -12,113 +12,140 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
     public class NunifyActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "nunify")]
-        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, Expression<Func<string>> bodyemail = null, Expression<Func<string>> bodyfirstName = null, Expression<Func<string>> bodylastName = null, Expression<Func<string>> bodydesignation = null, Expression<Func<string>> bodycompany = null, Expression<Func<string>> bodyticketTypeId = null)
+        public IBodyWorkflowAction<ADDREGISTRANTResponse> ADDREGISTRANT([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, [WorkflowExpression] Func<string> bodyemail = null, [WorkflowExpression] Func<string> bodyfirstName = null, [WorkflowExpression] Func<string> bodylastName = null, [WorkflowExpression] Func<string> bodydesignation = null, [WorkflowExpression] Func<string> bodycompany = null, [WorkflowExpression] Func<string> bodyticketTypeId = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["map_by_labels"] = Convert.ToString(true);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodyemail != null)
+            SourceExpression.Validate(platformId, nameof(platformId), required: true);
+            SourceExpression.Validate(domainId, nameof(domainId), required: true);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            SourceExpression.Validate(bodyemail, nameof(bodyemail), required: false);
+            SourceExpression.Validate(bodyfirstName, nameof(bodyfirstName), required: false);
+            SourceExpression.Validate(bodylastName, nameof(bodylastName), required: false);
+            SourceExpression.Validate(bodydesignation, nameof(bodydesignation), required: false);
+            SourceExpression.Validate(bodycompany, nameof(bodycompany), required: false);
+            SourceExpression.Validate(bodyticketTypeId, nameof(bodyticketTypeId), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["email"] = CSharpExpressionConverter.ConvertToken(bodyemail);
-                bodypropCount++;
-            }
-
-            if (bodyfirstName != null)
-            {
-                body["first_name"] = CSharpExpressionConverter.ConvertToken(bodyfirstName);
-                bodypropCount++;
-            }
-
-            if (bodylastName != null)
-            {
-                body["last_name"] = CSharpExpressionConverter.ConvertToken(bodylastName);
-                bodypropCount++;
-            }
-
-            if (bodydesignation != null)
-            {
-                body["designation"] = CSharpExpressionConverter.ConvertToken(bodydesignation);
-                bodypropCount++;
-            }
-
-            if (bodycompany != null)
-            {
-                body["company"] = CSharpExpressionConverter.ConvertToken(bodycompany);
-                bodypropCount++;
-            }
-
-            if (bodyticketTypeId != null)
-            {
-                if (bodyticketTypeId != null)
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/tickets.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["map_by_labels"] = Convert.ToString(true);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodyemail != null)
                 {
-                    body["ticket_type_id"] = CSharpExpressionConverter.ConvertToken(bodyticketTypeId);
+                    body["email"] = SourceExpressionConverter.ConvertToken(bodyemail);
                     bodypropCount++;
                 }
 
-                bodypropCount++;
-            }
-            else
-            {
-                body["ticket_type_id"] = "Default";
-                bodypropCount++;
+                if (bodyfirstName != null)
+                {
+                    body["first_name"] = SourceExpressionConverter.ConvertToken(bodyfirstName);
+                    bodypropCount++;
+                }
+
+                if (bodylastName != null)
+                {
+                    body["last_name"] = SourceExpressionConverter.ConvertToken(bodylastName);
+                    bodypropCount++;
+                }
+
+                if (bodydesignation != null)
+                {
+                    body["designation"] = SourceExpressionConverter.ConvertToken(bodydesignation);
+                    bodypropCount++;
+                }
+
+                if (bodycompany != null)
+                {
+                    body["company"] = SourceExpressionConverter.ConvertToken(bodycompany);
+                    bodypropCount++;
+                }
+
+                if (bodyticketTypeId != null)
+                {
+                    if (bodyticketTypeId != null)
+                    {
+                        body["ticket_type_id"] = SourceExpressionConverter.ConvertToken(bodyticketTypeId);
+                        bodypropCount++;
+                    }
+
+                    bodypropCount++;
+                }
+                else
+                {
+                    body["ticket_type_id"] = "Default";
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ADDREGISTRANTResponse>(callPayload);
+            return new ApiConnectionAction<ADDREGISTRANTResponse>(BuildSourceInput);
         }
     }
 
     public class NunifyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger NEWREGISTRATION(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWREGISTRATION([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["kind"] = "ticket_create";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(platformId, nameof(platformId), required: true);
+            SourceExpression.Validate(domainId, nameof(domainId), required: true);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/ticket_create.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["kind"] = "ticket_create";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
-        public IWorkflowTrigger NEWCHECKIN(Expression<Func<string>> platformId, Expression<Func<string>> domainId, Expression<Func<string>> appId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger NEWCHECKIN([WorkflowExpression] Func<string> platformId, [WorkflowExpression] Func<string> domainId, [WorkflowExpression] Func<string> appId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            callPayload.Headers["Accept"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["url"] = "@listCallbackUrl()";
-            bodypropCount++;
-            body["kind"] = "checkin";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(platformId, nameof(platformId), required: true);
+            SourceExpression.Validate(domainId, nameof(domainId), required: true);
+            SourceExpression.Validate(appId, nameof(appId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/platforms/{0}/domains/{1}/organisations/{2}/hooks/checkin.json", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(platformId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(domainId, 1), SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(appId, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                callPayload.Headers["Accept"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["url"] = "@listCallbackUrl()";
+                bodypropCount++;
+                body["kind"] = "checkin";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

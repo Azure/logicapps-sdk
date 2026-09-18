@@ -12,65 +12,78 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Blackbaudskyaddins
     public class BlackbaudskyaddinsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken(Expression<Func<string>> bodyuserIdentityToken, Expression<Func<string>> bodyapplicationID)
+        public IBodyWorkflowAction<PowerAutomateUIApiValidateUserIdentityTokenResponse> ValidateUserIdentityToken([WorkflowExpression] Func<string> bodyuserIdentityToken, [WorkflowExpression] Func<string> bodyapplicationID)
         {
-            var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["uit"] = CSharpExpressionConverter.ConvertToken(bodyuserIdentityToken);
-            bodypropCount++;
-            body["application_id"] = CSharpExpressionConverter.ConvertToken(bodyapplicationID);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyuserIdentityToken, nameof(bodyuserIdentityToken), required: true);
+            SourceExpression.Validate(bodyapplicationID, nameof(bodyapplicationID), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/powerautomateui/v1/useridentitytoken/validate";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["uit"] = SourceExpressionConverter.ConvertToken(bodyuserIdentityToken);
+                bodypropCount++;
+                body["application_id"] = SourceExpressionConverter.ConvertToken(bodyapplicationID);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(callPayload);
+            return new ApiConnectionAction<PowerAutomateUIApiValidateUserIdentityTokenResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "blackbaudskyaddins")]
-        public IWorkflowAction SendHttpRequest(Expression<Func<bodymethodInput>> bodymethod, Expression<Func<string>> bodyrelativePath, Expression<Func<string>> bodybody = null)
+        public IWorkflowAction SendHttpRequest([WorkflowExpression] Func<bodymethodInput> bodymethod, [WorkflowExpression] Func<string> bodyrelativePath, [WorkflowExpression] Func<string> bodybody = null)
         {
-            var apiCallPath = "/virtual/httprequest";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["method"] = CSharpExpressionConverter.Convert(bodymethod);
-            bodypropCount++;
-            body["path"] = CSharpExpressionConverter.ConvertToken(bodyrelativePath);
-            var queryObject = new JObject();
-            var queryObjectpropCount = 0;
-            if (queryObjectpropCount > 0)
+            SourceExpression.Validate(bodymethod, nameof(bodymethod), required: true);
+            SourceExpression.Validate(bodyrelativePath, nameof(bodyrelativePath), required: true);
+            SourceExpression.Validate(bodybody, nameof(bodybody), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["query"] = queryObject;
+                var apiCallPath = "/virtual/httprequest";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
                 bodypropCount++;
-            }
-
-            var headersObject = new JObject();
-            var headersObjectpropCount = 0;
-            if (headersObjectpropCount > 0)
-            {
-                body["headers"] = headersObject;
+                body["method"] = SourceExpressionConverter.Convert(bodymethod);
                 bodypropCount++;
+                body["path"] = SourceExpressionConverter.ConvertToken(bodyrelativePath);
+                var queryObject = new JObject();
+                var queryObjectpropCount = 0;
+                if (queryObjectpropCount > 0)
+                {
+                    body["query"] = queryObject;
+                    bodypropCount++;
+                }
+
+                var headersObject = new JObject();
+                var headersObjectpropCount = 0;
+                if (headersObjectpropCount > 0)
+                {
+                    body["headers"] = headersObject;
+                    bodypropCount++;
+                }
+
+                if (bodybody != null)
+                {
+                    body["body"] = SourceExpressionConverter.ConvertToken(bodybody);
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            if (bodybody != null)
-            {
-                body["body"] = CSharpExpressionConverter.ConvertToken(bodybody);
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction(callPayload);
+            return new ApiConnectionAction(BuildSourceInput);
         }
     }
 

@@ -12,35 +12,45 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagedatamarts
     public class ImanagedatamartsActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse> DeleteSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
-            var apiCallHttpMethod = "delete";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(itemType, nameof(itemType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
+                var apiCallHttpMethod = "delete";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+            return new ApiConnectionAction<ItemBatchResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "imanagedatamarts")]
-        public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch(Expression<Func<string>> itemType)
+        public IBodyWorkflowAction<ItemBatchResponse> UpdateSourceMetadataInBatch([WorkflowExpression] Func<string> itemType)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
-            var apiCallHttpMethod = "put";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(itemType, nameof(itemType), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/batch/{0}/metadata", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(itemType, 1));
+                var apiCallHttpMethod = "put";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ItemBatchResponse>(callPayload);
+            return new ApiConnectionAction<ItemBatchResponse>(BuildSourceInput);
         }
     }
 

@@ -12,48 +12,81 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zanranscaffolder
     public class ZanranscaffolderActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> UploadDocument(Expression<Func<object>> file, Expression<Func<int>> startPage = null, Expression<Func<int>> endPage = null, Expression<Func<string>> coords = null)
+        public IBodyWorkflowAction<string> UploadDocument([WorkflowExpression] Func<object> file, [WorkflowExpression] Func<int> startPage = null, [WorkflowExpression] Func<int> endPage = null, [WorkflowExpression] Func<string> coords = null)
         {
-            var apiCallPath = "/api/Upload/UploadFile";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(file, nameof(file), required: true);
+            SourceExpression.Validate(startPage, nameof(startPage), required: false);
+            SourceExpression.Validate(endPage, nameof(endPage), required: false);
+            SourceExpression.Validate(coords, nameof(coords), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/Upload/UploadFile";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<string> GetStatus(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<string> GetStatus([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = "/api/DocSearch/GetStatus";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<string>(callPayload);
+            SourceExpression.Validate(docname, nameof(docname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/api/DocSearch/GetStatus";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<string>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileXlsx(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileXlsx([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            SourceExpression.Validate(docname, nameof(docname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/{0}.xlsx", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileAllXml(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileAllXml([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            SourceExpression.Validate(docname, nameof(docname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/allxml/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "zanranscaffolder")]
-        public IBodyWorkflowAction<object> DownloadFileZnr(Expression<Func<string>> docname)
+        public IBodyWorkflowAction<object> DownloadFileZnr([WorkflowExpression] Func<string> docname)
         {
-            var apiCallPath = CSharpExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", CSharpExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<object>(callPayload);
+            SourceExpression.Validate(docname, nameof(docname), required: true);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = SourceExpressionConverter.ConvertGeneratedPath("/files/znr/{0}", SourceExpressionConverter.ConvertPathArgumentWithUrlEncoding(docname, 1));
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<object>(BuildSourceInput);
         }
     }
 

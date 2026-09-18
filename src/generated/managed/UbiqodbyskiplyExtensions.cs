@@ -15,25 +15,30 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
 
     public class UbiqodbyskiplyTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger DataIn(Expression<Func<int>> bodygroupId, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger DataIn([WorkflowExpression] Func<int> bodygroupId, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/key/subscribe";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["provider"] = Convert.ToString("pa");
-            callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["group_id"] = CSharpExpressionConverter.ConvertToken(bodygroupId);
-            body["hookUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodygroupId, nameof(bodygroupId), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/key/subscribe";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["provider"] = Convert.ToString("pa");
+                callPayload.Headers["Content-Type"] = Convert.ToString("application/json");
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["group_id"] = SourceExpressionConverter.ConvertToken(bodygroupId);
+                body["hookUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

@@ -12,61 +12,68 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
     public class CluedinActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "cluedin")]
-        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse(Expression<Func<string>> bodyresultapproval = null, Expression<Func<string>> bodyresultreason = null, Expression<Func<string>> bodyresultreviewedBy = null)
+        public IBodyWorkflowAction<ApprovalResponseResponse> ApprovalResponse([WorkflowExpression] Func<string> bodyresultapproval = null, [WorkflowExpression] Func<string> bodyresultreason = null, [WorkflowExpression] Func<string> bodyresultreviewedBy = null)
         {
-            var apiCallPath = "/callback";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            var dataObject = new JObject();
-            var dataObjectpropCount = 0;
-            if (dataObjectpropCount > 0)
+            SourceExpression.Validate(bodyresultapproval, nameof(bodyresultapproval), required: false);
+            SourceExpression.Validate(bodyresultreason, nameof(bodyresultreason), required: false);
+            SourceExpression.Validate(bodyresultreviewedBy, nameof(bodyresultreviewedBy), required: false);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                body["data"] = dataObject;
-                bodypropCount++;
+                var apiCallPath = "/callback";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                var dataObject = new JObject();
+                var dataObjectpropCount = 0;
+                if (dataObjectpropCount > 0)
+                {
+                    body["data"] = dataObject;
+                    bodypropCount++;
+                }
+
+                var workflowMetadataObject = new JObject();
+                var workflowMetadataObjectpropCount = 0;
+                if (workflowMetadataObjectpropCount > 0)
+                {
+                    body["workflowMetadata"] = workflowMetadataObject;
+                    bodypropCount++;
+                }
+
+                var resultObject = new JObject();
+                var resultObjectpropCount = 0;
+                if (bodyresultapproval != null)
+                {
+                    resultObject["approval"] = SourceExpressionConverter.ConvertToken(bodyresultapproval);
+                    resultObjectpropCount++;
+                }
+
+                if (bodyresultreason != null)
+                {
+                    resultObject["reason"] = SourceExpressionConverter.ConvertToken(bodyresultreason);
+                    resultObjectpropCount++;
+                }
+
+                if (bodyresultreviewedBy != null)
+                {
+                    resultObject["reviewedBy"] = SourceExpressionConverter.ConvertToken(bodyresultreviewedBy);
+                    resultObjectpropCount++;
+                }
+
+                if (resultObjectpropCount > 0)
+                {
+                    body["result"] = resultObject;
+                    bodypropCount++;
+                }
+
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            var workflowMetadataObject = new JObject();
-            var workflowMetadataObjectpropCount = 0;
-            if (workflowMetadataObjectpropCount > 0)
-            {
-                body["workflowMetadata"] = workflowMetadataObject;
-                bodypropCount++;
-            }
-
-            var resultObject = new JObject();
-            var resultObjectpropCount = 0;
-            if (bodyresultapproval != null)
-            {
-                resultObject["approval"] = CSharpExpressionConverter.ConvertToken(bodyresultapproval);
-                resultObjectpropCount++;
-            }
-
-            if (bodyresultreason != null)
-            {
-                resultObject["reason"] = CSharpExpressionConverter.ConvertToken(bodyresultreason);
-                resultObjectpropCount++;
-            }
-
-            if (bodyresultreviewedBy != null)
-            {
-                resultObject["reviewedBy"] = CSharpExpressionConverter.ConvertToken(bodyresultreviewedBy);
-                resultObjectpropCount++;
-            }
-
-            if (resultObjectpropCount > 0)
-            {
-                body["result"] = resultObject;
-                bodypropCount++;
-            }
-
-            if (bodypropCount > 0)
-            {
-                callPayload.Body = body;
-            }
-
-            return new ApiConnectionAction<ApprovalResponseResponse>(callPayload);
+            return new ApiConnectionAction<ApprovalResponseResponse>(BuildSourceInput);
         }
     }
 
@@ -74,138 +81,170 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cluedin
     {
         public IWorkflowTrigger RequestRACIRuleApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/419f013d-61fe-4f3b-b52e-8069811e6c94";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/419f013d-61fe-4f3b-b52e-8069811e6c94";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger RequestBatchedCluesApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/227C247E-7495-49DB-B1AD-486B99B43E2D";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/227C247E-7495-49DB-B1AD-486B99B43E2D";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger RequestRACIVocabularyApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/641f26b6-1285-4fbc-8990-10da9010700b";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/641f26b6-1285-4fbc-8990-10da9010700b";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger RequestRACIVocabularyKeyApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/26b92c0c-fc04-4db5-beda-31f8435a6445";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/26b92c0c-fc04-4db5-beda-31f8435a6445";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger RequestRACIEntityTypeApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/6fb298be-bfc5-4d97-ba6a-66e4651578e5";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/6fb298be-bfc5-4d97-ba6a-66e4651578e5";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger RequestRACIUserInviteApproval(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/a021ce72-c00c-43f3-9a6a-c856e6f5b005";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/a021ce72-c00c-43f3-9a6a-c856e6f5b005";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger Notification(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/af67f6ab-5ce6-4d04-8a16-6f90ecf9a502";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/af67f6ab-5ce6-4d04-8a16-6f90ecf9a502";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
 
         public IWorkflowTrigger StreamIdleEvent(string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks/4a1ff455-ce3e-47f3-a3cc-07dbdd3b2bdd";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
-            bodypropCount++;
-            if (bodypropCount > 0)
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/webhooks/4a1ff455-ce3e-47f3-a3cc-07dbdd3b2bdd";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                body["callbackUrl"] = "@listCallbackUrl()";
+                bodypropCount++;
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 

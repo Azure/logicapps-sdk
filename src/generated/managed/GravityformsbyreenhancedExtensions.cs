@@ -15,23 +15,28 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gravityformsbyreenhanced
 
     public class GravityformsbyreenhancedTriggers([ConnectionName] string connectionId)
     {
-        public IWorkflowTrigger CreateWebhook(Expression<Func<string>> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
+        public IWorkflowTrigger CreateWebhook([WorkflowExpression] Func<string> webhookform, string triggerName = null, FlowRecurrence recurrence = null)
         {
-            var apiCallPath = "/webhooks";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var webhook = new JObject();
-            var webhookpropCount = 0;
-            webhook["callback_url"] = "@listCallbackUrl()";
-            webhookpropCount++;
-            webhookpropCount++;
-            webhook["form_id"] = CSharpExpressionConverter.ConvertToken(webhookform);
-            if (webhookpropCount > 0)
+            SourceExpression.Validate(webhookform, nameof(webhookform), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = webhook;
+                var apiCallPath = "/webhooks";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var webhook = new JObject();
+                var webhookpropCount = 0;
+                webhook["callback_url"] = "@listCallbackUrl()";
+                webhookpropCount++;
+                webhookpropCount++;
+                webhook["form_id"] = SourceExpressionConverter.ConvertToken(webhookform);
+                if (webhookpropCount > 0)
+                {
+                    callPayload.Body = webhook;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionTrigger(callPayload, triggerName, recurrence);
+            return new ApiConnectionTrigger(BuildSourceInput, triggerName, recurrence);
         }
     }
 }

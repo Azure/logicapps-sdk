@@ -14,28 +14,38 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Aiornot
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
         public IBodyWorkflowAction<IsLiveResponse> IsLive()
         {
-            var apiCallPath = "/v1/system/live";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            return new ApiConnectionAction<IsLiveResponse>(callPayload);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/v1/system/live";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<IsLiveResponse>(BuildSourceInput);
         }
 
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "aiornot")]
-        public IBodyWorkflowAction<ImageReportResponse> ImageReport(Expression<Func<string>> bodyObject)
+        public IBodyWorkflowAction<ImageReportResponse> ImageReport([WorkflowExpression] Func<string> bodyObject)
         {
-            var apiCallPath = "/v1/reports/image";
-            var apiCallHttpMethod = "post";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            var body = new JObject();
-            var bodypropCount = 0;
-            bodypropCount++;
-            body["object"] = CSharpExpressionConverter.ConvertToken(bodyObject);
-            if (bodypropCount > 0)
+            SourceExpression.Validate(bodyObject, nameof(bodyObject), required: true);
+            ApiConnectionActionInput BuildSourceInput()
             {
-                callPayload.Body = body;
+                var apiCallPath = "/v1/reports/image";
+                var apiCallHttpMethod = "post";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                var body = new JObject();
+                var bodypropCount = 0;
+                bodypropCount++;
+                body["object"] = SourceExpressionConverter.ConvertToken(bodyObject);
+                if (bodypropCount > 0)
+                {
+                    callPayload.Body = body;
+                }
+                return callPayload;
             }
 
-            return new ApiConnectionAction<ImageReportResponse>(callPayload);
+            return new ApiConnectionAction<ImageReportResponse>(BuildSourceInput);
         }
     }
 

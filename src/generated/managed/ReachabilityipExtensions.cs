@@ -12,15 +12,22 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Reachabilityip
     public class ReachabilityipActions([ConnectionName] string connectionId)
     {
         [ConnectorOperation(Type = ConnectorType.ApiManagement, ConnectorName = "reachabilityip")]
-        public IBodyWorkflowAction<ReachResponse> Reach(Expression<Func<string>> url, Expression<Func<string>> country = null)
+        public IBodyWorkflowAction<ReachResponse> Reach([WorkflowExpression] Func<string> url, [WorkflowExpression] Func<string> country = null)
         {
-            var apiCallPath = "/reachability";
-            var apiCallHttpMethod = "get";
-            var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Queries["url"] = CSharpExpressionConverter.ConvertO(url);
-            if (country != null)
-                callPayload.Queries["country"] = CSharpExpressionConverter.ConvertO(country);
-            return new ApiConnectionAction<ReachResponse>(callPayload);
+            SourceExpression.Validate(url, nameof(url), required: true);
+            SourceExpression.Validate(country, nameof(country), required: false);
+            ApiConnectionActionInput BuildSourceInput()
+            {
+                var apiCallPath = "/reachability";
+                var apiCallHttpMethod = "get";
+                var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
+                callPayload.Queries["url"] = SourceExpressionConverter.ConvertO(url);
+                if (country != null)
+                    callPayload.Queries["country"] = SourceExpressionConverter.ConvertO(country);
+                return callPayload;
+            }
+
+            return new ApiConnectionAction<ReachResponse>(BuildSourceInput);
         }
     }
 
