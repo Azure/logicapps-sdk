@@ -12,7 +12,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// </summary>
     internal static class ExpressionConverter
     {
-        private const string CSharpExpressionPrefix = "@csharp{";
+        private const string CSharpExpressionPrefix = "#{";
 
         public static string Convert(Func<string> expression) =>
             ConvertGenerated(expression);

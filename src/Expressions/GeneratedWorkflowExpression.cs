@@ -77,7 +77,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (this.IsLiteral)
                 return this.LiteralValue == null ? JValue.CreateNull() : JToken.FromObject(this.LiteralValue);
 
-            return new JValue($"@csharp{{{this.ToCSharpSource()}}}");
+            return new JValue($"#{{{this.ToCSharpSource()}}}");
         }
 
         internal string ToCSharpSource()

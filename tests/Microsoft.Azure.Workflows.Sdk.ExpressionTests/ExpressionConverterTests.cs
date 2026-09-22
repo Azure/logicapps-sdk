@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
                 });
 
             Assert.Equal(
-                "@csharp{DateTime.UtcNow.DayOfWeek switch\r\n{\r\n    DayOfWeek.Saturday or DayOfWeek.Sunday => \"weekend\",\r\n    _ => \"weekday\",\r\n}}",
+                "#{DateTime.UtcNow.DayOfWeek switch\r\n{\r\n    DayOfWeek.Saturday or DayOfWeek.Sunday => \"weekend\",\r\n    _ => \"weekday\",\r\n}}",
                 (string)(Newtonsoft.Json.Linq.JToken)compose.GetActionDefinition("flow").Inputs);
         }
 
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
             var target = WorkflowActions.BuiltIn.Compose(() => $"{source.Output}");
 
             Assert.Equal(
-                "@csharp{$\"{outputs(\"DynamicallyNamed\")}\"}",
+                "#{$\"{outputs(\"DynamicallyNamed\")}\"}",
                 (string)(Newtonsoft.Json.Linq.JToken)target.GetActionDefinition("flow").Inputs);
         }
 
@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
                 table: () => "items");
 
             Assert.Equal(
-                "@csharp{5 + 1}",
+                "#{5 + 1}",
                 (string)(Newtonsoft.Json.Linq.JToken)compose.GetActionDefinition("flow").Inputs);
             Assert.Contains(
                 "@{encodeURIComponent(encodeURIComponent('captured-dataset'))}",
