@@ -99,6 +99,67 @@ public class WorkflowExpressionInterceptorGeneratorTests
     }
 
     [Fact]
+    public void Generator_RejectsCustomerDefinedHelperMethods()
+    {
+        const string source =
+            """
+            using Microsoft.Azure.Workflows.Sdk;
+
+            public static class CustomerHelper
+            {
+                public static string Format(string value) => value.ToUpperInvariant();
+            }
+
+            public static class Workflow
+            {
+                public static void Build()
+                {
+                    WorkflowActions.BuiltIn.Compose(
+                        () => CustomerHelper.Format("value"));
+                }
+            }
+            """;
+
+        var result = RunGenerator(source);
+        var diagnostic = Assert.Single(
+            result.Diagnostics.Where(candidate => candidate.Id == "LAEXP003"));
+
+        Assert.Equal(DiagnosticSeverity.Error, diagnostic.Severity);
+        Assert.Contains("CustomerHelper.Format", diagnostic.GetMessage());
+    }
+
+    [Fact]
+    public void Generator_RejectsCustomerDefinedTypeIdentity()
+    {
+        const string source =
+            """
+            using Microsoft.Azure.Workflows.Sdk;
+
+            public sealed class CustomerValue
+            {
+                public CustomerValue(string value) => Value = value;
+                public string Value { get; }
+            }
+
+            public static class Workflow
+            {
+                public static void Build()
+                {
+                    WorkflowActions.BuiltIn.Compose(
+                        () => new CustomerValue("value"));
+                }
+            }
+            """;
+
+        var result = RunGenerator(source);
+        var diagnostic = Assert.Single(
+            result.Diagnostics.Where(candidate => candidate.Id == "LAEXP003"));
+
+        Assert.Equal(DiagnosticSeverity.Error, diagnostic.Severity);
+        Assert.Contains("CustomerValue", diagnostic.GetMessage());
+    }
+
+    [Fact]
     public void Generator_LowersGeneratedDtoCollectionsAndWorkflowFunctions()
     {
         const string source =

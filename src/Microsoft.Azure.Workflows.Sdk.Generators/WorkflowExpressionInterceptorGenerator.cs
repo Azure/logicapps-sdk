@@ -37,6 +37,16 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
         description:
             "Inline connector path expressions support only literals, workflow references, " +
             "basic operators, conditionals, interpolation, and supported workflow functions.");
+    private static readonly DiagnosticDescriptor UnsupportedRuntimeDependency = new(
+        id: "LAEXP003",
+        title: "C# expression dependency is not available at runtime",
+        messageFormat: "Workflow expression symbol '{0}' requires assembly '{1}', which is not in the runtime-approved reference set",
+        category: "LogicAppsSdk",
+        defaultSeverity: DiagnosticSeverity.Error,
+        isEnabledByDefault: true,
+        description:
+            "Workflow C# expressions can use only the framework, JSON, and workflow-global references " +
+            "explicitly approved by the runtime. Customer-defined types and helpers are unavailable.");
 
     public void Initialize(IncrementalGeneratorInitializationContext context)
     {
@@ -69,6 +79,16 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
             .Select(static (diagnostic, _) => diagnostic!);
         context.RegisterSourceOutput(
             invalidInlineArguments,
+            static (sourceContext, diagnostic) => sourceContext.ReportDiagnostic(diagnostic));
+
+        var unsupportedDependencies = context.SyntaxProvider.CreateSyntaxProvider(
+                static (node, _) => node is InvocationExpressionSyntax,
+                static (generatorContext, cancellationToken) =>
+                    FindUnsupportedRuntimeDependency(generatorContext, cancellationToken))
+            .Where(static diagnostic => diagnostic is not null)
+            .Select(static (diagnostic, _) => diagnostic!);
+        context.RegisterSourceOutput(
+            unsupportedDependencies,
             static (sourceContext, diagnostic) => sourceContext.ReportDiagnostic(diagnostic));
     }
 
@@ -214,6 +234,42 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
             attribute.ConstructorArguments.Length > 0 &&
             attribute.ConstructorArguments[0].Value is int location &&
             location == 1;
+    }
+
+    private static Diagnostic? FindUnsupportedRuntimeDependency(
+        GeneratorSyntaxContext context,
+        CancellationToken cancellationToken)
+    {
+        var invocation = (InvocationExpressionSyntax)context.Node;
+        if (context.SemanticModel.GetSymbolInfo(invocation, cancellationToken).Symbol
+            is not IMethodSymbol method)
+        {
+            return null;
+        }
+
+        foreach (var parameter in method.Parameters.Where(IsWorkflowExpressionParameter))
+        {
+            var argument = FindArgument(invocation, parameter);
+            if (argument?.Expression is not LambdaExpressionSyntax lambda ||
+                lambda.Body is not ExpressionSyntax body)
+            {
+                continue;
+            }
+
+            var unsupported = RuntimeDependencyValidator.FindFirst(
+                context.SemanticModel,
+                body);
+            if (unsupported != null)
+            {
+                return Diagnostic.Create(
+                    UnsupportedRuntimeDependency,
+                    unsupported.Location,
+                    unsupported.Symbol,
+                    unsupported.Assembly);
+            }
+        }
+
+        return null;
     }
 
     private static ArgumentSyntax? FindArgument(
