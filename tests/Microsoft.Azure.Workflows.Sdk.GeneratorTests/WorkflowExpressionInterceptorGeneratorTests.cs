@@ -69,7 +69,7 @@ public class WorkflowExpressionInterceptorGeneratorTests
     }
 
     [Fact]
-    public void Generator_ReportsUnsupportedInlineTemplateExpression()
+    public void Generator_AllowsCSharpInlineTemplateExpression()
     {
         const string source =
             """
@@ -92,10 +92,9 @@ public class WorkflowExpressionInterceptorGeneratorTests
             """;
 
         var result = RunGenerator(source);
-        var diagnostic = Assert.Single(
-            result.Diagnostics.Where(candidate => candidate.Id == "LAEXP002"));
-
-        Assert.Equal(DiagnosticSeverity.Error, diagnostic.Severity);
+        Assert.DoesNotContain(
+            result.Diagnostics,
+            candidate => candidate.Id == "LAEXP002");
     }
 
     [Fact]

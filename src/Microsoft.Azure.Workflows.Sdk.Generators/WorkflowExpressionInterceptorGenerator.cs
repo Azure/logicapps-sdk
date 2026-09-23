@@ -27,16 +27,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
         description:
             "The source generator must inspect the lambda syntax at the workflow factory call site. " +
             "Delegate-returning method calls and delegate variables are not supported.");
-    private static readonly DiagnosticDescriptor InlineTemplateExpressionRequired = new(
-        id: "LAEXP002",
-        title: "Expression cannot be embedded in a workflow string",
-        messageFormat: "Workflow expression argument '{0}' uses C# syntax that cannot be embedded in a connector path or inline template",
-        category: "LogicAppsSdk",
-        defaultSeverity: DiagnosticSeverity.Error,
-        isEnabledByDefault: true,
-        description:
-            "Inline connector path expressions support only literals, workflow references, " +
-            "basic operators, conditionals, interpolation, and supported workflow functions.");
     private static readonly DiagnosticDescriptor UnsupportedRuntimeDependency = new(
         id: "LAEXP003",
         title: "C# expression dependency is not available at runtime",
@@ -69,16 +59,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
             .Select(static (diagnostic, _) => diagnostic!);
         context.RegisterSourceOutput(
             invalidArguments,
-            static (sourceContext, diagnostic) => sourceContext.ReportDiagnostic(diagnostic));
-
-        var invalidInlineArguments = context.SyntaxProvider.CreateSyntaxProvider(
-                static (node, _) => node is InvocationExpressionSyntax,
-                static (generatorContext, cancellationToken) =>
-                    FindInvalidInlineTemplateArgument(generatorContext, cancellationToken))
-            .Where(static diagnostic => diagnostic is not null)
-            .Select(static (diagnostic, _) => diagnostic!);
-        context.RegisterSourceOutput(
-            invalidInlineArguments,
             static (sourceContext, diagnostic) => sourceContext.ReportDiagnostic(diagnostic));
 
         var unsupportedDependencies = context.SyntaxProvider.CreateSyntaxProvider(
@@ -130,10 +110,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
             var constantValue = context.SemanticModel.GetConstantValue(body, cancellationToken);
             var hasRewrittenLiteral = TryRenderRewrittenLiteral(rewrittenBody, out var rewrittenLiteral);
             var isLiteral = constantValue.HasValue || hasRewrittenLiteral;
-            var inlineTemplateSource =
-                InlineTemplateSyntaxRenderer.TryRender(rewrittenBody, out var renderedInlineTemplate)
-                    ? renderedInlineTemplate
-                    : null;
             expressions.Add(new GeneratedExpression(
                 parameterIndex,
                 constantValue.HasValue
@@ -142,7 +118,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
                         ? rewrittenLiteral
                     : rewrittenBody.WithoutTrivia().NormalizeWhitespace().ToFullString(),
                 isLiteral,
-                inlineTemplateSource,
                 rewriter.OperationRegistrations
                     .Select(registration => registration.OperationId)
                     .ToImmutableArray(),
@@ -190,50 +165,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
         }
 
         return null;
-    }
-
-    private static Diagnostic? FindInvalidInlineTemplateArgument(
-        GeneratorSyntaxContext context,
-        CancellationToken cancellationToken)
-    {
-        var invocation = (InvocationExpressionSyntax)context.Node;
-        if (context.SemanticModel.GetSymbolInfo(invocation, cancellationToken).Symbol
-            is not IMethodSymbol method)
-        {
-            return null;
-        }
-
-        foreach (var parameter in method.Parameters.Where(IsInlineTemplateParameter))
-        {
-            var argument = FindArgument(invocation, parameter);
-            if (argument?.Expression is not LambdaExpressionSyntax lambda ||
-                lambda.Body is not ExpressionSyntax body)
-            {
-                continue;
-            }
-
-            var rewritten = (ExpressionSyntax)new WorkflowExpressionSyntaxRewriter(
-                context.SemanticModel).Visit(body)!;
-            if (!InlineTemplateSyntaxRenderer.TryRender(rewritten, out _))
-            {
-                return Diagnostic.Create(
-                    InlineTemplateExpressionRequired,
-                    argument.Expression.GetLocation(),
-                    parameter.Name);
-            }
-        }
-
-        return null;
-    }
-
-    private static bool IsInlineTemplateParameter(IParameterSymbol parameter)
-    {
-        var attribute = parameter.GetAttributes().FirstOrDefault(candidate =>
-            candidate.AttributeClass?.ToDisplayString() == WorkflowExpressionAttributeName);
-        return attribute != null &&
-            attribute.ConstructorArguments.Length > 0 &&
-            attribute.ConstructorArguments[0].Value is int location &&
-            location == 1;
     }
 
     private static Diagnostic? FindUnsupportedRuntimeDependency(
@@ -391,10 +322,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
                 .Append(expression.IsLiteral ? expression.Source : ToStringLiteral(expression.Source));
             if (!expression.IsLiteral)
             {
-                source.Append(", ")
-                    .Append(expression.InlineTemplateSource == null
-                        ? "null"
-                        : ToStringLiteral(expression.InlineTemplateSource));
                 source.Append(", ")
                     .Append(RenderStringArray(expression.OperationIds))
                     .Append(", ")
@@ -555,14 +482,12 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
             int parameterIndex,
             string source,
             bool isLiteral,
-            string? inlineTemplateSource,
             ImmutableArray<string> operationIds,
             ImmutableArray<string> capturedValueNames)
         {
             this.ParameterIndex = parameterIndex;
             this.Source = source;
             this.IsLiteral = isLiteral;
-            this.InlineTemplateSource = inlineTemplateSource;
             this.OperationIds = operationIds;
             this.CapturedValueNames = capturedValueNames;
         }
@@ -572,8 +497,6 @@ public sealed class WorkflowExpressionInterceptorGenerator : IIncrementalGenerat
         public string Source { get; }
 
         public bool IsLiteral { get; }
-
-        public string? InlineTemplateSource { get; }
 
         public ImmutableArray<string> OperationIds { get; }
 

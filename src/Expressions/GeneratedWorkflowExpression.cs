@@ -22,14 +22,12 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         private GeneratedWorkflowExpression(
             string csharpSource,
-            string inlineTemplateSource,
             object literalValue,
             bool isLiteral,
             string[] workflowOperationIds,
             string[] capturedValueNames)
         {
             this.CSharpSource = csharpSource;
-            this.InlineTemplateSource = inlineTemplateSource;
             this.LiteralValue = literalValue;
             this.IsLiteral = isLiteral;
             this.WorkflowOperationIds = workflowOperationIds ?? Array.Empty<string>();
@@ -37,8 +35,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
 
         internal string CSharpSource { get; }
-
-        internal string InlineTemplateSource { get; }
 
         internal object LiteralValue { get; }
 
@@ -52,12 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public static GeneratedWorkflowExpression FromCSharp(
             string source,
-            string inlineTemplateSource,
             string[] workflowOperationIds,
             string[] capturedValueNames) =>
             new GeneratedWorkflowExpression(
                 source ?? throw new ArgumentNullException(nameof(source)),
-                inlineTemplateSource,
                 literalValue: null,
                 isLiteral: false,
                 workflowOperationIds,
@@ -66,7 +60,6 @@ namespace Microsoft.Azure.Workflows.Sdk
         public static GeneratedWorkflowExpression FromLiteral(object value) =>
             new GeneratedWorkflowExpression(
                 csharpSource: null,
-                inlineTemplateSource: null,
                 literalValue: value,
                 isLiteral: true,
                 workflowOperationIds: null,
@@ -106,40 +99,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             return source;
         }
 
-        internal string ToInlineTemplate()
-        {
-            if (this.IsLiteral)
-            {
-                var token = this.ToWorkflowToken();
-                return token.Type == JTokenType.String
-                    ? $"'{EscapeTemplateString(token.Value<string>())}'"
-                    : token.ToString(Newtonsoft.Json.Formatting.None).ToLowerInvariant();
-            }
-
-            if (string.IsNullOrEmpty(this.InlineTemplateSource))
-            {
-                throw new NotSupportedException(
-                    "This C# expression cannot be embedded in a connector path or other inline template string.");
-            }
-
-            var source = this.InlineTemplateSource;
-            foreach (var operationId in this.WorkflowOperationIds)
-            {
-                source = source.Replace(
-                    GeneratedWorkflowOperationRegistry.GetMarker(operationId),
-                    EscapeTemplateString(GeneratedWorkflowOperationRegistry.GetRequiredName(operationId)));
-            }
-
-            foreach (var capturedValueName in this.CapturedValueNames)
-            {
-                source = source.Replace(
-                    GetCaptureMarker(capturedValueName),
-                    RenderTemplateValue(GetRequiredCapturedValue(capturedValueName)));
-            }
-
-            return source;
-        }
-
         internal void Bind(Delegate expression)
         {
             this.BoundExpression = expression;
@@ -147,9 +106,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private static string EscapeCSharpString(string value) =>
             value.Replace("\\", "\\\\").Replace("\"", "\\\"");
-
-        private static string EscapeTemplateString(string value) =>
-            value.Replace("'", "''");
 
         private object GetRequiredCapturedValue(string capturedValueName)
         {
@@ -240,27 +196,6 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             throw new NotSupportedException(
                 $"Captured value type '{value.GetType().FullName}' is not supported in workflow C# expressions.");
-        }
-
-        private static string RenderTemplateValue(object value)
-        {
-            if (value == null)
-                return "null";
-            if (value is string text)
-                return $"'{EscapeTemplateString(text)}'";
-            if (value is char character)
-                return $"'{EscapeTemplateString(character.ToString())}'";
-            if (value is bool boolean)
-                return boolean ? "true" : "false";
-            if (value is Enum enumValue)
-                return $"'{EscapeTemplateString(GetEnumWireValue(enumValue))}'";
-            if (value is Uri uri)
-                return $"'{EscapeTemplateString(uri.ToString())}'";
-            if (value is byte or sbyte or short or ushort or int or uint or long or ulong or float or double or decimal)
-                return Convert.ToString(value, CultureInfo.InvariantCulture);
-
-            throw new NotSupportedException(
-                $"Captured value type '{value.GetType().FullName}' cannot be embedded in an inline workflow expression.");
         }
 
         private static string GetEnumWireValue(Enum value)

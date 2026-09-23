@@ -43,7 +43,7 @@ public class ApiConnectionActionInput(string path, string method, string connect
     /// Gets or sets the path for the request.
     /// </summary>
     [JsonProperty(Required = Required.Always)]
-    public string Path { get; set; } = path;
+    public string Path { get; set; } = WorkflowStringExpressionComposer.Compose(path);
 
     /// <summary>
     /// Gets or sets the host.

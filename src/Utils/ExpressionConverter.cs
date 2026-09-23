@@ -53,10 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             Func<T> expression,
             int times)
             where T : Enum
-        {
-            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
-            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
-        }
+            => ConvertGeneratedWithUrlEncoding(expression, times);
 
         public static string ConvertOWithBase64<T>(Func<T> expression) =>
             WrapCSharp(
@@ -78,18 +75,21 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         internal static string ConvertGeneratedWithUrlEncoding(
             Func<string> expression,
-            int times)
-        {
-            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
-            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
-        }
+            int times) =>
+            ConvertGeneratedWithUrlEncoding<string>(expression, times);
 
         internal static string ConvertGeneratedWithUrlEncodingWithInt(
             Func<int> expression,
+            int times) =>
+            ConvertGeneratedWithUrlEncoding<int>(expression, times);
+
+        private static string ConvertGeneratedWithUrlEncoding<T>(
+            Func<T> expression,
             int times)
         {
-            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToInlineTemplate();
-            return WrapInlineTemplate(WrapFunction(source, "encodeURIComponent", times));
+            var source = GeneratedWorkflowExpressionRegistry.GetRequired(expression).ToCSharpSource();
+            return WorkflowStringExpressionComposer.CreatePlaceholder(
+                WrapFunction(source, "encodeURIComponent", times));
         }
 
         private static string WrapFunction(
@@ -105,8 +105,5 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private static string WrapCSharp(string expression) =>
             $"{CSharpExpressionPrefix}{expression}}}";
-
-        private static string WrapInlineTemplate(string expression) =>
-            $"@{{{expression}}}";
     }
 }
