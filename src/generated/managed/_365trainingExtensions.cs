@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -141,7 +141,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -158,7 +158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors._365training
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targeturl"] = "@listCallbackUrl()";
+            body["targeturl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

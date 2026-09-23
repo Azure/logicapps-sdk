@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pkisigning
             model["Events"] = ExpressionConverter.ConvertO(modelevents);
             var configObject = new JObject();
             var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
+            configObject["url"] = "#{listCallbackUrl()}";
             configObjectpropCount++;
             if (configObjectpropCount > 0)
             {

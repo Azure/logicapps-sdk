@@ -394,7 +394,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
                 callPayload.Queries["actionPackageId"] = ExpressionConverter.Convert(actionPackageId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -412,7 +412,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -430,7 +430,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -448,7 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -466,7 +466,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -502,7 +502,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -520,7 +520,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -539,7 +539,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -557,7 +557,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -577,7 +577,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -595,7 +595,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kaizala
             callPayload.Queries["objectId"] = ExpressionConverter.Convert(objectId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["CallbackUrl"] = "@listCallbackUrl()";
+            request["CallbackUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {

@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Orbusinfinity
 
             bodypropCount++;
             body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyexpirationDate != null)
             {

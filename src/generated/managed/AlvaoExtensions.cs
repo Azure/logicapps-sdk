@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Alvao
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["process"] = ExpressionConverter.ConvertO(bodyprocessName);

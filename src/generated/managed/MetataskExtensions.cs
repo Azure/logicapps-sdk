@@ -23,7 +23,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Metatask
             var webhookRequestBodypropCount = 0;
             webhookRequestBody["event"] = "PROCESS_COMPLETED";
             webhookRequestBodypropCount++;
-            webhookRequestBody["target_url"] = "@listCallbackUrl()";
+            webhookRequestBody["target_url"] = "#{listCallbackUrl()}";
             webhookRequestBodypropCount++;
             var conditionsObject = new JObject();
             var conditionsObjectpropCount = 0;

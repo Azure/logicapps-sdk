@@ -312,7 +312,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             callPayload.Queries["criterias"] = ExpressionConverter.Convert(criterias);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookURL"] = "@listCallbackUrl()";
+            body["webhookURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -336,7 +336,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zohomail
             var bodypropCount = 0;
             bodypropCount++;
             body["criterias"] = ExpressionConverter.ConvertO(bodycriterias);
-            body["webhookURL"] = "@listCallbackUrl()";
+            body["webhookURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

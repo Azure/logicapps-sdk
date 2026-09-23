@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Microsoftforms
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhook["eventType"] = "responseAdded";
             requestBodyOfWebhookpropCount++;
-            requestBodyOfWebhook["notificationUrl"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["notificationUrl"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["source"] = "ms-connector";
             requestBodyOfWebhookpropCount++;

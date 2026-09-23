@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
             var bodypropCount = 0;
             bodypropCount++;
             body["userFormId"] = ExpressionConverter.ConvertO(bodyuserFormId);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["includeSubFormData"] = ExpressionConverter.ConvertO(bodyincludeSubFormData);

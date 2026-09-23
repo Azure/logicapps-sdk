@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zforms
             callPayload.Queries["formlinkname"] = ExpressionConverter.Convert(formlinkname);
             callPayload.Headers["zf_service"] = Convert.ToString("MSPowerAutomate");
             callPayload.Headers["zf_version"] = Convert.ToString(2);
-            callPayload.Headers["webhooks_url"] = Convert.ToString("@listCallbackUrl()");
+            callPayload.Headers["webhooks_url"] = Convert.ToString("#{listCallbackUrl()}");
             return new ApiConnectionTrigger<FormSubmittedResponse>(callPayload, triggerName, recurrence);
         }
     }

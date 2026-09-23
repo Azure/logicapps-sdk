@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Paylocity
                 requestBodyOfWebhookpropCount++;
             }
 
-            requestBodyOfWebhook["callbackURL"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["callbackURL"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             if (requestBodyOfWebhookpropCount > 0)
             {

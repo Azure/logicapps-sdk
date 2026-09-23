@@ -467,7 +467,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHookrequesters != null)
             {
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHookrequesters != null)
             {
@@ -643,7 +643,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHookcommenter != null)
             {
@@ -697,7 +697,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {
@@ -741,7 +741,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {
@@ -779,7 +779,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tikit
             var bodypropCount = 0;
             var webHookObject = new JObject();
             var webHookObjectpropCount = 0;
-            webHookObject["URL"] = "@listCallbackUrl()";
+            webHookObject["URL"] = "#{listCallbackUrl()}";
             webHookObjectpropCount++;
             if (bodywebHooklifecycleId != null)
             {

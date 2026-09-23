@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiplyv2
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["hookUrl"] = "@listCallbackUrl()";
+            body["hookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["dispatchType"] = "POWERAUTOMATE";
             bodypropCount++;

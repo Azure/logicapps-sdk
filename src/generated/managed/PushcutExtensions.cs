@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Pushcut
             var bodypropCount = 0;
             bodypropCount++;
             body["actionName"] = ExpressionConverter.ConvertO(bodyactionName);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nintexworkflow
                 bodypropCount++;
             }
 
-            body["x-ntx-callbackUrl"] = "@listCallbackUrl()";
+            body["x-ntx-callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

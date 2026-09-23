@@ -132,7 +132,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudbot
             var bodypropCount = 0;
             body["event"] = "onended";
             bodypropCount++;
-            body["callback_endpoint"] = "@listCallbackUrl()";
+            body["callback_endpoint"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

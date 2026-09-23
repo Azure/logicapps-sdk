@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Jotformenterprise
             callPayload.Headers["workspaceID"] = ExpressionConverter.Convert(workspaceID);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackURL"] = "@listCallbackUrl()";
+            body["callbackURL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

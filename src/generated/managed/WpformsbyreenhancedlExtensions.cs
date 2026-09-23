@@ -45,7 +45,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpformsbyreenhancedl
             body["form_id"] = ExpressionConverter.ConvertO(bodyformID);
             var metaObject = new JObject();
             var metaObjectpropCount = 0;
-            metaObject["powerAutomateUrl"] = "@listCallbackUrl()";
+            metaObject["powerAutomateUrl"] = "#{listCallbackUrl()}";
             metaObjectpropCount++;
             if (metaObjectpropCount > 0)
             {

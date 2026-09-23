@@ -103,7 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
+            body["targetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyeventTypes != null)
             {
@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Vocean
                 callPayload.Queries["networkId"] = ExpressionConverter.Convert(networkId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["targetUrl"] = "@listCallbackUrl()";
+            body["targetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyeventTypes != null)
             {

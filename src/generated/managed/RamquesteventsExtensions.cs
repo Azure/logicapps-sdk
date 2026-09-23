@@ -21,7 +21,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
+            body["webHook"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyaction != null)
             {
@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ramquestevents
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["webHook"] = "@listCallbackUrl()";
+            body["webHook"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodyaction != null)
             {

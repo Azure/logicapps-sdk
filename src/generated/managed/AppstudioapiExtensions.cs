@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Appstudioapi
             callPayload.Queries["solutionId"] = ExpressionConverter.Convert(solutionId);
             var data = new JObject();
             var datapropCount = 0;
-            data["url"] = "@listCallbackUrl()";
+            data["url"] = "#{listCallbackUrl()}";
             datapropCount++;
             if (datapropCount > 0)
             {

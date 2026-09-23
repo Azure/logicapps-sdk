@@ -44,7 +44,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var bodypropCount = 0;
             bodypropCount++;
             body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
+            body["TargetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var bodypropCount = 0;
             bodypropCount++;
             body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
+            body["TargetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -82,7 +82,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Yakchat
             var bodypropCount = 0;
             bodypropCount++;
             body["InboxEmail"] = ExpressionConverter.ConvertO(bodyinboxEmail);
-            body["TargetUrl"] = "@listCallbackUrl()";
+            body["TargetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

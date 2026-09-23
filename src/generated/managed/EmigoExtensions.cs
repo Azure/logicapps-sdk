@@ -128,7 +128,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Emigo
             var requestBodyOfWebhookpropCount = 0;
             var configObject = new JObject();
             var configObjectpropCount = 0;
-            configObject["url"] = "@listCallbackUrl()";
+            configObject["url"] = "#{listCallbackUrl()}";
             configObjectpropCount++;
             if (configObjectpropCount > 0)
             {

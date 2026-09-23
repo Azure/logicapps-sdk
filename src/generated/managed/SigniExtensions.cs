@@ -19,7 +19,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             callPayload.Queries["workspaceId"] = ExpressionConverter.Convert(workspaceId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["fileName"] = ExpressionConverter.ConvertO(bodyfileName);
@@ -266,7 +266,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
             bodypropCount++;
             body["file_name"] = ExpressionConverter.ConvertO(bodyfileName);
-            body["webhooks[1][url]"] = "@listCallbackUrl()";
+            body["webhooks[1][url]"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["webhooks[1][state]"] = "rejected";
             bodypropCount++;
@@ -306,7 +306,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
                 bodypropCount++;
             }
 
-            body["webhooks[0][url]"] = "@listCallbackUrl()";
+            body["webhooks[0][url]"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodysignerZIP != null)
             {
@@ -342,7 +342,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
 
             bodypropCount++;
             body["proposer_sign"] = ExpressionConverter.ConvertO(bodyauthorShouldSign);
-            body["webhooks[2][url]"] = "@listCallbackUrl()";
+            body["webhooks[2][url]"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -383,7 +383,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var _2ObjectpropCount = 0;
             _2Object["state"] = "expired";
             _2ObjectpropCount++;
-            _2Object["url"] = "@listCallbackUrl()";
+            _2Object["url"] = "#{listCallbackUrl()}";
             _2ObjectpropCount++;
             if (_2ObjectpropCount > 0)
             {
@@ -395,7 +395,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var _1ObjectpropCount = 0;
             _1Object["state"] = "rejected";
             _1ObjectpropCount++;
-            _1Object["url"] = "@listCallbackUrl()";
+            _1Object["url"] = "#{listCallbackUrl()}";
             _1ObjectpropCount++;
             if (_1ObjectpropCount > 0)
             {
@@ -407,7 +407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signi
             var _0ObjectpropCount = 0;
             _0Object["state"] = "signed";
             _0ObjectpropCount++;
-            _0Object["url"] = "@listCallbackUrl()";
+            _0Object["url"] = "#{listCallbackUrl()}";
             _0ObjectpropCount++;
             if (_0ObjectpropCount > 0)
             {

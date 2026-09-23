@@ -750,7 +750,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["notificationUrl"] = "@listCallbackUrl()";
+            request["notificationUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["notificationUrl"] = "@listCallbackUrl()";
+            request["notificationUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -784,7 +784,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["notificationUrl"] = "@listCallbackUrl()";
+            request["notificationUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -801,7 +801,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["notificationUrl"] = "@listCallbackUrl()";
+            request["notificationUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -818,7 +818,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Shifts
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var request = new JObject();
             var requestpropCount = 0;
-            request["notificationUrl"] = "@listCallbackUrl()";
+            request["notificationUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {

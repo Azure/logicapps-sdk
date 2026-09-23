@@ -783,7 +783,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             var webhookSettingsObject = new JObject();
             var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
+            webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
             webhookSettingsObjectpropCount++;
             if (bodywebhookSettingsworkItemClassType != null)
             {
@@ -825,7 +825,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ciresonservicemanage
             var bodypropCount = 0;
             var webhookSettingsObject = new JObject();
             var webhookSettingsObjectpropCount = 0;
-            webhookSettingsObject["Url"] = "@listCallbackUrl()";
+            webhookSettingsObject["Url"] = "#{listCallbackUrl()}";
             webhookSettingsObjectpropCount++;
             if (bodywebhookSettingsworkItemClassType != null)
             {

@@ -86,6 +86,42 @@ namespace Microsoft.Azure.Workflows.Sdk.ExpressionTests
             Assert.Equal(Path, input.Path);
         }
 
+        [Fact]
+        public void ApiConnectionTriggerInput_UsesCSharpSplitOn()
+        {
+            var input = new ApiConnectionTriggerInput(
+                path: "/items",
+                method: "get",
+                connectionId: "connection",
+                recurrence: new FlowRecurrence(),
+                enableSplitOn: true);
+
+            Assert.Equal("#{triggerOutputs()?[\"body\"]}", input.SplitOn);
+        }
+
+        [Fact]
+        public void ManagedConnectorWebhook_UsesCSharpCallbackUrl()
+        {
+            var trigger = WorkflowTriggers.Managed
+                .Activityinfo("connection")
+                .AddRecordTrigger(
+                    formId: () => "form",
+                    bodylabel: () => "label");
+            var definition = Newtonsoft.Json.Linq.JObject.FromObject(
+                trigger.GetTriggerDefinition());
+            var inputs = (Newtonsoft.Json.Linq.JObject)definition.GetValue(
+                "inputs",
+                StringComparison.OrdinalIgnoreCase);
+            var body = (Newtonsoft.Json.Linq.JObject)inputs.GetValue(
+                "body",
+                StringComparison.OrdinalIgnoreCase);
+            var action = (Newtonsoft.Json.Linq.JObject)body.GetValue(
+                "action",
+                StringComparison.OrdinalIgnoreCase);
+
+            Assert.Equal("#{listCallbackUrl()}", (string)action["url"]);
+        }
+
         private static string GetPath(IWorkflowAction action)
         {
             var actionDefinition = Newtonsoft.Json.Linq.JObject.FromObject(

@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 bodypropCount++;
             }
 
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -348,7 +348,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
             body["event"] = "Do Not Disturb";
             bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -379,7 +379,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
             body["event"] = "Call Center Monitoring";
             bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
             body["event"] = "Call Center Queue";
             bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -447,7 +447,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
             body["event"] = "Call Center Agent";
             bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
 
             body["event"] = "Voice Mail Message Summary";
             bodypropCount++;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -527,7 +527,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Telephonyxtendedsrv
                 bodypropCount++;
             }
 
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

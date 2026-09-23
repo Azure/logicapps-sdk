@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["type"] = "ADD_RECORD";
             requestBodyOfWebhookpropCount++;
@@ -101,7 +101,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -124,7 +124,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;
@@ -170,7 +170,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Kintone
             var requestBodyOfWebhookpropCount = 0;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["app"] = ExpressionConverter.ConvertO(requestBodyOfWebhookappID);
-            requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["description"] = "Added by Microsoft Flow. Settings should not be changed.";
             requestBodyOfWebhookpropCount++;

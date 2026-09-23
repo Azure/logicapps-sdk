@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var apiCallPath = "/api/v3/power/CSAT/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
             var field = new JObject();
             var fieldpropCount = 0;
             if (fieldcsatFilterRaiting != null)
@@ -121,7 +121,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var apiCallPath = "/api/v3/power/NPS/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
             var field = new JObject();
             var fieldpropCount = 0;
             if (fieldnpsFilterScore != null)
@@ -161,7 +161,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smileback
             var apiCallPath = "/api/v3/power/PRJ/";
             var apiCallHttpMethod = "post";
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
-            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("@listCallbackUrl()");
+            callPayload.Headers["x-ms-notification-url"] = Convert.ToString("#{listCallbackUrl()}");
             var field = new JObject();
             var fieldpropCount = 0;
             if (fieldprojectsFilterScore != null)

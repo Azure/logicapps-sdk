@@ -2216,7 +2216,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["workflowName"] = ExpressionConverter.ConvertO(bodyworkflowName);
@@ -2283,7 +2283,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["workflowName"] = ExpressionConverter.ConvertO(bodyworkflowName);
@@ -2354,7 +2354,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["workflowName"] = ExpressionConverter.ConvertO(bodyworkflowName);
@@ -2407,7 +2407,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Imanagework
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["workflowName"] = ExpressionConverter.ConvertO(bodyworkflowName);

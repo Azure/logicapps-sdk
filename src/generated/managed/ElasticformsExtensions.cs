@@ -70,7 +70,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Elasticforms
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var requestBodyOfWebhook = new JObject();
             var requestBodyOfWebhookpropCount = 0;
-            requestBodyOfWebhook["TriggerUrl"] = "@listCallbackUrl()";
+            requestBodyOfWebhook["TriggerUrl"] = "#{listCallbackUrl()}";
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhookpropCount++;
             requestBodyOfWebhook["FormUid"] = ExpressionConverter.ConvertO(requestBodyOfWebhookform);

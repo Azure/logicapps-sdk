@@ -570,7 +570,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             var bodyObject = new JObject();
             var bodyObjectpropCount = 0;
@@ -710,7 +710,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teams
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var chatMessageSubscriptionRequest = new JObject();
             var chatMessageSubscriptionRequestpropCount = 0;
-            chatMessageSubscriptionRequest["notificationUrl"] = "@listCallbackUrl()";
+            chatMessageSubscriptionRequest["notificationUrl"] = "#{listCallbackUrl()}";
             chatMessageSubscriptionRequestpropCount++;
             if (chatMessageSubscriptionRequestpropCount > 0)
             {

@@ -1387,7 +1387,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["resourceType"] = "People";
             bodypropCount++;
@@ -1420,7 +1420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["resourceType"] = "Objectives";
             bodypropCount++;
@@ -1453,7 +1453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["resourceType"] = "Objectives_Progress";
             bodypropCount++;
@@ -1490,7 +1490,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
                 bodypropCount++;
             }
 
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["resourceType"] = "Articles";
             bodypropCount++;
@@ -1525,7 +1525,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["isActive"] = true;
             bodypropCount++;
@@ -1558,7 +1558,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["isActive"] = true;
             bodypropCount++;
@@ -1591,7 +1591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Staffcircle
             bodypropCount++;
             bodypropCount++;
             body["name"] = ExpressionConverter.ConvertO(bodyname);
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["isActive"] = true;
             bodypropCount++;

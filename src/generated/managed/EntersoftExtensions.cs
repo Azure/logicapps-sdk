@@ -2268,7 +2268,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registrationpropCount++;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
+            registration["CallbackURL"] = "#{listCallbackUrl()}";
             registrationpropCount++;
             if (registrationpropCount > 0)
             {
@@ -2369,7 +2369,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registrationpropCount++;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
+            registration["CallbackURL"] = "#{listCallbackUrl()}";
             registrationpropCount++;
             if (registrationpropCount > 0)
             {
@@ -2454,7 +2454,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registrationpropCount++;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
+            registration["CallbackURL"] = "#{listCallbackUrl()}";
             registrationpropCount++;
             if (registrationpropCount > 0)
             {
@@ -2503,7 +2503,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registrationpropCount++;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
+            registration["CallbackURL"] = "#{listCallbackUrl()}";
             registrationpropCount++;
             if (registrationpropCount > 0)
             {
@@ -2556,7 +2556,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Entersoft
                 registrationpropCount++;
             }
 
-            registration["CallbackURL"] = "@listCallbackUrl()";
+            registration["CallbackURL"] = "#{listCallbackUrl()}";
             registrationpropCount++;
             if (registrationpropCount > 0)
             {

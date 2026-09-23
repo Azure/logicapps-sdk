@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Powerform7
             callPayload.Headers["WP_SITEURL"] = ExpressionConverter.Convert(wPSITEURL);
             var callbackUrl = new JObject();
             var callbackUrlpropCount = 0;
-            callbackUrl["callback_url"] = "@listCallbackUrl()";
+            callbackUrl["callback_url"] = "#{listCallbackUrl()}";
             callbackUrlpropCount++;
             if (callbackUrlpropCount > 0)
             {

@@ -922,7 +922,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Lexoffice
             callPayload.Headers["Accept"] = Convert.ToString("application/json");
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["eventType"] = ExpressionConverter.ConvertO(bodyeventType);

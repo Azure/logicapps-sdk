@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Goformz
                 bodypropCount++;
             }
 
-            body["targetUrl"] = "@listCallbackUrl()";
+            body["targetUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["entityId"] = ExpressionConverter.ConvertO(bodyentityId);

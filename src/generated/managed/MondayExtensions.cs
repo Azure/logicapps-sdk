@@ -484,7 +484,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -505,7 +505,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -526,7 +526,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -568,7 +568,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -591,7 +591,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
             bodypropCount++;
             body["columnId"] = ExpressionConverter.ConvertO(bodycolumnId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -612,7 +612,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -633,7 +633,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
             body["workspaceId"] = ExpressionConverter.ConvertO(bodyworkspaceId);
             bodypropCount++;
             body["boardId"] = ExpressionConverter.ConvertO(bodyboardId);
-            body["callbackUrl"] = "@listCallbackUrl()";
+            body["callbackUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

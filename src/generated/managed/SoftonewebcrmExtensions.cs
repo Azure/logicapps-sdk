@@ -3626,7 +3626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3645,7 +3645,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3664,7 +3664,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3683,7 +3683,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3702,7 +3702,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3721,7 +3721,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3740,7 +3740,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3759,7 +3759,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3778,7 +3778,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3797,7 +3797,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3816,7 +3816,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3835,7 +3835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3854,7 +3854,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3873,7 +3873,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);
@@ -3892,7 +3892,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Softonewebcrm
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["Title"] = ExpressionConverter.ConvertO(bodytitle);

@@ -375,7 +375,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Windows365
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["notificationUrl"] = "@listCallbackUrl()";
+            body["notificationUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["scenario"] = ExpressionConverter.ConvertO(bodyscenario);

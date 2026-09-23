@@ -821,7 +821,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             };
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationURL"] = "@listCallbackUrl()";
+            subscription["NotificationURL"] = "#{listCallbackUrl()}";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {
@@ -858,7 +858,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Trello
             input.Subscribe.Queries["board_id"] = ExpressionConverter.Convert(boardId);
             var subscription = new JObject();
             var subscriptionpropCount = 0;
-            subscription["NotificationURL"] = "@listCallbackUrl()";
+            subscription["NotificationURL"] = "#{listCallbackUrl()}";
             subscriptionpropCount++;
             if (subscriptionpropCount > 0)
             {

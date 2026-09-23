@@ -221,7 +221,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 11;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -244,7 +244,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 1;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -267,7 +267,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 6;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -290,7 +290,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 12;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;
@@ -313,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Truedialogsms
             var bodypropCount = 0;
             body["CallbackType"] = 13;
             bodypropCount++;
-            body["URL"] = "@listCallbackUrl()";
+            body["URL"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["Active"] = true;
             bodypropCount++;

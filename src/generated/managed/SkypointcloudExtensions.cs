@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             var bodypropCount = 0;
             bodypropCount++;
             body["Events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {
@@ -84,7 +84,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Skypointcloud
             var bodypropCount = 0;
             bodypropCount++;
             body["Events"] = ExpressionConverter.ConvertO(bodyevents);
-            body["Url"] = "@listCallbackUrl()";
+            body["Url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

@@ -258,7 +258,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signrequest
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var data = new JObject();
             var datapropCount = 0;
-            data["callback_url"] = "@listCallbackUrl()";
+            data["callback_url"] = "#{listCallbackUrl()}";
             datapropCount++;
             if (datacreated != null)
             {

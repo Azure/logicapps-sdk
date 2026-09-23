@@ -91,7 +91,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.color";
             bodypropCount++;
@@ -113,7 +113,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.section";
             bodypropCount++;
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.create";
             bodypropCount++;
@@ -157,7 +157,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "idea.delete";
             bodypropCount++;
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Stormboard
             var bodypropCount = 0;
             body["service"] = "MicrosoftFlow";
             bodypropCount++;
-            body["url"] = "@listCallbackUrl()";
+            body["url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["events"] = "comment.create";
             bodypropCount++;

@@ -62,7 +62,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fabricdataagent
                 queryRequestpropCount++;
             }
 
-            queryRequest["callbackEndpoint"] = "@listCallbackUrl()";
+            queryRequest["callbackEndpoint"] = "#{listCallbackUrl()}";
             queryRequestpropCount++;
             if (queryRequestpropCount > 0)
             {

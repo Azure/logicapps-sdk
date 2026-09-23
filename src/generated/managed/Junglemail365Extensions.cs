@@ -334,7 +334,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             requestpropCount++;
             request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
+            request["triggerUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -353,7 +353,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             requestpropCount++;
             request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
+            request["triggerUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {
@@ -372,7 +372,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Junglemail365
             var requestpropCount = 0;
             requestpropCount++;
             request["title"] = ExpressionConverter.ConvertO(requesttitle);
-            request["triggerUrl"] = "@listCallbackUrl()";
+            request["triggerUrl"] = "#{listCallbackUrl()}";
             requestpropCount++;
             if (requestpropCount > 0)
             {

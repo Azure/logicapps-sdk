@@ -853,7 +853,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Signnoweu
             bodypropCount++;
             var attributesObject = new JObject();
             var attributesObjectpropCount = 0;
-            attributesObject["callback"] = "@listCallbackUrl()";
+            attributesObject["callback"] = "#{listCallbackUrl()}";
             attributesObjectpropCount++;
             if (attributesObjectpropCount > 0)
             {

@@ -102,7 +102,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["triggers"] = ExpressionConverter.Convert(triggers);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
+            requestBody["webHookUrl"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {
@@ -122,7 +122,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamforms
                 callPayload.Queries["formId"] = ExpressionConverter.Convert(formId);
             var requestBody = new JObject();
             var requestBodypropCount = 0;
-            requestBody["webHookUrl"] = "@listCallbackUrl()";
+            requestBody["webHookUrl"] = "#{listCallbackUrl()}";
             requestBodypropCount++;
             if (requestBodypropCount > 0)
             {

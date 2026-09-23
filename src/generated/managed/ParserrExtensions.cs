@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Parserr
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["TriggerUrl"] = "@listCallbackUrl()";
+            body["TriggerUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["email"] = ExpressionConverter.ConvertO(bodyemail);

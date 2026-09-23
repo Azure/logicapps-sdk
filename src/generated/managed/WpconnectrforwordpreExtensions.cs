@@ -92,7 +92,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
             body["trigger_resource_schema"] = ExpressionConverter.ConvertO(bodyresourceType);
             bodypropCount++;
             body["topic"] = ExpressionConverter.ConvertO(bodytriggerEvent);
-            body["delivery_url"] = "@listCallbackUrl()";
+            body["delivery_url"] = "#{listCallbackUrl()}";
             bodypropCount++;
             if (bodypropCount > 0)
             {

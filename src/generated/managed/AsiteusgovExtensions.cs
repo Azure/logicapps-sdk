@@ -58,7 +58,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);
@@ -81,7 +81,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteusgov
             callPayload.Headers["Accept"] = Convert.ToString("*/*");
             var body = new JObject();
             var bodypropCount = 0;
-            body["webhookUrl"] = "@listCallbackUrl()";
+            body["webhookUrl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             bodypropCount++;
             body["resourceId"] = ExpressionConverter.ConvertO(bodytriggerName);

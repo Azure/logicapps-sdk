@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -583,7 +583,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -604,7 +604,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -625,7 +625,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -646,7 +646,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -667,7 +667,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -709,7 +709,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -751,7 +751,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -793,7 +793,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -814,7 +814,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -835,7 +835,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -856,7 +856,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -877,7 +877,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -898,7 +898,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -919,7 +919,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -961,7 +961,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
@@ -982,7 +982,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cloudpkimanagement
             var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
             var body = new JObject();
             var bodypropCount = 0;
-            body["callbackurl"] = "@listCallbackUrl()";
+            body["callbackurl"] = "#{listCallbackUrl()}";
             bodypropCount++;
             body["type"] = "web";
             bodypropCount++;
