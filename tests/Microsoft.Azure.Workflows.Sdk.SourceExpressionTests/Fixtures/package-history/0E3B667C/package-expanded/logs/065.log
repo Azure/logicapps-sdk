@@ -1,1 +1,0 @@
-{"result":{"input":"@csharp{outputs(\"Count\").ToObject<int>() + 1}","overflow":false},"framework":".NETCoreApp,Version=v9.0","signed":false,"assemblyName":"Matrix"}

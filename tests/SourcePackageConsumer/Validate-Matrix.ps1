@@ -36,7 +36,6 @@ $fixtureHashes[(Join-Path $PSScriptRoot 'Consumer\Program.cs')] =
     (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'Consumer\Program.cs')).Hash
 $evidence = [ordered]@{
     evidenceKind = 'external-package-validation'
-    catalog = 'tests\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests\Fixtures\approved-catalog.md'
     catalogSection = '14.6'
     startedUtc = [DateTime]::UtcNow.ToString('o')
     packageSha256 = (Get-FileHash -LiteralPath $PackagePath).Hash

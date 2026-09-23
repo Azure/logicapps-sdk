@@ -1,1 +1,0 @@
-[assembly: System.Runtime.CompilerServices.InternalsVisibleTo("Matrix, PublicKey=__PUBLIC_KEY__")]

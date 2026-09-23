@@ -45,11 +45,12 @@ default of 200 and rejects an explicitly supplied literal zero.
 
 ### Verification and current limits
 
-The approved expected-test catalog is the target, not a claim that every case
-is implemented. Source tests and their machine-readable coverage ledger live in
+Executable compiler and SDK regression tests live in
 `tests\Microsoft.Azure.Workflows.Sdk.SourceExpressionTests`; package-consumer
-checks live in `tests\SourcePackageConsumer`. Entries without executable local
-coverage must not be counted as passing tests.
+checks live in `tests\SourcePackageConsumer`, and actual-host workflows live in
+`tests\SourceExpressionE2E`. Historical reports and recorded output snapshots
+are kept outside the repository. Local test passes do not establish backend
+support; the E2E suite retains its known failing contracts.
 
 Block/async workflow values are rejected until an execution-host transport is
 verified. Dynamically selected delegates, runtime-created expression trees,

@@ -16,17 +16,6 @@
     <Using Include="Xunit" />
     <ProjectReference Include="..\..\src\Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj" />
     <ProjectReference Include="..\..\src\Microsoft.Azure.Workflows.Sdk.csproj" />
-    <None Update="Fixtures\approved-catalog.md" CopyToOutputDirectory="PreserveNewest" />
     <None Update="Fixtures\catalog-destinations.schema.json" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Fixtures\host-runtime-1.170.91\**\*" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Fixtures\host-native-preview\**\*" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="Fixtures\package-*" CopyToOutputDirectory="PreserveNewest" />
-    <Compile Remove="Fixtures\package-expanded\**\*.cs" />
-    <None Remove="Fixtures\package-expanded\**\*" />
-    <None Include="Fixtures\package-expanded\**\*" CopyToOutputDirectory="PreserveNewest" />
-    <Compile Remove="Fixtures\package-history\**\*.cs;Fixtures\package-ide\**\*.cs" />
-    <None Remove="Fixtures\package-ide\**\*;Fixtures\package-support\**\*" />
-    <None Include="Fixtures\package-ide\**\*;Fixtures\package-support\**\*" CopyToOutputDirectory="PreserveNewest" />
-    <None Update="catalog-coverage.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 </Project>

@@ -1,1 +1,0 @@
-{"helper":"@csharp{outputs(\"Source\").ToObject<string>() + \"!\"}","transitive":"indirect package reference"}

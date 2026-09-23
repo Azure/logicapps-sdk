@@ -1,2 +1,0 @@
-D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\deployments\codeless\Probe\workflow.json: error WFDEP009: The selected execution host has no verified @csharp expression capability; deployment is blocked.
-D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\Shared\Workflow.cs: error WFDEP003: Missing deployed assembly 'ReferenceHelper, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null' for 'global::ReferencedHelper'.

@@ -1,2 +1,0 @@
-exports.activate = () => {};
-exports.deactivate = () => {};

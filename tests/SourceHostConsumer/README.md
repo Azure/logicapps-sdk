@@ -42,9 +42,9 @@ worker and compares native execution with independent template controls.
 Merely loading a newer extension with codeless settings does not enable its
 codeful expression evaluator.
 
-The earlier SDK literal-escaping failure is also retained as historical evidence:
-an unescaped literal marker was rejected, whereas the correctly escaped marker
-returns the original text, not an evaluated result.
+The literal-escaping probe checks that a correctly escaped marker returns the
+original text, not an evaluated result. Earlier recorded failures are archived
+outside the repository; rerun the probe to assess the current SDK and host.
 
 Stop only the host/emulator processes created for this test when finished.
 Local results do not certify cloud deployment or designer compatibility.

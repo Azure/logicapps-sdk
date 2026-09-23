@@ -5,8 +5,9 @@ The latest completed package gate is **`7F1BC5DE...`**, containing SDK
 expanded commands, original Worker, independent build-asset checks, and actual
 VS Code validation passed. Evidence is under `obj\host-json-fix-validation`.
 No approval gates or host-profile expectations were weakened.
-Package `0E3B667C...` and its earlier language-service/editor evidence remain
-separate historical snapshots. Neither run certifies an execution backend.
+Historical package and language-service/editor snapshots are archived outside
+the repository. Run the validators below to produce current observations;
+package and editor validation do not certify an execution backend.
 
 The SDK runtime remains `netstandard2.0`. Source compilation currently requires
 `dotnet build` on .NET SDK 9 (with the .NET 9 runtime). Full-framework MSBuild
@@ -90,7 +91,8 @@ hashes, completed case checks, and failure details in
 their assertions succeed. Failures remain visible and fail the overall gate;
 independent diagnostic probes can continue without turning a failure into a pass.
 
-The added scenarios directly follow **approved-catalog.md section 14.6**:
+The package matrix exercises the following scenarios. Case IDs are stable labels
+for the executable fixtures, not dependencies on an archived coverage catalog:
 
 | Cases | Executable fixture |
 | --- | --- |

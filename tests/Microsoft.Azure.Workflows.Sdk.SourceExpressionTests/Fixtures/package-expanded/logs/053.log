@@ -1,9 +1,0 @@
-D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\Shared\Workflow.cs(7,24): error CS8600: Converting null literal or possible null value to non-nullable type. [D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\Matrix\Matrix.csproj]
-
-Build FAILED.
-
-D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\Shared\Workflow.cs(7,24): error CS8600: Converting null literal or possible null value to non-nullable type. [D:\dev\logicapps-sdk\tests\SourcePackageConsumer\obj\package-validation\matrix workspace\Matrix\Matrix.csproj]
-    0 Warning(s)
-    1 Error(s)
-
-Time Elapsed 00:00:02.69

@@ -251,67 +251,14 @@ a workflow that failed to deliver its response; it does not classify the incomin
 request as malformed. Passing this oracle establishes error visibility, not
 support for a raw URI response body.
 
-### Export a source-linked review package
+## Known runtime limitations
 
-```powershell
-.\tests\SourceExpressionE2E\Write-ReviewPackage.ps1 `
-  -ResultsDirectory C:\e2e\runs\ours-001 `
-  -OutputDirectory C:\e2e\review-001
+The 19 custom-type scenarios require types that are not provisioned for the
+native compiler, and F138 / `NativeUri` fails at the scalar Response-body
+boundary. The fixtures retain their intended expectations rather than treating
+these capability gaps as passes.
 
-```
-
-The default selection is the 19 custom-type scenarios. Optional `-CaseIds`,
-`-BaselineResultsDirectory`, and `-DeclarationManifestPath` select other cases,
-add independent baseline evidence, or include a previously frozen historical
-declaration manifest. Current SDK builds no longer generate declaration bundles.
-The optional historical reader does not compile declarations or activate a host.
-The output must not exist. Run from the exact source snapshot recorded in each
-run's `source-fingerprints.json`: missing/mismatched source or definition hashes
-are rejected rather than silently exporting today's source or regenerating JSON.
-
-Open `report.md` for linked and expanded original C# files, declarations/seed
-callbacks, exact generated definitions, full observations, and per-action raw
-inputs/outputs. `package-manifest.json` inventories file hashes. Original JSON
-files are preserved; pretty JSON is display-only. Historical manifests with
-SDK v2 `declarationBundles` are autodetected: embedded `.cs` content hashes and
-bundle IDs are verified using the former `WorkflowDeclarationBundle.ComputeId` canonical
-System.Text.Json serialization. Simple filenames only are extracted under
-`declarations\<bundleId>\`; the report includes compiler settings, types, reference
-identities/aliases/interop flags, and the exact outer manifest hash.
-A supplied SDK manifest is bound to the current run's `manifestSha256` when
-`implementation-provenance.json` exists; mismatches are rejected. That provenance
-is copied exactly and expanded with its recorded runtime fingerprints and
-private-reflection hooks. Without it, the manifest remains supplemental;
-historical prototype hashes cannot authenticate an SDK manifest.
-Credential-free `host-profile.json` is included as supplemental metadata only.
-Neither profile capabilities nor recorded startup claims are independent
-production certification. Local-path `declaration-binding.json`, private runtime
-backups, and referenced paths are not copied or followed.
-Historical `Sources: [{ File, Sha256 }]` manifests still include hash-verified
-`.cs` files. References remain metadata-only; no DLLs are loaded or packaged.
-Unrecognized manifest formats are retained as metadata only.
-Baseline SDK/runtime, exporter, and README changes do not require matching hashes;
-the original copied workflow/harness inputs must still match the recorded sources.
-Contracts met and successful runs are counted separately: NullableEnumFailure
-and TypedBodyLinqInvalid intentionally expect failures. No host is started, ZIP
-created, or binaries/logs/private host settings collected. Review recorded bodies before
-sharing; this is an unredacted review collection, not a standalone build.
-
-## Recorded comparison baseline
-
-The initial full comparison used repository commit
-`58e8c0f5e219709bec2d337a214166995fbb9397`, PR #51 SDK/generator commit
-`7e3fd9cd3c2f453557353f29da298113952fe20d`, and local native runtime
-`1.187.0.10`. The 140 scenarios include 112 runtime-expression scenarios and 28
-authoring-contract proofs; two negative compiler fixtures are additional.
-
-Expected contracts were satisfied in 120 repository scenarios and 22 comparison
-scenarios. Among runtime-expression scenarios, 20 had matching Response values,
-6 returned different values despite both runs succeeding, 60 had different
-execution outcomes, 24 remained failed/blocked on both sides, one satisfied the
-same expected failure contract, and one satisfied the clock-window contract.
-
-This is **not an all-green baseline**. The repository variant has 19 native
-compilation blockers involving custom types unavailable to this host's C#
-compiler, plus one URI-valued Response serialization failure. The fixtures retain
-their intended expectations rather than treating these capability gaps as passes.
+Historical comparison reports, frozen host/package observations, and the review
+exporter for the removed declaration-bundle prototype are not test inputs. Keep
+them outside the repository; use fresh results from the commands above to assess
+the current SDK and runtime.

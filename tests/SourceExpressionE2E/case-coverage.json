@@ -2,15 +2,6 @@
   "schemaVersion": 1,
   "originalFailureCount": 195,
   "originalReport": "logicapps-expression-pr51-failed-test-diff.md",
-  "sourceEvidence": {
-    "report": "C:\\Users\\lambrian\\Downloads\\logicapps-expression-pr51-failed-test-diff.md",
-    "manifestRoot": "C:\\Users\\lambrian\\.copilot\\session-state\\183ac10e-d9bf-4c92-b5bf-e8a6d28c1df2\\files\\pr51-execution\\results\\report",
-    "providers": ["Ours.json", "Andrew.json"],
-    "behaviorAssessments": "behavior-assessments.json",
-    "caseEvidencePattern": "Ours\\{failureId}\\case.json and recorded *compilation.json / *definition.json events",
-    "catalogRoot": "pr51-execution\\harness\\Tests",
-    "actualHostFollowups": ["f005-stateful-host\\consumer\\F005StatefulWorkflow.cs", "f005-stateful-host\\consumer\\F007StatefulWorkflow.cs", "f005-stateful-host\\probes\\F177StatefulWorkflow.cs"]
-  },
   "coverageSemantics": {
     "exact": "Retains the authored value expression and the listed runtime scenario. This is not a claim that every original source-string assertion, fixture read count, or CLR exception type is checked by HTTP execution. Equivalent original expressions share factories; distinct expressions in a multi-action factory remain separate SDK calls and observable result fields.",
     "representative": "Expression, destination, seed, or observed assertion differs, or only part of the original multi-observation contract is covered; the reason records the limitation.",
@@ -70,21 +61,6 @@
       "true": { "value": [{ "DynamicProperties": { "active": "invalid", "name": "A" } }, { "DynamicProperties": { "active": false, "name": "ignored" } }, { "DynamicProperties": { "active": true, "name": "B" } }] },
       "empty": { "value": [] }
     }
-  },
-  "runtimeInvestigation": {
-    "evidence": "source-expression-e2e\\final-ours-001\\results.json and host.log",
-    "fixtureCorrections": [
-      "Renamed only the RuntimeEnumConditional, RuntimeEnumConditionalFallback and RuntimeEnumMethod workflow IDs to EnumRuntimeConditional, EnumRuntimeConditionalFallback and EnumRuntimeMethod. Functions reserves the runtime route prefix; host.log reported built-in route conflicts and HTTP404. Method names and tested expressions are unchanged.",
-      "JsonPropertyNavigation GetItems failed InvokeFunctionFailed: Non-static method requires a target. ScriptExecutor.cs stores callback.Method but invokes it with null, losing the anonymous delegate target. Named static seed methods accommodate this pre-existing SDK callback limitation; the native expressions under comparison are unchanged. Initial failure evidence is preserved externally.",
-      "ScriptExecutor serializes custom-code results using JsonExtensions.ObjectSerializationSettings, whose camel-case resolver changes the ListItem property to dynamicProperties. JsonPropertyNavigation's expected response spelling was corrected accordingly; authored expression and returned data were not rewritten.",
-      "F012/F015/F028 source-visible delegate factories are isolated unchanged in separate partial-class files to preserve Andrew LAEXP001 compilation-rejection evidence without blocking unrelated runtime cases."
-    ],
-    "unmodifiedBackendFailures": [
-      "CustomToString, DecimalBodiesAtBoundary/BelowBoundary, EnumClrToString, EnumComparisonFalse/True, EnumNativeArgument and NativeConstructor were rejected before runs with CS0234: namespace Sdk missing under Microsoft.Azure.Workflows. Public fixture types exist in the compiled worker assembly; the actual native-expression compiler does not resolve that assembly. No types or expressions were substituted to evade the limitation.",
-      "NativeUri Source and Result succeeded and persisted https://example.com/api. Response failed InternalServerError; host.log reports InvalidCastException: Object must implement IConvertible in JTokenExtensions.ConvertToString / ContentLinkExtensions.UpdateBodyContentLink. This is a backend URI-valued JToken response/persistence failure, not a URI construction fixture error; no ToString workaround was added.",
-      "AmbientCheckedJson, AmbientCheckedOverflow, CheckedOverflow, DivideByZero, InvalidValueConversion and MissingToObject intentionally expect failed runs. Their action errors, rather than a generic 502 NoResponse alone, must validate the intended negative contract."
-    ],
-    "validationState": "No build/export/host invocation after source isolation and static seed adaptation while parent assets were set to Andrew. Parent must rebuild both from the final stable source and update its explicit seed-method safety allowlist."
   },
   "negativeRuntimeContracts": [
     { "workflowIds": ["AmbientCheckedJson", "AmbientCheckedOverflow", "CheckedOverflow"], "expectedHttpStatus": 502, "expectedActionError": "Arithmetic operation resulted in an overflow.", "evidence": "Observed in final-ours-001/results.json Result action errors." },
