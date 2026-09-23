@@ -1,0 +1,8 @@
+// F019: expected WFBUILD006; this is intentionally outside Compile.
+using Microsoft.Azure.Workflows.Sdk;
+
+public static class BlockLambdaDiagnostic
+{
+    public static FlowTemplateAction Build()
+        => WorkflowActions.BuiltIn.Compose<string>(input: () => { return "x"; }).GetActionDefinition("Comparison");
+}

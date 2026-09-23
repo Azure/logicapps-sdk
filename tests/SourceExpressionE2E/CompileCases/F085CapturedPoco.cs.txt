@@ -1,0 +1,17 @@
+// F085: expected WFBUILD003; this is intentionally outside Compile.
+using Microsoft.Azure.Workflows.Sdk;
+
+public static class CapturedPocoDiagnostic
+{
+    public static FlowTemplateAction Build()
+    {
+        var model = new DisplayModel { Id = 1 };
+        return WorkflowActions.BuiltIn.Compose<object>(input: () => model).GetActionDefinition("Catalog");
+    }
+}
+
+public sealed class DisplayModel
+{
+    public int Id { get; set; }
+    public override string ToString() => $"Display:{Id}";
+}

@@ -2868,7 +2868,7 @@
       "tests": [
         "CoreStringAndMethodCatalogTests.Uri_constructor_remains_native_and_result_is_serializable"
       ],
-      "verification": "Passing executable local compiler/real-SDK definition or explicitly local runtime assertion; no backend verification.",
+      "verification": "Passing local URI construction and JSON serialization assertions only. F138 / NativeUri is a known end-to-end failure: Source and Result succeed, but the scalar URI Response body fails; the diagnostic-patched host returns HTTP 502 / InvalidResponseBody. The local pass is not proof of Response support. Original end-to-end success expectation retained; no normalization or ToString fallback.",
       "testResult": {
         "outcome": "passed",
         "passed": 1,
