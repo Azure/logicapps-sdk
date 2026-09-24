@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 callPayload.Queries["event_name"] = Convert.ToString("share_send_email");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookpropCount > 0)
                 {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_view");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookpropCount > 0)
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Showcaseworkshop
                 callPayload.Queries["event_name"] = Convert.ToString("shared_page_download");
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["callback_url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["callback_url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookpropCount > 0)
                 {

@@ -10,6 +10,7 @@ if (args is ["--compare", var ours, var comparison, var comparisonOutput])
 if (args is ["--self-test"])
 {
     ComparisonReport.SelfTest();
+    ServiceProviderFixtures.SelfTest();
     return 0;
 }
 if (args is ["--validate-results", var resultsFile])

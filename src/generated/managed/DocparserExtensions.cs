@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Docparser
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var targetUrl = new JObject();
                 var targetUrlpropCount = 0;
-                targetUrl["target_url"] = "@listCallbackUrl()";
+                targetUrl["target_url"] = "#{listCallbackUrl()}";
                 targetUrlpropCount++;
                 if (targetUrlpropCount > 0)
                 {

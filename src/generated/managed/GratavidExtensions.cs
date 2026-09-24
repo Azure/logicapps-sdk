@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Gratavid
                 callPayload.Queries["webookHookEvent"] = SourceExpressionConverter.Convert(webookHookEvent);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["webhookURL"] = "@listCallbackUrl()";
+                body["webhookURL"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

@@ -656,7 +656,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Smartdialog
                 createWebhookRequestBodypropCount++;
                 var optionsObject = new JObject();
                 var optionsObjectpropCount = 0;
-                optionsObject["endpointUrl"] = "@listCallbackUrl()";
+                optionsObject["endpointUrl"] = "#{listCallbackUrl()}";
                 optionsObjectpropCount++;
                 optionsObject["httpVerb"] = "POST";
                 optionsObjectpropCount++;

@@ -35,7 +35,7 @@ public sealed class CoreStringAndMethodCatalogTests
             ["Source"] = new JValue("hello"), ["Other"] = new JValue("world"), ["Count"] = new JValue(3),
             ["Amount"] = new JValue(1234.5m), ["Values"] = new JArray(1, 2, 3),
         });
-        EqualSource("@csharp{" + expectedBody + "}", emitted);
+        EqualSource("#{" + expectedBody + "}", emitted);
         Assert.Equal(expected, Assert.IsType<string>(local.Value));
         if (catalog == "S09b") Assert.Equal(["Source", "Other"], local.Reads);
     }
@@ -44,7 +44,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Captured_string_ToString_remains_native()
     {
         var emitted = Native("text.ToString()", """string text = "x";""");
-        EqualSource("@csharp{\"x\".ToString()}", emitted);
+        EqualSource("#{\"x\".ToString()}", emitted);
         Assert.Equal("x", LocalNativeHost.Evaluate(emitted, new()).Value);
     }
 
@@ -58,7 +58,7 @@ public sealed class CoreStringAndMethodCatalogTests
         var handle = (IOutputWorkflowAction<string>)built.Assembly.GetType("Consumer")!.GetField("ObservedSource")!.GetValue(null)!;
         Assert.Throws<InvalidOperationException>(() => handle.Output);
         var emitted = Token(built.Definition).Value<string>()!;
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>().Length}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>().Length}", emitted);
         Assert.Equal(5, Assert.IsType<int>(LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("hello") }).Value));
     }
 
@@ -66,7 +66,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Math_round_uses_decimal_materialization()
     {
         var emitted = Native("Math.Round(amount.Output, 2)", CoreHandles);
-        EqualSource("@csharp{System.Math.Round(outputs(\"Amount\").ToObject<decimal>(), 2)}", emitted);
+        EqualSource("#{System.Math.Round(outputs(\"Amount\").ToObject<decimal>(), 2)}", emitted);
         Assert.Equal(2.76m, Assert.IsType<decimal>(LocalNativeHost.Evaluate(emitted, new() { ["Amount"] = new JValue(2.755m) }).Value));
     }
 
@@ -74,7 +74,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void UtcNow_is_evaluated_only_in_the_local_runtime()
     {
         var emitted = Native("DateTime.UtcNow");
-        EqualSource("@csharp{System.DateTime.UtcNow}", emitted);
+        EqualSource("#{System.DateTime.UtcNow}", emitted);
         var before = DateTime.UtcNow;
         var result = Assert.IsType<DateTime>(LocalNativeHost.Evaluate(emitted, new()).Value);
         Assert.InRange(result, before, DateTime.UtcNow);
@@ -85,7 +85,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Typed_workflow_list_indexing_stays_native()
     {
         var emitted = Native("values.Output[1]", CoreHandles);
-        EqualSource("@csharp{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>()[1]}", emitted);
+        EqualSource("#{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>()[1]}", emitted);
         Assert.Equal(2, Assert.IsType<int>(LocalNativeHost.Evaluate(emitted, new() { ["Values"] = new JArray(1, 2, 3) }).Value));
     }
 
@@ -93,7 +93,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Nested_linq_parameters_and_result_array_keep_their_native_types()
     {
         var emitted = Native("values.Output.Where(x => x > 1).Select(x => x * 2).ToArray()", CoreHandles);
-        EqualSource("@csharp{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).Select(x => x * 2).ToArray()}", emitted);
+        EqualSource("#{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).Select(x => x * 2).ToArray()}", emitted);
         Assert.Equal([4, 6], Assert.IsType<int[]>(LocalNativeHost.Evaluate(emitted, new() { ["Values"] = new JArray(1, 2, 3) }).Value));
     }
 
@@ -106,8 +106,8 @@ public sealed class CoreStringAndMethodCatalogTests
     {
         Assert.NotEmpty(catalog);
         var emitted = Native(input, setup);
-        Assert.StartsWith("@csharp{", emitted);
-        var syntax = Assert.IsType<ElementAccessExpressionSyntax>(SyntaxFactory.ParseExpression(emitted[8..^1]));
+        Assert.StartsWith("#{", emitted);
+        var syntax = Assert.IsType<ElementAccessExpressionSyntax>(SyntaxFactory.ParseExpression(ConsumerCompilation.NativeBody(emitted)));
         Assert.DoesNotContain(syntax.DescendantNodes().OfType<IdentifierNameSyntax>(), n => n.Identifier.ValueText == captureName);
         var local = LocalNativeHost.Evaluate(emitted, new()).Value!;
         Assert.Equal(expectedType, local.GetType().FullName);
@@ -118,7 +118,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Typed_custom_code_body_property_preserves_decimal_calculation()
     {
         var emitted = Native("summary.Body.Total * 1.2m", CoreHandles);
-        EqualSource("@csharp{body(\"GetSummary\").ToObject<OrderSummary>().Total * 1.2m}", emitted);
+        EqualSource("#{body(\"GetSummary\").ToObject<OrderSummary>().Total * 1.2m}", emitted);
         Assert.Equal(120m, Assert.IsType<decimal>(LocalNativeHost.Evaluate(emitted,
             new() { ["GetSummary"] = JObject.Parse("""{"Total":100}""") }).Value));
     }
@@ -127,7 +127,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Uri_constructor_remains_native_and_result_is_serializable()
     {
         var emitted = Native("new Uri(source.Output)");
-        EqualSource("@csharp{new System.Uri(outputs(\"Source\").ToObject<string>())}", emitted);
+        EqualSource("#{new System.Uri(outputs(\"Source\").ToObject<string>())}", emitted);
         var value = Assert.IsType<Uri>(LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("https://example.com/api") }).Value);
         Assert.Equal("https://example.com/api", value.AbsoluteUri);
         Assert.Equal("https://example.com/api", JToken.Parse(JsonConvert.SerializeObject(value)).Value<string>());
@@ -148,7 +148,7 @@ public sealed class CoreStringAndMethodCatalogTests
     public void Object_materialization_precedes_native_type_test()
     {
         var emitted = Native("raw.Output is string", CoreHandles);
-        EqualSource("@csharp{outputs(\"Raw\").ToObject<object>() is string}", emitted);
+        EqualSource("#{outputs(\"Raw\").ToObject<object>() is string}", emitted);
         Assert.Equal(true, LocalNativeHost.Evaluate(emitted, new() { ["Raw"] = new JValue("text") }).Value);
         Assert.Equal(false, LocalNativeHost.Evaluate(emitted, new() { ["Raw"] = new JValue(3) }).Value);
     }
@@ -161,7 +161,7 @@ public sealed class CoreStringAndMethodCatalogTests
             """));
         Assert.Equal(0, result.Assembly.GetType("Money")!.GetField("ConstructorCalls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{new Money(outputs(\"Amount\").ToObject<decimal>())}", emitted);
+        EqualSource("#{new Money(outputs(\"Amount\").ToObject<decimal>())}", emitted);
         var value = LocalNativeHost.Evaluate(emitted, new() { ["Amount"] = new JValue(2.75m) }).Value!;
         Assert.Equal(2.75m, value.GetType().GetProperty("Value")!.GetValue(value));
         Assert.Equal(1, value.GetType().GetField("ConstructorCalls")!.GetValue(null));

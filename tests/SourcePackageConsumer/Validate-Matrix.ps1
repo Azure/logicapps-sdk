@@ -169,7 +169,7 @@ try {
     $consumer = Join-Path $PSScriptRoot "Consumer\bin\$Configuration\net9.0\Consumer.dll"
     $run = Invoke-Fixture -Arguments @($consumer)
     $definitions = @($run.Text | ConvertFrom-Json)
-    $cb01 = '@csharp{outputs("Source").ToObject<string>().ToUpperInvariant() + "!"}'
+    $cb01 = '#{outputs("Source").ToObject<string>().ToUpperInvariant() + "!"}'
     Assert-True ($definitions[0].Inputs -ceq $cb01) 'PK02 exact CB01 output mismatch.'
     Complete-Case 'PK02' @('Exact CB01 output', 'Zero reads at the first expression-body operation through serialization', 'Positive counter control observes one read') @{
         consumerSourceSha256 = (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'Consumer\Program.cs')).Hash
@@ -274,7 +274,7 @@ try {
     Restore-Fixture -Project $libraryConsumer
     $null = Build-Fixture -Project $libraryConsumer
     $result = Run-Fixture -Project $libraryConsumer
-    Assert-True ($result.helper -ceq '@csharp{outputs("Source").ToObject<string>() + "!"}') 'Packaged CB08 helper output mismatch.'
+    Assert-True ($result.helper -ceq '#{outputs("Source").ToObject<string>() + "!"}') 'Packaged CB08 helper output mismatch.'
     Assert-True ($result.transitive -ceq 'indirect package reference') 'Indirect library output mismatch.'
     $sources = (Get-Manifest -Project $libraryConsumer).sources
     Assert-True (@($sources | Where-Object { $_ -match 'WorkflowHelper\.cs|TransitiveWorkflow\.cs' }).Count -eq 0) 'Consumer requires helper source.'
@@ -517,7 +517,7 @@ try {
                 Write-Host "CHECK DEP-Aggregation FAILED: expected WFDEP001, exit $($failure.ExitCode); $($failure.Log)"
             }
         } finally { Remove-Item -LiteralPath $badSidecar }
-        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@csharp{global::ReferencedHelper.Convert(\"x\")}"}}}}' |
+        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"#{global::ReferencedHelper.Convert(\"x\")}"}}}}' |
             Set-Content -LiteralPath $artifact
         $unapproved = Invoke-Fixture ($publishArguments + @('-o', (Join-Path $publishRoot 'unapproved'))) -ExpectFailure
         Assert-True ($unapproved.Text.Contains('WFDEP002')) 'Publish did not reject a used, unapproved custom dependency.'
@@ -537,17 +537,17 @@ try {
         Complete-Case 'DEP-MissingOrHash' @('Directory aggregation reads actual compiler reports', 'Used approved helper requires a present matching managed DLL', 'Missing DLL and wrong SHA both fail WFDEP003')
 
         foreach ($case in @(
-            @{ Name = 'native'; Code = 'WFDEP009'; Json = '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@csharp{1+2}"}}}}' },
+            @{ Name = 'native'; Code = 'WFDEP009'; Json = '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"#{1+2}"}}}}' },
             @{ Name = 'marker'; Code = 'WFDEP004'; Json = '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@@csharp{1+2}"}}}}' },
-            @{ Name = 'condition'; Code = 'WFDEP005'; Json = '{"definition":{"actions":{"Probe":{"type":"If","expression":"@csharp{true}","actions":{}}}}}' },
-            @{ Name = 'syntax'; Code = 'WFDEP006'; Json = '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@csharp{1 +}"}}}}' }
+            @{ Name = 'condition'; Code = 'WFDEP005'; Json = '{"definition":{"actions":{"Probe":{"type":"If","expression":"#{true}","actions":{}}}}}' },
+            @{ Name = 'syntax'; Code = 'WFDEP006'; Json = '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"#{1 +}"}}}}' }
         )) {
             $case.Json | Set-Content -LiteralPath $artifact
             $failure = Invoke-Fixture ($publishArguments + @('-o', (Join-Path $publishRoot $case.Name))) -ExpectFailure
             Assert-True ($failure.Text.Contains($case.Code)) "Missing mandatory $($case.Code) deployment diagnostic."
             Complete-Case "DEP-$($case.Code)" @("Real publish artifact rejected with $($case.Code)", 'No capability silently enabled')
         }
-        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@csharp{1+2}"}}}}' | Set-Content -LiteralPath $artifact
+        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"#{1+2}"}}}}' | Set-Content -LiteralPath $artifact
         $failure = Invoke-Fixture ($publishArguments + @('-o', (Join-Path $publishRoot 'native-profile-denied'),
             "-p:WorkflowExpressionHostProfile=$profilePath")) -ExpectFailure
         Assert-True ($failure.Text.Contains('WFDEP009')) 'An explicit unverified-native profile did not block ordinary native expressions.'
@@ -555,7 +555,7 @@ try {
 
         Set-Variant 'Extension'
         $null = Build-Fixture -Properties $referenceProperties
-        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"@csharp{\"x\".Wrap()}"}}}}' | Set-Content -LiteralPath $artifact
+        '{"definition":{"actions":{"Probe":{"type":"Compose","inputs":"#{\"x\".Wrap()}"}}}}' | Set-Content -LiteralPath $artifact
         $failure = Invoke-Fixture ($publishArguments + @('-o', (Join-Path $publishRoot 'extension-import'))) -ExpectFailure
         Assert-True ($failure.Text.Contains('WFDEP008')) 'Preserved extension syntax without an approved namespace import was accepted.'
         Complete-Case 'DEP-ExtensionImport' @('Actual compiled extension dependency requirement', 'Instance-style extension syntax requires namespaceImports', 'Missing import fails WFDEP008; native host remains unapproved')

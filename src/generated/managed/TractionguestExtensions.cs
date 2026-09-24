@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 var bodypropCount = 0;
                 body["event"] = "invite";
                 bodypropCount++;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 var bodypropCount = 0;
                 body["event"] = "signin";
                 bodypropCount++;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -86,7 +86,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 var bodypropCount = 0;
                 body["event"] = "signout";
                 bodypropCount++;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -109,7 +109,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tractionguest
                 var bodypropCount = 0;
                 body["event"] = "watchlist";
                 bodypropCount++;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

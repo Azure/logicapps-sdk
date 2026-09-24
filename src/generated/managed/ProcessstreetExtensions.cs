@@ -187,7 +187,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodyworkflowID != null)
                 {
@@ -223,7 +223,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodyworkflowID != null)
                 {
@@ -251,7 +251,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Processstreet
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodyworkflowID != null)
                 {

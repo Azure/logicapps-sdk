@@ -19,7 +19,7 @@ public sealed class SourceFactoryTracingTests
         var result = Build(Source(Handles + """
             return WorkflowActions.BuiltIn.Compose<string>(input: Factory(source, "!")).GetActionDefinition("Catalog");
             """, Factory));
-        EqualSource("""@csharp{outputs("Source").ToObject<string>() + "!"}""",
+        EqualSource("""#{outputs("Source").ToObject<string>() + "!"}""",
             Token(result.Definition).Value<string>()!);
         var transformed = result.Transformation.Sources["Consumer.cs"];
         Assert.Contains("input: Factory(source, \"!\")", transformed);
@@ -93,19 +93,19 @@ public sealed class SourceFactoryTracingTests
             source.Name = "Final";
             return WorkflowActions.BuiltIn.Compose<string>(input: alias).GetActionDefinition("Catalog");
             """));
-        EqualSource("""@csharp{outputs("Final").ToObject<string>() + "!"}""",
+        EqualSource("""#{outputs("Final").ToObject<string>() + "!"}""",
             Token(result.Definition).Value<string>()!);
     }
 
     [Fact]
-    public void Generic_factory_keeps_concrete_binding_types()
+    public void Generic_factory_preserves_JSON_pass_through()
     {
         var result = Build(Source(Handles + """
             return WorkflowActions.BuiltIn.Compose<int>(input: Factory(count)).GetActionDefinition("Catalog");
             """, """
             private static Func<T> Factory<T>(IOutputWorkflowAction<T> action) => () => action.Output;
             """));
-        Assert.Equal("@outputs('Count')", Token(result.Definition).Value<string>());
+        EqualSource("#{outputs(\"Count\")}", Token(result.Definition).Value<string>()!);
     }
 
     [Fact]
@@ -133,7 +133,7 @@ public sealed class SourceFactoryTracingTests
             CSharpSyntaxTree.ParseText(transformed.Sources["Factory.cs"],
                 new CSharpParseOptions(LanguageVersion.CSharp13), "Factory.cs")));
         var definition = (FlowTemplateAction)Invoke(assembly, "Consumer", "Build")!;
-        EqualSource("""@csharp{outputs("Source").ToObject<string>() + "!"}""", Token(definition).Value<string>()!);
+        EqualSource("""#{outputs("Source").ToObject<string>() + "!"}""", Token(definition).Value<string>()!);
     }
 
     [Theory]

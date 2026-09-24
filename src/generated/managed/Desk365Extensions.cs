@@ -311,7 +311,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -416,7 +416,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -451,7 +451,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Desk365
                     bodypropCount++;
                 }
 
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

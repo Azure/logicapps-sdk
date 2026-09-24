@@ -34,7 +34,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                 var actionObjectpropCount = 0;
                 actionObject["type"] = "WEBHOOK";
                 actionObjectpropCount++;
-                actionObject["url"] = "@listCallbackUrl()";
+                actionObject["url"] = "#{listCallbackUrl()}";
                 actionObjectpropCount++;
                 if (actionObjectpropCount > 0)
                 {
@@ -71,7 +71,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                 var actionObjectpropCount = 0;
                 actionObject["type"] = "WEBHOOK";
                 actionObjectpropCount++;
-                actionObject["url"] = "@listCallbackUrl()";
+                actionObject["url"] = "#{listCallbackUrl()}";
                 actionObjectpropCount++;
                 if (actionObjectpropCount > 0)
                 {
@@ -108,7 +108,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Activityinfo
                 var actionObjectpropCount = 0;
                 actionObject["type"] = "WEBHOOK";
                 actionObjectpropCount++;
-                actionObject["url"] = "@listCallbackUrl()";
+                actionObject["url"] = "#{listCallbackUrl()}";
                 actionObjectpropCount++;
                 if (actionObjectpropCount > 0)
                 {

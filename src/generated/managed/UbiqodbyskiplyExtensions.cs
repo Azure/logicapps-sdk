@@ -29,7 +29,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Ubiqodbyskiply
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["group_id"] = SourceExpressionConverter.ConvertToken(bodygroupId);
-                body["hookUrl"] = "@listCallbackUrl()";
+                body["hookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

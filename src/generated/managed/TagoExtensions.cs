@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tago
                 var bodypropCount = 0;
                 var configObject = new JObject();
                 var configObjectpropCount = 0;
-                configObject["callback"] = "@listCallbackUrl()";
+                configObject["callback"] = "#{listCallbackUrl()}";
                 configObjectpropCount++;
                 if (configObjectpropCount > 0)
                 {

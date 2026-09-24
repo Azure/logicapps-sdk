@@ -17,7 +17,7 @@ public sealed class SchemaDestinationCatalogTests
     {
         Assert.NotEmpty(catalog);
         var result = SchemaConsumerCompilation.Build($"CatalogDestinations.Payload(content: () => {expression})");
-        Assert.Equal("@outputs('Source')", result.Value["display_name"]!.Value<string>());
+        Assert.Equal("#{outputs(\"Source\")}", result.Value["display_name"]!.Value<string>());
         Assert.Equal(enabled, result.Value["enabled"]!.Value<bool>());
         Assert.Equal(2, ((JObject)result.Value).Count);
         Assert.Contains("SourceExpression.Model<", result.Transformation.Sources["Consumer.cs"]);
@@ -41,22 +41,22 @@ public sealed class SchemaDestinationCatalogTests
     public void Explicit_runtime_object_profile_keeps_factory_opaque_until_execution()
     {
         var result = SchemaConsumerCompilation.Build("CatalogDestinations.Headers(headers: () => RuntimeValues.CreateHeaders())");
-        EqualSource("@csharp{RuntimeValues.CreateHeaders()}", result.Value.Value<string>()!);
+        EqualSource("#{RuntimeValues.CreateHeaders()}", result.Value.Value<string>()!);
         var executed = LocalNativeHost.Evaluate(result.Value.Value<string>()!, new());
         Assert.Equal("value", Assert.IsType<Dictionary<string, string>>(executed.Value)["X"]);
         Assert.Equal(1, executed.Calls);
     }
 
     [Fact, Trait("Catalog", "Q09")]
-    public void Generated_fields_keep_independent_literal_template_and_native_values()
+    public void Generated_fields_keep_independent_literal_and_native_values()
     {
         var result = SchemaConsumerCompilation.Build("""
             CatalogDestinations.Fields(name: () => source.Output, count: () => 3, label: () => other.Output.ToUpperInvariant())
             """);
-        Assert.Equal("@outputs('Source')", result.Value["name"]!.Value<string>());
+        Assert.Equal("#{outputs(\"Source\")}", result.Value["name"]!.Value<string>());
         Assert.Equal(JTokenType.Integer, result.Value["count"]!.Type);
         Assert.Equal(3, result.Value["count"]!.Value<int>());
-        EqualSource("@csharp{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", result.Value["label"]!.Value<string>()!);
+        EqualSource("#{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", result.Value["label"]!.Value<string>()!);
     }
 
     [Theory]
@@ -74,11 +74,11 @@ public sealed class SchemaDestinationCatalogTests
     }
 
     [Theory]
-    [InlineData("B08", "EncodeEnum", "WireChoice.First", "", "@base64('first /+')")]
-    [InlineData("B13", "EncodeUri", "uri", "var uri = new Uri(\"https://example.com/api\");", "@base64('https://example.com/api')")]
-    [InlineData("B13b", "EncodeMethod", "System.Net.Http.HttpMethod.Get", "", "@base64('GET')")]
-    [InlineData("B15", "EncodeJson", "new { n = 1 }", "", "@base64('{\"n\":1}')")]
-    [InlineData("B15b", "EncodeJson", "new[] { 1, 2 }", "", "@base64('[1,2]')")]
+    [InlineData("B08", "EncodeEnum", "WireChoice.First", "", "#{base64(\"first /+\")}")]
+    [InlineData("B13", "EncodeUri", "uri", "var uri = new Uri(\"https://example.com/api\");", "#{base64(\"https://example.com/api\")}")]
+    [InlineData("B13b", "EncodeMethod", "System.Net.Http.HttpMethod.Get", "", "#{base64(\"GET\")}")]
+    [InlineData("B15", "EncodeJson", "new { n = 1 }", "", "#{base64(\"{\\\"n\\\":1}\")}")]
+    [InlineData("B15b", "EncodeJson", "new[] { 1, 2 }", "", "#{base64(\"[1,2]\")}")]
     [InlineData("B19b", "AlreadyEncoded", "\"aGVsbG8=\"", "", "aGVsbG8=")]
     public void Explicit_normalization_profiles_produce_exact_literal_wire_values(
         string catalog, string method, string expression, string setup, string expected)
@@ -93,7 +93,7 @@ public sealed class SchemaDestinationCatalogTests
     public void Encoded_enums_keep_the_typed_source_and_map_only_at_the_wire_boundary(string catalog, string expression, string expected)
     {
         var result = SchemaConsumerCompilation.Build($"CatalogDestinations.EncodeEnum(content: () => {expression})").Value.Value<string>()!;
-        EqualSource("@csharp{" + expected + "}", result);
+        EqualSource("#{" + expected + "}", result);
         var local = LocalNativeHost.Evaluate(result, new() { ["Flag"] = new JValue(true) });
         Assert.Equal(Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes("first /+")), local.Value);
         Assert.Equal(catalog == "B10" ? 1 : 0, local.Calls);
@@ -114,11 +114,11 @@ public sealed class SchemaDestinationCatalogTests
                 ContractResolver = new DefaultContractResolver { NamingStrategy = new SnakeCaseNamingStrategy() },
                 DefaultValueHandling = DefaultValueHandling.Ignore
             };
-            Assert.Equal("@base64('{\"n\":1}')", SchemaConsumerCompilation.Build(
+            Assert.Equal("#{base64(\"{\\\"n\\\":1}\")}", SchemaConsumerCompilation.Build(
                 "CatalogDestinations.EncodeJson(content: () => token)", "JToken token = JObject.Parse(\"{\\\"n\\\":1}\");").Value.Value<string>());
-            Assert.Equal("@base64('{\"n\":1}')", SchemaConsumerCompilation.Build(
+            Assert.Equal("#{base64(\"{\\\"n\\\":1}\")}", SchemaConsumerCompilation.Build(
                 "CatalogDestinations.EncodeJson(content: () => new { n = 1 })").Value.Value<string>());
-            Assert.Equal("@base64('[1,2]')", SchemaConsumerCompilation.Build(
+            Assert.Equal("#{base64(\"[1,2]\")}", SchemaConsumerCompilation.Build(
                 "CatalogDestinations.EncodeJson(content: () => new[] { 1, 2 })").Value.Value<string>());
         }
         finally { JsonConvert.DefaultSettings = previous; }
@@ -160,7 +160,7 @@ public sealed class SchemaDestinationCatalogTests
         var error = Assert.Throws<InvalidDataException>(() => WorkflowSchemaGenerator.Generate(schema.ToString()));
         Assert.Contains("content", error.Message);
         Assert.Contains("Already-encoded", error.Message);
-        Assert.Equal("@base64('aGVsbG8=')", SchemaConsumerCompilation.Build(
+        Assert.Equal("#{base64(\"aGVsbG8=\")}", SchemaConsumerCompilation.Build(
             "CatalogDestinations.EncodeText(content: () => \"aGVsbG8=\")").Value.Value<string>());
     }
 
@@ -195,10 +195,56 @@ public sealed class SchemaDestinationCatalogTests
                 ContentType: () => "text/plain",
                 Label: () => source.Output.ToUpperInvariant())
             """);
-        Assert.Equal("@base64(triggerBody()['content'])", result.Value["ContentData"]!.Value<string>());
+        EqualSource("#{base64(triggerBody()[\"content\"])}", result.Value["ContentData"]!.Value<string>()!);
         Assert.Equal("text/plain", result.Value["ContentType"]!.Value<string>());
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", result.Value["Label"]!.Value<string>()!);
+        EqualSource("#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", result.Value["Label"]!.Value<string>()!);
         Assert.Equal(3, ((JObject)result.Value).Count);
+    }
+
+    [Theory]
+    [InlineData("EncodeText", "#{base64(triggerBody()[\"content\"])}")]
+    [InlineData("SinglePath", "#{string.Format(\"/items/{0}\", encodeURIComponent(triggerBody()[\"content\"]))}")]
+    [InlineData("Base64Path", "#{string.Format(\"/items/{0}\", encodeURIComponent(base64(triggerBody()[\"content\"])))}")]
+    [InlineData("AlreadyEncoded", "#{triggerBody()[\"content\"]}")]
+    public void Plain_JSON_text_references_use_portable_transforms_in_schema_order_without_double_encoding(
+        string method, string expected)
+    {
+        var emitted = SchemaConsumerCompilation.Build(
+            $"CatalogDestinations.{method}(content: () => trigger.TriggerOutput.Body[\"content\"])").Value.Value<string>()!;
+        EqualSource(expected, emitted);
+        Assert.DoesNotContain("Microsoft.Azure.Workflows.Sdk", emitted);
+    }
+
+    [Fact]
+    public void Computed_JSON_text_retains_normalization_single_evaluation_and_null_handling()
+    {
+        var emitted = SchemaConsumerCompilation.Build(
+            "CatalogDestinations.EncodeText(content: () => tokenSource.Output.DeepClone())").Value.Value<string>()!;
+        const string schema = """{"version":1,"destination":"content","kind":"text","nullable":true,"optional":true,"transforms":["base64"],"inputEncoding":"raw","allowAlreadyEncoded":false}""";
+        EqualSource("#{global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.NormalizeAndEncode(" +
+            "outputs(\"TokenSource\").DeepClone(), " + JsonConvert.ToString(schema) + ")}", emitted);
+        var text = LocalNativeHost.Evaluate(emitted, new() { ["TokenSource"] = new JValue("hello") });
+        Assert.Equal("aGVsbG8=", text.Value);
+        Assert.Equal(["TokenSource"], text.Reads);
+        var missing = LocalNativeHost.Evaluate(emitted, new() { ["TokenSource"] = JValue.CreateNull() });
+        Assert.Null(missing.Value);
+        Assert.Equal(["TokenSource"], missing.Reads);
+    }
+
+    [Theory]
+    [InlineData("EncodeValue")]
+    [InlineData("EncodeJson")]
+    public void Nontext_JSON_reference_schemas_retain_the_normalization_guard(string method)
+    {
+        var emitted = SchemaConsumerCompilation.Build(
+            $"CatalogDestinations.{method}(content: () => trigger.TriggerOutput.Body[\"content\"])").Value.Value<string>()!;
+        var schema = JObject.Parse(Fixture)["operations"]!.Single(o => o["name"]!.Value<string>() == method)
+            ["parameters"]![0]!["schema"]!.ToString(Formatting.None);
+        EqualSource("#{global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.NormalizeAndEncode(" +
+            "triggerBody()[\"content\"], " + JsonConvert.ToString(schema) + ")}", emitted);
+        var local = LocalNativeHost.Evaluate(emitted, new() { ["Trigger"] = JObject.Parse("""{"content":{"n":1}}""") });
+        Assert.Equal("eyJuIjoxfQ==", local.Value);
+        Assert.Equal(["Trigger"], local.Reads);
     }
 
     [Fact, Trait("Catalog", "B22"), Trait("Catalog", "IN15")]
@@ -212,7 +258,7 @@ public sealed class SchemaDestinationCatalogTests
             })
             """).Value;
         Assert.True(JToken.DeepEquals(JObject.Parse("""
-            {"items":[{"content":"@base64('hello')","label":"plain"},{"content":"@base64(outputs('Source'))","label":"reference"}],"enabled":true}
+            {"items":[{"content":"#{base64(\"hello\")}","label":"plain"},{"content":"#{base64(outputs(\"Source\").ToObject<string>())}","label":"reference"}],"enabled":true}
             """), result));
     }
 
@@ -232,23 +278,23 @@ public sealed class SchemaDestinationCatalogTests
     }
 
     [Theory]
-    [InlineData("U04", "EnumPath", "WireChoice.First", "@{encodeURIComponent('first /+')}")]
-    [InlineData("U05", "DoubleEnumPath", "WireChoice.First", "@{encodeURIComponent(encodeURIComponent('first /+'))}")]
-    [InlineData("U08", "Base64Path", "\"hello\"", "@{encodeURIComponent(base64('hello'))}")]
+    [InlineData("U04", "EnumPath", "WireChoice.First", "#{string.Format(\"/items/{0}\", encodeURIComponent(\"first /+\"))}")]
+    [InlineData("U05", "DoubleEnumPath", "WireChoice.First", "#{string.Format(\"/items/{0}\", encodeURIComponent(encodeURIComponent(\"first /+\")))}")]
+    [InlineData("U08", "Base64Path", "\"hello\"", "#{string.Format(\"/items/{0}\", encodeURIComponent(base64(\"hello\")))}")]
     public void Generated_path_transform_count_and_order_come_only_from_schema(string catalog, string method, string expression, string expected)
     {
         Assert.NotEmpty(catalog);
-        Assert.Equal("/items/" + expected, SchemaConsumerCompilation.Build(
+        Assert.Equal(expected, SchemaConsumerCompilation.Build(
             $"CatalogDestinations.{method}(content: () => {expression})").Value.Value<string>());
     }
 
     [Fact, Trait("Catalog", "U06")]
-    public void Generated_two_argument_path_retains_template_arguments_and_final_names()
+    public void Generated_two_argument_path_retains_typed_native_arguments_and_final_names()
     {
         var value = SchemaConsumerCompilation.Build(
             "CatalogDestinations.Path(first: () => source.Output, second: () => other.Output)").Value.Value<string>();
-        Assert.Equal("/items/@{encodeURIComponent(outputs('Source'))}/@{encodeURIComponent(outputs('Other'))}", value);
-        Assert.Equal("/items/@{encodeURIComponent(outputs('Renamed'))}/@{encodeURIComponent(outputs('Other'))}",
+        Assert.Equal("#{string.Format(\"/items/{0}/{1}\", encodeURIComponent(outputs(\"Source\").ToObject<string>()), encodeURIComponent(outputs(\"Other\").ToObject<string>()))}", value);
+        Assert.Equal("#{string.Format(\"/items/{0}/{1}\", encodeURIComponent(outputs(\"Renamed\").ToObject<string>()), encodeURIComponent(outputs(\"Other\").ToObject<string>()))}",
             SchemaConsumerCompilation.Build("CatalogDestinations.Path(first: () => source.Output, second: () => other.Output)",
                 after: "source.WithName(\"Renamed\");").Value.Value<string>());
     }
@@ -260,7 +306,7 @@ public sealed class SchemaDestinationCatalogTests
     {
         var second = catalog == "U09" ? "source.Output" : "other.Output";
         var emitted = SchemaConsumerCompilation.Build($"CatalogDestinations.Path(first: () => {first}, second: () => {second})").Value.Value<string>()!;
-        EqualSource("@csharp{" + expected + "}", emitted);
+        EqualSource("#{" + expected + "}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("a /"), ["Other"] = new JValue("B") });
         Assert.Equal(value, local.Value);
         Assert.Equal(catalog == "U09" ? 1 : 0, local.Calls);
@@ -272,7 +318,7 @@ public sealed class SchemaDestinationCatalogTests
     {
         var emitted = SchemaConsumerCompilation.Build(
             "CatalogDestinations.SinglePath(content: () => source.Output.ToUpperInvariant())").Value.Value<string>()!;
-        EqualSource("@csharp{string.Format(\"/items/{0}\", encodeURIComponent(outputs(\"Source\").ToObject<string>().ToUpperInvariant()))}", emitted);
+        EqualSource("#{string.Format(\"/items/{0}\", encodeURIComponent(outputs(\"Source\").ToObject<string>().ToUpperInvariant()))}", emitted);
         Assert.Equal("/items/A%20%2F", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("a /") }).Value);
     }
 

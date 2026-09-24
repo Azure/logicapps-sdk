@@ -205,17 +205,30 @@ public static class WorkflowDeploymentValidator
             else if (value.ValueKind == JsonValueKind.String)
             {
                 var text = value.GetString()!;
-                if (text.StartsWith("@@csharp{", StringComparison.Ordinal) && !profile.LiteralMarkerEscapingVerified)
+                if (!text.StartsWith("@@", StringComparison.Ordinal) &&
+                    !text.StartsWith("#{", StringComparison.Ordinal) &&
+                    (text.StartsWith("@", StringComparison.Ordinal) || text.Contains("@{", StringComparison.Ordinal)))
                 {
-                    diagnostics.Add(new("WFDEP004", "Literal @csharp data requires a host with verified leading-@ escaping; deployment is blocked.", file));
+                    diagnostics.Add(new("WFDEP010",
+                        "Standalone template expressions and template interpolation are unsupported. Rebuild with C# expressions or escape literal leading-@ data.",
+                        file));
                 }
-                if (text.StartsWith("@csharp{", StringComparison.Ordinal) && !IsNative(text))
+                if (text.StartsWith("@@", StringComparison.Ordinal) && !profile.LiteralMarkerEscapingVerified)
+                {
+                    diagnostics.Add(new("WFDEP004", "Literal leading-@ data requires a host with verified escaping; deployment is blocked.", file));
+                }
+                if (text.StartsWith("#{", StringComparison.Ordinal) && !IsNative(text))
                     diagnostics.Add(new("WFDEP006", "Malformed native expression envelope.", file));
                 if (IsNative(text))
                 {
                     if (!profile.NativeExpressionsVerified)
-                        diagnostics.Add(new("WFDEP009", "The selected execution host has no verified @csharp expression capability; deployment is blocked.", file));
-                    var syntax = SyntaxFactory.ParseExpression(text[8..^1], options: parseOptions);
+                        diagnostics.Add(new("WFDEP009", "The selected execution host has no verified #{...} expression capability; deployment is blocked.", file));
+                    var source = text[NativePrefix.Length..^1];
+                    var syntax = SyntaxFactory.ParseExpression(source, options: parseOptions);
+                    var script = CSharpSyntaxTree.ParseText(source, parseOptions.WithKind(SourceCodeKind.Script));
+                    if (script.GetRoot().DescendantTrivia(descendIntoTrivia: true).Any(trivia =>
+                        trivia.GetStructure() is ReferenceDirectiveTriviaSyntax or LoadDirectiveTriviaSyntax))
+                        diagnostics.Add(new("WFDEP006", "Native expressions cannot use #r or #load directives.", file));
                     foreach (var diagnostic in syntax.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
                         diagnostics.Add(new("WFDEP006", "Native expression is invalid for the selected host language: " + diagnostic.GetMessage(), file));
                     foreach (var token in syntax.DescendantTokens().Where(t => t.IsKind(SyntaxKind.IdentifierToken)))
@@ -228,8 +241,10 @@ public static class WorkflowDeploymentValidator
         }
     }
 
+    private const string NativePrefix = "#{";
+
     private static bool IsNative(string text) =>
-        text.StartsWith("@csharp{", StringComparison.Ordinal) && text.EndsWith("}", StringComparison.Ordinal);
+        text.StartsWith(NativePrefix, StringComparison.Ordinal) && text.EndsWith("}", StringComparison.Ordinal);
 
     private static string? QualifiedName(SyntaxNode node) => node switch
     {

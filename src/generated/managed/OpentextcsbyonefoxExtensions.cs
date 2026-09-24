@@ -746,7 +746,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -796,7 +796,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -846,7 +846,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -896,7 +896,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -946,7 +946,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -996,7 +996,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -1046,7 +1046,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -1096,7 +1096,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;
@@ -1146,7 +1146,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Opentextcsbyonefox
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["WebHookUri"] = "@listCallbackUrl()";
+                body["WebHookUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var filterObject = new JObject();
                 var filterObjectpropCount = 0;

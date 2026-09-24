@@ -634,7 +634,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -661,7 +661,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -688,7 +688,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -715,7 +715,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -742,7 +742,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -772,7 +772,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
                 bodypropCount++;
                 body["columnId"] = SourceExpressionConverter.ConvertToken(bodycolumnId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -799,7 +799,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -826,7 +826,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Monday
                 body["workspaceId"] = SourceExpressionConverter.ConvertToken(bodyworkspaceId);
                 bodypropCount++;
                 body["boardId"] = SourceExpressionConverter.ConvertToken(bodyboardId);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

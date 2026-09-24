@@ -106,7 +106,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["kind"] = "ticket_create";
                 bodypropCount++;
@@ -134,7 +134,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nunify
                 callPayload.Headers["Accept"] = Convert.ToString("application/json");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["kind"] = "checkin";
                 bodypropCount++;

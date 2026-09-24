@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                 callPayload.Headers["accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cpqsync
                 callPayload.Headers["accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

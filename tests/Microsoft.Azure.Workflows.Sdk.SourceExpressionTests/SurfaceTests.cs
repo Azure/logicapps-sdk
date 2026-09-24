@@ -13,7 +13,7 @@ public sealed class SurfaceTests
                 .WithName("Initialize");
             return WorkflowActions.BuiltIn.Compose<object>(input: () => variable.Value).GetActionDefinition("Catalog");
             """));
-        Assert.Equal("@variables('message')", Token(result.Definition).Value<string>());
+        Assert.Equal("#{variables(\"message\")}", Token(result.Definition).Value<string>());
     }
 
     [Fact, Trait("Catalog", "IN02")]
@@ -22,7 +22,7 @@ public sealed class SurfaceTests
         var result = Build(Source(Handles + """
             return WorkflowActions.BuiltIn.Response(responseBody: () => source.Output.ToUpperInvariant()).GetActionDefinition("Catalog");
             """));
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", Token(result.Definition)["body"]!.Value<string>()!);
+        EqualSource("#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", Token(result.Definition)["body"]!.Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "IN03"), Trait("Catalog", "I02")]
@@ -71,8 +71,8 @@ public sealed class SurfaceTests
         Assert.Equal(2, body.Count);
         var title = body["title"]!.Value<string>()!;
         var position = body["position"]!.Value<string>()!;
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>() + \"!\"}", title);
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() + 1}", position);
+        EqualSource("#{outputs(\"Source\").ToObject<string>() + \"!\"}", title);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() + 1}", position);
         var inputs = new Dictionary<string, JToken?>
         {
             ["Source"] = new JValue("hello"),
@@ -94,8 +94,8 @@ public sealed class SurfaceTests
             """));
         var headers = Assert.IsType<JObject>(Token(result.Definition)["headers"]);
         Assert.Equal(2, headers.Count);
-        Assert.Equal("@outputs('Source')", headers["X-Name"]!.Value<string>());
-        EqualSource("@csharp{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", headers["X-Upper"]!.Value<string>()!);
+        Assert.Equal("#{outputs(\"Source\")}", headers["X-Name"]!.Value<string>());
+        EqualSource("#{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", headers["X-Upper"]!.Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "Q01")]
@@ -115,8 +115,8 @@ public sealed class SurfaceTests
             {
                 "enabled": true,
                 "count": 3,
-                "body": "@triggerBody()",
-                "message": "Output: @{outputs('Source')}",
+                "body": "#{triggerBody()}",
+                "message": "#{$\"Output: {outputs(\"Source\").ToObject<string>()}\"}",
                 "labels": ["a", "b"]
             }
             """), result));
@@ -129,7 +129,7 @@ public sealed class SurfaceTests
             return WorkflowActions.BuiltIn.Compose<int>(input: () => MathAlias.Abs(count.Output)).GetActionDefinition("Catalog");
             """, imports: "using MathAlias = System.Math;"));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{global::System.Math.Abs(outputs(\"Count\").ToObject<int>())}", emitted);
+        EqualSource("#{global::System.Math.Abs(outputs(\"Count\").ToObject<int>())}", emitted);
         Assert.Equal(3, LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(-3) }).Value);
     }
 
@@ -140,7 +140,7 @@ public sealed class SurfaceTests
             return WorkflowActions.BuiltIn.Compose<int>(input: () => Abs(count.Output)).GetActionDefinition("Catalog");
             """, imports: "using static System.Math;"));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{global::System.Math.Abs(outputs(\"Count\").ToObject<int>())}", emitted);
+        EqualSource("#{global::System.Math.Abs(outputs(\"Count\").ToObject<int>())}", emitted);
         Assert.Equal(3, LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(-3) }).Value);
     }
 
@@ -154,7 +154,7 @@ public sealed class SurfaceTests
             }
             """));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{checked(outputs(\"Count\").ToObject<int>() + 1)}", emitted);
+        EqualSource("#{checked(outputs(\"Count\").ToObject<int>() + 1)}", emitted);
         Assert.Throws<OverflowException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(int.MaxValue) }));
     }
 
@@ -176,10 +176,62 @@ public sealed class SurfaceTests
             return definition;
             """));
         Assert.Contains("SourceBinding.Item(", result.Transformation.Sources["Consumer.cs"]);
-        Assert.Equal("@triggerBody()['rows']", result.Definition.Foreach.Value<string>());
+        Assert.Equal("#{triggerBody()[\"rows\"]}", result.Definition.Foreach.Value<string>());
         var nested = Assert.Single(result.Definition.Actions);
         Assert.Equal("ReadName", nested.Key);
-        Assert.Equal("@item()['name']", Token(nested.Value).Value<string>());
+        Assert.Equal("#{item()[\"name\"]}", Token(nested.Value).Value<string>());
+    }
+
+    [Theory]
+    [InlineData("int", "item", "#{item()}", "7", "",
+        "item + 1", "#{item().ToObject<int>() + 1}", "8", "System.Int32")]
+    [InlineData("ItemsList", "item", "#{item()}", """{"value":[{"extra":"retained"}],"undeclared":true}""", "",
+        "item.Value.Length", "#{item().ToObject<ItemsList>().Value.Length}", "1", "System.Int32")]
+    [InlineData("ItemsList", "item.Value", "#{item()[\"value\"]}", """{"value":[{"extra":"retained"}],"undeclared":true}""", "value",
+        "item.Value.Length", "#{item().ToObject<ItemsList>().Value.Length}", "1", "System.Int32")]
+    [InlineData("OrderSummary", "item.Total", "#{item()[\"Total\"]}", """{"Total":12.5}""", "Total",
+        "item.Total + 1m", "#{item().ToObject<OrderSummary>().Total + 1m}", "13.5", "System.Decimal")]
+    public void Typed_foreach_item_descriptors_preserve_JSON_and_explicit_typed_operations_preserve_source(
+        string itemType, string passThrough, string expectedWire, string itemJson, string wireProperty,
+        string operation, string expectedNative, string expectedResultJson, string expectedResultType)
+    {
+        var setup = $$"""
+            var items = WorkflowActions.BuiltIn.Compose<List<{{itemType}}>>(
+                input: () => new List<{{itemType}}>()).WithName("Items");
+            """;
+        string CompileItem(string expression)
+        {
+            var built = Build(Source(setup + $$"""
+                return WorkflowActions.BuiltIn.Control.ForEach(
+                    items: () => items.Output,
+                    actions: item => WorkflowActions.BuiltIn.Compose<object>(input: () => {{expression}}).WithName("ReadItem"))
+                    .GetActionDefinition("Catalog");
+                """));
+            Assert.Equal("#{outputs(\"Items\")}", built.Definition.Foreach.Value<string>());
+            return Token(Assert.Single(built.Definition.Actions).Value).Value<string>()!;
+        }
+
+        var loop = WorkflowActions.BuiltIn.Control.ForEach(
+            SourceExpression.Literal<object>(1, new JArray()), item =>
+                WorkflowActions.BuiltIn.Compose(SourceExpression.Value(1,
+                    SourceExpression.Create<object>(1, "native", ["", passThrough["item".Length..]],
+                        [SourceBinding.Item(item, itemType)]),
+                    SourceExpression.Create<JToken>(1, "native",
+                        ["", wireProperty.Length == 0 ? "" : "[" + Newtonsoft.Json.JsonConvert.ToString(wireProperty) + "]"],
+                        [SourceBinding.Item(item, "global::Newtonsoft.Json.Linq.JToken")]))));
+        var wire = Token(Assert.Single(loop.GetActionDefinition("Wire").Actions).Value).Value<string>()!;
+        var native = CompileItem("item.ToObject<" + itemType + ">()" + operation["item".Length..]);
+        EqualSource(expectedWire, wire);
+        EqualSource(expectedNative, native);
+        var item = JToken.Parse(itemJson);
+        var values = new Dictionary<string, JToken?> { ["Item"] = item };
+        var passedThrough = LocalNativeHost.Evaluate(wire, values);
+        var calculated = LocalNativeHost.Evaluate(native, values);
+        Assert.Same(wireProperty.Length == 0 ? item : item[wireProperty], passedThrough.Value);
+        Assert.Equal(expectedResultType, calculated.Value!.GetType().FullName);
+        Assert.True(JToken.DeepEquals(JToken.Parse(expectedResultJson), JToken.FromObject(calculated.Value)));
+        Assert.Equal(["Item"], passedThrough.Reads);
+        Assert.Equal(["Item"], calculated.Reads);
     }
 
     [Fact, Trait("Catalog", "R10")]
@@ -188,7 +240,7 @@ public sealed class SurfaceTests
         var result = BuildAgentTool("ctx.Parameters.Name");
         Assert.Contains("SourceBinding.AgentParameter(", result.Transformation.Sources["Consumer.cs"]);
         var branch = Assert.Single(result.Definition.Tools).Value;
-        Assert.Equal("@agentparameters('Name')", Token(Assert.Single(branch.Actions).Value).Value<string>());
+        Assert.Equal("#{agentparameters(\"Name\")}", Token(Assert.Single(branch.Actions).Value).Value<string>());
     }
 
     [Fact, Trait("Catalog", "I09"), Trait("Catalog", "IN14")]
@@ -198,7 +250,7 @@ public sealed class SurfaceTests
         Assert.Contains("SourceBinding.AgentParameter(", result.Transformation.Sources["Consumer.cs"]);
         var branch = Assert.Single(result.Definition.Tools).Value;
         var emitted = Token(Assert.Single(branch.Actions).Value).Value<string>()!;
-        EqualSource("@csharp{agentparameters(\"Name\").ToObject<string>().ToUpperInvariant()}", emitted);
+        EqualSource("#{agentparameters(\"Name\").ToObject<string>().ToUpperInvariant()}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Name"] = new JValue("alice") });
         Assert.Equal("ALICE", local.Value);
         Assert.Equal(["agent:Name"], local.Reads);
@@ -217,13 +269,13 @@ public sealed class SurfaceTests
             return action.GetActionDefinition("Catalog");
             """));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{new { Next = outputs(\"Count\").ToObject<int>() + 1, Accepted = outputs(\"Flag\").ToObject<bool>() && outputs(\"Count\").ToObject<int>() > 0 }}", emitted);
+        EqualSource("#{new { Next = outputs(\"Count\").ToObject<int>() + 1, Accepted = outputs(\"Flag\").ToObject<bool>() && outputs(\"Count\").ToObject<int>() > 0 }}", emitted);
         var value = LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3), ["Flag"] = new JValue(true) }).Value;
         Assert.True(JToken.DeepEquals(JObject.Parse("""{"Next":4,"Accepted":true}"""), JToken.FromObject(value!)));
     }
 
     [Fact, Trait("Catalog", "SC08")]
-    public void SC08_Generic_factory_preserves_direct_reference_with_concrete_call_type()
+    public void SC08_Generic_factory_preserves_direct_JSON_reference()
     {
         var result = Build(Source("""
             var source = WorkflowActions.BuiltIn.Compose<int>(input: () => 3).WithName("Source");
@@ -232,7 +284,7 @@ public sealed class SurfaceTests
             private static IOutputWorkflowAction<T> Create<T>(IOutputWorkflowAction<T> action)
                 => WorkflowActions.BuiltIn.Compose<T>(input: () => action.Output);
             """));
-        Assert.Equal("@outputs('Source')", Token(result.Definition).Value<string>());
+        EqualSource("#{outputs(\"Source\")}", Token(result.Definition).Value<string>()!);
     }
 
     private static (FlowTemplateAction Definition, System.Reflection.Assembly Assembly,

@@ -12,7 +12,7 @@ var compose = WorkflowActions.BuiltIn.Compose(inputs: () => source.Output.ToUppe
 var definition = ((WorkflowActionBase)compose).GetActionDefinition("LanguageServiceFixture");
 var actual = definition.Inputs?.ToString()
     ?.Replace("ToObject<global::System.String>()", "ToObject<string>()", StringComparison.Ordinal);
-if (actual != "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}")
+if (actual != "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}")
 {
     throw new InvalidOperationException($"Unexpected CB01: {actual}");
 }

@@ -5,6 +5,7 @@
 namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures
 {
     using System.Runtime.Serialization;
+    using Microsoft.Azure.Workflows.Sdk.Connectors.Abortionpolicyapiip;
 
     // Public fixtures are referenced by emitted C# without importing this namespace.
     public static class RuntimeValues
@@ -13,7 +14,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures
         public static string Text = "before";
         public static int GetterCalls;
         public static int EnumCalls;
+        public static int HeadersCalls;
+        public static int NumberCalls;
         public static WireChoice Choice = WireChoice.First;
+        public static stateInput State = stateInput.Alabama;
 
         public static string CurrentText
         {
@@ -30,12 +34,29 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures
             return Choice;
         }
 
+        public static stateInput NextState()
+        {
+            EnumCalls++;
+            return State;
+        }
+
+        public static int NextNumber() => ++NumberCalls;
+
+        public static Dictionary<string, string> CreateHeaders()
+        {
+            HeadersCalls++;
+            return new Dictionary<string, string>();
+        }
+
         public static void Reset()
         {
             Text = "before";
             GetterCalls = 0;
             EnumCalls = 0;
+            HeadersCalls = 0;
+            NumberCalls = 0;
             Choice = WireChoice.First;
+            State = stateInput.Alabama;
         }
     }
 
@@ -68,24 +89,4 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures
         public string Text;
     }
 
-    public sealed class CapturedCustomGetter
-    {
-        public int GetterCalls;
-        public int ToStringCalls;
-
-        public string Text
-        {
-            get
-            {
-                this.GetterCalls++;
-                return "value";
-            }
-        }
-
-        public override string ToString()
-        {
-            this.ToStringCalls++;
-            return nameof(CapturedCustomGetter);
-        }
-    }
 }

@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var optionsEmailSubscription = new JObject();
                 var optionsEmailSubscriptionpropCount = 0;
-                optionsEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
+                optionsEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 optionsEmailSubscriptionpropCount++;
                 var messageObject = new JObject();
                 var messageObjectpropCount = 0;
@@ -453,7 +453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var approvalEmailSubscription = new JObject();
                 var approvalEmailSubscriptionpropCount = 0;
-                approvalEmailSubscription["NotificationUrl"] = "@listCallbackUrl()";
+                approvalEmailSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 approvalEmailSubscriptionpropCount++;
                 var messageObject = new JObject();
                 var messageObjectpropCount = 0;
@@ -2954,7 +2954,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     input.Subscribe.Queries["pastDays"] = SourceExpressionConverter.ConvertO(pastDays);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -3079,7 +3079,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = SourceExpressionConverter.ConvertO(fetchOnlyWithAttachment);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -3158,7 +3158,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = SourceExpressionConverter.ConvertO(fetchOnlyWithAttachment);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -3235,7 +3235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Office365
                     input.Subscribe.Queries["fetchOnlyWithAttachment"] = SourceExpressionConverter.ConvertO(fetchOnlyWithAttachment);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {

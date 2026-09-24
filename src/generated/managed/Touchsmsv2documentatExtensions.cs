@@ -110,7 +110,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Touchsmsv2documentat
                     configpropCount++;
                 }
 
-                config["destination_url"] = "@listCallbackUrl()";
+                config["destination_url"] = "#{listCallbackUrl()}";
                 configpropCount++;
                 if (configpropCount > 0)
                 {

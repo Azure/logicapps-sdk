@@ -93,7 +93,7 @@
     { "failureId": "F020", "workflowIds": ["CapturedQuote"], "coverage": "exact", "reason": "Captured single quote character followed by ToString preserves escaping and runtime meaning." },
     { "failureId": "F021", "workflowIds": ["CapturedNewline"], "coverage": "exact", "reason": "Captured a-newline-b followed by ToUpperInvariant must return A-newline-B." },
     { "failureId": "F022", "workflowIds": ["ConnectorFormattedPath"], "coverage": "authoring-contract", "reason": "Real Service Bus CloseSessionInQueue definition retains :D4 and native envelope. No configured connector backend; path execution not claimed." },
-    { "failureId": "F023", "workflowIds": ["LiteralNativeMarker"], "coverage": "exact", "reason": "Literal @csharp{1 + 2} must be returned as data, not evaluated to 3." },
+    { "failureId": "F023", "workflowIds": ["LiteralNativeMarker"], "coverage": "exact", "reason": "Literal #{1 + 2} must be returned as data, not evaluated to 3." },
     { "failureId": "F024", "workflowIds": ["LiteralTemplateMarker"], "coverage": "exact", "reason": "Literal @outputs('Source') is data, with no Source action to accidentally satisfy it." },
     { "failureId": "F025", "workflowIds": ["RepeatedCallSite"], "coverage": "representative", "reason": "Same loop call site creates multiple native length actions. Unequal 1/4 seeds replace equal value seeds so mistaken operation identity is observable." },
     { "failureId": "F026", "workflowIds": ["ResponseCallbackGuard"], "coverage": "authoring-contract", "reason": "Real Response status callback retained as native source and zero generation calls; callback itself is not invoked." },

@@ -6,19 +6,19 @@ using static ConsumerCompilation;
 public sealed class CoreEncodingCatalogTests
 {
     [Theory]
-    [InlineData("B01", "\"hello\"", "", "@base64('hello')")]
-    [InlineData("B02", "source.Output", "", "@base64(outputs('Source'))")]
-    [InlineData("B03", "trigger.TriggerOutput.Body[\"content\"]", "", "@base64(triggerBody()['content'])")]
-    [InlineData("B06", "$\"Name: {source.Output}\"", "", "@base64(concat('Name: ', outputs('Source')))")]
-    [InlineData("IN10", "$\"Name: {source.Output}\"", "", "@base64(concat('Name: ', outputs('Source')))")]
-    [InlineData("B12", "42", "", "@base64('42')")]
-    [InlineData("B12b", "true", "", "@base64('true')")]
-    [InlineData("B14", "token", "JToken token = new JValue(\"hello\");", "@base64('hello')")]
-    [InlineData("B14b", "token", "JToken token = JObject.Parse(\"{\\\"n\\\":1}\");", "@base64('{\"n\":1}')")]
-    [InlineData("B16", "\"\"", "", "@base64('')")]
-    [InlineData("B16b", "\"\\u00e9\"", "", "@base64('é')")]
-    [InlineData("B19", "\"aGVsbG8=\"", "", "@base64('aGVsbG8=')")]
-    public void Generated_base64_destination_keeps_selected_literal_and_template_contract(
+    [InlineData("B01", "\"hello\"", "", "#{base64(\"hello\")}")]
+    [InlineData("B02", "source.Output", "", "#{base64(outputs(\"Source\").ToObject<string>())}")]
+    [InlineData("B03", "trigger.TriggerOutput.Body[\"content\"]", "", "#{base64(triggerBody()[\"content\"])}")]
+    [InlineData("B06", "$\"Name: {source.Output}\"", "", "#{base64($\"Name: {outputs(\"Source\").ToObject<string>()}\")}")]
+    [InlineData("IN10", "$\"Name: {source.Output}\"", "", "#{base64($\"Name: {outputs(\"Source\").ToObject<string>()}\")}")]
+    [InlineData("B12", "42", "", "#{base64(\"42\")}")]
+    [InlineData("B12b", "true", "", "#{base64(\"true\")}")]
+    [InlineData("B14", "token", "JToken token = new JValue(\"hello\");", "#{base64(\"hello\")}")]
+    [InlineData("B14b", "token", "JToken token = JObject.Parse(\"{\\\"n\\\":1}\");", "#{base64(\"{\\\"n\\\":1}\")}")]
+    [InlineData("B16", "\"\"", "", "#{base64(\"\")}")]
+    [InlineData("B16b", "\"\\u00e9\"", "", "#{base64(\"é\")}")]
+    [InlineData("B19", "\"aGVsbG8=\"", "", "#{base64(\"aGVsbG8=\")}")]
+    public void Generated_base64_destination_always_uses_native_envelope(
         string catalog, string input, string setup, string expected)
     {
         Assert.NotEmpty(catalog);
@@ -41,7 +41,7 @@ public sealed class CoreEncodingCatalogTests
         var result = Encode(input);
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition)["body"]!["ContentData"]!.Value<string>()!;
-        EqualSource("@csharp{" + expectedBody + "}", emitted);
+        EqualSource("#{" + expectedBody + "}", emitted);
         var local = LocalNativeHost.Evaluate(emitted,
             new() { ["Source"] = new JValue("hello"), ["Count"] = new JValue(3), ["Amount"] = new JValue(2.5m) });
         Assert.Equal(expected, local.Value);
@@ -73,9 +73,7 @@ public sealed class CoreEncodingCatalogTests
                 .GetActionDefinition("Catalog");
             """));
         var path = Token(result.Definition)["path"]!.Value<string>()!;
-        const string once = "@{encodeURIComponent(outputs('Source'))}";
-        const string twice = "@{encodeURIComponent(encodeURIComponent(outputs('Source')))}";
-        Assert.Equal("/" + twice + "/sessions/" + once + "/close", path);
+        Assert.Equal("#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/{0}/sessions/{1}/close\", encodeURIComponent(encodeURIComponent(outputs(\"Source\").ToObject<string>())), encodeURIComponent(outputs(\"Source\").ToObject<string>()))}", path);
     }
 
     [Fact, Trait("Catalog", "U03")]
@@ -88,10 +86,10 @@ public sealed class CoreEncodingCatalogTests
             """));
         var emitted = Token(result.Definition)["path"]!.Value<string>()!;
         var invocation = Assert.IsType<Microsoft.CodeAnalysis.CSharp.Syntax.InvocationExpressionSyntax>(
-            Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(emitted[8..^1]));
+            Microsoft.CodeAnalysis.CSharp.SyntaxFactory.ParseExpression(ConsumerCompilation.NativeBody(emitted)));
         var encodedArgument = invocation.ArgumentList.Arguments.Last().Expression.ToString();
-        EqualSource("@csharp{encodeURIComponent(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}",
-            "@csharp{" + encodedArgument + "}");
+        EqualSource("#{encodeURIComponent(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}",
+            "#{" + encodedArgument + "}");
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("a /") });
         Assert.Equal("/queue/sessions/A%20%2F/close", local.Value);
         Assert.Equal(["Source"], local.Reads);

@@ -46,7 +46,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Rescocloud
                 callPayload.Queries["$action"] = SourceExpressionConverter.Convert(action);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

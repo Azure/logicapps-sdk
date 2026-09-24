@@ -67,7 +67,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     Frequency = FlowRecurrenceFrequency.Minute,
                     Interval = 1,
                 };
-            this.SplitOn = enableSplitOn ? "@triggerOutputs()?['body']" : null;
+            this.SplitOn = enableSplitOn ? "#{triggerOutputs()?[\"body\"]}" : null;
         }
 
         /// <summary>

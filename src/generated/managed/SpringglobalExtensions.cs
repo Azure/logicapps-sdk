@@ -63,7 +63,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Springglobal
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callback"] = "@listCallbackUrl()";
+                body["callback"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 var parametersObject = new JObject();
                 var parametersObjectpropCount = 0;

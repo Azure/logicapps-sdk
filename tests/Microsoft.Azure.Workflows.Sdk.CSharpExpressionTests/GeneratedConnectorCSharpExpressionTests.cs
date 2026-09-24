@@ -105,7 +105,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var queries = actual["inputs"]?["queries"];
 
             Assert.Equal(
-                "/datasets/@{encodeURIComponent(encodeURIComponent('https://contoso.sharepoint.com/sites/parity'))}/GetFileByPath",
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/datasets/{0}/GetFileByPath\", encodeURIComponent(encodeURIComponent(\"https://contoso.sharepoint.com/sites/parity\")))}",
                 actual["inputs"]?["path"]?.Value<string>());
             Assert.Equal("/Shared Documents/payload.json", queries?["path"]?.Value<string>());
             Assert.Equal(JTokenType.Boolean, queries?["queryParametersSingleEncoded"]?.Type);
@@ -131,7 +131,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void QueryAndEnumInputs_SelectCSharpAndTemplateValues()
+        public void QueryAndEnumInputs_SelectCSharpAndLiteralValues()
         {
             var action = new AbbreviationsipActions("connection").AbbrGet(
                 term: () => "term".ToUpper(),
@@ -139,7 +139,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var input = GetActionInput(action);
 
-            Assert.Equal("@csharp{\"term\".ToUpper()}", input.Queries["term"]);
+            Assert.Equal("#{\"term\".ToUpper()}", input.Queries["term"]);
             Assert.Equal("a", input.Queries["sortby"]);
         }
 
@@ -155,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var input = GetActionInput(action);
 
             Assert.Equal(
-                "@csharp{variables(\"searchTerm\").Value<string>()}",
+                "#{variables(\"searchTerm\").Value<string>()}",
                 input.Queries["term"]);
         }
 
@@ -167,7 +167,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var input = GetActionInput(action);
 
-            Assert.Equal("@csharp{\"session\".ToUpper()}", input.Headers["Mcp-Session-Id"]);
+            Assert.Equal("#{\"session\".ToUpper()}", input.Headers["Mcp-Session-Id"]);
         }
 
         [Fact]
@@ -182,9 +182,9 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var input = GetActionInput(action);
             var body = Assert.IsType<JObject>(input.Body);
 
-            Assert.Equal("@csharp{\"Ada\".ToUpper()}", body["invitedUserDisplayName"]?.Value<string>());
+            Assert.Equal("#{\"Ada\".ToUpper()}", body["invitedUserDisplayName"]?.Value<string>());
             Assert.Equal("fr-FR", body["invitedUserMessageInfo"]?["messageLanguage"]?.Value<string>());
-            Assert.Equal("@csharp{!false}", body["resetRedemption"]?.Value<string>());
+            Assert.Equal("#{!false}", body["resetRedemption"]?.Value<string>());
         }
 
         [Fact]
@@ -279,7 +279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var input = GetActionInput(action);
 
             Assert.Equal(
-                "/datasets/@{encodeURIComponent(encodeURIComponent('site'))}/tables/@{encodeURIComponent(encodeURIComponent('list'))}/items/@{encodeURIComponent(42)}",
+                "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/datasets/{0}/tables/{1}/items/{2}\", encodeURIComponent(encodeURIComponent(\"site\")), encodeURIComponent(encodeURIComponent(\"list\")), encodeURIComponent(42))}",
                 input.Path);
         }
 
@@ -294,7 +294,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var body = Assert.IsType<JObject>(input.Body);
 
             Assert.Equal(
-                "@csharp{base64(global::Newtonsoft.Json.Linq.JToken.FromObject(\"hello\"))}",
+                "#{base64(global::Newtonsoft.Json.Linq.JToken.FromObject(\"hello\"))}",
                 body["ContentData"]?.Value<string>());
         }
 
@@ -310,16 +310,16 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var input = Assert.IsType<ApiConnectionNotificationActionInput>(
                 trigger.GetTriggerDefinition().Inputs);
 
-            Assert.Equal("@csharp{\"Inbox\".ToLower()}", input.Fetch.Queries["folderPath"]);
+            Assert.Equal("#{\"Inbox\".ToLower()}", input.Fetch.Queries["folderPath"]);
             Assert.Equal("High", input.Fetch.Queries["importance"]);
-            Assert.Equal("@csharp{!false}", input.Fetch.Queries["fetchOnlyWithAttachment"]);
-            Assert.Equal("@csharp{\"Inbox\".ToLower()}", input.Subscribe.Queries["folderPath"]);
+            Assert.Equal("#{!false}", input.Fetch.Queries["fetchOnlyWithAttachment"]);
+            Assert.Equal("#{\"Inbox\".ToLower()}", input.Subscribe.Queries["folderPath"]);
             Assert.Equal("High", input.Subscribe.Queries["importance"]);
-            Assert.Equal("@csharp{!false}", input.Subscribe.Queries["fetchOnlyWithAttachment"]);
+            Assert.Equal("#{!false}", input.Subscribe.Queries["fetchOnlyWithAttachment"]);
         }
 
         [Fact]
-        public void WorkflowReferences_StayTemplateInQueryHeaderAndBody()
+        public void WorkflowReferences_UseJsonNativeCSharpInQueryHeaderAndBody()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var query = GetActionInput(new AbbreviationsipActions("connection")
@@ -329,14 +329,14 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var body = GetActionInput(new AadinvitationmanagerActions("connection")
                 .CreateInvitation(bodyinvitedUserDisplayName: () => source.Output));
 
-            Assert.Equal("@outputs('Source')", query.Queries["term"]);
-            Assert.Equal("@outputs('Source')", header.Headers["Mcp-Session-Id"]);
-            Assert.Equal("@outputs('Source')",
+            Assert.Equal("#{outputs(\"Source\")}", query.Queries["term"]);
+            Assert.Equal("#{outputs(\"Source\")}", header.Headers["Mcp-Session-Id"]);
+            Assert.Equal("#{outputs(\"Source\")}",
                 Assert.IsType<JObject>(body.Body)["invitedUserDisplayName"].Value<string>());
         }
 
         [Fact]
-        public void NativeSibling_DoesNotPromoteOtherBodyFieldsToCSharp()
+        public void NativeSibling_PreservesJsonReferencesAndLiteralBodyFields()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var input = GetActionInput(new AadinvitationmanagerActions("connection").CreateInvitation(
@@ -345,15 +345,15 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 bodyresetRedemption: () => false));
             var body = Assert.IsType<JObject>(input.Body);
 
-            Assert.StartsWith("@csharp{", body["invitedUserDisplayName"].Value<string>());
-            Assert.Equal("@outputs('Source')", body["invitedUserEmailAddress"].Value<string>());
+            Assert.StartsWith("#{", body["invitedUserDisplayName"].Value<string>());
+            Assert.Equal("#{outputs(\"Source\")}", body["invitedUserEmailAddress"].Value<string>());
             Assert.Equal(JTokenType.Boolean, body["resetRedemption"].Type);
             Assert.False(body["resetRedemption"].Value<bool>());
             Assert.Null(body["sendInvitationMessage"]);
         }
 
         [Fact]
-        public void NotificationTriggerReferences_RemainTemplateOnFetchAndSubscribe()
+        public void NotificationTriggerReferences_UseCSharpOnFetchAndSubscribe()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Folder");
             var trigger = new Office365Triggers("connection").OnFlaggedEmail(
@@ -361,19 +361,19 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var input = Assert.IsType<ApiConnectionNotificationActionInput>(
                 trigger.GetTriggerDefinition().Inputs);
 
-            Assert.Equal("@outputs('Folder')", input.Fetch.Queries["folderPath"]);
-            Assert.Equal("@outputs('Folder')", input.Subscribe.Queries["folderPath"]);
+            Assert.Equal("#{outputs(\"Folder\")}", input.Fetch.Queries["folderPath"]);
+            Assert.Equal("#{outputs(\"Folder\")}", input.Subscribe.Queries["folderPath"]);
         }
 
         [Fact]
-        public void Base64WorkflowReference_RemainsTemplateInGeneratedBody()
+        public void Base64WorkflowReference_UsesCSharpInGeneratedBody()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             var input = GetActionInput(new ServicebusActions("connection").SendMessage(
                 entityName: () => "queue",
                 messagecontent: () => trigger.TriggerOutput.Body));
 
-            Assert.Equal("@base64(triggerBody())",
+            Assert.Equal("#{base64(triggerBody())}",
                 Assert.IsType<JObject>(input.Body)["ContentData"].Value<string>());
         }
 

@@ -300,31 +300,19 @@ The repository Tests, Tests.Worker, UnitTests, ExpressionTests and
 CSharpExpressionTests fixtures receive the same targets
 through the root `Directory.Build.targets`; additional project-reference fixtures
 can set `WorkflowRepositoryConsumer=true`. The compiler path is discovered from its
-project output rather than hard-coded. Historical projects transform their SDK
-setup/action/connector lambdas; calls to the linked, unannotated legacy converters
-retain their expression-tree characterization behavior. The SourceExpressionTests
+project output rather than hard-coded. The migrated ExpressionTests and
+CSharpExpressionTests projects exercise source-compiled SDK authoring rather than
+linking retired expression-tree converters. The SourceExpressionTests
 compiler/runtime-contract harness remains untransformed because it invokes the
 compiler explicitly and tests missing-transform behavior.
 The consumer assertion accepts either the C# `string` alias or
 `global::System.String` in the generated ToObject type argument; all other output
 text is compared exactly.
 
-The SDK explicitly excludes the ten inactive expression-tree implementation
-files from compilation. They remain on disk, including local edits, and
-`tests\LegacyExpressionSources.props` links them only into those two historical
-test projects. No tests are removed or disabled. The package consumer reflects
-over the shipped SDK to reject legacy converters or legacy expression-node types.
-Both historical projects compile with exactly ten linked legacy files each.
-The initial P7 run, before enabling transformation for their SDK setup lambdas,
-executed every test with zero skips:
-ExpressionTests **59 passed / 9 failed**, CSharpExpressionTests **171 passed /
-74 failed**. Of the 83 failures, 82 report missing source metadata for raw
-authoring delegates; the remaining Response serialization test expects the
-former concrete action type rather than the new deferred action type.
-Those are baseline results, not results of the later historical-test migration.
-That early source-pipeline snapshot passed **205/205**, the original Worker built,
-and package reflection checks passed after rebuilding the SDK.
-
+The ten retired expression-tree implementation files and their test-only source
+links have been deleted. Applicable tests are migrated to source-compiled authoring;
+obsolete lowering assertions are removed. The package consumer still reflects
+over the shipped SDK to prevent reintroducing legacy converters or expression-node types.
 Transformation always regenerates from original Compile items before CoreCompile.
 The dedicated intermediate directory is cleared before each invocation. This is
 deliberately conservative, not an incremental-performance claim: changed source,

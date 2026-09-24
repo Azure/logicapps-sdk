@@ -8,10 +8,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     using System.Linq;
     using Newtonsoft.Json.Linq;
 
-    public class HybridExpressionSelectionTests
+    public class SourceExpressionSelectionTests
     {
         [Fact]
-        public void Compose_WithOnlyWorkflowReference_UsesTemplateExpression()
+        public void Compose_WithOnlyWorkflowReference_UsesCSharpInterpolation()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             var compose = WorkflowActions.BuiltIn.Compose(
@@ -20,7 +20,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var definition = compose.GetActionDefinition("workflow");
 
             Assert.Equal(
-                "Received request: @{triggerBody()}",
+                "#{$\"Received request: {triggerBody()}\"}",
                 Assert.IsAssignableFrom<JToken>(definition.Inputs).Value<string>());
         }
 
@@ -36,7 +36,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var definition = condition.GetActionDefinition("workflow");
 
             Assert.Equal(
-                "@csharp{triggerBody()[\"condition\"].ToString() == \"foo\"}",
+                "#{triggerBody()[\"condition\"].ToString() == \"foo\"}",
                 definition.Expression?.Value<string>());
         }
 
@@ -52,7 +52,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var definition = condition.GetActionDefinition("workflow");
 
-            Assert.Equal("@csharp{triggerBody() == outputs(\"ComposeInput\")}", definition.Expression.Value<string>());
+            Assert.Equal("#{triggerBody() == outputs(\"ComposeInput\")}", definition.Expression.Value<string>());
         }
 
         [Fact]
@@ -60,12 +60,11 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "site")
                 .WithName("Source");
-            var expression = CSharpExpressionConverter.ConvertO(
-                () => source.Output.ToUpper());
+            var action = WorkflowActions.BuiltIn.Compose(() => source.Output.ToUpper());
 
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToUpper()}",
-                expression);
+                "#{outputs(\"Source\").ToObject<string>().ToUpper()}",
+                Input(action).Value<string>());
         }
 
         [Fact]
@@ -73,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             const string value = "literal triggerOutputs()?['Body']";
 
-            Assert.Equal(value, CSharpExpressionConverter.ConvertO(() => value));
+            Assert.Equal(value, Input(WorkflowActions.BuiltIn.Compose(() => value)).Value<string>());
         }
 
         [Fact]
@@ -84,7 +83,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 () => $"{trigger.TriggerOutput.Body} literal triggerOutputs()?['Body']");
 
             Assert.Equal(
-                "@{triggerBody()} literal triggerOutputs()?['Body']",
+                "#{$\"{triggerBody()} literal triggerOutputs()?['Body']\"}",
                 Assert.IsAssignableFrom<JToken>(
                     compose.GetActionDefinition("workflow").Inputs).Value<string>());
         }
@@ -96,16 +95,16 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("Source");
 
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().Length}",
-                CSharpExpressionConverter.ConvertO(() => source.Output.Length));
+                "#{outputs(\"Source\").ToObject<string>().Length}",
+                Input(WorkflowActions.BuiltIn.Compose<int>(() => source.Output.Length)).Value<string>());
         }
 
         [Fact]
-        public void UnsupportedCompositeFormat_FallsBackToCSharp()
+        public void CompositeFormat_PreservesNativeCSharp()
         {
             Assert.Equal(
-                "@csharp{string.Format(\"{0:00}\", 5)}",
-                CSharpExpressionConverter.ConvertO(() => string.Format("{0:00}", 5)));
+                "#{string.Format(\"{0:00}\", 5)}",
+                Input(WorkflowActions.BuiltIn.Compose(() => string.Format("{0:00}", 5))).Value<string>());
         }
 
         [Fact]
@@ -151,11 +150,15 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var list = new List<string> { "first", "second" };
             var dictionary = new Dictionary<string, string> { ["key"] = "value" };
 
-            Assert.StartsWith("@csharp{", CSharpExpressionConverter.ConvertO(() => values[1]));
-            var listExpression = CSharpExpressionConverter.ConvertO(() => list[1]);
-            Assert.Contains("new List<string>", listExpression);
-            Assert.DoesNotContain("`", listExpression);
-            Assert.StartsWith("@csharp{", CSharpExpressionConverter.ConvertO(() => dictionary["key"]));
+            using var arrayExpression = EmittedExpressionCompiler.Compile(
+                Input(WorkflowActions.BuiltIn.Compose(() => values[1])).Value<string>());
+            using var listExpression = EmittedExpressionCompiler.Compile(
+                Input(WorkflowActions.BuiltIn.Compose(() => list[1])).Value<string>());
+            using var dictionaryExpression = EmittedExpressionCompiler.Compile(
+                Input(WorkflowActions.BuiltIn.Compose(() => dictionary["key"])).Value<string>());
+            Assert.Equal("second", arrayExpression.Evaluate());
+            Assert.Equal("second", listExpression.Evaluate());
+            Assert.Equal("value", dictionaryExpression.Evaluate());
         }
 
         [Fact]
@@ -166,25 +169,24 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             var chooseFirst = false;
 
             Assert.Equal(
-                "@csharp{(false ? outputs(\"A\").ToObject<string>() : outputs(\"B\").ToObject<string>()).ToUpper()}",
-                CSharpExpressionConverter.ConvertO(
-                    () => (chooseFirst ? first.Output : second.Output).ToUpper()));
+                "#{(false ? outputs(\"A\").ToObject<string>() : outputs(\"B\").ToObject<string>()).ToUpper()}",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => (chooseFirst ? first.Output : second.Output).ToUpper())).Value<string>());
         }
 
         [Fact]
-        public void CSharpFallback_UsesValueEqualityForWorkflowTokens()
+        public void NativeEquality_DoesNotRewriteWorkflowTokensToDeepEquals()
         {
             var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
             var compose = WorkflowActions.BuiltIn.Compose(inputs: () => "foo")
                 .WithName("ComposeInput");
 
-            var expression = CSharpExpressionConverter.ConvertO(
-                () => trigger.TriggerOutput.Body == compose.Output &&
-                      "value".ToUpper() == "VALUE");
+            var action = WorkflowActions.BuiltIn.Compose<bool>(
+                () => trigger.TriggerOutput.Body == compose.Output && "value".ToUpper() == "VALUE");
 
-            Assert.Contains(
-                "JToken.DeepEquals(triggerBody(), outputs(\"ComposeInput\"))",
-                expression);
+            Assert.Equal(
+                "#{triggerBody() == outputs(\"ComposeInput\") && \"value\".ToUpper() == \"VALUE\"}",
+                Input(action).Value<string>());
         }
 
         [Fact]
@@ -195,31 +197,30 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 .WithName("Values");
 
             Assert.Equal(
-                "@csharp{(!outputs(\"Boolean\").ToObject<bool>()).ToString().ToUpper()}",
-                CSharpExpressionConverter.ConvertO(
-                    () => (!boolean.Output).ToString().ToUpper()));
+                "#{(!outputs(\"Boolean\").ToObject<bool>()).ToString().ToUpper()}",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => (!boolean.Output).ToString().ToUpper())).Value<string>());
             Assert.Equal(
-                "@csharp{outputs(\"Boolean\").ToObject<bool>() ? \"yes\".ToUpper() : \"no\"}",
-                CSharpExpressionConverter.ConvertO(
-                    () => boolean.Output ? "yes".ToUpper() : "no"));
+                "#{outputs(\"Boolean\").ToObject<bool>() ? \"yes\".ToUpper() : \"no\"}",
+                Input(WorkflowActions.BuiltIn.Compose(
+                    () => boolean.Output ? "yes".ToUpper() : "no")).Value<string>());
             Assert.Contains(
-                "outputs(\"Values\").ToObject<List<int>>()",
-                CSharpExpressionConverter.ConvertO(() => values.Output.Count()));
+                "outputs(\"Values\").ToObject<global::System.Collections.Generic.List<int>>()",
+                Input(WorkflowActions.BuiltIn.Compose<int>(() => values.Output.Count())).Value<string>());
         }
 
         [Fact]
-        public void ObjectWorkflowEquality_UsesDeepEqualsDuringCSharpFallback()
+        public void ObjectWorkflowEquality_PreservesNativeObjectMaterialization()
         {
             var first = WorkflowActions.BuiltIn.Compose<object>(() => new { value = 1 })
                 .WithName("A");
             var second = WorkflowActions.BuiltIn.Compose<object>(() => new { value = 1 })
                 .WithName("B");
 
-            Assert.Contains(
-                "JToken.DeepEquals(outputs(\"A\"), outputs(\"B\"))",
-                CSharpExpressionConverter.ConvertO(
-                    () => first.Output == second.Output &&
-                          "value".ToUpper() == "VALUE"));
+            Assert.Equal(
+                "#{outputs(\"A\").ToObject<object>() == outputs(\"B\").ToObject<object>() && \"value\".ToUpper() == \"VALUE\"}",
+                Input(WorkflowActions.BuiltIn.Compose<bool>(
+                    () => first.Output == second.Output && "value".ToUpper() == "VALUE")).Value<string>());
         }
 
         [Fact]
@@ -230,10 +231,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 TriggerOutput = new BodyNamedModel { Body = "value" }
             };
 
-            var expression = CSharpExpressionConverter.ConvertO(
-                () => model.TriggerOutput.Body.ToUpper());
+            var expression = Input(WorkflowActions.BuiltIn.Compose(
+                () => model.TriggerOutput.Body.ToUpper())).Value<string>();
 
-            Assert.Equal("@csharp{\"value\".ToUpper()}", expression);
+            Assert.Equal("#{\"value\".ToUpper()}", expression);
             using var compiled = EmittedExpressionCompiler.Compile(expression);
             Assert.Equal("VALUE", compiled.Evaluate());
         }
@@ -247,5 +248,8 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         {
             public string Body { get; set; }
         }
+
+        private static JToken Input(IWorkflowAction action) =>
+            JObject.Parse(action.GetActionDefinition("workflow").ToJson())["inputs"];
     }
 }

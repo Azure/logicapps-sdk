@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodytaskType != null)
                 {
@@ -98,7 +98,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodytaskType != null)
                 {
@@ -135,7 +135,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -159,7 +159,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["changeType"] = SourceExpressionConverter.ConvertToken(bodychangeType);
@@ -185,7 +185,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["definitionId"] = SourceExpressionConverter.ConvertToken(bodydefinitionId);
@@ -213,7 +213,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Evocom
                 callPayload.Headers["x-ep-tenant"] = SourceExpressionConverter.ConvertO(xEpTenant);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodydefinitionId != null)
                 {

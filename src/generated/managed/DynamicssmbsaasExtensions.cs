@@ -389,7 +389,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     callPayload.Queries["company"] = SourceExpressionConverter.ConvertO(company);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -468,7 +468,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -547,7 +547,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -705,7 +705,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -730,7 +730,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -755,7 +755,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -780,7 +780,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -805,7 +805,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -940,7 +940,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -1075,7 +1075,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {
@@ -1154,7 +1154,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicssmbsaas
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {

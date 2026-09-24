@@ -47,10 +47,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new SchemaAction(() =>
             {
                 var rendered = descriptors.Select((d, i) => Render(d, destinations[i])).ToArray();
-                if (rendered.Where((token, i) => !descriptors[i].IsLiteral).Any(IsNative))
+                if (rendered.Any(IsNative))
                 {
                     var expressions = descriptors.Select((d, i) => Native(d, destinations[i]));
-                    return new JValue("@csharp{string.Format(" + SourceSnapshot.Quote(format) + ", " + string.Join(", ", expressions) + ")}");
+                    return new JValue("#{string.Format(" + SourceSnapshot.Quote(format) + ", " + string.Join(", ", expressions) + ")}");
                 }
                 var path = new JValue(string.Format(CultureInfo.InvariantCulture, format, rendered.Select(t => (object)t.Value<string>()).ToArray()));
                 return descriptors.Select((d, i) => d.IsLiteral && destinations[i].Transforms.Count == 0).All(literal => literal)
@@ -79,7 +79,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                     var token = RenderStructure(structured, destination, escapeLiterals && destination.Transforms.Count == 0);
                     if (destination.Transforms.Count == 0) return token;
                     if (descriptor.IsLiteral) return EncodeLiteral(token, descriptor.ResultType, destination, escapeLiterals);
-                    return new JValue("@csharp{" + Native(descriptor, destination) + "}");
+                    return new JValue("#{" + Native(descriptor, destination) + "}");
                 }
                 if (!descriptor.IsLiteral && !destination.RuntimeObject)
                     throw WorkflowDestination.Error(destination.Name, "Runtime-object expressions require an explicit verified runtimeObject capability.");
@@ -104,15 +104,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             }
 
             ValidateType(descriptor.ResultType, destination);
-            if (destination.Transforms.Count == 0 && (destination.Kind == "any" || destination.Kind == "json"))
+            if (destination.Transforms.Count == 0 &&
+                (destination.Kind == "any" || destination.Kind == "json" ||
+                 !(Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType).IsEnum))
                 return escapeLiterals ? SourceExpressionConverter.RenderWire(descriptor) : descriptor.RenderToken();
-            var enumType = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
-            if (descriptor.Kind == "native" || enumType.IsEnum || destination.Kind == "json" ||
-                descriptor.Kind == "object" || descriptor.Kind == "array")
-                return new JValue("@csharp{" + Native(descriptor, destination) + "}");
-            if (destination.Transforms.Count == 0) return escapeLiterals ? SourceExpressionConverter.RenderWire(descriptor) : descriptor.RenderToken();
-            var template = SourceExpressionConverter.TemplateArgument(descriptor);
-            return TemplateTransforms(template, destination);
+            return new JValue("#{" + Native(descriptor, destination) + "}");
         }
 
         private static JToken RenderStructure(ISourceStructure structure, WorkflowDestination destination, bool escapeLiterals)
@@ -172,36 +168,33 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 var text = token.Value<string>();
                 if (!destination.Transforms.Contains("url")) return SourceSnapshot.CloneJson(new JValue(text), escapeLiterals);
-                return TemplateTransforms("'" + text.Replace("'", "''") + "'", destination);
+                return NativeTransforms(SourceSnapshot.Quote(text), destination);
             }
             if (token.Type == JTokenType.Bytes && destination.Transforms.FirstOrDefault() == "base64")
             {
                 var encoded = System.Convert.ToBase64String(token.Value<byte[]>());
                 var urls = destination.Transforms.Count(t => t == "url");
                 if (urls == 0) return new JValue(encoded);
-                var expression = "'" + encoded.Replace("'", "''") + "'";
+                var expression = SourceSnapshot.Quote(encoded);
                 for (int i = 0; i < urls; i++) expression = "encodeURIComponent(" + expression + ")";
-                return new JValue("@{" + expression + "}");
+                return new JValue("#{" + expression + "}");
             }
             if (token.Type == JTokenType.Bytes)
                 throw WorkflowDestination.Error(destination.Name, "Raw binary requires an explicit base64 transform.");
             var normalized = token.Type == JTokenType.String ? token.Value<string>() :
                 token.Type == JTokenType.Boolean ? (token.Value<bool>() ? "true" : "false") :
                 WorkflowWireRuntime.ToCompactJson(token);
-            return TemplateTransforms("'" + normalized.Replace("'", "''") + "'", destination);
+            return NativeTransforms(SourceSnapshot.Quote(normalized), destination);
         }
 
-        private static JToken TemplateTransforms(string expression, WorkflowDestination destination)
+        private static JToken NativeTransforms(string expression, WorkflowDestination destination)
         {
-            var applied = false;
             foreach (var transform in destination.Transforms)
             {
                 if (transform == "base64" && destination.InputEncoding == "base64") continue;
                 expression = (transform == "url" ? "encodeURIComponent" : "base64") + "(" + expression + ")";
-                applied = true;
             }
-            if (!applied) return new JValue("@" + expression);
-            return new JValue(destination.Transforms.Last() == "url" ? "@{" + expression + "}" : "@" + expression);
+            return new JValue("#{" + expression + "}");
         }
 
         private static string Native(ISourceDescriptor descriptor, WorkflowDestination destination)
@@ -209,7 +202,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             ValidateType(descriptor.ResultType, destination);
             var nullableType = Nullable.GetUnderlyingType(descriptor.ResultType);
             var type = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
-            if (destination.Transforms.Count != 0 && (nullableType != null || typeof(JToken).IsAssignableFrom(type)))
+            // Plain JSON text references can use host encoding helpers without an SDK dependency.
+            var jsonTextReference = descriptor is ISourceValueDescriptor && destination.Kind == "text";
+            if (destination.Transforms.Count != 0 &&
+                (nullableType != null || typeof(JToken).IsAssignableFrom(type) && !jsonTextReference))
                 return "global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.NormalizeAndEncode(" +
                     descriptor.RenderNative() + ", " + SourceSnapshot.Quote(destination.SchemaJson) + ")";
             var expression = SourceExpressionConverter.RenderNativeWire(descriptor);
@@ -289,7 +285,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             type == typeof(string) || type.IsEnum || type == typeof(bool) || type == typeof(char) ||
             IsNumber(type) || type == typeof(Uri) || type == typeof(System.Net.Http.HttpMethod);
         private static bool IsNative(JToken token) =>
-            token.Type == JTokenType.String && token.Value<string>().StartsWith("@csharp{", StringComparison.Ordinal);
+            token.Type == JTokenType.String && token.Value<string>().StartsWith("#{", StringComparison.Ordinal);
         private static void ValidateArguments(string[] schemas, Delegate[] values)
         {
             if (schemas == null || values == null || schemas.Length != values.Length || schemas.Any(s => s == null))

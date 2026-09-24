@@ -949,7 +949,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Fulcrum
                     webhookObjectpropCount++;
                 }
 
-                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObject["url"] = "#{listCallbackUrl()}";
                 webhookObjectpropCount++;
                 if (webhookObjectpropCount > 0)
                 {

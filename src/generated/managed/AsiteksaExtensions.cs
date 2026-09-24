@@ -87,7 +87,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["webhookUrl"] = "@listCallbackUrl()";
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["resourceId"] = SourceExpressionConverter.ConvertToken(bodytriggerName);
@@ -116,7 +116,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Asiteksa
                 callPayload.Headers["Accept"] = Convert.ToString("*/*");
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["webhookUrl"] = "@listCallbackUrl()";
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["resourceId"] = SourceExpressionConverter.ConvertToken(bodytriggerName);

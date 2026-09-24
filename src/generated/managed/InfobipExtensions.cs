@@ -112,7 +112,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Infobip
                 requestBodyOfWebhook["phoneNumber"] = SourceExpressionConverter.ConvertToken(requestBodyOfWebhookphoneNumber);
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["keyword"] = SourceExpressionConverter.ConvertToken(requestBodyOfWebhookkeyword);
-                requestBodyOfWebhook["webhookUrl"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["webhookUrl"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookpropCount > 0)
                 {

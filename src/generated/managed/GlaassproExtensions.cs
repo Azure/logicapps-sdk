@@ -228,7 +228,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     bodypropCount++;
                 }
 
-                body["Notification"] = "@listCallbackUrl()";
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -263,7 +263,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     bodypropCount++;
                 }
 
-                body["Notification"] = "@listCallbackUrl()";
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -298,7 +298,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Glaasspro
                     bodypropCount++;
                 }
 
-                body["Notification"] = "@listCallbackUrl()";
+                body["Notification"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

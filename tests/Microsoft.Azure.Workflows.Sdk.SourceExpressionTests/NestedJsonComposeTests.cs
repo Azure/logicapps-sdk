@@ -88,26 +88,26 @@ public sealed class NestedJsonComposeTests
         Assert.Equal(JTokenType.Integer, payload["items"]![0]!["quantity"]!.Type);
         Assert.Equal(JTokenType.Integer, payload["items"]![1]!["quantity"]!.Type);
 
-        Assert.Equal("@outputs('Payload')", actions["Forwarded"]!["inputs"]!.Value<string>());
-        Assert.Equal("@outputs('Payload')['order']", actions["Order"]!["inputs"]!.Value<string>());
-        Assert.Equal("@outputs('Forwarded')['items']", actions["Items"]!["inputs"]!.Value<string>());
-        EqualSource("@csharp{outputs(\"Items\")[1]}", actions["Second"]!["inputs"]!.Value<string>()!);
+        Assert.Equal("#{outputs(\"Payload\")}", actions["Forwarded"]!["inputs"]!.Value<string>());
+        Assert.Equal("#{outputs(\"Payload\")[\"order\"]}", actions["Order"]!["inputs"]!.Value<string>());
+        Assert.Equal("#{outputs(\"Forwarded\")[\"items\"]}", actions["Items"]!["inputs"]!.Value<string>());
+        EqualSource("#{outputs(\"Items\")[1]}", actions["Second"]!["inputs"]!.Value<string>()!);
         Assert.Equal(1, actions["Index"]!["inputs"]!.Value<int>());
         var projection = actions["Result"]!["inputs"]!;
         var expectedProjection = JObject.Parse("""
             {
-                "payload":"@outputs('Forwarded')","order":"@outputs('Order')",
-                "firstItem":"@outputs('FirstItem')","firstQuantity":"@outputs('FirstQuantity')",
-                "secondItem":"@outputs('Second')['item']","secondQuantity":"@outputs('Second')['quantity']",
-                "indexedItem":"@outputs('Indexed')","total":"@outputs('Total')"
+                "payload":"#{outputs(\"Forwarded\")}","order":"#{outputs(\"Order\")}",
+                "firstItem":"#{outputs(\"FirstItem\")}","firstQuantity":"#{outputs(\"FirstQuantity\")}",
+                "secondItem":"#{outputs(\"Second\")[\"item\"]}","secondQuantity":"#{outputs(\"Second\")[\"quantity\"]}",
+                "indexedItem":"#{outputs(\"Indexed\")}","total":"#{outputs(\"Total\")}"
             }
             """);
         Assert.Equal(8, Assert.IsType<JObject>(projection).Count);
         foreach (var property in expectedProjection.Properties())
             Assert.True(JToken.DeepEquals(property.Value, projection[property.Name]), property.Name);
-        EqualSource("@csharp{outputs(\"Items\")[0][\"item\"]}", actions["FirstItem"]!["inputs"]!.Value<string>()!);
-        EqualSource("@csharp{outputs(\"Items\")[0][\"quantity\"]}", actions["FirstQuantity"]!["inputs"]!.Value<string>()!);
-        Assert.Equal("@outputs('Result')", actions["Response"]!["inputs"]!["body"]!.Value<string>());
+        EqualSource("#{outputs(\"Items\")[0][\"item\"]}", actions["FirstItem"]!["inputs"]!.Value<string>()!);
+        EqualSource("#{outputs(\"Items\")[0][\"quantity\"]}", actions["FirstQuantity"]!["inputs"]!.Value<string>()!);
+        Assert.Equal("#{outputs(\"Result\")}", actions["Response"]!["inputs"]!["body"]!.Value<string>());
 
         var values = new Dictionary<string, JToken?>
         {

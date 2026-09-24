@@ -346,7 +346,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 callPayload.Queries["profileId"] = SourceExpressionConverter.ConvertO(profileId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -374,7 +374,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Witivio
                 callPayload.Queries["profileId"] = SourceExpressionConverter.ConvertO(profileId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

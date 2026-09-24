@@ -26,9 +26,9 @@ public class RuntimeEnumDescriptorTests
     [Fact]
     public void BranchSpecificWireSourceIsNotMappedTwice()
     {
-        Assert.Equal("@csharp{RuntimeValues.Flag ? \"p\" : \"a\"}", Render(Conditional()));
+        Assert.Equal("#{RuntimeValues.Flag ? \"p\" : \"a\"}", Render(Conditional()));
         var action = new AbbreviationsipActions("connection").AbbrGet(Literal("term"), sortby: Conditional());
-        Assert.Equal("@csharp{RuntimeValues.Flag ? \"p\" : \"a\"}",
+        Assert.Equal("#{RuntimeValues.Flag ? \"p\" : \"a\"}",
             action.GetActionDefinition("test").Inputs.ToJToken()["queries"]["sortby"].Value<string>());
     }
 
@@ -36,7 +36,7 @@ public class RuntimeEnumDescriptorTests
     public void Base64UsesBranchSpecificWireSourceThroughTokenAdapter()
     {
         var action = new ServicebusActions("connection").SendMessage(Literal("queue"), SourceExpression.Token(1, Conditional()));
-        Assert.Equal("@csharp{base64(RuntimeValues.Flag ? \"p\" : \"a\")}",
+        Assert.Equal("#{base64(RuntimeValues.Flag ? \"p\" : \"a\")}",
             action.GetActionDefinition("test").Inputs.ToJToken()["body"]["ContentData"].Value<string>());
     }
 
@@ -47,7 +47,7 @@ public class RuntimeEnumDescriptorTests
         var descriptor = SourceExpression.Enum(1, Native<HttpStatusCode>(typed),
             Native<string>("RuntimeValues.Flag ? \"Accepted\" : \"BadRequest\""));
         var response = WorkflowActions.BuiltIn.Response(statusCode: descriptor);
-        Assert.Equal("@csharp{(int)(" + typed + ")}",
+        Assert.Equal("#{(int)(" + typed + ")}",
             response.GetActionDefinition("test").Inputs.ToJToken()["statusCode"].Value<string>());
     }
 
@@ -57,7 +57,7 @@ public class RuntimeEnumDescriptorTests
         var wire = SourceExpression.Create<string>(1, "native", ["RuntimeValues.Flag ? ", " : ", ""],
             [SourceBinding.EnumWire(Literal<sortbyInput?>(sortbyInput.Popularity)), SourceBinding.EnumWire(Literal<sortbyInput?>(null))]);
         var descriptor = SourceExpression.Enum(1, Native<sortbyInput?>("RuntimeValues.NullableChoice"), wire);
-        Assert.Equal("@csharp{RuntimeValues.Flag ? \"p\" : null}", Render(descriptor));
+        Assert.Equal("#{RuntimeValues.Flag ? \"p\" : null}", Render(descriptor));
     }
 
     [Theory]
@@ -72,7 +72,7 @@ public class RuntimeEnumDescriptorTests
     public void CompiledNullableConditionalsPreserveBranchesAndLaziness(string source, bool flag, string expected, int calls)
     {
         var expression = ConsumerCompilation.Native(source, resultType: "WireChoice?");
-        var syntax = SyntaxFactory.ParseExpression(expression[8..^1]);
+        var syntax = SyntaxFactory.ParseExpression(ConsumerCompilation.NativeBody(expression));
         while (syntax is ParenthesizedExpressionSyntax parentheses)
             syntax = parentheses.Expression;
         var actual = LocalNativeHost.Evaluate(expression, new() { ["Flag"] = flag });
@@ -118,7 +118,7 @@ public class RuntimeEnumDescriptorTests
         var source = SourceExpression.Create<string>(1, "native", ["", ""],
             [SourceBinding.EnumWire(Native<sortbyInput>("RuntimeValues.NextChoice()"))]);
         var expression = Render(source);
-        Assert.StartsWith("@csharp{(RuntimeValues.NextChoice()) switch {", expression);
+        Assert.StartsWith("#{(RuntimeValues.NextChoice()) switch {", expression);
         Assert.Contains("=> \"p\"", expression);
         Assert.Contains("=> \"a\"", expression);
         Assert.Contains("var value => value.ToString()", expression);

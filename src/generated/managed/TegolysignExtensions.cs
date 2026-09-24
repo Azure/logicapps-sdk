@@ -41,7 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Tegolysign
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["name"] = SourceExpressionConverter.ConvertToken(bodyname);
-                body["delivery_url"] = "@listCallbackUrl()";
+                body["delivery_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

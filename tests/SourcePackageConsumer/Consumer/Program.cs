@@ -22,6 +22,10 @@ if (!descriptorApi.GetMethods().Any(method => method.Name == "Token" && method.I
 {
     throw new InvalidOperationException("The packaged runtime is stale: SourceExpression.Token<T> is missing.");
 }
+if (!descriptorApi.GetMethods().Any(method => method.Name == "Value" && method.IsGenericMethodDefinition))
+{
+    throw new InvalidOperationException("The packaged runtime is stale: SourceExpression.Value<T> is missing.");
+}
 if (!descriptorApi.GetMethods().Any(method => method.Name == "Json") ||
     !descriptorApi.GetMethods().Any(method => method.Name == "Enum" && method.IsGenericMethodDefinition) ||
     !typeof(SourceBinding).GetMethods().Any(method => method.Name == "EnumWire"))
@@ -42,7 +46,7 @@ IOutputWorkflowAction<string> source = observedSource;
 var compose = WorkflowActions.BuiltIn.Compose(inputs: () => source.Output.ToUpperInvariant() + suffix);
 suffix = "changed after construction";
 var definition = ((WorkflowActionBase)compose).GetActionDefinition("PackageConsumer");
-var expected = "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}";
+var expected = "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}";
 var actual = definition.Inputs?.ToString()
     ?.Replace("ToObject<global::System.String>()", "ToObject<string>()", StringComparison.Ordinal);
 if (actual != expected)
@@ -56,14 +60,14 @@ escapedCapture = "changed after construction";
 var capturedDefinition = ((WorkflowActionBase)captured).GetActionDefinition("PackageConsumer");
 var capturedText = capturedDefinition.Inputs?.ToString()
     ?.Replace("ToObject<global::System.String>()", "ToObject<string>()", StringComparison.Ordinal);
-if (capturedText != """@csharp{outputs("Source").ToObject<string>() + "\"\\source.Output"}""")
+if (capturedText != """#{outputs("Source").ToObject<string>() + "\"\\source.Output"}""")
 {
     throw new InvalidOperationException($"Escaped capture was not preserved as a construction-time snapshot: {capturedText}");
 }
 
 var interpolation = WorkflowActions.BuiltIn.Compose(inputs: () => $"{{Name}}: {source.Output}; again: {source.Output}");
 var interpolationDefinition = ((WorkflowActionBase)interpolation).GetActionDefinition("PackageConsumer");
-if (interpolationDefinition.Inputs?.ToString() != "{Name}: @{outputs('Source')}; again: @{outputs('Source')}")
+if (interpolationDefinition.Inputs?.ToString() != """#{$"{{Name}}: {outputs("Source").ToObject<string>()}; again: {outputs("Source").ToObject<string>()}"}""")
 {
     throw new InvalidOperationException("Escaped interpolation changed its literal braces or workflow references.");
 }
@@ -76,7 +80,7 @@ var structure = WorkflowActions.BuiltIn.Compose(input: () => new
 var structureDefinition = ((WorkflowActionBase)structure).GetActionDefinition("PackageConsumer");
 if (!JToken.DeepEquals(JToken.FromObject(structureDefinition.Inputs), JObject.Parse("""
     {
-        "outer": { "enabled": true, "name": "@outputs('Source')" },
+        "outer": { "enabled": true, "name": "#{outputs(\"Source\")}" },
         "entries": [ { "label": "a" }, { "label": "b" } ]
     }
     """)))
@@ -86,7 +90,7 @@ if (!JToken.DeepEquals(JToken.FromObject(structureDefinition.Inputs), JObject.Pa
 
 var genericReference = ReferenceValue(source);
 var genericDefinition = ((WorkflowActionBase)genericReference).GetActionDefinition("PackageConsumer");
-if (genericDefinition.Inputs?.ToString() != "@outputs('Source')")
+if (genericDefinition.Inputs?.ToString() != "#{outputs(\"Source\")}")
 {
     throw new InvalidOperationException("Generic workflow references did not retain their concrete CLR type.");
 }
@@ -95,7 +99,7 @@ var tokenInput = WorkflowActions.BuiltIn.Compose<JToken>(() => source.Output.ToU
 var tokenDefinition = ((WorkflowActionBase)tokenInput).GetActionDefinition("PackageConsumer");
 var tokenText = tokenDefinition.Inputs?.ToString()
     ?.Replace("ToObject<global::System.String>()", "ToObject<string>()", StringComparison.Ordinal);
-if (tokenText != "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}")
+if (tokenText != "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}")
 {
     throw new InvalidOperationException($"Trusted JToken conversion lost its inner source descriptor: {tokenText}");
 }

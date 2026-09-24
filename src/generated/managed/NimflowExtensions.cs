@@ -144,7 +144,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUrl"] = "@listCallbackUrl()";
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 if (requestcontextTypeName != null)
                 {
@@ -179,7 +179,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUrl"] = "@listCallbackUrl()";
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 if (requestcontextTypeName != null)
                 {
@@ -214,7 +214,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUrl"] = "@listCallbackUrl()";
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 if (requestcontextTypeName != null)
                 {
@@ -249,7 +249,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUrl"] = "@listCallbackUrl()";
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 if (requestcontextTypeName != null)
                 {
@@ -284,7 +284,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nimflow
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUrl"] = "@listCallbackUrl()";
+                request["callbackUrl"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 if (requestcontextTypeName != null)
                 {

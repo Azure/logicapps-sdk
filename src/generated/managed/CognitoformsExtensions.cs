@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
                 var endpoint = new JObject();
                 var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "@listCallbackUrl()";
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
                 endpointpropCount++;
                 if (endpointpropCount > 0)
                 {
@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
                 var endpoint = new JObject();
                 var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "@listCallbackUrl()";
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
                 endpointpropCount++;
                 if (endpointpropCount > 0)
                 {
@@ -75,7 +75,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cognitoforms
                 callPayload.Queries["publisher"] = SourceExpressionConverter.ConvertO(publisher);
                 var endpoint = new JObject();
                 var endpointpropCount = 0;
-                endpoint["notificationUrl"] = "@listCallbackUrl()";
+                endpoint["notificationUrl"] = "#{listCallbackUrl()}";
                 endpointpropCount++;
                 if (endpointpropCount > 0)
                 {

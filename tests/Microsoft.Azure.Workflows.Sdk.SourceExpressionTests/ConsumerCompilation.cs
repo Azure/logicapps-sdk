@@ -171,19 +171,48 @@ internal static class ConsumerCompilation
         return Token(result.Definition);
     }
 
-    internal static JToken Token(FlowTemplateAction definition) => JToken.Parse(definition.Inputs.ToJson());
+    internal static JToken Token(FlowTemplateAction definition)
+    {
+        var token = JToken.Parse(definition.Inputs.ToJson());
+        AssertNoTemplateExpressions(token);
+        return token;
+    }
+
+    internal static void AssertNoTemplateExpressions(JToken token)
+    {
+        if (token is JValue { Type: JTokenType.String } value)
+        {
+            var text = value.Value<string>()!;
+            if (text.StartsWith("@@", StringComparison.Ordinal) || text.StartsWith("#{", StringComparison.Ordinal))
+                return;
+            Assert.False(text.StartsWith('@'), $"Standalone template expression: {text}");
+            Assert.DoesNotContain("@{", text);
+        }
+        else if (token is JContainer container)
+        {
+            foreach (var child in container.Children())
+                AssertNoTemplateExpressions(child);
+        }
+    }
 
     internal static string Native(string expression, string setup = "", string after = "", string resultType = "object") =>
         Assert.IsType<JValue>(Input(expression, setup, after, resultType)).Value<string>()!;
 
+    internal static string NativeBody(string envelope)
+    {
+        Assert.StartsWith("#{", envelope);
+        Assert.EndsWith("}", envelope);
+        var body = envelope[2..^1];
+        Assert.False(string.IsNullOrWhiteSpace(body), "Native expression body cannot be empty or whitespace.");
+        return body;
+    }
+
     internal static void EqualSource(string expected, string actual)
     {
-        Assert.StartsWith("@csharp{", actual);
-        Assert.EndsWith("}", actual);
         // Namespace qualification and insignificant trivia are permitted by catalog section 14.1.
         static SyntaxNode Normalize(string text)
         {
-            var expression = SyntaxFactory.ParseExpression(text[8..^1]);
+            var expression = SyntaxFactory.ParseExpression(NativeBody(text));
             Assert.Empty(expression.GetDiagnostics());
             return new SourceTypeNormalizer().Visit(expression)!;
         }
@@ -236,7 +265,7 @@ internal static class LocalNativeHost
     internal static (object? Value, string[] Reads, int Calls) Evaluate(
         string envelope, Dictionary<string, JToken?> values, string additionalSource = "", Action<Assembly>? initialize = null)
     {
-        Assert.StartsWith("@csharp{", envelope);
+        var body = ConsumerCompilation.NativeBody(envelope);
         var source = $$"""
             using System;
             using System.Linq;
@@ -250,11 +279,12 @@ internal static class LocalNativeHost
                     JToken outputs(string name) { reads.Add(name); return values[name]; }
                     JToken body(string name) { reads.Add(name); return values[name]; }
                     JToken triggerBody() { reads.Add("Trigger"); return values["Trigger"]; }
+                    JToken item() { reads.Add("Item"); return values["Item"]; }
                     JToken agentparameters(string name) { reads.Add("agent:" + name); return values[name]; }
                     string encodeURIComponent(string value) => Uri.EscapeDataString(value);
                     string base64(string value) => Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value));
                     JToken json(string value) => JToken.Parse(value);
-                    var result = (object)({{envelope[8..^1]}});
+                    var result = (object)({{body}});
                     return new object[] { result, reads.ToArray(), RuntimeValues.Calls };
                 }
             }

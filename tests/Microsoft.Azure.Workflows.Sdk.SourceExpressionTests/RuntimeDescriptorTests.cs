@@ -16,7 +16,7 @@ public class RuntimeDescriptorTests
     private static Func<T> Template<T>(string[] segments, params SourceBinding[] bindings) =>
         SourceExpression.Create<T>(1, "template", segments, bindings);
     private static JToken Inputs(IWorkflowAction action) =>
-        action.GetActionDefinition("test").Inputs.ToJToken();
+        ConsumerCompilation.Token(action.GetActionDefinition("test"));
     private static IOutputWorkflowAction<string> Source(string name = "Source") =>
         WorkflowActions.BuiltIn.Compose<string>(Literal("source")).WithName(name);
 
@@ -91,16 +91,37 @@ public class RuntimeDescriptorTests
             ["", ".ToUpperInvariant() /* retained */ + ", ""],
             SourceBinding.Output(source, "string"), SourceBinding.Capture("!", "string")));
         source.Name = "Final";
-        Assert.Equal("@csharp{outputs(\"Final\").ToObject<string>().ToUpperInvariant() /* retained */ + \"!\"}", Inputs(action).Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>().ToUpperInvariant() /* retained */ + \"!\"}", Inputs(action).Value<string>());
     }
 
     [Fact]
-    public void TemplateEscapesFinalIdentityAndHasOnlyOneMarker()
+    public void LegacyDirectReferenceUsesCSharpIdentityEscapingAndOneEnvelope()
     {
         var source = Source();
         var action = WorkflowActions.BuiltIn.Compose(Template<string>(["@", ""], SourceBinding.Output(source, "string")));
         source.Name = "O'Brien";
-        Assert.Equal("@outputs('O''Brien')", Inputs(action).Value<string>());
+        Assert.Equal("#{outputs(\"O'Brien\").ToObject<string>()}", Inputs(action).Value<string>());
+    }
+
+    [Theory]
+    [InlineData("prefix @{", "}")]
+    [InlineData("@", "['name']")]
+    [InlineData("@", "?['name']")]
+    public void LegacyComplexTemplateWithoutNativeSourceCannotEmitExecutableTemplates(string prefix, string suffix)
+    {
+        var expression = Template<string>([prefix, suffix], SourceBinding.Output(Source(), "string"));
+        Assert.Throws<NotSupportedException>(() => Inputs(WorkflowActions.BuiltIn.Compose(expression)));
+        Assert.Throws<NotSupportedException>(() => Inputs(new AcceptmissionActions("connection").GetcategoriesId(expression)));
+        Assert.Throws<NotSupportedException>(() => Inputs(new ServicebusActions("connection").SendMessage(
+            Literal("queue"), SourceExpression.Token(1, expression))));
+    }
+
+    [Fact]
+    public void LegacyComplexTemplateWithoutNativeSourceCannotBeWrappedByJson()
+    {
+        var expression = Template<string>(["{\"name\":\"@{", "}\"}"], SourceBinding.Output(Source(), "string"));
+        Assert.Throws<NotSupportedException>(() => Inputs(
+            WorkflowActions.BuiltIn.Compose(SourceExpression.Json<JToken>(1, expression))));
     }
 
     [Fact]
@@ -110,8 +131,8 @@ public class RuntimeDescriptorTests
         var action = WorkflowActions.BuiltIn.Compose(Template<string>(["@", ""], SourceBinding.Output(source, "string")));
         var first = action.GetActionDefinition("test");
         source.Name = "New";
-        Assert.Equal("@outputs('Source')", JToken.FromObject(first.Inputs).Value<string>());
-        Assert.Equal("@outputs('New')", Inputs(action).Value<string>());
+        Assert.Equal("#{outputs(\"Source\").ToObject<string>()}", JToken.FromObject(first.Inputs).Value<string>());
+        Assert.Equal("#{outputs(\"New\").ToObject<string>()}", Inputs(action).Value<string>());
     }
 
     [Fact]
@@ -135,7 +156,7 @@ public class RuntimeDescriptorTests
         var descriptor = SourceExpression.Create<int>(1, "native", segments, bindings);
         segments[0] = "unsafe";
         bindings[0] = SourceBinding.Capture(99, "int");
-        Assert.Equal("@csharp{1 + 2}", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
+        Assert.Equal("#{1 + 2}", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
     }
 
     [Fact]
@@ -205,7 +226,7 @@ public class RuntimeDescriptorTests
     {
         var model = new CaptureModel { Child = new CaptureLeaf { Text = "hello" } };
         var native = Native<string>(["", ".ToUpperInvariant()"], SourceBinding.CapturePath(model, ["Child", "Text"], "string"));
-        Assert.Equal("@csharp{\"hello\".ToUpperInvariant()}", Inputs(WorkflowActions.BuiltIn.Compose(native)).Value<string>());
+        Assert.Equal("#{\"hello\".ToUpperInvariant()}", Inputs(WorkflowActions.BuiltIn.Compose(native)).Value<string>());
         var headers = new Dictionary<string, string> { ["X-Name"] = "before" };
         var headerDescriptor = SourceExpression.Create<Dictionary<string, string>>(1, "capture", ["", ""],
             [SourceBinding.Capture(headers, "global::System.Collections.Generic.Dictionary<string, string>")]);
@@ -233,7 +254,7 @@ public class RuntimeDescriptorTests
     public void NullNativeCapturePreservesReceiverType()
     {
         var action = WorkflowActions.BuiltIn.Compose(Native<string>(["", "?.ToUpperInvariant()"], SourceBinding.Capture(null, "string")));
-        Assert.Equal("@csharp{((string)null)?.ToUpperInvariant()}", Inputs(action).Value<string>());
+        Assert.Equal("#{((string)null)?.ToUpperInvariant()}", Inputs(action).Value<string>());
     }
 
     [Fact]
@@ -242,7 +263,7 @@ public class RuntimeDescriptorTests
         var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger();
         var action = WorkflowActions.BuiltIn.Compose(Native<int>(["", "[\"n\"].Value<int>()"],
             SourceBinding.Trigger(trigger, "triggerBody", "Newtonsoft.Json.Linq.JToken")));
-        Assert.Equal("@csharp{triggerBody()[\"n\"].Value<int>()}", Inputs(action).Value<string>());
+        Assert.Equal("#{triggerBody()[\"n\"].Value<int>()}", Inputs(action).Value<string>());
         Assert.Throws<ArgumentException>(() => SourceBinding.Trigger(trigger, "arbitrary", "int"));
     }
 
@@ -253,10 +274,11 @@ public class RuntimeDescriptorTests
         var connector = new AcceptmissionActions("connection");
         var pathAction = connector.GetcategoriesId(Template<string>(["@", ""], SourceBinding.Output(source, "string")));
         var bodyAction = connector.Postcategories(
-            bodytitle: Template<string>(["Title @{", "}"], SourceBinding.Output(source, "string")), bodyposition: Literal(3));
+            bodytitle: SourceExpression.Create<string>(1, "template", ["Title @{", "}"],
+                [SourceBinding.Output(source, "string")], nativeSegments: ["$\"Title {", "}\""]), bodyposition: Literal(3));
         source.Name = "Final";
-        Assert.Equal("/general/v1/categories/@{encodeURIComponent(outputs('Final'))}", Inputs(pathAction)["path"].Value<string>());
-        Assert.Equal("Title @{outputs('Final')}", Inputs(bodyAction)["body"]["title"].Value<string>());
+        Assert.Equal("#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, \"/general/v1/categories/{0}\", encodeURIComponent(outputs(\"Final\").ToObject<string>()))}", Inputs(pathAction)["path"].Value<string>());
+        Assert.Equal("#{$\"Title {outputs(\"Final\").ToObject<string>()}\"}", Inputs(bodyAction)["body"]["title"].Value<string>());
         Assert.Equal(JTokenType.Integer, Inputs(bodyAction)["body"]["position"].Type);
     }
 
@@ -268,9 +290,9 @@ public class RuntimeDescriptorTests
             Native<string>(["", ".ToUpperInvariant()"], SourceBinding.Output(source, "string")));
         source.Name = "Final";
         var path = Inputs(action)["path"].Value<string>();
-        Assert.StartsWith("@csharp{string.Format(", path);
+        Assert.StartsWith("#{string.Format(", path);
         Assert.Contains("encodeURIComponent(outputs(\"Final\").ToObject<string>().ToUpperInvariant())", path);
-        Assert.Equal(1, path.Split("@csharp{").Length - 1);
+        Assert.Equal(1, path.Split("#{").Length - 1);
     }
 
     [Fact]
@@ -280,14 +302,14 @@ public class RuntimeDescriptorTests
         var action = new AzureBlobActions("connection").DeleteBlob(
             Template<string>(["@", ""], SourceBinding.Output(source, "string")), Literal("blob"));
         source.Name = "Final";
-        Assert.Equal("@outputs('Final')", Inputs(action)["parameters"]["containerName"].Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>()}", Inputs(action)["parameters"]["containerName"].Value<string>());
         Assert.Equal("blob", Inputs(action)["parameters"]["blobName"].Value<string>());
     }
 
     [Theory]
-    [InlineData("hello", "@base64('hello')")]
-    [InlineData("", "@base64('')")]
-    [InlineData("aGVsbG8=", "@base64('aGVsbG8=')")]
+    [InlineData("hello", "#{base64(\"hello\")}")]
+    [InlineData("", "#{base64(\"\")}")]
+    [InlineData("aGVsbG8=", "#{base64(\"aGVsbG8=\")}")]
     public void Base64MetadataEncodesWholeLiteralOnce(string text, string expected)
     {
         var action = new ServicebusActions("connection").SendMessage(Literal("queue"), Literal<JToken>(new JValue(text)));
@@ -300,20 +322,21 @@ public class RuntimeDescriptorTests
         var connector = new ServicebusActions("connection");
         string Content(JToken value) => Inputs(connector.SendMessage(Literal("queue"), Literal(value)))["body"]["ContentData"].Value<string>();
         Assert.Equal("AAH/", Content(new JValue(new byte[] { 0, 1, 255 })));
-        Assert.Equal("@base64('42')", Content(new JValue(42)));
-        Assert.Equal("@base64('true')", Content(new JValue(true)));
-        Assert.Equal("@base64('{\"n\":1}')", Content(new JObject { ["n"] = 1 }));
+        Assert.Equal("#{base64(\"42\")}", Content(new JValue(42)));
+        Assert.Equal("#{base64(\"true\")}", Content(new JValue(true)));
+        Assert.Equal("#{base64(\"{\\\"n\\\":1}\")}", Content(new JObject { ["n"] = 1 }));
         Assert.Null(Content(JValue.CreateNull()));
     }
 
     [Fact]
-    public void Base64TemplateReferenceResolvesFinalName()
+    public void Base64LegacyInterpolationWithNativeSourceResolvesFinalName()
     {
         var source = Source();
-        var content = Template<JToken>(["Name: @{", "}"], SourceBinding.Output(source, "string"));
+        var content = SourceExpression.Token(1, SourceExpression.Create<string>(1, "template", ["Name: @{", "}"],
+            [SourceBinding.Output(source, "string")], nativeSegments: ["$\"Name: {", "}\""]));
         var action = new ServicebusActions("connection").SendMessage(Literal("queue"), content);
         source.Name = "Final";
-        Assert.Equal("@base64(concat('Name: ', outputs('Final')))", Inputs(action)["body"]["ContentData"].Value<string>());
+        Assert.Equal("#{base64($\"Name: {outputs(\"Final\").ToObject<string>()}\")}", Inputs(action)["body"]["ContentData"].Value<string>());
     }
 
     [Fact]
@@ -325,7 +348,7 @@ public class RuntimeDescriptorTests
             Template<string>(["@", ""], SourceBinding.Output(source, "string")));
         source.Name = "Final";
         var path = Inputs(action)["path"].Value<string>();
-        Assert.StartsWith("@csharp{", path);
+        Assert.StartsWith("#{", path);
         Assert.Contains("encodeURIComponent(encodeURIComponent(outputs(\"Final\").ToObject<string>().ToUpperInvariant()))", path);
         Assert.Contains("encodeURIComponent(outputs(\"Final\").ToObject<string>())", path);
         Assert.DoesNotContain("@{", path);
@@ -344,7 +367,7 @@ public class RuntimeDescriptorTests
         source.Name = "Final";
         var path = Inputs(action)["path"].Value<string>();
         Assert.Contains("encodeURIComponent($\"prefix {outputs(\"Final\").ToObject<string>()}\")", path);
-        Assert.Equal("prefix @{outputs('Final')}", Inputs(WorkflowActions.BuiltIn.Compose(interpolation)).Value<string>());
+        Assert.Equal("#{$\"prefix {outputs(\"Final\").ToObject<string>()}\"}", Inputs(WorkflowActions.BuiltIn.Compose(interpolation)).Value<string>());
         Assert.DoesNotContain("changed", path);
         Assert.DoesNotContain("@{", path);
     }
@@ -372,7 +395,7 @@ public class RuntimeDescriptorTests
         var calls = 0;
         var descriptor = SourceExpression.Create(1, "template", ["text"], [],
             typeWitness: () => { calls++; return "never"; }, nativeSegments: ["\"text\""]);
-        Assert.Equal("text", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
+        Assert.Equal("#{\"text\"}", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
         Assert.Equal(0, calls);
     }
 
@@ -407,8 +430,8 @@ public class RuntimeDescriptorTests
         source.Name = "Final";
         var input = Inputs(action);
         Assert.Equal("GET", input["method"].Value<string>());
-        Assert.Equal("@outputs('Final')", input["headers"]["X-Name"].Value<string>());
-        Assert.Equal("@csharp{outputs(\"Final\").ToObject<string>().ToUpperInvariant()}", input["headers"]["X-Native"].Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>()}", input["headers"]["X-Name"].Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>().ToUpperInvariant()}", input["headers"]["X-Native"].Value<string>());
     }
 
     [Fact]
@@ -423,7 +446,7 @@ public class RuntimeDescriptorTests
     {
         Assert.Equal(202, Inputs(WorkflowActions.BuiltIn.Response(statusCode: Literal(HttpStatusCode.Accepted)))["statusCode"].Value<int>());
         var action = WorkflowActions.BuiltIn.Response(statusCode: Native<HttpStatusCode>(["RuntimeValues.NextStatus()"]));
-        Assert.Equal("@csharp{(int)(RuntimeValues.NextStatus())}", Inputs(action)["statusCode"].Value<string>());
+        Assert.Equal("#{(int)(RuntimeValues.NextStatus())}", Inputs(action)["statusCode"].Value<string>());
     }
 
     [Fact]
@@ -438,7 +461,7 @@ public class RuntimeDescriptorTests
         var input = Inputs(action);
         Assert.Equal(JTokenType.Boolean, input["enabled"].Type);
         Assert.Equal(JTokenType.Integer, input["count"].Type);
-        Assert.Equal("@outputs('Final')", input["body"].Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>()}", input["body"].Value<string>());
         Assert.Equal(new[] { "a", "b" }, input["labels"].Values<string>());
     }
 
@@ -448,7 +471,7 @@ public class RuntimeDescriptorTests
         var calls = 0;
         var descriptor = SourceExpression.Create(1, "native", ["new { Next = 3 }"], [],
             typeWitness: () => new { Next = ++calls });
-        Assert.Equal("@csharp{new { Next = 3 }}", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
+        Assert.Equal("#{new { Next = 3 }}", Inputs(WorkflowActions.BuiltIn.Compose(descriptor)).Value<string>());
         Assert.Throws<InvalidOperationException>(() => descriptor());
         Assert.Equal(0, calls);
     }
@@ -493,7 +516,7 @@ public class RuntimeDescriptorTests
         var first = action.GetActionDefinition("test");
         _ = action.GetActionDefinition("test");
         Assert.Equal(1, calls);
-        Assert.Equal("@csharp{outputs(\"Final\").ToObject<string>().Length > 0}", first.Expression.Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>().Length > 0}", first.Expression.Value<string>());
     }
 
     [Fact]
@@ -502,7 +525,7 @@ public class RuntimeDescriptorTests
         var variable = WorkflowActions.BuiltIn.Variables.InitializeVariable(Literal("message"), Literal("hello"));
         var action = WorkflowActions.BuiltIn.Compose(Template<string>(["@", ""], SourceBinding.Variable(variable, "string")));
         variable.Name = "NotTheVariableName";
-        Assert.Equal("@variables('message')", Inputs(action).Value<string>());
+        Assert.Equal("#{variables(\"message\").ToObject<string>()}", Inputs(action).Value<string>());
     }
 
     [Fact]
@@ -518,7 +541,7 @@ public class RuntimeDescriptorTests
         var definition = loop.GetActionDefinition("test");
         _ = loop.GetActionDefinition("test");
         Assert.Equal(1, calls);
-        Assert.Equal("@csharp{item().Value<int>()}", definition.Actions.Values.Single().Inputs.ToJToken().Value<string>());
+        Assert.Equal("#{item().Value<int>()}", definition.Actions.Values.Single().Inputs.ToJToken().Value<string>());
     }
 
     [Fact]
@@ -527,7 +550,7 @@ public class RuntimeDescriptorTests
         var loop = WorkflowActions.BuiltIn.Control.ForEach(Literal<JToken>(new JArray(1)), item =>
             WorkflowActions.BuiltIn.Compose(SourceExpression.Create<JToken>(1, "capture", ["", ""],
                 [SourceBinding.Capture(item, "Newtonsoft.Json.Linq.JToken")])));
-        Assert.Equal("@item()", loop.GetActionDefinition("test").Actions.Values.Single().Inputs.ToJToken().Value<string>());
+        Assert.Equal("#{item()}", loop.GetActionDefinition("test").Actions.Values.Single().Inputs.ToJToken().Value<string>());
     }
 
     [Fact]
@@ -546,7 +569,7 @@ public class RuntimeDescriptorTests
         var definition = agent.GetActionDefinition("test");
         _ = agent.GetActionDefinition("test");
         Assert.Equal(1, calls);
-        Assert.Equal("@outputs('Final')", definition.Tools.Values.Single().Actions.Values.Single().Inputs.ToJToken().Value<string>());
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>()}", definition.Tools.Values.Single().Actions.Values.Single().Inputs.ToJToken().Value<string>());
     }
 
     [Fact]
@@ -554,7 +577,7 @@ public class RuntimeDescriptorTests
     {
         var context = new UnsafeAgentContext();
         var expression = Native<string>(["", ".ToUpperInvariant()"], SourceBinding.AgentParameter(context, "name", "string"));
-        Assert.Equal("@csharp{agentparameters(\"name\").ToObject<string>().ToUpperInvariant()}",
+        Assert.Equal("#{agentparameters(\"name\").ToObject<string>().ToUpperInvariant()}",
             Inputs(WorkflowActions.BuiltIn.Compose(expression)).Value<string>());
     }
 
@@ -565,7 +588,7 @@ public class RuntimeDescriptorTests
         var native = Inputs(WorkflowActions.BuiltIn.Compose(Native<WireChoice>(["RuntimeValues.NextChoice()"]))).Value<string>();
         Assert.Equal(1, native.Split("RuntimeValues.NextChoice()").Length - 1);
         Assert.Contains("switch", native);
-        Assert.Equal("@csharp{RuntimeValues.NextChoice() == WireChoice.First}",
+        Assert.Equal("#{RuntimeValues.NextChoice() == WireChoice.First}",
             Inputs(WorkflowActions.BuiltIn.Compose(Native<bool>(["RuntimeValues.NextChoice() == WireChoice.First"]))).Value<string>());
     }
 

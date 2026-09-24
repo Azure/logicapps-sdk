@@ -18,7 +18,7 @@ public class RuntimeJsonIntrinsicTests
     }
 
     [Fact]
-    public void TemplateInputEmitsJsonHelperWithFinalName()
+    public void LegacyReferenceEmitsNativeJsonHelperWithFinalName()
     {
         var source = WorkflowActions.BuiltIn.Compose(Literal("{}")).WithName("Initial");
         var input = SourceExpression.Create<string>(1, "template", ["@", ""], [SourceBinding.Output(source, "string")]);
@@ -26,8 +26,8 @@ public class RuntimeJsonIntrinsicTests
         source.Name = "Final";
         var first = action.GetActionDefinition("test");
         source.Name = "Later";
-        Assert.Equal("@json(outputs('Final'))", ((JValue)first.Inputs).Value<string>());
-        Assert.Equal("@json(outputs('Later'))", ((JValue)action.GetActionDefinition("test").Inputs).Value<string>());
+        Assert.Equal("#{json(outputs(\"Final\").ToObject<string>())}", ((JValue)first.Inputs).Value<string>());
+        Assert.Equal("#{json(outputs(\"Later\").ToObject<string>())}", ((JValue)action.GetActionDefinition("test").Inputs).Value<string>());
     }
 
     [Fact]
@@ -36,7 +36,7 @@ public class RuntimeJsonIntrinsicTests
         var source = WorkflowActions.BuiltIn.Compose(Literal("{}")).WithName("Source");
         var input = SourceExpression.Create<string>(1, "native", ["", ".ToUpperInvariant()"], [SourceBinding.Output(source, "string")]);
         var expression = Render(SourceExpression.Json<JObject>(1, input));
-        Assert.Equal("@csharp{json(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}", expression);
+        Assert.Equal("#{json(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}", expression);
         Assert.DoesNotContain("ToObject<global::Newtonsoft.Json.Linq.JObject>", expression);
     }
 
@@ -45,16 +45,16 @@ public class RuntimeJsonIntrinsicTests
     {
         var source = WorkflowActions.BuiltIn.Compose(Literal("value")).WithName("Source");
         var input = SourceExpression.Create<string>(1, "template", ["{\"x\":\"@{", "}\"}"],
-            [SourceBinding.Output(source, "string")]);
-        Assert.Equal("@json(concat('{\"x\":\"', outputs('Source'), '\"}'))",
+            [SourceBinding.Output(source, "string")], nativeSegments: ["$\"{{\\\"x\\\":\\\"{", "}\\\"}}\""]);
+        Assert.Equal("#{json($\"{{\\\"x\\\":\\\"{outputs(\"Source\").ToObject<string>()}\\\"}}\")}",
             Render(SourceExpression.Json<JToken>(1, input)));
     }
 
     [Theory]
-    [InlineData("{\"x\":1}", "@json('{\"x\":1}')")]
-    [InlineData("{\"name\":\"O'Brien\"}", "@json('{\"name\":\"O''Brien\"}')")]
-    [InlineData("not-json", "@json('not-json')")]
-    [InlineData(null, "@json(null)")]
+    [InlineData("{\"x\":1}", "#{json(\"{\\\"x\\\":1}\")}")]
+    [InlineData("{\"name\":\"O'Brien\"}", "#{json(\"{\\\"name\\\":\\\"O'Brien\\\"}\")}")]
+    [InlineData("not-json", "#{json(\"not-json\")}")]
+    [InlineData(null, "#{json(null)}")]
     public void LiteralInputIsNotParsedOrEvaluatedDuringGeneration(string input, string expected) =>
         Assert.Equal(expected, Render(SourceExpression.Json<JToken>(1, Literal(input))));
 
@@ -77,7 +77,7 @@ public class RuntimeJsonIntrinsicTests
         var parsed = SourceExpression.Json<JObject>(1, Literal("{\"x\":1}"));
         var expression = SourceExpression.Create<bool>(1, "native", ["", ".ContainsKey(\"x\")"],
             [SourceBinding.Json(parsed, "global::Newtonsoft.Json.Linq.JObject")]);
-        Assert.Equal("@csharp{json(\"{\\\"x\\\":1}\").ToObject<global::Newtonsoft.Json.Linq.JObject>().ContainsKey(\"x\")}",
+        Assert.Equal("#{json(\"{\\\"x\\\":1}\").ToObject<global::Newtonsoft.Json.Linq.JObject>().ContainsKey(\"x\")}",
             Render(expression));
     }
 
@@ -87,7 +87,7 @@ public class RuntimeJsonIntrinsicTests
         var parsed = SourceExpression.Json<JToken>(1, Literal("{\"x\":1}"));
         var expression = SourceExpression.Create<int>(1, "native", ["", "[\"x\"].Value<int>()"],
             [SourceBinding.Json(parsed, "global::Newtonsoft.Json.Linq.JToken")]);
-        Assert.Equal("@csharp{json(\"{\\\"x\\\":1}\")[\"x\"].Value<int>()}", Render(expression));
+        Assert.Equal("#{json(\"{\\\"x\\\":1}\")[\"x\"].Value<int>()}", Render(expression));
     }
 
     [Fact]
@@ -95,17 +95,17 @@ public class RuntimeJsonIntrinsicTests
     {
         var input = SourceExpression.Create<string>(1, "native", ["RuntimeValues.NextText()"], []);
         var parsedString = SourceExpression.Json<string>(1, input);
-        Assert.Equal("@csharp{json(json(RuntimeValues.NextText()).ToObject<global::System.String>())}",
+        Assert.Equal("#{json(json(RuntimeValues.NextText()).ToObject<global::System.String>())}",
             Render(SourceExpression.Json<JObject>(1, parsedString)));
     }
 
     [Fact]
-    public void TemplateConsumerReceivesBareJsonHelperFragment()
+    public void LegacyInterpolationWithNativeSourceMaterializesTypedJsonHelper()
     {
         var parsed = SourceExpression.Json<JObject>(1, Literal("{}"));
         var expression = SourceExpression.Create<string>(1, "template", ["JSON @{", "}"],
-            [SourceBinding.Json(parsed, "global::Newtonsoft.Json.Linq.JObject")]);
-        Assert.Equal("JSON @{json('{}')}", Render(expression));
+            [SourceBinding.Json(parsed, "global::Newtonsoft.Json.Linq.JObject")], nativeSegments: ["$\"JSON {", "}\""]);
+        Assert.Equal("#{$\"JSON {json(\"{}\").ToObject<global::Newtonsoft.Json.Linq.JObject>()}\"}", Render(expression));
     }
 
     [Fact]

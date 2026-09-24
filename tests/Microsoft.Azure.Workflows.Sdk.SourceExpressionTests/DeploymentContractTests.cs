@@ -12,7 +12,7 @@ using static ConsumerCompilation;
 
 public sealed class DeploymentContractTests : IDisposable
 {
-    private readonly string directory = Path.Combine(Path.GetTempPath(), "WorkflowDeploymentTests-" + Guid.NewGuid().ToString("N"));
+    private readonly string directory = Path.Combine("out", "test-workspaces", "WorkflowDeploymentTests-" + Guid.NewGuid().ToString("N"));
 
     public DeploymentContractTests() => Directory.CreateDirectory(directory);
 
@@ -56,7 +56,7 @@ public sealed class DeploymentContractTests : IDisposable
                     public static object Run()
                     {
                         JToken outputs(string name) => new JValue("A");
-                        return {{code[8..^1]}};
+                        return {{NativeBody(code)}};
                     }
                 }
                 """).AddReferences(MetadataReference.CreateFromFile(path));
@@ -114,7 +114,7 @@ public sealed class DeploymentContractTests : IDisposable
         WriteWorkflow(new JObject { ["actions"] = new JObject { ["Encode"] = new JObject
         {
             ["type"] = "Compose",
-            ["inputs"] = "@csharp{global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime." + call + "}",
+            ["inputs"] = "#{global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime." + call + "}",
         } } });
         var error = Assert.Single(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
         Assert.Equal("WFDEP003", error.Code);
@@ -127,8 +127,145 @@ public sealed class DeploymentContractTests : IDisposable
         WriteWorkflow(new JObject { ["actions"] = new JObject { ["Text"] = new JObject
         {
             ["type"] = "Compose",
-            ["inputs"] = "@csharp{\"global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.ToCompactJson(null)\"}",
+            ["inputs"] = "#{\"global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.ToCompactJson(null)\"}",
         } } });
+        Assert.Empty(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
+    }
+
+    [Theory]
+    [InlineData("@outputs('Source')")]
+    [InlineData("@body('Source')")]
+    [InlineData("@variables('message')")]
+    [InlineData("@triggerBody()")]
+    [InlineData("@triggerOutputs()")]
+    [InlineData("@item()")]
+    [InlineData("@agentparameters('Name')")]
+    [InlineData("@base64('hello')")]
+    [InlineData("@json('{}')")]
+    [InlineData("@encodeURIComponent('a b')")]
+    [InlineData("@listCallbackUrl()")]
+    [InlineData("@{outputs('Source')}")]
+    [InlineData("Name: @{outputs('Source')}")]
+    [InlineData("/items/@{encodeURIComponent(outputs('Source'))}")]
+    [InlineData("@csharp{1 + 2}")]
+    [InlineData("@csharp{outputs(\"Source\")}")]
+    public void Legacy_template_expressions_in_nested_inputs_are_rejected_by_preflight(string expression)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Legacy"] = new JObject
+        {
+            ["type"] = "Compose",
+            ["inputs"] = new JObject { ["values"] = new JArray(expression) },
+        } } });
+        var error = Assert.Single(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
+        Assert.Equal("WFDEP010", error.Code);
+        Assert.Contains("Standalone template expressions and template interpolation are unsupported", error.Message);
+    }
+
+    [Theory]
+    [InlineData("actions", "Foreach", "foreach")]
+    [InlineData("triggers", "ApiConnection", "splitOn")]
+    public void Legacy_templates_outside_operation_inputs_are_also_rejected(string container, string type, string property)
+    {
+        WriteWorkflow(new JObject { [container] = new JObject { ["Legacy"] = new JObject
+        {
+            ["type"] = type,
+            [property] = "@triggerBody()",
+        } } });
+        Assert.Equal("WFDEP010", Assert.Single(
+            WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile())).Code);
+    }
+
+    [Theory]
+    [InlineData("@@outputs('Source')")]
+    [InlineData("@@{outputs('Source')}")]
+    [InlineData("@@csharp{1 + 2}")]
+    [InlineData("@@@already")]
+    [InlineData("@@")]
+    public void Escaped_leading_markers_are_literals_not_legacy_template_expressions(string literal)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Literal"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = literal,
+        } } });
+        var profile = LocalHostProfile();
+        profile.LiteralMarkerEscapingVerified = true;
+        Assert.Empty(WorkflowDeploymentValidator.Validate(new(), directory, profile));
+    }
+
+    [Theory]
+    [InlineData("#{\"@outputs('Source')\"}")]
+    [InlineData("#{\"prefix @{outputs('Source')}\"}")]
+    [InlineData("#{\"@listCallbackUrl()\"}")]
+    [InlineData("#{\"@json('{}')\"}")]
+    [InlineData("#{\"@csharp{1 + 2}\"}")]
+    [InlineData("#{\"#r \\\"fixture.dll\\\"\"}")]
+    [InlineData("#{\"#load \\\"fixture.csx\\\"\"}")]
+    public void Native_quoted_template_looking_text_is_not_rejected_as_legacy_syntax(string expression)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["NativeLiteral"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = expression,
+        } } });
+        Assert.Empty(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
+    }
+
+    [Theory]
+    [InlineData("#r \"fixture.dll\"")]
+    [InlineData("#load \"fixture.csx\"")]
+    [InlineData("  #r \"fixture.dll\"")]
+    [InlineData("#load \"fixture.csx\"\r\n")]
+    public void Native_reference_and_load_directives_are_rejected_without_resolving_files(string directive)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Directive"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = "#{\n" + directive + "\n1\n}",
+        } } });
+        var diagnostics = WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile());
+        Assert.Contains(diagnostics, diagnostic => diagnostic.Code == "WFDEP006" &&
+            diagnostic.Message == "Native expressions cannot use #r or #load directives.");
+        Assert.All(diagnostics, diagnostic => Assert.Equal("WFDEP006", diagnostic.Code));
+    }
+
+    [Theory]
+    [InlineData("#{}")]
+    [InlineData("#{ }")]
+    [InlineData("#{\r\n\t}")]
+    public void Empty_or_whitespace_native_bodies_are_rejected(string expression)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Empty"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = expression,
+        } } });
+        var diagnostics = WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile());
+        Assert.NotEmpty(diagnostics);
+        Assert.All(diagnostics, diagnostic => Assert.Equal("WFDEP006", diagnostic.Code));
+    }
+
+    [Theory]
+    [InlineData("##{1 + 2}")]
+    [InlineData("###{}")]
+    [InlineData(" #{1 + 2}")]
+    [InlineData("\t#{1 + 2}")]
+    [InlineData("prefix #{1 + 2}")]
+    public void Non_envelope_hash_literals_are_not_trimmed_interpolated_or_treated_as_escapes(string literal)
+    {
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Literal"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = literal,
+        } } });
+        Assert.Empty(WorkflowDeploymentValidator.Validate(new(), directory));
+    }
+
+    [Fact]
+    public void Reserved_hash_literal_uses_native_string_expression_and_requires_native_host_capability()
+    {
+        var literal = Input("\"#{1 + 2}\"")!;
+        Assert.Equal("#{\"#{1 + 2}\"}", literal.Value<string>());
+        WriteWorkflow(new JObject { ["actions"] = new JObject { ["Literal"] = new JObject
+        {
+            ["type"] = "Compose", ["inputs"] = literal,
+        } } });
+        Assert.Equal("WFDEP009", Assert.Single(WorkflowDeploymentValidator.Validate(new(), directory)).Code);
         Assert.Empty(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
     }
 
@@ -155,7 +292,7 @@ public sealed class DeploymentContractTests : IDisposable
                 public static object Run()
                 {
                     JToken outputs(string name) => new JValue(1m);
-                    return {{expression[8..^1]}};
+                    return {{NativeBody(expression)}};
                 }
             }
             """);
@@ -187,7 +324,7 @@ public sealed class DeploymentContractTests : IDisposable
         WriteWorkflow(new JObject { ["actions"] = new JObject { ["Check"] = JToken.Parse(result.Definition.ToJson()) } });
         var error = Assert.Single(WorkflowDeploymentValidator.Validate(new(), directory, LocalHostProfile()));
         Assert.Equal("WFDEP005", error.Code);
-        Assert.StartsWith("@csharp{", result.Definition.Expression.Value<string>());
+        Assert.StartsWith("#{", result.Definition.Expression.Value<string>());
     }
 
     [Fact]
@@ -247,7 +384,7 @@ public sealed class DeploymentContractTests : IDisposable
         var path = Path.Combine(directory, original.AssemblyName + ".dll");
         var emitted = rewritten.Emit(path);
         Assert.True(emitted.Success, string.Join(Environment.NewLine, emitted.Diagnostics));
-        var code = "@csharp{global::UserFormatting.Wrap(outputs(\"Source\").ToObject<string>())}";
+        var code = "#{global::UserFormatting.Wrap(outputs(\"Source\").ToObject<string>())}";
         if (generateDefinition)
         {
             var assembly = Load(rewritten);
@@ -294,7 +431,7 @@ public sealed class DeploymentContractTests : IDisposable
     {
         WriteWorkflow(new JObject { ["actions"] = new JObject { ["Native"] = new JObject
         {
-            ["type"] = "Compose", ["inputs"] = "@csharp{1 + 2}",
+            ["type"] = "Compose", ["inputs"] = "#{1 + 2}",
         } } });
         Assert.Equal("WFDEP009", Assert.Single(WorkflowDeploymentValidator.Validate(new(), directory)).Code);
     }

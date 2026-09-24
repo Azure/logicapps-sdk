@@ -531,7 +531,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -555,7 +555,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -579,7 +579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -603,7 +603,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -627,7 +627,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -651,7 +651,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -675,7 +675,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -699,7 +699,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -723,7 +723,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -747,7 +747,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -771,7 +771,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -795,7 +795,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -819,7 +819,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -843,7 +843,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -867,7 +867,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -891,7 +891,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -915,7 +915,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -939,7 +939,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -963,7 +963,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {
@@ -987,7 +987,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Strategicportfoliomanager
                 var eventCreationInformationpropCount = 0;
                 eventCreationInformationpropCount++;
                 eventCreationInformation["SiteURL"] = SourceExpressionConverter.ConvertToken(eventCreationInformationsiteURL);
-                eventCreationInformation["ReceiverEndpoint"] = "@listCallbackUrl()";
+                eventCreationInformation["ReceiverEndpoint"] = "#{listCallbackUrl()}";
                 eventCreationInformationpropCount++;
                 if (eventCreationInformationpropCount > 0)
                 {

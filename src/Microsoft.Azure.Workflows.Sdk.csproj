@@ -15,16 +15,6 @@
 
   <ItemGroup>
     <Compile Remove="Build\**\*.cs" />
-    <Compile Remove="Utils\CSharpExpressionConverter.cs" />
-    <Compile Remove="Utils\ExpressionConverter.cs" />
-    <Compile Remove="Expressions\CapturedValueResolver.cs" />
-    <Compile Remove="Expressions\ComplexObjectConverter.cs" />
-    <Compile Remove="Expressions\CSharpExpressionConverter.cs" />
-    <Compile Remove="Expressions\ExpressionExtensions.cs" />
-    <Compile Remove="Expressions\ExpressionRenderer.cs" />
-    <Compile Remove="Expressions\ExpressionVisitor.cs" />
-    <Compile Remove="Expressions\LogicExpression.cs" />
-    <Compile Remove="Expressions\LogicExpressionConverter.cs" />
     <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.props" />
     <None Update="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" Pack="true" PackagePath="buildTransitive\Microsoft.Azure.Workflows.Sdk.targets" />
     <ProjectReference Include="Build\Microsoft.Azure.Workflows.Sdk.Build\Microsoft.Azure.Workflows.Sdk.Build.csproj"

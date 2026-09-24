@@ -27,7 +27,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Typeform
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodyenabled != null)
                 {

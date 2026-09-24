@@ -18,14 +18,31 @@ var result = WorkflowActions.BuiltIn.Compose(
 ```
 
 The emitted native expression is equivalent to
-`@csharp{outputs("Source").ToObject<string>().ToUpperInvariant() + "!"}`.
+`#{outputs("Source").ToObject<string>().ToUpperInvariant() + "!"}`.
 Ordinary captures are snapshotted when the action is constructed; workflow
 handles remain bound until definition generation so later action names resolve.
 
-Literals, Roslyn-proven constants, direct workflow references, and simple
-reference-only interpolated strings remain codeless. Explicit `string.Format`,
-`string.Concat`, arithmetic, and other native computations remain C#. The
-SDK's `WorkflowFunctions.ToJson` intrinsic remains a workflow JSON helper.
+Literals and Roslyn-proven constants remain literal JSON: `() => "test"` emits
+`"test"` and `() => 3` emits `3`. All runtime expressions use `#{...}`,
+including direct workflow references, property navigation, interpolation, JSON
+parsing, Base64 encoding, and generated URL-encoded paths. Standalone template
+expressions such as `@outputs(...)`, `@body(...)`, `@json(...)`, `@base64(...)`,
+and `@{...}` interpolation are no longer emitted. Workflow helpers remain
+available inside C# expressions. Pass-through values and recognized property
+paths use JSON-native helpers (for example `#{body("Read")["content"]}`)
+without requiring the generated output model on the expression host. Actual CLR
+operations, interpolation, and typed encoding operands materialize their declared
+types as needed.
+Structured JSON retains independently converted literal and C# leaves.
+The `#{...}` envelope replaces the incompatible `@csharp{...}` preview syntax.
+An authored literal such as `"#{1 + 2}"` is emitted as `#{"#{1 + 2}"}` so the
+runtime returns the original string without evaluating it. `##{...}` is not an
+escape sequence and remains literal with both hashes. Leading `@` literals retain
+the runtime's `@@` escaping; embedded WDL interpolation markers are preserved
+inside a C# string expression. Preflight rejects `#r` and `#load` directives,
+but not those characters inside ordinary C# strings.
+The SDK's `WorkflowFunctions.ToJson` intrinsic emits the workflow `json(...)`
+helper inside a C# expression; malformed JSON is still a runtime error.
 Implicit primitive-to-`JToken` conversions preserve the original value type
 for destination encoding rather than forcing native C#.
 The package includes the build tool and `buildTransitive` integration; users do not
@@ -36,8 +53,9 @@ The compiler-facing `SourceExpression` APIs are versioned build infrastructure,
 not an alternative authoring API. Calling an untransformed workflow value
 delegate fails explicitly instead of executing it. Ordinary graph-building
 callbacks and `CustomCode` callbacks retain their distinct execution behavior.
-The retired expression-tree converters are excluded from the shipped assembly;
-their preserved sources are linked only into historical characterization tests.
+The retired expression-tree converters and their test-only source links have been
+removed. Applicable regression coverage uses source-compiled workflow authoring;
+tests specific to the retired template-lowering implementation are not retained.
 
 Enum-wire destinations normalize conditional result branches without changing
 enum operands or numeric Response status. Response owns the omitted-status
@@ -75,6 +93,8 @@ definitions and sidecars before reporting a successful publish. Custom native
 dependencies require explicit, SHA256-pinned approval and matching executable
 assemblies/types in the deployment. Validation reads metadata; it does not load
 or execute dependency assemblies.
+Preflight rejects standalone template expressions and template interpolation
+with `WFDEP010`; escaped literal data is not treated as an expression.
 
 Set `WorkflowExpressionHostProfile` to an explicitly reviewed JSON profile for
 the target host. Version 1 profiles identify `host` and `evidence`, and can declare
@@ -84,8 +104,9 @@ the target host. Version 1 profiles identify `host` and `evidence`, and can decl
 capabilities are denied, not inferred from local compilation. A profile is an
 operator's recorded approval; the SDK does not manufacture backend certification.
 
-Actual local-host probes found that public Workflow bundles **1.170.43 and
-1.170.91 reject `@csharp{...}` expressions**. Ordinary C# action support does not
+Historical local-host probes found that public Workflow bundles **1.170.43 and
+1.170.91 reject the former `@csharp{...}` syntax**. Those results do not certify
+the newer `#{...}` envelope. Ordinary C# action support does not
 establish inline-expression support. Do not approve native-expression deployment
 to those versions. Reproducible host probes live in `tests\SourceHostConsumer`.
 
@@ -103,8 +124,9 @@ diagnostics, integrated builds, and the no-authoring-execution contract.
 Other platform/IDE combinations and a supporting native-Condition
 runtime/designer remain release gates. Local compiler execution and design-time
 MSBuild checks alone are not IDE or backend certification. Actual bundle 1.170.91
-probes verified simple interpolation and escaped literals in both en-US and
-fr-FR; they did not establish native-expression or native-Condition support.
+probes verified the former template interpolation and escaped literals in both
+en-US and fr-FR; that historical result does not certify the new C# interpolation
+contract or native-Condition support.
 
 Separate codeful preview-host probes execute native arithmetic, the JSON
 intrinsic, and the catalog's encoded calculated JSON payload. Bounded scalar,
@@ -113,7 +135,7 @@ settings without ambient defaults or an SDK helper dependency. Shapes requiring
 SDK wire helpers still need explicit host/assembly approval; deploying the SDK
 with the authoring worker does not make it available to the host's expression
 compiler. Preflight rejects missing helper dependency records as well.
-Native Conditions fail on the tested preview host while equivalent template
+Before the `#{...}` migration, native Conditions failed on the tested preview host while equivalent template
 controls succeed. No template substitution is used to hide that failure.
 Reproduction sources live in `tests\SourceNativeHostConsumer`.
 

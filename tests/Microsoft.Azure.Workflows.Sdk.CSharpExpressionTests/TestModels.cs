@@ -7,8 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Simple POCO used to exercise object/member-init conversion paths.
-    /// Mirrors the model in the Logic App expression test project.
+    /// Input model for source-compiled structural JSON, including renamed properties.
     /// </summary>
     public class Poco
     {

@@ -4,7 +4,7 @@ using Microsoft.Azure.Workflows.Sdk;
 
 var result = WorkflowProbe.Run(null)
     .Replace("ToObject<global::System.String>()", "ToObject<string>()", StringComparison.Ordinal);
-if (result != "@csharp{outputs(\"WorkerSource\").ToObject<string>().ToUpperInvariant()}")
+if (result != "#{outputs(\"WorkerSource\").ToObject<string>().ToUpperInvariant()}")
 {
     throw new InvalidOperationException($"Worker function workflow was not transformed: {result}");
 }

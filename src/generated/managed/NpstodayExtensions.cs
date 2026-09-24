@@ -173,7 +173,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                     bodypropCount++;
                 }
 
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["eventType"] = "NewResponse";
                 bodypropCount++;
@@ -204,7 +204,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Npstoday
                     bodypropCount++;
                 }
 
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["eventType"] = "NewCampaignMember";
                 bodypropCount++;

@@ -51,7 +51,7 @@ public sealed class CoreEnumCatalogTests
         var emitted = Native(input, CoreHandles, resultType: "WireChoice");
         Assert.Equal("first /+", LocalNativeHost.Evaluate(emitted,
             new() { ["Flag"] = new JValue(true), ["OtherFlag"] = new JValue(false) }).Value);
-        EqualSource("@csharp{" + expectedBody + "}", emitted);
+        EqualSource("#{" + expectedBody + "}", emitted);
     }
 
     [Fact, Trait("Catalog", "E07")]
@@ -62,7 +62,7 @@ public sealed class CoreEnumCatalogTests
             """));
         Assert.Equal(0, built.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(built.Definition).Value<string>()!;
-        Assert.StartsWith("@csharp{", emitted);
+        Assert.StartsWith("#{", emitted);
         Assert.Equal(1, emitted.Split("RuntimeValues.NextChoice()").Length - 1);
         Assert.Contains("\"first /+\"", emitted);
         Assert.Contains("\"second\"", emitted);
@@ -84,8 +84,8 @@ public sealed class CoreEnumCatalogTests
         var selected = LocalNativeHost.Evaluate(emitted, new() { ["Flag"] = new JValue(true) });
         Assert.Equal("first /+", selected.Value);
         Assert.Equal(0, selected.Calls);
-        var conditional = Assert.IsType<ConditionalExpressionSyntax>(SyntaxFactory.ParseExpression(emitted[8..^1]));
-        EqualSource("@csharp{outputs(\"Flag\").ToObject<bool>()}", "@csharp{" + conditional.Condition + "}");
+        var conditional = Assert.IsType<ConditionalExpressionSyntax>(SyntaxFactory.ParseExpression(ConsumerCompilation.NativeBody(emitted)));
+        EqualSource("#{outputs(\"Flag\").ToObject<bool>()}", "#{" + conditional.Condition + "}");
         Assert.Equal("first /+", Assert.IsType<LiteralExpressionSyntax>(conditional.WhenTrue).Token.ValueText);
         // The catalog permits an equivalent runtime helper instead of a particular opaque-result switch.
         foreach (var (choice, expected) in new[] { (0, "first /+"), (1, "second"), (2, "Unannotated"), (99, "99") })
@@ -104,7 +104,7 @@ public sealed class CoreEnumCatalogTests
     public void Enum_comparison_does_not_wire_map_native_operands()
     {
         var emitted = Native("choiceAction.Output == WireChoice.First", CoreHandles);
-        EqualSource("@csharp{outputs(\"Choice\").ToObject<WireChoice>() == WireChoice.First}", emitted);
+        EqualSource("#{outputs(\"Choice\").ToObject<WireChoice>() == WireChoice.First}", emitted);
         Assert.Equal(true, LocalNativeHost.Evaluate(emitted, new() { ["Choice"] = new JValue("First") }).Value);
         Assert.Equal(false, LocalNativeHost.Evaluate(emitted, new() { ["Choice"] = new JValue("Second") }).Value);
     }
@@ -113,7 +113,7 @@ public sealed class CoreEnumCatalogTests
     public void Enum_native_argument_keeps_clr_enum_type()
     {
         var emitted = Native("RuntimeValues.Accept(choiceAction.Output)", CoreHandles);
-        EqualSource("@csharp{RuntimeValues.Accept(outputs(\"Choice\").ToObject<WireChoice>())}", emitted);
+        EqualSource("#{RuntimeValues.Accept(outputs(\"Choice\").ToObject<WireChoice>())}", emitted);
         Assert.Equal("First", LocalNativeHost.Evaluate(emitted, new() { ["Choice"] = new JValue("First") }).Value);
     }
 
@@ -121,7 +121,7 @@ public sealed class CoreEnumCatalogTests
     public void Enum_ToString_is_not_replaced_by_wire_metadata()
     {
         var emitted = Native("WireChoice.First.ToString()");
-        EqualSource("@csharp{WireChoice.First.ToString()}", emitted);
+        EqualSource("#{WireChoice.First.ToString()}", emitted);
         Assert.Equal("First", LocalNativeHost.Evaluate(emitted, new()).Value);
     }
 
@@ -135,7 +135,7 @@ public sealed class CoreEnumCatalogTests
             LocalNativeHost.Evaluate(wire, new() { ["Flag"] = new JValue(false) }));
 
         var numeric = Native("(int)" + value, resultType: "int");
-        EqualSource("@csharp{(int)(WireChoice)(outputs(\"Flag\").ToObject<bool>() ? (WireChoice?)WireChoice.Second : null)}", numeric);
+        EqualSource("#{(int)(WireChoice)(outputs(\"Flag\").ToObject<bool>() ? (WireChoice?)WireChoice.Second : null)}", numeric);
         Assert.Equal(1, Assert.IsType<int>(LocalNativeHost.Evaluate(numeric, new() { ["Flag"] = new JValue(true) }).Value));
         Assert.Throws<InvalidOperationException>(() =>
             LocalNativeHost.Evaluate(numeric, new() { ["Flag"] = new JValue(false) }));

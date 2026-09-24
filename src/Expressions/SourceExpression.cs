@@ -57,6 +57,13 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new SourceJsonDescriptor<T>(GetDescriptor(input)).Invoke;
         }
 
+        /// <summary>Preserves a workflow JSON value at the wire boundary and typed source for native consumers.</summary>
+        public static Func<T> Value<T>(int version, Func<T> nativeSource, Func<JToken> wireSource)
+        {
+            CheckVersion(version);
+            return new SourceValueDescriptor<T>(GetDescriptor(nativeSource), GetDescriptor(wireSource)).Invoke;
+        }
+
         /// <summary>Preserves source metadata across a compiler-verified Newtonsoft JSON implicit conversion.</summary>
         public static Func<JToken> Token<T>(int version, Func<T> input)
         {
@@ -317,21 +324,6 @@ namespace Microsoft.Azure.Workflows.Sdk
                 : expression + ".ToObject<" + clrType + ">()";
         }
 
-        internal string ToTemplate()
-        {
-            if (this.enumWire != null)
-                throw new NotSupportedException("Enum wire bindings require native source.");
-            if (this.json != null)
-            {
-                if (this.json.Kind != "template")
-                    throw new NotSupportedException("A native JSON intrinsic cannot be inserted into a template expression.");
-                return this.json.RenderToken().Value<string>().Substring(1);
-            }
-            if (this.capture != null) return this.capture.Template;
-            var name = this.ResolveName();
-            return this.helper + "(" + (name == null ? "" : "'" + name.Replace("'", "''") + "'") + ")";
-        }
-
         private string ResolveName()
         {
             if (this.parameterName != null) return this.parameterName;
@@ -352,6 +344,29 @@ namespace Microsoft.Azure.Workflows.Sdk
     }
 
     internal interface ISourceJsonDescriptor : ISourceDescriptor { }
+
+    internal interface ISourceValueDescriptor : ISourceDescriptor { }
+
+    internal sealed class SourceValueDescriptor<T> : ISourceValueDescriptor
+    {
+        private readonly ISourceDescriptor native;
+        private readonly ISourceDescriptor wire;
+
+        internal SourceValueDescriptor(ISourceDescriptor native, ISourceDescriptor wire)
+        {
+            if (native.Kind != "native" || wire.Kind != "native")
+                throw new ArgumentException("Workflow value descriptors require native C# source for both representations.");
+            this.native = native;
+            this.wire = wire;
+        }
+
+        public bool IsLiteral => false;
+        public Type ResultType => typeof(T);
+        public string Kind => "native";
+        public T Invoke() => throw new InvalidOperationException("A workflow source descriptor is metadata and cannot be invoked.");
+        public string RenderNative() => this.native.RenderNative();
+        public JToken RenderToken() => this.wire.RenderToken();
+    }
 
     internal interface ISourceStructure : ISourceDescriptor
     {
@@ -396,7 +411,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         public T Invoke() => throw new InvalidOperationException("A workflow source descriptor is metadata and cannot be invoked.");
         public string RenderNative() => this.value.RenderNative();
         public string RenderNativeWire() => this.wire.RenderNative();
-        public JToken RenderToken() => new JValue("@csharp{" + this.RenderNativeWire() + "}");
+        public JToken RenderToken() => new JValue("#{" + this.RenderNativeWire() + "}");
     }
 
     internal sealed class SourceTokenDescriptor : ISourceDescriptor
@@ -424,7 +439,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         public bool IsLiteral => false;
         public Type ResultType => typeof(T);
-        public string Kind => this.input.Kind == "native" ? "native" : "template";
+        public string Kind => "native";
         public T Invoke() => throw new InvalidOperationException("A workflow source descriptor is metadata and cannot be invoked.");
         public string RenderNative()
         {
@@ -433,9 +448,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 native = SourceBinding.Materialize(native, SourceSnapshot.TypeName(this.input.ResultType));
             return "json(" + native + ")";
         }
-        public JToken RenderToken() => new JValue(this.Kind == "native"
-            ? "@csharp{" + this.RenderNative() + "}"
-            : "@json(" + SourceExpressionConverter.TemplateArgument(this.input, allowNull: true) + ")");
+        public JToken RenderToken() => new JValue("#{" + this.RenderNative() + "}");
     }
 
     internal sealed class SourceDescriptor<T> : ISourceStructure
@@ -484,11 +497,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (this.children != null)
                 return this.nativeSource?.RenderNative() ?? throw new NotSupportedException("Structured descriptor cannot be rendered as native source without compiler metadata.");
             if (this.Kind == "template" && this.nativeSegments != null)
-                return this.Render(false, this.nativeSegments);
+                return this.Render(this.nativeSegments);
             if (this.Kind == "template" && this.bindings.Length == 1 && this.segments[0] == "@" && this.segments[1] == "")
                 return this.bindings[0].ToNative();
             if (this.Kind != "native") throw new NotSupportedException("This template descriptor cannot be promoted to native C# without compiler source metadata.");
-            return this.Render(false);
+            return this.Render();
         }
 
         public JToken RenderToken()
@@ -496,7 +509,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (this.Schema != null) return WorkflowSchemaRuntime.Render(this, this.Schema);
             if (this.literal != null) return SourceSnapshot.CloneJson(this.literal.Token);
             if (this.Kind == "capture")
-                return this.bindings[0].IsCapture ? this.bindings[0].CaptureToken() : new JValue("@" + this.bindings[0].ToTemplate());
+                return this.bindings[0].IsCapture ? this.bindings[0].CaptureToken() : new JValue("#{" + this.bindings[0].ToNative() + "}");
             if (this.children != null)
             {
                 if (this.names == null) return new JArray(this.children.Select(c => c.RenderToken()));
@@ -504,15 +517,15 @@ namespace Microsoft.Azure.Workflows.Sdk
                 for (int i = 0; i < this.names.Length; i++) value.Add(this.names[i], this.children[i].RenderToken());
                 return value;
             }
-            return new JValue(this.Kind == "native" ? "@csharp{" + this.Render(false) + "}" : this.Render(true));
+            return new JValue("#{" + this.RenderNative() + "}");
         }
 
-        private string Render(bool template, string[] sourceSegments = null)
+        private string Render(string[] sourceSegments = null)
         {
             sourceSegments = sourceSegments ?? this.segments;
             var text = new StringBuilder(sourceSegments[0]);
             for (int i = 0; i < this.bindings.Length; i++)
-                text.Append(template ? this.bindings[i].ToTemplate() : this.bindings[i].ToNative()).Append(sourceSegments[i + 1]);
+                text.Append(this.bindings[i].ToNative()).Append(sourceSegments[i + 1]);
             return text.ToString();
         }
     }
@@ -521,7 +534,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         internal JToken Token { get; private set; }
         internal string Native { get; private set; }
-        internal string Template { get; private set; }
         internal Type RuntimeType { get; private set; }
 
         internal static string Quote(string value) => JsonConvert.ToString(value);
@@ -530,7 +542,7 @@ namespace Microsoft.Azure.Workflows.Sdk
 
         private static SourceSnapshot Create(object value, HashSet<object> visiting)
         {
-            if (value == null) return new SourceSnapshot { Token = JValue.CreateNull(), Native = "null", Template = "null" };
+            if (value == null) return new SourceSnapshot { Token = JValue.CreateNull(), Native = "null" };
             var type = value.GetType();
             string native;
             JToken token;
@@ -605,9 +617,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 }
                 finally { visiting.Remove(value); }
             }
-            var template = token.Type == JTokenType.String ? "'" + token.Value<string>().Replace("'", "''") + "'" :
-                token.Type == JTokenType.Null ? "null" : token.Type == JTokenType.Boolean ? (token.Value<bool>() ? "true" : "false") : token.ToString(Formatting.None);
-            return new SourceSnapshot { Token = token, Native = native, Template = template, RuntimeType = type };
+            return new SourceSnapshot { Token = token, Native = native, RuntimeType = type };
         }
 
         internal static bool MatchesDeclaredType(string declaredType, Type runtimeType)
@@ -685,6 +695,14 @@ namespace Microsoft.Azure.Workflows.Sdk
             "void", "volatile", "while",
         };
 
+        internal static string EscapeLiteral(string text)
+        {
+            if (text.StartsWith("@", StringComparison.Ordinal)) return "@" + text;
+            if (text.StartsWith("#{", StringComparison.Ordinal) || text.Contains("@{"))
+                return "#{" + Quote(text) + "}";
+            return text;
+        }
+
         internal static JToken CloneJson(JToken token, bool escapeLiterals = false)
         {
             if (token.GetType() == typeof(JObject))
@@ -699,15 +717,15 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (token.GetType() == typeof(JValue) && token.Type != JTokenType.Undefined && token.Type != JTokenType.Comment)
             {
                 var value = ((JValue)token).Value;
-                if (escapeLiterals && value is string text && text.StartsWith("@", StringComparison.Ordinal))
-                    return new JValue("@" + text);
+                if (escapeLiterals && value is string text)
+                    return new JValue(EscapeLiteral(text));
                 if (value is double d && (double.IsNaN(d) || double.IsInfinity(d)) ||
                     value is float f && (float.IsNaN(f) || float.IsInfinity(f)))
                     throw new NotSupportedException("Non-finite numeric captures are not JSON values.");
                 if (value is Uri uri)
                 {
-                    if (escapeLiterals && uri.OriginalString.StartsWith("@", StringComparison.Ordinal))
-                        return new JValue("@" + uri.OriginalString);
+                    if (escapeLiterals && EscapeLiteral(uri.OriginalString) is string escaped && escaped != uri.OriginalString)
+                        return new JValue(escaped);
                     return new JValue(new Uri(uri.OriginalString, UriKind.RelativeOrAbsolute));
                 }
                 return new JValue(value is byte[] bytes ? (byte[])bytes.Clone() : value);

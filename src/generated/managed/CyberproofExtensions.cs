@@ -49,7 +49,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var actionReq = new JObject();
                 var actionReqpropCount = 0;
-                actionReq["url"] = "@listCallbackUrl()";
+                actionReq["url"] = "#{listCallbackUrl()}";
                 actionReqpropCount++;
                 actionReqpropCount++;
                 actionReq["action"] = SourceExpressionConverter.ConvertToken(actionReqselectAction);
@@ -189,7 +189,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cyberproof
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var actionReq = new JObject();
                 var actionReqpropCount = 0;
-                actionReq["url"] = "@listCallbackUrl()";
+                actionReq["url"] = "#{listCallbackUrl()}";
                 actionReqpropCount++;
                 actionReqpropCount++;
                 actionReq["action"] = SourceExpressionConverter.ConvertToken(actionReqselectTrigger);

@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "memberships";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -344,7 +344,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "memberships";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -371,7 +371,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "memberships";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -398,7 +398,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "messages";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -425,7 +425,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "messages";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -452,7 +452,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "rooms";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -479,7 +479,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Webex
                 bodypropCount++;
                 body["resource"] = "rooms";
                 bodypropCount++;
-                body["targetUrl"] = "@listCallbackUrl()";
+                body["targetUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

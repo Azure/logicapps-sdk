@@ -26,7 +26,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookevents != null)
                 {
@@ -64,7 +64,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Flic
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 if (requestBodyOfWebhookpropCount > 0)
                 {

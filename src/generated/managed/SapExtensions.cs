@@ -562,7 +562,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     callRfcSubscriptionpropCount++;
                 }
 
-                callRfcSubscription["NotificationUrl"] = "@listCallbackUrl()";
+                callRfcSubscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 callRfcSubscriptionpropCount++;
                 if (callRfcSubscriptionpropCount > 0)
                 {
@@ -620,7 +620,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Sap
                     subscriptionpropCount++;
                 }
 
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {

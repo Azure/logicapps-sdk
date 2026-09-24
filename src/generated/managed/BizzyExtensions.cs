@@ -317,7 +317,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -404,7 +404,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -510,7 +510,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -632,7 +632,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -767,7 +767,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -894,7 +894,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -1001,7 +1001,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -1133,7 +1133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -1279,7 +1279,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {
@@ -1355,7 +1355,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bizzy
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var webHook = new JObject();
                 var webHookpropCount = 0;
-                webHook["webHookUri"] = "@listCallbackUrl()";
+                webHook["webHookUri"] = "#{listCallbackUrl()}";
                 webHookpropCount++;
                 if (webHookfilters != null)
                 {

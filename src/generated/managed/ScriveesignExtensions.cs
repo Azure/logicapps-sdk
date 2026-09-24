@@ -587,7 +587,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["documentId"] = SourceExpressionConverter.ConvertToken(bodydocumentId);
-                body["webhookUrl"] = "@listCallbackUrl()";
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -609,7 +609,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Scriveesign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["webhookUrl"] = "@listCallbackUrl()";
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

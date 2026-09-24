@@ -99,7 +99,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Bttn
                 callPayload.Queries["id"] = SourceExpressionConverter.ConvertO(id);
                 var webhookRequestBody = new JObject();
                 var webhookRequestBodypropCount = 0;
-                webhookRequestBody["url"] = "@listCallbackUrl()";
+                webhookRequestBody["url"] = "#{listCallbackUrl()}";
                 webhookRequestBodypropCount++;
                 if (webhookRequestBodypropCount > 0)
                 {

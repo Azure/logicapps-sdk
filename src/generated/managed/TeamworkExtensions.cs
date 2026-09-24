@@ -540,7 +540,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 webhookObjectpropCount++;
                 webhookObject["status"] = "ACTIVE";
                 webhookObjectpropCount++;
-                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObject["url"] = "#{listCallbackUrl()}";
                 webhookObjectpropCount++;
                 if (webhookObjectpropCount > 0)
                 {
@@ -575,7 +575,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 webhookObjectpropCount++;
                 webhookObject["status"] = "ACTIVE";
                 webhookObjectpropCount++;
-                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObject["url"] = "#{listCallbackUrl()}";
                 webhookObjectpropCount++;
                 if (webhookObjectpropCount > 0)
                 {
@@ -610,7 +610,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Teamwork
                 webhookObjectpropCount++;
                 webhookObject["status"] = "ACTIVE";
                 webhookObjectpropCount++;
-                webhookObject["url"] = "@listCallbackUrl()";
+                webhookObject["url"] = "#{listCallbackUrl()}";
                 webhookObjectpropCount++;
                 if (webhookObjectpropCount > 0)
                 {

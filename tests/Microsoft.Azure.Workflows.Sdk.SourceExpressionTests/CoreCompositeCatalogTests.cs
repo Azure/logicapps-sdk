@@ -9,7 +9,7 @@ public sealed class CoreCompositeCatalogTests
     public void Composite_arithmetic_preserves_precedence_and_integer_division()
     {
         var emitted = Native("(count.Output + 2) * 3 - quantity.Output / 2");
-        EqualSource("@csharp{(outputs(\"Count\").ToObject<int>() + 2) * 3 - outputs(\"Quantity\").ToObject<int>() / 2}", emitted);
+        EqualSource("#{(outputs(\"Count\").ToObject<int>() + 2) * 3 - outputs(\"Quantity\").ToObject<int>() / 2}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(4), ["Quantity"] = new JValue(5) });
         Assert.Equal(16, Assert.IsType<int>(local.Value));
         Assert.Equal(["Count", "Quantity"], local.Reads);
@@ -19,7 +19,7 @@ public sealed class CoreCompositeCatalogTests
     public void Native_null_guard_preserves_short_circuiting()
     {
         var emitted = Native("source.Output != null && source.Output.StartsWith(\"A\")");
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>() != null && outputs(\"Source\").ToObject<string>().StartsWith(\"A\")}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>() != null && outputs(\"Source\").ToObject<string>().StartsWith(\"A\")}", emitted);
         var missing = LocalNativeHost.Evaluate(emitted, new() { ["Source"] = JValue.CreateNull() });
         Assert.Equal(false, missing.Value);
         Assert.Equal(["Source"], missing.Reads);
@@ -34,7 +34,7 @@ public sealed class CoreCompositeCatalogTests
             var first = WorkflowActions.BuiltIn.CustomCode<OrderSummary>(_ => Task.FromResult<OrderSummary>(null)).WithName("First");
             var second = WorkflowActions.BuiltIn.CustomCode<OrderSummary>(_ => Task.FromResult<OrderSummary>(null)).WithName("Second");
             """);
-        EqualSource("@csharp{body(\"First\").ToObject<OrderSummary>().Total + body(\"Second\").ToObject<OrderSummary>().Total >= 1000m}", emitted);
+        EqualSource("#{body(\"First\").ToObject<OrderSummary>().Total + body(\"Second\").ToObject<OrderSummary>().Total >= 1000m}", emitted);
         Assert.Equal(false, LocalNativeHost.Evaluate(emitted, new()
         {
             ["First"] = JObject.Parse("""{"Total":500}"""), ["Second"] = JObject.Parse("""{"Total":499.99}"""),
@@ -57,7 +57,7 @@ public sealed class CoreCompositeCatalogTests
             var sharepoint = WorkflowActions.BuiltIn.CustomCode<ItemsList>(_ => Task.FromResult<ItemsList>(null)).WithName("GetItems");
             """);
         EqualSource("""
-            @csharp{body("GetItems").ToObject<ItemsList>().Value.Where(entry => entry.DynamicProperties["active"].Value<bool>()).Select(entry => entry.DynamicProperties["name"].Value<string>()).ToArray()}
+            #{body("GetItems").ToObject<ItemsList>().Value.Where(entry => entry.DynamicProperties["active"].Value<bool>()).Select(entry => entry.DynamicProperties["name"].Value<string>()).ToArray()}
             """, emitted);
         var value = JObject.Parse("""
             {"value":[

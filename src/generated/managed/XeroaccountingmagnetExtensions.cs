@@ -178,7 +178,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Xeroaccountingmagnet
                 callPayload.Headers["xero-tenant-id"] = SourceExpressionConverter.ConvertO(xeroTenantId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["webhookUrl"] = "@listCallbackUrl()";
+                body["webhookUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

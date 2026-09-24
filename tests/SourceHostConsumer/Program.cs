@@ -5,7 +5,7 @@ if (args.Length != 1) throw new ArgumentException("Pass the isolated host output
 var directory = Path.GetFullPath(args[0]);
 var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
 Write("TemplateProbe", WorkflowActions.BuiltIn.Response(responseBody: () => $"Received request: {trigger.TriggerOutput.Body}").WithName("Response"));
-Write("LiteralProbe", WorkflowActions.BuiltIn.Response(responseBody: () => "@csharp{1 + 2}").WithName("Response"));
+Write("LiteralProbe", WorkflowActions.BuiltIn.Response(responseBody: () => "#{1 + 2}").WithName("Response"));
 
 var count = WorkflowActions.BuiltIn.Compose<int>(input: () => 2).WithName("Count");
 var native = WorkflowActions.BuiltIn.Response(responseBody: () => count.Output + 1).WithName("Response");

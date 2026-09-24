@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Envoy
                     bodypropCount++;
                 }
 
-                body["callback-url"] = "@listCallbackUrl()";
+                body["callback-url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

@@ -176,7 +176,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["target_url"] = "@listCallbackUrl()";
+                body["target_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["event"] = "document_signed";
                 bodypropCount++;
@@ -199,7 +199,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["target_url"] = "@listCallbackUrl()";
+                body["target_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["event"] = "envelope_created";
                 bodypropCount++;
@@ -222,7 +222,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Esign
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["target_url"] = "@listCallbackUrl()";
+                body["target_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 body["event"] = "envelope_completed";
                 bodypropCount++;

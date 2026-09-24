@@ -7,8 +7,8 @@ using static ConsumerCompilation;
 public sealed class FinalCatalogGapTests
 {
     [Theory]
-    [InlineData("P04", "$\"hello{trigger.TriggerOutput.Body}\"", "hello@{triggerBody()}")]
-    [InlineData("DG01", "source.Output", "@outputs('Source')")]
+    [InlineData("P04", "$\"hello{trigger.TriggerOutput.Body}\"", "#{$\"hello{triggerBody()}\"}")]
+    [InlineData("DG01", "source.Output", "#{outputs(\"Source\")}")]
     public void Source_visible_Expression_local_requires_unchanged_authoring_compatibility(
         string catalog, string input, string expected)
     {
@@ -50,7 +50,7 @@ public sealed class FinalCatalogGapTests
             return WorkflowActions.BuiltIn.Response(statusCode: () => (System.Net.HttpStatusCode)count.Output).GetActionDefinition("Catalog");
             """));
         var emitted = Token(result.Definition)["statusCode"]!.Value<string>()!;
-        EqualSource("@csharp{(int)(System.Net.HttpStatusCode)outputs(\"Count\").ToObject<int>()}", emitted);
+        EqualSource("#{(int)(System.Net.HttpStatusCode)outputs(\"Count\").ToObject<int>()}", emitted);
         Assert.Equal(202, Assert.IsType<int>(LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(202) }).Value));
     }
 
@@ -74,7 +74,7 @@ public sealed class FinalCatalogGapTests
                 actions: () => WorkflowActions.BuiltIn.Compose(inputs: () => "loop")).GetActionDefinition("Catalog");
             """));
         var emitted = result.Definition.Expression.Value<string>()!;
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() >= 3}", emitted);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() >= 3}", emitted);
         Assert.Equal(true, LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3) }).Value);
         Assert.Equal(false, LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(2) }).Value);
     }
@@ -87,18 +87,18 @@ public sealed class FinalCatalogGapTests
                 cases: () => new Dictionary<string, SwitchCase>()).GetActionDefinition("Catalog");
             """));
         var emitted = result.Definition.Expression.Value<string>()!;
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() + 1}", emitted);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() + 1}", emitted);
         Assert.Equal(4, Assert.IsType<int>(LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3) }).Value));
     }
 
     [Fact, Trait("Catalog", "I07")]
-    public void Typed_list_ForEach_reference_keeps_catalog_collection_type()
+    public void Typed_list_ForEach_reference_preserves_the_JSON_collection()
     {
         var result = Build(Source(Handles + CoreHandles + """
             return WorkflowActions.BuiltIn.Control.ForEach(items: () => values.Output,
                 actions: item => WorkflowActions.BuiltIn.Compose(inputs: () => "item")).GetActionDefinition("Catalog");
             """));
-        Assert.Equal("@outputs('Values')", result.Definition.Foreach.Value<string>());
+        EqualSource("#{outputs(\"Values\")}", result.Definition.Foreach.Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "I08"), Trait("Catalog", "IN12")]
@@ -109,7 +109,7 @@ public sealed class FinalCatalogGapTests
                 actions: item => WorkflowActions.BuiltIn.Compose(inputs: () => "item")).GetActionDefinition("Catalog");
             """));
         var emitted = result.Definition.Foreach.Value<string>()!;
-        EqualSource("@csharp{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).ToArray()}", emitted);
+        EqualSource("#{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).ToArray()}", emitted);
         Assert.Equal([2, 3], Assert.IsType<int[]>(LocalNativeHost.Evaluate(emitted, new() { ["Values"] = new JArray(1, 2, 3) }).Value));
     }
 
@@ -117,7 +117,7 @@ public sealed class FinalCatalogGapTests
     public void Null_conditional_string_access_materializes_CLR_null()
     {
         var emitted = Native("source.Output?.ToUpperInvariant() ?? \"none\"");
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>()?.ToUpperInvariant() ?? \"none\"}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>()?.ToUpperInvariant() ?? \"none\"}", emitted);
         Assert.Equal("none", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = JValue.CreateNull() }).Value);
         Assert.Equal("HELLO", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("hello") }).Value);
     }
@@ -126,7 +126,7 @@ public sealed class FinalCatalogGapTests
     public void Explicit_trigger_value_conversion_is_preserved_in_arithmetic()
     {
         var emitted = Native("trigger.TriggerOutput.Body[\"value\"].Value<int>() + 2");
-        EqualSource("@csharp{triggerBody()[\"value\"].Value<int>() + 2}", emitted);
+        EqualSource("#{triggerBody()[\"value\"].Value<int>() + 2}", emitted);
         Assert.Equal(5, Assert.IsType<int>(LocalNativeHost.Evaluate(emitted,
             new() { ["Trigger"] = JObject.Parse("""{"value":3}""") }).Value));
     }
@@ -135,7 +135,7 @@ public sealed class FinalCatalogGapTests
     public void Ordinary_boolean_input_retains_native_predicate()
     {
         var emitted = Native("count.Output == 3", resultType: "bool");
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() == 3}", emitted);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() == 3}", emitted);
         Assert.True(Assert.IsType<bool>(LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3) }).Value));
         Assert.False(Assert.IsType<bool>(LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(2) }).Value));
     }
@@ -150,14 +150,14 @@ public sealed class FinalCatalogGapTests
             """));
         var body = Token(result.Definition)["body"]!;
         Assert.Equal("text/plain", body["ContentType"]!.Value<string>());
-        EqualSource("@csharp{base64(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}", body["ContentData"]!.Value<string>()!);
+        EqualSource("#{base64(outputs(\"Source\").ToObject<string>().ToUpperInvariant())}", body["ContentData"]!.Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "DG08")]
     public void Literal_zero_divisor_fails_only_at_native_execution()
     {
         var emitted = Native("count.Output / 0");
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() / 0}", emitted);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() / 0}", emitted);
         Assert.Throws<DivideByZeroException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3) }));
     }
 

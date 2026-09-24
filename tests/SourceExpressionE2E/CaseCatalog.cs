@@ -92,11 +92,20 @@ public static class CaseCatalog
 
     private static void ValidateRuntimeSafety(JObject workflow, string caseId)
     {
+        foreach (var value in workflow.Descendants().OfType<JValue>().Where(value => value.Type == JTokenType.String))
+        {
+            var text = (string)value;
+            if (text.StartsWith("@@", StringComparison.Ordinal) || text.StartsWith("#{", StringComparison.Ordinal))
+                continue;
+            if (text.StartsWith("@", StringComparison.Ordinal) || text.Contains("@{", StringComparison.Ordinal))
+                throw new InvalidOperationException($"E2E expression contract: only C# expressions or escaped literals are permitted at '{value.Path}'.");
+        }
         var triggers = (JObject)workflow["definition"]["triggers"];
         if (triggers.Count != 1 || triggers.Properties().Any(property =>
             (string)property.Value["type"] != "Request" || (string)property.Value["kind"] != "Http"))
             throw new InvalidOperationException("E2E safety: only one local HTTP request trigger is permitted.");
         ValidateActions((JObject)workflow["definition"]["actions"], caseId);
+        ServiceProviderFixtures.ValidateDefinition(caseId, workflow);
     }
 
     private static void ValidateActions(JObject actions, string caseId)
@@ -126,7 +135,9 @@ public static class CaseCatalog
                 action["inputs"] is JObject inputs && inputs.Count == 1 &&
                 inputs["userFunctionName"] is JValue { Type: JTokenType.String } function &&
                 (string)function == seedMethod;
-            if (type == null || (!allowed.Contains(type) && !reviewedSeed))
+            var reviewedProvider = type == "ServiceProvider" &&
+                ServiceProviderFixtures.IsAllowedAction(caseId, property.Name, action);
+            if (type == null || (!allowed.Contains(type) && !reviewedSeed && !reviewedProvider))
                 throw new InvalidOperationException($"E2E safety: action '{property.Name}' of type '{type}' is not allowed.");
             if (action["actions"] is JObject nested) ValidateActions(nested, caseId);
             if (action["else"]?["actions"] is JObject alternative) ValidateActions(alternative, caseId);

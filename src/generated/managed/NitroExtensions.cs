@@ -40,7 +40,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Nitro
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["endpoint"] = "@listCallbackUrl()";
+                request["endpoint"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 request["event"] = "esign.request.completed";
                 requestpropCount++;

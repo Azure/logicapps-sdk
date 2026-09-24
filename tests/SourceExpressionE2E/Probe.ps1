@@ -5,6 +5,7 @@ param(
     [Parameter(Mandatory)][string]$OutputPath,
     [string]$HostLogPath,
     [string[]]$CaseIds,
+    [switch]$IncludeServiceProviders,
     [switch]$RecordOnly
 )
 $ErrorActionPreference = 'Stop'
@@ -15,7 +16,7 @@ if (-not $origin.IsLoopback -or $origin.Scheme -ne 'http') {
 }
 $allowedContentPorts = @($origin.Port)
 $hostSettings = Get-Content -Raw (Join-Path $HostDirectory 'local.settings.json') | ConvertFrom-Json
-foreach ($endpoint in [regex]::Matches($hostSettings.Values.AzureWebJobsStorage, '(?:Blob|Queue|Table)Endpoint=([^;]+)')) {
+foreach ($endpoint in [regex]::Matches($hostSettings.Values.AzureWebJobsStorage, '(?i)(?:Blob|Queue|Table)Endpoint=([^;]+)')) {
     $storageUri = [Uri]$endpoint.Groups[1].Value
     if (-not $storageUri.IsLoopback -or $storageUri.Scheme -ne 'http') {
         throw 'Only loopback storage content is allowed.'
@@ -103,6 +104,9 @@ if ($warmup.StatusCode -ne 200 -or $warmup.Content -cne 'ready') {
     throw 'Real readiness workflow failed; do not interpret this host as a valid comparison environment.'
 }
 $allCases = @(Get-Content -Raw (Join-Path $DefinitionsDirectory 'generation-results.json') | ConvertFrom-Json)
+if (-not $IncludeServiceProviders) {
+    $allCases = @($allCases | Where-Object { $_.case.id -notlike 'ServiceProvider*' })
+}
 $cases = if ($CaseIds) { @($allCases | Where-Object { $_.case.id -in $CaseIds }) } else { $allCases }
 if (-not $cases.Count) { throw 'No cases selected.' }
 if ($CaseIds -and @($CaseIds | Where-Object { $_ -notin $cases.case.id }).Count) {

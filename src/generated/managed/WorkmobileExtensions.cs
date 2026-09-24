@@ -55,7 +55,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Workmobile
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["userFormId"] = SourceExpressionConverter.ConvertToken(bodyuserFormId);
-                body["url"] = "@listCallbackUrl()";
+                body["url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["includeSubFormData"] = SourceExpressionConverter.ConvertToken(bodyincludeSubFormData);

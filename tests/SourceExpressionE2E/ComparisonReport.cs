@@ -120,6 +120,7 @@ public static class ComparisonReport
                         && ((string)result["responseContract"] == "HandledResponseFailure"
                             ? SatisfiesHandledResponseFailure(result)
                             : result["actions"].All(action => (string)action["status"] == "Succeeded"));
+                passed = passed && ServiceProviderFixtures.SatisfiesRoundTrip(result);
             }
             result["passed"] = passed;
         }

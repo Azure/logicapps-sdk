@@ -72,7 +72,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Plumsailforms
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var subscriber = new JObject();
                 var subscriberpropCount = 0;
-                subscriber["callbackUrl"] = "@listCallbackUrl()";
+                subscriber["callbackUrl"] = "#{listCallbackUrl()}";
                 subscriberpropCount++;
                 subscriberpropCount++;
                 subscriber["formId"] = SourceExpressionConverter.ConvertToken(subscriberform);

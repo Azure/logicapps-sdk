@@ -9,7 +9,7 @@ public static class ResponseBodyCases
         ResponseContract = "HandledResponseFailure",
         ExpectedFailedAction = "InvalidResponse",
         ExpectedActionErrorCode = "InvalidResponseBody",
-        ExpectedActionError = "The response body contains a value that can't be converted to supported response content. Update the response body to use a supported value.")]
+        ExpectedActionError = "The response body contains a value that can not be converted to supported response content. Update the response body to use a supported value.")]
     public static FlowDefinition FallbackResponse()
     {
         var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");

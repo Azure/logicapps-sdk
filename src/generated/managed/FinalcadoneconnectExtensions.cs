@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
                 body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
-                body["client_url"] = "@listCallbackUrl()";
+                body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -156,7 +156,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
                 body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
-                body["client_url"] = "@listCallbackUrl()";
+                body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -183,7 +183,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
                 body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
-                body["client_url"] = "@listCallbackUrl()";
+                body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -210,7 +210,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
                 body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
-                body["client_url"] = "@listCallbackUrl()";
+                body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -237,7 +237,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Finalcadoneconnect
                 body["business_organization_id"] = SourceExpressionConverter.ConvertToken(bodyorganizationID);
                 bodypropCount++;
                 body["project_id"] = SourceExpressionConverter.ConvertToken(bodyprojectID);
-                body["client_url"] = "@listCallbackUrl()";
+                body["client_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

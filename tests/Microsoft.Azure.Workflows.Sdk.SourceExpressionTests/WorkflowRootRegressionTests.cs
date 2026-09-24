@@ -15,21 +15,63 @@ public sealed class WorkflowRootRegressionTests
         """;
 
     [Theory]
-    [InlineData("queueTrigger.TriggerBody.MessageId", "@triggerBody()['messageId']",
+    [InlineData(true, "#{triggerOutputs()?[\"body\"]}")]
+    [InlineData(false, null)]
+    public void Managed_trigger_splitOn_uses_one_native_envelope_only_when_enabled(bool enabled, string? expected)
+    {
+        var trigger = (ApiConnectionTrigger)Activator.CreateInstance(
+            typeof(ApiConnectionTrigger),
+            System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic,
+            binder: null,
+            args: [new Func<ApiConnectionActionInput>(() => new ApiConnectionActionInput("/queue", "get", "connection")), "QueueTrigger", null, enabled],
+            culture: null)!;
+        var definition = trigger.GetTriggerDefinition();
+        Assert.Equal(expected, definition.SplitOn);
+        var serialized = JObject.Parse(definition.ToJson());
+        Assert.Equal(expected, serialized["splitOn"]?.Value<string>());
+        AssertNoTemplateExpressions(serialized);
+    }
+
+    [Fact]
+    public void Generated_webhook_callback_default_is_an_executable_CSharp_expression_not_an_escaped_literal()
+    {
+        var built = Build(Source("""
+            var trigger = WorkflowTriggers.Managed.Signinghubwebhooks("connection")
+                .WebhookSubscribeTrigger(
+                    bodyeventType: () => Microsoft.Azure.Workflows.Sdk.Connectors.Signinghubwebhooks.bodyeventTypeInput.SIGNED);
+            return new FlowTemplateAction { Inputs = trigger.GetTriggerDefinition().Inputs };
+            """));
+        var inputs = Token(built.Definition);
+        Assert.Equal("/powerautomate/webhook/subscribe", inputs["path"]!.Value<string>());
+        Assert.Equal("post", inputs["method"]!.Value<string>());
+        Assert.Equal("#{listCallbackUrl()}", inputs["body"]!["callbackUrl"]!.Value<string>());
+        Assert.Equal("SIGNED", inputs["body"]!["eventType"]!.Value<string>());
+        Assert.Equal(2, Assert.IsType<JObject>(inputs["body"]).Count);
+    }
+
+    [Theory]
+    [InlineData("queueTrigger.TriggerBody.MessageId",
+        "#{triggerBody()[\"messageId\"]}",
         "triggerBody().ToObject<Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues.ReceiveQueueMessagesOutput>().MessageId",
         "Trigger", """{"messageId":"abc"}""")]
-    [InlineData("sent.Output.MessageId", "@outputs('Sent')['messageId']",
+    [InlineData("sent.Output.MessageId",
+        "#{outputs(\"Sent\")[\"messageId\"]}",
         "outputs(\"Sent\").ToObject<Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues.PutMessageOutput>().MessageId",
         "Sent", """{"messageId":"abc"}""")]
-    [InlineData("queues.Body.ContinuationToken", "@body('Queues')['continuationToken']",
+    [InlineData("queues.Body.ContinuationToken",
+        "#{body(\"Queues\")[\"continuationToken\"]}",
         "body(\"Queues\").ToObject<Microsoft.Azure.Workflows.Sdk.ServiceProviders.Azurequeues.ListQueuesOutput>().ContinuationToken",
         "Queues", """{"continuationToken":"abc"}""")]
-    public void Generated_workflow_member_chains_are_not_implicit_captured_getters(
-        string expression, string template, string nativeRoot, string helperKey, string json)
+    public void Generated_workflow_paths_are_JSON_native_while_operations_preserve_typed_source(
+        string expression, string wireExpression, string nativeRoot, string helperKey, string json)
     {
-        Assert.Equal(template, Input(expression, GeneratedHandles)!.Value<string>());
+        var wire = Input(expression, GeneratedHandles)!.Value<string>()!;
+        EqualSource(wireExpression, wire);
+        var passedThrough = LocalNativeHost.Evaluate(wire, new() { [helperKey] = JToken.Parse(json) });
+        Assert.Equal("abc", Assert.IsType<JValue>(passedThrough.Value).Value<string>());
+        Assert.Equal([helperKey], passedThrough.Reads);
         var emitted = Native(expression + ".ToUpperInvariant()", GeneratedHandles);
-        EqualSource("@csharp{" + nativeRoot + ".ToUpperInvariant()}", emitted);
+        EqualSource("#{" + nativeRoot + ".ToUpperInvariant()}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new() { [helperKey] = JToken.Parse(json) });
         Assert.Equal("ABC", local.Value);
         Assert.Equal([helperKey], local.Reads);
@@ -57,7 +99,7 @@ public sealed class WorkflowRootRegressionTests
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
         EqualSource("""
-            @csharp{new global::Consumer.RuntimePayload
+            #{new global::Consumer.RuntimePayload
             {
                 Label = outputs("Source").ToObject<string>().ToUpperInvariant(),
                 Count = outputs("Count").ToObject<int>() + 1
@@ -93,9 +135,9 @@ public sealed class WorkflowRootRegressionTests
         Assert.Equal("System", messages[0]["role"]!.Value<string>());
         Assert.Equal("You are helpful.", messages[0]["content"]!.Value<string>());
         Assert.Equal("User", messages[1]["role"]!.Value<string>());
-        Assert.Equal("Name: @{outputs('Source')}", messages[1]["content"]!.Value<string>());
+        Assert.Equal("#{$\"Name: {outputs(\"Source\").ToObject<string>()}\"}", messages[1]["content"]!.Value<string>());
         Assert.Equal("Assistant", messages[2]["role"]!.Value<string>());
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", messages[2]["content"]!.Value<string>()!);
+        EqualSource("#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", messages[2]["content"]!.Value<string>()!);
         Assert.Contains("SourceExpression.Array<", result.Transformation.Sources["Consumer.cs"]);
         Assert.Contains("SourceExpression.Object<", result.Transformation.Sources["Consumer.cs"]);
     }
@@ -119,7 +161,7 @@ public sealed class WorkflowRootRegressionTests
             """, fixture));
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{outputs(\"Model\").ToObject<global::Consumer.ComputedModel>().Upper}", emitted);
+        EqualSource("#{outputs(\"Model\").ToObject<global::Consumer.ComputedModel>().Upper}", emitted);
         var local = LocalNativeHost.Evaluate(emitted,
             new() { ["Model"] = JObject.Parse("""{"Text":"abc"}""") },
             "public static class Consumer { " + fixture + " }");

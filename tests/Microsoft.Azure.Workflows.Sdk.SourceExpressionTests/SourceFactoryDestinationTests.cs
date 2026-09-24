@@ -10,7 +10,7 @@ public sealed class SourceFactoryDestinationTests
     {
         var result = SchemaConsumerCompilation.Build("CatalogDestinations.EncodeText(content: expression)",
             """Func<object> expression = () => "hello";""");
-        Assert.Equal("@base64('hello')", result.Value.Value<string>());
+        Assert.Equal("#{base64(\"hello\")}", result.Value.Value<string>());
         Assert.Contains("SourceExpression.Box", result.Transformation.Sources["Consumer.cs"]);
     }
 
@@ -23,7 +23,7 @@ public sealed class SourceFactoryDestinationTests
                 => () => action.Output + suffix;
             """);
         Assert.Contains("SourceExpression.Box", result.Transformation.Sources["Consumer.cs"]);
-        EqualSource("""@csharp{base64(outputs("Source").ToObject<string>() + "!")}""", result.Value.Value<string>()!);
+        EqualSource("""#{base64(outputs("Source").ToObject<string>() + "!")}""", result.Value.Value<string>()!);
     }
 
     [Fact]
@@ -34,7 +34,7 @@ public sealed class SourceFactoryDestinationTests
             Func<PayloadModel> Factory(IOutputWorkflowAction<string> action)
                 => () => new PayloadModel { Name = action.Output };
             """);
-        Assert.Equal("@outputs('Source')", result.Value["display_name"]!.Value<string>());
+        Assert.Equal("#{outputs(\"Source\")}", result.Value["display_name"]!.Value<string>());
         Assert.True(result.Value["enabled"]!.Value<bool>());
         Assert.Contains("SourceExpression.Model<", result.Transformation.Sources["Consumer.cs"]);
     }
@@ -48,7 +48,7 @@ public sealed class SourceFactoryDestinationTests
             var expression = Factory();
             _ = CatalogDestinations.EncodeText(content: expression);
             """);
-        Assert.Equal("@base64('hello')", result.Value.Value<string>());
+        Assert.Equal("#{base64(\"hello\")}", result.Value.Value<string>());
     }
 
     [Fact]
@@ -67,7 +67,7 @@ public sealed class SourceFactoryDestinationTests
     {
         var result = SchemaConsumerCompilation.Build("CatalogDestinations.SinglePath(content: Factory())",
             """Func<object> Factory() => () => "a b";""");
-        Assert.Equal("/items/@{encodeURIComponent('a b')}", result.Value.Value<string>());
+        Assert.Equal("#{string.Format(\"/items/{0}\", encodeURIComponent(\"a b\"))}", result.Value.Value<string>());
     }
 
     [Theory]

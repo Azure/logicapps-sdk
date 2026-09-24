@@ -24,7 +24,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUri"] = "@listCallbackUrl()";
+                request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
                 request["prompt"] = SourceExpressionConverter.ConvertToken(requestprompt);
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUri"] = "@listCallbackUrl()";
+                request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
                 request["prompt"] = SourceExpressionConverter.ConvertToken(requestprompt);
@@ -174,7 +174,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var request = new JObject();
                 var requestpropCount = 0;
-                request["callbackUri"] = "@listCallbackUrl()";
+                request["callbackUri"] = "#{listCallbackUrl()}";
                 requestpropCount++;
                 requestpropCount++;
                 request["prompt"] = SourceExpressionConverter.ConvertToken(requestprompt);
@@ -203,7 +203,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);
@@ -235,7 +235,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 body["intent"] = SourceExpressionConverter.ConvertToken(bodyintent);
                 bodypropCount++;
                 body["description"] = SourceExpressionConverter.ConvertToken(bodydescription);
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -259,7 +259,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Companyconnect
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var body = new JObject();
                 var bodypropCount = 0;
-                body["callbackUrl"] = "@listCallbackUrl()";
+                body["callbackUrl"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 bodypropCount++;
                 body["title"] = SourceExpressionConverter.ConvertToken(bodytitle);

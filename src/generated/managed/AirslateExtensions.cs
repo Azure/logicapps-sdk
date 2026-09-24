@@ -66,7 +66,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Airslate
                 var bodypropCount = 0;
                 bodypropCount++;
                 body["botToken"] = SourceExpressionConverter.ConvertToken(bodybotAuthorizationToken);
-                body["callback"] = "@listCallbackUrl()";
+                body["callback"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

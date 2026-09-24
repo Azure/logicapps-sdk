@@ -215,12 +215,14 @@ public sealed class SchemaGeneratorTests
         Assert.Throws<InvalidDataException>(() => WorkflowSchemaGenerator.Generate(input));
     }
 
-    [Fact]
-    public void Metadata_literals_round_trip_quotes_controls_and_expression_markers_without_source_injection()
+    [Theory]
+    [InlineData("@csharp{Evil()}")]
+    [InlineData("#{Evil()}")]
+    public void Metadata_literals_round_trip_quotes_controls_and_expression_markers_without_source_injection(string marker)
     {
         var root = JsonNode.Parse(Fixture())!;
         var schema = root["operations"]![0]!["parameters"]![0]!["schema"]!;
-        schema["destination"] = "\"\r\n\\\u2028@csharp{Evil()}\u2029";
+        schema["destination"] = "\"\r\n\\\u2028" + marker + "\u2029";
         var files = WorkflowSchemaGenerator.Generate(root.ToJsonString());
         var syntax = CSharpSyntaxTree.ParseText(files["CatalogDestinations.g.cs"]);
         Assert.Empty(syntax.GetDiagnostics());

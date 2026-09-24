@@ -24,8 +24,8 @@ public class RuntimeLiteralSafetyTests
         var descriptor = SourceExpression.Create<object>(1, "native", [prefix, suffix],
             [SourceBinding.Capture(value, declaredType)]);
         var text = ((JValue)WorkflowActions.BuiltIn.Compose(descriptor).GetActionDefinition("test").Inputs).Value<string>();
-        Assert.StartsWith("@csharp{", text);
-        return text.Substring(8, text.Length - 9);
+        Assert.StartsWith("#{", text);
+        return ConsumerCompilation.NativeBody(text);
     }
 
     [Fact]
@@ -50,7 +50,7 @@ public class RuntimeLiteralSafetyTests
                 };
             };
             var definition = action.GetActionDefinition("test");
-            Assert.Equal("@base64('{\"MixedCase\":[1,true,\"text\"]}')",
+            Assert.Equal("#{base64(\"{\\\"MixedCase\\\":[1,true,\\\"text\\\"]}\")}",
                 definition.Inputs.ToJToken()["body"]["ContentData"].Value<string>());
             Assert.Equal(baseline, definition.ToJson());
             Assert.Equal(0, factoryCalls);

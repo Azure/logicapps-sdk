@@ -158,12 +158,58 @@ public static partial class CaptureCases
         return Finish("CapturedNewline", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
     }
 
-    [WorkflowCase("LiteralNativeMarker", "@csharp{1 + 2}", FailureIds = new[] { "F023" })]
+    [WorkflowCase("LiteralNativeMarker", "#{1 + 2}", FailureIds = new[] { "F023" })]
     public static FlowDefinition LiteralNativeMarker()
     {
         var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
-        var result = WorkflowActions.BuiltIn.Compose<object>(() => "@csharp{1 + 2}");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "#{1 + 2}");
         return Finish("LiteralNativeMarker", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
+    }
+
+    [WorkflowCase("LiteralOldNativeMarker", "@csharp{1 + 2}",
+        Description = "The retired expression envelope remains literal user data, not executable C#.")]
+    public static FlowDefinition LiteralOldNativeMarker()
+    {
+        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "@csharp{1 + 2}");
+        return Finish("LiteralOldNativeMarker", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
+    }
+
+    [WorkflowCase("LiteralDoubleHashMarker", "##{1 + 2}",
+        Description = "Double hash is not an escape sequence; both hashes must survive.")]
+    public static FlowDefinition LiteralDoubleHashMarker()
+    {
+        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "##{1 + 2}");
+        return Finish("LiteralDoubleHashMarker", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
+    }
+
+    [WorkflowCase("LiteralEmbeddedNativeMarker", "before #{1 + 2} after",
+        Description = "Only a leading hash envelope is executable; embedded hash text stays literal.")]
+    public static FlowDefinition LiteralEmbeddedNativeMarker()
+    {
+        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "before #{1 + 2} after");
+        return Finish("LiteralEmbeddedNativeMarker", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
+    }
+
+    [WorkflowCase("LiteralEmbeddedTemplateMarker", "before @{add(1, 2)} after",
+        Description = "Authored text must not execute as legacy template interpolation.")]
+    public static FlowDefinition LiteralEmbeddedTemplateMarker()
+    {
+        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "before @{add(1, 2)} after");
+        return Finish("LiteralEmbeddedTemplateMarker", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"));
+    }
+
+    [WorkflowCase("NativeQuotedDirectiveText", "#r \"not-loaded.dll\" #load \"not-loaded.csx\"!",
+        Description = "Directive-looking text within C# strings is data and must not load files.")]
+    public static FlowDefinition NativeQuotedDirectiveText()
+    {
+        var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("manual");
+        var source = WorkflowActions.BuiltIn.Compose<string>(() => "!").WithName("Source");
+        var result = WorkflowActions.BuiltIn.Compose<object>(() => "#r \"not-loaded.dll\" #load \"not-loaded.csx\"" + source.Output);
+        return Finish("NativeQuotedDirectiveText", trigger, result.WithName("Result"), WorkflowActions.BuiltIn.Response(responseBody: () => result.Output).WithName("Response"), source);
     }
 
     [WorkflowCase("LiteralTemplateMarker", "@outputs('Source')", FailureIds = new[] { "F024" })]

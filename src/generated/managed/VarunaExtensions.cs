@@ -129,7 +129,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Varuna
                     bodypropCount++;
                 }
 
-                body["Endpoint"] = "@listCallbackUrl()";
+                body["Endpoint"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

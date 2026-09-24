@@ -17,7 +17,7 @@ public sealed class CoreConversionCatalogTests
     {
         Assert.NotEmpty(catalog);
         var emitted = Native(input);
-        EqualSource("@csharp{" + expectedBody + "}", emitted);
+        EqualSource("#{" + expectedBody + "}", emitted);
         var value = LocalNativeHost.Evaluate(emitted, new() { ["Trigger"] = JObject.Parse(body) }).Value!;
         Assert.Equal(expectedType, value.GetType().FullName);
         Assert.True(JToken.DeepEquals(JToken.Parse(expectedJson), JToken.FromObject(value)));
@@ -27,7 +27,7 @@ public sealed class CoreConversionCatalogTests
     public void Conditional_conversion_does_not_read_unselected_count()
     {
         var emitted = Native("flag.Output ? count.Output + 1 : 0");
-        EqualSource("@csharp{outputs(\"Flag\").ToObject<bool>() ? outputs(\"Count\").ToObject<int>() + 1 : 0}", emitted);
+        EqualSource("#{outputs(\"Flag\").ToObject<bool>() ? outputs(\"Count\").ToObject<int>() + 1 : 0}", emitted);
         var noCount = LocalNativeHost.Evaluate(emitted, new() { ["Flag"] = new JValue(false) });
         Assert.Equal(0, Assert.IsType<int>(noCount.Value));
         Assert.Equal(["Flag"], noCount.Reads);
@@ -47,7 +47,7 @@ public sealed class CoreConversionCatalogTests
     public void Nullable_Value_conversion_returns_clr_null()
     {
         var emitted = Native("trigger.TriggerOutput.Body[\"value\"].Value<int?>()");
-        EqualSource("@csharp{triggerBody()[\"value\"].Value<int?>()}", emitted);
+        EqualSource("#{triggerBody()[\"value\"].Value<int?>()}", emitted);
         Assert.Null(LocalNativeHost.Evaluate(emitted, new() { ["Trigger"] = JObject.Parse("""{"value":null}""") }).Value);
     }
 
@@ -55,7 +55,7 @@ public sealed class CoreConversionCatalogTests
     public void ToObject_on_missing_property_preserves_null_receiver_failure()
     {
         var emitted = Native("trigger.TriggerOutput.Body[\"value\"].ToObject<int>()");
-        EqualSource("@csharp{triggerBody()[\"value\"].ToObject<int>()}", emitted);
+        EqualSource("#{triggerBody()[\"value\"].ToObject<int>()}", emitted);
         Assert.Throws<NullReferenceException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Trigger"] = new JObject() }));
     }
 }

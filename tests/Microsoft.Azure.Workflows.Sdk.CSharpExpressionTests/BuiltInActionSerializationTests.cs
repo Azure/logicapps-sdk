@@ -7,8 +7,10 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
     using System;
     using System.Collections.Generic;
     using System.Net;
+    using Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures;
     using Newtonsoft.Json.Linq;
 
+    [Collection("Runtime-dependent expressions")]
     public class BuiltInActionSerializationTests
     {
         [Fact]
@@ -78,7 +80,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void HttpAction_ConvertsInlineQueryAndHeaderValuesWithHybridSelection()
+        public void HttpAction_ConvertsInlineQueryAndHeaderValuesToCSharp()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var action = WorkflowActions.BuiltIn.HttpAction(
@@ -97,13 +99,13 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var inputs = JObject.Parse(action.GetActionDefinition("workflow").ToJson())["inputs"];
 
-            Assert.Equal("@outputs('Source')", inputs["queries"]["template"].Value<string>());
+            Assert.Equal("#{outputs(\"Source\")}", inputs["queries"]["template"].Value<string>());
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
+                "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
                 inputs["queries"]["csharp"].Value<string>());
-            Assert.Equal("@outputs('Source')", inputs["headers"]["x-template"].Value<string>());
+            Assert.Equal("#{outputs(\"Source\")}", inputs["headers"]["x-template"].Value<string>());
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToLowerInvariant()}",
+                "#{outputs(\"Source\").ToObject<string>().ToLowerInvariant()}",
                 inputs["headers"]["x-csharp"].Value<string>());
         }
 
@@ -143,7 +145,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         }
 
         [Fact]
-        public void Response_UsesHybridConversionForAllExpressionInputs()
+        public void Response_UsesCSharpForAllExpressionInputs()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var flag = WorkflowActions.BuiltIn.Compose<bool>(() => false).WithName("Flag");
@@ -159,16 +161,16 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
             var inputs = JObject.Parse(action.GetActionDefinition("workflow").ToJson())["inputs"];
 
-            Assert.StartsWith("@csharp{", inputs["statusCode"].Value<string>());
+            Assert.StartsWith("#{", inputs["statusCode"].Value<string>());
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
+                "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
                 inputs["body"].Value<string>());
-            Assert.Equal("@outputs('Source')", inputs["headers"]["x-template"].Value<string>());
+            Assert.Equal("#{outputs(\"Source\")}", inputs["headers"]["x-template"].Value<string>());
             Assert.True(JToken.DeepEquals(schema, inputs["schema"]));
         }
 
         [Fact]
-        public void Agent_UsesHybridConversionForMessageContent()
+        public void Agent_UsesCSharpForMessageContent()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var action = WorkflowActions.BuiltIn.Agent(
@@ -191,19 +193,20 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 });
 
             var messages = action.GetActionDefinition("workflow").Inputs.ToJToken()["parameters"]["messages"];
-            Assert.Equal("@outputs('Source')", messages[0]["content"].Value<string>());
+            Assert.Equal("#{outputs(\"Source\")}", messages[0]["content"].Value<string>());
             using var compiled = EmittedExpressionCompiler.Compile(messages[1]["content"].Value<string>());
             Assert.Equal("HELLO", compiled.Evaluate(new Dictionary<string, JToken> { ["Source"] = "hello" }));
         }
 
         [Fact]
-        public void ConvertObject_DoesNotExecuteArbitraryUserCode()
+        public void ExecutableHeaders_AreRejectedWithoutExecutingUserCode()
         {
-            var counter = new InvocationCounter();
+            RuntimeValues.HeadersCalls = 0;
+            var action = WorkflowActions.BuiltIn.Response(headers: () => RuntimeValues.CreateHeaders());
 
             Assert.Throws<NotSupportedException>(
-                () => CSharpExpressionConverter.ConvertObject(() => counter.CreateHeaders()));
-            Assert.Equal(0, counter.Count);
+                () => action.GetActionDefinition("workflow"));
+            Assert.Equal(0, RuntimeValues.HeadersCalls);
         }
 
         [Fact]
@@ -332,17 +335,6 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                 jArray);
         }
 
-        private sealed class InvocationCounter
-        {
-            public int Count { get; private set; }
-
-            public Dictionary<string, string> CreateHeaders()
-            {
-                this.Count++;
-                return new Dictionary<string, string>();
-            }
-        }
-
         [Fact]
         public void WorkflowFactory_SerializesTopLevelRunAfterLikeDesigner()
         {
@@ -428,7 +420,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
                       "inputs": "true"
                     }
                   },
-                  "expression": "@csharp{\"ready\" == \"ready\"}",
+                  "expression": "#{\"ready\" == \"ready\"}",
                   "runAfter": {},
                   "else": {
                     "actions": {

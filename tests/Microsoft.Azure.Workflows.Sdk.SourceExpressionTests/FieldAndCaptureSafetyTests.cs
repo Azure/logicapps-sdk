@@ -15,7 +15,7 @@ public sealed class FieldAndCaptureSafetyTests
             HeldSource.WithName("Renamed");
             return action.GetActionDefinition("Catalog");
             """, "public static IOutputWorkflowAction<string> HeldSource;"));
-        Assert.Equal("@outputs('Renamed')", Token(built.Definition).Value<string>());
+        Assert.Equal("#{outputs(\"Renamed\")}", Token(built.Definition).Value<string>());
     }
 
     [Fact]
@@ -29,7 +29,7 @@ public sealed class FieldAndCaptureSafetyTests
             return action.GetActionDefinition("Catalog");
             """, "public sealed class Holder { public IOutputWorkflowAction<string> Source; }"));
         var emitted = Token(built.Definition).Value<string>()!;
-        EqualSource("@csharp{outputs(\"Renamed\").ToObject<string>().ToUpperInvariant()}", emitted);
+        EqualSource("#{outputs(\"Renamed\").ToObject<string>().ToUpperInvariant()}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Renamed"] = new JValue("hello") });
         Assert.Equal("HELLO", local.Value);
         Assert.Equal(["Renamed"], local.Reads);
@@ -50,7 +50,7 @@ public sealed class FieldAndCaptureSafetyTests
                     WorkflowActions.BuiltIn.Compose<string>(input: () => this.Source.Output).GetActionDefinition("Catalog");
             }
             """));
-        Assert.Equal("@outputs('FieldSource')", Token(built.Definition).Value<string>());
+        Assert.Equal("#{outputs(\"FieldSource\")}", Token(built.Definition).Value<string>());
     }
 
     [Theory]

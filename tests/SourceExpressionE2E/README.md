@@ -24,10 +24,17 @@ index, multi-hop Compose outputs, numeric conversions/addition, and a Response
 containing both the original payload and projected values. Captured cases mutate
 the original object after action construction to check deep snapshot isolation.
 These cases require no application-defined model or declaration bundle.
-Captured payloads remain literal JSON and string-key navigation remains template
-expressions. The current compiler retains inline parsing/construction, numeric
-indexing, and typed arithmetic as native C#; the regressions exercise those
-expressions rather than assuming every JSON accessor lowers to a template.
+Captured payloads remain literal JSON. All runtime expressions now use
+`#{...}`, including forwarding, string-key navigation, interpolation, and
+Response body references. Pass-through JSON uses raw runtime helpers without
+materializing application or generated model types. Inline parsing/construction,
+numeric indexing, and typed arithmetic also remain C#. Every exported workflow
+is checked for forbidden standalone template expressions and interpolation.
+The native envelope is now `#{...}`; it is not backward-compatible with hosts
+expecting `@csharp{...}`. Five additional cases preserve old-envelope literals,
+double hashes, embedded hash/template markers, and directive-looking C# strings.
+Literal `#{...}` text is returned through a C# string expression; `##` is not an
+escape sequence.
 
 ## Requirements
 
@@ -42,8 +49,10 @@ expressions rather than assuming every JSON accessor lowers to a template.
 Never commit runtime bundles, credentials, generated host settings, or run history.
 The harness rejects cloud storage and external connector/action execution. It
 permits core local actions, a single HTTP request trigger, and the nine reviewed
-in-memory seed callbacks listed under `customCodeSeedSafety` in the manifest. Connector-definition
-contracts must be inspected at authoring time, not sent to live services.
+in-memory seed callbacks listed under `customCodeSeedSafety` in the manifest.
+Six additional service-provider workflows use only isolated local Azurite through
+the dedicated runner below. Managed-connector definition contracts remain
+authoring-time checks, not requests to live services.
 This guard is not a C# sandbox; new expressions and callbacks still require review.
 
 ## Build the repository variant
@@ -144,6 +153,95 @@ readiness workflow before running the selected cases. It records:
 
 Signed callback and history URLs stay in memory, not in the result artifact.
 `Run-Local.ps1` restores the host settings and terminates its own process tree.
+
+## Azure Blob and Azure Queues service providers
+
+`Workflows\ServiceProviderCases.cs` adds six actual service-provider round trips,
+not managed-connector calls or mock evaluations. Export includes all 162 workflows.
+Ordinary `Run-Local.ps1` runs exclude these six unless explicitly enabled by the
+dedicated runner; the original 151 non-provider cases remain, plus five syntax
+and literal-preservation regressions.
+
+| Cases | Operations and runtime contract |
+| --- | --- |
+| `ServiceProviderBlobLiteral`, `ServiceProviderBlobTemplate`, `ServiceProviderBlobNative` | Upload text, read it back, return the exact content, delete the blob, and verify `blobExists` returns false. |
+| `ServiceProviderQueueLiteral`, `ServiceProviderQueueTemplate`, `ServiceProviderQueueNative` | Create a queue, send text, receive exactly one message, capture its content, delete it using its returned ID and pop receipt, verify a subsequent read is empty, and return the exact content. |
+
+Each provider has a literal payload, a direct Compose-output reference, and a
+`ToUpperInvariant()` payload. Generation checks require the literal to stay
+literal, the direct reference to be `#{outputs("Source")}`, and the method
+call to use `#{outputs("Source").ToObject<string>().ToUpperInvariant()}`.
+The `Template` case IDs are retained for historical comparisons; they now exercise
+C# references, not template expressions. Blob read-content navigation is
+`#{body("Read")["content"]}`. Queue foreach collections use
+`#{body("Read")}` and item conversions remain native C#.
+There are two C# expressions in BlobLiteral, three in BlobTemplate/BlobNative,
+six in QueueLiteral, and seven in QueueTemplate/QueueNative.
+No generated CLR model deployment is required for these pass-through paths.
+
+The former `@csharp{...}` run satisfied 133 of 157 contracts. Queue cases exposed
+missing Foreach dependency discovery: `body("Read")` could not access the preceding
+action. Keep that historical evidence separate from current runtime results.
+
+With `#{...}` and the rebuilt Andrew-based runtime (base
+`4a67469c61ed5c6386ee3167843eeb69a5b0c2f4` plus the local Foreach/Repeat and Response
+diagnostic fixes), all six provider cases pass on the isolated Core Tools host.
+The full run satisfies 142 of 162 contracts: the 19 unavailable custom-type cases
+and `NativeUri` remain failing. All previously passing cases still pass;
+`NativeUriFallbackResponse` now meets its recovery contract, and all five new
+literal/syntax cases pass. A strict 19-case representative run also passes.
+Queue metadata verifies zero remaining messages, cleanup deletes all six resources,
+and the owned host/emulator processes are stopped. No template fallback,
+custom-type deployment, or URI normalization is used.
+
+The subsequent simplified runtime removes the redundant Foreach/Repeat expression
+filter while retaining C# dependency registration. Its rebuilt payload passes the
+same strict 19-case host run, including all six providers and URI fallback recovery.
+That run preserves the user's revised `InvalidResponseBody` diagnostic wording
+(`can not`). The 142/162 full-run result above belongs to the earlier payload;
+the complete catalog was not rerun for this simplification.
+
+The prepared host must include the Azure Blob and Azure Queue provider extensions
+as well as the native-C# engine. Pass the Azurite JavaScript entry point, not its
+Windows command shim:
+
+```powershell
+.\tests\SourceExpressionE2E\Run-ServiceProviders.ps1 `
+  -FuncPath C:\tools\func.exe `
+  -AzuritePath C:\tools\node_modules\azurite\dist\src\azurite.js `
+  -HostDirectory C:\e2e\host-ours `
+  -WorkerDirectory C:\e2e\worker-ours `
+  -ResultsDirectory C:\e2e\runs\providers-001
+```
+
+Use a nonexistent results directory outside the repository. The runner starts its
+own Azurite process with fresh storage, binds only to `127.0.0.1`, and refuses
+occupied ports. Defaults are host 18571, Blob 18581, Queue 18582, Table 18583;
+each has a corresponding `-Port`, `-BlobPort`, `-QueuePort`, or `-TablePort` option.
+Do not start another emulator on those ports first.
+`-AdditionalCaseIds` runs other catalog cases alongside the six provider cases
+on the same isolated host, useful for checking expression migrations.
+
+The runner temporarily installs `e2eAzureBlob` and `e2eAzureQueues` connections
+using `@appsetting('AzureWebJobsStorage')`. Only the development account with
+explicit loopback endpoints is permitted. Resource names have a fresh
+`sdke2e-<run-id>` prefix, and definition validation restricts each action to its
+reviewed provider, operation, connection, and exact resource.
+Containers are provisioned by the runner; queues are created by the workflows.
+
+`results.json` requires the exact response, successful persisted action history
+(including queue Capture/Delete), and deletion-check outputs. `queue-counts.json`
+independently verifies zero messages, including invisible messages, before cleanup;
+an empty receive alone would not prove deletion during the visibility timeout.
+`resource-cleanup.json` records container/queue deletion. The runner restores
+settings and connections byte-for-byte and stops only its owned host/emulator.
+Azurite data and execution evidence remain under the results directory, never in
+the repository. Normal mode fails unmet contracts; `-RecordOnly` retains failures
+for investigation but does not suppress provisioning or cleanup errors.
+
+`--self-test` includes negative checks for unapproved connections, operations,
+resources, missing/failed actions, and undeleted data. Every export also checks
+provider payload expression shapes and native-expression counts.
 
 ## Compare and retain evidence
 

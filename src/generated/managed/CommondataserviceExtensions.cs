@@ -410,7 +410,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
                 var subscriptionRequestpropCount = 0;
                 subscriptionRequest["version"] = 1;
                 subscriptionRequestpropCount++;
-                subscriptionRequest["url"] = "@listCallbackUrl()";
+                subscriptionRequest["url"] = "#{listCallbackUrl()}";
                 subscriptionRequestpropCount++;
                 subscriptionRequestpropCount++;
                 subscriptionRequest["entityname"] = SourceExpressionConverter.ConvertToken(subscriptionRequesttableName);
@@ -472,7 +472,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Commondataservice
                 var subscriptionRequestpropCount = 0;
                 subscriptionRequest["version"] = 3;
                 subscriptionRequestpropCount++;
-                subscriptionRequest["url"] = "@listCallbackUrl()";
+                subscriptionRequest["url"] = "#{listCallbackUrl()}";
                 subscriptionRequestpropCount++;
                 subscriptionRequest["scope"] = 4;
                 subscriptionRequestpropCount++;

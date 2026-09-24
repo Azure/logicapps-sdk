@@ -48,10 +48,10 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
         }
 
         /// <summary>
-        /// Verifies service provider parameters use hybrid template and C# conversion.
+        /// Verifies JSON pass-through and typed operations both use native C#.
         /// </summary>
         [Fact]
-        public void GetActionDefinition_ExpressionsUseHybridConversion()
+        public void GetActionDefinition_ExpressionsUseNativeConversion()
         {
             var source = WorkflowActions.BuiltIn.Compose<string>(() => "unused").WithName("Source");
             var action = new WorkflowServiceProviderActions()
@@ -63,9 +63,9 @@ namespace Microsoft.Azure.Workflows.Sdk.Tests
             var definition = action.GetActionDefinition(flowName: null);
             var inputs = Assert.IsType<JObject>(definition.Inputs);
 
-            Assert.Equal("@outputs('Source')", inputs["parameters"].Value<string>("containerName"));
+            Assert.Equal("#{outputs(\"Source\")}", inputs["parameters"].Value<string>("containerName"));
             Assert.Equal(
-                "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
+                "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}",
                 inputs["parameters"].Value<string>("blobName"));
         }
     }

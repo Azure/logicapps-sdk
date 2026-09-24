@@ -147,7 +147,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Wpconnectrforwordpre
                 body["trigger_resource_schema"] = SourceExpressionConverter.ConvertToken(bodyresourceType);
                 bodypropCount++;
                 body["topic"] = SourceExpressionConverter.ConvertToken(bodytriggerEvent);
-                body["delivery_url"] = "@listCallbackUrl()";
+                body["delivery_url"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

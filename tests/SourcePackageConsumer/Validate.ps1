@@ -83,7 +83,7 @@ foreach ($inputPath in $compilerInputs) {
     $inputHashes[$inputPath] = (Get-FileHash -LiteralPath $inputPath).Hash
 }
 $transformedText = ($compilerInputs | ForEach-Object { Get-Content -LiteralPath $_ -Raw }) -join "`n"
-foreach ($requiredApi in @('nativeSegments:', 'typeWitness:', 'SourceExpression.TypeName', 'SourceExpression.Token')) {
+foreach ($requiredApi in @('SourceExpression.Value', 'typeWitness:', 'SourceExpression.TypeName', 'SourceExpression.Token')) {
     if (!$transformedText.Contains($requiredApi)) {
         throw "The packaged compiler is stale: transformed fixture did not emit $requiredApi"
     }

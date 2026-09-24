@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Dynamicsax
                     callPayload.Queries["legalEntity"] = SourceExpressionConverter.ConvertO(legalEntity);
                 var subscription = new JObject();
                 var subscriptionpropCount = 0;
-                subscription["NotificationUrl"] = "@listCallbackUrl()";
+                subscription["NotificationUrl"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {

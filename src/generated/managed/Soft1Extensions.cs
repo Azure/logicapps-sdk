@@ -3453,7 +3453,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var configObject = new JObject();
                 var configObjectpropCount = 0;
-                configObject["url"] = "@listCallbackUrl()";
+                configObject["url"] = "#{listCallbackUrl()}";
                 configObjectpropCount++;
                 if (configObjectpropCount > 0)
                 {
@@ -3495,7 +3495,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var configObject = new JObject();
                 var configObjectpropCount = 0;
-                configObject["url"] = "@listCallbackUrl()";
+                configObject["url"] = "#{listCallbackUrl()}";
                 configObjectpropCount++;
                 if (configObjectpropCount > 0)
                 {
@@ -3537,7 +3537,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var configObject = new JObject();
                 var configObjectpropCount = 0;
-                configObject["url"] = "@listCallbackUrl()";
+                configObject["url"] = "#{listCallbackUrl()}";
                 configObjectpropCount++;
                 if (configObjectpropCount > 0)
                 {
@@ -3579,7 +3579,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Soft1
 
                 var configObject = new JObject();
                 var configObjectpropCount = 0;
-                configObject["url"] = "@listCallbackUrl()";
+                configObject["url"] = "#{listCallbackUrl()}";
                 configObjectpropCount++;
                 if (configObjectpropCount > 0)
                 {

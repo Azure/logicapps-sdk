@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
 
         public static CompiledExpression Compile(string expression)
         {
-            const string prefix = "@csharp{";
+            const string prefix = "#{";
             if (expression == null ||
                 !expression.StartsWith(prefix, StringComparison.Ordinal) ||
                 !expression.EndsWith("}", StringComparison.Ordinal))

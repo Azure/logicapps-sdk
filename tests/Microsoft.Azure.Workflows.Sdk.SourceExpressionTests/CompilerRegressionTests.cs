@@ -49,8 +49,8 @@ public sealed class CompilerRegressionTests
             }).GetActionDefinition("Catalog");
             """));
         var headers = Assert.IsType<JObject>(Token(result.Definition)["headers"]);
-        Assert.Equal("@outputs('Source')", headers["X-Name"]!.Value<string>());
-        EqualSource("@csharp{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", headers["X-Upper"]!.Value<string>()!);
+        Assert.Equal("#{outputs(\"Source\")}", headers["X-Name"]!.Value<string>());
+        EqualSource("#{outputs(\"Other\").ToObject<string>().ToUpperInvariant()}", headers["X-Upper"]!.Value<string>()!);
     }
 
     [Theory]
@@ -74,7 +74,7 @@ public sealed class CompilerRegressionTests
             """);
         Assert.True(JToken.DeepEquals(JObject.Parse("""
             {
-                "outer": { "enabled": true, "name": "@outputs('Source')" },
+                "outer": { "enabled": true, "name": "#{outputs(\"Source\")}" },
                 "entries": [ { "label": "a" }, { "label": "b" } ]
             }
             """), token));
@@ -91,7 +91,7 @@ public sealed class CompilerRegressionTests
                 => WorkflowActions.BuiltIn.Compose<string>(input: () => action.Output.ToString());
             """));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{outputs(\"Source\").ToObject<int>().ToString()}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<int>().ToString()}", emitted);
         Assert.DoesNotContain("<T>", emitted);
         Assert.Equal("3", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue(3) }).Value);
     }
@@ -104,13 +104,13 @@ public sealed class CompilerRegressionTests
                 queueName: () => source.Output.ToUpperInvariant(),
                 sessionId: () => $"prefix {other.Output}").GetActionDefinition("Catalog");
             """, imports: "using Microsoft.Azure.Workflows.Sdk.Connectors.Servicebus;"));
-        Assert.Contains("nativeSegments:", result.Transformation.Sources["Consumer.cs"]);
+        Assert.Contains("\"native\"", result.Transformation.Sources["Consumer.cs"]);
         var emitted = Token(result.Definition)["path"]!.Value<string>()!;
         EqualSource("""
-            @csharp{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, "/{0}/sessions/{1}/close", encodeURIComponent(encodeURIComponent(outputs("Source").ToObject<string>().ToUpperInvariant())), encodeURIComponent($"prefix {outputs("Other").ToObject<string>()}"))}
+            #{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, "/{0}/sessions/{1}/close", encodeURIComponent(encodeURIComponent(outputs("Source").ToObject<string>().ToUpperInvariant())), encodeURIComponent($"prefix {outputs("Other").ToObject<string>()}"))}
             """, emitted);
         Assert.DoesNotContain("@{", emitted);
-        Assert.Equal(1, emitted.Split("@csharp{").Length - 1);
+        Assert.Equal(1, emitted.Split("#{").Length - 1);
         var local = LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("q /"), ["Other"] = new JValue("a b") });
         Assert.Equal("/Q%2520%252F/sessions/prefix%20a%20b/close", local.Value);
         Assert.Equal(["Source", "Other"], local.Reads);
@@ -135,7 +135,7 @@ public sealed class CompilerRegressionTests
             """, conversionType));
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{(global::Consumer.CountedValue)(7)}", emitted);
+        EqualSource("#{(global::Consumer.CountedValue)(7)}", emitted);
         var local = LocalNativeHost.Evaluate(emitted, new(), "public static class Consumer { " + conversionType + " }");
         Assert.Equal(1, local.Calls);
         Assert.Equal(7, JToken.FromObject(local.Value!)["Value"]!.Value<int>());
@@ -162,7 +162,7 @@ public sealed class CompilerRegressionTests
             return WorkflowActions.BuiltIn.Compose<string>(input: () => source.Output + nameof(Secret)).GetActionDefinition("Catalog");
             """, privateProperty));
         var emitted = Token(native.Definition).Value<string>()!;
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>() + \"Secret\"}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>() + \"Secret\"}", emitted);
         Assert.Equal("ASecret", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("A") }).Value);
     }
 }

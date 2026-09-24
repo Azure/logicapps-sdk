@@ -584,7 +584,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {
@@ -605,7 +605,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {
@@ -626,7 +626,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {
@@ -647,7 +647,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {
@@ -668,7 +668,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {
@@ -689,7 +689,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Cosmobot
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBody = new JObject();
                 var requestBodypropCount = 0;
-                requestBody["url"] = "@listCallbackUrl()";
+                requestBody["url"] = "#{listCallbackUrl()}";
                 requestBodypropCount++;
                 if (requestBodypropCount > 0)
                 {

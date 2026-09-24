@@ -32,8 +32,12 @@ transport for F08. Callback credentials are used in memory and never written to
 the evidence.
 
 NativeProbe and ConditionProbe deliberately exercise the SDK's native envelope.
-Public bundles 1.170.43 and 1.170.91 reject these definitions during validation.
-Preserve the actual error as an unsupported-host result; do not count it as a
+The historical `TemplateProbe` ID now also emits C# interpolation under the
+C#-only SDK contract. Earlier successful public-bundle template measurements do
+not describe current emitted definitions.
+Public bundles 1.170.43 and 1.170.91 rejected the historical `@csharp{...}`
+definitions during validation; those observations do not certify the new
+`#{...}` syntax. Preserve unsupported-host outcomes; do not count them as a
 passing native execution case or rewrite it into another expression language.
 SDK deployment preflight must reject native publication to an unverified host.
 For a runtime with codeful inline-expression support, use

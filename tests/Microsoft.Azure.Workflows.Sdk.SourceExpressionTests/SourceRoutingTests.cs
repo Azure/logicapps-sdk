@@ -29,30 +29,30 @@ public sealed class SourceRoutingTests
     }
 
     [Theory]
-    [InlineData("R04", "source.Output", "@outputs('Source')")]
-    [InlineData("R02", "trigger.TriggerOutput.Body", "@triggerBody()")]
-    [InlineData("R01", "trigger.TriggerOutput", "@triggerOutputs()")]
-    [InlineData("R08", "trigger.TriggerOutput.Body[\"name\"]", "@triggerBody()['name']")]
-    [InlineData("R09", "trigger.TriggerOutput.Body[\"customer\"][\"name\"]", "@triggerBody()['customer']['name']")]
-    [InlineData("SR01", "$\"Name: {source.Output}\"", "Name: @{outputs('Source')}")]
-    [InlineData("SR03", "$\"{{Name}}: {source.Output}; again: {source.Output}\"", "{Name}: @{outputs('Source')}; again: @{outputs('Source')}")]
-    [InlineData("S02", "$\"First: {source.Output}; second: {other.Output}\"", "First: @{outputs('Source')}; second: @{outputs('Other')}")]
-    [InlineData("S03", "$\"Name: {trigger.TriggerOutput.Body[\"name\"]}\"", "Name: @{triggerBody()['name']}")]
-    [InlineData("S12", "$\"Received: {trigger.TriggerOutput.Body}\"", "Received: @{triggerBody()}")]
-    [InlineData("S01", "$\"Received request: {trigger.TriggerOutput.Body}\"", "Received request: @{triggerBody()}")]
-    [InlineData("S09", "$\"{{Name}}: {source.Output}; again: {source.Output}\"", "{Name}: @{outputs('Source')}; again: @{outputs('Source')}")]
-    [InlineData("P03", "$\"hello{trigger.TriggerOutput.Body}\"", "hello@{triggerBody()}")]
-    public void Direct_reference_and_interpolation_are_templates(string catalog, string expression, string expected)
+    [InlineData("R04", "source.Output", "#{outputs(\"Source\")}")]
+    [InlineData("R02", "trigger.TriggerOutput.Body", "#{triggerBody()}")]
+    [InlineData("R01", "trigger.TriggerOutput", "#{triggerOutputs()}")]
+    [InlineData("R08", "trigger.TriggerOutput.Body[\"name\"]", "#{triggerBody()[\"name\"]}")]
+    [InlineData("R09", "trigger.TriggerOutput.Body[\"customer\"][\"name\"]", "#{triggerBody()[\"customer\"][\"name\"]}")]
+    [InlineData("SR01", "$\"Name: {source.Output}\"", "#{$\"Name: {outputs(\"Source\").ToObject<string>()}\"}")]
+    [InlineData("SR03", "$\"{{Name}}: {source.Output}; again: {source.Output}\"", "#{$\"{{Name}}: {outputs(\"Source\").ToObject<string>()}; again: {outputs(\"Source\").ToObject<string>()}\"}")]
+    [InlineData("S02", "$\"First: {source.Output}; second: {other.Output}\"", "#{$\"First: {outputs(\"Source\").ToObject<string>()}; second: {outputs(\"Other\").ToObject<string>()}\"}")]
+    [InlineData("S03", "$\"Name: {trigger.TriggerOutput.Body[\"name\"]}\"", "#{$\"Name: {triggerBody()[\"name\"]}\"}")]
+    [InlineData("S12", "$\"Received: {trigger.TriggerOutput.Body}\"", "#{$\"Received: {triggerBody()}\"}")]
+    [InlineData("S01", "$\"Received request: {trigger.TriggerOutput.Body}\"", "#{$\"Received request: {triggerBody()}\"}")]
+    [InlineData("S09", "$\"{{Name}}: {source.Output}; again: {source.Output}\"", "#{$\"{{Name}}: {outputs(\"Source\").ToObject<string>()}; again: {outputs(\"Source\").ToObject<string>()}\"}")]
+    [InlineData("P03", "$\"hello{trigger.TriggerOutput.Body}\"", "#{$\"hello{triggerBody()}\"}")]
+    public void References_preserve_JSON_and_interpolation_preserves_typed_native_source(string catalog, string expression, string expected)
     {
         Assert.NotEmpty(catalog);
         Assert.Equal(expected, Input(expression)!.Value<string>());
     }
 
     [Theory]
-    [InlineData("$$$\"\"\"{{Name}}: {{{source.Output}}}\"\"\"", "{{Name}}: @{outputs('Source')}")]
-    [InlineData("$$$\"\"\"\n{{Name}}: {{{source.Output}}}\n\"\"\"", "{{Name}}: @{outputs('Source')}")]
-    [InlineData("$\"{{Name}}: {source.Output}\"", "{Name}: @{outputs('Source')}")]
-    [InlineData("$@\"{{Name}}: {source.Output}\"", "{Name}: @{outputs('Source')}")]
+    [InlineData("$$$\"\"\"{{Name}}: {{{source.Output}}}\"\"\"", "#{$$$\"\"\"{{Name}}: {{{outputs(\"Source\").ToObject<string>()}}}\"\"\"}")]
+    [InlineData("$$$\"\"\"\n{{Name}}: {{{source.Output}}}\n\"\"\"", "#{$$$\"\"\"\n{{Name}}: {{{outputs(\"Source\").ToObject<string>()}}}\n\"\"\"}")]
+    [InlineData("$\"{{Name}}: {source.Output}\"", "#{$\"{{Name}}: {outputs(\"Source\").ToObject<string>()}\"}")]
+    [InlineData("$@\"{{Name}}: {source.Output}\"", "#{$@\"{{Name}}: {outputs(\"Source\").ToObject<string>()}\"}")]
     public void Raw_and_regular_interpolation_preserve_literal_braces(string expression, string expected)
     {
         var token = Input(expression);
@@ -61,16 +61,16 @@ public sealed class SourceRoutingTests
     }
 
     [Theory]
-    [InlineData("SR02", "string.Format(\"Name: {0}\", source.Output)", "@csharp{string.Format(\"Name: {0}\", outputs(\"Source\").ToObject<string>())}")]
-    [InlineData("SR05", "\"Name: \" + source.Output", "@csharp{\"Name: \" + outputs(\"Source\").ToObject<string>()}")]
-    [InlineData("SR06", "string.Concat(\"Name: \", source.Output)", "@csharp{string.Concat(\"Name: \", outputs(\"Source\").ToObject<string>())}")]
-    [InlineData("SR07", "$\"Next: {count.Output + 1}\"", "@csharp{$\"Next: {outputs(\"Count\").ToObject<int>() + 1}\"}")]
-    [InlineData("SR09", "(count.Output + 2) * 3", "@csharp{(outputs(\"Count\").ToObject<int>() + 2) * 3}")]
-    [InlineData("SR15", "count.Output switch { > 0 => \"positive\", _ => \"other\" }", "@csharp{outputs(\"Count\").ToObject<int>() switch { > 0 => \"positive\", _ => \"other\" }}")]
-    [InlineData("N01", "source.Output.ToUpperInvariant()", "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}")]
-    [InlineData("N02", "source.Output.Length", "@csharp{outputs(\"Source\").ToObject<string>().Length}")]
-    [InlineData("S12b", "string.Format(\"Received: {0}\", trigger.TriggerOutput.Body)", "@csharp{string.Format(\"Received: {0}\", triggerBody())}")]
-    [InlineData("M07", "trigger.TriggerOutput.Body[\"value\"].Value<int>() + 2", "@csharp{triggerBody()[\"value\"].Value<int>() + 2}")]
+    [InlineData("SR02", "string.Format(\"Name: {0}\", source.Output)", "#{string.Format(\"Name: {0}\", outputs(\"Source\").ToObject<string>())}")]
+    [InlineData("SR05", "\"Name: \" + source.Output", "#{\"Name: \" + outputs(\"Source\").ToObject<string>()}")]
+    [InlineData("SR06", "string.Concat(\"Name: \", source.Output)", "#{string.Concat(\"Name: \", outputs(\"Source\").ToObject<string>())}")]
+    [InlineData("SR07", "$\"Next: {count.Output + 1}\"", "#{$\"Next: {outputs(\"Count\").ToObject<int>() + 1}\"}")]
+    [InlineData("SR09", "(count.Output + 2) * 3", "#{(outputs(\"Count\").ToObject<int>() + 2) * 3}")]
+    [InlineData("SR15", "count.Output switch { > 0 => \"positive\", _ => \"other\" }", "#{outputs(\"Count\").ToObject<int>() switch { > 0 => \"positive\", _ => \"other\" }}")]
+    [InlineData("N01", "source.Output.ToUpperInvariant()", "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}")]
+    [InlineData("N02", "source.Output.Length", "#{outputs(\"Source\").ToObject<string>().Length}")]
+    [InlineData("S12b", "string.Format(\"Received: {0}\", trigger.TriggerOutput.Body)", "#{string.Format(\"Received: {0}\", triggerBody())}")]
+    [InlineData("M07", "trigger.TriggerOutput.Body[\"value\"].Value<int>() + 2", "#{triggerBody()[\"value\"].Value<int>() + 2}")]
     public void Native_source_is_preserved(string catalog, string expression, string expected)
     {
         Assert.NotEmpty(catalog);
@@ -78,12 +78,12 @@ public sealed class SourceRoutingTests
     }
 
     [Theory]
-    [InlineData("O01", "count.Output + 2", "@csharp{outputs(\"Count\").ToObject<int>() + 2}", 7)]
-    [InlineData("O02", "count.Output - 2", "@csharp{outputs(\"Count\").ToObject<int>() - 2}", 3)]
-    [InlineData("O03", "count.Output * 3", "@csharp{outputs(\"Count\").ToObject<int>() * 3}", 15)]
-    [InlineData("O04", "count.Output / 2", "@csharp{outputs(\"Count\").ToObject<int>() / 2}", 2)]
-    [InlineData("O05", "count.Output % 2", "@csharp{outputs(\"Count\").ToObject<int>() % 2}", 1)]
-    [InlineData("O17", "count.Output << 1", "@csharp{outputs(\"Count\").ToObject<int>() << 1}", 10)]
+    [InlineData("O01", "count.Output + 2", "#{outputs(\"Count\").ToObject<int>() + 2}", 7)]
+    [InlineData("O02", "count.Output - 2", "#{outputs(\"Count\").ToObject<int>() - 2}", 3)]
+    [InlineData("O03", "count.Output * 3", "#{outputs(\"Count\").ToObject<int>() * 3}", 15)]
+    [InlineData("O04", "count.Output / 2", "#{outputs(\"Count\").ToObject<int>() / 2}", 2)]
+    [InlineData("O05", "count.Output % 2", "#{outputs(\"Count\").ToObject<int>() % 2}", 1)]
+    [InlineData("O17", "count.Output << 1", "#{outputs(\"Count\").ToObject<int>() << 1}", 10)]
     public void Native_integer_operators_execute_locally(string catalog, string expression, string expected, int value)
     {
         Assert.NotEmpty(catalog);
@@ -98,7 +98,7 @@ public sealed class SourceRoutingTests
     public void SR04_Explicit_format_preserves_argument_order_and_single_reads()
     {
         var emitted = Native("string.Format(\"{1}/{0}/{1}\", source.Output, other.Output)");
-        EqualSource("@csharp{string.Format(\"{1}/{0}/{1}\", outputs(\"Source\").ToObject<string>(), outputs(\"Other\").ToObject<string>())}", emitted);
+        EqualSource("#{string.Format(\"{1}/{0}/{1}\", outputs(\"Source\").ToObject<string>(), outputs(\"Other\").ToObject<string>())}", emitted);
         var result = LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("A"), ["Other"] = new JValue("B") });
         Assert.Equal("B/A/B", result.Value);
         Assert.Equal(["Source", "Other"], result.Reads);
@@ -108,7 +108,7 @@ public sealed class SourceRoutingTests
     public void SR08_Invariant_format_remains_native()
     {
         var emitted = Native("string.Format(System.Globalization.CultureInfo.InvariantCulture, \"{0:00}\", count.Output)");
-        EqualSource("@csharp{string.Format(System.Globalization.CultureInfo.InvariantCulture, \"{0:00}\", outputs(\"Count\").ToObject<int>())}", emitted);
+        EqualSource("#{string.Format(System.Globalization.CultureInfo.InvariantCulture, \"{0:00}\", outputs(\"Count\").ToObject<int>())}", emitted);
         Assert.Equal("03", LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3) }).Value);
     }
 
@@ -116,7 +116,7 @@ public sealed class SourceRoutingTests
     public void SR10_Checked_overflow_is_runtime_not_generation_time()
     {
         var emitted = Native("checked(count.Output + 1)");
-        EqualSource("@csharp{checked(outputs(\"Count\").ToObject<int>() + 1)}", emitted);
+        EqualSource("#{checked(outputs(\"Count\").ToObject<int>() + 1)}", emitted);
         Assert.Throws<OverflowException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(int.MaxValue) }));
     }
 
@@ -124,7 +124,7 @@ public sealed class SourceRoutingTests
     public void SR11_Property_pattern_executes_locally()
     {
         var emitted = Native("source.Output is { Length: > 2 }");
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>() is { Length: > 2 }}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>() is { Length: > 2 }}", emitted);
         Assert.Equal(true, LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("hello") }).Value);
     }
 
@@ -132,7 +132,7 @@ public sealed class SourceRoutingTests
     public void SR12_Range_executes_locally()
     {
         var emitted = Native("source.Output[..2]");
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>()[..2]}", emitted);
+        EqualSource("#{outputs(\"Source\").ToObject<string>()[..2]}", emitted);
         Assert.Equal("he", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("hello") }).Value);
     }
 
@@ -140,7 +140,7 @@ public sealed class SourceRoutingTests
     public void CB05_Unselected_branch_does_not_read_source()
     {
         var emitted = Native("flag.Output ? source.Output.ToUpperInvariant() : \"skip\"");
-        EqualSource("@csharp{outputs(\"Flag\").ToObject<bool>() ? outputs(\"Source\").ToObject<string>().ToUpperInvariant() : \"skip\"}", emitted);
+        EqualSource("#{outputs(\"Flag\").ToObject<bool>() ? outputs(\"Source\").ToObject<string>().ToUpperInvariant() : \"skip\"}", emitted);
         var result = LocalNativeHost.Evaluate(emitted, new() { ["Flag"] = new JValue(false) });
         Assert.Equal("skip", result.Value);
         Assert.Equal(["Flag"], result.Reads);
@@ -150,7 +150,7 @@ public sealed class SourceRoutingTests
     public void F06_Runtime_divide_by_zero_is_not_swallowed()
     {
         var emitted = Native("count.Output / quantity.Output");
-        EqualSource("@csharp{outputs(\"Count\").ToObject<int>() / outputs(\"Quantity\").ToObject<int>()}", emitted);
+        EqualSource("#{outputs(\"Count\").ToObject<int>() / outputs(\"Quantity\").ToObject<int>()}", emitted);
         Assert.Throws<DivideByZeroException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Count"] = new JValue(3), ["Quantity"] = new JValue(0) }));
     }
 
@@ -158,7 +158,7 @@ public sealed class SourceRoutingTests
     public void M08_Explicit_value_conversion_keeps_runtime_failure()
     {
         var emitted = Native("trigger.TriggerOutput.Body[\"value\"].Value<int>()");
-        EqualSource("@csharp{triggerBody()[\"value\"].Value<int>()}", emitted);
+        EqualSource("#{triggerBody()[\"value\"].Value<int>()}", emitted);
         Assert.Throws<FormatException>(() => LocalNativeHost.Evaluate(emitted, new() { ["Trigger"] = JObject.Parse("""{"value":"abc"}""") }));
     }
 
@@ -167,7 +167,7 @@ public sealed class SourceRoutingTests
     {
         var emitted = Native("values.Output.Where(x => x > 1).Select(x => x * 2).ToArray()",
             """var values = WorkflowActions.BuiltIn.Compose<List<int>>(input: () => new List<int>()).WithName("Values");""");
-        EqualSource("@csharp{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).Select(x => x * 2).ToArray()}", emitted);
+        EqualSource("#{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Where(x => x > 1).Select(x => x * 2).ToArray()}", emitted);
         Assert.Equal([4, 6], Assert.IsType<int[]>(LocalNativeHost.Evaluate(emitted,
             new() { ["Values"] = new JArray(1, 2, 3) }).Value));
     }
@@ -179,7 +179,7 @@ public sealed class SourceRoutingTests
             int increment = 2;
             var values = WorkflowActions.BuiltIn.Compose<List<int>>(input: () => new List<int>()).WithName("Values");
             """);
-        EqualSource("@csharp{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Select(x => x + 2).ToArray()}", emitted);
+        EqualSource("#{outputs(\"Values\").ToObject<System.Collections.Generic.List<int>>().Select(x => x + 2).ToArray()}", emitted);
         Assert.Equal([3, 4, 5], Assert.IsType<int[]>(LocalNativeHost.Evaluate(emitted,
             new() { ["Values"] = new JArray(1, 2, 3) }).Value));
     }
@@ -188,12 +188,12 @@ public sealed class SourceRoutingTests
     public void SR18_Static_runtime_state_is_not_frozen_during_generation()
     {
         var emitted = Native("RuntimeValues.Text.ToUpperInvariant()");
-        EqualSource("@csharp{RuntimeValues.Text.ToUpperInvariant()}", emitted);
+        EqualSource("#{RuntimeValues.Text.ToUpperInvariant()}", emitted);
         var assembly = Load(Compile($$"""
             using System;
             public static class NativeState
             {
-                public static string Run() => {{emitted[8..^1]}};
+                public static string Run() => {{ConsumerCompilation.NativeBody(emitted)}};
             }
             {{Fixtures}}
             """));

@@ -14,7 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         [Fact]
         public void LiteralExpression_CompilesAndEvaluates()
         {
-            using var compiled = EmittedExpressionCompiler.Compile("@csharp{\"value\".ToUpperInvariant()}");
+            using var compiled = EmittedExpressionCompiler.Compile("#{\"value\".ToUpperInvariant()}");
             Assert.Equal("VALUE", compiled.Evaluate());
         }
 
@@ -22,7 +22,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void WorkflowAndEncodingGlobals_UseRuntimeInputs()
         {
             using var compiled = EmittedExpressionCompiler.Compile(
-                "@csharp{encodeURIComponent(outputs(\"Name\").ToObject<string>())}");
+                "#{encodeURIComponent(outputs(\"Name\").ToObject<string>())}");
             Assert.Equal("a%20b%2F%2B", compiled.Evaluate(
                 new Dictionary<string, JToken> { ["Name"] = "a b/+" }));
         }
@@ -31,7 +31,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void QualifiedFixtureReference_CompilesWithoutFixtureNamespaceImport()
         {
             using var compiled = EmittedExpressionCompiler.Compile(
-                "@csharp{global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures.RuntimeValues.ConstantText}");
+                "#{global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures.RuntimeValues.ConstantText}");
             Assert.Equal("constant", compiled.Evaluate());
         }
 
@@ -42,7 +42,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
             try
             {
                 using var compiled = EmittedExpressionCompiler.Compile(
-                    "@csharp{global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures.RuntimeValues.CurrentText}");
+                    "#{global::Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests.RuntimeFixtures.RuntimeValues.CurrentText}");
                 Assert.Equal(0, RuntimeValues.GetterCalls);
                 RuntimeValues.Text = "first";
                 Assert.Equal("first", compiled.Evaluate());
@@ -60,7 +60,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         public void InvalidSource_ReportsDiagnosticsAndSource()
         {
             var error = Assert.Throws<XunitException>(() =>
-                EmittedExpressionCompiler.Compile("@csharp{MissingInstance.Text}"));
+                EmittedExpressionCompiler.Compile("#{MissingInstance.Text}"));
             Assert.Contains("CS0103", error.Message);
             Assert.Contains("Source:", error.Message);
             Assert.Contains("MissingInstance.Text", error.Message);
@@ -76,7 +76,7 @@ namespace Microsoft.Azure.Workflows.Sdk.CSharpExpressionTests
         [Fact]
         public void DisposedCompilation_CannotBeExecuted()
         {
-            var compiled = EmittedExpressionCompiler.Compile("@csharp{42}");
+            var compiled = EmittedExpressionCompiler.Compile("#{42}");
             compiled.Dispose();
             Assert.Throws<ObjectDisposedException>(() => compiled.Evaluate());
         }

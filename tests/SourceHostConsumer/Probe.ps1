@@ -30,7 +30,7 @@ $results = foreach ($case in $cases) {
 }
 $literal = Invoke-RestMethod -Method Post ($BaseUri + ($callbackPath -f 'LiteralProbe'))
 $response = Invoke-WebRequest -Method Post $literal.value -ContentType 'application/json' -Body '{}' -SkipHttpErrorCheck
-$literalPassed = $response.StatusCode -eq 200 -and $response.Content -ceq '@csharp{1 + 2}'
+$literalPassed = $response.StatusCode -eq 200 -and $response.Content -ceq '#{1 + 2}'
 $definitions = foreach ($name in @('TemplateProbe','LiteralProbe','NativeProbe','ConditionProbe')) {
     $path = Join-Path (Join-Path $HostDirectory $name) 'workflow.json'
     [ordered]@{ name = $name; sha256 = (Get-FileHash -LiteralPath $path).Hash }

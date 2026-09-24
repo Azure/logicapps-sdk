@@ -47,6 +47,8 @@ in memory, records definition and runtime/worker assembly hashes, and checks:
 - The JSON intrinsic executes inside a native expression.
 
 The template Condition is a diagnostic control, never an SDK fallback.
+It is a manually injected historical control, outside the C#-only SDK output
+contract, and current deployment preflight rejects it with `WFDEP010`.
 Every failed observation is retained and makes the script fail. Do not mark an
 unsupported native Condition as passing because its template control succeeds.
 Likewise, arithmetic success does not establish availability of every helper

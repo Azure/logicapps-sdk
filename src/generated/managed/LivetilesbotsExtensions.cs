@@ -30,7 +30,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -61,7 +61,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -94,7 +94,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodytitle != null)
                 {
@@ -133,7 +133,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -171,7 +171,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -209,7 +209,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                     bodypropCount++;
                 }
 
-                body["callbackUri"] = "@listCallbackUrl()";
+                body["callbackUri"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {
@@ -291,7 +291,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Livetilesbots
                 subscription["bot"] = SourceExpressionConverter.ConvertToken(subscriptionbot);
                 subscriptionpropCount++;
                 subscription["key"] = SourceExpressionConverter.ConvertToken(subscriptionflow);
-                subscription["callbackUri"] = "@listCallbackUrl()";
+                subscription["callbackUri"] = "#{listCallbackUrl()}";
                 subscriptionpropCount++;
                 if (subscriptionpropCount > 0)
                 {

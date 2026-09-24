@@ -72,7 +72,7 @@ public sealed class SchemaNativeJsonTests
         var method = typeof(WorkflowWireRuntime).GetMethod("CompactJsonExpression", BindingFlags.Static | BindingFlags.NonPublic)!;
         var fragment = (string)method.Invoke(null, [type, "Next()"])!;
         Assert.DoesNotContain("Microsoft.Azure.Workflows.Sdk", fragment);
-        var result = ExecuteWithoutSdk("@csharp{" + fragment + "}", """
+        var result = ExecuteWithoutSdk("#{" + fragment + "}", """
             static int[] Next() { RuntimeValues.Calls++; return null; }
             """);
         Assert.Equal("null", result[0]);
@@ -81,7 +81,7 @@ public sealed class SchemaNativeJsonTests
 
     private static object[] ExecuteWithoutSdk(string envelope, string extra = "")
     {
-        Assert.StartsWith("@csharp{", envelope);
+        Assert.StartsWith("#{", envelope);
         var source = $$"""
             using System;
             using System.Collections.Generic;
@@ -93,7 +93,7 @@ public sealed class SchemaNativeJsonTests
                     var reads = new List<string>();
                     JToken outputs(string name) { reads.Add(name); return name == "Count" ? new JValue(3) : new JValue("A"); }
                     string base64(string value) => Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(value));
-                    var result = (object)({{envelope[8..^1]}});
+                    var result = (object)({{ConsumerCompilation.NativeBody(envelope)}});
                     return new object[] { result, reads.ToArray(), RuntimeValues.Calls };
                 }
                 {{extra}}

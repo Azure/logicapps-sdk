@@ -39,7 +39,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Mailparser
                 var callPayload = new ApiConnectionActionInput(apiCallPath, apiCallHttpMethod, connectionId);
                 var requestBodyOfWebhook = new JObject();
                 var requestBodyOfWebhookpropCount = 0;
-                requestBodyOfWebhook["target_url"] = "@listCallbackUrl()";
+                requestBodyOfWebhook["target_url"] = "#{listCallbackUrl()}";
                 requestBodyOfWebhookpropCount++;
                 requestBodyOfWebhook["provider"] = "flow";
                 requestBodyOfWebhookpropCount++;

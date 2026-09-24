@@ -180,7 +180,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Zellis
 
                 bodypropCount++;
                 body["IsEnabled"] = SourceExpressionConverter.ConvertToken(bodyisEnabled);
-                body["URL"] = "@listCallbackUrl()";
+                body["URL"] = "#{listCallbackUrl()}";
                 bodypropCount++;
                 if (bodypropCount > 0)
                 {

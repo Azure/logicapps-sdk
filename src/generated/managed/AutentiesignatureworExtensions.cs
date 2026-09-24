@@ -224,7 +224,7 @@ namespace Microsoft.Azure.Workflows.Sdk.Connectors.Autentiesignaturewor
                 body["callbackAdapterId"] = SourceExpressionConverter.ConvertToken(bodycallbackAdapterId);
                 var callbackParametersObject = new JObject();
                 var callbackParametersObjectpropCount = 0;
-                callbackParametersObject["callbackUrl"] = "@listCallbackUrl()";
+                callbackParametersObject["callbackUrl"] = "#{listCallbackUrl()}";
                 callbackParametersObjectpropCount++;
                 if (callbackParametersObjectpropCount > 0)
                 {

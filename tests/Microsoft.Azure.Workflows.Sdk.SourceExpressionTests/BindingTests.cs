@@ -22,7 +22,7 @@ public sealed class BindingTests
     public void CB02_Scalar_capture_is_frozen_at_construction()
     {
         EqualSource(
-            "@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}",
+            "#{outputs(\"Source\").ToObject<string>().ToUpperInvariant() + \"!\"}",
             Native("source.Output.ToUpperInvariant() + suffix", "string suffix = \"!\";", "suffix = \"changed\";"));
     }
 
@@ -37,7 +37,7 @@ public sealed class BindingTests
     [Fact, Trait("Catalog", "CB03")]
     public void CB03_Workflow_handle_uses_final_name()
     {
-        EqualSource("@csharp{outputs(\"Renamed\").ToObject<string>().ToUpperInvariant()}",
+        EqualSource("#{outputs(\"Renamed\").ToObject<string>().ToUpperInvariant()}",
             Native("source.Output.ToUpperInvariant()", after: "source.WithName(\"Renamed\");"));
     }
 
@@ -45,15 +45,15 @@ public sealed class BindingTests
     public void CB04_Escaped_capture_is_not_identifier_substitution()
     {
         var emitted = Native("source.Output + suffix", """string suffix = "\"\\source.Output";""");
-        EqualSource("""@csharp{outputs("Source").ToObject<string>() + "\"\\source.Output"}""", emitted);
+        EqualSource("""#{outputs("Source").ToObject<string>() + "\"\\source.Output"}""", emitted);
         Assert.Equal("A\"\\source.Output", LocalNativeHost.Evaluate(emitted, new() { ["Source"] = new JValue("A") }).Value);
     }
 
     [Fact, Trait("Catalog", "R13"), Trait("Catalog", "R13b")]
-    public void R13_Final_name_escaping_depends_on_language()
+    public void R13_Final_name_escaping_always_uses_CSharp()
     {
-        Assert.Equal("@outputs('O''Brien')", Input("source.Output", after: "source.WithName(\"O'Brien\");")!.Value<string>());
-        EqualSource("@csharp{outputs(\"O'Brien\").ToObject<string>().ToUpperInvariant()}",
+        Assert.Equal("#{outputs(\"O'Brien\")}", Input("source.Output", after: "source.WithName(\"O'Brien\");")!.Value<string>());
+        EqualSource("#{outputs(\"O'Brien\").ToObject<string>().ToUpperInvariant()}",
             Native("source.Output.ToUpperInvariant()", after: "source.WithName(\"O'Brien\");"));
     }
 
@@ -67,7 +67,7 @@ public sealed class BindingTests
             """));
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{string.Format(\"{0}/{0}\", RuntimeValues.NextText())}", emitted);
+        EqualSource("#{string.Format(\"{0}/{0}\", RuntimeValues.NextText())}", emitted);
         var runtime = LocalNativeHost.Evaluate(emitted, new());
         Assert.Equal("hello/hello", runtime.Value);
         Assert.Equal(1, runtime.Calls);
@@ -82,7 +82,7 @@ public sealed class BindingTests
             """));
         Assert.Equal(0, result.Assembly.GetType("RuntimeValues")!.GetField("Calls")!.GetValue(null));
         var emitted = Token(result.Definition).Value<string>()!;
-        EqualSource("@csharp{RuntimeValues.CurrentText}", emitted);
+        EqualSource("#{RuntimeValues.CurrentText}", emitted);
         var runtime = LocalNativeHost.Evaluate(emitted, new());
         Assert.Equal("hello", runtime.Value);
         Assert.Equal(1, runtime.Calls);
@@ -105,7 +105,7 @@ public sealed class BindingTests
         for (var i = 0; i < 3; i++)
         {
             var emitted = values[i].Value<string>()!;
-            EqualSource($"@csharp{{{i} + 1}}", emitted);
+            EqualSource($"#{{{i} + 1}}", emitted);
             Assert.Equal(i + 1, LocalNativeHost.Evaluate(emitted, new()).Value);
         }
     }
@@ -119,7 +119,7 @@ public sealed class BindingTests
             private static IOutputWorkflowAction<string> Create(IOutputWorkflowAction<string> action, string ending)
                 => WorkflowActions.BuiltIn.Compose<string>(input: () => action.Output + ending);
             """));
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>() + \"!\"}", Token(result.Definition).Value<string>()!);
+        EqualSource("#{outputs(\"Source\").ToObject<string>() + \"!\"}", Token(result.Definition).Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "CB13")]
@@ -137,8 +137,8 @@ public sealed class BindingTests
                 Inputs = new JArray(a.GetActionDefinition("Catalog").Inputs, b.GetActionDefinition("Catalog").Inputs)
             };
             """));
-        EqualSource("@csharp{outputs(\"A\").ToObject<string>().Length}", Token(result.Definition)[0]!.Value<string>()!);
-        EqualSource("@csharp{outputs(\"B\").ToObject<string>().Length}", Token(result.Definition)[1]!.Value<string>()!);
+        EqualSource("#{outputs(\"A\").ToObject<string>().Length}", Token(result.Definition)[0]!.Value<string>()!);
+        EqualSource("#{outputs(\"B\").ToObject<string>().Length}", Token(result.Definition)[1]!.Value<string>()!);
     }
 
     [Fact, Trait("Catalog", "DG02")]
@@ -149,7 +149,7 @@ public sealed class BindingTests
             var action = WorkflowActions.BuiltIn.Compose(inputs: e);
             return action.GetActionDefinition("Catalog");
             """));
-        Assert.Equal("@outputs('Source')", Token(result.Definition).Value<string>());
+        Assert.Equal("#{outputs(\"Source\")}", Token(result.Definition).Value<string>());
     }
 
     [Fact, Trait("Catalog", "P04b")]
@@ -160,7 +160,7 @@ public sealed class BindingTests
             var action = WorkflowActions.BuiltIn.Compose(inputs: message);
             return action.GetActionDefinition("Catalog");
             """));
-        Assert.Equal("hello@{triggerBody()}", Token(result.Definition).Value<string>());
+        Assert.Equal("#{$\"hello{triggerBody()}\"}", Token(result.Definition).Value<string>());
     }
 
     [Fact, Trait("Catalog", "IN01")]
@@ -171,6 +171,6 @@ public sealed class BindingTests
             if (action.Name != "Upper") throw new InvalidOperationException("Action name lost.");
             return action.GetActionDefinition("Catalog");
             """));
-        EqualSource("@csharp{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", Token(result.Definition).Value<string>()!);
+        EqualSource("#{outputs(\"Source\").ToObject<string>().ToUpperInvariant()}", Token(result.Definition).Value<string>()!);
     }
 }

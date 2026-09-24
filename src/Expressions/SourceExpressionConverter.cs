@@ -51,7 +51,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 var status = (HttpStatusCode)Enum.Parse(typeof(HttpStatusCode), token.Value<string>());
                 return new JValue((int)status);
             }
-            return new JValue("@csharp{(int)(" + descriptor.RenderNative() + ")}");
+            return new JValue("#{(int)(" + descriptor.RenderNative() + ")}");
         }
 
         internal static string Convert<T>(Func<T> expression) where T : Enum => ConvertO(expression);
@@ -66,28 +66,24 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (token.Type == JTokenType.Null) return null;
                 if (token.Type == JTokenType.Bytes) return System.Convert.ToBase64String(token.Value<byte[]>());
                 var text = token.Type == JTokenType.String ? token.Value<string>() : token.ToString(Newtonsoft.Json.Formatting.None);
-                return "@base64('" + text.Replace("'", "''") + "')";
-            }
-            if (descriptor.Kind == "native")
-            {
-                var native = RenderNativeWire(descriptor);
-                var type = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
-                if (type == typeof(bool))
-                    native = "(" + native + ").ToString().ToLowerInvariant()";
-                else if (type.IsPrimitive && type != typeof(char) || type == typeof(decimal))
-                    native = "(" + native + ").ToString(global::System.Globalization.CultureInfo.InvariantCulture)";
-                return "@csharp{base64(" + native + ")}";
+                return "#{base64(" + SourceSnapshot.Quote(text) + ")}";
             }
             if (descriptor.Kind == "object" || descriptor.Kind == "array")
                 throw new NotSupportedException("Encoding a structured value with runtime leaves requires explicit destination metadata.");
-            return "@base64(" + TemplateArgument(descriptor) + ")";
+            var native = RenderNativeWire(descriptor);
+            var type = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
+            if (type == typeof(bool))
+                native = "(" + native + ").ToString().ToLowerInvariant()";
+            else if (type.IsPrimitive && type != typeof(char) || type == typeof(decimal))
+                native = "(" + native + ").ToString(global::System.Globalization.CultureInfo.InvariantCulture)";
+            return "#{base64(" + native + ")}";
         }
 
         internal static string ConvertWithUrlEncoding<T>(Func<T> expression, int times)
         {
             var argument = ConvertPathArgumentWithUrlEncoding(expression, times);
-            return argument.RequiresCSharp ? "@csharp{" + argument.Native() + "}" :
-                argument.IsLiteral && argument.Template.StartsWith("@", StringComparison.Ordinal) ? "@" + argument.Template : argument.Template;
+            return argument.RequiresCSharp ? "#{" + argument.Native() + "}" :
+                argument.IsLiteral ? SourceSnapshot.EscapeLiteral(argument.Template) : argument.Template;
         }
 
         internal static string ConvertWithUrlEncodingWithInt(Func<int> expression, int times) =>
@@ -100,7 +96,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (descriptor.IsLiteral && descriptor.RenderToken().Type == JTokenType.Null)
                 throw new ArgumentException("A required path argument cannot be null.", nameof(expression));
             Func<string> native = () => WrapUri(RenderNativeWire(descriptor), times);
-            if (descriptor.Kind == "native") return new ConvertedPathArgument(null, native, true);
             if (times == 0 && descriptor.IsLiteral)
             {
                 var token = descriptor.RenderToken();
@@ -108,9 +103,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 var text = token.Type == JTokenType.String ? token.Value<string>() : token.ToString(Newtonsoft.Json.Formatting.None);
                 return new ConvertedPathArgument(text, native, false, isLiteral: true);
             }
-            var template = TemplateArgument(descriptor);
-            for (int i = 0; i < times; i++) template = "encodeURIComponent(" + template + ")";
-            return new ConvertedPathArgument("@{" + template + "}", native, false);
+            return new ConvertedPathArgument(null, native, true);
         }
 
         internal static ConvertedPathArgument ConvertPathArgumentWithUrlEncodingWithInt(Func<int> expression, int times) =>
@@ -123,9 +116,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (!arguments.Any(a => a.RequiresCSharp))
             {
                 var text = string.Format(CultureInfo.InvariantCulture, format, arguments.Select(a => (object)a.Template).ToArray());
-                return arguments.All(a => a.IsLiteral) && text.StartsWith("@", StringComparison.Ordinal) ? "@" + text : text;
+                return arguments.All(a => a.IsLiteral) ? SourceSnapshot.EscapeLiteral(text) : text;
             }
-            return "@csharp{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, " +
+            return "#{string.Format(global::System.Globalization.CultureInfo.InvariantCulture, " +
                 SourceSnapshot.Quote(format) + ", " + string.Join(", ", arguments.Select(a => a.Native())) + ")}";
         }
 
@@ -147,52 +140,6 @@ namespace Microsoft.Azure.Workflows.Sdk
             return expression;
         }
 
-        internal static string TemplateArgument(ISourceDescriptor descriptor, bool allowNull = false)
-        {
-            var token = descriptor.RenderToken();
-            if (descriptor.IsLiteral)
-            {
-                if (token.Type == JTokenType.Null)
-                {
-                    if (allowNull) return "null";
-                    throw new NotSupportedException("Encoding a null value is unsupported at this destination.");
-                }
-                if (!(token is JValue)) throw new NotSupportedException("Encoding a structured literal requires destination metadata.");
-                return token.Type == JTokenType.String ? "'" + token.Value<string>().Replace("'", "''") + "'" : token.ToString(Newtonsoft.Json.Formatting.None);
-            }
-            var text = token.Value<string>();
-            if (text.StartsWith("@", StringComparison.Ordinal) && !text.StartsWith("@{", StringComparison.Ordinal))
-                return text.Substring(1);
-            // A whole interpolation needs one transform, not an independent transform per hole.
-            var pieces = new List<string>();
-            var cursor = 0;
-            while (cursor < text.Length)
-            {
-                var start = text.IndexOf("@{", cursor, StringComparison.Ordinal);
-                if (start < 0) { pieces.Add("'" + text.Substring(cursor).Replace("'", "''") + "'"); break; }
-                if (start > cursor) pieces.Add("'" + text.Substring(cursor, start - cursor).Replace("'", "''") + "'");
-                var end = FindTemplateEnd(text, start + 2);
-                pieces.Add(text.Substring(start + 2, end - start - 2));
-                cursor = end + 1;
-            }
-            return pieces.Count == 1 ? pieces[0] : "concat(" + string.Join(", ", pieces) + ")";
-        }
-
-        private static int FindTemplateEnd(string text, int start)
-        {
-            bool quoted = false;
-            for (int i = start; i < text.Length; i++)
-            {
-                if (text[i] == '\'')
-                {
-                    if (quoted && i + 1 < text.Length && text[i + 1] == '\'') { i++; continue; }
-                    quoted = !quoted;
-                }
-                if (text[i] == '}' && !quoted) return i;
-            }
-            throw new NotSupportedException("Invalid compiler template descriptor.");
-        }
-
         internal static JToken RenderWire(ISourceDescriptor descriptor)
         {
             // Walk descriptors, not their rendered strings: mixed objects retain which leaves are executable.
@@ -208,7 +155,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (descriptor.IsLiteral) return SourceSnapshot.CloneJson(descriptor.RenderToken(), escapeLiterals: true);
             var enumType = Nullable.GetUnderlyingType(descriptor.ResultType) ?? descriptor.ResultType;
             if (enumType.IsEnum && !descriptor.IsLiteral)
-                return new JValue("@csharp{" + RenderNativeWire(descriptor) + "}");
+                return new JValue("#{" + RenderNativeWire(descriptor) + "}");
             return descriptor.RenderToken();
         }
 
