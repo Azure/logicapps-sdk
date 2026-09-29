@@ -1,5 +1,6 @@
 <Project>
   <PropertyGroup>
+    <InterceptorsPreviewNamespaces>$(InterceptorsPreviewNamespaces);Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsPreviewNamespaces>
     <InterceptorsNamespaces>$(InterceptorsNamespaces);Microsoft.Azure.Workflows.Sdk.GeneratedInterceptors</InterceptorsNamespaces>
   </PropertyGroup>
 </Project>

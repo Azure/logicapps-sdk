@@ -245,7 +245,8 @@ namespace Microsoft.Azure.Workflows.Sdk
 
             throw new InvalidOperationException(
                 "The workflow expression was not processed by the Microsoft.Azure.Workflows.Sdk source generator. " +
-                "Build the workflow project with a compatible .NET 9.0.2xx or newer SDK.");
+                "Build the workflow project with a compiler compatible with Roslyn 4.11 or newer, " +
+                "such as the .NET 8.0.4xx SDK or newer.");
         }
     }
 
