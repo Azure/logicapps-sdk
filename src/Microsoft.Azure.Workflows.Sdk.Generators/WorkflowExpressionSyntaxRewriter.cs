@@ -31,6 +31,140 @@ internal sealed class WorkflowExpressionSyntaxRewriter : CSharpSyntaxRewriter
     public ImmutableArray<string> CapturedValueNames =>
         this.capturedValueNames.ToImmutableArray();
 
+    internal static bool CanRewriteObjectCreation(
+        SemanticModel semanticModel,
+        BaseObjectCreationExpressionSyntax node)
+    {
+        if (semanticModel.GetSymbolInfo(node).Symbol is not IMethodSymbol constructor ||
+            constructor.Parameters.Length != 0 ||
+            !IsJsonObjectType(constructor.ContainingType) ||
+            (!constructor.IsImplicitlyDeclared &&
+                constructor.ContainingAssembly.Name != "Microsoft.Azure.Workflows.Sdk"))
+        {
+            return false;
+        }
+
+        return node.Initializer == null ||
+            node.Initializer.Expressions.All(expression =>
+                expression is AssignmentExpressionSyntax assignment &&
+                assignment.IsKind(SyntaxKind.SimpleAssignmentExpression) &&
+                semanticModel.GetSymbolInfo(assignment.Left).Symbol is IPropertySymbol);
+    }
+
+    internal static bool IsJsonObjectType(ITypeSymbol type) =>
+        type.TypeKind == TypeKind.Class &&
+        GetObjectProperties(type).Any(property => property.GetAttributes().Any(attribute =>
+            attribute.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute"));
+
+    public override SyntaxNode? VisitObjectCreationExpression(ObjectCreationExpressionSyntax node) =>
+        CanRewriteObjectCreation(this.semanticModel, node)
+            ? this.RewriteObjectCreation(node)
+            : base.VisitObjectCreationExpression(node);
+
+    public override SyntaxNode? VisitImplicitObjectCreationExpression(ImplicitObjectCreationExpressionSyntax node) =>
+        CanRewriteObjectCreation(this.semanticModel, node)
+            ? this.RewriteObjectCreation(node)
+            : base.VisitImplicitObjectCreationExpression(node);
+
+    public override SyntaxNode? VisitArrayCreationExpression(ArrayCreationExpressionSyntax node) =>
+        node.Initializer != null &&
+        this.semanticModel.GetTypeInfo(node).Type is IArrayTypeSymbol array &&
+        IsJsonObjectType(array.ElementType)
+            ? this.RewriteObjectArray(node.Initializer).WithTriviaFrom(node)
+            : base.VisitArrayCreationExpression(node);
+
+    public override SyntaxNode? VisitImplicitArrayCreationExpression(ImplicitArrayCreationExpressionSyntax node) =>
+        this.semanticModel.GetTypeInfo(node).Type is IArrayTypeSymbol array &&
+        IsJsonObjectType(array.ElementType)
+            ? this.RewriteObjectArray(node.Initializer).WithTriviaFrom(node)
+            : base.VisitImplicitArrayCreationExpression(node);
+
+    private ExpressionSyntax RewriteObjectArray(InitializerExpressionSyntax initializer) =>
+        WorkflowData(
+            $"new global::Newtonsoft.Json.Linq.JArray {{ {string.Join(", ", initializer.Expressions.Select(expression => this.Visit(expression)!.WithoutTrivia().NormalizeWhitespace().ToFullString()))} }}");
+
+    private ExpressionSyntax RewriteObjectCreation(BaseObjectCreationExpressionSyntax node)
+    {
+        var properties = new List<string>();
+        var boundMembers = new HashSet<string>(StringComparer.Ordinal);
+        if (node.Initializer != null)
+        {
+            foreach (var assignment in node.Initializer.Expressions.Cast<AssignmentExpressionSyntax>())
+            {
+                var property = (IPropertySymbol)this.semanticModel.GetSymbolInfo(assignment.Left).Symbol!;
+                boundMembers.Add(property.Name);
+                AddProperty(property, (ExpressionSyntax)this.Visit(assignment.Right)!);
+            }
+        }
+
+        // Defaults are metadata, not constructor execution: customer CLR types never reach the runtime.
+        var type = this.semanticModel.GetTypeInfo(node).Type!;
+        foreach (var property in GetObjectProperties(type))
+        {
+            if (boundMembers.Contains(property.Name))
+                continue;
+
+            var attribute = property.GetAttributes().FirstOrDefault(candidate =>
+                candidate.AttributeClass?.ToDisplayString() == "System.ComponentModel.DefaultValueAttribute");
+            if (attribute?.ConstructorArguments.Length == 1)
+            {
+                AddProperty(property, RenderDefaultValue(property.Type, attribute.ConstructorArguments[0].Value));
+            }
+        }
+
+        return WorkflowData($"new global::Newtonsoft.Json.Linq.JObject({string.Join(", ", properties)})")
+            .WithTriviaFrom(node);
+
+        void AddProperty(IPropertySymbol property, ExpressionSyntax value)
+        {
+            var name = SymbolDisplay.FormatLiteral(GetJsonPropertyName(property, property.Name), quote: true);
+            properties.Add(
+                $"new global::Newtonsoft.Json.Linq.JProperty({name}, {value.WithoutTrivia().NormalizeWhitespace()})");
+        }
+    }
+
+    private static IEnumerable<IPropertySymbol> GetObjectProperties(ITypeSymbol type)
+    {
+        var names = new HashSet<string>(StringComparer.Ordinal);
+        for (var current = type; current != null; current = current.BaseType)
+        {
+            foreach (var property in current.GetMembers().OfType<IPropertySymbol>())
+            {
+                if (!property.IsStatic && !property.IsIndexer &&
+                    property.DeclaredAccessibility == Accessibility.Public &&
+                    names.Add(property.Name))
+                {
+                    yield return property;
+                }
+            }
+        }
+    }
+
+    private static ExpressionSyntax RenderDefaultValue(ITypeSymbol type, object? value)
+    {
+        if (type is INamedTypeSymbol named &&
+            named.OriginalDefinition.SpecialType == SpecialType.System_Nullable_T)
+        {
+            type = named.TypeArguments[0];
+        }
+
+        if (value != null && type.TypeKind == TypeKind.Enum)
+        {
+            var member = type.GetMembers().OfType<IFieldSymbol>()
+                .FirstOrDefault(field => field.HasConstantValue && Equals(field.ConstantValue, value));
+            if (member != null)
+                return RenderConstant(GetEnumWireValue(member));
+        }
+
+        if (value is string json && IsJToken(type))
+        {
+            return SyntaxFactory.ParseExpression(
+                $"global::Newtonsoft.Json.Linq.JToken.Parse({SymbolDisplay.FormatLiteral(json, quote: true)})");
+        }
+
+        return RenderConstant(value);
+    }
+
     public override SyntaxNode? VisitIdentifierName(IdentifierNameSyntax node)
     {
         if (node.Parent is MemberAccessExpressionSyntax memberAccess &&

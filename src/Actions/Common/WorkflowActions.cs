@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>
     /// Provides the top-level entry point for creating workflow actions. Use the <see cref="BuiltIn"/>
     /// property to access built-in action types (HTTP, Compose, Response, Custom Code, etc.) and the
-    /// <see cref="Managed"/> property to access actions provided by managed API connectors.
+    /// <see cref="Managed"/> and <see cref="ServiceProviders"/> properties to access connector actions.
     /// </summary>
     /// <example>
     /// <code>
@@ -36,5 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// extension methods on this instance.
         /// </summary>
         public static WorkflowManagedActions Managed = new WorkflowManagedActions();
+
+        /// <summary>
+        /// Gets the factory for service provider actions (e.g., SQL, Service Bus, Azure Blob).
+        /// Service provider actions are auto-generated from operation manifests.
+        /// </summary>
+        public static WorkflowServiceProviderActions ServiceProviders = new WorkflowServiceProviderActions();
     }
 }

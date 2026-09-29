@@ -33,7 +33,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// Create and register a complete stateful HTTP workflow:
     /// <code>
     /// // 1. Create a trigger
-    /// var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger("MyTrigger");
+    /// var trigger = WorkflowTriggers.BuiltIn.CreateHttpTrigger().WithName("MyTrigger");
     ///
     /// // 2. Create actions
     /// var compose = WorkflowActions.BuiltIn.Compose(inputs: () => $"Hello: {trigger.TriggerOutput.Body}").WithName("FormatInput");

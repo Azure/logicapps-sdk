@@ -61,7 +61,8 @@ internal static class RuntimeDependencyValidator
                 return;
 
             if (this.semanticModel.GetSymbolInfo(node).Symbol is IMethodSymbol constructor &&
-                !this.IsApprovedAssembly(constructor.ContainingAssembly))
+                !this.IsApprovedAssembly(constructor.ContainingAssembly) &&
+                !WorkflowExpressionSyntaxRewriter.CanRewriteObjectCreation(this.semanticModel, node))
             {
                 this.UnsupportedDependency = Create(constructor.ContainingType, node);
                 return;
@@ -76,7 +77,8 @@ internal static class RuntimeDependencyValidator
                 return;
 
             if (this.semanticModel.GetSymbolInfo(node).Symbol is IMethodSymbol constructor &&
-                !this.IsApprovedAssembly(constructor.ContainingAssembly))
+                !this.IsApprovedAssembly(constructor.ContainingAssembly) &&
+                !WorkflowExpressionSyntaxRewriter.CanRewriteObjectCreation(this.semanticModel, node))
             {
                 this.UnsupportedDependency = Create(constructor.ContainingType, node);
                 return;

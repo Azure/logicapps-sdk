@@ -39,19 +39,17 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// <summary>
         /// Initializes a new instance of the <see cref="RecurrenceTrigger"/> class.
         /// </summary>
-        /// <param name="name">The name to assign to the recurrence trigger.</param>
         /// <param name="frequency">The frequency of the recurrence (e.g., Minute, Hour, Day).</param>
         /// <param name="interval">The interval between recurrences.</param>
         /// <param name="startTime">The start time for the recurrence schedule.</param>
         /// <param name="timeZone">The time zone for the recurrence schedule.</param>
         internal RecurrenceTrigger(
-            string name,
             FlowRecurrenceFrequency frequency,
             int interval,
             DateTime? startTime,
             TimeZoneInfo timeZone)
         {
-            this.Name = name;
+            this.Name = "recurrence";
             this.Frequency = frequency;
             this.Interval = interval;
             this.StartTime = startTime;

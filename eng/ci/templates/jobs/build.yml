@@ -41,6 +41,16 @@ jobs:
         projects: $(project)
         arguments: -c $(configuration) -v m --no-restore
 
+    - task: DotNetCoreCLI@2
+      displayName: Test SDK and workflow expressions
+      inputs:
+        command: test
+        projects: |
+          tests/Microsoft.Azure.Workflows.Sdk.Tests/Microsoft.Azure.Workflows.Sdk.Tests.csproj
+          tests/Microsoft.Azure.Workflows.Sdk.ExpressionTests/Microsoft.Azure.Workflows.Sdk.ExpressionTests.csproj
+          tests/Microsoft.Azure.Workflows.Sdk.GeneratorTests/Microsoft.Azure.Workflows.Sdk.GeneratorTests.csproj
+        arguments: -c $(configuration) -v m --no-build --no-restore
+
     - ${{ if eq(parameters.official, true) }}:
       - template: ci/sign-files.yml@eng
         parameters:

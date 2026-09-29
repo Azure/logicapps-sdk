@@ -14,6 +14,7 @@ namespace Microsoft.Azure.Workflows.Sdk
         /// </summary>
         internal ConversationalFlowTrigger()
         {
+            this.Name = "When_a_new_chat_session_starts";
         }
 
         /// <summary>

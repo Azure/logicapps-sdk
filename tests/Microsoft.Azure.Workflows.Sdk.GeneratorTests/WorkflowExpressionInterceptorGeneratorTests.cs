@@ -202,7 +202,7 @@ public class WorkflowExpressionInterceptorGeneratorTests
         Assert.DoesNotContain("WorkflowFunctions.AppSetting", generated);
     }
 
-    private static GeneratorDriverRunResult RunGenerator(string source)
+    internal static GeneratorDriverRunResult RunGenerator(string source)
     {
         var parseOptions = new CSharpParseOptions(LanguageVersion.Latest);
         var syntaxTree = CSharpSyntaxTree.ParseText(source, parseOptions);

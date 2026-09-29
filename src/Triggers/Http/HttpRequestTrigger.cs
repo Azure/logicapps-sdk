@@ -27,6 +27,8 @@ namespace Microsoft.Azure.Workflows.Sdk
             JToken requestBodyJsonSchema = null,
             string relativePath = null)
         {
+            this.Name = "when_an_HTTP_request_is_received";
+
             if (method != null || requestBodyJsonSchema != null || relativePath != null)
             {
                 this.input = new HttpRequestTriggerInput
