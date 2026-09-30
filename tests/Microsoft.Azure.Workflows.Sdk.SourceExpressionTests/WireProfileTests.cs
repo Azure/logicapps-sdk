@@ -53,6 +53,24 @@ public class WireProfileTests
         Assert.Equal("\"first /+\"", WorkflowWireRuntime.ToCompactJson((Choice?)Choice.First));
     }
 
+    [Theory]
+    [InlineData(1)]
+    [InlineData(2)]
+    [InlineData(99)]
+    [InlineData(null)]
+    public void Literal_and_runtime_enum_normalization_share_the_same_wire_policy(int? number)
+    {
+        Choice? value = number.HasValue ? (Choice)number.Value : null;
+        var action = WorkflowActions.BuiltIn.Compose(SourceExpression.Literal(1, value));
+        var literal = ConsumerCompilation.Token(action.GetActionDefinition("Enum")).Value<string>();
+        Assert.Equal(literal, JToken.Parse(WorkflowWireRuntime.ToCompactJson(value)).Value<string>());
+        var expected = literal == null ? null : Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(literal));
+        Assert.Equal(expected, WorkflowWireRuntime.NormalizeAndEncode(value, """
+            {"version":1,"destination":"choice","kind":"enum","enumPolicy":"open",
+             "nullable":true,"optional":false,"transforms":["base64"],"inputEncoding":"raw"}
+            """));
+    }
+
     [Fact]
     public void ConflictingEnumAliasesFailRatherThanChoosingOne()
     {

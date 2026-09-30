@@ -27,26 +27,26 @@ public static class WorkflowSchemaGenerator
         {
             using var document = JsonDocument.Parse(schemaJson, new JsonDocumentOptions { MaxDepth = 128 });
             var root = document.RootElement;
-            CheckDuplicates(root, "$");
-            Object(root, "$", "version", "namespace", "className", "models", "operations");
-            Version(root, "$");
-            var ns = Text(root, "namespace", "$");
+            ValidateUniquePropertyNames(root, "$");
+            ValidateObjectProperties(root, "$", "version", "namespace", "className", "models", "operations");
+            ValidateSchemaVersion(root, "$");
+            var ns = GetRequiredText(root, "namespace", "$");
             foreach (var part in ns.Split('.'))
-                Identifier(part, "$.namespace");
-            var className = Text(root, "className", "$");
-            Identifier(className, "$.className");
-            FileName(className, "$.className");
+                ValidateIdentifier(part, "$.namespace");
+            var className = GetRequiredText(root, "className", "$");
+            ValidateIdentifier(className, "$.className");
+            ValidateGeneratedDeclarationName(className, "$.className");
 
-            var models = Array(root, "models", "$");
-            var operations = Array(root, "operations", "$");
+            var models = GetRequiredArray(root, "models", "$");
+            var operations = GetRequiredArray(root, "operations", "$");
             var modelNames = new HashSet<string>(StringComparer.Ordinal);
             var fileNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { className };
             foreach (var model in models.EnumerateArray())
             {
-                Object(model, "$.models", "name", "schema");
-                var name = Text(model, "name", "$.models");
-                Identifier(name, "$.models.name");
-                FileName(name, "$.models.name");
+                ValidateObjectProperties(model, "$.models", "name", "schema");
+                var name = GetRequiredText(model, "name", "$.models");
+                ValidateIdentifier(name, "$.models.name");
+                ValidateGeneratedDeclarationName(name, "$.models.name");
                 if (!modelNames.Add(name) || !fileNames.Add(name))
                     throw Error(name, "Duplicate model name or generated file/class name collision.");
                 if (BuiltInTypes.Contains(name))
@@ -56,94 +56,12 @@ public static class WorkflowSchemaGenerator
             var files = new Dictionary<string, string>(StringComparer.Ordinal);
             foreach (var model in models.EnumerateArray())
             {
-                var name = Text(model, "name", "$.models");
-                var schema = Required(model, "schema", name);
-                ValidateNode(schema, name, modelNames, modelRoot: true);
-                if (Text(schema, "kind", name) != "object")
-                    throw Error(name, "A model schema must have kind 'object'.");
-                var properties = Required(schema, "properties", name);
-                var members = new HashSet<string>(StringComparer.Ordinal);
-                var source = Header(ns);
-                source.Append('[').Append(Sdk).Append("WorkflowModelSchemaAttribute(1, ")
-                    .Append(Literal(schema.GetRawText())).AppendLine(")]");
-                source.Append("public sealed class ").Append(name).AppendLine("\n{");
-                foreach (var property in properties.EnumerateObject())
-                {
-                    var destination = Text(property.Value, "destination", name);
-                    var clrName = Text(property.Value, "clrName", destination);
-                    Identifier(clrName, destination);
-                    if (!members.Add(clrName) || clrName == name)
-                        throw Error(destination, "Duplicate CLR property name or property named after its containing model.");
-                    var clrType = Type(Text(property.Value, "clrType", destination), modelNames, destination);
-                    source.Append("    [global::Newtonsoft.Json.JsonPropertyAttribute(")
-                        .Append(Literal(property.Name)).AppendLine(")]");
-                    source.Append("    public ").Append(clrType).Append(' ').Append(clrName).Append(" { get; set; }");
-                    if (property.Value.TryGetProperty("default", out var defaultValue))
-                        source.Append(" = ").Append(DefaultLiteral(defaultValue,
-                            Text(property.Value, "clrType", destination), destination)).Append(';');
-                    source.AppendLine();
-                }
-                source.AppendLine("}");
-                files.Add(name + ".g.cs", source.ToString());
+                var name = GetRequiredText(model, "name", "$.models");
+                var schema = GetRequiredProperty(model, "schema", name);
+                files.Add(name + ".g.cs", GenerateModelSource(ns, name, schema, modelNames));
             }
 
-            var api = Header(ns);
-            api.Append("public static class ").Append(className).AppendLine("\n{");
-            var operationNames = new HashSet<string>(StringComparer.Ordinal);
-            foreach (var operation in operations.EnumerateArray())
-            {
-                Object(operation, "$.operations", "name", "mode", "parameters", "path");
-                var name = Text(operation, "name", "$.operations");
-                Identifier(name, "$.operations.name");
-                if (!operationNames.Add(name) || name == className)
-                    throw Error(name, "Duplicate operation name or operation named after its containing class.");
-                var mode = Choice(operation, "mode", name, "value", "object", "path");
-                var parameters = Array(operation, "parameters", name).EnumerateArray().ToArray();
-                if (mode == "value" && parameters.Length != 1)
-                    throw Error(name, "Value operations require exactly one parameter.");
-                if (mode != "path" && operation.TryGetProperty("path", out _))
-                    throw Error(name, "Only path operations may declare a path.");
-                var path = mode == "path" ? Text(operation, "path", name) : null;
-                if (path != null)
-                    ValidatePath(path, parameters.Length, name);
-
-                var names = new HashSet<string>(StringComparer.Ordinal);
-                var parameterNames = new List<string>();
-                var schemas = new List<string>();
-                var declarations = new List<string>();
-                foreach (var parameter in parameters)
-                {
-                    Object(parameter, name, "name", "type", "schema");
-                    var parameterName = Text(parameter, "name", name);
-                    var schema = Required(parameter, "schema", name + "." + parameterName);
-                    ValidateNode(schema, name + "." + parameterName, modelNames);
-                    var destination = Text(schema, "destination", name);
-                    Identifier(parameterName, destination);
-                    if (!names.Add(parameterName))
-                        throw Error(destination, "Duplicate parameter name.");
-                    var type = Type(Text(parameter, "type", destination), modelNames, destination);
-                    parameterNames.Add(parameterName);
-                    schemas.Add(Literal(schema.GetRawText()));
-                    declarations.Add($"[{Sdk}WorkflowExpressionAttribute, {Sdk}WorkflowDestinationAttribute({schemas[^1]})] global::System.Func<{type}> {parameterName} = null");
-                }
-
-                api.Append("    public static ").Append(Sdk)
-                    .Append("ComposeAction<global::Newtonsoft.Json.Linq.JToken> ").Append(name).Append('(')
-                    .Append(string.Join(", ", declarations)).AppendLine(")");
-                api.Append("        => ").Append(Sdk).Append("WorkflowSchemaRuntime.");
-                var schemaArray = "new string[] { " + string.Join(", ", schemas) + " }";
-                var delegates = "new global::System.Delegate[] { " + string.Join(", ", parameterNames) + " }";
-                if (mode == "value")
-                    api.Append("Value(").Append(schemas[0]).Append(", ").Append(parameterNames[0]);
-                else if (mode == "object")
-                    api.Append("Object(new string[] { ").Append(string.Join(", ", parameterNames.Select(Literal)))
-                        .Append(" }, ").Append(schemaArray).Append(", ").Append(delegates);
-                else
-                    api.Append("Path(").Append(Literal(path!)).Append(", ").Append(schemaArray).Append(", ").Append(delegates);
-                api.AppendLine(");").AppendLine();
-            }
-            api.AppendLine("}");
-            files.Add(className + ".g.cs", api.ToString());
+            files.Add(className + ".g.cs", GenerateOperationApiSource(ns, className, operations, modelNames));
             return new ReadOnlyDictionary<string, string>(files);
         }
         catch (JsonException exception)
@@ -152,22 +70,115 @@ public static class WorkflowSchemaGenerator
         }
     }
 
-    private static bool ValidateNode(JsonElement node, string location, HashSet<string> models,
+    private static string GenerateModelSource(string ns, string name, JsonElement schema, HashSet<string> modelNames)
+    {
+        ValidateNodeAndDetectTransforms(schema, name, modelNames, modelRoot: true);
+        if (GetRequiredText(schema, "kind", name) != "object")
+            throw Error(name, "A model schema must have kind 'object'.");
+        var properties = GetRequiredProperty(schema, "properties", name);
+        var members = new HashSet<string>(StringComparer.Ordinal);
+        var source = CreateSourceBuilder(ns);
+        source.Append('[').Append(Sdk).Append("WorkflowModelSchemaAttribute(1, ")
+            .Append(Literal(schema.GetRawText())).AppendLine(")]");
+        source.Append("public sealed class ").Append(name).AppendLine("\n{");
+        foreach (var property in properties.EnumerateObject())
+        {
+            var destination = GetRequiredText(property.Value, "destination", name);
+            var clrName = GetRequiredText(property.Value, "clrName", destination);
+            ValidateIdentifier(clrName, destination);
+            if (!members.Add(clrName) || clrName == name)
+                throw Error(destination, "Duplicate CLR property name or property named after its containing model.");
+            var clrType = ResolveClrTypeName(GetRequiredText(property.Value, "clrType", destination), modelNames, destination);
+            source.Append("    [global::Newtonsoft.Json.JsonPropertyAttribute(")
+                .Append(Literal(property.Name)).AppendLine(")]");
+            source.Append("    public ").Append(clrType).Append(' ').Append(clrName).Append(" { get; set; }");
+            if (property.Value.TryGetProperty("default", out var defaultValue))
+                source.Append(" = ").Append(FormatModelDefaultLiteral(defaultValue,
+                    GetRequiredText(property.Value, "clrType", destination), destination)).Append(';');
+            source.AppendLine();
+        }
+        source.AppendLine("}");
+        return source.ToString();
+    }
+
+    private static string GenerateOperationApiSource(string ns, string className, JsonElement operations,
+        HashSet<string> modelNames)
+    {
+        var api = CreateSourceBuilder(ns);
+        api.Append("public static class ").Append(className).AppendLine("\n{");
+        var operationNames = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var operation in operations.EnumerateArray())
+        {
+            ValidateObjectProperties(operation, "$.operations", "name", "mode", "parameters", "path");
+            var name = GetRequiredText(operation, "name", "$.operations");
+            ValidateIdentifier(name, "$.operations.name");
+            if (!operationNames.Add(name) || name == className)
+                throw Error(name, "Duplicate operation name or operation named after its containing class.");
+            var mode = GetRequiredChoice(operation, "mode", name, "value", "object", "path");
+            var parameters = GetRequiredArray(operation, "parameters", name).EnumerateArray().ToArray();
+            if (mode == "value" && parameters.Length != 1)
+                throw Error(name, "Value operations require exactly one parameter.");
+            if (mode != "path" && operation.TryGetProperty("path", out _))
+                throw Error(name, "Only path operations may declare a path.");
+            var path = mode == "path" ? GetRequiredText(operation, "path", name) : null;
+            if (path != null)
+                ValidatePathFormat(path, parameters.Length, name);
+
+            var names = new HashSet<string>(StringComparer.Ordinal);
+            var parameterNames = new List<string>();
+            var schemas = new List<string>();
+            var declarations = new List<string>();
+            foreach (var parameter in parameters)
+            {
+                ValidateObjectProperties(parameter, name, "name", "type", "schema");
+                var parameterName = GetRequiredText(parameter, "name", name);
+                var schema = GetRequiredProperty(parameter, "schema", name + "." + parameterName);
+                ValidateNodeAndDetectTransforms(schema, name + "." + parameterName, modelNames);
+                var destination = GetRequiredText(schema, "destination", name);
+                ValidateIdentifier(parameterName, destination);
+                if (!names.Add(parameterName))
+                    throw Error(destination, "Duplicate parameter name.");
+                var type = ResolveClrTypeName(GetRequiredText(parameter, "type", destination), modelNames, destination);
+                parameterNames.Add(parameterName);
+                schemas.Add(Literal(schema.GetRawText()));
+                declarations.Add($"[{Sdk}WorkflowExpressionAttribute, {Sdk}WorkflowDestinationAttribute({schemas[^1]})] global::System.Func<{type}> {parameterName} = null");
+            }
+
+            api.Append("    public static ").Append(Sdk)
+                .Append("ComposeAction<global::Newtonsoft.Json.Linq.JToken> ").Append(name).Append('(')
+                .Append(string.Join(", ", declarations)).AppendLine(")");
+            api.Append("        => ").Append(Sdk).Append("WorkflowSchemaRuntime.");
+            var schemaArray = "new string[] { " + string.Join(", ", schemas) + " }";
+            var delegates = "new global::System.Delegate[] { " + string.Join(", ", parameterNames) + " }";
+            if (mode == "value")
+                api.Append("Value(").Append(schemas[0]).Append(", ").Append(parameterNames[0]);
+            else if (mode == "object")
+                api.Append("Object(new string[] { ").Append(string.Join(", ", parameterNames.Select(Literal)))
+                    .Append(" }, ").Append(schemaArray).Append(", ").Append(delegates);
+            else
+                api.Append("Path(").Append(Literal(path!)).Append(", ").Append(schemaArray).Append(", ").Append(delegates);
+            api.AppendLine(");").AppendLine();
+        }
+        api.AppendLine("}");
+        return api.ToString();
+    }
+
+    private static bool ValidateNodeAndDetectTransforms(JsonElement node, string location, HashSet<string> models,
         bool modelRoot = false, bool modelProperty = false)
     {
         if (node.ValueKind == JsonValueKind.Object &&
             node.TryGetProperty("destination", out var label) && label.ValueKind == JsonValueKind.String)
             location = label.GetString()!;
-        Object(node, location, "version", "destination", "kind", "nullable", "optional", "transforms",
+        ValidateObjectProperties(node, location, "version", "destination", "kind", "nullable", "optional", "transforms",
             "properties", "items", "enumPolicy", "enumValues", "inputEncoding", "allowAlreadyEncoded",
             "runtimeObject", "serializerProfile", "default", "clrName", "clrType", "additionalProperties");
-        Version(node, location);
-        Text(node, "destination", location);
-        var kind = Choice(node, "kind", location, "text", "number", "boolean", "bytes", "uri",
+        ValidateSchemaVersion(node, location);
+        GetRequiredText(node, "destination", location);
+        var kind = GetRequiredChoice(node, "kind", location, "text", "number", "boolean", "bytes", "uri",
             "httpMethod", "enum", "json", "object", "array", "any");
-        var nullable = Boolean(node, "nullable", location);
-        Boolean(node, "optional", location);
-        var transforms = Array(node, "transforms", location);
+        var nullable = GetRequiredBoolean(node, "nullable", location);
+        GetRequiredBoolean(node, "optional", location);
+        var transforms = GetRequiredArray(node, "transforms", location);
         var base64 = false;
         var url = false;
         foreach (var transform in transforms.EnumerateArray())
@@ -190,11 +201,11 @@ public static class WorkflowSchemaGenerator
         var hasEncoding = node.TryGetProperty("inputEncoding", out _);
         if (kind == "bytes" && url && !base64)
             throw Error(location, "Raw binary requires base64 before URL encoding.");
-        var encoding = hasEncoding ? Choice(node, "inputEncoding", location, "raw", "base64") : null;
+        var encoding = hasEncoding ? GetRequiredChoice(node, "inputEncoding", location, "raw", "base64") : null;
         if (base64 && !hasEncoding)
             throw Error(location, "Base64 requires explicit inputEncoding metadata.");
         var hasPassThrough = node.TryGetProperty("allowAlreadyEncoded", out _);
-        var passThrough = hasPassThrough && Boolean(node, "allowAlreadyEncoded", location);
+        var passThrough = hasPassThrough && GetRequiredBoolean(node, "allowAlreadyEncoded", location);
         if ((hasEncoding || hasPassThrough) && !base64)
             throw Error(location, "Input encoding metadata requires a base64 transform.");
         if (encoding == "base64" && (!passThrough || kind != "text"))
@@ -205,7 +216,7 @@ public static class WorkflowSchemaGenerator
         var hasProfile = node.TryGetProperty("serializerProfile", out _);
         if (hasProfile)
         {
-            Choice(node, "serializerProfile", location, "compact-json-v1");
+            GetRequiredChoice(node, "serializerProfile", location, "compact-json-v1");
             if (kind is not ("json" or "any" or "object" or "array"))
                 throw Error(location, "A serializer profile is only valid for JSON-capable kinds.");
         }
@@ -213,23 +224,23 @@ public static class WorkflowSchemaGenerator
             throw Error(location, "JSON normalization requires serializerProfile='compact-json-v1'.");
         if (node.TryGetProperty("runtimeObject", out _))
         {
-            Boolean(node, "runtimeObject", location);
+            GetRequiredBoolean(node, "runtimeObject", location);
             if (kind != "object")
                 throw Error(location, "runtimeObject is only valid for object destinations.");
         }
         if (node.TryGetProperty("additionalProperties", out _))
         {
-            Boolean(node, "additionalProperties", location);
+            GetRequiredBoolean(node, "additionalProperties", location);
             if (kind != "object")
                 throw Error(location, "additionalProperties is only valid for objects.");
         }
 
         if (kind == "enum")
         {
-            var policy = Choice(node, "enumPolicy", location, "open", "closed");
+            var policy = GetRequiredChoice(node, "enumPolicy", location, "open", "closed");
             if (policy == "closed")
             {
-                var values = Array(node, "enumValues", location);
+                var values = GetRequiredArray(node, "enumValues", location);
                 var unique = new HashSet<string>(StringComparer.Ordinal);
                 foreach (var value in values.EnumerateArray())
                     if (value.ValueKind != JsonValueKind.String || !unique.Add(value.GetString()!))
@@ -252,7 +263,7 @@ public static class WorkflowSchemaGenerator
             {
                 if (string.IsNullOrWhiteSpace(property.Name))
                     throw Error(location, "Property wire names must not be empty.");
-                childTransforms |= ValidateNode(property.Value, location + "." + property.Name, models,
+                childTransforms |= ValidateNodeAndDetectTransforms(property.Value, location + "." + property.Name, models,
                     modelProperty: modelRoot);
             }
         }
@@ -262,7 +273,7 @@ public static class WorkflowSchemaGenerator
         {
             if (kind != "array")
                 throw Error(location, "items is only valid on array destinations.");
-            childTransforms |= ValidateNode(items, location + "[*]", models);
+            childTransforms |= ValidateNodeAndDetectTransforms(items, location + "[*]", models);
         }
         else if (kind == "array")
             throw Error(location, "An array destination requires an items schema.");
@@ -271,8 +282,8 @@ public static class WorkflowSchemaGenerator
 
         if (modelProperty)
         {
-            Identifier(Text(node, "clrName", location), location);
-            Type(Text(node, "clrType", location), models, location);
+            ValidateIdentifier(GetRequiredText(node, "clrName", location), location);
+            ResolveClrTypeName(GetRequiredText(node, "clrType", location), models, location);
         }
         else if (node.TryGetProperty("clrName", out _) || node.TryGetProperty("clrType", out _))
             throw Error(location, "clrName/clrType are only valid on generated model properties.");
@@ -297,7 +308,7 @@ public static class WorkflowSchemaGenerator
                 };
                 if (!valid)
                     throw Error(location, "The default literal does not match the destination kind.");
-                if (kind == "enum" && Text(node, "enumPolicy", location) == "closed" &&
+                if (kind == "enum" && GetRequiredText(node, "enumPolicy", location) == "closed" &&
                     !node.GetProperty("enumValues").EnumerateArray().Any(v => v.GetString() == defaultValue.GetString()))
                     throw Error(location, "The default is not a declared closed enum wire value.");
             }
@@ -307,17 +318,14 @@ public static class WorkflowSchemaGenerator
 
     internal static void ValidateModelSchema(JsonElement schema, IEnumerable<string> modelNames)
     {
-        CheckDuplicates(schema, "$");
-        ValidateNode(schema, "$", new HashSet<string>(modelNames, StringComparer.Ordinal), modelRoot: true);
+        ValidateUniquePropertyNames(schema, "$");
+        ValidateNodeAndDetectTransforms(schema, "$", new HashSet<string>(modelNames, StringComparer.Ordinal), modelRoot: true);
         foreach (var property in schema.GetProperty("properties").EnumerateObject())
             if (property.Value.TryGetProperty("default", out var value))
-                DefaultLiteral(value, Text(property.Value, "clrType", property.Name), property.Name);
+                FormatModelDefaultLiteral(value, GetRequiredText(property.Value, "clrType", property.Name), property.Name);
     }
 
-    internal static string ModelDefaultLiteral(JsonElement value, string clrType, string destination) =>
-        DefaultLiteral(value, clrType, destination);
-
-    private static string DefaultLiteral(JsonElement value, string type, string location)
+    internal static string FormatModelDefaultLiteral(JsonElement value, string type, string location)
     {
         if (value.ValueKind == JsonValueKind.Null && type is not ("bool" or "int"))
             return "null";
@@ -332,14 +340,14 @@ public static class WorkflowSchemaGenerator
             if (type == "object" && value.TryGetDecimal(out var number))
             {
                 var literal = number.ToString(CultureInfo.InvariantCulture);
-                if (CanonicalNumber(value.GetRawText()) == CanonicalNumber(literal))
+                if (CanonicalizeNumber(value.GetRawText()) == CanonicalizeNumber(literal))
                     return literal + "M";
             }
         }
         throw Error(location, $"The scalar default cannot be represented safely as CLR type '{type}'.");
     }
 
-    private static string CanonicalNumber(string text)
+    private static string CanonicalizeNumber(string text)
     {
         var parts = text.Split(new[] { 'e', 'E' });
         var exponent = parts.Length == 2
@@ -361,7 +369,7 @@ public static class WorkflowSchemaGenerator
         return (negative ? "-" : "") + trimmed + "e" + exponent.ToString(CultureInfo.InvariantCulture);
     }
 
-    private static void ValidatePath(string path, int count, string location)
+    private static void ValidatePathFormat(string path, int count, string location)
     {
         if (!path.StartsWith("/", StringComparison.Ordinal) || path.Any(char.IsControl))
             throw Error(location, "Path formats must start with '/' and contain no control characters.");
@@ -382,7 +390,7 @@ public static class WorkflowSchemaGenerator
             throw Error(location, "Path placeholder count must equal the nonzero parameter count.");
     }
 
-    private static void CheckDuplicates(JsonElement element, string location)
+    private static void ValidateUniquePropertyNames(JsonElement element, string location)
     {
         if (element.ValueKind == JsonValueKind.Object)
         {
@@ -393,18 +401,18 @@ public static class WorkflowSchemaGenerator
             {
                 if (!names.Add(property.Name))
                     throw Error(location, $"Duplicate JSON key '{property.Name}'.");
-                CheckDuplicates(property.Value, location + "." + property.Name);
+                ValidateUniquePropertyNames(property.Value, location + "." + property.Name);
             }
         }
         else if (element.ValueKind == JsonValueKind.Array)
         {
             var index = 0;
             foreach (var item in element.EnumerateArray())
-                CheckDuplicates(item, $"{location}[{index++}]");
+                ValidateUniquePropertyNames(item, $"{location}[{index++}]");
         }
     }
 
-    private static void Object(JsonElement value, string location, params string[] allowed)
+    private static void ValidateObjectProperties(JsonElement value, string location, params string[] allowed)
     {
         if (value.ValueKind != JsonValueKind.Object)
             throw Error(location, "Expected an object.");
@@ -413,53 +421,53 @@ public static class WorkflowSchemaGenerator
                 throw Error(location, $"Unknown metadata key '{property.Name}'.");
     }
 
-    private static JsonElement Required(JsonElement value, string name, string location)
+    private static JsonElement GetRequiredProperty(JsonElement value, string name, string location)
     {
         if (!value.TryGetProperty(name, out var property))
             throw Error(location, $"Missing required '{name}'.");
         return property;
     }
 
-    private static string Text(JsonElement value, string name, string location)
+    private static string GetRequiredText(JsonElement value, string name, string location)
     {
-        var property = Required(value, name, location);
+        var property = GetRequiredProperty(value, name, location);
         if (property.ValueKind != JsonValueKind.String || string.IsNullOrWhiteSpace(property.GetString()))
             throw Error(location, $"'{name}' must be a nonempty string.");
         return property.GetString()!;
     }
 
-    private static JsonElement Array(JsonElement value, string name, string location)
+    private static JsonElement GetRequiredArray(JsonElement value, string name, string location)
     {
-        var property = Required(value, name, location);
+        var property = GetRequiredProperty(value, name, location);
         if (property.ValueKind != JsonValueKind.Array)
             throw Error(location, $"'{name}' must be an array.");
         return property;
     }
 
-    private static bool Boolean(JsonElement value, string name, string location)
+    private static bool GetRequiredBoolean(JsonElement value, string name, string location)
     {
-        var property = Required(value, name, location);
+        var property = GetRequiredProperty(value, name, location);
         if (property.ValueKind is not (JsonValueKind.True or JsonValueKind.False))
             throw Error(location, $"'{name}' must be a Boolean.");
         return property.GetBoolean();
     }
 
-    private static void Version(JsonElement value, string location)
+    private static void ValidateSchemaVersion(JsonElement value, string location)
     {
-        var version = Required(value, "version", location);
+        var version = GetRequiredProperty(value, "version", location);
         if (version.ValueKind != JsonValueKind.Number || !version.TryGetInt32(out var number) || number != 1)
             throw Error(location, "Unsupported schema version; expected integer version 1.");
     }
 
-    private static string Choice(JsonElement value, string name, string location, params string[] allowed)
+    private static string GetRequiredChoice(JsonElement value, string name, string location, params string[] allowed)
     {
-        var text = Text(value, name, location);
+        var text = GetRequiredText(value, name, location);
         if (!allowed.Contains(text, StringComparer.Ordinal))
             throw Error(location, $"Unsupported '{name}' value '{text}'. Expected: {string.Join(", ", allowed)}.");
         return text;
     }
 
-    private static void Identifier(string value, string location)
+    private static void ValidateIdentifier(string value, string location)
     {
         if (value.Length == 0 || !value.All(c => char.IsAsciiLetterOrDigit(c) || c == '_') ||
             !SyntaxFacts.IsValidIdentifier(value) || SyntaxFacts.GetKeywordKind(value) != SyntaxKind.None ||
@@ -467,7 +475,7 @@ public static class WorkflowSchemaGenerator
             throw Error(location, $"Unsafe C# identifier '{value}'. Use an unescaped identifier.");
     }
 
-    private static void FileName(string name, string location)
+    private static void ValidateGeneratedDeclarationName(string name, string location)
     {
         var upper = name.ToUpperInvariant();
         if (upper is "CON" or "PRN" or "AUX" or "NUL" ||
@@ -478,7 +486,7 @@ public static class WorkflowSchemaGenerator
             throw Error(location, $"'{name}' is not a supported C# declaration name.");
     }
 
-    private static string Type(string value, HashSet<string> models, string location)
+    private static string ResolveClrTypeName(string value, HashSet<string> models, string location)
     {
         if (BuiltInTypes.Contains(value))
             return value.StartsWith("System.", StringComparison.Ordinal) ? "global::" + value : value;
@@ -487,7 +495,7 @@ public static class WorkflowSchemaGenerator
         throw Error(location, $"Unsupported or unsafe CLR type '{value}'.");
     }
 
-    private static StringBuilder Header(string ns) => new StringBuilder()
+    private static StringBuilder CreateSourceBuilder(string ns) => new StringBuilder()
         .AppendLine("// <auto-generated />")
         .AppendLine("#nullable disable")
         .Append("namespace ").Append(ns).AppendLine(";").AppendLine();

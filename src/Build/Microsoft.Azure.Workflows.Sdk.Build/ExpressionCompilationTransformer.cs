@@ -21,7 +21,8 @@ public static class ExpressionCompilationTransformer
 
     public static TransformationResult Transform(CSharpCompilation compilation)
     {
-        using var dependencyScope = WorkflowDependencyAnalysis.Begin(compilation);
+        ArgumentNullException.ThrowIfNull(compilation);
+        var dependencies = new WorkflowDependencyCollector();
         var sources = new Dictionary<string, string>(StringComparer.Ordinal);
         var diagnostics = ImmutableArray.CreateBuilder<Diagnostic>();
         foreach (var diagnostic in compilation.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
@@ -37,17 +38,17 @@ public static class ExpressionCompilationTransformer
             return new TransformationResult(sources, diagnostics.ToImmutable());
         }
 
-        var factories = SourceFactoryPlan.Create(compilation, diagnostics);
+        var factories = SourceFactoryPlan.Create(compilation, diagnostics, dependencies);
         foreach (var tree in compilation.SyntaxTrees)
         {
-            var rewriter = new CallRewriter(compilation.GetSemanticModel(tree), diagnostics, factories);
+            var rewriter = new CallRewriter(compilation.GetSemanticModel(tree), diagnostics, factories, dependencies);
             var root = rewriter.Visit(tree.GetRoot())!;
             sources.Add(tree.FilePath, root.ToFullString());
         }
 
         return new TransformationResult(sources, diagnostics.ToImmutable())
         {
-            Dependencies = dependencyScope.Dependencies,
+            Dependencies = dependencies.Dependencies,
         };
     }
 
@@ -66,8 +67,8 @@ public static class ExpressionCompilationTransformer
             return false;
         }
 
-        var method = ResolveSourceMethod(model, invocation);
-        return method != null && method.Parameters.Any(IsExpressionParameter) &&
+        var method = ResolveInvocationMethod(model, invocation);
+        return method != null && method.Parameters.Any(IsWorkflowExpressionParameter) &&
             invocation.ArgumentList.Arguments.Any(a =>
                 model.GetSymbolInfo(a.Expression).Symbol is ILocalSymbol local &&
                 local.Type is INamedTypeSymbol type &&
@@ -76,26 +77,33 @@ public static class ExpressionCompilationTransformer
                 { Initializer.Value: LambdaExpressionSyntax });
     }
 
-    internal static IMethodSymbol? ResolveSourceMethod(SemanticModel model, InvocationExpressionSyntax invocation)
+    internal static IMethodSymbol? ResolveInvocationMethod(SemanticModel model, InvocationExpressionSyntax invocation)
     {
         var info = model.GetSymbolInfo(invocation);
         if (info.Symbol is IMethodSymbol method) return method;
         var candidates = info.CandidateSymbols.OfType<IMethodSymbol>()
-            .Where(m => m.Parameters.Any(IsExpressionParameter))
+            .Where(m => m.Parameters.Any(IsWorkflowExpressionParameter))
             .Where(m => invocation.ArgumentList.Arguments.All(a =>
                 a.NameColon == null || m.Parameters.Any(p => p.Name == a.NameColon.Name.Identifier.ValueText)))
             .ToArray();
         return candidates.Length == 1 ? candidates[0] : null;
     }
 
-    internal static bool IsExpressionParameter(IParameterSymbol parameter) =>
+    internal static bool IsWorkflowExpressionParameter(IParameterSymbol parameter) =>
         parameter.GetAttributes().Any(a =>
             a.AttributeClass?.ToDisplayString() == SdkAssembly + ".WorkflowExpressionAttribute" &&
             a.AttributeClass.ContainingAssembly.Name == SdkAssembly);
 
+    internal static IParameterSymbol? ResolveArgumentParameter(IMethodSymbol method, ArgumentSyntax argument) =>
+        argument.NameColon is { } name
+            ? method.Parameters.FirstOrDefault(p => p.Name == name.Name.Identifier.ValueText)
+            : argument.Parent is ArgumentListSyntax arguments
+                ? method.Parameters.ElementAtOrDefault(arguments.Arguments.IndexOf(argument))
+                : null;
+
     internal static string Quote(string text) => SymbolDisplay.FormatLiteral(text, quote: true);
 
-    internal static ExpressionSyntax DescriptorExpression(string descriptor, ExpressionSyntax original)
+    internal static ExpressionSyntax CreateDescriptorSyntax(string descriptor, ExpressionSyntax original)
     {
         var replacement = SyntaxFactory.ParseExpression(descriptor).WithTriviaFrom(original);
         var missingLines = original.ToFullString().Count(c => c == '\n') -
@@ -111,20 +119,21 @@ public static class ExpressionCompilationTransformer
     private sealed class CallRewriter(
         SemanticModel model,
         ImmutableArray<Diagnostic>.Builder diagnostics,
-        SourceFactoryPlan factories) : CSharpSyntaxRewriter
+        SourceFactoryPlan factories,
+        WorkflowDependencyCollector dependencies) : CSharpSyntaxRewriter
     {
         public override SyntaxNode? VisitSimpleLambdaExpression(SimpleLambdaExpressionSyntax node) =>
-            factories.Replacement(node) ?? base.VisitSimpleLambdaExpression(node);
+            factories.GetReplacementSyntax(node) ?? base.VisitSimpleLambdaExpression(node);
 
         public override SyntaxNode? VisitParenthesizedLambdaExpression(ParenthesizedLambdaExpressionSyntax node) =>
-            factories.Replacement(node) ?? base.VisitParenthesizedLambdaExpression(node);
+            factories.GetReplacementSyntax(node) ?? base.VisitParenthesizedLambdaExpression(node);
 
         public override SyntaxNode? VisitInvocationExpression(InvocationExpressionSyntax node)
         {
             var info = model.GetSymbolInfo(node);
-            var method = ResolveSourceMethod(model, node);
+            var method = ResolveInvocationMethod(model, node);
 
-            if (method == null || !method.Parameters.Any(IsExpressionParameter))
+            if (method == null || !method.Parameters.Any(IsWorkflowExpressionParameter))
             {
                 return base.VisitInvocationExpression(node);
             }
@@ -133,10 +142,8 @@ public static class ExpressionCompilationTransformer
             for (var index = 0; index < node.ArgumentList.Arguments.Count; index++)
             {
                 var argument = node.ArgumentList.Arguments[index];
-                var parameter = argument.NameColon is { } name
-                    ? method.Parameters.FirstOrDefault(p => p.Name == name.Name.Identifier.ValueText)
-                    : method.Parameters.ElementAtOrDefault(index);
-                if (parameter == null || !IsExpressionParameter(parameter) ||
+                var parameter = ResolveArgumentParameter(method, argument);
+                if (parameter == null || !IsWorkflowExpressionParameter(parameter) ||
                     argument.Expression.IsKind(SyntaxKind.NullLiteralExpression))
                 {
                     arguments.Add((ArgumentSyntax)Visit(argument)!);
@@ -157,7 +164,7 @@ public static class ExpressionCompilationTransformer
                         continue;
                     }
 
-                    var lambda = FindLambda(argument.Expression, node.SpanStart);
+                    var lambda = ResolveSourceLambda(argument.Expression, node.SpanStart);
                     var resultType = invoke.ReturnType;
                     if (resultType is ITypeParameterSymbol { TypeParameterKind: TypeParameterKind.Method } &&
                         info.Symbol == null)
@@ -171,9 +178,9 @@ public static class ExpressionCompilationTransformer
                         resultType = storedType?.DelegateInvokeMethod?.ReturnType ?? resultType;
                     }
 
-                    var builder = new SourceDescriptorBuilder(model, lambda, node.SpanStart);
-                    var descriptor = builder.Build(resultType, parameter);
-                    var replacement = DescriptorExpression(descriptor, argument.Expression);
+                    var builder = new SourceDescriptorBuilder(model, lambda, node.SpanStart, dependencies);
+                    var descriptor = builder.BuildDescriptorSource(resultType, parameter);
+                    var replacement = CreateDescriptorSyntax(descriptor, argument.Expression);
                     arguments.Add(argument.WithExpression(replacement));
                 }
                 catch (SourceDiagnosticException exception)
@@ -187,7 +194,7 @@ public static class ExpressionCompilationTransformer
                 SyntaxFactory.SeparatedList(arguments, node.ArgumentList.Arguments.GetSeparators())));
         }
 
-        private LambdaExpressionSyntax FindLambda(ExpressionSyntax expression, int callPosition)
+        private LambdaExpressionSyntax ResolveSourceLambda(ExpressionSyntax expression, int callPosition)
         {
             if (expression is LambdaExpressionSyntax lambda)
             {
@@ -196,7 +203,7 @@ public static class ExpressionCompilationTransformer
 
             if (expression is ParenthesizedExpressionSyntax parenthesized)
             {
-                return FindLambda(parenthesized.Expression, callPosition);
+                return ResolveSourceLambda(parenthesized.Expression, callPosition);
             }
 
             if (model.GetSymbolInfo(expression).Symbol is ILocalSymbol local &&

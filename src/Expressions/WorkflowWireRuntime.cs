@@ -7,7 +7,7 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System.IO;
     using System.Linq;
     using System.Reflection;
-    using System.Runtime.CompilerServices;
+    using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
     using Newtonsoft.Json.Serialization;
@@ -15,46 +15,20 @@ namespace Microsoft.Azure.Workflows.Sdk
     /// <summary>Wire conversions used when emitted workflow expressions execute at runtime.</summary>
     public static class WorkflowWireRuntime
     {
-        // Only closed, finite-valued CLR shapes can use the ordinary Newtonsoft writer
-        // without losing the SDK writer's enum, converter, raw-JSON, or NaN checks.
-        internal static string CompactJsonExpression(Type sourceType, string expression)
+        internal static string EnumWire(Enum value)
         {
-            if (!SupportsFrameworkJson(sourceType))
-                return "global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.ToCompactJson(" + expression + ")";
-
-            return "global::Newtonsoft.Json.Linq.JToken.FromObject((object)(" + expression +
-                ") ?? global::Newtonsoft.Json.Linq.JValue.CreateNull(), " +
-                "global::Newtonsoft.Json.JsonSerializer.Create(new global::Newtonsoft.Json.JsonSerializerSettings { " +
-                "Culture = global::System.Globalization.CultureInfo.InvariantCulture, " +
-                "Formatting = global::Newtonsoft.Json.Formatting.None, " +
-                "NullValueHandling = global::Newtonsoft.Json.NullValueHandling.Include, " +
-                "DefaultValueHandling = global::Newtonsoft.Json.DefaultValueHandling.Include, " +
-                "ContractResolver = new global::Newtonsoft.Json.Serialization.DefaultContractResolver { " +
-                "NamingStrategy = new global::Newtonsoft.Json.Serialization.DefaultNamingStrategy() }, " +
-                "DateFormatHandling = global::Newtonsoft.Json.DateFormatHandling.IsoDateFormat, " +
-                "DateTimeZoneHandling = global::Newtonsoft.Json.DateTimeZoneHandling.RoundtripKind, " +
-                "TypeNameHandling = global::Newtonsoft.Json.TypeNameHandling.None, " +
-                "StringEscapeHandling = global::Newtonsoft.Json.StringEscapeHandling.Default, " +
-                "FloatFormatHandling = global::Newtonsoft.Json.FloatFormatHandling.String, " +
-                "ReferenceLoopHandling = global::Newtonsoft.Json.ReferenceLoopHandling.Error, " +
-                "PreserveReferencesHandling = global::Newtonsoft.Json.PreserveReferencesHandling.None " +
-                "})).ToString(global::Newtonsoft.Json.Formatting.None)";
+            var type = value.GetType();
+            var numeric = value.ToString("D");
+            var names = type.GetFields(BindingFlags.Public | BindingFlags.Static)
+                .Where(f => ((Enum)f.GetValue(null)).ToString("D") == numeric)
+                .Select(f => f.GetCustomAttribute<EnumMemberAttribute>()?.Value ?? f.Name)
+                .Distinct(StringComparer.Ordinal).ToArray();
+            if (names.Length > 1) throw new NotSupportedException($"Enum '{type.FullName}' has conflicting wire aliases for {numeric}.");
+            return names.Length == 1 ? names[0] : value.ToString();
         }
 
-        private static bool SupportsFrameworkJson(Type type)
-        {
-            type = Nullable.GetUnderlyingType(type) ?? type;
-            if (type == typeof(string) || type == typeof(bool) || type == typeof(char) ||
-                type == typeof(byte) || type == typeof(sbyte) || type == typeof(short) ||
-                type == typeof(ushort) || type == typeof(int) || type == typeof(uint) ||
-                type == typeof(long) || type == typeof(ulong) || type == typeof(decimal))
-                return true;
-            if (type.IsArray)
-                return type.GetArrayRank() == 1 && type != typeof(byte[]) && SupportsFrameworkJson(type.GetElementType());
-            return type.IsSealed && type.Name.StartsWith("<>f__AnonymousType", StringComparison.Ordinal) &&
-                type.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) &&
-                type.GetProperties(BindingFlags.Instance | BindingFlags.Public).All(property => SupportsFrameworkJson(property.PropertyType));
-        }
+        internal static bool IsNumber(Type type) =>
+            type != typeof(bool) && type != typeof(char) && type != typeof(IntPtr) && type != typeof(UIntPtr) && type.IsPrimitive || type == typeof(decimal);
 
         /// <summary>Normalizes one evaluated nullable or token value under its explicit destination schema.</summary>
         public static string NormalizeAndEncode(object value, string schema)
@@ -67,8 +41,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 return null;
             }
             var type = value.GetType();
-            var numeric = type != typeof(bool) && type != typeof(char) && type != typeof(IntPtr) &&
-                type != typeof(UIntPtr) && type.IsPrimitive || type == typeof(decimal);
+            var numeric = IsNumber(type);
             if (destination.Kind == "text" && !(value is string || value is char) ||
                 destination.Kind == "number" && !numeric ||
                 destination.Kind == "boolean" && !(value is bool) ||
@@ -80,7 +53,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             string text;
             var binary = value as byte[];
             if (value is Enum choice)
-                text = RequireEnumWire(SourceExpressionConverter.EnumWire(choice),
+                text = RequireEnumWire(EnumWire(choice),
                     destination.EnumValues == null ? null : System.Linq.Enumerable.ToArray(destination.EnumValues),
                     destination.Nullable, destination.Name);
             else if (value is string str) text = str;
@@ -245,7 +218,7 @@ namespace Microsoft.Azure.Workflows.Sdk
                 if (value == null)
                     writer.WriteNull();
                 else
-                    writer.WriteValue(SourceExpressionConverter.EnumWire((Enum)value));
+                    writer.WriteValue(EnumWire((Enum)value));
             }
 
             public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) =>

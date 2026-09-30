@@ -94,7 +94,7 @@ public static class WorkflowDeploymentValidator
         foreach (var workflow in workflows)
         {
             using var document = JsonDocument.Parse(File.ReadAllText(workflow));
-            Inspect(document.RootElement, workflow);
+            InspectWorkflowValue(document.RootElement, workflow, profile, parseOptions, identifiers, sdkHelperFiles, diagnostics);
         }
 
         if (!requirements.Dependencies.Any(d => d.Assembly == ExpressionCompilationTransformer.SdkAssembly &&
@@ -118,152 +118,163 @@ public static class WorkflowDeploymentValidator
         }
         foreach (var group in used.GroupBy(d => d.AssemblyIdentity, StringComparer.Ordinal))
         {
-            var requirement = group.First();
-            var approval = profile.ApprovedDependencies.SingleOrDefault(d =>
-                string.Equals(d.Assembly, requirement.Assembly, StringComparison.OrdinalIgnoreCase));
-            if (approval == null)
-            {
-                diagnostics.Add(new("WFDEP002",
-                    $"Native dependency '{requirement.Assembly}' ({requirement.TypeName}) is not explicitly approved for deployment.",
-                    requirement.SourceFile));
-                continue;
-            }
-
-            var matches = new List<string>();
-            foreach (var file in Directory.EnumerateFiles(deploymentDirectory, "*.dll", enumeration))
-            {
-                AssemblyName identity;
-                try
-                {
-                    identity = AssemblyName.GetAssemblyName(file);
-                }
-                catch (BadImageFormatException)
-                {
-                    // Native DLLs are not candidates for a managed expression dependency.
-                    continue;
-                }
-                if (string.Equals(identity.FullName, requirement.AssemblyIdentity, StringComparison.Ordinal))
-                {
-                    matches.Add(file);
-                }
-            }
-
-            if (matches.Count == 0)
-            {
-                diagnostics.Add(new("WFDEP003",
-                    $"Missing deployed assembly '{requirement.AssemblyIdentity}' for '{requirement.TypeName}'.",
-                    requirement.SourceFile));
-                continue;
-            }
-
-            foreach (var file in matches)
-            {
-                using var stream = File.OpenRead(file);
-                var actual = Convert.ToHexString(SHA256.HashData(stream));
-                if (!string.Equals(actual, approval.Sha256, StringComparison.OrdinalIgnoreCase))
-                {
-                    diagnostics.Add(new("WFDEP003", $"Deployed assembly '{requirement.Assembly}' does not match its approved SHA256.", file));
-                    continue;
-                }
-
-                stream.Position = 0;
-                using var pe = new PEReader(stream);
-                var metadata = pe.GetMetadataReader();
-                if (IsReferenceAssembly(metadata))
-                {
-                    diagnostics.Add(new("WFDEP003", $"'{requirement.Assembly}' is a reference assembly, not an executable deployment dependency.", file));
-                    continue;
-                }
-
-                var types = metadata.TypeDefinitions.Select(h => FullName(metadata, h)).ToHashSet(StringComparer.Ordinal);
-                foreach (var dependency in group)
-                {
-                    if (!types.Contains(dependency.MetadataTypeName))
-                        diagnostics.Add(new("WFDEP003", $"Deployed '{requirement.Assembly}' lacks type '{dependency.MetadataTypeName}'.", file));
-                }
-            }
+            ValidateDeployedAssembly(group, deploymentDirectory, enumeration, profile, diagnostics);
         }
         return diagnostics;
+    }
 
-        void Inspect(JsonElement value, string file)
+    private static void ValidateDeployedAssembly(IGrouping<string, WorkflowDependency> dependencies,
+        string deploymentDirectory, EnumerationOptions enumeration, WorkflowHostProfile profile,
+        List<WorkflowDeploymentDiagnostic> diagnostics)
+    {
+        var requirement = dependencies.First();
+        var approval = profile.ApprovedDependencies.SingleOrDefault(d =>
+            string.Equals(d.Assembly, requirement.Assembly, StringComparison.OrdinalIgnoreCase));
+        if (approval == null)
         {
-            if (value.ValueKind == JsonValueKind.Object)
+            diagnostics.Add(new("WFDEP002",
+                $"Native dependency '{requirement.Assembly}' ({requirement.TypeName}) is not explicitly approved for deployment.",
+                requirement.SourceFile));
+            return;
+        }
+
+        var matches = new List<string>();
+        foreach (var file in Directory.EnumerateFiles(deploymentDirectory, "*.dll", enumeration))
+        {
+            AssemblyName identity;
+            try
             {
-                if (value.TryGetProperty("type", out var type) && type.ValueKind == JsonValueKind.String &&
-                    string.Equals(type.GetString(), "If", StringComparison.OrdinalIgnoreCase) &&
-                    value.TryGetProperty("expression", out var condition) && condition.ValueKind == JsonValueKind.String &&
-                    IsNative(condition.GetString()!) && !profile.NativeConditionsVerified)
-                {
-                    diagnostics.Add(new("WFDEP005", "The selected host/designer has no verified native Condition expression capability.", file));
-                }
-                foreach (var property in value.EnumerateObject()) Inspect(property.Value, file);
+                identity = AssemblyName.GetAssemblyName(file);
             }
-            else if (value.ValueKind == JsonValueKind.Array)
+            catch (BadImageFormatException)
             {
-                foreach (var element in value.EnumerateArray()) Inspect(element, file);
+                // Native DLLs are not candidates for a managed expression dependency.
+                continue;
             }
-            else if (value.ValueKind == JsonValueKind.String)
+            if (string.Equals(identity.FullName, requirement.AssemblyIdentity, StringComparison.Ordinal))
             {
-                var text = value.GetString()!;
-                if (!text.StartsWith("@@", StringComparison.Ordinal) &&
-                    !text.StartsWith("#{", StringComparison.Ordinal) &&
-                    (text.StartsWith("@", StringComparison.Ordinal) || text.Contains("@{", StringComparison.Ordinal)))
-                {
-                    diagnostics.Add(new("WFDEP010",
-                        "Standalone template expressions and template interpolation are unsupported. Rebuild with C# expressions or escape literal leading-@ data.",
-                        file));
-                }
-                if (text.StartsWith("@@", StringComparison.Ordinal) && !profile.LiteralMarkerEscapingVerified)
-                {
-                    diagnostics.Add(new("WFDEP004", "Literal leading-@ data requires a host with verified escaping; deployment is blocked.", file));
-                }
-                if (text.StartsWith("#{", StringComparison.Ordinal) && !IsNative(text))
-                    diagnostics.Add(new("WFDEP006", "Malformed native expression envelope.", file));
-                if (IsNative(text))
-                {
-                    if (!profile.NativeExpressionsVerified)
-                        diagnostics.Add(new("WFDEP009", "The selected execution host has no verified #{...} expression capability; deployment is blocked.", file));
-                    var source = text[NativePrefix.Length..^1];
-                    var syntax = SyntaxFactory.ParseExpression(source, options: parseOptions);
-                    var script = CSharpSyntaxTree.ParseText(source, parseOptions.WithKind(SourceCodeKind.Script));
-                    if (script.GetRoot().DescendantTrivia(descendIntoTrivia: true).Any(trivia =>
-                        trivia.GetStructure() is ReferenceDirectiveTriviaSyntax or LoadDirectiveTriviaSyntax))
-                        diagnostics.Add(new("WFDEP006", "Native expressions cannot use #r or #load directives.", file));
-                    foreach (var diagnostic in syntax.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
-                        diagnostics.Add(new("WFDEP006", "Native expression is invalid for the selected host language: " + diagnostic.GetMessage(), file));
-                    foreach (var token in syntax.DescendantTokens().Where(t => t.IsKind(SyntaxKind.IdentifierToken)))
-                        identifiers.Add(token.ValueText);
-                    if (syntax.DescendantNodesAndSelf().OfType<MemberAccessExpressionSyntax>().Any(access =>
-                        QualifiedName(access.Expression) == ExpressionCompilationTransformer.SdkAssembly + ".WorkflowWireRuntime"))
-                        sdkHelperFiles.Add(file);
-                }
+                matches.Add(file);
+            }
+        }
+
+        if (matches.Count == 0)
+        {
+            diagnostics.Add(new("WFDEP003",
+                $"Missing deployed assembly '{requirement.AssemblyIdentity}' for '{requirement.TypeName}'.",
+                requirement.SourceFile));
+            return;
+        }
+
+        foreach (var file in matches)
+        {
+            using var stream = File.OpenRead(file);
+            var actual = Convert.ToHexString(SHA256.HashData(stream));
+            if (!string.Equals(actual, approval.Sha256, StringComparison.OrdinalIgnoreCase))
+            {
+                diagnostics.Add(new("WFDEP003", $"Deployed assembly '{requirement.Assembly}' does not match its approved SHA256.", file));
+                continue;
+            }
+
+            stream.Position = 0;
+            using var pe = new PEReader(stream);
+            var metadata = pe.GetMetadataReader();
+            if (IsReferenceAssembly(metadata))
+            {
+                diagnostics.Add(new("WFDEP003", $"'{requirement.Assembly}' is a reference assembly, not an executable deployment dependency.", file));
+                continue;
+            }
+
+            var types = metadata.TypeDefinitions.Select(h => GetMetadataTypeName(metadata, h)).ToHashSet(StringComparer.Ordinal);
+            foreach (var dependency in dependencies)
+            {
+                if (!types.Contains(dependency.MetadataTypeName))
+                    diagnostics.Add(new("WFDEP003", $"Deployed '{requirement.Assembly}' lacks type '{dependency.MetadataTypeName}'.", file));
+            }
+        }
+    }
+
+    private static void InspectWorkflowValue(JsonElement value, string file, WorkflowHostProfile profile,
+        CSharpParseOptions parseOptions, HashSet<string> identifiers, HashSet<string> sdkHelperFiles,
+        List<WorkflowDeploymentDiagnostic> diagnostics)
+    {
+        if (value.ValueKind == JsonValueKind.Object)
+        {
+            if (value.TryGetProperty("type", out var type) && type.ValueKind == JsonValueKind.String &&
+                string.Equals(type.GetString(), "If", StringComparison.OrdinalIgnoreCase) &&
+                value.TryGetProperty("expression", out var condition) && condition.ValueKind == JsonValueKind.String &&
+                HasNativeExpressionEnvelope(condition.GetString()!) && !profile.NativeConditionsVerified)
+            {
+                diagnostics.Add(new("WFDEP005", "The selected host/designer has no verified native Condition expression capability.", file));
+            }
+            foreach (var property in value.EnumerateObject())
+                InspectWorkflowValue(property.Value, file, profile, parseOptions, identifiers, sdkHelperFiles, diagnostics);
+        }
+        else if (value.ValueKind == JsonValueKind.Array)
+        {
+            foreach (var element in value.EnumerateArray())
+                InspectWorkflowValue(element, file, profile, parseOptions, identifiers, sdkHelperFiles, diagnostics);
+        }
+        else if (value.ValueKind == JsonValueKind.String)
+        {
+            var text = value.GetString()!;
+            if (!text.StartsWith("@@", StringComparison.Ordinal) &&
+                !text.StartsWith("#{", StringComparison.Ordinal) &&
+                (text.StartsWith("@", StringComparison.Ordinal) || text.Contains("@{", StringComparison.Ordinal)))
+            {
+                diagnostics.Add(new("WFDEP010",
+                    "Standalone template expressions and template interpolation are unsupported. Rebuild with C# expressions or escape literal leading-@ data.",
+                    file));
+            }
+            if (text.StartsWith("@@", StringComparison.Ordinal) && !profile.LiteralMarkerEscapingVerified)
+            {
+                diagnostics.Add(new("WFDEP004", "Literal leading-@ data requires a host with verified escaping; deployment is blocked.", file));
+            }
+            if (text.StartsWith("#{", StringComparison.Ordinal) && !HasNativeExpressionEnvelope(text))
+                diagnostics.Add(new("WFDEP006", "Malformed native expression envelope.", file));
+            if (HasNativeExpressionEnvelope(text))
+            {
+                if (!profile.NativeExpressionsVerified)
+                    diagnostics.Add(new("WFDEP009", "The selected execution host has no verified #{...} expression capability; deployment is blocked.", file));
+                var source = text[NativePrefix.Length..^1];
+                var syntax = SyntaxFactory.ParseExpression(source, options: parseOptions);
+                var script = CSharpSyntaxTree.ParseText(source, parseOptions.WithKind(SourceCodeKind.Script));
+                if (script.GetRoot().DescendantTrivia(descendIntoTrivia: true).Any(trivia =>
+                    trivia.GetStructure() is ReferenceDirectiveTriviaSyntax or LoadDirectiveTriviaSyntax))
+                    diagnostics.Add(new("WFDEP006", "Native expressions cannot use #r or #load directives.", file));
+                foreach (var diagnostic in syntax.GetDiagnostics().Where(d => d.Severity == DiagnosticSeverity.Error))
+                    diagnostics.Add(new("WFDEP006", "Native expression is invalid for the selected host language: " + diagnostic.GetMessage(), file));
+                foreach (var token in syntax.DescendantTokens().Where(t => t.IsKind(SyntaxKind.IdentifierToken)))
+                    identifiers.Add(token.ValueText);
+                if (syntax.DescendantNodesAndSelf().OfType<MemberAccessExpressionSyntax>().Any(access =>
+                    GetQualifiedSyntaxName(access.Expression) == ExpressionCompilationTransformer.SdkAssembly + ".WorkflowWireRuntime"))
+                    sdkHelperFiles.Add(file);
             }
         }
     }
 
     private const string NativePrefix = "#{";
 
-    private static bool IsNative(string text) =>
+    private static bool HasNativeExpressionEnvelope(string text) =>
         text.StartsWith(NativePrefix, StringComparison.Ordinal) && text.EndsWith("}", StringComparison.Ordinal);
 
-    private static string? QualifiedName(SyntaxNode node) => node switch
+    private static string? GetQualifiedSyntaxName(SyntaxNode node) => node switch
     {
         IdentifierNameSyntax identifier => identifier.Identifier.ValueText,
-        AliasQualifiedNameSyntax alias when alias.Alias.Identifier.ValueText == "global" => QualifiedName(alias.Name),
-        QualifiedNameSyntax qualified when QualifiedName(qualified.Left) is { } left =>
-            left + "." + QualifiedName(qualified.Right),
-        MemberAccessExpressionSyntax member when QualifiedName(member.Expression) is { } parent =>
-            parent + "." + QualifiedName(member.Name),
+        AliasQualifiedNameSyntax alias when alias.Alias.Identifier.ValueText == "global" => GetQualifiedSyntaxName(alias.Name),
+        QualifiedNameSyntax qualified when GetQualifiedSyntaxName(qualified.Left) is { } left =>
+            left + "." + GetQualifiedSyntaxName(qualified.Right),
+        MemberAccessExpressionSyntax member when GetQualifiedSyntaxName(member.Expression) is { } parent =>
+            parent + "." + GetQualifiedSyntaxName(member.Name),
         _ => null,
     };
 
-    private static string FullName(MetadataReader reader, TypeDefinitionHandle handle)
+    private static string GetMetadataTypeName(MetadataReader reader, TypeDefinitionHandle handle)
     {
         var definition = reader.GetTypeDefinition(handle);
         var parent = definition.GetDeclaringType();
         return parent.IsNil
             ? (reader.GetString(definition.Namespace) is { Length: > 0 } ns ? ns + "." : "") + reader.GetString(definition.Name)
-            : FullName(reader, parent) + "+" + reader.GetString(definition.Name);
+            : GetMetadataTypeName(reader, parent) + "+" + reader.GetString(definition.Name);
     }
 
     private static bool IsReferenceAssembly(MetadataReader reader)

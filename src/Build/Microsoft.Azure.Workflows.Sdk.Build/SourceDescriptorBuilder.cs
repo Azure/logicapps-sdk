@@ -12,27 +12,27 @@ using static ExpressionCompilationTransformer;
 internal sealed class SourceDescriptorBuilder(
     SemanticModel model,
     LambdaExpressionSyntax lambda,
-    int callPosition)
+    int callPosition,
+    WorkflowDependencyCollector dependencies)
 {
     private string? destinationName;
 
-    private static string TypeName(ITypeSymbol type) =>
+    private static string GetQualifiedTypeName(ITypeSymbol type) =>
         type.ToDisplayString(SymbolDisplayFormat.FullyQualifiedFormat);
 
-    private static string BindingType(ITypeSymbol type) =>
+    private static string BuildBindingTypeExpression(ITypeSymbol type) =>
         ContainsTypeParameter(type)
-            ? $"{Runtime}SourceExpression.TypeName(typeof({TypeName(type)}))"
-            : Quote(TypeName(type));
+            ? $"{Runtime}SourceExpression.TypeName(typeof({GetQualifiedTypeName(type)}))"
+            : Quote(GetQualifiedTypeName(type));
 
-    public string Build(ITypeSymbol resultType, IParameterSymbol? destinationParameter = null)
+    public string BuildDescriptorSource(ITypeSymbol resultType, IParameterSymbol destinationParameter)
     {
-        destinationParameter ??= FindDestinationParameter();
-        var destinationAttribute = destinationParameter?.GetAttributes().FirstOrDefault(a =>
+        var destinationAttribute = destinationParameter.GetAttributes().FirstOrDefault(a =>
             a.AttributeClass?.ContainingAssembly.Name == SdkAssembly &&
             a.AttributeClass.ToDisplayString() == SdkAssembly + ".WorkflowDestinationAttribute");
         if (destinationAttribute?.ConstructorArguments.FirstOrDefault().Value is string destinationSchema)
         {
-            WorkflowDependencyAnalysis.RecordType(
+            dependencies.RecordType(
                 model.Compilation.GetTypeByMetadataName(SdkAssembly + ".WorkflowWireRuntime"), lambda);
             try
             {
@@ -56,48 +56,48 @@ internal sealed class SourceDescriptorBuilder(
                 "Task-returning workflow expressions require a verified execution-host transport; a Task cannot be serialized as its awaited result.", lambda);
         }
 
-        return BuildExpression((ExpressionSyntax)lambda.Body, resultType);
+        return BuildExpressionDescriptorSource((ExpressionSyntax)lambda.Body, resultType);
     }
 
-    private string BuildExpression(ExpressionSyntax body, ITypeSymbol resultType)
+    private string BuildExpressionDescriptorSource(ExpressionSyntax body, ITypeSymbol resultType)
     {
         var actualType = model.GetTypeInfo(body).Type;
         if (destinationName != null && actualType != null && resultType.SpecialType == SpecialType.System_Object &&
             actualType.SpecialType != SpecialType.System_Object && actualType.TypeKind != TypeKind.Error)
-            return $"{Runtime}SourceExpression.Box(1, {BuildExpression(body, actualType)})";
-        if (destinationName != null && actualType != null && IsStream(actualType) &&
+            return $"{Runtime}SourceExpression.Box(1, {BuildExpressionDescriptorSource(body, actualType)})";
+        if (destinationName != null && actualType != null && IsStreamType(actualType) &&
             model.GetSymbolInfo(body).Symbol is ILocalSymbol or IParameterSymbol)
-            return $"{Runtime}SourceExpression.Unsupported<{TypeName(resultType)}>(1, {Quote(destinationName)}, {Quote(TypeName(actualType))})";
+            return $"{Runtime}SourceExpression.Unsupported<{GetQualifiedTypeName(resultType)}>(1, {Quote(destinationName)}, {Quote(GetQualifiedTypeName(actualType))})";
         var conversion = model.ClassifyConversion(body, resultType);
         if (conversion.IsUserDefined && conversion.IsImplicit &&
             conversion.MethodSymbol is { Name: "op_Implicit", ContainingAssembly.Name: "Newtonsoft.Json" } tokenConversion &&
             tokenConversion.ContainingType.ToDisplayString() == "Newtonsoft.Json.Linq.JToken")
         {
             var sourceType = model.GetTypeInfo(body).Type!;
-            return $"{Runtime}SourceExpression.Token(1, {BuildExpression(body, sourceType)})";
+            return $"{Runtime}SourceExpression.Token(1, {BuildExpressionDescriptorSource(body, sourceType)})";
         }
 
         if (conversion.IsUserDefined)
         {
-            var converted = Native(body);
-            converted.Segments[0] = "(" + TypeName(resultType) + ")(" + converted.Segments[0];
+            var converted = BuildNativeSource(body);
+            converted.Segments[0] = "(" + GetQualifiedTypeName(resultType) + ")(" + converted.Segments[0];
             converted.Segments[^1] += ")";
-            return Create(resultType, "native", converted.Segments, converted.Bindings, body);
+            return BuildDescriptorFactoryCall(resultType, "native", converted.Segments, converted.Bindings, body);
         }
 
         var constant = model.GetConstantValue(body);
         if (constant.HasValue)
         {
             var sourceType = model.GetTypeInfo(body).Type ?? resultType;
-            WorkflowDependencyAnalysis.RecordType(sourceType, body);
-            var expression = "((" + TypeName(sourceType) + ")" + ConstantText(constant.Value) + ")";
-            return $"{Runtime}SourceExpression.Literal<{TypeName(resultType)}>(1, {expression})";
+            dependencies.RecordType(sourceType, body);
+            var expression = "((" + GetQualifiedTypeName(sourceType) + ")" + FormatConstantLiteral(constant.Value) + ")";
+            return $"{Runtime}SourceExpression.Literal<{GetQualifiedTypeName(resultType)}>(1, {expression})";
         }
 
         if (body is CastExpressionSyntax cast && resultType.SpecialType == SpecialType.System_Object &&
             model.GetConstantValue(cast.Expression).HasValue)
         {
-            return $"{Runtime}SourceExpression.Literal<{TypeName(resultType)}>(1, {Native(body).Source})";
+            return $"{Runtime}SourceExpression.Literal<{GetQualifiedTypeName(resultType)}>(1, {BuildNativeSource(body).UnboundSource})";
         }
 
         if (body is ObjectCreationExpressionSyntax uri &&
@@ -105,53 +105,42 @@ internal sealed class SourceDescriptorBuilder(
             uri.ArgumentList?.Arguments.Count == 1 &&
             model.GetConstantValue(uri.ArgumentList.Arguments[0].Expression) is { HasValue: true, Value: string uriText })
         {
-            return $"{Runtime}SourceExpression.Literal<{TypeName(resultType)}>(1, new global::System.Uri({Quote(uriText)}))";
+            return $"{Runtime}SourceExpression.Literal<{GetQualifiedTypeName(resultType)}>(1, new global::System.Uri({Quote(uriText)}))";
         }
 
         if (model.GetSymbolInfo(body).Symbol is IPropertySymbol { IsStatic: true } httpMethod &&
             httpMethod.ContainingType.ToDisplayString() == "System.Net.Http.HttpMethod" &&
             httpMethod.Name is "Get" or "Post" or "Put" or "Delete" or "Head" or "Options" or "Trace" or "Patch")
         {
-            return $"{Runtime}SourceExpression.Literal<{TypeName(resultType)}>(1, global::System.Net.Http.HttpMethod.{httpMethod.Name})";
+            return $"{Runtime}SourceExpression.Literal<{GetQualifiedTypeName(resultType)}>(1, global::System.Net.Http.HttpMethod.{httpMethod.Name})";
         }
 
-        if (IsJsonIntrinsic(body))
+        if (IsJsonIntrinsicCall(body))
         {
-            return Json((InvocationExpressionSyntax)body, resultType);
+            return BuildJsonDescriptorSource((InvocationExpressionSyntax)body, resultType);
         }
 
-        if (TryReference(body, out _))
+        if (TryBuildJsonNavigation(body, out _, out _))
         {
-            return ValueExpression(body, resultType);
+            return BuildWorkflowValueDescriptorSource(body, resultType);
         }
 
-        if (TryNavigation(body, out _, out _))
+        if (TryBuildCaptureBinding(body, out var capture))
         {
-            return ValueExpression(body, resultType);
+            return BuildDescriptorFactoryCall(resultType, "capture", ["", ""], [capture], body);
         }
 
-        if (body is InterpolatedStringExpressionSyntax interpolation &&
-            TryInterpolation(interpolation, out _, out _))
-        {
-            return NativeExpression(body, resultType);
-        }
-
-        if (TryCapture(body, out var capture))
-        {
-            return Create(resultType, "capture", ["", ""], [capture], body);
-        }
-
-        if (TrySchemaModel(body, resultType, out var schemaModel))
+        if (TryBuildSchemaModelDescriptorSource(body, resultType, out var schemaModel))
         {
             return schemaModel;
         }
 
-        if (TryCompleteModel(body, out var modelMembers))
+        if (TryGetCompleteConnectorModelMembers(body, out var modelMembers))
         {
-            return Object(resultType, modelMembers, body);
+            return BuildObjectDescriptorSource(resultType, modelMembers, body);
         }
 
-        if (IsAgentMessage(body) && body is ObjectCreationExpressionSyntax message)
+        if (IsAgentMessageCreation(body) && body is ObjectCreationExpressionSyntax message)
         {
             var members = message.Initializer!.Expressions.Select(e =>
             {
@@ -168,13 +157,13 @@ internal sealed class SourceDescriptorBuilder(
                 };
                 return (wireName, assignment.Right);
             });
-            return Object(resultType, members, body);
+            return BuildObjectDescriptorSource(resultType, members, body);
         }
 
         if (body is AnonymousObjectCreationExpressionSyntax anonymous &&
-            anonymous.Initializers.All(i => IsStructural(i.Expression)))
+            anonymous.Initializers.All(i => CanBuildStructuralDescriptor(i.Expression)))
         {
-            return Object(resultType, anonymous.Initializers.Select(i =>
+            return BuildObjectDescriptorSource(resultType, anonymous.Initializers.Select(i =>
                 (i.NameEquals?.Name.Identifier.ValueText ??
                  (i.Expression as IdentifierNameSyntax)?.Identifier.ValueText ??
                  (i.Expression as MemberAccessExpressionSyntax)?.Name.Identifier.ValueText ??
@@ -183,14 +172,14 @@ internal sealed class SourceDescriptorBuilder(
         }
 
         if (body is ArrayCreationExpressionSyntax { Initializer: { } initializer } &&
-            initializer.Expressions.All(IsStructural))
+            initializer.Expressions.All(CanBuildStructuralDescriptor))
         {
-            return Array(resultType, initializer.Expressions, body);
+            return BuildArrayDescriptorSource(resultType, initializer.Expressions, body);
         }
 
-        if (body is ImplicitArrayCreationExpressionSyntax array && array.Initializer.Expressions.All(IsStructural))
+        if (body is ImplicitArrayCreationExpressionSyntax array && array.Initializer.Expressions.All(CanBuildStructuralDescriptor))
         {
-            return Array(resultType, array.Initializer.Expressions, body);
+            return BuildArrayDescriptorSource(resultType, array.Initializer.Expressions, body);
         }
 
         if (body is ObjectCreationExpressionSyntax dictionary &&
@@ -215,42 +204,41 @@ internal sealed class SourceDescriptorBuilder(
                 entries.Add((name, value));
             }
 
-            return Object(resultType, entries, body);
+            return BuildObjectDescriptorSource(resultType, entries, body);
         }
 
         if ((resultType.TypeKind == TypeKind.Enum ||
              resultType is INamedTypeSymbol { OriginalDefinition.SpecialType: SpecialType.System_Nullable_T } nullableEnum &&
-             nullableEnum.TypeArguments[0].TypeKind == TypeKind.Enum) && ConditionalResult(body) is { } conditionalResult)
+             nullableEnum.TypeArguments[0].TypeKind == TypeKind.Enum) && FindConditionalEnumExpression(body) is { } conditionalResult)
         {
-            var original = Native(body);
-            var wire = Native(conditionalResult, enumWireType: resultType);
+            var original = BuildNativeSource(body);
+            var wire = BuildNativeSource(conditionalResult, enumWireType: resultType);
             return $"{Runtime}SourceExpression.Enum(1, " +
-                Create(resultType, "native", original.Segments, original.Bindings, body) + ", " +
-                Create(model.Compilation.GetSpecialType(SpecialType.System_String), "native", wire.Segments, wire.Bindings, body) + ")";
+                BuildDescriptorFactoryCall(resultType, "native", original.Segments, original.Bindings, body) + ", " +
+                BuildDescriptorFactoryCall(model.Compilation.GetSpecialType(SpecialType.System_String), "native", wire.Segments, wire.Bindings, body) + ")";
         }
 
-        var native = Native(body);
-        return Create(resultType, "native", native.Segments, native.Bindings, body);
+        return BuildNativeDescriptorSource(body, resultType);
     }
 
-    private string Object(ITypeSymbol type, IEnumerable<(string Name, ExpressionSyntax Value)> entries, ExpressionSyntax body)
+    private string BuildObjectDescriptorSource(ITypeSymbol type, IEnumerable<(string Name, ExpressionSyntax Value)> entries, ExpressionSyntax body)
     {
         var members = entries.ToArray();
-        var source = Native(body);
-        return $"{Runtime}SourceExpression.Object{GenericType(type)}(1, new string[] {{ {string.Join(", ", members.Select(m => Quote(m.Name)))} }}, " +
-            $"new global::System.Delegate[] {{ {string.Join(", ", members.Select(m => BuildExpression(m.Value, StructuralType(m.Value))))} }}" +
-            ", preserveSource: true, nativeSource: " + Create(type, "native", source.Segments, source.Bindings, body) + ")";
+        var source = BuildNativeSource(body);
+        return $"{Runtime}SourceExpression.Object{FormatTypeArgumentList(type)}(1, new string[] {{ {string.Join(", ", members.Select(m => Quote(m.Name)))} }}, " +
+            $"new global::System.Delegate[] {{ {string.Join(", ", members.Select(m => BuildExpressionDescriptorSource(m.Value, GetStructuralResultType(m.Value))))} }}" +
+            ", preserveSource: true, nativeSource: " + BuildDescriptorFactoryCall(type, "native", source.Segments, source.Bindings, body) + ")";
     }
 
-    private string Array(ITypeSymbol type, IEnumerable<ExpressionSyntax> values, ExpressionSyntax body)
+    private string BuildArrayDescriptorSource(ITypeSymbol type, IEnumerable<ExpressionSyntax> values, ExpressionSyntax body)
     {
-        var source = Native(body);
-        return $"{Runtime}SourceExpression.Array{GenericType(type)}(1, new global::System.Delegate[] {{ " +
-            string.Join(", ", values.Select(v => BuildExpression(v, StructuralType(v)))) +
-            " }, preserveSource: true, nativeSource: " + Create(type, "native", source.Segments, source.Bindings, body) + ")";
+        var source = BuildNativeSource(body);
+        return $"{Runtime}SourceExpression.Array{FormatTypeArgumentList(type)}(1, new global::System.Delegate[] {{ " +
+            string.Join(", ", values.Select(v => BuildExpressionDescriptorSource(v, GetStructuralResultType(v)))) +
+            " }, preserveSource: true, nativeSource: " + BuildDescriptorFactoryCall(type, "native", source.Segments, source.Bindings, body) + ")";
     }
 
-    private ITypeSymbol StructuralType(ExpressionSyntax value)
+    private ITypeSymbol GetStructuralResultType(ExpressionSyntax value)
     {
         var type = model.GetTypeInfo(value).Type;
         return type == null || ContainsAnonymousType(type)
@@ -258,48 +246,36 @@ internal sealed class SourceDescriptorBuilder(
             : type;
     }
 
-    private bool IsStructural(ExpressionSyntax expression) =>
+    private bool CanBuildStructuralDescriptor(ExpressionSyntax expression) =>
         model.GetConstantValue(expression).HasValue ||
-        IsJsonIntrinsic(expression) ||
-        TryReference(expression, out _) || TryNavigation(expression, out _, out _) ||
-        TryCapture(expression, out _) ||
-        HasSchemaModel(expression) ||
-        TryCompleteModel(expression, out _) ||
-        IsAgentMessage(expression) ||
-        expression is InterpolatedStringExpressionSyntax interpolation && TryInterpolation(interpolation, out _, out _) ||
-        expression is AnonymousObjectCreationExpressionSyntax anonymous && anonymous.Initializers.All(i => IsStructural(i.Expression)) ||
-        expression is ImplicitArrayCreationExpressionSyntax array && array.Initializer.Expressions.All(IsStructural);
+        IsJsonIntrinsicCall(expression) ||
+        TryBuildJsonNavigation(expression, out _, out _) ||
+        TryBuildCaptureBinding(expression, out _) ||
+        IsSchemaModelCreation(expression) ||
+        TryGetCompleteConnectorModelMembers(expression, out _) ||
+        IsAgentMessageCreation(expression) ||
+        expression is InterpolatedStringExpressionSyntax interpolation && IsReferenceInterpolation(interpolation) ||
+        expression is AnonymousObjectCreationExpressionSyntax anonymous && anonymous.Initializers.All(i => CanBuildStructuralDescriptor(i.Expression)) ||
+        expression is ImplicitArrayCreationExpressionSyntax array && array.Initializer.Expressions.All(CanBuildStructuralDescriptor);
 
-    private IParameterSymbol? FindDestinationParameter()
-    {
-        var argument = lambda.Ancestors().OfType<ArgumentSyntax>().FirstOrDefault();
-        if (argument?.Parent is not ArgumentListSyntax arguments ||
-            arguments.Parent is not InvocationExpressionSyntax invocation ||
-            invocation.SpanStart != callPosition || model.GetSymbolInfo(invocation).Symbol is not IMethodSymbol method)
-            return null;
-        return argument.NameColon is { } named
-            ? method.Parameters.FirstOrDefault(p => p.Name == named.Name.Identifier.ValueText)
-            : method.Parameters.ElementAtOrDefault(arguments.Arguments.IndexOf(argument));
-    }
+    private static bool IsStreamType(ITypeSymbol type) =>
+        type.ToDisplayString() == "System.IO.Stream" || type is INamedTypeSymbol { BaseType: { } parent } && IsStreamType(parent);
 
-    private static bool IsStream(ITypeSymbol type) =>
-        type.ToDisplayString() == "System.IO.Stream" || type is INamedTypeSymbol { BaseType: { } parent } && IsStream(parent);
-
-    private bool HasSchemaModel(ExpressionSyntax expression) =>
+    private bool IsSchemaModelCreation(ExpressionSyntax expression) =>
         expression is ObjectCreationExpressionSyntax &&
-        model.GetTypeInfo(expression).Type?.GetAttributes().Any(IsModelSchema) == true;
+        model.GetTypeInfo(expression).Type?.GetAttributes().Any(IsModelSchemaAttribute) == true;
 
-    private static bool IsModelSchema(AttributeData attribute) =>
+    private static bool IsModelSchemaAttribute(AttributeData attribute) =>
         attribute.AttributeClass?.ContainingAssembly.Name == SdkAssembly &&
         attribute.AttributeClass.ToDisplayString() == SdkAssembly + ".WorkflowModelSchemaAttribute";
 
-    private bool TrySchemaModel(ExpressionSyntax expression, ITypeSymbol resultType, out string descriptor)
+    private bool TryBuildSchemaModelDescriptorSource(ExpressionSyntax expression, ITypeSymbol resultType, out string descriptor)
     {
         descriptor = "";
         if (expression is not ObjectCreationExpressionSyntax creation ||
             model.GetTypeInfo(expression).Type is not INamedTypeSymbol type)
             return false;
-        var attributes = type.GetAttributes().Where(IsModelSchema).ToArray();
+        var attributes = type.GetAttributes().Where(IsModelSchemaAttribute).ToArray();
         if (attributes.Length == 0) return false;
         if (attributes.Length != 1 || attributes[0].ConstructorArguments.Length != 2 ||
             attributes[0].ConstructorArguments[0].Value is not 1 ||
@@ -339,7 +315,7 @@ internal sealed class SourceDescriptorBuilder(
                 var expectedType = model.GetSpeculativeTypeInfo(expression.SpanStart,
                     SyntaxFactory.ParseTypeName(declaredClrType), SpeculativeBindingOption.BindAsTypeOrNamespace).Type;
                 if (!SymbolEqualityComparer.Default.Equals(expectedType, property.Type) &&
-                    !(property.Type.Name == declaredClrType && property.Type.GetAttributes().Any(IsModelSchema)))
+                    !(property.Type.Name == declaredClrType && property.Type.GetAttributes().Any(IsModelSchemaAttribute)))
                     throw Error("WFBUILD009", "Schema and generated CLR property types conflict for " + clrName, expression);
                 var wireNames = property.GetAttributes().Where(a =>
                     a.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute" &&
@@ -349,44 +325,44 @@ internal sealed class SourceDescriptorBuilder(
                 if (assignments.TryGetValue(clrName, out var value))
                 {
                     names.Add(member.Name);
-                    values.Add(BuildExpression(value, property.Type));
+                    values.Add(BuildExpressionDescriptorSource(value, property.Type));
                 }
                 else if (member.Value.TryGetProperty("default", out var defaultValue))
                 {
                     names.Add(member.Name);
-                    var literal = WorkflowSchemaGenerator.ModelDefaultLiteral(defaultValue, declaredClrType, member.Name);
-                    values.Add($"{Runtime}SourceExpression.Literal<{TypeName(property.Type)}>(1, {literal})");
+                    var literal = WorkflowSchemaGenerator.FormatModelDefaultLiteral(defaultValue, declaredClrType, member.Name);
+                    values.Add($"{Runtime}SourceExpression.Literal<{GetQualifiedTypeName(property.Type)}>(1, {literal})");
                 }
                 else if (!member.Value.GetProperty("optional").GetBoolean())
                     throw Error("WFBUILD009", "Required schema member is missing: " + member.Name, expression);
             }
             if (matched.Count != properties.Length)
                 throw Error("WFBUILD009", "The model contains properties without authoritative schema metadata.", expression);
-            var native = Native(expression);
-            descriptor = $"{Runtime}SourceExpression.Model<{TypeName(resultType)}>(1, {Quote(schemaText)}, " +
+            var native = BuildNativeSource(expression);
+            descriptor = $"{Runtime}SourceExpression.Model<{GetQualifiedTypeName(resultType)}>(1, {Quote(schemaText)}, " +
                 $"new string[] {{ {string.Join(", ", names.Select(Quote))} }}, new global::System.Delegate[] {{ {string.Join(", ", values)} }}, " +
-                Create(resultType, "native", native.Segments, native.Bindings, expression) + ")";
+                BuildDescriptorFactoryCall(resultType, "native", native.Segments, native.Bindings, expression) + ")";
             return true;
         }
         catch (JsonException exception) { throw Error("WFBUILD009", "Invalid model schema: " + exception.Message, expression); }
         catch (InvalidDataException exception) { throw Error("WFBUILD009", exception.Message, expression); }
     }
 
-    private bool IsJsonIntrinsic(ExpressionSyntax expression) =>
+    private bool IsJsonIntrinsicCall(ExpressionSyntax expression) =>
         expression is InvocationExpressionSyntax { ArgumentList.Arguments.Count: 1 } &&
         model.GetSymbolInfo(expression).Symbol is IMethodSymbol { IsStatic: true, Name: "ToJson" } method &&
         method.ContainingAssembly.Name == SdkAssembly &&
         method.ContainingType.ToDisplayString() == SdkAssembly + ".WorkflowFunctions";
 
-    private string Json(InvocationExpressionSyntax expression, ITypeSymbol resultType)
+    private string BuildJsonDescriptorSource(InvocationExpressionSyntax expression, ITypeSymbol resultType)
     {
-        WorkflowDependencyAnalysis.RecordType(resultType, expression);
-        return $"{Runtime}SourceExpression.Json<{TypeName(resultType)}>(1, " +
-            BuildExpression(expression.ArgumentList.Arguments[0].Expression,
+        dependencies.RecordType(resultType, expression);
+        return $"{Runtime}SourceExpression.Json<{GetQualifiedTypeName(resultType)}>(1, " +
+            BuildExpressionDescriptorSource(expression.ArgumentList.Arguments[0].Expression,
                 model.Compilation.GetSpecialType(SpecialType.System_String)) + ")";
     }
 
-    private bool TryCompleteModel(ExpressionSyntax expression, out List<(string Name, ExpressionSyntax Value)> members)
+    private bool TryGetCompleteConnectorModelMembers(ExpressionSyntax expression, out List<(string Name, ExpressionSyntax Value)> members)
     {
         members = [];
         if (expression is not ObjectCreationExpressionSyntax { Initializer: { } initializer } creation ||
@@ -435,38 +411,37 @@ internal sealed class SourceDescriptorBuilder(
         return true;
     }
 
-    private bool IsAgentMessage(ExpressionSyntax expression) =>
+    private bool IsAgentMessageCreation(ExpressionSyntax expression) =>
         expression is ObjectCreationExpressionSyntax { Initializer: not null } created &&
         (created.ArgumentList == null || created.ArgumentList.Arguments.Count == 0) &&
         model.GetTypeInfo(created).Type is { } type && type.ContainingAssembly.Name == SdkAssembly &&
         type.ToDisplayString() == SdkAssembly + ".AgentPromptMessage";
 
-    private string NativeExpression(ExpressionSyntax body, ITypeSymbol resultType)
+    private string BuildNativeDescriptorSource(ExpressionSyntax body, ITypeSymbol resultType)
     {
-        var native = Native(body);
-        return Create(resultType, "native", native.Segments, native.Bindings, body);
+        var native = BuildNativeSource(body);
+        return BuildDescriptorFactoryCall(resultType, "native", native.Segments, native.Bindings, body);
     }
 
-    private string ValueExpression(ExpressionSyntax body, ITypeSymbol resultType)
+    private string BuildWorkflowValueDescriptorSource(ExpressionSyntax body, ITypeSymbol resultType)
     {
-        if (!TryNavigationParts(body, out var binding, out var suffix, jsonValue: true))
+        if (!TryBuildJsonNavigation(body, out var binding, out var suffix))
             throw Error("WFBUILD003", "Workflow value is not a recognized JSON reference path.", body);
         var tokenType = model.Compilation.GetTypeByMetadataName("Newtonsoft.Json.Linq.JToken")!;
-        var wire = Create(tokenType, "native", ["", suffix], [binding], body);
-        return $"{Runtime}SourceExpression.Value(1, {NativeExpression(body, resultType)}, {wire})";
+        var wire = BuildDescriptorFactoryCall(tokenType, "native", ["", suffix], [binding], body);
+        return $"{Runtime}SourceExpression.Value(1, {BuildNativeDescriptorSource(body, resultType)}, {wire})";
     }
 
-    private static string Create(ITypeSymbol resultType, string kind, IEnumerable<string> segments, IEnumerable<string> bindings,
-        ExpressionSyntax body, IEnumerable<string>? nativeSegments = null) =>
-        $"{Runtime}SourceExpression.Create{GenericType(resultType)}(1, {Quote(kind)}, " +
+    private static string BuildDescriptorFactoryCall(ITypeSymbol resultType, string kind, IEnumerable<string> segments, IEnumerable<string> bindings,
+        ExpressionSyntax body) =>
+        $"{Runtime}SourceExpression.Create{FormatTypeArgumentList(resultType)}(1, {Quote(kind)}, " +
         $"new string[] {{ {string.Join(", ", segments.Select(Quote))} }}, " +
         $"new {Runtime}SourceBinding[] {{ {string.Join(", ", bindings)} }}" +
-        Witness(resultType, body) +
-        (nativeSegments == null ? "" : $", nativeSegments: new string[] {{ {string.Join(", ", nativeSegments.Select(Quote))} }}") + ")";
+        BuildTypeWitnessArgument(resultType, body) + ")";
 
-    private static string GenericType(ITypeSymbol type) => ContainsAnonymousType(type) ? "" : "<" + TypeName(type) + ">";
+    private static string FormatTypeArgumentList(ITypeSymbol type) => ContainsAnonymousType(type) ? "" : "<" + GetQualifiedTypeName(type) + ">";
 
-    private static string Witness(ITypeSymbol type, ExpressionSyntax body) =>
+    private static string BuildTypeWitnessArgument(ITypeSymbol type, ExpressionSyntax body) =>
         ContainsAnonymousType(type) ? ", typeWitness: () => " + body : "";
 
     private static bool ContainsAnonymousType(ITypeSymbol type) =>
@@ -474,50 +449,11 @@ internal sealed class SourceDescriptorBuilder(
         type is IArrayTypeSymbol array && ContainsAnonymousType(array.ElementType) ||
         type is INamedTypeSymbol named && named.TypeArguments.Any(ContainsAnonymousType);
 
-    private bool TryInterpolation(InterpolatedStringExpressionSyntax source, out List<string> segments, out List<string> bindings)
+    private bool IsReferenceInterpolation(InterpolatedStringExpressionSyntax source)
     {
-        segments = [];
-        bindings = [];
-        var text = "";
-        foreach (var part in source.Contents)
-        {
-            if (part is InterpolatedStringTextSyntax literal)
-            {
-                var value = literal.TextToken.ValueText;
-                var raw = source.StringStartToken.IsKind(SyntaxKind.InterpolatedSingleLineRawStringStartToken) ||
-                    source.StringStartToken.IsKind(SyntaxKind.InterpolatedMultiLineRawStringStartToken);
-                text += raw ? value : value.Replace("{{", "{").Replace("}}", "}");
-            }
-            else if (part is InterpolationSyntax { AlignmentClause: null, FormatClause: null } hole &&
-                     TryNavigationParts(hole.Expression, out var binding, out var suffix))
-            {
-                segments.Add(text + "@{");
-                bindings.Add(binding);
-                text = suffix + "}";
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        segments.Add(text);
-        return bindings.Count != 0;
-    }
-
-    private bool TryNavigation(ExpressionSyntax node, out List<string> segments, out List<string> bindings)
-    {
-        segments = [];
-        bindings = [];
-        if (!TryNavigationParts(node, out var binding, out var suffix))
-        {
-            return false;
-        }
-
-        segments.Add("@");
-        segments.Add(suffix);
-        bindings.Add(binding);
-        return true;
+        var holes = source.Contents.OfType<InterpolationSyntax>().ToArray();
+        return holes.Length != 0 && holes.All(hole => hole.AlignmentClause == null && hole.FormatClause == null &&
+            TryBuildJsonNavigation(hole.Expression, out _, out _));
     }
 
     private bool IsCapturedObjectPath(ExpressionSyntax expression)
@@ -525,7 +461,7 @@ internal sealed class SourceDescriptorBuilder(
         var node = expression;
         while (node is MemberAccessExpressionSyntax access)
         {
-            if (TryReference(node, out _))
+            if (TryBuildWorkflowBinding(node, out _))
             {
                 return false;
             }
@@ -540,13 +476,13 @@ internal sealed class SourceDescriptorBuilder(
             IParameterSymbol parameter => parameter.Type,
             _ => null,
         };
-        return type != null && !IsInside(symbol!) && !IsSafeValue(type);
+        return type != null && !IsDeclaredInsideLambda(symbol!) && !IsSupportedCaptureType(type);
     }
 
-    private bool TryNavigationParts(ExpressionSyntax node, out string binding, out string suffix, bool jsonValue = false)
+    private bool TryBuildJsonNavigation(ExpressionSyntax node, out string binding, out string suffix)
     {
         suffix = "";
-        if (TryReference(node, out binding, jsonValue))
+        if (TryBuildWorkflowBinding(node, out binding, jsonValue: true))
         {
             return true;
         }
@@ -554,9 +490,9 @@ internal sealed class SourceDescriptorBuilder(
         if (node is ElementAccessExpressionSyntax element &&
             element.ArgumentList.Arguments.Count == 1 &&
             model.GetConstantValue(element.ArgumentList.Arguments[0].Expression) is { HasValue: true, Value: string key } &&
-            TryNavigationParts(element.Expression, out binding, out var parent, jsonValue))
+            TryBuildJsonNavigation(element.Expression, out binding, out var parent))
         {
-            suffix = parent + (jsonValue ? "[" + Quote(key) + "]" : "['" + key.Replace("'", "''") + "']");
+            suffix = parent + "[" + Quote(key) + "]";
             return true;
         }
 
@@ -567,12 +503,12 @@ internal sealed class SourceDescriptorBuilder(
             property.ContainingType.SpecialType == SpecialType.None &&
             !property.ContainingNamespace.ToDisplayString().StartsWith("System", StringComparison.Ordinal) &&
             !property.ContainingNamespace.ToDisplayString().StartsWith("Newtonsoft", StringComparison.Ordinal) &&
-            TryNavigationParts(member.Expression, out binding, out var parentSuffix, jsonValue))
+            TryBuildJsonNavigation(member.Expression, out binding, out var parentSuffix))
         {
             var jsonName = property.GetAttributes().FirstOrDefault(a =>
                 a.AttributeClass?.ToDisplayString() == "Newtonsoft.Json.JsonPropertyAttribute")
                 ?.ConstructorArguments.FirstOrDefault().Value as string ?? property.Name;
-            suffix = parentSuffix + (jsonValue ? "[" + Quote(jsonName) + "]" : "['" + jsonName.Replace("'", "''") + "']");
+            suffix = parentSuffix + "[" + Quote(jsonName) + "]";
             return true;
         }
 
@@ -580,15 +516,15 @@ internal sealed class SourceDescriptorBuilder(
         return false;
     }
 
-    private bool TryReference(ExpressionSyntax expression, out string binding, bool jsonValue = false)
+    private bool TryBuildWorkflowBinding(ExpressionSyntax expression, out string binding, bool jsonValue = false)
     {
         binding = "";
         if (expression is IdentifierNameSyntax &&
-            model.GetSymbolInfo(expression).Symbol is IParameterSymbol item && IsForEachItem(item))
+            model.GetSymbolInfo(expression).Symbol is IParameterSymbol item && IsForEachItemParameter(item))
         {
-            EnsureHandle(expression);
-            WorkflowDependencyAnalysis.RecordType(item.Type, expression);
-            var itemType = jsonValue ? Quote("global::Newtonsoft.Json.Linq.JToken") : BindingType(item.Type);
+            ValidateHandleReceiver(expression);
+            dependencies.RecordType(item.Type, expression);
+            var itemType = jsonValue ? Quote("global::Newtonsoft.Json.Linq.JToken") : BuildBindingTypeExpression(item.Type);
             binding = $"{Runtime}SourceBinding.Item({expression}, {itemType})";
             return true;
         }
@@ -599,14 +535,14 @@ internal sealed class SourceDescriptorBuilder(
             return false;
         }
 
-        var type = jsonValue ? Quote("global::Newtonsoft.Json.Linq.JToken") : BindingType(property.Type);
+        var type = jsonValue ? Quote("global::Newtonsoft.Json.Linq.JToken") : BuildBindingTypeExpression(property.Type);
         if (member.Expression is MemberAccessExpressionSyntax { Name.Identifier.ValueText: "Parameters" } parameters &&
             model.GetSymbolInfo(parameters).Symbol is IPropertySymbol parameterProperty &&
             parameterProperty.ContainingType.AllInterfaces.Prepend(parameterProperty.ContainingType).Any(i =>
                 i.ContainingAssembly.Name == SdkAssembly && i.OriginalDefinition.MetadataName == "IAgentToolContext`1"))
         {
-            EnsureHandle(parameters.Expression);
-            WorkflowDependencyAnalysis.RecordType(property.Type, expression);
+            ValidateHandleReceiver(parameters.Expression);
+            dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.AgentParameter({parameters.Expression}, {Quote(property.Name)}, {type})";
             return true;
         }
@@ -614,16 +550,16 @@ internal sealed class SourceDescriptorBuilder(
         if (IsWorkflowProperty(property, "IOutputWorkflowAction<T>", "Output") ||
             IsWorkflowProperty(property, "IBodyWorkflowAction<T>", "Body"))
         {
-            EnsureHandle(member.Expression);
-            WorkflowDependencyAnalysis.RecordType(property.Type, expression);
+            ValidateHandleReceiver(member.Expression);
+            dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.{property.Name}({member.Expression}, {type})";
             return true;
         }
 
         if (IsWorkflowProperty(property, "IVariableWorkflowAction", "Value"))
         {
-            EnsureHandle(member.Expression);
-            WorkflowDependencyAnalysis.RecordType(property.Type, expression);
+            ValidateHandleReceiver(member.Expression);
+            dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.Variable({member.Expression}, {type})";
             return true;
         }
@@ -633,8 +569,8 @@ internal sealed class SourceDescriptorBuilder(
             model.GetSymbolInfo(triggerOutput).Symbol is IPropertySymbol triggerProperty &&
             triggerProperty.ContainingAssembly.Name == SdkAssembly && triggerProperty.Name == "TriggerOutput")
         {
-            EnsureHandle(triggerOutput.Expression);
-            WorkflowDependencyAnalysis.RecordType(property.Type, expression);
+            ValidateHandleReceiver(triggerOutput.Expression);
+            dependencies.RecordType(property.Type, expression);
             binding = $"{Runtime}SourceBinding.Trigger({triggerOutput.Expression}, \"triggerBody\", {type})";
             return true;
         }
@@ -642,8 +578,8 @@ internal sealed class SourceDescriptorBuilder(
         if (property.ContainingAssembly.Name == SdkAssembly &&
             property.Name is "TriggerOutput" or "TriggerBody")
         {
-            EnsureHandle(member.Expression);
-            WorkflowDependencyAnalysis.RecordType(property.Type, expression);
+            ValidateHandleReceiver(member.Expression);
+            dependencies.RecordType(property.Type, expression);
             var helper = property.Name == "TriggerBody" ? "triggerBody" : "triggerOutputs";
             binding = $"{Runtime}SourceBinding.Trigger({member.Expression}, {Quote(helper)}, {type})";
             return true;
@@ -652,9 +588,9 @@ internal sealed class SourceDescriptorBuilder(
         return false;
     }
 
-    private bool IsForEachItem(IParameterSymbol parameter)
+    private bool IsForEachItemParameter(IParameterSymbol parameter)
     {
-        if (IsInside(parameter))
+        if (IsDeclaredInsideLambda(parameter))
         {
             return false;
         }
@@ -685,22 +621,22 @@ internal sealed class SourceDescriptorBuilder(
                 SymbolEqualityComparer.Default.Equals(property.ContainingType.FindImplementationForInterfaceMember(m), property)));
     }
 
-    private void EnsureHandle(ExpressionSyntax receiver)
+    private void ValidateHandleReceiver(ExpressionSyntax receiver)
     {
         var symbol = model.GetSymbolInfo(receiver).Symbol;
-        if (symbol is IFieldSymbol && IsFieldLocation(receiver))
+        if (symbol is IFieldSymbol && IsSupportedFieldReceiver(receiver))
         {
             return;
         }
 
-        if (symbol is not (ILocalSymbol or IParameterSymbol) || IsInside(symbol) ||
+        if (symbol is not (ILocalSymbol or IParameterSymbol) || IsDeclaredInsideLambda(symbol) ||
             model.LookupSymbols(callPosition, name: symbol.Name).All(s => !SymbolEqualityComparer.Default.Equals(s, symbol)))
         {
             throw Error("WFBUILD004", "Workflow handles must be fields, locals or parameters visible at the SDK call; runtime-lambda handles and executable handle resolution are not allowed.", receiver);
         }
     }
 
-    private bool IsFieldLocation(ExpressionSyntax expression)
+    private bool IsSupportedFieldReceiver(ExpressionSyntax expression)
     {
         if (model.GetSymbolInfo(expression).Symbol is INamedTypeSymbol)
         {
@@ -716,16 +652,16 @@ internal sealed class SourceDescriptorBuilder(
         {
             var symbol = model.GetSymbolInfo(identifier).Symbol;
             return symbol is IFieldSymbol ||
-                symbol is ILocalSymbol or IParameterSymbol && !IsInside(symbol) &&
+                symbol is ILocalSymbol or IParameterSymbol && !IsDeclaredInsideLambda(symbol) &&
                 model.LookupSymbols(callPosition, name: symbol.Name).Any(s => SymbolEqualityComparer.Default.Equals(s, symbol));
         }
 
         return expression is MemberAccessExpressionSyntax member &&
             model.GetSymbolInfo(member).Symbol is IFieldSymbol &&
-            IsFieldLocation(member.Expression);
+            IsSupportedFieldReceiver(member.Expression);
     }
 
-    private bool TryCapture(ExpressionSyntax expression, out string binding)
+    private bool TryBuildCaptureBinding(ExpressionSyntax expression, out string binding)
     {
         binding = "";
         var symbol = model.GetSymbolInfo(expression).Symbol;
@@ -738,7 +674,7 @@ internal sealed class SourceDescriptorBuilder(
         var members = new List<string>();
         while (node is MemberAccessExpressionSyntax access)
         {
-            if (TryReference(node, out _))
+            if (TryBuildWorkflowBinding(node, out _))
             {
                 return false;
             }
@@ -767,7 +703,7 @@ internal sealed class SourceDescriptorBuilder(
         }
 
         var root = model.GetSymbolInfo(node).Symbol;
-        if (root is not (ILocalSymbol or IParameterSymbol) || IsInside(root))
+        if (root is not (ILocalSymbol or IParameterSymbol) || IsDeclaredInsideLambda(root))
         {
             return false;
         }
@@ -778,28 +714,28 @@ internal sealed class SourceDescriptorBuilder(
         }
 
         var type = model.GetTypeInfo(expression).Type!;
-        if (!IsSafeValue(type))
+        if (!IsSupportedCaptureType(type))
         {
             throw Error("WFBUILD003", $"Unsupported captured value of type '{type}'. Use a workflow binding or an explicitly deployed static runtime dependency.", expression);
         }
 
-        WorkflowDependencyAnalysis.RecordType(type, expression);
+        dependencies.RecordType(type, expression);
         binding = members.Count == 0
-            ? $"{Runtime}SourceBinding.Capture({node}, {Quote(TypeName(type))})"
-            : $"{Runtime}SourceBinding.CapturePath({node}, new string[] {{ {string.Join(", ", members.Select(Quote))} }}, {Quote(TypeName(type))})";
+            ? $"{Runtime}SourceBinding.Capture({node}, {Quote(GetQualifiedTypeName(type))})"
+            : $"{Runtime}SourceBinding.CapturePath({node}, new string[] {{ {string.Join(", ", members.Select(Quote))} }}, {Quote(GetQualifiedTypeName(type))})";
         return true;
     }
 
-    private static bool IsSafeValue(ITypeSymbol type) =>
+    private static bool IsSupportedCaptureType(ITypeSymbol type) =>
         type.SpecialType is >= SpecialType.System_Boolean and <= SpecialType.System_String ||
         type.TypeKind == TypeKind.Enum ||
-        type is IArrayTypeSymbol array && IsSafeValue(array.ElementType) ||
+        type is IArrayTypeSymbol array && IsSupportedCaptureType(array.ElementType) ||
         type is INamedTypeSymbol named &&
-        ((named.OriginalDefinition.SpecialType == SpecialType.System_Nullable_T && IsSafeValue(named.TypeArguments[0])) ||
+        ((named.OriginalDefinition.SpecialType == SpecialType.System_Nullable_T && IsSupportedCaptureType(named.TypeArguments[0])) ||
          (named.OriginalDefinition.ToDisplayString() == "System.Collections.Generic.List<T>" &&
-          named.TypeArguments.All(IsSafeValue)) ||
+          named.TypeArguments.All(IsSupportedCaptureType)) ||
          (named.OriginalDefinition.ToDisplayString() == "System.Collections.Generic.Dictionary<TKey, TValue>" &&
-          named.TypeArguments[0].SpecialType == SpecialType.System_String && IsSafeValue(named.TypeArguments[1])) ||
+          named.TypeArguments[0].SpecialType == SpecialType.System_String && IsSupportedCaptureType(named.TypeArguments[1])) ||
          named.ToDisplayString() is "Newtonsoft.Json.Linq.JToken" or "Newtonsoft.Json.Linq.JObject" or "Newtonsoft.Json.Linq.JArray" or "Newtonsoft.Json.Linq.JValue" or "System.Uri");
 
     private static bool IsAutoProperty(IPropertySymbol property) =>
@@ -810,31 +746,31 @@ internal sealed class SourceDescriptorBuilder(
         property.GetMethod?.GetAttributes().Any(a =>
             a.AttributeClass?.ToDisplayString() == "System.Runtime.CompilerServices.CompilerGeneratedAttribute") == true;
 
-    private bool IsInside(ISymbol symbol) =>
+    private bool IsDeclaredInsideLambda(ISymbol symbol) =>
         symbol.DeclaringSyntaxReferences.Any(r => r.SyntaxTree == lambda.SyntaxTree && lambda.Span.Contains(r.Span));
 
-    private ConditionalExpressionSyntax? ConditionalResult(ExpressionSyntax expression)
+    private ConditionalExpressionSyntax? FindConditionalEnumExpression(ExpressionSyntax expression)
     {
         if (expression is ConditionalExpressionSyntax conditional) return conditional;
-        if (expression is ParenthesizedExpressionSyntax parenthesized) return ConditionalResult(parenthesized.Expression);
+        if (expression is ParenthesizedExpressionSyntax parenthesized) return FindConditionalEnumExpression(parenthesized.Expression);
         if (expression is CastExpressionSyntax cast &&
             model.GetTypeInfo(cast.Expression).Type is { TypeKind: TypeKind.Enum } source &&
             model.GetTypeInfo(cast).Type is INamedTypeSymbol { OriginalDefinition.SpecialType: SpecialType.System_Nullable_T } target &&
             SymbolEqualityComparer.Default.Equals(source, target.TypeArguments[0]))
         {
-            return ConditionalResult(cast.Expression);
+            return FindConditionalEnumExpression(cast.Expression);
         }
 
         return null;
     }
 
-    private NativeSource Native(ExpressionSyntax body, ITypeSymbol? enumWireType = null)
+    private NativeSource BuildNativeSource(ExpressionSyntax body, ITypeSymbol? enumWireType = null)
     {
         var replacements = new List<(TextSpan Span, string? Binding, string? Text)>();
         var protectedInterpolations = new HashSet<InterpolationSyntax>();
         var enumLeaves = new HashSet<ExpressionSyntax>();
         if (enumWireType != null) CollectEnumLeaves(body);
-        Collect(body);
+        CollectSourceReplacements(body);
         var segments = new List<string>();
         var bindings = new List<string>();
         var text = body.ToString();
@@ -892,7 +828,7 @@ internal sealed class SourceDescriptorBuilder(
             }
         }
 
-        void ProtectInterpolation(SyntaxNode node)
+        void ParenthesizeInterpolationHole(SyntaxNode node)
         {
             var hole = node.Ancestors().OfType<InterpolationSyntax>()
                 .FirstOrDefault(i => i.Expression.Span.Contains(node.Span) && body.Span.Contains(i.Span));
@@ -906,26 +842,26 @@ internal sealed class SourceDescriptorBuilder(
             replacements.Add((new TextSpan(hole.Expression.Span.End, 0), null, ")"));
         }
 
-        void Collect(SyntaxNode node)
+        void CollectSourceReplacements(SyntaxNode node)
         {
             if (node is ExpressionSyntax expression)
             {
                 if (enumLeaves.Contains(expression))
                 {
                     replacements.Add((node.Span,
-                        $"{Runtime}SourceBinding.EnumWire({BuildExpression(expression, enumWireType!)})", null));
+                        $"{Runtime}SourceBinding.EnumWire({BuildExpressionDescriptorSource(expression, enumWireType!)})", null));
                     return;
                 }
 
-                if (IsJsonIntrinsic(expression))
+                if (IsJsonIntrinsicCall(expression))
                 {
                     var resultType = model.GetTypeInfo(expression).Type!;
                     replacements.Add((node.Span,
-                        $"{Runtime}SourceBinding.Json({Json((InvocationExpressionSyntax)expression, resultType)}, {BindingType(resultType)})", null));
+                        $"{Runtime}SourceBinding.Json({BuildJsonDescriptorSource((InvocationExpressionSyntax)expression, resultType)}, {BuildBindingTypeExpression(resultType)})", null));
                     return;
                 }
 
-                if (TryReference(expression, out var workflow))
+                if (TryBuildWorkflowBinding(expression, out var workflow))
                 {
                     replacements.Add((node.Span, workflow, null));
                     return;
@@ -935,8 +871,8 @@ internal sealed class SourceDescriptorBuilder(
                     expression is IdentifierNameSyntax &&
                     model.GetSymbolInfo(expression).Symbol is ILocalSymbol { IsConst: true } localConstant)
                 {
-                    WorkflowDependencyAnalysis.RecordType(localConstant.Type, expression);
-                    replacements.Add((node.Span, null, "((" + TypeName(localConstant.Type) + ")" + ConstantText(constant.Value) + ")"));
+                    dependencies.RecordType(localConstant.Type, expression);
+                    replacements.Add((node.Span, null, "((" + GetQualifiedTypeName(localConstant.Type) + ")" + FormatConstantLiteral(constant.Value) + ")"));
                     return;
                 }
 
@@ -947,9 +883,9 @@ internal sealed class SourceDescriptorBuilder(
                     return;
                 }
 
-                if (TryCapture(expression, out var capture))
+                if (TryBuildCaptureBinding(expression, out var capture))
                 {
-                    if (IsWriteOrReference(expression))
+                    if (IsWriteOrByReferenceUse(expression))
                     {
                         throw Error("WFBUILD003", "Captured values are construction-time snapshots, not writable runtime variables or by-reference arguments.", expression);
                     }
@@ -959,10 +895,10 @@ internal sealed class SourceDescriptorBuilder(
                 }
 
                 var symbol = model.GetSymbolInfo(expression).Symbol;
-                WorkflowDependencyAnalysis.Record(symbol, node);
+                dependencies.RecordSymbol(symbol, node);
                 if (symbol is IMethodSymbol or IFieldSymbol or IPropertySymbol &&
                     symbol.DeclaredAccessibility is Accessibility.Private or Accessibility.Protected or Accessibility.ProtectedAndInternal &&
-                    !IsInside(symbol))
+                    !IsDeclaredInsideLambda(symbol))
                 {
                     throw Error("WFBUILD007", "Runtime source cannot access a private or protected dependency from the execution host.", node);
                 }
@@ -982,8 +918,8 @@ internal sealed class SourceDescriptorBuilder(
                     !(node.Parent is QualifiedNameSyntax or AliasQualifiedNameSyntax) &&
                     !(node.Parent is MemberAccessExpressionSyntax member && member.Name == node))
                 {
-                    ProtectInterpolation(node);
-                    replacements.Add((node.Span, null, TypeName(named)));
+                    ParenthesizeInterpolationHole(node);
+                    replacements.Add((node.Span, null, GetQualifiedTypeName(named)));
                     return;
                 }
 
@@ -991,8 +927,8 @@ internal sealed class SourceDescriptorBuilder(
                     symbol is IMethodSymbol { IsStatic: true } method &&
                     node.Parent is InvocationExpressionSyntax)
                 {
-                    ProtectInterpolation(node);
-                    replacements.Add((node.Span, null, TypeName(method.ContainingType) + "." + identifier));
+                    ParenthesizeInterpolationHole(node);
+                    replacements.Add((node.Span, null, GetQualifiedTypeName(method.ContainingType) + "." + identifier));
                     return;
                 }
 
@@ -1000,8 +936,8 @@ internal sealed class SourceDescriptorBuilder(
                     symbol is IFieldSymbol { IsStatic: true } or IPropertySymbol { IsStatic: true } &&
                     !(node.Parent is MemberAccessExpressionSyntax staticMember && staticMember.Name == node))
                 {
-                    ProtectInterpolation(node);
-                    replacements.Add((node.Span, null, TypeName(symbol.ContainingType!) + "." + staticName));
+                    ParenthesizeInterpolationHole(node);
+                    replacements.Add((node.Span, null, GetQualifiedTypeName(symbol.ContainingType!) + "." + staticName));
                     return;
                 }
 
@@ -1014,12 +950,12 @@ internal sealed class SourceDescriptorBuilder(
 
             foreach (var child in node.ChildNodes())
             {
-                Collect(child);
+                CollectSourceReplacements(child);
             }
         }
     }
 
-    private static string ConstantText(object? value) => value switch
+    private static string FormatConstantLiteral(object? value) => value switch
     {
         null => "null",
         string text => Quote(text),
@@ -1050,7 +986,7 @@ internal sealed class SourceDescriptorBuilder(
         type is IArrayTypeSymbol array && ContainsTypeParameter(array.ElementType) ||
         type is INamedTypeSymbol named && named.TypeArguments.Any(ContainsTypeParameter);
 
-    private static bool IsWriteOrReference(ExpressionSyntax expression)
+    private static bool IsWriteOrByReferenceUse(ExpressionSyntax expression)
     {
         SyntaxNode node = expression;
         while (node.Parent is ParenthesizedExpressionSyntax parenthesized)
@@ -1071,7 +1007,7 @@ internal sealed class SourceDescriptorBuilder(
 
     private sealed record NativeSource(List<string> Segments, List<string> Bindings)
     {
-        public string Source => Bindings.Count == 0
+        public string UnboundSource => Bindings.Count == 0
             ? Segments[0]
             : throw new InvalidOperationException("A compiler constant cannot contain runtime bindings.");
     }

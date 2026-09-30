@@ -7,8 +7,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System.Globalization;
     using System.Linq;
     using System.Net;
-    using System.Reflection;
-    using System.Runtime.Serialization;
     using Newtonsoft.Json.Linq;
 
     /// <summary>Renders compiler descriptors, not C# syntax trees or executable delegates.</summary>
@@ -175,21 +173,10 @@ namespace Microsoft.Azure.Workflows.Sdk
             var mappings = Enum.GetValues(enumType).Cast<Enum>()
                 .GroupBy(e => e.ToString("D"), StringComparer.Ordinal)
                 .Select(group => group.First())
-                .Select(e => "(" + SourceSnapshot.TypeName(enumType) + ")" + e.ToString("D") + " => " + SourceSnapshot.Quote(EnumWire(e)));
+                .Select(e => "(" + SourceSnapshot.TypeName(enumType) + ")" + e.ToString("D") + " => " + SourceSnapshot.Quote(WorkflowWireRuntime.EnumWire(e)));
             var nullArm = Nullable.GetUnderlyingType(descriptor.ResultType) != null ? "null => null, " : "";
             return "(" + native + ") switch { " + nullArm + string.Join(", ", mappings) + ", var value => value.ToString() }";
         }
 
-        internal static string EnumWire(Enum value)
-        {
-            var type = value.GetType();
-            var numeric = value.ToString("D");
-            var names = type.GetFields(BindingFlags.Public | BindingFlags.Static)
-                .Where(f => ((Enum)f.GetValue(null)).ToString("D") == numeric)
-                .Select(f => f.GetCustomAttribute<EnumMemberAttribute>()?.Value ?? f.Name)
-                .Distinct(StringComparer.Ordinal).ToArray();
-            if (names.Length > 1) throw new NotSupportedException($"Enum '{type.FullName}' has conflicting wire aliases for {numeric}.");
-            return names.Length == 1 ? names[0] : value.ToString();
-        }
     }
 }

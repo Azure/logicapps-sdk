@@ -36,8 +36,11 @@ namespace Microsoft.Azure.Workflows.Sdk
                 throw new ArgumentException("A capture descriptor requires empty segments and exactly one captured-value or foreach-item binding.");
             if (nativeSegments != null && (kind != "template" || nativeSegments.Length != segments.Length || nativeSegments.Any(s => s == null)))
                 throw new ArgumentException("Native source segments require a template descriptor and must match its binding count.", nameof(nativeSegments));
-            return new SourceDescriptor<T>(kind, (string[])segments.Clone(), (SourceBinding[])bindings.Clone(),
-                nativeSegments == null ? null : (string[])nativeSegments.Clone()).Invoke;
+            // Normalize the version-1 template ABI once; renderers only consume native segments.
+            var sourceSegments = kind != "template" ? segments : nativeSegments ??
+                (bindings.Length == 1 && segments[0] == "@" && segments[1] == "" ? new[] { "", "" } : null);
+            return new SourceDescriptor<T>(kind, sourceSegments == null ? null : (string[])sourceSegments.Clone(),
+                (SourceBinding[])bindings.Clone()).Invoke;
         }
 
         /// <summary>Infers an unnameable result type; the witness is never invoked or retained.</summary>
@@ -455,7 +458,6 @@ namespace Microsoft.Azure.Workflows.Sdk
     {
         private readonly string[] segments;
         private readonly SourceBinding[] bindings;
-        private readonly string[] nativeSegments;
         private readonly SourceSnapshot literal;
         private readonly string[] names;
         private readonly ISourceDescriptor[] children;
@@ -467,12 +469,11 @@ namespace Microsoft.Azure.Workflows.Sdk
         internal void SetNativeSource(ISourceDescriptor source) { this.nativeSource = source; }
         internal void SetSchema(WorkflowDestination schema) { this.Schema = schema; }
 
-        internal SourceDescriptor(string kind, string[] segments, SourceBinding[] bindings, string[] nativeSegments)
+        internal SourceDescriptor(string kind, string[] segments, SourceBinding[] bindings)
         {
             this.Kind = kind;
             this.segments = segments;
             this.bindings = bindings;
-            this.nativeSegments = nativeSegments;
         }
 
         internal SourceDescriptor(SourceSnapshot literal) { this.literal = literal; this.Kind = "literal"; }
@@ -496,11 +497,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             if (this.Kind == "capture") return this.bindings[0].ToNative();
             if (this.children != null)
                 return this.nativeSource?.RenderNative() ?? throw new NotSupportedException("Structured descriptor cannot be rendered as native source without compiler metadata.");
-            if (this.Kind == "template" && this.nativeSegments != null)
-                return this.Render(this.nativeSegments);
-            if (this.Kind == "template" && this.bindings.Length == 1 && this.segments[0] == "@" && this.segments[1] == "")
-                return this.bindings[0].ToNative();
-            if (this.Kind != "native") throw new NotSupportedException("This template descriptor cannot be promoted to native C# without compiler source metadata.");
+            if (this.segments == null) throw new NotSupportedException("This template descriptor cannot be promoted to native C# without compiler source metadata.");
             return this.Render();
         }
 
@@ -520,12 +517,11 @@ namespace Microsoft.Azure.Workflows.Sdk
             return new JValue("#{" + this.RenderNative() + "}");
         }
 
-        private string Render(string[] sourceSegments = null)
+        private string Render()
         {
-            sourceSegments = sourceSegments ?? this.segments;
-            var text = new StringBuilder(sourceSegments[0]);
+            var text = new StringBuilder(this.segments[0]);
             for (int i = 0; i < this.bindings.Length; i++)
-                text.Append(this.bindings[i].ToNative()).Append(sourceSegments[i + 1]);
+                text.Append(this.bindings[i].ToNative()).Append(this.segments[i + 1]);
             return text.ToString();
         }
     }
@@ -552,7 +548,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             else if (value is Enum choice)
             {
                 native = "(" + TypeName(type) + ")" + System.Convert.ToString(System.Convert.ChangeType(choice, Enum.GetUnderlyingType(type), CultureInfo.InvariantCulture), CultureInfo.InvariantCulture);
-                token = new JValue(SourceExpressionConverter.EnumWire(choice));
+                token = new JValue(WorkflowWireRuntime.EnumWire(choice));
             }
             else if (value is Uri uri) { native = "new global::System.Uri(" + Quote(uri.OriginalString) + ", global::System.UriKind.RelativeOrAbsolute)"; token = new JValue(uri.OriginalString); }
             else if (value is System.Net.Http.HttpMethod method) { native = "new global::System.Net.Http.HttpMethod(" + Quote(method.Method) + ")"; token = new JValue(method.Method); }

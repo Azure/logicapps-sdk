@@ -116,6 +116,22 @@ public sealed class CompilerRegressionTests
         Assert.Equal(["Source", "Other"], local.Reads);
     }
 
+    [Theory]
+    [InlineData("$\"{{prefix}} {source.Output}\"")]
+    [InlineData("$@\"{{prefix}} {source.Output}\"")]
+    [InlineData("$$\"\"\"{prefix} {{source.Output}}\"\"\"")]
+    public void Structural_interpolation_uses_authored_CSharp_without_template_segments(string expression)
+    {
+        var result = Build(Source(Handles + $$"""
+            return WorkflowActions.BuiltIn.Compose(() => new { label = {{expression}} }).GetActionDefinition("Catalog");
+            """));
+        var source = result.Transformation.Sources["Consumer.cs"];
+        Assert.DoesNotContain("\"template\"", source);
+        Assert.DoesNotContain("nativeSegments:", source);
+        var label = Assert.IsType<JObject>(Token(result.Definition))["label"]!.Value<string>()!;
+        Assert.Equal("{prefix} A", LocalNativeHost.Evaluate(label, new() { ["Source"] = new JValue("A") }).Value);
+    }
+
     [Fact]
     public void Constant_user_defined_result_conversion_is_not_executed_during_generation()
     {

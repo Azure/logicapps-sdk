@@ -131,7 +131,7 @@ getters. Static storage, custom getters, compiler-generated closure objects,
 ambiguous hidden members, and null intermediate receivers are rejected.
 `Create` with kind `capture`, two empty segments, and one capture binding retains
 the snapshot's JSON token type. Captured foreach placeholders instead render
-`@item()` (or typed `item()` access in native source).
+`#{item()}` (or typed `item()` access in native source).
 
 Structured descriptors use `SourceExpression.Object<T>` and `Array<T>` with explicit
 child descriptors. `Create`, `Object`, and `Array` also accept a trailing
@@ -140,16 +140,18 @@ invoked or retained; the supplied descriptor is the only expression representati
 `SourceExpression.TypeName(Type)` supplies fully qualified C# names for concrete
 binding types, including nested generics and arrays; open and pointer types fail
 explicitly.
-Template descriptors may supply `nativeSegments` to either `Create` overload.
-These compiler-preserved source segments use the same binding order and permit
-native generated-path composition without reverse-translating template text.
+The compiler emits only native or capture segments, not intermediate template text.
+For version-1 ABI compatibility, template descriptors may still supply
+`nativeSegments` to either `Create` overload. Construction selects these native
+segments once; rendering does not retain or reverse-translate the template text.
+The legacy direct-reference shape is normalized the same way. Unsupported
+template shapes still fail at rendering, rather than changing validation timing.
 Headers and other generation-time objects reject native
 expressions instead of invoking constructors, getters, or methods. Captured custom
 objects, unsupported descriptor versions, block/async bodies, and template-to-native
 promotions without adequate source metadata fail explicitly.
 
-The historical expression-tree visitors remain temporarily for migration of legacy
-tests; the workflow-authoring APIs do not use them. Runtime descriptor tests are not
+The historical expression-tree visitors have been removed. Runtime descriptor tests are not
 verification of native expression support in the deployed execution host.
 
 Captured native values retain their compiler-declared CLR type for overload
@@ -176,3 +178,49 @@ native enum source and compiler-supplied wire source. Numeric consumers such as
 Response status codes use the former; enum wire destinations use the latter
 without a second mapping. `SourceBinding.EnumWire` renders individual enum leaves,
 allowing the compiler to preserve conditional source and branch evaluation.
+
+### Descriptor, schema, and execution boundaries
+
+`SourceExpression` holds construction-time snapshots and late-bound workflow handles.
+`SourceExpressionConverter` renders these descriptors at ordinary connector boundaries;
+`WorkflowSchemaRuntime` additionally validates explicit destination contracts and emits
+schema-specific C# normalization. Framework-only compact JSON expression generation
+belongs to this definition-generation layer.
+
+`WorkflowWireRuntime` operates on evaluated values, not descriptors or C# source.
+It owns shared enum wire names and numeric classification as well as strict JSON
+serialization and runtime normalization. Definition generation uses these same value
+rules without invoking authored delegates. Schema defaults, transforms, nullability,
+and deployment checks remain in place; no additional package is required.
+
+The build still rewrites source before compilation. A call interceptor receives all
+arguments after their evaluation: if a later argument mutates a captured local, reading
+the delegate's closure at interception cannot recover its earlier value. Preserving
+argument-position capture snapshots would require earlier instrumentation, not merely
+replacing the rewriter with an interceptor. The current transport is retained rather
+than changing this contract or maintaining two pipelines.
+
+### Build-tool responsibilities
+
+`Build\Microsoft.Azure.Workflows.Sdk.Build` is an SDK-owned tool using Roslyn,
+not a modification to Roslyn itself. Its responsibilities are kept separate:
+
+| Component | Responsibility |
+| --- | --- |
+| MSBuild targets and `Program` | Transfer compiler inputs/options, create the analysis compilation, and write transformed compiler inputs and dependency manifests. |
+| `ExpressionCompilationTransformer` and `SourceDescriptorBuilder` | Resolve workflow arguments and emit descriptor construction source while preserving authored expression semantics. |
+| `SourceFactoryPlan` and `SourceFactoryDestination` | Prove supported source-visible factories and their consumers before replacing returned lambdas. |
+| `WorkflowSchemaGenerator` | Validate explicit schemas and generate model classes and operation APIs. |
+| `WorkflowDependencyCollector` and `WorkflowDeploymentValidator` | Record native dependencies and check deployment artifacts against the selected host profile. These checks are not execution-host certification. |
+
+Each transformation owns a dependency collector explicitly passed through factory
+planning and call rewriting. No ambient collector is shared between transformations.
+Dependencies retain deterministic ordering and the first recorded source location.
+Build-tool helper names distinguish source generation (`Build...Source`), symbol
+resolution (`Resolve...`), and validation (`Validate...`); generated runtime ABI
+method names remain unchanged.
+
+The separate build process is an integration choice, not a requirement for JSON
+serialization. It rewrites authoring source before normal compilation. The compiled
+application subsequently constructs the workflow graph and serializes its
+definitions; the execution host later evaluates embedded native C# expressions.

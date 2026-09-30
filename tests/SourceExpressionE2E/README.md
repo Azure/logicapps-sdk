@@ -194,12 +194,18 @@ Queue metadata verifies zero remaining messages, cleanup deletes all six resourc
 and the owned host/emulator processes are stopped. No template fallback,
 custom-type deployment, or URI normalization is used.
 
-The subsequent simplified runtime removes the redundant Foreach/Repeat expression
-filter while retaining C# dependency registration. Its rebuilt payload passes the
-same strict 19-case host run, including all six providers and URI fallback recovery.
-That run preserves the user's revised `InvalidResponseBody` diagnostic wording
-(`can not`). The 142/162 full-run result above belongs to the earlier payload;
-the complete catalog was not rerun for this simplification.
+The subsequent simplified runtime (`andrew-foreach-runtime-003`) removes the
+redundant Foreach/Repeat expression filter while retaining C# dependency registration.
+After its initial strict 19-case run, the SDK simplification baseline reran the full
+catalog against this frozen payload: 142/162 contracts pass, with exactly the same
+20 failing case IDs and no lost passing cases. This payload preserves the user's
+revised `InvalidResponseBody` diagnostic wording (`can not`).
+
+SDK simplification gates compare individual unit-test IDs, actual-host case outcomes,
+and all 162 exported workflow definitions, not just aggregate pass counts. Each
+bounded change must also pass the fresh-package consumer matrix before the next
+change proceeds. The package gate retains its existing `SkipExistingSamples` scope;
+it does not claim validation of those excluded samples.
 
 The prepared host must include the Azure Blob and Azure Queue provider extensions
 as well as the native-C# engine. Pass the Azurite JavaScript entry point, not its

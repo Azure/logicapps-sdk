@@ -400,6 +400,26 @@ public class RuntimeDescriptorTests
     }
 
     [Fact]
+    public void TemplateCompatibilityNormalizesOnceWithoutFreezingBindings()
+    {
+        var source = Source();
+        var template = new[] { "@", "" };
+        var bindings = new[] { SourceBinding.Output(source, "string") };
+        var expression = SourceExpression.Create<string>(1, "template", template, bindings);
+        template[0] = "not source";
+        bindings[0] = SourceBinding.Capture("not a reference", "string");
+        source.Name = "Final";
+        Assert.Equal("#{outputs(\"Final\").ToObject<string>()}", Inputs(WorkflowActions.BuiltIn.Compose(expression)).Value<string>());
+
+        var unsupportedSegments = new[] { "@", "['name']" };
+        var unsupported = SourceExpression.Create<string>(1, "template", unsupportedSegments,
+            [SourceBinding.Output(source, "string")]);
+        unsupportedSegments[1] = "";
+        var action = WorkflowActions.BuiltIn.Compose(unsupported);
+        Assert.Throws<NotSupportedException>(() => Inputs(action));
+    }
+
+    [Fact]
     public void ByteSnapshotIsNotAliasedAcrossReturnedDefinitions()
     {
         var bytes = new byte[] { 1, 2 };

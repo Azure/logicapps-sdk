@@ -10,33 +10,34 @@ using Microsoft.CodeAnalysis.Text;
 using static ExpressionCompilationTransformer;
 
 /// <summary>Proves closed, source-visible factory uses before replacing any factory return.</summary>
-internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
+internal sealed class SourceFactoryPlan(CSharpCompilation compilation, WorkflowDependencyCollector dependencies)
 {
     private const int MaxAliasDepth = 16;
     private readonly HashSet<(SyntaxTree, TextSpan)> arguments = [];
     private readonly Dictionary<(SyntaxTree, TextSpan), string> replacements = [];
     private readonly Dictionary<IMethodSymbol, string?> prepared = new(SymbolEqualityComparer.Default);
 
-    internal static SourceFactoryPlan Create(CSharpCompilation compilation, ImmutableArray<Diagnostic>.Builder diagnostics)
+    internal static SourceFactoryPlan Create(CSharpCompilation compilation, ImmutableArray<Diagnostic>.Builder diagnostics,
+        WorkflowDependencyCollector dependencies)
     {
-        var plan = new SourceFactoryPlan(compilation);
+        var plan = new SourceFactoryPlan(compilation, dependencies);
         foreach (var tree in compilation.SyntaxTrees)
         {
             var model = compilation.GetSemanticModel(tree);
             foreach (var call in tree.GetRoot().DescendantNodes().OfType<InvocationExpressionSyntax>())
             {
-                var method = ResolveSourceMethod(model, call);
-                if (method == null || !method.Parameters.Any(IsExpressionParameter)) continue;
+                var method = ResolveInvocationMethod(model, call);
+                if (method == null || !method.Parameters.Any(IsWorkflowExpressionParameter)) continue;
                 foreach (var argument in call.ArgumentList.Arguments)
                 {
-                    var destination = DestinationParameter(model, argument);
-                    if (destination == null || !IsExpressionParameter(destination)) continue;
-                    var origin = plan.Origin(argument.Expression, model, 0);
+                    var destination = ResolveArgumentParameter(method, argument);
+                    if (destination == null || !IsWorkflowExpressionParameter(destination)) continue;
+                    var origin = plan.FindFactoryInvocation(argument.Expression, model, 0);
                     if (origin == null) continue;
                     plan.arguments.Add((argument.Expression.SyntaxTree, argument.Expression.Span));
                     try
                     {
-                        plan.Prepare(origin, model, destination);
+                        plan.ValidateAndPlanFactory(origin, model, destination);
                     }
                     catch (SourceDiagnosticException exception)
                     {
@@ -51,31 +52,31 @@ internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
     internal bool IsFactoryArgument(ExpressionSyntax expression) =>
         this.arguments.Contains((expression.SyntaxTree, expression.Span));
 
-    internal ExpressionSyntax? Replacement(LambdaExpressionSyntax lambda) =>
+    internal ExpressionSyntax? GetReplacementSyntax(LambdaExpressionSyntax lambda) =>
         this.replacements.TryGetValue((lambda.SyntaxTree, lambda.Span), out var descriptor)
-            ? DescriptorExpression(descriptor, lambda)
+            ? CreateDescriptorSyntax(descriptor, lambda)
             : null;
 
-    private InvocationExpressionSyntax? Origin(ExpressionSyntax expression, SemanticModel model, int depth)
+    private InvocationExpressionSyntax? FindFactoryInvocation(ExpressionSyntax expression, SemanticModel model, int depth)
     {
         if (depth > MaxAliasDepth) return null;
-        expression = Unwrap(expression);
+        expression = UnwrapParentheses(expression);
         if (expression is InvocationExpressionSyntax call) return call;
         if (model.GetSymbolInfo(expression).Symbol is ILocalSymbol local &&
-            Initializer(local) is { } initializer && IsUnwritten(local, model))
-            return this.Origin(initializer, model, depth + 1);
+            GetLocalInitializer(local) is { } initializer && IsLocalUnmodified(local, model))
+            return this.FindFactoryInvocation(initializer, model, depth + 1);
         return null;
     }
 
-    private void Prepare(InvocationExpressionSyntax call, SemanticModel callerModel, IParameterSymbol destination)
+    private void ValidateAndPlanFactory(InvocationExpressionSyntax call, SemanticModel callerModel, IParameterSymbol destination)
     {
         if (callerModel.GetSymbolInfo(call).Symbol is not IMethodSymbol called)
             throw Reject("A factory must resolve to one source method.", call);
-        var method = Definition(called);
-        var contract = SourceFactoryDestination.Contract(destination, call);
+        var method = GetOriginalMethodDefinition(called);
+        var contract = SourceFactoryDestination.GetDestinationSchema(destination, call);
         if (this.prepared.TryGetValue(method, out var previous))
         {
-            RequireSameContract(previous, contract, call);
+            RequireMatchingDestinationSchema(previous, contract, call);
             return;
         }
         if (method.IsAsync || method.IsVirtual || method.IsAbstract || method.IsOverride ||
@@ -94,16 +95,16 @@ internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
         var declaration = method.DeclaringSyntaxReferences[0].GetSyntax();
         var returned = declaration switch
         {
-            MethodDeclarationSyntax m => ReturnExpression(m.ExpressionBody, m.Body),
-            LocalFunctionStatementSyntax f => ReturnExpression(f.ExpressionBody, f.Body),
+            MethodDeclarationSyntax m => GetSingleReturnExpression(m.ExpressionBody, m.Body),
+            LocalFunctionStatementSyntax f => GetSingleReturnExpression(f.ExpressionBody, f.Body),
             _ => null,
         };
-        if (returned == null || Unwrap(returned) is not LambdaExpressionSyntax lambda)
+        if (returned == null || UnwrapParentheses(returned) is not LambdaExpressionSyntax lambda)
             throw Reject("A source-traceable factory must consist only of a single returned lambda; executable setup, selection, and recursive forwarding are unsupported.", declaration);
 
         // Immutable value parameters and deferred handles have the same meaning even when
         // a descriptor-producing factory result is stored before its SDK consumption.
-        if (method.Parameters.Any(p => !StableParameter(p.Type)))
+        if (method.Parameters.Any(p => !IsSupportedFactoryParameterType(p.Type)))
             throw Reject("Factory parameters must be immutable scalar values or SDK workflow handles; mutable captures require an inline expression.", declaration);
         var model = compilation.GetSemanticModel(lambda.SyntaxTree);
         if (lambda.DescendantNodes().Any(n => n is ThisExpressionSyntax or BaseExpressionSyntax))
@@ -111,13 +112,13 @@ internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
         foreach (var identifier in lambda.DescendantNodes().OfType<IdentifierNameSyntax>())
         {
             var symbol = model.GetSymbolInfo(identifier).Symbol;
-            if (symbol is ILocalSymbol { IsConst: false } local && !DeclaredInside(local, lambda) ||
-                symbol is IParameterSymbol parameter && !DeclaredInside(parameter, lambda) &&
+            if (symbol is ILocalSymbol { IsConst: false } local && !IsDeclaredInsideLambda(local, lambda) ||
+                symbol is IParameterSymbol parameter && !IsDeclaredInsideLambda(parameter, lambda) &&
                     !SymbolEqualityComparer.Default.Equals(parameter.ContainingSymbol, method) ||
                 symbol is IFieldSymbol { IsStatic: false } or IPropertySymbol { IsStatic: false } or
                     IMethodSymbol { IsStatic: false, MethodKind: MethodKind.Ordinary } &&
                     identifier.Parent is not (MemberAccessExpressionSyntax or NameEqualsSyntax or NameColonSyntax) &&
-                    !IsInitializerMember(identifier))
+                    !IsObjectInitializerTarget(identifier))
                 throw Reject("Factory lambdas cannot capture mutable enclosing locals, enclosing parameters, or implicit instance state.", identifier);
         }
 
@@ -129,76 +130,69 @@ internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
             {
                 var reference = useModel.GetSymbolInfo(name);
                 if (!(reference.Symbol is IMethodSymbol referenced &&
-                    SymbolEqualityComparer.Default.Equals(Definition(referenced), method)) &&
+                    SymbolEqualityComparer.Default.Equals(GetOriginalMethodDefinition(referenced), method)) &&
                     !reference.CandidateSymbols.OfType<IMethodSymbol>().Any(candidate =>
-                        SymbolEqualityComparer.Default.Equals(Definition(candidate), method))) continue;
+                        SymbolEqualityComparer.Default.Equals(GetOriginalMethodDefinition(candidate), method))) continue;
                 ExpressionSyntax target = name;
                 if (name.Parent is MemberAccessExpressionSyntax member && member.Name == name) target = member;
                 if (target.Parent is not InvocationExpressionSyntax use || use.Expression != target ||
-                    !this.SafeConsumer(use, useModel, new HashSet<ILocalSymbol>(SymbolEqualityComparer.Default), 0, contract))
+                    !this.IsSupportedConsumerFlow(use, useModel, new HashSet<ILocalSymbol>(SymbolEqualityComparer.Default), 0, contract))
                     throw Reject("Every factory result must flow only to SDK expression parameters through unreassigned locals; ordinary invocation, escape, and ambiguous consumers are unsupported.", name);
             }
         }
 
-        var descriptor = new SourceDescriptorBuilder(model, lambda, lambda.SpanStart).Build(invoke.ReturnType, destination);
+        var descriptor = new SourceDescriptorBuilder(model, lambda, lambda.SpanStart, dependencies).BuildDescriptorSource(invoke.ReturnType, destination);
         this.replacements.Add((lambda.SyntaxTree, lambda.Span), descriptor);
         this.prepared.Add(method, contract);
     }
 
-    private bool SafeConsumer(ExpressionSyntax expression, SemanticModel model, HashSet<ILocalSymbol> visiting, int depth, string? contract)
+    private bool IsSupportedConsumerFlow(ExpressionSyntax expression, SemanticModel model, HashSet<ILocalSymbol> visiting, int depth, string? contract)
     {
         if (depth > MaxAliasDepth) return false;
         while (expression.Parent is ParenthesizedExpressionSyntax parentheses) expression = parentheses;
-        if (expression.Parent is ArgumentSyntax argument && argument.Expression == expression)
+        if (expression.Parent is ArgumentSyntax argument && argument.Expression == expression &&
+            argument.Parent is ArgumentListSyntax { Parent: InvocationExpressionSyntax call })
         {
-            var destination = DestinationParameter(model, argument);
-            if (destination == null || !IsExpressionParameter(destination) ||
-                !SourceFactoryDestination.IsSupportedBoundary(destination, compilation, argument)) return false;
-            RequireSameContract(contract, SourceFactoryDestination.Contract(destination, argument), argument);
+            var method = ResolveInvocationMethod(model, call);
+            var destination = method == null ? null : ResolveArgumentParameter(method, argument);
+            if (destination == null || !IsWorkflowExpressionParameter(destination) ||
+                !SourceFactoryDestination.IsSupportedFactoryDestination(destination, compilation, argument)) return false;
+            RequireMatchingDestinationSchema(contract, SourceFactoryDestination.GetDestinationSchema(destination, argument), argument);
             return true;
         }
         if (expression.Parent is not EqualsValueClauseSyntax { Parent: VariableDeclaratorSyntax declaration } ||
             model.GetDeclaredSymbol(declaration) is not ILocalSymbol local ||
-            !IsUnwritten(local, model) || !visiting.Add(local)) return false;
+            !IsLocalUnmodified(local, model) || !visiting.Add(local)) return false;
 
         var uses = declaration.SyntaxTree.GetRoot().DescendantNodes().OfType<IdentifierNameSyntax>()
             .Where(n => n.Identifier.ValueText == local.Name &&
                 SymbolEqualityComparer.Default.Equals(model.GetSymbolInfo(n).Symbol, local)).ToArray();
-        var safe = uses.Length != 0 && uses.All(use => this.SafeConsumer(use, model, visiting, depth + 1, contract));
+        var safe = uses.Length != 0 && uses.All(use => this.IsSupportedConsumerFlow(use, model, visiting, depth + 1, contract));
         visiting.Remove(local);
         return safe;
     }
 
-    private static IParameterSymbol? DestinationParameter(SemanticModel model, ArgumentSyntax argument)
-    {
-        if (argument.Parent is not ArgumentListSyntax { Parent: InvocationExpressionSyntax call }) return null;
-        var method = ResolveSourceMethod(model, call);
-        return argument.NameColon is { } name
-            ? method?.Parameters.FirstOrDefault(p => p.Name == name.Name.Identifier.ValueText)
-            : method?.Parameters.ElementAtOrDefault(call.ArgumentList.Arguments.IndexOf(argument));
-    }
-
-    private static void RequireSameContract(string? expected, string? actual, SyntaxNode node)
+    private static void RequireMatchingDestinationSchema(string? expected, string? actual, SyntaxNode node)
     {
         if (!string.Equals(expected, actual, StringComparison.Ordinal))
             throw new SourceDiagnosticException("WFBUILD009",
                 "A shared factory has conflicting workflow destination contracts. Use separate factories for distinct schema destinations.", node);
     }
 
-    private static ExpressionSyntax? ReturnExpression(ArrowExpressionClauseSyntax? expression, BlockSyntax? body) =>
+    private static ExpressionSyntax? GetSingleReturnExpression(ArrowExpressionClauseSyntax? expression, BlockSyntax? body) =>
         expression?.Expression ?? (body?.Statements is [ReturnStatementSyntax statement] ? statement.Expression : null);
 
-    private static ExpressionSyntax Unwrap(ExpressionSyntax expression)
+    private static ExpressionSyntax UnwrapParentheses(ExpressionSyntax expression)
     {
         while (expression is ParenthesizedExpressionSyntax parentheses) expression = parentheses.Expression;
         return expression;
     }
 
-    private static ExpressionSyntax? Initializer(ILocalSymbol local) =>
+    private static ExpressionSyntax? GetLocalInitializer(ILocalSymbol local) =>
         local.DeclaringSyntaxReferences.SingleOrDefault()?.GetSyntax() is VariableDeclaratorSyntax declaration
             ? declaration.Initializer?.Value : null;
 
-    private static bool IsUnwritten(ILocalSymbol local, SemanticModel model) =>
+    private static bool IsLocalUnmodified(ILocalSymbol local, SemanticModel model) =>
         !model.SyntaxTree.GetRoot().DescendantNodes().OfType<IdentifierNameSyntax>().Any(identifier =>
         {
             if (!SymbolEqualityComparer.Default.Equals(model.GetSymbolInfo(identifier).Symbol, local)) return false;
@@ -211,23 +205,23 @@ internal sealed class SourceFactoryPlan(CSharpCompilation compilation)
                 target.Parent is PrefixUnaryExpressionSyntax or PostfixUnaryExpressionSyntax;
         });
 
-    private static bool DeclaredInside(ISymbol symbol, LambdaExpressionSyntax lambda) =>
+    private static bool IsDeclaredInsideLambda(ISymbol symbol, LambdaExpressionSyntax lambda) =>
         symbol.DeclaringSyntaxReferences.Any(r => r.SyntaxTree == lambda.SyntaxTree && lambda.Span.Contains(r.Span));
 
-    private static bool IsInitializerMember(IdentifierNameSyntax identifier) =>
+    private static bool IsObjectInitializerTarget(IdentifierNameSyntax identifier) =>
         identifier.Parent is AssignmentExpressionSyntax assignment && assignment.Left == identifier &&
         assignment.Parent is InitializerExpressionSyntax initializer &&
         initializer.IsKind(SyntaxKind.ObjectInitializerExpression);
 
-    private static IMethodSymbol Definition(IMethodSymbol method) =>
+    private static IMethodSymbol GetOriginalMethodDefinition(IMethodSymbol method) =>
         (method.ReducedFrom ?? method).OriginalDefinition;
 
-    private static bool StableParameter(ITypeSymbol type)
+    private static bool IsSupportedFactoryParameterType(ITypeSymbol type)
     {
         if (type is INamedTypeSymbol named)
         {
             if (named.OriginalDefinition.SpecialType == SpecialType.System_Nullable_T)
-                return StableParameter(named.TypeArguments[0]);
+                return IsSupportedFactoryParameterType(named.TypeArguments[0]);
             if (named.AllInterfaces.Prepend(named).Any(i => i.Name == "IWorkflowOperation" &&
                 i.ContainingNamespace.ToDisplayString() == SdkAssembly && i.ContainingAssembly.Name == SdkAssembly))
                 return true;

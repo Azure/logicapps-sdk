@@ -5,6 +5,19 @@ using static ConsumerCompilation;
 
 public sealed class SourceFactoryDestinationTests
 {
+    [Theory]
+    [InlineData("CatalogDestinations.Fields(Factory(), () => 3, () => \"label\")")]
+    [InlineData("CatalogDestinations.Fields(label: () => \"label\", name: Factory(), count: () => 3)")]
+    [InlineData("CatalogDestinations.Fields(name: () => \"hello\", count: () => 3, label: () => \"label\")")]
+    public void Positional_named_and_direct_destinations_preserve_the_same_schema(string invocation)
+    {
+        var result = SchemaConsumerCompilation.Build(invocation,
+            """Func<object> Factory() => () => "hello";""");
+        Assert.Equal("hello", result.Value["name"]!.Value<string>());
+        Assert.Equal(3, result.Value["count"]!.Value<int>());
+        Assert.Equal("label", result.Value["label"]!.Value<string>());
+    }
+
     [Fact]
     public void Reused_lambda_receives_the_bound_destination_parameter()
     {

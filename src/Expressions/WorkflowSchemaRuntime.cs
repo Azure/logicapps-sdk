@@ -6,6 +6,8 @@ namespace Microsoft.Azure.Workflows.Sdk
     using System.Collections.Generic;
     using System.Globalization;
     using System.Linq;
+    using System.Reflection;
+    using System.Runtime.CompilerServices;
     using Newtonsoft.Json.Linq;
 
     /// <summary>Definition generation for SDK schema-generated APIs. No authoring delegate is invoked.</summary>
@@ -221,9 +223,9 @@ namespace Microsoft.Azure.Workflows.Sdk
             {
                 if (destination.Kind == "json" || destination.Kind == "object" || destination.Kind == "array" ||
                     destination.Kind == "any" && !IsScalar(type) && type != typeof(byte[]))
-                    expression = WorkflowWireRuntime.CompactJsonExpression(descriptor.ResultType, expression);
+                    expression = CompactJsonExpression(descriptor.ResultType, expression);
                 else if (type == typeof(bool)) expression = "(" + expression + ").ToString().ToLowerInvariant()";
-                else if (IsNumber(type)) expression = "(" + expression + ").ToString(global::System.Globalization.CultureInfo.InvariantCulture)";
+                else if (WorkflowWireRuntime.IsNumber(type)) expression = "(" + expression + ").ToString(global::System.Globalization.CultureInfo.InvariantCulture)";
                 else if (type == typeof(Uri)) expression = "(" + expression + ").OriginalString";
                 else if (type == typeof(System.Net.Http.HttpMethod)) expression = "(" + expression + ").Method";
             }
@@ -235,6 +237,47 @@ namespace Microsoft.Azure.Workflows.Sdk
                     : (transform == "url" ? "encodeURIComponent" : "base64") + "(" + expression + ")";
             }
             return expression;
+        }
+
+        // Only closed, finite-valued CLR shapes can use the ordinary Newtonsoft writer
+        // without losing the SDK writer's enum, converter, raw-JSON, or NaN checks.
+        internal static string CompactJsonExpression(Type sourceType, string expression)
+        {
+            if (!SupportsFrameworkJson(sourceType))
+                return "global::Microsoft.Azure.Workflows.Sdk.WorkflowWireRuntime.ToCompactJson(" + expression + ")";
+
+            return "global::Newtonsoft.Json.Linq.JToken.FromObject((object)(" + expression +
+                ") ?? global::Newtonsoft.Json.Linq.JValue.CreateNull(), " +
+                "global::Newtonsoft.Json.JsonSerializer.Create(new global::Newtonsoft.Json.JsonSerializerSettings { " +
+                "Culture = global::System.Globalization.CultureInfo.InvariantCulture, " +
+                "Formatting = global::Newtonsoft.Json.Formatting.None, " +
+                "NullValueHandling = global::Newtonsoft.Json.NullValueHandling.Include, " +
+                "DefaultValueHandling = global::Newtonsoft.Json.DefaultValueHandling.Include, " +
+                "ContractResolver = new global::Newtonsoft.Json.Serialization.DefaultContractResolver { " +
+                "NamingStrategy = new global::Newtonsoft.Json.Serialization.DefaultNamingStrategy() }, " +
+                "DateFormatHandling = global::Newtonsoft.Json.DateFormatHandling.IsoDateFormat, " +
+                "DateTimeZoneHandling = global::Newtonsoft.Json.DateTimeZoneHandling.RoundtripKind, " +
+                "TypeNameHandling = global::Newtonsoft.Json.TypeNameHandling.None, " +
+                "StringEscapeHandling = global::Newtonsoft.Json.StringEscapeHandling.Default, " +
+                "FloatFormatHandling = global::Newtonsoft.Json.FloatFormatHandling.String, " +
+                "ReferenceLoopHandling = global::Newtonsoft.Json.ReferenceLoopHandling.Error, " +
+                "PreserveReferencesHandling = global::Newtonsoft.Json.PreserveReferencesHandling.None " +
+                "})).ToString(global::Newtonsoft.Json.Formatting.None)";
+        }
+
+        private static bool SupportsFrameworkJson(Type type)
+        {
+            type = Nullable.GetUnderlyingType(type) ?? type;
+            if (type == typeof(string) || type == typeof(bool) || type == typeof(char) ||
+                type == typeof(byte) || type == typeof(sbyte) || type == typeof(short) ||
+                type == typeof(ushort) || type == typeof(int) || type == typeof(uint) ||
+                type == typeof(long) || type == typeof(ulong) || type == typeof(decimal))
+                return true;
+            if (type.IsArray)
+                return type.GetArrayRank() == 1 && type != typeof(byte[]) && SupportsFrameworkJson(type.GetElementType());
+            return type.IsSealed && type.Name.StartsWith("<>f__AnonymousType", StringComparison.Ordinal) &&
+                type.IsDefined(typeof(CompilerGeneratedAttribute), inherit: false) &&
+                type.GetProperties(BindingFlags.Instance | BindingFlags.Public).All(property => SupportsFrameworkJson(property.PropertyType));
         }
 
         private static void ValidateLiteral(JToken token, Type type, WorkflowDestination destination)
@@ -270,7 +313,7 @@ namespace Microsoft.Azure.Workflows.Sdk
             var token = typeof(JToken).IsAssignableFrom(type);
             if (destination.Kind == "enum" && !type.IsEnum ||
                 destination.Kind == "text" && type != typeof(string) && type != typeof(char) && !token ||
-                destination.Kind == "number" && !IsNumber(type) && !token ||
+                destination.Kind == "number" && !WorkflowWireRuntime.IsNumber(type) && !token ||
                 destination.Kind == "boolean" && type != typeof(bool) && !token ||
                 destination.Kind == "bytes" && type != typeof(byte[]) ||
                 destination.Kind == "uri" && type != typeof(Uri) ||
@@ -279,11 +322,9 @@ namespace Microsoft.Azure.Workflows.Sdk
         }
         private static NotSupportedException Unsupported(Type type, WorkflowDestination destination) =>
             new NotSupportedException("Destination '" + destination.Name + "' does not support encoding normalization of '" + type.FullName + "' as " + destination.Kind + ".");
-        private static bool IsNumber(Type type) =>
-            type != typeof(bool) && type != typeof(char) && type != typeof(IntPtr) && type != typeof(UIntPtr) && type.IsPrimitive || type == typeof(decimal);
         private static bool IsScalar(Type type) =>
             type == typeof(string) || type.IsEnum || type == typeof(bool) || type == typeof(char) ||
-            IsNumber(type) || type == typeof(Uri) || type == typeof(System.Net.Http.HttpMethod);
+            WorkflowWireRuntime.IsNumber(type) || type == typeof(Uri) || type == typeof(System.Net.Http.HttpMethod);
         private static bool IsNative(JToken token) =>
             token.Type == JTokenType.String && token.Value<string>().StartsWith("#{", StringComparison.Ordinal);
         private static void ValidateArguments(string[] schemas, Delegate[] values)

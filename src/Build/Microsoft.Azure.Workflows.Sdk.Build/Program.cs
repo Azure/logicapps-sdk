@@ -23,7 +23,7 @@ internal static class Program
     {
         if (args.Length > 0 && args[0] == "validate-deployment")
         {
-            return ValidateDeployment(args);
+            return RunDeploymentValidation(args);
         }
 
         if (args.Length != 2)
@@ -37,7 +37,7 @@ internal static class Program
             var manifest = JsonSerializer.Deserialize<CompilationManifest>(
                 File.ReadAllText(args[0]), JsonOptions)
                 ?? throw new InvalidDataException("Compilation manifest is empty.");
-            return Transform(manifest, args[1]);
+            return RunSourceTransformation(manifest, args[1]);
         }
         catch (Exception error) when (error is IOException or InvalidDataException or UnauthorizedAccessException or JsonException or ArgumentException)
         {
@@ -46,7 +46,7 @@ internal static class Program
         }
     }
 
-    private static int ValidateDeployment(string[] args)
+    private static int RunDeploymentValidation(string[] args)
     {
         if (args.Length is not (3 or 4))
         {
@@ -86,7 +86,26 @@ internal static class Program
         }
     }
 
-    private static int Transform(CompilationManifest manifest, string outputDirectory)
+    private static int RunSourceTransformation(CompilationManifest manifest, string outputDirectory)
+    {
+        var (compilation, generatedOriginals) = CreateCompilation(manifest, outputDirectory);
+        var result = ExpressionCompilationTransformer.Transform(compilation);
+        foreach (var diagnostic in result.Diagnostics)
+        {
+            Console.Error.WriteLine(diagnostic);
+        }
+
+        if (result.Diagnostics.Any(d => d.Severity == DiagnosticSeverity.Error))
+        {
+            return 1;
+        }
+
+        WriteBuildOutputs(manifest.AssemblyName, outputDirectory, generatedOriginals, result);
+        return 0;
+    }
+
+    private static (CSharpCompilation Compilation, Dictionary<string, string> GeneratedOriginals) CreateCompilation(
+        CompilationManifest manifest, string outputDirectory)
     {
         if (manifest.SourcesFile != null)
         {
@@ -168,18 +187,12 @@ internal static class Program
                 .WithStrongNameProvider(new DesktopStrongNameProvider());
         }
 
-        var compilation = CSharpCompilation.Create(manifest.AssemblyName, trees, references, options);
-        var result = ExpressionCompilationTransformer.Transform(compilation);
-        foreach (var diagnostic in result.Diagnostics)
-        {
-            Console.Error.WriteLine(diagnostic);
-        }
+        return (CSharpCompilation.Create(manifest.AssemblyName, trees, references, options), generatedOriginals);
+    }
 
-        if (result.Diagnostics.Any(d => d.Severity == DiagnosticSeverity.Error))
-        {
-            return 1;
-        }
-
+    private static void WriteBuildOutputs(string assemblyName, string outputDirectory,
+        IReadOnlyDictionary<string, string> generatedOriginals, TransformationResult result)
+    {
         Directory.CreateDirectory(outputDirectory);
         foreach (var original in generatedOriginals)
         {
@@ -204,11 +217,10 @@ internal static class Program
         File.WriteAllText(Path.Combine(outputDirectory, "expression-dependencies.json"),
             JsonSerializer.Serialize(new WorkflowDependencyManifest
             {
-                AssemblyName = manifest.AssemblyName,
+                AssemblyName = assemblyName,
                 Dependencies = result.Dependencies.ToArray(),
             }, JsonOptions), new UTF8Encoding(false));
         File.WriteAllLines(Path.Combine(outputDirectory, "compiled-files.txt"), compiledFiles);
-        return 0;
     }
 }
 

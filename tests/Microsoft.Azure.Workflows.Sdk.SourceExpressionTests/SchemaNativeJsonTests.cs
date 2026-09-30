@@ -51,6 +51,26 @@ public sealed class SchemaNativeJsonTests
         finally { JsonConvert.DefaultSettings = previous; }
     }
 
+    [Fact]
+    public void Fixed_profile_ignores_mutations_to_the_shared_default_contract_resolver()
+    {
+        var emitted = SchemaConsumerCompilation.Build(
+            "CatalogDestinations.EncodeJson(content: () => new { PascalName = source.Output })").Value.Value<string>()!;
+        var shared = Assert.IsType<DefaultContractResolver>(JsonSerializer.Create().ContractResolver);
+        var previous = shared.NamingStrategy;
+        try
+        {
+            shared.NamingStrategy = new CamelCaseNamingStrategy();
+            var control = JToken.FromObject(new { SharedResolverSentinel = "changed" });
+            Assert.Equal("changed", control["sharedResolverSentinel"]!.Value<string>());
+
+            var result = ExecuteWithoutSdk(emitted);
+            Assert.Equal("{\"PascalName\":\"A\"}",
+                System.Text.Encoding.UTF8.GetString(Convert.FromBase64String((string)result[0])));
+        }
+        finally { shared.NamingStrategy = previous; }
+    }
+
     [Theory]
     [InlineData("new { Value = RuntimeValues.NextChoice() }")]
     [InlineData("new { Value = (double)count.Output }")]
@@ -69,7 +89,7 @@ public sealed class SchemaNativeJsonTests
     public void Null_array_is_evaluated_once_and_keeps_the_existing_JSON_null_text_contract()
     {
         var type = typeof(int[]);
-        var method = typeof(WorkflowWireRuntime).GetMethod("CompactJsonExpression", BindingFlags.Static | BindingFlags.NonPublic)!;
+        var method = typeof(WorkflowSchemaRuntime).GetMethod("CompactJsonExpression", BindingFlags.Static | BindingFlags.NonPublic)!;
         var fragment = (string)method.Invoke(null, [type, "Next()"])!;
         Assert.DoesNotContain("Microsoft.Azure.Workflows.Sdk", fragment);
         var result = ExecuteWithoutSdk("#{" + fragment + "}", """
